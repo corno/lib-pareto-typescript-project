@@ -11,6 +11,7 @@ export type TProject = {
     readonly "modules": pt.Dictionary<{
         readonly "definition": mapi.TModuleDefinition
     }>
+    readonly "resource"?: boolean
 }
 
 export type XserializeProject = ($: TProject, $i: mfp.IWriter) => void

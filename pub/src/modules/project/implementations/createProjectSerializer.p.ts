@@ -12,12 +12,14 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
         const compare = (a: string, b: string) => $d.compare({ a: a, b: b })
 
 
-        function tsConfig($i: mfp.IWriter) {
+        function tsConfig($: {
+            isResource: boolean
+        }, $i: mfp.IWriter) {
 
             $i.createFile("tsconfig.json", ($i) => {
                 $i.literal(`{`)
                 $i.literal(`  "compilerOptions": {`)
-                $i.literal(`    "noLib": true,`)
+                if (!$.isResource) { $i.literal(`    "noLib": true,`) }
                 $i.literal(`    "target": "ES2015",`)
                 $i.literal(`    "module": "commonjs",`)
                 $i.literal(`    "declaration": true,`)
@@ -59,7 +61,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                     $i.createFile("generateCode.generated.ts", ($i) => {
 
 
-                        
+
                         $i.literal(`import * as exe from "pareto-core-exe"`)
                         $i.literal(`import * as mmain from "../modules/main"`)
                         $i.literal(``)
@@ -72,11 +74,13 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                     })
                 })
             })
-            tsConfig($i)
+            tsConfig({ isResource: false }, $i)
         })
         $i.createDirectory("pub", ($i) => {
             $i.createDirectory("src", ($i) => {
-                globals($i)
+                if ($.resource !== undefined && $.resource) {
+                    globals($i)
+                }
                 $i.createDirectory("modules", ($i) => {
                     $.modules.forEach(compare, ($, key) => {
                         $i.createDirectory(`${key}`, ($i) => {
@@ -171,7 +175,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                     $i.literal(`export { $a } from "./modules/${$.main}"`)
                 })
             })
-            tsConfig($i)
+            tsConfig({ isResource: $.resource !== undefined && $.resource }, $i)
         })
         $i.createDirectory("test", ($i) => {
 
@@ -345,7 +349,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                     })
                 })
             })
-            tsConfig($i)
+            tsConfig({ isResource: false }, $i)
         })
 
     }

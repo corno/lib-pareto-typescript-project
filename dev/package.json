@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "glo-pareto-common": "^0.1.0",
-    "glo-pareto-main": "^0.3.0",
+    "glo-pareto-main": "^0.4.0",
     "lib-fountain-pen": "^0.11.0",
     "lib-pareto-exe": "^0.5.0",
     "pareto-core-exe": "^0.15.1",

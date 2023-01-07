@@ -175,7 +175,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                     $i.literal(`export { $a } from "./modules/${$.main}"`)
                     $i.literal(`export * from "./modules/${$.main}/api"`)
 
-                    
+
                 })
             })
             tsConfig({ isResource: $.resource !== undefined && $.resource }, $i)
@@ -199,7 +199,8 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                         $i.literal(``)
                         $i.literal(`pe.runProgram(`)
                         $i.literal(`    ($) => {`)
-                        $i.literal(`        test.$b.createTestProgram(`)
+                        $i.literal(`        test.$a.createTestProgram(`)
+                        $i.literal(`            null,`)
                         $i.literal(`            {`)
                         $i.literal(`                getTestSet: createGetTestset(`)
                         $i.literal(`                    data,`)
@@ -353,6 +354,17 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 })
             })
             tsConfig({ isResource: false }, $i)
+        })
+        $i.createFile(".gitignore", ($i) => {
+            $i.literal(`/dev/dist/`)
+            $i.literal(`/dev/node_modules/`)
+            $i.literal(`/pub/dist/`)
+            $i.literal(`/pub/node_modules/`)
+            $i.literal(`/pareto/node_modules/`)
+            $i.literal(`/pareto/scripts/`)
+            $i.literal(`/test/dist/`)
+            $i.literal(`/test/node_modules/`)
+            $i.literal(`/tmp`)
         })
 
     }

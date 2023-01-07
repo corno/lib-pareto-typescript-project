@@ -5,27 +5,23 @@
     "glo-pareto-main": "^0.3.0",
     "lib-fountain-pen": "^0.11.0",
     "lib-pareto-exe": "^0.5.0",
-    "lib-pareto-filesystem": "^0.7.0",
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.0",
     "pareto-core-state": "^0.12.0",
-    "res-pareto-arithmetic": "^0.5.0",
-    "res-pareto-boolean": "^0.7.0",
-    "res-pareto-collation": "^0.10.0",
-    "res-pareto-diff": "^0.13.2"
+    "res-pareto-collation": "^0.10.0"
   },
-  "description": "test functions for pareto",
+  "description": "generates a pareto typescript project structure",
   "files": [
     "dist"
   ],
   "license": "ISC",
   "main": "dist/index.js",
-  "name": "lib-pareto-test",
+  "name": "lib-pareto-typescript-project",
   "repository": {
     "type": "git",
-    "url": "http://github.com/corno/lib-pareto-test.git"
+    "url": "http://github.com/corno/lib-pareto-typescript-project.git"
   },
   "types": "dist/index.d.ts",
-  "version": "0.12.0",
-  "content-fingerprint": "3c353cece29c228735f7ec652b83e06a2a2025ef"
+  "version": "0.1.0",
+  "content-fingerprint": "33069094e0dc778f9c406aa0dbd16da7f2a28d2a"
 }

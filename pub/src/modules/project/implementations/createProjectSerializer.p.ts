@@ -61,7 +61,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
 
                         
                         $i.literal(`import * as exe from "pareto-core-exe"`)
-                        $i.literal(`import * as mmain from "../modules/main""`)
+                        $i.literal(`import * as mmain from "../modules/main"`)
                         $i.literal(``)
                         $i.literal(`exe.runProgram(mmain.$a.main)`)
 

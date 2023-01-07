@@ -18,11 +18,12 @@ export const project: NProject.TProject = {
                     'imports': wd({
                         "project": "../../project",
                         "common": "glo-pareto-common",
+                        "main": "glo-pareto-main",
                     }),
                     'types': types({
                         "ProjectSettings": group({
                             "project": member(er("project", "Project")),
-                            "path": member(er("common", "Path")),
+                            "mainData": member(er("main", "MainData")),
                         })
                     }),
                     'functions': wd({

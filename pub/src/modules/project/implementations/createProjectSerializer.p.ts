@@ -78,7 +78,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
         })
         $i.createDirectory("pub", ($i) => {
             $i.createDirectory("src", ($i) => {
-                if ($.resource !== undefined && $.resource) {
+                if ($.resource === undefined || !$.resource) {
                     globals($i)
                 }
                 $i.createDirectory("modules", ($i) => {

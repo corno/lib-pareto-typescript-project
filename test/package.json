@@ -6,8 +6,6 @@
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.0",
     "pareto-core-state": "^0.12.0",
-    "res-pareto-diff": "^0.13.2",
-    "res-pareto-filesystem": "^0.26.1",
     "res-pareto-ugly-stuff": "^0.9.0"
   }
 }

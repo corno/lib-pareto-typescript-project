@@ -1,0 +1,31 @@
+{
+  "author": "Corno",
+  "dependencies": {
+    "glo-pareto-common": "^0.1.0",
+    "glo-pareto-main": "^0.3.0",
+    "lib-fountain-pen": "^0.11.0",
+    "lib-pareto-exe": "^0.5.0",
+    "lib-pareto-filesystem": "^0.7.0",
+    "pareto-core-lib": "^0.17.0",
+    "pareto-core-raw": "^0.7.0",
+    "pareto-core-state": "^0.12.0",
+    "res-pareto-arithmetic": "^0.5.0",
+    "res-pareto-boolean": "^0.7.0",
+    "res-pareto-collation": "^0.10.0",
+    "res-pareto-diff": "^0.13.2"
+  },
+  "description": "test functions for pareto",
+  "files": [
+    "dist"
+  ],
+  "license": "ISC",
+  "main": "dist/index.js",
+  "name": "lib-pareto-test",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/corno/lib-pareto-test.git"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.12.0",
+  "content-fingerprint": "3c353cece29c228735f7ec652b83e06a2a2025ef"
+}

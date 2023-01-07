@@ -35,6 +35,9 @@ export function dictionary($: Type): Type {
 export function array($: Type): Type {
     return ["array", $]
 }
+export function optional($: Type): Type {
+    return ["optional", $]
+}
 export function group($: {
     [key: string]: {
         type: Type

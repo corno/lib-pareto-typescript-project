@@ -51,6 +51,12 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($, $d) 
                     $i.snippet(`>`)
                 })
                 break
+            case "optional":
+                pl.cc($[1], ($) => {
+                    $i.snippet(`null | `)
+                    serializeType($, $i)
+                })
+                break
             case "leaf":
                 pl.cc($[1], ($) => {
                     serializeLeafType($, $i)

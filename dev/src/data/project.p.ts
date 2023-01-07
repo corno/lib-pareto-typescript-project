@@ -98,6 +98,7 @@ export const project: NProject.TProject = {
                         }),
                         "Type": taggedUnion({
                             "leaf": ref("LeafType"),
+                            "optional": ref("Type"),
                             "array": ref("Type"),
                             "dictionary": ref("Type"),
                             "group": dictionary(group({

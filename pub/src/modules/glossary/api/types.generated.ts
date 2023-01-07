@@ -54,6 +54,7 @@ export type TType =
         readonly "type": TType
     }> ]
     | [ "leaf", TLeafType ]
+    | [ "optional", TType ]
     | [ "taggedUnion", pt.Dictionary<TType> ]
 
 export type XserializeGlossary = ($: TGlossary, $i: mfp.IBlock) => void

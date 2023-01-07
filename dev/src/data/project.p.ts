@@ -1,14 +1,16 @@
 import * as pr from "pareto-core-raw"
-import { dictionary, group, member, taggedUnion, types, _function } from "../modules/glossary/api/shorthands.p"
 import {
     externalReference as er,
     string as str,
     _null as nll,
     reference as ref,
     boolean as bln,
-} from "../modules/glossary/api/shorthands.p"
-import { string, _null, reference, externalReference, number, boolean } from "../modules/api/api/shorthands.p"
-import * as NProject from "../modules/project"
+} from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
+import { dictionary, group, member, taggedUnion, types, _function } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
+
+
+import { string, _null, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/api/api/shorthands.p"
+import * as NProject from "lib-pareto-typescript-project/dist/modules/project"
 const wd = pr.wrapRawDictionary
 export const project: NProject.TProject = {
     modules: wd({

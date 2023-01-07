@@ -102,6 +102,7 @@ export const project: NProject.TProject = {
                             "leaf": ref("LeafType"),
                             "optional": ref("Type"),
                             "array": ref("Type"),
+                            "nested": ref("Type"),
                             "dictionary": ref("Type"),
                             "group": dictionary(group({
                                 "type": member(ref("Type")),

@@ -54,6 +54,7 @@ export type TType =
         readonly "type": TType
     }> ]
     | [ "leaf", TLeafType ]
+    | [ "nested", TType ]
     | [ "optional", TType ]
     | [ "taggedUnion", pt.Dictionary<TType> ]
 

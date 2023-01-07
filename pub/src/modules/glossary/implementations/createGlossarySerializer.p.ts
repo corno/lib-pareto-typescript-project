@@ -51,6 +51,13 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($, $d) 
                     $i.snippet(`>`)
                 })
                 break
+            case "nested":
+                pl.cc($[1], ($) => {
+                    $i.snippet(`pt.Nested<`)
+                    serializeType($, $i)
+                    $i.snippet(`>`)
+                })
+                break
             case "optional":
                 pl.cc($[1], ($) => {
                     $i.snippet(`null | `)

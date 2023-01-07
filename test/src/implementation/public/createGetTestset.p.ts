@@ -3,7 +3,7 @@ import * as pl from "pareto-core-lib"
 import * as pm from "pareto-core-state"
 import * as pr from "pareto-core-raw"
 
-import * as test from "lib-pareto-test"
+import * as tst from "lib-pareto-test"
 
 import * as api from "../../interface"
 import * as us from "res-pareto-ugly-stuff"
@@ -48,11 +48,11 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
         //     pr.wrapRawArray(["foo"])
         // )
 
-        const builder = pm.createUnsafeDictionaryBuilder<test.TTestElement>()
+        const builder = pm.createUnsafeDictionaryBuilder<tst.TTestElement>()
         function createTest(name: string, actual: string, expected: string) {
             builder.add(name, {
                 type: ["test", {
-                    type: ["simple string", {
+                    type: ["short string", {
                         actual: actual,
                         expected: expected
                     }]

@@ -10,7 +10,8 @@ import { createGetTestset } from "../implementation"
 
 pe.runProgram(
     ($) => {
-        test.$b.createTestProgram(
+        test.$a.createTestProgram(
+            null,
             {
                 getTestSet: createGetTestset(
                     data,

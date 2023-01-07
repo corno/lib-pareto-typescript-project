@@ -173,6 +173,9 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 // })
                 $i.createFile("index.ts", ($i) => {
                     $i.literal(`export { $a } from "./modules/${$.main}"`)
+                    $i.literal(`export * from "./modules/${$.main}/api"`)
+
+                    
                 })
             })
             tsConfig({ isResource: $.resource !== undefined && $.resource }, $i)

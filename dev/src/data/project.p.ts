@@ -391,5 +391,5 @@ export const project: NProject.TProject = {
             implemenation: {}
         }
     }),
-    main: "project"
+    main: "main"
 }

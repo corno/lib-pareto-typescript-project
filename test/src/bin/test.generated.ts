@@ -11,19 +11,18 @@ import { createGetTestset } from "../implementation"
 pe.runProgram(
     ($) => {
         test.$a.createTestProgram(
-            null,
             {
-                getTestSet: createGetTestset(
+                fgetTestSet: createGetTestset(
                     data,
                     dependencies
                 ),
-                log: ($) => {
+                dlog: ($) => {
                     pl.logDebugMessage($)
                 },
-                logError: ($) => {
+                dlogError: ($) => {
                     pl.logDebugMessage($)
                 },
-                onTestErrors: ($) => {
+                donTestErrors: ($) => {
                     pl.logDebugMessage("TEST ERROR")
                 },
             },

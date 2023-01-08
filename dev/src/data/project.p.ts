@@ -201,7 +201,7 @@ export const project: NProject.TProject = {
                                         "dependencies": member(group({
                                             "functions": member(dictionary(ref("FunctionReference"))),
                                             "side effects": member(dictionary(er("glossary", "LeafTypeOrNull")), true),
-                                            "callbacks": member(dictionary(ref("CallbackReference")), true),
+                                            //"callbacks": member(dictionary(ref("CallbackReference")), true),
 
                                         })),
                                         "function": member(ref("FunctionReference")),
@@ -221,7 +221,7 @@ export const project: NProject.TProject = {
                                         "dependencies": member(group({
                                             "functions": member(dictionary(ref("FunctionReference"))),
                                             "downstreams": member(dictionary(er("glossary", "LeafTypeOrNull"))),
-                                            "callbacks": member(dictionary(ref("CallbackReference"))),
+                                            //"callbacks": member(dictionary(ref("CallbackReference"))),
                                         })),
                                         "type": member(er("glossary", "LeafTypeOrNull")),
                                     })),

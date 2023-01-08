@@ -8,7 +8,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
 ) => {
     return ($, $i) => {
 
-        const compare = (a: string, b: string) => $d.f.compare({ a: a, b: b })
+        const compare = (a: string, b: string) => $d.fcompare({ a: a, b: b })
 
 
         function tsConfig($: {
@@ -84,7 +84,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                     $.modules.forEach(compare, ($, key) => {
                         $i.createDirectory(`${key}`, ($i) => {
                             $i.createDirectory(`api`, ($i) => {
-                                $d.cb.serializeModuleDefinition($.definition, $i)
+                                $d.cbserializeModuleDefinition($.definition, $i)
                             })
 
                             // $.definition.api.algorithms.forEach(compare, ($, key) => {

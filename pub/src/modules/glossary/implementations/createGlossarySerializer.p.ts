@@ -5,7 +5,7 @@ import * as api from "../api"
 import * as mfp from "lib-fountain-pen"
 
 export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => {
-    const compare = (a: string, b: string) => $d.f.compare({ a: a, b: b })
+    const compare = (a: string, b: string) => $d.fcompare({ a: a, b: b })
 
     function serializeLeafType($: api.TLeafType, $i: mfp.ILine) {
         switch ($[0]) {

@@ -4,10 +4,10 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
-        const compare = (a: string, b: string) => $d.f.compare({ a: a, b: b })
+        const compare = (a: string, b: string) => $d.fcompare({ a: a, b: b })
         function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {
             $i.createFile("types.generated.ts", ($i) => {
-                $d.cb.serializeGlossary($, $i)
+                $d.cbserializeGlossary($, $i)
             })
         }
         function serializeFunctionReference($: api.TFunctionReference, $i: mfp.ILine) {
@@ -43,7 +43,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                     break
                 case "type":
                     pl.cc($[1], ($) => {
-                        $d.cb.serializeLeafType($, $i)
+                        $d.cbserializeLeafType($, $i)
                     })
                     break
                 default: pl.au($[0])
@@ -105,7 +105,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                     case "type":
                                         pl.cc($["configuration data"][1], ($) => {
                                             $i.snippet(`$: `)
-                                            $d.cb.serializeLeafType($, $i)
+                                            $d.cbserializeLeafType($, $i)
                                             $i.snippet(`, `)
                                         })
                                         break
@@ -114,14 +114,14 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                 pl.cc($.dependencies, ($) => {
                                     $i.snippet(`$d: {`)
                                     $i.indent(($i) => {
-                                        if ($.callbacks !== undefined) {
-                                            $.callbacks.forEach(compare, ($, key) => {
-                                                $i.line(($i) => {
-                                                    $i.snippet(`readonly "cb${key}": `)
-                                                    serializeCallbackReference($, $i)
-                                                })
-                                            })
-                                        }
+                                        // if ($.callbacks !== undefined) {
+                                        //     $.callbacks.forEach(compare, ($, key) => {
+                                        //         $i.line(($i) => {
+                                        //             $i.snippet(`readonly "cb${key}": `)
+                                        //             serializeCallbackReference($, $i)
+                                        //         })
+                                        //     })
+                                        // }
                                         $.functions.forEach(compare, ($, key) => {
                                             $i.line(($i) => {
                                                 $i.snippet(`readonly "f${key}": `)
@@ -154,7 +154,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                     case "type":
                                         pl.cc($["configuration data"][1], ($) => {
                                             $i.snippet(`$: `)
-                                            $d.cb.serializeLeafType($, $i)
+                                            $d.cbserializeLeafType($, $i)
                                             $i.snippet(`, `)
                                         })
                                         break
@@ -163,12 +163,12 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                 pl.cc($.dependencies, ($) => {
                                     $i.snippet(`$d: {`)
                                     $i.indent(($i) => {
-                                        $.callbacks.forEach(compare, ($, key) => {
-                                            $i.line(($i) => {
-                                                $i.snippet(`readonly cb"${key}": `)
-                                                serializeCallbackReference($, $i)
-                                            })
-                                        })
+                                        // $.callbacks.forEach(compare, ($, key) => {
+                                        //     $i.line(($i) => {
+                                        //         $i.snippet(`readonly cb"${key}": `)
+                                        //         serializeCallbackReference($, $i)
+                                        //     })
+                                        // })
                                         $.functions.forEach(compare, ($, key) => {
                                             $i.line(($i) => {
                                                 $i.snippet(`readonly "f${key}": `)
@@ -199,7 +199,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                     case "type":
                                         pl.cc($["configuration data"][1], ($) => {
                                             $i.snippet(`$: `)
-                                            $d.cb.serializeLeafType($, $i)
+                                            $d.cbserializeLeafType($, $i)
                                             $i.snippet(`, `)
                                         })
                                         break

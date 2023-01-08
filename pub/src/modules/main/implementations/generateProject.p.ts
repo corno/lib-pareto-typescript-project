@@ -27,32 +27,17 @@ export function igenerateProject($: api.TProjectSettings): void {
             )
             mproject.$a.createProjectSerializer(
                 {
-                    f: {
-                        compare: mcoll.$a.localeIsABeforeB
-                    },
-                    cb: {
-                        serializeModuleDefinition: mapi.$a.createModuleDefinitionSerializer(
-                            {
-                                f: {
-                                    compare: mcoll.$a.localeIsABeforeB,
-                                },
-                                cb: {
-                                    serializeGlossary: mglossary.$a.createGlossarySerializer({
-                                        f: {
-                                            compare: mcoll.$a.localeIsABeforeB,
-
-                                        },
-                                        cb: {},
-                                        se: {}
-                                    }),
-                                    serializeLeafType: mglossary.$a.serializeLeafType,
-                                },
-                                se: {}
-                            }
-                        ),
-                        serializeLeafType: mglossary.$a.serializeLeafType,
-                    },
-                    se: {}
+                    fcompare: mcoll.$a.localeIsABeforeB,
+                    cbserializeModuleDefinition: mapi.$a.createModuleDefinitionSerializer(
+                        {
+                            fcompare: mcoll.$a.localeIsABeforeB,
+                            cbserializeGlossary: mglossary.$a.createGlossarySerializer({
+                                fcompare: mcoll.$a.localeIsABeforeB,
+                            }),
+                            cbserializeLeafType: mglossary.$a.serializeLeafType,
+                        }
+                    ),
+                    cbserializeLeafType: mglossary.$a.serializeLeafType,
                 }
             )(
                 project,
@@ -60,11 +45,7 @@ export function igenerateProject($: api.TProjectSettings): void {
             )
             mproject.$a.createTemplateSerializer(
                 {
-                    f: {
-                        compare: mcoll.$a.localeIsABeforeB,
-                    },
-                    se: {},
-                    cb: {},
+                    fcompare: mcoll.$a.localeIsABeforeB,
                 }
             )(
                 project,

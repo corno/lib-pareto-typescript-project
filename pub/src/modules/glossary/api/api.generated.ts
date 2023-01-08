@@ -5,11 +5,7 @@ import * as glo from "./types.generated"
 import * as mcollation from "res-pareto-collation"
 
 export type CcreateGlossarySerializer = ($d: {
-    cb: {}
-    f: {
-        readonly "compare": mcollation.FIsABeforeB
-    }
-    se: {}
+    readonly "fcompare": mcollation.FIsABeforeB
 }) => glo.XSerializeGlossary
 
 export type CserializeLeafType = glo.XSerializeLeafType

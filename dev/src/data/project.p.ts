@@ -24,7 +24,7 @@ export const project: NProject.TProject = {
                     'imports': wd({
                         "project": "../../project",
                         "common": "glo-pareto-common",
-                        "main": "glo-pareto-main",
+                        "main": "lib-pareto-main",
                     }),
                     'types': types({
                         "ProjectSettings": group({
@@ -40,7 +40,6 @@ export const project: NProject.TProject = {
                 },
                 "api": {
                     'imports': wd({
-                        "main": "glo-pareto-main",
                     }),
                     'algorithms': wd({
                         "generateProject": ['procedure', ['type', reference("ProjectSettings")]],

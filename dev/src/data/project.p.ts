@@ -33,11 +33,14 @@ export const project: NProject.TProject = {
                         })
                     }),
                     'functions': wd({}),
+                    'builder': wd({}),
                     'callbacks': wd({}),
                     'interfaces': wd({}),
                 },
                 "api": {
-                    'imports': wd({}),
+                    'imports': wd({
+                        "project": "../../project"
+                    }),
                     'algorithms': wd({
                         "generateProject": ['procedure', ['type', reference("ProjectSettings")]],
                         "createProjectGenerator": ['procedure constructor', {
@@ -53,14 +56,14 @@ export const project: NProject.TProject = {
                                     // "log": ['type', string()],
                                 }),
                                 'callbacks': wd({
-                                    "serializeProject": {
-                                        'context': ['import', "project"],
-                                        'callback': "SerializeProject",
-                                    },
-                                    "serializeTemplate": {
-                                        'context': ['import', "project"],
-                                        'callback': "SerializeTemplate",
-                                    }
+                                    // "serializeProject": {
+                                    //     'context': ['import', "project"],
+                                    //     'callback': "SerializeProject",
+                                    // },
+                                    // "serializeTemplate": {
+                                    //     'context': ['import', "project"],
+                                    //     'callback': "SerializeTemplate",
+                                    // }
                                 }),
                             },
                             'type': ['type', reference("ProjectSettings")],
@@ -97,7 +100,7 @@ export const project: NProject.TProject = {
                             "functions": member(dictionary(ref("Function"))),
                             "interfaces": member(dictionary(ref("Interface"))),
                             "callbacks": member(dictionary(ref("Callback"))),
-                            "builder": member(dictionary(ref("Callback"))),
+                            "builders": member(dictionary(ref("Callback"))),
                         }),
                         "Interface": group({
                             "members": member(dictionary(taggedUnion({
@@ -143,6 +146,7 @@ export const project: NProject.TProject = {
                         }),
                     }),
                     'functions': wd({}),
+                    'builder': wd({}),
                     'callbacks': wd({
                         "SerializeGlossary": {
                             'data': ['type', reference("Glossary")],
@@ -253,6 +257,7 @@ export const project: NProject.TProject = {
                         })
                     }),
                     'functions': wd({}),
+                    'builder': wd({}),
                     'callbacks': wd({
                         "SerializeModuleDefinition": {
                             'data': ['type', reference("ModuleDefinition")],
@@ -328,6 +333,7 @@ export const project: NProject.TProject = {
                         }),
                     }),
                     'functions': wd({}),
+                    'builder': wd({}),
                     'callbacks': wd({
                         "SerializeProject": {
                             'data': ['type', reference("Project")],

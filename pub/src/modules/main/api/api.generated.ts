@@ -2,6 +2,7 @@ import * as pt from "pareto-core-types"
 
 import * as glo from "./types.generated"
 
+import * as mproject from "../../project"
 
 export type CcreateProjectGenerator = ($d: {}) => pt.Procedure<glo.TProjectSettings>
 

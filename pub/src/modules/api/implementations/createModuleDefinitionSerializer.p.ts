@@ -165,7 +165,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                     $i.indent(($i) => {
                                         $.callbacks.forEach(compare, ($, key) => {
                                             $i.line(($i) => {
-                                                $i.snippet(`readonly cb"${key}": `)
+                                                $i.snippet(`readonly "cb${key}": `)
                                                 serializeCallbackReference($, $i)
                                             })
                                         })

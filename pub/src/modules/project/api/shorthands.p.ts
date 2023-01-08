@@ -8,39 +8,39 @@ const wd = pr.wrapRawDictionary
 
 
 // export function boolean(): Type {
-//     return ["leaf", ["boolean", null]]
+//     return ['leaf', ['boolean', null]]
 // }
 // export function string(): Type {
-//     return ["leaf", ["string", null]]
+//     return ['leaf', ['string', null]]
 // }
 // export function number(): Type {
-//     return ["leaf", ["number", null]]
+//     return ['leaf', ['number', null]]
 // }
 // export function _null(): Type {
-//     return ["leaf", ["null", null]]
+//     return ['leaf', ['null', null]]
 // }
 
 // export function types($: { [key: string]: Type }) {
 //     return wd($)
 // }
 // export function taggedUnion($: { [key: string]: Type }): Type {
-//     return ["taggedUnion", wd($)]
+//     return ['taggedUnion', wd($)]
 // }
 // export function dictionary($: Type): Type {
-//     return ["dictionary", $]
+//     return ['dictionary', $]
 // }
 // export function array($: Type): Type {
-//     return ["array", $]
+//     return ['array', $]
 // }
 // export function group($: { [key: string]: Type }): Type {
-//     return ["group", wd($)]
+//     return ['group', wd($)]
 // }
 // export function reference(type: string): Type {
-//     return ["leaf", ["reference", type]]
+//     return ['leaf', ['reference', type]]
 // }
 
 // export function externalReference( context: string, type: string): Type {
-//     return ["external reference", {
+//     return ['external reference', {
 //         type: type,
 //         context: context,
 //     }]

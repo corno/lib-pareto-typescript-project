@@ -9,40 +9,40 @@ const wd = pr.wrapRawDictionary
 
 
 export function nullType(): api.TTypeOrNull {
-    return ["null", null]
+    return ['null', null]
 }
 export function type($: api.TType): api.TTypeOrNull {
-    return ["type", $]
+    return ['type', $]
 }
 export function boolean(): api.TType {
-    return ["leaf", ["boolean", null]]
+    return ['leaf', ['boolean', null]]
 }
 export function string(): api.TType {
-    return ["leaf", ["string", null]]
+    return ['leaf', ['string', null]]
 }
 export function number(): api.TType {
-    return ["leaf", ["number", null]]
+    return ['leaf', ['number', null]]
 }
 export function types($: { [key: string]: api.TType }) {
     return wd($)
 }
 export function taggedUnion($: { [key: string]: api.TTypeOrNull }): api.TType {
-    return ["taggedUnion", wd($)]
+    return ['taggedUnion', wd($)]
 }
 export function dictionary($: api.TType): api.TType {
-    return ["dictionary", ['type', $]]
+    return ['dictionary', ['type', $]]
 }
 export function nullDictionary(): api.TType {
-    return ["dictionary", ['null', null]]
+    return ['dictionary', ['null', null]]
 }
 export function array($: api.TType): api.TType {
-    return ["array", $]
+    return ['array', $]
 }
 export function nested($: api.TType): api.TType {
-    return ["nested", $]
+    return ['nested', $]
 }
 export function optional($: api.TType): api.TType {
-    return ["optional", $]
+    return ['optional', $]
 }
 export function group($: {
     [key: string]: {
@@ -50,7 +50,7 @@ export function group($: {
         optional?: boolean
     }
 }): api.TType {
-    return ["group", wd($)]
+    return ['group', wd($)]
 }
 
 export function member($: api.TType, optional?: boolean): { type: api.TType, optional?: boolean } {
@@ -61,11 +61,11 @@ export function member($: api.TType, optional?: boolean): { type: api.TType, opt
 }
 
 export function reference(type: string): api.TType {
-    return ["leaf", ["reference", type]]
+    return ['leaf', ['reference', type]]
 }
 
 export function externalReference(context: string, type: string): api.TType {
-    return ["leaf", ["external reference", {
+    return ['leaf', ['external reference', {
         type: type,
         context: context,
     }]]

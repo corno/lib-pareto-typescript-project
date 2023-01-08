@@ -43,7 +43,7 @@ export const project: NProject.TProject = {
                     }),
                     'algorithms': wd({
                         "generateProject": ['algorithm', {
-                            'type': ['procedure', ["type", reference("ProjectSettings")]],
+                            'type': ['procedure', ['type', reference("ProjectSettings")]],
                         }],
                     })
                 },

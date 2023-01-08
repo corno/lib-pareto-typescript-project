@@ -8,22 +8,22 @@ import * as NGlossary from "../../glossary"
 const wd = pr.wrapRawDictionary
 
 export function boolean(): NGlossary.TLeafType {
-    return ["boolean", null]
+    return ['boolean', null]
 }
 
 export function string(): NGlossary.TLeafType {
-    return ["string", null]
+    return ['string', null]
 }
 export function reference(type: string): NGlossary.TLeafType {
-    return ["reference", type]
+    return ['reference', type]
 }
 export function externalReference(context: string, type: string): NGlossary.TLeafType {
-    return ["external reference", {
+    return ['external reference', {
         type: type,
         context: context,
     }]
 }
 
 export function number(): NGlossary.TLeafType {
-    return ["number", null]
+    return ['number', null]
 }

@@ -51,8 +51,8 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
         const builder = pm.createUnsafeDictionaryBuilder<tst.TTestElement>()
         function createTest(name: string, actual: string, expected: string) {
             builder.add(name, {
-                type: ["test", {
-                    type: ["short string", {
+                type: ['test', {
+                    type: ['short string', {
                         actual: actual,
                         expected: expected
                     }]

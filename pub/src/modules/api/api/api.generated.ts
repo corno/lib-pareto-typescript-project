@@ -6,21 +6,21 @@ import * as mcollation from "res-pareto-collation"
 import * as mglossary from "../../glossary"
 
 export type CcreateAlgorithmReferenceSerializer = ($: null, $d: {
-    readonly "serializeLeafType": mglossary.XserializeLeafType
-}) => glo.XserializeAlgorithmReference
+    readonly "serializeLeafType": mglossary.XSerializeLeafType
+}) => glo.XSerializeAlgorithmReference
 
 export type CcreateConstructorSerializer = ($: null, $d: {
     readonly "compare": mcollation.FIsABeforeB
-    readonly "serializeAlgorithmReference": glo.XserializeAlgorithmReference
-    readonly "serializeLeafType": mglossary.XserializeLeafType
-}) => glo.XserializeConstructor
+    readonly "serializeAlgorithmReference": glo.XSerializeAlgorithmReference
+    readonly "serializeLeafType": mglossary.XSerializeLeafType
+}) => glo.XSerializeConstructor
 
 export type CcreateModuleDefinitionSerializer = ($: null, $d: {
     readonly "compare": mcollation.FIsABeforeB
-    readonly "serializeAlgorithmReference": glo.XserializeAlgorithmReference
-    readonly "serializeConstructor": glo.XserializeConstructor
-    readonly "serializeGlossary": mglossary.XserializeGlossary
-}) => glo.XserializeModuleDefinition
+    readonly "serializeAlgorithmReference": glo.XSerializeAlgorithmReference
+    readonly "serializeConstructor": glo.XSerializeConstructor
+    readonly "serializeGlossary": mglossary.XSerializeGlossary
+}) => glo.XSerializeModuleDefinition
 
 export type API = {
     createAlgorithmReferenceSerializer: CcreateAlgorithmReferenceSerializer

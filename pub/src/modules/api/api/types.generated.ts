@@ -21,11 +21,11 @@ export type TAlgorithmReference = {
                 | [ "local", null ]
             readonly "function": string
         } ]
-        | [ "procedure", mglossary.TLeafType ]
+        | [ "procedure", mglossary.TLeafTypeOrNull ]
 }
 
 export type TConstructor = {
-    readonly "data": mglossary.TLeafType
+    readonly "data": mglossary.TLeafTypeOrNull
     readonly "dependencies": pt.Dictionary<TAlgorithmReference>
     readonly "result": TAlgorithmReference
 }
@@ -38,8 +38,8 @@ export type TModuleDefinition = {
     readonly "glossary": mglossary.TGlossary
 }
 
-export type XserializeAlgorithmReference = ($: TAlgorithmReference, $i: mfp.ILine) => void
+export type XSerializeAlgorithmReference = ($: TAlgorithmReference, $i: mfp.ILine) => void
 
-export type XserializeConstructor = ($: TConstructor, $i: mfp.ILine) => void
+export type XSerializeConstructor = ($: TConstructor, $i: mfp.ILine) => void
 
-export type XserializeModuleDefinition = ($: TModuleDefinition, $i: mfp.IWriter) => void
+export type XSerializeModuleDefinition = ($: TModuleDefinition, $i: mfp.IWriter) => void

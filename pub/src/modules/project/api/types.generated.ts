@@ -14,4 +14,4 @@ export type TProject = {
     readonly "resource"?: boolean
 }
 
-export type XserializeProject = ($: TProject, $i: mfp.IWriter) => void
+export type XSerializeProject = ($: TProject, $i: mfp.IWriter) => void

@@ -37,7 +37,20 @@ export const icreateAlgorithmReferenceSerializer: api.CcreateAlgorithmReferenceS
                 case "procedure":
                     pl.cc($[1], ($) => {
                         $i.snippet(`pt.Procedure<`)
-                        $d.serializeLeafType($, $i)
+                        switch ($[0]) {
+                            case "null":
+                                pl.cc($[1], ($) => {
+                                    $i.snippet(`null`)
+                                })
+                                break
+                            case "type":
+                                pl.cc($[1], ($) => {
+                                    $d.serializeLeafType($, $i)
+
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
                         $i.snippet(`>`)
                     })
                     break

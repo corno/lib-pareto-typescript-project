@@ -5,7 +5,7 @@ export type TCallback = {
     readonly "context"?: 
         | [ "import", string ]
         | [ "local", null ]
-    readonly "data": TLeafType
+    readonly "data": TLeafTypeOrNull
     readonly "interface": string
 }
 
@@ -31,7 +31,7 @@ export type TInterface = {
                 | [ "local", null ]
             readonly "interface": string
         } ]
-        | [ "procedure", TLeafType ]
+        | [ "procedure", TLeafTypeOrNull ]
     >
 }
 
@@ -41,10 +41,13 @@ export type TLeafType =
         readonly "context": string
         readonly "type": string
     } ]
-    | [ "null", null ]
     | [ "number", null ]
     | [ "reference", string ]
     | [ "string", null ]
+
+export type TLeafTypeOrNull = 
+    | [ "null", null ]
+    | [ "type", TLeafType ]
 
 export type TType = 
     | [ "array", TType ]
@@ -58,6 +61,6 @@ export type TType =
     | [ "optional", TType ]
     | [ "taggedUnion", pt.Dictionary<TType> ]
 
-export type XserializeGlossary = ($: TGlossary, $i: mfp.IBlock) => void
+export type XSerializeGlossary = ($: TGlossary, $i: mfp.IBlock) => void
 
-export type XserializeLeafType = ($: TLeafType, $i: mfp.ILine) => void
+export type XSerializeLeafType = ($: TLeafType, $i: mfp.ILine) => void

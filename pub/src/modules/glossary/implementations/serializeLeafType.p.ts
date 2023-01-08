@@ -9,11 +9,6 @@ export const iserializeLeafType: api.CserializeLeafType = ($, $i) => {
                 $i.snippet(`boolean`)
             })
             break
-        case "null":
-            pl.cc($[1], ($) => {
-                $i.snippet(`null`)
-            })
-            break
         case "number":
             pl.cc($[1], ($) => {
                 $i.snippet(`number`)

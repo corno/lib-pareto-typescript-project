@@ -6,9 +6,9 @@ import * as mcollation from "res-pareto-collation"
 
 export type CcreateGlossarySerializer = ($: null, $d: {
     readonly "compare": mcollation.FIsABeforeB
-}) => glo.XserializeGlossary
+}) => glo.XSerializeGlossary
 
-export type CserializeLeafType = glo.XserializeLeafType
+export type CserializeLeafType = glo.XSerializeLeafType
 
 export type API = {
     createGlossarySerializer: CcreateGlossarySerializer

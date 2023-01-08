@@ -8,13 +8,13 @@ import * as mglossary from "../../glossary"
 
 export type CcreateProjectSerializer = ($: null, $d: {
     readonly "compare": mcollation.FIsABeforeB
-    readonly "serializeLeafType": mglossary.XserializeLeafType
-    readonly "serializeModuleDefinition": mapi.XserializeModuleDefinition
-}) => glo.XserializeProject
+    readonly "serializeLeafType": mglossary.XSerializeLeafType
+    readonly "serializeModuleDefinition": mapi.XSerializeModuleDefinition
+}) => glo.XSerializeProject
 
 export type CcreateTemplateSerializer = ($: null, $d: {
     readonly "compare": mcollation.FIsABeforeB
-}) => glo.XserializeProject
+}) => glo.XSerializeProject
 
 export type API = {
     createProjectSerializer: CcreateProjectSerializer

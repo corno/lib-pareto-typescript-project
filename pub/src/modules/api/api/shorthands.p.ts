@@ -27,7 +27,3 @@ export function externalReference(context: string, type: string): NGlossary.TLea
 export function number(): NGlossary.TLeafType {
     return ["number", null]
 }
-
-export function _null(): NGlossary.TLeafType {
-    return ["null", null]
-}

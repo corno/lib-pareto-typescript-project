@@ -19,11 +19,6 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($, $d) 
                     $i.snippet(`m${$.context}.T${$.type}`)
                 })
                 break
-            case "null":
-                pl.cc($[1], ($) => {
-                    $i.snippet(`null`)
-                })
-                break
             case "number":
                 pl.cc($[1], ($) => {
                     $i.snippet(`number`)
@@ -181,9 +176,22 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($, $d) 
         $.callbacks.forEach(compare, ($, key) => {
             $i.literal(``)
             $i.line(($i) => {
-                $i.snippet(`export type X${key} = ($: `)
-                serializeLeafType($.data, $i)
-                $i.snippet(`, $i: `)
+                $i.snippet(`export type X${key} = (`)
+                switch ($.data[0]) {
+                    case "null":
+                        pl.cc($.data[1], ($) => {
+                        })
+                        break
+                    case "type":
+                        pl.cc($.data[1], ($) => {
+                            $i.snippet(`$: `)
+                            serializeLeafType($, $i)
+                            $i.snippet(`, `)
+                        })
+                        break
+                    default: pl.au($.data[0])
+                }
+                $i.snippet(`$i: `)
                 if ($.context !== undefined) {
                     switch ($.context[0]) {
                         case "import":

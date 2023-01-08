@@ -19,10 +19,6 @@ export function string(): Type {
 export function number(): Type {
     return ["leaf", ["number", null]]
 }
-export function _null(): Type {
-    return ["leaf", ["null", null]]
-}
-
 export function types($: { [key: string]: Type }) {
     return wd($)
 }
@@ -34,6 +30,9 @@ export function dictionary($: Type): Type {
 }
 export function array($: Type): Type {
     return ["array", $]
+}
+export function nested($: Type): Type {
+    return ["nested", $]
 }
 export function optional($: Type): Type {
     return ["optional", $]

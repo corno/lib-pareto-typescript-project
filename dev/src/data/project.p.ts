@@ -292,7 +292,11 @@ export const project: NProject.TProject = {
                         "AlgorithmImplementation": group({}),
                         "Implementation": dictionary(ref("AlgorithmImplementation")),
                         "Project": group({
-                            "resource": member(bln(), true),
+                            "type": member(taggedUnion({
+                                "resource": nullType(),
+                                "glossary": nullType(),
+                                "library": nullType(),
+                            }), true),
                             "modules": member(dictionary(group({
                                 "definition": member(er("api", "ModuleDefinition")),
                                 // "type": member(taggedUnion({

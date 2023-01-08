@@ -5,6 +5,7 @@ import * as pl from "pareto-core-lib"
 import { test as api_createModuleDefinitionSerializer } from "../modules/api/createModuleDefinitionSerializer.p"
 import { test as glossary_createGlossarySerializer } from "../modules/glossary/createGlossarySerializer.p"
 import { test as glossary_serializeLeafType } from "../modules/glossary/serializeLeafType.p"
+import { test as main_createProjectGenerator } from "../modules/main/createProjectGenerator.p"
 import { test as main_generateProject } from "../modules/main/generateProject.p"
 import { test as project_createProjectSerializer } from "../modules/project/createProjectSerializer.p"
 import { test as project_createTemplateSerializer } from "../modules/project/createTemplateSerializer.p"
@@ -18,6 +19,7 @@ const x = pr.wrapRawDictionary({
         "serializeLeafType": glossary_serializeLeafType,
     }),
     "main": pr.wrapRawDictionary({
+        "createProjectGenerator": main_createProjectGenerator,
         "generateProject": main_generateProject,
     }),
     "project": pr.wrapRawDictionary({

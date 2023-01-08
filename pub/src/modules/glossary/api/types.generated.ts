@@ -16,6 +16,7 @@ export type TFunction = {
 }
 
 export type TGlossary = {
+    readonly "builder": pt.Dictionary<TCallback>
     readonly "callbacks": pt.Dictionary<TCallback>
     readonly "functions": pt.Dictionary<TFunction>
     readonly "imports": pt.Dictionary<string>
@@ -25,13 +26,13 @@ export type TGlossary = {
 
 export type TInterface = {
     readonly "members": pt.Dictionary<
+        | [ "callback", TLeafTypeOrNull ]
         | [ "interface", {
             readonly "context"?: 
                 | [ "import", string ]
                 | [ "local", null ]
             readonly "interface": string
         } ]
-        | [ "procedure", TLeafTypeOrNull ]
     >
 }
 

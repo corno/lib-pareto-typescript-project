@@ -180,7 +180,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                                     //serializeInterface($.interface, $i)
                                 })
                                 break
-                            case "procedure":
+                            case "callback":
                                 pl.cc($[1], ($) => {
                                     $i.snippet(`FIXME PROC`)
                                 })

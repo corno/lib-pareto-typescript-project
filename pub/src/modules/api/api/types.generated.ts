@@ -44,6 +44,7 @@ export type TModuleDefinition = {
             | [ "procedure constructor", {
                 readonly "configuration data": mglossary.TLeafTypeOrNull
                 readonly "dependencies": {
+                    readonly "callbacks": pt.Dictionary<TCallbackReference>
                     readonly "downstreams": pt.Dictionary<mglossary.TLeafTypeOrNull>
                     readonly "functions": pt.Dictionary<TFunctionReference>
                 }

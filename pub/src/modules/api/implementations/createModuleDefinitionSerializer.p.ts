@@ -163,12 +163,12 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                 pl.cc($.dependencies, ($) => {
                                     $i.snippet(`$d: {`)
                                     $i.indent(($i) => {
-                                        // $.callbacks.forEach(compare, ($, key) => {
-                                        //     $i.line(($i) => {
-                                        //         $i.snippet(`readonly cb"${key}": `)
-                                        //         serializeCallbackReference($, $i)
-                                        //     })
-                                        // })
+                                        $.callbacks.forEach(compare, ($, key) => {
+                                            $i.line(($i) => {
+                                                $i.snippet(`readonly cb"${key}": `)
+                                                serializeCallbackReference($, $i)
+                                            })
+                                        })
                                         $.functions.forEach(compare, ($, key) => {
                                             $i.line(($i) => {
                                                 $i.snippet(`readonly "f${key}": `)

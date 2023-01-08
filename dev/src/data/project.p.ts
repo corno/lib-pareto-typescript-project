@@ -32,17 +32,39 @@ export const project: NProject.TProject = {
                             "mainData": member(er("main", "MainData")),
                         })
                     }),
-                    'functions': wd({
-                    }),
-                    'callbacks': wd({
-                    }),
+                    'functions': wd({}),
+                    'callbacks': wd({}),
                     'interfaces': wd({}),
                 },
                 "api": {
-                    'imports': wd({
-                    }),
+                    'imports': wd({}),
                     'algorithms': wd({
                         "generateProject": ['procedure', ['type', reference("ProjectSettings")]],
+                        "createProjectGenerator": ['procedure constructor', {
+                            'configuration data': ['null', null],
+                            'dependencies': {
+                                'functions': wd({
+                                    // "isABeforeB": {
+                                    //     'context': ['import', "collation"],
+                                    //     'function': "IsABeforeB",
+                                    // },
+                                }),
+                                'downstreams': wd({
+                                    // "log": ['type', string()],
+                                }),
+                                'callbacks': wd({
+                                    "serializeProject": {
+                                        'context': ['import', "project"],
+                                        'callback': "SerializeProject",
+                                    },
+                                    "serializeTemplate": {
+                                        'context': ['import', "project"],
+                                        'callback': "SerializeTemplate",
+                                    }
+                                }),
+                            },
+                            'type': ['type', reference("ProjectSettings")],
+                        }],
                     })
                 },
             },
@@ -75,6 +97,7 @@ export const project: NProject.TProject = {
                             "functions": member(dictionary(ref("Function"))),
                             "interfaces": member(dictionary(ref("Interface"))),
                             "callbacks": member(dictionary(ref("Callback"))),
+                            "builder": member(dictionary(ref("Callback"))),
                         }),
                         "Interface": group({
                             "members": member(dictionary(taggedUnion({
@@ -85,7 +108,7 @@ export const project: NProject.TProject = {
                                     }), true),
                                     "interface": member(str()),
                                 })),
-                                "procedure": type(ref("LeafTypeOrNull"))
+                                "callback": type(ref("LeafTypeOrNull"))
                             })))
                         }),
                         "LeafType": taggedUnion({
@@ -119,8 +142,7 @@ export const project: NProject.TProject = {
                             "taggedUnion": type(dictionary(ref("TypeOrNull"))),
                         }),
                     }),
-                    'functions': wd({
-                    }),
+                    'functions': wd({}),
                     'callbacks': wd({
                         "SerializeGlossary": {
                             'data': ['type', reference("Glossary")],
@@ -152,10 +174,8 @@ export const project: NProject.TProject = {
                                         'function': "IsABeforeB",
                                     },
                                 }),
-                                'callbacks': wd({
-                                }),
-                                'side effects': wd({
-                                }),
+                                'callbacks': wd({}),
+                                'side effects': wd({}),
 
                             },
                             'callback': {
@@ -221,7 +241,7 @@ export const project: NProject.TProject = {
                                         "dependencies": member(group({
                                             "functions": member(dictionary(ref("FunctionReference"))),
                                             "downstreams": member(dictionary(er("glossary", "LeafTypeOrNull"))),
-                                            //"callbacks": member(dictionary(ref("CallbackReference"))),
+                                            "callbacks": member(dictionary(ref("CallbackReference"))),
                                         })),
                                         "type": member(er("glossary", "LeafTypeOrNull")),
                                     })),
@@ -232,8 +252,7 @@ export const project: NProject.TProject = {
                             })),
                         })
                     }),
-                    'functions': wd({
-                    }),
+                    'functions': wd({}),
                     'callbacks': wd({
                         "SerializeModuleDefinition": {
                             'data': ['type', reference("ModuleDefinition")],
@@ -268,8 +287,7 @@ export const project: NProject.TProject = {
                                         'callback': "SerializeLeafType"
                                     },
                                 }),
-                                'side effects': wd({
-                                }),
+                                'side effects': wd({}),
 
                             },
                             'callback': {
@@ -309,8 +327,7 @@ export const project: NProject.TProject = {
                             "main": member(str()),
                         }),
                     }),
-                    'functions': wd({
-                    }),
+                    'functions': wd({}),
                     'callbacks': wd({
                         "SerializeProject": {
                             'data': ['type', reference("Project")],
@@ -346,8 +363,7 @@ export const project: NProject.TProject = {
                                         'callback': "SerializeLeafType"
                                     },
                                 }),
-                                'side effects': wd({
-                                }),
+                                'side effects': wd({}),
 
                             },
                             'callback': {
@@ -363,10 +379,8 @@ export const project: NProject.TProject = {
                                         'function': "IsABeforeB",
                                     },
                                 }),
-                                'callbacks': wd({
-                                }),
-                                'side effects': wd({
-                                }),
+                                'callbacks': wd({}),
+                                'side effects': wd({}),
 
                             },
                             'callback': {

@@ -29,8 +29,11 @@ export function types($: { [key: string]: api.TType }) {
 export function taggedUnion($: { [key: string]: api.TTypeOrNull }): api.TType {
     return ["taggedUnion", wd($)]
 }
-export function dictionary($: api.TTypeOrNull): api.TType {
-    return ["dictionary", $]
+export function dictionary($: api.TType): api.TType {
+    return ["dictionary", ['type', $]]
+}
+export function nullDictionary(): api.TType {
+    return ["dictionary", ['null', null]]
 }
 export function array($: api.TType): api.TType {
     return ["array", $]

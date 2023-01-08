@@ -7,11 +7,7 @@ import * as mapi from "../../api"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 import * as mcoll from "res-pareto-collation"
-
 import * as mexe from "lib-pareto-exe"
-import * as mmain from "glo-pareto-main"
-
-
 
 export function igenerateProject($: api.TProjectSettings): void {
     const project = $.project

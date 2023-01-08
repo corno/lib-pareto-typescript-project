@@ -51,7 +51,7 @@ export type TLeafTypeOrNull =
 
 export type TType = 
     | [ "array", TType ]
-    | [ "dictionary", TType ]
+    | [ "dictionary", TTypeOrNull ]
     | [ "group", pt.Dictionary<{
         readonly "optional"?: boolean
         readonly "type": TType
@@ -59,7 +59,11 @@ export type TType =
     | [ "leaf", TLeafType ]
     | [ "nested", TType ]
     | [ "optional", TType ]
-    | [ "taggedUnion", pt.Dictionary<TType> ]
+    | [ "taggedUnion", pt.Dictionary<TTypeOrNull> ]
+
+export type TTypeOrNull = 
+    | [ "null", null ]
+    | [ "type", TType ]
 
 export type XSerializeGlossary = ($: TGlossary, $i: mfp.IBlock) => void
 

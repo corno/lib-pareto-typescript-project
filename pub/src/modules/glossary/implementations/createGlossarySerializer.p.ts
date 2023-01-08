@@ -67,7 +67,20 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($, $d) 
             case "dictionary":
                 pl.cc($[1], ($) => {
                     $i.snippet(`pt.Dictionary<`)
-                    serializeType($, $i)
+                    switch ($[0]) {
+                        case "null":
+                            pl.cc($[1], ($) => {
+                                $i.snippet(`null`)
+                            })
+                            break
+                        case "type":
+                            pl.cc($[1], ($) => {
+                                serializeType($, $i)
+
+                            })
+                            break
+                        default: pl.au($[0])
+                    }
                     $i.snippet(`>`)
                 })
                 break
@@ -91,7 +104,20 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($, $d) 
                         $.forEach(compare, ($, key) => {
                             $i.line(($i) => {
                                 $i.snippet(`| [ "${key}", `)
-                                serializeType($, $i)
+                                switch ($[0]) {
+                                    case "null":
+                                        pl.cc($[1], ($) => {
+                                            $i.snippet(`null`)
+                                        })
+                                        break
+                                    case "type":
+                                        pl.cc($[1], ($) => {
+                                            serializeType($, $i)
+            
+                                        })
+                                        break
+                                    default: pl.au($[0])
+                                }
                                 $i.snippet(` ]`)
                             })
                         })

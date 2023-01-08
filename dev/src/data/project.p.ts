@@ -101,17 +101,21 @@ export const project: NProject.TProject = {
                             "type": ref("LeafType"),
                             "null": nll(),
                         }),
+                        "TypeOrNull": taggedUnion({
+                            "type": ref("Type"),
+                            "null": nll(),
+                        }),
                         "Type": taggedUnion({
                             "leaf": ref("LeafType"),
                             "optional": ref("Type"),
                             "array": ref("Type"),
                             "nested": ref("Type"),
-                            "dictionary": ref("Type"),
+                            "dictionary": ref("TypeOrNull"),
                             "group": dictionary(group({
                                 "type": member(ref("Type")),
                                 "optional": member(bln(), true)
                             })),
-                            "taggedUnion": dictionary(ref("Type")),
+                            "taggedUnion": dictionary(ref("TypeOrNull")),
                         }),
                     }),
                     'functions': wd({

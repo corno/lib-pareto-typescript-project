@@ -1,70 +1,74 @@
 
 import * as pr from "pareto-core-raw"
 
-import * as NGlossary from "./types.generated"
+import * as api from "./types.generated"
 
-type Type = NGlossary.TType
-type LeafType = NGlossary.TLeafType
 
 
 const wd = pr.wrapRawDictionary
 
 
-export function boolean(): Type {
+export function nullType(): api.TTypeOrNull {
+    return ["null", null]
+}
+export function type($: api.TType): api.TTypeOrNull {
+    return ["type", $]
+}
+export function boolean(): api.TType {
     return ["leaf", ["boolean", null]]
 }
-export function string(): Type {
+export function string(): api.TType {
     return ["leaf", ["string", null]]
 }
-export function number(): Type {
+export function number(): api.TType {
     return ["leaf", ["number", null]]
 }
-export function types($: { [key: string]: Type }) {
+export function types($: { [key: string]: api.TType }) {
     return wd($)
 }
-export function taggedUnion($: { [key: string]: Type }): Type {
+export function taggedUnion($: { [key: string]: api.TTypeOrNull }): api.TType {
     return ["taggedUnion", wd($)]
 }
-export function dictionary($: Type): Type {
+export function dictionary($: api.TTypeOrNull): api.TType {
     return ["dictionary", $]
 }
-export function array($: Type): Type {
+export function array($: api.TType): api.TType {
     return ["array", $]
 }
-export function nested($: Type): Type {
+export function nested($: api.TType): api.TType {
     return ["nested", $]
 }
-export function optional($: Type): Type {
+export function optional($: api.TType): api.TType {
     return ["optional", $]
 }
 export function group($: {
     [key: string]: {
-        type: Type
+        type: api.TType
         optional?: boolean
     }
-}): Type {
+}): api.TType {
     return ["group", wd($)]
 }
 
-export function member($: Type, optional?: boolean): { type: Type, optional?: boolean } {
+export function member($: api.TType, optional?: boolean): { type: api.TType, optional?: boolean } {
     return {
         optional: optional,
         type: $
     }
 }
 
-export function reference(type: string): Type {
+export function reference(type: string): api.TType {
     return ["leaf", ["reference", type]]
 }
 
-export function externalReference(context: string, type: string): Type {
+export function externalReference(context: string, type: string): api.TType {
     return ["leaf", ["external reference", {
         type: type,
         context: context,
     }]]
 }
 
-export function _function(data: LeafType, returnValue: LeafType, async?: boolean): NGlossary.TFunction {
+export function _function(data: api.TLeafType, returnValue: api.TLeafType, async?: boolean): api.TFunction {
     return {
         "async": async === undefined ? false : async,
         "data": data,

@@ -14,7 +14,7 @@ export type CcreateProjectSerializer = ($d: {
 
 export type CcreateTemplateSerializer = ($d: {
     readonly "fcompare": mcollation.FIsABeforeB
-}) => glo.XSerializeProject
+}) => glo.XSerializeTemplate
 
 export type API = {
     createProjectSerializer: CcreateProjectSerializer

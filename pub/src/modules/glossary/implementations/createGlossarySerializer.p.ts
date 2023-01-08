@@ -113,7 +113,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                                     case "type":
                                         pl.cc($[1], ($) => {
                                             serializeType($, $i)
-            
+
                                         })
                                         break
                                     default: pl.au($[0])
@@ -176,13 +176,45 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                         switch ($[0]) {
                             case "interface":
                                 pl.cc($[1], ($) => {
-                                    $i.snippet(`FIXME INTERFACE`)
+                                    if ($.context !== undefined) {
+                                        switch ($.context[0]) {
+                                            case "import":
+                                                pl.cc($.context[1], ($) => {
+                                                    $i.snippet(`m${$}.`)
+                                                })
+                                                break
+                                            case "local":
+                                                pl.cc($.context[1], ($) => {
+
+                                                })
+                                                break
+                                            default: pl.au($.context[0])
+                                        }
+                                    }
+                                    $i.snippet(`I${$.interface}`)
                                     //serializeInterface($.interface, $i)
                                 })
                                 break
                             case "callback":
                                 pl.cc($[1], ($) => {
-                                    $i.snippet(`FIXME PROC`)
+                                    function serializeProcedure($: api.TLeafTypeOrNull, $i: mfp.ILine) {
+                                        $i.snippet(`pt.Procedure<`)
+                                        switch ($[0]) {
+                                            case "null":
+                                                pl.cc($[1], ($) => {
+                                                    $i.snippet(`null`)
+                                                })
+                                                break
+                                            case "type":
+                                                pl.cc($[1], ($) => {
+                                                    serializeLeafType($, $i)
+                                                })
+                                                break
+                                            default: pl.au($[0])
+                                        }
+                                        $i.snippet(`>`)
+                                    }
+                                    serializeProcedure($, $i)
                                 })
                                 break
                             default: pl.au($[0])
@@ -234,6 +266,43 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                     }
                 }
                 $i.snippet(`I${$.interface}) => void`)
+            })
+        })
+        $.builders.forEach(compare, ($, key) => {
+            $i.literal(``)
+            $i.line(($i) => {
+                $i.snippet(`export type B${key} = (`)
+                switch ($.data[0]) {
+                    case "null":
+                        pl.cc($.data[1], ($) => {
+                        })
+                        break
+                    case "type":
+                        pl.cc($.data[1], ($) => {
+                            $i.snippet(`$: `)
+                            serializeLeafType($, $i)
+                            $i.snippet(`, `)
+                        })
+                        break
+                    default: pl.au($.data[0])
+                }
+                $i.snippet(`$c: ($i: `)
+                if ($.context !== undefined) {
+                    switch ($.context[0]) {
+                        case "import":
+                            pl.cc($.context[1], ($) => {
+                                $i.snippet(`m${$}.`)
+                            })
+                            break
+                        case "local":
+                            pl.cc($.context[1], ($) => {
+
+                            })
+                            break
+                        default: pl.au($.context[0])
+                    }
+                }
+                $i.snippet(`I${$.interface}) => void) => void`)
             })
         })
     }

@@ -18,3 +18,5 @@ export type TProject = {
 }
 
 export type XSerializeProject = ($: TProject, $i: mfp.IWriter) => void
+
+export type XSerializeTemplate = ($: TProject, $i: mfp.IWriter) => void

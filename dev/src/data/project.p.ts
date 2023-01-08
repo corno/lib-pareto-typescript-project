@@ -6,6 +6,7 @@ import {
     type,
     reference as ref,
     boolean as bln,
+    array,
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 import { dictionary, group, member, taggedUnion, types, _function } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
@@ -30,12 +31,24 @@ export const project: NProject.TProject = {
                         "ProjectSettings": group({
                             "project": member(er("project", "Project")),
                             "mainData": member(er("main", "MainData")),
-                        })
+                        }),
+                        "Arguments": array(str()),
                     }),
                     'functions': wd({}),
-                    'builder': wd({}),
-                    'callbacks': wd({}),
-                    'interfaces': wd({}),
+                    'builders': wd({}),
+                    'interfaces': wd({
+                        "SingleArgument": {
+                            "members": wd({
+                                //"Z": ["callback", ['type', string()]]
+                            }),
+                        }
+                    }),
+                    'callbacks': wd({
+                        "GetSingleArgument": {
+                            'data': ['type', reference("Arguments")],
+                            'interface': "SingleArgument",
+                        }
+                    }),
                 },
                 "api": {
                     'imports': wd({
@@ -56,14 +69,17 @@ export const project: NProject.TProject = {
                                     // "log": ['type', string()],
                                 }),
                                 'callbacks': wd({
-                                    // "serializeProject": {
-                                    //     'context': ['import', "project"],
-                                    //     'callback': "SerializeProject",
-                                    // },
-                                    // "serializeTemplate": {
-                                    //     'context': ['import', "project"],
-                                    //     'callback': "SerializeTemplate",
-                                    // }
+                                    "serializeProject": {
+                                        'context': ['import', "project"],
+                                        'callback': "SerializeProject",
+                                    },
+                                    "serializeTemplate": {
+                                        'context': ['import', "project"],
+                                        'callback': "SerializeTemplate",
+                                    },
+                                    "getSingleArgument": {
+                                        'callback': "GetSingleArgument",
+                                    }
                                 }),
                             },
                             'type': ['type', reference("ProjectSettings")],
@@ -100,7 +116,14 @@ export const project: NProject.TProject = {
                             "functions": member(dictionary(ref("Function"))),
                             "interfaces": member(dictionary(ref("Interface"))),
                             "callbacks": member(dictionary(ref("Callback"))),
-                            "builders": member(dictionary(ref("Callback"))),
+                            "builders": member(dictionary(group({
+                                "data": member(ref("LeafTypeOrNull")),
+                                "context": member(taggedUnion({
+                                    "local": nullType(),
+                                    "import": type(str()),
+                                }), true),
+                                "interface": member(str())
+                            }))),
                         }),
                         "Interface": group({
                             "members": member(dictionary(taggedUnion({
@@ -146,7 +169,7 @@ export const project: NProject.TProject = {
                         }),
                     }),
                     'functions': wd({}),
-                    'builder': wd({}),
+                    'builders': wd({}),
                     'callbacks': wd({
                         "SerializeGlossary": {
                             'data': ['type', reference("Glossary")],
@@ -257,7 +280,7 @@ export const project: NProject.TProject = {
                         })
                     }),
                     'functions': wd({}),
-                    'builder': wd({}),
+                    'builders': wd({}),
                     'callbacks': wd({
                         "SerializeModuleDefinition": {
                             'data': ['type', reference("ModuleDefinition")],
@@ -333,15 +356,21 @@ export const project: NProject.TProject = {
                         }),
                     }),
                     'functions': wd({}),
-                    'builder': wd({}),
+                    'builders': wd({}),
+                    'interfaces': wd({
+                    }),
                     'callbacks': wd({
                         "SerializeProject": {
                             'data': ['type', reference("Project")],
                             'context': ['import', "fp"],
                             'interface': "Writer",
                         },
+                        "SerializeTemplate": {
+                            'data': ['type', reference("Project")],
+                            'context': ['import', "fp"],
+                            'interface': "Writer",
+                        },
                     }),
-                    'interfaces': wd({}),
                 },
                 'api': {
                     'imports': wd({
@@ -390,7 +419,7 @@ export const project: NProject.TProject = {
 
                             },
                             'callback': {
-                                'callback': "SerializeProject"
+                                'callback': "SerializeTemplate"
                             }
                         }],
                     })

@@ -5,77 +5,37 @@ import * as api from "../api"
 import * as mproject from "../../project"
 import * as mapi from "../../api"
 import * as mglossary from "../../glossary"
-import * as mfp from "lib-fountain-pen"
 import * as mcoll from "res-pareto-collation"
 import * as mexe from "lib-pareto-exe"
+
 import { icreateProjectGenerator } from "./createProjectGenerator.p"
 
 export const igenerateProject: api.CgenerateProject = ($) => {
-    const project = $.project
 
     icreateProjectGenerator(
-        {}
-    )
-
-    function xxx(
-        $d: {
-            serializeProject: mproject.XSerializeProject
-            serializeTemplate: mproject.XSerializeProject
-        },
-        $i: mfp.IWriter
-    ) {
-        $d.serializeProject(
-            project,
-            $i,
-        )
-        $d.serializeTemplate(
-            project,
-            $i,
-        )
-    }
-    mexe.p_getSingleArgument($.mainData.arguments, {
-        callback: ($) => {
-
-            const $i = mfp.$a.createWriter(
+        {
+            cbserializeProject: mproject.$a.createProjectSerializer(
                 {
-                    path: $,
-                    configuration: mfp._defaultSettings,
-                },
-                {
-                    onError: ($) => {
-                        pl.logDebugMessage("ERROR!!!")
-                    }
-                },
-            )
-            xxx(
-                {
-                    serializeProject: mproject.$a.createProjectSerializer(
+                    fcompare: mcoll.$a.localeIsABeforeB,
+                    cbserializeModuleDefinition: mapi.$a.createModuleDefinitionSerializer(
                         {
                             fcompare: mcoll.$a.localeIsABeforeB,
-                            cbserializeModuleDefinition: mapi.$a.createModuleDefinitionSerializer(
-                                {
-                                    fcompare: mcoll.$a.localeIsABeforeB,
-                                    cbserializeGlossary: mglossary.$a.createGlossarySerializer({
-                                        fcompare: mcoll.$a.localeIsABeforeB,
-                                    }),
-                                    cbserializeLeafType: mglossary.$a.serializeLeafType,
-                                }
-                            ),
+                            cbserializeGlossary: mglossary.$a.createGlossarySerializer({
+                                fcompare: mcoll.$a.localeIsABeforeB,
+                            }),
                             cbserializeLeafType: mglossary.$a.serializeLeafType,
                         }
                     ),
-                    serializeTemplate: mproject.$a.createTemplateSerializer(
-                        {
-                            fcompare: mcoll.$a.localeIsABeforeB,
-                        }
-                    )
-                },
-                $i,
-            )
-        },
-        error: () => {
-            pl.implementMe("@@@@")
+                    cbserializeLeafType: mglossary.$a.serializeLeafType,
+                }
+            ),
+            cbserializeTemplate: mproject.$a.createTemplateSerializer(
+                {
+                    fcompare: mcoll.$a.localeIsABeforeB,
+                }
+            ),
+            cbgetSingleArgument: () => { pl.panic(`SSDFSFSF`)},
+            //cbgetSingleArgument: mexe.p_getSingleArgument,
         }
-    })
-
+    )($)
 }

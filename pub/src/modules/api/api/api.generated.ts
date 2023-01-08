@@ -6,9 +6,14 @@ import * as mcollation from "res-pareto-collation"
 import * as mglossary from "../../glossary"
 
 export type CcreateModuleDefinitionSerializer = ($d: {
-    readonly "compare": mcollation.FIsABeforeB
-    readonly "serializeGlossary": mglossary.XSerializeGlossary
-    readonly "serializeLeafType": mglossary.XSerializeLeafType
+    cb: {
+        readonly "serializeGlossary": mglossary.XSerializeGlossary
+        readonly "serializeLeafType": mglossary.XSerializeLeafType
+    }
+    f: {
+        readonly "compare": mcollation.FIsABeforeB
+    }
+    se: {}
 }) => glo.XSerializeModuleDefinition
 
 export type API = {

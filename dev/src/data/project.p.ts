@@ -42,9 +42,7 @@ export const project: NProject.TProject = {
                         "main": "glo-pareto-main",
                     }),
                     'algorithms': wd({
-                        "generateProject": ['algorithm', {
-                            'type': ['procedure', ['type', reference("ProjectSettings")]],
-                        }],
+                        "generateProject": ['procedure', ['type', reference("ProjectSettings")]],
                     })
                 },
             },
@@ -142,25 +140,26 @@ export const project: NProject.TProject = {
                         "collation": "res-pareto-collation"
                     }),
                     'algorithms': wd({
-                        "serializeLeafType": ['algorithm', {
-                            'type': ['callback', {
-                                'callback': "SerializeLeafType"
-                            }],
+                        "serializeLeafType": ['callback', {
+                            'callback': "SerializeLeafType"
                         }],
-                        "createGlossarySerializer": ['constructor', {
-                            'data': ['null', null],
-                            'dependencies': wd({
-                                "compare": {
-                                    'type': ['function', {
+                        "createGlossarySerializer": ['callback constructor', {
+                            'configuration data': ['null', null],
+                            'dependencies': {
+                                'functions': wd({
+                                    "compare": {
                                         'context': ['import', "collation"],
                                         'function': "IsABeforeB",
-                                    }],
-                                },
-                            }),
-                            'result': {
-                                'type': ['callback', {
-                                    'callback': "SerializeGlossary"
-                                }],
+                                    },
+                                }),
+                                'callbacks': wd({
+                                }),
+                                'side effects': wd({
+                                }),
+
+                            },
+                            'callback': {
+                                'callback': "SerializeGlossary"
                             }
                         }],
                     })
@@ -250,32 +249,31 @@ export const project: NProject.TProject = {
                         "glossary": "../../glossary",
                     }),
                     'algorithms': wd({
-                        "createModuleDefinitionSerializer": ['constructor', {
-                            'data': ['null', null],
-                            'dependencies': wd({
-                                "compare": {
-                                    'type': ['function', {
+                        "createModuleDefinitionSerializer": ['callback constructor', {
+                            'configuration data': ['null', null],
+                            'dependencies': {
+                                'functions': wd({
+                                    "compare": {
                                         'context': ['import', "collation"],
                                         'function': "IsABeforeB",
-                                    }],
-                                },
-                                "serializeGlossary": {
-                                    'type': ['callback', {
+                                    },
+                                }),
+                                'callbacks': wd({
+                                    "serializeGlossary": {
                                         'context': ['import', "glossary"],
                                         'callback': "SerializeGlossary"
-                                    }],
-                                },
-                                "serializeLeafType": {
-                                    'type': ['callback', {
+                                    },
+                                    "serializeLeafType": {
                                         'context': ['import', "glossary"],
                                         'callback': "SerializeLeafType"
-                                    }],
-                                },
-                            }),
-                            'result': {
-                                'type': ['callback', {
-                                    'callback': "SerializeModuleDefinition"
-                                }],
+                                    },
+                                }),
+                                'side effects': wd({
+                                }),
+
+                            },
+                            'callback': {
+                                'callback': "SerializeModuleDefinition"
                             }
                         }],
                     })
@@ -325,48 +323,50 @@ export const project: NProject.TProject = {
                         "collation": "res-pareto-collation",
                     }),
                     'algorithms': wd({
-                        "createProjectSerializer": ['constructor', {
-                            'data': ['null', null],
-                            'dependencies': wd({
-                                "serializeLeafType": {
-                                    'type': ['callback', {
-                                        'context': ['import', "glossary"],
-                                        'callback': "SerializeLeafType"
-                                    }],
-                                },
-                                "serializeModuleDefinition": {
-                                    'type': ['callback', {
+                        "createProjectSerializer": ['callback constructor', {
+                            'configuration data': ['null', null],
+                            'dependencies': {
+                                'functions': wd({
+                                    "compare": {
+                                        'context': ['import', "collation"],
+                                        'function': "IsABeforeB",
+                                    },
+                                }),
+                                'callbacks': wd({
+                                    "serializeModuleDefinition": {
                                         'context': ['import', "api"],
                                         'callback': "SerializeModuleDefinition"
-                                    }],
-                                },
-                                "compare": {
-                                    'type': ['function', {
-                                        'context': ['import', "collation"],
-                                        'function': "IsABeforeB",
-                                    }],
-                                },
-                            }),
-                            'result': {
-                                'type': ['callback', {
-                                    'callback': "SerializeProject"
-                                }],
+                                    },
+                                    "serializeLeafType": {
+                                        'context': ['import', "glossary"],
+                                        'callback': "SerializeLeafType"
+                                    },
+                                }),
+                                'side effects': wd({
+                                }),
+
+                            },
+                            'callback': {
+                                'callback': "SerializeProject"
                             }
                         }],
-                        "createTemplateSerializer": ['constructor', {
-                            'data': ['null', null],
-                            'dependencies': wd({
-                                "compare": {
-                                    'type': ['function', {
+                        "createTemplateSerializer": ['callback constructor', {
+                            'configuration data': ['null', null],
+                            'dependencies': {
+                                'functions': wd({
+                                    "compare": {
                                         'context': ['import', "collation"],
                                         'function': "IsABeforeB",
-                                    }],
-                                },
-                            }),
-                            'result': {
-                                'type': ['callback', {
-                                    'callback': "SerializeProject"
-                                }],
+                                    },
+                                }),
+                                'callbacks': wd({
+                                }),
+                                'side effects': wd({
+                                }),
+
+                            },
+                            'callback': {
+                                'callback': "SerializeProject"
                             }
                         }],
                     })

@@ -4,10 +4,10 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
-        const compare = (a: string, b: string) => $d.compare({ a: a, b: b })
+        const compare = (a: string, b: string) => $d.f.compare({ a: a, b: b })
         function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {
             $i.createFile("types.generated.ts", ($i) => {
-                $d.serializeGlossary($, $i)
+                $d.cb.serializeGlossary($, $i)
             })
         }
         function serializeFunctionReference($: api.TFunctionReference, $i: mfp.ILine) {
@@ -43,7 +43,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                     break
                 case "type":
                     pl.cc($[1], ($) => {
-                        $d.serializeLeafType($, $i)
+                        $d.cb.serializeLeafType($, $i)
                     })
                     break
                 default: pl.au($[0])
@@ -105,7 +105,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                     case "type":
                                         pl.cc($["configuration data"][1], ($) => {
                                             $i.snippet(`$: `)
-                                            $d.serializeLeafType($, $i)
+                                            $d.cb.serializeLeafType($, $i)
                                             $i.snippet(`, `)
                                         })
                                         break
@@ -114,46 +114,28 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                 pl.cc($.dependencies, ($) => {
                                     $i.snippet(`$d: {`)
                                     $i.indent(($i) => {
-                                        $i.line(($i) => {
-                                            $i.snippet(`cb: {`)
-                                            $i.indent(($i) => {
-                                                if ($.callbacks !== undefined) {
-                                                    $.callbacks.forEach(compare, ($, key) => {
-                                                        $i.line(($i) => {
-                                                            $i.snippet(`readonly "${key}": `)
-                                                            serializeCallbackReference($, $i)
-                                                        })
-                                                    })
-                                                }
-                                            })
-                                            $i.snippet(`}`)
-                                        })
-                                        $i.line(($i) => {
-                                            $i.snippet(`f: {`)
-                                            $i.indent(($i) => {
-                                                $.functions.forEach(compare, ($, key) => {
-                                                    $i.line(($i) => {
-                                                        $i.snippet(`readonly "${key}": `)
-                                                        serializeFunctionReference($, $i)
-                                                    })
+                                        if ($.callbacks !== undefined) {
+                                            $.callbacks.forEach(compare, ($, key) => {
+                                                $i.line(($i) => {
+                                                    $i.snippet(`readonly "cb${key}": `)
+                                                    serializeCallbackReference($, $i)
                                                 })
                                             })
-                                            $i.snippet(`}`)
-                                        })
-                                        $i.line(($i) => {
-                                            $i.snippet(`se: {`)
-                                            $i.indent(($i) => {
-                                                if ($["side effects"] !== undefined) {
-                                                    $["side effects"].forEach(compare, ($, key) => {
-                                                        $i.line(($i) => {
-                                                            $i.snippet(`readonly "${key}": `)
-                                                            serializeProcedure($, $i)
-                                                        })
-                                                    })
-                                                }
+                                        }
+                                        $.functions.forEach(compare, ($, key) => {
+                                            $i.line(($i) => {
+                                                $i.snippet(`readonly "f${key}": `)
+                                                serializeFunctionReference($, $i)
                                             })
-                                            $i.snippet(`}`)
                                         })
+                                        if ($["side effects"] !== undefined) {
+                                            $["side effects"].forEach(compare, ($, key) => {
+                                                $i.line(($i) => {
+                                                    $i.snippet(`readonly "se${key}": `)
+                                                    serializeProcedure($, $i)
+                                                })
+                                            })
+                                        }
                                     })
                                     $i.snippet(`}`)
                                 })
@@ -172,7 +154,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                     case "type":
                                         pl.cc($["configuration data"][1], ($) => {
                                             $i.snippet(`$: `)
-                                            $d.serializeLeafType($, $i)
+                                            $d.cb.serializeLeafType($, $i)
                                             $i.snippet(`, `)
                                         })
                                         break
@@ -181,41 +163,23 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                 pl.cc($.dependencies, ($) => {
                                     $i.snippet(`$d: {`)
                                     $i.indent(($i) => {
-                                        $i.line(($i) => {
-                                            $i.snippet(`cb: {`)
-                                            $i.indent(($i) => {
-                                                $.callbacks.forEach(compare, ($, key) => {
-                                                    $i.line(($i) => {
-                                                        $i.snippet(`readonly "${key}": `)
-                                                        serializeCallbackReference($, $i)
-                                                    })
-                                                })
+                                        $.callbacks.forEach(compare, ($, key) => {
+                                            $i.line(($i) => {
+                                                $i.snippet(`readonly cb"${key}": `)
+                                                serializeCallbackReference($, $i)
                                             })
-                                            $i.snippet(`}`)
                                         })
-                                        $i.line(($i) => {
-                                            $i.snippet(`f: {`)
-                                            $i.indent(($i) => {
-                                                $.functions.forEach(compare, ($, key) => {
-                                                    $i.line(($i) => {
-                                                        $i.snippet(`readonly "${key}": `)
-                                                        serializeFunctionReference($, $i)
-                                                    })
-                                                })
+                                        $.functions.forEach(compare, ($, key) => {
+                                            $i.line(($i) => {
+                                                $i.snippet(`readonly "f${key}": `)
+                                                serializeFunctionReference($, $i)
                                             })
-                                            $i.snippet(`}`)
                                         })
-                                        $i.line(($i) => {
-                                            $i.snippet(`d: {`)
-                                            $i.indent(($i) => {
-                                                $.downstreams.forEach(compare, ($, key) => {
-                                                    $i.line(($i) => {
-                                                        $i.snippet(`readonly "${key}": `)
-                                                        serializeProcedure($, $i)
-                                                    })
-                                                })
+                                        $.downstreams.forEach(compare, ($, key) => {
+                                            $i.line(($i) => {
+                                                $i.snippet(`readonly "d${key}": `)
+                                                serializeProcedure($, $i)
                                             })
-                                            $i.snippet(`}`)
                                         })
                                     })
                                     $i.snippet(`}`)
@@ -235,7 +199,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                     case "type":
                                         pl.cc($["configuration data"][1], ($) => {
                                             $i.snippet(`$: `)
-                                            $d.serializeLeafType($, $i)
+                                            $d.cb.serializeLeafType($, $i)
                                             $i.snippet(`, `)
                                         })
                                         break
@@ -244,41 +208,23 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                 pl.cc($.dependencies, ($) => {
                                     $i.snippet(`$d: {`)
                                     $i.indent(($i) => {
-                                        $i.line(($i) => {
-                                            $i.snippet(`cb: {`)
-                                            $i.indent(($i) => {
-                                                $.callbacks.forEach(compare, ($, key) => {
-                                                    $i.line(($i) => {
-                                                        $i.snippet(`readonly "${key}": `)
-                                                        serializeCallbackReference($, $i)
-                                                    })
-                                                })
+                                        $.callbacks.forEach(compare, ($, key) => {
+                                            $i.line(($i) => {
+                                                $i.snippet(`readonly "cb${key}": `)
+                                                serializeCallbackReference($, $i)
                                             })
-                                            $i.snippet(`}`)
                                         })
-                                        $i.line(($i) => {
-                                            $i.snippet(`f: {`)
-                                            $i.indent(($i) => {
-                                                $.functions.forEach(compare, ($, key) => {
-                                                    $i.line(($i) => {
-                                                        $i.snippet(`readonly "${key}": `)
-                                                        serializeFunctionReference($, $i)
-                                                    })
-                                                })
+                                        $.functions.forEach(compare, ($, key) => {
+                                            $i.line(($i) => {
+                                                $i.snippet(`readonly "f${key}": `)
+                                                serializeFunctionReference($, $i)
                                             })
-                                            $i.snippet(`}`)
                                         })
-                                        $i.line(($i) => {
-                                            $i.snippet(`se: {`)
-                                            $i.indent(($i) => {
-                                                $["side effects"].forEach(compare, ($, key) => {
-                                                    $i.line(($i) => {
-                                                        $i.snippet(`readonly "${key}": `)
-                                                        serializeProcedure($, $i)
-                                                    })
-                                                })
+                                        $["side effects"].forEach(compare, ($, key) => {
+                                            $i.line(($i) => {
+                                                $i.snippet(`readonly "se${key}": `)
+                                                serializeProcedure($, $i)
                                             })
-                                            $i.snippet(`}`)
                                         })
                                     })
                                     $i.snippet(`}`)

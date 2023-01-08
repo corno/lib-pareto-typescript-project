@@ -6,7 +6,7 @@ export const icreateTemplateSerializer: api.CcreateTemplateSerializer = (
     $d
 ) => {
     return ($, $i) => {
-        const compare = (a: string, b: string) => $d.compare({ a: a, b: b })
+        const compare = (a: string, b: string) => $d.f.compare({ a: a, b: b })
         $i.createDirectory("tmp", ($i) => {
             $i.createDirectory("templates", ($i) => {
                 $i.createDirectory("dev", ($i) => {

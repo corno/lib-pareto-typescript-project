@@ -1,14 +1,9 @@
 {
   "dependencies": {
-    "glo-pareto-common": "^0.1.0",
-    "glo-pareto-main": "^0.4.0",
-    "lib-fountain-pen": "^0.11.0",
-    "lib-pareto-exe": "^0.5.0",
     "lib-pareto-typescript-project": "^0.6.0",
     "pareto-core-exe": "^0.15.1",
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.0",
-    "pareto-core-state": "^0.12.0",
-    "res-pareto-collation": "^0.10.0"
+    "pareto-core-state": "^0.12.0"
   }
 }

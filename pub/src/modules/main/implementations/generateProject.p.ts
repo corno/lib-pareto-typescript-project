@@ -31,24 +31,21 @@ export function igenerateProject($: api.TProjectSettings): void {
             )
 
             const sar = mapi.$a.createAlgorithmReferenceSerializer(
-                null,
                 {
                     serializeLeafType: mglossary.$a.serializeLeafType,
                 }
             )
 
             mproject.$a.createProjectSerializer(
-                null,
                 {
                     compare: mcoll.$a.localeIsABeforeB,
                     serializeModuleDefinition: mapi.$a.createModuleDefinitionSerializer(
-                        null,
                         {
                             compare: mcoll.$a.localeIsABeforeB,
-                            serializeGlossary: mglossary.$a.createGlossarySerializer(null, {
+                            serializeGlossary: mglossary.$a.createGlossarySerializer({
                                 compare: mcoll.$a.localeIsABeforeB,
                             }),
-                            serializeConstructor: mapi.$a.createConstructorSerializer(null, {
+                            serializeConstructor: mapi.$a.createConstructorSerializer({
                                 compare: mcoll.$a.localeIsABeforeB,
                                 serializeAlgorithmReference: sar,
                                 serializeLeafType: mglossary.$a.serializeLeafType,
@@ -64,7 +61,6 @@ export function igenerateProject($: api.TProjectSettings): void {
                 $i,
             )
             mproject.$a.createTemplateSerializer(
-                null,
                 {
                     compare: mcoll.$a.localeIsABeforeB,
                 }

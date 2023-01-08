@@ -2,7 +2,7 @@ import * as pl from "pareto-core-lib"
 
 import * as api from "../api"
 
-export const icreateAlgorithmReferenceSerializer: api.CcreateAlgorithmReferenceSerializer = ($, $d) => {
+export const icreateAlgorithmReferenceSerializer: api.CcreateAlgorithmReferenceSerializer = ($d) => {
     return ($, $i) => {
         pl.cc($.type, ($) => {
             switch ($[0]) {

@@ -4,7 +4,7 @@ import * as glo from "./types.generated"
 
 import * as mcollation from "res-pareto-collation"
 
-export type CcreateGlossarySerializer = ($: null, $d: {
+export type CcreateGlossarySerializer = ($d: {
     readonly "compare": mcollation.FIsABeforeB
 }) => glo.XSerializeGlossary
 

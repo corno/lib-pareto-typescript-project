@@ -4,7 +4,6 @@ import * as mfp from "lib-fountain-pen"
 
 
 export const icreateProjectSerializer: api.CcreateProjectSerializer = (
-    $,
     $d,
 ) => {
     return ($, $i) => {

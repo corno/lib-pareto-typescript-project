@@ -3,7 +3,6 @@ import * as api from "../api"
 
 
 export const icreateTemplateSerializer: api.CcreateTemplateSerializer = (
-    $,
     $d
 ) => {
     return ($, $i) => {

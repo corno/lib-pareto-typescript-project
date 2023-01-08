@@ -3,7 +3,7 @@ import * as pl from "pareto-core-lib"
 import * as api from "../api"
 
 export const icreateConstructorSerializer: api.CcreateConstructorSerializer = (
-    $, $d
+    $d
 ) => {
     const compare = (a: string, b: string) => $d.compare({ a: a, b: b })
 

@@ -1,11 +1,11 @@
 import * as pl from "pareto-core-lib"
 
-import * as mmain from "glo-pareto-main"
+import * as api from "../api"
 
 import { project } from "../../../data/project.p"
 import * as mpareto from "lib-pareto-typescript-project"
 
-export const imain: mmain.PProgramMain = ($) => {
+export const imain: api.Cmain = ($) => {
     mpareto.$a.generateProject({
         project: project,
         mainData: $,

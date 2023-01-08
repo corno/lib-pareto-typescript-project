@@ -176,20 +176,9 @@ export const project: NProject.TProject = {
                         "glossary": "../../glossary"
                     }),
                     'types': types({
-                        "AlgorithmDefinition": taggedUnion({
-                            "constructor": type(ref("Constructor")),
-                            "algorithm": type(ref("AlgorithmReference")),
-                        }),
                         "AlgorithmReference": group({
                             "type": member(taggedUnion({
-                                "function": type(group({
-                                    "context": member(taggedUnion({
-                                        "local": nullType(),
-                                        "import": type(str()),
-                                    }), true),
-                                    "function": member(str()),
-                                    "async": member(bln(), true),
-                                })),
+                                "function": type(ref("FunctionReference")),
                                 "procedure": type(er("glossary", "LeafTypeOrNull")),
                                 "callback": type(group({
                                     "context": member(taggedUnion({
@@ -200,32 +189,32 @@ export const project: NProject.TProject = {
                                 }))
                             })),
                         }),
-                        "Constructor": group({
-                            "data": member(er("glossary", "LeafTypeOrNull")),
-                            "dependencies": member(dictionary(ref("AlgorithmReference"))),
-                            "result": member(ref("AlgorithmReference")),
+                        "FunctionReference": group({
+                            "context": member(taggedUnion({
+                                "local": nullType(),
+                                "import": type(str()),
+                            }), true),
+                            "function": member(str()),
+                            "async": member(bln(), true),
                         }),
                         "ModuleDefinition": group({
                             "glossary": member(er("glossary", "Glossary")),
                             "api": member(group({
                                 "imports": member(dictionary(str())),
-                                "algorithms": member(dictionary(ref("AlgorithmDefinition"))),
+                                "algorithms": member(dictionary(taggedUnion({
+                                    "constructor": type(group({
+                                        "data": member(er("glossary", "LeafTypeOrNull")),
+                                        "dependencies": member(dictionary(ref("AlgorithmReference"))),
+                                        "result": member(ref("AlgorithmReference")),
+                                    })),
+                                    "algorithm": type(ref("AlgorithmReference")),
+                                }))),
                             })),
                         })
                     }),
                     'functions': wd({
                     }),
                     'callbacks': wd({
-                        "SerializeConstructor": {
-                            'data': ['type', reference("Constructor")],
-                            'context': ['import', "fp"],
-                            'interface': "Line",
-                        },
-                        "SerializeAlgorithmReference": {
-                            'data': ['type', reference("AlgorithmReference")],
-                            'context': ['import', "fp"],
-                            'interface': "Line",
-                        },
                         "SerializeModuleDefinition": {
                             'data': ['type', reference("ModuleDefinition")],
                             'context': ['import', "fp"],
@@ -240,22 +229,6 @@ export const project: NProject.TProject = {
                         "glossary": "../../glossary",
                     }),
                     'algorithms': wd({
-                        "createAlgorithmReferenceSerializer": ['constructor', {
-                            'data': ['null', null],
-                            'dependencies': wd({
-                                "serializeLeafType": {
-                                    'type': ['callback', {
-                                        'context': ['import', "glossary"],
-                                        'callback': "SerializeLeafType"
-                                    }],
-                                },
-                            }),
-                            'result': {
-                                'type': ['callback', {
-                                    'callback': "SerializeAlgorithmReference"
-                                }],
-                            }
-                        }],
                         "createModuleDefinitionSerializer": ['constructor', {
                             'data': ['null', null],
                             'dependencies': wd({
@@ -271,47 +244,16 @@ export const project: NProject.TProject = {
                                         'callback': "SerializeGlossary"
                                     }],
                                 },
-                                "serializeAlgorithmReference": {
-                                    'type': ['callback', {
-                                        'callback': "SerializeAlgorithmReference"
-                                    }],
-                                },
-                                "serializeConstructor": {
-                                    'type': ['callback', {
-                                        'callback': "SerializeConstructor"
-                                    }],
-                                },
-                            }),
-                            'result': {
-                                'type': ['callback', {
-                                    'callback': "SerializeModuleDefinition"
-                                }],
-                            }
-                        }],
-                        "createConstructorSerializer": ['constructor', {
-                            'data': ['null', null],
-                            'dependencies': wd({
-                                "compare": {
-                                    'type': ['function', {
-                                        'context': ['import', "collation"],
-                                        'function': "IsABeforeB",
-                                    }],
-                                },
                                 "serializeLeafType": {
                                     'type': ['callback', {
                                         'context': ['import', "glossary"],
                                         'callback': "SerializeLeafType"
                                     }],
                                 },
-                                "serializeAlgorithmReference": {
-                                    'type': ['callback', {
-                                        'callback': "SerializeAlgorithmReference"
-                                    }],
-                                },
                             }),
                             'result': {
                                 'type': ['callback', {
-                                    'callback': "SerializeConstructor"
+                                    'callback': "SerializeModuleDefinition"
                                 }],
                             }
                         }],

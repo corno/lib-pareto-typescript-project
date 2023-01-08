@@ -2,12 +2,12 @@ import * as pl from "pareto-core-lib"
 
 import * as api from "../api"
 
-import * as fp from "lib-fountain-pen"
+import * as mfp from "lib-fountain-pen"
 
 export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => {
     const compare = (a: string, b: string) => $d.compare({ a: a, b: b })
 
-    function serializeLeafType($: api.TLeafType, $i: fp.ILine) {
+    function serializeLeafType($: api.TLeafType, $i: mfp.ILine) {
         switch ($[0]) {
             case "boolean":
                 pl.cc($[1], ($) => {
@@ -37,7 +37,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             default: pl.au($[0])
         }
     }
-    function serializeType($: api.TType, $i: fp.ILine) {
+    function serializeType($: api.TType, $i: mfp.ILine) {
         switch ($[0]) {
             case "array":
                 pl.cc($[1], ($) => {
@@ -166,7 +166,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 }
             })
         })
-        function serializeInterface($: api.TInterface, $i: fp.ILine) {
+        function serializeInterface($: api.TInterface, $i: mfp.ILine) {
 
             $i.snippet(`{`)
             $i.indent(($i) => {

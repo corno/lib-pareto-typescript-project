@@ -176,19 +176,6 @@ export const project: NProject.TProject = {
                         "glossary": "../../glossary"
                     }),
                     'types': types({
-                        "AlgorithmReference": group({
-                            "type": member(taggedUnion({
-                                "function": type(ref("FunctionReference")),
-                                "procedure": type(er("glossary", "LeafTypeOrNull")),
-                                "callback": type(group({
-                                    "context": member(taggedUnion({
-                                        "local": nullType(),
-                                        "import": type(str()),
-                                    }), true),
-                                    "callback": member(str()),
-                                }))
-                            })),
-                        }),
                         "FunctionReference": group({
                             "context": member(taggedUnion({
                                 "local": nullType(),
@@ -197,17 +184,51 @@ export const project: NProject.TProject = {
                             "function": member(str()),
                             "async": member(bln(), true),
                         }),
+                        "CallbackReference": group({
+                            "context": member(taggedUnion({
+                                "local": nullType(),
+                                "import": type(str()),
+                            }), true),
+                            "callback": member(str()),
+                            "async": member(bln(), true),
+                        }),
                         "ModuleDefinition": group({
                             "glossary": member(er("glossary", "Glossary")),
                             "api": member(group({
                                 "imports": member(dictionary(str())),
                                 "algorithms": member(dictionary(taggedUnion({
-                                    "constructor": type(group({
-                                        "data": member(er("glossary", "LeafTypeOrNull")),
-                                        "dependencies": member(dictionary(ref("AlgorithmReference"))),
-                                        "result": member(ref("AlgorithmReference")),
+                                    "function constructor": type(group({
+                                        "configuration data": member(er("glossary", "LeafTypeOrNull")),
+                                        "dependencies": member(group({
+                                            "functions": member(dictionary(ref("FunctionReference"))),
+                                            "side effects": member(dictionary(er("glossary", "LeafTypeOrNull")), true),
+                                            "callbacks": member(dictionary(ref("CallbackReference")), true),
+
+                                        })),
+                                        "function": member(ref("FunctionReference")),
                                     })),
-                                    "algorithm": type(ref("AlgorithmReference")),
+                                    "callback constructor": type(group({
+                                        "configuration data": member(er("glossary", "LeafTypeOrNull")),
+                                        "dependencies": member(group({
+                                            "functions": member(dictionary(ref("FunctionReference"))),
+                                            "side effects": member(dictionary(er("glossary", "LeafTypeOrNull"))),
+                                            "callbacks": member(dictionary(ref("CallbackReference"))),
+
+                                        })),
+                                        "callback": member(ref("CallbackReference")),
+                                    })),
+                                    "procedure constructor": type(group({
+                                        "configuration data": member(er("glossary", "LeafTypeOrNull")),
+                                        "dependencies": member(group({
+                                            "functions": member(dictionary(ref("FunctionReference"))),
+                                            "downstreams": member(dictionary(er("glossary", "LeafTypeOrNull"))),
+                                            "callbacks": member(dictionary(ref("CallbackReference"))),
+                                        })),
+                                        "type": member(er("glossary", "LeafTypeOrNull")),
+                                    })),
+                                    "function": type(ref("FunctionReference")),
+                                    "callback": type(ref("CallbackReference")),
+                                    "procedure": type(er("glossary", "LeafTypeOrNull")),
                                 }))),
                             })),
                         })

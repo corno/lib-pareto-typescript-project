@@ -72,14 +72,14 @@ export const project: NProject.TProject = {
                             "interface": member(str())
                         }),
                         "Glossary": group({
-                            "imports": member(dictionary(type(str()))),
-                            "types": member(dictionary(type(ref("Type")))),
-                            "functions": member(dictionary(type(ref("Function")))),
-                            "interfaces": member(dictionary(type(ref("Interface")))),
-                            "callbacks": member(dictionary(type(ref("Callback")))),
+                            "imports": member(dictionary(str())),
+                            "types": member(dictionary(ref("Type"))),
+                            "functions": member(dictionary(ref("Function"))),
+                            "interfaces": member(dictionary(ref("Interface"))),
+                            "callbacks": member(dictionary(ref("Callback"))),
                         }),
                         "Interface": group({
-                            "members": member(dictionary(type(taggedUnion({
+                            "members": member(dictionary(taggedUnion({
                                 "interface": type(group({
                                     "context": member(taggedUnion({
                                         "local": nullType(),
@@ -88,7 +88,7 @@ export const project: NProject.TProject = {
                                     "interface": member(str()),
                                 })),
                                 "procedure": type(ref("LeafTypeOrNull"))
-                            }))))
+                            })))
                         }),
                         "LeafType": taggedUnion({
                             "boolean": nullType(),
@@ -114,11 +114,11 @@ export const project: NProject.TProject = {
                             "array": type(ref("Type")),
                             "nested": type(ref("Type")),
                             "dictionary": type(ref("TypeOrNull")),
-                            "group": type(dictionary(type(group({
+                            "group": type(dictionary(group({
                                 "type": member(ref("Type")),
                                 "optional": member(bln(), true)
-                            })))),
-                            "taggedUnion": type(dictionary(type(ref("TypeOrNull")))),
+                            }))),
+                            "taggedUnion": type(dictionary(ref("TypeOrNull"))),
                         }),
                     }),
                     'functions': wd({
@@ -202,14 +202,14 @@ export const project: NProject.TProject = {
                         }),
                         "Constructor": group({
                             "data": member(er("glossary", "LeafTypeOrNull")),
-                            "dependencies": member(dictionary(type(ref("AlgorithmReference")))),
+                            "dependencies": member(dictionary(ref("AlgorithmReference"))),
                             "result": member(ref("AlgorithmReference")),
                         }),
                         "ModuleDefinition": group({
                             "glossary": member(er("glossary", "Glossary")),
                             "api": member(group({
-                                "imports": member(dictionary(type(str()))),
-                                "algorithms": member(dictionary(type(ref("AlgorithmDefinition")))),
+                                "imports": member(dictionary(str())),
+                                "algorithms": member(dictionary(ref("AlgorithmDefinition"))),
                             })),
                         })
                     }),
@@ -329,10 +329,10 @@ export const project: NProject.TProject = {
                     }),
                     'types': types({
                         "AlgorithmImplementation": group({}),
-                        "Implementation": dictionary(type(ref("AlgorithmImplementation"))),
+                        "Implementation": dictionary(ref("AlgorithmImplementation")),
                         "Project": group({
                             "resource": member(bln(), true),
-                            "modules": member(dictionary(type(group({
+                            "modules": member(dictionary(group({
                                 "definition": member(er("api", "ModuleDefinition")),
                                 // "type": member(taggedUnion({
                                 //     "binding": nll(),
@@ -340,7 +340,7 @@ export const project: NProject.TProject = {
                                 //     "logic": nll(),
 
                                 // }))
-                            })))),
+                            }))),
                             "main": member(str()),
                         }),
                     }),

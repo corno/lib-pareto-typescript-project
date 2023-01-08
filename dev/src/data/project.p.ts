@@ -16,7 +16,8 @@ const wd = pr.wrapRawDictionary
 
 
 export const project: NProject.TProject = {
-    modules: wd({
+    'type': ['library', null],
+    'modules': wd({
         "main": {
             'definition': {
                 "glossary": {

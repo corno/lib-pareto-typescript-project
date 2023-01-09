@@ -13,4 +13,4 @@ export type TProjectSettings = {
 
 export type AGetSingleArgument = ($: TArguments) => pt.AsyncValue<string>
 
-export type BCreateWriter = ($: string, $c: ($i: mfp.IWriter) => void) => void
+export type ICreateWriter = ($: string, $c: ($i: mfp.IWriter) => void) => void

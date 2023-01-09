@@ -14,27 +14,27 @@ export const igenerateProject: api.CgenerateProject = ($) => {
 
     icreateProjectGenerator(
         {
-            cbserializeProject: mproject.$a.createProjectSerializer(
+            cb_serializeProject: mproject.$a.createProjectSerializer(
                 {
-                    fcompare: mcoll.$a.localeIsABeforeB,
-                    cbserializeModuleDefinition: mapi.$a.createModuleDefinitionSerializer(
+                    sf_compare: mcoll.$a.localeIsABeforeB,
+                    cb_serializeModuleDefinition: mapi.$a.createModuleDefinitionSerializer(
                         {
-                            fcompare: mcoll.$a.localeIsABeforeB,
-                            cbserializeGlossary: mglossary.$a.createGlossarySerializer({
-                                fcompare: mcoll.$a.localeIsABeforeB,
+                            sf_compare: mcoll.$a.localeIsABeforeB,
+                            cb_serializeGlossary: mglossary.$a.createGlossarySerializer({
+                                sf_compare: mcoll.$a.localeIsABeforeB,
                             }),
-                            cbserializeLeafType: mglossary.$a.serializeLeafType,
+                            cb_serializeLeafType: mglossary.$a.serializeLeafType,
                         }
                     ),
-                    cbserializeLeafType: mglossary.$a.serializeLeafType,
+                    cb_serializeLeafType: mglossary.$a.serializeLeafType,
                 }
             ),
-            cbserializeTemplate: mproject.$a.createTemplateSerializer(
+            cb_serializeTemplate: mproject.$a.createTemplateSerializer(
                 {
-                    fcompare: mcoll.$a.localeIsABeforeB,
+                    sf_compare: mcoll.$a.localeIsABeforeB,
                 }
             ),
-            fgetSingleArgument: () => { pl.panic(`SSDFSFSF`)},
+            af_getSingleArgument: () => { pl.panic(`SSDFSFSF`)},
             //cbgetSingleArgument: mexe.p_getSingleArgument,
         }
     )($)

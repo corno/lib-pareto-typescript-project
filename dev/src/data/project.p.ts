@@ -13,14 +13,19 @@ import { dictionary, group, member, taggedUnion, types, _function } from "lib-pa
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/api/api/shorthands.p"
 import * as NProject from "lib-pareto-typescript-project/dist/modules/project"
+import * as mapi from "lib-pareto-typescript-project/dist/modules/api"
 const wd = pr.wrapRawDictionary
+
+function def($: mapi.TModuleDefinition): mapi.TModuleDefinition {
+    return $
+}
 
 
 export const project: NProject.TProject = {
     'type': ['library', null],
     'modules': wd({
         "main": {
-            'definition': {
+            'definition': def({
                 "glossary": {
                     'imports': wd({
                         "project": "../../project",
@@ -39,72 +44,68 @@ export const project: NProject.TProject = {
                         "GetSingleArgument": _function(reference("Arguments"), string(), true),
 
                     }),
-                    'builders': wd({
-                        "CreateWriter": {
-                            'data': ['type', string()],
-                            'context': ['import', "fp"],
-                            'interface': "Writer",
-                        }
-                    }),
                     'interfaces': wd({
-                        // "SingleArgument": {
-                        //     "members": wd({
-                        //         "Z": ["callback", ['type', string()]],
-                        //         "Y": ["callback", ['type', string()]],
-                        //     }),
-                        // }
+                        "CreateWriter": ['method', {
+                            'data': ['type', string()],
+                            'interface': ['set', {
+                                'context': ['import', "fp"],
+                                'interface': "Writer"
+                            }],
+                        }]
                     }),
+                    // 'interfaces': wd({
+                    //     // "SingleArgument": {
+                    //     //     "members": wd({
+                    //     //         "Z": ["callback", ['type', string()]],
+                    //     //         "Y": ["callback", ['type', string()]],
+                    //     //     }),
+                    //     // }
+                    // }),
                     'callbacks': wd({
                         // "GetSingleArgument": {
                         //     'data': ['type', reference("Arguments")],
                         //     'interface': "SingleArgument",
                         // }
                     }),
+                    'pipes': wd({}),
                 },
                 "api": {
                     'imports': wd({
                         "project": "../../project"
                     }),
                     'algorithms': wd({
-                        "generateProject": ['procedure', ['type', reference("ProjectSettings")]],
-                        "createProjectGenerator": ['procedure constructor', {
-                            'configuration data': ['null', null],
-                            'dependencies': {
-                                'functions': wd({
-                                    // "isABeforeB": {
-                                    //     'context': ['import', "collation"],
-                                    //     'function': "IsABeforeB",
-                                    // },
-                                    "getSingleArgument": {
+                        "generateProject": {
+                            'definition': ['procedure', ['type', reference("ProjectSettings")]],
+                            'type': ['reference', null],
+                        },
+                        "createProjectGenerator": {
+                            'definition': ['procedure', ['type', reference("ProjectSettings")]],
+                            'type': ['constructor', {
+                                'configuration data': ['null', null],
+                                'dependencies': wd({
+                                    "getSingleArgument": ['function', {
                                         'async': true,
                                         'function': "GetSingleArgument",
-                                    }
-                                }),
-                                'downstreams': wd({
-                                    // "log": ['type', string()],
-                                }),
-                                'builders': wd({}),
-                                'callbacks': wd({
-                                    "serializeProject": {
+                                    }],
+                                    "serializeProject": ['callback', {
                                         'context': ['import', "project"],
                                         'callback': "SerializeProject",
-                                    },
-                                    "serializeTemplate": {
+                                    }],
+                                    "serializeTemplate": ['callback', {
                                         'context': ['import', "project"],
                                         'callback': "SerializeTemplate",
-                                    },
+                                    }],
                                 }),
-                            },
-                            'type': ['type', reference("ProjectSettings")],
-                        }],
+                            }],
+                        }
                     })
                 },
-            },
+            }),
             'implementation': {}
 
         },
         "glossary": {
-            'definition': {
+            'definition': def({
                 "glossary": {
                     'imports': wd({
                         "fp": "../../fp",
@@ -186,7 +187,7 @@ export const project: NProject.TProject = {
                         }),
                     }),
                     'functions': wd({}),
-                    'builders': wd({}),
+                    'interfaces': wd({}),
                     'callbacks': wd({
                         "SerializeGlossary": {
                             'data': ['type', reference("Glossary")],
@@ -199,40 +200,40 @@ export const project: NProject.TProject = {
                             'interface': "Line",
                         },
                     }),
-                    'interfaces': wd({}),
+                    'pipes': wd({}),
                 },
                 'api': {
                     'imports': wd({
                         "collation": "res-pareto-collation"
                     }),
                     'algorithms': wd({
-                        "serializeLeafType": ['callback', {
-                            'callback': "SerializeLeafType"
-                        }],
-                        "createGlossarySerializer": ['callback constructor', {
-                            'configuration data': ['null', null],
-                            'dependencies': {
-                                'functions': wd({
-                                    "compare": {
+                        "serializeLeafType": {
+                            'definition': ['callback', {
+                                'callback': "SerializeLeafType"
+                            }],
+                            'type': ['reference', null],
+                        },
+                        "createGlossarySerializer": {
+                            'definition': ['callback', {
+                                'callback': "SerializeGlossary"
+                            }],
+                            'type': ['constructor', {
+                                'configuration data': ['null', null],
+                                'dependencies': wd({
+                                    "compare": ['function', {
                                         'context': ['import', "collation"],
                                         'function': "IsABeforeB",
-                                    },
-                                }),
-                                'callbacks': wd({}),
-                                'side effects': wd({}),
-
-                            },
-                            'callback': {
-                                'callback': "SerializeGlossary"
-                            }
-                        }],
+                                    }],
+                                })
+                            }]
+                        },
                     })
                 },
-            },
+            }),
             'implementation': {}
         },
         "api": {
-            'definition': {
+            'definition': def({
                 'glossary': {
                     'imports': wd({
                         "fp": "../../fp",
@@ -283,7 +284,7 @@ export const project: NProject.TProject = {
                         })
                     }),
                     'functions': wd({}),
-                    'builders': wd({}),
+                    'interfaces': wd({}),
                     'callbacks': wd({
                         "SerializeModuleDefinition": {
                             'data': ['type', reference("ModuleDefinition")],
@@ -291,7 +292,7 @@ export const project: NProject.TProject = {
                             'interface': "Writer",
                         },
                     }),
-                    'interfaces': wd({}),
+                    'pipes': wd({}),
                 },
                 'api': {
                     'imports': wd({
@@ -299,39 +300,38 @@ export const project: NProject.TProject = {
                         "glossary": "../../glossary",
                     }),
                     'algorithms': wd({
-                        "createModuleDefinitionSerializer": ['callback constructor', {
-                            'configuration data': ['null', null],
-                            'dependencies': {
-                                'functions': wd({
-                                    "compare": {
+                        "createModuleDefinitionSerializer": {
+                            'definition': ['callback', {
+                                'callback': "SerializeModuleDefinition"
+                            }],
+                            'type': ['constructor', {
+                                'configuration data': ['null', null],
+                                'dependencies': wd({
+                                    "compare": ['function', {
                                         'context': ['import', "collation"],
                                         'function': "IsABeforeB",
-                                    },
-                                }),
-                                'callbacks': wd({
-                                    "serializeGlossary": {
+                                    }],
+                                    "serializeGlossary": ['callback', {
                                         'context': ['import', "glossary"],
                                         'callback': "SerializeGlossary"
-                                    },
-                                    "serializeLeafType": {
+                                    }],
+                                    "serializeLeafType": ['callback', {
                                         'context': ['import', "glossary"],
                                         'callback': "SerializeLeafType"
-                                    },
+                                    }],
                                 }),
-                                'side effects': wd({}),
-
-                            },
-                            'callback': {
-                                'callback': "SerializeModuleDefinition"
-                            }
-                        }],
+                                'callback': {
+                                    'callback': "SerializeModuleDefinition"
+                                }
+                            }],
+                        }
                     })
                 },
-            },
+            }),
             'implementation': {}
         },
         "project": {
-            'definition': {
+            'definition': def({
                 'glossary': {
                     'imports': wd({
                         "api": "../../api",
@@ -359,7 +359,6 @@ export const project: NProject.TProject = {
                         }),
                     }),
                     'functions': wd({}),
-                    'builders': wd({}),
                     'interfaces': wd({}),
                     'callbacks': wd({
                         "SerializeProject": {
@@ -373,6 +372,7 @@ export const project: NProject.TProject = {
                             'interface': "Writer",
                         },
                     }),
+                    'pipes': wd({}),
                 },
                 'api': {
                     'imports': wd({
@@ -381,52 +381,50 @@ export const project: NProject.TProject = {
                         "collation": "res-pareto-collation",
                     }),
                     'algorithms': wd({
-                        "createProjectSerializer": ['callback constructor', {
-                            'configuration data': ['null', null],
-                            'dependencies': {
-                                'functions': wd({
-                                    "compare": {
+                        "createProjectSerializer": {
+                            'definition': ['callback', {
+                                'callback': "SerializeProject"
+                            }],
+                            'type': ['constructor', {
+                                'configuration data': ['null', null],
+                                'dependencies': wd({
+                                    "compare": ['function', {
                                         'context': ['import', "collation"],
                                         'function': "IsABeforeB",
-                                    },
-                                }),
-                                'callbacks': wd({
-                                    "serializeModuleDefinition": {
+                                    }],
+                                    "serializeModuleDefinition": ['callback', {
                                         'context': ['import', "api"],
                                         'callback': "SerializeModuleDefinition"
-                                    },
-                                    "serializeLeafType": {
+                                    }],
+                                    "serializeLeafType": ['callback', {
                                         'context': ['import', "glossary"],
                                         'callback': "SerializeLeafType"
-                                    },
+                                    }],
                                 }),
-                                'side effects': wd({}),
-
-                            },
-                            'callback': {
-                                'callback': "SerializeProject"
-                            }
-                        }],
-                        "createTemplateSerializer": ['callback constructor', {
-                            'configuration data': ['null', null],
-                            'dependencies': {
-                                'functions': wd({
-                                    "compare": {
+                                'callback': {
+                                    'callback': "SerializeProject"
+                                }
+                            }]
+                        },
+                        "createTemplateSerializer": {
+                            'definition': ['callback', {
+                                'callback': "SerializeTemplate"
+                            }],
+                            'type': ['constructor', {
+                                'configuration data': ['null', null],
+                                'dependencies': wd({
+                                    "compare": ['function', {
                                         'context': ['import', "collation"],
                                         'function': "IsABeforeB",
-                                    },
+                                    }],
                                 }),
-                                'callbacks': wd({}),
-                                'side effects': wd({}),
-
-                            },
-                            'callback': {
-                                'callback': "SerializeTemplate"
-                            }
-                        }],
+                                'callback': {
+                                }
+                            }]
+                        },
                     })
                 },
-            },
+            }),
             'implemenation': {}
         }
     }),

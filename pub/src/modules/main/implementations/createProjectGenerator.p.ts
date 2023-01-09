@@ -46,11 +46,11 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                         //configuration: mfp._defaultSettings,
                     },
                     ($i) => {
-                        $d.cbserializeProject(
+                        $d.cb_serializeProject(
                             project,
                             $i,
                         )
-                        $d.cbserializeTemplate(
+                        $d.cb_serializeTemplate(
                             project,
                             $i,
                         )

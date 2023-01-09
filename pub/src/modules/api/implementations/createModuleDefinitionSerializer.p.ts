@@ -4,10 +4,10 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
-        const compare = (a: string, b: string) => $d.fcompare({ a: a, b: b })
+        const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
         function glossary($: mglossary.TGlossary, $i: mfp.BWriter) {
             $i.createFile("types.generated.ts", ($i) => {
-                $d.cbserializeGlossary($, $i)
+                $d.cb_serializeGlossary($, $i)
             })
         }
 
@@ -76,7 +76,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                 break
                             case "type":
                                 pl.cc($[1], ($) => {
-                                    $d.cbserializeLeafType($, $i)
+                                    $d.cb_serializeLeafType($, $i)
                                 })
                                 break
                             default: pl.au($[0])
@@ -115,7 +115,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                     case "type":
                                         pl.cc($["configuration data"][1], ($) => {
                                             $i.snippet(`$: `)
-                                            $d.cbserializeLeafType($, $i)
+                                            $d.cb_serializeLeafType($, $i)
                                             $i.snippet(`, `)
                                         })
                                         break

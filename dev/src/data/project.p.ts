@@ -26,6 +26,7 @@ export const project: NProject.TProject = {
                         "project": "../../project",
                         "common": "glo-pareto-common",
                         "main": "lib-pareto-main",
+                        "fp": "../../fp",
                     }),
                     'types': types({
                         "ProjectSettings": group({
@@ -34,20 +35,30 @@ export const project: NProject.TProject = {
                         }),
                         "Arguments": array(str()),
                     }),
-                    'functions': wd({}),
-                    'builders': wd({}),
-                    'interfaces': wd({
-                        "SingleArgument": {
-                            "members": wd({
-                                //"Z": ["callback", ['type', string()]]
-                            }),
+                    'functions': wd({
+                        "GetSingleArgument": _function(reference("Arguments"), string(), true),
+
+                    }),
+                    'builders': wd({
+                        "CreateWriter": {
+                            'data': ['type', string()],
+                            'context': ['import', "fp"],
+                            'interface': "Writer",
                         }
                     }),
+                    'interfaces': wd({
+                        // "SingleArgument": {
+                        //     "members": wd({
+                        //         "Z": ["callback", ['type', string()]],
+                        //         "Y": ["callback", ['type', string()]],
+                        //     }),
+                        // }
+                    }),
                     'callbacks': wd({
-                        "GetSingleArgument": {
-                            'data': ['type', reference("Arguments")],
-                            'interface': "SingleArgument",
-                        }
+                        // "GetSingleArgument": {
+                        //     'data': ['type', reference("Arguments")],
+                        //     'interface': "SingleArgument",
+                        // }
                     }),
                 },
                 "api": {
@@ -64,10 +75,15 @@ export const project: NProject.TProject = {
                                     //     'context': ['import', "collation"],
                                     //     'function': "IsABeforeB",
                                     // },
+                                    "getSingleArgument": {
+                                        'async': true,
+                                        'function': "GetSingleArgument",
+                                    }
                                 }),
                                 'downstreams': wd({
                                     // "log": ['type', string()],
                                 }),
+                                'builders': wd({}),
                                 'callbacks': wd({
                                     "serializeProject": {
                                         'context': ['import', "project"],
@@ -77,9 +93,6 @@ export const project: NProject.TProject = {
                                         'context': ['import', "project"],
                                         'callback': "SerializeTemplate",
                                     },
-                                    "getSingleArgument": {
-                                        'callback': "GetSingleArgument",
-                                    }
                                 }),
                             },
                             'type': ['type', reference("ProjectSettings")],
@@ -94,21 +107,41 @@ export const project: NProject.TProject = {
             'definition': {
                 "glossary": {
                     'imports': wd({
-                        "fp": "lib-fountain-pen",
+                        "fp": "../../fp",
                     }),
                     'types': types({
+                        "Interface": taggedUnion({
+                            "method": type(group({
+                                "data": member(ref("LeafTypeOrNull")),
+                                "interface": member(taggedUnion({
+                                    "set": type(group({
+                                        "interface": member(str())
+                                    })),
+                                    "null": nullType(),
+                                }))
+                            })),
+                            "group": type(group({
+                                "members": member(dictionary(ref("Interface")))
+                            })),
+                            "reference": type(ref("InterfaceReference"))
+                        }),
+                        "InterfaceReference": group({
+                            "context": member(ref("Context"), true),
+                            "interface": member(str())
+                        }),
+                        "Callback": group({
+                            "data": member(ref("LeafTypeOrNull")),
+                            "context": member(ref("Context"), true),
+                            "interface": member(str())
+                        }),
+                        "Context": taggedUnion({
+                            "local": nullType(),
+                            "import": type(str()),
+                        }),
                         "Function": group({
                             "async": member(bln(), true),
                             "data": member(ref("LeafType")),
                             "return value": member(ref("LeafType"))
-                        }),
-                        "Callback": group({
-                            "data": member(ref("LeafTypeOrNull")),
-                            "context": member(taggedUnion({
-                                "local": nullType(),
-                                "import": type(str()),
-                            }), true),
-                            "interface": member(str())
                         }),
                         "Glossary": group({
                             "imports": member(dictionary(str())),
@@ -116,26 +149,10 @@ export const project: NProject.TProject = {
                             "functions": member(dictionary(ref("Function"))),
                             "interfaces": member(dictionary(ref("Interface"))),
                             "callbacks": member(dictionary(ref("Callback"))),
-                            "builders": member(dictionary(group({
-                                "data": member(ref("LeafTypeOrNull")),
-                                "context": member(taggedUnion({
-                                    "local": nullType(),
-                                    "import": type(str()),
-                                }), true),
-                                "interface": member(str())
+                            "pipes": member(dictionary(group({
+                                "in": member(ref("InterfaceReference")),
+                                "out": member(ref("InterfaceReference")),
                             }))),
-                        }),
-                        "Interface": group({
-                            "members": member(dictionary(taggedUnion({
-                                "interface": type(group({
-                                    "context": member(taggedUnion({
-                                        "local": nullType(),
-                                        "import": type(str()),
-                                    }), true),
-                                    "interface": member(str()),
-                                })),
-                                "callback": type(ref("LeafTypeOrNull"))
-                            })))
                         }),
                         "LeafType": taggedUnion({
                             "boolean": nullType(),
@@ -151,10 +168,6 @@ export const project: NProject.TProject = {
                             "type": type(ref("LeafType")),
                             "null": nullType(),
                         }),
-                        "TypeOrNull": taggedUnion({
-                            "type": type(ref("Type")),
-                            "null": nullType(),
-                        }),
                         "Type": taggedUnion({
                             "leaf": type(ref("LeafType")),
                             "optional": type(ref("Type")),
@@ -166,6 +179,10 @@ export const project: NProject.TProject = {
                                 "optional": member(bln(), true)
                             }))),
                             "taggedUnion": type(dictionary(ref("TypeOrNull"))),
+                        }),
+                        "TypeOrNull": taggedUnion({
+                            "type": type(ref("Type")),
+                            "null": nullType(),
                         }),
                     }),
                     'functions': wd({}),
@@ -218,63 +235,49 @@ export const project: NProject.TProject = {
             'definition': {
                 'glossary': {
                     'imports': wd({
-                        "fp": "lib-fountain-pen",
+                        "fp": "../../fp",
                         "glossary": "../../glossary"
                     }),
                     'types': types({
-                        "FunctionReference": group({
-                            "context": member(taggedUnion({
-                                "local": nullType(),
-                                "import": type(str()),
-                            }), true),
-                            "function": member(str()),
-                            "async": member(bln(), true),
+                        "DefinitionReference": taggedUnion({
+                            "function": type(group({
+                                "context": member(ref("Context"), true),
+                                "function": member(str()),
+                                "async": member(bln(), true),
+                            })),
+                            "interface": type(group({
+                                "context": member(ref("Context"), true),
+                                "interface": member(str()),
+                            })),
+                            "callback": type(group({
+                                "context": member(ref("Context"), true),
+                                "callback": member(str()),
+                                //"async": member(bln(), true),
+                            })),
+                            "pipe": type(group({
+                                "context": member(ref("Context"), true),
+                                "pipe": member(str()),
+                            })),
+                            "procedure": type(er("glossary", "LeafTypeOrNull")),
+
                         }),
-                        "CallbackReference": group({
-                            "context": member(taggedUnion({
-                                "local": nullType(),
-                                "import": type(str()),
-                            }), true),
-                            "callback": member(str()),
-                            "async": member(bln(), true),
+                        "Context": taggedUnion({
+                            "local": nullType(),
+                            "import": type(str()),
                         }),
                         "ModuleDefinition": group({
                             "glossary": member(er("glossary", "Glossary")),
                             "api": member(group({
                                 "imports": member(dictionary(str())),
-                                "algorithms": member(dictionary(taggedUnion({
-                                    "function constructor": type(group({
-                                        "configuration data": member(er("glossary", "LeafTypeOrNull")),
-                                        "dependencies": member(group({
-                                            "functions": member(dictionary(ref("FunctionReference"))),
-                                            "side effects": member(dictionary(er("glossary", "LeafTypeOrNull")), true),
-                                            //"callbacks": member(dictionary(ref("CallbackReference")), true),
-
+                                "algorithms": member(dictionary(group({
+                                    "definition": member(ref("DefinitionReference")),
+                                    "type": member(taggedUnion({
+                                        "reference": nullType(),
+                                        "constructor": type(group({
+                                            "configuration data": member(er("glossary", "LeafTypeOrNull")),
+                                            "dependencies": member(dictionary(ref("DefinitionReference"))),
                                         })),
-                                        "function": member(ref("FunctionReference")),
-                                    })),
-                                    "callback constructor": type(group({
-                                        "configuration data": member(er("glossary", "LeafTypeOrNull")),
-                                        "dependencies": member(group({
-                                            "functions": member(dictionary(ref("FunctionReference"))),
-                                            "side effects": member(dictionary(er("glossary", "LeafTypeOrNull"))),
-                                            "callbacks": member(dictionary(ref("CallbackReference"))),
-
-                                        })),
-                                        "callback": member(ref("CallbackReference")),
-                                    })),
-                                    "procedure constructor": type(group({
-                                        "configuration data": member(er("glossary", "LeafTypeOrNull")),
-                                        "dependencies": member(group({
-                                            "functions": member(dictionary(ref("FunctionReference"))),
-                                            "downstreams": member(dictionary(er("glossary", "LeafTypeOrNull"))),
-                                            "callbacks": member(dictionary(ref("CallbackReference"))),
-                                        })),
-                                        "type": member(er("glossary", "LeafTypeOrNull")),
-                                    })),
-                                    "function": type(ref("FunctionReference")),
-                                    "callback": type(ref("CallbackReference")),
-                                    "procedure": type(er("glossary", "LeafTypeOrNull")),
+                                    }))
                                 }))),
                             })),
                         })
@@ -332,7 +335,7 @@ export const project: NProject.TProject = {
                 'glossary': {
                     'imports': wd({
                         "api": "../../api",
-                        "fp": "lib-fountain-pen",
+                        "fp": "../../fp",
                     }),
                     'types': types({
                         "AlgorithmImplementation": group({}),
@@ -357,8 +360,7 @@ export const project: NProject.TProject = {
                     }),
                     'functions': wd({}),
                     'builders': wd({}),
-                    'interfaces': wd({
-                    }),
+                    'interfaces': wd({}),
                     'callbacks': wd({
                         "SerializeProject": {
                             'data': ['type', reference("Project")],

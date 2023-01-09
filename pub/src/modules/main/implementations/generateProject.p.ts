@@ -34,7 +34,7 @@ export const igenerateProject: api.CgenerateProject = ($) => {
                     fcompare: mcoll.$a.localeIsABeforeB,
                 }
             ),
-            cbgetSingleArgument: () => { pl.panic(`SSDFSFSF`)},
+            fgetSingleArgument: () => { pl.panic(`SSDFSFSF`)},
             //cbgetSingleArgument: mexe.p_getSingleArgument,
         }
     )($)

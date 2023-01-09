@@ -1,13 +1,15 @@
 import * as pt from "pareto-core-types"
-import * as mfp from "lib-fountain-pen"
+import * as mfp from "../../fp"
 
 export type TCallback = {
-    readonly "context"?: 
-        | [ "import", string ]
-        | [ "local", null ]
+    readonly "context"?: TContext
     readonly "data": TLeafTypeOrNull
     readonly "interface": string
 }
+
+export type TContext = 
+    | [ "import", string ]
+    | [ "local", null ]
 
 export type TFunction = {
     readonly "async"?: boolean
@@ -16,30 +18,34 @@ export type TFunction = {
 }
 
 export type TGlossary = {
-    readonly "builders": pt.Dictionary<{
-        readonly "context"?: 
-            | [ "import", string ]
-            | [ "local", null ]
-        readonly "data": TLeafTypeOrNull
-        readonly "interface": string
-    }>
     readonly "callbacks": pt.Dictionary<TCallback>
     readonly "functions": pt.Dictionary<TFunction>
     readonly "imports": pt.Dictionary<string>
     readonly "interfaces": pt.Dictionary<TInterface>
+    readonly "pipes": pt.Dictionary<{
+        readonly "in": TInterfaceReference
+        readonly "out": TInterfaceReference
+    }>
     readonly "types": pt.Dictionary<TType>
 }
 
-export type TInterface = {
-    readonly "members": pt.Dictionary<
-        | [ "callback", TLeafTypeOrNull ]
-        | [ "interface", {
-            readonly "context"?: 
-                | [ "import", string ]
-                | [ "local", null ]
-            readonly "interface": string
-        } ]
-    >
+export type TInterface = 
+    | [ "group", {
+        readonly "members": pt.Dictionary<TInterface>
+    } ]
+    | [ "method", {
+        readonly "data": TLeafTypeOrNull
+        readonly "interface": 
+            | [ "null", null ]
+            | [ "set", {
+                readonly "interface": string
+            } ]
+    } ]
+    | [ "reference", TInterfaceReference ]
+
+export type TInterfaceReference = {
+    readonly "context"?: TContext
+    readonly "interface": string
 }
 
 export type TLeafType = 

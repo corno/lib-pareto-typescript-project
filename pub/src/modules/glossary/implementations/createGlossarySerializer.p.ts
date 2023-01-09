@@ -7,7 +7,7 @@ import * as mfp from "lib-fountain-pen"
 export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => {
     const compare = (a: string, b: string) => $d.fcompare({ a: a, b: b })
 
-    function serializeLeafType($: api.TLeafType, $i: mfp.ILine) {
+    function serializeLeafType($: api.TLeafType, $i: mfp.BLine) {
         switch ($[0]) {
             case "boolean":
                 pl.cc($[1], ($) => {
@@ -37,7 +37,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             default: pl.au($[0])
         }
     }
-    function serializeType($: api.TType, $i: mfp.ILine) {
+    function serializeType($: api.TType, $i: mfp.BLine) {
         switch ($[0]) {
             case "array":
                 pl.cc($[1], ($) => {
@@ -127,6 +127,88 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             default: pl.au($[0])
         }
     }
+    function serializeInterfaceReference($: api.TInterfaceReference, $i: mfp.BLine) {
+        if ($.context !== undefined) {
+            switch ($.context[0]) {
+                case "import":
+                    pl.cc($.context[1], ($) => {
+                        $i.snippet(`m${$}.`)
+                    })
+                    break
+                case "local":
+                    pl.cc($.context[1], ($) => {
+
+                    })
+                    break
+                default: pl.au($.context[0])
+            }
+        }
+        $i.snippet(`I${$.interface}`)
+
+    }
+    function serializeInterface($: api.TInterface, $i: mfp.BLine) {
+        switch ($[0]) {
+            case "group":
+                pl.cc($[1], ($) => {
+
+                    $i.snippet(`{`)
+                    $i.indent(($i) => {
+                        $.members.forEach(compare, ($, key) => {
+                            $i.line(($i) => {
+                                $i.snippet(`"${key}": `)
+                                serializeInterface($, $i)
+                            })
+                        })
+                    })
+                    $i.snippet(`}`)
+                })
+                break
+            case "method":
+                pl.cc($[1], ($) => {
+
+                    $i.snippet(`(`)
+                    pl.cc($.data, ($) => {
+                        switch ($[0]) {
+                            case "null":
+                                pl.cc($[1], ($) => {
+                                })
+                                break
+                            case "type":
+                                pl.cc($[1], ($) => {
+                                    $i.snippet(`$: `)
+                                    serializeLeafType($, $i)
+                                    $i.snippet(`, `)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
+                    pl.cc($.interface, ($) => {
+                        switch ($[0]) {
+                            case "null":
+                                pl.cc($[1], ($) => {
+                                })
+                                break
+                            case "set":
+                                pl.cc($[1], ($) => {
+                                    $i.snippet(`$c: ($i: I${$.interface}) => void`)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
+                    $i.snippet(`) => void`)
+                })
+                break
+            case "reference":
+                pl.cc($[1], ($) => {
+                    serializeInterfaceReference($, $i)
+                })
+                break
+            default: pl.au($[0])
+        }
+
+    }
     return ($, $i) => {
         $i.line(($i) => {
             $i.snippet(`import * as pt from "pareto-core-types"`)
@@ -166,71 +248,6 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 }
             })
         })
-        function serializeInterface($: api.TInterface, $i: mfp.ILine) {
-
-            $i.snippet(`{`)
-            $i.indent(($i) => {
-                $.members.forEach(compare, ($, key) => {
-                    $i.line(($i) => {
-                        $i.snippet(`"${key}": `)
-                        switch ($[0]) {
-                            case "interface":
-                                pl.cc($[1], ($) => {
-                                    if ($.context !== undefined) {
-                                        switch ($.context[0]) {
-                                            case "import":
-                                                pl.cc($.context[1], ($) => {
-                                                    $i.snippet(`m${$}.`)
-                                                })
-                                                break
-                                            case "local":
-                                                pl.cc($.context[1], ($) => {
-
-                                                })
-                                                break
-                                            default: pl.au($.context[0])
-                                        }
-                                    }
-                                    $i.snippet(`I${$.interface}`)
-                                    //serializeInterface($.interface, $i)
-                                })
-                                break
-                            case "callback":
-                                pl.cc($[1], ($) => {
-                                    function serializeProcedure($: api.TLeafTypeOrNull, $i: mfp.ILine) {
-                                        $i.snippet(`pt.Procedure<`)
-                                        switch ($[0]) {
-                                            case "null":
-                                                pl.cc($[1], ($) => {
-                                                    $i.snippet(`null`)
-                                                })
-                                                break
-                                            case "type":
-                                                pl.cc($[1], ($) => {
-                                                    serializeLeafType($, $i)
-                                                })
-                                                break
-                                            default: pl.au($[0])
-                                        }
-                                        $i.snippet(`>`)
-                                    }
-                                    serializeProcedure($, $i)
-                                })
-                                break
-                            default: pl.au($[0])
-                        }
-                    })
-                })
-            })
-            $i.snippet(`}`)
-        }
-        $.interfaces.forEach(compare, ($, key) => {
-            $i.literal(``)
-            $i.line(($i) => {
-                $i.snippet(`export type I${key} = `)
-                serializeInterface($, $i)
-            })
-        })
         $.callbacks.forEach(compare, ($, key) => {
             $i.literal(``)
             $i.line(($i) => {
@@ -268,41 +285,21 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 $i.snippet(`I${$.interface}) => void`)
             })
         })
-        $.builders.forEach(compare, ($, key) => {
+        $.interfaces.forEach(compare, ($, key) => {
             $i.literal(``)
             $i.line(($i) => {
-                $i.snippet(`export type B${key} = (`)
-                switch ($.data[0]) {
-                    case "null":
-                        pl.cc($.data[1], ($) => {
-                        })
-                        break
-                    case "type":
-                        pl.cc($.data[1], ($) => {
-                            $i.snippet(`$: `)
-                            serializeLeafType($, $i)
-                            $i.snippet(`, `)
-                        })
-                        break
-                    default: pl.au($.data[0])
-                }
-                $i.snippet(`$c: ($i: `)
-                if ($.context !== undefined) {
-                    switch ($.context[0]) {
-                        case "import":
-                            pl.cc($.context[1], ($) => {
-                                $i.snippet(`m${$}.`)
-                            })
-                            break
-                        case "local":
-                            pl.cc($.context[1], ($) => {
-
-                            })
-                            break
-                        default: pl.au($.context[0])
-                    }
-                }
-                $i.snippet(`I${$.interface}) => void) => void`)
+                $i.snippet(`export type I${key} = `)
+                serializeInterface($, $i)
+            })
+        })
+        $.pipes.forEach(compare, ($, key) => {
+            $i.literal(``)
+            $i.line(($i) => {
+                $i.snippet(`export type P${key} = ($i: `)
+                serializeInterfaceReference($.in, $i)
+                $i.snippet(`, $c: ($i: `)
+                serializeInterfaceReference($.out, $i)
+                $i.snippet(`) => void) => void`)
             })
         })
     }

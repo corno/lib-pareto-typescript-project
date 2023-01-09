@@ -13,7 +13,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
 
         function tsConfig($: {
             isResource: boolean
-        }, $i: mfp.IWriter) {
+        }, $i: mfp.BWriter) {
 
             $i.createFile("tsconfig.json", ($i) => {
                 $i.literal(`{`)
@@ -34,7 +34,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 $i.literal(`}`)
             })
         }
-        function globals($i: mfp.IWriter) {
+        function globals($i: mfp.BWriter) {
             $i.createFile("_globals.ts", ($i) => {
                 $i.literal(`interface Array<T> {`)
                 $i.literal(`    [n: number]: T`)
@@ -123,7 +123,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 //     // $i.createDirectory("private_definitions", ($i) => {
                 //     //     moduleDefintion($["private definitions"], $i)
                 //     // })
-                //     // function implementations($: NProject.Implementation, $i: IWriter) {
+                //     // function implementations($: NProject.Implementation, $i: BWriter) {
                 //     //     $i.createFile("index.ts", ($i) => {
                 //     //         $.forEach(compare, ($, key) => {
                 //     //             $i.literal(`import { i${key} } from "./${$.type[0] === "binding" ? "binding" : "pure"}/${key}.p"`)

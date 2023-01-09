@@ -1,5 +1,6 @@
 import * as pt from "pareto-core-types"
 import * as mcommon from "glo-pareto-common"
+import * as mfp from "../../fp"
 import * as mmain from "lib-pareto-main"
 import * as mproject from "../../project"
 
@@ -10,6 +11,6 @@ export type TProjectSettings = {
     readonly "project": mproject.TProject
 }
 
-export type ISingleArgument = {}
+export type AGetSingleArgument = ($: TArguments) => pt.AsyncValue<string>
 
-export type XGetSingleArgument = ($: TArguments, $i: ISingleArgument) => void
+export type BCreateWriter = ($: string, $c: ($i: mfp.IWriter) => void) => void

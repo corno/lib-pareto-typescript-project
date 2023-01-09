@@ -5,54 +5,16 @@ import * as mfp from "lib-fountain-pen"
 export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
         const compare = (a: string, b: string) => $d.fcompare({ a: a, b: b })
-        function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {
+        function glossary($: mglossary.TGlossary, $i: mfp.BWriter) {
             $i.createFile("types.generated.ts", ($i) => {
                 $d.cbserializeGlossary($, $i)
             })
         }
-        function serializeFunctionReference($: api.TFunctionReference, $i: mfp.ILine) {
-            if ($.context !== undefined) {
-                pl.cc($.context, ($) => {
-                    switch ($[0]) {
-                        case "import":
-                            pl.cc($[1], ($) => {
-                                $i.snippet(`m${$}.`)
-                            })
-                            break
-                        case "local":
-                            pl.cc($[1], ($) => {
-                                $i.snippet(`glo.`)
-                            })
-                            break
-                        default: pl.au($[0])
-                    }
-                })
-            } else {
-                $i.snippet(`glo.`)
-            }
-            $i.snippet(`${$.async ? "A" : "F"}`)
-            $i.snippet(`${$.function}`)
-        }
-        function serializeProcedure($: mglossary.TLeafTypeOrNull, $i: mfp.ILine) {
-            $i.snippet(`pt.Procedure<`)
-            switch ($[0]) {
-                case "null":
-                    pl.cc($[1], ($) => {
-                        $i.snippet(`null`)
-                    })
-                    break
-                case "type":
-                    pl.cc($[1], ($) => {
-                        $d.cbserializeLeafType($, $i)
-                    })
-                    break
-                default: pl.au($[0])
-            }
-            $i.snippet(`>`)
-        }
-        function serializeCallbackReference($: api.TCallbackReference, $i: mfp.ILine) {
-            if ($.context !== undefined) {
-                pl.cc($.context, ($) => {
+
+        function serializeContext($: api.TContext | undefined, $i: mfp.BLine) {
+
+            if ($ !== undefined) {
+                pl.cc($, ($) => {
                     switch ($[0]) {
                         // case "api":
                         //     pl.cc($[1], ($) => {
@@ -75,8 +37,55 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
             } else {
                 $i.snippet(`glo.`)
             }
-            $i.snippet(`X`)
-            $i.snippet(`${$.callback}`)
+        }
+
+        function serializeDefinitionReference($: api.TDefinitionReference, $i: mfp.BLine) {
+            switch ($[0]) {
+                case "callback":
+                    pl.cc($[1], ($) => {
+                        serializeContext($.context, $i)
+                        $i.snippet(`X${$.callback}`)
+                    })
+                    break
+                case "function":
+                    pl.cc($[1], ($) => {
+                        serializeContext($.context, $i)
+                        $i.snippet(`${$.async ? "A" : "F"}${$.function}`)
+                    })
+                    break
+                case "interface":
+                    pl.cc($[1], ($) => {
+                        serializeContext($.context, $i)
+                        $i.snippet(`I${$.interface}`)
+                    })
+                    break
+                case "pipe":
+                    pl.cc($[1], ($) => {
+                        serializeContext($.context, $i)
+                        $i.snippet(`P${$.pipe}`)
+                    })
+                    break
+                case "procedure":
+                    pl.cc($[1], ($) => {
+                        $i.snippet(`pt.Procedure<`)
+                        switch ($[0]) {
+                            case "null":
+                                pl.cc($[1], ($) => {
+                                    $i.snippet(`null`)
+                                })
+                                break
+                            case "type":
+                                pl.cc($[1], ($) => {
+                                    $d.cbserializeLeafType($, $i)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                        $i.snippet(`>`)
+                    })
+                    break
+                default: pl.au($[0])
+            }
         }
         glossary($.glossary, $i)
         $i.createFile("api.generated.ts", ($i) => {
@@ -90,12 +99,13 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                 })
             })
             $.api.algorithms.forEach(compare, ($, key) => {
+                const definition = $.definition
                 $i.literal(``)
                 $i.line(($i) => {
                     $i.snippet(`export type C${key} = `)
-                    switch ($[0]) {
-                        case "function constructor":
-                            pl.cc($[1], ($) => {
+                    switch ($.type[0]) {
+                        case "constructor":
+                            pl.cc($.type[1], ($) => {
                                 $i.snippet(`(`)
                                 switch ($["configuration data"][0]) {
                                     case "null":
@@ -111,145 +121,79 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                         break
                                     default: pl.au($["configuration data"][0])
                                 }
-                                pl.cc($.dependencies, ($) => {
-                                    $i.snippet(`$d: {`)
-                                    $i.indent(($i) => {
-                                        // if ($.callbacks !== undefined) {
-                                        //     $.callbacks.forEach(compare, ($, key) => {
-                                        //         $i.line(($i) => {
-                                        //             $i.snippet(`readonly "cb${key}": `)
-                                        //             serializeCallbackReference($, $i)
-                                        //         })
-                                        //     })
-                                        // }
-                                        $.functions.forEach(compare, ($, key) => {
-                                            $i.line(($i) => {
-                                                $i.snippet(`readonly "f${key}": `)
-                                                serializeFunctionReference($, $i)
-                                            })
+                                $i.snippet(`$d: {`)
+                                $i.indent(($i) => {
+                                    $.dependencies.forEach(compare, ($, key) => {
+                                        const id = pl.cc($, ($): string => {
+                                            switch ($[0]) {
+                                                case "callback":
+                                                    return pl.cc($[1], ($) => {
+                                                        return "cb"
+                                                    })
+                                                case "function":
+                                                    return pl.cc($[1], ($) => {
+                                                        return $.async ? "af" : "sf"
+                                                    })
+                                                case "interface":
+                                                    return pl.cc($[1], ($) => {
+                                                        return "if"
+                                                    })
+                                                case "pipe":
+                                                    return pl.cc($[1], ($) => {
+                                                        return "pi"
+                                                    })
+                                                case "procedure":
+                                                    return pl.cc($[1], ($) => {
+                                                        return "pr"
+                                                    })
+                                                default: return pl.au($[0])
+                                            }
                                         })
-                                        if ($["side effects"] !== undefined) {
-                                            $["side effects"].forEach(compare, ($, key) => {
-                                                $i.line(($i) => {
-                                                    $i.snippet(`readonly "se${key}": `)
-                                                    serializeProcedure($, $i)
-                                                })
-                                            })
-                                        }
-                                    })
-                                    $i.snippet(`}`)
-                                })
-                                $i.snippet(`) => `)
-                                serializeFunctionReference($.function, $i)
-                            })
-                            break
-                        case "procedure constructor":
-                            pl.cc($[1], ($) => {
-                                $i.snippet(`(`)
-                                switch ($["configuration data"][0]) {
-                                    case "null":
-                                        pl.cc($["configuration data"][1], ($) => {
-                                        })
-                                        break
-                                    case "type":
-                                        pl.cc($["configuration data"][1], ($) => {
-                                            $i.snippet(`$: `)
-                                            $d.cbserializeLeafType($, $i)
-                                            $i.snippet(`, `)
-                                        })
-                                        break
-                                    default: pl.au($["configuration data"][0])
-                                }
-                                pl.cc($.dependencies, ($) => {
-                                    $i.snippet(`$d: {`)
-                                    $i.indent(($i) => {
-                                        $.callbacks.forEach(compare, ($, key) => {
-                                            $i.line(($i) => {
-                                                $i.snippet(`readonly "cb${key}": `)
-                                                serializeCallbackReference($, $i)
-                                            })
-                                        })
-                                        $.functions.forEach(compare, ($, key) => {
-                                            $i.line(($i) => {
-                                                $i.snippet(`readonly "f${key}": `)
-                                                serializeFunctionReference($, $i)
-                                            })
-                                        })
-                                        $.downstreams.forEach(compare, ($, key) => {
-                                            $i.line(($i) => {
-                                                $i.snippet(`readonly "d${key}": `)
-                                                serializeProcedure($, $i)
-                                            })
+                                        $i.line(($i) => {
+                                            $i.snippet(`readonly "${id}_${key}": `)
+                                            serializeDefinitionReference($, $i)
                                         })
                                     })
-                                    $i.snippet(`}`)
                                 })
+                                $i.snippet(`}`)
+                                // pl.cc($.dependencies, ($) => {
+                                //     $i.snippet(`$d: {`)
+                                //     $i.indent(($i) => {
+                                //         // if ($.callbacks !== undefined) {
+                                //         //     $.callbacks.forEach(compare, ($, key) => {
+                                //         //         $i.line(($i) => {
+                                //         //             $i.snippet(`readonly "cb${key}": `)
+                                //         //             serializeCallbackReference($, $i)
+                                //         //         })
+                                //         //     })
+                                //         // }
+                                //         $.functions.forEach(compare, ($, key) => {
+                                //             $i.line(($i) => {
+                                //                 $i.snippet(`readonly "f${key}": `)
+                                //                 serializeFunctionReference($, $i)
+                                //             })
+                                //         })
+                                //         if ($["side effects"] !== undefined) {
+                                //             $["side effects"].forEach(compare, ($, key) => {
+                                //                 $i.line(($i) => {
+                                //                     $i.snippet(`readonly "se${key}": `)
+                                //                     serializeProcedure($, $i)
+                                //                 })
+                                //             })
+                                //         }
+                                //     })
+                                //     $i.snippet(`}`)
+                                // })
                                 $i.snippet(`) => `)
-                                serializeProcedure($.type, $i)
                             })
                             break
-                        case "callback constructor":
-                            pl.cc($[1], ($) => {
-                                $i.snippet(`(`)
-                                switch ($["configuration data"][0]) {
-                                    case "null":
-                                        pl.cc($["configuration data"][1], ($) => {
-                                        })
-                                        break
-                                    case "type":
-                                        pl.cc($["configuration data"][1], ($) => {
-                                            $i.snippet(`$: `)
-                                            $d.cbserializeLeafType($, $i)
-                                            $i.snippet(`, `)
-                                        })
-                                        break
-                                    default: pl.au($["configuration data"][0])
-                                }
-                                pl.cc($.dependencies, ($) => {
-                                    $i.snippet(`$d: {`)
-                                    $i.indent(($i) => {
-                                        $.callbacks.forEach(compare, ($, key) => {
-                                            $i.line(($i) => {
-                                                $i.snippet(`readonly "cb${key}": `)
-                                                serializeCallbackReference($, $i)
-                                            })
-                                        })
-                                        $.functions.forEach(compare, ($, key) => {
-                                            $i.line(($i) => {
-                                                $i.snippet(`readonly "f${key}": `)
-                                                serializeFunctionReference($, $i)
-                                            })
-                                        })
-                                        $["side effects"].forEach(compare, ($, key) => {
-                                            $i.line(($i) => {
-                                                $i.snippet(`readonly "se${key}": `)
-                                                serializeProcedure($, $i)
-                                            })
-                                        })
-                                    })
-                                    $i.snippet(`}`)
-                                })
-                                $i.snippet(`) => `)
-                                serializeCallbackReference($.callback, $i)
+                        case "reference":
+                            pl.cc($.type[1], ($) => {
                             })
                             break
-                        case "function":
-                            pl.cc($[1], ($) => {
-                                serializeFunctionReference($, $i)
-                            })
-                            break
-                        case "callback":
-                            pl.cc($[1], ($) => {
-                                serializeCallbackReference($, $i)
-                            })
-                            break
-                        case "procedure":
-                            pl.cc($[1], ($) => {
-                                serializeProcedure($, $i)
-                            })
-                            break
-                        default: pl.au($[0])
+                        default: pl.au($.type[0])
                     }
+                    serializeDefinitionReference(definition, $i)
                 })
             })
             $i.literal(``)

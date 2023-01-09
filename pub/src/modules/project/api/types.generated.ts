@@ -1,6 +1,6 @@
 import * as pt from "pareto-core-types"
 import * as mapi from "../../api"
-import * as mfp from "lib-fountain-pen"
+import * as mfp from "../../fp"
 
 export type TAlgorithmImplementation = {}
 

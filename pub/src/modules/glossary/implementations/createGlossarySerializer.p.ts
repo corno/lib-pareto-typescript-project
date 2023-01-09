@@ -298,9 +298,9 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             $i.literal(``)
             $i.line(($i) => {
                 $i.snippet(`export type P${key} = ($i: `)
-                serializeInterfaceReference($.in, $i)
-                $i.snippet(`, $c: ($i: `)
                 serializeInterfaceReference($.out, $i)
+                $i.snippet(`, $c: ($i: `)
+                serializeInterfaceReference($.in, $i)
                 $i.snippet(`) => void) => void`)
             })
         })

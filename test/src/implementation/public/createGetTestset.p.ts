@@ -126,26 +126,79 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
                                 }),
                                 'callbacks': wd({
 
-                                    "XXXSerializeGlossary": {
-                                        'data': ['type', reference("Glossary")],
-                                        'context': ['import', "fp"],
-                                        'interface': "Block",
-                                    },
+                                    // "XXXSerializeGlossary": {
+                                    //     'data': ['type', reference("Glossary")],
+                                    //     'context': ['import', "fp"],
+                                    //     'interface': "Block",
+                                    // },
                                 }),
                                 'pipes': wd({
                                     "FountainPen": {
                                         'in': {
-                                            'interface': "XXX",
+                                            'interface': "Block",
                                         },
                                         'out': {
-                                            'interface': "XXX",
+                                            'interface': "WriteString",
                                         }
                                     }
                                 }),
                             },
                             "api": {
-                                'imports': wd({}),
-                                'algorithms': wd({})
+                                'imports': wd({
+                                    "tostring": "res-pareto-tostring",
+                                    "fs": "res-pareto-filesystem",
+                                }),
+                                'algorithms': wd({
+                                    "createFountainPenCreator": {
+                                        'definition': ['pipe', {
+                                            'pipe': "FountainPen"
+                                        }],
+                                        'type': ['constructor', {
+                                            'configuration data': ['type', reference("Configuration")],
+                                            'dependencies': wd({
+                                            }),
+                                        }],
+                                    },
+                                    "createUnboundFountainPenCreator": {
+                                        'definition': ['pipe', {
+                                            'pipe': "FountainPen"
+                                        }],
+                                        'type': ['constructor', {
+                                            'configuration data': ['type', reference("Configuration")],
+                                            'dependencies': wd({
+                                                "joinNestedStrings": ['function', {
+                                                    'context': ['import', "tostring"],
+                                                    'function': "JoinNestedString",
+                                                }],
+                                                "getArrayAsString": ['function', {
+                                                    'context': ['import', "tostring"],
+                                                    'function': "GetArrayAsString",
+                                                }],
+                                            }),
+                                        }],
+                                    },
+                                    "createWriterCreator": {
+                                        'definition': ['interface', {
+                                            'interface': "CreateWriter"
+                                        }],
+                                        'type': ['constructor', {
+                                            'configuration data': ['null', null],
+                                            'dependencies': wd({
+
+
+
+                                                "createWriteStream": ['interface', {
+                                                    'interface': "CreateWriteStream",
+                                                }],
+                                                "pipeFountainPen": ['pipe', {
+                                                    'pipe': "FountainPen",
+                                                }],
+                                                "onError": ['procedure', ['type', externalReference("fs", "AnnotatedFSError<mfs.TWriteFileError>")]]
+                                        
+                                            }),
+                                        }],
+                                    }
+                                })
                             },
                         },
                         'implementation': {}

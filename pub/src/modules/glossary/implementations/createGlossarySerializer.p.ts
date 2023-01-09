@@ -7,7 +7,7 @@ import * as mfp from "lib-fountain-pen"
 export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => {
     const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
 
-    function serializeLeafType($: api.TLeafType, $i: mfp.BLine) {
+    function serializeLeafType($: api.TLeafType, $i: mfp.ILine) {
         switch ($[0]) {
             case "boolean":
                 pl.cc($[1], ($) => {
@@ -37,7 +37,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             default: pl.au($[0])
         }
     }
-    function serializeType($: api.TType, $i: mfp.BLine) {
+    function serializeType($: api.TType, $i: mfp.ILine) {
         switch ($[0]) {
             case "array":
                 pl.cc($[1], ($) => {
@@ -127,7 +127,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             default: pl.au($[0])
         }
     }
-    function serializeInterfaceReference($: api.TInterfaceReference, $i: mfp.BLine) {
+    function serializeInterfaceReference($: api.TInterfaceReference, $i: mfp.ILine) {
         if ($.context !== undefined) {
             switch ($.context[0]) {
                 case "import":
@@ -146,7 +146,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
         $i.snippet(`I${$.interface}`)
 
     }
-    function serializeInterface($: api.TInterface, $i: mfp.BLine) {
+    function serializeInterface($: api.TInterface, $i: mfp.ILine) {
         switch ($[0]) {
             case "group":
                 pl.cc($[1], ($) => {

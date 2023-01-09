@@ -1,6 +1,6 @@
 import * as pt from "pareto-core-types"
 import * as mcommon from "glo-pareto-common"
-import * as mfp from "../../fp"
+import * as mfp from "lib-fountain-pen"
 import * as mmain from "lib-pareto-main"
 import * as mproject from "../../project"
 

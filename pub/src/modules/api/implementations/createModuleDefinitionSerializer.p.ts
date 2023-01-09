@@ -5,13 +5,13 @@ import * as mfp from "lib-fountain-pen"
 export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
         const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
-        function glossary($: mglossary.TGlossary, $i: mfp.BWriter) {
+        function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {
             $i.createFile("types.generated.ts", ($i) => {
                 $d.cb_serializeGlossary($, $i)
             })
         }
 
-        function serializeContext($: api.TContext | undefined, $i: mfp.BLine) {
+        function serializeContext($: api.TContext | undefined, $i: mfp.ILine) {
 
             if ($ !== undefined) {
                 pl.cc($, ($) => {
@@ -39,7 +39,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
             }
         }
 
-        function serializeDefinitionReference($: api.TDefinitionReference, $i: mfp.BLine) {
+        function serializeDefinitionReference($: api.TDefinitionReference, $i: mfp.ILine) {
             switch ($[0]) {
                 case "callback":
                     pl.cc($[1], ($) => {

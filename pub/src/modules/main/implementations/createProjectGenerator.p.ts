@@ -15,12 +15,8 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
             callback: ($) => {
 
                 mfp.$a.createWriterCreator(
-                    {},
                     {
-                        onError: ($) => {
-                            pl.logDebugMessage("ERROR!!!")
-                        },
-                        createWriteStream: ($, $c) => {
+                        if_createWriteStream: ($, $c) => {
                             fs.f_createWriteStream(
                                 {
                                     path: [$],
@@ -35,16 +31,12 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                                 ($, $i) => $._execute($i)
                             )
                         },
-                        pipeFountainPen: mfp.$a.createFountainPenCreator(
-                            mfp._defaultSettings,
+                        pi_pipeFountainPen: mfp.$a.createFountainPen(
                             {}
                         ),
                     },
                 )(
-                    {
-                        path: $,
-                        //configuration: mfp._defaultSettings,
-                    },
+                    $,
                     ($i) => {
                         $d.cb_serializeProject(
                             project,

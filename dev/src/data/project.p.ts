@@ -31,7 +31,7 @@ export const project: NProject.TProject = {
                         "project": "../../project",
                         "common": "glo-pareto-common",
                         "main": "lib-pareto-main",
-                        "fp": "../../fp",
+                        "fp": "lib-fountain-pen",
                     }),
                     'types': types({
                         "ProjectSettings": group({
@@ -108,7 +108,7 @@ export const project: NProject.TProject = {
             'definition': def({
                 "glossary": {
                     'imports': wd({
-                        "fp": "../../fp",
+                        "fp": "lib-fountain-pen",
                     }),
                     'types': types({
                         "Interface": taggedUnion({
@@ -236,7 +236,7 @@ export const project: NProject.TProject = {
             'definition': def({
                 'glossary': {
                     'imports': wd({
-                        "fp": "../../fp",
+                        "fp": "lib-fountain-pen",
                         "glossary": "../../glossary"
                     }),
                     'types': types({
@@ -335,7 +335,7 @@ export const project: NProject.TProject = {
                 'glossary': {
                     'imports': wd({
                         "api": "../../api",
-                        "fp": "../../fp",
+                        "fp": "lib-fountain-pen",
                     }),
                     'types': types({
                         "AlgorithmImplementation": group({}),

@@ -6,9 +6,8 @@ import {
     type,
     reference as ref,
     boolean as bln,
-    array,
+    array, dictionary, group, member, taggedUnion, types, _function
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
-import { dictionary, group, member, taggedUnion, types, _function } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/api/api/shorthands.p"
@@ -34,11 +33,18 @@ export const project: NProject.TProject = {
                         "fp": "lib-fountain-pen",
                     }),
                     'types': types({
+                        "ArgumentError": taggedUnion({
+                            "missing": nullType(),
+                            "too many": nullType(),
+                        }),
+                        "Arguments": array(str()),
                         "ProjectSettings": group({
                             "project": member(er("project", "Project")),
                             "mainData": member(er("main", "MainData")),
                         }),
-                        "Arguments": array(str()),
+                        "Parameters": group({
+                            "testDirectory": member(str()),
+                        }),
                     }),
                     'functions': wd({
                         "GetSingleArgument": _function(reference("Arguments"), string(), true),
@@ -51,7 +57,15 @@ export const project: NProject.TProject = {
                                 'context': ['import', "fp"],
                                 'interface': "Writer"
                             }],
-                        }]
+                        }],
+                        "ParseArguments": ['method', {
+                            'data': ['type', reference("Arguments")],
+                            'interface': ['null', null],
+                        }],
+                        "ProcessArgument": ['method', {
+                            'data': ['type', string()],
+                            'interface': ['null', null],
+                        }],
                     }),
                     // 'interfaces': wd({
                     //     // "SingleArgument": {
@@ -67,13 +81,35 @@ export const project: NProject.TProject = {
                         //     'interface': "SingleArgument",
                         // }
                     }),
-                    'pipes': wd({}),
+                    'pipes': wd({
+                        "ParseArguments": {
+                            'in': {
+                                'interface': "ParseArguments"
+                            },
+                            'out': {
+                                'interface': "ProcessArgument"
+                            },
+                        },
+                    }),
                 },
                 "api": {
                     'imports': wd({
-                        "project": "../../project"
+                        "project": "../../project",
+                        "main": "lib-pareto-main"
                     }),
                     'algorithms': wd({
+                        "createParametersParser": {
+                            'definition': ['procedure', ['type', reference("Arguments")]],
+                            //'definition': ['procedure', ['type', externalReference("main", "Arguments")]],
+                            'type': ['constructor', {
+                                'configuration data': ['null', null],
+                                'dependencies': wd({
+                                    "callback": ['procedure', ['type', reference("Parameters")]],
+                                    "onError": ['procedure', ['type', reference("ArgumentError")]],
+
+                                }),
+                            }],
+                        },
                         "generateProject": {
                             'definition': ['procedure', ['type', reference("ProjectSettings")]],
                             'type': ['reference', null],

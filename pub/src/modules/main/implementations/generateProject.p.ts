@@ -6,7 +6,6 @@ import * as mproject from "../../project"
 import * as mapi from "../../api"
 import * as mglossary from "../../glossary"
 import * as mcoll from "res-pareto-collation"
-import * as mexe from "lib-pareto-exe"
 
 import { icreateProjectGenerator } from "./createProjectGenerator.p"
 

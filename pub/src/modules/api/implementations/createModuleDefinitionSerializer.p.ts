@@ -28,7 +28,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                             break
                         case "local":
                             pl.cc($[1], ($) => {
-                                $i.snippet(`glo????.`)
+                                $i.snippet(`glo.`)
                             })
                             break
                         default: pl.au($[0])

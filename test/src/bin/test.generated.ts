@@ -12,17 +12,17 @@ pe.runProgram(
     ($) => {
         test.$a.createTestProgram(
             {
-                fgetTestSet: createGetTestset(
+                af_getTestSet: createGetTestset(
                     data,
                     dependencies
                 ),
-                dlog: ($) => {
+                pr_log: ($) => {
                     pl.logDebugMessage($)
                 },
-                dlogError: ($) => {
+                pr_logError: ($) => {
                     pl.logDebugMessage($)
                 },
-                donTestErrors: ($) => {
+                pr_onTestErrors: ($) => {
                     pl.logDebugMessage("TEST ERROR")
                 },
             },

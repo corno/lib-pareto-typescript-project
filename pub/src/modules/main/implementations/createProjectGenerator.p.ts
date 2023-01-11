@@ -3,16 +3,15 @@ import * as pl from "pareto-core-lib"
 import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
-import * as mexe from "lib-pareto-exe"
 import * as fs from "res-pareto-filesystem"
+import { icreateParametersParser } from "./createParametersParser.p"
 
 export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
     return ($) => {
 
         const project = $.project
-
-        mexe.p_getSingleArgument($.mainData.arguments, {
-            callback: ($) => {
+        icreateParametersParser({
+            pr_callback: ($) => {
 
                 mfp.$a.createWriterCreator(
                     {
@@ -50,15 +49,15 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                 )
 
             },
-            error: ($) => {
+            pr_onError: ($) => {
                 switch ($[0]) {
-                    case "no arguments found":
+                    case "missing":
                         pl.cc($[1], ($) => {
                             pl.implementMe("@@@@NA")
 
                         })
                         break
-                    case "too many arguments found":
+                    case "too many":
                         pl.cc($[1], ($) => {
                             pl.implementMe("@@@@2M")
 
@@ -67,7 +66,7 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                     default: pl.au($[0])
                 }
             }
-        })
+        })($.mainData.arguments)
 
     }
 

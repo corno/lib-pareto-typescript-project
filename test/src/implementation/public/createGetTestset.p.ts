@@ -48,155 +48,136 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
                                     "common": "glo-pareto-common"
                                 }),
                                 'types': types({
-                                    "Configuration": group({
-                                        "indentation": member(str()),
-                                        "newline": member(str()),
-                                    })
-                                    // "Path": nested(str()),
-                                    // "String": str(),
-                                    // "Number": nr(),
-                                    // "Boolean": bln(),
+                                    "AnnotatedReadFileError": group({
+                                        "path": member(str()),
+                                        "error": member(taggedUnion({
+                                            "no entity": nullType(),
+                                            "is directory": nullType(),
+                                            "unknown": type(group({
+                                                "message": member(str())
+                                            })),
+                                        }))
+                                    }),
+                                    "Mkdir_Data": group({
+                                        // readonly path: TPath
+                                        // readonly createContainingDirectories: boolean
+                                    }),
+                                    "Mkdir_Result": taggedUnion({
+                                        "error": type(group({
+                                            "path": member(str()),
+                                        //     "error": member(taggedUnion({
+
+                                        //                               // | ["no entity", null]
+                                        // // | ["exists", null]
+                                        // // //| ["is directory", null]
+                                        // // | ["unknown", {
+                                        // //     readonly "message": string
+                                        // // }]
+                                        //     }))
+                                        })),
+                                        // | ["error", Error]
+                                        // | ["success", Success]
+
+                                        // export type TMkdirError =
+                                        // | ["no entity", null]
+                                        // | ["exists", null]
+                                        // //| ["is directory", null]
+                                        // | ["unknown", {
+                                        //     readonly "message": string
+                                        // }]
+
+                                    }),
+                                    "ReadDirectory_Data": group({
+
+                                    }),
+                                    "ReadDirectory_Result": group({
+
+                                    }),
+                                    "Unlink_Data": group({
+
+                                    }),
+                                    "Unlink_Result": group({
+
+                                    }),
                                 }),
-                                'functions': wd({}),
-                                // 'interfaces': wd({
-
-                                // }),
+                                'functions': wd({
+                                    "MakeDirectory": _function(reference("Mkdir_Data"), reference("Mkdir_Result"), true),
+                                    "ReadDirectory": _function(reference("ReadDirectory_Data"), reference("ReadDirectory_Result"), true),
+                                    "Unlink": _function(reference("Unlink_Data"), reference("Unlink_Result"), true),
+                                }),
                                 'interfaces': wd({
-                                    "Block": ['group', {
+                                    "StreamConsumer": ['group', {
                                         'members': wd({
-                                            "line": ['method', {
+                                            "onData": ['method', {
+                                                'data': ['type', string()],
+                                                'interface': ['null', null],
+                                            }],
+                                            "onEnd": ['method', {
+                                                'data': ['null', null],
+                                                'interface': ['null', null],
+                                            }],
+                                        }),
+                                    }],
+                                    "Reader": ['group', {
+                                        'members': wd({
+                                            "init": ['method', {
                                                 'data': ['null', null],
                                                 'interface': ['set', {
-                                                    'interface': "Line"
-                                                }]
+                                                    'interface': "StreamConsumer"
+                                                }],
                                             }],
-                                            "literal": ['method', {
-                                                'data': ['type', string()],
-                                                'interface': ['null', null]
-                                            }],
-                                        })
-                                    }],
-                                    "CreateWriteStream": ['method', {
-                                        'data': ['type', externalReference("common", "Path")],
-                                        'interface': ['set', {
-                                            'interface': "WriteString"
-                                        }]
-                                    }],
-                                    "CreateWriter": ['method', {
-                                        'data': ['type', externalReference("common", "Path")],
-                                        'interface': ['set', {
-                                            'interface': "Writer"
-                                        }]
-                                    }],
-                                    "Line": ['group', {
-                                        'members': wd({
-                                            "indent": ['method', {
-                                                'data': ['null', null],
-                                                'interface': ['set', {
-                                                    'interface': "Block"
-                                                }]
-                                            }],
-                                            "snippet": ['method', {
-                                                'data': ['type', string()],
-                                                'interface': ['null', null]
+                                            "onError": ['method', {
+                                                'data': ['type', reference("AnnotatedReadFileError")],
+                                                'interface': ['null', null],
                                             }],
                                         })
-                                    }],
-                                    "Writer": ['group', {
-                                        'members': wd({
-                                            "createFile": ['method', {
-                                                'data': ['type', string()],
-                                                'interface': ['set', {
-                                                    'interface': "Block"
-                                                }]
-                                            }],
-                                            "createDirectory": ['method', {
-                                                'data': ['type', string()],
-                                                'interface': ['set', {
-                                                    'interface': "Writer"
-                                                }]
-                                            }],
-                                        })
-                                    }],
-                                    "WriteString": ['method', {
-                                        'data': ['type', string()],
-                                        'interface': ['null', null]
-
-                                    }],
+                                    }]
                                 }),
                                 'callbacks': wd({
-
-                                    // "XXXSerializeGlossary": {
-                                    //     'data': ['type', reference("Glossary")],
-                                    //     'context': ['import', "fp"],
-                                    //     'interface': "Block",
-                                    // },
+                                    "GetFile": {
+                                        'data': ['type', externalReference("common", "Path")],
+                                        'interface': "Reader"
+                                    }
                                 }),
                                 'pipes': wd({
-                                    "FountainPen": {
-                                        'in': {
-                                            'interface': "Block",
-                                        },
-                                        'out': {
-                                            'interface': "WriteString",
-                                        }
-                                    }
                                 }),
                             },
                             "api": {
                                 'imports': wd({
-                                    "tostring": "res-pareto-tostring",
-                                    "fs": "res-pareto-filesystem",
                                 }),
                                 'algorithms': wd({
-                                    "createFountainPenCreator": {
-                                        'definition': ['pipe', {
-                                            'pipe': "FountainPen"
+                                    "createWriteStream": {
+                                        'definition': ['callback', {
+                                            'callback': "GetFile"
                                         }],
-                                        'type': ['constructor', {
-                                            'configuration data': ['type', reference("Configuration")],
-                                            'dependencies': wd({
-                                            }),
-                                        }],
+                                        'type': ['reference', null]
                                     },
-                                    "createUnboundFountainPenCreator": {
-                                        'definition': ['pipe', {
-                                            'pipe': "FountainPen"
+                                    "getFile": {
+                                        'definition': ['callback', {
+                                            'callback': "GetFile"
                                         }],
-                                        'type': ['constructor', {
-                                            'configuration data': ['type', reference("Configuration")],
-                                            'dependencies': wd({
-                                                "joinNestedStrings": ['function', {
-                                                    'context': ['import', "tostring"],
-                                                    'function': "JoinNestedString",
-                                                }],
-                                                "getArrayAsString": ['function', {
-                                                    'context': ['import', "tostring"],
-                                                    'function': "GetArrayAsString",
-                                                }],
-                                            }),
-                                        }],
+                                        'type': ['reference', null]
                                     },
-                                    "createWriterCreator": {
-                                        'definition': ['interface', {
-                                            'interface': "CreateWriter"
+                                    "makeDirectory": {
+                                        'definition': ['function', {
+                                            'function': "MakeDirectory",
+                                            'async': true,
                                         }],
-                                        'type': ['constructor', {
-                                            'configuration data': ['null', null],
-                                            'dependencies': wd({
-
-
-
-                                                "createWriteStream": ['interface', {
-                                                    'interface': "CreateWriteStream",
-                                                }],
-                                                "pipeFountainPen": ['pipe', {
-                                                    'pipe': "FountainPen",
-                                                }],
-                                                "onError": ['procedure', ['type', externalReference("fs", "AnnotatedFSError<mfs.TWriteFileError>")]]
-                                        
-                                            }),
+                                        'type': ['reference', null]
+                                    },
+                                    "readDirectory": {
+                                        'definition': ['function', {
+                                            'function': "ReadDirectory",
+                                            'async': true,
                                         }],
+                                        'type': ['reference', null]
+                                    },
+                                    "unlink": {
+                                        'definition': ['function', {
+                                            'function': "Unlink",
+                                            'async': true,
+                                        }],
+                                        'type': ['reference', null]
                                     }
                                 })
                             },

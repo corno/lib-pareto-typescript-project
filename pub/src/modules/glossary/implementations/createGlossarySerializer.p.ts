@@ -250,6 +250,13 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 }
             })
         })
+        $.interfaces.forEach(compare, ($, key) => {
+            $i.literal(``)
+            $i.line(($i) => {
+                $i.snippet(`export type I${key} = `)
+                serializeInterface($, $i)
+            })
+        })
         $.callbacks.forEach(compare, ($, key) => {
             $i.literal(``)
             $i.line(($i) => {
@@ -285,13 +292,6 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                     }
                 }
                 $i.snippet(`I${$.interface}) => void`)
-            })
-        })
-        $.interfaces.forEach(compare, ($, key) => {
-            $i.literal(``)
-            $i.line(($i) => {
-                $i.snippet(`export type I${key} = `)
-                serializeInterface($, $i)
             })
         })
         $.pipes.forEach(compare, ($, key) => {

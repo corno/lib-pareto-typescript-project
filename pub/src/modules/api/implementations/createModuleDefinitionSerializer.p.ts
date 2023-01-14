@@ -88,6 +88,8 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
             }
         }
         glossary($.glossary, $i)
+        $i.allowed(`shorthands.p.ts`)
+
         $i.file("api.generated.ts", ($i) => {
             $i.literal(`import * as pt from "pareto-core-types"`)
             $i.literal(``)

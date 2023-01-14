@@ -44,7 +44,13 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 $i.literal(``)
             })
         }
+        $i.allowed(`.git`)
+        $i.allowed(`pareto`)
         $i.directory("dev", ($i) => {
+            $i.allowed(`dist`)
+            $i.allowed(`node_modules`)
+            $i.allowed(`package-lock.json`)
+            $i.allowed(`package.json`)
             $i.directory("src", ($i) => {
                 globals($i)
                 $i.directory("bin", ($i) => {
@@ -55,10 +61,32 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                         $i.literal(`exe.runProgram(mmain.$a.main)`)
                     })
                 })
+                $i.directory(`src`, ($i) => {
+                    $i.directory(`modules`, ($i) => {
+
+                        // $i.directory(`api`, ($i) => {
+
+                        //     $i.directory(`api`, ($i) => {
+                        //         $i.allowed(`shorthands.p.ts`)
+                        //     })
+                        // })
+                        // $i.directory(`glossary`, ($i) => {
+
+                        //     $i.directory(`api`, ($i) => {
+                        //         $i.allowed(`sorthands.p.ts`)
+                        //     })
+                        // })
+                    })
+
+                })
             })
             tsConfig({ isResource: false }, $i)
         })
         $i.directory("pub", ($i) => {
+            $i.allowed(`dist`)
+            $i.allowed(`node_modules`)
+            $i.allowed(`package-lock.json`)
+            $i.allowed(`package.json`)
             $i.directory("src", ($i) => {
                 if ($.type === undefined || $.type[0] !== "resource") {
                     globals($i)
@@ -153,7 +181,14 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
         })
         if ($.type === undefined || $.type[0] !== "glossary") {
             $i.directory("test", ($i) => {
+                $i.allowed(`dist`)
+                $i.allowed(`node_modules`)
+                $i.allowed(`package-lock.json`)
+                $i.allowed(`package.json`)
                 $i.directory("src", ($i) => {
+                    $i.allowed(`data`)
+                    $i.allowed(`dependencies`)
+                    $i.allowed(`implementation`)
                     globals($i)
                     $i.directory("bin", ($i) => {
                         $i.file("test.generated.ts", ($i) => {

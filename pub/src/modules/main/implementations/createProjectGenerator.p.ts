@@ -54,7 +54,10 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                             })
                         },
                         pr_reportSuperfluousNode: ($) => {
-                            pl.logDebugMessage(`SUPERFLUOUS: ${$.path}/${$.name}`)
+                            pl.logDebugMessage(`SUPERFLUOUS: ${mtostring.$a.joinNestedStrings({
+                                strings: $.path,
+                                separator: "/",
+                            })}/${$.name}`)
                         },
                     },
                 )(

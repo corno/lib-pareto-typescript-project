@@ -62,21 +62,24 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                     })
                 })
                 $i.directory(`src`, ($i) => {
-                    $i.directory(`modules`, ($i) => {
+                    $i.allowed(`data`)
+                    $i.allowed(`modules`)
+                    $i.allowed(`index.ts`)
+                    // $i.directory(`modules`, ($i) => {
 
-                        // $i.directory(`api`, ($i) => {
+                    //     // $i.directory(`api`, ($i) => {
 
-                        //     $i.directory(`api`, ($i) => {
-                        //         $i.allowed(`shorthands.p.ts`)
-                        //     })
-                        // })
-                        // $i.directory(`glossary`, ($i) => {
+                    //     //     $i.directory(`api`, ($i) => {
+                    //     //         $i.allowed(`shorthands.p.ts`)
+                    //     //     })
+                    //     // })
+                    //     // $i.directory(`glossary`, ($i) => {
 
-                        //     $i.directory(`api`, ($i) => {
-                        //         $i.allowed(`sorthands.p.ts`)
-                        //     })
-                        // })
-                    })
+                    //     //     $i.directory(`api`, ($i) => {
+                    //     //         $i.allowed(`sorthands.p.ts`)
+                    //     //     })
+                    //     // })
+                    // })
 
                 })
             })

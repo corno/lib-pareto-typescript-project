@@ -277,7 +277,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                         onNotEmpty: ($c) => {
                             $i.snippet(`<`)
                             $c(($) => {
-                                $i.snippet(`${$.isFirst ? ``: `, `}A${$.key}`)
+                                $i.snippet(`${$.isFirst ? `` : `, `}A${$.key}`)
                             })
                             $i.snippet(`>`)
 

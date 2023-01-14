@@ -12,9 +12,9 @@ export type TProject = {
         readonly "definition": mapi.TModuleDefinition
     }>
     readonly "type"?: 
-        | [ "glossary", null ]
-        | [ "library", null ]
-        | [ "resource", null ]
+        | ["glossary", null]
+        | ["library", null]
+        | ["resource", null]
 }
 
 export type XSerializeProject = ($: TProject, $i: mfp.IWriter) => void

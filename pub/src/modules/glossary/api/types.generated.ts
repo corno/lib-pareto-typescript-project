@@ -8,8 +8,8 @@ export type TCallback = {
 }
 
 export type TContext = 
-    | [ "import", string ]
-    | [ "local", null ]
+    | ["import", string]
+    | ["local", null]
 
 export type TFunction = {
     readonly "async"?: boolean
@@ -31,18 +31,18 @@ export type TGlossary = {
 }
 
 export type TInterface = 
-    | [ "group", {
+    | ["group", {
         readonly "members": pt.Dictionary<TInterface>
-    } ]
-    | [ "method", {
+    }]
+    | ["method", {
         readonly "data": TLeafTypeOrNull
         readonly "interface": 
-            | [ "null", null ]
-            | [ "set", {
+            | ["null", null]
+            | ["set", {
                 readonly "interface": string
-            } ]
-    } ]
-    | [ "reference", TInterfaceReference ]
+            }]
+    }]
+    | ["reference", TInterfaceReference]
 
 export type TInterfaceReference = {
     readonly "context"?: TContext
@@ -50,18 +50,18 @@ export type TInterfaceReference = {
 }
 
 export type TLeafType = 
-    | [ "boolean", null ]
-    | [ "external reference", {
+    | ["boolean", null]
+    | ["external reference", {
         readonly "context": string
         readonly "type": string
-    } ]
-    | [ "number", null ]
-    | [ "reference", string ]
-    | [ "string", null ]
+    }]
+    | ["number", null]
+    | ["reference", string]
+    | ["string", null]
 
 export type TLeafTypeOrNull = 
-    | [ "null", null ]
-    | [ "type", TLeafType ]
+    | ["null", null]
+    | ["type", TLeafType]
 
 export type TTemplate = {
     readonly "parameters": pt.Dictionary<null>
@@ -69,26 +69,26 @@ export type TTemplate = {
 }
 
 export type TType = 
-    | [ "array", TType ]
-    | [ "dictionary", TTypeOrNull ]
-    | [ "group", pt.Dictionary<{
+    | ["array", TType]
+    | ["dictionary", TTypeOrNull]
+    | ["group", pt.Dictionary<{
         readonly "optional"?: boolean
         readonly "type": TType
-    }> ]
-    | [ "leaf", TLeafType ]
-    | [ "nested", TType ]
-    | [ "optional", TType ]
-    | [ "parameter", string ]
-    | [ "taggedUnion", pt.Dictionary<TTypeOrNull> ]
-    | [ "template", {
+    }>]
+    | ["leaf", TLeafType]
+    | ["nested", TType]
+    | ["optional", TType]
+    | ["parameter", string]
+    | ["taggedUnion", pt.Dictionary<TTypeOrNull>]
+    | ["template", {
         readonly "arguments": pt.Dictionary<TTypeOrNull>
         readonly "context"?: TContext
         readonly "template": string
-    } ]
+    }]
 
 export type TTypeOrNull = 
-    | [ "null", null ]
-    | [ "type", TType ]
+    | ["null", null]
+    | ["type", TType]
 
 export type XSerializeGlossary = ($: TGlossary, $i: mfp.IBlock) => void
 

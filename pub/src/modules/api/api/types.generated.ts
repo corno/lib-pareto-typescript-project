@@ -3,39 +3,39 @@ import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../glossary"
 
 export type TContext = 
-    | [ "import", string ]
-    | [ "local", null ]
+    | ["import", string]
+    | ["local", null]
 
 export type TDefinitionReference = 
-    | [ "callback", {
+    | ["callback", {
         readonly "callback": string
         readonly "context"?: TContext
-    } ]
-    | [ "function", {
+    }]
+    | ["function", {
         readonly "async"?: boolean
         readonly "context"?: TContext
         readonly "function": string
-    } ]
-    | [ "interface", {
+    }]
+    | ["interface", {
         readonly "context"?: TContext
         readonly "interface": string
-    } ]
-    | [ "pipe", {
+    }]
+    | ["pipe", {
         readonly "context"?: TContext
         readonly "pipe": string
-    } ]
-    | [ "procedure", mglossary.TLeafTypeOrNull ]
+    }]
+    | ["procedure", mglossary.TLeafTypeOrNull]
 
 export type TModuleDefinition = {
     readonly "api": {
         readonly "algorithms": pt.Dictionary<{
             readonly "definition": TDefinitionReference
             readonly "type": 
-                | [ "constructor", {
+                | ["constructor", {
                     readonly "configuration data": mglossary.TLeafTypeOrNull
                     readonly "dependencies": pt.Dictionary<TDefinitionReference>
-                } ]
-                | [ "reference", null ]
+                }]
+                | ["reference", null]
         }>
         readonly "imports": pt.Dictionary<string>
     }

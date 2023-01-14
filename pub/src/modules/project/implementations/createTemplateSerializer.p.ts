@@ -7,11 +7,11 @@ export const icreateTemplateSerializer: api.CcreateTemplateSerializer = (
 ) => {
     return ($, $i) => {
         const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
-        $i.createDirectory("tmp", ($i) => {
-            $i.createDirectory("templates", ($i) => {
-                $i.createDirectory("dev", ($i) => {
+        $i.directory("tmp", ($i) => {
+            $i.directory("templates", ($i) => {
+                $i.directory("dev", ($i) => {
 
-                    $i.createFile("package.json", ($i) => {
+                    $i.file("package.json", ($i) => {
                         $i.literal(`{`)
                         $i.literal(`  "dependencies": {`)
                         // $i.literal(`    "glo-pareto-common": "^0.1.0",`)
@@ -26,17 +26,17 @@ export const icreateTemplateSerializer: api.CcreateTemplateSerializer = (
                         $i.literal(`}`)
                     })
                 })
-                $i.createDirectory("pub", ($i) => {
-                    $i.createDirectory("src", ($i) => {
-                        $i.createDirectory("modules", ($i) => {
+                $i.directory("pub", ($i) => {
+                    $i.directory("src", ($i) => {
+                        $i.directory("modules", ($i) => {
 
                             $.modules.forEach(compare, ($, key) => {
                                 const moduleName = key
 
-                                $i.createDirectory(key, ($i) => {
-                                    $i.createDirectory(`implementations`, ($i) => {
+                                $i.directory(key, ($i) => {
+                                    $i.directory(`implementations`, ($i) => {
                                         $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                            $i.createFile(`${key}.p.ts`, ($i) => {
+                                            $i.file(`${key}.p.ts`, ($i) => {
                                                 $i.literal(`import * as pl from "pareto-core-lib"`)
                                                 $i.literal(``)
                                                 $i.literal(`import * as api from "../api"`)
@@ -64,7 +64,7 @@ export const icreateTemplateSerializer: api.CcreateTemplateSerializer = (
                             })
                         })
                     })
-                    $i.createFile("package.json", ($i) => {
+                    $i.file("package.json", ($i) => {
                         $i.literal(`{`)
                         $i.literal(`  "author": "Corno",`)
                         $i.literal(`  "dependencies": {`)
@@ -95,9 +95,9 @@ export const icreateTemplateSerializer: api.CcreateTemplateSerializer = (
                         $i.literal(`}`)
                     })
                 })
-                $i.createDirectory("test", ($i) => {
+                $i.directory("test", ($i) => {
 
-                    $i.createFile("package.json", ($i) => {
+                    $i.file("package.json", ($i) => {
                         $i.literal(`{`)
                         $i.literal(`  "dependencies": {`)
                         // $i.literal(`    "glo-pareto-common": "^0.1.0",`)
@@ -111,15 +111,15 @@ export const icreateTemplateSerializer: api.CcreateTemplateSerializer = (
                         // $i.literal(`    "res-pareto-diff": "^0.13.2"`)
                         $i.literal(`}`)
                     })
-                    $i.createDirectory("src", ($i) => {
-                        $i.createDirectory("modules", ($i) => {
+                    $i.directory("src", ($i) => {
+                        $i.directory("modules", ($i) => {
 
                             $.modules.forEach(compare, ($, key) => {
                                 const moduleName = key
 
-                                $i.createDirectory(key, ($i) => {
+                                $i.directory(key, ($i) => {
                                     $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                        $i.createFile(`${key}.p.ts`, ($i) => {
+                                        $i.file(`${key}.p.ts`, ($i) => {
                                             $i.literal(`import * as pl from "pareto-core-lib"`)
                                             $i.literal(``)
                                             $i.literal(`import * as api from "../api"`)

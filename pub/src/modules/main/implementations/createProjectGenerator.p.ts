@@ -1,8 +1,10 @@
+import * as pt from "pareto-core-types"
 import * as pl from "pareto-core-lib"
 
 import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
+import * as mtostring from "res-pareto-tostring"
 import * as fs from "res-pareto-filesystem"
 import { icreateParametersParser } from "./createParametersParser.p"
 
@@ -16,23 +18,44 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                 mfp.$a.createWriterCreator(
                     {
                         if_createWriteStream: ($, $c) => {
-                            fs.f_createWriteStream(
+                            fs.$a.createWriteStream(
+                                {
+                                    pr_onError: () => {
+                                        pl.logDebugMessage(`SSDSFSDFS`)
+                                    }
+                                },
+                            )(
+
                                 {
                                     path: [$],
                                     createContainingDirectories: true,
                                 },
                                 $c,
-                                {
-                                    onError: () => {
-                                        pl.logDebugMessage(`SSDSFSDFS`)
-                                    }
-                                },
-                                ($, $i) => $._execute($i)
                             )
                         },
                         pi_pipeFountainPen: mfp.$a.createFountainPen(
                             {}
                         ),
+                        af_getNodes: ($) => {
+                            return fs.$a.readDirectory({
+                                path: $
+                            }).map<pt.Dictionary<string>>(($) => {
+                                switch ($[0]) {
+                                    case "error":
+                                        return pl.cc($[1], ($) => {
+                                            return pl.asyncValue(pl.createEmptyDictionary())
+                                        })
+                                    case "success":
+                                        return pl.cc($[1], ($) => {
+                                            return  pl.asyncValue($.map(($, key) => key))
+                                        })
+                                    default: return pl.au($[0])
+                                }
+                            })
+                        },
+                        pr_reportSuperfluousNode: ($) => {
+                            pl.logDebugMessage(`${$.path}/${$.name}`)
+                        },
                     },
                 )(
                     $,

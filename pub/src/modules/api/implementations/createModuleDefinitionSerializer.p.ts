@@ -6,7 +6,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
     return ($, $i) => {
         const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
         function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {
-            $i.createFile("types.generated.ts", ($i) => {
+            $i.file("types.generated.ts", ($i) => {
                 $d.cb_serializeGlossary($, $i)
             })
         }
@@ -88,7 +88,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
             }
         }
         glossary($.glossary, $i)
-        $i.createFile("api.generated.ts", ($i) => {
+        $i.file("api.generated.ts", ($i) => {
             $i.literal(`import * as pt from "pareto-core-types"`)
             $i.literal(``)
             $i.literal(`import * as glo from "./types.generated"`)
@@ -207,7 +207,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                 $i.snippet(`}`)
             })
         })
-        $i.createFile("index.ts", ($i) => {
+        $i.file("index.ts", ($i) => {
             $i.literal(`export * from "./types.generated"`)
             $i.literal(`export * from "./api.generated"`)
         })

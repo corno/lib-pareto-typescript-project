@@ -5,8 +5,8 @@ import * as mmain from "lib-pareto-main"
 import * as mproject from "../../project"
 
 export type TArgumentError = 
-    | [ "missing", null ]
-    | [ "too many", null ]
+    | ["missing", null]
+    | ["too many", null]
 
 export type TArguments = pt.Array<string>
 

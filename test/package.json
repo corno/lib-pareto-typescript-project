@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "lib-pareto-test": "^0.15.0",
+    "lib-pareto-test": "^0.16.0",
     "pareto-core-exe": "^0.15.1",
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.0",

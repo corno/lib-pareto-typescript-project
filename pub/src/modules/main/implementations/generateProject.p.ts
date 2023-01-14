@@ -2,6 +2,7 @@ import * as pl from "pareto-core-lib"
 
 import * as api from "../api"
 
+import * as mtemp from "../../temp"
 import * as mproject from "../../project"
 import * as mapi from "../../api"
 import * as mglossary from "../../glossary"
@@ -21,6 +22,9 @@ export const igenerateProject: api.CgenerateProject = ($) => {
                             sf_compare: mcoll.$a.localeIsABeforeB,
                             cb_serializeGlossary: mglossary.$a.createGlossarySerializer({
                                 sf_compare: mcoll.$a.localeIsABeforeB,
+                                cb_enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
+                                    sf_compare: mcoll.$a.localeIsABeforeB,
+                                })
                             }),
                             cb_serializeLeafType: mglossary.$a.serializeLeafType,
                         }

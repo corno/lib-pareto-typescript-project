@@ -25,7 +25,7 @@ export const project: NProject.TProject = {
     'modules': wd({
         "main": {
             'definition': def({
-                "glossary": {
+                'glossary': {
                     'imports': wd({
                         "project": "../../project",
                         "common": "glo-pareto-common",
@@ -182,6 +182,7 @@ export const project: NProject.TProject = {
                         }),
                         "Glossary": group({
                             "imports": member(dictionary(str())),
+                            "templates": member(dictionary(ref("Template")), true),
                             "types": member(dictionary(ref("Type"))),
                             "functions": member(dictionary(ref("Function"))),
                             "interfaces": member(dictionary(ref("Interface"))),
@@ -205,16 +206,26 @@ export const project: NProject.TProject = {
                             "type": type(ref("LeafType")),
                             "null": nullType(),
                         }),
+                        "Template": group({
+                            "parameters": member(["dictionary", nullType()]),
+                            "type": member(ref("Type"))
+                        }),
                         "Type": taggedUnion({
-                            "leaf": type(ref("LeafType")),
-                            "optional": type(ref("Type")),
                             "array": type(ref("Type")),
-                            "nested": type(ref("Type")),
                             "dictionary": type(ref("TypeOrNull")),
                             "group": type(dictionary(group({
                                 "type": member(ref("Type")),
                                 "optional": member(bln(), true)
                             }))),
+                            "leaf": type(ref("LeafType")),
+                            "nested": type(ref("Type")),
+                            "optional": type(ref("Type")),
+                            "parameter": type(str()),
+                            "template": type(group({
+                                "context": member(ref("Context"), true),
+                                "template": member(str()),
+                                "arguments": member(dictionary(ref("TypeOrNull")))
+                            })),
                             "taggedUnion": type(dictionary(ref("TypeOrNull"))),
                         }),
                         "TypeOrNull": taggedUnion({
@@ -240,7 +251,8 @@ export const project: NProject.TProject = {
                 },
                 'api': {
                     'imports': wd({
-                        "collation": "res-pareto-collation"
+                        "collation": "res-pareto-collation",
+                        "temp": "../../temp",
                     }),
                     'algorithms': wd({
                         "serializeLeafType": {
@@ -256,6 +268,10 @@ export const project: NProject.TProject = {
                             'type': ['constructor', {
                                 'configuration data': ['null', null],
                                 'dependencies': wd({
+                                    "enrichedDictionaryForEach": ['callback', {
+                                        'context': ['import', "temp"],
+                                        'callback': "EnrichedDictionaryForEach",
+                                    }],
                                     "compare": ['function', {
                                         'context': ['import', "collation"],
                                         'function': "IsABeforeB",
@@ -462,7 +478,59 @@ export const project: NProject.TProject = {
                 },
             }),
             'implemenation': {}
-        }
+        },
+        // "temp": {
+        //     'definition': def({
+        //         'glossary': {
+        //             'imports': wd({}),
+        //             'types': types({
+        //                 "Dictionary": dictionary(str()),
+        //                 "B": group({
+        //                     "key": member(str()),
+        //                     "value": member(str()),
+        //                     "isFirst": member(bln()),
+        //                 }),
+        //             }),
+        //             'functions': wd({}),
+        //             'interfaces': wd({
+        //                 "X": ['group', {
+        //                     'members': wd({
+        //                         "onEmpty": ['method', {
+        //                             'data': ['null', null],
+        //                             'interface': ['null', null],
+
+        //                         }],
+        //                         "onNotEmpty": ['method', {
+        //                             'data': ['null', null],
+        //                             'interface': ['set', {
+        //                                 'interface': "Y"
+        //                             }],
+        //                         }],
+        //                     })
+        //                 }],
+        //                 "Y": ['method', {
+        //                     'data': ['null', null],
+        //                     'interface': ['set', {
+        //                         'interface': "Y"
+        //                     }],
+        //                 }],
+        //             }),
+        //             'callbacks': wd({
+        //                 "EnrichedDictionaryForEach": {
+        //                     'data': ['type', reference("Dictionary")],
+        //                     'interface': "X",
+        //                 },
+        //             }),
+        //             'pipes': wd({}),
+        //         },
+        //         "api": {
+        //             'imports': wd({}),
+        //             'algorithms': wd({})
+        //         },
+        //     }),
+        //     'implementation': {}
+
+        // },
     }),
     'main': "main"
 }

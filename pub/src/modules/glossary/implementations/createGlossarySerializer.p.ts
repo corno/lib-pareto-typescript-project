@@ -46,24 +46,6 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                     $i.snippet(`>`)
                 })
                 break
-            case "nested":
-                pl.cc($[1], ($) => {
-                    $i.snippet(`pt.Nested<`)
-                    serializeType($, $i)
-                    $i.snippet(`>`)
-                })
-                break
-            case "optional":
-                pl.cc($[1], ($) => {
-                    $i.snippet(`null | `)
-                    serializeType($, $i)
-                })
-                break
-            case "leaf":
-                pl.cc($[1], ($) => {
-                    serializeLeafType($, $i)
-                })
-                break
             case "dictionary":
                 pl.cc($[1], ($) => {
                     $i.snippet(`pt.Dictionary<`)
@@ -98,12 +80,35 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                     $i.snippet(`}`)
                 })
                 break
+            case "leaf":
+                pl.cc($[1], ($) => {
+                    serializeLeafType($, $i)
+                })
+                break
+            case "nested":
+                pl.cc($[1], ($) => {
+                    $i.snippet(`pt.Nested<`)
+                    serializeType($, $i)
+                    $i.snippet(`>`)
+                })
+                break
+            case "optional":
+                pl.cc($[1], ($) => {
+                    $i.snippet(`null | `)
+                    serializeType($, $i)
+                })
+                break
+            case "parameter":
+                pl.cc($[1], ($) => {
+                    $i.snippet(`A${$}`)
+                })
+                break
             case "taggedUnion":
                 pl.cc($[1], ($) => {
                     $i.indent(($i) => {
                         $.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`| [ "${key}", `)
+                                $i.snippet(`| ["${key}", `)
                                 switch ($[0]) {
                                     case "null":
                                         pl.cc($[1], ($) => {
@@ -118,10 +123,62 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                                         break
                                     default: pl.au($[0])
                                 }
-                                $i.snippet(` ]`)
+                                $i.snippet(`]`)
                             })
                         })
                     })
+                })
+                break
+            case "template":
+                pl.cc($[1], ($) => {
+                    if ($.context !== undefined) {
+                        serializeContext($.context, $i)
+                    }
+                    $i.snippet(`M${$.template}`)
+                    $d.cb_enrichedDictionaryForEach($.arguments, {
+                        onNotEmpty: ($c) => {
+                            $i.snippet(`<`)
+                            $c(($) => {
+                                $i.snippet($.isFirst ? `` : `, `)
+                                pl.cc($.value, ($) => {
+                                    switch ($[0]) {
+                                        case "null":
+                                            pl.cc($[1], ($) => {
+                                                $i.snippet(`null`)
+                                            })
+                                            break
+                                        case "type":
+                                            pl.cc($[1], ($) => {
+                                                serializeType($, $i)
+                                            })
+                                            break
+                                        default: pl.au($[0])
+                                    }
+
+                                })
+                            })
+
+                            $i.snippet(`>`)
+                        },
+                        onEmpty: () => {
+                            //nothing to do
+                        }
+                    })
+                })
+                break
+            default: pl.au($[0])
+        }
+    }
+    function serializeContext($: api.TContext, $i: mfp.ILine) {
+        switch ($[0]) {
+            case "import":
+                pl.cc($[1], ($) => {
+                    $i.snippet(`m${$}.`)
+                })
+                break
+            case "local":
+                pl.cc($[1], ($) => {
+
                 })
                 break
             default: pl.au($[0])
@@ -129,19 +186,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
     }
     function serializeInterfaceReference($: api.TInterfaceReference, $i: mfp.ILine) {
         if ($.context !== undefined) {
-            switch ($.context[0]) {
-                case "import":
-                    pl.cc($.context[1], ($) => {
-                        $i.snippet(`m${$}.`)
-                    })
-                    break
-                case "local":
-                    pl.cc($.context[1], ($) => {
-
-                    })
-                    break
-                default: pl.au($.context[0])
-            }
+            serializeContext($.context, $i)
         }
         $i.snippet(`I${$.interface}`)
 
@@ -220,6 +265,29 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 $i.snippet(`import * as m${key} from "${$}"`)
             })
         })
+        if ($.templates !== undefined) {
+            $.templates.forEach(compare, ($, key) => {
+                $i.literal(``)
+                $i.line(($i) => {
+                    $i.snippet(`export type M${key}`)
+                    $d.cb_enrichedDictionaryForEach($.parameters, {
+                        onEmpty: () => {
+                            //nothing
+                        },
+                        onNotEmpty: ($c) => {
+                            $i.snippet(`<`)
+                            $c(($) => {
+                                $i.snippet(`${$.isFirst ? ``: `, `}A${$.key}`)
+                            })
+                            $i.snippet(`>`)
+
+                        }
+                    })
+                    $i.snippet(` = `)
+                    serializeType($.type, $i)
+                })
+            })
+        }
         $.types.forEach(compare, ($, key) => {
             $i.literal(``)
             $i.line(($i) => {
@@ -277,19 +345,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 }
                 $i.snippet(`$i: `)
                 if ($.context !== undefined) {
-                    switch ($.context[0]) {
-                        case "import":
-                            pl.cc($.context[1], ($) => {
-                                $i.snippet(`m${$}.`)
-                            })
-                            break
-                        case "local":
-                            pl.cc($.context[1], ($) => {
-
-                            })
-                            break
-                        default: pl.au($.context[0])
-                    }
+                    serializeContext($.context, $i)
                 }
                 $i.snippet(`I${$.interface}) => void`)
             })

@@ -35,6 +35,15 @@ export function dictionary($: api.TType): api.TType {
 export function nullDictionary(): api.TType {
     return ['dictionary', ['null', null]]
 }
+export function parameter($: string): api.TType {
+    return ['parameter', $]
+}
+export function template(template: string, $: { [key: string]: api.TTypeOrNull }): api.TType {
+    return ['template', {
+        'template': template,
+        'arguments': wd($),
+    }]
+}
 export function array($: api.TType): api.TType {
     return ['array', $]
 }

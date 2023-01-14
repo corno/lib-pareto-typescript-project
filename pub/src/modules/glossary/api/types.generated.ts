@@ -26,6 +26,7 @@ export type TGlossary = {
         readonly "in": TInterfaceReference
         readonly "out": TInterfaceReference
     }>
+    readonly "templates"?: pt.Dictionary<TTemplate>
     readonly "types": pt.Dictionary<TType>
 }
 
@@ -62,6 +63,11 @@ export type TLeafTypeOrNull =
     | [ "null", null ]
     | [ "type", TLeafType ]
 
+export type TTemplate = {
+    readonly "parameters": pt.Dictionary<null>
+    readonly "type": TType
+}
+
 export type TType = 
     | [ "array", TType ]
     | [ "dictionary", TTypeOrNull ]
@@ -72,7 +78,13 @@ export type TType =
     | [ "leaf", TLeafType ]
     | [ "nested", TType ]
     | [ "optional", TType ]
+    | [ "parameter", string ]
     | [ "taggedUnion", pt.Dictionary<TTypeOrNull> ]
+    | [ "template", {
+        readonly "arguments": pt.Dictionary<TTypeOrNull>
+        readonly "context"?: TContext
+        readonly "template": string
+    } ]
 
 export type TTypeOrNull = 
     | [ "null", null ]

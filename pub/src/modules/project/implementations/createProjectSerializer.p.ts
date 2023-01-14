@@ -1,20 +1,13 @@
 import * as api from "../api"
-
 import * as mfp from "lib-fountain-pen"
-
-
 export const icreateProjectSerializer: api.CcreateProjectSerializer = (
     $d,
 ) => {
     return ($, $i) => {
-
         const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
-
-
         function tsConfig($: {
             isResource: boolean
         }, $i: mfp.IWriter) {
-
             $i.createFile("tsconfig.json", ($i) => {
                 $i.literal(`{`)
                 $i.literal(`  "compilerOptions": {`)
@@ -52,24 +45,14 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
             })
         }
         $i.createDirectory("dev", ($i) => {
-
             $i.createDirectory("src", ($i) => {
                 globals($i)
                 $i.createDirectory("bin", ($i) => {
-
                     $i.createFile("generateCode.generated.ts", ($i) => {
-
-
-
                         $i.literal(`import * as exe from "pareto-core-exe"`)
                         $i.literal(`import * as mmain from "../modules/main"`)
                         $i.literal(``)
                         $i.literal(`exe.runProgram(mmain.$a.main)`)
-
-
-
-
-
                     })
                 })
             })
@@ -86,15 +69,12 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                             $i.createDirectory(`api`, ($i) => {
                                 $d.cb_serializeModuleDefinition($.definition, $i)
                             })
-
                             // $.definition.api.algorithms.forEach(compare, ($, key) => {
                             //     $i.createDirectory(`${key}`, ($i) => {
-
                             //     })
                             // })
                             $i.createFile("index.ts", ($i) => {
                                 $i.literal(`import { API } from "./api"`)
-
                                 $.definition.api.algorithms.forEach(compare, ($, key) => {
                                     $i.literal(`import { i${key} } from "./implementations/${key}.p"`)
                                 })
@@ -102,24 +82,19 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                 $i.literal(`export * from "./api"`)
                                 $i.literal(``)
                                 $i.line(($i) => {
-
                                     $i.snippet(`export const $a: API = {`)
                                     $i.indent(($i) => {
-
                                         $.definition.api.algorithms.forEach(compare, ($, key) => {
                                             $i.literal(`"${key}": i${key},`)
                                         })
                                     })
                                     $i.snippet(`}`)
                                 })
-
                             })
                         })
-
                     })
                 })
                 // $i.createDirectory("implementation", ($i) => {
-
                 //     // $i.createDirectory("private_definitions", ($i) => {
                 //     //     moduleDefintion($["private definitions"], $i)
                 //     // })
@@ -139,7 +114,6 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 //     //             $i.snippet(`}`)
                 //     //         })
                 //     //     })
-
                 //     // }
                 //     // $i.createDirectory("private", ($i) => {
                 //     //     implementations($["private implementations"], $i)
@@ -147,10 +121,6 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 //     // $i.createDirectory("public", ($i) => {
                 //     //     implementations($["public implementations"], $i)
                 //     // })
-
-
-
-
                 //     // $i.createFile("implementationDeclarations.ts", ($i) => {
                 //     //     $i.literal(`import * as glo from "./internal_glossary"`)
                 //     //     $i.literal(`import * as api from "../api"`)
@@ -166,26 +136,21 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 //         $i.literal(`export * from "./private_definitions"`)
                 //         $i.literal(`export { $a as $x } from "./private"`)
                 //         $i.literal(`export * from "./public"`)
-
                 //         $i.literal(``)
                 //     })
                 // })
                 $i.createFile("index.ts", ($i) => {
                     $i.literal(`export { $a } from "./modules/${$.main}"`)
                     $i.literal(`export * from "./modules/${$.main}/api"`)
-
-
                 })
             })
             tsConfig({ isResource: $.type !== undefined && $.type[0] === "resource" }, $i)
         })
         if ($.type === undefined || $.type[0] !== "glossary") {
             $i.createDirectory("test", ($i) => {
-
                 $i.createDirectory("src", ($i) => {
                     globals($i)
                     $i.createDirectory("bin", ($i) => {
-
                         $i.createFile("test.generated.ts", ($i) => {
                             $i.literal(`#!/usr/bin/env node`)
                             $i.literal(``)
@@ -226,7 +191,6 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                             $i.literal(`import * as pr from "pareto-core-raw"`)
                             $i.literal(`import * as pl from "pareto-core-lib"`)
                             $i.literal(``)
-
                             $.modules.forEach(compare, ($, key) => {
                                 const moduleName = key
                                 $.definition.api.algorithms.forEach(compare, ($, key) => {
@@ -259,10 +223,8 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                         })
                     })
                     $i.createDirectory("modules", ($i) => {
-
                         $.modules.forEach(compare, ($, key) => {
                             const moduleName = key
-
                             $i.createDirectory(key, ($i) => {
                                 const def = $.definition
                                 $.definition.api.algorithms.forEach(compare, ($, key) => {
@@ -271,7 +233,6 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                     //     $i.literal(`import * as pl from "pareto-core-lib"`)
                                     //     $i.literal(``)
                                     //     $i.literal(`import * as tst from "lib-pareto-test"`)
-
                                     //     $i.literal(``)
                                     //     def.api.imports.forEach(compare, ($, key) => {
                                     //         $i.literal(`import * as m${key} from "${$}"`)
@@ -282,7 +243,6 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                     //             switch ($[0]) {
                                     //                 case "algorithm":
                                     //                     pl.cc($[1], ($) => {
-
                                     //                     })
                                     //                     break
                                     //                 case "constructor":
@@ -297,18 +257,15 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                     //                                                 switch ($.context[0]) {
                                     //                                                     case "import":
                                     //                                                         pl.cc($.context[1], ($) => {
-
                                     //                                                         })
                                     //                                                         break
                                     //                                                     case "local":
                                     //                                                         pl.cc($.context[1], ($) => {
-
                                     //                                                         })
                                     //                                                         break
                                     //                                                     default: pl.au($.context[0])
                                     //                                                 }
                                     //                                             } else {
-
                                     //                                             }
                                     //                                             $i.snippet(`string/*FIXME*/`)
                                     //                                         })
@@ -331,7 +288,6 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                     //         $i.snippet(`}`)
                                     //     })
                                     //     $i.literal(``)
-
                                     // })
                                     $i.createFile(`${key}.p.ts`, ($i) => {
                                         $i.literal(`import * as pt from "pareto-core-types"`)
@@ -366,6 +322,5 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
             $i.literal(`/test/node_modules/`)
             $i.literal(`/tmp`)
         })
-
     }
 }

@@ -192,6 +192,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                     $i.allowed(`data`)
                     $i.allowed(`dependencies`)
                     $i.allowed(`implementation`)
+                    $i.allowed(`interface`)
                     globals($i)
                     $i.directory("bin", ($i) => {
                         $i.file("test.generated.ts", ($i) => {

@@ -54,10 +54,13 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                             })
                         },
                         pr_reportSuperfluousNode: ($) => {
-                            pl.logDebugMessage(`SUPERFLUOUS: ${mtostring.$a.joinNestedStrings({
+                            const red = "\x1b[31m"
+                            const green = "\x1b[32m"
+                            const reset = "\x1b[0m"
+                            pl.logDebugMessage(`${red}superfluous node: ${mtostring.$a.joinNestedStrings({
                                 strings: $.path,
                                 separator: "/",
-                            })}/${$.name}`)
+                            })}/${$.name}${reset}`)
                         },
                     },
                 )(

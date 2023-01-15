@@ -5,9 +5,12 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
 ) => {
     return ($, $i) => {
         const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
-        function tsConfig($: {
-            isResource: boolean
-        }, $i: mfp.IWriter) {
+        function tsConfig(
+            $: {
+                isResource: boolean
+            },
+            $i: mfp.IWriter
+        ) {
             $i.file("tsconfig.json", ($i) => {
                 $i.literal(`{`)
                 $i.literal(`  "compilerOptions": {`)
@@ -44,6 +47,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 $i.literal(``)
             })
         }
+        //$i.allowed(`tmp`) //already defined in 'generateTemplate'
         $i.allowed(`.git`)
         $i.allowed(`pareto`)
         $i.directory("dev", ($i) => {
@@ -184,6 +188,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
         })
         if ($.type === undefined || $.type[0] !== "glossary") {
             $i.directory("test", ($i) => {
+                $i.allowed(`data`)
                 $i.allowed(`dist`)
                 $i.allowed(`node_modules`)
                 $i.allowed(`package-lock.json`)
@@ -366,5 +371,6 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
             $i.literal(`/test/node_modules/`)
             $i.literal(`/tmp`)
         })
+        $i.allowed("README.md")
     }
 }

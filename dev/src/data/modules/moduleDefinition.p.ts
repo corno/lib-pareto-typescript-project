@@ -43,7 +43,7 @@ export const $: mapi.TModuleDefinition = {
                         "context": member(ref("Context"), true),
                         "pipe": member(str()),
                     })),
-                    "procedure": type(er("glossary", "LeafTypeOrNull")),
+                    "procedure": type(ref("TypeReference")),
 
                 }),
                 "Context": taggedUnion({
@@ -59,13 +59,18 @@ export const $: mapi.TModuleDefinition = {
                             "type": member(taggedUnion({
                                 "reference": nullType(),
                                 "constructor": type(group({
-                                    "configuration data": member(er("glossary", "LeafTypeOrNull")),
+                                    "configuration data": member(er("glossary", "OptionalTypeReference")),
                                     "dependencies": member(dictionary(ref("DefinitionReference"))),
                                 })),
                             }))
                         }))),
                     })),
-                })
+                }),
+                "TypeReference": group({
+                    "context": member(ref("Context")),
+                    "namespaces": member(array(str())),
+                    "type": member(str()),
+                }),
             }),
             'interfaces': d({}),
 

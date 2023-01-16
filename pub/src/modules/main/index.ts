@@ -6,7 +6,6 @@ import { icreateProjectGenerator } from "./implementations/createProjectGenerato
 import { icreateProjectSerializer } from "./implementations/createProjectSerializer.p"
 import { icreateTemplateSerializer } from "./implementations/createTemplateSerializer.p"
 import { igenerateProject } from "./implementations/generateProject.p"
-import { iserializeLeafType } from "./implementations/serializeLeafType.p"
 
 export * from "./api"
 
@@ -18,5 +17,4 @@ export const $a: API = {
     "createProjectSerializer": icreateProjectSerializer,
     "createTemplateSerializer": icreateTemplateSerializer,
     "generateProject": igenerateProject,
-    "serializeLeafType": iserializeLeafType,
 }

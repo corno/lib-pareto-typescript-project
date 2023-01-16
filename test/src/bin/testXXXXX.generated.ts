@@ -14,7 +14,6 @@ import { test as main_createProjectGenerator } from "../modules/main/createProje
 import { test as main_createProjectSerializer } from "../modules/main/createProjectSerializer.p"
 import { test as main_createTemplateSerializer } from "../modules/main/createTemplateSerializer.p"
 import { test as main_generateProject } from "../modules/main/generateProject.p"
-import { test as main_serializeLeafType } from "../modules/main/serializeLeafType.p"
 import { test as moduleDefinition_createSerializer } from "../modules/moduleDefinition/createSerializer.p"
 
 const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({
@@ -35,7 +34,6 @@ const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElemen
         "createProjectSerializer": main_createProjectSerializer,
         "createTemplateSerializer": main_createTemplateSerializer,
         "generateProject": main_generateProject,
-        "serializeLeafType": main_serializeLeafType,
     }),
     "moduleDefinition": pr.wrapRawDictionary({
         "createSerializer": moduleDefinition_createSerializer,

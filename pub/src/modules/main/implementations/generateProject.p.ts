@@ -25,10 +25,8 @@ export const igenerateProject: api.CgenerateProject = ($) => {
                                     sf_compare: mcoll.$a.localeIsABeforeB,
                                 })
                             }),
-                            cb_serializeLeafType: foo.$a.serializeLeafType,
                         }
                     ),
-                    cb_serializeLeafType: foo.$a.serializeLeafType,
                 }
             ),
             cb_serializeTemplate: foo.$a.createTemplateSerializer(

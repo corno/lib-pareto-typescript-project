@@ -6,7 +6,7 @@ import {
     type,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function
+    array, dictionary, group, member, taggedUnion, types, _function, optional
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -35,7 +35,7 @@ export const $: mapi.TModuleDefinition = {
                         "members": member(dictionary(ref("Interface")))
                     })),
                     "method": type(group({
-                        "data": member(ref("LeafTypeOrNull")),
+                        "data": member(ref("OptionalTypeReference")),
                         "interface": member(taggedUnion({
                             "set": type(group({
                                 "interface": member(str())
@@ -50,7 +50,7 @@ export const $: mapi.TModuleDefinition = {
                     "interface": member(str())
                 }),
                 "Callback": group({
-                    "data": member(ref("LeafTypeOrNull")),
+                    "data": member(ref("OptionalTypeReference")),
                     "context": member(ref("Context"), true),
                     "interface": member(str())
                 }),
@@ -60,8 +60,8 @@ export const $: mapi.TModuleDefinition = {
                 }),
                 "Function": group({
                     "async": member(bln(), true),
-                    "data": member(ref("LeafType")),
-                    "return value": member(ref("LeafType"))
+                    "data": member(ref("TypeReference")),
+                    "return value": member(ref("TypeReference"))
                 }),
                 "Glossary": group({
                     "parameters": member(ref("Parameters"), true),
@@ -74,46 +74,38 @@ export const $: mapi.TModuleDefinition = {
                         "out": member(ref("InterfaceReference")),
                     }))),
                 }),
-                "LeafType": taggedUnion({
-                    "boolean": nullType(),
-                    "string": nullType(),
-                    "number": nullType(),
-                    "reference": type(group({
-                        "context": member(ref("Context")),
-                        "namespaces": member(array(str())),
-                        "type": member(str()),
-                    })),
-                }),
-                "LeafTypeOrNull": taggedUnion({
-                    "type": type(ref("LeafType")),
-                    "null": nullType(),
-                }),
+                "OptionalTypeReference": optional(ref("TypeReference")),
                 "Parameters": ['dictionary', nullType()],
                 "Template": group({
                     "parameters": member(["dictionary", nullType()]),
                     "type": member(ref("Type"))
                 }),
                 "Type": taggedUnion({
+                    "null": nullType(),
+                    "boolean": nullType(),
+                    "string": nullType(),
+                    "number": nullType(),
+                    "reference": type(ref("TypeReference")),
                     "array": type(ref("Type")),
-                    "dictionary": type(ref("TypeOrNull")),
+                    "dictionary": type(ref("Type")),
                     "group": type(dictionary(group({
                         "type": member(ref("Type")),
                         "optional": member(bln(), true)
                     }))),
-                    "leaf": type(ref("LeafType")),
                     "nested": type(ref("Type")),
                     "optional": type(ref("Type")),
                     "parameter": type(str()),
                     "template": type(group({
                         "context": member(ref("Context"), true),
                         "template": member(str()),
-                        "arguments": member(dictionary(ref("TypeOrNull")))
+                        "arguments": member(dictionary(ref("Type")))
                     })),
-                    "taggedUnion": type(dictionary(ref("TypeOrNull"))),
+                    "taggedUnion": type(dictionary(ref("Type"))),
                 }),
-                "TypeOrNull": taggedUnion({
-                    "type": type(ref("Type")),
-                    "null": nullType(),
+                "TypeReference": group({
+                    "context": member(ref("Context")),
+                    "namespaces": member(array(str())),
+                    "type": member(str()),
                 }),
             }),
             'interfaces': d({}),

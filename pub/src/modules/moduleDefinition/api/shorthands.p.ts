@@ -8,21 +8,21 @@ import * as mglossary from "../../glossary"
 const wd = pr.wrapRawDictionary
 const wa = pr.wrapRawArray
 
-export function boolean(): mglossary.TLeafType {
+export function boolean(): mglossary.TType {
     return ['boolean', null]
 }
 
-export function string(): mglossary.TLeafType {
+export function string(): mglossary.TType {
     return ['string', null]
 }
-export function reference(type: string): mglossary.TLeafType {
+export function reference(type: string): mglossary.TType {
     return ['reference', {
         'context': ['local', null],
         'namespaces': wa([]),
         'type': type,
     }]
 }
-export function externalReference(context: string, type: string): mglossary.TLeafType {
+export function externalReference(context: string, type: string): mglossary.TType {
     return ['reference', {
         'context': ['import', context],
         'namespaces': wa([]),
@@ -30,6 +30,6 @@ export function externalReference(context: string, type: string): mglossary.TLea
     }]
 }
 
-export function number(): mglossary.TLeafType {
+export function number(): mglossary.TType {
     return ['number', null]
 }

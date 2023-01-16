@@ -1,4 +1,5 @@
 import * as pr from "pareto-core-raw"
+import { externalTypeReference } from "../../../../pub/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "../../../../pub/dist/modules/moduleDefinition"
 
@@ -39,11 +40,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     }),
                     'templates': d({}),
                     'types': d({
-                        "root": ['leaf', ['reference', {
+                        "root": ['reference', {
                             'context': ['local', null],
                             'namespaces': a(["types"]),
                             'type': "FOO",
-                        }]],
+                        }],
                     }),
                     'interfaces': d({}),
                 },
@@ -55,11 +56,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'functions': d({}),
         'callbacks': d({
             "Serialize": {
-                'data': ['type', ['reference', {
+                'data': {
                     'context': ['local', null],
                     'namespaces': a([]),
                     'type': "Glossary",
-                }]],
+                },
                 'context': ['import', "fp"],
                 'interface': "Line",
             },
@@ -67,14 +68,15 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'pipes': d({}),
     },
     'api': {
-        'imports': d({}),
+        'imports': d({
+        }),
         'algorithms': d({
             "createSerializer": {
                 'definition': ['callback', {
                     'callback': "Serialize",
                 }],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
                         "compare": ['function', {
                             'context': ['import', "collation"],

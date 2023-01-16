@@ -80,11 +80,11 @@ export const api: mapi.TModuleDefinition = def({
                 'context': ['import', "fp"],
                 'interface': "Block",
             },
-            "SerializeLeafType": {
-                'data': ['type', externalReference("glossary", "LeafType")],
-                'context': ['import', "fp"],
-                'interface': "Line",
-            },
+            // "SerializeLeafType": {
+            //     'data': ['type', externalReference("glossary", "LeafType")],
+            //     'context': ['import', "fp"],
+            //     'interface': "Line",
+            // },
             "SerializeModuleDefinition": {
                 'data': ['type', externalReference("moduleDefinition", "ModuleDefinition")],
                 'context': ['import', "fp"],
@@ -135,10 +135,10 @@ export const api: mapi.TModuleDefinition = def({
                             //'context': ['import', "glossary"],
                             'callback': "SerializeGlossary"
                         }],
-                        "serializeLeafType": ['callback', {
-                            //'context': ['import', "glossary"],
-                            'callback': "SerializeLeafType"
-                        }],
+                        // "serializeLeafType": ['callback', {
+                        //     //'context': ['import', "glossary"],
+                        //     'callback': "SerializeLeafType"
+                        // }],
                     }),
                     'callback': {
                         'callback': "SerializeModuleDefinition"
@@ -160,10 +160,10 @@ export const api: mapi.TModuleDefinition = def({
                             //'context': ['import', "api"],
                             'callback': "SerializeModuleDefinition"
                         }],
-                        "serializeLeafType": ['callback', {
-                            //'context': ['import', "glossary"],
-                            'callback': "SerializeLeafType"
-                        }],
+                        // "serializeLeafType": ['callback', {
+                        //     //'context': ['import', "glossary"],
+                        //     'callback': "SerializeLeafType"
+                        // }],
                     }),
                     'callback': {
                         'callback': "SerializeProject"
@@ -186,12 +186,12 @@ export const api: mapi.TModuleDefinition = def({
                     }
                 }]
             },
-            "serializeLeafType": {
-                'definition': ['callback', {
-                    'callback': "SerializeLeafType"
-                }],
-                'type': ['reference', null],
-            },
+            // "serializeLeafType": {
+            //     'definition': ['callback', {
+            //         'callback': "SerializeLeafType"
+            //     }],
+            //     'type': ['reference', null],
+            // },
             "createGlossarySerializer": {
                 'definition': ['callback', {
                     'callback': "SerializeGlossary"

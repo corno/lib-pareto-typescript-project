@@ -7,14 +7,12 @@ import {
     array,
     externalReference as er,
     string as str,
-    nullType,
-    type,
     reference as ref,
     boolean as bln,
     number as nr,
     nested,
     template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group
+    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference
 } from "../../glossary/api/shorthands.p"
 
 
@@ -47,11 +45,11 @@ export const icreateLiana2ParetoMapper: api.CcreateLiana2ParetoMapper = ($d) => 
                                 },
                             }),
                             'types': types({
-                                "root": ['leaf', ['reference', {
+                                "root": ['reference', {
                                     'context': ['local', null],
                                     'namespaces': a(["types"]),
                                     'type': $.root
-                                }]]
+                                }]
                             }),
                             'interfaces': d({}),
                         },
@@ -71,7 +69,7 @@ export const icreateLiana2ParetoMapper: api.CcreateLiana2ParetoMapper = ($d) => 
                 'functions': d({}),
                 'callbacks': d({
                     "Serialize": {
-                        'data': ['type', reference("Glossary")],
+                        'data': typeReference("Glossary"),
                         'context': ['import', "fp"],
                         'interface': "Line",
                     },
@@ -80,6 +78,7 @@ export const icreateLiana2ParetoMapper: api.CcreateLiana2ParetoMapper = ($d) => 
             },
             'api': {
                 'imports': d({
+                    "common": "glo-pareto-common",
                 }),
                 'algorithms': d({
                     "createSerializer": {
@@ -87,7 +86,7 @@ export const icreateLiana2ParetoMapper: api.CcreateLiana2ParetoMapper = ($d) => 
                             'callback': "Serialize"
                         }],
                         'type': ['constructor', {
-                            'configuration data': ['null', null],
+                            'configuration data': externalTypeReference("common", "Null"),
                             'dependencies': d({
                                 "enrichedDictionaryForEach": ['callback', {
                                     'context': ['import', "temp"],

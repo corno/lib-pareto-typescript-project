@@ -27,8 +27,29 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 }
             })
         }
-        function serializeLeafType($: mglossary.TLeafType, $i: mfp.ILine) {
+        function serializeOptionalTypeReference($: mglossary.TOptionalTypeReference, $i: mfp.ILine) {
+            if ($ === null) {
+                //
+            } else {
+                $i.snippet(`$: `)
+                serializeTypeReference($, $i)
+                $i.snippet(`, `)
+            }
+        }
+        function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
+            serializeContext($.context, $i)
+            $.namespaces.forEach(($) => {
+                $i.snippet(`N${$}.`)
+            })
+            $i.snippet(`T${$.type}`)
+        }
+        function serializeType($: mglossary.TType, $i: mfp.ILine) {
             switch ($[0]) {
+                case "null":
+                    pl.cc($[1], ($) => {
+                        $i.snippet(`null`)
+                    })
+                    break
                 case "boolean":
                     pl.cc($[1], ($) => {
                         $i.snippet(`boolean`)
@@ -36,11 +57,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                     break
                 case "reference":
                     pl.cc($[1], ($) => {
-                        serializeContext($.context, $i)
-                        $.namespaces.forEach(($) => {
-                            $i.snippet(`N${$}.`)
-                        })
-                        $i.snippet(`T${$.type}`)
+                        serializeTypeReference($, $i)
                     })
                     break
                 case "number":
@@ -53,11 +70,6 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                         $i.snippet(`string`)
                     })
                     break
-                default: pl.au($[0])
-            }
-        }
-        function serializeType($: mglossary.TType, $i: mfp.ILine) {
-            switch ($[0]) {
                 case "array":
                     pl.cc($[1], ($) => {
                         $i.snippet(`pt.Array<`)
@@ -68,20 +80,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 case "dictionary":
                     pl.cc($[1], ($) => {
                         $i.snippet(`pt.Dictionary<`)
-                        switch ($[0]) {
-                            case "null":
-                                pl.cc($[1], ($) => {
-                                    $i.snippet(`null`)
-                                })
-                                break
-                            case "type":
-                                pl.cc($[1], ($) => {
-                                    serializeType($, $i)
-    
-                                })
-                                break
-                            default: pl.au($[0])
-                        }
+                        serializeType($, $i)
                         $i.snippet(`>`)
                     })
                     break
@@ -97,11 +96,6 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                             })
                         })
                         $i.snippet(`}`)
-                    })
-                    break
-                case "leaf":
-                    pl.cc($[1], ($) => {
-                        serializeLeafType($, $i)
                     })
                     break
                 case "nested":
@@ -128,20 +122,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                             $.forEach(compare, ($, key) => {
                                 $i.line(($i) => {
                                     $i.snippet(`| ["${key}", `)
-                                    switch ($[0]) {
-                                        case "null":
-                                            pl.cc($[1], ($) => {
-                                                $i.snippet(`null`)
-                                            })
-                                            break
-                                        case "type":
-                                            pl.cc($[1], ($) => {
-                                                serializeType($, $i)
-    
-                                            })
-                                            break
-                                        default: pl.au($[0])
-                                    }
+                                    serializeType($, $i)
                                     $i.snippet(`]`)
                                 })
                             })
@@ -160,23 +141,11 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                                 $c(($) => {
                                     $i.snippet($.isFirst ? `` : `, `)
                                     pl.cc($.value, ($) => {
-                                        switch ($[0]) {
-                                            case "null":
-                                                pl.cc($[1], ($) => {
-                                                    $i.snippet(`null`)
-                                                })
-                                                break
-                                            case "type":
-                                                pl.cc($[1], ($) => {
-                                                    serializeType($, $i)
-                                                })
-                                                break
-                                            default: pl.au($[0])
-                                        }
-    
+                                        serializeType($, $i)
+
                                     })
                                 })
-    
+
                                 $i.snippet(`>`)
                             },
                             onEmpty: () => {
@@ -197,7 +166,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                     break
                 case "local":
                     pl.cc($[1], ($) => {
-    
+
                     })
                     break
                 default: pl.au($[0])
@@ -208,13 +177,13 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 serializeContext($.context, $i)
             }
             $i.snippet(`I${$.interface}`)
-    
+
         }
         function serializeInterface($: mglossary.TInterface, $i: mfp.ILine) {
             switch ($[0]) {
                 case "group":
                     pl.cc($[1], ($) => {
-    
+
                         $i.snippet(`{`)
                         $i.indent(($i) => {
                             $.members.forEach(compare, ($, key) => {
@@ -229,23 +198,10 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                     break
                 case "method":
                     pl.cc($[1], ($) => {
-    
+
                         $i.snippet(`(`)
                         pl.cc($.data, ($) => {
-                            switch ($[0]) {
-                                case "null":
-                                    pl.cc($[1], ($) => {
-                                    })
-                                    break
-                                case "type":
-                                    pl.cc($[1], ($) => {
-                                        $i.snippet(`$: `)
-                                        serializeLeafType($, $i)
-                                        $i.snippet(`, `)
-                                    })
-                                    break
-                                default: pl.au($[0])
-                            }
+                            serializeOptionalTypeReference($, $i)
                         })
                         pl.cc($.interface, ($) => {
                             switch ($[0]) {
@@ -273,10 +229,10 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                     break
                 default: pl.au($[0])
             }
-    
+
         }
         function serializeNamespace($: mglossary.TNamespace, $i: mfp.IBlock) {
-    
+
             if ($.namespaces !== undefined) {
                 $.namespaces.forEach(compare, ($, key) => {
                     $i.literal(``)
@@ -304,7 +260,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                                     $i.snippet(`${$.isFirst ? `` : `, `}A${$.key}`)
                                 })
                                 $i.snippet(`>`)
-    
+
                             }
                         })
                         $i.snippet(` = `)
@@ -350,14 +306,14 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 $i.snippet(`export type ${$.async ? "A" : "F"}${key} = `)
                 serializeParameters(parameters, $i)
                 $i.snippet(`($: `)
-                serializeLeafType($.data, $i)
+                serializeTypeReference($.data, $i)
                 $i.snippet(`) => `)
                 if ($.async) {
                     $i.snippet(`pt.AsyncValue<`)
-                    serializeLeafType($["return value"], $i)
+                    serializeTypeReference($["return value"], $i)
                     $i.snippet(`>`)
                 } else {
-                    serializeLeafType($["return value"], $i)
+                    serializeTypeReference($["return value"], $i)
                 }
             })
         })
@@ -365,20 +321,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             $i.literal(``)
             $i.line(($i) => {
                 $i.snippet(`export type X${key} = (`)
-                switch ($.data[0]) {
-                    case "null":
-                        pl.cc($.data[1], ($) => {
-                        })
-                        break
-                    case "type":
-                        pl.cc($.data[1], ($) => {
-                            $i.snippet(`$: `)
-                            serializeLeafType($, $i)
-                            $i.snippet(`, `)
-                        })
-                        break
-                    default: pl.au($.data[0])
-                }
+                serializeOptionalTypeReference($.data, $i)
                 $i.snippet(`$i: `)
                 if ($.context !== undefined) {
                     serializeContext($.context, $i)

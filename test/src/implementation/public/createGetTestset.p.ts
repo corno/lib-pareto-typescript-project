@@ -11,8 +11,6 @@ import * as api from "../../interface"
 import {
     externalReference as er,
     string as str,
-    nullType,
-    type,
     reference as ref,
     boolean as bln,
     number as nr,

@@ -15,7 +15,20 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                 $d.cb_serializeGlossary($, $i)
             })
         }
-
+        function serializeOptionalTypeReference($: mglossary.TOptionalTypeReference, $i: mfp.ILine) {
+            if ($ === null) {
+                //
+            } else {
+                serializeTypeReference($, $i)
+            }
+        }
+        function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
+            serializeContext($.context, $i)
+            $.namespaces.forEach(($) => {
+                $i.snippet(`N${$}.`)
+            })
+            $i.snippet(`T${$.type}`)
+        }
         function serializeContext($: mmoduleDefinition.TContext | undefined, $i: mfp.ILine) {
 
             if ($ !== undefined) {
@@ -73,19 +86,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                 case "procedure":
                     pl.cc($[1], ($) => {
                         $i.snippet(`pt.Procedure<`)
-                        switch ($[0]) {
-                            case "null":
-                                pl.cc($[1], ($) => {
-                                    $i.snippet(`null`)
-                                })
-                                break
-                            case "type":
-                                pl.cc($[1], ($) => {
-                                    $d.cb_serializeLeafType($, $i)
-                                })
-                                break
-                            default: pl.au($[0])
-                        }
+                        serializeOptionalTypeReference($, $i)
                         $i.snippet(`>`)
                     })
                     break
@@ -114,20 +115,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                         case "constructor":
                             pl.cc($.type[1], ($) => {
                                 $i.snippet(`(`)
-                                switch ($["configuration data"][0]) {
-                                    case "null":
-                                        pl.cc($["configuration data"][1], ($) => {
-                                        })
-                                        break
-                                    case "type":
-                                        pl.cc($["configuration data"][1], ($) => {
-                                            $i.snippet(`$: `)
-                                            $d.cb_serializeLeafType($, $i)
-                                            $i.snippet(`, `)
-                                        })
-                                        break
-                                    default: pl.au($["configuration data"][0])
-                                }
+                                serializeOptionalTypeReference($["configuration data"], $i)
                                 $i.snippet(`$d: {`)
                                 $i.indent(($i) => {
                                     $.dependencies.forEach(compare, ($, key) => {

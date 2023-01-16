@@ -3,7 +3,7 @@ import * as mfp from "lib-fountain-pen"
 
 export type TCallback = {
     readonly "context"?: TContext
-    readonly "data": TLeafTypeOrNull
+    readonly "data": TOptionalTypeReference
     readonly "interface": string
 }
 
@@ -13,8 +13,8 @@ export type TContext =
 
 export type TFunction = {
     readonly "async"?: boolean
-    readonly "data": TLeafType
-    readonly "return value": TLeafType
+    readonly "data": TTypeReference
+    readonly "return value": TTypeReference
 }
 
 export type TGlossary = {
@@ -34,7 +34,7 @@ export type TInterface =
         readonly "members": pt.Dictionary<TInterface>
     }]
     | ["method", {
-        readonly "data": TLeafTypeOrNull
+        readonly "data": TOptionalTypeReference
         readonly "interface": 
             | ["null", null]
             | ["set", {
@@ -48,26 +48,14 @@ export type TInterfaceReference = {
     readonly "interface": string
 }
 
-export type TLeafType = 
-    | ["boolean", null]
-    | ["number", null]
-    | ["reference", {
-        readonly "context": TContext
-        readonly "namespaces": pt.Array<string>
-        readonly "type": string
-    }]
-    | ["string", null]
-
-export type TLeafTypeOrNull = 
-    | ["null", null]
-    | ["type", TLeafType]
-
 export type TNamespace = {
     readonly "interfaces": pt.Dictionary<TInterface>
     readonly "namespaces"?: pt.Dictionary<TNamespace>
     readonly "templates"?: pt.Dictionary<TTemplate>
     readonly "types": pt.Dictionary<TType>
 }
+
+export type TOptionalTypeReference = null | TTypeReference
 
 export type TParameters = pt.Dictionary<null>
 
@@ -78,24 +66,30 @@ export type TTemplate = {
 
 export type TType = 
     | ["array", TType]
-    | ["dictionary", TTypeOrNull]
+    | ["boolean", null]
+    | ["dictionary", TType]
     | ["group", pt.Dictionary<{
         readonly "optional"?: boolean
         readonly "type": TType
     }>]
-    | ["leaf", TLeafType]
     | ["nested", TType]
+    | ["null", null]
+    | ["number", null]
     | ["optional", TType]
     | ["parameter", string]
-    | ["taggedUnion", pt.Dictionary<TTypeOrNull>]
+    | ["reference", TTypeReference]
+    | ["string", null]
+    | ["taggedUnion", pt.Dictionary<TType>]
     | ["template", {
-        readonly "arguments": pt.Dictionary<TTypeOrNull>
+        readonly "arguments": pt.Dictionary<TType>
         readonly "context"?: TContext
         readonly "template": string
     }]
 
-export type TTypeOrNull = 
-    | ["null", null]
-    | ["type", TType]
+export type TTypeReference = {
+    readonly "context": TContext
+    readonly "namespaces": pt.Array<string>
+    readonly "type": string
+}
 
 export type XSerialize = ($: TGlossary, $i: mfp.ILine) => void

@@ -31,8 +31,6 @@ export type AGetSingleArgument = ($: TArguments) => pt.AsyncValue<string>
 
 export type XSerializeGlossary = ($: mglossary.TGlossary, $i: mfp.IBlock) => void
 
-export type XSerializeLeafType = ($: mglossary.TLeafType, $i: mfp.ILine) => void
-
 export type XSerializeModuleDefinition = ($: mmoduleDefinition.TModuleDefinition, $i: mfp.IWriter) => void
 
 export type XSerializeProject = ($: mproject.TProject, $i: mfp.IWriter) => void

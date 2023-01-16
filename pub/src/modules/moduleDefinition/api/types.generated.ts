@@ -24,7 +24,7 @@ export type TDefinitionReference =
         readonly "context"?: TContext
         readonly "pipe": string
     }]
-    | ["procedure", mglossary.TLeafTypeOrNull]
+    | ["procedure", TTypeReference]
 
 export type TModuleDefinition = {
     readonly "api": {
@@ -32,7 +32,7 @@ export type TModuleDefinition = {
             readonly "definition": TDefinitionReference
             readonly "type": 
                 | ["constructor", {
-                    readonly "configuration data": mglossary.TLeafTypeOrNull
+                    readonly "configuration data": mglossary.TOptionalTypeReference
                     readonly "dependencies": pt.Dictionary<TDefinitionReference>
                 }]
                 | ["reference", null]
@@ -40,6 +40,12 @@ export type TModuleDefinition = {
         readonly "imports": pt.Dictionary<string>
     }
     readonly "glossary": mglossary.TGlossary
+}
+
+export type TTypeReference = {
+    readonly "context": TContext
+    readonly "namespaces": pt.Array<string>
+    readonly "type": string
 }
 
 export type XSerialize = ($: TModuleDefinition, $i: mfp.IWriter) => void

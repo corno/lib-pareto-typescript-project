@@ -15,7 +15,6 @@ export type CcreateGlossarySerializer = ($d: {
 export type CcreateModuleDefinitionSerializer = ($d: {
     readonly "sf_compare": mcollation.FIsABeforeB
     readonly "cb_serializeGlossary": glo.XSerializeGlossary
-    readonly "cb_serializeLeafType": glo.XSerializeLeafType
 }) => glo.XSerializeModuleDefinition
 
 export type CcreateParametersParser = ($d: {
@@ -31,7 +30,6 @@ export type CcreateProjectGenerator = ($d: {
 
 export type CcreateProjectSerializer = ($d: {
     readonly "sf_compare": mcollation.FIsABeforeB
-    readonly "cb_serializeLeafType": glo.XSerializeLeafType
     readonly "cb_serializeModuleDefinition": glo.XSerializeModuleDefinition
 }) => glo.XSerializeProject
 
@@ -41,8 +39,6 @@ export type CcreateTemplateSerializer = ($d: {
 
 export type CgenerateProject = pt.Procedure<glo.TProjectSettings>
 
-export type CserializeLeafType = glo.XSerializeLeafType
-
 export type API = {
     createGlossarySerializer: CcreateGlossarySerializer
     createModuleDefinitionSerializer: CcreateModuleDefinitionSerializer
@@ -51,5 +47,4 @@ export type API = {
     createProjectSerializer: CcreateProjectSerializer
     createTemplateSerializer: CcreateTemplateSerializer
     generateProject: CgenerateProject
-    serializeLeafType: CserializeLeafType
 }

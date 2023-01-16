@@ -1,4 +1,6 @@
 import * as api from "../api"
+
+import * as mproject from "../api"
 import * as mfp from "lib-fountain-pen"
 export const icreateProjectSerializer: api.CcreateProjectSerializer = (
     $d,
@@ -239,6 +241,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                             $i.literal(`import * as pt from "pareto-core-types"`)
                             $i.literal(`import * as pr from "pareto-core-raw"`)
                             $i.literal(`import * as pl from "pareto-core-lib"`)
+                            $i.literal(`import * as tst from "lib-pareto-test"`)
                             $i.literal(``)
                             $.modules.forEach(compare, ($, key) => {
                                 const moduleName = key
@@ -250,7 +253,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                             })
                             $i.literal(``)
                             $i.line(($i) => {
-                                $i.snippet(`const x = pr.wrapRawDictionary({`)
+                                $i.snippet(`const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({`)
                                 $i.indent(($i) => {
                                     $.modules.forEach(compare, ($, key) => {
                                         const moduleName = key

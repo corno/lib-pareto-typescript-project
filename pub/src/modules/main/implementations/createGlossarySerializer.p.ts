@@ -2,12 +2,13 @@ import * as pl from "pareto-core-lib"
 
 import * as api from "../api"
 
+import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => {
     const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
 
-    function serializeLeafType($: api.TLeafType, $i: mfp.ILine) {
+    function serializeLeafType($: mglossary.TLeafType, $i: mfp.ILine) {
         switch ($[0]) {
             case "boolean":
                 pl.cc($[1], ($) => {
@@ -37,7 +38,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             default: pl.au($[0])
         }
     }
-    function serializeType($: api.TType, $i: mfp.ILine) {
+    function serializeType($: mglossary.TType, $i: mfp.ILine) {
         switch ($[0]) {
             case "array":
                 pl.cc($[1], ($) => {
@@ -169,7 +170,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             default: pl.au($[0])
         }
     }
-    function serializeContext($: api.TContext, $i: mfp.ILine) {
+    function serializeContext($: mglossary.TContext, $i: mfp.ILine) {
         switch ($[0]) {
             case "import":
                 pl.cc($[1], ($) => {
@@ -184,14 +185,14 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             default: pl.au($[0])
         }
     }
-    function serializeInterfaceReference($: api.TInterfaceReference, $i: mfp.ILine) {
+    function serializeInterfaceReference($: mglossary.TInterfaceReference, $i: mfp.ILine) {
         if ($.context !== undefined) {
             serializeContext($.context, $i)
         }
         $i.snippet(`I${$.interface}`)
 
     }
-    function serializeInterface($: api.TInterface, $i: mfp.ILine) {
+    function serializeInterface($: mglossary.TInterface, $i: mfp.ILine) {
         switch ($[0]) {
             case "group":
                 pl.cc($[1], ($) => {

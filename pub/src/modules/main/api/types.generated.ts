@@ -1,7 +1,9 @@
 import * as pt from "pareto-core-types"
 import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
+import * as mglossary from "../../glossary"
 import * as mmain from "lib-pareto-main"
+import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mproject from "../../project"
 
 export type TArgumentError = 
@@ -26,5 +28,15 @@ export type ICreateWriter = ($: string, $c: ($i: mfp.IWriter) => void) => void
 export type IParseArguments = ($: TArguments, ) => void
 
 export type IProcessArgument = ($: string, ) => void
+
+export type XSerializeGlossary = ($: mglossary.TGlossary, $i: mfp.IBlock) => void
+
+export type XSerializeLeafType = ($: mglossary.TLeafType, $i: mfp.ILine) => void
+
+export type XSerializeModuleDefinition = ($: mmoduleDefinition.TModuleDefinition, $i: mfp.IWriter) => void
+
+export type XSerializeProject = ($: mproject.TProject, $i: mfp.IWriter) => void
+
+export type XSerializeTemplate = ($: mproject.TProject, $i: mfp.IWriter) => void
 
 export type PParseArguments = ($i: IProcessArgument, $c: ($i: IParseArguments) => void) => void

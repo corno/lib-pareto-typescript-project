@@ -2,7 +2,7 @@
   "author": "Corno",
   "dependencies": {
     "glo-pareto-common": "^0.2.0",
-    "lib-fountain-pen": "^0.16.0",
+    "lib-fountain-pen": "^0.17.0",
     "lib-pareto-main": "^0.3.0",
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.0",
@@ -23,5 +23,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.25.0",
-  "content-fingerprint": "f2b4eecb8153d85d32aad2366637c78a274bbe53"
+  "content-fingerprint": "bf4cf433d18c7ec950d5be599bed8f0285c629a7"
 }

@@ -89,7 +89,3 @@ export type TType =
 export type TTypeOrNull = 
     | ["null", null]
     | ["type", TType]
-
-export type XSerializeGlossary = ($: TGlossary, $i: mfp.IBlock) => void
-
-export type XSerializeLeafType = ($: TLeafType, $i: mfp.ILine) => void

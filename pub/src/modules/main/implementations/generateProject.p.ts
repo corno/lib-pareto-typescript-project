@@ -2,10 +2,9 @@ import * as pl from "pareto-core-lib"
 
 import * as api from "../api"
 
+import * as foo from "../index"
+
 import * as mtemp from "../../temp"
-import * as mproject from "../../project"
-import * as mapi from "../../api"
-import * as mglossary from "../../glossary"
 import * as mcoll from "res-pareto-collation"
 
 import { icreateProjectGenerator } from "./createProjectGenerator.p"
@@ -14,25 +13,25 @@ export const igenerateProject: api.CgenerateProject = ($) => {
 
     icreateProjectGenerator(
         {
-            cb_serializeProject: mproject.$a.createProjectSerializer(
+            cb_serializeProject: foo.$a.createProjectSerializer(
                 {
                     sf_compare: mcoll.$a.localeIsABeforeB,
-                    cb_serializeModuleDefinition: mapi.$a.createModuleDefinitionSerializer(
+                    cb_serializeModuleDefinition: foo.$a.createModuleDefinitionSerializer(
                         {
                             sf_compare: mcoll.$a.localeIsABeforeB,
-                            cb_serializeGlossary: mglossary.$a.createGlossarySerializer({
+                            cb_serializeGlossary: foo.$a.createGlossarySerializer({
                                 sf_compare: mcoll.$a.localeIsABeforeB,
                                 cb_enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
                                     sf_compare: mcoll.$a.localeIsABeforeB,
                                 })
                             }),
-                            cb_serializeLeafType: mglossary.$a.serializeLeafType,
+                            cb_serializeLeafType: foo.$a.serializeLeafType,
                         }
                     ),
-                    cb_serializeLeafType: mglossary.$a.serializeLeafType,
+                    cb_serializeLeafType: foo.$a.serializeLeafType,
                 }
             ),
-            cb_serializeTemplate: mproject.$a.createTemplateSerializer(
+            cb_serializeTemplate: foo.$a.createTemplateSerializer(
                 {
                     sf_compare: mcoll.$a.localeIsABeforeB,
                 }

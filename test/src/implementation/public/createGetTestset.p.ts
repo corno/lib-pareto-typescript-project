@@ -22,7 +22,7 @@ import {
 } from "../../../../pub/dist/modules/glossary/api/shorthands.p"
 
 
-import { string, reference, externalReference, number, boolean } from "../../../../pub/dist/modules/api/api/shorthands.p"
+import { string, reference, externalReference, number, boolean } from "../../../../pub/dist/modules/moduleDefinition/api/shorthands.p"
 import * as NProject from "../../../../pub/dist/modules/project"
 const wd = pr.wrapRawDictionary
 

@@ -1,7 +1,12 @@
 import * as pl from "pareto-core-lib"
+
 import * as api from "../api"
+
+import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
+
+
 export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
         const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
@@ -11,7 +16,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
             })
         }
 
-        function serializeContext($: api.TContext | undefined, $i: mfp.ILine) {
+        function serializeContext($: mmoduleDefinition.TContext | undefined, $i: mfp.ILine) {
 
             if ($ !== undefined) {
                 pl.cc($, ($) => {
@@ -39,7 +44,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
             }
         }
 
-        function serializeDefinitionReference($: api.TDefinitionReference, $i: mfp.ILine) {
+        function serializeDefinitionReference($: mmoduleDefinition.TDefinitionReference, $i: mfp.ILine) {
             switch ($[0]) {
                 case "callback":
                     pl.cc($[1], ($) => {

@@ -13,125 +13,12 @@ import {
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/api/api/shorthands.p"
 import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
 import * as mapi from "lib-pareto-typescript-project/dist/modules/api"
+import { api } from "./api.p"
 const wd = pr.wrapRawDictionary
 
 function def($: mapi.TModuleDefinition): mapi.TModuleDefinition {
     return $
 }
-
-export const api: mapi.TModuleDefinition = def({
-    'glossary': {
-        'imports': wd({
-            "project": "../../project",
-            "common": "glo-pareto-common",
-            "main": "lib-pareto-main",
-            "fp": "lib-fountain-pen",
-        }),
-        'types': types({
-            "ArgumentError": taggedUnion({
-                "missing": nullType(),
-                "too many": nullType(),
-            }),
-            "Arguments": array(str()),
-            "ProjectSettings": group({
-                "project": member(er("project", "Project")),
-                "mainData": member(er("main", "MainData")),
-            }),
-            "Parameters": group({
-                "testDirectory": member(str()),
-            }),
-        }),
-        'functions': wd({
-            "GetSingleArgument": _function(reference("Arguments"), string(), true),
-
-        }),
-        'interfaces': wd({
-            "CreateWriter": ['method', {
-                'data': ['type', string()],
-                'interface': ['set', {
-                    'context': ['import', "fp"],
-                    'interface': "Writer"
-                }],
-            }],
-            "ParseArguments": ['method', {
-                'data': ['type', reference("Arguments")],
-                'interface': ['null', null],
-            }],
-            "ProcessArgument": ['method', {
-                'data': ['type', string()],
-                'interface': ['null', null],
-            }],
-        }),
-        // 'interfaces': wd({
-        //     // "SingleArgument": {
-        //     //     "members": wd({
-        //     //         "Z": ["callback", ['type', string()]],
-        //     //         "Y": ["callback", ['type', string()]],
-        //     //     }),
-        //     // }
-        // }),
-        'callbacks': wd({
-            // "GetSingleArgument": {
-            //     'data': ['type', reference("Arguments")],
-            //     'interface': "SingleArgument",
-            // }
-        }),
-        'pipes': wd({
-            "ParseArguments": {
-                'in': {
-                    'interface': "ParseArguments"
-                },
-                'out': {
-                    'interface': "ProcessArgument"
-                },
-            },
-        }),
-    },
-    "api": {
-        'imports': wd({
-            "project": "../../project",
-            "main": "lib-pareto-main"
-        }),
-        'algorithms': wd({
-            "createParametersParser": {
-                'definition': ['procedure', ['type', reference("Arguments")]],
-                //'definition': ['procedure', ['type', externalReference("main", "Arguments")]],
-                'type': ['constructor', {
-                    'configuration data': ['null', null],
-                    'dependencies': wd({
-                        "callback": ['procedure', ['type', reference("Parameters")]],
-                        "onError": ['procedure', ['type', reference("ArgumentError")]],
-
-                    }),
-                }],
-            },
-            "generateProject": {
-                'definition': ['procedure', ['type', reference("ProjectSettings")]],
-                'type': ['reference', null],
-            },
-            "createProjectGenerator": {
-                'definition': ['procedure', ['type', reference("ProjectSettings")]],
-                'type': ['constructor', {
-                    'configuration data': ['null', null],
-                    'dependencies': wd({
-                        "getSingleArgument": ['function', {
-                            'async': true,
-                            'function': "GetSingleArgument",
-                        }],
-                        "serializeProject": ['callback', {
-                            'context': ['import', "project"],
-                            'callback': "SerializeProject",
-                        }],
-                        "serializeTemplate": ['callback', {
-                            'context': ['import', "project"],
-                            'callback': "SerializeTemplate",
-                        }],
-                    }),
-                }],
-            }
-        })
-    },
-})
 
 export const project: mproject.TProject = {
     'type': ['library', null],
@@ -237,59 +124,22 @@ export const project: mproject.TProject = {
                     'functions': wd({}),
                     'interfaces': wd({}),
                     'callbacks': wd({
-                        "SerializeGlossary": {
-                            'data': ['type', reference("Glossary")],
-                            'context': ['import', "fp"],
-                            'interface': "Block",
-                        },
-                        "SerializeLeafType": {
-                            'data': ['type', reference("LeafType")],
-                            'context': ['import', "fp"],
-                            'interface': "Line",
-                        },
                     }),
                     'pipes': wd({}),
                 },
                 'api': {
                     'imports': wd({
-                        "collation": "res-pareto-collation",
-                        "temp": "../../temp",
                     }),
                     'algorithms': wd({
-                        "serializeLeafType": {
-                            'definition': ['callback', {
-                                'callback': "SerializeLeafType"
-                            }],
-                            'type': ['reference', null],
-                        },
-                        "createGlossarySerializer": {
-                            'definition': ['callback', {
-                                'callback': "SerializeGlossary"
-                            }],
-                            'type': ['constructor', {
-                                'configuration data': ['null', null],
-                                'dependencies': wd({
-                                    "enrichedDictionaryForEach": ['callback', {
-                                        'context': ['import', "temp"],
-                                        'callback': "EnrichedDictionaryForEach",
-                                    }],
-                                    "compare": ['function', {
-                                        'context': ['import', "collation"],
-                                        'function': "IsABeforeB",
-                                    }],
-                                })
-                            }]
-                        },
                     })
                 },
             }),
             'implementation': {}
         },
-        "api": {
+        "moduleDefinition": {
             'definition': def({
                 'glossary': {
                     'imports': wd({
-                        "fp": "lib-fountain-pen",
                         "glossary": "../../glossary"
                     }),
                     'types': types({
@@ -339,45 +189,13 @@ export const project: mproject.TProject = {
                     'functions': wd({}),
                     'interfaces': wd({}),
                     'callbacks': wd({
-                        "SerializeModuleDefinition": {
-                            'data': ['type', reference("ModuleDefinition")],
-                            'context': ['import', "fp"],
-                            'interface': "Writer",
-                        },
                     }),
                     'pipes': wd({}),
                 },
                 'api': {
                     'imports': wd({
-                        "collation": "res-pareto-collation",
-                        "glossary": "../../glossary",
                     }),
                     'algorithms': wd({
-                        "createModuleDefinitionSerializer": {
-                            'definition': ['callback', {
-                                'callback': "SerializeModuleDefinition"
-                            }],
-                            'type': ['constructor', {
-                                'configuration data': ['null', null],
-                                'dependencies': wd({
-                                    "compare": ['function', {
-                                        'context': ['import', "collation"],
-                                        'function': "IsABeforeB",
-                                    }],
-                                    "serializeGlossary": ['callback', {
-                                        'context': ['import', "glossary"],
-                                        'callback': "SerializeGlossary"
-                                    }],
-                                    "serializeLeafType": ['callback', {
-                                        'context': ['import', "glossary"],
-                                        'callback': "SerializeLeafType"
-                                    }],
-                                }),
-                                'callback': {
-                                    'callback': "SerializeModuleDefinition"
-                                }
-                            }],
-                        }
                     })
                 },
             }),
@@ -387,8 +205,7 @@ export const project: mproject.TProject = {
             'definition': def({
                 'glossary': {
                     'imports': wd({
-                        "api": "../../api",
-                        "fp": "lib-fountain-pen",
+                        "moduleDefinition": "../../moduleDefinition",
                     }),
                     'types': types({
                         "AlgorithmImplementation": group({}),
@@ -400,7 +217,7 @@ export const project: mproject.TProject = {
                                 "library": nullType(),
                             }), true),
                             "modules": member(dictionary(group({
-                                "definition": member(er("api", "ModuleDefinition")),
+                                "definition": member(er("moduleDefinition", "ModuleDefinition")),
                                 // "type": member(taggedUnion({
                                 //     "binding": nll(),
                                 //     "resource": nll(),
@@ -414,67 +231,13 @@ export const project: mproject.TProject = {
                     'functions': wd({}),
                     'interfaces': wd({}),
                     'callbacks': wd({
-                        "SerializeProject": {
-                            'data': ['type', reference("Project")],
-                            'context': ['import', "fp"],
-                            'interface': "Writer",
-                        },
-                        "SerializeTemplate": {
-                            'data': ['type', reference("Project")],
-                            'context': ['import', "fp"],
-                            'interface': "Writer",
-                        },
                     }),
                     'pipes': wd({}),
                 },
                 'api': {
                     'imports': wd({
-                        "api": "../../api",
-                        "glossary": "../../glossary",
-                        "collation": "res-pareto-collation",
                     }),
                     'algorithms': wd({
-                        "createProjectSerializer": {
-                            'definition': ['callback', {
-                                'callback': "SerializeProject"
-                            }],
-                            'type': ['constructor', {
-                                'configuration data': ['null', null],
-                                'dependencies': wd({
-                                    "compare": ['function', {
-                                        'context': ['import', "collation"],
-                                        'function': "IsABeforeB",
-                                    }],
-                                    "serializeModuleDefinition": ['callback', {
-                                        'context': ['import', "api"],
-                                        'callback': "SerializeModuleDefinition"
-                                    }],
-                                    "serializeLeafType": ['callback', {
-                                        'context': ['import', "glossary"],
-                                        'callback': "SerializeLeafType"
-                                    }],
-                                }),
-                                'callback': {
-                                    'callback': "SerializeProject"
-                                }
-                            }]
-                        },
-                        "createTemplateSerializer": {
-                            'definition': ['callback', {
-                                'callback': "SerializeTemplate"
-                            }],
-                            'type': ['constructor', {
-                                'configuration data': ['null', null],
-                                'dependencies': wd({
-                                    "compare": ['function', {
-                                        'context': ['import', "collation"],
-                                        'function': "IsABeforeB",
-                                    }],
-                                }),
-                                'callback': {
-                                }
-                            }]
-                        },
                     })
                 },
             }),

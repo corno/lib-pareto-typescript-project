@@ -150,6 +150,10 @@ export const project: mproject.TProject = {
                                         'context': ['import', "temp"],
                                         'callback': "EnrichedDictionaryForEach",
                                     }],
+                                    "enrichedArrayForEach": ['callback', {
+                                        'context': ['import', "temp"],
+                                        'callback': "EnrichedArrayForEach",
+                                    }],
                                     "compare": ['function', {
                                         'context': ['import', "collation"],
                                         'function': "IsABeforeB",
@@ -171,18 +175,31 @@ export const project: mproject.TProject = {
                         // "fp": "lib-fountain-pen",
                     }),
                     'types': types({
-                        "TypeBlock": group({
-                            "properties": member(dictionary(taggedUnion({
-                                "string": type(group({})),
-                                "dictionary": type(group({})),
-                                "array": type(group({})),
-                                "taggedUnion": type(group({})),
-                                "group": type(group({})),
+                        "LocalType": taggedUnion({
+                            "string": type(group({})),
+                            "dictionary": type(group({
+                                "type": member(ref("LocalType"))
+                            })),
+                            "array": type(group({
+                                "type": member(ref("LocalType"))
+                            })),
+                            "taggedUnion": type(group({
+                                "options": member(dictionary(group({
+                                    "type": member(ref("LocalType"))
+                                })))
+                            })),
+                            "group": type(group({
+                                "properties": member(dictionary(group({
+                                    "type": member(ref("LocalType"))
+                                })))
+                            })),
+                            "component": type((group({
+                                "type": member(str())
                             }))),
                         }),
                         "Model": group({
                             "types": member(dictionary(group({
-                                "block": member(ref("TypeBlock"))
+                                "type": member(ref("LocalType"))
                             }))),
                             "root": member(str())
                         }),
@@ -281,7 +298,7 @@ export const project: mproject.TProject = {
                     'functions': wd({
                         "MapLiana2Pareto": {
                             'data': externalReference("liana", "Model"),
-                            'return value':  externalReference("moduleDefinition", "ModuleDefinition"),
+                            'return value': externalReference("moduleDefinition", "ModuleDefinition"),
                         }
                     }),
                     'interfaces': wd({}),
@@ -473,6 +490,10 @@ export const project: mproject.TProject = {
                                     "serializeGlossary": ['callback', {
                                         'context': ['import', "glossary"],
                                         'callback': "Serialize"
+                                    }],
+                                    "enrichedArrayForEach": ['callback', {
+                                        'context': ['import', "temp"],
+                                        'callback': "EnrichedArrayForEach",
                                     }],
                                     // "serializeLeafType": ['callback', {
                                     //     //'context': ['import', "glossary"],

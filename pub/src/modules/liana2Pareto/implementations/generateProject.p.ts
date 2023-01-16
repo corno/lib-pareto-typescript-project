@@ -22,8 +22,12 @@ export const igenerateProject: api.CgenerateProject = ($) => {
                     sf_compare: mcoll.$a.localeIsABeforeB,
                     cb_enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
                         sf_compare: mcoll.$a.localeIsABeforeB,
+                    }),
+                    cb_enrichedArrayForEach: mtemp.$a.createEnrichedArrayForEach({
                     })
                 }),
+                cb_enrichedArrayForEach: mtemp.$a.createEnrichedArrayForEach({
+                })
                 //cb_serializeLeafType: mserialize.$a,
             })
             // cb_serializeProject: foo.$a.createProjectSerializer(

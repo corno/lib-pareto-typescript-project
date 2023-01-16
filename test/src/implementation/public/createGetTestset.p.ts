@@ -30,7 +30,7 @@ const wd = pr.wrapRawDictionary
 
 
 import * as pub from "../../../../pub"
-import { project } from "./project.p"
+import { $ as moduleDefinition } from "./project.p"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
@@ -42,7 +42,15 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
             'mainData': {
                 'arguments': pr.wrapRawArray(["FOOOOOOOOOOOOOO"]),
             },
-            'project': project,
+            'project': {
+                'modules': wd({
+                    "main": {
+                        'definition': moduleDefinition,
+                        'implementation': {},
+                    }
+                }),
+                'main': "main",
+            },
         })
         // pub.$a.createTestProgram(null, {
         //     getTestSet: () => {
@@ -76,14 +84,18 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
 
 
         const model: mliana.TModel = {
-            'types': wd({}),
+            'types': wd({
+                "FOO": {
+                    'type': ['string', {}],
+                },
+            }),
             'root': "FOO",
         }
 
         mliana2Pareto.$a.generateProject({
             'mainData': {
                 'arguments': pr.wrapRawArray(["LIANALIANA"]),
-    
+
             },
             'model': model,
         })

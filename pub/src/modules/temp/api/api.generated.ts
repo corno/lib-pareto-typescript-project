@@ -10,6 +10,13 @@ export type CcreateEnrichedDictionaryForEach = (
     }
 ) => glo.XEnrichedDictionaryForEach
 
+
+export type CcreateEnrichedArrayForEach = (
+    $d: {
+    }
+) => glo.XEnrichedArrayForEach
+
 export type API = {
     createEnrichedDictionaryForEach: CcreateEnrichedDictionaryForEach
+    createEnrichedArrayForEach: CcreateEnrichedArrayForEach
 }

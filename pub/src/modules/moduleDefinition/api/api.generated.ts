@@ -8,6 +8,7 @@ import * as mtemp from "../../temp"
 
 export type CcreateSerializer = ($d: {
     readonly "sf_compare": mcollation.FIsABeforeB
+    readonly "cb_enrichedArrayForEach": mtemp.XEnrichedArrayForEach
     readonly "cb_serializeGlossary": mglossary.XSerialize
 }) => glo.XSerialize
 

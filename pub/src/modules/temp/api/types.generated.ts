@@ -11,3 +11,14 @@ export type XEnrichedDictionaryForEach = <T> (
         }) => void) => void) => void
     }
 ) => void
+
+export type XEnrichedArrayForEach = <T> (
+    $: pt.Array<T>,
+    $i: {
+        onEmpty: () => void
+        onNotEmpty: ($c: ($i: ($: {
+            value: T,
+            isFirst: boolean
+        }) => void) => void) => void
+    }
+) => void

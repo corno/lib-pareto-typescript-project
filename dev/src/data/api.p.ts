@@ -19,7 +19,7 @@ function def($: mmoduleDefinition.TModuleDefinition): mmoduleDefinition.TModuleD
     return $
 }
 
-export const api: mmoduleDefinition.TModuleDefinition = def({
+export const $: mmoduleDefinition.TModuleDefinition = def({
     'glossary': {
         'imports': d({
             "glossary": "../../glossary",

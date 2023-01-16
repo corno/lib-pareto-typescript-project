@@ -197,7 +197,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 //     // $i.directory("private_definitions", ($i) => {
                 //     //     moduleDefintion($["private definitions"], $i)
                 //     // })
-                //     // function implementations($: NProject.Implementation, $i: IWriter) {
+                //     // function implementations($: mproject.Implementation, $i: IWriter) {
                 //     //     $i.file("index.ts", ($i) => {
                 //     //         $.forEach(compare, ($, key) => {
                 //     //             $i.literal(`import { i${key} } from "./${$.type[0] === "binding" ? "binding" : "pure"}/${key}.p"`)

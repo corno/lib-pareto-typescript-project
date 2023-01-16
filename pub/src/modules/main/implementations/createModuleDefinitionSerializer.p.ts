@@ -19,7 +19,9 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
             if ($ === null) {
                 //
             } else {
+                $i.snippet(`$: `)
                 serializeTypeReference($, $i)
+                $i.snippet(`, `)
             }
         }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
@@ -86,7 +88,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                 case "procedure":
                     pl.cc($[1], ($) => {
                         $i.snippet(`pt.Procedure<`)
-                        serializeOptionalTypeReference($, $i)
+                        serializeTypeReference($, $i)
                         $i.snippet(`>`)
                     })
                     break

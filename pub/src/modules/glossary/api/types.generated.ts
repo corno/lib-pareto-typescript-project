@@ -22,6 +22,7 @@ export type TGlossary = {
     readonly "functions": pt.Dictionary<TFunction>
     readonly "imports": pt.Dictionary<string>
     readonly "namespace": TNamespace
+    readonly "parameters"?: TParameters
     readonly "pipes": pt.Dictionary<{
         readonly "in": TInterfaceReference
         readonly "out": TInterfaceReference
@@ -67,6 +68,8 @@ export type TNamespace = {
     readonly "templates"?: pt.Dictionary<TTemplate>
     readonly "types": pt.Dictionary<TType>
 }
+
+export type TParameters = pt.Dictionary<null>
 
 export type TTemplate = {
     readonly "parameters": pt.Dictionary<null>

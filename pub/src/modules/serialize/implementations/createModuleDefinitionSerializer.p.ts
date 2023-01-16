@@ -81,7 +81,8 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                 break
                             case "type":
                                 pl.cc($[1], ($) => {
-                                    $d.cb_serializeLeafType($, $i)
+                                    pl.implementMe("@@#$@#$@$$")
+                                    //$d.cb_serializeLeafType($, $i)
                                 })
                                 break
                             default: pl.au($[0])
@@ -122,7 +123,8 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                     case "type":
                                         pl.cc($["configuration data"][1], ($) => {
                                             $i.snippet(`$: `)
-                                            $d.cb_serializeLeafType($, $i)
+                                            pl.implementMe("#@#$@$#$@$#$")
+                                            //$d.cb_serializeLeafType($, $i)
                                             $i.snippet(`, `)
                                         })
                                         break

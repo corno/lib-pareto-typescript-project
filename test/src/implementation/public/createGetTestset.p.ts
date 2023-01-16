@@ -23,11 +23,15 @@ import {
 
 
 import { string, reference, externalReference, number, boolean } from "../../../../pub/dist/modules/moduleDefinition/api/shorthands.p"
-import * as NProject from "../../../../pub/dist/modules/project"
+import * as mproject from "../../../../pub/dist/modules/project"
+import * as mserialize from "../../../../pub/dist/modules/serialize"
+import * as mliana from "../../../../pub/dist/modules/liana"
+import * as mliana2Pareto from "../../../../pub/dist/modules/liana2Pareto"
 const wd = pr.wrapRawDictionary
 
 
 import * as pub from "../../../../pub"
+import { project } from "./project.p"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
@@ -39,73 +43,7 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
             'mainData': {
                 'arguments': pr.wrapRawArray(["FOOOOOOOOOOOOOO"]),
             },
-            'project': {
-                'type': ["glossary", null],
-                'modules': wd({
-                    "main": {
-                        'definition': {
-                            "glossary": {
-                                'imports': wd({
-                                }),
-                                'namespace': {
-                                    'templates': wd({
-                                    }),
-                                    'types': types({
-                                    }),
-                                    'interfaces': wd({
-                                        "Writer": ['group', {
-                                            'members': wd({
-                                                "createFile": ['method', {
-                                                    'data': ['type', string()],
-                                                    'interface': ['set', {
-                                                        'interface': "Block"
-                                                    }]
-                                                }],
-                                                "createDirectory": ['method', {
-                                                    'data': ['type', string()],
-                                                    'interface': ['set', {
-                                                        'interface': "Writer"
-                                                    }]
-                                                }],
-                                                // "foo": ['dictionary', ['tagged union', {
-                                                //     'options': wd({
-                                                //         "directory": ['method', {
-                                                //             'data': ['type', string()],
-                                                //             'interface': ['set', {
-                                                //                 'interface': "Writer"
-                                                //             }]
-                                                //         }],
-                                                //         "file": ['method', {
-                                                //             'data': ['type', string()],
-                                                //             'interface': ['set', {
-                                                //                 'interface': "Block"
-                                                //             }]
-                                                //         }],
-                                                //     })
-                                                // }]],
-                                            })
-                                        }],
-                                    }),
-
-                                },
-                                'functions': wd({
-                                }),
-                                'callbacks': wd({
-                                }),
-                                'pipes': wd({}),
-                            },
-                            "api": {
-                                'imports': wd({}),
-                                'algorithms': wd({
-                                })
-                            },
-                        },
-                        'implementation': {}
-
-                    },
-                }),
-                'main': "main"
-            }
+            'project': project,
         })
         // pub.$a.createTestProgram(null, {
         //     getTestSet: () => {
@@ -136,6 +74,25 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
         // )(
         //     pr.wrapRawArray(["foo"])
         // )
+
+
+        const model: mliana.TModel = {}
+
+        mliana2Pareto.$a.generateProject({
+            'mainData': {
+                'arguments': pr.wrapRawArray(["LIANALIANA"]),
+    
+            },
+            'model': {
+
+            },
+        })
+
+
+        // mserialize.$a.createModuleDefinitionSerializer({
+
+        // })(mliana2Pareto.$a.createLiana2ParetoMapper({})(model), )
+        // mliana2Pareto.$a.createLiana2ParetoMapper({})(model)
 
         const builder = pm.createUnsafeDictionaryBuilder<tst.TTestElement>()
         function createTest(name: string, actual: string, expected: string) {

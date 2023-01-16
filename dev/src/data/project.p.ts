@@ -23,11 +23,6 @@ function def($: mapi.TModuleDefinition): mapi.TModuleDefinition {
 export const project: mproject.TProject = {
     'type': ['library', null],
     'modules': wd({
-        "main": {
-            'definition': api,
-            'implementation': {}
-
-        },
         "glossary": {
             'definition': def({
                 "glossary": {
@@ -75,7 +70,7 @@ export const project: mproject.TProject = {
                             "return value": member(ref("LeafType"))
                         }),
                         "Glossary": group({
-                            //"parameters": member(['dictionary', nullType()], true),
+                            "parameters": member(ref("Parameters"), true),
                             "imports": member(dictionary(str())),
                             "namespace": member(ref("Namespace")),
                             "functions": member(dictionary(ref("Function"))),
@@ -99,6 +94,7 @@ export const project: mproject.TProject = {
                             "type": type(ref("LeafType")),
                             "null": nullType(),
                         }),
+                        "Parameters": ['dictionary', nullType()],
                         "Template": group({
                             "parameters": member(["dictionary", nullType()]),
                             "type": member(ref("Type"))
@@ -140,6 +136,222 @@ export const project: mproject.TProject = {
                 },
             }),
             'implementation': {}
+        },
+        "liana": {
+            'definition': def({
+                'glossary': {
+                    'imports': wd({
+                        // "glossary": "../../glossary",
+                        // "moduleDefinition": "../../moduleDefinition",
+                        // "fp": "lib-fountain-pen",
+                    }),
+                    'types': types({
+                        "Model": group({
+                            //"types": member(ref("Type"), true),
+                        }),
+                    }),
+                    'functions': wd({}),
+                    'interfaces': wd({}),
+                    'callbacks': wd({
+                        // "SerializeGlossary": {
+                        //     'data': ['type', externalReference("glossary", "Glossary")],
+                        //     'context': ['import', "fp"],
+                        //     'interface': "Block",
+                        // },
+                        // "SerializeLeafType": {
+                        //     'data': ['type', externalReference("glossary", "LeafType")],
+                        //     'context': ['import', "fp"],
+                        //     'interface': "Line",
+                        // },
+                        // "SerializeModuleDefinition": {
+                        //     'data': ['type', externalReference("moduleDefinition", "ModuleDefinition")],
+                        //     'context': ['import', "fp"],
+                        //     'interface': "Writer",
+                        // },
+                    }),
+                    'pipes': wd({}),
+                },
+                'api': {
+                    'imports': wd({
+                        // "collation": "res-pareto-collation",
+                        // "temp": "../../temp",
+                    }),
+                    'algorithms': wd({
+                        // "createGlossarySerializer": {
+                        //     'definition': ['callback', {
+                        //         'callback': "SerializeGlossary"
+                        //     }],
+                        //     'type': ['constructor', {
+                        //         'configuration data': ['null', null],
+                        //         'dependencies': wd({
+                        //             "enrichedDictionaryForEach": ['callback', {
+                        //                 'context': ['import', "temp"],
+                        //                 'callback': "EnrichedDictionaryForEach",
+                        //             }],
+                        //             "compare": ['function', {
+                        //                 'context': ['import', "collation"],
+                        //                 'function': "IsABeforeB",
+                        //             }],
+                        //         })
+                        //     }]
+                        // },
+                        // "createModuleDefinitionSerializer": {
+                        //     'definition': ['callback', {
+                        //         'callback': "SerializeModuleDefinition"
+                        //     }],
+                        //     'type': ['constructor', {
+                        //         'configuration data': ['null', null],
+                        //         'dependencies': wd({
+                        //             "compare": ['function', {
+                        //                 'context': ['import', "collation"],
+                        //                 'function': "IsABeforeB",
+                        //             }],
+                        //             "serializeGlossary": ['callback', {
+                        //                 //'context': ['import', "glossary"],
+                        //                 'callback': "SerializeGlossary"
+                        //             }],
+                        //             "serializeLeafType": ['callback', {
+                        //                 //'context': ['import', "glossary"],
+                        //                 'callback': "SerializeLeafType"
+                        //             }],
+                        //         }),
+                        //         'callback': {
+                        //             'callback': "SerializeModuleDefinition"
+                        //         }
+                        //     }],
+                        // },
+                    })
+                },
+            }),
+            'implemenation': {}
+        },
+        "liana2Pareto": {
+            'definition': def({
+                'glossary': {
+                    'imports': wd({
+                        // "glossary": "../../glossary",
+                        "liana": "../../liana",
+                        "moduleDefinition": "../../moduleDefinition",
+                        // "fp": "lib-fountain-pen",
+                        "main": "lib-pareto-main",
+                    }),
+                    'types': types({
+                        "Configuration": group({
+                            "model": member(er("liana", "Model")),
+                            "mainData": member(er("main", "MainData")),
+                        }),
+                    }),
+                    'functions': wd({
+                        "MapLiana2Pareto": {
+                            'data': externalReference("liana", "Model"),
+                            'return value':  externalReference("moduleDefinition", "ModuleDefinition"),
+                        }
+                    }),
+                    'interfaces': wd({}),
+                    'callbacks': wd({
+                        // "SerializeGlossary": {
+                        //     'data': ['type', externalReference("glossary", "Glossary")],
+                        //     'context': ['import', "fp"],
+                        //     'interface': "Block",
+                        // },
+                        // "SerializeLeafType": {
+                        //     'data': ['type', externalReference("glossary", "LeafType")],
+                        //     'context': ['import', "fp"],
+                        //     'interface': "Line",
+                        // },
+                        // "SerializeModuleDefinition": {
+                        //     'data': ['type', externalReference("moduleDefinition", "ModuleDefinition")],
+                        //     'context': ['import', "fp"],
+                        //     'interface': "Writer",
+                        // },
+                    }),
+                    'pipes': wd({}),
+                },
+                'api': {
+                    'imports': wd({
+                        "serialize": "../../serialize",
+                    }),
+                    'algorithms': wd({
+                        "generateProject": {
+                            'definition': ['procedure', ['type', reference("Configuration")]],
+                            'type': ['reference', null],
+                        },
+                        "createProjectGenerator": {
+                            'definition': ['procedure', ['type', reference("Configuration")]],
+                            'type': ['constructor', {
+                                'configuration data': ['null', null],
+                                'dependencies': wd({
+                                    "mapLiana2Pareto": ['function', {
+                                        //'async': true,
+                                        'function': "MapLiana2Pareto",
+                                    }],
+                                    // "serializeProject": ['callback', {
+                                    //     //'context': ['import', "project"],
+                                    //     'callback': "SerializeProject",
+                                    // }],
+                                    // "serializeTemplate": ['callback', {
+                                    //     //'context': ['import', "project"],
+                                    //     'callback': "SerializeTemplate",
+                                    // }],
+                                    "serializeModuleDefinition": ['callback', {
+                                        'context': ['import', "serialize"],
+                                        'callback': "SerializeModuleDefinition"
+                                    }],
+                                }),
+                            }],
+                        },
+                        "createLiana2ParetoMapper": {
+                            'definition': ['function', {
+                                'function': "MapLiana2Pareto"
+                            }],
+                            'type': ['constructor', {
+                                'configuration data': ['null', null],
+                                'dependencies': wd({
+                                    // "enrichedDictionaryForEach": ['callback', {
+                                    //     'context': ['import', "temp"],
+                                    //     'callback': "EnrichedDictionaryForEach",
+                                    // }],
+                                    // "compare": ['function', {
+                                    //     'context': ['import', "collation"],
+                                    //     'function': "IsABeforeB",
+                                    // }],
+                                })
+                            }]
+                        },
+                        // "createModuleDefinitionSerializer": {
+                        //     'definition': ['callback', {
+                        //         'callback': "SerializeModuleDefinition"
+                        //     }],
+                        //     'type': ['constructor', {
+                        //         'configuration data': ['null', null],
+                        //         'dependencies': wd({
+                        //             "compare": ['function', {
+                        //                 'context': ['import', "collation"],
+                        //                 'function': "IsABeforeB",
+                        //             }],
+                        //             "serializeGlossary": ['callback', {
+                        //                 //'context': ['import', "glossary"],
+                        //                 'callback': "SerializeGlossary"
+                        //             }],
+                        //             "serializeLeafType": ['callback', {
+                        //                 //'context': ['import', "glossary"],
+                        //                 'callback': "SerializeLeafType"
+                        //             }],
+                        //         }),
+                        //         'callback': {
+                        //             'callback': "SerializeModuleDefinition"
+                        //         }
+                        //     }],
+                        // },
+                    })
+                },
+            }),
+            'implemenation': {}
+        },
+        "main": {
+            'definition': api,
+            'implementation': {}
+
         },
         "moduleDefinition": {
             'definition': def({
@@ -318,10 +530,10 @@ export const project: mproject.TProject = {
                                         //'context': ['import', "glossary"],
                                         'callback': "SerializeGlossary"
                                     }],
-                                    "serializeLeafType": ['callback', {
-                                        //'context': ['import', "glossary"],
-                                        'callback': "SerializeLeafType"
-                                    }],
+                                    // "serializeLeafType": ['callback', {
+                                    //     //'context': ['import', "glossary"],
+                                    //     'callback': "SerializeLeafType"
+                                    // }],
                                 }),
                                 'callback': {
                                     'callback': "SerializeModuleDefinition"

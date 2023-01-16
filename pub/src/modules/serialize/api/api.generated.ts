@@ -13,7 +13,6 @@ export type CcreateGlossarySerializer = ($d: {
 export type CcreateModuleDefinitionSerializer = ($d: {
     readonly "sf_compare": mcollation.FIsABeforeB
     readonly "cb_serializeGlossary": glo.XSerializeGlossary
-    readonly "cb_serializeLeafType": glo.XSerializeLeafType
 }) => glo.XSerializeModuleDefinition
 
 export type API = {

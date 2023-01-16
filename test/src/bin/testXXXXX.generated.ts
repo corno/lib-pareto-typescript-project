@@ -3,6 +3,9 @@ import * as pr from "pareto-core-raw"
 import * as pl from "pareto-core-lib"
 import * as tst from "lib-pareto-test"
 
+import { test as liana2Pareto_createLiana2ParetoMapper } from "../modules/liana2Pareto/createLiana2ParetoMapper.p"
+import { test as liana2Pareto_createProjectGenerator } from "../modules/liana2Pareto/createProjectGenerator.p"
+import { test as liana2Pareto_generateProject } from "../modules/liana2Pareto/generateProject.p"
 import { test as main_createGlossarySerializer } from "../modules/main/createGlossarySerializer.p"
 import { test as main_createModuleDefinitionSerializer } from "../modules/main/createModuleDefinitionSerializer.p"
 import { test as main_createParametersParser } from "../modules/main/createParametersParser.p"
@@ -16,6 +19,12 @@ import { test as serialize_createModuleDefinitionSerializer } from "../modules/s
 
 const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({
     "glossary": pr.wrapRawDictionary({}),
+    "liana": pr.wrapRawDictionary({}),
+    "liana2Pareto": pr.wrapRawDictionary({
+        "createLiana2ParetoMapper": liana2Pareto_createLiana2ParetoMapper,
+        "createProjectGenerator": liana2Pareto_createProjectGenerator,
+        "generateProject": liana2Pareto_generateProject,
+    }),
     "main": pr.wrapRawDictionary({
         "createGlossarySerializer": main_createGlossarySerializer,
         "createModuleDefinitionSerializer": main_createModuleDefinitionSerializer,

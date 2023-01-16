@@ -2,11 +2,10 @@ import * as pr from "pareto-core-raw"
 import {
     externalReference as er,
     string as str,
-    nullType,
-    type,
+   null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, optional
+    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -31,19 +30,19 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "interfaces": member(dictionary(ref("Interface"))),
                 }),
                 "Interface": taggedUnion({
-                    "group": type(group({
+                    "group":group({
                         "members": member(dictionary(ref("Interface")))
-                    })),
-                    "method": type(group({
+                    }),
+                    "method": group({
                         "data": member(ref("OptionalTypeReference")),
                         "interface": member(taggedUnion({
-                            "set": type(group({
+                            "set": group({
                                 "interface": member(str())
-                            })),
-                            "null": nullType(),
+                            }),
+                            "null": null_(),
                         }))
-                    })),
-                    "reference": type(ref("InterfaceReference")),
+                    }),
+                    "reference": ref("InterfaceReference"),
                 }),
                 "InterfaceReference": group({
                     "context": member(ref("Context"), true),
@@ -55,8 +54,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "interface": member(str())
                 }),
                 "Context": taggedUnion({
-                    "local": nullType(),
-                    "import": type(str()),
+                    "local": null_(),
+                    "import": str(),
                 }),
                 "Function": group({
                     "async": member(bln(), true),
@@ -75,32 +74,32 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     }))),
                 }),
                 "OptionalTypeReference": optional(ref("TypeReference")),
-                "Parameters": ['dictionary', nullType()],
+                "Parameters": ['dictionary', null_()],
                 "Template": group({
-                    "parameters": member(["dictionary", nullType()]),
+                    "parameters": member(["dictionary", null_()]),
                     "type": member(ref("Type"))
                 }),
                 "Type": taggedUnion({
-                    "null": nullType(),
-                    "boolean": nullType(),
-                    "string": nullType(),
-                    "number": nullType(),
-                    "reference": type(ref("TypeReference")),
-                    "array": type(ref("Type")),
-                    "dictionary": type(ref("Type")),
-                    "group": type(dictionary(group({
+                    "null": null_(),
+                    "boolean": null_(),
+                    "string": null_(),
+                    "number": null_(),
+                    "reference": ref("TypeReference"),
+                    "array": ref("Type"),
+                    "dictionary": ref("Type"),
+                    "group": dictionary(group({
                         "type": member(ref("Type")),
                         "optional": member(bln(), true)
-                    }))),
-                    "nested": type(ref("Type")),
-                    "optional": type(ref("Type")),
-                    "parameter": type(str()),
-                    "template": type(group({
+                    })),
+                    "nested": ref("Type"),
+                    "optional": ref("Type"),
+                    "parameter": str(),
+                    "template": group({
                         "context": member(ref("Context"), true),
                         "template": member(str()),
                         "arguments": member(dictionary(ref("Type")))
-                    })),
-                    "taggedUnion": type(dictionary(ref("Type"))),
+                    }),
+                    "taggedUnion":dictionary(ref("Type")),
                 }),
                 "TypeReference": group({
                     "context": member(ref("Context")),
@@ -114,7 +113,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'functions': d({}),
         'callbacks': d({
             "Serialize": {
-                'data': ['type', reference("Glossary")],
+                'data': typeReference("Glossary"),
                 'context': ['import', "fp"],
                 'interface': "Line",
             },
@@ -132,7 +131,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'callback': "Serialize"
                 }],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
                         "enrichedDictionaryForEach": ['callback', {
                             'context': ['import', "temp"],

@@ -21,13 +21,13 @@ export type TProjectSettings = {
     readonly "project": mproject.TProject
 }
 
-export type ICreateWriter = ($: string, $c: ($i: mfp.IWriter) => void) => void
+export type ICreateWriter = ($: mcommon.TString, $c: ($i: mfp.IWriter) => void) => void
 
 export type IParseArguments = ($: TArguments, ) => void
 
-export type IProcessArgument = ($: string, ) => void
+export type IProcessArgument = ($: mcommon.TString, ) => void
 
-export type AGetSingleArgument = ($: TArguments) => pt.AsyncValue<string>
+export type AGetSingleArgument = ($: TArguments) => pt.AsyncValue<mcommon.TString>
 
 export type XSerializeGlossary = ($: mglossary.TGlossary, $i: mfp.IBlock) => void
 

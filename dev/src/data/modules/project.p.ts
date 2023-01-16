@@ -2,8 +2,7 @@ import * as pr from "pareto-core-raw"
 import {
     externalReference as er,
     string as str,
-    nullType,
-    type,
+    null_,
     reference as ref,
     boolean as bln,
     array, dictionary, group, member, taggedUnion, types, _function
@@ -25,9 +24,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "Implementation": dictionary(ref("AlgorithmImplementation")),
                 "Project": group({
                     "type": member(taggedUnion({
-                        "resource": nullType(),
-                        "glossary": nullType(),
-                        "library": nullType(),
+                        "resource": null_(),
+                        "glossary": null_(),
+                        "library": null_(),
                     }), true),
                     "modules": member(dictionary(group({
                         "definition": member(er("moduleDefinition", "ModuleDefinition")),

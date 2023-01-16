@@ -2,8 +2,7 @@ import * as pr from "pareto-core-raw"
 import {
     externalReference as er,
     string as str,
-    nullType,
-    type,
+    null_,
     reference as ref,
     boolean as bln,
     array, dictionary, group, member, taggedUnion, types, _function
@@ -24,26 +23,26 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'namespace': {
             'types': types({
                 "LocalType": taggedUnion({
-                    "string": type(group({})),
-                    "dictionary": type(group({
+                    "string": group({}),
+                    "dictionary":group({
                         "type": member(ref("LocalType"))
-                    })),
-                    "array": type(group({
+                    }),
+                    "array": group({
                         "type": member(ref("LocalType"))
-                    })),
-                    "taggedUnion": type(group({
+                    }),
+                    "taggedUnion": group({
                         "options": member(dictionary(group({
                             "type": member(ref("LocalType"))
                         })))
-                    })),
-                    "group": type(group({
+                    }),
+                    "group": group({
                         "properties": member(dictionary(group({
                             "type": member(ref("LocalType"))
                         })))
-                    })),
-                    "component": type((group({
+                    }),
+                    "component": group({
                         "type": member(str())
-                    }))),
+                    }),
                 }),
                 "Model": group({
                     "types": member(dictionary(group({

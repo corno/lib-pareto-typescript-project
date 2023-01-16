@@ -2,11 +2,10 @@ import * as pr from "pareto-core-raw"
 import {
     externalReference as er,
     string as str,
-    nullType,
-    type,
+    null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function
+    array, dictionary, group, member, taggedUnion, types, _function, typeReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -25,30 +24,30 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'namespace': {
             'types': types({
                 "DefinitionReference": taggedUnion({
-                    "function": type(group({
+                    "function": group({
                         "context": member(ref("Context"), true),
                         "function": member(str()),
                         "async": member(bln(), true),
-                    })),
-                    "interface": type(group({
+                    }),
+                    "interface": group({
                         "context": member(ref("Context"), true),
                         "interface": member(str()),
-                    })),
-                    "callback": type(group({
+                    }),
+                    "callback":group({
                         "context": member(ref("Context"), true),
                         "callback": member(str()),
                         //"async": member(bln(), true),
-                    })),
-                    "pipe": type(group({
+                    }),
+                    "pipe": group({
                         "context": member(ref("Context"), true),
                         "pipe": member(str()),
-                    })),
-                    "procedure": type(ref("TypeReference")),
+                    }),
+                    "procedure": ref("TypeReference"),
 
                 }),
                 "Context": taggedUnion({
-                    "local": nullType(),
-                    "import": type(str()),
+                    "local": null_(),
+                    "import": str(),
                 }),
                 "ModuleDefinition": group({
                     "glossary": member(er("glossary", "Glossary")),
@@ -57,11 +56,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "algorithms": member(dictionary(group({
                             "definition": member(ref("DefinitionReference")),
                             "type": member(taggedUnion({
-                                "reference": nullType(),
-                                "constructor": type(group({
+                                "reference": null_(),
+                                "constructor": group({
                                     "configuration data": member(er("glossary", "OptionalTypeReference")),
                                     "dependencies": member(dictionary(ref("DefinitionReference"))),
-                                })),
+                                }),
                             }))
                         }))),
                     })),
@@ -78,7 +77,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'functions': d({}),
         'callbacks': d({
             "Serialize": {
-                'data': ['type', reference("ModuleDefinition")],
+                'data':  typeReference("ModuleDefinition"),
                 'context': ['import', "fp"],
                 'interface': "Writer",
             },
@@ -97,7 +96,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'callback': "Serialize"
                 }],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
                         "compare": ['function', {
                             'context': ['import', "collation"],

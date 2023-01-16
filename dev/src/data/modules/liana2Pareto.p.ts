@@ -2,11 +2,9 @@ import * as pr from "pareto-core-raw"
 import {
     externalReference as er,
     string as str,
-    nullType,
-    type,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function
+    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -37,8 +35,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         },
         'functions': d({
             "MapLiana2Pareto": {
-                'data': externalReference("liana", "Model"),
-                'return value': externalReference("moduleDefinition", "ModuleDefinition"),
+                'data': externalTypeReference("liana", "Model"),
+                'return value': externalTypeReference("moduleDefinition", "ModuleDefinition"),
             }
         }),
         'callbacks': d({
@@ -66,13 +64,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "generateProject": {
-                'definition': ['procedure', ['type', reference("Configuration")]],
+                'definition': ['procedure',  typeReference("Configuration")],
                 'type': ['reference', null],
             },
             "createProjectGenerator": {
-                'definition': ['procedure', ['type', reference("Configuration")]],
+                'definition': ['procedure', typeReference("Configuration")],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
                         "mapLiana2Pareto": ['function', {
                             //'async': true,
@@ -98,7 +96,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'function': "MapLiana2Pareto"
                 }],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
                         // "enrichedDictionaryForEach": ['callback', {
                         //     'context': ['import', "temp"],
@@ -116,7 +114,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             //         'callback': "SerializeModuleDefinition"
             //     }],
             //     'type': ['constructor', {
-            //         'configuration data': ['null', null],
+            //         'configuration data': null,
             //         'dependencies': d({
             //             "compare": ['function', {
             //                 'context': ['import', "collation"],

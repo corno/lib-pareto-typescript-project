@@ -2,11 +2,10 @@ import * as pr from "pareto-core-raw"
 import {
     externalReference as er,
     string as str,
-    nullType,
-    type,
+    null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function
+    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
@@ -32,8 +31,8 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
         'namespace': {
             'types': types({
                 "ArgumentError": taggedUnion({
-                    "missing": nullType(),
-                    "too many": nullType(),
+                    "missing": null_(),
+                    "too many": null_(),
                 }),
                 "Arguments": array(str()),
                 "ProjectSettings": group({
@@ -46,24 +45,24 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             }),
             'interfaces': d({
                 "CreateWriter": ['method', {
-                    'data': ['type', string()],
+                    'data': externalTypeReference("common", "String"),
                     'interface': ['set', {
                         'context': ['import', "fp"],
                         'interface': "Writer"
                     }],
                 }],
                 "ParseArguments": ['method', {
-                    'data': ['type', reference("Arguments")],
+                    'data': typeReference("Arguments"),
                     'interface': ['null', null],
                 }],
                 "ProcessArgument": ['method', {
-                    'data': ['type', string()],
+                    'data': externalTypeReference("common", "String"),
                     'interface': ['null', null],
                 }],
             }),
         },
         'functions': d({
-            "GetSingleArgument": _function(reference("Arguments"), string(), true),
+            "GetSingleArgument": _function(typeReference("Arguments"), externalTypeReference("common", "String"), true),
 
         }),
         // 'interfaces': d({
@@ -76,7 +75,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
         // }),
         'callbacks': d({
             "SerializeGlossary": {
-                'data': ['type', externalReference("glossary", "Glossary")],
+                'data': externalTypeReference("glossary", "Glossary"),
                 'context': ['import', "fp"],
                 'interface': "Block",
             },
@@ -86,17 +85,17 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             //     'interface': "Line",
             // },
             "SerializeModuleDefinition": {
-                'data': ['type', externalReference("moduleDefinition", "ModuleDefinition")],
+                'data': externalTypeReference("moduleDefinition", "ModuleDefinition"),
                 'context': ['import', "fp"],
                 'interface': "Writer",
             },
             "SerializeProject": {
-                'data': ['type', externalReference("project", "Project")],
+                'data': externalTypeReference("project", "Project"),
                 'context': ['import', "fp"],
                 'interface': "Writer",
             },
             "SerializeTemplate": {
-                'data': ['type', externalReference("project", "Project")],
+                'data': externalTypeReference("project", "Project"),
                 'context': ['import', "fp"],
                 'interface': "Writer",
             },
@@ -125,7 +124,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                     'callback': "SerializeModuleDefinition"
                 }],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
                         "compare": ['function', {
                             'context': ['import', "collation"],
@@ -150,7 +149,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                     'callback': "SerializeProject"
                 }],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
                         "compare": ['function', {
                             'context': ['import', "collation"],
@@ -175,7 +174,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                     'callback': "SerializeTemplate"
                 }],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
                         "compare": ['function', {
                             'context': ['import', "collation"],
@@ -197,7 +196,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                     'callback': "SerializeGlossary"
                 }],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
                         "enrichedDictionaryForEach": ['callback', {
                             'context': ['import', "temp"],
@@ -211,25 +210,25 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 }]
             },
             "createParametersParser": {
-                'definition': ['procedure', ['type', reference("Arguments")]],
+                'definition': ['procedure', typeReference("Arguments")],
                 //'definition': ['procedure', ['type', externalReference("main", "Arguments")]],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
-                        "callback": ['procedure', ['type', reference("Parameters")]],
-                        "onError": ['procedure', ['type', reference("ArgumentError")]],
+                        "callback": ['procedure', typeReference("Parameters")],
+                        "onError": ['procedure', typeReference("ArgumentError")],
 
                     }),
                 }],
             },
             "generateProject": {
-                'definition': ['procedure', ['type', reference("ProjectSettings")]],
+                'definition': ['procedure', typeReference("ProjectSettings")],
                 'type': ['reference', null],
             },
             "createProjectGenerator": {
-                'definition': ['procedure', ['type', reference("ProjectSettings")]],
+                'definition': ['procedure', typeReference("ProjectSettings")],
                 'type': ['constructor', {
-                    'configuration data': ['null', null],
+                    'configuration data': null,
                     'dependencies': d({
                         "getSingleArgument": ['function', {
                             'async': true,

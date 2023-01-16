@@ -9,9 +9,9 @@ const d = pr.wrapRawDictionary
 const wa = pr.wrapRawArray
 
 
-// export function nullType(): api.TTypeOrNull {
-//     return ['null', null]
-// }
+export function null_(): api.TType {
+    return ['null', null]
+}
 
 export function boolean(): api.TType {
     return ['boolean', null]

@@ -96,7 +96,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                             })
                         })
                         $i.directory(`implementations`, ($i) => {
-                            $i.file(`main.generated.p.ts`, ($i) => {
+                            $i.file(`main.generated.ts`, ($i) => {
                                 $i.literal(`import * as pl from "pareto-core-lib"`)
                                 $i.literal(`import * as api from "../api"`)
                                 $i.literal(``)

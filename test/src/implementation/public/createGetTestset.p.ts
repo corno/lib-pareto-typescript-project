@@ -24,7 +24,6 @@ import {
 
 import { string, reference, externalReference, number, boolean } from "../../../../pub/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mproject from "../../../../pub/dist/modules/project"
-import * as mserialize from "../../../../pub/dist/modules/serialize"
 import * as mliana from "../../../../pub/dist/modules/liana"
 import * as mliana2Pareto from "../../../../pub/dist/modules/liana2Pareto"
 const wd = pr.wrapRawDictionary
@@ -76,16 +75,17 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
         // )
 
 
-        const model: mliana.TModel = {}
+        const model: mliana.TModel = {
+            'types': wd({}),
+            'root': "FOO",
+        }
 
         mliana2Pareto.$a.generateProject({
             'mainData': {
                 'arguments': pr.wrapRawArray(["LIANALIANA"]),
     
             },
-            'model': {
-
-            },
+            'model': model,
         })
 
 

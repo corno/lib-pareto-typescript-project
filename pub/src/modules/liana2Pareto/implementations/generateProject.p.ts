@@ -6,7 +6,8 @@ import * as foo from "../index"
 
 import * as mtemp from "../../temp"
 import * as mcoll from "res-pareto-collation"
-import * as mserialize from "../../serialize"
+import * as mmoduleDefinition from "../../moduleDefinition"
+import * as mglossary from "../../glossary"
 
 import { icreateProjectGenerator } from "./createProjectGenerator.p"
 
@@ -15,9 +16,9 @@ export const igenerateProject: api.CgenerateProject = ($) => {
     icreateProjectGenerator(
         {
             sf_mapLiana2Pareto: foo.$a.createLiana2ParetoMapper({}),
-            cb_serializeModuleDefinition: mserialize.$a.createModuleDefinitionSerializer({
+            cb_serializeModuleDefinition: mmoduleDefinition.$a.createSerializer({
                 sf_compare: mcoll.$a.localeIsABeforeB,
-                cb_serializeGlossary: mserialize.$a.createGlossarySerializer({
+                cb_serializeGlossary: mglossary.$a.createSerializer({
                     sf_compare: mcoll.$a.localeIsABeforeB,
                     cb_enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
                         sf_compare: mcoll.$a.localeIsABeforeB,

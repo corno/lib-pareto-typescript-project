@@ -1,4 +1,5 @@
 import * as pt from "pareto-core-types"
+import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../glossary"
 
 export type TContext = 
@@ -40,3 +41,5 @@ export type TModuleDefinition = {
     }
     readonly "glossary": mglossary.TGlossary
 }
+
+export type XSerialize = ($: TModuleDefinition, $i: mfp.IWriter) => void

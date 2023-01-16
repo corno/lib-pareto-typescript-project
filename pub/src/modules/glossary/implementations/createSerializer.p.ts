@@ -5,7 +5,7 @@ import * as api from "../api"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
-export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => {
+export const icreateSerializer: api.CcreateSerializer = ($d) => {
     const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
 
     function serializeLeafType($: mglossary.TLeafType, $i: mfp.ILine) {
@@ -41,18 +41,18 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
         switch ($[0]) {
             case "array":
                 pl.cc($[1], ($) => {
-                    $i.snippet(`pt.Array<`)
+                    $i.snippet(`['array', `)
                     serializeType($, $i)
-                    $i.snippet(`>`)
+                    $i.snippet(`]`)
                 })
                 break
             case "dictionary":
                 pl.cc($[1], ($) => {
-                    $i.snippet(`pt.Dictionary<`)
+                    $i.snippet(`['dictionary', `)
                     switch ($[0]) {
                         case "null":
                             pl.cc($[1], ($) => {
-                                $i.snippet(`null`)
+                                $i.snippet(`['null', null]`)
                             })
                             break
                         case "type":
@@ -63,21 +63,21 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                             break
                         default: pl.au($[0])
                     }
-                    $i.snippet(`>`)
+                    $i.snippet(`]`)
                 })
                 break
             case "group":
                 pl.cc($[1], ($) => {
-                    $i.snippet(`{`)
+                    $i.snippet(`['group', {`)
                     $i.indent(($i) => {
                         $.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`readonly "${key}"${$.optional === undefined || false ? "" : "?"}: `)
+                                $i.snippet(`"${key}": `)
                                 serializeType($.type, $i)
                             })
                         })
                     })
-                    $i.snippet(`}`)
+                    $i.snippet(`}]`)
                 })
                 break
             case "leaf":
@@ -87,20 +87,23 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                 break
             case "nested":
                 pl.cc($[1], ($) => {
-                    $i.snippet(`pt.Nested<`)
+                    $i.snippet(`['nested', `)
                     serializeType($, $i)
-                    $i.snippet(`>`)
+                    $i.snippet(`]`)
                 })
                 break
             case "optional":
                 pl.cc($[1], ($) => {
-                    $i.snippet(`null | `)
+                    $i.snippet(`['optional', `)
                     serializeType($, $i)
+                    $i.snippet(`]`)
                 })
                 break
             case "parameter":
                 pl.cc($[1], ($) => {
-                    $i.snippet(`A${$}`)
+                    $i.snippet(`['parameter', `)
+                    $i.snippet(`"${$}"`)
+                    $i.snippet(`]`)
                 })
                 break
             case "taggedUnion":
@@ -256,126 +259,229 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
         }
 
     }
-    function serializeNamespace($: mglossary.TNamespace, $i: mfp.IBlock) {
+    function serializeNamespace($: mglossary.TNamespace, $i: mfp.ILine) {
+        $i.snippet(`{`)
+        $i.indent(($i) => {
 
-        if ($.namespaces !== undefined) {
-            $.namespaces.forEach(compare, ($, key) => {
-                $i.literal(``)
-                $i.line(($i) => {
-                    $i.snippet(`export namespace N${key} {`)
-                    $i.indent(($i) => {
-                        serializeNamespace($, $i)
-                    })
-                    $i.snippet(`}`)
-                })
-            })
-        }
-        if ($.templates !== undefined) {
-            $.templates.forEach(compare, ($, key) => {
-                $i.literal(``)
-                $i.line(($i) => {
-                    $i.snippet(`export type M${key}`)
-                    $d.cb_enrichedDictionaryForEach($.parameters, {
-                        onEmpty: () => {
-                            //nothing
-                        },
-                        onNotEmpty: ($c) => {
-                            $i.snippet(`<`)
-                            $c(($) => {
-                                $i.snippet(`${$.isFirst ? `` : `, `}A${$.key}`)
+            $i.line(($i) => {
+                $i.snippet(`'namespaces': d({`)
+                $i.indent(($i) => {
+                    if ($.namespaces !== undefined) {
+                        $.namespaces.forEach(compare, ($, key) => {
+                            $i.line(($i) => {
+                                $i.snippet(`"${key}": `)
+                                serializeNamespace($, $i)
+                                $i.snippet(`,`)
                             })
-                            $i.snippet(`>`)
-
-                        }
-                    })
-                    $i.snippet(` = `)
-                    serializeType($.type, $i)
+                        })
+                    }
                 })
+                $i.snippet(`}),`)
             })
-        }
-        $.types.forEach(compare, ($, key) => {
-            $i.literal(``)
             $i.line(($i) => {
-                $i.snippet(`export type T${key} = `)
-                serializeType($, $i)
+                $i.snippet(`'templates': d({`)
+                $i.indent(($i) => {
+                    if ($.templates !== undefined) {
+                        $.templates.forEach(compare, ($, key) => {
+                            $i.line(($i) => {
+                                $i.snippet(`"${key}": {`)
+                                $i.indent(($i) => {
+                                    
+                                    $i.line(($i) => {
+                                        $i.snippet(`'parameters': d({`)
+                                        $i.indent(($i) => {
+                                            $.parameters.forEach(compare, ($, key) => {
+                                                $i.line(($i) => {
+                                                    $i.snippet(`"${key}": null,`)
+                                                })
+                                            })
+                                        })
+                                        $i.snippet(`}),`)
+                                    })
+                                    $i.line(($i) => {
+                                        $i.snippet(`'type': `)
+                                        serializeType($.type, $i)
+                                        $i.snippet(`,`)
+                                    })
+                                })
+                                $i.snippet(`},`)
+                            })
+                        })
+                    }
+                })
+                $i.snippet(`}),`)
+            })
+            $i.line(($i) => {
+                $i.snippet(`'types': d({`)
+                $i.indent(($i) => {
+                    $.types.forEach(compare, ($, key) => {
+                        $i.line(($i) => {
+                            $i.snippet(`"${key}": `)
+                            serializeType($, $i)
+                            $i.snippet(`,`)
+                        })
+                    })
+                })
+                $i.snippet(`}),`)
+            })
+            $i.line(($i) => {
+                $i.snippet(`'interfaces': d({`)
+                $i.indent(($i) => {
+                    $.interfaces.forEach(compare, ($, key) => {
+                        $i.line(($i) => {
+                            $i.snippet(`"${key}": `)
+                            serializeInterface($, $i)
+                            $i.snippet(`,`)
+                        })
+                    })
+                })
+                $i.snippet(`}),`)
             })
         })
-        $.interfaces.forEach(compare, ($, key) => {
-            $i.literal(``)
-            $i.line(($i) => {
-                $i.snippet(`export type I${key} = `)
-                serializeInterface($, $i)
-            })
-        })
+        $i.snippet(`}`)
     }
     return ($, $i) => {
-        $i.line(($i) => {
-            $i.snippet(`import * as pt from "pareto-core-types"`)
-        })
-        $.imports.forEach(compare, ($, key) => {
+        $i.snippet(`{`)
+        $i.indent(($i) => {
             $i.line(($i) => {
-                $i.snippet(`import * as m${key} from "${$}"`)
+                $i.snippet(`'imports': d({`)
+                $i.indent(($i) => {
+                    $.imports.forEach(compare, ($, key) => {
+                        $i.line(($i) => {
+                            $i.snippet(`"${key}": "FIXME",`)
+                        })
+                    })
+                })
+                $i.snippet(`}),`)
             })
+            $i.line(($i) => {
+                $i.snippet(`'parameters': d({`)
+                $i.indent(($i) => {
+                    if ($.parameters !== undefined) {
+                        $.parameters.forEach(compare, ($, key) => {
+                            $i.line(($i) => {
+                                $i.snippet(`"${key}": "FIXME",`)
+                            })
+                        })
+                    }
+                })
+                $i.snippet(`}),`)
+            })
+            $i.line(($i) => {
+                $i.snippet(`'namespace': `)
+                serializeNamespace($.namespace, $i)
+                $i.snippet(`,`)
+            })
+            $i.line(($i) => {
+                $i.snippet(`'functions': d({`)
+                $i.indent(($i) => {
+                    $.functions.forEach(compare, ($, key) => {
+                        $i.line(($i) => {
+                            $i.snippet(`"${key}": "FIXME",`)
+                        })
+                    })
+                })
+                $i.snippet(`}),`)
+            })
+            $i.line(($i) => {
+                $i.snippet(`'callbacks': d({`)
+                $i.indent(($i) => {
+                    $.callbacks.forEach(compare, ($, key) => {
+                        $i.line(($i) => {
+                            $i.snippet(`"${key}": "FIXME",`)
+                        })
+                    })
+                })
+                $i.snippet(`}),`)
+            })
+            $i.line(($i) => {
+                $i.snippet(`'pipes': d({`)
+                $i.indent(($i) => {
+                    $.pipes.forEach(compare, ($, key) => {
+                        $i.line(($i) => {
+                            $i.snippet(`"${key}": "FIXME",`)
+                        })
+                    })
+                })
+                $i.snippet(`}),`)
+            })
+            // $i.line(($i) => {
+            //     $i.snippet(`imports: d({}),`)
+            // })
+            // $i.line(($i) => {
+            //     $i.snippet(`imports: d({}),`)
+            // })
         })
-        serializeNamespace($.namespace, $i)
-        // $.procedures.forEach(compare, ($, key) => {
-        //     $i.literal(``)
+        $i.snippet(`}`)
+        // $i.line(($i) => {
+        //     $i.snippet(`import * as pt from "pareto-core-types"`)
+        // })
+
+
+        // $.imports.forEach(compare, ($, key) => {
         //     $i.line(($i) => {
-        //         $i.snippet(`export type P${key} = ($: `)
-        //         serializeLeafType($.data, $i)
-        //         $i.snippet(`) => void`)
+        //         $i.snippet(`import * as m${key} from "${$}"`)
         //     })
         // })
-        $.functions.forEach(compare, ($, key) => {
-            $i.literal(``)
-            $i.line(($i) => {
-                $i.snippet(`export type ${$.async ? "A" : "F"}${key} = ($: `)
-                serializeLeafType($.data, $i)
-                $i.snippet(`) => `)
-                if ($.async) {
-                    $i.snippet(`pt.AsyncValue<`)
-                    serializeLeafType($["return value"], $i)
-                    $i.snippet(`>`)
-                } else {
-                    serializeLeafType($["return value"], $i)
-                }
-            })
-        })
-        $.callbacks.forEach(compare, ($, key) => {
-            $i.literal(``)
-            $i.line(($i) => {
-                $i.snippet(`export type X${key} = (`)
-                switch ($.data[0]) {
-                    case "null":
-                        pl.cc($.data[1], ($) => {
-                        })
-                        break
-                    case "type":
-                        pl.cc($.data[1], ($) => {
-                            $i.snippet(`$: `)
-                            serializeLeafType($, $i)
-                            $i.snippet(`, `)
-                        })
-                        break
-                    default: pl.au($.data[0])
-                }
-                $i.snippet(`$i: `)
-                if ($.context !== undefined) {
-                    serializeContext($.context, $i)
-                }
-                $i.snippet(`I${$.interface}) => void`)
-            })
-        })
-        $.pipes.forEach(compare, ($, key) => {
-            $i.literal(``)
-            $i.line(($i) => {
-                $i.snippet(`export type P${key} = ($i: `)
-                serializeInterfaceReference($.out, $i)
-                $i.snippet(`, $c: ($i: `)
-                serializeInterfaceReference($.in, $i)
-                $i.snippet(`) => void) => void`)
-            })
-        })
+        // serializeNamespace($.namespace, $i)
+        // // $.procedures.forEach(compare, ($, key) => {
+        // //     $i.literal(``)
+        // //     $i.line(($i) => {
+        // //         $i.snippet(`export type P${key} = ($: `)
+        // //         serializeLeafType($.data, $i)
+        // //         $i.snippet(`) => void`)
+        // //     })
+        // // })
+        // $.functions.forEach(compare, ($, key) => {
+        //     $i.literal(``)
+        //     $i.line(($i) => {
+        //         $i.snippet(`export type ${$.async ? "A" : "F"}${key} = ($: `)
+        //         serializeLeafType($.data, $i)
+        //         $i.snippet(`) => `)
+        //         if ($.async) {
+        //             $i.snippet(`pt.AsyncValue<`)
+        //             serializeLeafType($["return value"], $i)
+        //             $i.snippet(`>`)
+        //         } else {
+        //             serializeLeafType($["return value"], $i)
+        //         }
+        //     })
+        // })
+        // $.callbacks.forEach(compare, ($, key) => {
+        //     $i.literal(``)
+        //     $i.line(($i) => {
+        //         $i.snippet(`export type X${key} = (`)
+        //         switch ($.data[0]) {
+        //             case "null":
+        //                 pl.cc($.data[1], ($) => {
+        //                 })
+        //                 break
+        //             case "type":
+        //                 pl.cc($.data[1], ($) => {
+        //                     $i.snippet(`$: `)
+        //                     serializeLeafType($, $i)
+        //                     $i.snippet(`, `)
+        //                 })
+        //                 break
+        //             default: pl.au($.data[0])
+        //         }
+        //         $i.snippet(`$i: `)
+        //         if ($.context !== undefined) {
+        //             serializeContext($.context, $i)
+        //         }
+        //         $i.snippet(`I${$.interface}) => void`)
+        //     })
+        // })
+        // $.pipes.forEach(compare, ($, key) => {
+        //     $i.literal(``)
+        //     $i.line(($i) => {
+        //         $i.snippet(`export type P${key} = ($i: `)
+        //         serializeInterfaceReference($.out, $i)
+        //         $i.snippet(`, $c: ($i: `)
+        //         serializeInterfaceReference($.in, $i)
+        //         $i.snippet(`) => void) => void`)
+        //     })
+        // })
     }
 }
 

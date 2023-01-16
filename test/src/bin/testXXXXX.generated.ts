@@ -3,6 +3,7 @@ import * as pr from "pareto-core-raw"
 import * as pl from "pareto-core-lib"
 import * as tst from "lib-pareto-test"
 
+import { test as glossary_createSerializer } from "../modules/glossary/createSerializer.p"
 import { test as liana2Pareto_createLiana2ParetoMapper } from "../modules/liana2Pareto/createLiana2ParetoMapper.p"
 import { test as liana2Pareto_createProjectGenerator } from "../modules/liana2Pareto/createProjectGenerator.p"
 import { test as liana2Pareto_generateProject } from "../modules/liana2Pareto/generateProject.p"
@@ -14,11 +15,12 @@ import { test as main_createProjectSerializer } from "../modules/main/createProj
 import { test as main_createTemplateSerializer } from "../modules/main/createTemplateSerializer.p"
 import { test as main_generateProject } from "../modules/main/generateProject.p"
 import { test as main_serializeLeafType } from "../modules/main/serializeLeafType.p"
-import { test as serialize_createGlossarySerializer } from "../modules/serialize/createGlossarySerializer.p"
-import { test as serialize_createModuleDefinitionSerializer } from "../modules/serialize/createModuleDefinitionSerializer.p"
+import { test as moduleDefinition_createSerializer } from "../modules/moduleDefinition/createSerializer.p"
 
 const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({
-    "glossary": pr.wrapRawDictionary({}),
+    "glossary": pr.wrapRawDictionary({
+        "createSerializer": glossary_createSerializer,
+    }),
     "liana": pr.wrapRawDictionary({}),
     "liana2Pareto": pr.wrapRawDictionary({
         "createLiana2ParetoMapper": liana2Pareto_createLiana2ParetoMapper,
@@ -35,10 +37,8 @@ const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElemen
         "generateProject": main_generateProject,
         "serializeLeafType": main_serializeLeafType,
     }),
-    "moduleDefinition": pr.wrapRawDictionary({}),
-    "project": pr.wrapRawDictionary({}),
-    "serialize": pr.wrapRawDictionary({
-        "createGlossarySerializer": serialize_createGlossarySerializer,
-        "createModuleDefinitionSerializer": serialize_createModuleDefinitionSerializer,
+    "moduleDefinition": pr.wrapRawDictionary({
+        "createSerializer": moduleDefinition_createSerializer,
     }),
+    "project": pr.wrapRawDictionary({}),
 }).asyncMap(($, key) => $.asyncMap(($, key) => $()))

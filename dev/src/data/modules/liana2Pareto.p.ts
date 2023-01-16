@@ -9,9 +9,9 @@ import {
     array, dictionary, group, member, taggedUnion, types, _function
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/api/api/shorthands.p"
+import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
-import * as mapi from "lib-pareto-typescript-project/dist/modules/api"
+import * as mapi from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
 
 const d = pr.wrapRawDictionary
@@ -25,19 +25,22 @@ export const $: mapi.TModuleDefinition = {
             // "fp": "lib-fountain-pen",
             "main": "lib-pareto-main",
         }),
-        'types': types({
-            "Configuration": group({
-                "model": member(er("liana", "Model")),
-                "mainData": member(er("main", "MainData")),
+        'namespace': {
+            'types': types({
+                "Configuration": group({
+                    "model": member(er("liana", "Model")),
+                    "mainData": member(er("main", "MainData")),
+                }),
             }),
-        }),
+            'interfaces': d({}),
+
+        },
         'functions': d({
             "MapLiana2Pareto": {
                 'data': externalReference("liana", "Model"),
                 'return value': externalReference("moduleDefinition", "ModuleDefinition"),
             }
         }),
-        'interfaces': d({}),
         'callbacks': d({
             // "SerializeGlossary": {
             //     'data': ['type', externalReference("glossary", "Glossary")],

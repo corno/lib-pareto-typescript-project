@@ -9,7 +9,7 @@ import {
     array, dictionary, group, member, taggedUnion, types, _function
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import * as mapi from "lib-pareto-typescript-project/dist/modules/api"
+import * as mapi from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
 
 const d = pr.wrapRawDictionary
@@ -21,38 +21,41 @@ export const $: mapi.TModuleDefinition = {
             // "moduleDefinition": "../../moduleDefinition",
             // "fp": "lib-fountain-pen",
         }),
-        'types': types({
-            "LocalType": taggedUnion({
-                "string": type(group({})),
-                "dictionary": type(group({
-                    "type": member(ref("LocalType"))
-                })),
-                "array": type(group({
-                    "type": member(ref("LocalType"))
-                })),
-                "taggedUnion": type(group({
-                    "options": member(dictionary(group({
+        'namespace': {
+            'types': types({
+                "LocalType": taggedUnion({
+                    "string": type(group({})),
+                    "dictionary": type(group({
                         "type": member(ref("LocalType"))
-                    })))
-                })),
-                "group": type(group({
-                    "properties": member(dictionary(group({
+                    })),
+                    "array": type(group({
                         "type": member(ref("LocalType"))
-                    })))
-                })),
-                "component": type((group({
-                    "type": member(str())
-                }))),
+                    })),
+                    "taggedUnion": type(group({
+                        "options": member(dictionary(group({
+                            "type": member(ref("LocalType"))
+                        })))
+                    })),
+                    "group": type(group({
+                        "properties": member(dictionary(group({
+                            "type": member(ref("LocalType"))
+                        })))
+                    })),
+                    "component": type((group({
+                        "type": member(str())
+                    }))),
+                }),
+                "Model": group({
+                    "types": member(dictionary(group({
+                        "type": member(ref("LocalType"))
+                    }))),
+                    "root": member(str())
+                }),
             }),
-            "Model": group({
-                "types": member(dictionary(group({
-                    "type": member(ref("LocalType"))
-                }))),
-                "root": member(str())
-            }),
-        }),
+            'interfaces': d({}),
+
+        },
         'functions': d({}),
-        'interfaces': d({}),
         'callbacks': d({
             // "SerializeGlossary": {
             //     'data': ['type', externalReference("glossary", "Glossary")],

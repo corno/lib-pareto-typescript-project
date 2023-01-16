@@ -10,9 +10,9 @@ import {
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
-import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/api/api/shorthands.p"
+import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
-import * as mapi from "lib-pareto-typescript-project/dist/modules/api"
+import * as mapi from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 const wd = pr.wrapRawDictionary
 
 function def($: mapi.TModuleDefinition): mapi.TModuleDefinition {
@@ -29,40 +29,42 @@ export const api: mapi.TModuleDefinition = def({
             "main": "lib-pareto-main",
             "fp": "lib-fountain-pen",
         }),
-        'types': types({
-            "ArgumentError": taggedUnion({
-                "missing": nullType(),
-                "too many": nullType(),
+        'namespace': {
+            'types': types({
+                "ArgumentError": taggedUnion({
+                    "missing": nullType(),
+                    "too many": nullType(),
+                }),
+                "Arguments": array(str()),
+                "ProjectSettings": group({
+                    "project": member(er("project", "Project")),
+                    "mainData": member(er("main", "MainData")),
+                }),
+                "Parameters": group({
+                    "testDirectory": member(str()),
+                }),
             }),
-            "Arguments": array(str()),
-            "ProjectSettings": group({
-                "project": member(er("project", "Project")),
-                "mainData": member(er("main", "MainData")),
+            'interfaces': wd({
+                "CreateWriter": ['method', {
+                    'data': ['type', string()],
+                    'interface': ['set', {
+                        'context': ['import', "fp"],
+                        'interface': "Writer"
+                    }],
+                }],
+                "ParseArguments": ['method', {
+                    'data': ['type', reference("Arguments")],
+                    'interface': ['null', null],
+                }],
+                "ProcessArgument": ['method', {
+                    'data': ['type', string()],
+                    'interface': ['null', null],
+                }],
             }),
-            "Parameters": group({
-                "testDirectory": member(str()),
-            }),
-        }),
+        },
         'functions': wd({
             "GetSingleArgument": _function(reference("Arguments"), string(), true),
 
-        }),
-        'interfaces': wd({
-            "CreateWriter": ['method', {
-                'data': ['type', string()],
-                'interface': ['set', {
-                    'context': ['import', "fp"],
-                    'interface': "Writer"
-                }],
-            }],
-            "ParseArguments": ['method', {
-                'data': ['type', reference("Arguments")],
-                'interface': ['null', null],
-            }],
-            "ProcessArgument": ['method', {
-                'data': ['type', string()],
-                'interface': ['null', null],
-            }],
         }),
         // 'interfaces': wd({
         //     // "SingleArgument": {

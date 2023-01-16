@@ -12,83 +12,39 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
         const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
         function serializeOptionalTypeReference($: mglossary.TOptionalTypeReference, $i: mfp.ILine) {
             if ($ === null) {
-                $i.snippet(`OOOFSFSFSDF`)
+                $i.snippet(`null`)
             } else {
-                
+                serializeTypeReference($, $i)
             }
         }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
-            $i.snippet(`aaaaa`)
+            $i.snippet(`{`)
+            $i.indent(($i) => {
+                $i.line(($i) => {
+                    $i.snippet(`'context': `)
+                    serializeContext($.context, $i)
+                    $i.snippet(`,`)
+                })
+                $i.line(($i) => {
+                    $i.snippet(`'namespaces': a([`)
+                    $d.cb_enrichedArrayForEach($.namespaces, {
+                        onEmpty: () => {
+    
+                        },
+                        onNotEmpty: ($c) => {
+                            $c(($) => {
+                                $i.snippet(`${$.isFirst ? `` : `, `}"${$.value}"`)
+                            })
+                        }
+                    })
+                    $i.snippet(`]),`)
+                })
+                $i.line(($i) => {
+                    $i.snippet(`'type': "${$.type}",`)
+                })
+            })
+            $i.snippet(`}`)
         }
-        // function serializeLeafTypeOrNull($: mglossary.TLeafTypeOrNull, $i: mfp.ILine) {
-        //     switch ($[0]) {
-        //         case "null":
-        //             pl.cc($[1], ($) => {
-        //                 $i.snippet(`['null', null]`)
-        //             })
-        //             break
-        //         case "type":
-        //             pl.cc($[1], ($) => {
-
-        //                 $i.snippet(`['type', `)
-        //                 serializeLeafType($, $i)
-        //                 $i.snippet(`]`)
-        //             })
-        //             break
-        //         default: pl.au($[0])
-        //     }
-        // }
-
-        // function serializeLeafType($: mglossary.TLeafType, $i: mfp.ILine) {
-        //     switch ($[0]) {
-        //         case 'boolean':
-        //             pl.cc($[1], ($) => {
-        //                 $i.snippet(`['boolean', null]`)
-        //             })
-        //             break
-        //         case 'reference':
-        //             pl.cc($[1], ($) => {
-        //                 $i.snippet(`['reference', {`)
-        //                 $i.indent(($i) => {
-        //                     $i.line(($i) => {
-        //                         $i.snippet(`'context': `)
-        //                         serializeContext($.context, $i)
-        //                         $i.snippet(`,`)
-        //                     })
-        //                     $i.line(($i) => {
-        //                         $i.snippet(`'namespaces': a([`)
-        //                         $d.cb_enrichedArrayForEach($.namespaces, {
-        //                             onEmpty: () => {
-
-        //                             },
-        //                             onNotEmpty: ($c) => {
-        //                                 $c(($) => {
-        //                                     $i.snippet(`${$.isFirst ? `` : `, `}"${$.value}"`)
-        //                                 })
-        //                             }
-        //                         })
-        //                         $i.snippet(`]),`)
-        //                     })
-        //                     $i.line(($i) => {
-        //                         $i.snippet(`'type': "${$.type}",`)
-        //                     })
-        //                 })
-        //                 $i.snippet(`}]`)
-        //             })
-        //             break
-        //         case 'number':
-        //             pl.cc($[1], ($) => {
-        //                 $i.snippet(`['number', null]`)
-        //             })
-        //             break
-        //         case 'string':
-        //             pl.cc($[1], ($) => {
-        //                 $i.snippet(`['string', null]`)
-        //             })
-        //             break
-        //         default: pl.au($[0])
-        //     }
-        // }
         function serializeDefinitionReference($: api.TDefinitionReference, $i: mfp.ILine) {
 
             switch ($[0]) {

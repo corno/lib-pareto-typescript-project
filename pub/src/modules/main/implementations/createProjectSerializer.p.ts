@@ -66,8 +66,66 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                         $i.literal(`exe.runProgram(mmain.$a.main)`)
                     })
                 })
-                $i.allowed(`data`)
-                $i.allowed(`modules`)
+                $i.directory(`data`, ($i) => {
+                    $i.allowed(`modules`)
+                    $i.allowed(`api.p.ts`)
+                    $i.allowed(`project.p.ts`)
+                })
+                $i.directory(`modules`, ($i) => {
+                    $i.directory(`main`, ($i) => {
+                        $i.directory(`api`, ($i) => {
+                            $i.file(`api.generated.ts`, ($i) => {
+                                $i.literal(`import * as pt from "pareto-core-types"`)
+                                $i.literal(``)
+                                $i.literal(`import * as glo from "./types.generated"`)
+                                $i.literal(``)
+                                $i.literal(`import * as mmain from "lib-pareto-main"`)
+                                $i.literal(``)
+                                $i.literal(`export type Cmain = pt.Procedure<mmain.TMainData>`)
+                                $i.literal(``)
+                                $i.literal(`export type API = {`)
+                                $i.literal(`    main: Cmain`)
+                                $i.literal(`}`)
+                            })
+                            $i.file(`types.generated.ts`, ($i) => {
+                                $i.literal(`import * as pt from "pareto-core-types"`)
+                            })
+                            $i.file(`index.ts`, ($i) => {
+                                $i.literal(`export * from "./types.generated"`)
+                                $i.literal(`export * from "./api.generated"`)
+                            })
+                        })
+                        $i.directory(`implementations`, ($i) => {
+                            $i.file(`main.generated.p`, ($i) => {
+                                $i.literal(`import * as pl from "pareto-core-lib"`)
+                                $i.literal(`import * as api from "../api"`)
+                                $i.literal(``)
+                                $i.literal(`import { $ as project } from "../../../data/project.p"`)
+                                $i.literal(`import * as mpareto from "lib-pareto-typescript-project"`)
+                                $i.literal(``)
+                                $i.literal(`export const imain: api.Cmain = ($) => {`)
+                                $i.literal(``)
+                                $i.literal(`    mpareto.$a.generateProject({`)
+                                $i.literal(`        project: project,`)
+                                $i.literal(`        mainData: $,`)
+                                $i.literal(`    })`)
+                                $i.literal(`}`)
+                            })
+                        })
+                        $i.file(`export.generated.ts`, ($i) => {
+                            $i.literal(`import { API } from "./api"`)
+                            $i.literal(`import { imain } from "./implementations/main.generated"`)
+                            $i.literal(``)
+                            $i.literal(`export const $a: API = {`)
+                            $i.literal(`    "main": imain,`)
+                            $i.literal(`}`)
+                        })
+                        $i.file(`index.ts`, ($i) => {
+                            $i.literal(`export * from "./api"`)
+                            $i.literal(`export * from "./export.generated"`)
+                        })
+                    })
+                })
                 $i.allowed(`index.ts`)
                 // $i.directory(`src`, ($i) => {
                 //     // $i.directory(`modules`, ($i) => {

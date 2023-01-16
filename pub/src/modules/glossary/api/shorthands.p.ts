@@ -5,7 +5,7 @@ import * as api from "./types.generated"
 
 
 
-const wd = pr.wrapRawDictionary
+const d = pr.wrapRawDictionary
 const wa = pr.wrapRawArray
 
 
@@ -23,10 +23,10 @@ export function number(): api.TType {
     return ['number', null]
 }
 export function types($: { [key: string]: api.TType }) {
-    return wd($)
+    return d($)
 }
 export function taggedUnion($: { [key: string]: api.TType }): api.TType {
-    return ['taggedUnion', wd($)]
+    return ['taggedUnion', d($)]
 }
 export function dictionary($: api.TType): api.TType {
     return ['dictionary', $]
@@ -41,7 +41,7 @@ export function parameter($: string): api.TType {
 export function template(template: string, $: { [key: string]: api.TType }): api.TType {
     return ['template', {
         'template': template,
-        'arguments': wd($),
+        'arguments': d($),
     }]
 }
 export function array($: api.TType): api.TType {
@@ -59,7 +59,7 @@ export function group($: {
         optional?: boolean
     }
 }): api.TType {
-    return ['group', wd($)]
+    return ['group', d($)]
 }
 
 export function member($: api.TType, optional?: boolean): { type: api.TType, optional?: boolean } {

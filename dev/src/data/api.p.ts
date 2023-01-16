@@ -12,16 +12,16 @@ import {
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
-import * as mapi from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
-const wd = pr.wrapRawDictionary
+import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+const d = pr.wrapRawDictionary
 
-function def($: mapi.TModuleDefinition): mapi.TModuleDefinition {
+function def($: mmoduleDefinition.TModuleDefinition): mmoduleDefinition.TModuleDefinition {
     return $
 }
 
-export const api: mapi.TModuleDefinition = def({
+export const api: mmoduleDefinition.TModuleDefinition = def({
     'glossary': {
-        'imports': wd({
+        'imports': d({
             "glossary": "../../glossary",
             "moduleDefinition": "../../moduleDefinition",
             "project": "../../project",
@@ -44,7 +44,7 @@ export const api: mapi.TModuleDefinition = def({
                     "testDirectory": member(str()),
                 }),
             }),
-            'interfaces': wd({
+            'interfaces': d({
                 "CreateWriter": ['method', {
                     'data': ['type', string()],
                     'interface': ['set', {
@@ -62,19 +62,19 @@ export const api: mapi.TModuleDefinition = def({
                 }],
             }),
         },
-        'functions': wd({
+        'functions': d({
             "GetSingleArgument": _function(reference("Arguments"), string(), true),
 
         }),
-        // 'interfaces': wd({
+        // 'interfaces': d({
         //     // "SingleArgument": {
-        //     //     "members": wd({
+        //     //     "members": d({
         //     //         "Z": ["callback", ['type', string()]],
         //     //         "Y": ["callback", ['type', string()]],
         //     //     }),
         //     // }
         // }),
-        'callbacks': wd({
+        'callbacks': d({
             "SerializeGlossary": {
                 'data': ['type', externalReference("glossary", "Glossary")],
                 'context': ['import', "fp"],
@@ -101,7 +101,7 @@ export const api: mapi.TModuleDefinition = def({
                 'interface': "Writer",
             },
         }),
-        'pipes': wd({
+        'pipes': d({
             "ParseArguments": {
                 'in': {
                     'interface': "ParseArguments"
@@ -113,20 +113,20 @@ export const api: mapi.TModuleDefinition = def({
         }),
     },
     'api': {
-        'imports': wd({
+        'imports': d({
             "project": "../../project",
             "main": "lib-pareto-main",
             "collation": "res-pareto-collation",
             "temp": "../../temp",
         }),
-        'algorithms': wd({
+        'algorithms': d({
             "createModuleDefinitionSerializer": {
                 'definition': ['callback', {
                     'callback': "SerializeModuleDefinition"
                 }],
                 'type': ['constructor', {
                     'configuration data': ['null', null],
-                    'dependencies': wd({
+                    'dependencies': d({
                         "compare": ['function', {
                             'context': ['import', "collation"],
                             'function': "IsABeforeB",
@@ -151,7 +151,7 @@ export const api: mapi.TModuleDefinition = def({
                 }],
                 'type': ['constructor', {
                     'configuration data': ['null', null],
-                    'dependencies': wd({
+                    'dependencies': d({
                         "compare": ['function', {
                             'context': ['import', "collation"],
                             'function': "IsABeforeB",
@@ -176,7 +176,7 @@ export const api: mapi.TModuleDefinition = def({
                 }],
                 'type': ['constructor', {
                     'configuration data': ['null', null],
-                    'dependencies': wd({
+                    'dependencies': d({
                         "compare": ['function', {
                             'context': ['import', "collation"],
                             'function': "IsABeforeB",
@@ -198,7 +198,7 @@ export const api: mapi.TModuleDefinition = def({
                 }],
                 'type': ['constructor', {
                     'configuration data': ['null', null],
-                    'dependencies': wd({
+                    'dependencies': d({
                         "enrichedDictionaryForEach": ['callback', {
                             'context': ['import', "temp"],
                             'callback': "EnrichedDictionaryForEach",
@@ -215,7 +215,7 @@ export const api: mapi.TModuleDefinition = def({
                 //'definition': ['procedure', ['type', externalReference("main", "Arguments")]],
                 'type': ['constructor', {
                     'configuration data': ['null', null],
-                    'dependencies': wd({
+                    'dependencies': d({
                         "callback": ['procedure', ['type', reference("Parameters")]],
                         "onError": ['procedure', ['type', reference("ArgumentError")]],
 
@@ -230,7 +230,7 @@ export const api: mapi.TModuleDefinition = def({
                 'definition': ['procedure', ['type', reference("ProjectSettings")]],
                 'type': ['constructor', {
                     'configuration data': ['null', null],
-                    'dependencies': wd({
+                    'dependencies': d({
                         "getSingleArgument": ['function', {
                             'async': true,
                             'function': "GetSingleArgument",

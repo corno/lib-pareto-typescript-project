@@ -9,12 +9,12 @@ import {
     array, dictionary, group, member, taggedUnion, types, _function
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import * as mapi from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
 
 const d = pr.wrapRawDictionary
 
-export const $: mapi.TModuleDefinition = {
+export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
             // "glossary": "../../glossary",
@@ -87,7 +87,7 @@ export const $: mapi.TModuleDefinition = {
             //     }],
             //     'type': ['constructor', {
             //         'configuration data': ['null', null],
-            //         'dependencies': wd({
+            //         'dependencies': d({
             //             "enrichedDictionaryForEach": ['callback', {
             //                 'context': ['import', "temp"],
             //                 'callback': "EnrichedDictionaryForEach",
@@ -105,7 +105,7 @@ export const $: mapi.TModuleDefinition = {
             //     }],
             //     'type': ['constructor', {
             //         'configuration data': ['null', null],
-            //         'dependencies': wd({
+            //         'dependencies': d({
             //             "compare": ['function', {
             //                 'context': ['import', "collation"],
             //                 'function': "IsABeforeB",

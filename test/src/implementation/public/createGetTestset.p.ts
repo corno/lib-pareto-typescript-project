@@ -24,7 +24,7 @@ import { string, reference, externalReference, number, boolean } from "../../../
 import * as mproject from "../../../../pub/dist/modules/project"
 import * as mliana from "../../../../pub/dist/modules/liana"
 import * as mliana2Pareto from "../../../../pub/dist/modules/liana2Pareto"
-const wd = pr.wrapRawDictionary
+const d = pr.wrapRawDictionary
 
 
 import * as pub from "../../../../pub"
@@ -41,7 +41,7 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
                 'arguments': pr.wrapRawArray(["FOOOOOOOOOOOOOO"]),
             },
             'project': {
-                'modules': wd({
+                'modules': d({
                     "main": {
                         'definition': moduleDefinition,
                         'implementation': {},
@@ -82,7 +82,7 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
 
 
         const model: mliana.TModel = {
-            'types': wd({
+            'types': d({
                 "FOO": {
                     'type': ['string', {}],
                 },

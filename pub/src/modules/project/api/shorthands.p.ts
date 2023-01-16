@@ -4,7 +4,7 @@ import * as pr from "pareto-core-raw"
 //import { Function, Glossary, LeafType, Type } from "./types.p"
 
 
-const wd = pr.wrapRawDictionary
+const d = pr.wrapRawDictionary
 
 
 // export function boolean(): Type {

@@ -5,7 +5,7 @@ import * as mglossary from "../../glossary"
 // import { Function, Glossary, LeafType, Type } from "./types.p"
 
 
-const wd = pr.wrapRawDictionary
+const d = pr.wrapRawDictionary
 const wa = pr.wrapRawArray
 
 export function boolean(): mglossary.TType {

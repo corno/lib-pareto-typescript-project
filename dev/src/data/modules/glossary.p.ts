@@ -12,13 +12,13 @@ import {
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 
-import * as mapi from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
 
 const d = pr.wrapRawDictionary
 
-export const $: mapi.TModuleDefinition = {
-    "glossary": {
+export const $: mmoduleDefinition.TModuleDefinition = {
+    'glossary': {
         'imports': d({
             "fp": "lib-fountain-pen",
         }),

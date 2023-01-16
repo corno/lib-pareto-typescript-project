@@ -9,12 +9,12 @@ import { $ as liana2Pareto } from "./modules/liana2Pareto.p"
 import { $ as moduleDefinition } from "./modules/moduleDefinition.p"
 import { $ as project } from "./modules/project.p"
 
-const wd = pr.wrapRawDictionary
+const d = pr.wrapRawDictionary
 
 export const $: mproject.TProject = {
     'type': ['library', null],
-    'modules': wd({
-        "glossary": {
+    'modules': d({
+        'glossary': {
             'definition': glossary,
             'implementation': {}
         },
@@ -41,7 +41,7 @@ export const $: mproject.TProject = {
         // "temp": {
         //     'definition': def({
         //         'glossary': {
-        //             'imports': wd({}),
+        //             'imports': d({}),
         //             'types': types({
         //                 "Dictionary": dictionary(str()),
         //                 "B": group({
@@ -50,10 +50,10 @@ export const $: mproject.TProject = {
         //                     "isFirst": member(bln()),
         //                 }),
         //             }),
-        //             'functions': wd({}),
-        //             'interfaces': wd({
+        //             'functions': d({}),
+        //             'interfaces': d({
         //                 "X": ['group', {
-        //                     'members': wd({
+        //                     'members': d({
         //                         "onEmpty": ['method', {
         //                             'data': ['null', null],
         //                             'interface': ['null', null],
@@ -74,17 +74,17 @@ export const $: mproject.TProject = {
         //                     }],
         //                 }],
         //             }),
-        //             'callbacks': wd({
+        //             'callbacks': d({
         //                 "EnrichedDictionaryForEach": {
         //                     'data': ['type', reference("Dictionary")],
         //                     'interface': "X",
         //                 },
         //             }),
-        //             'pipes': wd({}),
+        //             'pipes': d({}),
         //         },
-        //         "api": {
-        //             'imports': wd({}),
-        //             'algorithms': wd({})
+        //         'api': {
+        //             'imports': d({}),
+        //             'algorithms': d({})
         //         },
         //     }),
         //     'implementation': {}

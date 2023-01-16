@@ -21,13 +21,11 @@ export type TGlossary = {
     readonly "callbacks": pt.Dictionary<TCallback>
     readonly "functions": pt.Dictionary<TFunction>
     readonly "imports": pt.Dictionary<string>
-    readonly "interfaces": pt.Dictionary<TInterface>
+    readonly "namespace": TNamespace
     readonly "pipes": pt.Dictionary<{
         readonly "in": TInterfaceReference
         readonly "out": TInterfaceReference
     }>
-    readonly "templates"?: pt.Dictionary<TTemplate>
-    readonly "types": pt.Dictionary<TType>
 }
 
 export type TInterface = 
@@ -51,17 +49,24 @@ export type TInterfaceReference = {
 
 export type TLeafType = 
     | ["boolean", null]
-    | ["external reference", {
-        readonly "context": string
+    | ["number", null]
+    | ["reference", {
+        readonly "context": TContext
+        readonly "namespaces": pt.Array<string>
         readonly "type": string
     }]
-    | ["number", null]
-    | ["reference", string]
     | ["string", null]
 
 export type TLeafTypeOrNull = 
     | ["null", null]
     | ["type", TLeafType]
+
+export type TNamespace = {
+    readonly "interfaces": pt.Dictionary<TInterface>
+    readonly "namespaces"?: pt.Dictionary<TNamespace>
+    readonly "templates"?: pt.Dictionary<TTemplate>
+    readonly "types": pt.Dictionary<TType>
+}
 
 export type TTemplate = {
     readonly "parameters": pt.Dictionary<null>

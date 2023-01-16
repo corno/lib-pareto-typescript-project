@@ -11,6 +11,8 @@ import { test as main_createProjectSerializer } from "../modules/main/createProj
 import { test as main_createTemplateSerializer } from "../modules/main/createTemplateSerializer.p"
 import { test as main_generateProject } from "../modules/main/generateProject.p"
 import { test as main_serializeLeafType } from "../modules/main/serializeLeafType.p"
+import { test as serialize_createGlossarySerializer } from "../modules/serialize/createGlossarySerializer.p"
+import { test as serialize_createModuleDefinitionSerializer } from "../modules/serialize/createModuleDefinitionSerializer.p"
 
 const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({
     "glossary": pr.wrapRawDictionary({}),
@@ -26,4 +28,8 @@ const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElemen
     }),
     "moduleDefinition": pr.wrapRawDictionary({}),
     "project": pr.wrapRawDictionary({}),
+    "serialize": pr.wrapRawDictionary({
+        "createGlossarySerializer": serialize_createGlossarySerializer,
+        "createModuleDefinitionSerializer": serialize_createModuleDefinitionSerializer,
+    }),
 }).asyncMap(($, key) => $.asyncMap(($, key) => $()))

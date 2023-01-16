@@ -6,6 +6,7 @@ import * as api from "./types.generated"
 
 
 const wd = pr.wrapRawDictionary
+const wa = pr.wrapRawArray
 
 
 export function nullType(): api.TTypeOrNull {
@@ -70,13 +71,18 @@ export function member($: api.TType, optional?: boolean): { type: api.TType, opt
 }
 
 export function reference(type: string): api.TType {
-    return ['leaf', ['reference', type]]
+    return ['leaf', ['reference', {
+        'context': ['local', null],
+        'namespaces': wa([]),
+        'type': type,
+    }]]
 }
 
 export function externalReference(context: string, type: string): api.TType {
-    return ['leaf', ['external reference', {
-        type: type,
-        context: context,
+    return ['leaf', ['reference', {
+        'context': ['import', context],
+        'namespaces': wa([]),
+        'type': type,
     }]]
 }
 

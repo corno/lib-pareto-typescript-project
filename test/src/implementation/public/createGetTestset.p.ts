@@ -47,45 +47,48 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
                             "glossary": {
                                 'imports': wd({
                                 }),
-                                'templates': wd({
-                                }),
-                                'types': types({
-                                }),
+                                'namespace': {
+                                    'templates': wd({
+                                    }),
+                                    'types': types({
+                                    }),
+                                    'interfaces': wd({
+                                        "Writer": ['group', {
+                                            'members': wd({
+                                                "createFile": ['method', {
+                                                    'data': ['type', string()],
+                                                    'interface': ['set', {
+                                                        'interface': "Block"
+                                                    }]
+                                                }],
+                                                "createDirectory": ['method', {
+                                                    'data': ['type', string()],
+                                                    'interface': ['set', {
+                                                        'interface': "Writer"
+                                                    }]
+                                                }],
+                                                // "foo": ['dictionary', ['tagged union', {
+                                                //     'options': wd({
+                                                //         "directory": ['method', {
+                                                //             'data': ['type', string()],
+                                                //             'interface': ['set', {
+                                                //                 'interface': "Writer"
+                                                //             }]
+                                                //         }],
+                                                //         "file": ['method', {
+                                                //             'data': ['type', string()],
+                                                //             'interface': ['set', {
+                                                //                 'interface': "Block"
+                                                //             }]
+                                                //         }],
+                                                //     })
+                                                // }]],
+                                            })
+                                        }],
+                                    }),
+
+                                },
                                 'functions': wd({
-                                }),
-                                'interfaces': wd({
-                                    "Writer": ['group', {
-                                        'members': wd({
-                                            "createFile": ['method', {
-                                                'data': ['type', string()],
-                                                'interface': ['set', {
-                                                    'interface': "Block"
-                                                }]
-                                            }],
-                                            "createDirectory": ['method', {
-                                                'data': ['type', string()],
-                                                'interface': ['set', {
-                                                    'interface': "Writer"
-                                                }]
-                                            }],
-                                            // "foo": ['dictionary', ['tagged union', {
-                                            //     'options': wd({
-                                            //         "directory": ['method', {
-                                            //             'data': ['type', string()],
-                                            //             'interface': ['set', {
-                                            //                 'interface': "Writer"
-                                            //             }]
-                                            //         }],
-                                            //         "file": ['method', {
-                                            //             'data': ['type', string()],
-                                            //             'interface': ['set', {
-                                            //                 'interface': "Block"
-                                            //             }]
-                                            //         }],
-                                            //     })
-                                            // }]],
-                                        })
-                                    }],
                                 }),
                                 'callbacks': wd({
                                 }),

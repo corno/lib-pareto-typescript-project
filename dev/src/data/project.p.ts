@@ -35,6 +35,12 @@ export const project: mproject.TProject = {
                         "fp": "lib-fountain-pen",
                     }),
                     'types': types({
+                        "Namespace": group({
+                            "namespaces": member(dictionary(ref("Namespace")), true),
+                            "templates": member(dictionary(ref("Template")), true),
+                            "types": member(dictionary(ref("Type"))),
+                            "interfaces": member(dictionary(ref("Interface"))),
+                        }),
                         "Interface": taggedUnion({
                             "group": type(group({
                                 "members": member(dictionary(ref("Interface")))
@@ -69,11 +75,10 @@ export const project: mproject.TProject = {
                             "return value": member(ref("LeafType"))
                         }),
                         "Glossary": group({
+                            //"parameters": member(['dictionary', nullType()], true),
                             "imports": member(dictionary(str())),
-                            "templates": member(dictionary(ref("Template")), true),
-                            "types": member(dictionary(ref("Type"))),
+                            "namespace": member(ref("Namespace")),
                             "functions": member(dictionary(ref("Function"))),
-                            "interfaces": member(dictionary(ref("Interface"))),
                             "callbacks": member(dictionary(ref("Callback"))),
                             "pipes": member(dictionary(group({
                                 "in": member(ref("InterfaceReference")),
@@ -84,9 +89,9 @@ export const project: mproject.TProject = {
                             "boolean": nullType(),
                             "string": nullType(),
                             "number": nullType(),
-                            "reference": type(str()),
-                            "external reference": type(group({
-                                "context": member(str()),
+                            "reference": type(group({
+                                "context": member(ref("Context")),
+                                "namespaces": member(array(str())),
                                 "type": member(str()),
                             })),
                         }),
@@ -238,6 +243,91 @@ export const project: mproject.TProject = {
                     'imports': wd({
                     }),
                     'algorithms': wd({
+                    })
+                },
+            }),
+            'implemenation': {}
+        },
+        "serialize": {
+            'definition': def({
+                'glossary': {
+                    'imports': wd({
+                        "glossary": "../../glossary",
+                        "moduleDefinition": "../../moduleDefinition",
+                        "fp": "lib-fountain-pen",
+                    }),
+                    'types': types({
+                    }),
+                    'functions': wd({}),
+                    'interfaces': wd({}),
+                    'callbacks': wd({
+                        "SerializeGlossary": {
+                            'data': ['type', externalReference("glossary", "Glossary")],
+                            'context': ['import', "fp"],
+                            'interface': "Block",
+                        },
+                        "SerializeLeafType": {
+                            'data': ['type', externalReference("glossary", "LeafType")],
+                            'context': ['import', "fp"],
+                            'interface': "Line",
+                        },
+                        "SerializeModuleDefinition": {
+                            'data': ['type', externalReference("moduleDefinition", "ModuleDefinition")],
+                            'context': ['import', "fp"],
+                            'interface': "Writer",
+                        },
+                    }),
+                    'pipes': wd({}),
+                },
+                'api': {
+                    'imports': wd({
+                        "collation": "res-pareto-collation",
+                        "temp": "../../temp",
+                    }),
+                    'algorithms': wd({
+                        "createGlossarySerializer": {
+                            'definition': ['callback', {
+                                'callback': "SerializeGlossary"
+                            }],
+                            'type': ['constructor', {
+                                'configuration data': ['null', null],
+                                'dependencies': wd({
+                                    "enrichedDictionaryForEach": ['callback', {
+                                        'context': ['import', "temp"],
+                                        'callback': "EnrichedDictionaryForEach",
+                                    }],
+                                    "compare": ['function', {
+                                        'context': ['import', "collation"],
+                                        'function': "IsABeforeB",
+                                    }],
+                                })
+                            }]
+                        },
+                        "createModuleDefinitionSerializer": {
+                            'definition': ['callback', {
+                                'callback': "SerializeModuleDefinition"
+                            }],
+                            'type': ['constructor', {
+                                'configuration data': ['null', null],
+                                'dependencies': wd({
+                                    "compare": ['function', {
+                                        'context': ['import', "collation"],
+                                        'function': "IsABeforeB",
+                                    }],
+                                    "serializeGlossary": ['callback', {
+                                        //'context': ['import', "glossary"],
+                                        'callback': "SerializeGlossary"
+                                    }],
+                                    "serializeLeafType": ['callback', {
+                                        //'context': ['import', "glossary"],
+                                        'callback': "SerializeLeafType"
+                                    }],
+                                }),
+                                'callback': {
+                                    'callback': "SerializeModuleDefinition"
+                                }
+                            }],
+                        },
                     })
                 },
             }),

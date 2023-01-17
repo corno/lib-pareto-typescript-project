@@ -3,11 +3,13 @@ import * as pr from 'pareto-core-raw'
 import * as pl from 'pareto-core-lib'
 import * as tst from "lib-pareto-test"
 
+import { test as algorithm_createSerializer } from "../modules/algorithm/createSerializer.p"
 import { test as glossary_createSerializer } from "../modules/glossary/createSerializer.p"
 import { test as liana2Pareto_createLiana2ParetoMapper } from "../modules/liana2Pareto/createLiana2ParetoMapper.p"
 import { test as liana2Pareto_createProjectGenerator } from "../modules/liana2Pareto/createProjectGenerator.p"
 import { test as liana2Pareto_generateProject } from "../modules/liana2Pareto/generateProject.p"
 import { test as main_createGlossarySerializer } from "../modules/main/createGlossarySerializer.p"
+import { test as main_createImplementationSerializer } from "../modules/main/createImplementationSerializer.p"
 import { test as main_createModuleDefinitionSerializer } from "../modules/main/createModuleDefinitionSerializer.p"
 import { test as main_createParametersParser } from "../modules/main/createParametersParser.p"
 import { test as main_createProjectGenerator } from "../modules/main/createProjectGenerator.p"
@@ -15,8 +17,13 @@ import { test as main_createProjectSerializer } from "../modules/main/createProj
 import { test as main_createTemplateSerializer } from "../modules/main/createTemplateSerializer.p"
 import { test as main_generateProject } from "../modules/main/generateProject.p"
 import { test as moduleDefinition_createSerializer } from "../modules/moduleDefinition/createSerializer.p"
+import { test as project_createSerializer } from "../modules/project/createSerializer.p"
+import { test as project_createSerializerWithContext } from "../modules/project/createSerializerWithContext.p"
 
 const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({
+    'algorithm': pr.wrapRawDictionary({
+        'createSerializer': algorithm_createSerializer,
+    }),
     'glossary': pr.wrapRawDictionary({
         'createSerializer': glossary_createSerializer,
     }),
@@ -28,6 +35,7 @@ const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElemen
     }),
     'main': pr.wrapRawDictionary({
         'createGlossarySerializer': main_createGlossarySerializer,
+        'createImplementationSerializer': main_createImplementationSerializer,
         'createModuleDefinitionSerializer': main_createModuleDefinitionSerializer,
         'createParametersParser': main_createParametersParser,
         'createProjectGenerator': main_createProjectGenerator,
@@ -38,5 +46,8 @@ const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElemen
     'moduleDefinition': pr.wrapRawDictionary({
         'createSerializer': moduleDefinition_createSerializer,
     }),
-    'project': pr.wrapRawDictionary({}),
+    'project': pr.wrapRawDictionary({
+        'createSerializer': project_createSerializer,
+        'createSerializerWithContext': project_createSerializerWithContext,
+    }),
 }).asyncMap(($, key) => $.asyncMap(($, key) => $()))

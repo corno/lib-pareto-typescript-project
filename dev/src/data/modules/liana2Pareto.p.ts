@@ -19,7 +19,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'imports': d({
             // "glossary": "../../glossary",
             "liana": "../../liana",
-            "moduleDefinition": "../../moduleDefinition",
+            "project": "../../project",
             // "fp": "lib-fountain-pen",
             "main": "lib-pareto-main",
         }),
@@ -36,7 +36,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'functions': d({
             "MapLiana2Pareto": {
                 'data': externalTypeReference("liana", "Model"),
-                'return value': externalTypeReference("moduleDefinition", "ModuleDefinition"),
+                'return value': externalTypeReference("project", "Module"),
             }
         }),
         'callbacks': d({
@@ -60,7 +60,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     },
     'api': {
         'imports': d({
-            "moduleDefinition": "../../moduleDefinition",
+            "project": "../../project",
         }),
         'algorithms': d({
             "generateProject": {
@@ -84,9 +84,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         //     //'context': ['import', "project"],
                         //     'callback': "SerializeTemplate",
                         // }],
-                        "serializeModuleDefinition": ['callback', {
-                            'context': ['import', "moduleDefinition"],
-                            'callback': "Serialize"
+                        "serializeProject": ['callback', {
+                            'context': ['import', "project"],
+                            'callback': "SerializeWithContext"
                         }],
                     }),
                 }],

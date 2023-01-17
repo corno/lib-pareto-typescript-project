@@ -48,4 +48,4 @@ export type TTypeReference = {
     readonly 'type': string
 }
 
-export type XSerialize = ($: TModuleDefinition, $i: mfp.IWriter) => void
+export type XSerialize = ($: TModuleDefinition, $i: mfp.ILine) => void

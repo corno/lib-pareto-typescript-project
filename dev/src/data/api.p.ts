@@ -21,12 +21,13 @@ function def($: mmoduleDefinition.TModuleDefinition): mmoduleDefinition.TModuleD
 export const $: mmoduleDefinition.TModuleDefinition = def({
     'glossary': {
         'imports': d({
+            "algorithm": "../../algorithm",
+            "common": "glo-pareto-common",
+            "fp": "lib-fountain-pen",
             "glossary": "../../glossary",
+            "main": "lib-pareto-main",
             "moduleDefinition": "../../moduleDefinition",
             "project": "../../project",
-            "common": "glo-pareto-common",
-            "main": "lib-pareto-main",
-            "fp": "lib-fountain-pen",
         }),
         'namespace': {
             'types': types({
@@ -78,6 +79,11 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'data': externalTypeReference("glossary", "Glossary"),
                 'context': ['import', "fp"],
                 'interface': "Block",
+            },
+            "SerializeImplementation": {
+                'data': externalTypeReference("algorithm", "Implementation"),
+                'context': ['import', "fp"],
+                'interface': "Writer",
             },
             // "SerializeLeafType": {
             //     'data': ['type', externalReference("glossary", "LeafType")],
@@ -163,6 +169,10 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                         //     //'context': ['import', "glossary"],
                         //     'callback': "SerializeLeafType"
                         // }],
+                        "serializeImplementation": ['callback', {
+                            //'context': ['import', "project"],
+                            'callback': "SerializeImplementation",
+                        }],
                     }),
                     'callback': {
                         'callback': "SerializeProject"
@@ -194,6 +204,24 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             "createGlossarySerializer": {
                 'definition': ['callback', {
                     'callback': "SerializeGlossary"
+                }],
+                'type': ['constructor', {
+                    'configuration data': null,
+                    'dependencies': d({
+                        "enrichedDictionaryForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "EnrichedDictionaryForEach",
+                        }],
+                        "compare": ['function', {
+                            'context': ['import', "collation"],
+                            'function': "IsABeforeB",
+                        }],
+                    })
+                }]
+            },
+            "createImplementationSerializer": {
+                'definition': ['callback', {
+                    'callback': "SerializeImplementation"
                 }],
                 'type': ['constructor', {
                     'configuration data': null,

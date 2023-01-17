@@ -27,6 +27,14 @@ export const igenerateProject: api.CgenerateProject = ($) => {
                             }),
                         }
                     ),
+                    cb_serializeImplementation: foo.$a.createImplementationSerializer(
+                        {
+                            sf_compare: mcoll.$a.localeIsABeforeB,
+                            cb_enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
+                                sf_compare: mcoll.$a.localeIsABeforeB,
+                            })
+                        }
+                    ),
                 }
             ),
             cb_serializeTemplate: foo.$a.createTemplateSerializer(
@@ -34,7 +42,7 @@ export const igenerateProject: api.CgenerateProject = ($) => {
                     sf_compare: mcoll.$a.localeIsABeforeB,
                 }
             ),
-            af_getSingleArgument: () => { pl.panic(`SSDFSFSF`)},
+            af_getSingleArgument: () => { pl.panic(`SSDFSFSF`) },
             //cbgetSingleArgument: mexe.p_getSingleArgument,
         }
     )($)

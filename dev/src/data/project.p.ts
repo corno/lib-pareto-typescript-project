@@ -3,6 +3,7 @@ import * as pr from 'pareto-core-raw'
 import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
 
 import { $ as api } from "./api.p"
+import { $ as algorithm } from "./modules/algorithm.p"
 import { $ as glossary } from "./modules/glossary.p"
 import { $ as liana } from "./modules/liana.p"
 import { $ as liana2Pareto } from "./modules/liana2Pareto.p"
@@ -14,7 +15,11 @@ const d = pr.wrapRawDictionary
 export const $: mproject.TProject = {
     'type': ['library', null],
     'modules': d({
-        'glossary': {
+        "algorithm": {
+            'definition': algorithm,
+            'implementation': {}
+        },
+        "glossary": {
             'definition': glossary,
             'implementation': {}
         },

@@ -12,6 +12,11 @@ export type CcreateGlossarySerializer = ($d: {
     readonly 'cb_enrichedDictionaryForEach': mtemp.XEnrichedDictionaryForEach
 }) => glo.XSerializeGlossary
 
+export type CcreateImplementationSerializer = ($d: {
+    readonly 'sf_compare': mcollation.FIsABeforeB
+    readonly 'cb_enrichedDictionaryForEach': mtemp.XEnrichedDictionaryForEach
+}) => glo.XSerializeImplementation
+
 export type CcreateModuleDefinitionSerializer = ($d: {
     readonly 'sf_compare': mcollation.FIsABeforeB
     readonly 'cb_serializeGlossary': glo.XSerializeGlossary
@@ -30,6 +35,7 @@ export type CcreateProjectGenerator = ($d: {
 
 export type CcreateProjectSerializer = ($d: {
     readonly 'sf_compare': mcollation.FIsABeforeB
+    readonly 'cb_serializeImplementation': glo.XSerializeImplementation
     readonly 'cb_serializeModuleDefinition': glo.XSerializeModuleDefinition
 }) => glo.XSerializeProject
 
@@ -41,6 +47,7 @@ export type CgenerateProject = pt.Procedure<glo.TProjectSettings>
 
 export type API = {
     createGlossarySerializer: CcreateGlossarySerializer
+    createImplementationSerializer: CcreateImplementationSerializer
     createModuleDefinitionSerializer: CcreateModuleDefinitionSerializer
     createParametersParser: CcreateParametersParser
     createProjectGenerator: CcreateProjectGenerator

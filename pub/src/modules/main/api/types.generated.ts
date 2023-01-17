@@ -1,4 +1,5 @@
 import * as pt from 'pareto-core-types'
+import * as malgorithm from "../../algorithm"
 import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../glossary"
@@ -30,6 +31,8 @@ export type IProcessArgument = ($: mcommon.TString, ) => void
 export type AGetSingleArgument = ($: TArguments) => pt.AsyncValue<mcommon.TString>
 
 export type XSerializeGlossary = ($: mglossary.TGlossary, $i: mfp.IBlock) => void
+
+export type XSerializeImplementation = ($: malgorithm.TImplementation, $i: mfp.IWriter) => void
 
 export type XSerializeModuleDefinition = ($: mmoduleDefinition.TModuleDefinition, $i: mfp.IWriter) => void
 

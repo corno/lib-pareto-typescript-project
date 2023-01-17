@@ -90,7 +90,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                         $i.indent(($i) => {
                             $.forEach(compare, ($, key) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`readonly '${key}'${$.optional === undefined || false ? `` : `?`}: `)
+                                    $i.snippet(`readonly '${key}'${$.optional === undefined || $.optional === false ? `` : `?`}: `)
                                     serializeType($.type, $i)
                                 })
                             })

@@ -79,7 +79,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "Serialize": {
                 'data':  typeReference("ModuleDefinition"),
                 'context': ['import', "fp"],
-                'interface': "Writer",
+                'interface': "Line",
             },
         }),
         'pipes': d({}),
@@ -115,9 +115,6 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         //     'callback': "SerializeLeafType"
                         // }],
                     }),
-                    'callback': {
-                        'callback': "SerializeModuleDefinition"
-                    }
                 }],
             },
         })

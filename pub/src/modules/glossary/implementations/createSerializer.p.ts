@@ -66,6 +66,8 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
     }
 
     function serializeType($: mglossary.TType, $i: mfp.ILine) {
+        $i.snippet(`<mglossary.TType>`)
+
         switch ($[0]) {
             case 'null':
                 pl.cc($[1], ($) => {
@@ -114,9 +116,20 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                     $i.indent(($i) => {
                         $.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`"${key}": `)
-                                serializeType($.type, $i)
-                                $i.snippet(`,`)
+                                $i.snippet(`"${key}": {`)
+                                $i.indent(($i) => {
+                                    if ($.optional !== undefined) {
+                                        $i.line(($i) => {
+                                            $i.snippet(`'optional': ${$.optional ? `true` : `false`},`)
+                                        })
+                                    }
+                                    $i.line(($i) => {
+                                        $i.snippet(`'type': `)
+                                        serializeType($.type, $i)
+                                        $i.snippet(`,`)
+                                    })
+                                })
+                                $i.snippet(`},`)
                             })
                         })
                     })
@@ -146,47 +159,57 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                 break
             case 'taggedUnion':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['taggedUnion', {`)
+                    $i.snippet(`['taggedUnion', d({`)
                     $i.indent(($i) => {
                         $.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`'${key}': `)
+                                $i.snippet(`"${key}": `)
                                 serializeType($, $i)
                                 $i.snippet(`,`)
                             })
                         })
                     })
-                    $i.snippet(`}]`)
+                    $i.snippet(`})]`)
                 })
                 break
             case 'template':
                 pl.cc($[1], ($) => {
-                    if ($.context !== undefined) {
-                        serializeContext($.context, $i)
-                    }
-                    $i.snippet(`M${$.template}`)
-                    $d.cb_enrichedDictionaryForEach($.arguments, {
-                        onNotEmpty: ($c) => {
-                            $i.snippet(`<`)
-                            $c(($) => {
-                                $i.snippet($.isFirst ? `` : `, `)
-                                pl.cc($.value, ($) => {
-                                    serializeType($, $i)
+                    $i.snippet(`['template', {`)
+                    $i.indent(($i) => {
+                        if ($.context !== undefined) {
+                            pl.cc($.context, ($) => {
+                                $i.line(($i) => {
+                                    $i.snippet(`'context': `)
+                                    serializeContext($, $i)
+                                    $i.snippet(`,`)
                                 })
                             })
-
-                            $i.snippet(`>`)
-                        },
-                        onEmpty: () => {
-                            //nothing to do
                         }
+                        $i.line(($i) => {
+                            $i.snippet(`'arguments': d({`)
+                            $i.indent(($i) => {
+                                $.arguments.forEach(compare, ($, key) => {
+                                    $i.line(($i) => {
+                                        $i.snippet(`"${key}": `)
+                                        serializeType($, $i)
+                                        $i.snippet(`,`)
+                                    })
+                                })
+                            })
+                            $i.snippet(`}),`)
+                        })
+                        $i.line(($i) => {
+                            $i.snippet(`'template': "${$.template}",`)
+                        })
                     })
+                    $i.snippet(`}]`)
                 })
                 break
             default: pl.au($[0])
         }
     }
     function serializeContext($: mglossary.TContext, $i: mfp.ILine) {
+        $i.snippet(`<mglossary.TContext>`)
         switch ($[0]) {
             case 'import':
                 pl.cc($[1], ($) => {
@@ -213,16 +236,16 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
             case 'group':
                 pl.cc($[1], ($) => {
 
-                    $i.snippet(`{`)
+                    $i.snippet(`d({`)
                     $i.indent(($i) => {
                         $.members.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`'${key}': `)
+                                $i.snippet(`"${key}": `)
                                 serializeInterface($, $i)
                             })
                         })
                     })
-                    $i.snippet(`}`)
+                    $i.snippet(`})`)
                 })
                 break
             case 'method':

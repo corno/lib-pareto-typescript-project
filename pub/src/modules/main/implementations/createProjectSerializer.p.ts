@@ -1,3 +1,5 @@
+import * as pl from 'pareto-core-lib'
+
 import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
@@ -160,23 +162,39 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 $i.directory("modules", ($i) => {
                     $.modules.forEach(compare, ($, key) => {
                         $i.directory(`${key}`, ($i) => {
-                            $i.directory("implementations", ($i) => {
-                                $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                    $i.allowed(`${key}.p.ts`)
-                                })
-                            })
                             $i.directory("api", ($i) => {
                                 $d.cb_serializeModuleDefinition($.definition, $i)
                             })
+                            if ($.implementation !== undefined) {
+                                pl.cc($.implementation, ($) => {
+                                    $i.directory("implementations.generated", ($i) => {
+                                        $d.cb_serializeImplementation($, $i)
+
+                                    })
+                                })
+                            } else {
+                                $i.directory("implementations", ($i) => {
+                                    $.definition.api.algorithms.forEach(compare, ($, key) => {
+                                        $i.allowed(`${key}.p.ts`)
+                                    })
+                                })
+                            }
                             // $.definition.api.algorithms.forEach(compare, ($, key) => {
                             //     $i.directory(`${key}`, ($i) => {
                             //     })
                             // })
                             $i.file("index.ts", ($i) => {
                                 $i.literal(`import { API } from "./api"`)
-                                $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                    $i.literal(`import { i${key} } from "./implementations/${key}.p"`)
-                                })
+                                if ($.implementation !== undefined) {
+                                    $.definition.api.algorithms.forEach(compare, ($, key) => {
+                                        $i.literal(`import { $$ as i${key} } from "./implementations.generated/${key}.generated"`)
+                                    })
+
+                                } else {
+                                    $.definition.api.algorithms.forEach(compare, ($, key) => {
+                                        $i.literal(`import { $$ as i${key} } from "./implementations/${key}.p"`)
+                                    })
+                                }
                                 $i.literal(``)
                                 $i.literal(`export * from "./api"`)
                                 $i.literal(``)

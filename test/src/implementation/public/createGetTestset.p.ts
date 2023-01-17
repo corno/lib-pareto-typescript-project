@@ -28,7 +28,7 @@ const d = pr.wrapRawDictionary
 
 
 import * as pub from "../../../../pub"
-import { $ as moduleDefinition } from "./project.p"
+import { $ as module } from "./project.p"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
@@ -44,10 +44,7 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
             },
             'project': {
                 'modules': d({
-                    "main": {
-                        'definition': moduleDefinition,
-                        'implementation': {},
-                    }
+                    "main": module
                 }),
                 'main': "main",
             },

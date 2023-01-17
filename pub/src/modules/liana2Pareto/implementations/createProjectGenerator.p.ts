@@ -66,10 +66,10 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                 )(
                     $,
                     ($i) => {
-                        const tmodel = $d.sf_mapLiana2Pareto(model)
+                        const module = $d.sf_mapLiana2Pareto(model)
 
-                        $d.cb_serializeModuleDefinition(
-                            tmodel,
+                        $d.cb_serializeProject(
+                            module,
                             $i,
                         )
                     }

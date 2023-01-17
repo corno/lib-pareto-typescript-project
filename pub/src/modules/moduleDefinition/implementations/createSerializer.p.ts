@@ -29,7 +29,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                     $i.snippet(`'namespaces': a([`)
                     $d.cb_enrichedArrayForEach($.namespaces, {
                         onEmpty: () => {
-    
+
                         },
                         onNotEmpty: ($c) => {
                             $c(($) => {
@@ -78,7 +78,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                                 pl.cc($.async, ($) => {
 
                                     $i.line(($i) => {
-                                        $i.snippet(`'async': ${$ ? `true`: `false`},`)
+                                        $i.snippet(`'async': ${$ ? `true` : `false`},`)
                                     })
                                 })
                             }
@@ -139,107 +139,93 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        $i.file("api.generated.ts", ($i) => {
-            $i.literal(`import * as pr from 'pareto-core-raw'`)
-            $i.literal(``)
-            $i.literal(`import * as mmoduleDefinition from "../../../pub/dist/modules/moduleDefinition"`)
-            $i.literal(``)
-            $i.literal(`const d = pr.wrapRawDictionary`)
-            $i.literal(`const a = pr.wrapRawArray`)
+        $i.snippet(`{`)
+        $i.indent(($i) => {
             $i.line(($i) => {
-            })
-            $i.line(($i) => {
-                $i.snippet(`export const $: mmoduleDefinition.TModuleDefinition = `)
-                $i.snippet(`{`)
-                $i.indent(($i) => {
-                    $i.line(($i) => {
-                        $i.snippet(`'glossary': `)
-                        $d.cb_serializeGlossary($.glossary, $i)
-                        $i.snippet(`,`)
-                    }),
+                $i.snippet(`'glossary': `)
+                $d.cb_serializeGlossary($.glossary, $i)
+                $i.snippet(`,`)
+            }),
+                $i.line(($i) => {
+                    $i.snippet(`'api': `)
+                    $i.snippet(`{`)
+                    $i.indent(($i) => {
                         $i.line(($i) => {
-                            $i.snippet(`'api': `)
-                            $i.snippet(`{`)
+                            $i.snippet(`'imports': d({`)
                             $i.indent(($i) => {
-                                $i.line(($i) => {
-                                    $i.snippet(`'imports': d({`)
-                                    $i.indent(($i) => {
-                                        $.api.imports.forEach(compare, ($, key) => {
-                                            $i.line(($i) => {
-                                                $i.snippet(`'${key}': "${$}"`)
-                                            })
-                                        })
-                                    })
-                                    $i.snippet(`}),`)
-                                }),
+                                $.api.imports.forEach(compare, ($, key) => {
                                     $i.line(($i) => {
-                                        $i.snippet(`'algorithms': d({`)
-                                        $i.indent(($i) => {
-                                            $.api.algorithms.forEach(compare, ($, key) => {
+                                        $i.snippet(`'${key}': "${$}"`)
+                                    })
+                                })
+                            })
+                            $i.snippet(`}),`)
+                        }),
+                            $i.line(($i) => {
+                                $i.snippet(`'algorithms': d({`)
+                                $i.indent(($i) => {
+                                    $.api.algorithms.forEach(compare, ($, key) => {
+                                        $i.line(($i) => {
+                                            $i.snippet(`'${key}': {`)
+                                            $i.indent(($i) => {
                                                 $i.line(($i) => {
-                                                    $i.snippet(`'${key}': {`)
-                                                    $i.indent(($i) => {
-                                                        $i.line(($i) => {
-                                                            $i.snippet(`'definition': `)
-                                                            serializeDefinitionReference($.definition, $i)
-                                                            $i.snippet(`,`)
-                                                        })
-                                                        $i.line(($i) => {
-                                                            $i.snippet(`'type': `)
-                                                            switch ($.type[0]) {
-                                                                case 'constructor':
-                                                                    pl.cc($.type[1], ($) => {
+                                                    $i.snippet(`'definition': `)
+                                                    serializeDefinitionReference($.definition, $i)
+                                                    $i.snippet(`,`)
+                                                })
+                                                $i.line(($i) => {
+                                                    $i.snippet(`'type': `)
+                                                    switch ($.type[0]) {
+                                                        case 'constructor':
+                                                            pl.cc($.type[1], ($) => {
 
-                                                                        $i.snippet(`['constructor', {`)
+                                                                $i.snippet(`['constructor', {`)
+                                                                $i.indent(($i) => {
+
+                                                                    $i.line(($i) => {
+                                                                        $i.snippet(`'configuration data': `)
+                                                                        serializeOptionalTypeReference($["configuration data"], $i)
+                                                                        $i.snippet(`,`)
+                                                                    })
+                                                                    $i.line(($i) => {
+                                                                        $i.snippet(`'dependencies': d({`)
                                                                         $i.indent(($i) => {
-
-                                                                            $i.line(($i) => {
-                                                                                $i.snippet(`'configuration data': `)
-                                                                                serializeOptionalTypeReference($["configuration data"], $i)
-                                                                                $i.snippet(`,`)
-                                                                            })
-                                                                            $i.line(($i) => {
-                                                                                $i.snippet(`'dependencies': d({`)
-                                                                                $i.indent(($i) => {
-                                                                                    $.dependencies.forEach(compare, ($, key) => {
-                                                                                        $i.line(($i) => {
-                                                                                            $i.snippet(`'${key}': `)
-                                                                                            serializeDefinitionReference($, $i)
-                                                                                            $i.snippet(`,`)
-                                                                                        })
-                                                                                    })
+                                                                            $.dependencies.forEach(compare, ($, key) => {
+                                                                                $i.line(($i) => {
+                                                                                    $i.snippet(`'${key}': `)
+                                                                                    serializeDefinitionReference($, $i)
+                                                                                    $i.snippet(`,`)
                                                                                 })
-                                                                                $i.snippet(`}),`)
                                                                             })
                                                                         })
-                                                                        $i.snippet(`}]`)
+                                                                        $i.snippet(`}),`)
                                                                     })
-                                                                    break
-                                                                case 'reference':
-                                                                    pl.cc($.type[1], ($) => {
+                                                                })
+                                                                $i.snippet(`}]`)
+                                                            })
+                                                            break
+                                                        case 'reference':
+                                                            pl.cc($.type[1], ($) => {
 
-                                                                        $i.snippet(`['reference', null]`)
-                                                                    })
-                                                                    break
-                                                                default: pl.au($.type[0])
-                                                            }
-                                                            $i.snippet(`,`)
-                                                        })
-                                                    })
-                                                    $i.snippet(`},`)
+                                                                $i.snippet(`['reference', null]`)
+                                                            })
+                                                            break
+                                                        default: pl.au($.type[0])
+                                                    }
+                                                    $i.snippet(`,`)
                                                 })
                                             })
+                                            $i.snippet(`},`)
                                         })
-                                        $i.snippet(`}),`)
                                     })
+                                })
+                                $i.snippet(`}),`)
                             })
-                            $i.snippet(`}`)
-                            $i.snippet(`,`)
-                        })
+                    })
+                    $i.snippet(`}`)
+                    $i.snippet(`,`)
                 })
-                $i.snippet(`}`)
-
-            })
         })
+        $i.snippet(`}`)
     }
 }

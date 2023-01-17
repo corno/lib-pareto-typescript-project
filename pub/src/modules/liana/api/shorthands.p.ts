@@ -7,6 +7,12 @@ import {
 
 const d = pr.wrapRawDictionary
 
+export function array(type: TLocalType): TLocalType {
+    return ['array', {
+        'type': type
+    }]
+}
+
 export function dictionary(type: TLocalType): TLocalType {
     return ['dictionary', {
         'type': type
@@ -22,6 +28,16 @@ export function globalType(type: TLocalType): TGlobalType {
 export function group(properties: { [key: string]: TLocalType }): TLocalType {
     return ['group', {
         'properties': d(properties).map(($) => {
+            return {
+                'type': $
+            }
+        })
+    }]
+}
+
+export function taggedUnion(options: { [key: string]: TLocalType }): TLocalType {
+    return ['taggedUnion', {
+        'options': d(options).map(($) => {
             return {
                 'type': $
             }

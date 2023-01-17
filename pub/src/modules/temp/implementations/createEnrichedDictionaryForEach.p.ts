@@ -3,7 +3,7 @@ import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
-export const icreateEnrichedDictionaryForEach: api.CcreateEnrichedDictionaryForEach = ($d) => {
+export const $$: api.CcreateEnrichedDictionaryForEach = ($d) => {
     return ($, $i) => {
         const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
 

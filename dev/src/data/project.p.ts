@@ -85,8 +85,7 @@ export const $: mproject.TProject = {
         //             'algorithms': d({})
         //         },
         //     }),
-        //     'implementation': {}
-
+        //
         // },
     }),
     'main': "main"

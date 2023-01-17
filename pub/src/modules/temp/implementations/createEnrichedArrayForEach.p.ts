@@ -3,7 +3,7 @@ import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
-export const icreateEnrichedArrayForEach: api.CcreateEnrichedArrayForEach = ($d) => {
+export const $$: api.CcreateEnrichedArrayForEach = ($d) => {
     return ($, $i) => {
 
         let empty = true

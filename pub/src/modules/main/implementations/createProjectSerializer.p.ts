@@ -105,7 +105,7 @@ export const $$: api.CcreateProjectSerializer = (
                                 $i.literal(`import { $ as project } from "../../../data/project.p"`)
                                 $i.literal(`import * as mpareto from "lib-pareto-typescript-project"`)
                                 $i.literal(``)
-                                $i.literal(`export const imain: api.Cmain = ($) => {`)
+                                $i.literal(`export const $$: api.Cmain = ($) => {`)
                                 $i.literal(``)
                                 $i.literal(`    mpareto.$a.generateProject({`)
                                 $i.literal(`        project: project,`)
@@ -116,7 +116,7 @@ export const $$: api.CcreateProjectSerializer = (
                         })
                         $i.file("export.generated.ts", ($i) => {
                             $i.literal(`import { API } from "./api"`)
-                            $i.literal(`import { imain } from "./implementations/main.generated"`)
+                            $i.literal(`import { $$ as imain } from "./implementations/main.generated"`)
                             $i.literal(``)
                             $i.literal(`export const $a: API = {`)
                             $i.literal(`    "main": imain,`)

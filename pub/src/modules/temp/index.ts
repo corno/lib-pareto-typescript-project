@@ -1,6 +1,6 @@
 import { API } from "./api"
-import { icreateEnrichedDictionaryForEach } from "./implementations/createEnrichedDictionaryForEach.p"
-import { icreateEnrichedArrayForEach } from "./implementations/createEnrichedArrayForEach.p"
+import { $$ as icreateEnrichedDictionaryForEach } from "./implementations/createEnrichedDictionaryForEach.p"
+import { $$ as icreateEnrichedArrayForEach } from "./implementations/createEnrichedArrayForEach.p"
 
 export * from "./api"
 

@@ -6,13 +6,13 @@ import * as api from "../api"
 import * as mfp from "lib-fountain-pen"
 import * as mtostring from "res-pareto-tostring"
 import * as fs from "res-pareto-filesystem"
-import { icreateParametersParser } from "./createParametersParser.p"
+import { $a } from "../index"
 
-export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
+export const $$: api.CcreateProjectGenerator = ($d) => {
     return ($) => {
 
         const project = $.project
-        icreateParametersParser({
+        $a.createParametersParser({
             pr_callback: ($) => {
 
                 mfp.$a.createWriterCreator(

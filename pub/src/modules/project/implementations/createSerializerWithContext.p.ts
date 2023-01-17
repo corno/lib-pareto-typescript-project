@@ -5,7 +5,7 @@ import * as api from "../api"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
-export const icreateSerializerWithContext: api.CcreateSerializerWithContext = ($d) => {
+export const $$: api.CcreateSerializerWithContext = ($d) => {
 
     return ($, $i) => {
         $i.file("api.generated.ts", ($i) => {

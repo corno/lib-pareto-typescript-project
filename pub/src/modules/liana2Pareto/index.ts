@@ -1,7 +1,7 @@
 import { API } from "./api"
-import { icreateLiana2ParetoMapper } from "./implementations/createLiana2ParetoMapper.p"
-import { icreateProjectGenerator } from "./implementations/createProjectGenerator.p"
-import { igenerateProject } from "./implementations/generateProject.p"
+import { $$ as icreateLiana2ParetoMapper } from "./implementations/createLiana2ParetoMapper.p"
+import { $$ as icreateProjectGenerator } from "./implementations/createProjectGenerator.p"
+import { $$ as igenerateProject } from "./implementations/generateProject.p"
 
 export * from "./api"
 

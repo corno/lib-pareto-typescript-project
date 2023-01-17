@@ -3,7 +3,7 @@ import * as api from "../api"
 import * as mproject from "../api"
 
 
-export const icreateTemplateSerializer: api.CcreateTemplateSerializer = (
+export const $$: api.CcreateTemplateSerializer = (
     $d
 ) => {
     return ($, $i) => {

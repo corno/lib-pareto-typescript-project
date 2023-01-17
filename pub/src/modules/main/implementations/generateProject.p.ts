@@ -7,11 +7,11 @@ import * as foo from "../index"
 import * as mtemp from "../../temp"
 import * as mcoll from "res-pareto-collation"
 
-import { icreateProjectGenerator } from "./createProjectGenerator.p"
+import { $a } from "../index"
 
-export const igenerateProject: api.CgenerateProject = ($) => {
+export const $$: api.CgenerateProject = ($) => {
 
-    icreateProjectGenerator(
+    $a.createProjectGenerator(
         {
             cb_serializeProject: foo.$a.createProjectSerializer(
                 {

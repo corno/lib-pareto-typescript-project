@@ -1,6 +1,6 @@
 import { API } from "./api"
-import { icreateSerializer } from "./implementations/createSerializer.p"
-import { icreateSerializerWithContext } from "./implementations/createSerializerWithContext.p"
+import { $$ as icreateSerializer } from "./implementations/createSerializer.p"
+import { $$ as icreateSerializerWithContext } from "./implementations/createSerializerWithContext.p"
 
 export * from "./api"
 

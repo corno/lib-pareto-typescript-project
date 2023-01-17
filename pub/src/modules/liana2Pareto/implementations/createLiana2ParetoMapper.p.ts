@@ -27,7 +27,7 @@ const d = pr.wrapRawDictionary
 const a = pr.wrapRawArray
 
 
-export const icreateLiana2ParetoMapper: api.CcreateLiana2ParetoMapper = ($d) => {
+export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
     return ($) => {
         function generateTypes(optional: boolean): mglossary.TNamespace {
             return {

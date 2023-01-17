@@ -7,7 +7,7 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 
-export const icreateSerializer: api.CcreateSerializer = ($d) => {
+export const $$: api.CcreateSerializer = ($d) => {
     return ($, $i) => {
         const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
         function serializeOptionalTypeReference($: mglossary.TOptionalTypeReference, $i: mfp.ILine) {

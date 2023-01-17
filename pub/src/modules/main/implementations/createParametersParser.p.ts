@@ -1,6 +1,6 @@
 import * as api from "../api"
 
-export const icreateParametersParser: api.CcreateParametersParser = (
+export const $$: api.CcreateParametersParser = (
     $d,
 ) => {
     return ($) => {

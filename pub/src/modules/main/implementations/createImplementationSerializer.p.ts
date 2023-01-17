@@ -6,7 +6,7 @@ import * as malgorithm from "../../algorithm"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
-export const icreateImplementationSerializer: api.CcreateImplementationSerializer = ($d) => {
+export const $$: api.CcreateImplementationSerializer = ($d) => {
     const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
 
     return ($, $i) => {

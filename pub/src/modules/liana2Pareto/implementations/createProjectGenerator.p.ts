@@ -5,20 +5,20 @@ import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
 import * as mtostring from "res-pareto-tostring"
-import * as fs from "res-pareto-filesystem"
-import { icreateParametersParser } from "../../main/implementations/createParametersParser.p"
+import * as mfs from "res-pareto-filesystem"
+import * as mmain from "../../main"
 
-export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
+export const $$: api.CcreateProjectGenerator = ($d) => {
     return ($) => {
 
         const model = $.model
-        icreateParametersParser({
+        mmain.$a.createParametersParser({
             pr_callback: ($) => {
 
                 mfp.$a.createWriterCreator(
                     {
                         if_createWriteStream: ($, $c) => {
-                            fs.$a.createWriteStream(
+                            mfs.$a.createWriteStream(
                                 {
                                     pr_onError: () => {
                                         pl.logDebugMessage(`SSDSFSDFS`)
@@ -37,7 +37,7 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                             {}
                         ),
                         af_getNodes: ($) => {
-                            return fs.$a.readDirectory({
+                            return mfs.$a.readDirectory({
                                 path: $
                             }).map<pt.Dictionary<string>>(($) => {
                                 switch ($[0]) {

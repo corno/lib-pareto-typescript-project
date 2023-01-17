@@ -17,31 +17,24 @@ export const $: mproject.TProject = {
     'modules': d({
         "algorithm": {
             'definition': algorithm,
-            'implementation': {}
         },
         "glossary": {
             'definition': glossary,
-            'implementation': {}
         },
         "liana": {
             'definition': liana,
-            'implemenation': {}
         },
         "liana2Pareto": {
             'definition': liana2Pareto,
-            'implemenation': {}
         },
         "main": {
             'definition': api,
-            'implementation': {}
         },
         "moduleDefinition": {
             'definition': moduleDefinition,
-            'implementation': {}
         },
         "project": {
             'definition': project,
-            'implemenation': {}
         },
         // "temp": {
         //     'definition': def({

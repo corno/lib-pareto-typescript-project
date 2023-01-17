@@ -7,7 +7,7 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 
-export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSerializer = ($d) => {
+export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
         const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
         function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {

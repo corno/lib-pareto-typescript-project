@@ -1,5 +1,5 @@
 import { API } from "./api"
-import { icreateSerializer } from "./implementations/createSerializer.p"
+import { $$ as icreateSerializer } from "./implementations/createSerializer.p"
 
 export * from "./api"
 

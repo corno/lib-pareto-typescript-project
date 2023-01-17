@@ -48,34 +48,34 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 $i.literal(``)
             })
         }
-        //$i.allowed(`tmp`) //already defined in 'generateTemplate'
-        $i.allowed(`.git`)
-        $i.allowed(`pareto`)
+        //$i.allowed("tmp") //already defined in 'generateTemplate'
+        $i.allowed(".git")
+        $i.allowed("pareto")
         $i.directory("dev", ($i) => {
-            $i.allowed(`dist`)
-            $i.allowed(`node_modules`)
-            $i.allowed(`package-lock.json`)
-            $i.allowed(`package.json`)
+            $i.allowed("dist")
+            $i.allowed("node_modules")
+            $i.allowed("package-lock.json")
+            $i.allowed("package.json")
             $i.directory("src", ($i) => {
                 globals($i)
                 $i.directory("bin", ($i) => {
                     $i.file("generateCode.generated.ts", ($i) => {
-                        $i.literal(`import * as exe from "pareto-core-exe"`)
+                        $i.literal(`import * as exe from 'pareto-core-exe'`)
                         $i.literal(`import * as mmain from "../modules/main"`)
                         $i.literal(``)
                         $i.literal(`exe.runProgram(mmain.$a.main)`)
                     })
                 })
-                $i.directory(`data`, ($i) => {
-                    $i.allowed(`modules`)
-                    $i.allowed(`api.p.ts`)
-                    $i.allowed(`project.p.ts`)
+                $i.directory("data", ($i) => {
+                    $i.allowed("modules")
+                    $i.allowed("api.p.ts")
+                    $i.allowed("project.p.ts")
                 })
-                $i.directory(`modules`, ($i) => {
-                    $i.directory(`main`, ($i) => {
-                        $i.directory(`api`, ($i) => {
-                            $i.file(`api.generated.ts`, ($i) => {
-                                $i.literal(`import * as pt from "pareto-core-types"`)
+                $i.directory("modules", ($i) => {
+                    $i.directory("main", ($i) => {
+                        $i.directory("api", ($i) => {
+                            $i.file("api.generated.ts", ($i) => {
+                                $i.literal(`import * as pt from 'pareto-core-types'`)
                                 $i.literal(``)
                                 $i.literal(`import * as glo from "./types.generated"`)
                                 $i.literal(``)
@@ -87,17 +87,17 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                 $i.literal(`    main: Cmain`)
                                 $i.literal(`}`)
                             })
-                            $i.file(`types.generated.ts`, ($i) => {
-                                $i.literal(`import * as pt from "pareto-core-types"`)
+                            $i.file("types.generated.ts", ($i) => {
+                                $i.literal(`import * as pt from 'pareto-core-types'`)
                             })
-                            $i.file(`index.ts`, ($i) => {
+                            $i.file("index.ts", ($i) => {
                                 $i.literal(`export * from "./types.generated"`)
                                 $i.literal(`export * from "./api.generated"`)
                             })
                         })
-                        $i.directory(`implementations`, ($i) => {
-                            $i.file(`main.generated.ts`, ($i) => {
-                                $i.literal(`import * as pl from "pareto-core-lib"`)
+                        $i.directory("implementations", ($i) => {
+                            $i.file("main.generated.ts", ($i) => {
+                                $i.literal(`import * as pl from 'pareto-core-lib'`)
                                 $i.literal(`import * as api from "../api"`)
                                 $i.literal(``)
                                 $i.literal(`import { $ as project } from "../../../data/project.p"`)
@@ -112,7 +112,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                 $i.literal(`}`)
                             })
                         })
-                        $i.file(`export.generated.ts`, ($i) => {
+                        $i.file("export.generated.ts", ($i) => {
                             $i.literal(`import { API } from "./api"`)
                             $i.literal(`import { imain } from "./implementations/main.generated"`)
                             $i.literal(``)
@@ -120,26 +120,26 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                             $i.literal(`    "main": imain,`)
                             $i.literal(`}`)
                         })
-                        $i.file(`index.ts`, ($i) => {
+                        $i.file("index.ts", ($i) => {
                             $i.literal(`export * from "./api"`)
                             $i.literal(`export * from "./export.generated"`)
                         })
                     })
                 })
-                $i.allowed(`index.ts`)
-                // $i.directory(`src`, ($i) => {
-                //     // $i.directory(`modules`, ($i) => {
+                $i.allowed("index.ts")
+                // $i.directory("src", ($i) => {
+                //     // $i.directory("modules", ($i) => {
 
-                //     //     // $i.directory(`api`, ($i) => {
+                //     //     // $i.directory("api", ($i) => {
 
-                //     //     //     $i.directory(`api`, ($i) => {
-                //     //     //         $i.allowed(`shorthands.p.ts`)
+                //     //     //     $i.directory("api", ($i) => {
+                //     //     //         $i.allowed("shorthands.p.ts")
                 //     //     //     })
                 //     //     // })
-                //     //     // $i.directory(`glossary`, ($i) => {
+                //     //     // $i.directory("glossary", ($i) => {
 
-                //     //     //     $i.directory(`api`, ($i) => {
-                //     //     //         $i.allowed(`sorthands.p.ts`)
+                //     //     //     $i.directory("api", ($i) => {
+                //     //     //         $i.allowed("sorthands.p.ts")
                 //     //     //     })
                 //     //     // })
                 //     // })
@@ -149,23 +149,23 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
             tsConfig({ isResource: false }, $i)
         })
         $i.directory("pub", ($i) => {
-            $i.allowed(`dist`)
-            $i.allowed(`node_modules`)
-            $i.allowed(`package-lock.json`)
-            $i.allowed(`package.json`)
+            $i.allowed("dist")
+            $i.allowed("node_modules")
+            $i.allowed("package-lock.json")
+            $i.allowed("package.json")
             $i.directory("src", ($i) => {
-                if ($.type === undefined || $.type[0] !== "resource") {
+                if ($.type === undefined || $.type[0] !== 'resource') {
                     globals($i)
                 }
                 $i.directory("modules", ($i) => {
                     $.modules.forEach(compare, ($, key) => {
                         $i.directory(`${key}`, ($i) => {
-                            $i.directory(`implementations`, ($i) => {
+                            $i.directory("implementations", ($i) => {
                                 $.definition.api.algorithms.forEach(compare, ($, key) => {
                                     $i.allowed(`${key}.p.ts`)
                                 })
                             })
-                            $i.directory(`api`, ($i) => {
+                            $i.directory("api", ($i) => {
                                 $d.cb_serializeModuleDefinition($.definition, $i)
                             })
                             // $.definition.api.algorithms.forEach(compare, ($, key) => {
@@ -184,7 +184,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                     $i.snippet(`export const $a: API = {`)
                                     $i.indent(($i) => {
                                         $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                            $i.literal(`"${key}": i${key},`)
+                                            $i.literal(`'${key}': i${key},`)
                                         })
                                     })
                                     $i.snippet(`}`)
@@ -207,7 +207,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                 //     //             $i.snippet(`export const $a = {`)
                 //     //             $i.indent(($i) => {
                 //     //                 $.forEach(compare, ($, key) => {
-                //     //                     $i.literal(`"${key}": i${key},`)
+                //     //                     $i.literal(`'${key}': i${key},`)
                 //     //                 })
                 //     //             })
                 //     //             $i.snippet(`}`)
@@ -243,27 +243,27 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                     $i.literal(`export * from "./modules/${$.main}/api"`)
                 })
             })
-            tsConfig({ isResource: $.type !== undefined && $.type[0] === "resource" }, $i)
+            tsConfig({ isResource: $.type !== undefined && $.type[0] === 'resource' }, $i)
         })
-        if ($.type === undefined || $.type[0] !== "glossary") {
+        if ($.type === undefined || $.type[0] !== 'glossary') {
             $i.directory("test", ($i) => {
-                $i.allowed(`data`)
-                $i.allowed(`dist`)
-                $i.allowed(`node_modules`)
-                $i.allowed(`package-lock.json`)
-                $i.allowed(`package.json`)
+                $i.allowed("data")
+                $i.allowed("dist")
+                $i.allowed("node_modules")
+                $i.allowed("package-lock.json")
+                $i.allowed("package.json")
                 $i.directory("src", ($i) => {
-                    $i.allowed(`data`)
-                    $i.allowed(`dependencies`)
-                    $i.allowed(`implementation`)
-                    $i.allowed(`interface`)
+                    $i.allowed("data")
+                    $i.allowed("dependencies")
+                    $i.allowed("implementation")
+                    $i.allowed("interface")
                     globals($i)
                     $i.directory("bin", ($i) => {
                         $i.file("test.generated.ts", ($i) => {
                             $i.literal(`#!/usr/bin/env node`)
                             $i.literal(``)
-                            $i.literal(`import * as pe from "pareto-core-exe"`)
-                            $i.literal(`import * as pl from "pareto-core-lib"`)
+                            $i.literal(`import * as pe from 'pareto-core-exe'`)
+                            $i.literal(`import * as pl from 'pareto-core-lib'`)
                             $i.literal(`import * as test from "lib-pareto-test"`)
                             $i.literal(``)
                             $i.literal(`import { dependencies } from "../dependencies/dependencies.p"`)
@@ -295,9 +295,9 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                             $i.literal(`)`)
                         })
                         $i.file("testXXXXX.generated.ts", ($i) => {
-                            $i.literal(`import * as pt from "pareto-core-types"`)
-                            $i.literal(`import * as pr from "pareto-core-raw"`)
-                            $i.literal(`import * as pl from "pareto-core-lib"`)
+                            $i.literal(`import * as pt from 'pareto-core-types'`)
+                            $i.literal(`import * as pr from 'pareto-core-raw'`)
+                            $i.literal(`import * as pl from 'pareto-core-lib'`)
                             $i.literal(`import * as tst from "lib-pareto-test"`)
                             $i.literal(``)
                             $.modules.forEach(compare, ($, key) => {
@@ -315,11 +315,11 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                     $.modules.forEach(compare, ($, key) => {
                                         const moduleName = key
                                         $i.line(($i) => {
-                                            $i.snippet(`"${key}": pr.wrapRawDictionary({`)
+                                            $i.snippet(`'${key}': pr.wrapRawDictionary({`)
                                             $i.indent(($i) => {
                                                 $.definition.api.algorithms.forEach(compare, ($, key) => {
                                                     $i.line(($i) => {
-                                                        $i.snippet(`"${key}": ${moduleName}_${key},`)
+                                                        $i.snippet(`'${key}': ${moduleName}_${key},`)
                                                     })
                                                 })
                                             })
@@ -338,8 +338,8 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                 const def = $.definition
                                 $.definition.api.algorithms.forEach(compare, ($, key) => {
                                     // $i.file(`${key}_tmp.p.ts`, ($i) => {
-                                    //     $i.literal(`import * as pt from "pareto-core-types"`)
-                                    //     $i.literal(`import * as pl from "pareto-core-lib"`)
+                                    //     $i.literal(`import * as pt from 'pareto-core-types'`)
+                                    //     $i.literal(`import * as pl from 'pareto-core-lib'`)
                                     //     $i.literal(``)
                                     //     $i.literal(`import * as tst from "lib-pareto-test"`)
                                     //     $i.literal(``)
@@ -350,25 +350,25 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                     //         $i.snippet(`export type XX = `)
                                     //         $i.indent(($i) => {
                                     //             switch ($[0]) {
-                                    //                 case "algorithm":
+                                    //                 case 'algorithm':
                                     //                     pl.cc($[1], ($) => {
                                     //                     })
                                     //                     break
-                                    //                 case "constructor":
+                                    //                 case 'constructor':
                                     //                     pl.cc($[1], ($) => {
                                     //                         $.dependencies.forEach(compare, ($, key) => {
                                     //                             $i.line(($i) => {
-                                    //                                 $i.snippet(`| [ "${key}", `)
+                                    //                                 $i.snippet(`| [ '${key}', `)
                                     //                                 switch ($.type[0]) {
-                                    //                                     case "function":
+                                    //                                     case 'function':
                                     //                                         pl.cc($.type[1], ($) => {
                                     //                                             if ($.context !== undefined) {
                                     //                                                 switch ($.context[0]) {
-                                    //                                                     case "import":
+                                    //                                                     case 'import':
                                     //                                                         pl.cc($.context[1], ($) => {
                                     //                                                         })
                                     //                                                         break
-                                    //                                                     case "local":
+                                    //                                                     case 'local':
                                     //                                                         pl.cc($.context[1], ($) => {
                                     //                                                         })
                                     //                                                         break
@@ -379,7 +379,7 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                     //                                             $i.snippet(`string/*FIXME*/`)
                                     //                                         })
                                     //                                         break
-                                    //                                     case "procedure":
+                                    //                                     case 'procedure':
                                     //                                         pl.cc($.type[1], ($) => {
                                     //                                             $d.serializeLeafType($, $i)
                                     //                                         })
@@ -399,15 +399,15 @@ export const icreateProjectSerializer: api.CcreateProjectSerializer = (
                                     //     $i.literal(``)
                                     // })
                                     $i.file(`${key}.p.ts`, ($i) => {
-                                        $i.literal(`import * as pt from "pareto-core-types"`)
-                                        $i.literal(`import * as pl from "pareto-core-lib"`)
+                                        $i.literal(`import * as pt from 'pareto-core-types'`)
+                                        $i.literal(`import * as pl from 'pareto-core-lib'`)
                                         $i.literal(``)
                                         $i.literal(`import * as tst from "lib-pareto-test"`)
                                         $i.literal(``)
                                         $i.line(($i) => {
                                             $i.snippet(`export function test(): pt.AsyncValue<tst.TTestElement> {`)
                                             $i.indent(($i) => {
-                                                $i.literal(`pl.implementMe("${moduleName}:${key}")`)
+                                                $i.literal(`pl.implementMe(\`${moduleName}:${key}\`)`)
                                             })
                                             $i.snippet(`}`)
                                         })

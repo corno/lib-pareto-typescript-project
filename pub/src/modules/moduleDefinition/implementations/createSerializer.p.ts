@@ -1,4 +1,4 @@
-import * as pl from "pareto-core-lib"
+import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
@@ -48,7 +48,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
         function serializeDefinitionReference($: api.TDefinitionReference, $i: mfp.ILine) {
 
             switch ($[0]) {
-                case "callback":
+                case 'callback':
                     pl.cc($[1], ($) => {
                         $i.snippet(`['callback', {`)
                         $i.indent(($i) => {
@@ -70,7 +70,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
 
                     })
                     break
-                case "function":
+                case 'function':
                     pl.cc($[1], ($) => {
                         $i.snippet(`['function', {`)
                         $i.indent(($i) => {
@@ -100,21 +100,21 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
 
                     })
                     break
-                case "interface":
+                case 'interface':
                     pl.cc($[1], ($) => {
                         $i.snippet(`['interface', `)
                         $i.snippet(`FIXME]`)
 
                     })
                     break
-                case "pipe":
+                case 'pipe':
                     pl.cc($[1], ($) => {
                         $i.snippet(`['pipe', `)
                         $i.snippet(`FIXME]`)
 
                     })
                     break
-                case "procedure":
+                case 'procedure':
                     pl.cc($[1], ($) => {
                         $i.snippet(`['procedure', `)
                         $i.snippet(`FIXME]`)
@@ -139,8 +139,8 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        $i.file(`api.generated.ts`, ($i) => {
-            $i.literal(`import * as pr from "pareto-core-raw"`)
+        $i.file("api.generated.ts", ($i) => {
+            $i.literal(`import * as pr from 'pareto-core-raw'`)
             $i.literal(``)
             $i.literal(`import * as mmoduleDefinition from "../../../pub/dist/modules/moduleDefinition"`)
             $i.literal(``)
@@ -166,7 +166,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                                     $i.indent(($i) => {
                                         $.api.imports.forEach(compare, ($, key) => {
                                             $i.line(($i) => {
-                                                $i.snippet(`"${key}": "${$}"`)
+                                                $i.snippet(`'${key}': "${$}"`)
                                             })
                                         })
                                     })
@@ -177,7 +177,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                                         $i.indent(($i) => {
                                             $.api.algorithms.forEach(compare, ($, key) => {
                                                 $i.line(($i) => {
-                                                    $i.snippet(`"${key}": {`)
+                                                    $i.snippet(`'${key}': {`)
                                                     $i.indent(($i) => {
                                                         $i.line(($i) => {
                                                             $i.snippet(`'definition': `)
@@ -187,7 +187,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                                                         $i.line(($i) => {
                                                             $i.snippet(`'type': `)
                                                             switch ($.type[0]) {
-                                                                case "constructor":
+                                                                case 'constructor':
                                                                     pl.cc($.type[1], ($) => {
 
                                                                         $i.snippet(`['constructor', {`)
@@ -203,7 +203,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                                                                                 $i.indent(($i) => {
                                                                                     $.dependencies.forEach(compare, ($, key) => {
                                                                                         $i.line(($i) => {
-                                                                                            $i.snippet(`"${key}": `)
+                                                                                            $i.snippet(`'${key}': `)
                                                                                             serializeDefinitionReference($, $i)
                                                                                             $i.snippet(`,`)
                                                                                         })
@@ -215,7 +215,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                                                                         $i.snippet(`}]`)
                                                                     })
                                                                     break
-                                                                case "reference":
+                                                                case 'reference':
                                                                     pl.cc($.type[1], ($) => {
 
                                                                         $i.snippet(`['reference', null]`)

@@ -1,7 +1,7 @@
-import * as pt from "pareto-core-types"
-import * as pl from "pareto-core-lib"
-import * as pm from "pareto-core-state"
-import * as pr from "pareto-core-raw"
+import * as pt from 'pareto-core-types'
+import * as pl from 'pareto-core-lib'
+import * as pm from 'pareto-core-state'
+import * as pr from 'pareto-core-raw'
 
 import * as tst from "lib-pareto-test"
 

@@ -1,4 +1,4 @@
-import * as pr from "pareto-core-raw"
+import * as pr from 'pareto-core-raw'
 import {
     externalReference as er,
     string as str,
@@ -68,8 +68,8 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
         // 'interfaces': d({
         //     // "SingleArgument": {
         //     //     "members": d({
-        //     //         "Z": ["callback", ['type', string()]],
-        //     //         "Y": ["callback", ['type', string()]],
+        //     //         "Z": ['callback',  ['type', string()]],
+        //     //         "Y": ['callback',  ['type', string()]],
         //     //     }),
         //     // }
         // }),

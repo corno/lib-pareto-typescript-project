@@ -1,5 +1,5 @@
 
-import * as pr from "pareto-core-raw"
+import * as pr from 'pareto-core-raw'
 
 //import { Function, Glossary, LeafType, Type } from "./types.p"
 

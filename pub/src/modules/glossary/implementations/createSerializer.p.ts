@@ -1,4 +1,4 @@
-import * as pl from "pareto-core-lib"
+import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
@@ -10,12 +10,12 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
 
     // function serializeLeafTypeOrNull($: mglossary.TLeafTypeOrNull, $i: mfp.ILine) {
     //     switch ($[0]) {
-    //         case "null":
+    //         case 'null':
     //             pl.cc($[1], ($) => {
     //                 $i.snippet(`['null', null]`)
     //             })
     //             break
-    //         case "type":
+    //         case 'type':
     //             pl.cc($[1], ($) => {
 
     //                 $i.snippet(`['type', `)
@@ -114,7 +114,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                     $i.indent(($i) => {
                         $.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`"${key}": `)
+                                $i.snippet(`'${key}': `)
                                 serializeType($.type, $i)
                                 $i.snippet(`,`)
                             })
@@ -150,7 +150,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                     $i.indent(($i) => {
                         $.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`"${key}": `)
+                                $i.snippet(`'${key}': `)
                                 serializeType($, $i)
                                 $i.snippet(`,`)
                             })
@@ -217,7 +217,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                     $i.indent(($i) => {
                         $.members.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`"${key}": `)
+                                $i.snippet(`'${key}': `)
                                 serializeInterface($, $i)
                             })
                         })
@@ -270,7 +270,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                     if ($.namespaces !== undefined) {
                         $.namespaces.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`"${key}": `)
+                                $i.snippet(`'${key}': `)
                                 serializeNamespace($, $i)
                                 $i.snippet(`,`)
                             })
@@ -285,7 +285,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                     if ($.templates !== undefined) {
                         $.templates.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`"${key}": {`)
+                                $i.snippet(`'${key}': {`)
                                 $i.indent(($i) => {
 
                                     $i.line(($i) => {
@@ -293,7 +293,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                                         $i.indent(($i) => {
                                             $.parameters.forEach(compare, ($, key) => {
                                                 $i.line(($i) => {
-                                                    $i.snippet(`"${key}": null,`)
+                                                    $i.snippet(`'${key}': null,`)
                                                 })
                                             })
                                         })
@@ -317,7 +317,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                 $i.indent(($i) => {
                     $.types.forEach(compare, ($, key) => {
                         $i.line(($i) => {
-                            $i.snippet(`"${key}": `)
+                            $i.snippet(`'${key}': `)
                             serializeType($, $i)
                             $i.snippet(`,`)
                         })
@@ -330,7 +330,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                 $i.indent(($i) => {
                     $.interfaces.forEach(compare, ($, key) => {
                         $i.line(($i) => {
-                            $i.snippet(`"${key}": `)
+                            $i.snippet(`'${key}': `)
                             serializeInterface($, $i)
                             $i.snippet(`,`)
                         })
@@ -349,7 +349,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                 $i.indent(($i) => {
                     $.imports.forEach(compare, ($, key) => {
                         $i.line(($i) => {
-                            $i.snippet(`"${key}": "${$}",`)
+                            $i.snippet(`'${key}': "${$}",`)
                         })
                     })
                 })
@@ -361,7 +361,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                     if ($.parameters !== undefined) {
                         $.parameters.forEach(compare, ($, key) => {
                             $i.line(($i) => {
-                                $i.snippet(`"${key}": null,`)
+                                $i.snippet(`'${key}': null,`)
                             })
                         })
                     }
@@ -379,7 +379,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                     $.functions.forEach(compare, ($, key) => {
                         $i.line(($i) => {
 
-                            $i.snippet(`"${key}": {`)
+                            $i.snippet(`'${key}': {`)
                             $i.indent(($i) => {
                                 $i.line(($i) => {
                                     $i.snippet(`'async': XXX,`)
@@ -398,7 +398,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                 $i.indent(($i) => {
                     $.callbacks.forEach(compare, ($, key) => {
                         $i.line(($i) => {
-                            $i.snippet(`"${key}": {`)
+                            $i.snippet(`'${key}': {`)
                             $i.indent(($i) => {
                                 $i.line(($i) => {
                                     $i.snippet(`'data': `)
@@ -429,7 +429,7 @@ export const icreateSerializer: api.CcreateSerializer = ($d) => {
                 $i.indent(($i) => {
                     $.pipes.forEach(compare, ($, key) => {
                         $i.line(($i) => {
-                            $i.snippet(`"${key}": "FIXME",`)
+                            $i.snippet(`'${key}': "FIXME",`)
                         })
                     })
                 })

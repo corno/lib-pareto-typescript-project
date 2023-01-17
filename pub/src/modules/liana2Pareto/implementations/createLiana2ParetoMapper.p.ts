@@ -1,5 +1,5 @@
-import * as pl from "pareto-core-lib"
-import * as pr from "pareto-core-raw"
+import * as pl from 'pareto-core-lib'
+import * as pr from 'pareto-core-raw'
 
 import * as api from "../api"
 

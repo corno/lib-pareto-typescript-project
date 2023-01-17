@@ -1,4 +1,4 @@
-import * as pl from "pareto-core-lib"
+import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
@@ -36,17 +36,17 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
             if ($ !== undefined) {
                 pl.cc($, ($) => {
                     switch ($[0]) {
-                        // case "api":
+                        // case 'api':
                         //     pl.cc($[1], ($) => {
                         //         $i.snippet(`api`)
                         //     })
                         //     break
-                        case "import":
+                        case 'import':
                             pl.cc($[1], ($) => {
                                 $i.snippet(`m${$}.`)
                             })
                             break
-                        case "local":
+                        case 'local':
                             pl.cc($[1], ($) => {
                                 $i.snippet(`glo.`)
                             })
@@ -61,31 +61,31 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
 
         function serializeDefinitionReference($: mmoduleDefinition.TDefinitionReference, $i: mfp.ILine) {
             switch ($[0]) {
-                case "callback":
+                case 'callback':
                     pl.cc($[1], ($) => {
                         serializeContext($.context, $i)
                         $i.snippet(`X${$.callback}`)
                     })
                     break
-                case "function":
+                case 'function':
                     pl.cc($[1], ($) => {
                         serializeContext($.context, $i)
-                        $i.snippet(`${$.async ? "A" : "F"}${$.function}`)
+                        $i.snippet(`${$.async ? `A` : `F`}${$.function}`)
                     })
                     break
-                case "interface":
+                case 'interface':
                     pl.cc($[1], ($) => {
                         serializeContext($.context, $i)
                         $i.snippet(`I${$.interface}`)
                     })
                     break
-                case "pipe":
+                case 'pipe':
                     pl.cc($[1], ($) => {
                         serializeContext($.context, $i)
                         $i.snippet(`P${$.pipe}`)
                     })
                     break
-                case "procedure":
+                case 'procedure':
                     pl.cc($[1], ($) => {
                         $i.snippet(`pt.Procedure<`)
                         serializeTypeReference($, $i)
@@ -96,10 +96,10 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
             }
         }
         glossary($.glossary, $i)
-        $i.allowed(`shorthands.p.ts`)
+        $i.allowed("shorthands.p.ts")
 
         $i.file("api.generated.ts", ($i) => {
-            $i.literal(`import * as pt from "pareto-core-types"`)
+            $i.literal(`import * as pt from 'pareto-core-types'`)
             $i.literal(``)
             $i.literal(`import * as glo from "./types.generated"`)
             $i.literal(``)
@@ -114,40 +114,40 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                 $i.line(($i) => {
                     $i.snippet(`export type C${key} = `)
                     switch ($.type[0]) {
-                        case "constructor":
+                        case 'constructor':
                             pl.cc($.type[1], ($) => {
                                 $i.snippet(`(`)
-                                serializeOptionalTypeReference($["configuration data"], $i)
+                                serializeOptionalTypeReference($['configuration data'], $i)
                                 $i.snippet(`$d: {`)
                                 $i.indent(($i) => {
                                     $.dependencies.forEach(compare, ($, key) => {
                                         const id = pl.cc($, ($): string => {
                                             switch ($[0]) {
-                                                case "callback":
+                                                case 'callback':
                                                     return pl.cc($[1], ($) => {
-                                                        return "cb"
+                                                        return `cb`
                                                     })
-                                                case "function":
+                                                case 'function':
                                                     return pl.cc($[1], ($) => {
-                                                        return $.async ? "af" : "sf"
+                                                        return $.async ? `af` : `sf`
                                                     })
-                                                case "interface":
+                                                case 'interface':
                                                     return pl.cc($[1], ($) => {
-                                                        return "if"
+                                                        return `if`
                                                     })
-                                                case "pipe":
+                                                case 'pipe':
                                                     return pl.cc($[1], ($) => {
-                                                        return "pi"
+                                                        return `pi`
                                                     })
-                                                case "procedure":
+                                                case 'procedure':
                                                     return pl.cc($[1], ($) => {
-                                                        return "pr"
+                                                        return `pr`
                                                     })
                                                 default: return pl.au($[0])
                                             }
                                         })
                                         $i.line(($i) => {
-                                            $i.snippet(`readonly "${id}_${key}": `)
+                                            $i.snippet(`readonly '${id}_${key}': `)
                                             serializeDefinitionReference($, $i)
                                         })
                                     })
@@ -184,7 +184,7 @@ export const icreateModuleDefinitionSerializer: api.CcreateModuleDefinitionSeria
                                 $i.snippet(`) => `)
                             })
                             break
-                        case "reference":
+                        case 'reference':
                             pl.cc($.type[1], ($) => {
                             })
                             break

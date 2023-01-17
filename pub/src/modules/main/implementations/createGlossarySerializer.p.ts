@@ -1,4 +1,4 @@
-import * as pl from "pareto-core-lib"
+import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
@@ -45,52 +45,52 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
         }
         function serializeType($: mglossary.TType, $i: mfp.ILine) {
             switch ($[0]) {
-                case "null":
+                case 'null':
                     pl.cc($[1], ($) => {
                         $i.snippet(`null`)
                     })
                     break
-                case "boolean":
+                case 'boolean':
                     pl.cc($[1], ($) => {
                         $i.snippet(`boolean`)
                     })
                     break
-                case "reference":
+                case 'reference':
                     pl.cc($[1], ($) => {
                         serializeTypeReference($, $i)
                     })
                     break
-                case "number":
+                case 'number':
                     pl.cc($[1], ($) => {
                         $i.snippet(`number`)
                     })
                     break
-                case "string":
+                case 'string':
                     pl.cc($[1], ($) => {
                         $i.snippet(`string`)
                     })
                     break
-                case "array":
+                case 'array':
                     pl.cc($[1], ($) => {
                         $i.snippet(`pt.Array<`)
                         serializeType($, $i)
                         $i.snippet(`>`)
                     })
                     break
-                case "dictionary":
+                case 'dictionary':
                     pl.cc($[1], ($) => {
                         $i.snippet(`pt.Dictionary<`)
                         serializeType($, $i)
                         $i.snippet(`>`)
                     })
                     break
-                case "group":
+                case 'group':
                     pl.cc($[1], ($) => {
                         $i.snippet(`{`)
                         $i.indent(($i) => {
                             $.forEach(compare, ($, key) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`readonly "${key}"${$.optional === undefined || false ? "" : "?"}: `)
+                                    $i.snippet(`readonly '${key}'${$.optional === undefined || false ? `` : `?`}: `)
                                     serializeType($.type, $i)
                                 })
                             })
@@ -98,30 +98,30 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                         $i.snippet(`}`)
                     })
                     break
-                case "nested":
+                case 'nested':
                     pl.cc($[1], ($) => {
                         $i.snippet(`pt.Nested<`)
                         serializeType($, $i)
                         $i.snippet(`>`)
                     })
                     break
-                case "optional":
+                case 'optional':
                     pl.cc($[1], ($) => {
                         $i.snippet(`null | `)
                         serializeType($, $i)
                     })
                     break
-                case "parameter":
+                case 'parameter':
                     pl.cc($[1], ($) => {
                         $i.snippet(`A${$}`)
                     })
                     break
-                case "taggedUnion":
+                case 'taggedUnion':
                     pl.cc($[1], ($) => {
                         $i.indent(($i) => {
                             $.forEach(compare, ($, key) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`| ["${key}", `)
+                                    $i.snippet(`| ['${key}', `)
                                     serializeType($, $i)
                                     $i.snippet(`]`)
                                 })
@@ -129,7 +129,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                         })
                     })
                     break
-                case "template":
+                case 'template':
                     pl.cc($[1], ($) => {
                         if ($.context !== undefined) {
                             serializeContext($.context, $i)
@@ -159,12 +159,12 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
         }
         function serializeContext($: mglossary.TContext, $i: mfp.ILine) {
             switch ($[0]) {
-                case "import":
+                case 'import':
                     pl.cc($[1], ($) => {
                         $i.snippet(`m${$}.`)
                     })
                     break
-                case "local":
+                case 'local':
                     pl.cc($[1], ($) => {
 
                     })
@@ -181,14 +181,14 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
         }
         function serializeInterface($: mglossary.TInterface, $i: mfp.ILine) {
             switch ($[0]) {
-                case "group":
+                case 'group':
                     pl.cc($[1], ($) => {
 
                         $i.snippet(`{`)
                         $i.indent(($i) => {
                             $.members.forEach(compare, ($, key) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`"${key}": `)
+                                    $i.snippet(`'${key}': `)
                                     serializeInterface($, $i)
                                 })
                             })
@@ -196,7 +196,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                         $i.snippet(`}`)
                     })
                     break
-                case "method":
+                case 'method':
                     pl.cc($[1], ($) => {
 
                         $i.snippet(`(`)
@@ -205,11 +205,11 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                         })
                         pl.cc($.interface, ($) => {
                             switch ($[0]) {
-                                case "null":
+                                case 'null':
                                     pl.cc($[1], ($) => {
                                     })
                                     break
-                                case "set":
+                                case 'set':
                                     pl.cc($[1], ($) => {
                                         $i.snippet(`$c: ($i: `)
                                         serializeInterfaceReference($, $i)
@@ -222,7 +222,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
                         $i.snippet(`) => void`)
                     })
                     break
-                case "reference":
+                case 'reference':
                     pl.cc($[1], ($) => {
                         serializeInterfaceReference($, $i)
                     })
@@ -284,7 +284,7 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
             })
         }
         $i.line(($i) => {
-            $i.snippet(`import * as pt from "pareto-core-types"`)
+            $i.snippet(`import * as pt from 'pareto-core-types'`)
         })
         $.imports.forEach(compare, ($, key) => {
             $i.line(($i) => {
@@ -303,17 +303,17 @@ export const icreateGlossarySerializer: api.CcreateGlossarySerializer = ($d) => 
         $.functions.forEach(compare, ($, key) => {
             $i.literal(``)
             $i.line(($i) => {
-                $i.snippet(`export type ${$.async ? "A" : "F"}${key} = `)
+                $i.snippet(`export type ${$.async ? `A` : `F`}${key} = `)
                 serializeParameters(parameters, $i)
                 $i.snippet(`($: `)
                 serializeTypeReference($.data, $i)
                 $i.snippet(`) => `)
                 if ($.async) {
                     $i.snippet(`pt.AsyncValue<`)
-                    serializeTypeReference($["return value"], $i)
+                    serializeTypeReference($[`return value`], $i)
                     $i.snippet(`>`)
                 } else {
-                    serializeTypeReference($["return value"], $i)
+                    serializeTypeReference($[`return value`], $i)
                 }
             })
         })

@@ -35,10 +35,10 @@ export const icreateTemplateSerializer: api.CcreateTemplateSerializer = (
                                 const moduleName = key
 
                                 $i.directory(key, ($i) => {
-                                    $i.directory(`implementations`, ($i) => {
+                                    $i.directory("implementations", ($i) => {
                                         $.definition.api.algorithms.forEach(compare, ($, key) => {
                                             $i.file(`${key}.p.ts`, ($i) => {
-                                                $i.literal(`import * as pl from "pareto-core-lib"`)
+                                                $i.literal(`import * as pl from 'pareto-core-lib'`)
                                                 $i.literal(``)
                                                 $i.literal(`import * as api from "../api"`)
                                                 $i.literal(``)
@@ -121,7 +121,7 @@ export const icreateTemplateSerializer: api.CcreateTemplateSerializer = (
                                 $i.directory(key, ($i) => {
                                     $.definition.api.algorithms.forEach(compare, ($, key) => {
                                         $i.file(`${key}.p.ts`, ($i) => {
-                                            $i.literal(`import * as pl from "pareto-core-lib"`)
+                                            $i.literal(`import * as pl from 'pareto-core-lib'`)
                                             $i.literal(``)
                                             $i.literal(`import * as api from "../api"`)
                                             $i.literal(``)

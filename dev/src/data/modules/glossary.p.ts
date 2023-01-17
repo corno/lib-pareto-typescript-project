@@ -1,4 +1,4 @@
-import * as pr from "pareto-core-raw"
+import * as pr from 'pareto-core-raw'
 import {
     externalReference as er,
     string as str,
@@ -76,23 +76,24 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "OptionalTypeReference": optional(ref("TypeReference")),
                 "Parameters": ['dictionary', null_()],
                 "Template": group({
-                    "parameters": member(["dictionary", null_()]),
+                    "parameters": member(['dictionary',  null_()]),
                     "type": member(ref("Type"))
                 }),
                 "Type": taggedUnion({
+                    "array": ref("Type"),
+                    "nested": ref("Type"),
+                    "optional": ref("Type"),
+                    "dictionary": ref("Type"),
+
                     "null": null_(),
                     "boolean": null_(),
                     "string": null_(),
                     "number": null_(),
                     "reference": ref("TypeReference"),
-                    "array": ref("Type"),
-                    "dictionary": ref("Type"),
                     "group": dictionary(group({
                         "type": member(ref("Type")),
                         "optional": member(bln(), true)
                     })),
-                    "nested": ref("Type"),
-                    "optional": ref("Type"),
                     "parameter": str(),
                     "template": group({
                         "context": member(ref("Context"), true),

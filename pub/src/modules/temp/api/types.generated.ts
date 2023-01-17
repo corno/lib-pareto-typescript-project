@@ -1,4 +1,4 @@
-import * as pt from "pareto-core-types"
+import * as pt from 'pareto-core-types'
 
 export type XEnrichedDictionaryForEach = <T> (
     $: pt.Dictionary<T>,

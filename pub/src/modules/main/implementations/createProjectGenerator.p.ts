@@ -1,5 +1,5 @@
-import * as pt from "pareto-core-types"
-import * as pl from "pareto-core-lib"
+import * as pt from 'pareto-core-types'
+import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
@@ -41,11 +41,11 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                                 path: $
                             }).map<pt.Dictionary<string>>(($) => {
                                 switch ($[0]) {
-                                    case "error":
+                                    case 'error':
                                         return pl.cc($[1], ($) => {
                                             return pl.asyncValue(pl.createEmptyDictionary())
                                         })
-                                    case "success":
+                                    case 'success':
                                         return pl.cc($[1], ($) => {
                                             return  pl.asyncValue($.map(($, key) => key))
                                         })
@@ -54,12 +54,12 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
                             })
                         },
                         pr_reportSuperfluousNode: ($) => {
-                            const red = "\x1b[31m"
-                            const green = "\x1b[32m"
-                            const reset = "\x1b[0m"
+                            const red = `\x1b[31m`
+                            const green = `\x1b[32m`
+                            const reset = `\x1b[0m`
                             pl.logDebugMessage(`${red}superfluous node: ${mtostring.$a.joinNestedStrings({
                                 strings: $.path,
-                                separator: "/",
+                                separator: `/`,
                             })}/${$.name}${reset}`)
                         },
                     },
@@ -80,15 +80,15 @@ export const icreateProjectGenerator: api.CcreateProjectGenerator = ($d) => {
             },
             pr_onError: ($) => {
                 switch ($[0]) {
-                    case "missing":
+                    case 'missing':
                         pl.cc($[1], ($) => {
-                            pl.implementMe("@@@@NA")
+                            pl.implementMe(`@@@@NA`)
 
                         })
                         break
-                    case "too many":
+                    case 'too many':
                         pl.cc($[1], ($) => {
-                            pl.implementMe("@@@@2M")
+                            pl.implementMe(`@@@@2M`)
 
                         })
                         break

@@ -1,4 +1,4 @@
-import * as pr from "pareto-core-raw"
+import * as pr from 'pareto-core-raw'
 import {
     externalReference as er,
     string as str,

@@ -8,7 +8,7 @@
     "pareto-core-raw": "^0.7.0",
     "pareto-core-state": "^0.12.0",
     "res-pareto-collation": "^0.11.0",
-    "res-pareto-filesystem": "^0.28.0"
+    "res-pareto-filesystem": "^0.29.0"
   },
   "description": "generates a pareto typescript project structure",
   "files": [
@@ -23,5 +23,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.30.0",
-  "content-fingerprint": "6f19488a93977ef7476ef666f05ea22e534c54e3"
+  "content-fingerprint": "102ea81782db12cf87b8db6bef8b6e604ef47351"
 }

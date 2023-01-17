@@ -1,4 +1,4 @@
-import * as pt from "pareto-core-types"
+import * as pt from 'pareto-core-types'
 import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../glossary"
@@ -7,18 +7,18 @@ import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mproject from "../../project"
 
 export type TArgumentError = 
-    | ["missing", null]
-    | ["too many", null]
+    | ['missing', null]
+    | ['too many', null]
 
 export type TArguments = pt.Array<string>
 
 export type TParameters = {
-    readonly "testDirectory": string
+    readonly 'testDirectory': string
 }
 
 export type TProjectSettings = {
-    readonly "mainData": mmain.TMainData
-    readonly "project": mproject.TProject
+    readonly 'mainData': mmain.TMainData
+    readonly 'project': mproject.TProject
 }
 
 export type ICreateWriter = ($: mcommon.TString, $c: ($i: mfp.IWriter) => void) => void

@@ -1,51 +1,51 @@
-import * as pt from "pareto-core-types"
+import * as pt from 'pareto-core-types'
 import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../glossary"
 
 export type TContext = 
-    | ["import", string]
-    | ["local", null]
+    | ['import', string]
+    | ['local', null]
 
 export type TDefinitionReference = 
-    | ["callback", {
-        readonly "callback": string
-        readonly "context"?: TContext
+    | ['callback', {
+        readonly 'callback': string
+        readonly 'context'?: TContext
     }]
-    | ["function", {
-        readonly "async"?: boolean
-        readonly "context"?: TContext
-        readonly "function": string
+    | ['function', {
+        readonly 'async'?: boolean
+        readonly 'context'?: TContext
+        readonly 'function': string
     }]
-    | ["interface", {
-        readonly "context"?: TContext
-        readonly "interface": string
+    | ['interface', {
+        readonly 'context'?: TContext
+        readonly 'interface': string
     }]
-    | ["pipe", {
-        readonly "context"?: TContext
-        readonly "pipe": string
+    | ['pipe', {
+        readonly 'context'?: TContext
+        readonly 'pipe': string
     }]
-    | ["procedure", TTypeReference]
+    | ['procedure', TTypeReference]
 
 export type TModuleDefinition = {
-    readonly "api": {
-        readonly "algorithms": pt.Dictionary<{
-            readonly "definition": TDefinitionReference
-            readonly "type": 
-                | ["constructor", {
-                    readonly "configuration data": mglossary.TOptionalTypeReference
-                    readonly "dependencies": pt.Dictionary<TDefinitionReference>
+    readonly 'api': {
+        readonly 'algorithms': pt.Dictionary<{
+            readonly 'definition': TDefinitionReference
+            readonly 'type': 
+                | ['constructor', {
+                    readonly 'configuration data': mglossary.TOptionalTypeReference
+                    readonly 'dependencies': pt.Dictionary<TDefinitionReference>
                 }]
-                | ["reference", null]
+                | ['reference', null]
         }>
-        readonly "imports": pt.Dictionary<string>
+        readonly 'imports': pt.Dictionary<string>
     }
-    readonly "glossary": mglossary.TGlossary
+    readonly 'glossary': mglossary.TGlossary
 }
 
 export type TTypeReference = {
-    readonly "context": TContext
-    readonly "namespaces": pt.Array<string>
-    readonly "type": string
+    readonly 'context': TContext
+    readonly 'namespaces': pt.Array<string>
+    readonly 'type': string
 }
 
 export type XSerialize = ($: TModuleDefinition, $i: mfp.IWriter) => void

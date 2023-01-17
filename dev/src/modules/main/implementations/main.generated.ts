@@ -1,4 +1,4 @@
-import * as pl from "pareto-core-lib"
+import * as pl from 'pareto-core-lib'
 import * as api from "../api"
 
 import { $ as project } from "../../../data/project.p"

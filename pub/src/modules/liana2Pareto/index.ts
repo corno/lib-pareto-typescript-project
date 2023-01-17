@@ -6,7 +6,7 @@ import { igenerateProject } from "./implementations/generateProject.p"
 export * from "./api"
 
 export const $a: API = {
-    "createLiana2ParetoMapper": icreateLiana2ParetoMapper,
-    "createProjectGenerator": icreateProjectGenerator,
-    "generateProject": igenerateProject,
+    'createLiana2ParetoMapper': icreateLiana2ParetoMapper,
+    'createProjectGenerator': icreateProjectGenerator,
+    'generateProject': igenerateProject,
 }

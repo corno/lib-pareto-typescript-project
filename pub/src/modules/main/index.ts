@@ -10,11 +10,11 @@ import { igenerateProject } from "./implementations/generateProject.p"
 export * from "./api"
 
 export const $a: API = {
-    "createGlossarySerializer": icreateGlossarySerializer,
-    "createModuleDefinitionSerializer": icreateModuleDefinitionSerializer,
-    "createParametersParser": icreateParametersParser,
-    "createProjectGenerator": icreateProjectGenerator,
-    "createProjectSerializer": icreateProjectSerializer,
-    "createTemplateSerializer": icreateTemplateSerializer,
-    "generateProject": igenerateProject,
+    'createGlossarySerializer': icreateGlossarySerializer,
+    'createModuleDefinitionSerializer': icreateModuleDefinitionSerializer,
+    'createParametersParser': icreateParametersParser,
+    'createProjectGenerator': icreateProjectGenerator,
+    'createProjectSerializer': icreateProjectSerializer,
+    'createTemplateSerializer': icreateTemplateSerializer,
+    'generateProject': igenerateProject,
 }

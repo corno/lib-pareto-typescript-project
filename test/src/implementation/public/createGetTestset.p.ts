@@ -32,6 +32,8 @@ import { $ as moduleDefinition } from "./project.p"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
+import { $ as lianaModel } from "./lianaModel.p"
+
 export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
 
     return ($) => {
@@ -81,21 +83,13 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
         // )
 
 
-        const model: mliana.TModel = {
-            'types': d({
-                "FOO": {
-                    'type': ['string', {}],
-                },
-            }),
-            'root': "FOO",
-        }
 
         mliana2Pareto.$a.generateProject({
             'mainData': {
                 'arguments': pr.wrapRawArray(["LIANALIANA"]),
 
             },
-            'model': model,
+            'model': lianaModel,
         })
 
 

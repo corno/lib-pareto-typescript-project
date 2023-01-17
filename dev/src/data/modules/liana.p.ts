@@ -5,7 +5,7 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function
+    array, dictionary, group, member, taggedUnion, types, _function, string
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -22,8 +22,19 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'namespace': {
             'types': types({
+                "GlobalType": group({
+                    "type": member(ref("LocalType"))
+                }),
                 "LocalType": taggedUnion({
-                    "string": group({}),
+                    "string": group({
+                        "constrained": member(taggedUnion({
+                            "no": null_(),
+                            "yes": group({
+                                "type": member(str()),
+                            })
+                        }))
+                    }),
+                    "boolean": null_(),
                     "dictionary":group({
                         "type": member(ref("LocalType"))
                     }),
@@ -45,9 +56,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     }),
                 }),
                 "Model": group({
-                    "types": member(dictionary(group({
-                        "type": member(ref("LocalType"))
-                    }))),
+                    "globalTypes": member(dictionary(ref("GlobalType"))),
                     "root": member(str())
                 }),
             }),

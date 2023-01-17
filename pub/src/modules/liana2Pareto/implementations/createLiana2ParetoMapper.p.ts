@@ -18,6 +18,9 @@ import {
 
 import { string, reference, externalReference, number, boolean } from "../../moduleDefinition/api/shorthands.p"
 
+import * as mglossary from "../../glossary"
+import * as mliana from "../../liana"
+
 
 const d = pr.wrapRawDictionary
 const a = pr.wrapRawArray
@@ -40,7 +43,67 @@ export const icreateLiana2ParetoMapper: api.CcreateLiana2ParetoMapper = ($d) => 
                         "unresolved": {
                             'namespaces': d({
                                 "types": {
-                                    'types': types({}),
+                                    'types': $.globalTypes.map(($) => {
+                                        function mapType($: mliana.TLocalType): mglossary.TType {
+                                            switch ($[0]) {
+                                                case 'array':
+                                                    return pl.cc($[1], ($) => {
+                                                        return ['array', mapType($.type)]
+                                                    })
+                                                case 'boolean':
+                                                    return pl.cc($[1], ($) => {
+                                                        return ['boolean', null]
+                                                    })
+                                                case 'component':
+                                                    return pl.cc($[1], ($) => {
+                                                        return ['reference', {
+                                                            'context': ['local', null],
+                                                            'namespaces': pl.createEmptyArray(),
+                                                            'type': $.type,
+                                                        }]
+                                                    })
+                                                case 'dictionary':
+                                                    return pl.cc($[1], ($) => {
+                                                        return ['dictionary', mapType($.type)]
+                                                    })
+                                                case 'group':
+                                                    return pl.cc($[1], ($) => {
+                                                        return ['group', $.properties.map(($) => {
+                                                            return {
+                                                                'type': mapType($.type),
+                                                                'optional': false,
+                                                            }
+                                                        })]
+                                                    })
+                                                case 'string':
+                                                    return pl.cc($[1], ($) => {
+                                                        switch ($.constrained[0]) {
+                                                            case 'no':
+                                                                return pl.cc($.constrained[1], ($) => {
+                                                                    return ['string', null]
+                                                                })
+                                                            case 'yes':
+                                                                return pl.cc($.constrained[1], ($) => {
+                                                                    return ['template', {
+                                                                        'template': "Reference",
+                                                                        'arguments': d({}),
+                                                                    }]
+                                                                })
+                                                            default: return pl.au($.constrained[0])
+                                                        }
+                                                    })
+                                                case 'taggedUnion':
+                                                    return pl.cc($[1], ($) => {
+                                                        return ['taggedUnion', $.options.map(($) => {
+                                                            return mapType($.type)
+                                                        })]
+                                                    })
+                                                default: return pl.au($[0])
+                                            }
+
+                                        }
+                                        return mapType($.type)
+                                    }),
                                     'interfaces': d({}),
                                 },
                             }),

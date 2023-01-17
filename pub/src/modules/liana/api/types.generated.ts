@@ -1,9 +1,14 @@
 import * as pt from 'pareto-core-types'
 
+export type TGlobalType = {
+    readonly 'type': TLocalType
+}
+
 export type TLocalType = 
     | ['array', {
         readonly 'type': TLocalType
     }]
+    | ['boolean', null]
     | ['component', {
         readonly 'type': string
     }]
@@ -15,7 +20,13 @@ export type TLocalType =
             readonly 'type': TLocalType
         }>
     }]
-    | ['string', {}]
+    | ['string', {
+        readonly 'constrained': 
+            | ['no', null]
+            | ['yes', {
+                readonly 'type': string
+            }]
+    }]
     | ['taggedUnion', {
         readonly 'options': pt.Dictionary<{
             readonly 'type': TLocalType
@@ -23,8 +34,6 @@ export type TLocalType =
     }]
 
 export type TModel = {
+    readonly 'globalTypes': pt.Dictionary<TGlobalType>
     readonly 'root': string
-    readonly 'types': pt.Dictionary<{
-        readonly 'type': TLocalType
-    }>
 }

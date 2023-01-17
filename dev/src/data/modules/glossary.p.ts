@@ -23,31 +23,6 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'namespace': {
             'types': types({
-                "Namespace": group({
-                    "namespaces": member(dictionary(ref("Namespace")), true),
-                    "templates": member(dictionary(ref("Template")), true),
-                    "types": member(dictionary(ref("Type"))),
-                    "interfaces": member(dictionary(ref("Interface"))),
-                }),
-                "Interface": taggedUnion({
-                    "group":group({
-                        "members": member(dictionary(ref("Interface")))
-                    }),
-                    "method": group({
-                        "data": member(ref("OptionalTypeReference")),
-                        "interface": member(taggedUnion({
-                            "set": group({
-                                "interface": member(str())
-                            }),
-                            "null": null_(),
-                        }))
-                    }),
-                    "reference": ref("InterfaceReference"),
-                }),
-                "InterfaceReference": group({
-                    "context": member(ref("Context"), true),
-                    "interface": member(str())
-                }),
                 "Callback": group({
                     "data": member(ref("OptionalTypeReference")),
                     "context": member(ref("Context"), true),
@@ -72,6 +47,31 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "in": member(ref("InterfaceReference")),
                         "out": member(ref("InterfaceReference")),
                     }))),
+                }),
+                "Interface": taggedUnion({
+                    "group":group({
+                        "members": member(dictionary(ref("Interface")))
+                    }),
+                    "method": group({
+                        "data": member(ref("OptionalTypeReference")),
+                        "interface": member(taggedUnion({
+                            "set": group({
+                                "interface": member(str())
+                            }),
+                            "null": null_(),
+                        }))
+                    }),
+                    "reference": ref("InterfaceReference"),
+                }),
+                "InterfaceReference": group({
+                    "context": member(ref("Context"), true),
+                    "interface": member(str())
+                }),
+                "Namespace": group({
+                    "namespaces": member(dictionary(ref("Namespace")), true),
+                    "templates": member(dictionary(ref("Template")), true),
+                    "types": member(dictionary(ref("Type"))),
+                    "interfaces": member(dictionary(ref("Interface"))),
                 }),
                 "OptionalTypeReference": optional(ref("TypeReference")),
                 "Parameters": ['dictionary', null_()],

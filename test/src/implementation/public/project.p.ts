@@ -15,256 +15,176 @@ import {
 
 import * as mmoduleDefinition from "../../../../pub/dist/modules/moduleDefinition"
 
+import * as mglossary from "../../../../pub/dist/modules/glossary"
+
 
 const d = pr.wrapRawDictionary
+const a = pr.wrapRawArray
 
 export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
-            "common": "glo-pareto-common"
+            "fp": "lib-fountain-pen",
+        }),
+        'parameters': d({
+            "Annotation": null,
         }),
         'namespace': {
-            'templates': d({
-                "AnnotatedError": {
-                    'parameters': d({
-                        "Error": null,
+            'namespaces': d<mglossary.TNamespace>({
+                "resolved": {
+                    'namespaces': d({
+                        "types": {
+                            'namespaces': d({}),
+                            'templates': d({}),
+                            'types': d({}),
+                            'interfaces': d({}),
+                        },
                     }),
-                    'type': grp({
-                        "path": member(str()),
-                        "error": member(['parameter', "Error"])
-                    }),
+                    'templates': d({}),
+                    'types': d({}),
+                    'interfaces': d({}),
                 },
-                "Result": {
-                    'parameters': d({
-                        "Error": null,
-                        "Success": null,
+                "unresolved": {
+                    'namespaces': d<mglossary.TNamespace>({
+                        "types": {
+                            'namespaces': d({}),
+                            'templates': d({}),
+                            'types': d<mglossary.TType>({
+                                // "Glossary": ['group', {
+                                //     'callbacks': ['dictionary', ['group', {
+                                //         'context': ['reference', {
+                                //             'context': ['local', null],
+                                //             'namespaces': a([]),
+                                //             'type': "Context",
+                                //         }],
+                                //         'data': ['reference', {
+                                //             'context': ['local', null],
+                                //             'namespaces': a([]),
+                                //             'type': "OptionalTypeReference",
+                                //         }],
+                                //         'interface': "#####################MReference",
+                                //     }]],
+                                //     'functions': ['dictionary', ['group', {
+                                //         'async': ['boolean', null],
+                                //         'data': ['reference', {
+                                //             'context': ['local', null],
+                                //             'namespaces': a([]),
+                                //             'type': "TypeReference",
+                                //         }],
+                                //         'return value': ['reference', {
+                                //             'context': ['local', null],
+                                //             'namespaces': a([]),
+                                //             'type': "TypeReference",
+                                //         }],
+                                //     }]],
+                                //     'imports': ['dictionary', ['group', {}]],
+                                //     'namespace': ['reference', {
+                                //         'context': ['local', null],
+                                //         'namespaces': a([]),
+                                //         'type': "Namespace",
+                                //     }],
+                                //     'parameters': ['dictionary', ['group', {}]],
+                                //     'pipes': ['dictionary', ['group', {
+                                //         'in': ['reference', {
+                                //             'context': ['local', null],
+                                //             'namespaces': a([]),
+                                //             'type': "InterfaceReference",
+                                //         }],
+                                //         'out': ['reference', {
+                                //             'context': ['local', null],
+                                //             'namespaces': a([]),
+                                //             'type': "InterfaceReference",
+                                //         }],
+                                //     }]],
+                                // }],
+                                // "Interface": ['group', d({})],
+                                // "Namespace": ['group', {
+                                //     'interfaces': ['dictionary', ['reference', {
+                                //         'context': ['local', null],
+                                //         'namespaces': a([]),
+                                //         'type': "Interface",
+                                //     }]],
+                                //     'namespaces': ['dictionary', ['reference', {
+                                //         'context': ['local', null],
+                                //         'namespaces': a([]),
+                                //         'type': "Namespace",
+                                //     }]],
+                                //     'templates': ['dictionary', ['reference', {
+                                //         'context': ['local', null],
+                                //         'namespaces': a([]),
+                                //         'type': "Template",
+                                //     }]],
+                                //     'types': ['dictionary', ['reference', {
+                                //         'context': ['local', null],
+                                //         'namespaces': a([]),
+                                //         'type': "Type",
+                                //     }]],
+                                // }],
+                                // "Type": ['group', d({})],
+                            }),
+                            'interfaces': d({}),
+                        },
                     }),
-                    'type': taggedUnion({
-                        "error": ['parameter', "Error"],
-                        "success": ['parameter', "Success"],
+                    'templates': d({}),
+                    'types': d({
+                        "root": ['reference', {
+                            'context': ['local', null],
+                            'namespaces': a(["types"]),
+                            'type': "Glossary",
+                        }],
                     }),
+                    'interfaces': d({}),
                 },
             }),
-            'types': types({
-                "AnnotatedReadDirError": template("AnnotatedError", {
-                    "Error": ref("ReadDirError"),
-                }),
-                "AnnotatedReadFileError": template("AnnotatedError", {
-                    "Error": ref("ReadFileError"),
-                }),
-                "AnnotatedMkdirError": template("AnnotatedError", {
-                    "Error": ref("MkdirError"),
-                }),
-                "AnnotatedUnlinkError": template("AnnotatedError", {
-                    "Error": ref("UnlinkError"),
-                }),
-                "AnnotatedWriteFileError": template("AnnotatedError", {
-                    "Error": ref("WriteFileError"),
-                }),
-                "CreateWriteStreamData": group({
-                    "path": member(er("common", "Path")),
-                    "createContainingDirectories": member(bln()),
-                }),
-                // "AnnotatedReadFileError": group({
-                //     "path": member(str()),
-                //     "error": member(taggedUnion({
-                //         "no entity": null_(),
-                //         "is directory": null_(),
-                //         "unknown": type(group({
-                //             "message": member(str())
-                //         })),
-                //     }))
-                // }),
-                "DirNodeData": grp({
-                    "path": member(str()),
-                    "type": member(taggedUnion({
-                        "directory": null_(),
-                        "file": null_(),
-                        "unknown": null_(),
-                    })),
-                }),
-                "MkdirError": taggedUnion({
-                    "no entity": null_(),
-                    "exists": null_(),
-                    "unknown": grp({
-                        "message": member(str())
-                    }),
-                }),
-                "Mkdir_Data": grp({
-                    "path": member(er("common", "Path")),
-                    "createContainingDirectories": member(bln()),
-                }),
-                "Mkdir_Result": template("Result", {
-                    "Error": ref("AnnotatedMkdirError"),
-                    "Success": null_(),
-                }),
-                "ReadDirectory_Data": grp({
-                    "path": member(er("common", "Path")),
-                }),
-                "ReadDirectory_Result": template("Result", {
-                    "Error": ref("AnnotatedReadDirError"),
-                    "Success": dictionary(ref("DirNodeData")),
-                }),
-
-                "ReadDirectory_Success": grp({}),
-                "ReadDirError": taggedUnion({
-                    "no entity": null_(),
-                    "is not directory": null_(),
-                    "unknown": grp({
-                        "message": member(str())
-                    }),
-                }),
-                "ReadFile_Data": template("Result", {
-                    "Error": ref("AnnotatedReadFileError"),
-                    "Success": str(),
-                }),
-
-                "ReadFile_Result": grp({}),
-                "ReadFileError": taggedUnion({
-                    "no entity": null_(),
-                    "is directory": null_(),
-                    "unknown": grp({
-                        "message": member(str())
-                    }),
-                }),
-                "RmdirError": taggedUnion({
-                    "no entity": null_(),
-                    "not empty": null_(),
-                    "unknown": grp({
-                        "message": member(str())
-                    }),
-                }),
-                "UnlinkError": taggedUnion({
-                    "no entity": null_(),
-                    "is directory": null_(),
-                    "unknown": grp({
-                        "message": member(str())
-                    }),
-                }),
-                "Unlink_Data": grp({
-                    "path": member(er("common", "Path")),
-                }),
-                "Unlink_Result": template("Result", {
-                    "Error": ref("AnnotatedUnlinkError"),
-                    "Success": null_(),
-                }),
-
-                "WriteFile_Result": template("Result", {
-                    "Error": ref("AnnotatedWriteFileError"),
-                    "Success": null_(),
-                }),
-
-                "WriteFileData": grp({
-                    "path": member(er("common", "Path")),
-                    "data": member(str()),
-                    "createContainingDirectories": member(bln()),
-                }),
-                "WriteFileError": taggedUnion({
-                    "no entity": null_(),
-                    "is directory": null_(),
-                    "unknown": grp({
-                        "message": member(str())
-                    }),
-                }),
-            }),
-            'interfaces': d({
-                "WriteString": ['method', {
-                    'data': externalTypeReference("common", "String"),
-                    'interface': ['null', null]
-
-                }],
-                "CreateWriteStream": ['method', {
-                    'data': typeReference("CreateWriteStreamData"),
-                    'interface': ['set', {
-                        'interface': "WriteString"
-                    }]
-                }],
-                "StreamConsumer": ['group', {
-                    'members': d({
-                        "onData": ['method', {
-                            'data': externalTypeReference("common", "String"),
-                            'interface': ['null', null],
-                        }],
-                        "onEnd": ['method', {
-                            'data': null,
-                            'interface': ['null', null],
-                        }],
-                    }),
-                }],
-                "Reader": ['group', {
-                    'members': d({
-                        "init": ['method', {
-                            'data': null,
-                            'interface': ['set', {
-                                'interface': "StreamConsumer"
-                            }],
-                        }],
-                        "onError": ['method', {
-                            'data': typeReference("AnnotatedReadFileError"),
-                            'interface': ['null', null],
-                        }],
-                    })
-                }]
-            }),
-
+            'templates': d({}),
+            'types': d({}),
+            'interfaces': d({}),
         },
-        'functions': d({
-            "MakeDirectory": _function(typeReference("Mkdir_Data"), typeReference("Mkdir_Result"), true),
-            "ReadDirectory": _function(typeReference("ReadDirectory_Data"), typeReference("ReadDirectory_Result"), true),
-            "Unlink": _function(typeReference("Unlink_Data"), typeReference("Unlink_Result"), true),
-        }),
+        'functions': d({}),
         'callbacks': d({
-            "GetFile": {
-                'data': externalTypeReference("common", "Path"),
-                'interface': "Reader"
-            }
+            "Serialize": {
+                'data': {
+                    'context': ['local', null],
+                    'namespaces': a([]),
+                    'type': "Glossary",
+                },
+                'context': ['import', "fp"],
+                'interface': "Line",
+            },
         }),
         'pipes': d({}),
     },
     'api': {
-        'imports': d({}),
+        'imports': d({
+            'common': "glo-pareto-common"
+        }),
         'algorithms': d({
-            "createWriteStream": {
-                'definition': ['interface', {
-                    'interface': "CreateWriteStream"
+            'createSerializer': {
+                'definition': ['callback', {
+                    'callback': "Serialize",
                 }],
                 'type': ['constructor', {
-                    'configuration data': null,
-                    // 'configuration data': ['type', group({
-                    //     'context path': member(er("common", "Path")),
-                    // })],
+                    'configuration data': {
+                        'context': ['import', "common"],
+                        'namespaces': a([]),
+                        'type': "Null",
+                    },
                     'dependencies': d({
-                        "onError": ['procedure', typeReference("AnnotatedWriteFileError")],
+                        'compare': ['function', {
+                            'context': ['import', "collation"],
+                            'function': "IsABeforeB",
+                        }],
+                        'enrichedArrayForEach': ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "EnrichedArrayForEach",
+                        }],
+                        'enrichedDictionaryForEach': ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "EnrichedDictionaryForEach",
+                        }],
                     }),
-                }]
-            },
-            "getFile": {
-                'definition': ['callback', {
-                    'callback': "GetFile"
                 }],
-                'type': ['reference', null]
             },
-            "makeDirectory": {
-                'definition': ['function', {
-                    'function': "MakeDirectory",
-                    'async': true,
-                }],
-                'type': ['reference', null]
-            },
-            "readDirectory": {
-                'definition': ['function', {
-                    'function': "ReadDirectory",
-                    'async': true,
-                }],
-                'type': ['reference', null]
-            },
-            "unlink": {
-                'definition': ['function', {
-                    'function': "Unlink",
-                    'async': true,
-                }],
-                'type': ['reference', null]
-            }
-        })
+        }),
     },
 }

@@ -16,7 +16,7 @@ export const $$: api.CcreateParametersParser = (
         if (state === null) {
             $d.pr_onError(['missing', null])
         } else {
-            $d.pr_callback(state)
+            $d.pr_callback(state)//FIXME THIS IS NOT THE RIGHT TYPE
         }
     }
 }

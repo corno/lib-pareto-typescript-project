@@ -8,7 +8,7 @@ import * as mfp from "lib-fountain-pen"
 export const $$: api.CcreateSerializerWithContext = ($d) => {
 
     return ($, $i) => {
-        $i.file("api.generated.ts", ($i) => {
+        $i.file("module.generated.ts", ($i) => {
             $i.literal(`import * as pr from 'pareto-core-raw'`)
             $i.literal(``)
             $i.literal(`import * as mmoduleDefinition from "../../../pub/dist/modules/moduleDefinition"`)

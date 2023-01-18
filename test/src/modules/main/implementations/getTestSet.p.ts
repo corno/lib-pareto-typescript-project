@@ -28,7 +28,7 @@ const d = pr.wrapRawDictionary
 
 
 import * as pub from "../../../../../pub/dist"
-// import { $ as module } from "./project.p"
+import { $ as module } from "../../../data/project.p"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
@@ -36,17 +36,17 @@ import { $ as lianaModel } from "../../../data/lianaModel.p"
 
 export const $$: api.CgetTestSet = ($) => {
     pl.logDebugMessage(`HIERO: ${$.testDirectory}`)
-    // pub.$a.generateProject({
-    //     'mainData': {
-    //         'arguments': pr.wrapRawArray(["FOOOOOOOOOOOOOO"]),
-    //     },
-    //     'project': {
-    //         'modules': d({
-    //             "main": module
-    //         }),
-    //         'main': "main",
-    //     },
-    // })
+    pub.$a.generateProject({
+        'mainData': {
+            'arguments': pr.wrapRawArray([`${$.testDirectory}/project`]),
+        },
+        'project': {
+            'modules': d({
+                "main": module
+            }),
+            'main': "main",
+        },
+    })
     // pub.$a.createTestProgram(null, {
     //     getTestSet: () => {
     //         pl.panic("@@@")
@@ -81,7 +81,7 @@ export const $$: api.CgetTestSet = ($) => {
 
     mliana2Pareto.$a.generateProject({
         'mainData': {
-            'arguments': pr.wrapRawArray(["LIANALIANA"]),
+            'arguments': pr.wrapRawArray([`${$.testDirectory}/liana`]),
 
         },
         'model': lianaModel,

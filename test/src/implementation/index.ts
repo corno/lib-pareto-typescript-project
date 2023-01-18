@@ -1,1 +1,1 @@
-export * from "./public/createGetTestset.p"
+export * from "../modules/main/implementations/getTestSet.p"

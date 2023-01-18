@@ -247,8 +247,6 @@ export const $$: api.CcreateProjectSerializer = (
                 $i.allowed("package.json")
                 $i.directory("src", ($i) => {
                     $i.allowed("data")
-                    $i.allowed("dependencies")
-                    $i.allowed("implementation")
                     $i.directory("interface", ($i) => {
                         $i.file("index.ts", ($i) => {
                             $i.literal(`export * from "./functions/functions.p"`)
@@ -264,162 +262,233 @@ export const $$: api.CcreateProjectSerializer = (
                     globals($i)
                     $i.directory("bin", ($i) => {
                         $i.file("test.generated.ts", ($i) => {
-                            $i.literal(`#!/usr/bin/env node`)
+                            $i.literal(`import * as exe from 'pareto-core-exe'`)
+                            $i.literal(`import * as mmain from "../modules/main"`)
                             $i.literal(``)
-                            $i.literal(`import * as pe from 'pareto-core-exe'`)
-                            $i.literal(`import * as pl from 'pareto-core-lib'`)
-                            $i.literal(`import * as test from "lib-pareto-test"`)
-                            $i.literal(``)
-                            $i.literal(`import { dependencies } from "../dependencies/dependencies.p"`)
-                            $i.literal(`import { data } from "../data/data.p"`)
-                            $i.literal(`import { createGetTestset } from "../implementation"`)
-                            $i.literal(``)
-                            $i.literal(`pe.runProgram(`)
-                            $i.literal(`    ($) => {`)
-                            $i.literal(`        test.$a.createTestProgram(`)
-                            $i.literal(`            {`)
-                            $i.literal(`                af_getTestSet: createGetTestset(`)
-                            $i.literal(`                    data,`)
-                            $i.literal(`                    dependencies`)
-                            $i.literal(`                ),`)
-                            $i.literal(`                pr_log: ($) => {`)
-                            $i.literal(`                    pl.logDebugMessage($)`)
-                            $i.literal(`                },`)
-                            $i.literal(`                pr_logError: ($) => {`)
-                            $i.literal(`                    pl.logDebugMessage($)`)
-                            $i.literal(`                },`)
-                            $i.literal(`                pr_onTestErrors: ($) => {`)
-                            $i.literal(`                    pl.logDebugMessage("TEST ERROR")`)
-                            $i.literal(`                },`)
-                            $i.literal(`            },`)
-                            $i.literal(`        )(`)
-                            $i.literal(`           $.arguments`)
-                            $i.literal(`        )`)
-                            $i.literal(`    }`)
-                            $i.literal(`)`)
-                        })
-                        $i.file("testXXXXX.generated.ts", ($i) => {
-                            $i.literal(`import * as pt from 'pareto-core-types'`)
-                            $i.literal(`import * as pr from 'pareto-core-raw'`)
-                            $i.literal(`import * as pl from 'pareto-core-lib'`)
-                            $i.literal(`import * as tst from "lib-pareto-test"`)
-                            $i.literal(``)
-                            $.modules.forEach(compare, ($, key) => {
-                                const moduleName = key
-                                $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                    $i.line(($i) => {
-                                        $i.snippet(`import { test as ${moduleName}_${key} } from "../modules/${moduleName}/${key}.generated"`)
-                                    })
-                                })
-                            })
-                            $i.literal(``)
-                            $i.line(($i) => {
-                                $i.snippet(`const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({`)
-                                $i.indent(($i) => {
-                                    $.modules.forEach(compare, ($, key) => {
-                                        const moduleName = key
-                                        $i.line(($i) => {
-                                            $i.snippet(`'${key}': pr.wrapRawDictionary({`)
-                                            $i.indent(($i) => {
-                                                $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                                    $i.line(($i) => {
-                                                        $i.snippet(`'${key}': ${moduleName}_${key},`)
-                                                    })
-                                                })
-                                            })
-                                            $i.snippet(`}),`)
-                                        })
-                                    })
-                                })
-                                $i.snippet(`}).asyncMap(($, key) => $.asyncMap(($, key) => $()))`)
-                            })
+                            $i.literal(`exe.runProgram(mmain.$a.main)`)
                         })
                     })
                     $i.directory("modules", ($i) => {
-                        $.modules.forEach(compare, ($, key) => {
-                            const moduleName = key
-                            $i.directory(key, ($i) => {
-                                const def = $.definition
-                                $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                    // $i.file(`${key}_tmp.p.ts`, ($i) => {
-                                    //     $i.literal(`import * as pt from 'pareto-core-types'`)
-                                    //     $i.literal(`import * as pl from 'pareto-core-lib'`)
-                                    //     $i.literal(``)
-                                    //     $i.literal(`import * as tst from "lib-pareto-test"`)
-                                    //     $i.literal(``)
-                                    //     def.api.imports.forEach(compare, ($, key) => {
-                                    //         $i.literal(`import * as m${key} from "${$}"`)
-                                    //     })
-                                    //     $i.line(($i) => {
-                                    //         $i.snippet(`export type XX = `)
-                                    //         $i.indent(($i) => {
-                                    //             switch ($[0]) {
-                                    //                 case 'algorithm':
-                                    //                     pl.cc($[1], ($) => {
-                                    //                     })
-                                    //                     break
-                                    //                 case 'constructor':
-                                    //                     pl.cc($[1], ($) => {
-                                    //                         $.dependencies.forEach(compare, ($, key) => {
-                                    //                             $i.line(($i) => {
-                                    //                                 $i.snippet(`| [ '${key}', `)
-                                    //                                 switch ($.type[0]) {
-                                    //                                     case 'function':
-                                    //                                         pl.cc($.type[1], ($) => {
-                                    //                                             if ($.context !== undefined) {
-                                    //                                                 switch ($.context[0]) {
-                                    //                                                     case 'import':
-                                    //                                                         pl.cc($.context[1], ($) => {
-                                    //                                                         })
-                                    //                                                         break
-                                    //                                                     case 'local':
-                                    //                                                         pl.cc($.context[1], ($) => {
-                                    //                                                         })
-                                    //                                                         break
-                                    //                                                     default: pl.au($.context[0])
-                                    //                                                 }
-                                    //                                             } else {
-                                    //                                             }
-                                    //                                             $i.snippet(`string/*FIXME*/`)
-                                    //                                         })
-                                    //                                         break
-                                    //                                     case 'procedure':
-                                    //                                         pl.cc($.type[1], ($) => {
-                                    //                                             $d.serializeLeafType($, $i)
-                                    //                                         })
-                                    //                                         break
-                                    //                                     default: pl.au($.type[0])
-                                    //                                 }
-                                    //                                 $i.snippet(` ]`)
-                                    //                             })
-                                    //                         })
-                                    //                     })
-                                    //                     break
-                                    //                 default: pl.au($[0])
-                                    //             }
-                                    //         })
-                                    //         $i.snippet(`}`)
-                                    //     })
-                                    //     $i.literal(``)
-                                    // })
-                                    $i.file(`${key}.generated.ts`, ($i) => {
-                                        $i.literal(`import * as pt from 'pareto-core-types'`)
-                                        $i.literal(`import * as pl from 'pareto-core-lib'`)
-                                        $i.literal(``)
-                                        $i.literal(`import * as tst from "lib-pareto-test"`)
-                                        $i.literal(``)
-                                        $i.line(($i) => {
-                                            $i.snippet(`export function test(): pt.AsyncValue<tst.TTestElement> {`)
-                                            $i.indent(($i) => {
-                                                $i.literal(`pl.implementMe(\`${moduleName}:${key}\`)`)
-                                            })
-                                            $i.snippet(`}`)
-                                        })
-                                    })
+                        $i.directory("main", ($i) => {
+                            $i.directory("api", ($i) => {
+                                $i.file("api.generated.ts", ($i) => {
+                                    $i.literal(`import * as pt from 'pareto-core-types'`)
+                                    $i.literal(``)
+                                    $i.literal(`import * as glo from "./types.generated"`)
+                                    $i.literal(``)
+                                    $i.literal(`import * as mmain from "lib-pareto-main"`)
+                                    $i.literal(`import * as mtest from "lib-pareto-test"`)
+                                    $i.literal(``)
+                                    $i.literal(`export type CgetTestSet = mtest.AGetTestSet`)
+                                    $i.literal(``)
+                                    $i.literal(`export type Cmain = pt.Procedure<mmain.TMainData>`)
+                                    $i.literal(``)
+                                    $i.literal(`export type API = {`)
+                                    $i.literal(`    getTestSet: CgetTestSet`)
+                                    $i.literal(`    main: Cmain`)
+                                    $i.literal(`}`)
                                 })
+                                $i.file("types.generated.ts", ($i) => {
+                                    $i.literal(`import * as pt from 'pareto-core-types'`)
+                                })
+                                $i.file("index.ts", ($i) => {
+                                    $i.literal(`export * from "./types.generated"`)
+                                    $i.literal(`export * from "./api.generated"`)
+                                })
+                            })
+                            $i.directory("implementations", ($i) => {
+                                $i.file("main.generated.ts", ($i) => {
+                                    $i.literal(`import * as pl from 'pareto-core-lib'`)
+                                    $i.literal(`import * as api from "../api"`)
+                                    $i.literal(``)
+                                    $i.literal(`import { $a } from "../index"`)
+                                    $i.literal(`import * as mtest from "lib-pareto-test"`)
+                                    $i.literal(``)
+                                    $i.literal(`export const $$: api.Cmain = ($) => {`)
+                                    $i.literal(``)
+                                    $i.literal(`    mtest.$a.createTestProgram({`)
+                                    $i.literal(`        af_getTestSet: $a.getTestSet,`)
+                                    $i.literal(`        pr_log: pl.logDebugMessage,`)
+                                    $i.literal(`        pr_logError: pl.logDebugMessage,`)
+                                    $i.literal(`        pr_onTestErrors: () => { pl.logDebugMessage(\`TEST ERRORS\`) }`)
+                                    $i.literal(`    })`)
+                                    $i.literal(`}`)
+                                })
+                            })
+                            $i.file("export.generated.ts", ($i) => {
+                                $i.literal(`import { API } from "./api"`)
+                                $i.literal(`import { $$ as imain } from "./implementations/main.generated"`)
+                                $i.literal(`import { $$ as igetTestSet } from "./implementations/getTestSet.p"`)
+                                $i.literal(``)
+                                $i.literal(`export const $a: API = {`)
+                                $i.literal(`    "main": imain,`)
+                                $i.literal(`    "getTestSet": igetTestSet,`)
+                                $i.literal(`}`)
+                            })
+                            $i.file("index.ts", ($i) => {
+                                $i.literal(`export * from "./api"`)
+                                $i.literal(`export * from "./export.generated"`)
                             })
                         })
                     })
+                    // $i.directory("bin", ($i) => {
+                    //     $i.file("test.generated.ts", ($i) => {
+                    //         $i.literal(`#!/usr/bin/env node`)
+                    //         $i.literal(``)
+                    //         $i.literal(`import * as pe from 'pareto-core-exe'`)
+                    //         $i.literal(`import * as pl from 'pareto-core-lib'`)
+                    //         $i.literal(`import * as test from "lib-pareto-test"`)
+                    //         $i.literal(``)
+                    //         $i.literal(`import { dependencies } from "../dependencies/dependencies.p"`)
+                    //         $i.literal(`import { data } from "../data/data.p"`)
+                    //         $i.literal(`import { createGetTestset } from "../implementation"`)
+                    //         $i.literal(``)
+                    //         $i.literal(`pe.runProgram(`)
+                    //         $i.literal(`    ($) => {`)
+                    //         $i.literal(`        test.$a.createTestProgram(`)
+                    //         $i.literal(`            {`)
+                    //         $i.literal(`                af_getTestSet: createGetTestset(`)
+                    //         $i.literal(`                    data,`)
+                    //         $i.literal(`                    dependencies`)
+                    //         $i.literal(`                ),`)
+                    //         $i.literal(`                pr_log: ($) => {`)
+                    //         $i.literal(`                    pl.logDebugMessage($)`)
+                    //         $i.literal(`                },`)
+                    //         $i.literal(`                pr_logError: ($) => {`)
+                    //         $i.literal(`                    pl.logDebugMessage($)`)
+                    //         $i.literal(`                },`)
+                    //         $i.literal(`                pr_onTestErrors: ($) => {`)
+                    //         $i.literal(`                    pl.logDebugMessage("TEST ERROR")`)
+                    //         $i.literal(`                },`)
+                    //         $i.literal(`            },`)
+                    //         $i.literal(`        )(`)
+                    //         $i.literal(`           $.arguments`)
+                    //         $i.literal(`        )`)
+                    //         $i.literal(`    }`)
+                    //         $i.literal(`)`)
+                    //     })
+                    //     $i.file("testXXXXX.generated.ts", ($i) => {
+                    //         $i.literal(`import * as pt from 'pareto-core-types'`)
+                    //         $i.literal(`import * as pr from 'pareto-core-raw'`)
+                    //         $i.literal(`import * as pl from 'pareto-core-lib'`)
+                    //         $i.literal(`import * as tst from "lib-pareto-test"`)
+                    //         $i.literal(``)
+                    //         $.modules.forEach(compare, ($, key) => {
+                    //             const moduleName = key
+                    //             $.definition.api.algorithms.forEach(compare, ($, key) => {
+                    //                 $i.line(($i) => {
+                    //                     $i.snippet(`import { test as ${moduleName}_${key} } from "../modules/${moduleName}/${key}.generated"`)
+                    //                 })
+                    //             })
+                    //         })
+                    //         $i.literal(``)
+                    //         $i.line(($i) => {
+                    //             $i.snippet(`const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({`)
+                    //             $i.indent(($i) => {
+                    //                 $.modules.forEach(compare, ($, key) => {
+                    //                     const moduleName = key
+                    //                     $i.line(($i) => {
+                    //                         $i.snippet(`'${key}': pr.wrapRawDictionary({`)
+                    //                         $i.indent(($i) => {
+                    //                             $.definition.api.algorithms.forEach(compare, ($, key) => {
+                    //                                 $i.line(($i) => {
+                    //                                     $i.snippet(`'${key}': ${moduleName}_${key},`)
+                    //                                 })
+                    //                             })
+                    //                         })
+                    //                         $i.snippet(`}),`)
+                    //                     })
+                    //                 })
+                    //             })
+                    //             $i.snippet(`}).asyncMap(($, key) => $.asyncMap(($, key) => $()))`)
+                    //         })
+                    //     })
+                    // })
+                    // $i.directory("modules", ($i) => {
+                    //     $.modules.forEach(compare, ($, key) => {
+                    //         const moduleName = key
+                    //         $i.directory(key, ($i) => {
+                    //             const def = $.definition
+                    //             $.definition.api.algorithms.forEach(compare, ($, key) => {
+                    //                 // $i.file(`${key}_tmp.p.ts`, ($i) => {
+                    //                 //     $i.literal(`import * as pt from 'pareto-core-types'`)
+                    //                 //     $i.literal(`import * as pl from 'pareto-core-lib'`)
+                    //                 //     $i.literal(``)
+                    //                 //     $i.literal(`import * as tst from "lib-pareto-test"`)
+                    //                 //     $i.literal(``)
+                    //                 //     def.api.imports.forEach(compare, ($, key) => {
+                    //                 //         $i.literal(`import * as m${key} from "${$}"`)
+                    //                 //     })
+                    //                 //     $i.line(($i) => {
+                    //                 //         $i.snippet(`export type XX = `)
+                    //                 //         $i.indent(($i) => {
+                    //                 //             switch ($[0]) {
+                    //                 //                 case 'algorithm':
+                    //                 //                     pl.cc($[1], ($) => {
+                    //                 //                     })
+                    //                 //                     break
+                    //                 //                 case 'constructor':
+                    //                 //                     pl.cc($[1], ($) => {
+                    //                 //                         $.dependencies.forEach(compare, ($, key) => {
+                    //                 //                             $i.line(($i) => {
+                    //                 //                                 $i.snippet(`| [ '${key}', `)
+                    //                 //                                 switch ($.type[0]) {
+                    //                 //                                     case 'function':
+                    //                 //                                         pl.cc($.type[1], ($) => {
+                    //                 //                                             if ($.context !== undefined) {
+                    //                 //                                                 switch ($.context[0]) {
+                    //                 //                                                     case 'import':
+                    //                 //                                                         pl.cc($.context[1], ($) => {
+                    //                 //                                                         })
+                    //                 //                                                         break
+                    //                 //                                                     case 'local':
+                    //                 //                                                         pl.cc($.context[1], ($) => {
+                    //                 //                                                         })
+                    //                 //                                                         break
+                    //                 //                                                     default: pl.au($.context[0])
+                    //                 //                                                 }
+                    //                 //                                             } else {
+                    //                 //                                             }
+                    //                 //                                             $i.snippet(`string/*FIXME*/`)
+                    //                 //                                         })
+                    //                 //                                         break
+                    //                 //                                     case 'procedure':
+                    //                 //                                         pl.cc($.type[1], ($) => {
+                    //                 //                                             $d.serializeLeafType($, $i)
+                    //                 //                                         })
+                    //                 //                                         break
+                    //                 //                                     default: pl.au($.type[0])
+                    //                 //                                 }
+                    //                 //                                 $i.snippet(` ]`)
+                    //                 //                             })
+                    //                 //                         })
+                    //                 //                     })
+                    //                 //                     break
+                    //                 //                 default: pl.au($[0])
+                    //                 //             }
+                    //                 //         })
+                    //                 //         $i.snippet(`}`)
+                    //                 //     })
+                    //                 //     $i.literal(``)
+                    //                 // })
+                    //                 $i.file(`${key}.generated.ts`, ($i) => {
+                    //                     $i.literal(`import * as pt from 'pareto-core-types'`)
+                    //                     $i.literal(`import * as pl from 'pareto-core-lib'`)
+                    //                     $i.literal(``)
+                    //                     $i.literal(`import * as tst from "lib-pareto-test"`)
+                    //                     $i.literal(``)
+                    //                     $i.line(($i) => {
+                    //                         $i.snippet(`export function test(): pt.AsyncValue<tst.TTestElement> {`)
+                    //                         $i.indent(($i) => {
+                    //                             $i.literal(`pl.implementMe(\`${moduleName}:${key}\`)`)
+                    //                         })
+                    //                         $i.snippet(`}`)
+                    //                     })
+                    //                 })
+                    //             })
+                    //         })
+                    //     })
+                    // })
                 })
                 tsConfig({ isResource: false }, $i)
             })

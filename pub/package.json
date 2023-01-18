@@ -22,6 +22,6 @@
     "url": "http://github.com/corno/lib-pareto-typescript-project.git"
   },
   "types": "dist/index.d.ts",
-  "version": "0.36.0",
-  "content-fingerprint": "d820b3aee5aa04e6c756eece180f4700ed439a48"
+  "version": "0.36.1",
+  "content-fingerprint": "0d76d03b16eb88e49dc1d5e2f48cc8c9576e6644"
 }

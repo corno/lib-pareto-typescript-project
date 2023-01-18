@@ -5,7 +5,7 @@ import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
 import * as mtostring from "res-pareto-tostring"
-import * as fs from "res-pareto-filesystem"
+import * as mfs from "res-pareto-filesystem"
 import { $a } from "../index"
 
 export const $$: api.CcreateProjectGenerator = ($d) => {
@@ -18,7 +18,7 @@ export const $$: api.CcreateProjectGenerator = ($d) => {
                 mfp.$a.createWriterCreator(
                     {
                         if_createWriteStream: ($, $c) => {
-                            fs.$a.createWriteStream(
+                            mfs.$a.createWriteStream(
                                 {
                                     pr_onError: () => {
                                         $d.pr_logError(`SSDSFSDFS`)
@@ -37,7 +37,7 @@ export const $$: api.CcreateProjectGenerator = ($d) => {
                             {}
                         ),
                         af_getNodes: ($) => {
-                            return fs.$a.readDirectory({
+                            return mfs.$a.readDirectory({
                                 path: $
                             }).map<pt.Dictionary<string>>(($) => {
                                 switch ($[0]) {

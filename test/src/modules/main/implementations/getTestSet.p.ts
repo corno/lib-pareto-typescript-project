@@ -1,9 +1,9 @@
 import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
-import * as pm from 'pareto-core-state'
+import * as ps from 'pareto-core-state'
 import * as pr from 'pareto-core-raw'
 
-import * as tst from "lib-pareto-test"
+import * as mtst from "lib-pareto-test"
 
 import * as api from "../api"
 // import * as us from "res-pareto-ugly-stuff"
@@ -27,7 +27,7 @@ import * as mliana2Pareto from "../../../../../pub/dist/modules/liana2Pareto"
 const d = pr.wrapRawDictionary
 
 
-import * as pub from "../../../../../pub/dist"
+import * as pub from "../../../../../pub"
 import { $ as module } from "../../../data/project.p"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
@@ -92,7 +92,7 @@ export const $$: api.CgetTestSet = ($) => {
     // })(mliana2Pareto.$a.createLiana2ParetoMapper({})(model), )
     // mliana2Pareto.$a.createLiana2ParetoMapper({})(model)
 
-    const builder = pm.createUnsafeDictionaryBuilder<tst.TTestElement>()
+    const builder = ps.createUnsafeDictionaryBuilder<mtst.TTestElement>()
     function createTest(name: string, actual: string, expected: string) {
         builder.add(name, {
             type: ['test', {

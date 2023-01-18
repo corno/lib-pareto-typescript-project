@@ -11,5 +11,5 @@ export const $$: api.Cmain = ($) => {
         pr_log: pl.logDebugMessage,
         pr_logError: pl.logDebugMessage,
         pr_onTestErrors: () => { pl.logDebugMessage(`TEST ERRORS`) }
-    })
+    })($.arguments)
 }

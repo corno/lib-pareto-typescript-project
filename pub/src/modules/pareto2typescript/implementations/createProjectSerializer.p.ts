@@ -300,7 +300,7 @@ export const $$: api.CcreateProjectSerializer = (
                                     $i.literal(`        pr_log: pl.logDebugMessage,`)
                                     $i.literal(`        pr_logError: pl.logDebugMessage,`)
                                     $i.literal(`        pr_onTestErrors: () => { pl.logDebugMessage(\`TEST ERRORS\`) }`)
-                                    $i.literal(`    })`)
+                                    $i.literal(`    })($.arguments)`)
                                     $i.literal(`}`)
                                 })
                             })

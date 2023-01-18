@@ -21,12 +21,11 @@ function def($: mmoduleDefinition.TModuleDefinition): mmoduleDefinition.TModuleD
 export const $: mmoduleDefinition.TModuleDefinition = def({
     'glossary': {
         'imports': d({
-            "algorithm": "../../algorithm",
+            "pareto2typescript": "../../pareto2typescript",
+
             "common": "glo-pareto-common",
             "fp": "lib-fountain-pen",
-            "glossary": "../../glossary",
             "main": "lib-pareto-main",
-            "moduleDefinition": "../../moduleDefinition",
             "project": "../../project",
         }),
         'namespace': {
@@ -75,36 +74,6 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
         //     // }
         // }),
         'callbacks': d({
-            "SerializeGlossary": {
-                'data': externalTypeReference("glossary", "Glossary"),
-                'context': ['import', "fp"],
-                'interface': "Block",
-            },
-            "SerializeImplementation": {
-                'data': externalTypeReference("algorithm", "Implementation"),
-                'context': ['import', "fp"],
-                'interface': "Writer",
-            },
-            // "SerializeLeafType": {
-            //     'data': ['type', externalReference("glossary", "LeafType")],
-            //     'context': ['import', "fp"],
-            //     'interface': "Line",
-            // },
-            "SerializeModuleDefinition": {
-                'data': externalTypeReference("moduleDefinition", "ModuleDefinition"),
-                'context': ['import', "fp"],
-                'interface': "Writer",
-            },
-            "SerializeProject": {
-                'data': externalTypeReference("project", "Project"),
-                'context': ['import', "fp"],
-                'interface': "Writer",
-            },
-            "SerializeTemplate": {
-                'data': externalTypeReference("project", "Project"),
-                'context': ['import', "fp"],
-                'interface': "Writer",
-            },
         }),
         'pipes': d({
             "ParseArguments": {
@@ -119,124 +88,12 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
     },
     'api': {
         'imports': d({
-            "project": "../../project",
             "main": "lib-pareto-main",
             "collation": "res-pareto-collation",
             "temp": "../../temp",
+            "pareto2typescript": "../../pareto2typescript",
         }),
         'algorithms': d({
-            "createModuleDefinitionSerializer": {
-                'definition': ['callback', {
-                    'callback': "SerializeModuleDefinition"
-                }],
-                'type': ['constructor', {
-                    'configuration data': null,
-                    'dependencies': d({
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
-                        }],
-                        "serializeGlossary": ['callback', {
-                            //'context': ['import', "glossary"],
-                            'callback': "SerializeGlossary"
-                        }],
-                        // "serializeLeafType": ['callback', {
-                        //     //'context': ['import', "glossary"],
-                        //     'callback': "SerializeLeafType"
-                        // }],
-                    }),
-                    'callback': {
-                        'callback': "SerializeModuleDefinition"
-                    }
-                }],
-            },
-            "createProjectSerializer": {
-                'definition': ['callback', {
-                    'callback': "SerializeProject"
-                }],
-                'type': ['constructor', {
-                    'configuration data': null,
-                    'dependencies': d({
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
-                        }],
-                        "serializeModuleDefinition": ['callback', {
-                            //'context': ['import', "api"],
-                            'callback': "SerializeModuleDefinition"
-                        }],
-                        // "serializeLeafType": ['callback', {
-                        //     //'context': ['import', "glossary"],
-                        //     'callback': "SerializeLeafType"
-                        // }],
-                        "serializeImplementation": ['callback', {
-                            //'context': ['import', "project"],
-                            'callback': "SerializeImplementation",
-                        }],
-                    }),
-                    'callback': {
-                        'callback': "SerializeProject"
-                    }
-                }]
-            },
-            "createTemplateSerializer": {
-                'definition': ['callback', {
-                    'callback': "SerializeTemplate"
-                }],
-                'type': ['constructor', {
-                    'configuration data': null,
-                    'dependencies': d({
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
-                        }],
-                    }),
-                    'callback': {
-                    }
-                }]
-            },
-            // "serializeLeafType": {
-            //     'definition': ['callback', {
-            //         'callback': "SerializeLeafType"
-            //     }],
-            //     'type': ['reference', null],
-            // },
-            "createGlossarySerializer": {
-                'definition': ['callback', {
-                    'callback': "SerializeGlossary"
-                }],
-                'type': ['constructor', {
-                    'configuration data': null,
-                    'dependencies': d({
-                        "enrichedDictionaryForEach": ['callback', {
-                            'context': ['import', "temp"],
-                            'callback': "EnrichedDictionaryForEach",
-                        }],
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
-                        }],
-                    })
-                }]
-            },
-            "createImplementationSerializer": {
-                'definition': ['callback', {
-                    'callback': "SerializeImplementation"
-                }],
-                'type': ['constructor', {
-                    'configuration data': null,
-                    'dependencies': d({
-                        "enrichedDictionaryForEach": ['callback', {
-                            'context': ['import', "temp"],
-                            'callback': "EnrichedDictionaryForEach",
-                        }],
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
-                        }],
-                    })
-                }]
-            },
             "createParametersParser": {
                 'definition': ['procedure', typeReference("Arguments")],
                 //'definition': ['procedure', ['type', externalReference("main", "Arguments")]],
@@ -263,11 +120,11 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                             'function': "GetSingleArgument",
                         }],
                         "serializeProject": ['callback', {
-                            //'context': ['import', "project"],
+                            'context': ['import', "pareto2typescript"],
                             'callback': "SerializeProject",
                         }],
                         "serializeTemplate": ['callback', {
-                            //'context': ['import', "project"],
+                            'context': ['import', "pareto2typescript"],
                             'callback': "SerializeTemplate",
                         }],
                     }),

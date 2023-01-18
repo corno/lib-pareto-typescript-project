@@ -8,6 +8,7 @@ import { $ as glossary } from "./modules/glossary.p"
 import { $ as liana } from "./modules/liana.p"
 import { $ as liana2Pareto } from "./modules/liana2Pareto.p"
 import { $ as moduleDefinition } from "./modules/moduleDefinition.p"
+import { $ as pareto2typescript } from "./modules/pareto2typescript.p"
 import { $ as project } from "./modules/project.p"
 
 const d = pr.wrapRawDictionary
@@ -36,57 +37,9 @@ export const $: mproject.TProject = {
         "project": {
             'definition': project,
         },
-        // "temp": {
-        //     'definition': def({
-        //         'glossary': {
-        //             'imports': d({}),
-        //             'types': types({
-        //                 "Dictionary": dictionary(str()),
-        //                 "B": group({
-        //                     "key": member(str()),
-        //                     "value": member(str()),
-        //                     "isFirst": member(bln()),
-        //                 }),
-        //             }),
-        //             'functions': d({}),
-        //             'interfaces': d({
-        //                 "X": ['group', {
-        //                     'members': d({
-        //                         "onEmpty": ['method', {
-        //                             'data': ['null', null],
-        //                             'interface': ['null', null],
-
-        //                         }],
-        //                         "onNotEmpty": ['method', {
-        //                             'data': ['null', null],
-        //                             'interface': ['set', {
-        //                                 'interface': "Y"
-        //                             }],
-        //                         }],
-        //                     })
-        //                 }],
-        //                 "Y": ['method', {
-        //                     'data': ['null', null],
-        //                     'interface': ['set', {
-        //                         'interface': "Y"
-        //                     }],
-        //                 }],
-        //             }),
-        //             'callbacks': d({
-        //                 "EnrichedDictionaryForEach": {
-        //                     'data': ['type', reference("Dictionary")],
-        //                     'interface': "X",
-        //                 },
-        //             }),
-        //             'pipes': d({}),
-        //         },
-        //         'api': {
-        //             'imports': d({}),
-        //             'algorithms': d({})
-        //         },
-        //     }),
-        //
-        // },
+        "pareto2typescript": {
+            'definition': pareto2typescript,
+        },
     }),
     'main': "main"
 }

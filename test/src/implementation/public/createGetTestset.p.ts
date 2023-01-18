@@ -28,7 +28,7 @@ const d = pr.wrapRawDictionary
 
 
 import * as pub from "../../../../pub"
-import { $ as module } from "./project.p"
+// import { $ as module } from "./project.p"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
@@ -38,17 +38,17 @@ export const createGetTestset: api.FCreateGetTestset = ($, $f) => {
 
     return ($) => {
         pl.logDebugMessage(`HIERO: ${$.testDirectory}`)
-        pub.$a.generateProject({
-            'mainData': {
-                'arguments': pr.wrapRawArray(["FOOOOOOOOOOOOOO"]),
-            },
-            'project': {
-                'modules': d({
-                    "main": module
-                }),
-                'main': "main",
-            },
-        })
+        // pub.$a.generateProject({
+        //     'mainData': {
+        //         'arguments': pr.wrapRawArray(["FOOOOOOOOOOOOOO"]),
+        //     },
+        //     'project': {
+        //         'modules': d({
+        //             "main": module
+        //         }),
+        //         'main': "main",
+        //     },
+        // })
         // pub.$a.createTestProgram(null, {
         //     getTestSet: () => {
         //         pl.panic("@@@")

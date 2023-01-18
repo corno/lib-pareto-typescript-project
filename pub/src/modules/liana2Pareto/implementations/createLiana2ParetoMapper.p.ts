@@ -12,7 +12,7 @@ import {
     number as nr,
     nested,
     template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, parameter
+    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, parameter, namespacedTypeReference
 } from "../../glossary/api/shorthands.p"
 
 
@@ -214,18 +214,6 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             'type': ['constructor', {
                                 'configuration data': externalTypeReference("common", "Null"),
                                 'dependencies': d({
-                                    "enrichedDictionaryForEach": ['callback', {
-                                        'context': ['import', "temp"],
-                                        'callback': "EnrichedDictionaryForEach",
-                                    }],
-                                    "enrichedArrayForEach": ['callback', {
-                                        'context': ['import', "temp"],
-                                        'callback': "EnrichedArrayForEach",
-                                    }],
-                                    "compare": ['function', {
-                                        'context': ['import', "collation"],
-                                        'function': "IsABeforeB",
-                                    }],
                                 })
                             }]
                         },
@@ -237,9 +225,13 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     "createSerializer": {
                         'constructor': true,
                         'type': ['function', {
-                            'block': {
-                                'innerFunctions': $.globalTypes.map(($) => {
+                            'block': <malgorithm.TFunctionBlock>{
+                                'innerFunctions': $.globalTypes.map(($, key) => {
                                     return {
+                                        'definition': {
+                                            'data': namespacedTypeReference(["unresolved"], key),
+                                            'return value': namespacedTypeReference(["resolved"], key),
+                                        },
                                         'block': generateBlock($.type)
                                     }
                                 }),

@@ -54,7 +54,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     break
                 case 'mapDictionary':
                     pl.cc($[1], ($) => {
-                        $i.snippet(`$.map(compare, ($, key) => `)
+                        $i.snippet(`$.map(($, key) => `)
                         serializeFunctionBlock($.block, $i)
                         $i.snippet(`)`)
                     })
@@ -66,7 +66,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     break
                 case 'switch':
                     pl.cc($[1], ($) => {
-                        $i.snippet(`pl.cc($.${$}, ($) => {`)
+                        $i.snippet(`pl.cc($, ($) => {`)
                         $i.indent(($i) => {
                             $i.line(($i) => {
                                 $i.snippet(`switch ($) {`)

@@ -60,7 +60,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                     break
                 case 'implementMe':
                     pl.cc($[1], ($) => {
-                        $i.snippet(`['implementMe', null]`)
+                        $i.snippet(`['implementMe', "${$}"]`)
                     })
                     break
                 case 'mapArray':
@@ -128,6 +128,27 @@ export const $$: api.CcreateSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
+        // function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
+        //     $.context dddd
+        // }
+        // function serializeFunction($: mglossary.TFunction, $i: mfp.ILine) {
+
+        //     $i.snippet(`{`)
+        //     $i.indent(($i) => {
+        //         $i.line(($i) => {
+        //             $i.snippet(`'data': `)
+        //             serializeTypeReference($.data, $i)
+        //             $i.snippet(`,`)
+        //         })
+        //         $i.line(($i) => {
+        //             $i.snippet(`'returnValue': `)
+        //             serializeTypeReference($['return value'], $i)
+                    
+        //             $i.snippet(`,`)
+        //         })
+        //     })
+        //     $i.snippet(`},`)
+        // }
         function serializeBlock($: api.TFunctionBlock, $i: mfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
@@ -139,6 +160,11 @@ export const $$: api.CcreateSerializer = ($d) => {
                                 $i.line(($i) => {
                                     $i.snippet(`"${key}": {`)
                                     $i.indent(($i) => {
+                                        // $i.line(($i) => {
+                                        //     $i.snippet(`'definition': `)
+                                        //     serializeFunction($, $i)
+                                        //     $i.snippet(`,`)
+                                        // })
                                         $i.line(($i) => {
                                             $i.snippet(`'block': `)
                                             serializeBlock($.block, $i)

@@ -128,25 +128,6 @@ export const $$: api.CcreateProjectSerializer = (
                         })
                     })
                 })
-                $i.allowed("index.ts")
-                // $i.directory("src", ($i) => {
-                //     // $i.directory("modules", ($i) => {
-
-                //     //     // $i.directory("api", ($i) => {
-
-                //     //     //     $i.directory("api", ($i) => {
-                //     //     //         $i.allowed("shorthands.p.ts")
-                //     //     //     })
-                //     //     // })
-                //     //     // $i.directory("glossary", ($i) => {
-
-                //     //     //     $i.directory("api", ($i) => {
-                //     //     //         $i.allowed("sorthands.p.ts")
-                //     //     //     })
-                //     //     // })
-                //     // })
-
-                // })
             })
             tsConfig({ isResource: false }, $i)
         })
@@ -165,38 +146,28 @@ export const $$: api.CcreateProjectSerializer = (
                             $i.directory("api", ($i) => {
                                 $d.cb_serializeModuleDefinition($.definition, $i)
                             })
-                            if ($.implementation !== undefined) {
-                                pl.cc($.implementation, ($) => {
-                                    $i.directory("implementations.generated", ($i) => {
-                                        $d.cb_serializeImplementation($, $i)
 
+                            $i.directory("implementations", ($i) => {
+                                if ($.implementation !== undefined) {
+                                    pl.cc($.implementation, ($) => {
+                                        $d.cb_serializeImplementation($, $i)
                                     })
-                                })
-                            } else {
-                                $i.directory("implementations", ($i) => {
+                                } else {
                                     $.definition.api.algorithms.forEach(compare, ($, key) => {
                                         $i.allowed(`${key}.p.ts`)
                                     })
-                                })
-                            }
+                                }
+                            })
                             // $.definition.api.algorithms.forEach(compare, ($, key) => {
                             //     $i.directory(`${key}`, ($i) => {
                             //     })
                             // })
-                            $i.file("index.ts", ($i) => {
+                            $i.file("implementation.generated.ts", ($i) => {
+                                const suffix = $.implementation !== undefined ? `generated` : `p`
                                 $i.literal(`import { API } from "./api"`)
-                                if ($.implementation !== undefined) {
-                                    $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                        $i.literal(`import { $$ as i${key} } from "./implementations.generated/${key}.generated"`)
-                                    })
-
-                                } else {
-                                    $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                        $i.literal(`import { $$ as i${key} } from "./implementations/${key}.p"`)
-                                    })
-                                }
-                                $i.literal(``)
-                                $i.literal(`export * from "./api"`)
+                                $.definition.api.algorithms.forEach(compare, ($, key) => {
+                                    $i.literal(`import { $$ as i${key} } from "./implementations/${key}.${suffix}"`)
+                                })
                                 $i.literal(``)
                                 $i.line(($i) => {
                                     $i.snippet(`export const $a: API = {`)
@@ -207,6 +178,10 @@ export const $$: api.CcreateProjectSerializer = (
                                     })
                                     $i.snippet(`}`)
                                 })
+                            })
+                            $i.file("index.ts", ($i) => {
+                                $i.literal(`export * from "./api"`)
+                                $i.literal(`export * from "./implementation.generated"`)
                             })
                         })
                     })
@@ -274,7 +249,18 @@ export const $$: api.CcreateProjectSerializer = (
                     $i.allowed("data")
                     $i.allowed("dependencies")
                     $i.allowed("implementation")
-                    $i.allowed("interface")
+                    $i.directory("interface", ($i) => {
+                        $i.file("index.ts", ($i) => {
+                            $i.literal(`export * from "./functions/functions.p"`)
+                            $i.literal(`export * from "./dependencies/dependencies.p"`)
+                        })
+                        $i.directory("dependencies", ($i) => {
+                            $i.allowed("dependencies.p.ts") //FIX should be generated
+                        })
+                        $i.directory("functions", ($i) => {
+                            $i.allowed("functions.p.ts") //FIX should be generated
+                        })
+                    })
                     globals($i)
                     $i.directory("bin", ($i) => {
                         $i.file("test.generated.ts", ($i) => {
@@ -416,7 +402,7 @@ export const $$: api.CcreateProjectSerializer = (
                                     //     })
                                     //     $i.literal(``)
                                     // })
-                                    $i.file(`${key}.p.ts`, ($i) => {
+                                    $i.file(`${key}.generated.ts`, ($i) => {
                                         $i.literal(`import * as pt from 'pareto-core-types'`)
                                         $i.literal(`import * as pl from 'pareto-core-lib'`)
                                         $i.literal(``)

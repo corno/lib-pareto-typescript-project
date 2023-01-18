@@ -83,6 +83,13 @@ export function typeReference(type: string): api.TTypeReference {
         'type': type,
     }
 }
+export function namespacedTypeReference(namespaces: string[], type: string): api.TTypeReference {
+    return {
+        'context': ['local', null],
+        'namespaces': wa(namespaces),
+        'type': type,
+    }
+}
 
 export function externalReference(context: string, type: string): api.TType {
     return ['reference', {

@@ -21,9 +21,6 @@ export const $$: api.CgenerateProject = ($) => {
                     sf_compare: mcoll.$a.localeIsABeforeB,
                     cb_serializeModuleDefinition: mmoduleDefinition.$a.createSerializer({
                         sf_compare: mcoll.$a.localeIsABeforeB,
-                        // cb_enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
-                        //     sf_compare: mcoll.$a.localeIsABeforeB,
-                        // }),
                         cb_enrichedArrayForEach: mtemp.$a.createEnrichedArrayForEach({
                         }),
                         cb_serializeGlossary: mglossary.$a.createSerializer({

@@ -32,7 +32,7 @@ import * as pub from "../../../../../pub/dist"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
-import { $ as lianaModel } from "../../../implementation/public/lianaModel.p"
+import { $ as lianaModel } from "../../../data/lianaModel.p"
 
 export const $$: api.CgetTestSet = ($) => {
     pl.logDebugMessage(`HIERO: ${$.testDirectory}`)

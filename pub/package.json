@@ -3,7 +3,7 @@
   "dependencies": {
     "glo-pareto-common": "^0.4.0",
     "lib-fountain-pen": "^0.19.0",
-    "lib-pareto-main": "^0.4.0",
+    "lib-pareto-main": "^0.6.1",
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.0",
     "pareto-core-state": "^0.12.0",
@@ -23,5 +23,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.37.0",
-  "content-fingerprint": "e9cbaa564dc719ed414e38924a6b959849e3baf0"
+  "content-fingerprint": "81af04e277d40d7616cfe52e8202ef1cb639b02c"
 }

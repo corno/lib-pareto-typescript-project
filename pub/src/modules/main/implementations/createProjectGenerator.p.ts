@@ -21,7 +21,7 @@ export const $$: api.CcreateProjectGenerator = ($d) => {
                             fs.$a.createWriteStream(
                                 {
                                     pr_onError: () => {
-                                        pl.logDebugMessage(`SSDSFSDFS`)
+                                        $d.pr_logError(`SSDSFSDFS`)
                                     }
                                 },
                             )(
@@ -57,7 +57,7 @@ export const $$: api.CcreateProjectGenerator = ($d) => {
                             const red = `\x1b[31m`
                             const green = `\x1b[32m`
                             const reset = `\x1b[0m`
-                            pl.logDebugMessage(`${red}superfluous node: ${mtostring.$a.joinNestedStrings({
+                            $d.pr_logError(`${red}superfluous node: ${mtostring.$a.joinNestedStrings({
                                 strings: $.path,
                                 separator: `/`,
                             })}/${$.name}${reset}`)

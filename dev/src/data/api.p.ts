@@ -88,10 +88,11 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
     },
     'api': {
         'imports': d({
-            "main": "lib-pareto-main",
+            "common": "glo-pareto-common",
             "collation": "res-pareto-collation",
-            "temp": "../../temp",
+            "main": "lib-pareto-main",
             "pareto2typescript": "../../pareto2typescript",
+            "temp": "../../temp",
         }),
         'algorithms': d({
             "createParametersParser": {
@@ -119,6 +120,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                             'async': true,
                             'function': "GetSingleArgument",
                         }],
+                        "logError":  ['procedure', externalTypeReference("common", "String")],
                         "serializeProject": ['callback', {
                             'context': ['import', "pareto2typescript"],
                             'callback': "SerializeProject",

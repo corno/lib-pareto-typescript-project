@@ -2,11 +2,13 @@ import * as pt from 'pareto-core-types'
 
 import * as glo from "./types.generated"
 
+import * as mcommon from "glo-pareto-common"
 import * as mproject from "../../project"
 
 export type CcreateLiana2ParetoMapper = ($d: {}) => glo.FMapLiana2Pareto
 
 export type CcreateProjectGenerator = ($d: {
+    readonly 'pr_logError': pt.Procedure<mcommon.TString>
     readonly 'sf_mapLiana2Pareto': glo.FMapLiana2Pareto
     readonly 'cb_serializeProject': mproject.XSerializeWithContext
 }) => pt.Procedure<glo.TConfiguration>

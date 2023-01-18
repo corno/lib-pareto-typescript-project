@@ -60,6 +60,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     },
     'api': {
         'imports': d({
+            "common": "glo-pareto-common",
             "project": "../../project",
         }),
         'algorithms': d({
@@ -72,6 +73,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
+                        "logError":  ['procedure', externalTypeReference("common", "String")],
                         "mapLiana2Pareto": ['function', {
                             //'async': true,
                             'function': "MapLiana2Pareto",

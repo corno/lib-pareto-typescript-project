@@ -6,6 +6,7 @@ import * as mpareto2typescript from "../../pareto2typescript"
 
 import * as mtemp from "../../temp"
 import * as mcoll from "res-pareto-collation"
+import * as mmain from "lib-pareto-main"
 
 import { $a } from "../index"
 
@@ -42,6 +43,7 @@ export const $$: api.CgenerateProject = ($) => {
                     sf_compare: mcoll.$a.localeIsABeforeB,
                 }
             ),
+            pr_logError: mmain.$a.logError,
             af_getSingleArgument: () => { pl.panic(`SSDFSFSF`) },
             //cbgetSingleArgument: mexe.p_getSingleArgument,
         }

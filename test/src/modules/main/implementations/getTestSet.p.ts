@@ -35,7 +35,6 @@ import { $ as module } from "../../../data/project.p"
 import { $ as lianaModel } from "../../../data/lianaModel.p"
 
 export const $$: api.CgetTestSet = ($) => {
-    pl.logDebugMessage(`HIERO: ${$.testDirectory}`)
     pub.$a.generateProject({
         'mainData': {
             'arguments': pr.wrapRawArray([`${$.testDirectory}/project`]),
@@ -107,7 +106,6 @@ export const $$: api.CgetTestSet = ($) => {
 
 
     //test that a failing test indeed fails!!! now it will make the program exit with an error code
-    pl.logDebugMessage("FIXME: TEST THE LIB")
     createTest(
         "TODO: ACTUALLY TEST THE LIB",
         "TODO: ACTUALLY TEST THE LIB",

@@ -5,6 +5,7 @@ import * as api from "../api"
 import * as mtemp from "../../temp"
 import * as mcoll from "res-pareto-collation"
 import * as mmoduleDefinition from "../../moduleDefinition"
+import * as mmain from "lib-pareto-main"
 import * as mproject from "../../project"
 import * as mglossary from "../../glossary"
 import * as malgorithm from "../../algorithm"
@@ -15,6 +16,7 @@ export const $$: api.CgenerateProject = ($) => {
 
     $a.createProjectGenerator(
         {
+            pr_logError: mmain.$a.logError,
             sf_mapLiana2Pareto: $a.createLiana2ParetoMapper({}),
             cb_serializeProject: mproject.$a.createSerializerWithContext({
                 cb_serialize: mproject.$a.createSerializer({

@@ -1,5 +1,2 @@
-import { API } from "./api"
-
 export * from "./api"
-
-export const $a: API = {}
+export * from "./implementation.generated"

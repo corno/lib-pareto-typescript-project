@@ -4,7 +4,7 @@ import * as api from "../api"
 import { $ as project } from "../../../data/project.p"
 import * as mpareto from "lib-pareto-typescript-project"
 
-export const imain: api.Cmain = ($) => {
+export const $$: api.Cmain = ($) => {
 
     mpareto.$a.generateProject({
         project: project,

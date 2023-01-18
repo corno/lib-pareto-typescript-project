@@ -308,7 +308,7 @@ export const $$: api.CcreateProjectSerializer = (
                                 const moduleName = key
                                 $.definition.api.algorithms.forEach(compare, ($, key) => {
                                     $i.line(($i) => {
-                                        $i.snippet(`import { test as ${moduleName}_${key} } from "../modules/${moduleName}/${key}.p"`)
+                                        $i.snippet(`import { test as ${moduleName}_${key} } from "../modules/${moduleName}/${key}.generated"`)
                                     })
                                 })
                             })

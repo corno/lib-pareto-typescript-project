@@ -34,7 +34,7 @@ export const $$: api.CcreateProjectSerializer = (
             })
         }
         function globals($i: mfp.IWriter) {
-            $i.file("_globals.ts", ($i) => {
+            $i.file("globals.generated.ts", ($i) => {
                 $i.literal(`interface Array<T> {`)
                 $i.literal(`    [n: number]: T`)
                 $i.literal(`}`)

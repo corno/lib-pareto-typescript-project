@@ -29,6 +29,31 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     })), true),
                     "returnExpression": member(ref("Expression"))
                 }),
+                "CallbackBlock": group({
+                    "innerCallbacks": member(dictionary(group({
+                        "block": member(ref("CallbackBlock"))
+                    })), true),
+                    "statements": member(array(taggedUnion({
+                        "dependencyCall": group({
+                            "data": member(str(), true),
+                            "callback": member(ref("CallbackBlock"), true)
+                        }),
+                        "innerCallbackCall": group({
+                            "innerCallback": member(str()),
+                            "data": member(ref("Expression"), true),
+                            "interface": member(str(), true),
+                        }),
+                        "interfaceCall": group({
+                            "property": member(str()),
+                            "data": member(str(), true),
+                            "callback": member(ref("CallbackBlock"), true)
+                        }),
+                        "switch": group({
+                            "path": member(array(str())),
+                            "cases": member(dictionary(ref("CallbackBlock")))
+                        })
+                    })))
+                }),
                 "Expression": taggedUnion({
                     "call": group({
                         "function": member(str()),
@@ -60,7 +85,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "type": member(taggedUnion({
                             "function": group({
                                 "block": member(ref("FunctionBlock"))
-                            })
+                            }),
+                            "callback": group({
+                                "block": member(ref("CallbackBlock"))
+                            }),
                         }))
                     }))),
                 }),

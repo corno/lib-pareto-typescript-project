@@ -20,6 +20,7 @@ import { string, reference, externalReference, number, boolean } from "../../mod
 
 import * as malgorithm from "../../algorithm"
 import * as mglossary from "../../glossary"
+import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mliana from "../../liana"
 
 
@@ -162,7 +163,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
             }
         }
         return {
-            'definition': {
+            'definition': <mmoduleDefinition.TModuleDefinition>{
                 'glossary': {
                     'imports': d({
                         "fp": "lib-fountain-pen",
@@ -192,10 +193,15 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                         }),
 
                     },
-                    'functions': d({}),
+                    'functions': d({
+                        "Enrich": {
+                            'data': namespacedTypeReference(["unresolved"],"Root"),
+                            'return value': namespacedTypeReference(["resolved"], "Root"),
+                        },
+                    }),
                     'callbacks': d({
                         "Serialize": {
-                            'data': typeReference("Root"),
+                            'data': namespacedTypeReference(["resolved"],"Root"),
                             'context': ['import', "fp"],
                             'interface': "Line",
                         },
@@ -212,7 +218,17 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                 'callback': "Serialize"
                             }],
                             'type': ['constructor', {
-                                'configuration data': externalTypeReference("common", "Null"),
+                                'configuration data': null,
+                                'dependencies': d({
+                                })
+                            }]
+                        },
+                        "createEnricher": {
+                            'definition': ['function', {
+                                'function': "Enrich"
+                            }],
+                            'type': ['constructor', {
+                                'configuration data': null,
                                 'dependencies': d({
                                 })
                             }]
@@ -220,9 +236,28 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     })
                 },
             },
-            'implementation': {
+            'implementation': <malgorithm.TImplementation>{
                 'implementations': d({
-                    "createSerializer": {
+                    // "createSerializer": {
+                    //     'constructor': true,
+                    //     'type': ['function', {
+                    //         'block': <malgorithm.TFunctionBlock>{
+                    //             'innerFunctions': $.globalTypes.map(($, key) => {
+                    //                 return {
+                    //                     'definition': {
+                    //                         'data': namespacedTypeReference(["unresolved"], key),
+                    //                         'return value': namespacedTypeReference(["resolved"], key),
+                    //                     },
+                    //                     'block': generateBlock($.type)
+                    //                 }
+                    //             }),
+                    //             'returnExpression': ['switch', {
+                    //                 'cases': d({}),
+                    //             }]
+                    //         }
+                    //     }]
+                    // },
+                    "createEnricher": {
                         'constructor': true,
                         'type': ['function', {
                             'block': <malgorithm.TFunctionBlock>{

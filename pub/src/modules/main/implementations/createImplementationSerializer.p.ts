@@ -87,6 +87,24 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
+        function serializeCallbackBlock($: malgorithm.TCallbackBlock, $i: mfp.ILine) {
+            $i.snippet(`{`)
+            $i.indent(($i) => {
+                if ($.innerCallbacks !== undefined) {
+                    pl.cc($.innerCallbacks, ($) => {
+                        $.forEach(compare, ($, key) => {
+                            $i.line(($i) => {
+                                $i.snippet(`function ${key}() `)
+                                serializeCallbackBlock($.block, $i)
+                            })
+                        })
+                    })
+                }
+                $.statements
+                pl.implementMe(`SFSDFSDR`)
+            })
+            $i.snippet(`}`)
+        }
         function serializeFunctionBlock($: malgorithm.TFunctionBlock, $i: mfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
@@ -110,12 +128,18 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
         $.implementations.forEach(compare, ($, key) => {
             function body($i: mfp.ILine) {
                 switch ($.type[0]) {
-                    case 'function':
+                    case 'callback':
                         pl.cc($.type[1], ($) => {
                             $i.snippet(`($) => `)
-                            serializeFunctionBlock($.block, $i)
+                            serializeCallbackBlock($.block, $i)
                         })
                         break
+                        case 'function':
+                            pl.cc($.type[1], ($) => {
+                                $i.snippet(`($) => `)
+                                serializeFunctionBlock($.block, $i)
+                            })
+                            break
                     default: pl.au($.type[0])
                 }
             }

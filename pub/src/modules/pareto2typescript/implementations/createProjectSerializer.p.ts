@@ -52,8 +52,8 @@ export const $$: api.CcreateProjectSerializer = (
         }
         //$i.allowed("tmp") //already defined in 'generateTemplate'
         $i.allowed(".git")
-        $i.allowed("pareto")
-        $i.directory("dev", ($i) => {
+        $i.allowed("build")
+        $i.directory("pareto", ($i) => {
             $i.allowed("dist")
             $i.allowed("node_modules")
             $i.allowed("package-lock.json")
@@ -62,10 +62,11 @@ export const $$: api.CcreateProjectSerializer = (
                 globals($i)
                 $i.directory("bin", ($i) => {
                     $i.file("generateCode.generated.ts", ($i) => {
-                        $i.literal(`import * as exe from 'pareto-core-exe'`)
+                        $i.literal(`import * as pe from 'pareto-core-exe'`)
+                        $i.literal(``)
                         $i.literal(`import * as mmain from "../modules/main"`)
                         $i.literal(``)
-                        $i.literal(`exe.runProgram(mmain.$a.main)`)
+                        $i.literal(`pe.runProgram(mmain.$a.main)`)
                     })
                 })
                 $i.directory("data", ($i) => {
@@ -449,12 +450,14 @@ export const $$: api.CcreateProjectSerializer = (
             })
         }
         $i.file(".gitignore", ($i) => {
+            $i.literal(`/build/node_modules/`)
+            $i.literal(`/build/scripts/`)
             $i.literal(`/dev/dist/`)
             $i.literal(`/dev/node_modules/`)
+            $i.literal(`/pareto/dist/`)
+            $i.literal(`/pareto/node_modules/`)
             $i.literal(`/pub/dist/`)
             $i.literal(`/pub/node_modules/`)
-            $i.literal(`/pareto/node_modules/`)
-            $i.literal(`/pareto/scripts/`)
             $i.literal(`/test/dist/`)
             $i.literal(`/test/node_modules/`)
             $i.literal(`/tmp`)

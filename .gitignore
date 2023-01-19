@@ -1,9 +1,11 @@
+/build/node_modules/
+/build/scripts/
 /dev/dist/
 /dev/node_modules/
+/pareto/dist/
+/pareto/node_modules/
 /pub/dist/
 /pub/node_modules/
-/pareto/node_modules/
-/pareto/scripts/
 /test/dist/
 /test/node_modules/
 /tmp

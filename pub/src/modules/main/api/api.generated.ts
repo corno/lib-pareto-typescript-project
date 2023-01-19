@@ -14,6 +14,7 @@ export type CcreateParametersParser = ($d: {
 }) => pt.Procedure<glo.TArguments>
 
 export type CcreateProjectGenerator = ($d: {
+    readonly 'sf_addKeysToDictionary': mtemp.FAddKeysToDictionary
     readonly 'af_getSingleArgument': glo.AGetSingleArgument
     readonly 'pr_logError': pt.Procedure<mcommon.TString>
     readonly 'cb_serializeProject': mpareto2typescript.XSerializeProject

@@ -1,5 +1,12 @@
 import * as pt from 'pareto-core-types'
 
+export type FAddKeysToDictionary = <T> (
+    $: pt.Dictionary<T>
+) => pt.Dictionary<{
+    key: string
+    value: T
+}>
+
 export type XArrayForEach = <T> (
     $: pt.Array<T>,
     $i: ($i: {

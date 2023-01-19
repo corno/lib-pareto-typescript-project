@@ -17,28 +17,28 @@ export const $$: api.CcreateSerializer = ($d) => {
         }
         function Glossary() {
             return {
-                'callbacks': $.map(($, key) => {
+                'callbacks': $.map(($) => {
                     return {
                         'context': Context(),
                         'data': OptionalTypeReference(),
                         'interface': pl.implementMe(`liana2Pareto`),
                     }
                 }),
-                'functions': $.map(($, key) => {
+                'functions': $.map(($) => {
                     return {
                         'async': pl.implementMe(`liana2Pareto`),
                         'data': TypeReference(),
                         'return value': TypeReference(),
                     }
                 }),
-                'imports': $.map(($, key) => {
+                'imports': $.map(($) => {
                     return {}
                 }),
                 'namespace': Namespace(),
-                'parameters': $.map(($, key) => {
+                'parameters': $.map(($) => {
                     return {}
                 }),
-                'pipes': $.map(($, key) => {
+                'pipes': $.map(($) => {
                     return {
                         'in': InterfaceReference(),
                         'out': InterfaceReference(),
@@ -49,7 +49,7 @@ export const $$: api.CcreateSerializer = ($d) => {
         function Interface() {
             return {
                 'group': {
-                    'members': $.map(($, key) => {
+                    'members': $.map(($) => {
                         return Interface()
                     }),
                 },
@@ -79,21 +79,21 @@ export const $$: api.CcreateSerializer = ($d) => {
         }
         function Namespace() {
             return {
-                'interfaces': $.map(($, key) => {
+                'interfaces': $.map(($) => {
                     return Interface()
                 }),
-                'namespaces': $.map(($, key) => {
+                'namespaces': $.map(($) => {
                     return Namespace()
                 }),
-                'templates': $.map(($, key) => {
+                'templates': $.map(($) => {
                     return {
-                        'parameters': $.map(($, key) => {
+                        'parameters': $.map(($) => {
                             return {}
                         }),
                         'type': Type(),
                     }
                 }),
-                'types': $.map(($, key) => {
+                'types': $.map(($) => {
                     return Type()
                 }),
             }

@@ -62,6 +62,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'imports': d({
             "common": "glo-pareto-common",
             "project": "../../project",
+            "temp": "../../temp",
         }),
         'algorithms': d({
             "generateProject": {
@@ -73,6 +74,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
+                        "addKeysToDictionary": ['function', {
+                            'context': ['import', "temp"],
+                            'function': "AddKeysToDictionary"
+                        }],
                         "logError":  ['procedure', externalTypeReference("common", "String")],
                         "mapLiana2Pareto": ['function', {
                             //'async': true,
@@ -100,6 +105,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
+                        "addKeysToDictionary": ['function', {
+                            'context': ['import', "temp"],
+                            'function': "AddKeysToDictionary"
+                        }],
                         // "enrichedDictionaryForEach": ['callback', {
                         //     'context': ['import', "temp"],
                         //     'callback': "EnrichedDictionaryForEach",

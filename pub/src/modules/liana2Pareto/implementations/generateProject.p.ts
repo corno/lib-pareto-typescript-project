@@ -29,8 +29,11 @@ export const $$: api.CgenerateProject = ($) => {
 
     $a.createProjectGenerator(
         {
+            sf_addKeysToDictionary: mtemp.$a.addKeysToDictionary,
             pr_logError: mmain.$a.logError,
-            sf_mapLiana2Pareto: $a.createLiana2ParetoMapper({}),
+            sf_mapLiana2Pareto: $a.createLiana2ParetoMapper({
+                sf_addKeysToDictionary: mtemp.$a.addKeysToDictionary,
+            }),
             cb_serializeProject: mproject.$a.createSerializerWithContext({
                 cb_serialize: mproject.$a.createSerializer({
                     cb_dictionaryForEach: d,

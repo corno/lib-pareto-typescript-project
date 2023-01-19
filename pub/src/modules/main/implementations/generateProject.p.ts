@@ -55,6 +55,7 @@ export const $$: api.CgenerateProject = ($) => {
             ),
             pr_logError: mmain.$a.logError,
             af_getSingleArgument: () => { pl.panic(`SSDFSFSF`) },
+            sf_addKeysToDictionary: mtemp.$a.addKeysToDictionary,
             //cbgetSingleArgument: mexe.p_getSingleArgument,
         }
     )($)

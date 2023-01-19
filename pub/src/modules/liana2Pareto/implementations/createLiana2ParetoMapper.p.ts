@@ -261,13 +261,13 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                         'constructor': true,
                         'type': ['function', {
                             'block': <malgorithm.TFunctionBlock>{
-                                'innerFunctions': $.globalTypes.map(($, key) => {
+                                'innerFunctions': $d.sf_addKeysToDictionary($.globalTypes).map(($) => {
                                     return {
                                         'definition': {
-                                            'data': namespacedTypeReference(["unresolved"], key),
-                                            'return value': namespacedTypeReference(["resolved"], key),
+                                            'data': namespacedTypeReference(["unresolved"], $.key),
+                                            'return value': namespacedTypeReference(["resolved"], $.key),
                                         },
-                                        'block': generateBlock($.type)
+                                        'block': generateBlock($.value.type)
                                     }
                                 }),
                                 'returnExpression': ['switch', {

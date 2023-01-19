@@ -47,7 +47,7 @@ export const $$: api.CcreateProjectGenerator = ($d) => {
                                         })
                                     case 'success':
                                         return pl.cc($[1], ($) => {
-                                            return pl.asyncValue($.map(($, key) => key))
+                                            return pl.asyncValue($d.sf_addKeysToDictionary($).map(($) => $.key))
                                         })
                                     default: return pl.au($[0])
                                 }

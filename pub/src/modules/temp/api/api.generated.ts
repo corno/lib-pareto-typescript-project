@@ -4,6 +4,8 @@ import * as glo from "./types.generated"
 
 import * as mcollation from "res-pareto-collation"
 
+export type CaddKeysToDictionary = glo.FAddKeysToDictionary
+
 export type CcreateArrayForEach = (
     $d: {
         readonly "sf_compare": mcollation.FIsABeforeB
@@ -28,6 +30,7 @@ export type CcreateEnrichedDictionaryForEach = (
 ) => glo.XEnrichedDictionaryForEach
 
 export type API = {
+    addKeysToDictionary: CaddKeysToDictionary,
     createArrayForEach: CcreateArrayForEach
     createDictionaryForEach: CcreateDictionaryForEach
     createEnrichedArrayForEach: CcreateEnrichedArrayForEach

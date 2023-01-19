@@ -116,6 +116,10 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
+                        "addKeysToDictionary": ['function', {
+                            'context': ['import', "temp"],
+                            'function': "AddKeysToDictionary"
+                        }],
                         "getSingleArgument": ['function', {
                             'async': true,
                             'function': "GetSingleArgument",

@@ -80,9 +80,9 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
+                        "dictionaryForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "DictionaryForEach",
                         }],
                         "serializeGlossary": ['callback', {
                             //'context': ['import', "glossary"],
@@ -105,9 +105,9 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
+                        "dictionaryForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "DictionaryForEach",
                         }],
                         "serializeModuleDefinition": ['callback', {
                             //'context': ['import', "api"],
@@ -134,9 +134,9 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
+                        "dictionaryForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "DictionaryForEach",
                         }],
                     }),
                     'callback': {
@@ -150,13 +150,13 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
+                        "dictionaryForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "DictionaryForEach",
+                        }],
                         "enrichedDictionaryForEach": ['callback', {
                             'context': ['import', "temp"],
                             'callback': "EnrichedDictionaryForEach",
-                        }],
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
                         }],
                     })
                 }]
@@ -168,13 +168,21 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
+                        "arrayForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "ArrayForEach",
+                        }],
+                        "dictionaryForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "DictionaryForEach",
+                        }],
+                        "enrichedArrayForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "EnrichedArrayForEach",
+                        }],
                         "enrichedDictionaryForEach": ['callback', {
                             'context': ['import', "temp"],
                             'callback': "EnrichedDictionaryForEach",
-                        }],
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
                         }],
                     })
                 }]

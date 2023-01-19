@@ -98,18 +98,26 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
-                        }],
                         "serializeGlossary": ['callback', {
                             'context': ['import', "glossary"],
                             'callback': "Serialize"
+                        }],
+                        // "arrayForEach": ['callback', {
+                        //     'context': ['import', "temp"],
+                        //     'callback': "ArrayForEach",
+                        // }],
+                        "dictionaryForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "DictionaryForEach",
                         }],
                         "enrichedArrayForEach": ['callback', {
                             'context': ['import', "temp"],
                             'callback': "EnrichedArrayForEach",
                         }],
+                        // "enrichedDictionaryForEach": ['callback', {
+                        //     'context': ['import', "temp"],
+                        //     'callback': "EnrichedDictionaryForEach",
+                        // }],
                         // "serializeLeafType": ['callback', {
                         //     //'context': ['import', "glossary"],
                         //     'callback': "SerializeLeafType"

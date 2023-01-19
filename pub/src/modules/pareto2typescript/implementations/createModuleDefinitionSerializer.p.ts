@@ -9,7 +9,6 @@ import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
-        const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
         function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {
             $i.file("types.generated.ts", ($i) => {
                 $d.cb_serializeGlossary($, $i)
@@ -103,25 +102,25 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
             $i.literal(``)
             $i.literal(`import * as glo from "./types.generated"`)
             $i.literal(``)
-            $.api.imports.forEach(compare, ($, key) => {
+            $d.cb_dictionaryForEach($.api.imports, ($) => {
                 $i.line(($i) => {
-                    $i.snippet(`import * as m${key} from "${$}"`)
+                    $i.snippet(`import * as m${$.key} from "${$.value}"`)
                 })
             })
-            $.api.algorithms.forEach(compare, ($, key) => {
-                const definition = $.definition
+            $d.cb_dictionaryForEach($.api.algorithms, ($) => {
+                const definition = $.value.definition
                 $i.literal(``)
                 $i.line(($i) => {
-                    $i.snippet(`export type C${key} = `)
-                    switch ($.type[0]) {
+                    $i.snippet(`export type C${$.key} = `)
+                    switch ($.value.type[0]) {
                         case 'constructor':
-                            pl.cc($.type[1], ($) => {
+                            pl.cc($.value.type[1], ($) => {
                                 $i.snippet(`(`)
                                 serializeOptionalTypeReference($['configuration data'], $i)
                                 $i.snippet(`$d: {`)
                                 $i.indent(($i) => {
-                                    $.dependencies.forEach(compare, ($, key) => {
-                                        const id = pl.cc($, ($): string => {
+                                    $d.cb_dictionaryForEach($.dependencies, ($) => {
+                                        const id = pl.cc($.value, ($): string => {
                                             switch ($[0]) {
                                                 case 'callback':
                                                     return pl.cc($[1], ($) => {
@@ -147,8 +146,8 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                                             }
                                         })
                                         $i.line(($i) => {
-                                            $i.snippet(`readonly '${id}_${key}': `)
-                                            serializeDefinitionReference($, $i)
+                                            $i.snippet(`readonly '${id}_${$.key}': `)
+                                            serializeDefinitionReference($.value, $i)
                                         })
                                     })
                                 })
@@ -157,14 +156,14 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                                 //     $i.snippet(`$d: {`)
                                 //     $i.indent(($i) => {
                                 //         // if ($.callbacks !== undefined) {
-                                //         //     $.callbacks.forEach(compare, ($, key) => {
+                                //         //     $d.cb_dictionaryForEach($.callbacks, ($, key) => {
                                 //         //         $i.line(($i) => {
                                 //         //             $i.snippet(`readonly "cb${key}": `)
                                 //         //             serializeCallbackReference($, $i)
                                 //         //         })
                                 //         //     })
                                 //         // }
-                                //         $.functions.forEach(compare, ($, key) => {
+                                //         $d.cb_dictionaryForEach($.functions, ($, key) => {
                                 //             $i.line(($i) => {
                                 //                 $i.snippet(`readonly "f${key}": `)
                                 //                 serializeFunctionReference($, $i)
@@ -185,10 +184,10 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                             })
                             break
                         case 'reference':
-                            pl.cc($.type[1], ($) => {
+                            pl.cc($.value.type[1], ($) => {
                             })
                             break
-                        default: pl.au($.type[0])
+                        default: pl.au($.value.type[0])
                     }
                     serializeDefinitionReference(definition, $i)
                 })
@@ -197,8 +196,8 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
             $i.line(($i) => {
                 $i.snippet(`export type API = {`)
                 $i.indent(($i) => {
-                    $.api.algorithms.forEach(compare, ($, key) => {
-                        $i.literal(`${key}: C${key}`)
+                    $d.cb_dictionaryForEach($.api.algorithms, ($) => {
+                        $i.literal(`${$.key}: C${$.key}`)
                     })
                 })
                 $i.snippet(`}`)

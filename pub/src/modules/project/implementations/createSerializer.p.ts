@@ -6,8 +6,6 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateSerializer = ($d) => {
-    const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
-
     return ($, $i) => {
         $i.snippet(`{`)
         $i.indent(($i) => {

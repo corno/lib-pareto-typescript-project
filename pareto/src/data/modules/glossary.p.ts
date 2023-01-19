@@ -134,17 +134,21 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "enrichedDictionaryForEach": ['callback', {
+                        "arrayForEach": ['callback', {
                             'context': ['import', "temp"],
-                            'callback': "EnrichedDictionaryForEach",
+                            'callback': "ArrayForEach",
+                        }],
+                        "dictionaryForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "DictionaryForEach",
                         }],
                         "enrichedArrayForEach": ['callback', {
                             'context': ['import', "temp"],
                             'callback': "EnrichedArrayForEach",
                         }],
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
+                        "enrichedDictionaryForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "EnrichedDictionaryForEach",
                         }],
                     })
                 }]

@@ -1,5 +1,20 @@
 import * as pt from 'pareto-core-types'
 
+export type XArrayForEach = <T> (
+    $: pt.Array<T>,
+    $i: ($i: {
+        value: T,
+    }) => void
+) => void
+
+export type XDictionaryForEach = <T> (
+    $: pt.Dictionary<T>,
+    $i: ($i: {
+        key: string
+        value: T,
+    }) => void
+) => void
+
 export type XEnrichedDictionaryForEach = <T> (
     $: pt.Dictionary<T>,
     $i: {

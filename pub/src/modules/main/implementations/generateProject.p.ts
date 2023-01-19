@@ -11,36 +11,46 @@ import * as mmain from "lib-pareto-main"
 import { $a } from "../index"
 
 export const $$: api.CgenerateProject = ($) => {
+    const a = mtemp.$a.createArrayForEach({
+        sf_compare: mcoll.$a.localeIsABeforeB,
+    })
+    const d = mtemp.$a.createDictionaryForEach({
+        sf_compare: mcoll.$a.localeIsABeforeB,
+    })
+    const ea = mtemp.$a.createEnrichedArrayForEach({
+        sf_compare: mcoll.$a.localeIsABeforeB,
+    })
+    const ed = mtemp.$a.createEnrichedDictionaryForEach({
+        sf_compare: mcoll.$a.localeIsABeforeB,
+    })
 
     $a.createProjectGenerator(
         {
             cb_serializeProject: mpareto2typescript.$a.createProjectSerializer(
                 {
-                    sf_compare: mcoll.$a.localeIsABeforeB,
+                    cb_dictionaryForEach: d,
                     cb_serializeModuleDefinition: mpareto2typescript.$a.createModuleDefinitionSerializer(
                         {
-                            sf_compare: mcoll.$a.localeIsABeforeB,
+                            cb_dictionaryForEach: d,
                             cb_serializeGlossary: mpareto2typescript.$a.createGlossarySerializer({
-                                sf_compare: mcoll.$a.localeIsABeforeB,
-                                cb_enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
-                                    sf_compare: mcoll.$a.localeIsABeforeB,
-                                })
+                                cb_enrichedDictionaryForEach: ed,
+                                cb_dictionaryForEach: d,
                             }),
                         }
                     ),
                     cb_serializeImplementation: mpareto2typescript.$a.createImplementationSerializer(
                         {
-                            sf_compare: mcoll.$a.localeIsABeforeB,
-                            cb_enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
-                                sf_compare: mcoll.$a.localeIsABeforeB,
-                            })
+                            cb_arrayForEach: a,
+                            cb_dictionaryForEach: d,
+                            cb_enrichedArrayForEach: ea,
+                            cb_enrichedDictionaryForEach: ed,
                         }
                     ),
                 }
             ),
             cb_serializeTemplate: mpareto2typescript.$a.createTemplateSerializer(
                 {
-                    sf_compare: mcoll.$a.localeIsABeforeB,
+                    cb_dictionaryForEach: d,
                 }
             ),
             pr_logError: mmain.$a.logError,

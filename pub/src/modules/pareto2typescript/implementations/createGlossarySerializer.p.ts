@@ -6,7 +6,6 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateGlossarySerializer = ($d) => {
-    const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
 
     return ($, $i) => {
         const parameters: mglossary.TParameters = $.parameters !== undefined ? $.parameters : pl.createEmptyDictionary()
@@ -88,10 +87,10 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.snippet(`{`)
                         $i.indent(($i) => {
-                            $.forEach(compare, ($, key) => {
+                            $d.cb_dictionaryForEach($, ($) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`readonly '${key}'${$.optional === undefined || $.optional === false ? `` : `?`}: `)
-                                    serializeType($.type, $i)
+                                    $i.snippet(`readonly '${$.key}'${$.value.optional === undefined || $.value.optional === false ? `` : `?`}: `)
+                                    serializeType($.value.type, $i)
                                 })
                             })
                         })
@@ -119,10 +118,10 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 case 'taggedUnion':
                     pl.cc($[1], ($) => {
                         $i.indent(($i) => {
-                            $.forEach(compare, ($, key) => {
+                            $d.cb_dictionaryForEach($, ($) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`| ['${key}', `)
-                                    serializeType($, $i)
+                                    $i.snippet(`| ['${$.key}', `)
+                                    serializeType($.value, $i)
                                     $i.snippet(`]`)
                                 })
                             })
@@ -186,10 +185,10 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
 
                         $i.snippet(`{`)
                         $i.indent(($i) => {
-                            $.members.forEach(compare, ($, key) => {
+                            $d.cb_dictionaryForEach($.members, ($) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`'${key}': `)
-                                    serializeInterface($, $i)
+                                    $i.snippet(`'${$.key}': `)
+                                    serializeInterface($.value, $i)
                                 })
                             })
                         })
@@ -234,23 +233,23 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
         function serializeNamespace($: mglossary.TNamespace, $i: mfp.IBlock) {
 
             if ($.namespaces !== undefined) {
-                $.namespaces.forEach(compare, ($, key) => {
+                $d.cb_dictionaryForEach($.namespaces, ($) => {
                     $i.literal(``)
                     $i.line(($i) => {
-                        $i.snippet(`export namespace N${key} {`)
+                        $i.snippet(`export namespace N${$.key} {`)
                         $i.indent(($i) => {
-                            serializeNamespace($, $i)
+                            serializeNamespace($.value, $i)
                         })
                         $i.snippet(`}`)
                     })
                 })
             }
             if ($.templates !== undefined) {
-                $.templates.forEach(compare, ($, key) => {
+                $d.cb_dictionaryForEach($.templates, ($) => {
                     $i.literal(``)
                     $i.line(($i) => {
-                        $i.snippet(`export type M${key}`)
-                        $d.cb_enrichedDictionaryForEach($.parameters, {
+                        $i.snippet(`export type M${$.key}`)
+                        $d.cb_enrichedDictionaryForEach($.value.parameters, {
                             onEmpty: () => {
                                 //nothing
                             },
@@ -264,35 +263,35 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                             }
                         })
                         $i.snippet(` = `)
-                        serializeType($.type, $i)
+                        serializeType($.value.type, $i)
                     })
                 })
             }
-            $.types.forEach(compare, ($, key) => {
+            $d.cb_dictionaryForEach($.types, ($) => {
                 $i.literal(``)
                 $i.line(($i) => {
-                    $i.snippet(`export type T${key} = `)
-                    serializeType($, $i)
+                    $i.snippet(`export type T${$.key} = `)
+                    serializeType($.value, $i)
                 })
             })
-            $.interfaces.forEach(compare, ($, key) => {
+            $d.cb_dictionaryForEach($.interfaces, ($) => {
                 $i.literal(``)
                 $i.line(($i) => {
-                    $i.snippet(`export type I${key} = `)
-                    serializeInterface($, $i)
+                    $i.snippet(`export type I${$.key} = `)
+                    serializeInterface($.value, $i)
                 })
             })
         }
         $i.line(($i) => {
             $i.snippet(`import * as pt from 'pareto-core-types'`)
         })
-        $.imports.forEach(compare, ($, key) => {
+        $d.cb_dictionaryForEach($.imports, ($) => {
             $i.line(($i) => {
-                $i.snippet(`import * as m${key} from "${$}"`)
+                $i.snippet(`import * as m${$.key} from "${$.value}"`)
             })
         })
         serializeNamespace($.namespace, $i)
-        // $.procedures.forEach(compare, ($, key) => {
+        // $d.cb_dictionaryForEach($.procedures, ($, key) => {
         //     $i.literal(``)
         //     $i.line(($i) => {
         //         $i.snippet(`export type P${key} = ($: `)
@@ -300,42 +299,42 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
         //         $i.snippet(`) => void`)
         //     })
         // })
-        $.functions.forEach(compare, ($, key) => {
+        $d.cb_dictionaryForEach($.functions, ($) => {
             $i.literal(``)
             $i.line(($i) => {
-                $i.snippet(`export type ${$.async ? `A` : `F`}${key} = `)
+                $i.snippet(`export type ${$.value.async ? `A` : `F`}${$.key} = `)
                 serializeParameters(parameters, $i)
                 $i.snippet(`($: `)
-                serializeTypeReference($.data, $i)
+                serializeTypeReference($.value.data, $i)
                 $i.snippet(`) => `)
-                if ($.async) {
+                if ($.value.async) {
                     $i.snippet(`pt.AsyncValue<`)
-                    serializeTypeReference($[`return value`], $i)
+                    serializeTypeReference($.value[`return value`], $i)
                     $i.snippet(`>`)
                 } else {
-                    serializeTypeReference($[`return value`], $i)
+                    serializeTypeReference($.value[`return value`], $i)
                 }
             })
         })
-        $.callbacks.forEach(compare, ($, key) => {
+        $d.cb_dictionaryForEach($.callbacks, ($) => {
             $i.literal(``)
             $i.line(($i) => {
-                $i.snippet(`export type X${key} = (`)
-                serializeOptionalTypeReference($.data, $i)
+                $i.snippet(`export type X${$.key} = (`)
+                serializeOptionalTypeReference($.value.data, $i)
                 $i.snippet(`$i: `)
-                if ($.context !== undefined) {
-                    serializeContext($.context, $i)
+                if ($.value.context !== undefined) {
+                    serializeContext($.value.context, $i)
                 }
-                $i.snippet(`I${$.interface}) => void`)
+                $i.snippet(`I${$.value.interface}) => void`)
             })
         })
-        $.pipes.forEach(compare, ($, key) => {
+        $d.cb_dictionaryForEach($.pipes, ($) => {
             $i.literal(``)
             $i.line(($i) => {
-                $i.snippet(`export type P${key} = ($i: `)
-                serializeInterfaceReference($.out, $i)
+                $i.snippet(`export type P${$.key} = ($i: `)
+                serializeInterfaceReference($.value.out, $i)
                 $i.snippet(`, $c: ($i: `)
-                serializeInterfaceReference($.in, $i)
+                serializeInterfaceReference($.value.in, $i)
                 $i.snippet(`) => void) => void`)
             })
         })

@@ -15,7 +15,7 @@ export const $$: api.CcreateEnrichedArrayForEach = ($d) => {
         } else {
             $i.onNotEmpty(($i) => {
                 let first = true
-                $.map(($) => {
+                $.forEach(($) => {
                     $i({
                         isFirst: first,
                         value: $,

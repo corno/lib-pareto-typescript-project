@@ -77,10 +77,6 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "compare": ['function', {
-                            'context': ['import', "collation"],
-                            'function': "IsABeforeB",
-                        }],
                         "serializeModuleDefinition": ['callback', {
                             'context': ['import', "moduleDefinition"],
                             'callback': "Serialize"
@@ -89,13 +85,21 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                             'context': ['import', "algorithm"],
                             'callback': "Serialize"
                         }],
+                        // "arrayForEach": ['callback', {
+                        //     'context': ['import', "temp"],
+                        //     'callback': "ArrayForEach",
+                        // }],
+                        "dictionaryForEach": ['callback', {
+                            'context': ['import', "temp"],
+                            'callback': "DictionaryForEach",
+                        }],
                         "enrichedArrayForEach": ['callback', {
                             'context': ['import', "temp"],
                             'callback': "EnrichedArrayForEach",
                         }],
-                        // "serializeLeafType": ['callback', {
-                        //     //'context': ['import', "glossary"],
-                        //     'callback': "SerializeLeafType"
+                        // "enrichedDictionaryForEach": ['callback', {
+                        //     'context': ['import', "temp"],
+                        //     'callback': "EnrichedDictionaryForEach",
                         // }],
                     }),
                 }],

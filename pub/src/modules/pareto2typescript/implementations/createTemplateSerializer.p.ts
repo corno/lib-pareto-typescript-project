@@ -7,7 +7,6 @@ export const $$: api.CcreateTemplateSerializer = (
     $d
 ) => {
     return ($, $i) => {
-        const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
         $i.directory("tmp", ($i) => {
             $i.directory("templates", ($i) => {
                 $i.directory("dev", ($i) => {
@@ -31,26 +30,26 @@ export const $$: api.CcreateTemplateSerializer = (
                     $i.directory("src", ($i) => {
                         $i.directory("modules", ($i) => {
 
-                            $.modules.forEach(compare, ($, key) => {
-                                const moduleName = key
+                            $d.cb_dictionaryForEach($.modules, ($) => {
+                                const moduleName = $.key
 
-                                $i.directory(key, ($i) => {
+                                $i.directory(moduleName, ($i) => {
                                     $i.directory("implementations", ($i) => {
-                                        $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                            $i.file(`${key}.p.ts`, ($i) => {
+                                        $d.cb_dictionaryForEach($.value.definition.api.algorithms, ($) => {
+                                            $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.literal(`import * as pl from 'pareto-core-lib'`)
                                                 $i.literal(``)
                                                 $i.literal(`import * as api from "../api"`)
                                                 $i.literal(``)
                                                 $i.line(($i) => {
-                                                    $i.snippet(`export const $$: api.C${key}`)
+                                                    $i.snippet(`export const $$: api.C${$.key}`)
                                                     $i.snippet(` = ($c, $d) => {`)
                                                     $i.indent(($i) => {
                                                         $i.line(($i) => {
                                                             $i.snippet(`return ($) => {`)
                                                             $i.indent(($i) => {
                                                                 $i.line(($i) => {
-                                                                    $i.snippet(`pl.implementMe("IMPLEMENT ${moduleName}:${key}")`)
+                                                                    $i.snippet(`pl.implementMe("IMPLEMENT ${moduleName}:${$.key}")`)
                                                                 })
                                                             })
                                                             $i.snippet(`}`)
@@ -115,12 +114,12 @@ export const $$: api.CcreateTemplateSerializer = (
                     $i.directory("src", ($i) => {
                         $i.directory("modules", ($i) => {
 
-                            $.modules.forEach(compare, ($, key) => {
-                                const moduleName = key
+                            $d.cb_dictionaryForEach($.modules, ($) => {
+                                const moduleName = $.key
 
-                                $i.directory(key, ($i) => {
-                                    $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                        $i.file(`${key}.p.ts`, ($i) => {
+                                $i.directory($.key, ($i) => {
+                                    $d.cb_dictionaryForEach($.value.definition.api.algorithms, ($) => {
+                                        $i.file(`${$.key}.p.ts`, ($i) => {
                                             $i.literal(`import * as pl from 'pareto-core-lib'`)
                                             $i.literal(``)
                                             $i.literal(`import * as api from "../api"`)

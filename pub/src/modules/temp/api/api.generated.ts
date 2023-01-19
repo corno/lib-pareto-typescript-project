@@ -4,19 +4,32 @@ import * as glo from "./types.generated"
 
 import * as mcollation from "res-pareto-collation"
 
-export type CcreateEnrichedDictionaryForEach = (
+export type CcreateArrayForEach = (
     $d: {
         readonly "sf_compare": mcollation.FIsABeforeB
     }
-) => glo.XEnrichedDictionaryForEach
+) => glo.XArrayForEach
 
+export type CcreateDictionaryForEach = (
+    $d: {
+        readonly "sf_compare": mcollation.FIsABeforeB
+    }
+) => glo.XDictionaryForEach
 
 export type CcreateEnrichedArrayForEach = (
     $d: {
     }
 ) => glo.XEnrichedArrayForEach
 
+export type CcreateEnrichedDictionaryForEach = (
+    $d: {
+        readonly "sf_compare": mcollation.FIsABeforeB
+    }
+) => glo.XEnrichedDictionaryForEach
+
 export type API = {
-    createEnrichedDictionaryForEach: CcreateEnrichedDictionaryForEach
+    createArrayForEach: CcreateArrayForEach
+    createDictionaryForEach: CcreateDictionaryForEach
     createEnrichedArrayForEach: CcreateEnrichedArrayForEach
+    createEnrichedDictionaryForEach: CcreateEnrichedDictionaryForEach
 }

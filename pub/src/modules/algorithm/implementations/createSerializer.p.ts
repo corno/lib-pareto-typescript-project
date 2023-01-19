@@ -6,7 +6,6 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateSerializer = ($d) => {
-    const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
 
     return ($, $i) => {
         function serializeExpression($: api.TExpression, $i: mfp.ILine) {
@@ -43,10 +42,10 @@ export const $$: api.CcreateSerializer = ($d) => {
                             $i.line(($i) => {
                                 $i.snippet(`'properties': d({`)
                                 $i.indent(($i) => {
-                                    $.properties.forEach(compare, ($, key) => {
+                                    $d.cb_dictionaryForEach($.properties, ($) => {
                                         $i.line(($i) => {
-                                            $i.snippet(`"${key}": `)
-                                            serializeExpression($, $i)
+                                            $i.snippet(`"${$.key}": `)
+                                            serializeExpression($.value, $i)
                                             $i.snippet(`,`)
                                         })
                                     })
@@ -109,10 +108,10 @@ export const $$: api.CcreateSerializer = ($d) => {
                             $i.line(($i) => {
                                 $i.snippet(`'cases': d({`)
                                 $i.indent(($i) => {
-                                    $.cases.forEach(compare, ($, key) => {
+                                    $d.cb_dictionaryForEach($.cases, ($) => {
                                         $i.line(($i) => {
-                                            $i.snippet(`"${key}": `)
-                                            serializeFunctionBlock($, $i)
+                                            $i.snippet(`"${$.key}": `)
+                                            serializeFunctionBlock($.value, $i)
                                             $i.snippet(`,`)
                                         })
                                     })
@@ -156,9 +155,9 @@ export const $$: api.CcreateSerializer = ($d) => {
                     $i.snippet(`'innerFunctions': d({`)
                     $i.indent(($i) => {
                         if ($.innerFunctions !== undefined) {
-                            $.innerFunctions.forEach(compare, ($, key) => {
+                            $d.cb_dictionaryForEach($.innerFunctions, ($) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`"${key}": {`)
+                                    $i.snippet(`"${$.key}": {`)
                                     $i.indent(($i) => {
                                         // $i.line(($i) => {
                                         //     $i.snippet(`'definition': `)
@@ -167,7 +166,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                         // })
                                         $i.line(($i) => {
                                             $i.snippet(`'block': `)
-                                            serializeFunctionBlock($.block, $i)
+                                            serializeFunctionBlock($.value.block, $i)
                                             $i.snippet(`,`)
                                         })
                                     })
@@ -194,9 +193,9 @@ export const $$: api.CcreateSerializer = ($d) => {
                     $i.snippet(`'innerCallbacks': d({`)
                     $i.indent(($i) => {
                         if ($.innerCallbacks !== undefined) {
-                            $.innerCallbacks.forEach(compare, ($, key) => {
+                            $d.cb_dictionaryForEach($.innerCallbacks, ($) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`"${key}": {`)
+                                    $i.snippet(`"${$.key}": {`)
                                     $i.indent(($i) => {
                                         // $i.line(($i) => {
                                         //     $i.snippet(`'definition': `)
@@ -205,7 +204,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                         // })
                                         $i.line(($i) => {
                                             $i.snippet(`'block': `)
-                                            serializeCallbackBlock($.block, $i)
+                                            serializeCallbackBlock($.value.block, $i)
                                             $i.snippet(`,`)
                                         })
                                     })
@@ -259,20 +258,20 @@ export const $$: api.CcreateSerializer = ($d) => {
             $i.line(($i) => {
                 $i.snippet(`'implementations': d({`)
                 $i.indent(($i) => {
-                    $.implementations.forEach(compare, ($, key) => {
+                    $d.cb_dictionaryForEach($.implementations, ($) => {
                         $i.line(($i) => {
-                            $i.snippet(`"${key}": {`)
+                            $i.snippet(`"${$.key}": {`)
                             $i.indent(($i) => {
 
                                 $i.line(($i) => {
-                                    $i.snippet(`'constructor': ${$.constructor ? `true` : `false`}`)
+                                    $i.snippet(`'constructor': ${$.value.constructor ? `true` : `false`}`)
                                     $i.snippet(`,`)
                                 })
                                 $i.line(($i) => {
                                     $i.snippet(`'type': `)
-                                    switch ($.type[0]) {
+                                    switch ($.value.type[0]) {
                                         case 'function':
-                                            pl.cc($.type[1], ($) => {
+                                            pl.cc($.value.type[1], ($) => {
                                                 $i.snippet(`['function', {`)
                                                 $i.indent(($i) => {
                                                     $i.line(($i) => {
@@ -285,7 +284,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                             })
                                             break
                                         case 'callback':
-                                            pl.cc($.type[1], ($) => {
+                                            pl.cc($.value.type[1], ($) => {
                                                 $i.snippet(`['function', {`)
                                                 $i.indent(($i) => {
                                                     $i.line(($i) => {
@@ -297,7 +296,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                 $i.snippet(`}]`)
                                             })
                                             break
-                                        default: pl.au($.type[0])
+                                        default: pl.au($.value.type[0])
                                     }
                                     $i.snippet(`,`)
                                 })

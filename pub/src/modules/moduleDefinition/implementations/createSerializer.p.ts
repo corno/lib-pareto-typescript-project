@@ -9,7 +9,6 @@ import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateSerializer = ($d) => {
     return ($, $i) => {
-        const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
         function serializeOptionalTypeReference($: mglossary.TOptionalTypeReference, $i: mfp.ILine) {
             if ($ === null) {
                 $i.snippet(`null`)
@@ -153,9 +152,9 @@ export const $$: api.CcreateSerializer = ($d) => {
                         $i.line(($i) => {
                             $i.snippet(`'imports': d({`)
                             $i.indent(($i) => {
-                                $.api.imports.forEach(compare, ($, key) => {
+                                $d.cb_dictionaryForEach($.api.imports, ($) => {
                                     $i.line(($i) => {
-                                        $i.snippet(`'${key}': "${$}"`)
+                                        $i.snippet(`'${$.key}': "${$.value}"`)
                                     })
                                 })
                             })
@@ -164,20 +163,20 @@ export const $$: api.CcreateSerializer = ($d) => {
                             $i.line(($i) => {
                                 $i.snippet(`'algorithms': d({`)
                                 $i.indent(($i) => {
-                                    $.api.algorithms.forEach(compare, ($, key) => {
+                                    $d.cb_dictionaryForEach($.api.algorithms, ($) => {
                                         $i.line(($i) => {
-                                            $i.snippet(`'${key}': {`)
+                                            $i.snippet(`'${$.key}': {`)
                                             $i.indent(($i) => {
                                                 $i.line(($i) => {
                                                     $i.snippet(`'definition': `)
-                                                    serializeDefinitionReference($.definition, $i)
+                                                    serializeDefinitionReference($.value.definition, $i)
                                                     $i.snippet(`,`)
                                                 })
                                                 $i.line(($i) => {
                                                     $i.snippet(`'type': `)
-                                                    switch ($.type[0]) {
+                                                    switch ($.value.type[0]) {
                                                         case 'constructor':
-                                                            pl.cc($.type[1], ($) => {
+                                                            pl.cc($.value.type[1], ($) => {
 
                                                                 $i.snippet(`['constructor', {`)
                                                                 $i.indent(($i) => {
@@ -190,10 +189,10 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                     $i.line(($i) => {
                                                                         $i.snippet(`'dependencies': d({`)
                                                                         $i.indent(($i) => {
-                                                                            $.dependencies.forEach(compare, ($, key) => {
+                                                                            $d.cb_dictionaryForEach($.dependencies, ($) => {
                                                                                 $i.line(($i) => {
-                                                                                    $i.snippet(`'${key}': `)
-                                                                                    serializeDefinitionReference($, $i)
+                                                                                    $i.snippet(`'${$.key}': `)
+                                                                                    serializeDefinitionReference($.value, $i)
                                                                                     $i.snippet(`,`)
                                                                                 })
                                                                             })
@@ -205,12 +204,12 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                             })
                                                             break
                                                         case 'reference':
-                                                            pl.cc($.type[1], ($) => {
+                                                            pl.cc($.value.type[1], ($) => {
 
                                                                 $i.snippet(`['reference', null]`)
                                                             })
                                                             break
-                                                        default: pl.au($.type[0])
+                                                        default: pl.au($.value.type[0])
                                                     }
                                                     $i.snippet(`,`)
                                                 })

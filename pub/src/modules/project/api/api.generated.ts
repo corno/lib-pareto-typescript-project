@@ -8,7 +8,7 @@ import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mtemp from "../../temp"
 
 export type CcreateSerializer = ($d: {
-    readonly 'sf_compare': mcollation.FIsABeforeB
+    readonly 'cb_dictionaryForEach': mtemp.XDictionaryForEach
     readonly 'cb_enrichedArrayForEach': mtemp.XEnrichedArrayForEach
     readonly 'cb_serializeImplementation': malgorithm.XSerialize
     readonly 'cb_serializeModuleDefinition': mmoduleDefinition.XSerialize

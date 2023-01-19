@@ -13,6 +13,19 @@ import * as malgorithm from "../../algorithm"
 import { $a } from "../index"
 
 export const $$: api.CgenerateProject = ($) => {
+    const a = mtemp.$a.createArrayForEach({
+        sf_compare: mcoll.$a.localeIsABeforeB,
+    })
+    const d = mtemp.$a.createDictionaryForEach({
+        sf_compare: mcoll.$a.localeIsABeforeB,
+    })
+    const ea = mtemp.$a.createEnrichedArrayForEach({
+        sf_compare: mcoll.$a.localeIsABeforeB,
+    })
+    const ed = mtemp.$a.createEnrichedDictionaryForEach({
+        sf_compare: mcoll.$a.localeIsABeforeB,
+    })
+
 
     $a.createProjectGenerator(
         {
@@ -20,31 +33,25 @@ export const $$: api.CgenerateProject = ($) => {
             sf_mapLiana2Pareto: $a.createLiana2ParetoMapper({}),
             cb_serializeProject: mproject.$a.createSerializerWithContext({
                 cb_serialize: mproject.$a.createSerializer({
-                    sf_compare: mcoll.$a.localeIsABeforeB,
+                    cb_dictionaryForEach: d,
+                    cb_enrichedArrayForEach: ea,
                     cb_serializeModuleDefinition: mmoduleDefinition.$a.createSerializer({
-                        sf_compare: mcoll.$a.localeIsABeforeB,
-                        cb_enrichedArrayForEach: mtemp.$a.createEnrichedArrayForEach({
-                        }),
+
+                        cb_dictionaryForEach: d,
+                        cb_enrichedArrayForEach: ea,
                         cb_serializeGlossary: mglossary.$a.createSerializer({
-                            sf_compare: mcoll.$a.localeIsABeforeB,
-                            cb_enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
-                                sf_compare: mcoll.$a.localeIsABeforeB,
-                            }),
-                            cb_enrichedArrayForEach: mtemp.$a.createEnrichedArrayForEach({
-                            }),
+                            cb_arrayForEach: a,
+                            cb_dictionaryForEach: d,
+                            cb_enrichedArrayForEach: ea,
+                            cb_enrichedDictionaryForEach: ed,
                         })
                     }),
                     cb_serializeImplementation: malgorithm.$a.createSerializer({
-    
-                        sf_compare: mcoll.$a.localeIsABeforeB,
-                        cb_enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
-                            sf_compare: mcoll.$a.localeIsABeforeB,
-                        }),
-                        cb_enrichedArrayForEach: mtemp.$a.createEnrichedArrayForEach({
-                        }),
+                        cb_arrayForEach: a,
+                        cb_dictionaryForEach: d,
+                        cb_enrichedArrayForEach: ea,
+                        cb_enrichedDictionaryForEach: ed,
                     }),
-                    cb_enrichedArrayForEach: mtemp.$a.createEnrichedArrayForEach({
-                    })
                     //cb_serializeLeafType: mserialize.$a,
                 })
             })

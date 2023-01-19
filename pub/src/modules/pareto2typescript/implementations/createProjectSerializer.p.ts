@@ -7,7 +7,6 @@ export const $$: api.CcreateProjectSerializer = (
     $d,
 ) => {
     return ($, $i) => {
-        const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
         function tsConfig(
             $: {
                 isResource: boolean
@@ -142,39 +141,39 @@ export const $$: api.CcreateProjectSerializer = (
                     globals($i)
                 }
                 $i.directory("modules", ($i) => {
-                    $.modules.forEach(compare, ($, key) => {
-                        $i.directory(`${key}`, ($i) => {
+                    $d.cb_dictionaryForEach($.modules, ($) => {
+                        $i.directory(`${$.key}`, ($i) => {
                             $i.directory("api", ($i) => {
-                                $d.cb_serializeModuleDefinition($.definition, $i)
+                                $d.cb_serializeModuleDefinition($.value.definition, $i)
                             })
 
                             $i.directory("implementations", ($i) => {
-                                if ($.implementation !== undefined) {
-                                    pl.cc($.implementation, ($) => {
+                                if ($.value.implementation !== undefined) {
+                                    pl.cc($.value.implementation, ($) => {
                                         $d.cb_serializeImplementation($, $i)
                                     })
                                 } else {
-                                    $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                        $i.allowed(`${key}.p.ts`)
+                                    $d.cb_dictionaryForEach($.value.definition.api.algorithms, ($) => {
+                                        $i.allowed(`${$.key}.p.ts`)
                                     })
                                 }
                             })
-                            // $.definition.api.algorithms.forEach(compare, ($, key) => {
+                            // $d.cb_dictionaryForEach($.definition.api.algorithms, ($, key) => {
                             //     $i.directory(`${key}`, ($i) => {
                             //     })
                             // })
                             $i.file("implementation.generated.ts", ($i) => {
-                                const suffix = $.implementation !== undefined ? `generated` : `p`
+                                const suffix = $.value.implementation !== undefined ? `generated` : `p`
                                 $i.literal(`import { API } from "./api"`)
-                                $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                    $i.literal(`import { $$ as i${key} } from "./implementations/${key}.${suffix}"`)
+                                $d.cb_dictionaryForEach($.value.definition.api.algorithms, ($) => {
+                                    $i.literal(`import { $$ as i${$.key} } from "./implementations/${$.key}.${suffix}"`)
                                 })
                                 $i.literal(``)
                                 $i.line(($i) => {
                                     $i.snippet(`export const $a: API = {`)
                                     $i.indent(($i) => {
-                                        $.definition.api.algorithms.forEach(compare, ($, key) => {
-                                            $i.literal(`'${key}': i${key},`)
+                                        $d.cb_dictionaryForEach($.value.definition.api.algorithms, ($) => {
+                                            $i.literal(`'${$.key}': i${$.key},`)
                                         })
                                     })
                                     $i.snippet(`}`)
@@ -218,7 +217,7 @@ export const $$: api.CcreateProjectSerializer = (
                 //     //     $i.literal(`import * as glo from "./internal_glossary"`)
                 //     //     $i.literal(`import * as api from "../api"`)
                 //     //     $i.literal(``)
-                //     //     $.implementation.implementations.forEach(compare, ($, key) => {
+                //     //     $d.cb_dictionaryForEach($.implementation.implementations, ($, key) => {
                 //     //         $i.line(($i) => {
                 //     //             $i.snippet(`export type I${key} = `)
                 //     //             serializeAlgorithmDefinition($.definition, $i)
@@ -330,9 +329,9 @@ export const $$: api.CcreateProjectSerializer = (
                     //     $i.literal(`import * as pl from 'pareto-core-lib'`)
                     //     $i.literal(`import * as tst from "lib-pareto-test"`)
                     //     $i.literal(``)
-                    //     $.modules.forEach(compare, ($, key) => {
+                    //     $d.cb_dictionaryForEach($.modules, ($, key) => {
                     //         const moduleName = key
-                    //         $.definition.api.algorithms.forEach(compare, ($, key) => {
+                    //         $d.cb_dictionaryForEach($.definition.api.algorithms, ($, key) => {
                     //             $i.line(($i) => {
                     //                 $i.snippet(`import { test as ${moduleName}_${key} } from "../modules/${moduleName}/${key}.generated"`)
                     //             })
@@ -342,12 +341,12 @@ export const $$: api.CcreateProjectSerializer = (
                     //     $i.line(($i) => {
                     //         $i.snippet(`const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({`)
                     //         $i.indent(($i) => {
-                    //             $.modules.forEach(compare, ($, key) => {
+                    //             $d.cb_dictionaryForEach($.modules, ($, key) => {
                     //                 const moduleName = key
                     //                 $i.line(($i) => {
                     //                     $i.snippet(`'${key}': pr.wrapRawDictionary({`)
                     //                     $i.indent(($i) => {
-                    //                         $.definition.api.algorithms.forEach(compare, ($, key) => {
+                    //                         $d.cb_dictionaryForEach($.definition.api.algorithms, ($, key) => {
                     //                             $i.line(($i) => {
                     //                                 $i.snippet(`'${key}': ${moduleName}_${key},`)
                     //                             })
@@ -361,11 +360,11 @@ export const $$: api.CcreateProjectSerializer = (
                     //     })
                     // })
                     // $i.directory("modules", ($i) => {
-                    //     $.modules.forEach(compare, ($, key) => {
+                    //     $d.cb_dictionaryForEach($.modules, ($, key) => {
                     //         const moduleName = key
                     //         $i.directory(key, ($i) => {
                     //             const def = $.definition
-                    //             $.definition.api.algorithms.forEach(compare, ($, key) => {
+                    //             $d.cb_dictionaryForEach($.definition.api.algorithms, ($, key) => {
                     //                 // $i.file(`${key}_tmp.p.ts`, ($i) => {
                     //                 //     $i.literal(`import * as pt from 'pareto-core-types'`)
                     //                 //     $i.literal(`import * as pl from 'pareto-core-lib'`)
@@ -385,7 +384,7 @@ export const $$: api.CcreateProjectSerializer = (
                     //                 //                     break
                     //                 //                 case 'constructor':
                     //                 //                     pl.cc($[1], ($) => {
-                    //                 //                         $.dependencies.forEach(compare, ($, key) => {
+                    //                 //                         $d.cb_dictionaryForEach($.dependencies, ($, key) => {
                     //                 //                             $i.line(($i) => {
                     //                 //                                 $i.snippet(`| [ '${key}', `)
                     //                 //                                 switch ($.type[0]) {

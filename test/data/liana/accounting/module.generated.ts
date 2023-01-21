@@ -359,122 +359,11 @@ export const $: mproject.TModule = {
                                                                         "Verwerkt": <mglossary.TType>['group', d({
                                                                             "Afhandeling": {
                                                                                 'optional': false,
-                                                                                'type': <mglossary.TType>['taggedUnion', d({
-                                                                                    "BTW-periode": <mglossary.TType>['group', d({
-                                                                                        "BTW-periode": {
-                                                                                            'optional': false,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "BTW-periodes",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                        "Jaar": {
-                                                                                            'optional': false,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Jaren",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                    })],
-                                                                                    "Informele rekening": <mglossary.TType>['group', d({
-                                                                                        "Informele rekening": {
-                                                                                            'optional': false,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Informele rekeningen",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                    })],
-                                                                                    "Inkoop": <mglossary.TType>['group', d({
-                                                                                        "Inkoop": {
-                                                                                            'optional': false,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Inkopen",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                        "Jaar": {
-                                                                                            'optional': false,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Jaren",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                    })],
-                                                                                    "Verkoop": <mglossary.TType>['group', d({
-                                                                                        "Inkoop": {
-                                                                                            'optional': false,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Verkopen",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                        "Jaar": {
-                                                                                            'optional': false,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Jaren",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                    })],
-                                                                                    "Verrekenpost": <mglossary.TType>['group', d({
-                                                                                        "Verrekenpost": {
-                                                                                            'optional': false,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Verrekenposten",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                    })],
-                                                                                })],
+                                                                                'type': <mglossary.TType>['reference', {
+                                                                                    'context': <mglossary.TContext>['local', null],
+                                                                                    'namespaces': a([]),
+                                                                                    'type': "Afhandeling",
+                                                                                }],
                                                                             },
                                                                         })],
                                                                     })],
@@ -845,9 +734,224 @@ export const $: mproject.TModule = {
                                                 "Verkopen": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                                        "Afhandeling": {
+                                                            'optional': false,
+                                                            'type': <mglossary.TType>['taggedUnion', d({
+                                                                "Mutaties": <mglossary.TType>['group', d({})],
+                                                                "Rekening courant": <mglossary.TType>['group', d({
+                                                                    "Rekening courant": {
+                                                                        'optional': false,
+                                                                        'type': <mglossary.TType>['template', {
+                                                                            'arguments': d({
+                                                                                "RererencedType": <mglossary.TType>['reference', {
+                                                                                    'context': <mglossary.TContext>['local', null],
+                                                                                    'namespaces': a([]),
+                                                                                    'type': "Rekeningen courant",
+                                                                                }],
+                                                                            }),
+                                                                            'template': "Reference",
+                                                                        }],
+                                                                    },
+                                                                })],
+                                                            })],
+                                                        },
+                                                        "Betalingstermijn": {
+                                                            'optional': false,
+                                                            'type': <mglossary.TType>['number', null],
+                                                        },
+                                                        "Brondocument": {
+                                                            'optional': false,
+                                                            'type': <mglossary.TType>['taggedUnion', d({
+                                                                "Nog toevoegen": <mglossary.TType>['group', d({})],
+                                                                "Toegevoegd": <mglossary.TType>['group', d({
+                                                                    "Document": {
+                                                                        'optional': false,
+                                                                        'type': <mglossary.TType>['number', null],
+                                                                    },
+                                                                })],
+                                                            })],
+                                                        },
+                                                        "BTW-periode": {
+                                                            'optional': false,
+                                                            'type': <mglossary.TType>['template', {
+                                                                'arguments': d({
+                                                                    "RererencedType": <mglossary.TType>['reference', {
+                                                                        'context': <mglossary.TContext>['local', null],
+                                                                        'namespaces': a([]),
+                                                                        'type': "BTW-periodes",
+                                                                    }],
+                                                                }),
+                                                                'template': "Reference",
+                                                            }],
+                                                        },
+                                                        "Contracttype": {
+                                                            'optional': false,
+                                                            'type': <mglossary.TType>['taggedUnion', d({
+                                                                "Licentieovereenkomst": <mglossary.TType>['group', d({
+                                                                    "Overeenkomst": {
+                                                                        'optional': false,
+                                                                        'type': <mglossary.TType>['template', {
+                                                                            'arguments': d({
+                                                                                "RererencedType": <mglossary.TType>['reference', {
+                                                                                    'context': <mglossary.TContext>['local', null],
+                                                                                    'namespaces': a([]),
+                                                                                    'type': "Overeenkomsten",
+                                                                                }],
+                                                                            }),
+                                                                            'template': "Reference",
+                                                                        }],
+                                                                    },
+                                                                })],
+                                                                "Project": <mglossary.TType>['group', d({
+                                                                    "Offerte": {
+                                                                        'optional': false,
+                                                                        'type': <mglossary.TType>['template', {
+                                                                            'arguments': d({
+                                                                                "RererencedType": <mglossary.TType>['reference', {
+                                                                                    'context': <mglossary.TContext>['local', null],
+                                                                                    'namespaces': a([]),
+                                                                                    'type': "Offerte",
+                                                                                }],
+                                                                            }),
+                                                                            'template': "Reference",
+                                                                        }],
+                                                                    },
+                                                                    "Project": {
+                                                                        'optional': false,
+                                                                        'type': <mglossary.TType>['template', {
+                                                                            'arguments': d({
+                                                                                "RererencedType": <mglossary.TType>['reference', {
+                                                                                    'context': <mglossary.TContext>['local', null],
+                                                                                    'namespaces': a([]),
+                                                                                    'type': "Projecten",
+                                                                                }],
+                                                                            }),
+                                                                            'template': "Reference",
+                                                                        }],
+                                                                    },
+                                                                })],
+                                                            })],
+                                                        },
+                                                        "Debiteur": {
+                                                            'optional': false,
+                                                            'type': <mglossary.TType>['template', {
+                                                                'arguments': d({
+                                                                    "RererencedType": <mglossary.TType>['reference', {
+                                                                        'context': <mglossary.TContext>['local', null],
+                                                                        'namespaces': a([]),
+                                                                        'type': "Klanten",
+                                                                    }],
+                                                                }),
+                                                                'template': "Reference",
+                                                            }],
+                                                        },
                                                         "Regels": {
                                                             'optional': false,
-                                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                                                "Bedrag exclusief BTW": {
+                                                                    'optional': false,
+                                                                    'type': <mglossary.TType>['number', null],
+                                                                },
+                                                                "BTW-regime": {
+                                                                    'optional': false,
+                                                                    'type': <mglossary.TType>['taggedUnion', d({
+                                                                        "Binnenland heffing verlegd": <mglossary.TType>['group', d({})],
+                                                                        "Export buiten de EU": <mglossary.TType>['group', d({})],
+                                                                        "Installatie of afstandsverkopen binnen de EU": <mglossary.TType>['group', d({})],
+                                                                        "Intracommunautair": <mglossary.TType>['group', d({})],
+                                                                        "Standaard": <mglossary.TType>['group', d({
+                                                                            "BTW-cateogrie": {
+                                                                                'optional': false,
+                                                                                'type': <mglossary.TType>['template', {
+                                                                                    'arguments': d({
+                                                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                                                            'context': <mglossary.TContext>['local', null],
+                                                                                            'namespaces': a([]),
+                                                                                            'type': "BTW Categorieen",
+                                                                                        }],
+                                                                                    }),
+                                                                                    'template': "Reference",
+                                                                                }],
+                                                                            },
+                                                                        })],
+                                                                    })],
+                                                                },
+                                                                "Contracttype": {
+                                                                    'optional': false,
+                                                                    'type': <mglossary.TType>['taggedUnion', d({
+                                                                        "Licentieovereenkomst": <mglossary.TType>['group', d({
+                                                                            "Periode": {
+                                                                                'optional': false,
+                                                                                'type': <mglossary.TType>['template', {
+                                                                                    'arguments': d({
+                                                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                                                            'context': <mglossary.TContext>['local', null],
+                                                                                            'namespaces': a([]),
+                                                                                            'type': "Periodes",
+                                                                                        }],
+                                                                                    }),
+                                                                                    'template': "Reference",
+                                                                                }],
+                                                                            },
+                                                                        })],
+                                                                        "Los": <mglossary.TType>['group', d({})],
+                                                                        "Project": <mglossary.TType>['group', d({
+                                                                            "Opbrengst": {
+                                                                                'optional': false,
+                                                                                'type': <mglossary.TType>['template', {
+                                                                                    'arguments': d({
+                                                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                                                            'context': <mglossary.TContext>['local', null],
+                                                                                            'namespaces': a([]),
+                                                                                            'type': "Opbrengsten",
+                                                                                        }],
+                                                                                    }),
+                                                                                    'template': "Reference",
+                                                                                }],
+                                                                            },
+                                                                        })],
+                                                                    })],
+                                                                },
+                                                                "Omschrijving": {
+                                                                    'optional': false,
+                                                                    'type': <mglossary.TType>['number', null],
+                                                                },
+                                                                "Type": {
+                                                                    'optional': false,
+                                                                    'type': <mglossary.TType>['taggedUnion', d({
+                                                                        "Balans": <mglossary.TType>['group', d({
+                                                                            "Balans item": {
+                                                                                'optional': false,
+                                                                                'type': <mglossary.TType>['template', {
+                                                                                    'arguments': d({
+                                                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                                                            'context': <mglossary.TContext>['local', null],
+                                                                                            'namespaces': a([]),
+                                                                                            'type': "Balans items",
+                                                                                        }],
+                                                                                    }),
+                                                                                    'template': "Reference",
+                                                                                }],
+                                                                            },
+                                                                        })],
+                                                                        "Opbrengsten": <mglossary.TType>['group', d({
+                                                                            "Grootboekrekening": {
+                                                                                'optional': false,
+                                                                                'type': <mglossary.TType>['template', {
+                                                                                    'arguments': d({
+                                                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                                                            'context': <mglossary.TContext>['local', null],
+                                                                                            'namespaces': a([]),
+                                                                                            'type': "GRootboekrekeningen",
+                                                                                        }],
+                                                                                    }),
+                                                                                    'template': "Reference",
+                                                                                }],
+                                                                            },
+                                                                        })],
+                                                                    })],
+                                                                },
+                                                            })]],
                                                         },
                                                     })]],
                                                 },
@@ -859,122 +963,11 @@ export const $: mproject.TModule = {
                                                             'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                                                 "Afhandeling": {
                                                                     'optional': false,
-                                                                    'type': <mglossary.TType>['taggedUnion', d({
-                                                                        "BTW-periode": <mglossary.TType>['group', d({
-                                                                            "BTW-periode": {
-                                                                                'optional': false,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "BTW-periodes",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                            "Jaar": {
-                                                                                'optional': false,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Jaren",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                        })],
-                                                                        "Informele rekening": <mglossary.TType>['group', d({
-                                                                            "Informele rekening": {
-                                                                                'optional': false,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Informele rekeningen",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                        })],
-                                                                        "Inkoop": <mglossary.TType>['group', d({
-                                                                            "Inkoop": {
-                                                                                'optional': false,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Inkopen",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                            "Jaar": {
-                                                                                'optional': false,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Jaren",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                        })],
-                                                                        "Verkoop": <mglossary.TType>['group', d({
-                                                                            "Inkoop": {
-                                                                                'optional': false,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Verkopen",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                            "Jaar": {
-                                                                                'optional': false,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Jaren",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                        })],
-                                                                        "Verrekenpost": <mglossary.TType>['group', d({
-                                                                            "Verrekenpost": {
-                                                                                'optional': false,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Verrekenposten",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                        })],
-                                                                    })],
+                                                                    'type': <mglossary.TType>['reference', {
+                                                                        'context': <mglossary.TContext>['local', null],
+                                                                        'namespaces': a([]),
+                                                                        'type': "Afhandeling",
+                                                                    }],
                                                                 },
                                                                 "Bedrag": {
                                                                     'optional': false,
@@ -1043,6 +1036,122 @@ export const $: mproject.TModule = {
                                             'optional': false,
                                             'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
                                         },
+                                    })],
+                                    "Afhandeling": <mglossary.TType>['taggedUnion', d({
+                                        "BTW-periode": <mglossary.TType>['group', d({
+                                            "BTW-periode": {
+                                                'optional': false,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "BTW-periodes",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                            "Jaar": {
+                                                'optional': false,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Jaren",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                        })],
+                                        "Informele rekening": <mglossary.TType>['group', d({
+                                            "Informele rekening": {
+                                                'optional': false,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Informele rekeningen",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                        })],
+                                        "Inkoop": <mglossary.TType>['group', d({
+                                            "Inkoop": {
+                                                'optional': false,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Inkopen",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                            "Jaar": {
+                                                'optional': false,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Jaren",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                        })],
+                                        "Verkoop": <mglossary.TType>['group', d({
+                                            "Inkoop": {
+                                                'optional': false,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Verkopen",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                            "Jaar": {
+                                                'optional': false,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Jaren",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                        })],
+                                        "Verrekenpost": <mglossary.TType>['group', d({
+                                            "Verrekenpost": {
+                                                'optional': false,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Verrekenposten",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                        })],
                                     })],
                                 }),
                                 'interfaces': d({}),
@@ -1399,122 +1508,11 @@ export const $: mproject.TModule = {
                                                                         "Verwerkt": <mglossary.TType>['group', d({
                                                                             "Afhandeling": {
                                                                                 'optional': true,
-                                                                                'type': <mglossary.TType>['taggedUnion', d({
-                                                                                    "BTW-periode": <mglossary.TType>['group', d({
-                                                                                        "BTW-periode": {
-                                                                                            'optional': true,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "BTW-periodes",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                        "Jaar": {
-                                                                                            'optional': true,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Jaren",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                    })],
-                                                                                    "Informele rekening": <mglossary.TType>['group', d({
-                                                                                        "Informele rekening": {
-                                                                                            'optional': true,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Informele rekeningen",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                    })],
-                                                                                    "Inkoop": <mglossary.TType>['group', d({
-                                                                                        "Inkoop": {
-                                                                                            'optional': true,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Inkopen",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                        "Jaar": {
-                                                                                            'optional': true,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Jaren",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                    })],
-                                                                                    "Verkoop": <mglossary.TType>['group', d({
-                                                                                        "Inkoop": {
-                                                                                            'optional': true,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Verkopen",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                        "Jaar": {
-                                                                                            'optional': true,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Jaren",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                    })],
-                                                                                    "Verrekenpost": <mglossary.TType>['group', d({
-                                                                                        "Verrekenpost": {
-                                                                                            'optional': true,
-                                                                                            'type': <mglossary.TType>['template', {
-                                                                                                'arguments': d({
-                                                                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                                                                        'context': <mglossary.TContext>['local', null],
-                                                                                                        'namespaces': a([]),
-                                                                                                        'type': "Verrekenposten",
-                                                                                                    }],
-                                                                                                }),
-                                                                                                'template': "Reference",
-                                                                                            }],
-                                                                                        },
-                                                                                    })],
-                                                                                })],
+                                                                                'type': <mglossary.TType>['reference', {
+                                                                                    'context': <mglossary.TContext>['local', null],
+                                                                                    'namespaces': a([]),
+                                                                                    'type': "Afhandeling",
+                                                                                }],
                                                                             },
                                                                         })],
                                                                     })],
@@ -1885,9 +1883,224 @@ export const $: mproject.TModule = {
                                                 "Verkopen": {
                                                     'optional': true,
                                                     'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                                        "Afhandeling": {
+                                                            'optional': true,
+                                                            'type': <mglossary.TType>['taggedUnion', d({
+                                                                "Mutaties": <mglossary.TType>['group', d({})],
+                                                                "Rekening courant": <mglossary.TType>['group', d({
+                                                                    "Rekening courant": {
+                                                                        'optional': true,
+                                                                        'type': <mglossary.TType>['template', {
+                                                                            'arguments': d({
+                                                                                "RererencedType": <mglossary.TType>['reference', {
+                                                                                    'context': <mglossary.TContext>['local', null],
+                                                                                    'namespaces': a([]),
+                                                                                    'type': "Rekeningen courant",
+                                                                                }],
+                                                                            }),
+                                                                            'template': "Reference",
+                                                                        }],
+                                                                    },
+                                                                })],
+                                                            })],
+                                                        },
+                                                        "Betalingstermijn": {
+                                                            'optional': true,
+                                                            'type': <mglossary.TType>['number', null],
+                                                        },
+                                                        "Brondocument": {
+                                                            'optional': true,
+                                                            'type': <mglossary.TType>['taggedUnion', d({
+                                                                "Nog toevoegen": <mglossary.TType>['group', d({})],
+                                                                "Toegevoegd": <mglossary.TType>['group', d({
+                                                                    "Document": {
+                                                                        'optional': true,
+                                                                        'type': <mglossary.TType>['number', null],
+                                                                    },
+                                                                })],
+                                                            })],
+                                                        },
+                                                        "BTW-periode": {
+                                                            'optional': true,
+                                                            'type': <mglossary.TType>['template', {
+                                                                'arguments': d({
+                                                                    "RererencedType": <mglossary.TType>['reference', {
+                                                                        'context': <mglossary.TContext>['local', null],
+                                                                        'namespaces': a([]),
+                                                                        'type': "BTW-periodes",
+                                                                    }],
+                                                                }),
+                                                                'template': "Reference",
+                                                            }],
+                                                        },
+                                                        "Contracttype": {
+                                                            'optional': true,
+                                                            'type': <mglossary.TType>['taggedUnion', d({
+                                                                "Licentieovereenkomst": <mglossary.TType>['group', d({
+                                                                    "Overeenkomst": {
+                                                                        'optional': true,
+                                                                        'type': <mglossary.TType>['template', {
+                                                                            'arguments': d({
+                                                                                "RererencedType": <mglossary.TType>['reference', {
+                                                                                    'context': <mglossary.TContext>['local', null],
+                                                                                    'namespaces': a([]),
+                                                                                    'type': "Overeenkomsten",
+                                                                                }],
+                                                                            }),
+                                                                            'template': "Reference",
+                                                                        }],
+                                                                    },
+                                                                })],
+                                                                "Project": <mglossary.TType>['group', d({
+                                                                    "Offerte": {
+                                                                        'optional': true,
+                                                                        'type': <mglossary.TType>['template', {
+                                                                            'arguments': d({
+                                                                                "RererencedType": <mglossary.TType>['reference', {
+                                                                                    'context': <mglossary.TContext>['local', null],
+                                                                                    'namespaces': a([]),
+                                                                                    'type': "Offerte",
+                                                                                }],
+                                                                            }),
+                                                                            'template': "Reference",
+                                                                        }],
+                                                                    },
+                                                                    "Project": {
+                                                                        'optional': true,
+                                                                        'type': <mglossary.TType>['template', {
+                                                                            'arguments': d({
+                                                                                "RererencedType": <mglossary.TType>['reference', {
+                                                                                    'context': <mglossary.TContext>['local', null],
+                                                                                    'namespaces': a([]),
+                                                                                    'type': "Projecten",
+                                                                                }],
+                                                                            }),
+                                                                            'template': "Reference",
+                                                                        }],
+                                                                    },
+                                                                })],
+                                                            })],
+                                                        },
+                                                        "Debiteur": {
+                                                            'optional': true,
+                                                            'type': <mglossary.TType>['template', {
+                                                                'arguments': d({
+                                                                    "RererencedType": <mglossary.TType>['reference', {
+                                                                        'context': <mglossary.TContext>['local', null],
+                                                                        'namespaces': a([]),
+                                                                        'type': "Klanten",
+                                                                    }],
+                                                                }),
+                                                                'template': "Reference",
+                                                            }],
+                                                        },
                                                         "Regels": {
                                                             'optional': true,
-                                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                                                "Bedrag exclusief BTW": {
+                                                                    'optional': true,
+                                                                    'type': <mglossary.TType>['number', null],
+                                                                },
+                                                                "BTW-regime": {
+                                                                    'optional': true,
+                                                                    'type': <mglossary.TType>['taggedUnion', d({
+                                                                        "Binnenland heffing verlegd": <mglossary.TType>['group', d({})],
+                                                                        "Export buiten de EU": <mglossary.TType>['group', d({})],
+                                                                        "Installatie of afstandsverkopen binnen de EU": <mglossary.TType>['group', d({})],
+                                                                        "Intracommunautair": <mglossary.TType>['group', d({})],
+                                                                        "Standaard": <mglossary.TType>['group', d({
+                                                                            "BTW-cateogrie": {
+                                                                                'optional': true,
+                                                                                'type': <mglossary.TType>['template', {
+                                                                                    'arguments': d({
+                                                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                                                            'context': <mglossary.TContext>['local', null],
+                                                                                            'namespaces': a([]),
+                                                                                            'type': "BTW Categorieen",
+                                                                                        }],
+                                                                                    }),
+                                                                                    'template': "Reference",
+                                                                                }],
+                                                                            },
+                                                                        })],
+                                                                    })],
+                                                                },
+                                                                "Contracttype": {
+                                                                    'optional': true,
+                                                                    'type': <mglossary.TType>['taggedUnion', d({
+                                                                        "Licentieovereenkomst": <mglossary.TType>['group', d({
+                                                                            "Periode": {
+                                                                                'optional': true,
+                                                                                'type': <mglossary.TType>['template', {
+                                                                                    'arguments': d({
+                                                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                                                            'context': <mglossary.TContext>['local', null],
+                                                                                            'namespaces': a([]),
+                                                                                            'type': "Periodes",
+                                                                                        }],
+                                                                                    }),
+                                                                                    'template': "Reference",
+                                                                                }],
+                                                                            },
+                                                                        })],
+                                                                        "Los": <mglossary.TType>['group', d({})],
+                                                                        "Project": <mglossary.TType>['group', d({
+                                                                            "Opbrengst": {
+                                                                                'optional': true,
+                                                                                'type': <mglossary.TType>['template', {
+                                                                                    'arguments': d({
+                                                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                                                            'context': <mglossary.TContext>['local', null],
+                                                                                            'namespaces': a([]),
+                                                                                            'type': "Opbrengsten",
+                                                                                        }],
+                                                                                    }),
+                                                                                    'template': "Reference",
+                                                                                }],
+                                                                            },
+                                                                        })],
+                                                                    })],
+                                                                },
+                                                                "Omschrijving": {
+                                                                    'optional': true,
+                                                                    'type': <mglossary.TType>['number', null],
+                                                                },
+                                                                "Type": {
+                                                                    'optional': true,
+                                                                    'type': <mglossary.TType>['taggedUnion', d({
+                                                                        "Balans": <mglossary.TType>['group', d({
+                                                                            "Balans item": {
+                                                                                'optional': true,
+                                                                                'type': <mglossary.TType>['template', {
+                                                                                    'arguments': d({
+                                                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                                                            'context': <mglossary.TContext>['local', null],
+                                                                                            'namespaces': a([]),
+                                                                                            'type': "Balans items",
+                                                                                        }],
+                                                                                    }),
+                                                                                    'template': "Reference",
+                                                                                }],
+                                                                            },
+                                                                        })],
+                                                                        "Opbrengsten": <mglossary.TType>['group', d({
+                                                                            "Grootboekrekening": {
+                                                                                'optional': true,
+                                                                                'type': <mglossary.TType>['template', {
+                                                                                    'arguments': d({
+                                                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                                                            'context': <mglossary.TContext>['local', null],
+                                                                                            'namespaces': a([]),
+                                                                                            'type': "GRootboekrekeningen",
+                                                                                        }],
+                                                                                    }),
+                                                                                    'template': "Reference",
+                                                                                }],
+                                                                            },
+                                                                        })],
+                                                                    })],
+                                                                },
+                                                            })]],
                                                         },
                                                     })]],
                                                 },
@@ -1899,122 +2112,11 @@ export const $: mproject.TModule = {
                                                             'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                                                 "Afhandeling": {
                                                                     'optional': true,
-                                                                    'type': <mglossary.TType>['taggedUnion', d({
-                                                                        "BTW-periode": <mglossary.TType>['group', d({
-                                                                            "BTW-periode": {
-                                                                                'optional': true,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "BTW-periodes",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                            "Jaar": {
-                                                                                'optional': true,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Jaren",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                        })],
-                                                                        "Informele rekening": <mglossary.TType>['group', d({
-                                                                            "Informele rekening": {
-                                                                                'optional': true,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Informele rekeningen",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                        })],
-                                                                        "Inkoop": <mglossary.TType>['group', d({
-                                                                            "Inkoop": {
-                                                                                'optional': true,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Inkopen",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                            "Jaar": {
-                                                                                'optional': true,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Jaren",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                        })],
-                                                                        "Verkoop": <mglossary.TType>['group', d({
-                                                                            "Inkoop": {
-                                                                                'optional': true,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Verkopen",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                            "Jaar": {
-                                                                                'optional': true,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Jaren",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                        })],
-                                                                        "Verrekenpost": <mglossary.TType>['group', d({
-                                                                            "Verrekenpost": {
-                                                                                'optional': true,
-                                                                                'type': <mglossary.TType>['template', {
-                                                                                    'arguments': d({
-                                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                                            'context': <mglossary.TContext>['local', null],
-                                                                                            'namespaces': a([]),
-                                                                                            'type': "Verrekenposten",
-                                                                                        }],
-                                                                                    }),
-                                                                                    'template': "Reference",
-                                                                                }],
-                                                                            },
-                                                                        })],
-                                                                    })],
+                                                                    'type': <mglossary.TType>['reference', {
+                                                                        'context': <mglossary.TContext>['local', null],
+                                                                        'namespaces': a([]),
+                                                                        'type': "Afhandeling",
+                                                                    }],
                                                                 },
                                                                 "Bedrag": {
                                                                     'optional': true,
@@ -2083,6 +2185,122 @@ export const $: mproject.TModule = {
                                             'optional': true,
                                             'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
                                         },
+                                    })],
+                                    "Afhandeling": <mglossary.TType>['taggedUnion', d({
+                                        "BTW-periode": <mglossary.TType>['group', d({
+                                            "BTW-periode": {
+                                                'optional': true,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "BTW-periodes",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                            "Jaar": {
+                                                'optional': true,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Jaren",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                        })],
+                                        "Informele rekening": <mglossary.TType>['group', d({
+                                            "Informele rekening": {
+                                                'optional': true,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Informele rekeningen",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                        })],
+                                        "Inkoop": <mglossary.TType>['group', d({
+                                            "Inkoop": {
+                                                'optional': true,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Inkopen",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                            "Jaar": {
+                                                'optional': true,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Jaren",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                        })],
+                                        "Verkoop": <mglossary.TType>['group', d({
+                                            "Inkoop": {
+                                                'optional': true,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Verkopen",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                            "Jaar": {
+                                                'optional': true,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Jaren",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                        })],
+                                        "Verrekenpost": <mglossary.TType>['group', d({
+                                            "Verrekenpost": {
+                                                'optional': true,
+                                                'type': <mglossary.TType>['template', {
+                                                    'arguments': d({
+                                                        "RererencedType": <mglossary.TType>['reference', {
+                                                            'context': <mglossary.TContext>['local', null],
+                                                            'namespaces': a([]),
+                                                            'type': "Verrekenposten",
+                                                        }],
+                                                    }),
+                                                    'template': "Reference",
+                                                }],
+                                            },
+                                        })],
                                     })],
                                 }),
                                 'interfaces': d({}),
@@ -2541,52 +2759,8 @@ export const $: mproject.TModule = {
                                                                                                         'innerFunctions': d({}),
                                                                                                         'returnExpression': ['groupInitializer', {
                                                                                                             'properties': d({
-                                                                                                                "Afhandeling": ['switch', {
-                                                                                                                    'cases': d({
-                                                                                                                        "BTW-periode": {
-                                                                                                                            'innerFunctions': d({}),
-                                                                                                                            'returnExpression': ['groupInitializer', {
-                                                                                                                                'properties': d({
-                                                                                                                                    "BTW-periode": ['implementMe', "liana2Pareto"],
-                                                                                                                                    "Jaar": ['implementMe', "liana2Pareto"],
-                                                                                                                                })
-                                                                                                                            }],
-                                                                                                                        },
-                                                                                                                        "Informele rekening": {
-                                                                                                                            'innerFunctions': d({}),
-                                                                                                                            'returnExpression': ['groupInitializer', {
-                                                                                                                                'properties': d({
-                                                                                                                                    "Informele rekening": ['implementMe', "liana2Pareto"],
-                                                                                                                                })
-                                                                                                                            }],
-                                                                                                                        },
-                                                                                                                        "Inkoop": {
-                                                                                                                            'innerFunctions': d({}),
-                                                                                                                            'returnExpression': ['groupInitializer', {
-                                                                                                                                'properties': d({
-                                                                                                                                    "Inkoop": ['implementMe', "liana2Pareto"],
-                                                                                                                                    "Jaar": ['implementMe', "liana2Pareto"],
-                                                                                                                                })
-                                                                                                                            }],
-                                                                                                                        },
-                                                                                                                        "Verkoop": {
-                                                                                                                            'innerFunctions': d({}),
-                                                                                                                            'returnExpression': ['groupInitializer', {
-                                                                                                                                'properties': d({
-                                                                                                                                    "Inkoop": ['implementMe', "liana2Pareto"],
-                                                                                                                                    "Jaar": ['implementMe', "liana2Pareto"],
-                                                                                                                                })
-                                                                                                                            }],
-                                                                                                                        },
-                                                                                                                        "Verrekenpost": {
-                                                                                                                            'innerFunctions': d({}),
-                                                                                                                            'returnExpression': ['groupInitializer', {
-                                                                                                                                'properties': d({
-                                                                                                                                    "Verrekenpost": ['implementMe', "liana2Pareto"],
-                                                                                                                                })
-                                                                                                                            }],
-                                                                                                                        },
-                                                                                                                    })
+                                                                                                                "Afhandeling": ['call', {
+                                                                                                                    'function': "Afhandeling",
                                                                                                                 }],
                                                                                                             })
                                                                                                         }],
@@ -2807,11 +2981,156 @@ export const $: mproject.TModule = {
                                                                     'innerFunctions': d({}),
                                                                     'returnExpression': ['groupInitializer', {
                                                                         'properties': d({
+                                                                            "Afhandeling": ['switch', {
+                                                                                'cases': d({
+                                                                                    "Mutaties": {
+                                                                                        'innerFunctions': d({}),
+                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                            'properties': d({})
+                                                                                        }],
+                                                                                    },
+                                                                                    "Rekening courant": {
+                                                                                        'innerFunctions': d({}),
+                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                            'properties': d({
+                                                                                                "Rekening courant": ['implementMe', "liana2Pareto"],
+                                                                                            })
+                                                                                        }],
+                                                                                    },
+                                                                                })
+                                                                            }],
+                                                                            "Betalingstermijn": ['implementMe', "liana2Pareto"],
+                                                                            "Brondocument": ['switch', {
+                                                                                'cases': d({
+                                                                                    "Nog toevoegen": {
+                                                                                        'innerFunctions': d({}),
+                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                            'properties': d({})
+                                                                                        }],
+                                                                                    },
+                                                                                    "Toegevoegd": {
+                                                                                        'innerFunctions': d({}),
+                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                            'properties': d({
+                                                                                                "Document": ['implementMe', "liana2Pareto"],
+                                                                                            })
+                                                                                        }],
+                                                                                    },
+                                                                                })
+                                                                            }],
+                                                                            "BTW-periode": ['implementMe', "liana2Pareto"],
+                                                                            "Contracttype": ['switch', {
+                                                                                'cases': d({
+                                                                                    "Licentieovereenkomst": {
+                                                                                        'innerFunctions': d({}),
+                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                            'properties': d({
+                                                                                                "Overeenkomst": ['implementMe', "liana2Pareto"],
+                                                                                            })
+                                                                                        }],
+                                                                                    },
+                                                                                    "Project": {
+                                                                                        'innerFunctions': d({}),
+                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                            'properties': d({
+                                                                                                "Offerte": ['implementMe', "liana2Pareto"],
+                                                                                                "Project": ['implementMe', "liana2Pareto"],
+                                                                                            })
+                                                                                        }],
+                                                                                    },
+                                                                                })
+                                                                            }],
+                                                                            "Debiteur": ['implementMe', "liana2Pareto"],
                                                                             "Regels": ['mapDictionary', {
                                                                                 'block': {
                                                                                     'innerFunctions': d({}),
                                                                                     'returnExpression': ['groupInitializer', {
-                                                                                        'properties': d({})
+                                                                                        'properties': d({
+                                                                                            "Bedrag exclusief BTW": ['implementMe', "liana2Pareto"],
+                                                                                            "BTW-regime": ['switch', {
+                                                                                                'cases': d({
+                                                                                                    "Binnenland heffing verlegd": {
+                                                                                                        'innerFunctions': d({}),
+                                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                                            'properties': d({})
+                                                                                                        }],
+                                                                                                    },
+                                                                                                    "Export buiten de EU": {
+                                                                                                        'innerFunctions': d({}),
+                                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                                            'properties': d({})
+                                                                                                        }],
+                                                                                                    },
+                                                                                                    "Installatie of afstandsverkopen binnen de EU": {
+                                                                                                        'innerFunctions': d({}),
+                                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                                            'properties': d({})
+                                                                                                        }],
+                                                                                                    },
+                                                                                                    "Intracommunautair": {
+                                                                                                        'innerFunctions': d({}),
+                                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                                            'properties': d({})
+                                                                                                        }],
+                                                                                                    },
+                                                                                                    "Standaard": {
+                                                                                                        'innerFunctions': d({}),
+                                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                                            'properties': d({
+                                                                                                                "BTW-cateogrie": ['implementMe', "liana2Pareto"],
+                                                                                                            })
+                                                                                                        }],
+                                                                                                    },
+                                                                                                })
+                                                                                            }],
+                                                                                            "Contracttype": ['switch', {
+                                                                                                'cases': d({
+                                                                                                    "Licentieovereenkomst": {
+                                                                                                        'innerFunctions': d({}),
+                                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                                            'properties': d({
+                                                                                                                "Periode": ['implementMe', "liana2Pareto"],
+                                                                                                            })
+                                                                                                        }],
+                                                                                                    },
+                                                                                                    "Los": {
+                                                                                                        'innerFunctions': d({}),
+                                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                                            'properties': d({})
+                                                                                                        }],
+                                                                                                    },
+                                                                                                    "Project": {
+                                                                                                        'innerFunctions': d({}),
+                                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                                            'properties': d({
+                                                                                                                "Opbrengst": ['implementMe', "liana2Pareto"],
+                                                                                                            })
+                                                                                                        }],
+                                                                                                    },
+                                                                                                })
+                                                                                            }],
+                                                                                            "Omschrijving": ['implementMe', "liana2Pareto"],
+                                                                                            "Type": ['switch', {
+                                                                                                'cases': d({
+                                                                                                    "Balans": {
+                                                                                                        'innerFunctions': d({}),
+                                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                                            'properties': d({
+                                                                                                                "Balans item": ['implementMe', "liana2Pareto"],
+                                                                                                            })
+                                                                                                        }],
+                                                                                                    },
+                                                                                                    "Opbrengsten": {
+                                                                                                        'innerFunctions': d({}),
+                                                                                                        'returnExpression': ['groupInitializer', {
+                                                                                                            'properties': d({
+                                                                                                                "Grootboekrekening": ['implementMe', "liana2Pareto"],
+                                                                                                            })
+                                                                                                        }],
+                                                                                                    },
+                                                                                                })
+                                                                                            }],
+                                                                                        })
                                                                                     }],
                                                                                 },
                                                                             }],
@@ -2829,52 +3148,8 @@ export const $: mproject.TModule = {
                                                                                     'innerFunctions': d({}),
                                                                                     'returnExpression': ['groupInitializer', {
                                                                                         'properties': d({
-                                                                                            "Afhandeling": ['switch', {
-                                                                                                'cases': d({
-                                                                                                    "BTW-periode": {
-                                                                                                        'innerFunctions': d({}),
-                                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                                            'properties': d({
-                                                                                                                "BTW-periode": ['implementMe', "liana2Pareto"],
-                                                                                                                "Jaar": ['implementMe', "liana2Pareto"],
-                                                                                                            })
-                                                                                                        }],
-                                                                                                    },
-                                                                                                    "Informele rekening": {
-                                                                                                        'innerFunctions': d({}),
-                                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                                            'properties': d({
-                                                                                                                "Informele rekening": ['implementMe', "liana2Pareto"],
-                                                                                                            })
-                                                                                                        }],
-                                                                                                    },
-                                                                                                    "Inkoop": {
-                                                                                                        'innerFunctions': d({}),
-                                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                                            'properties': d({
-                                                                                                                "Inkoop": ['implementMe', "liana2Pareto"],
-                                                                                                                "Jaar": ['implementMe', "liana2Pareto"],
-                                                                                                            })
-                                                                                                        }],
-                                                                                                    },
-                                                                                                    "Verkoop": {
-                                                                                                        'innerFunctions': d({}),
-                                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                                            'properties': d({
-                                                                                                                "Inkoop": ['implementMe', "liana2Pareto"],
-                                                                                                                "Jaar": ['implementMe', "liana2Pareto"],
-                                                                                                            })
-                                                                                                        }],
-                                                                                                    },
-                                                                                                    "Verrekenpost": {
-                                                                                                        'innerFunctions': d({}),
-                                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                                            'properties': d({
-                                                                                                                "Verrekenpost": ['implementMe', "liana2Pareto"],
-                                                                                                            })
-                                                                                                        }],
-                                                                                                    },
-                                                                                                })
+                                                                                            "Afhandeling": ['call', {
+                                                                                                'function': "Afhandeling",
                                                                                             }],
                                                                                             "Bedrag": ['implementMe', "liana2Pareto"],
                                                                                         })
@@ -2973,6 +3248,58 @@ export const $: mproject.TModule = {
                                                     }],
                                                 },
                                             }],
+                                        })
+                                    }],
+                                },
+                            },
+                            "Afhandeling": {
+                                'block': {
+                                    'innerFunctions': d({}),
+                                    'returnExpression': ['switch', {
+                                        'cases': d({
+                                            "BTW-periode": {
+                                                'innerFunctions': d({}),
+                                                'returnExpression': ['groupInitializer', {
+                                                    'properties': d({
+                                                        "BTW-periode": ['implementMe', "liana2Pareto"],
+                                                        "Jaar": ['implementMe', "liana2Pareto"],
+                                                    })
+                                                }],
+                                            },
+                                            "Informele rekening": {
+                                                'innerFunctions': d({}),
+                                                'returnExpression': ['groupInitializer', {
+                                                    'properties': d({
+                                                        "Informele rekening": ['implementMe', "liana2Pareto"],
+                                                    })
+                                                }],
+                                            },
+                                            "Inkoop": {
+                                                'innerFunctions': d({}),
+                                                'returnExpression': ['groupInitializer', {
+                                                    'properties': d({
+                                                        "Inkoop": ['implementMe', "liana2Pareto"],
+                                                        "Jaar": ['implementMe', "liana2Pareto"],
+                                                    })
+                                                }],
+                                            },
+                                            "Verkoop": {
+                                                'innerFunctions': d({}),
+                                                'returnExpression': ['groupInitializer', {
+                                                    'properties': d({
+                                                        "Inkoop": ['implementMe', "liana2Pareto"],
+                                                        "Jaar": ['implementMe', "liana2Pareto"],
+                                                    })
+                                                }],
+                                            },
+                                            "Verrekenpost": {
+                                                'innerFunctions': d({}),
+                                                'returnExpression': ['groupInitializer', {
+                                                    'properties': d({
+                                                        "Verrekenpost": ['implementMe', "liana2Pareto"],
+                                                    })
+                                                }],
+                                            },
                                         })
                                     }],
                                 },

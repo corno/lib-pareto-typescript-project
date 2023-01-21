@@ -82,7 +82,6 @@ export const $$: api.CgetTestSet = ($) => {
     mliana2Pareto.$a.generateProject({
         'mainData': {
             'arguments': pr.wrapRawArray([`${$.testDirectory}/liana/glossary`]),
-
         },
         'model': {
             'model': lianaModel,
@@ -99,9 +98,9 @@ export const $$: api.CgetTestSet = ($) => {
         },
         'model': {
             'model': accountingModel,
-
             'stringmapping': pr.wrapRawDictionary({
                 "bestand": ['number', null],
+                "dagen": ['number', null],
                 "datum": ['number', null],
                 "multiline text": ['number', null],
                 "bedrag": ['number', null],

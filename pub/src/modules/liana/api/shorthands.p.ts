@@ -1,4 +1,5 @@
 import * as pr from 'pareto-core-raw'
+import * as pl from 'pareto-core-lib'
 
 import {
     TGlobalType,
@@ -28,7 +29,7 @@ export function dictionary(type: TLocalType): TLocalType {
     return ['dictionary', {
         'key': {
             'constrained': ['no', {
-                'type': "text"
+                'type': "identifier"
             }]
         },
         'type': type
@@ -56,14 +57,23 @@ export function group(properties: { [key: string]: [string[], TLocalType] }): TL
     }]
 }
 
-export function taggedUnion(options: { [key: string]: TLocalType }, dflt: string): TLocalType {
+export function taggedUnion(options: { [key: string]: TLocalType }): TLocalType {
+    let firstKey: null | string = null
+    d(options).map(($, key) => {
+        if (firstKey === null) {
+            firstKey = key
+        }
+    })
+    if (firstKey === null) {
+        pl.panic(`Missing options in tagged union`)
+    }
     return ['taggedUnion', {
         'options': d(options).map(($) => {
             return {
                 'type': $
             }
         }),
-        'default': dflt
+        'default': firstKey
     }]
 }
 

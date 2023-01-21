@@ -24,27 +24,28 @@ export const $: mliana.TModel = {
         "datum": null,
         "multiline text": null,
         "promillage": null,
-        "text": null,
+        "identifier": null,
+        "single line text": null,
     }),
     'globalTypes': d({
         "Accounting": globalType(group({
             "Beheer": [[], group({
                 "Gebruikers": [[], dictionary(group({
-                    "Volledige naam": [[], string("text")],
+                    "Volledige naam": [[], string("single line text")],
                 }))],
                 "Balans": [[], group({
                     "Hoofdcategorieen fiscus": [[], dictionary(group({
                         "Zijde": [[], taggedUnion({
                             "Activa": group({}),
                             "Passiva": group({}),
-                        }, "Activa")],
+                        })],
                         "Subcategorieen": [[], dictionary(group({}))],
                     }))],
                     "Hoofdcategorieen": [[], dictionary(group({
                         "Zijde": [[], taggedUnion({
                             "Activa": group({}),
                             "Passiva": group({}),
-                        }, "Activa")],
+                        })],
                         "Subcategorieen": [[], dictionary(group({
                             "Hoofdcategorie fiscus": [[], reference("Hoofdcategorieen fiscus")],
                             "Subcategorie fiscus": [[], reference("Subcategorieen")],
@@ -56,7 +57,7 @@ export const $: mliana.TModel = {
                         "Zijde": [[], taggedUnion({
                             "Activa": group({}),
                             "Passiva": group({}),
-                        }, "Activa")],
+                        })],
                     }))]
                 })],
                 "Resultaat": [[], group({
@@ -64,14 +65,14 @@ export const $: mliana.TModel = {
                         "Zijde": [[], taggedUnion({
                             "Kosten": group({}),
                             "Opbrengsten": group({}),
-                        }, "Kosten")],
+                        })],
                         "Subcategorieen": [[], dictionary(group({}))],
                     }))],
                     "Hoofdcategorieen": [[], dictionary(group({
                         "Zijde": [[], taggedUnion({
                             "Kosten": group({}),
                             "Opbrengsten": group({}),
-                        }, "Kosten")],
+                        })],
                         "Subcategorieen": [[], dictionary(group({
                             "Hoofdcategorie fiscus": [[], reference("Hoofdcategorieen fiscus")],
                             "Subcategorie fiscus": [[], reference("Subcategorieen")],
@@ -82,25 +83,25 @@ export const $: mliana.TModel = {
                         "Hoofdcategorie": [[], reference("Hoofdcategorieen")],
                         "Subcategorie": [[], reference("Subcategorieen")],
                         "Zijde": [[], taggedUnion({
+                            "Opbrengsten": group({}),
                             "Kosten": group({
                                 "Correctie op vennootschapsbelasting": [[], taggedUnion({
                                     "Nee": group({}),
                                     "Ja": group({
                                         "Correctietype": [[], reference("Correctietypes vennootschapsbelasting")]
                                     })
-                                }, "Nee")]
+                                })]
                             }),
-                            "Opbrengsten": group({}),
-                        }, "Kosten")],
+                        })],
                     }))],
                 })],
                 "BTW-categorieen": [[], dictionary(group({
                     "BTW-heffing": [[], taggedUnion({
+                        "Nee": group({}),
                         "Ja": group({
                             "BTW-promillage": [[], string("promillage")]
                         }),
-                        "Nee": group({}),
-                    }, "Nee")]
+                    })]
                 }))]
             })],
             "Klanten": [[], dictionary(group({
@@ -112,7 +113,7 @@ export const $: mliana.TModel = {
                                     "Betaaldatum": [[], string("datum")],
                                     "Bedrag": [[], string("bedrag")],
                                 })
-                            }, "Project")],
+                            })],
                         }))]
                     }))]
                 }))],
@@ -140,13 +141,13 @@ export const $: mliana.TModel = {
                         "Vorig boekjaar": [[], reference("Jaren")]
                     }),
                     "Ja": group({}),
-                }, "Ja")],
+                })],
                 "Beginsaldo Winstreserve": [[], string("bedrag")],
                 "Afgesloten": [[], taggedUnion({
                     "Nee": group({
                     }),
                     "Ja": group({}),
-                }, "Nee")],
+                })],
                 "Grootboekrekening voor resultaat dit jaar": [[], reference("Grootboekrekeningen")],
                 "Grootboekrekening voor winstreserve": [[], reference("Grootboekrekeningen")],
                 "Grootboekrekening voor BTW afrondingen": [[], reference("Grootboekrekeningen")],
@@ -160,7 +161,7 @@ export const $: mliana.TModel = {
                         "Bankrekening": group({}),
                         "Informele rekening": group({}),
                         "Overig": group({}),
-                    }, "Bankrekening")],
+                    })],
                 }))],
                 "Resultaat grootboekrekeningen": [[], constrainedDictionary("Resultaat grootboekrekeningen", group({
                 }))],
@@ -175,7 +176,7 @@ export const $: mliana.TModel = {
                             "Rekening": [[], reference("Informele Rekening")],
                         }),
                         "Ja": group({}),
-                    }, "Ja")],
+                    })],
                 }))],
                 "Overige balans items": [[], dictionary(group({
                     "Beginsaldo": [[], string("bedrag")],
@@ -187,7 +188,7 @@ export const $: mliana.TModel = {
                             "Balans item": [[], reference("Balans Items")],
                         }),
                         "Ja": group({}),
-                    }, "Ja")],
+                    })],
 
                     "Memoriaal boekingen": [[], dictionary(group({
                         "Bedrag": [[], string("bedrag")],
@@ -205,7 +206,7 @@ export const $: mliana.TModel = {
                             "Datum": [[], string("datum")],
                         }),
                         "Openstaand": group({}),
-                    }, "Openstaand")],
+                    })],
 
                     "1. BTW-categorieen": [[], constrainedDictionary("BTW-categorieen", group({
                     }))],
@@ -216,67 +217,79 @@ export const $: mliana.TModel = {
                 "Salarisrondes": [[], dictionary(group({
                 }))],
                 "Inkopen": [[], dictionary(group({
-                    // 'datum': Date
-                    // 'brondocument': string
-                    // 'type':
-                    // | ['bonnetje', {
-
-                    // }]
-                    // | ['inkoop', {
-                    //     'factuurnummer': string
-                    //     'crediteur': string
-                    // }]
-                    // | ['salaris', {
-                    //     'ronde': string
-                    //     'medewerker': string
-                    // }]
-                    // | ['loonheffing', {
-                    //     'ronde': string
-                    // }]
-                    // | ['wbso', {
-                    //     'ronde': string
-                    // }]
-                    // 'btw':
-                    // | ['geen', {
-                    //     'periode': string
-                    // }]
-                    // | ['standaard', {
-                    //     'periode': string
-                    // }]
-                    // | ['binnenland', {
-                    //     'periode': string
-                    // }]
-                    // | ['intracommunautair', {
-                    //     'periode': string
-                    // }]
-                    // | ['import van buiten de EU', {
-                    //     'periode': string
-                    // }]
-                    // 'afhandeling':
-                    // | ['mutaties', {}]
-                    // | ['rekening courant', {
-                    //     'rekening courant': string
-                    // }]
-                    // | ['nog te betalen', {
-                    //     'betalingstermijn': number
-                    // }]
+                    "Datum": [[], string("datum")],
+                    "Brondocument": [[], taggedUnion({
+                        "Toegevoegd": group({
+                            "Document": [[], string("bestand")],
+                        }),
+                        "Nog toevoegen": group({}),
+                        "Niet van toepassing": group({}),
+                        "Ontbreekt": group({}),
+                    })],
+                    "Type": [[], taggedUnion({
+                        "Bonnetje": group({
+                        }),
+                        "Inkoop (met crediteur)": group({
+                            "Factuurnummer": [[], string("identifier")],
+                            "Crediteur": [[], reference("Leveranciers")],
+                        }),
+                        "Salaris": group({
+                            "Ronde": [[], reference("Rondes")],
+                            "Medewerker": [[], reference("Medewerkers")],
+                        }),
+                        "Loonheffing": group({
+                            "Ronde": [[], reference("Rondes")],
+                        }),
+                        "WBSO": group({
+                            "Ronde": [[], reference("Rondes")],
+                        }),
+                    })],
+                    "BTW-regime": [[], taggedUnion({
+                        "Standaard": group({
+                            "BTW-periode": [[], reference("BTW Periodes")],
+                        }),
+                        "Geen BTW van toepassing": group({
+                            "BTW-periode": [[], reference("BTW Periodes")],
+                        }),
+                        "Binnenland heffing verlegd": group({
+                            "BTW-periode": [[], reference("BTW Periodes")],
+                        }),
+                        "Intracommunautair": group({
+                            "BTW-periode": [[], reference("BTW Periodes")],
+                        }),
+                        "Import van buiten de EU": group({
+                            "BTW-periode": [[], reference("BTW Periodes")],
+                        }),
+                    })],
+                    "Afhandeling": [[], taggedUnion({
+                        "Mutaties": group({
+                        }),
+                        "Rekening courant": group({
+                            "Rekening courant": [[], reference("Rekeningen courant")],
+                        }),
+                        "Nog te betalen": group({
+                            "Betalingstermijn": [[], string("dagen")],
+                        }),
+                    })],
                     "Regels": [[], dictionary(group({
-                        // 'bedrag':
-                        // | ['bekend', {
-                        //     'bedragInc': number,
-                        //     'btw': number,
-                        // }]
-                        // | ['nog niet bekend', {
-                        //     'aantekeningen': string,
-                        // }],
-                        // 'omschrijving': string,
-                        // 'type':
-                        // | ['kosten', {
-                        //     'grootboekrekening': string
-                        // }]
-                        // | ['balans', {
-                        //     'balansItem': string
-                        // }]
+                        "Omschrijving": [[], string("multiline text")],
+                        "Bedrag": [[], taggedUnion({
+                            "Bekend": group({
+                                "Bedrag inclusief BTW": [[], string("bedrag")],
+                                "BTW": [[], string("bedrag")],
+                            }),
+                            "Nog niet bekend": group({
+                                "Aantekeningen": [[], string("multiline text")]
+                            }),
+                        })],
+                        "Type": [[], taggedUnion({
+                            "Kosten": group({
+                                "Grootboekrekening": [[], reference("Grootboekrekeningen")],
+                            }),
+                            "Balans": group({
+                                "Balans item": [[], reference("Balans Items")],
+                            }),
+                        })],
                     }))],
                 }))],
                 "Verkopen": [[], dictionary(group({
@@ -286,7 +299,7 @@ export const $: mliana.TModel = {
                         "Toegevoegd": group({
                             "Document": [[], string("bestand")]
                         }),
-                    }, "Nog toevoegen")],
+                    })],
                     "Betalingstermijn": [[], string("dagen")],
                     "Debiteur": [[], reference("Klanten")],
                     "BTW-periode": [[], reference("BTW-periodes")],
@@ -299,7 +312,7 @@ export const $: mliana.TModel = {
                             "Project": [[], reference("Projecten")],
                             "Offerte": [[], reference("Offerte")],
                         }),
-                    }, "Opbrengsten")],
+                    })],
 
                     "Afhandeling": [[], taggedUnion({
                         "Mutaties": group({
@@ -307,7 +320,7 @@ export const $: mliana.TModel = {
                         "Rekening courant": group({
                             "Rekening courant": [[], reference("Rekeningen courant")],
                         }),
-                    }, "Mutaties")],
+                    })],
                     "Regels": [[], dictionary(group({
                         "Omschrijving": [[], string("multiline text")],
                         "Bedrag exclusief BTW": [[], string("bedrag")],
@@ -318,7 +331,7 @@ export const $: mliana.TModel = {
                             "Balans": group({
                                 "Balans item": [[], reference("Balans items")],
                             }),
-                        }, "Opbrengsten")],
+                        })],
                         "BTW-regime": [[], taggedUnion({
                             "Standaard": group({
                                 "BTW-cateogrie": [[], reference("BTW Categorieen")],
@@ -331,7 +344,7 @@ export const $: mliana.TModel = {
                             }),
                             "Installatie of afstandsverkopen binnen de EU": group({
                             }),
-                        }, "Standaard")],
+                        })],
                         "Contracttype": [[], taggedUnion({
                             "Los": group({
                             }),
@@ -341,7 +354,7 @@ export const $: mliana.TModel = {
                             "Project": group({
                                 "Opbrengst": [[], reference("Opbrengsten")],
                             }),
-                        }, "Los")],
+                        })],
                     }))],
                 }))],
                 "Verrekenposten": [[], dictionary(group({
@@ -358,7 +371,7 @@ export const $: mliana.TModel = {
                             "Rekening": [[], reference("Bankrekeningen")],
                         }),
                         "Ja": group({}),
-                    }, "Ja")],
+                    })],
                     "Grootboekrekening": [[], reference("Grootboekrekeningen")],
                     "Mutaties": [[], dictionary(group({
                         "Omschrijving": [[], string("multiline text")],
@@ -369,7 +382,7 @@ export const $: mliana.TModel = {
                             "Verwerkt": group({
                                 "Afhandeling": [[], component("Afhandeling")]
                             })
-                        }, "Nog te verwerken")]
+                        })]
                     }))],
                 }))],
             }))],
@@ -393,7 +406,7 @@ export const $: mliana.TModel = {
             "Informele rekening": group({
                 "Informele rekening": [[], reference("Informele rekeningen")],
             }),
-        }, "Inkoop"))
+        }))
     }),
     'root': "Accounting",
 }

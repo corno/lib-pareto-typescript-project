@@ -87,7 +87,7 @@ export const $$: api.CgetTestSet = ($) => {
             'model': lianaModel,
 
             'stringmapping': pr.wrapRawDictionary({
-                "text": ['string', null]
+                "identifier": ['string', null]
             }),
         },
     })
@@ -99,13 +99,14 @@ export const $$: api.CgetTestSet = ($) => {
         'model': {
             'model': accountingModel,
             'stringmapping': pr.wrapRawDictionary({
-                "bestand": ['number', null],
+                "bedrag": ['number', null],
+                "bestand": ['string', null],
                 "dagen": ['number', null],
                 "datum": ['number', null],
-                "multiline text": ['number', null],
-                "bedrag": ['number', null],
+                "identifier": ['string', null],
+                "multiline text": ['string', null],
                 "promillage": ['number', null],
-                "text": ['string', null]
+                "single line text": ['string', null],
             }),
         },
     })

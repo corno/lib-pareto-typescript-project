@@ -23,7 +23,7 @@ export const $: mliana.TModel = {
         "Context": globalType(taggedUnion({
             "local": group({}),
             "import": group({}),
-        }, "local")),
+        })),
         "Glossary": globalType(group({
             "imports": [[], dictionary(group({}))],
             "parameters": [[], dictionary(group({}))],
@@ -50,11 +50,11 @@ export const $: mliana.TModel = {
             "method": [[], group({
                 "data": [[], component("OptionalTypeReference")],
                 "interface": [[], taggedUnion({
+                    "null": group({}),
                     "set": group({
                         "interface": [[], reference("Interface")]
                     }),
-                    "null": group({}),
-                }, "null")]
+                })]
             })],
             "reference": [[], component("InterfaceReference")],
         })),
@@ -72,9 +72,9 @@ export const $: mliana.TModel = {
             "interfaces": [["types"], dictionary(component("Interface"))]
         })),
         "OptionalTypeReference": globalType(taggedUnion({
+            "not set": group({}),
             "set": component("TypeReference"),
-            "not set": group({})
-        }, "not set")),
+        })),
         "Type": globalType(group({
 
         })),

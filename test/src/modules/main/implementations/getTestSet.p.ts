@@ -101,7 +101,9 @@ export const $$: api.CgetTestSet = ($) => {
             'model': accountingModel,
 
             'stringmapping': pr.wrapRawDictionary({
+                "bestand": ['number', null],
                 "datum": ['number', null],
+                "multiline text": ['number', null],
                 "bedrag": ['number', null],
                 "promillage": ['number', null],
                 "text": ['string', null]

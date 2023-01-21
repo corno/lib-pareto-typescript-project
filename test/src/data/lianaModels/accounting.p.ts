@@ -18,10 +18,12 @@ const d = pr.wrapRawDictionary
 
 export const $: mliana.TModel = {
     'stringTypes': d({
-        "text": null,
         "bedrag": null,
-        "promillage": null,
+        "bestand": null,
         "datum": null,
+        "multiline text": null,
+        "promillage": null,
+        "text": null,
     }),
     'globalTypes': d({
         "Accounting": globalType(group({
@@ -131,68 +133,93 @@ export const $: mliana.TModel = {
                 "Bankrekeningen",
                 "Informele rekeningen",
             ], dictionary(group({
-                "Startdatum boekjar": [[], string("datum")],
-                //""
-                // 'startdatum': Date,
-                // 'eersteboekjaar':
-                // | ['ja', {}]
-                // | ['nee', {
-                //     'vorigboekjaar': string,
-                // }]
-                // 'beginsaldoWinstReserve': number,
-                // 'afgesloten': boolean,
-                // 'grootboekrekeningResultaat': string,
-                // 'grootboekrekeningWinstreserve': string,
-                // 'grootboekrekeningBTWAfrondingen': string,
-                // 'beginsaldoBTW': number,
-                // 'grootboekNogAanteGevenBTW': string,
-                // 'grootboekInkoopSaldo': string,
-                // 'grootboekVerkoopSaldo': string,
-                // 'grootboekBTW': string,
+                "Startdatum boekjaar": [[], string("datum")],
+                "Eerste boekjaar": [[], taggedUnion({
+                    "Nee": group({
+                        "Vorig boekjaar": [[], reference("Jaren")]
+                    }),
+                    "Ja": group({}),
+                }, "Ja")],
+                "Beginsaldo Winstreserve": [[], string("bedrag")],
+                "Afgesloten": [[], taggedUnion({
+                    "Nee": group({
+                    }),
+                    "Ja": group({}),
+                }, "Nee")],
+                "Grootboekrekening voor resultaat dit jaar": [[], reference("Grootboekrekeningen")],
+                "Grootboekrekening voor winstreserve": [[], reference("Grootboekrekeningen")],
+                "Grootboekrekening voor BTW afrondingen": [[], reference("Grootboekrekeningen")],
+                "Beginsaldo nog aan te geven BTW": [[], string("bedrag")],
+                "Grootboekrekening voor nog aan te geven BTW": [[], reference("Grootboekrekeningen")],
+                "Grootboek inkoop saldo": [[], reference("Grootboekrekeningen")],
+                "Grootboek verkoop saldo": [[], reference("Grootboekrekeningen")],
+                "Grootboek BTW periode": [[], reference("Grootboekrekeningen")],
                 "Balans grootboekrekeningen": [[], constrainedDictionary("Balans grootboekrekeningen", group({
-                    /////<---- HIER
-
+                    "Type": [[], taggedUnion({
+                        "Bankrekening": group({}),
+                        "Informele rekening": group({}),
+                        "Overig": group({}),
+                    }, "Bankrekening")],
                 }))],
                 "Resultaat grootboekrekeningen": [[], constrainedDictionary("Resultaat grootboekrekeningen", group({
-                    /////<---- HIER
-
                 }))],
 
                 "Informele rekeningen": [[], constrainedDictionary("Informele rekeningen", group({
-                    /////<---- HIER
+                    "Grootboekrekening": [[], reference("Grootboekrekeningen")],
+                    "Beginsaldo": [[], string("bedrag")],
 
+                    "Nieuw": [[], taggedUnion({
+                        "Nee": group({
+                            "Jaar": [[], reference("Jaar")],
+                            "Rekening": [[], reference("Informele Rekening")],
+                        }),
+                        "Ja": group({}),
+                    }, "Ja")],
                 }))],
                 "Overige balans items": [[], dictionary(group({
-                    /////<---- HIER
+                    "Beginsaldo": [[], string("bedrag")],
+                    "Grootboekrekening": [[], reference("Grootboekrekeningen")],
+
+                    "Nieuw": [[], taggedUnion({
+                        "Nee": group({
+                            "Jaar": [[], reference("Jaar")],
+                            "Balans item": [[], reference("Balans Items")],
+                        }),
+                        "Ja": group({}),
+                    }, "Ja")],
 
                     "Memoriaal boekingen": [[], dictionary(group({
-
-                        /////<---- HIER
-
+                        "Bedrag": [[], string("bedrag")],
+                        "Datum": [[], string("datum")],
+                        "Grootboekrekening": [[], reference("Grootboekrekeningen")],
+                        "Omschrijving": [[], string("multiline text")],
                     }))],
                 }))],
                 "BTW periodes": [[], dictionary(group({
-                    /////<---- HIER
+                    "Omschrijving": [[], string("multiline text")],
+                    "Status": [[], taggedUnion({
+                        "Aangegeven": group({
+                            "Bedrag": [[], string("bedrag")],
+                            "Afronding": [[], string("bedrag")],
+                            "Datum": [[], string("datum")],
+                        }),
+                        "Openstaand": group({}),
+                    }, "Openstaand")],
 
-                    "1. BTW-categorieen": [[], dictionary(group({
-                        /////<---- HIER
-
+                    "1. BTW-categorieen": [[], constrainedDictionary("BTW-categorieen", group({
                     }))],
                     "Documenten": [[], dictionary(group({
-                        /////<---- HIER
-
+                        "Bestand": [[], string("bestand")]
                     }))],
                 }))],
                 "Salarisrondes": [[], dictionary(group({
-                    /////<---- HIER
-
                 }))],
                 "Inkopen": [[], dictionary(group({
                     // 'datum': Date
                     // 'brondocument': string
                     // 'type':
                     // | ['bonnetje', {
-                
+
                     // }]
                     // | ['inkoop', {
                     //     'factuurnummer': string
@@ -260,19 +287,69 @@ export const $: mliana.TModel = {
                     }))],
                 }))],
                 "Verrekenposten": [[], dictionary(group({
-                    /////<---- HIER
-
                     "Mutaties": [[], dictionary(group({
-                        /////<---- HIER
-
+                        "Bedrag": [[], string("bedrag")],
+                        "Afhandeling": [[], taggedUnion({
+                            "Inkoop": group({
+                                "Jaar": [[], reference("Jaren")],
+                                "Inkoop": [[], reference("Inkopen")],
+                            }),
+                            "Verkoop": group({
+                                "Jaar": [[], reference("Jaren")],
+                                "Inkoop": [[], reference("Verkopen")],
+                            }),
+                            "BTW-periode": group({
+                                "Jaar": [[], reference("Jaren")],
+                                "BTW-periode": [[], reference("BTW-periodes")],
+                            }),
+                            "Verrekenpost": group({
+                                "Verrekenpost": [[], reference("Verrekenposten")],
+                            }),
+                            "Informele rekening": group({
+                                "Informele rekening": [[], reference("Informele rekeningen")],
+                            }),
+                        }, "Inkoop")]
                     }))],
                 }))],
                 "Bankrekeningen": [[], dictionary(group({
-                    /////<---- HIER
-
+                    "Beginsaldo": [[], string("bedrag")],
+                    "Nieuw": [[], taggedUnion({
+                        "Nee": group({
+                            "Jaar": [[], reference("Jaar")],
+                            "Rekening": [[], reference("Bankrekeningen")],
+                        }),
+                        "Ja": group({}),
+                    }, "Ja")],
+                    "Grootboekrekening": [[], reference("Grootboekrekeningen")],
                     "Mutaties": [[], dictionary(group({
-                        /////<---- HIER
-
+                        "Omschrijving": [[], string("multiline text")],
+                        "Bedrag": [[], string("bedrag")],
+                        "Datum": [[], string("datum")],
+                        "Status": [[], taggedUnion({
+                            "Nog te verwerken": group({}),
+                            "Verwerkt": group({
+                                "Afhandeling": [[], taggedUnion({
+                                    "Inkoop": group({
+                                        "Jaar": [[], reference("Jaren")],
+                                        "Inkoop": [[], reference("Inkopen")],
+                                    }),
+                                    "Verkoop": group({
+                                        "Jaar": [[], reference("Jaren")],
+                                        "Inkoop": [[], reference("Verkopen")],
+                                    }),
+                                    "BTW-periode": group({
+                                        "Jaar": [[], reference("Jaren")],
+                                        "BTW-periode": [[], reference("BTW-periodes")],
+                                    }),
+                                    "Verrekenpost": group({
+                                        "Verrekenpost": [[], reference("Verrekenposten")],
+                                    }),
+                                    "Informele rekening": group({
+                                        "Informele rekening": [[], reference("Informele rekeningen")],
+                                    }),
+                                }, "Inkoop")]
+                            })
+                        }, "Nog te verwerken")]
                     }))],
                 }))],
             }))],

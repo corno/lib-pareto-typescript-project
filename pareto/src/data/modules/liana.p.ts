@@ -5,7 +5,7 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, string
+    array, dictionary, group, member, taggedUnion, types, _function, string, optional
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -25,17 +25,21 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "GlobalType": group({
                     "type": member(ref("LocalType"))
                 }),
+                "String": group({
+                    "constrained": member(taggedUnion({
+                        "no": group({
+                            "type": member(str()),
+                        }),
+                        "yes": group({
+                            "type": member(str()),
+                        })
+                    }))
+                }),
                 "LocalType": taggedUnion({
-                    "string": group({
-                        "constrained": member(taggedUnion({
-                            "no": null_(),
-                            "yes": group({
-                                "type": member(str()),
-                            })
-                        }))
-                    }),
+                    "string": ref("String"),
                     "boolean": null_(),
-                    "dictionary":group({
+                    "dictionary": group({
+                        "key": member(ref("String")),
                         "type": member(ref("LocalType"))
                     }),
                     "array": group({
@@ -44,10 +48,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "taggedUnion": group({
                         "options": member(dictionary(group({
                             "type": member(ref("LocalType"))
-                        })))
+                        }))),
+                        "default": member(str())
                     }),
                     "group": group({
                         "properties": member(dictionary(group({
+                            "sibling dependencies": member(dictionary(null_())),
                             "type": member(ref("LocalType"))
                         })))
                     }),
@@ -56,6 +62,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     }),
                 }),
                 "Model": group({
+                    "stringTypes": member(dictionary(null_())),
                     "globalTypes": member(dictionary(ref("GlobalType"))),
                     "root": member(str())
                 }),

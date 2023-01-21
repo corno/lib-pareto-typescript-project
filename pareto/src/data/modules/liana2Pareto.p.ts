@@ -4,10 +4,8 @@ import {
     string as str,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference
+    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, null_
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
-
-import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
@@ -17,7 +15,6 @@ const d = pr.wrapRawDictionary
 export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
-            // "glossary": "../../glossary",
             "liana": "../../liana",
             "project": "../../project",
             // "fp": "lib-fountain-pen",
@@ -26,35 +23,27 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'namespace': {
             'types': types({
                 "Configuration": group({
-                    "model": member(er("liana", "Model")),
+                    "model": member(ref("MappedModel")),
                     "mainData": member(er("main", "MainData")),
                 }),
+                "MappedModel": group({
+                    "model": member(er("liana", "Model")),
+                    "stringmapping": member(dictionary(taggedUnion({
+                        "number": null_(),
+                        "string": null_(),
+                    }))),
+                })
             }),
             'interfaces': d({}),
 
         },
         'functions': d({
             "MapLiana2Pareto": {
-                'data': externalTypeReference("liana", "Model"),
+                'data': typeReference("MappedModel"),
                 'return value': externalTypeReference("project", "Module"),
             }
         }),
         'callbacks': d({
-            // "SerializeGlossary": {
-            //     'data': ['type', externalReference("glossary", "Glossary")],
-            //     'context': ['import', "fp"],
-            //     'interface': "Block",
-            // },
-            // "SerializeLeafType": {
-            //     'data': ['type', externalReference("glossary", "LeafType")],
-            //     'context': ['import', "fp"],
-            //     'interface': "Line",
-            // },
-            // "SerializeModuleDefinition": {
-            //     'data': ['type', externalReference("moduleDefinition", "ModuleDefinition")],
-            //     'context': ['import', "fp"],
-            //     'interface': "Writer",
-            // },
         }),
         'pipes': d({}),
     },
@@ -66,7 +55,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "generateProject": {
-                'definition': ['procedure',  typeReference("Configuration")],
+                'definition': ['procedure', typeReference("Configuration")],
                 'type': ['reference', null],
             },
             "createProjectGenerator": {
@@ -78,19 +67,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                             'context': ['import', "temp"],
                             'function': "AddKeysToDictionary"
                         }],
-                        "logError":  ['procedure', externalTypeReference("common", "String")],
+                        "logError": ['procedure', externalTypeReference("common", "String")],
                         "mapLiana2Pareto": ['function', {
                             //'async': true,
                             'function': "MapLiana2Pareto",
                         }],
-                        // "serializeProject": ['callback', {
-                        //     //'context': ['import', "project"],
-                        //     'callback': "SerializeProject",
-                        // }],
-                        // "serializeTemplate": ['callback', {
-                        //     //'context': ['import', "project"],
-                        //     'callback': "SerializeTemplate",
-                        // }],
                         "serializeProject": ['callback', {
                             'context': ['import', "project"],
                             'callback': "SerializeWithContext"
@@ -109,42 +90,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                             'context': ['import', "temp"],
                             'function': "AddKeysToDictionary"
                         }],
-                        // "enrichedDictionaryForEach": ['callback', {
-                        //     'context': ['import', "temp"],
-                        //     'callback': "EnrichedDictionaryForEach",
-                        // }],
-                        // "compare": ['function', {
-                        //     'context': ['import', "collation"],
-                        //     'function': "IsABeforeB",
-                        // }],
                     })
                 }]
             },
-            // "createModuleDefinitionSerializer": {
-            //     'definition': ['callback', {
-            //         'callback': "SerializeModuleDefinition"
-            //     }],
-            //     'type': ['constructor', {
-            //         'configuration data': null,
-            //         'dependencies': d({
-            //             "compare": ['function', {
-            //                 'context': ['import', "collation"],
-            //                 'function': "IsABeforeB",
-            //             }],
-            //             "serializeGlossary": ['callback', {
-            //                 //'context': ['import', "glossary"],
-            //                 'callback': "SerializeGlossary"
-            //             }],
-            //             "serializeLeafType": ['callback', {
-            //                 //'context': ['import', "glossary"],
-            //                 'callback': "SerializeLeafType"
-            //             }],
-            //         }),
-            //         'callback': {
-            //             'callback': "SerializeModuleDefinition"
-            //         }
-            //     }],
-            // },
         })
     },
 }

@@ -30,11 +30,12 @@ const a = pr.wrapRawArray
 
 export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
     return ($) => {
+        const stringMapping = $.stringmapping
         function generateTypes(optional: boolean): mglossary.TNamespace {
             return {
                 'namespaces': d({
                     "types": {
-                        'types': $.globalTypes.map(($) => {
+                        'types': $.model.globalTypes.map(($) => {
                             function mapType($: mliana.TLocalType): mglossary.TType {
                                 switch ($[0]) {
                                     case 'array':
@@ -71,7 +72,25 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                             switch ($.constrained[0]) {
                                                 case 'no':
                                                     return pl.cc($.constrained[1], ($) => {
-                                                        return ['string', null]
+                                                        return pr.getEntry(
+                                                            stringMapping, $.type,
+                                                            ($) => {
+                                                                switch ($[0]) {
+                                                                    case 'number':
+                                                                        return pl.cc($[1], ($) => {
+                                                                            return ['number', null]
+                                                                        })
+                                                                    case 'string':
+                                                                        return pl.cc($[1], ($) => {
+                                                                            return ['string', null]
+                                                                        })
+                                                                    default: return pl.au($[0])
+                                                                }
+                                                            },
+                                                            () => {
+                                                                pl.panic(`MISSING STRING MAPPING: ${$.type}`)
+                                                            }
+                                                        )
                                                     })
                                                 case 'yes':
                                                     return pl.cc($.constrained[1], ($) => {
@@ -104,7 +123,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     "Root": ['reference', {
                         'context': ['local', null],
                         'namespaces': a(["types"]),
-                        'type': $.root
+                        'type': $.model.root
                     }]
                 }),
                 'interfaces': d({}),
@@ -195,13 +214,13 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     },
                     'functions': d({
                         "Enrich": {
-                            'data': namespacedTypeReference(["unresolved"],"Root"),
+                            'data': namespacedTypeReference(["unresolved"], "Root"),
                             'return value': namespacedTypeReference(["resolved"], "Root"),
                         },
                     }),
                     'callbacks': d({
                         "Serialize": {
-                            'data': namespacedTypeReference(["resolved"],"Root"),
+                            'data': namespacedTypeReference(["resolved"], "Root"),
                             'context': ['import', "fp"],
                             'interface': "Line",
                         },
@@ -261,7 +280,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                         'constructor': true,
                         'type': ['function', {
                             'block': <malgorithm.TFunctionBlock>{
-                                'innerFunctions': $d.sf_addKeysToDictionary($.globalTypes).map(($) => {
+                                'innerFunctions': $d.sf_addKeysToDictionary($.model.globalTypes).map(($) => {
                                     return {
                                         'definition': {
                                             'data': namespacedTypeReference(["unresolved"], $.key),

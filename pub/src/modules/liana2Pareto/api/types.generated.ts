@@ -5,7 +5,15 @@ import * as mproject from "../../project"
 
 export type TConfiguration = {
     readonly 'mainData': mmain.TMainData
-    readonly 'model': mliana.TModel
+    readonly 'model': TMappedModel
 }
 
-export type FMapLiana2Pareto = ($: mliana.TModel) => mproject.TModule
+export type TMappedModel = {
+    readonly 'model': mliana.TModel
+    readonly 'stringmapping': pt.Dictionary<
+        | ['number', null]
+        | ['string', null]
+    >
+}
+
+export type FMapLiana2Pareto = ($: TMappedModel) => mproject.TModule

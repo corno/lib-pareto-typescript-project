@@ -13,8 +13,24 @@ export function array(type: TLocalType): TLocalType {
     }]
 }
 
+export function constrainedDictionary(constraint: string, type: TLocalType): TLocalType {
+    return ['dictionary', {
+        'key': {
+            'constrained': ['yes', {
+                'type': constraint,
+            }],
+        },
+        'type': type
+    }]
+}
+
 export function dictionary(type: TLocalType): TLocalType {
     return ['dictionary', {
+        'key': {
+            'constrained': ['no', {
+                'type': "text"
+            }]
+        },
         'type': type
     }]
 }
@@ -25,29 +41,37 @@ export function globalType(type: TLocalType): TGlobalType {
     }
 }
 
-export function group(properties: { [key: string]: TLocalType }): TLocalType {
+export function group(properties: { [key: string]: [string[], TLocalType] }): TLocalType {
     return ['group', {
         'properties': d(properties).map(($) => {
+            const temp: { [key: string]: null } = {}
+            pr.wrapRawArray($[0]).forEach(($) => {
+                temp[$] = null
+            })
             return {
-                'type': $
+                'sibling dependencies': d(temp),
+                'type': $[1],
             }
         })
     }]
 }
 
-export function taggedUnion(options: { [key: string]: TLocalType }): TLocalType {
+export function taggedUnion(options: { [key: string]: TLocalType }, dflt: string): TLocalType {
     return ['taggedUnion', {
         'options': d(options).map(($) => {
             return {
                 'type': $
             }
-        })
+        }),
+        'default': dflt
     }]
 }
 
-export function string(): TLocalType {
+export function string(type: string): TLocalType {
     return ['string', {
-        'constrained': ['no', null],
+        'constrained': ['no', {
+            'type': type,
+        }],
     }]
 }
 

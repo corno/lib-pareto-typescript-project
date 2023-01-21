@@ -32,7 +32,8 @@ import { $ as module } from "../../../data/project.p"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
-import { $ as lianaModel } from "../../../data/lianaModel.p"
+import { $ as lianaModel } from "../../../data/lianaModels/glossary.p"
+import { $ as accountingModel } from "../../../data/lianaModels/accounting.p"
 
 export const $$: api.CgetTestSet = ($) => {
     pub.$a.generateProject({
@@ -80,10 +81,32 @@ export const $$: api.CgetTestSet = ($) => {
 
     mliana2Pareto.$a.generateProject({
         'mainData': {
-            'arguments': pr.wrapRawArray([`${$.testDirectory}/liana`]),
+            'arguments': pr.wrapRawArray([`${$.testDirectory}/liana/glossary`]),
 
         },
-        'model': lianaModel,
+        'model': {
+            'model': lianaModel,
+
+            'stringmapping': pr.wrapRawDictionary({
+                "text": ['string', null]
+            }),
+        },
+    })
+    mliana2Pareto.$a.generateProject({
+        'mainData': {
+            'arguments': pr.wrapRawArray([`${$.testDirectory}/liana/accounting`]),
+
+        },
+        'model': {
+            'model': accountingModel,
+
+            'stringmapping': pr.wrapRawDictionary({
+                "datum": ['number', null],
+                "bedrag": ['number', null],
+                "promillage": ['number', null],
+                "text": ['string', null]
+            }),
+        },
     })
 
 

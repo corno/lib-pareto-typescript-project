@@ -97,7 +97,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                                         return ['template', {
                                                             'template': "Reference",
                                                             'arguments': d({
-                                                                "RererencedType": ref($.type)
+                                                                "RererencedType": ref($['referenced type'])
                                                             }),
                                                         }]
                                                     })

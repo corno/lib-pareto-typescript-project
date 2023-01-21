@@ -42,6 +42,6 @@ export type TString = {
             readonly 'type': string
         }]
         | ['yes', {
-            readonly 'type': string
+            readonly 'referenced type': string
         }]
 }

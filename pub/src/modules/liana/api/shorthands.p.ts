@@ -4,6 +4,7 @@ import * as pl from 'pareto-core-lib'
 import {
     TGlobalType,
     TLocalType,
+    TString,
 } from "./types.generated";
 
 const d = pr.wrapRawDictionary
@@ -14,13 +15,17 @@ export function array(type: TLocalType): TLocalType {
     }]
 }
 
+function constrainedString(constraint: string): TString {
+    return {
+        'constrained': ['yes', {
+            'referenced type': constraint,
+        }],
+    }
+}
+
 export function constrainedDictionary(constraint: string, type: TLocalType): TLocalType {
     return ['dictionary', {
-        'key': {
-            'constrained': ['yes', {
-                'type': constraint,
-            }],
-        },
+        'key': constrainedString(constraint),
         'type': type
     }]
 }
@@ -89,10 +94,17 @@ export function boolean(): TLocalType {
     return ['boolean', null]
 }
 
-export function reference(type: string): TLocalType {
+export function reference(
+    type:
+    | ["sibling"]
+    | ["parent"]
+    | ["parameter"]
+        | ["self"],
+    referencedType: string
+): TLocalType {
     return ['string', {
         'constrained': ['yes', {
-            'type': type
+            'referenced type': referencedType
         }],
     }]
 }

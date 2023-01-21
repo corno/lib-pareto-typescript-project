@@ -5,7 +5,7 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, string, optional
+    array, dictionary, group, member, taggedUnion, types, _function, string, optional, typeReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -31,7 +31,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                             "type": member(str()),
                         }),
                         "yes": group({
-                            "type": member(str()),
+
+                            "referenced type": member(str()),
                         })
                     }))
                 }),
@@ -96,6 +97,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             // "temp": "../../temp",
         }),
         'algorithms': d({
+            "resolve": {
+                'definition': ['procedure', typeReference("Model")],
+                'type': ['reference', null],
+            },
             // "createGlossarySerializer": {
             //     'definition': ['callback', {
             //         'callback': "SerializeGlossary"

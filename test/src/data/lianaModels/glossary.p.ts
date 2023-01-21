@@ -36,7 +36,7 @@ export const $: mliana.TModel = {
             "callbacks": [["namespace"], dictionary(group({
                 "data": [[], component("OptionalTypeReference")],
                 "context": [[], component("Context")],
-                "interface": [["context"], reference("Interface")]
+                "interface": [["context"], reference(['parameter'], "Interface")]
             }))],
             "pipes": [["namespace"], dictionary(group({
                 "in": [[], component("InterfaceReference")],
@@ -52,7 +52,7 @@ export const $: mliana.TModel = {
                 "interface": [[], taggedUnion({
                     "null": group({}),
                     "set": group({
-                        "interface": [[], reference("Interface")]
+                        "interface": [[], reference(['parameter'], "Interface")]
                     }),
                 })]
             })],
@@ -60,7 +60,7 @@ export const $: mliana.TModel = {
         })),
         "InterfaceReference": globalType(group({
             "context": [[], component("Context")],
-            "interface": [[], reference("Interface")],
+            "interface": [["context"], reference(['sibling'], "Interface")],
         })),
         "Namespace": globalType(group({
             "namespaces": [[], dictionary(component("Namespace"))],
@@ -80,8 +80,8 @@ export const $: mliana.TModel = {
         })),
         "TypeReference": globalType(group({
             "context": [[], component("Context")],
-            "namespaces": [["context"], array(reference("Namespace"))],
-            "type": [["namespace"], reference("Type")],
+            "namespaces": [["context"], array(reference(['sibling'], "Namespace"))],
+            "type": [["namespace"], reference(['sibling'], "Type")],
         }))
     }),
     'root': "Glossary",

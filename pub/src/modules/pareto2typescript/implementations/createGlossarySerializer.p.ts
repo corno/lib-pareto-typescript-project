@@ -69,6 +69,12 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                         $i.snippet(`string`)
                     })
                     break
+                case 'calculated':
+                    pl.cc($[1], ($) => {
+                        $i.snippet(`() => `)
+                        serializeType($, $i)
+                    })
+                    break
                 case 'array':
                     pl.cc($[1], ($) => {
                         $i.snippet(`pt.Array<`)

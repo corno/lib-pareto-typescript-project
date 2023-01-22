@@ -73,7 +73,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                                 case 'no':
                                                     return pl.cc($.constrained[1], ($) => {
                                                         return pr.getEntry(
-                                                            stringMapping, $.type,
+                                                            stringMapping, $.type.name,
                                                             ($) => {
                                                                 switch ($[0]) {
                                                                     case 'number':

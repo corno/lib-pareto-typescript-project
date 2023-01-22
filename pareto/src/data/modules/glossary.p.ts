@@ -84,6 +84,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "nested": ref("Type"),
                     "optional": ref("Type"),
                     "dictionary": ref("Type"),
+                    "calculated": ref("Type"),
 
                     "null": null_(),
                     "boolean": null_(),

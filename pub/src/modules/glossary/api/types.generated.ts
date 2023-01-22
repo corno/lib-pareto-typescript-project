@@ -67,6 +67,7 @@ export type TTemplate = {
 export type TType = 
     | ['array', TType]
     | ['boolean', null]
+    | ['calculated', TType]
     | ['dictionary', TType]
     | ['group', pt.Dictionary<{
         readonly 'optional'?: boolean

@@ -11,11 +11,15 @@ import {
 
 const d = pr.wrapRawDictionary
 
-export function r(name: string): T_Reference {
+function r_imp(name: string, annotation: string): T_Reference {
     return {
         name: name,
-        annotation: pr.getLocationInfo(1)
+        annotation: annotation
     }
+}
+
+export function r(name: string): T_Reference {
+    return r_imp(name, pr.getLocationInfo(1))
 }
 
 export function array(type: TLocalType): TLocalType {
@@ -41,7 +45,7 @@ export function dictionary(type: TLocalType): TLocalType {
     return ['dictionary', {
         'key': {
             'constrained': ['no', {
-                'type': "identifier"
+                'type': r_imp("identifier", pr.getLocationInfo(1))
             }]
         },
         'type': type
@@ -84,20 +88,26 @@ export function taggedUnion(options: { [key: string]: TLocalType }): TLocalType 
     if (firstKey === null) {
         pl.panic(`Missing options in tagged union`)
     }
-    return ['taggedUnion', {
-        'options': d(options).map(($) => {
-            return {
-                'type': $
+    return pl.cc(firstKey, ($) => {
+
+        return ['taggedUnion', {
+            'options': d(options).map(($) => {
+                return {
+                    'type': $
+                }
+            }),
+            'default': {
+                'name': $,
+                'annotation': pr.getLocationInfo(1)
             }
-        }),
-        'default': firstKey
-    }]
+        }]
+    })
 }
 
 export function string(type: string): TLocalType {
     return ['string', {
         'constrained': ['no', {
-            'type': type,
+            'type': r_imp(type, pr.getLocationInfo(1)),
         }],
     }]
 }

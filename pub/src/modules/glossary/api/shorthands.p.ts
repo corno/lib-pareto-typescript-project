@@ -47,6 +47,9 @@ export function template(template: string, $: { [key: string]: t.TType }): t.TTy
 export function array($: t.TType): t.TType {
     return ['array', $]
 }
+export function calculated($: t.TType): t.TType {
+    return ['calculated', $]
+}
 export function nested($: t.TType): t.TType {
     return ['nested', $]
 }

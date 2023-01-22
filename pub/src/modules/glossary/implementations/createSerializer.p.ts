@@ -68,6 +68,13 @@ export const $$: api.CcreateSerializer = ($d) => {
         $i.snippet(`<mglossary.TType>`)
 
         switch ($[0]) {
+            case 'calculated':
+                pl.cc($[1], ($) => {
+                    $i.snippet(`['calculated', `)
+                    serializeType($, $i)
+                    $i.snippet(`]`)
+                })
+                break
             case 'null':
                 pl.cc($[1], ($) => {
                     $i.snippet(`['null', null]`)
@@ -133,6 +140,13 @@ export const $$: api.CcreateSerializer = ($d) => {
                         })
                     })
                     $i.snippet(`})]`)
+                })
+                break
+            case 'nested':
+                pl.cc($[1], ($) => {
+                    $i.snippet(`['nested', `)
+                    serializeType($, $i)
+                    $i.snippet(`]`)
                 })
                 break
             case 'nested':

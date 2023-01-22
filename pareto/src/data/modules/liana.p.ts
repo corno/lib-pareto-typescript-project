@@ -65,7 +65,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "options": member(dictionary(group({
                             "type": member(ref("LocalType"))
                         }))),
-                        "default": member(str())
+                        "default": member(ref("_Reference"))
                     }),
                     "group": group({
                         "properties": member(ref("Properties"))
@@ -103,7 +103,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "String": group({
                     "constrained": member(taggedUnion({
                         "no": group({
-                            "type": member(str()),
+                            "type": member(ref("_Reference")),
                         }),
                         "yes": ref("Reference")
                     }))
@@ -125,10 +125,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "type": member(ref("XLocalType"))
                     }),
                     "taggedUnion": group({
-                        "options": member(dictionary(group({
-                            "type": member(ref("XLocalType"))
-                        }))),
-                        "default": member(str())
+                        "options": member(dictionary(ref("XOption"))),
+                        "default": member(template("Reference", { "ReferencedType": ref("XOption") }))
                     }),
                     "group": group({
                         "properties": member(ref("XProperties"))
@@ -139,9 +137,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     }),
                 }),
                 "XModel": group({
-                    "stringTypes": member(dictionary(null_())),
+                    "stringTypes": member(dictionary(ref("XStringType"))),
                     "globalTypes": member(dictionary(ref("XGlobalType"))),
                     "root": member(template("Reference", { "ReferencedType": ref("XGlobalType") }))
+                }),
+                "XOption": group({
+                    "type": member(ref("XLocalType"))
                 }),
                 "XParameters": dictionary(null_()),
                 "XProperty": group({
@@ -154,11 +155,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "XString": group({
                     "constrained": member(taggedUnion({
                         "no": group({
-                            "type": member(str()),
+                            "type": member(template("Reference", { "ReferencedType": ref("XStringType") }))
                         }),
                         "yes": ref("XReference")
                     }))
                 }),
+                "XStringType": null_(),
                 ////
                 "PossibleModel": template("Possibly", {"Type": ref("XModel")})
             }),

@@ -38,7 +38,7 @@ export type TLocalType =
     }]
     | ['string', TString]
     | ['taggedUnion', {
-        readonly 'default': string
+        readonly 'default': T_Reference
         readonly 'options': pt.Dictionary<{
             readonly 'type': TLocalType
         }>
@@ -78,7 +78,7 @@ export type TReference = {
 export type TString = {
     readonly 'constrained': 
         | ['no', {
-            readonly 'type': string
+            readonly 'type': T_Reference
         }]
         | ['yes', TReference]
 }
@@ -106,16 +106,18 @@ export type TXLocalType =
     }]
     | ['string', TXString]
     | ['taggedUnion', {
-        readonly 'default': string
-        readonly 'options': pt.Dictionary<{
-            readonly 'type': TXLocalType
-        }>
+        readonly 'default': MReference<TXOption>
+        readonly 'options': pt.Dictionary<TXOption>
     }]
 
 export type TXModel = {
     readonly 'globalTypes': pt.Dictionary<TXGlobalType>
     readonly 'root': MReference<TXGlobalType>
-    readonly 'stringTypes': pt.Dictionary<null>
+    readonly 'stringTypes': pt.Dictionary<TXStringType>
+}
+
+export type TXOption = {
+    readonly 'type': TXLocalType
 }
 
 export type TXParameters = pt.Dictionary<null>
@@ -131,10 +133,12 @@ export type TXReference = {}
 export type TXString = {
     readonly 'constrained': 
         | ['no', {
-            readonly 'type': string
+            readonly 'type': MReference<TXStringType>
         }]
         | ['yes', TXReference]
 }
+
+export type TXStringType = null
 
 export type IOnResolved = ($: TXModel, ) => void
 

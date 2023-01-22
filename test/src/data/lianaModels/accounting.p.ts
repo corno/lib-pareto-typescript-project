@@ -134,7 +134,7 @@ export const $: mliana.TModel = {
                 "Leveranciers",
                 "Bankrekeningen",
                 "Informele rekeningen",
-            ], component("Jaren", [])],
+            ], component("Jaren", {})],
         })),
         "Informele Rekeningen": globalType({}, constrainedDictionary(['self', null], [], group({
             "Grootboekrekening": [[], reference(['parent', null], [])],
@@ -180,7 +180,7 @@ export const $: mliana.TModel = {
             "Resultaat grootboekrekeningen": [[], constrainedDictionary(['self', null], [], group({
             }))],
 
-            "Informele rekeningen": [[], component("Informele Rekeningen", [])],
+            "Informele rekeningen": [[], component("Informele Rekeningen", {})],
             "Overige balans items": [[], dictionary(group({
                 "Beginsaldo": [[], string("bedrag")],
                 "Grootboekrekening": [[], reference(['parent', null], [])],
@@ -363,7 +363,7 @@ export const $: mliana.TModel = {
             "Verrekenposten": [[], dictionary(group({
                 "Mutaties": [[], dictionary(group({
                     "Bedrag": [[], string("bedrag")],
-                    "Afhandeling": [[], component("Afhandeling", [])]
+                    "Afhandeling": [[], component("Afhandeling", {})]
                 }))],
             }))],
             "Bankrekeningen": [[], dictionary(group({
@@ -383,7 +383,7 @@ export const $: mliana.TModel = {
                     "Status": [[], taggedUnion({
                         "Nog te verwerken": group({}),
                         "Verwerkt": group({
-                            "Afhandeling": [[], component("Afhandeling", [])]
+                            "Afhandeling": [[], component("Afhandeling", {})]
                         })
                     })]
                 }))],

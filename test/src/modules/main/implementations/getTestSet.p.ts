@@ -107,7 +107,7 @@ export const $$: api.CgetTestSet = ($) => {
         }
     }
     // x(lianaModel)
-    // x(accountingModel)
+    x(accountingModel)
     x(simpleModel)
 
     mliana2Pareto.$a.generateProject({

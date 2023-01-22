@@ -4,6 +4,7 @@ import * as pr from 'pareto-core-raw'
 import * as ps from 'pareto-core-state'
 
 import * as api from "../api"
+import { TXGlobalType } from '../api'
 
 export const $$: api.CcreateResolver = ($d) => {
     let hasErrors = false
@@ -34,20 +35,20 @@ export const $$: api.CcreateResolver = ($d) => {
     type OptionalAnnotatedUnsafeDictionary<T> = null | AnnotatedUnsafeDictionary<T>
     type PossibleValue<T> = api.MPossibly<T>
     function buildDictionary<TIN, TOUT>($: AnnotatedDictionary<TIN>, cb: ($: TIN, $i: {
-        getDictionary: () => AnnotatedUnsafeDictionary<TOUT>
-        subscribe: ($: api.T_Reference) => () => TOUT
+        getPrecedingSiblings: () => AnnotatedUnsafeDictionary<TOUT>
+        subscribeToSibling: ComputedReference<TOUT>
     }) => TOUT | undefined): AnnotatedUnsafeDictionary<TOUT> {
         const builder = ps.createUnsafeDictionaryBuilder<PossibleValue<TOUT>>()
         const annotation = $.annotation
         $.dictionary.forEach(() => false, ($, key) => {
             const value = cb($, {
-                getDictionary: () => {
+                getPrecedingSiblings: () => {
                     return {
                         annotation: annotation,
                         dictionary: builder.getDictionary()
                     }
                 },
-                subscribe: () => {
+                subscribeToSibling: () => {
                     pl.implementMe(`implement subscription`)
                     return () => {
                         pl.implementMe(`SKDFSL:FSF`)
@@ -189,7 +190,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                 switch ($[0]) {
                                     case 'other':
                                         return pl.cc($[1], ($) => {
-                                            onError(`IMPLEMENT OTHER`)
+                                            //onError(`IMPLEMENT OTHER`)
                                             //pl.implementMe(`case`)
                                         })
                                     case 'parameter':
@@ -201,14 +202,12 @@ export const $$: api.CcreateResolver = ($d) => {
                                             if (support.siblings === null) {
                                                 pl.implementMe(`NO SIBLINGS`)
                                             } else {
-                                                const siblings = support.siblings
                                                 const annotation = $.annotation
                                                 const current = resolve("sibling", support.siblings, $)
                                                 switch (current[0]) {
                                                     case 'not set':
                                                         pl.cc(current[1], ($) => {
                                                             //what to do
-
                                                         })
                                                         break
                                                     case 'set':
@@ -225,7 +224,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                     default: return pl.au($[0])
                                 }
                             })
-                            onError("IMPLEMENT REFERENCE")
+                            onError(`IMPLEMENT REFERENCE`)
                             return ['not set', null] ///HIER
 
                         })
@@ -272,13 +271,18 @@ export const $$: api.CcreateResolver = ($d) => {
                         })
                     case 'component':
                         return pl.cc($[1], ($): api.MPossibly<api.TXLocalType> => {
-                            const r_arguments = buildDictionary<null, api.TXArgument>($.arguments, ($, $i) => {
-                                return null
-                            })
-                            return ['set', ['component', {
-                                'type': computedReference($.type, support.globalTypes($.type)),
-                                'arguments': filter(r_arguments),
-                            }]]
+                            // const r_arguments = buildDictionary<null, api.MConstrainedDictionaryEntry<TXGlobalType, null>>($.arguments, ($, $i) => {
+                            //     resolve("global types", support.globalTypes)
+                            //     return {
+                            //         'value': null
+                            //     }
+                            // })
+                            // return ['set', ['component', {
+                            //     'type': computedReference($.type, support.globalTypes($.type)),
+                            //     'arguments': filter(r_arguments),
+                            // }]]
+                            onError(`IMPLEMENT COMPONENT`)
+                            return ['not set', null]
                         })
                     case 'dictionary':
                         return pl.cc($[1], ($) => {
@@ -319,7 +323,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                     support: {
                                         stringTypes: support.stringTypes,
                                         globalTypes: support.globalTypes,
-                                        siblings: $i.getDictionary(),
+                                        siblings: $i.getPrecedingSiblings(),
                                     }
                                 })
                                 if (r_type[0] === 'not set') {
@@ -362,7 +366,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                     support: {
                                         stringTypes: support.stringTypes,
                                         globalTypes: support.globalTypes,
-                                        siblings: $i.getDictionary(),
+                                        siblings: $i.getPrecedingSiblings(),
                                     }
                                 })
                                 if (r_type[0] === 'not set') {
@@ -403,7 +407,7 @@ export const $$: api.CcreateResolver = ($d) => {
                 support: {
                     siblings: null,
                     stringTypes: r_stringTypes,
-                    globalTypes: $i.subscribe,
+                    globalTypes: $i.subscribeToSibling,
                 }
             })
             if (true

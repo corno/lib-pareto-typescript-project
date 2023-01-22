@@ -6,6 +6,16 @@ export type MComputedReference<AReferencedType> = {
     readonly 'referenced value': () => AReferencedType
 }
 
+export type MConstrainedDictionary<AReferencedType, AType> = {
+    readonly 'annotation': string
+    readonly 'dictionary': pt.Dictionary<MConstrainedDictionaryEntry<TXGlobalType, TXArgument>>
+}
+
+export type MConstrainedDictionaryEntry<AReferencedType, AType> = {
+    readonly 'referenced value': AReferencedType
+    readonly 'value': AType
+}
+
 export type MDictionary<AType> = {
     readonly 'annotation': string
     readonly 'dictionary': pt.Dictionary<AType>
@@ -98,7 +108,7 @@ export type TString = {
         | ['yes', TReference]
 }
 
-export type TXArgument = null
+export type TXArgument = MComputedReference<TXGlobalType>
 
 export type TXGlobalType = {
     readonly 'parameters': TXParameters
@@ -111,7 +121,7 @@ export type TXLocalType =
     }]
     | ['boolean', null]
     | ['component', {
-        readonly 'arguments': MDictionary<TXArgument>
+        readonly 'arguments': MConstrainedDictionary<TXParameter, TXArgument>
         readonly 'type': MComputedReference<TXGlobalType>
     }]
     | ['dictionary', {

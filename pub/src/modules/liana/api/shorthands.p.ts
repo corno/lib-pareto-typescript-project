@@ -214,17 +214,13 @@ export function reference(
     }]
 }
 
-export function component(type: string, args: string[]): TLocalType {
+export function component(type: string, args: {[key:string]: null}): TLocalType {
     const li = pr.getLocationInfo(1)
-    const temp: { [key: string]: null } = {}
-    pr.wrapRawArray(args).forEach(($) => {
-        temp[$] = null
-    })
     return ['component', {
         'type': {
             'name': type,
             'annotation': li
         },
-        'arguments': d_imp(temp, li)
+        'arguments': d_imp(args, li)
     }]
 }

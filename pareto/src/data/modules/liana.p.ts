@@ -32,6 +32,32 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "dictionary": member(dictionary(parameter("Type"))),
                     })
                 },
+                "ConstrainedDictionary": {
+                    'parameters': d({
+                        "ReferencedType": null,
+                        "Type": null
+                    }),
+                    'type': group({
+                        "annotation": member(str()),
+                        "dictionary": member(dictionary(template("ConstrainedDictionaryEntry", {
+                            "Type": ref("XArgument"),
+                            "ReferencedType": ref("XGlobalType"),
+                        }))),
+                    })
+                },
+                "ConstrainedDictionaryEntry": {
+                    'parameters': d({
+                        "ReferencedType": null,
+                        "Type": null
+                    }),
+                    'type': group({
+                        "referenced value": member(parameter("ReferencedType")),
+                        "value": member(parameter("Type"))
+                    })
+                },
+
+
+                
                 "Possibly": {
                     'parameters': d({
                         "Type": null
@@ -129,7 +155,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     }))
                 }),
                 /////
-                "XArgument": null_(),
+                "XArgument": template("ComputedReference", { "ReferencedType": ref("XGlobalType") }),
                 "XGlobalType": group({
                     "parameters": member(ref("XParameters")),
                     "type": member(ref("XLocalType"))
@@ -153,7 +179,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     }),
                     "component": group({
                         "type": member(template("ComputedReference", { "ReferencedType": ref("XGlobalType") })),
-                        "arguments": member(template("Dictionary", { "Type": ref("XArgument")})),
+                        "arguments": member(template("ConstrainedDictionary", {
+                            "ReferencedType": ref("XParameter"),
+                            "Type": ref("XArgument"),
+                        })),
                     }),
                 }),
                 "XModel": group({

@@ -224,7 +224,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                     default: return pl.au($[0])
                                 }
                             })
-                            onError(`IMPLEMENT REFERENCE`)
+                            //onError(`IMPLEMENT REFERENCE`)
                             return ['not set', null] ///HIER
 
                         })
@@ -281,7 +281,7 @@ export const $$: api.CcreateResolver = ($d) => {
                             //     'type': computedReference($.type, support.globalTypes($.type)),
                             //     'arguments': filter(r_arguments),
                             // }]]
-                            onError(`IMPLEMENT COMPONENT`)
+                            //onError(`IMPLEMENT COMPONENT`)
                             return ['not set', null]
                         })
                     case 'dictionary':

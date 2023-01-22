@@ -420,12 +420,8 @@ export const $$: api.CcreateResolver = ($d) => {
             return null
         })
         const r_globalTypes = buildDictionary<api.TGlobalType, api.TXGlobalType>($.globalTypes, ($, $i) => {
-            let r_parameters: api.MPossibly<pt.Dictionary<null>> = pl.cc($.parameters, ($) => {
-                const builder = ps.createUnsafeDictionaryBuilder<null>()
-                $.forEach(() => false, ($, key) => {
-                    builder.add(key, null)
-                })
-                return ['set', builder.getDictionary()]
+            const r_parameters = buildDictionary<null, null>($.parameters, ($, $i) => {
+                return null
             })
             let r_type: api.MPossibly<api.TXLocalType> = resolveType({
                 $: $.type,
@@ -436,11 +432,10 @@ export const $$: api.CcreateResolver = ($d) => {
                 }
             })
             if (true
-                && r_parameters[0] === 'set'
                 && r_type[0] === 'set'
             ) {
                 return {
-                    'parameters': r_parameters[1],
+                    'parameters': filter(r_parameters),
                     'type': r_type[1],
                 }
             } else {

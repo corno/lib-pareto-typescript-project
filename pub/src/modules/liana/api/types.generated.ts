@@ -148,7 +148,9 @@ export type TXProperty = {
     readonly 'type': TXLocalType
 }
 
-export type TXReference = {}
+export type TXReference = {
+    readonly 'resolved type': null | TLocalType
+}
 
 export type TXString = {
     readonly 'constrained': 

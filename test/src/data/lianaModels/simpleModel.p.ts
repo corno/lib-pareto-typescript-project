@@ -30,6 +30,10 @@ export const $: mliana.TModel = {
                 //"a": [[], reference(['parent', null], [])],
             })],
             "f": [[], reference(['parameter', "parameterA"], [])],
+            //"g": [[], taggedUnion({})],
+            "h": [[], taggedUnion({
+                "a": group({})
+            })],
 
 
         })),

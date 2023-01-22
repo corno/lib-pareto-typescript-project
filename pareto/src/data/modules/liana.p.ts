@@ -166,13 +166,15 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "type": member(ref("XLocalType"))
                 }),
                 "XParameter": null_(),
+                //"XParameter": template("ComputedReference", { "ReferencedType": ref("XGlobalType") }),
+
                 "XParameters": template("Dictionary", { "Type": ref("XParameter")}),
                 "XProperty": group({
                     "type": member(ref("XLocalType"))
                 }),
                 "XProperties": template("Dictionary", { "Type": ref("XProperty")}),
                 "XReference": group({
-                    //"resolved type": member(ref("LocalType")),
+                    "resolved type": member(optional(ref("LocalType"))),
                 }),
                 "XString": group({
                     "constrained": member(taggedUnion({
@@ -236,49 +238,6 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     }),
                 }],
             },
-            // "createGlossarySerializer": {
-            //     'definition': ['callback', {
-            //         'callback': "SerializeGlossary"
-            //     }],
-            //     'type': ['constructor', {
-            //         'configuration data': ['null', null],
-            //         'dependencies': d({
-            //             "enrichedDictionaryForEach": ['callback', {
-            //                 'context': ['import', "temp"],
-            //                 'callback': "EnrichedDictionaryForEach",
-            //             }],
-            //             "compare": ['function', {
-            //                 'context': ['import', "collation"],
-            //                 'function': "IsABeforeB",
-            //             }],
-            //         })
-            //     }]
-            // },
-            // "createModuleDefinitionSerializer": {
-            //     'definition': ['callback', {
-            //         'callback': "SerializeModuleDefinition"
-            //     }],
-            //     'type': ['constructor', {
-            //         'configuration data': ['null', null],
-            //         'dependencies': d({
-            //             "compare": ['function', {
-            //                 'context': ['import', "collation"],
-            //                 'function': "IsABeforeB",
-            //             }],
-            //             "serializeGlossary": ['callback', {
-            //                 //'context': ['import', "glossary"],
-            //                 'callback': "SerializeGlossary"
-            //             }],
-            //             "serializeLeafType": ['callback', {
-            //                 //'context': ['import', "glossary"],
-            //                 'callback': "SerializeLeafType"
-            //             }],
-            //         }),
-            //         'callback': {
-            //             'callback': "SerializeModuleDefinition"
-            //         }
-            //     }],
-            // },
         })
     },
 }

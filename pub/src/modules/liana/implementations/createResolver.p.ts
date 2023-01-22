@@ -8,6 +8,7 @@ import * as api from "../api"
 export const $$: api.CcreateResolver = ($d) => {
     let hasErrors = false
     function onError($: string) {
+        $d.pr_onError($)
         hasErrors = true
     }
     function filter<T>($: AnnotatedUnsafeDictionary<T>): api.MDictionary<T> {
@@ -44,7 +45,7 @@ export const $$: api.CcreateResolver = ($d) => {
                     }
                 },
                 subscribe: () => {
-                    pl.logDebugMessage(`implement subscription`)
+                    pl.implementMe(`implement subscription`)
                     return () => {
                         pl.implementMe(`SKDFSL:FSF`)
                     }
@@ -244,7 +245,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                     default: return pl.au($[0])
                                 }
                             })
-                            pl.logDebugMessage(`.`)
+                            onError("IMPLEMENT REFERENCE")
                             return ['not set', null] ///HIER
 
                         })

@@ -111,7 +111,7 @@ export function taggedUnion(options: { [key: string]: TLocalType }): TLocalType 
         }
     })
     if (firstKey === null) {
-        pl.panic(`Missing options in tagged union`)
+        firstKey = "--NO OPTIONS--"
     }
     return pl.cc(firstKey, ($) => {
 

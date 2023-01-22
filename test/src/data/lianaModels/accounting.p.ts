@@ -28,7 +28,7 @@ export const $: mliana.TModel = {
         "single line text": null,
     }),
     'globalTypes': d({
-        "Accounting": globalType([], group({
+        "Accounting": globalType({}, group({
             "Beheer": [[], group({
                 "Gebruikers": [[], dictionary(group({
                     "Volledige naam": [[], string("single line text")],
@@ -136,7 +136,7 @@ export const $: mliana.TModel = {
                 "Informele rekeningen",
             ], component("Jaren", [])],
         })),
-        "Informele Rekeningen": globalType([], constrainedDictionary(['self', null], [], group({
+        "Informele Rekeningen": globalType({}, constrainedDictionary(['self', null], [], group({
             "Grootboekrekening": [[], reference(['parent', null], [])],
             "Beginsaldo": [[], string("bedrag")],
 
@@ -148,7 +148,7 @@ export const $: mliana.TModel = {
                 "Ja": group({}),
             })],
         }))),
-        "Jaren": globalType([], dictionary(group({
+        "Jaren": globalType({}, dictionary(group({
             "Startdatum boekjaar": [[], string("datum")],
             "Eerste boekjaar": [[], taggedUnion({
                 "Nee": group({
@@ -389,7 +389,8 @@ export const $: mliana.TModel = {
                 }))],
             }))],
         }))),
-        "Afhandeling": globalType(["Informele Rekeningen", "Jaren", "Verrekenposten"], taggedUnion({
+        //"Afhandeling": globalType(["Informele Rekeningen", "Jaren", "Verrekenposten"], taggedUnion({
+        "Afhandeling": globalType({}, taggedUnion({
             "Inkoop": group({
                 "Jaar": [[], reference(['parameter', "Jaren"], [])],
                 "Inkoop": [[], reference(['sibling', "Jaar"], [])],

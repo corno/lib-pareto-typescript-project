@@ -21,7 +21,7 @@ export const $: mliana.TModel = {
         "identifier": null,
     }),
     'globalTypes': d({
-        "Root": globalType([ "parameterA"], group({
+        "Root": globalType({ "parameterA": "Sub"}, group({
             "a": [[], string("text")],
             "b": [[], string("text")],
             "c": [[], dictionary(group({}))],
@@ -33,7 +33,7 @@ export const $: mliana.TModel = {
 
 
         })),
-        "Sub": globalType([], group({
+        "Sub": globalType({}, group({
 
         }))
     }),

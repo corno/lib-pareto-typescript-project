@@ -414,7 +414,7 @@ export const $$: api.CcreateResolver = ($d) => {
             return null
         })
         const r_globalTypes = buildDictionary<api.TGlobalType, api.TXGlobalType>($.globalTypes, ($, $i) => {
-            const r_parameters = buildDictionary<null, null>($.parameters, ($, $i) => {
+            const r_parameters = buildDictionary<api.TParameter, api.TXParameter>($.parameters, ($, $i) => {
                 return null
             })
             let r_type: api.MPossibly<api.TXLocalType> = resolveType({

@@ -100,7 +100,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "globalTypes": member(template("Dictionary", { "Type": ref("GlobalType")})),
                     "root": member(ref("_Reference"))
                 }),
-                "Parameters": template("Dictionary", { "Type": null_()}),
+                "Parameter": ref("_Reference"),
+                "Parameters": template("Dictionary", { "Type": ref("Parameter")}),
                 "Property": group({
                     "sibling dependencies": member(template("Dictionary", { "Type": null_()})),
                     "type": member(ref("LocalType"))
@@ -164,7 +165,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "XOption": group({
                     "type": member(ref("XLocalType"))
                 }),
-                "XParameters": template("Dictionary", { "Type": null_()}),
+                "XParameter": null_(),
+                "XParameters": template("Dictionary", { "Type": ref("XParameter")}),
                 "XProperty": group({
                     "type": member(ref("XLocalType"))
                 }),

@@ -61,7 +61,9 @@ export type TModel = {
     readonly 'stringTypes': MDictionary<null>
 }
 
-export type TParameters = MDictionary<null>
+export type TParameter = T_Reference
+
+export type TParameters = MDictionary<TParameter>
 
 export type TPossibleModel = MPossibly<{
     readonly 'has errors': boolean
@@ -136,7 +138,9 @@ export type TXOption = {
     readonly 'type': TXLocalType
 }
 
-export type TXParameters = MDictionary<null>
+export type TXParameter = null
+
+export type TXParameters = MDictionary<TXParameter>
 
 export type TXProperties = MDictionary<TXProperty>
 

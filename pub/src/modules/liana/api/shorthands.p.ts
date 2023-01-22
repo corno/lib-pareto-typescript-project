@@ -17,26 +17,28 @@ function r_imp(name: string, annotation: string): T_Reference {
     }
 }
 
-function d_imp<T>($: {[key: string]: T}, annotation: string): MDictionary<T> {
+function d_imp<T>($: { [key: string]: T }, annotation: string): MDictionary<T> {
     return {
         'annotation': annotation,
         'dictionary': pr.wrapRawDictionary($),
     }
 }
 
-function d_mappedimp<T, RT>($: {[key: string]: T}, annotation: string, cb: ($:T) => RT ): MDictionary<RT> {
+function d_mappedimp<T, RT>($: { [key: string]: T }, annotation: string, cb: ($: T) => RT): MDictionary<RT> {
     return {
         'annotation': annotation,
         'dictionary': pr.wrapRawDictionary($).map(cb),
     }
 }
 
-export function d<T>($: {[key: string]: T}) {
-    return d_imp($, pr.getLocationInfo(1))
+export function d<T>($: { [key: string]: T }) {
+    const li = pr.getLocationInfo(1)
+    return d_imp($, li)
 }
 
 export function r(name: string): T_Reference {
-    return r_imp(name, pr.getLocationInfo(1))
+    const li = pr.getLocationInfo(1)
+    return r_imp(name, li)
 }
 
 export function array(type: TLocalType): TLocalType {
@@ -52,45 +54,48 @@ function constrainedString($: ReferenceType, steps: Step[], annotation: string):
 }
 
 export function constrainedDictionary($: ReferenceType, steps: Step[], type: TLocalType): TLocalType {
+    const li = pr.getLocationInfo(1)
     return ['dictionary', {
-        // 'annotation': pr.getLocationInfo(1),
-        'key': constrainedString($, steps, pr.getLocationInfo(1)),
+        // 'annotation': li,
+        'key': constrainedString($, steps, li),
         'type': type
     }]
 }
 
 export function dictionary(type: TLocalType): TLocalType {
+    const li = pr.getLocationInfo(1)
+
     return ['dictionary', {
-        // 'annotation': pr.getLocationInfo(1),
+        // 'annotation': li,
         'key': {
             'constrained': ['no', {
-                'type': r_imp("identifier", pr.getLocationInfo(1))
+                'type': r_imp("identifier", li)
             }]
         },
         'type': type
     }]
 }
 
-export function globalType(parameters: string[], type: TLocalType): TGlobalType {
-    const temp: { [key: string]: null } = {}
-    pr.wrapRawArray(parameters).forEach(($) => {
-        temp[$] = null
-    })
+export function globalType(parameters: { [key: string]: string }, type: TLocalType): TGlobalType {
+    const li = pr.getLocationInfo(1)
     return {
         'type': type,
-        'parameters': d_imp(temp, pr.getLocationInfo(1))
+        'parameters': d_mappedimp(parameters, li, ($) => {
+            return r_imp($, li)
+        })
     }
 }
 
 export function group(properties: { [key: string]: [string[], TLocalType] }): TLocalType {
+    const li = pr.getLocationInfo(1)
     return ['group', {
-        'properties': d_mappedimp(properties, pr.getLocationInfo(1), ($) => {
+        'properties': d_mappedimp(properties, li, ($) => {
             const temp: { [key: string]: null } = {}
             pr.wrapRawArray($[0]).forEach(($) => {
                 temp[$] = null
             })
             return {
-                'sibling dependencies': d_imp(temp, pr.getLocationInfo(1)),
+                'sibling dependencies': d_imp(temp, li),
                 'type': $[1],
             }
         })
@@ -98,6 +103,7 @@ export function group(properties: { [key: string]: [string[], TLocalType] }): TL
 }
 
 export function taggedUnion(options: { [key: string]: TLocalType }): TLocalType {
+    const li = pr.getLocationInfo(1)
     let firstKey: null | string = null
     pr.wrapRawDictionary(options).map(($, key) => {
         if (firstKey === null) {
@@ -110,23 +116,24 @@ export function taggedUnion(options: { [key: string]: TLocalType }): TLocalType 
     return pl.cc(firstKey, ($) => {
 
         return ['taggedUnion', {
-            'options': d_mappedimp(options, pr.getLocationInfo(1), ($) => {
+            'options': d_mappedimp(options, li, ($) => {
                 return {
                     'type': $
                 }
             }),
             'default': {
                 'name': $,
-                'annotation': pr.getLocationInfo(1)
+                'annotation': li
             }
         }]
     })
 }
 
 export function string(type: string): TLocalType {
+    const li = pr.getLocationInfo(1)
     return ['string', {
         'constrained': ['no', {
-            'type': r_imp(type, pr.getLocationInfo(1)),
+            'type': r_imp(type, li),
         }],
     }]
 }
@@ -208,12 +215,14 @@ export function reference(
     type: ReferenceType,
     steps: Step[],
 ): TLocalType {
+    const li = pr.getLocationInfo(1)
     return ['string', {
-        'constrained': ['yes', referenceX(type, steps, pr.getLocationInfo(1))],
+        'constrained': ['yes', referenceX(type, steps, li)],
     }]
 }
 
 export function component(type: string, args: string[]): TLocalType {
+    const li = pr.getLocationInfo(1)
     const temp: { [key: string]: null } = {}
     pr.wrapRawArray(args).forEach(($) => {
         temp[$] = null
@@ -221,8 +230,8 @@ export function component(type: string, args: string[]): TLocalType {
     return ['component', {
         'type': {
             'name': type,
-            'annotation': pr.getLocationInfo(1)
+            'annotation': li
         },
-        'arguments': d_imp(temp, pr.getLocationInfo(1))
+        'arguments': d_imp(temp, li)
     }]
 }

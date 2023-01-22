@@ -20,11 +20,11 @@ export const $: mliana.TModel = {
         "text": null,
     }),
     'globalTypes': d({
-        "Context": globalType([], taggedUnion({
+        "Context": globalType({}, taggedUnion({
             "local": group({}),
             "import": reference(['parent', null], []),
         })),
-        "Glossary": globalType([], group({
+        "Glossary": globalType({}, group({
             "imports": [[], dictionary(group({}))],
             "parameters": [[], dictionary(group({}))],
             "namespace": [["imports"], component("Namespace", [])],
@@ -43,7 +43,7 @@ export const $: mliana.TModel = {
                 "out": [[], component("InterfaceReference", [])],
             }))],
         })),
-        "Interface": globalType([], group({
+        "Interface": globalType({}, group({
             "group": [[], group({
                 "members": [[], dictionary(component("Interface", []))]
             })],
@@ -58,11 +58,11 @@ export const $: mliana.TModel = {
             })],
             "reference": [[], component("InterfaceReference", [])],
         })),
-        "InterfaceReference": globalType([], group({
+        "InterfaceReference": globalType({}, group({
             "context": [[], component("Context", [])],
             "interface": [["context"], reference(['sibling', "context"], [])],
         })),
-        "Namespace": globalType([], group({
+        "Namespace": globalType({}, group({
             "namespaces": [[], dictionary(component("Namespace", []))],
             "templates": [[], dictionary(group({
                 "parameters": [[], dictionary(group({}))],
@@ -71,13 +71,13 @@ export const $: mliana.TModel = {
             "types": [["namespaces", "templates"], dictionary(component("Type", []))],
             "interfaces": [["types"], dictionary(component("Interface", []))]
         })),
-        "OptionalTypeReference": globalType([], taggedUnion({
+        "OptionalTypeReference": globalType({}, taggedUnion({
             "not set": group({}),
             "set": component("TypeReference", []),
         })),
-        "Type": globalType([], group({
+        "Type": globalType({}, group({
         })),
-        "TypeReference": globalType([], group({
+        "TypeReference": globalType({}, group({
             "context": [[], component("Context", [])],
             "namespaces": [["context"], array(reference(['sibling', "context"], []))],
             "type": [["namespace"], reference(['sibling', "namespaces"], [])],

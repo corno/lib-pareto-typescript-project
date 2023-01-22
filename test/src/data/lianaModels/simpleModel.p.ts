@@ -18,9 +18,24 @@ import {
 export const $: mliana.TModel = {
     'stringTypes': d({
         "text": null,
+        "identifier": null,
     }),
     'globalTypes': d({
-        "Root": globalType([], string("textx"))
+        "Root": globalType([ "parameterA"], group({
+            "a": [[], string("text")],
+            "b": [[], string("text")],
+            "c": [[], dictionary(group({}))],
+            "d": [[], reference(['sibling', "c"], [])],
+            "e": [[], group({
+                //"a": [[], reference(['parent', null], [])],
+            })],
+            "f": [[], reference(['parameter', "parameterA"], [])],
+
+
+        })),
+        "Sub": globalType([], group({
+
+        }))
     }),
     'root': r("Root"),
 }

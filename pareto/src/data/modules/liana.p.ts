@@ -182,13 +182,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
                 "XStringType": null_(),
                 ////
-                "PossibleModel": template("Possibly", {"Type": ref("XModel")})
+                "PossibleModel": template("Possibly", {"Type": group({
+                    "model": member(ref("XModel")),
+                    "has errors": member(bln()),
+                })})
             }),
             'interfaces': d({
-                "OnResolved": ['method', {
-                    'data': typeReference("XModel"),
-                    'interface': ['null', null],
-                }]
             }),
 
         },

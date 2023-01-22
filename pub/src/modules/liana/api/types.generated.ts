@@ -63,7 +63,10 @@ export type TModel = {
 
 export type TParameters = MDictionary<null>
 
-export type TPossibleModel = MPossibly<TXModel>
+export type TPossibleModel = MPossibly<{
+    readonly 'has errors': boolean
+    readonly 'model': TXModel
+}>
 
 export type TProperties = MDictionary<TProperty>
 
@@ -152,7 +155,5 @@ export type TXString = {
 }
 
 export type TXStringType = null
-
-export type IOnResolved = ($: TXModel, ) => void
 
 export type FResolve = ($: TModel) => TPossibleModel

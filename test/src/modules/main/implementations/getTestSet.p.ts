@@ -94,12 +94,13 @@ export const $$: api.CgetTestSet = ($) => {
             case 'set':
                 pl.cc(res[1], ($) => {
                     pl.logDebugMessage(`SET`)
-                    $.stringTypes.dictionary.forEach(() => false, ($, key) => {
+                    $.model.stringTypes.dictionary.forEach(() => false, ($, key) => {
                             pl.logDebugMessage(key)
                     })
-                    $.globalTypes.dictionary.forEach(() => false, ($, key) => {
+                    $.model.globalTypes.dictionary.forEach(() => false, ($, key) => {
                             pl.logDebugMessage(key)
                     })
+                    pl.logDebugMessage(`has errors? ${$['has errors']}`)
                 })
                 break
             default: pl.au(res[0])

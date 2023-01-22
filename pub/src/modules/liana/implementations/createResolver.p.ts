@@ -8,6 +8,41 @@ import { TXGlobalType } from '../api'
 
 export const $$: api.CcreateResolver = ($d) => {
 
+    function filter<T>($: UnsafeDictionary<T>): pt.Dictionary<T> {
+        return $.filter(($) => {
+            return $[0] === 'not set' ? undefined : $[1]
+        })
+    }
+
+    type UnsafeDictionary<T> = pt.Dictionary<api.MPossibly<T>>
+    type PossibleValue<T> = api.MPossibly<T>
+    function buildDictionary<T>(cb: ($i: {
+        add: (key: string, value: T | undefined) => void,
+        getDictionary: () => UnsafeDictionary<T>
+        subscribe: ($: api.T_Reference) => () => T
+    }) => void): UnsafeDictionary<T> {
+        const builder = ps.createUnsafeDictionaryBuilder<PossibleValue<T>>()
+        cb({
+            add: (key, value) => {
+                if (value === undefined) {
+                    builder.add(key, ['not set', null])
+                } else {
+                    builder.add(key, ['set', value])
+
+                }
+            },
+            getDictionary: () => {
+                return builder.getDictionary()
+            },
+            subscribe: () => {
+                pl.logDebugMessage(`implement subscription`)
+                return () => {
+                    pl.implementMe(`SKDFSL:FSF`)
+                }
+            }
+        })
+        return builder.getDictionary()
+    }
     function resolveXX<T>(
         where: string,
         dict: pt.Dictionary<T>,
@@ -423,85 +458,47 @@ export const $$: api.CcreateResolver = ($d) => {
                 return ['set', builder.getDictionary().filter($ => $ === 42 ? undefined : $)]
             }
         })
-        let r_globalTypes: pt.Dictionary<api.TXGlobalType> = pl.cc($.globalTypes, ($) => {
-            const builder = ps.createUnsafeDictionaryBuilder<api.TXGlobalType | 42>()
-            const subscriptions = ps.createArrayBuilder<($: pt.Dictionary<api.TXGlobalType | 42>) => void>()
-            let foundErrors = false
-            $.forEach(() => false, ($, key) => {
+        const r_globalTypes = buildDictionary<api.TXGlobalType>(($i) => {
+            $.globalTypes.forEach(() => false, ($, key) => {
                 let r_parameters: api.MPossibly<pt.Dictionary<null>> = pl.cc($.parameters, ($) => {
                     const builder = ps.createUnsafeDictionaryBuilder<null>()
                     $.forEach(() => false, ($, key) => {
                         builder.add(key, null)
                     })
-                    if (foundErrors) {
-                        return ['not set', null]
-                    } else {
-                        return ['set', builder.getDictionary().filter($ => $ === 42 ? undefined : $)]
-                    }
+                    return ['set', builder.getDictionary().filter($ => $ === 42 ? undefined : $)]
                 })
                 let r_type: api.MPossibly<api.TXLocalType> = resolveType({
                     $: $.type,
                     support: {
                         siblings: null,
                         stringTypes: r_stringTypes,
-                        globalTypes: ($) => {
-                            let x: null | api.TXGlobalType = null
-                            subscriptions.push((dict) => {
-                                pr.getEntry(
-                                    dict,
-                                    $.name,
-                                    ($) => {
-                                        if ($ === 42) {
-                                            x = null
-                                        } else {
-                                            x = $
-                                        }
-                                    },
-                                    () => {
-                                        foundErrors = true
-                                        $d.pr_onError(`calculated failure ${$.name} @ ${$.annotation}`)
-                                    }
-                                )
-                            })
-                            const computer = () => {
-                                if (x === null) {
-                                    pl.panic(`UNEXPECTED MISSING ${$.name} @ ${$.annotation}`)
-                                }
-                                return x
-                            }
-                            return computer
-                        },
+                        globalTypes: $i.subscribe,
                     }
                 })
-                add(builder, key, pl.cc(null, ($) => {
-
+                $i.add(key, pl.cc(null, ($) => {
                     if (true
                         && r_parameters[0] === 'set'
                         && r_type[0] === 'set'
                     ) {
-                        return ['set', {
+                        return {
                             'parameters': r_parameters[1],
                             'type': r_type[1],
-                        }]
+                        }
                     } else {
-                        return ['not set', null]
+                        return undefined
                     }
                 }))
             })
-            const dict = builder.getDictionary()
-            subscriptions.getArray().forEach(($) => {
-                $(dict)
-            })
-            return dict.filter($ => $ === 42 ? undefined : $)
         })
-        let r_root: api.MPossibly<api.MReference<api.TXGlobalType>> = resolve("root", ['set', r_globalTypes], $.root)
+
+        let r_root: api.MPossibly<api.MReference<api.TXGlobalType>> = resolve("root", ['set', filter(r_globalTypes)], $.root)
         if (true
             && r_stringTypes[0] === 'set'
             && r_root[0] === 'set'
         ) {
             const x: api.TXModel = {
                 'stringTypes': r_stringTypes[1],
-                'globalTypes': r_globalTypes,
+                'globalTypes': filter(r_globalTypes),
                 'root': r_root[1],
             }
             return ['set', x]

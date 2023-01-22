@@ -3,7 +3,12 @@ import * as pt from 'pareto-core-types'
 export type MComputedReference<AReferencedType> = {
     readonly 'annotation': string
     readonly 'name': string
-    readonly 'referenced type': () => AReferencedType
+    readonly 'referenced value': () => AReferencedType
+}
+
+export type MDictionary<AType> = {
+    readonly 'annotation': string
+    readonly 'dictionary': pt.Dictionary<AType>
 }
 
 export type MPossibly<AType> = 
@@ -13,7 +18,7 @@ export type MPossibly<AType> =
 export type MReference<AReferencedType> = {
     readonly 'annotation': string
     readonly 'name': string
-    readonly 'referenced type': AReferencedType
+    readonly 'referenced value': AReferencedType
 }
 
 export type T_Reference = {
@@ -32,7 +37,7 @@ export type TLocalType =
     }]
     | ['boolean', null]
     | ['component', {
-        readonly 'arguments': pt.Dictionary<null>
+        readonly 'arguments': MDictionary<null>
         readonly 'type': T_Reference
     }]
     | ['dictionary', {
@@ -45,25 +50,25 @@ export type TLocalType =
     | ['string', TString]
     | ['taggedUnion', {
         readonly 'default': T_Reference
-        readonly 'options': pt.Dictionary<{
+        readonly 'options': MDictionary<{
             readonly 'type': TLocalType
         }>
     }]
 
 export type TModel = {
-    readonly 'globalTypes': pt.Dictionary<TGlobalType>
+    readonly 'globalTypes': MDictionary<TGlobalType>
     readonly 'root': T_Reference
-    readonly 'stringTypes': pt.Dictionary<null>
+    readonly 'stringTypes': MDictionary<null>
 }
 
-export type TParameters = pt.Dictionary<null>
+export type TParameters = MDictionary<null>
 
 export type TPossibleModel = MPossibly<TXModel>
 
-export type TProperties = pt.Dictionary<TProperty>
+export type TProperties = MDictionary<TProperty>
 
 export type TProperty = {
-    readonly 'sibling dependencies': pt.Dictionary<null>
+    readonly 'sibling dependencies': MDictionary<null>
     readonly 'type': TLocalType
 }
 
@@ -102,7 +107,7 @@ export type TXLocalType =
     }]
     | ['boolean', null]
     | ['component', {
-        readonly 'arguments': pt.Dictionary<TXArgument>
+        readonly 'arguments': MDictionary<TXArgument>
         readonly 'type': MComputedReference<TXGlobalType>
     }]
     | ['dictionary', {
@@ -115,22 +120,22 @@ export type TXLocalType =
     | ['string', TXString]
     | ['taggedUnion', {
         readonly 'default': MReference<TXOption>
-        readonly 'options': pt.Dictionary<TXOption>
+        readonly 'options': MDictionary<TXOption>
     }]
 
 export type TXModel = {
-    readonly 'globalTypes': pt.Dictionary<TXGlobalType>
+    readonly 'globalTypes': MDictionary<TXGlobalType>
     readonly 'root': MReference<TXGlobalType>
-    readonly 'stringTypes': pt.Dictionary<TXStringType>
+    readonly 'stringTypes': MDictionary<TXStringType>
 }
 
 export type TXOption = {
     readonly 'type': TXLocalType
 }
 
-export type TXParameters = pt.Dictionary<null>
+export type TXParameters = MDictionary<null>
 
-export type TXProperties = pt.Dictionary<TXProperty>
+export type TXProperties = MDictionary<TXProperty>
 
 export type TXProperty = {
     readonly 'type': TXLocalType

@@ -32,6 +32,7 @@ import { $ as module } from "../../../data/project.p"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
+import { $ as simpleModel } from "../../../data/lianaModels/simpleModel.p"
 import { $ as lianaModel } from "../../../data/lianaModels/glossary.p"
 import { $ as accountingModel } from "../../../data/lianaModels/accounting.p"
 
@@ -78,7 +79,7 @@ export const $$: api.CgetTestSet = ($) => {
     // )
     const resolve = mliana.$a.createResolver({
         'pr_onError': ($) => {
-            pl.logDebugMessage(`RESOLVE ERROR: ${$}`)
+            pl.logDebugMessage($)
         }
     })
 
@@ -93,7 +94,10 @@ export const $$: api.CgetTestSet = ($) => {
             case 'set':
                 pl.cc(res[1], ($) => {
                     pl.logDebugMessage(`SET`)
-                    $.globalTypes.forEach(() => false, ($, key) => {
+                    $.stringTypes.dictionary.forEach(() => false, ($, key) => {
+                            pl.logDebugMessage(key)
+                    })
+                    $.globalTypes.dictionary.forEach(() => false, ($, key) => {
                             pl.logDebugMessage(key)
                     })
                 })
@@ -101,8 +105,9 @@ export const $$: api.CgetTestSet = ($) => {
             default: pl.au(res[0])
         }
     }
-    x(lianaModel)
-    x(accountingModel)
+    // x(lianaModel)
+    // x(accountingModel)
+    x(simpleModel)
 
     mliana2Pareto.$a.generateProject({
         'mainData': {

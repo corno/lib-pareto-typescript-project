@@ -35,7 +35,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
             return {
                 'namespaces': d({
                     "types": {
-                        'types': $.model.globalTypes.map(($) => {
+                        'types': $.model.globalTypes.dictionary.map(($) => {
                             function mapType($: mliana.TLocalType): mglossary.TType {
                                 switch ($[0]) {
                                     case 'array':
@@ -60,7 +60,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         })
                                     case 'group':
                                         return pl.cc($[1], ($) => {
-                                            return ['group', $.properties.map(($) => {
+                                            return ['group', $.properties.dictionary.map(($) => {
                                                 return {
                                                     'type': mapType($.type),
                                                     'optional': optional,
@@ -106,7 +106,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         })
                                     case 'taggedUnion':
                                         return pl.cc($[1], ($) => {
-                                            return ['taggedUnion', $.options.map(($) => {
+                                            return ['taggedUnion', $.options.dictionary.map(($) => {
                                                 return mapType($.type)
                                             })]
                                         })
@@ -161,7 +161,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 case 'group':
                     return pl.cc($[1], ($) => {
                         return ['groupInitializer', {
-                            'properties': $.properties.map(($) => {
+                            'properties': $.properties.dictionary.map(($) => {
                                 return generateExpression($.type)
                             })
                         }]
@@ -173,7 +173,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 case 'taggedUnion':
                     return pl.cc($[1], ($) => {
                         return ['switch', {
-                            'cases': $.options.map(($) => {
+                            'cases': $.options.dictionary.map(($) => {
                                 return generateBlock($.type)
                             })
                         }]
@@ -280,7 +280,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                         'constructor': true,
                         'type': ['function', {
                             'block': <malgorithm.TFunctionBlock>{
-                                'innerFunctions': $d.sf_addKeysToDictionary($.model.globalTypes).map(($) => {
+                                'innerFunctions': $d.sf_addKeysToDictionary($.model.globalTypes.dictionary).map(($) => {
                                     return {
                                         'definition': {
                                             'data': namespacedTypeReference(["unresolved"], $.key),

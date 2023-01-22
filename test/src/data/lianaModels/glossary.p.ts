@@ -2,6 +2,7 @@ import * as pr from 'pareto-core-raw'
 
 import * as mliana from "../../../../pub/dist/modules/liana"
 import {
+    d,
     array,
     boolean,
     component,
@@ -13,8 +14,6 @@ import {
     //string,
     taggedUnion,
 } from "../../../../pub/dist/modules/liana/api/shorthands.p"
-
-const d = pr.wrapRawDictionary
 
 export const $: mliana.TModel = {
     'stringTypes': d({

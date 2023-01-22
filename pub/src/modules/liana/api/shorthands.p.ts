@@ -4,6 +4,7 @@ import * as pl from 'pareto-core-lib'
 import {
     TGlobalType,
     TLocalType,
+    TReference,
     TString,
 } from "./types.generated";
 
@@ -15,17 +16,15 @@ export function array(type: TLocalType): TLocalType {
     }]
 }
 
-function constrainedString(constraint: string): TString {
+function constrainedString($: ReferenceType, constraint: string, annotation: string): TString {
     return {
-        'constrained': ['yes', {
-            'referenced type': constraint,
-        }],
+        'constrained': ['yes', referenceX($, constraint, annotation)],
     }
 }
 
-export function constrainedDictionary(constraint: string, type: TLocalType): TLocalType {
+export function constrainedDictionary($: ReferenceType, constraint: string, type: TLocalType): TLocalType {
     return ['dictionary', {
-        'key': constrainedString(constraint),
+        'key': constrainedString($, constraint, pr.getLocationInfo(1)),
         'type': type
     }]
 }
@@ -41,9 +40,14 @@ export function dictionary(type: TLocalType): TLocalType {
     }]
 }
 
-export function globalType(type: TLocalType): TGlobalType {
+export function globalType(parameters: string[], type: TLocalType): TGlobalType {
+    const temp: { [key: string]: null} = {}
+    pr.wrapRawArray(parameters).forEach(($) => {
+        temp[$] = null
+    })
     return {
         'type': type,
+        'parameters': pr.wrapRawDictionary(temp)
     }
 }
 
@@ -94,23 +98,59 @@ export function boolean(): TLocalType {
     return ['boolean', null]
 }
 
+export type ReferenceType =
+    | ["sibling", string]
+    | ["parent", null]
+    | ["parameter", string]
+    | ["self", null]
+
+function referenceX($: ReferenceType, referencedType: string, annotation: string): TReference {
+
+
+    return {
+        'type': pl.cc($, ($) => {
+            switch ($[0]) {
+                case 'parameter':
+                    return pl.cc($[1], ($) => {
+                        return ['parameter', $]
+                    })
+                case 'parent':
+                    return pl.cc($[1], ($) => {
+                        return ['other', null]
+                    })
+                case 'self':
+                    return pl.cc($[1], ($) => {
+                        return ['other', null]
+                    })
+                case 'sibling':
+                    return pl.cc($[1], ($) => {
+                        return ['sibling', $]
+                    })
+                default: return pl.au($[0])
+            }
+        }),
+        'referenced type': referencedType,
+        'annotation': annotation,
+    }
+
+}
+
 export function reference(
-    type:
-    | ["sibling"]
-    | ["parent"]
-    | ["parameter"]
-        | ["self"],
-    referencedType: string
+    type: ReferenceType,
+    referencedType: string,
 ): TLocalType {
     return ['string', {
-        'constrained': ['yes', {
-            'referenced type': referencedType
-        }],
+        'constrained': ['yes', referenceX(type, referencedType, pr.getLocationInfo(1))],
     }]
 }
 
-export function component(type: string): TLocalType {
+export function component(type: string, args: string[]): TLocalType {
+    const temp: { [key: string]: null} = {}
+    pr.wrapRawArray(args).forEach(($) => {
+        temp[$] = null
+    })
     return ['component', {
-        'type': type
+        'type': type,
+        'arguments': pr.wrapRawDictionary(temp)
     }]
 }

@@ -1,6 +1,7 @@
 import * as pt from 'pareto-core-types'
 
 export type TGlobalType = {
+    readonly 'parameters': TParameters
     readonly 'type': TLocalType
 }
 
@@ -10,6 +11,7 @@ export type TLocalType =
     }]
     | ['boolean', null]
     | ['component', {
+        readonly 'arguments': pt.Dictionary<null>
         readonly 'type': string
     }]
     | ['dictionary', {
@@ -17,10 +19,7 @@ export type TLocalType =
         readonly 'type': TLocalType
     }]
     | ['group', {
-        readonly 'properties': pt.Dictionary<{
-            readonly 'sibling dependencies': pt.Dictionary<null>
-            readonly 'type': TLocalType
-        }>
+        readonly 'properties': TProperties
     }]
     | ['string', TString]
     | ['taggedUnion', {
@@ -36,12 +35,28 @@ export type TModel = {
     readonly 'stringTypes': pt.Dictionary<null>
 }
 
+export type TParameters = pt.Dictionary<null>
+
+export type TProperties = pt.Dictionary<TProperty>
+
+export type TProperty = {
+    readonly 'sibling dependencies': pt.Dictionary<null>
+    readonly 'type': TLocalType
+}
+
+export type TReference = {
+    readonly 'annotation': string
+    readonly 'referenced type': string
+    readonly 'type': 
+        | ['other', null]
+        | ['parameter', string]
+        | ['sibling', string]
+}
+
 export type TString = {
     readonly 'constrained': 
         | ['no', {
             readonly 'type': string
         }]
-        | ['yes', {
-            readonly 'referenced type': string
-        }]
+        | ['yes', TReference]
 }

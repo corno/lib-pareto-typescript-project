@@ -5,7 +5,7 @@
     "lib-fountain-pen": "^0.21.0",
     "lib-pareto-main": "^0.7.0",
     "pareto-core-lib": "^0.17.0",
-    "pareto-core-raw": "^0.7.0",
+    "pareto-core-raw": "^0.7.2",
     "pareto-core-state": "^0.12.0",
     "res-pareto-collation": "^0.11.0",
     "res-pareto-filesystem": "^0.30.0"
@@ -23,5 +23,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.40.1",
-  "content-fingerprint": "b0d23b679ee58eec2b3d15e4953ec9859cf447a0"
+  "content-fingerprint": "0e88bbd6dcdb33152cc02fec88cfc6998d628eaf"
 }

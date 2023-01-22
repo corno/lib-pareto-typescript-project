@@ -25,7 +25,16 @@ export const $: mproject.TModule = {
                                 'templates': d({}),
                                 'types': d({
                                     "Context": <mglossary.TType>['taggedUnion', d({
-                                        "import": <mglossary.TType>['group', d({})],
+                                        "import": <mglossary.TType>['template', {
+                                            'arguments': d({
+                                                "RererencedType": <mglossary.TType>['reference', {
+                                                    'context': <mglossary.TContext>['local', null],
+                                                    'namespaces': a([]),
+                                                    'type': "Interface",
+                                                }],
+                                            }),
+                                            'template': "Reference",
+                                        }],
                                         "local": <mglossary.TType>['group', d({})],
                                     })],
                                     "Glossary": <mglossary.TType>['group', d({
@@ -315,7 +324,16 @@ export const $: mproject.TModule = {
                                 'templates': d({}),
                                 'types': d({
                                     "Context": <mglossary.TType>['taggedUnion', d({
-                                        "import": <mglossary.TType>['group', d({})],
+                                        "import": <mglossary.TType>['template', {
+                                            'arguments': d({
+                                                "RererencedType": <mglossary.TType>['reference', {
+                                                    'context': <mglossary.TContext>['local', null],
+                                                    'namespaces': a([]),
+                                                    'type': "Interface",
+                                                }],
+                                            }),
+                                            'template': "Reference",
+                                        }],
                                         "local": <mglossary.TType>['group', d({})],
                                     })],
                                     "Glossary": <mglossary.TType>['group', d({
@@ -680,9 +698,7 @@ export const $: mproject.TModule = {
                                         'cases': d({
                                             "import": {
                                                 'innerFunctions': d({}),
-                                                'returnExpression': ['groupInitializer', {
-                                                    'properties': d({})
-                                                }],
+                                                'returnExpression': ['implementMe', "liana2Pareto"],
                                             },
                                             "local": {
                                                 'innerFunctions': d({}),

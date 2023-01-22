@@ -23,18 +23,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'namespace': {
             'types': types({
                 "GlobalType": group({
+                    "parameters": member(ref("Parameters")),
                     "type": member(ref("LocalType"))
-                }),
-                "String": group({
-                    "constrained": member(taggedUnion({
-                        "no": group({
-                            "type": member(str()),
-                        }),
-                        "yes": group({
-
-                            "referenced type": member(str()),
-                        })
-                    }))
                 }),
                 "LocalType": taggedUnion({
                     "string": ref("String"),
@@ -53,19 +43,40 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "default": member(str())
                     }),
                     "group": group({
-                        "properties": member(dictionary(group({
-                            "sibling dependencies": member(dictionary(null_())),
-                            "type": member(ref("LocalType"))
-                        })))
+                        "properties": member(ref("Properties"))
                     }),
                     "component": group({
-                        "type": member(str())
+                        "type": member(str()),
+                        "arguments": member(dictionary(null_())),
                     }),
                 }),
                 "Model": group({
                     "stringTypes": member(dictionary(null_())),
                     "globalTypes": member(dictionary(ref("GlobalType"))),
                     "root": member(str())
+                }),
+                "Parameters": dictionary(null_()),
+                "Property": group({
+                    "sibling dependencies": member(dictionary(null_())),
+                    "type": member(ref("LocalType"))
+                }),
+                "Properties": dictionary(ref("Property")),
+                "Reference": group({
+                    "annotation": member(str()),
+                    "type": member(taggedUnion({
+                        "parameter": str(),
+                        "sibling": str(),
+                        "other": null_(),
+                    })),
+                    "referenced type": member(str()),
+                }),
+                "String": group({
+                    "constrained": member(taggedUnion({
+                        "no": group({
+                            "type": member(str()),
+                        }),
+                        "yes": ref("Reference")
+                    }))
                 }),
             }),
             'interfaces': d({}),

@@ -77,7 +77,8 @@ export const $$: api.CgetTestSet = ($) => {
     //     pr.wrapRawArray(["foo"])
     // )
 
-
+    mliana.$a.resolve(lianaModel)
+    mliana.$a.resolve(accountingModel)
 
     mliana2Pareto.$a.generateProject({
         'mainData': {

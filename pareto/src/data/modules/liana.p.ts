@@ -68,7 +68,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "sibling": str(),
                         "other": null_(),
                     })),
-                    "referenced type": member(str()),
+                    "steps": member(array(taggedUnion({
+                        "group": str(),
+                        "tagged union": str(),
+                        "reference": null_(),
+                        "array": null_(),
+                    }))),
                 }),
                 "String": group({
                     "constrained": member(taggedUnion({

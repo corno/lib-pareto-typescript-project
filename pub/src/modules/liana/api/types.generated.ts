@@ -46,7 +46,12 @@ export type TProperty = {
 
 export type TReference = {
     readonly 'annotation': string
-    readonly 'referenced type': string
+    readonly 'steps': pt.Array<
+        | ['array', null]
+        | ['group', string]
+        | ['reference', null]
+        | ['tagged union', string]
+    >
     readonly 'type': 
         | ['other', null]
         | ['parameter', string]

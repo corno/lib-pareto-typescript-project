@@ -22,7 +22,7 @@ export const $: mliana.TModel = {
     'globalTypes': d({
         "Context": globalType([], taggedUnion({
             "local": group({}),
-            "import": reference(['parent', null], "Interface"),
+            "import": reference(['parent', null], []),
         })),
         "Glossary": globalType([], group({
             "imports": [[], dictionary(group({}))],
@@ -36,7 +36,7 @@ export const $: mliana.TModel = {
             "callbacks": [["namespace"], dictionary(group({
                 "data": [[], component("OptionalTypeReference", [])],
                 "context": [[], component("Context", [])],
-                "interface": [["context"], reference(['sibling', "context"], "Interface")]
+                "interface": [["context"], reference(['sibling', "context"], [])]
             }))],
             "pipes": [["namespace"], dictionary(group({
                 "in": [[], component("InterfaceReference", [])],
@@ -52,7 +52,7 @@ export const $: mliana.TModel = {
                 "interface": [[], taggedUnion({
                     "null": group({}),
                     "set": group({
-                        "interface": [[], reference(['parent', null], "Interface")]
+                        "interface": [[], reference(['parent', null], [])]
                     }),
                 })]
             })],
@@ -60,7 +60,7 @@ export const $: mliana.TModel = {
         })),
         "InterfaceReference": globalType([], group({
             "context": [[], component("Context", [])],
-            "interface": [["context"], reference(['sibling', "context"], "Interface")],
+            "interface": [["context"], reference(['sibling', "context"], [])],
         })),
         "Namespace": globalType([], group({
             "namespaces": [[], dictionary(component("Namespace", []))],
@@ -80,8 +80,8 @@ export const $: mliana.TModel = {
         })),
         "TypeReference": globalType([], group({
             "context": [[], component("Context", [])],
-            "namespaces": [["context"], array(reference(['sibling', "context"], "Namespace"))],
-            "type": [["namespace"], reference(['sibling', "namespaces"], "Type")],
+            "namespaces": [["context"], array(reference(['sibling', "context"], []))],
+            "type": [["namespace"], reference(['sibling', "namespaces"], [])],
         }))
     }),
     'root': "Glossary",

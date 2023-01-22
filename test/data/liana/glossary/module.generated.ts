@@ -30,7 +30,7 @@ export const $: mproject.TModule = {
                                                 "RererencedType": <mglossary.TType>['reference', {
                                                     'context': <mglossary.TContext>['local', null],
                                                     'namespaces': a([]),
-                                                    'type': "Interface",
+                                                    'type': "FIXMEFIXMEFIXME",
                                                 }],
                                             }),
                                             'template': "Reference",
@@ -64,7 +64,7 @@ export const $: mproject.TModule = {
                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                 'context': <mglossary.TContext>['local', null],
                                                                 'namespaces': a([]),
-                                                                'type': "Interface",
+                                                                'type': "FIXMEFIXMEFIXME",
                                                             }],
                                                         }),
                                                         'template': "Reference",
@@ -172,7 +172,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Interface",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -208,7 +208,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Interface",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -283,7 +283,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Namespace",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -296,7 +296,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Type",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -329,7 +329,7 @@ export const $: mproject.TModule = {
                                                 "RererencedType": <mglossary.TType>['reference', {
                                                     'context': <mglossary.TContext>['local', null],
                                                     'namespaces': a([]),
-                                                    'type': "Interface",
+                                                    'type': "FIXMEFIXMEFIXME",
                                                 }],
                                             }),
                                             'template': "Reference",
@@ -363,7 +363,7 @@ export const $: mproject.TModule = {
                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                 'context': <mglossary.TContext>['local', null],
                                                                 'namespaces': a([]),
-                                                                'type': "Interface",
+                                                                'type': "FIXMEFIXMEFIXME",
                                                             }],
                                                         }),
                                                         'template': "Reference",
@@ -471,7 +471,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Interface",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -507,7 +507,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Interface",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -582,7 +582,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Namespace",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -595,7 +595,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Type",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",

@@ -45,7 +45,7 @@ export const $: mproject.TModule = {
                                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                                 'context': <mglossary.TContext>['local', null],
                                                                                 'namespaces': a([]),
-                                                                                'type': "Hoofdcategorieen",
+                                                                                'type': "FIXMEFIXMEFIXME",
                                                                             }],
                                                                         }),
                                                                         'template': "Reference",
@@ -58,7 +58,7 @@ export const $: mproject.TModule = {
                                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                                 'context': <mglossary.TContext>['local', null],
                                                                                 'namespaces': a([]),
-                                                                                'type': "Subcategorieen",
+                                                                                'type': "FIXMEFIXMEFIXME",
                                                                             }],
                                                                         }),
                                                                         'template': "Reference",
@@ -86,7 +86,7 @@ export const $: mproject.TModule = {
                                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                                         'context': <mglossary.TContext>['local', null],
                                                                                         'namespaces': a([]),
-                                                                                        'type': "Hoofdcategorieen fiscus",
+                                                                                        'type': "FIXMEFIXMEFIXME",
                                                                                     }],
                                                                                 }),
                                                                                 'template': "Reference",
@@ -99,7 +99,7 @@ export const $: mproject.TModule = {
                                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                                         'context': <mglossary.TContext>['local', null],
                                                                                         'namespaces': a([]),
-                                                                                        'type': "Subcategorieen",
+                                                                                        'type': "FIXMEFIXMEFIXME",
                                                                                     }],
                                                                                 }),
                                                                                 'template': "Reference",
@@ -177,7 +177,7 @@ export const $: mproject.TModule = {
                                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                                 'context': <mglossary.TContext>['local', null],
                                                                                 'namespaces': a([]),
-                                                                                'type': "Hoofdcategorieen",
+                                                                                'type': "FIXMEFIXMEFIXME",
                                                                             }],
                                                                         }),
                                                                         'template': "Reference",
@@ -190,7 +190,7 @@ export const $: mproject.TModule = {
                                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                                 'context': <mglossary.TContext>['local', null],
                                                                                 'namespaces': a([]),
-                                                                                'type': "Subcategorieen",
+                                                                                'type': "FIXMEFIXMEFIXME",
                                                                             }],
                                                                         }),
                                                                         'template': "Reference",
@@ -211,7 +211,7 @@ export const $: mproject.TModule = {
                                                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                                                         'context': <mglossary.TContext>['local', null],
                                                                                                         'namespaces': a([]),
-                                                                                                        'type': "Correctietypes vennootschapsbelasting",
+                                                                                                        'type': "FIXMEFIXMEFIXME",
                                                                                                     }],
                                                                                                 }),
                                                                                                 'template': "Reference",
@@ -240,7 +240,7 @@ export const $: mproject.TModule = {
                                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                                         'context': <mglossary.TContext>['local', null],
                                                                                         'namespaces': a([]),
-                                                                                        'type': "Hoofdcategorieen fiscus",
+                                                                                        'type': "FIXMEFIXMEFIXME",
                                                                                     }],
                                                                                 }),
                                                                                 'template': "Reference",
@@ -253,7 +253,7 @@ export const $: mproject.TModule = {
                                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                                         'context': <mglossary.TContext>['local', null],
                                                                                         'namespaces': a([]),
-                                                                                        'type': "Subcategorieen",
+                                                                                        'type': "FIXMEFIXMEFIXME",
                                                                                     }],
                                                                                 }),
                                                                                 'template': "Reference",
@@ -369,7 +369,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "BTW-periodes",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -382,7 +382,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Jaren",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -397,7 +397,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Informele rekeningen",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -412,7 +412,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Inkopen",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -425,7 +425,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Jaren",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -440,7 +440,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Verkopen",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -453,7 +453,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Jaren",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -468,7 +468,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Verrekenposten",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -488,7 +488,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -506,7 +506,7 @@ export const $: mproject.TModule = {
                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                     'context': <mglossary.TContext>['local', null],
                                                                     'namespaces': a([]),
-                                                                    'type': "Jaar",
+                                                                    'type': "FIXMEFIXMEFIXME",
                                                                 }],
                                                             }),
                                                             'template': "Reference",
@@ -519,7 +519,7 @@ export const $: mproject.TModule = {
                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                     'context': <mglossary.TContext>['local', null],
                                                                     'namespaces': a([]),
-                                                                    'type': "Informele Rekening",
+                                                                    'type': "FIXMEFIXMEFIXME",
                                                                 }],
                                                             }),
                                                             'template': "Reference",
@@ -564,7 +564,7 @@ export const $: mproject.TModule = {
                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                 'context': <mglossary.TContext>['local', null],
                                                                 'namespaces': a([]),
-                                                                'type': "Grootboekrekeningen",
+                                                                'type': "FIXMEFIXMEFIXME",
                                                             }],
                                                         }),
                                                         'template': "Reference",
@@ -615,7 +615,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Jaar",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -628,7 +628,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Bankrekeningen",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -701,7 +701,7 @@ export const $: mproject.TModule = {
                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                     'context': <mglossary.TContext>['local', null],
                                                                     'namespaces': a([]),
-                                                                    'type': "Jaren",
+                                                                    'type': "FIXMEFIXMEFIXME",
                                                                 }],
                                                             }),
                                                             'template': "Reference",
@@ -717,7 +717,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -730,7 +730,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -743,7 +743,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -756,7 +756,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -769,7 +769,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -782,7 +782,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -795,7 +795,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -830,7 +830,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Rekeningen courant",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -864,7 +864,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "BTW Periodes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -879,7 +879,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "BTW Periodes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -894,7 +894,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "BTW Periodes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -909,7 +909,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "BTW Periodes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -924,7 +924,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "BTW Periodes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -976,7 +976,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "Balans Items",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -991,7 +991,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "Grootboekrekeningen",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -1014,7 +1014,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Leveranciers",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1033,7 +1033,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Rondes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1048,7 +1048,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Medewerkers",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1061,7 +1061,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Rondes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1076,7 +1076,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Rondes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1101,7 +1101,7 @@ export const $: mproject.TModule = {
                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                 'context': <mglossary.TContext>['local', null],
                                                                 'namespaces': a([]),
-                                                                'type': "Grootboekrekeningen",
+                                                                'type': "FIXMEFIXMEFIXME",
                                                             }],
                                                         }),
                                                         'template': "Reference",
@@ -1125,7 +1125,7 @@ export const $: mproject.TModule = {
                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                         'context': <mglossary.TContext>['local', null],
                                                                         'namespaces': a([]),
-                                                                        'type': "Grootboekrekeningen",
+                                                                        'type': "FIXMEFIXMEFIXME",
                                                                     }],
                                                                 }),
                                                                 'template': "Reference",
@@ -1149,7 +1149,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Balans Items",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1162,7 +1162,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Jaren",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1200,7 +1200,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Rekeningen courant",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1232,7 +1232,7 @@ export const $: mproject.TModule = {
                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                 'context': <mglossary.TContext>['local', null],
                                                                 'namespaces': a([]),
-                                                                'type': "BTW-periodes",
+                                                                'type': "FIXMEFIXMEFIXME",
                                                             }],
                                                         }),
                                                         'template': "Reference",
@@ -1249,7 +1249,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Overeenkomsten",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1264,7 +1264,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Offerte",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1277,7 +1277,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Projecten",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -1293,7 +1293,7 @@ export const $: mproject.TModule = {
                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                 'context': <mglossary.TContext>['local', null],
                                                                 'namespaces': a([]),
-                                                                'type': "Klanten",
+                                                                'type': "FIXMEFIXMEFIXME",
                                                             }],
                                                         }),
                                                         'template': "Reference",
@@ -1321,7 +1321,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "BTW Categorieen",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -1341,7 +1341,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "Periodes",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -1357,7 +1357,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "Opbrengsten",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -1381,7 +1381,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "Balans items",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -1396,7 +1396,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "GRootboekrekeningen",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -1473,7 +1473,7 @@ export const $: mproject.TModule = {
                                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                                 'context': <mglossary.TContext>['local', null],
                                                                                 'namespaces': a([]),
-                                                                                'type': "Hoofdcategorieen",
+                                                                                'type': "FIXMEFIXMEFIXME",
                                                                             }],
                                                                         }),
                                                                         'template': "Reference",
@@ -1486,7 +1486,7 @@ export const $: mproject.TModule = {
                                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                                 'context': <mglossary.TContext>['local', null],
                                                                                 'namespaces': a([]),
-                                                                                'type': "Subcategorieen",
+                                                                                'type': "FIXMEFIXMEFIXME",
                                                                             }],
                                                                         }),
                                                                         'template': "Reference",
@@ -1514,7 +1514,7 @@ export const $: mproject.TModule = {
                                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                                         'context': <mglossary.TContext>['local', null],
                                                                                         'namespaces': a([]),
-                                                                                        'type': "Hoofdcategorieen fiscus",
+                                                                                        'type': "FIXMEFIXMEFIXME",
                                                                                     }],
                                                                                 }),
                                                                                 'template': "Reference",
@@ -1527,7 +1527,7 @@ export const $: mproject.TModule = {
                                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                                         'context': <mglossary.TContext>['local', null],
                                                                                         'namespaces': a([]),
-                                                                                        'type': "Subcategorieen",
+                                                                                        'type': "FIXMEFIXMEFIXME",
                                                                                     }],
                                                                                 }),
                                                                                 'template': "Reference",
@@ -1605,7 +1605,7 @@ export const $: mproject.TModule = {
                                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                                 'context': <mglossary.TContext>['local', null],
                                                                                 'namespaces': a([]),
-                                                                                'type': "Hoofdcategorieen",
+                                                                                'type': "FIXMEFIXMEFIXME",
                                                                             }],
                                                                         }),
                                                                         'template': "Reference",
@@ -1618,7 +1618,7 @@ export const $: mproject.TModule = {
                                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                                 'context': <mglossary.TContext>['local', null],
                                                                                 'namespaces': a([]),
-                                                                                'type': "Subcategorieen",
+                                                                                'type': "FIXMEFIXMEFIXME",
                                                                             }],
                                                                         }),
                                                                         'template': "Reference",
@@ -1639,7 +1639,7 @@ export const $: mproject.TModule = {
                                                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                                                         'context': <mglossary.TContext>['local', null],
                                                                                                         'namespaces': a([]),
-                                                                                                        'type': "Correctietypes vennootschapsbelasting",
+                                                                                                        'type': "FIXMEFIXMEFIXME",
                                                                                                     }],
                                                                                                 }),
                                                                                                 'template': "Reference",
@@ -1668,7 +1668,7 @@ export const $: mproject.TModule = {
                                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                                         'context': <mglossary.TContext>['local', null],
                                                                                         'namespaces': a([]),
-                                                                                        'type': "Hoofdcategorieen fiscus",
+                                                                                        'type': "FIXMEFIXMEFIXME",
                                                                                     }],
                                                                                 }),
                                                                                 'template': "Reference",
@@ -1681,7 +1681,7 @@ export const $: mproject.TModule = {
                                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                                         'context': <mglossary.TContext>['local', null],
                                                                                         'namespaces': a([]),
-                                                                                        'type': "Subcategorieen",
+                                                                                        'type': "FIXMEFIXMEFIXME",
                                                                                     }],
                                                                                 }),
                                                                                 'template': "Reference",
@@ -1797,7 +1797,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "BTW-periodes",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -1810,7 +1810,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Jaren",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -1825,7 +1825,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Informele rekeningen",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -1840,7 +1840,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Inkopen",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -1853,7 +1853,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Jaren",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -1868,7 +1868,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Verkopen",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -1881,7 +1881,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Jaren",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -1896,7 +1896,7 @@ export const $: mproject.TModule = {
                                                         "RererencedType": <mglossary.TType>['reference', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'namespaces': a([]),
-                                                            'type': "Verrekenposten",
+                                                            'type': "FIXMEFIXMEFIXME",
                                                         }],
                                                     }),
                                                     'template': "Reference",
@@ -1916,7 +1916,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -1934,7 +1934,7 @@ export const $: mproject.TModule = {
                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                     'context': <mglossary.TContext>['local', null],
                                                                     'namespaces': a([]),
-                                                                    'type': "Jaar",
+                                                                    'type': "FIXMEFIXMEFIXME",
                                                                 }],
                                                             }),
                                                             'template': "Reference",
@@ -1947,7 +1947,7 @@ export const $: mproject.TModule = {
                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                     'context': <mglossary.TContext>['local', null],
                                                                     'namespaces': a([]),
-                                                                    'type': "Informele Rekening",
+                                                                    'type': "FIXMEFIXMEFIXME",
                                                                 }],
                                                             }),
                                                             'template': "Reference",
@@ -1992,7 +1992,7 @@ export const $: mproject.TModule = {
                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                 'context': <mglossary.TContext>['local', null],
                                                                 'namespaces': a([]),
-                                                                'type': "Grootboekrekeningen",
+                                                                'type': "FIXMEFIXMEFIXME",
                                                             }],
                                                         }),
                                                         'template': "Reference",
@@ -2043,7 +2043,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Jaar",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2056,7 +2056,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Bankrekeningen",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2129,7 +2129,7 @@ export const $: mproject.TModule = {
                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                     'context': <mglossary.TContext>['local', null],
                                                                     'namespaces': a([]),
-                                                                    'type': "Jaren",
+                                                                    'type': "FIXMEFIXMEFIXME",
                                                                 }],
                                                             }),
                                                             'template': "Reference",
@@ -2145,7 +2145,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -2158,7 +2158,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -2171,7 +2171,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -2184,7 +2184,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -2197,7 +2197,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -2210,7 +2210,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -2223,7 +2223,7 @@ export const $: mproject.TModule = {
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'namespaces': a([]),
-                                                        'type': "Grootboekrekeningen",
+                                                        'type': "FIXMEFIXMEFIXME",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -2258,7 +2258,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Rekeningen courant",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2292,7 +2292,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "BTW Periodes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2307,7 +2307,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "BTW Periodes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2322,7 +2322,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "BTW Periodes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2337,7 +2337,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "BTW Periodes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2352,7 +2352,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "BTW Periodes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2404,7 +2404,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "Balans Items",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -2419,7 +2419,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "Grootboekrekeningen",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -2442,7 +2442,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Leveranciers",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2461,7 +2461,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Rondes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2476,7 +2476,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Medewerkers",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2489,7 +2489,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Rondes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2504,7 +2504,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Rondes",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2529,7 +2529,7 @@ export const $: mproject.TModule = {
                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                 'context': <mglossary.TContext>['local', null],
                                                                 'namespaces': a([]),
-                                                                'type': "Grootboekrekeningen",
+                                                                'type': "FIXMEFIXMEFIXME",
                                                             }],
                                                         }),
                                                         'template': "Reference",
@@ -2553,7 +2553,7 @@ export const $: mproject.TModule = {
                                                                     "RererencedType": <mglossary.TType>['reference', {
                                                                         'context': <mglossary.TContext>['local', null],
                                                                         'namespaces': a([]),
-                                                                        'type': "Grootboekrekeningen",
+                                                                        'type': "FIXMEFIXMEFIXME",
                                                                     }],
                                                                 }),
                                                                 'template': "Reference",
@@ -2577,7 +2577,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Balans Items",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2590,7 +2590,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Jaren",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2628,7 +2628,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Rekeningen courant",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2660,7 +2660,7 @@ export const $: mproject.TModule = {
                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                 'context': <mglossary.TContext>['local', null],
                                                                 'namespaces': a([]),
-                                                                'type': "BTW-periodes",
+                                                                'type': "FIXMEFIXMEFIXME",
                                                             }],
                                                         }),
                                                         'template': "Reference",
@@ -2677,7 +2677,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Overeenkomsten",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2692,7 +2692,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Offerte",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2705,7 +2705,7 @@ export const $: mproject.TModule = {
                                                                         "RererencedType": <mglossary.TType>['reference', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'namespaces': a([]),
-                                                                            'type': "Projecten",
+                                                                            'type': "FIXMEFIXMEFIXME",
                                                                         }],
                                                                     }),
                                                                     'template': "Reference",
@@ -2721,7 +2721,7 @@ export const $: mproject.TModule = {
                                                             "RererencedType": <mglossary.TType>['reference', {
                                                                 'context': <mglossary.TContext>['local', null],
                                                                 'namespaces': a([]),
-                                                                'type': "Klanten",
+                                                                'type': "FIXMEFIXMEFIXME",
                                                             }],
                                                         }),
                                                         'template': "Reference",
@@ -2749,7 +2749,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "BTW Categorieen",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -2769,7 +2769,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "Periodes",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -2785,7 +2785,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "Opbrengsten",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -2809,7 +2809,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "Balans items",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",
@@ -2824,7 +2824,7 @@ export const $: mproject.TModule = {
                                                                                 "RererencedType": <mglossary.TType>['reference', {
                                                                                     'context': <mglossary.TContext>['local', null],
                                                                                     'namespaces': a([]),
-                                                                                    'type': "GRootboekrekeningen",
+                                                                                    'type': "FIXMEFIXMEFIXME",
                                                                                 }],
                                                                             }),
                                                                             'template': "Reference",

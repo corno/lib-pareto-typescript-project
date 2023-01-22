@@ -16,15 +16,15 @@ export function array(type: TLocalType): TLocalType {
     }]
 }
 
-function constrainedString($: ReferenceType, constraint: string, annotation: string): TString {
+function constrainedString($: ReferenceType, steps: Step[], annotation: string): TString {
     return {
-        'constrained': ['yes', referenceX($, constraint, annotation)],
+        'constrained': ['yes', referenceX($, steps, annotation)],
     }
 }
 
-export function constrainedDictionary($: ReferenceType, constraint: string, type: TLocalType): TLocalType {
+export function constrainedDictionary($: ReferenceType, steps: Step[], type: TLocalType): TLocalType {
     return ['dictionary', {
-        'key': constrainedString($, constraint, pr.getLocationInfo(1)),
+        'key': constrainedString($, steps, pr.getLocationInfo(1)),
         'type': type
     }]
 }
@@ -41,7 +41,7 @@ export function dictionary(type: TLocalType): TLocalType {
 }
 
 export function globalType(parameters: string[], type: TLocalType): TGlobalType {
-    const temp: { [key: string]: null} = {}
+    const temp: { [key: string]: null } = {}
     pr.wrapRawArray(parameters).forEach(($) => {
         temp[$] = null
     })
@@ -104,7 +104,13 @@ export type ReferenceType =
     | ["parameter", string]
     | ["self", null]
 
-function referenceX($: ReferenceType, referencedType: string, annotation: string): TReference {
+export type Step =
+    | ["group", string]
+    | ["tagged union", string]
+    | ["reference", null]
+    | ["array", null]
+
+function referenceX($: ReferenceType, steps: Step[], annotation: string): TReference {
 
 
     return {
@@ -129,7 +135,7 @@ function referenceX($: ReferenceType, referencedType: string, annotation: string
                 default: return pl.au($[0])
             }
         }),
-        'referenced type': referencedType,
+        'steps': pr.wrapRawArray(steps),
         'annotation': annotation,
     }
 
@@ -137,15 +143,15 @@ function referenceX($: ReferenceType, referencedType: string, annotation: string
 
 export function reference(
     type: ReferenceType,
-    referencedType: string,
+    steps: Step[],
 ): TLocalType {
     return ['string', {
-        'constrained': ['yes', referenceX(type, referencedType, pr.getLocationInfo(1))],
+        'constrained': ['yes', referenceX(type, steps, pr.getLocationInfo(1))],
     }]
 }
 
 export function component(type: string, args: string[]): TLocalType {
-    const temp: { [key: string]: null} = {}
+    const temp: { [key: string]: null } = {}
     pr.wrapRawArray(args).forEach(($) => {
         temp[$] = null
     })

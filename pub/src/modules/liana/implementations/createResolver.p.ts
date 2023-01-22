@@ -20,6 +20,8 @@ export const $$: api.CcreateResolver = ($d) => {
         }
     }
 
+    type ComputedReference<T> = (ref: api.T_Reference) => () => T
+
     type UnsafeDictionary<T> = pt.Dictionary<api.MPossibly<T>>
     type AnnotatedUnsafeDictionary<T> = {
         annotation: string,
@@ -29,6 +31,7 @@ export const $$: api.CcreateResolver = ($d) => {
         annotation: string,
         dictionary: pt.Dictionary<T>
     }
+    type OptionalAnnotatedUnsafeDictionary<T> = null | AnnotatedUnsafeDictionary<T>
     type PossibleValue<T> = api.MPossibly<T>
     function buildDictionary<TIN, TOUT>($: AnnotatedDictionary<TIN>, cb: ($: TIN, $i: {
         getDictionary: () => AnnotatedUnsafeDictionary<TOUT>
@@ -71,36 +74,40 @@ export const $$: api.CcreateResolver = ($d) => {
     }
     function resolve<T>(
         target: string,
-        dict: AnnotatedUnsafeDictionary<T>,
+        dict: OptionalAnnotatedUnsafeDictionary<T>,
         key: api.T_Reference,
     ): api.MPossibly<api.MReference<T>> {
-        return pr.getEntry(
-            dict.dictionary,
-            key.name,
-            ($): api.MPossibly<api.MReference<T>> => {
-                if ($[0] === 'not set') {
+        if (dict === null) {
+            onError(`${key.annotation}: no dictionary`)
+            return ['not set', null]
+        } else {
+            return pr.getEntry(
+                dict.dictionary,
+                key.name,
+                ($): api.MPossibly<api.MReference<T>> => {
+                    if ($[0] === 'not set') {
+                        return ['not set', null]
+                    } else {
+                        return ['set', {
+                            annotation: key.annotation,
+                            name: key.name,
+                            'referenced value': $[1],
+                        }]
+                    }
+                },
+                () => {
+                    onError(`${key.annotation}: no such '${target}' "${key.name}" @ ${dict.annotation}`)
                     return ['not set', null]
-                } else {
-                    return ['set', {
-                        annotation: key.annotation,
-                        name: key.name,
-                        'referenced value': $[1],
-                    }]
                 }
-            },
-            () => {
-                onError(`${key.annotation}: no such '${target}' "${key.name}" @ ${dict.annotation}`)
-                return ['not set', null]
-            }
-        )
+            )
+        }
     }
     return ($) => {
-        const FIXME_RESOLVED_STATUS = false
         function resolveString($: {
             $: api.TString,
             support: {
-                stringTypes: AnnotatedUnsafeDictionary<null>
-                siblings: null | AnnotatedUnsafeDictionary<api.TXProperty>
+                stringTypes: OptionalAnnotatedUnsafeDictionary<api.TXStringType>
+                siblings: OptionalAnnotatedUnsafeDictionary<api.TXProperty>
             }
         }): api.MPossibly<api.TXString> {
             const support = $.support
@@ -122,7 +129,7 @@ export const $$: api.CcreateResolver = ($d) => {
                         })
                     case 'yes':
                         return pl.cc($.constrained[1], ($) => {
-                            const annotation = $.annotation
+                            //const annotation = $.annotation
                             function doTail() {
                                 $.steps.forEach(($) => {
                                     switch ($[0]) {
@@ -195,10 +202,8 @@ export const $$: api.CcreateResolver = ($d) => {
                                                 pl.implementMe(`NO SIBLINGS`)
                                             } else {
                                                 const siblings = support.siblings
-                                                const current = resolve("sibling", support.siblings, {
-                                                    name: $,
-                                                    annotation: annotation
-                                                })
+                                                const annotation = $.annotation
+                                                const current = resolve("sibling", support.siblings, $)
                                                 switch (current[0]) {
                                                     case 'not set':
                                                         pl.cc(current[1], ($) => {
@@ -215,31 +220,6 @@ export const $$: api.CcreateResolver = ($d) => {
                                                         break
                                                     default: pl.au(current[0])
                                                 }
-                                                // pr.getEntry(
-                                                //     support.siblings,
-                                                //     $,
-                                                //     ($) => {
-                                                //         if ($ === undefined) {
-                                                //             pl.implementMe(`UNDEFINED ENTRY`)
-                                                //         } else {
-
-                                                //         }
-                                                //         // const current = doTail({
-                                                //         //     type: $.type,
-                                                //         //     resolved: FIXME_RESOLVED_STATUS,
-                                                //         // })
-                                                //         // if (current[0] !== "dictionary") {
-                                                //         //     pl.logDebugMessage(`Not a dicionary but a ${$.type[0]} @ ${annotation}`)
-                                                //         // }
-                                                //     },
-                                                //     () => {
-                                                //         pl.logDebugMessage(`----------`)
-                                                //         siblings.forEach(() => false, ($, key) => {
-                                                //             pl.logDebugMessage(`key: ${key}`)
-                                                //         })
-                                                //         pl.implementMe(`No such sibling: ${$} @ ${annotation}`)
-                                                //     }
-                                                // )
                                             }
                                         })
                                     default: return pl.au($[0])
@@ -256,9 +236,9 @@ export const $$: api.CcreateResolver = ($d) => {
         function resolveType($: {
             $: api.TLocalType,
             support: {
-                stringTypes: AnnotatedUnsafeDictionary<null>
-                globalTypes: (ref: api.T_Reference) => () => api.TXGlobalType
-                siblings: null | AnnotatedUnsafeDictionary<api.TXProperty>
+                stringTypes: OptionalAnnotatedUnsafeDictionary<null>
+                globalTypes: ComputedReference<api.TXGlobalType>
+                siblings: OptionalAnnotatedUnsafeDictionary<api.TXProperty>
             }
         }): api.MPossibly<api.TXLocalType> {
             const support = $.support

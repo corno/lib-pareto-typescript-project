@@ -78,7 +78,6 @@ export type TProperty = {
 }
 
 export type TReference = {
-    readonly 'annotation': string
     readonly 'steps': pt.Array<
         | ['array', null]
         | ['group', T_Reference]
@@ -87,8 +86,8 @@ export type TReference = {
     >
     readonly 'type': 
         | ['other', null]
-        | ['parameter', string]
-        | ['sibling', string]
+        | ['parameter', T_Reference]
+        | ['sibling', T_Reference]
 }
 
 export type TString = {

@@ -108,10 +108,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
                 "Properties": template("Dictionary", { "Type": ref("Property")}),
                 "Reference": group({
-                    "annotation": member(str()),
                     "type": member(taggedUnion({
-                        "parameter": str(),
-                        "sibling": str(),
+                        "parameter": ref("_Reference"),
+                        "sibling": ref("_Reference"),
                         "other": null_(),
                     })),
                     "steps": member(array(taggedUnion({

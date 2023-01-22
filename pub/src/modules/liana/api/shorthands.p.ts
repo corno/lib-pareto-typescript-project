@@ -162,7 +162,7 @@ function referenceX($: ReferenceType, steps: Step[], annotation: string): TRefer
             switch ($[0]) {
                 case 'parameter':
                     return pl.cc($[1], ($) => {
-                        return ['parameter', $]
+                        return ['parameter', r_imp($, annotation)]
                     })
                 case 'parent':
                     return pl.cc($[1], ($) => {
@@ -174,7 +174,7 @@ function referenceX($: ReferenceType, steps: Step[], annotation: string): TRefer
                     })
                 case 'sibling':
                     return pl.cc($[1], ($) => {
-                        return ['sibling', $]
+                        return ['sibling', r_imp($, annotation)]
                     })
                 default: return pl.au($[0])
             }
@@ -187,10 +187,7 @@ function referenceX($: ReferenceType, steps: Step[], annotation: string): TRefer
                     })
                 case 'group':
                     return pl.cc($[1], ($) => {
-                        return ['group', {
-                            'name': $,
-                            'annotation': annotation,
-                        }]
+                        return ['group', r_imp($, annotation)]
                     })
                 case 'reference':
                     return pl.cc($[1], ($) => {
@@ -198,15 +195,11 @@ function referenceX($: ReferenceType, steps: Step[], annotation: string): TRefer
                     })
                 case 'tagged union':
                     return pl.cc($[1], ($) => {
-                        return ['tagged union', {
-                            'name': $,
-                            'annotation': annotation,
-                        }]
+                        return ['tagged union', r_imp($, annotation)]
                     })
                 default: return pl.au($[0])
             }
         }),
-        'annotation': annotation,
     }
 
 }

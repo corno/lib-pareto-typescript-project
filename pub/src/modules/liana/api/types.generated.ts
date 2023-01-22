@@ -1,5 +1,20 @@
 import * as pt from 'pareto-core-types'
 
+export type MPossibly<AType> = 
+    | ['not set', null]
+    | ['set', AType]
+
+export type MReference<AReferencedType> = {
+    readonly 'annotation': string
+    readonly 'name': string
+    readonly 'referenced type': AReferencedType
+}
+
+export type T_Reference = {
+    readonly 'annotation': string
+    readonly 'name': string
+}
+
 export type TGlobalType = {
     readonly 'parameters': TParameters
     readonly 'type': TLocalType
@@ -31,11 +46,13 @@ export type TLocalType =
 
 export type TModel = {
     readonly 'globalTypes': pt.Dictionary<TGlobalType>
-    readonly 'root': string
+    readonly 'root': T_Reference
     readonly 'stringTypes': pt.Dictionary<null>
 }
 
 export type TParameters = pt.Dictionary<null>
+
+export type TPossibleModel = MPossibly<TXModel>
 
 export type TProperties = pt.Dictionary<TProperty>
 
@@ -48,9 +65,9 @@ export type TReference = {
     readonly 'annotation': string
     readonly 'steps': pt.Array<
         | ['array', null]
-        | ['group', string]
+        | ['group', T_Reference]
         | ['reference', null]
-        | ['tagged union', string]
+        | ['tagged union', T_Reference]
     >
     readonly 'type': 
         | ['other', null]
@@ -65,3 +82,60 @@ export type TString = {
         }]
         | ['yes', TReference]
 }
+
+export type TXGlobalType = {
+    readonly 'parameters': TXParameters
+    readonly 'type': TXLocalType
+}
+
+export type TXLocalType = 
+    | ['array', {
+        readonly 'type': TXLocalType
+    }]
+    | ['boolean', null]
+    | ['component', {
+        readonly 'arguments': pt.Dictionary<null>
+        readonly 'type': string
+    }]
+    | ['dictionary', {
+        readonly 'key': TXString
+        readonly 'type': TXLocalType
+    }]
+    | ['group', {
+        readonly 'properties': TXProperties
+    }]
+    | ['string', TXString]
+    | ['taggedUnion', {
+        readonly 'default': string
+        readonly 'options': pt.Dictionary<{
+            readonly 'type': TXLocalType
+        }>
+    }]
+
+export type TXModel = {
+    readonly 'globalTypes': pt.Dictionary<TXGlobalType>
+    readonly 'root': MReference<TXGlobalType>
+    readonly 'stringTypes': pt.Dictionary<null>
+}
+
+export type TXParameters = pt.Dictionary<null>
+
+export type TXProperties = pt.Dictionary<TXProperty>
+
+export type TXProperty = {
+    readonly 'type': TXLocalType
+}
+
+export type TXReference = {}
+
+export type TXString = {
+    readonly 'constrained': 
+        | ['no', {
+            readonly 'type': string
+        }]
+        | ['yes', TXReference]
+}
+
+export type IOnResolved = ($: TXModel, ) => void
+
+export type FResolve = ($: TModel) => TPossibleModel

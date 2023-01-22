@@ -2,6 +2,7 @@ import * as pr from 'pareto-core-raw'
 
 import * as mliana from "../../../../pub/dist/modules/liana"
 import {
+    r,
     array,
     boolean,
     component,
@@ -410,5 +411,5 @@ export const $: mliana.TModel = {
             }),
         }))
     }),
-    'root': "Accounting",
+    'root': r("Accounting"),
 }

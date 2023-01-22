@@ -123,7 +123,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     "Root": ['reference', {
                         'context': ['local', null],
                         'namespaces': a(["types"]),
-                        'type': $.model.root
+                        'type': $.model.root.name
                     }]
                 }),
                 'interfaces': d({}),

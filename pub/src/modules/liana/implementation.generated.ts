@@ -1,6 +1,6 @@
 import { API } from "./api"
-import { $$ as iresolve } from "./implementations/resolve.p"
+import { $$ as icreateResolver } from "./implementations/createResolver.p"
 
 export const $a: API = {
-    'resolve': iresolve,
+    'createResolver': icreateResolver,
 }

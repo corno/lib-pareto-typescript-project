@@ -5,7 +5,7 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, string, optional, typeReference
+    array, dictionary, group, member, taggedUnion, types, _function, string, optional, typeReference, parameter, template, externalTypeReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -21,7 +21,32 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             // "fp": "lib-fountain-pen",
         }),
         'namespace': {
+            'templates': d({
+                "Possibly": {
+                    'parameters': d({
+                        "Type": null
+                    }),
+                    'type': taggedUnion({
+                        "set": parameter("Type"),
+                        "not set": null_()
+                    }),
+                },
+                "Reference": {
+                    'parameters': d({
+                        "ReferencedType": null
+                    }),
+                    'type': group({
+                        "referenced type": member(parameter("ReferencedType")),
+                        "annotation": member(str()),
+                        "name": member(str()),
+                    }),
+                }
+            }),
             'types': types({
+                "_Reference": group({
+                    "name": member(str()),
+                    "annotation": member(str()),
+                }),
                 "GlobalType": group({
                     "parameters": member(ref("Parameters")),
                     "type": member(ref("LocalType"))
@@ -53,7 +78,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "Model": group({
                     "stringTypes": member(dictionary(null_())),
                     "globalTypes": member(dictionary(ref("GlobalType"))),
-                    "root": member(str())
+                    "root": member(ref("_Reference"))
                 }),
                 "Parameters": dictionary(null_()),
                 "Property": group({
@@ -69,8 +94,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "other": null_(),
                     })),
                     "steps": member(array(taggedUnion({
-                        "group": str(),
-                        "tagged union": str(),
+                        "group": ref("_Reference"),
+                        "tagged union": ref("_Reference"),
                         "reference": null_(),
                         "array": null_(),
                     }))),
@@ -83,12 +108,76 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "yes": ref("Reference")
                     }))
                 }),
+                /////
+
+                "XGlobalType": group({
+                    "parameters": member(ref("XParameters")),
+                    "type": member(ref("XLocalType"))
+                }),
+                "XLocalType": taggedUnion({
+                    "string": ref("XString"),
+                    "boolean": null_(),
+                    "dictionary": group({
+                        "key": member(ref("XString")),
+                        "type": member(ref("XLocalType"))
+                    }),
+                    "array": group({
+                        "type": member(ref("XLocalType"))
+                    }),
+                    "taggedUnion": group({
+                        "options": member(dictionary(group({
+                            "type": member(ref("XLocalType"))
+                        }))),
+                        "default": member(str())
+                    }),
+                    "group": group({
+                        "properties": member(ref("XProperties"))
+                    }),
+                    "component": group({
+                        "type": member(str()),
+                        "arguments": member(dictionary(null_())),
+                    }),
+                }),
+                "XModel": group({
+                    "stringTypes": member(dictionary(null_())),
+                    "globalTypes": member(dictionary(ref("XGlobalType"))),
+                    "root": member(template("Reference", { "ReferencedType": ref("XGlobalType") }))
+                }),
+                "XParameters": dictionary(null_()),
+                "XProperty": group({
+                    "type": member(ref("XLocalType"))
+                }),
+                "XProperties": dictionary(ref("XProperty")),
+                "XReference": group({
+                    //"resolved type": member(ref("LocalType")),
+                }),
+                "XString": group({
+                    "constrained": member(taggedUnion({
+                        "no": group({
+                            "type": member(str()),
+                        }),
+                        "yes": ref("XReference")
+                    }))
+                }),
+                ////
+                "PossibleModel": template("Possibly", {"Type": ref("XModel")})
             }),
-            'interfaces': d({}),
+            'interfaces': d({
+                "OnResolved": ['method', {
+                    'data': typeReference("XModel"),
+                    'interface': ['null', null],
+                }]
+            }),
 
         },
-        'functions': d({}),
+        'functions': d({
+            "Resolve": {
+                'data': typeReference("Model"),
+                'return value': typeReference("PossibleModel"),
+            }
+        }),
         'callbacks': d({
+
             // "SerializeGlossary": {
             //     'data': ['type', externalReference("glossary", "Glossary")],
             //     'context': ['import', "fp"],
@@ -110,12 +199,19 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     'api': {
         'imports': d({
             // "collation": "res-pareto-collation",
-            // "temp": "../../temp",
+            "common": "glo-pareto-common",
         }),
         'algorithms': d({
-            "resolve": {
-                'definition': ['procedure', typeReference("Model")],
-                'type': ['reference', null],
+            "createResolver": {
+                'definition': ['function', {
+                    'function': "Resolve"
+                }],
+                'type': ['constructor', {
+                    'configuration data': null,
+                    'dependencies': d({
+                        "onError": ['procedure', externalTypeReference("common", "String")]
+                    }),
+                }],
             },
             // "createGlossarySerializer": {
             //     'definition': ['callback', {

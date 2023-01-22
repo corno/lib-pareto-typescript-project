@@ -8,6 +8,7 @@ import {
     dictionary,
     globalType,
     group,
+    r,
     reference,
     //string,
     taggedUnion,
@@ -76,7 +77,6 @@ export const $: mliana.TModel = {
             "set": component("TypeReference", []),
         })),
         "Type": globalType([], group({
-
         })),
         "TypeReference": globalType([], group({
             "context": [[], component("Context", [])],
@@ -84,5 +84,5 @@ export const $: mliana.TModel = {
             "type": [["namespace"], reference(['sibling', "namespaces"], [])],
         }))
     }),
-    'root': "Glossary",
+    'root': r("Glossary"),
 }

@@ -6,9 +6,17 @@ import {
     TLocalType,
     TReference,
     TString,
+    T_Reference,
 } from "./types.generated";
 
 const d = pr.wrapRawDictionary
+
+export function r(name: string): T_Reference {
+    return {
+        name: name,
+        annotation: pr.getLocationInfo(1)
+    }
+}
 
 export function array(type: TLocalType): TLocalType {
     return ['array', {
@@ -135,7 +143,33 @@ function referenceX($: ReferenceType, steps: Step[], annotation: string): TRefer
                 default: return pl.au($[0])
             }
         }),
-        'steps': pr.wrapRawArray(steps),
+        'steps': pr.wrapRawArray(steps).map(($) => {
+            switch ($[0]) {
+                case 'array':
+                    return pl.cc($[1], ($) => {
+                        return ['array', null]
+                    })
+                case 'group':
+                    return pl.cc($[1], ($) => {
+                        return ['group', {
+                            'name': $,
+                            'annotation': annotation,
+                        }]
+                    })
+                case 'reference':
+                    return pl.cc($[1], ($) => {
+                        return ['reference', null]
+                    })
+                case 'tagged union':
+                    return pl.cc($[1], ($) => {
+                        return ['tagged union', {
+                            'name': $,
+                            'annotation': annotation,
+                        }]
+                    })
+                default: return pl.au($[0])
+            }
+        }),
         'annotation': annotation,
     }
 

@@ -76,9 +76,31 @@ export const $$: api.CgetTestSet = ($) => {
     // )(
     //     pr.wrapRawArray(["foo"])
     // )
+    const resolve = mliana.$a.createResolver({
+        'pr_onError': ($) => {
+            pl.logDebugMessage(`RESOLVE ERROR: ${$}`)
+        }
+    })
 
-    mliana.$a.resolve(lianaModel)
-    mliana.$a.resolve(accountingModel)
+    function x($: mliana.TModel) {
+        const res = resolve($)
+        switch (res[0]) {
+            case 'not set':
+                pl.cc(res[1], ($) => {
+                    pl.logDebugMessage(`NOT SET`)
+                })
+                break
+            case 'set':
+                pl.cc(res[1], ($) => {
+
+                    pl.logDebugMessage(`SET`)
+                })
+                break
+            default: pl.au(res[0])
+        }
+    }
+    x(lianaModel)
+    x(accountingModel)
 
     mliana2Pareto.$a.generateProject({
         'mainData': {

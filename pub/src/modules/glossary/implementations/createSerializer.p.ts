@@ -68,9 +68,9 @@ export const $$: api.CcreateSerializer = ($d) => {
         $i.snippet(`<mglossary.TType>`)
 
         switch ($[0]) {
-            case 'calculated':
+            case 'computed':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['calculated', `)
+                    $i.snippet(`['computed', `)
                     serializeType($, $i)
                     $i.snippet(`]`)
                 })

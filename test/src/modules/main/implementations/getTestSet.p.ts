@@ -92,8 +92,10 @@ export const $$: api.CgetTestSet = ($) => {
                 break
             case 'set':
                 pl.cc(res[1], ($) => {
-
                     pl.logDebugMessage(`SET`)
+                    $.globalTypes.forEach(() => false, ($, key) => {
+                            pl.logDebugMessage(key)
+                    })
                 })
                 break
             default: pl.au(res[0])

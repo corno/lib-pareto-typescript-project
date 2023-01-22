@@ -41,12 +41,14 @@ export const $$: api.CcreateResolver = ($d) => {
         }
     }
     function add<T>(
-        builder: ps.DictionaryBuilder<T>,
+        builder: ps.DictionaryBuilder<T | 42>,
         key: string,
         value: api.MPossibly<T>
     ) {
         if (value[0] === 'set') {
             builder.add(key, value[1])
+        } else {
+            builder.add(key, 42)
         }
     }
     function set<T>(
@@ -60,6 +62,7 @@ export const $$: api.CcreateResolver = ($d) => {
             $: api.TString,
             support: {
                 stringTypes: api.MPossibly<pt.Dictionary<null>>
+                siblings: null | pt.Dictionary<api.TXProperty | 42>
             }
         }): api.MPossibly<api.TXString> {
             const support = $.support
@@ -81,6 +84,109 @@ export const $$: api.CcreateResolver = ($d) => {
                         })
                     case 'yes':
                         return pl.cc($.constrained[1], ($) => {
+                            const annotation = $.annotation
+                            function doTail() {
+                                $.steps.forEach(($) => {
+                                    switch ($[0]) {
+                                        case 'array':
+                                            pl.cc($[1], ($) => {
+                                                // if (current[0] !== 'array') {
+                                                //     pl.panic(`not an array @${reference.annotation}`)
+                                                // } else {
+
+                                                // }
+                                            })
+                                            break
+                                        case 'group':
+                                            pl.cc($[1], ($) => {
+                                                // if (current[0] !== 'group') {
+                                                //     pl.panic(`not a group @${reference.annotation}`)
+                                                // } else {
+
+                                                // }
+
+                                            })
+                                            break
+                                        case 'reference':
+                                            pl.cc($[1], ($) => {
+                                                // if (!resolved) {
+                                                //     pl.panic(`not resolved @${reference.annotation}`)
+                                                // }
+                                                // if (current[0] !== 'string') {
+                                                //     pl.panic(`not a reference @${reference.annotation}`)
+                                                // } else {
+                                                //     pl.cc(current[1], ($) => {
+                                                //         if ($.constrained[0] !== 'yes') {
+                                                //             pl.panic(`not a reference @${reference.annotation}`)
+                                                //         } else {
+                                                //         }
+                                                //     })
+                                                // }
+
+                                            })
+                                            break
+                                        case 'tagged union':
+                                            pl.cc($[1], ($) => {
+                                                // if (current[0] !== 'taggedUnion') {
+                                                //     pl.panic(`not a tagged union @${reference.annotation}`)
+                                                // } else {
+
+                                                // }
+
+                                            })
+                                            break
+                                        default: pl.au($[0])
+                                    }
+                                })
+
+                            }
+                            const current = pl.cc($.type, ($) => {
+                                switch ($[0]) {
+                                    case 'other':
+                                        return pl.cc($[1], ($) => {
+                                            //pl.implementMe(`case`)
+                                        })
+                                    case 'parameter':
+                                        return pl.cc($[1], ($) => {
+                                            //pl.implementMe(`case`)
+                                        })
+                                    case 'sibling':
+                                        return pl.cc($[1], ($) => {
+                                            pl.logDebugMessage(`SIBLING: ${$}`)
+                                            if (support.siblings === null) {
+                                                pl.implementMe(`NO SIBLINGS`)
+                                            } else {
+                                                const siblings = support.siblings
+                                                pr.getEntry(
+                                                    support.siblings,
+                                                    $,
+                                                    ($) => {
+                                                        if ($ === undefined) {
+                                                            pl.implementMe(`UNDEFINED ENTRY`)
+                                                        } else {
+
+                                                        }
+                                                        // const current = doTail({
+                                                        //     type: $.type,
+                                                        //     resolved: FIXME_RESOLVED_STATUS,
+                                                        // })
+                                                        // if (current[0] !== "dictionary") {
+                                                        //     pl.logDebugMessage(`Not a dicionary but a ${$.type[0]} @ ${annotation}`)
+                                                        // }
+                                                    },
+                                                    () => {
+                                                        pl.logDebugMessage(`----------`)
+                                                        siblings.forEach(() => false, ($, key) => {
+                                                            pl.logDebugMessage(`key: ${key}`)
+                                                        })
+                                                        pl.implementMe(`No such sibling: ${$} @ ${annotation}`)
+                                                    }
+                                                )
+                                            }
+                                        })
+                                    default: return pl.au($[0])
+                                }
+                            })
                             pl.logDebugMessage(`FIXMECASE`)
                             return ['not set', null]
 
@@ -93,6 +199,8 @@ export const $$: api.CcreateResolver = ($d) => {
             $: api.TLocalType,
             support: {
                 stringTypes: api.MPossibly<pt.Dictionary<null>>
+                globalTypes: (ref: api.T_Reference) => () => api.TXGlobalType
+                siblings: null | pt.Dictionary<api.TXProperty | 42>
             }
         }): api.MPossibly<api.TXLocalType> {
             const support = $.support
@@ -104,7 +212,9 @@ export const $$: api.CcreateResolver = ($d) => {
                             const r_type = resolveType({
                                 $: $.type,
                                 support: {
-                                    stringTypes: support.stringTypes
+                                    stringTypes: support.stringTypes,
+                                    globalTypes: support.globalTypes,
+                                    siblings: support.siblings,
                                 }
                             })
                             if (true
@@ -124,8 +234,38 @@ export const $$: api.CcreateResolver = ($d) => {
                         })
                     case 'component':
                         return pl.cc($[1], ($) => {
-                            pl.logDebugMessage(`FIXMECASE`)
-                            return ['set', ['boolean', null]]
+                            let r_arguments: api.MPossibly<pt.Dictionary<api.TXArgument>> = pl.cc($.arguments, ($) => {
+                                const builder = ps.createUnsafeDictionaryBuilder<api.TXArgument | 42>()
+                                let foundErrors = false
+                                $.forEach(() => false, ($, key) => {
+
+                                    add(builder, key, pl.cc(null, ($) => {
+                                        return ['set', null]
+
+                                    }))
+                                })
+                                if (foundErrors) {
+                                    return ['not set', null]
+                                } else {
+                                    return ['set', builder.getDictionary().filter($ => $ === 42 ? undefined : $)]
+                                }
+                            })
+                            if (true
+                                && r_arguments[0] === 'set'
+                            ) {
+
+                                return ['set', ['component', {
+                                    'type': {
+                                        'name': $.type.name,
+                                        'annotation': $.type.annotation,
+                                        'referenced type': support.globalTypes($.type),
+                                    },
+                                    'arguments': r_arguments[1],
+                                }]]
+
+                            } else {
+                                return ['not set', null]
+                            }
 
                         })
                     case 'dictionary':
@@ -133,13 +273,16 @@ export const $$: api.CcreateResolver = ($d) => {
                             const r_key = resolveString({
                                 $: $.key,
                                 support: {
-                                    stringTypes: support.stringTypes
+                                    stringTypes: support.stringTypes,
+                                    siblings: support.siblings,
                                 }
                             })
                             const r_type = resolveType({
                                 $: $.type,
                                 support: {
-                                    stringTypes: support.stringTypes
+                                    stringTypes: support.stringTypes,
+                                    globalTypes: support.globalTypes,
+                                    siblings: support.siblings,
                                 }
                             })
                             if (true
@@ -158,13 +301,15 @@ export const $$: api.CcreateResolver = ($d) => {
                     case 'group':
                         return pl.cc($[1], ($) => {
                             let r_properties: api.MPossibly<pt.Dictionary<api.TXProperty>> = pl.cc($.properties, ($) => {
-                                const builder = ps.createUnsafeDictionaryBuilder<api.TXOption>()
+                                const builder = ps.createUnsafeDictionaryBuilder<api.TXProperty | 42>()
                                 let foundErrors = false
                                 $.forEach(() => false, ($, key) => {
                                     const r_type = resolveType({
                                         $: $.type,
                                         support: {
-                                            stringTypes: support.stringTypes
+                                            stringTypes: support.stringTypes,
+                                            globalTypes: support.globalTypes,
+                                            siblings: builder.getDictionary(),
                                         }
                                     })
                                     add(builder, key, pl.cc(null, ($) => {
@@ -183,7 +328,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                 if (foundErrors) {
                                     return ['not set', null]
                                 } else {
-                                    return ['set', builder.getDictionary()]
+                                    return ['set', builder.getDictionary().filter($ => $ === 42 ? undefined : $)]
                                 }
                             })
                             if (true
@@ -202,7 +347,8 @@ export const $$: api.CcreateResolver = ($d) => {
                             const r_ = resolveString({
                                 $: $,
                                 support: {
-                                    stringTypes: support.stringTypes
+                                    stringTypes: support.stringTypes,
+                                    siblings: support.siblings,
                                 }
                             })
                             if (r_[0] === 'not set') {
@@ -216,13 +362,15 @@ export const $$: api.CcreateResolver = ($d) => {
                     case 'taggedUnion':
                         return pl.cc($[1], ($) => {
                             let r_options: api.MPossibly<pt.Dictionary<api.TXOption>> = pl.cc($.options, ($) => {
-                                const builder = ps.createUnsafeDictionaryBuilder<api.TXOption>()
+                                const builder = ps.createUnsafeDictionaryBuilder<api.TXOption | 42>()
                                 let foundErrors = false
                                 $.forEach(() => false, ($, key) => {
                                     const r_type = resolveType({
                                         $: $.type,
                                         support: {
-                                            stringTypes: support.stringTypes
+                                            stringTypes: support.stringTypes,
+                                            globalTypes: support.globalTypes,
+                                            siblings: support.siblings,
                                         }
                                     })
                                     add(builder, key, pl.cc(null, ($) => {
@@ -241,7 +389,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                 if (foundErrors) {
                                     return ['not set', null]
                                 } else {
-                                    return ['set', builder.getDictionary()]
+                                    return ['set', builder.getDictionary().filter($ => $ === 42 ? undefined : $)]
                                 }
                             })
                             let r_default: api.MPossibly<api.MReference<api.TXOption>> = resolve("default", r_options, $.default)
@@ -272,29 +420,57 @@ export const $$: api.CcreateResolver = ($d) => {
             if (foundErrors) {
                 return ['not set', null]
             } else {
-                return ['set', builder.getDictionary()]
+                return ['set', builder.getDictionary().filter($ => $ === 42 ? undefined : $)]
             }
         })
         let r_globalTypes: api.MPossibly<pt.Dictionary<api.TXGlobalType>> = pl.cc($.globalTypes, ($) => {
-            const builder = ps.createUnsafeDictionaryBuilder<api.TXGlobalType>()
+            const builder = ps.createUnsafeDictionaryBuilder<api.TXGlobalType | 42>()
+            const subscriptions = ps.createArrayBuilder<($: pt.Dictionary<api.TXGlobalType | 42>) => void>()
             let foundErrors = false
             $.forEach(() => false, ($, key) => {
                 let r_parameters: api.MPossibly<pt.Dictionary<null>> = pl.cc($.parameters, ($) => {
                     const builder = ps.createUnsafeDictionaryBuilder<null>()
-                    let foundErrors = false
                     $.forEach(() => false, ($, key) => {
                         builder.add(key, null)
                     })
                     if (foundErrors) {
                         return ['not set', null]
                     } else {
-                        return ['set', builder.getDictionary()]
+                        return ['set', builder.getDictionary().filter($ => $ === 42 ? undefined : $)]
                     }
                 })
                 let r_type: api.MPossibly<api.TXLocalType> = resolveType({
                     $: $.type,
                     support: {
-                        stringTypes: r_stringTypes
+                        siblings: null,
+                        stringTypes: r_stringTypes,
+                        globalTypes: ($) => {
+                            let x: null | api.TXGlobalType = null
+                            subscriptions.push((dict) => {
+                                pr.getEntry(
+                                    dict,
+                                    $.name,
+                                    ($) => {
+                                        if ($ === 42) {
+                                            x = null
+                                        } else {
+                                            x = $
+                                        }
+                                    },
+                                    () => {
+                                        foundErrors = true
+                                        $d.pr_onError(`calculated failure ${$.name} @ ${$.annotation}`)
+                                    }
+                                )
+                            })
+                            const computer = () => {
+                                if (x === null) {
+                                    pl.panic(`UNEXPECTED MISSING ${$.name} @ ${$.annotation}`)
+                                }
+                                return x
+                            }
+                            return computer
+                        },
                     }
                 })
                 add(builder, key, pl.cc(null, ($) => {
@@ -312,10 +488,14 @@ export const $$: api.CcreateResolver = ($d) => {
                     }
                 }))
             })
+            const dict = builder.getDictionary()
+            subscriptions.getArray().forEach(($) => {
+                $(dict)
+            })
             if (foundErrors) {
                 return ['not set', null]
             } else {
-                return ['set', builder.getDictionary()]
+                return ['set', dict.filter($ => $ === 42 ? undefined : $)]
             }
         })
         let r_root: api.MPossibly<api.MReference<api.TXGlobalType>> = resolve("root", r_globalTypes, $.root)
@@ -587,7 +767,7 @@ export const $$: api.CcreateResolver = ($d) => {
         //                             doType({
         //                                 localType: $.type,
         //                                 parameters: parameters,
-        //                                 siblings: builder.getDictionary(),
+        //                                 siblings: builder.getDictionary().filter($ => $ === 42 ? undefined : $),
         //                             })
         //                             builder.add(key, $)
         //                         })

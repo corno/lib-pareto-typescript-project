@@ -1,5 +1,11 @@
 import * as pt from 'pareto-core-types'
 
+export type MComputedReference<AReferencedType> = {
+    readonly 'annotation': string
+    readonly 'name': string
+    readonly 'referenced type': () => AReferencedType
+}
+
 export type MPossibly<AType> = 
     | ['not set', null]
     | ['set', AType]
@@ -27,7 +33,7 @@ export type TLocalType =
     | ['boolean', null]
     | ['component', {
         readonly 'arguments': pt.Dictionary<null>
-        readonly 'type': string
+        readonly 'type': T_Reference
     }]
     | ['dictionary', {
         readonly 'key': TString
@@ -83,6 +89,8 @@ export type TString = {
         | ['yes', TReference]
 }
 
+export type TXArgument = null
+
 export type TXGlobalType = {
     readonly 'parameters': TXParameters
     readonly 'type': TXLocalType
@@ -94,8 +102,8 @@ export type TXLocalType =
     }]
     | ['boolean', null]
     | ['component', {
-        readonly 'arguments': pt.Dictionary<null>
-        readonly 'type': string
+        readonly 'arguments': pt.Dictionary<TXArgument>
+        readonly 'type': MComputedReference<TXGlobalType>
     }]
     | ['dictionary', {
         readonly 'key': TXString

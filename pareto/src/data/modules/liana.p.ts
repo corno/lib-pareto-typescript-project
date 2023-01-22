@@ -1,5 +1,6 @@
 import * as pr from 'pareto-core-raw'
 import {
+    calculated,
     externalReference as er,
     string as str,
     null_,
@@ -40,6 +41,16 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "annotation": member(str()),
                         "name": member(str()),
                     }),
+                },
+                "ComputedReference": {
+                    'parameters': d({
+                        "ReferencedType": null
+                    }),
+                    'type': group({
+                        "referenced type": member(calculated(parameter("ReferencedType"))),
+                        "annotation": member(str()),
+                        "name": member(str()),
+                    }),
                 }
             }),
             'types': types({
@@ -71,7 +82,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "properties": member(ref("Properties"))
                     }),
                     "component": group({
-                        "type": member(str()),
+                        "type": member(ref("_Reference")),
                         "arguments": member(dictionary(null_())),
                     }),
                 }),
@@ -109,7 +120,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     }))
                 }),
                 /////
-
+                "XArgument": null_(),
                 "XGlobalType": group({
                     "parameters": member(ref("XParameters")),
                     "type": member(ref("XLocalType"))
@@ -132,8 +143,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "properties": member(ref("XProperties"))
                     }),
                     "component": group({
-                        "type": member(str()),
-                        "arguments": member(dictionary(null_())),
+                        "type": member(template("ComputedReference", { "ReferencedType": ref("XGlobalType") })),
+                        "arguments": member(dictionary(ref("XArgument"))),
                     }),
                 }),
                 "XModel": group({

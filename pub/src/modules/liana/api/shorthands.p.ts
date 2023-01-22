@@ -200,7 +200,10 @@ export function component(type: string, args: string[]): TLocalType {
         temp[$] = null
     })
     return ['component', {
-        'type': type,
+        'type': {
+            'name': type,
+            'annotation': pr.getLocationInfo(1)
+        },
         'arguments': pr.wrapRawDictionary(temp)
     }]
 }

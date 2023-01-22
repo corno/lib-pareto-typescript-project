@@ -51,7 +51,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                             return ['reference', {
                                                 'context': ['local', null],
                                                 'namespaces': pl.createEmptyArray(),
-                                                'type': $.type,
+                                                'type': $.type.name,
                                             }]
                                         })
                                     case 'dictionary':
@@ -149,7 +149,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 case 'component':
                     return pl.cc($[1], ($) => {
                         return ['call', {
-                            'function': $.type
+                            'function': $.type.name
                         }]
                     })
                 case 'dictionary':

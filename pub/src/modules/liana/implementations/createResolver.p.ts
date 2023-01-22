@@ -423,7 +423,7 @@ export const $$: api.CcreateResolver = ($d) => {
                 return ['set', builder.getDictionary().filter($ => $ === 42 ? undefined : $)]
             }
         })
-        let r_globalTypes: api.MPossibly<pt.Dictionary<api.TXGlobalType>> = pl.cc($.globalTypes, ($) => {
+        let r_globalTypes: pt.Dictionary<api.TXGlobalType> = pl.cc($.globalTypes, ($) => {
             const builder = ps.createUnsafeDictionaryBuilder<api.TXGlobalType | 42>()
             const subscriptions = ps.createArrayBuilder<($: pt.Dictionary<api.TXGlobalType | 42>) => void>()
             let foundErrors = false
@@ -492,21 +492,16 @@ export const $$: api.CcreateResolver = ($d) => {
             subscriptions.getArray().forEach(($) => {
                 $(dict)
             })
-            if (foundErrors) {
-                return ['not set', null]
-            } else {
-                return ['set', dict.filter($ => $ === 42 ? undefined : $)]
-            }
+            return dict.filter($ => $ === 42 ? undefined : $)
         })
-        let r_root: api.MPossibly<api.MReference<api.TXGlobalType>> = resolve("root", r_globalTypes, $.root)
+        let r_root: api.MPossibly<api.MReference<api.TXGlobalType>> = resolve("root", ['set', r_globalTypes], $.root)
         if (true
             && r_stringTypes[0] === 'set'
-            && r_globalTypes[0] === 'set'
             && r_root[0] === 'set'
         ) {
             const x: api.TXModel = {
                 'stringTypes': r_stringTypes[1],
-                'globalTypes': r_globalTypes[1],
+                'globalTypes': r_globalTypes,
                 'root': r_root[1],
             }
             return ['set', x]

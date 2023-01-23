@@ -1,6 +1,6 @@
 import * as pr from 'pareto-core-raw'
 import {
-    calculated,
+    computed,
     externalReference as er,
     string as str,
     null_,
@@ -82,7 +82,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "ReferencedType": null
                     }),
                     'type': group({
-                        "referenced value": member(calculated(parameter("ReferencedType"))),
+                        "referenced value": member(computed(parameter("ReferencedType"))),
                         "annotation": member(str()),
                         "name": member(str()),
                     }),

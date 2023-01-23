@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "lib-fountain-pen": "^0.23.0",
+    "lib-fountain-pen": "^0.24.0",
     "lib-pareto-main": "^0.8.0",
-    "lib-pareto-test": "^0.21.0",
+    "lib-pareto-test": "^0.22.0",
     "pareto-core-exe": "^0.15.1",
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.4",

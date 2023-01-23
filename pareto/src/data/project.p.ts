@@ -6,6 +6,7 @@ import { $ as api } from "./api.p"
 import { $ as algorithm } from "./modules/algorithm.p"
 import { $ as glossary } from "./modules/glossary.p"
 import { $ as liana } from "./modules/liana.p"
+import { $ as liana_flat } from "./modules/liana_flat.p"
 import { $ as liana2Pareto } from "./modules/liana2Pareto.p"
 import { $ as moduleDefinition } from "./modules/moduleDefinition.p"
 import { $ as pareto2typescript } from "./modules/pareto2typescript.p"
@@ -24,6 +25,9 @@ export const $: mproject.TProject = {
         },
         "liana": {
             'definition': liana,
+        },
+        "liana_flat": {
+            'definition': liana_flat,
         },
         "liana2Pareto": {
             'definition': liana2Pareto,

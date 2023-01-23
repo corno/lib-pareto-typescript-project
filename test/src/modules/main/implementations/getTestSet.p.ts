@@ -21,9 +21,11 @@ import {
 
 
 import { string, reference, externalReference, number, boolean } from "../../../../../pub/dist/modules/moduleDefinition/api/shorthands.p"
+import * as mliana_flat from "../../../../../pub/dist/modules/liana_flat"
 import * as mproject from "../../../../../pub/dist/modules/project"
 import * as mliana from "../../../../../pub/dist/modules/liana"
 import * as mliana2Pareto from "../../../../../pub/dist/modules/liana2Pareto"
+import * as mfp from "lib-fountain-pen"
 const d = pr.wrapRawDictionary
 
 
@@ -83,24 +85,39 @@ export const $$: api.CgetTestSet = ($) => {
         }
     })
 
+    const writer = mfp.$a.createWriter({
+        pr_onError: ($) => {
+            pl.logDebugMessage($)
+        },
+        pr_reportSuperfluousNode: ($) => {
+            pl.logDebugMessage(mfp.$a.createSuperfluousNodeMessage($))
+        },
+    })
+    writer([$.testDirectory, 'flat'], ($i) => {
+        mliana_flat.$a.createSerializer({
+
+        })(accountingModel, $i)
+
+    })
+
     function x($: mliana.TModel) {
         const res = resolve($)
         switch (res[0]) {
             case 'not set':
                 pl.cc(res[1], ($) => {
-                    pl.logDebugMessage(`NOT SET`)
+                    //pl.logDebugMessage(`NOT SET`)
                 })
                 break
             case 'set':
                 pl.cc(res[1], ($) => {
-                    pl.logDebugMessage(`SET`)
+                    //pl.logDebugMessage(`SET`)
                     $.model.stringTypes.dictionary.forEach(() => false, ($, key) => {
-                            pl.logDebugMessage(key)
+                        //pl.logDebugMessage(key)
                     })
                     $.model.globalTypes.dictionary.forEach(() => false, ($, key) => {
-                            pl.logDebugMessage(key)
+                        //pl.logDebugMessage(key)
                     })
-                    pl.logDebugMessage(`has errors? ${$['has errors']}`)
+                    //pl.logDebugMessage(`has errors? ${$['has errors']}`)
                 })
                 break
             default: pl.au(res[0])

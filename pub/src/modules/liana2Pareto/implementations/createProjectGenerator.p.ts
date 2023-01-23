@@ -15,53 +15,12 @@ export const $$: api.CcreateProjectGenerator = ($d) => {
         mmain.$a.createParametersParser({
             pr_callback: ($) => {
 
-                mfp.$a.createWriterCreator(
+                mfp.$a.createWriter(
                     {
-                        if_createWriteStream: ($, $c) => {
-                            mfs.$a.createWriteStream(
-                                {
-                                    pr_onError: () => {
-                                        $d.pr_logError(`SSDSFSDFS`)
-                                    }
-                                },
-                            )(
-
-                                {
-                                    path: [$],
-                                    createContainingDirectories: true,
-                                },
-                                $c,
-                            )
-                        },
-                        pi_pipeFountainPen: mfp.$a.createFountainPen(
-                            {}
-                        ),
-                        af_getNodes: ($) => {
-                            return mfs.$a.readDirectory({
-                                path: $
-                            }).map<pt.Dictionary<string>>(($) => {
-                                switch ($[0]) {
-                                    case 'error':
-                                        return pl.cc($[1], ($) => {
-                                            return pl.asyncValue(pl.createEmptyDictionary())
-                                        })
-                                    case 'success':
-                                        return pl.cc($[1], ($) => {
-                                            return pl.asyncValue($d.sf_addKeysToDictionary($).map(($) => $.key))
-                                        })
-                                    default: return pl.au($[0])
-                                }
-                            })
-                        },
+                        pr_onError: $d.pr_logError,
                         pr_reportSuperfluousNode: ($) => {
-                            const red = "\x1b[31m"
-                            const green = "\x1b[32m"
-                            const reset = "\x1b[0m"
-                            $d.pr_logError(`${red}superfluous node: ${mtostring.$a.joinNestedStrings({
-                                strings: $.path,
-                                separator: "/",
-                            })}/${$.name}${reset}`)
-                        },
+                            $d.pr_logError(mfp.$a.createSuperfluousNodeMessage($))
+                        }
                     },
                 )(
                     $,

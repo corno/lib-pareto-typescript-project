@@ -18,8 +18,6 @@ export type TProjectSettings = {
     readonly 'project': mproject.TProject
 }
 
-export type ICreateWriter = ($: mcommon.TString, $c: ($i: mfp.IWriter) => void) => void
-
 export type IHandleParameters = ($: TParameters, ) => void
 
 export type IParseArguments = ($: mmain.TArguments, ) => void
@@ -32,6 +30,4 @@ export type FGetSingleArgument = ($: mmain.TArguments,) => pt.AsyncValue<mcommon
 
 export type FHandleArgumentError = ($: TArgumentError,) => void
 
-export type FParseArguments = ($: mcommon.TNull,$c: ($i: IParseArguments) => void,$i: IProcessArgument,) => void
-
-export type FParseArguments2 = ($: mmain.TArguments,$i: IHandleParameters,) => void
+export type FParseArguments2 = ($: mmain.TArguments, $i: IHandleParameters,) => void

@@ -90,4 +90,4 @@ export type TTypeReference = {
     readonly 'type': string
 }
 
-export type FSerialize = ($: TGlossary,$i: mfp.ILine,) => void
+export type FSerialize = ($: TGlossary, $i: mfp.ILine,) => void

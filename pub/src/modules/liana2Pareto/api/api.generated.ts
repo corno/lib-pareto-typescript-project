@@ -7,11 +7,11 @@ import * as mproject from "../../project"
 import * as mtemp from "../../temp"
 
 export type CcreateLiana2ParetoMapper = ($d: {
-    readonly 'addKeysToDictionary': mtemp.FAddKeysToDictionary
+    readonly 'decorateDictionaryEntriesWithKey': mtemp.FDecorateDictionaryEntriesWithKey
 }) => glo.FMapLiana2Pareto
 
 export type CcreateProjectGenerator = ($d: {
-    readonly 'addKeysToDictionary': mtemp.FAddKeysToDictionary
+    readonly 'decorateDictionaryEntriesWithKey': mtemp.FDecorateDictionaryEntriesWithKey
     readonly 'logError': mcommon.FLog
     readonly 'mapLiana2Pareto': glo.FMapLiana2Pareto
     readonly 'serializeProject': mproject.FSerializeWithContext

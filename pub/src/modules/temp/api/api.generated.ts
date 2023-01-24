@@ -4,7 +4,7 @@ import * as glo from "./types.generated"
 
 import * as mcollation from "res-pareto-collation"
 
-export type CaddKeysToDictionary = glo.FAddKeysToDictionary
+export type CdecorateDictionaryEntriesWithKey = glo.FDecorateDictionaryEntriesWithKey
 
 export type CcreateArrayForEach = (
     $d: {
@@ -30,7 +30,7 @@ export type CcreateEnrichedDictionaryForEach = (
 ) => glo.FEnrichedDictionaryForEach
 
 export type API = {
-    addKeysToDictionary: CaddKeysToDictionary,
+    decorateDictionaryEntriesWithKey: CdecorateDictionaryEntriesWithKey,
     createArrayForEach: CcreateArrayForEach
     createDictionaryForEach: CcreateDictionaryForEach
     createEnrichedArrayForEach: CcreateEnrichedArrayForEach

@@ -5,14 +5,13 @@ import {
    null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalInterfaceReference
+    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
-import { callback } from './liana_flat.p'
 
 
 const d = pr.wrapRawDictionary

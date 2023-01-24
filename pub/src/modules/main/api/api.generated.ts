@@ -13,8 +13,7 @@ export type CcreateParametersParser = ($d: {
 }) => glo.FParseArguments2
 
 export type CcreateProjectGenerator = ($d: {
-    readonly 'addKeysToDictionary': mtemp.FAddKeysToDictionary
-    readonly 'getSingleArgument': glo.FGetSingleArgument
+    readonly 'decorateDictionaryEntriesWithKey': mtemp.FDecorateDictionaryEntriesWithKey
     readonly 'logError': mcommon.FLog
     readonly 'serializeProject': mpareto2typescript.FSerializeProject
     readonly 'serializeTemplate': mpareto2typescript.FSerializeTemplate

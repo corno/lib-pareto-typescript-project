@@ -21,6 +21,6 @@ export type TProject = {
         | ['resource', null]
 }
 
-export type FSerialize = ($: TModule,$i: mfp.ILine,) => void
+export type FSerialize = ($: TModule, $i: mfp.ILine,) => void
 
-export type FSerializeWithContext = ($: TModule,$i: mfp.IWriter,) => void
+export type FSerializeWithContext = ($: TModule, $i: mfp.IWriter,) => void

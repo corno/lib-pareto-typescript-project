@@ -62,9 +62,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "addKeysToDictionary": {
+                        "decorateDictionaryEntriesWithKey": {
                             'context': ['import', "temp"],
-                            'function': "AddKeysToDictionary"
+                            'function': "DecorateDictionaryEntriesWithKey"
                         },
                         "logError": {
                             'context': ['import', "common"],
@@ -87,9 +87,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "addKeysToDictionary": {
+                        "decorateDictionaryEntriesWithKey": {
                             'context': ['import', "temp"],
-                            'function': "AddKeysToDictionary"
+                            'function': "DecorateDictionaryEntriesWithKey"
                         },
                     })
                 }]

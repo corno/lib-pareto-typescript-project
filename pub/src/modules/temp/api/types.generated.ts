@@ -1,6 +1,6 @@
 import * as pt from 'pareto-core-types'
 
-export type FAddKeysToDictionary = <T> (
+export type FDecorateDictionaryEntriesWithKey = <T> (
     $: pt.Dictionary<T>
 ) => pt.Dictionary<{
     key: string

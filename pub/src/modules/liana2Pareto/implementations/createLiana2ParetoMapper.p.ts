@@ -283,7 +283,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                         'constructor': true,
                         'type': ['function', {
                             'block': <malgorithm.TFunctionBlock>{
-                                'innerFunctions': $d.addKeysToDictionary($.model.globalTypes.dictionary).map(($) => {
+                                'innerFunctions': $d.decorateDictionaryEntriesWithKey($.model.globalTypes.dictionary).map(($) => {
                                     return {
                                         'definition': {
                                             'data': typeReference($.key),

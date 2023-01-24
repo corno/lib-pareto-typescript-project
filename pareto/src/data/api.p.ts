@@ -5,7 +5,7 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, managedPipe, interfaceReference, procedure
+    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, managedPipe, interfaceReference, procedure, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
@@ -15,18 +15,24 @@ import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 const d = pr.wrapRawDictionary
 
-
-export function callback(data: mglossary.TTypeReference, inf: mglossary.TInterfaceReference): mglossary.TFunction {
-    return {
-        'return type': ['nothing', null],
-        'data': data,
-        'managed input interface': null,
-        'output interface': inf,
-    }
-}
-
 function def($: mmoduleDefinition.TModuleDefinition): mmoduleDefinition.TModuleDefinition {
     return $
+}
+
+
+export function externalNamespacedTypeReference(context: string, type: string): mglossary.TNamespacedTypeReference {
+    return {
+        'context': ['import', context],
+        'namespaces': pr.wrapRawArray([]),
+        'type': type,
+    }
+}
+export function namespacedTypeReference(type: string): mglossary.TNamespacedTypeReference {
+    return {
+        'context': ['local', null],
+        'namespaces': pr.wrapRawArray([]),
+        'type': type,
+    }
 }
 
 export const $: mmoduleDefinition.TModuleDefinition = def({
@@ -54,23 +60,16 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 }),
             }),
             'interfaces': d({
-                "CreateWriter": ['method', {
-                    'data': externalTypeReference("common", "String"),
-                    'interface': ['reference', {
-                        'context': ['import', "fp"],
-                        'interface': "Writer"
-                    }],
-                }],
                 "ParseArguments": ['method', {
-                    'data': externalTypeReference("main", "Arguments"),
+                    'data': externalNamespacedTypeReference("main", "Arguments"),
                     'interface': null,
                 }],
                 "ProcessArgument": ['method', {
-                    'data': externalTypeReference("common", "String"),
+                    'data': externalNamespacedTypeReference("common", "String"),
                     'interface': null,
                 }],
                 "HandleParameters": ['method', {
-                    'data': typeReference("Parameters"),
+                    'data': namespacedTypeReference("Parameters"),
                     'interface': null,
                 }],
             }),
@@ -79,7 +78,6 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             "GenerateProject": procedure(typeReference("ProjectSettings")),
             "GetSingleArgument": _function(externalTypeReference("main", "Arguments"), externalTypeReference("common", "String"), true),
             "HandleArgumentError": procedure(typeReference("ArgumentError")),
-            "ParseArguments": managedPipe(externalTypeReference("common", "Null"), interfaceReference("ParseArguments"), interfaceReference("ProcessArgument")),
             "ParseArguments2": callback(externalTypeReference("main", "Arguments"), interfaceReference("HandleParameters")),
         }),
 
@@ -120,12 +118,9 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "addKeysToDictionary": {
+                        "decorateDictionaryEntriesWithKey": {
                             'context': ['import', "temp"],
-                            'function': "AddKeysToDictionary"
-                        },
-                        "getSingleArgument": {
-                            'function': "GetSingleArgument",
+                            'function': "DecorateDictionaryEntriesWithKey"
                         },
                         "logError": {
                             'context': ['import', "common"],

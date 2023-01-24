@@ -5,7 +5,7 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalTypeReference, externalInterfaceReference
+    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalTypeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -13,15 +13,6 @@ import { string, reference, externalReference, number, boolean } from "lib-paret
 import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
-
-export function callback(data: mglossary.TTypeReference, inf: mglossary.TInterfaceReference): mglossary.TFunction {
-    return {
-        'return type': ['nothing', null],
-        'data': data,
-        'managed input interface': null,
-        'output interface': inf,
-    }
-}
 
 const d = pr.wrapRawDictionary
 

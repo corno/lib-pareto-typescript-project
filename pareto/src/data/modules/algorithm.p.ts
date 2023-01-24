@@ -8,7 +8,7 @@ import {
     array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import {definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -81,7 +81,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
                 "Implementation": group({
                     "implementations": member(dictionary(group({
-                        "constructor": member(boolean()),
+                        "constructor": member(bln()),
                         "type": member(taggedUnion({
                             "function": group({
                                 "block": member(ref("FunctionBlock"))

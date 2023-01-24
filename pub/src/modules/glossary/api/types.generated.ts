@@ -14,6 +14,11 @@ export type T_Function = {
         | ['nothing', null]
 }
 
+export type T_MethodInterface = {
+    readonly 'interface': TInterface
+    readonly 'managed': boolean
+}
+
 export type T_Parameters = pt.Dictionary<null>
 
 export type TContext = 
@@ -33,7 +38,7 @@ export type TInterface =
     }]
     | ['method', {
         readonly 'data': null | TNamespacedTypeReference
-        readonly 'interface': null | TInterface
+        readonly 'interface': null | T_MethodInterface
     }]
     | ['reference', {
         readonly 'context'?: TContext

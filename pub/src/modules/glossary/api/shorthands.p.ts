@@ -170,3 +170,16 @@ export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceRefere
         'output interface': out_inf,
     }
 }
+export function method(data: t.TNamespacedTypeReference, inf?: null | t.TInterface, managed?: boolean): t.TInterface {
+    return ['method', {
+        'data': data,
+        'interface': inf === undefined
+            ? null
+            : inf === null
+                ? null
+                : {
+                    'interface': inf,
+                    'managed': managed === undefined ? false : managed
+                },
+    }]
+}

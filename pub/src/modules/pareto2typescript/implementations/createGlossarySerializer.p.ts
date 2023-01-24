@@ -211,14 +211,27 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                         })
                         pl.cc($.interface, ($) => {
                             if ($ === null) {
-                                //
+    
                             } else {
-                                $i.snippet(`$c: ($i: `)
-                                serializeInterface($, $i)
-                                $i.snippet(`) => void`)
+                                if ($.managed) {
+                                    $i.snippet(`$c: ($i: `)
+                                    serializeInterface($.interface, $i)
+                                    $i.snippet(`) => void`)
+                                }
                             }
                         })
-                        $i.snippet(`) => void`)
+                        $i.snippet(`) => `)
+                        pl.cc($.interface, ($) => {
+                            if ($ === null) {
+                                $i.snippet(`void`)
+                            } else {
+                                if ($.managed) {
+                                    $i.snippet(`void`)
+                                } else {
+                                    serializeInterface($.interface, $i)
+                                }
+                            }
+                        })
                     })
                     break
                 case 'reference':

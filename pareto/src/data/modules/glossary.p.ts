@@ -5,7 +5,7 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, interfaceReference, externalInterfaceReference, callback
+    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, interfaceReference, externalInterfaceReference, callback, boolean
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import {definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -35,6 +35,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "managed input interface": member(optional(ref("InterfaceReference"))),
                     "output interface": member(optional(ref("InterfaceReference"))),
                 }),
+                "_MethodInterface": group({
+                    "managed": member(boolean()),
+                    "interface": member(ref("Interface"))
+                }),
                 "_Parameters": dictionary(null_()),
 
                 "Context": taggedUnion({
@@ -53,7 +57,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     }),
                     "method": group({
                         "data": member(optional(ref("NamespacedTypeReference"))),
-                        "interface": member(optional(ref("Interface"))),
+                        "interface": member(optional(ref("_MethodInterface"))),
                     }),
                     "reference": group({
                         "context": member(ref("Context"), true),

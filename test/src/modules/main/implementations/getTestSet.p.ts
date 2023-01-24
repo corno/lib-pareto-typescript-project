@@ -20,7 +20,6 @@ import {
 } from "../../../../../pub/dist/modules/glossary/api/shorthands.p"
 
 
-import { string, reference, externalReference, number, boolean } from "../../../../../pub/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mliana_flat from "../../../../../pub/dist/modules/liana_flat"
 import * as mproject from "../../../../../pub/dist/modules/project"
 import * as mliana from "../../../../../pub/dist/modules/liana"

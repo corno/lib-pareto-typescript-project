@@ -79,12 +79,29 @@ export function reference(type: string): t.TType {
         'type': type,
     }]
 }
+
+export function externalNamespacedTypeReference(context: string, type: string): t.TNamespacedTypeReference {
+    return {
+        'context': ['import', context],
+        'namespaces': pr.wrapRawArray([]),
+        'type': type
+    }
+}
+export function nmespacedTypeReference(type: string): t.TNamespacedTypeReference {
+    return {
+        'context': ['local', null],
+        'namespaces': pr.wrapRawArray([]),
+        'type': type
+    }
+}
+
 export function typeReference(type: string): t.TTypeReference {
     return {
         'context': ['local', null],
         'type': type,
     }
 }
+
 export function interfaceReference(inf: string): t.TInterfaceReference {
     return {
         'interface': inf
@@ -98,12 +115,9 @@ export function externalInterfaceReference(context: string, inf: string): t.TInt
 }
 
 export function externalReference(context: string, type: string): t.TType {
-    return ['reference', {
-        'context': ['import', context],
-        'namespaces': wa([]),
-        'type': type,
-    }]
+    return ['reference', externalNamespacedTypeReference(context, type)]
 }
+
 export function externalTypeReference(context: string, type: string): t.TTypeReference {
     return {
         'context': ['import', context],

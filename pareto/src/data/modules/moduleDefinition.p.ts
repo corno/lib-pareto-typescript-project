@@ -23,6 +23,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'namespace': {
             'types': types({
+                "_AlgorithmType": taggedUnion({
+                    "reference": null_(),
+                    "constructor": group({
+                        "configuration data": member(optional(er("glossary", "TypeReference"))),
+                        "dependencies": member(dictionary(ref("DefinitionReference"))),
+                    }),
+                }),
                 "DefinitionReference": group({
                     "context": member(ref("Context"), true),
                     "function": member(str()),
@@ -37,13 +44,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "imports": member(dictionary(str())),
                         "algorithms": member(dictionary(group({
                             "definition": member(ref("DefinitionReference")),
-                            "type": member(taggedUnion({
-                                "reference": null_(),
-                                "constructor": group({
-                                    "configuration data": member(optional(er("glossary", "TypeReference"))),
-                                    "dependencies": member(dictionary(ref("DefinitionReference"))),
-                                }),
-                            }))
+                            "type": member(ref("_AlgorithmType"))
                         }))),
                     })),
                 }),

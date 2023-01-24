@@ -15,9 +15,6 @@ import {
     dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, parameter
 } from "../../glossary/api/shorthands.p"
 
-
-import { string, reference, externalReference, number, boolean } from "../../moduleDefinition/api/shorthands.p"
-
 import * as malgorithm from "../../algorithm"
 import * as mglossary from "../../glossary"
 import * as mmoduleDefinition from "../../moduleDefinition"
@@ -287,7 +284,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                     return {
                                         'definition': {
                                             'data': typeReference($.key),
-                                            'return value': externalReference("resolved", $.key),
+                                            'return value': er("resolved", $.key),
                                         },
                                         'block': generateBlock($.value.type)
                                     }

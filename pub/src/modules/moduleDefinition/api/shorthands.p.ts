@@ -1,35 +1,33 @@
 
 import * as pr from 'pareto-core-raw'
+
+import * as api from "../api"
+
 import * as mglossary from "../../glossary"
 
 // import { Function, Glossary, LeafType, Type } from "./types.p"
 
 
 const d = pr.wrapRawDictionary
-const wa = pr.wrapRawArray
+const a = pr.wrapRawArray
 
-export function boolean(): mglossary.TType {
-    return ['boolean', null]
-}
-
-export function string(): mglossary.TType {
-    return ['string', null]
-}
-export function reference(type: string): mglossary.TType {
-    return ['reference', {
+export function definitionReference(func: string): api.TDefinitionReference  {
+    return {
         'context': ['local', null],
-        'namespaces': wa([]),
-        'type': type,
-    }]
-}
-export function externalReference(context: string, type: string): mglossary.TType {
-    return ['reference', {
-        'context': ['import', context],
-        'namespaces': wa([]),
-        'type': type,
-    }]
+        'function': func
+    }
 }
 
-export function number(): mglossary.TType {
-    return ['number', null]
+export function externalDefinitionReference(context: string, func: string): api.TDefinitionReference  {
+    return {
+        'context': ['import', context],
+        'function': func
+    }
+}
+
+export function constructor(data: null | mglossary.TTypeReference, deps: {[key:string]: api.TDefinitionReference}): api.T_AlgorithmType {
+    return ['constructor', {
+        'configuration data': data,
+        'dependencies': d(deps)
+    }]
 }

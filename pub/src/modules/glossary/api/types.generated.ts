@@ -1,32 +1,28 @@
 import * as pt from 'pareto-core-types'
 import * as mfp from "lib-fountain-pen"
 
-export type TCallback = {
-    readonly 'context'?: TContext
-    readonly 'data': TOptionalTypeReference
-    readonly 'interface': string
-}
-
 export type TContext = 
     | ['import', string]
     | ['local', null]
 
 export type TFunction = {
-    readonly 'async'?: boolean
     readonly 'data': TTypeReference
-    readonly 'return value': TTypeReference
+    readonly 'managed input interface': null | TInterfaceReference
+    readonly 'output interface': null | TInterfaceReference
+    readonly 'return type': 
+        | ['data', {
+            readonly 'asynchronous': boolean
+            readonly 'type': TTypeReference
+        }]
+        | ['interface', TInterfaceReference]
+        | ['nothing', null]
 }
 
 export type TGlossary = {
-    readonly 'callbacks': pt.Dictionary<TCallback>
     readonly 'functions': pt.Dictionary<TFunction>
     readonly 'imports': pt.Dictionary<string>
     readonly 'namespace': TNamespace
     readonly 'parameters'?: TParameters
-    readonly 'pipes': pt.Dictionary<{
-        readonly 'in': TInterfaceReference
-        readonly 'out': TInterfaceReference
-    }>
 }
 
 export type TInterface = 
@@ -34,12 +30,8 @@ export type TInterface =
         readonly 'members': pt.Dictionary<TInterface>
     }]
     | ['method', {
-        readonly 'data': TOptionalTypeReference
-        readonly 'interface': 
-            | ['null', null]
-            | ['set', {
-                readonly 'interface': string
-            }]
+        readonly 'data': null | TTypeReference
+        readonly 'interface': null | TInterface
     }]
     | ['reference', TInterfaceReference]
 
@@ -54,8 +46,6 @@ export type TNamespace = {
     readonly 'templates'?: pt.Dictionary<TTemplate>
     readonly 'types': pt.Dictionary<TType>
 }
-
-export type TOptionalTypeReference = null | TTypeReference
 
 export type TParameters = pt.Dictionary<null>
 

@@ -9,13 +9,6 @@ import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateSerializer = ($d) => {
     return ($, $i) => {
-        function serializeOptionalTypeReference($: mglossary.TOptionalTypeReference, $i: mfp.ILine) {
-            if ($ === null) {
-                $i.snippet(`null`)
-            } else {
-                serializeTypeReference($, $i)
-            }
-        }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
@@ -45,83 +38,23 @@ export const $$: api.CcreateSerializer = ($d) => {
             $i.snippet(`}`)
         }
         function serializeDefinitionReference($: api.TDefinitionReference, $i: mfp.ILine) {
+            $i.snippet(`{`)
+            $i.indent(($i) => {
+                if ($.context !== undefined) {
+                    pl.cc($.context, ($) => {
 
-            switch ($[0]) {
-                case 'callback':
-                    pl.cc($[1], ($) => {
-                        $i.snippet(`['callback', {`)
-                        $i.indent(($i) => {
-                            if ($.context !== undefined) {
-                                pl.cc($.context, ($) => {
-
-                                    $i.line(($i) => {
-                                        $i.snippet(`'context': `)
-                                        serializeContext($, $i)
-                                        $i.snippet(`,`)
-                                    })
-                                })
-                            }
-                            $i.line(($i) => {
-                                $i.snippet(`'callback': "${$.callback}",`)
-                            })
+                        $i.line(($i) => {
+                            $i.snippet(`'context': `)
+                            serializeContext($, $i)
+                            $i.snippet(`,`)
                         })
-                        $i.snippet(`}]`)
-
                     })
-                    break
-                case 'function':
-                    pl.cc($[1], ($) => {
-                        $i.snippet(`['function', {`)
-                        $i.indent(($i) => {
-                            if ($.async !== undefined) {
-                                pl.cc($.async, ($) => {
-
-                                    $i.line(($i) => {
-                                        $i.snippet(`'async': ${$ ? `true` : `false`},`)
-                                    })
-                                })
-                            }
-                            if ($.context !== undefined) {
-                                pl.cc($.context, ($) => {
-
-                                    $i.line(($i) => {
-                                        $i.snippet(`'context': `)
-                                        serializeContext($, $i)
-                                        $i.snippet(`,`)
-                                    })
-                                })
-                            }
-                            $i.line(($i) => {
-                                $i.snippet(`'function': "${$.function}",`)
-                            })
-                        })
-                        $i.snippet(`}]`)
-
-                    })
-                    break
-                case 'interface':
-                    pl.cc($[1], ($) => {
-                        $i.snippet(`['interface', `)
-                        $i.snippet(`FIXME]`)
-
-                    })
-                    break
-                case 'pipe':
-                    pl.cc($[1], ($) => {
-                        $i.snippet(`['pipe', `)
-                        $i.snippet(`FIXME]`)
-
-                    })
-                    break
-                case 'procedure':
-                    pl.cc($[1], ($) => {
-                        $i.snippet(`['procedure', `)
-                        $i.snippet(`FIXME]`)
-
-                    })
-                    break
-                default: pl.au($[0])
-            }
+                }
+                $i.line(($i) => {
+                    $i.snippet(`'function': "${$.function}"`)
+                    $i.snippet(`,`)
+                })
+            })
         }
         function serializeContext($: mglossary.TContext, $i: mfp.ILine) {
             switch ($[0]) {
@@ -183,7 +116,11 @@ export const $$: api.CcreateSerializer = ($d) => {
 
                                                                     $i.line(($i) => {
                                                                         $i.snippet(`'configuration data': `)
-                                                                        serializeOptionalTypeReference($["configuration data"], $i)
+                                                                        if ($['configuration data'] === null) {
+                                                                            $i.snippet(`null`)
+                                                                        } else {
+                                                                            serializeTypeReference($['configuration data'], $i)
+                                                                        }
                                                                         $i.snippet(`,`)
                                                                     })
                                                                     $i.line(($i) => {

@@ -6,35 +6,6 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateSerializer = ($d) => {
-
-    // function serializeLeafTypeOrNull($: mglossary.TLeafTypeOrNull, $i: mfp.ILine) {
-    //     switch ($[0]) {
-    //         case 'null':
-    //             pl.cc($[1], ($) => {
-    //                 $i.snippet(`['null', null]`)
-    //             })
-    //             break
-    //         case 'type':
-    //             pl.cc($[1], ($) => {
-
-    //                 $i.snippet(`['type', `)
-    //                 serializeLeafType($, $i)
-    //                 $i.snippet(`]`)
-    //             })
-    //             break
-    //         default: pl.au($[0])
-    //     }
-    // }
-
-    function serializeOptionalTypeReference($: api.TOptionalTypeReference, $i: mfp.ILine) {
-        if ($ === null) {
-            $i.snippet(`null`)
-        } else {
-            serializeTypeReference($, $i)
-        }
-    }
-
-    // }
     function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
         $i.snippet(`{`)
         $i.indent(($i) => {
@@ -266,22 +237,19 @@ export const $$: api.CcreateSerializer = ($d) => {
 
                     $i.snippet(`(`)
                     pl.cc($.data, ($) => {
-                        serializeOptionalTypeReference($, $i)
+                        if ($ === null) {
+                            $i.snippet(`null`)
+                        } else {
+                            serializeTypeReference($, $i)
+                        }
                     })
                     pl.cc($.interface, ($) => {
-                        switch ($[0]) {
-                            case 'null':
-                                pl.cc($[1], ($) => {
-                                })
-                                break
-                            case 'set':
-                                pl.cc($[1], ($) => {
-                                    $i.snippet(`$c: ($i: `)
-                                    serializeInterfaceReference($, $i)
-                                    $i.snippet(`) => void`)
-                                })
-                                break
-                            default: pl.au($[0])
+                        if ($ === null) {
+
+                        } else {
+                            $i.snippet(`$c: ($i: `)
+                            serializeInterface($, $i)
+                            $i.snippet(`) => void`)
                         }
                     })
                     $i.snippet(`) => void`)
@@ -424,48 +392,6 @@ export const $$: api.CcreateSerializer = ($d) => {
                                 })
                             })
                             $i.snippet(`},`)
-                        })
-                    })
-                })
-                $i.snippet(`}),`)
-            })
-            $i.line(($i) => {
-                $i.snippet(`'callbacks': d({`)
-                $i.indent(($i) => {
-                    $d.cb_dictionaryForEach($.callbacks, ($) => {
-                        $i.line(($i) => {
-                            $i.snippet(`"${$.key}": {`)
-                            $i.indent(($i) => {
-                                $i.line(($i) => {
-                                    $i.snippet(`'data': `)
-                                    serializeOptionalTypeReference($.value.data, $i)
-                                    $i.snippet(`,`)
-                                })
-                                if ($.value.context !== undefined) {
-                                    const cntxt = $.value.context
-                                    $i.line(($i) => {
-                                        $i.snippet(`'context': `)
-                                        serializeContext(cntxt, $i)
-                                        $i.snippet(`,`)
-                                    })
-                                }
-                                $i.line(($i) => {
-                                    $i.snippet(`'interface': "${$.value.interface}",`)
-                                })
-                            })
-
-                            $i.snippet(`},`)
-                        })
-                    })
-                })
-                $i.snippet(`}),`)
-            })
-            $i.line(($i) => {
-                $i.snippet(`'pipes': d({`)
-                $i.indent(($i) => {
-                    $d.cb_dictionaryForEach($.pipes, ($) => {
-                        $i.line(($i) => {
-                            $i.snippet(`"${$.key}": "FIXME",`)
                         })
                     })
                 })

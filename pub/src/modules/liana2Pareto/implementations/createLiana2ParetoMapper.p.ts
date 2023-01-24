@@ -214,18 +214,21 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     },
                     'functions': d({
                         "Enrich": {
+                            'return type': ['data', {
+                                'type': namespacedTypeReference(["resolved"], "Root"),
+                                'asynchronous': false,
+                            }],
                             'data': namespacedTypeReference(["unresolved"], "Root"),
-                            'return value': namespacedTypeReference(["resolved"], "Root"),
                         },
-                    }),
-                    'callbacks': d({
                         "Serialize": {
-                            'data': namespacedTypeReference(["resolved"], "Root"),
-                            'context': ['import', "fp"],
-                            'interface': "Line",
+                            'return type': ['nothing', null],
+                            'data': namespacedTypeReference(["unresolved"], "Root"),
+                            'output interface': {
+                                'context': ['import', "fp"],
+                                'interface': "Line"
+                            },
                         },
                     }),
-                    'pipes': d({}),
                 },
                 'api': {
                     'imports': d({

@@ -26,15 +26,6 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 }
             })
         }
-        function serializeOptionalTypeReference($: mglossary.TOptionalTypeReference, $i: mfp.ILine) {
-            if ($ === null) {
-                //
-            } else {
-                $i.snippet(`$: `)
-                serializeTypeReference($, $i)
-                $i.snippet(`, `)
-            }
-        }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
             serializeContext($.context, $i)
             $.namespaces.forEach(($) => {
@@ -206,22 +197,21 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
 
                         $i.snippet(`(`)
                         pl.cc($.data, ($) => {
-                            serializeOptionalTypeReference($, $i)
+                            if ($ === null) {
+                                //
+                            } else {
+                                $i.snippet(`$: `)
+                                serializeTypeReference($, $i)
+                                $i.snippet(`, `)
+                            }
                         })
                         pl.cc($.interface, ($) => {
-                            switch ($[0]) {
-                                case 'null':
-                                    pl.cc($[1], ($) => {
-                                    })
-                                    break
-                                case 'set':
-                                    pl.cc($[1], ($) => {
-                                        $i.snippet(`$c: ($i: `)
-                                        serializeInterfaceReference($, $i)
-                                        $i.snippet(`) => void`)
-                                    })
-                                    break
-                                default: pl.au($[0])
+                            if ($ === null) {
+                                //
+                            } else {
+                                $i.snippet(`$c: ($i: `)
+                                serializeInterface($, $i)
+                                $i.snippet(`) => void`)
                             }
                         })
                         $i.snippet(`) => void`)
@@ -308,40 +298,54 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
         $d.cb_dictionaryForEach($.functions, ($) => {
             $i.literal(``)
             $i.line(($i) => {
-                $i.snippet(`export type ${$.value.async ? `A` : `F`}${$.key} = `)
+                $i.snippet(`export type F${$.key} = `)
                 serializeParameters(parameters, $i)
-                $i.snippet(`($: `)
-                serializeTypeReference($.value.data, $i)
-                $i.snippet(`) => `)
-                if ($.value.async) {
-                    $i.snippet(`pt.AsyncValue<`)
-                    serializeTypeReference($.value[`return value`], $i)
-                    $i.snippet(`>`)
-                } else {
-                    serializeTypeReference($.value[`return value`], $i)
-                }
-            })
-        })
-        $d.cb_dictionaryForEach($.callbacks, ($) => {
-            $i.literal(``)
-            $i.line(($i) => {
-                $i.snippet(`export type X${$.key} = (`)
-                serializeOptionalTypeReference($.value.data, $i)
-                $i.snippet(`$i: `)
-                if ($.value.context !== undefined) {
-                    serializeContext($.value.context, $i)
-                }
-                $i.snippet(`I${$.value.interface}) => void`)
-            })
-        })
-        $d.cb_dictionaryForEach($.pipes, ($) => {
-            $i.literal(``)
-            $i.line(($i) => {
-                $i.snippet(`export type P${$.key} = ($i: `)
-                serializeInterfaceReference($.value.out, $i)
-                $i.snippet(`, $c: ($i: `)
-                serializeInterfaceReference($.value.in, $i)
-                $i.snippet(`) => void) => void`)
+                pl.cc($.value, ($) => {
+
+                    $i.snippet(`($: `)
+                    serializeTypeReference($.data, $i)
+                    $i.snippet(`,`)
+                    if ($['managed input interface'] !== null) {
+
+                        $i.snippet(`$c: ($i: `)
+                        serializeInterfaceReference($['managed input interface'], $i)
+                        $i.snippet(`) => void,`)
+                    }
+                    if ($['output interface'] !== null) {
+
+                        $i.snippet(`$i: `)
+                        serializeInterfaceReference($['output interface'], $i)
+                        $i.snippet(`,`)
+                    }
+                    $i.snippet(`) => `)
+                    pl.cc($['return type'], ($) => {
+                        switch ($[0]) {
+                            case 'data':
+                                pl.cc($[1], ($) => {
+
+                                    if ($.asynchronous) {
+                                        $i.snippet(`pt.AsyncValue<`)
+                                        serializeTypeReference($.type, $i)
+                                        $i.snippet(`>`)
+                                    } else {
+                                        serializeTypeReference($.type, $i)
+                                    }
+                                })
+                                break
+                            case 'interface':
+                                pl.cc($[1], ($) => {
+                                    serializeInterfaceReference($, $i)
+                                })
+                                break
+                            case 'nothing':
+                                pl.cc($[1], ($) => {
+                                    $i.snippet(`void`)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
+                })
             })
         })
     }

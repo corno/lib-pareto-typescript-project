@@ -1,5 +1,6 @@
 import * as pr from 'pareto-core-raw'
 import {
+    array,
     externalReference as er,
     null_,
     string as str,
@@ -10,6 +11,7 @@ import {
     number as nr,
     nested,
     template,
+    optional,
     dictionary, group as grp, member, taggedUnion, types, _function, group, externalTypeReference
 } from "../../../pub/dist/modules/glossary/api/shorthands.p"
 
@@ -31,648 +33,124 @@ export const $: mproject.TModule = {
             'imports': d({
                 "fp": "lib-fountain-pen",
             }),
-            'parameters': d({
-                "Annotation": null,
-            }),
             'namespace': {
-                'namespaces': d({
-                    "resolved": {
-                        'namespaces': d({
-                            "types": {
-                                'namespaces': d({}),
-                                'templates': d({}),
-                                'types': d({
-                                    "Context": <mglossary.TType>['taggedUnion', d({
-                                        "import": <mglossary.TType>['group', d({})],
-                                        "local": <mglossary.TType>['group', d({})],
-                                    })],
-                                    "Glossary": <mglossary.TType>['group', d({
-                                        "callbacks": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                                                "context": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Context",
-                                                    }],
-                                                },
-                                                "data": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "OptionalTypeReference",
-                                                    }],
-                                                },
-                                                "interface": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['template', {
-                                                        'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['reference', {
-                                                                'context': <mglossary.TContext>['local', null],
-                                                                'namespaces': a([]),
-                                                                'type': "Interface",
-                                                            }],
-                                                        }),
-                                                        'template': "Reference",
-                                                    }],
-                                                },
-                                            })]],
-                                        },
-                                        "functions": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                                                "async": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['boolean', null],
-                                                },
-                                                "data": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "TypeReference",
-                                                    }],
-                                                },
-                                                "return value": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "TypeReference",
-                                                    }],
-                                                },
-                                            })]],
-                                        },
-                                        "imports": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
-                                        },
-                                        "namespace": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Namespace",
-                                            }],
-                                        },
-                                        "parameters": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
-                                        },
-                                        "pipes": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                                                "in": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "InterfaceReference",
-                                                    }],
-                                                },
-                                                "out": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "InterfaceReference",
-                                                    }],
-                                                },
-                                            })]],
-                                        },
-                                    })],
-                                    "Interface": <mglossary.TType>['group', d({
-                                        "group": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['group', d({
-                                                "members": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Interface",
-                                                    }]],
-                                                },
-                                            })],
-                                        },
-                                        "method": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['group', d({
-                                                "data": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "OptionalTypeReference",
-                                                    }],
-                                                },
-                                                "interface": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['taggedUnion', d({
-                                                        "null": <mglossary.TType>['group', d({})],
-                                                        "set": <mglossary.TType>['group', d({
-                                                            "interface": {
-                                                                'optional': false,
-                                                                'type': <mglossary.TType>['template', {
-                                                                    'arguments': d({
-                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                            'context': <mglossary.TContext>['local', null],
-                                                                            'namespaces': a([]),
-                                                                            'type': "Interface",
-                                                                        }],
-                                                                    }),
-                                                                    'template': "Reference",
-                                                                }],
-                                                            },
-                                                        })],
-                                                    })],
-                                                },
-                                            })],
-                                        },
-                                        "reference": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "InterfaceReference",
-                                            }],
-                                        },
-                                    })],
-                                    "InterfaceReference": <mglossary.TType>['group', d({
-                                        "context": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Context",
-                                            }],
-                                        },
-                                        "interface": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['template', {
-                                                'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Interface",
-                                                    }],
-                                                }),
-                                                'template': "Reference",
-                                            }],
-                                        },
-                                    })],
-                                    "Namespace": <mglossary.TType>['group', d({
-                                        "interfaces": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Interface",
-                                            }]],
-                                        },
-                                        "namespaces": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Namespace",
-                                            }]],
-                                        },
-                                        "templates": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                                                "parameters": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
-                                                },
-                                                "type": {
-                                                    'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Type",
-                                                    }],
-                                                },
-                                            })]],
-                                        },
-                                        "types": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Type",
-                                            }]],
-                                        },
-                                    })],
-                                    "OptionalTypeReference": <mglossary.TType>['taggedUnion', d({
-                                        "not set": <mglossary.TType>['group', d({})],
-                                        "set": <mglossary.TType>['reference', {
-                                            'context': <mglossary.TContext>['local', null],
-                                            'namespaces': a([]),
-                                            'type': "TypeReference",
-                                        }],
-                                    })],
-                                    "Type": <mglossary.TType>['group', d({})],
-                                    "TypeReference": <mglossary.TType>['group', d({
-                                        "context": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Context",
-                                            }],
-                                        },
-                                        "namespaces": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['array', <mglossary.TType>['template', {
-                                                'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Namespace",
-                                                    }],
-                                                }),
-                                                'template': "Reference",
-                                            }]],
-                                        },
-                                        "type": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['template', {
-                                                'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Type",
-                                                    }],
-                                                }),
-                                                'template': "Reference",
-                                            }],
-                                        },
-                                    })],
-                                }),
-                                'interfaces': d({}),
-                            },
+                'types': types({
+                    "Context": taggedUnion({
+                        "local": null_(),
+                        "import": str(),
+                    }),
+                    "Function": group({
+                        "return type": member(taggedUnion({
+                            "data": group({
+                                "asynchronous": member(bln()),
+                                "type": member(ref("TypeReference")),
+                            }),
+                            "interface": ref("InterfaceReference"),
+                            "nothing": null_(),
+                        })),
+                        "data": member(ref("TypeReference")),
+                        "managed input interface": member(optional(ref("InterfaceReference"))),
+                        "output interface": member(optional(ref("InterfaceReference"))),
+                    }),
+                    "Glossary": group({
+                        "parameters": member(ref("Parameters"), true),
+                        "imports": member(dictionary(str())),
+                        "namespace": member(ref("Namespace")),
+                        "functions": member(dictionary(ref("Function"))),
+                    }),
+                    "Interface": taggedUnion({
+                        "group":group({
+                            "members": member(dictionary(ref("Interface")))
                         }),
-                        'templates': d({}),
-                        'types': d({
-                            "Root": <mglossary.TType>['reference', {
-                                'context': <mglossary.TContext>['local', null],
-                                'namespaces': a(["types"]),
-                                'type': "Glossary",
-                            }],
+                        "method": group({
+                            "data": member(optional(ref("TypeReference"))),
+                            "interface": member(optional(ref("Interface")))
                         }),
-                        'interfaces': d({}),
-                    },
-                    "unresolved": {
-                        'namespaces': d({
-                            "types": {
-                                'namespaces': d({}),
-                                'templates': d({}),
-                                'types': d({
-                                    "Context": <mglossary.TType>['taggedUnion', d({
-                                        "import": <mglossary.TType>['group', d({})],
-                                        "local": <mglossary.TType>['group', d({})],
-                                    })],
-                                    "Glossary": <mglossary.TType>['group', d({
-                                        "callbacks": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                                                "context": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Context",
-                                                    }],
-                                                },
-                                                "data": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "OptionalTypeReference",
-                                                    }],
-                                                },
-                                                "interface": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['template', {
-                                                        'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['reference', {
-                                                                'context': <mglossary.TContext>['local', null],
-                                                                'namespaces': a([]),
-                                                                'type': "Interface",
-                                                            }],
-                                                        }),
-                                                        'template': "Reference",
-                                                    }],
-                                                },
-                                            })]],
-                                        },
-                                        "functions": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                                                "async": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['boolean', null],
-                                                },
-                                                "data": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "TypeReference",
-                                                    }],
-                                                },
-                                                "return value": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "TypeReference",
-                                                    }],
-                                                },
-                                            })]],
-                                        },
-                                        "imports": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
-                                        },
-                                        "namespace": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Namespace",
-                                            }],
-                                        },
-                                        "parameters": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
-                                        },
-                                        "pipes": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                                                "in": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "InterfaceReference",
-                                                    }],
-                                                },
-                                                "out": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "InterfaceReference",
-                                                    }],
-                                                },
-                                            })]],
-                                        },
-                                    })],
-                                    "Interface": <mglossary.TType>['group', d({
-                                        "group": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['group', d({
-                                                "members": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Interface",
-                                                    }]],
-                                                },
-                                            })],
-                                        },
-                                        "method": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['group', d({
-                                                "data": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "OptionalTypeReference",
-                                                    }],
-                                                },
-                                                "interface": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['taggedUnion', d({
-                                                        "null": <mglossary.TType>['group', d({})],
-                                                        "set": <mglossary.TType>['group', d({
-                                                            "interface": {
-                                                                'optional': true,
-                                                                'type': <mglossary.TType>['template', {
-                                                                    'arguments': d({
-                                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                                            'context': <mglossary.TContext>['local', null],
-                                                                            'namespaces': a([]),
-                                                                            'type': "Interface",
-                                                                        }],
-                                                                    }),
-                                                                    'template': "Reference",
-                                                                }],
-                                                            },
-                                                        })],
-                                                    })],
-                                                },
-                                            })],
-                                        },
-                                        "reference": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "InterfaceReference",
-                                            }],
-                                        },
-                                    })],
-                                    "InterfaceReference": <mglossary.TType>['group', d({
-                                        "context": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Context",
-                                            }],
-                                        },
-                                        "interface": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['template', {
-                                                'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Interface",
-                                                    }],
-                                                }),
-                                                'template': "Reference",
-                                            }],
-                                        },
-                                    })],
-                                    "Namespace": <mglossary.TType>['group', d({
-                                        "interfaces": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Interface",
-                                            }]],
-                                        },
-                                        "namespaces": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Namespace",
-                                            }]],
-                                        },
-                                        "templates": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                                                "parameters": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
-                                                },
-                                                "type": {
-                                                    'optional': true,
-                                                    'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Type",
-                                                    }],
-                                                },
-                                            })]],
-                                        },
-                                        "types": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Type",
-                                            }]],
-                                        },
-                                    })],
-                                    "OptionalTypeReference": <mglossary.TType>['taggedUnion', d({
-                                        "not set": <mglossary.TType>['group', d({})],
-                                        "set": <mglossary.TType>['reference', {
-                                            'context': <mglossary.TContext>['local', null],
-                                            'namespaces': a([]),
-                                            'type': "TypeReference",
-                                        }],
-                                    })],
-                                    "Type": <mglossary.TType>['group', d({})],
-                                    "TypeReference": <mglossary.TType>['group', d({
-                                        "context": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'namespaces': a([]),
-                                                'type': "Context",
-                                            }],
-                                        },
-                                        "namespaces": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['array', <mglossary.TType>['template', {
-                                                'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Namespace",
-                                                    }],
-                                                }),
-                                                'template': "Reference",
-                                            }]],
-                                        },
-                                        "type": {
-                                            'optional': true,
-                                            'type': <mglossary.TType>['template', {
-                                                'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'namespaces': a([]),
-                                                        'type': "Type",
-                                                    }],
-                                                }),
-                                                'template': "Reference",
-                                            }],
-                                        },
-                                    })],
-                                }),
-                                'interfaces': d({}),
-                            },
+                        "reference": ref("InterfaceReference"),
+                    }),
+                    "InterfaceReference": group({
+                        "context": member(ref("Context"), true),
+                        "interface": member(str())
+                    }),
+                    "Namespace": group({
+                        "namespaces": member(dictionary(ref("Namespace")), true),
+                        "templates": member(dictionary(ref("Template")), true),
+                        "types": member(dictionary(ref("Type"))),
+                        "interfaces": member(dictionary(ref("Interface"))),
+                    }),
+                    "Parameters": ['dictionary', null_()],
+                    "Template": group({
+                        "parameters": member(['dictionary',  null_()]),
+                        "type": member(ref("Type"))
+                    }),
+                    "Type": taggedUnion({
+                        "array": ref("Type"),
+                        "nested": ref("Type"),
+                        "optional": ref("Type"),
+                        "dictionary": ref("Type"),
+                        "computed": ref("Type"),
+    
+                        "null": null_(),
+                        "boolean": null_(),
+                        "string": null_(),
+                        "number": null_(),
+                        "reference": ref("TypeReference"),
+                        "group": dictionary(group({
+                            "type": member(ref("Type")),
+                            "optional": member(bln(), true)
+                        })),
+                        "parameter": str(),
+                        "template": group({
+                            "context": member(ref("Context"), true),
+                            "template": member(str()),
+                            "arguments": member(dictionary(ref("Type")))
                         }),
-                        'templates': d({}),
-                        'types': d({
-                            "Root": <mglossary.TType>['reference', {
-                                'context': <mglossary.TContext>['local', null],
-                                'namespaces': a(["types"]),
-                                'type': "Glossary",
-                            }],
-                        }),
-                        'interfaces': d({}),
-                    },
+                        "taggedUnion":dictionary(ref("Type")),
+                    }),
+                    "TypeReference": group({
+                        "context": member(ref("Context")),
+                        "namespaces": member(array(str())),
+                        "type": member(str()),
+                    }),
                 }),
-                'templates': d({
-                    "Reference": {
-                        'parameters': d({
-                            "ReferencedType": null,
-                        }),
-                        'type': <mglossary.TType>['group', d({
-                            "annotation": {
-                                'optional': true,
-                                'type': <mglossary.TType>['parameter', "Annotation"],
-                            },
-                            "referenced": {
-                                'optional': true,
-                                'type': <mglossary.TType>['parameter', "ReferencedType"],
-                            },
-                            "value": {
-                                'type': <mglossary.TType>['string', null],
-                            },
-                        })],
-                    },
-                }),
-                'types': d({}),
                 'interfaces': d({}),
+    
             },
             'functions': d({}),
-            'callbacks': d({
-                "Serialize": {
-                    'data': {
-                        'context': <mglossary.TContext>['local', null],
-                        'namespaces': a([]),
-                        'type': "Root",
-                    },
-                    'context': <mglossary.TContext>['import', "fp"],
-                    'interface': "Line",
-                },
-            }),
-            'pipes': d({}),
         },
         'api': {
             'imports': d({
-                'common': "glo-pareto-common"
+                "collation": "res-pareto-collation",
+                "temp": "../../temp",
             }),
             'algorithms': d({
-                'createSerializer': {
-                    'definition': ['callback', {
-                        'callback': "Serialize",
-                    }],
-                    'type': ['constructor', {
-                        'configuration data': {
-                            'context': ['import', "common"],
-                            'namespaces': a([]),
-                            'type': "Null",
-                        },
-                        'dependencies': d({}),
-                    }],
-                },
-            }),
+                // "createSerializer": {
+                //     'definition': ['callback', {
+                //         'callback': "Serialize"
+                //     }],
+                //     'type': ['constructor', {
+                //         'configuration data': null,
+                //         'dependencies': d({
+                //             "arrayForEach": ['callback', {
+                //                 'context': ['import', "temp"],
+                //                 'callback': "ArrayForEach",
+                //             }],
+                //             "dictionaryForEach": ['callback', {
+                //                 'context': ['import', "temp"],
+                //                 'callback': "DictionaryForEach",
+                //             }],
+                //             "enrichedArrayForEach": ['callback', {
+                //                 'context': ['import', "temp"],
+                //                 'callback': "EnrichedArrayForEach",
+                //             }],
+                //             "enrichedDictionaryForEach": ['callback', {
+                //                 'context': ['import', "temp"],
+                //                 'callback': "EnrichedDictionaryForEach",
+                //             }],
+                //         })
+                //     }]
+                // },
+            })
         },
     },
     'implementation': {

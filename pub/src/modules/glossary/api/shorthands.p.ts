@@ -86,6 +86,17 @@ export function typeReference(type: string): t.TTypeReference {
         'type': type,
     }
 }
+export function interfaceReference(inf: string): t.TInterfaceReference {
+    return {
+        'interface': inf
+    }
+}
+export function externalInterfaceReference(context: string, inf: string): t.TInterfaceReference {
+    return {
+        'context': ['import', context],
+        'interface': inf
+    }
+}
 export function namespacedTypeReference(namespaces: string[], type: string): t.TTypeReference {
     return {
         'context': ['local', null],
@@ -111,8 +122,46 @@ export function externalTypeReference(context: string, type: string): t.TTypeRef
 
 export function _function(data: t.TTypeReference, returnValue: t.TTypeReference, async?: boolean): t.TFunction {
     return {
-        "async": async === undefined ? false : async,
-        "data": data,
-        "return value": returnValue,
+        'return type': ['data', {
+            'type': returnValue,
+            'asynchronous': async === undefined ? false : async,
+        }],
+        'data': data,
+        'managed input interface': null,
+        'output interface': null,
+    }
+}
+
+export function procedure(data: t.TTypeReference): t.TFunction {
+    return {
+        'return type': ['nothing', null],
+        'data': data,
+        'managed input interface': null,
+        'output interface': null,
+    }
+}
+
+export function callback(data: t.TTypeReference, inf: t.TInterfaceReference): t.TFunction {
+    return {
+        'return type': ['interface', inf],
+        'data': data,
+        'managed input interface': null,
+        'output interface': null,
+    }
+}
+export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.TFunction {
+    return {
+        'return type': ['nothing', null],
+        'data': data,
+        'managed input interface': in_inf,
+        'output interface': out_inf,
+    }
+}
+export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.TFunction {
+    return {
+        'return type': ['interface', in_inf],
+        'data': data,
+        'managed input interface': null,
+        'output interface': out_inf,
     }
 }

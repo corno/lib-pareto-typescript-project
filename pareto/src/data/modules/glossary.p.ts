@@ -23,43 +23,36 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'namespace': {
             'types': types({
-                "Callback": group({
-                    "data": member(ref("OptionalTypeReference")),
-                    "context": member(ref("Context"), true),
-                    "interface": member(str())
-                }),
                 "Context": taggedUnion({
                     "local": null_(),
                     "import": str(),
                 }),
                 "Function": group({
-                    "async": member(bln(), true),
+                    "return type": member(taggedUnion({
+                        "data": group({
+                            "asynchronous": member(bln()),
+                            "type": member(ref("TypeReference")),
+                        }),
+                        "interface": ref("InterfaceReference"),
+                        "nothing": null_(),
+                    })),
                     "data": member(ref("TypeReference")),
-                    "return value": member(ref("TypeReference"))
+                    "managed input interface": member(optional(ref("InterfaceReference"))),
+                    "output interface": member(optional(ref("InterfaceReference"))),
                 }),
                 "Glossary": group({
                     "parameters": member(ref("Parameters"), true),
                     "imports": member(dictionary(str())),
                     "namespace": member(ref("Namespace")),
                     "functions": member(dictionary(ref("Function"))),
-                    "callbacks": member(dictionary(ref("Callback"))),
-                    "pipes": member(dictionary(group({
-                        "in": member(ref("InterfaceReference")),
-                        "out": member(ref("InterfaceReference")),
-                    }))),
                 }),
                 "Interface": taggedUnion({
                     "group":group({
                         "members": member(dictionary(ref("Interface")))
                     }),
                     "method": group({
-                        "data": member(ref("OptionalTypeReference")),
-                        "interface": member(taggedUnion({
-                            "set": group({
-                                "interface": member(str())
-                            }),
-                            "null": null_(),
-                        }))
+                        "data": member(optional(ref("TypeReference"))),
+                        "interface": member(optional(ref("Interface")))
                     }),
                     "reference": ref("InterfaceReference"),
                 }),
@@ -73,7 +66,6 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "types": member(dictionary(ref("Type"))),
                     "interfaces": member(dictionary(ref("Interface"))),
                 }),
-                "OptionalTypeReference": optional(ref("TypeReference")),
                 "Parameters": ['dictionary', null_()],
                 "Template": group({
                     "parameters": member(['dictionary',  null_()]),

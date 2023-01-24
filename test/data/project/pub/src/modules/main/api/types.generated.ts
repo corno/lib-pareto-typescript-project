@@ -1,158 +1,84 @@
 import * as pt from 'pareto-core-types'
 import * as mfp from "lib-fountain-pen"
 
-export namespace Nresolved {
-    
-    export namespace Ntypes {
-        
-        export type TContext = 
-            | ['import', {}]
-            | ['local', {}]
-        
-        export type TGlossary = {
-            readonly 'callbacks': pt.Dictionary<{
-                readonly 'context': TContext
-                readonly 'data': TOptionalTypeReference
-                readonly 'interface': MReference<TInterface>
-            }>
-            readonly 'functions': pt.Dictionary<{
-                readonly 'async': boolean
-                readonly 'data': TTypeReference
-                readonly 'return value': TTypeReference
-            }>
-            readonly 'imports': pt.Dictionary<{}>
-            readonly 'namespace': TNamespace
-            readonly 'parameters': pt.Dictionary<{}>
-            readonly 'pipes': pt.Dictionary<{
-                readonly 'in': TInterfaceReference
-                readonly 'out': TInterfaceReference
-            }>
-        }
-        
-        export type TInterface = {
-            readonly 'group': {
-                readonly 'members': pt.Dictionary<TInterface>
-            }
-            readonly 'method': {
-                readonly 'data': TOptionalTypeReference
-                readonly 'interface': 
-                    | ['null', {}]
-                    | ['set', {
-                        readonly 'interface': MReference<TInterface>
-                    }]
-            }
-            readonly 'reference': TInterfaceReference
-        }
-        
-        export type TInterfaceReference = {
-            readonly 'context': TContext
-            readonly 'interface': MReference<TInterface>
-        }
-        
-        export type TNamespace = {
-            readonly 'interfaces': pt.Dictionary<TInterface>
-            readonly 'namespaces': pt.Dictionary<TNamespace>
-            readonly 'templates': pt.Dictionary<{
-                readonly 'parameters': pt.Dictionary<{}>
-                readonly 'type': TType
-            }>
-            readonly 'types': pt.Dictionary<TType>
-        }
-        
-        export type TOptionalTypeReference = 
-            | ['not set', {}]
-            | ['set', TTypeReference]
-        
-        export type TType = {}
-        
-        export type TTypeReference = {
-            readonly 'context': TContext
-            readonly 'namespaces': pt.Array<MReference<TNamespace>>
-            readonly 'type': MReference<TType>
-        }
-    }
-    
-    export type TRoot = Ntypes.TGlossary
+export type TContext = 
+    | ['import', string]
+    | ['local', null]
+
+export type TFunction = {
+    readonly 'data': TTypeReference
+    readonly 'managed input interface': null | TInterfaceReference
+    readonly 'output interface': null | TInterfaceReference
+    readonly 'return type': 
+        | ['data', {
+            readonly 'asynchronous': boolean
+            readonly 'type': TTypeReference
+        }]
+        | ['interface', TInterfaceReference]
+        | ['nothing', null]
 }
 
-export namespace Nunresolved {
-    
-    export namespace Ntypes {
-        
-        export type TContext = 
-            | ['import', {}]
-            | ['local', {}]
-        
-        export type TGlossary = {
-            readonly 'callbacks'?: pt.Dictionary<{
-                readonly 'context'?: TContext
-                readonly 'data'?: TOptionalTypeReference
-                readonly 'interface'?: MReference<TInterface>
-            }>
-            readonly 'functions'?: pt.Dictionary<{
-                readonly 'async'?: boolean
-                readonly 'data'?: TTypeReference
-                readonly 'return value'?: TTypeReference
-            }>
-            readonly 'imports'?: pt.Dictionary<{}>
-            readonly 'namespace'?: TNamespace
-            readonly 'parameters'?: pt.Dictionary<{}>
-            readonly 'pipes'?: pt.Dictionary<{
-                readonly 'in'?: TInterfaceReference
-                readonly 'out'?: TInterfaceReference
-            }>
-        }
-        
-        export type TInterface = {
-            readonly 'group'?: {
-                readonly 'members'?: pt.Dictionary<TInterface>
-            }
-            readonly 'method'?: {
-                readonly 'data'?: TOptionalTypeReference
-                readonly 'interface'?: 
-                    | ['null', {}]
-                    | ['set', {
-                        readonly 'interface'?: MReference<TInterface>
-                    }]
-            }
-            readonly 'reference'?: TInterfaceReference
-        }
-        
-        export type TInterfaceReference = {
-            readonly 'context'?: TContext
-            readonly 'interface'?: MReference<TInterface>
-        }
-        
-        export type TNamespace = {
-            readonly 'interfaces'?: pt.Dictionary<TInterface>
-            readonly 'namespaces'?: pt.Dictionary<TNamespace>
-            readonly 'templates'?: pt.Dictionary<{
-                readonly 'parameters'?: pt.Dictionary<{}>
-                readonly 'type'?: TType
-            }>
-            readonly 'types'?: pt.Dictionary<TType>
-        }
-        
-        export type TOptionalTypeReference = 
-            | ['not set', {}]
-            | ['set', TTypeReference]
-        
-        export type TType = {}
-        
-        export type TTypeReference = {
-            readonly 'context'?: TContext
-            readonly 'namespaces'?: pt.Array<MReference<TNamespace>>
-            readonly 'type'?: MReference<TType>
-        }
-    }
-    
-    export type TRoot = Ntypes.TGlossary
+export type TGlossary = {
+    readonly 'functions': pt.Dictionary<TFunction>
+    readonly 'imports': pt.Dictionary<string>
+    readonly 'namespace': TNamespace
+    readonly 'parameters'?: TParameters
 }
 
-export type MReference<AReferencedType> = {
-    readonly 'annotation'?: AAnnotation
-    readonly 'referenced'?: AReferencedType
-    readonly 'value': string
+export type TInterface = 
+    | ['group', {
+        readonly 'members': pt.Dictionary<TInterface>
+    }]
+    | ['method', {
+        readonly 'data': null | TTypeReference
+        readonly 'interface': null | TInterface
+    }]
+    | ['reference', TInterfaceReference]
+
+export type TInterfaceReference = {
+    readonly 'context'?: TContext
+    readonly 'interface': string
 }
 
-export type XSerialize = ($: TRoot, $i: mfp.ILine) => void
+export type TNamespace = {
+    readonly 'interfaces': pt.Dictionary<TInterface>
+    readonly 'namespaces'?: pt.Dictionary<TNamespace>
+    readonly 'templates'?: pt.Dictionary<TTemplate>
+    readonly 'types': pt.Dictionary<TType>
+}
+
+export type TParameters = pt.Dictionary<null>
+
+export type TTemplate = {
+    readonly 'parameters': pt.Dictionary<null>
+    readonly 'type': TType
+}
+
+export type TType = 
+    | ['array', TType]
+    | ['boolean', null]
+    | ['computed', TType]
+    | ['dictionary', TType]
+    | ['group', pt.Dictionary<{
+        readonly 'optional'?: boolean
+        readonly 'type': TType
+    }>]
+    | ['nested', TType]
+    | ['null', null]
+    | ['number', null]
+    | ['optional', TType]
+    | ['parameter', string]
+    | ['reference', TTypeReference]
+    | ['string', null]
+    | ['taggedUnion', pt.Dictionary<TType>]
+    | ['template', {
+        readonly 'arguments': pt.Dictionary<TType>
+        readonly 'context'?: TContext
+        readonly 'template': string
+    }]
+
+export type TTypeReference = {
+    readonly 'context': TContext
+    readonly 'namespaces': pt.Array<string>
+    readonly 'type': string
+}

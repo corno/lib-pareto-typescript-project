@@ -6,25 +6,10 @@ export type TContext =
     | ['import', string]
     | ['local', null]
 
-export type TDefinitionReference = 
-    | ['callback', {
-        readonly 'callback': string
-        readonly 'context'?: TContext
-    }]
-    | ['function', {
-        readonly 'async'?: boolean
-        readonly 'context'?: TContext
-        readonly 'function': string
-    }]
-    | ['interface', {
-        readonly 'context'?: TContext
-        readonly 'interface': string
-    }]
-    | ['pipe', {
-        readonly 'context'?: TContext
-        readonly 'pipe': string
-    }]
-    | ['procedure', TTypeReference]
+export type TDefinitionReference = {
+    readonly 'context'?: TContext
+    readonly 'function': string
+}
 
 export type TModuleDefinition = {
     readonly 'api': {
@@ -32,7 +17,7 @@ export type TModuleDefinition = {
             readonly 'definition': TDefinitionReference
             readonly 'type': 
                 | ['constructor', {
-                    readonly 'configuration data': mglossary.TOptionalTypeReference
+                    readonly 'configuration data': null | mglossary.TTypeReference
                     readonly 'dependencies': pt.Dictionary<TDefinitionReference>
                 }]
                 | ['reference', null]
@@ -40,12 +25,6 @@ export type TModuleDefinition = {
         readonly 'imports': pt.Dictionary<string>
     }
     readonly 'glossary': mglossary.TGlossary
-}
-
-export type TTypeReference = {
-    readonly 'context': TContext
-    readonly 'namespaces': pt.Array<string>
-    readonly 'type': string
 }
 
 export type XSerialize = ($: TModuleDefinition, $i: mfp.ILine) => void

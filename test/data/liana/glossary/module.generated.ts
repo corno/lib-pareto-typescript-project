@@ -644,19 +644,10 @@ export const $: mproject.TModule = {
                 "Enrich": {
                     'async': XXX,'data': XXX,'return value': XXX,
                 },
-            }),
-            'callbacks': d({
                 "Serialize": {
-                    'data': {
-                        'context': <mglossary.TContext>['local', null],
-                        'namespaces': a(["resolved"]),
-                        'type': "Root",
-                    },
-                    'context': <mglossary.TContext>['import', "fp"],
-                    'interface': "Line",
+                    'async': XXX,'data': XXX,'return value': XXX,
                 },
             }),
-            'pipes': d({}),
         },
         'api': {
             'imports': d({
@@ -664,18 +655,18 @@ export const $: mproject.TModule = {
             }),
             'algorithms': d({
                 'createEnricher': {
-                    'definition': ['function', {
-                        'function': "Enrich",
-                    }],
+                    'definition': {
+                        'function': "undefined",
+                    ,
                     'type': ['constructor', {
                         'configuration data': null,
                         'dependencies': d({}),
                     }],
                 },
                 'createSerializer': {
-                    'definition': ['callback', {
-                        'callback': "Serialize",
-                    }],
+                    'definition': {
+                        'function': "undefined",
+                    ,
                     'type': ['constructor', {
                         'configuration data': null,
                         'dependencies': d({}),

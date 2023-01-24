@@ -2,10 +2,7 @@ import * as pt from 'pareto-core-types'
 
 import * as glo from "./types.generated"
 
-import * as mcommon from "glo-pareto-common"
+import * as mcollation from "res-pareto-collation"
+import * as mtemp from "../../temp"
 
-export type CcreateSerializer = ($: mcommon.TNull, $d: {}) => glo.XSerialize
-
-export type API = {
-    createSerializer: CcreateSerializer
-}
+export type API = {}

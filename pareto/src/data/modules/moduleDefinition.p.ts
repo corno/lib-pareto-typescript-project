@@ -5,7 +5,7 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference
+    array, dictionary, group, member, taggedUnion, types, _function, typeReference, optional
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -23,27 +23,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'namespace': {
             'types': types({
-                "DefinitionReference": taggedUnion({
-                    "function": group({
-                        "context": member(ref("Context"), true),
-                        "function": member(str()),
-                        "async": member(bln(), true),
-                    }),
-                    "interface": group({
-                        "context": member(ref("Context"), true),
-                        "interface": member(str()),
-                    }),
-                    "callback":group({
-                        "context": member(ref("Context"), true),
-                        "callback": member(str()),
-                        //"async": member(bln(), true),
-                    }),
-                    "pipe": group({
-                        "context": member(ref("Context"), true),
-                        "pipe": member(str()),
-                    }),
-                    "procedure": ref("TypeReference"),
-
+                "DefinitionReference": group({
+                    "context": member(ref("Context"), true),
+                    "function": member(str()),
                 }),
                 "Context": taggedUnion({
                     "local": null_(),
@@ -58,18 +40,18 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                             "type": member(taggedUnion({
                                 "reference": null_(),
                                 "constructor": group({
-                                    "configuration data": member(er("glossary", "OptionalTypeReference")),
+                                    "configuration data": member(optional(er("glossary", "TypeReference"))),
                                     "dependencies": member(dictionary(ref("DefinitionReference"))),
                                 }),
                             }))
                         }))),
                     })),
                 }),
-                "TypeReference": group({
-                    "context": member(ref("Context")),
-                    "namespaces": member(array(str())),
-                    "type": member(str()),
-                }),
+                // "TypeReference": group({
+                //     "context": member(ref("Context")),
+                //     "namespaces": member(array(str())),
+                //     "type": member(str()),
+                // }),
             }),
             'interfaces': d({}),
 
@@ -77,7 +59,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'functions': d({}),
         'callbacks': d({
             "Serialize": {
-                'data':  typeReference("ModuleDefinition"),
+                'data': typeReference("ModuleDefinition"),
                 'context': ['import', "fp"],
                 'interface': "Line",
             },

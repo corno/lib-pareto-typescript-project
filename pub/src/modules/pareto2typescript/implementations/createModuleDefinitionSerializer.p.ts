@@ -14,15 +14,6 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                 $d.cb_serializeGlossary($, $i)
             })
         }
-        function serializeOptionalTypeReference($: mglossary.TOptionalTypeReference, $i: mfp.ILine) {
-            if ($ === null) {
-                //
-            } else {
-                $i.snippet(`$: `)
-                serializeTypeReference($, $i)
-                $i.snippet(`, `)
-            }
-        }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
             serializeContext($.context, $i)
             $.namespaces.forEach(($) => {
@@ -59,40 +50,8 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
         }
 
         function serializeDefinitionReference($: mmoduleDefinition.TDefinitionReference, $i: mfp.ILine) {
-            switch ($[0]) {
-                case 'callback':
-                    pl.cc($[1], ($) => {
-                        serializeContext($.context, $i)
-                        $i.snippet(`X${$.callback}`)
-                    })
-                    break
-                case 'function':
-                    pl.cc($[1], ($) => {
-                        serializeContext($.context, $i)
-                        $i.snippet(`${$.async ? `A` : `F`}${$.function}`)
-                    })
-                    break
-                case 'interface':
-                    pl.cc($[1], ($) => {
-                        serializeContext($.context, $i)
-                        $i.snippet(`I${$.interface}`)
-                    })
-                    break
-                case 'pipe':
-                    pl.cc($[1], ($) => {
-                        serializeContext($.context, $i)
-                        $i.snippet(`P${$.pipe}`)
-                    })
-                    break
-                case 'procedure':
-                    pl.cc($[1], ($) => {
-                        $i.snippet(`pt.Procedure<`)
-                        serializeTypeReference($, $i)
-                        $i.snippet(`>`)
-                    })
-                    break
-                default: pl.au($[0])
-            }
+            serializeContext($.context, $i)
+            $i.snippet(`F${$.function}`)
         }
         glossary($.glossary, $i)
         $i.allowed("shorthands.p.ts")
@@ -116,37 +75,18 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                         case 'constructor':
                             pl.cc($.value.type[1], ($) => {
                                 $i.snippet(`(`)
-                                serializeOptionalTypeReference($['configuration data'], $i)
+                                if ($['configuration data'] === null) {
+                                    //
+                                } else {
+                                    $i.snippet(`$: `)
+                                    serializeTypeReference($['configuration data'], $i)
+                                    $i.snippet(`, `)
+                                }
                                 $i.snippet(`$d: {`)
                                 $i.indent(($i) => {
                                     $d.cb_dictionaryForEach($.dependencies, ($) => {
-                                        const id = pl.cc($.value, ($): string => {
-                                            switch ($[0]) {
-                                                case 'callback':
-                                                    return pl.cc($[1], ($) => {
-                                                        return `cb`
-                                                    })
-                                                case 'function':
-                                                    return pl.cc($[1], ($) => {
-                                                        return $.async ? `af` : `sf`
-                                                    })
-                                                case 'interface':
-                                                    return pl.cc($[1], ($) => {
-                                                        return `if`
-                                                    })
-                                                case 'pipe':
-                                                    return pl.cc($[1], ($) => {
-                                                        return `pi`
-                                                    })
-                                                case 'procedure':
-                                                    return pl.cc($[1], ($) => {
-                                                        return `pr`
-                                                    })
-                                                default: return pl.au($[0])
-                                            }
-                                        })
                                         $i.line(($i) => {
-                                            $i.snippet(`readonly '${id}_${$.key}': `)
+                                            $i.snippet(`readonly '${$.key}': `)
                                             serializeDefinitionReference($.value, $i)
                                         })
                                     })

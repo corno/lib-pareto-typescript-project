@@ -8,9 +8,9 @@ import * as mtest from "lib-pareto-test"
 export const $$: api.Cmain = ($) => {
 
     mtest.$a.createTestProgram({
-        af_getTestSet: $a.getTestSet,
-        pr_log: mmain.$a.log,
-        pr_logError: mmain.$a.logError,
-        pr_onTestErrors: mmain.$a.setExitCodeToFailed
-    })($.arguments)
+        getTestSet: $a.getTestSet,
+        log: mmain.$a.log,
+        logError: mmain.$a.logError,
+        onTestErrors: mmain.$a.setExitCodeToFailed
+    })($)
 }

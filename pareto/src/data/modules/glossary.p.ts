@@ -20,6 +20,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'imports': d({
             "fp": "lib-fountain-pen",
         }),
+        'parameters': d({}),
         'namespace': {
             'types': types({
                 "_Function": group({

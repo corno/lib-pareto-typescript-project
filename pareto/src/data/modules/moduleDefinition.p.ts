@@ -21,6 +21,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "glossary": "../../glossary",
             "fp": "lib-fountain-pen",
         }),
+        'parameters': d({}),
         'namespace': {
             'types': types({
                 "_AlgorithmType": taggedUnion({

@@ -22,6 +22,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "fp": "lib-fountain-pen",
             "liana": "../../liana"
         }),
+        'parameters': d({}),
         'namespace': {
             'types': types({
             }),

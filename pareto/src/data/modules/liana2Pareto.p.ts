@@ -20,6 +20,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             // "fp": "lib-fountain-pen",
             "main": "lib-pareto-main",
         }),
+        'parameters': d({}),
         'namespace': {
             'types': types({
                 "Configuration": group({

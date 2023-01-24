@@ -20,6 +20,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "algorithm": "../../algorithm",
             "fp": "lib-fountain-pen",
         }),
+        'parameters': d({}),
         'namespace': {
             'types': types({
                 "AlgorithmImplementation": group({}),

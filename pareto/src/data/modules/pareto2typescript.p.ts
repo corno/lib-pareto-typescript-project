@@ -27,6 +27,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             "moduleDefinition": "../../moduleDefinition",
             "project": "../../project",
         }),
+        'parameters': d({}),
         'namespace': {
             'types': types({
             }),

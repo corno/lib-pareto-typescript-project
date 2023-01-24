@@ -37,6 +37,7 @@ export function namespacedTypeReference(type: string): mglossary.TNamespacedType
 
 export const $: mmoduleDefinition.TModuleDefinition = def({
     'glossary': {
+        'parameters': d({}),
         'imports': d({
             "pareto2typescript": "../../pareto2typescript",
 

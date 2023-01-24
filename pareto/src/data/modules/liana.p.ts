@@ -21,6 +21,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             // "moduleDefinition": "../../moduleDefinition",
             // "fp": "lib-fountain-pen",
         }),
+        'parameters': d({}),
         'namespace': {
             'templates': d({
                 "Dictionary": {

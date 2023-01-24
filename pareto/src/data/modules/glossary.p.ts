@@ -46,7 +46,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "import": str(),
                 }),
                 "Glossary": group({
-                    "parameters": member(ref("_Parameters"), true),
+                    "parameters": member(ref("_Parameters")),
                     "imports": member(dictionary(str())),
                     "namespace": member(ref("Namespace")),
                     "functions": member(dictionary(ref("_Function"))),
@@ -60,13 +60,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "interface": member(optional(ref("_MethodInterface"))),
                     }),
                     "reference": group({
-                        "context": member(ref("Context"), true),
+                        "context": member(ref("Context")),
                         "namespaces": member(array(str())),// shouldn't this be a singular optional namespace?
                         "interface": member(str())
                     }),
                 }),
                 "InterfaceReference": group({
-                    "context": member(ref("Context"), true),
+                    "context": member(ref("Context")),
                     "interface": member(str())
                 }),
                 "Namespace": group({
@@ -97,11 +97,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "reference": ref("NamespacedTypeReference"),
                     "group": dictionary(group({
                         "type": member(ref("Type")),
-                        "optional": member(bln(), true)
+                        "optional": member(bln())
                     })),
                     "parameter": str(),
                     "template": group({
-                        "context": member(ref("Context"), true),
+                        "context": member(ref("Context")),
                         "template": member(str()),
                         "arguments": member(dictionary(ref("Type")))
                     }),

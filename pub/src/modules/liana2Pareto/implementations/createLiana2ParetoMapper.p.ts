@@ -93,6 +93,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                                     return pl.cc($.constrained[1], ($) => {
                                                         return ['template', {
                                                             'template': "Reference",
+                                                            'context': ['local', null],
                                                             'arguments': d({
                                                                 "RererencedType": ref("FIXMEFIXMEFIXME")
                                                             }),

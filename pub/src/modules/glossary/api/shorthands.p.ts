@@ -41,6 +41,7 @@ export function parameter($: string): t.TType {
 export function template(template: string, $: { [key: string]: t.TType }): t.TType {
     return ['template', {
         'template': template,
+        'context': ['local', null],
         'arguments': d($),
     }]
 }
@@ -59,15 +60,15 @@ export function optional($: t.TType): t.TType {
 export function group($: {
     [key: string]: {
         type: t.TType
-        optional?: boolean
+        optional: boolean
     }
 }): t.TType {
     return ['group', d($)]
 }
 
-export function member($: t.TType, optional?: boolean): { type: t.TType, optional?: boolean } {
+export function member($: t.TType, optional?: boolean): { type: t.TType, optional: boolean } {
     return {
-        optional: optional,
+        optional: optional === undefined ? false : optional,
         type: $
     }
 }
@@ -104,6 +105,7 @@ export function typeReference(type: string): t.TTypeReference {
 
 export function interfaceReference(inf: string): t.TInterfaceReference {
     return {
+        'context': ['local', null],
         'interface': inf
     }
 }
@@ -170,7 +172,7 @@ export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceRefere
         'output interface': out_inf,
     }
 }
-export function method(data: t.TNamespacedTypeReference, inf?: null | t.TInterface, managed?: boolean): t.TInterface {
+export function method(data: null | t.TNamespacedTypeReference, inf?: null | t.TInterface, managed?: boolean): t.TInterface {
     return ['method', {
         'data': data,
         'interface': inf === undefined

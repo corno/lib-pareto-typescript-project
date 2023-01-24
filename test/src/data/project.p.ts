@@ -33,6 +33,7 @@ export const $: mproject.TModule = {
             'imports': d({
                 "fp": "lib-fountain-pen",
             }),
+            'parameters': d({}),
             'namespace': {
                 'types': types({
                     "Context": taggedUnion({

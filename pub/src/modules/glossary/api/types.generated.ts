@@ -29,7 +29,7 @@ export type TGlossary = {
     readonly 'functions': pt.Dictionary<T_Function>
     readonly 'imports': pt.Dictionary<string>
     readonly 'namespace': TNamespace
-    readonly 'parameters'?: T_Parameters
+    readonly 'parameters': T_Parameters
 }
 
 export type TInterface = 
@@ -41,13 +41,13 @@ export type TInterface =
         readonly 'interface': null | T_MethodInterface
     }]
     | ['reference', {
-        readonly 'context'?: TContext
+        readonly 'context': TContext
         readonly 'interface': string
         readonly 'namespaces': pt.Array<string>
     }]
 
 export type TInterfaceReference = {
-    readonly 'context'?: TContext
+    readonly 'context': TContext
     readonly 'interface': string
 }
 
@@ -73,7 +73,7 @@ export type TType =
     | ['computed', TType]
     | ['dictionary', TType]
     | ['group', pt.Dictionary<{
-        readonly 'optional'?: boolean
+        readonly 'optional': boolean
         readonly 'type': TType
     }>]
     | ['nested', TType]
@@ -86,7 +86,7 @@ export type TType =
     | ['taggedUnion', pt.Dictionary<TType>]
     | ['template', {
         readonly 'arguments': pt.Dictionary<TType>
-        readonly 'context'?: TContext
+        readonly 'context': TContext
         readonly 'template': string
     }]
 

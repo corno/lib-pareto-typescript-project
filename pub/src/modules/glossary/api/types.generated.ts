@@ -1,11 +1,7 @@
 import * as pt from 'pareto-core-types'
 import * as mfp from "lib-fountain-pen"
 
-export type TContext = 
-    | ['import', string]
-    | ['local', null]
-
-export type TFunction = {
+export type T_Function = {
     readonly 'data': TTypeReference
     readonly 'managed input interface': null | TInterfaceReference
     readonly 'output interface': null | TInterfaceReference
@@ -18,11 +14,17 @@ export type TFunction = {
         | ['nothing', null]
 }
 
+export type T_Parameters = pt.Dictionary<null>
+
+export type TContext = 
+    | ['import', string]
+    | ['local', null]
+
 export type TGlossary = {
-    readonly 'functions': pt.Dictionary<TFunction>
+    readonly 'functions': pt.Dictionary<T_Function>
     readonly 'imports': pt.Dictionary<string>
     readonly 'namespace': TNamespace
-    readonly 'parameters'?: TParameters
+    readonly 'parameters'?: T_Parameters
 }
 
 export type TInterface = 
@@ -30,10 +32,14 @@ export type TInterface =
         readonly 'members': pt.Dictionary<TInterface>
     }]
     | ['method', {
-        readonly 'data': null | TTypeReference
+        readonly 'data': null | TNamespacedTypeReference
         readonly 'interface': null | TInterface
     }]
-    | ['reference', TInterfaceReference]
+    | ['reference', {
+        readonly 'context'?: TContext
+        readonly 'interface': string
+        readonly 'namespaces': pt.Array<string>
+    }]
 
 export type TInterfaceReference = {
     readonly 'context'?: TContext
@@ -43,15 +49,17 @@ export type TInterfaceReference = {
 export type TNamespace = {
     readonly 'interfaces': pt.Dictionary<TInterface>
     readonly 'namespaces'?: pt.Dictionary<TNamespace>
-    readonly 'templates'?: pt.Dictionary<TTemplate>
+    readonly 'templates'?: pt.Dictionary<{
+        readonly 'parameters': pt.Dictionary<null>
+        readonly 'type': TType
+    }>
     readonly 'types': pt.Dictionary<TType>
 }
 
-export type TParameters = pt.Dictionary<null>
-
-export type TTemplate = {
-    readonly 'parameters': pt.Dictionary<null>
-    readonly 'type': TType
+export type TNamespacedTypeReference = {
+    readonly 'context': TContext
+    readonly 'namespaces': pt.Array<string>
+    readonly 'type': string
 }
 
 export type TType = 
@@ -68,7 +76,7 @@ export type TType =
     | ['number', null]
     | ['optional', TType]
     | ['parameter', string]
-    | ['reference', TTypeReference]
+    | ['reference', TNamespacedTypeReference]
     | ['string', null]
     | ['taggedUnion', pt.Dictionary<TType>]
     | ['template', {
@@ -79,8 +87,7 @@ export type TType =
 
 export type TTypeReference = {
     readonly 'context': TContext
-    readonly 'namespaces': pt.Array<string>
     readonly 'type': string
 }
 
-export type XSerialize = ($: TGlossary, $i: mfp.ILine) => void
+export type FSerialize = ($: TGlossary,$i: mfp.ILine,) => void

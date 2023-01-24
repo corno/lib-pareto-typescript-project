@@ -2,16 +2,17 @@ import * as pr from 'pareto-core-raw'
 import {
     externalReference as er,
     string as str,
-   null_,
+    null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference
+    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, interfaceReference, externalInterfaceReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import { callback } from './liana_flat.p'
 
 
 const d = pr.wrapRawDictionary
@@ -23,11 +24,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'namespace': {
             'types': types({
-                "Context": taggedUnion({
-                    "local": null_(),
-                    "import": str(),
-                }),
-                "Function": group({
+                "_Function": group({
                     "return type": member(taggedUnion({
                         "data": group({
                             "asynchronous": member(bln()),
@@ -40,21 +37,31 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "managed input interface": member(optional(ref("InterfaceReference"))),
                     "output interface": member(optional(ref("InterfaceReference"))),
                 }),
+                "_Parameters": dictionary(null_()),
+
+                "Context": taggedUnion({
+                    "local": null_(),
+                    "import": str(),
+                }),
                 "Glossary": group({
-                    "parameters": member(ref("Parameters"), true),
+                    "parameters": member(ref("_Parameters"), true),
                     "imports": member(dictionary(str())),
                     "namespace": member(ref("Namespace")),
-                    "functions": member(dictionary(ref("Function"))),
+                    "functions": member(dictionary(ref("_Function"))),
                 }),
                 "Interface": taggedUnion({
-                    "group":group({
+                    "group": group({
                         "members": member(dictionary(ref("Interface")))
                     }),
                     "method": group({
-                        "data": member(optional(ref("TypeReference"))),
-                        "interface": member(optional(ref("Interface")))
+                        "data": member(optional(ref("NamespacedTypeReference"))),
+                        "interface": member(optional(ref("Interface"))),
                     }),
-                    "reference": ref("InterfaceReference"),
+                    "reference": group({
+                        "context": member(ref("Context"), true),
+                        "namespaces": member(array(str())),// shouldn't this be a singular optional namespace?
+                        "interface": member(str())
+                    }),
                 }),
                 "InterfaceReference": group({
                     "context": member(ref("Context"), true),
@@ -62,14 +69,17 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
                 "Namespace": group({
                     "namespaces": member(dictionary(ref("Namespace")), true),
-                    "templates": member(dictionary(ref("Template")), true),
+                    "templates": member(dictionary(group({
+                        "parameters": member(['dictionary', null_()]),
+                        "type": member(ref("Type"))
+                    })), true),
                     "types": member(dictionary(ref("Type"))),
                     "interfaces": member(dictionary(ref("Interface"))),
                 }),
-                "Parameters": ['dictionary', null_()],
-                "Template": group({
-                    "parameters": member(['dictionary',  null_()]),
-                    "type": member(ref("Type"))
+                "NamespacedTypeReference": group({
+                    "context": member(ref("Context")),
+                    "namespaces": member(array(str())),// shouldn't this be a singular optional namespace?
+                    "type": member(str()),
                 }),
                 "Type": taggedUnion({
                     "array": ref("Type"),
@@ -82,7 +92,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "boolean": null_(),
                     "string": null_(),
                     "number": null_(),
-                    "reference": ref("TypeReference"),
+                    "reference": ref("NamespacedTypeReference"),
                     "group": dictionary(group({
                         "type": member(ref("Type")),
                         "optional": member(bln(), true)
@@ -93,26 +103,19 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "template": member(str()),
                         "arguments": member(dictionary(ref("Type")))
                     }),
-                    "taggedUnion":dictionary(ref("Type")),
+                    "taggedUnion": dictionary(ref("Type")),
                 }),
                 "TypeReference": group({
                     "context": member(ref("Context")),
-                    "namespaces": member(array(str())),
                     "type": member(str()),
                 }),
             }),
             'interfaces': d({}),
 
         },
-        'functions': d({}),
-        'callbacks': d({
-            "Serialize": {
-                'data': typeReference("Glossary"),
-                'context': ['import', "fp"],
-                'interface': "Line",
-            },
+        'functions': d({
+            "Serialize": callback(typeReference("Glossary"), externalInterfaceReference("fp", "Line")),
         }),
-        'pipes': d({}),
     },
     'api': {
         'imports': d({
@@ -121,28 +124,28 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": {
-                'definition': ['callback', {
-                    'callback': "Serialize"
-                }],
+                'definition': {
+                    'function': "Serialize"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "arrayForEach": ['callback', {
+                        "arrayForEach": {
                             'context': ['import', "temp"],
-                            'callback': "ArrayForEach",
-                        }],
-                        "dictionaryForEach": ['callback', {
+                            'function': "ArrayForEach",
+                        },
+                        "dictionaryForEach": {
                             'context': ['import', "temp"],
-                            'callback': "DictionaryForEach",
-                        }],
-                        "enrichedArrayForEach": ['callback', {
+                            'function': "DictionaryForEach",
+                        },
+                        "enrichedArrayForEach": {
                             'context': ['import', "temp"],
-                            'callback': "EnrichedArrayForEach",
-                        }],
-                        "enrichedDictionaryForEach": ['callback', {
+                            'function': "EnrichedArrayForEach",
+                        },
+                        "enrichedDictionaryForEach": {
                             'context': ['import', "temp"],
-                            'callback': "EnrichedDictionaryForEach",
-                        }],
+                            'function': "EnrichedDictionaryForEach",
+                        },
                     })
                 }]
             },

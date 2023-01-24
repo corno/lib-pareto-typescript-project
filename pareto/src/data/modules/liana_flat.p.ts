@@ -2,17 +2,26 @@ import * as pr from 'pareto-core-raw'
 import {
     externalReference as er,
     string as str,
-   null_,
+    null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalTypeReference
+    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalTypeReference, externalInterfaceReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
+import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
+export function callback(data: mglossary.TTypeReference, inf: mglossary.TInterfaceReference): mglossary.TFunction {
+    return {
+        'return type': ['nothing', null],
+        'data': data,
+        'managed input interface': null,
+        'output interface': inf,
+    }
+}
 
 const d = pr.wrapRawDictionary
 
@@ -28,15 +37,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             'interfaces': d({}),
 
         },
-        'functions': d({}),
-        'callbacks': d({
-            "Serialize": {
-                'data': externalTypeReference("liana", "Model"),
-                'context': ['import', "fp"],
-                'interface': "Writer",
-            },
+        'functions': d({
+
+            "Serialize": callback(externalTypeReference("liana", "Model"), externalInterfaceReference("fp", "Writer")),
         }),
-        'pipes': d({}),
     },
     'api': {
         'imports': d({
@@ -45,9 +49,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": {
-                'definition': ['callback', {
-                    'callback': "Serialize"
-                }],
+                'definition':{
+                    'function': "Serialize"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({

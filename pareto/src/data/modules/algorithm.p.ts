@@ -5,13 +5,14 @@ import {
    null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference
+    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalInterfaceReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import { callback } from './liana_flat.p'
 
 
 const d = pr.wrapRawDictionary
@@ -96,15 +97,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             'interfaces': d({}),
 
         },
-        'functions': d({}),
-        'callbacks': d({
-            "Serialize": {
-                'data': typeReference("Implementation"),
-                'context': ['import', "fp"],
-                'interface': "Line",
-            },
+        'functions': d({
+            "Serialize": callback(typeReference("Implementation"), externalInterfaceReference("fp", "Line")),
         }),
-        'pipes': d({}),
     },
     'api': {
         'imports': d({
@@ -113,28 +108,28 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": {
-                'definition': ['callback', {
-                    'callback': "Serialize"
-                }],
+                'definition': {
+                    'function': "Serialize"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "arrayForEach": ['callback', {
+                        "arrayForEach": {
                             'context': ['import', "temp"],
-                            'callback': "ArrayForEach",
-                        }],
-                        "dictionaryForEach": ['callback', {
+                            'function': "ArrayForEach",
+                        },
+                        "dictionaryForEach": {
                             'context': ['import', "temp"],
-                            'callback': "DictionaryForEach",
-                        }],
-                        "enrichedArrayForEach": ['callback', {
+                            'function': "DictionaryForEach",
+                        },
+                        "enrichedArrayForEach": {
                             'context': ['import', "temp"],
-                            'callback': "EnrichedArrayForEach",
-                        }],
-                        "enrichedDictionaryForEach": ['callback', {
+                            'function': "EnrichedArrayForEach",
+                        },
+                        "enrichedDictionaryForEach": {
                             'context': ['import', "temp"],
-                            'callback': "EnrichedDictionaryForEach",
-                        }],
+                            'function': "EnrichedDictionaryForEach",
+                        },
                     })
                 }]
             },

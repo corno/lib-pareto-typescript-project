@@ -7,10 +7,10 @@ import * as mglossary from "../../glossary"
 import * as mtemp from "../../temp"
 
 export type CcreateSerializer = ($d: {
-    readonly 'cb_dictionaryForEach': mtemp.XDictionaryForEach
-    readonly 'cb_enrichedArrayForEach': mtemp.XEnrichedArrayForEach
-    readonly 'cb_serializeGlossary': mglossary.XSerialize
-}) => glo.XSerialize
+    readonly 'dictionaryForEach': mtemp.FDictionaryForEach
+    readonly 'enrichedArrayForEach': mtemp.FEnrichedArrayForEach
+    readonly 'serializeGlossary': mglossary.FSerialize
+}) => glo.FSerialize
 
 export type API = {
     createSerializer: CcreateSerializer

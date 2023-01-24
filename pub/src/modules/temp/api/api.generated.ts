@@ -8,26 +8,26 @@ export type CaddKeysToDictionary = glo.FAddKeysToDictionary
 
 export type CcreateArrayForEach = (
     $d: {
-        readonly "sf_compare": mcollation.FIsABeforeB
+        readonly 'compare': mcollation.FIsABeforeB
     }
-) => glo.XArrayForEach
+) => glo.FArrayForEach
 
 export type CcreateDictionaryForEach = (
     $d: {
-        readonly "sf_compare": mcollation.FIsABeforeB
+        readonly 'compare': mcollation.FIsABeforeB
     }
-) => glo.XDictionaryForEach
+) => glo.FDictionaryForEach
 
 export type CcreateEnrichedArrayForEach = (
     $d: {
     }
-) => glo.XEnrichedArrayForEach
+) => glo.FEnrichedArrayForEach
 
 export type CcreateEnrichedDictionaryForEach = (
     $d: {
-        readonly "sf_compare": mcollation.FIsABeforeB
+        readonly 'compare': mcollation.FIsABeforeB
     }
-) => glo.XEnrichedDictionaryForEach
+) => glo.FEnrichedDictionaryForEach
 
 export type API = {
     addKeysToDictionary: CaddKeysToDictionary,

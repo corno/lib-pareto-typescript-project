@@ -1,22 +1,29 @@
+import * as pl from 'pareto-core-lib'
+
 import * as api from "../api"
 
 export const $$: api.CcreateParametersParser = (
     $d,
 ) => {
-    return ($) => {
+    return ($, $i) => {
         type State = null | string
         let state: State = null
         $.forEach(($) => {
             if (state !== null) {
-                $d.pr_onError(['too many', null])
+                $d.onError(['too many', null])
             } else {
                 state = $
             }
         })
-        if (state === null) {
-            $d.pr_onError(['missing', null])
-        } else {
-            $d.pr_callback(state)//FIXME THIS IS NOT THE RIGHT TYPE
-        }
+        pl.cc($, ($) => {
+            if (state === null) {
+                $d.onError(['missing', null])
+            } else {
+                $i({
+                    testDirectory: state
+                })//FIXME THIS IS NOT THE RIGHT TYPE
+            }
+
+        })
     }
 }

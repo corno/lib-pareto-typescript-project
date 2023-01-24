@@ -21,7 +21,7 @@ export const $$: api.CcreateSerializerWithContext = ($d) => {
             })
             $i.line(($i) => {
                 $i.snippet(`export const $: mproject.TModule = `)
-                $d.cb_serialize($, $i)
+                $d.serialize($, $i)
             })
         })
     }

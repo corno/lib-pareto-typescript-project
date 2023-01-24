@@ -12,50 +12,50 @@ import { $a } from "../index"
 
 export const $$: api.CgenerateProject = ($) => {
     const a = mtemp.$a.createArrayForEach({
-        sf_compare: mcoll.$a.localeIsABeforeB,
+        compare: mcoll.$a.localeIsABeforeB,
     })
     const d = mtemp.$a.createDictionaryForEach({
-        sf_compare: mcoll.$a.localeIsABeforeB,
+        compare: mcoll.$a.localeIsABeforeB,
     })
     const ea = mtemp.$a.createEnrichedArrayForEach({
-        sf_compare: mcoll.$a.localeIsABeforeB,
+        compare: mcoll.$a.localeIsABeforeB,
     })
     const ed = mtemp.$a.createEnrichedDictionaryForEach({
-        sf_compare: mcoll.$a.localeIsABeforeB,
+        compare: mcoll.$a.localeIsABeforeB,
     })
 
     $a.createProjectGenerator(
         {
-            cb_serializeProject: mpareto2typescript.$a.createProjectSerializer(
+            serializeProject: mpareto2typescript.$a.createProjectSerializer(
                 {
-                    cb_dictionaryForEach: d,
-                    cb_serializeModuleDefinition: mpareto2typescript.$a.createModuleDefinitionSerializer(
+                    dictionaryForEach: d,
+                    serializeModuleDefinition: mpareto2typescript.$a.createModuleDefinitionSerializer(
                         {
-                            cb_dictionaryForEach: d,
-                            cb_serializeGlossary: mpareto2typescript.$a.createGlossarySerializer({
-                                cb_enrichedDictionaryForEach: ed,
-                                cb_dictionaryForEach: d,
+                            dictionaryForEach: d,
+                            serializeGlossary: mpareto2typescript.$a.createGlossarySerializer({
+                                enrichedDictionaryForEach: ed,
+                                dictionaryForEach: d,
                             }),
                         }
                     ),
-                    cb_serializeImplementation: mpareto2typescript.$a.createImplementationSerializer(
+                    serializeImplementation: mpareto2typescript.$a.createImplementationSerializer(
                         {
-                            cb_arrayForEach: a,
-                            cb_dictionaryForEach: d,
-                            cb_enrichedArrayForEach: ea,
-                            cb_enrichedDictionaryForEach: ed,
+                            arrayForEach: a,
+                            dictionaryForEach: d,
+                            enrichedArrayForEach: ea,
+                            enrichedDictionaryForEach: ed,
                         }
                     ),
                 }
             ),
-            cb_serializeTemplate: mpareto2typescript.$a.createTemplateSerializer(
+            serializeTemplate: mpareto2typescript.$a.createTemplateSerializer(
                 {
-                    cb_dictionaryForEach: d,
+                    dictionaryForEach: d,
                 }
             ),
-            pr_logError: mmain.$a.logError,
-            af_getSingleArgument: () => { pl.panic(`SSDFSFSF`) },
-            sf_addKeysToDictionary: mtemp.$a.addKeysToDictionary,
+            logError: mmain.$a.logError,
+            getSingleArgument: () => { pl.panic(`SSDFSFSF`) },
+            addKeysToDictionary: mtemp.$a.addKeysToDictionary,
             //cbgetSingleArgument: mexe.p_getSingleArgument,
         }
     )($)

@@ -171,4 +171,4 @@ export type TXString = {
 
 export type TXStringType = null
 
-export type FResolve = ($: TModel) => TPossibleModel
+export type FResolve = ($: TModel,) => TPossibleModel

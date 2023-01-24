@@ -4,7 +4,7 @@ import {
     string as str,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, null_
+    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, null_, procedure
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -38,14 +38,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
 
         },
         'functions': d({
-            "MapLiana2Pareto": {
-                'data': typeReference("MappedModel"),
-                'return value': externalTypeReference("project", "Module"),
-            }
+            "MapLiana2Pareto": _function(typeReference("MappedModel"), externalTypeReference("project", "Module")),
+            "GenerateProject": procedure(typeReference("Configuration")),
         }),
-        'callbacks': d({
-        }),
-        'pipes': d({}),
     },
     'api': {
         'imports': d({
@@ -55,41 +50,47 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "generateProject": {
-                'definition': ['procedure', typeReference("Configuration")],
+                'definition': {
+                    'function': "GenerateProject"
+                },
                 'type': ['reference', null],
             },
             "createProjectGenerator": {
-                'definition': ['procedure', typeReference("Configuration")],
+                'definition': {
+                    'function': "GenerateProject"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "addKeysToDictionary": ['function', {
+                        "addKeysToDictionary": {
                             'context': ['import', "temp"],
                             'function': "AddKeysToDictionary"
-                        }],
-                        "logError": ['procedure', externalTypeReference("common", "String")],
-                        "mapLiana2Pareto": ['function', {
-                            //'async': true,
+                        },
+                        "logError": {
+                            'context': ['import', "common"],
+                            'function': "Log"
+                        },
+                        "mapLiana2Pareto": {
                             'function': "MapLiana2Pareto",
-                        }],
-                        "serializeProject": ['callback', {
+                        },
+                        "serializeProject":  {
                             'context': ['import', "project"],
-                            'callback': "SerializeWithContext"
-                        }],
+                            'function': "SerializeWithContext"
+                        },
                     }),
                 }],
             },
             "createLiana2ParetoMapper": {
-                'definition': ['function', {
+                'definition':  {
                     'function': "MapLiana2Pareto"
-                }],
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "addKeysToDictionary": ['function', {
+                        "addKeysToDictionary": {
                             'context': ['import', "temp"],
                             'function': "AddKeysToDictionary"
-                        }],
+                        },
                     })
                 }]
             },

@@ -9,8 +9,6 @@ export type TArgumentError =
     | ['missing', null]
     | ['too many', null]
 
-export type TArguments = pt.Array<string>
-
 export type TParameters = {
     readonly 'testDirectory': string
 }
@@ -22,10 +20,18 @@ export type TProjectSettings = {
 
 export type ICreateWriter = ($: mcommon.TString, $c: ($i: mfp.IWriter) => void) => void
 
-export type IParseArguments = ($: TArguments, ) => void
+export type IHandleParameters = ($: TParameters, ) => void
+
+export type IParseArguments = ($: mmain.TArguments, ) => void
 
 export type IProcessArgument = ($: mcommon.TString, ) => void
 
-export type AGetSingleArgument = ($: TArguments) => pt.AsyncValue<mcommon.TString>
+export type FGenerateProject = ($: TProjectSettings,) => void
 
-export type PParseArguments = ($i: IProcessArgument, $c: ($i: IParseArguments) => void) => void
+export type FGetSingleArgument = ($: mmain.TArguments,) => pt.AsyncValue<mcommon.TString>
+
+export type FHandleArgumentError = ($: TArgumentError,) => void
+
+export type FParseArguments = ($: mcommon.TNull,$c: ($i: IParseArguments) => void,$i: IProcessArgument,) => void
+
+export type FParseArguments2 = ($: mmain.TArguments,$i: IHandleParameters,) => void

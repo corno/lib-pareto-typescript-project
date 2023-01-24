@@ -42,7 +42,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                             $i.line(($i) => {
                                 $i.snippet(`'properties': d({`)
                                 $i.indent(($i) => {
-                                    $d.cb_dictionaryForEach($.properties, ($) => {
+                                    $d.dictionaryForEach($.properties, ($) => {
                                         $i.line(($i) => {
                                             $i.snippet(`"${$.key}": `)
                                             serializeExpression($.value, $i)
@@ -108,7 +108,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                             $i.line(($i) => {
                                 $i.snippet(`'cases': d({`)
                                 $i.indent(($i) => {
-                                    $d.cb_dictionaryForEach($.cases, ($) => {
+                                    $d.dictionaryForEach($.cases, ($) => {
                                         $i.line(($i) => {
                                             $i.snippet(`"${$.key}": `)
                                             serializeFunctionBlock($.value, $i)
@@ -155,7 +155,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                     $i.snippet(`'innerFunctions': d({`)
                     $i.indent(($i) => {
                         if ($.innerFunctions !== undefined) {
-                            $d.cb_dictionaryForEach($.innerFunctions, ($) => {
+                            $d.dictionaryForEach($.innerFunctions, ($) => {
                                 $i.line(($i) => {
                                     $i.snippet(`"${$.key}": {`)
                                     $i.indent(($i) => {
@@ -193,7 +193,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                     $i.snippet(`'innerCallbacks': d({`)
                     $i.indent(($i) => {
                         if ($.innerCallbacks !== undefined) {
-                            $d.cb_dictionaryForEach($.innerCallbacks, ($) => {
+                            $d.dictionaryForEach($.innerCallbacks, ($) => {
                                 $i.line(($i) => {
                                     $i.snippet(`"${$.key}": {`)
                                     $i.indent(($i) => {
@@ -258,7 +258,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             $i.line(($i) => {
                 $i.snippet(`'implementations': d({`)
                 $i.indent(($i) => {
-                    $d.cb_dictionaryForEach($.implementations, ($) => {
+                    $d.dictionaryForEach($.implementations, ($) => {
                         $i.line(($i) => {
                             $i.snippet(`"${$.key}": {`)
                             $i.indent(($i) => {

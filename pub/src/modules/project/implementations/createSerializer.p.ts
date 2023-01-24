@@ -11,14 +11,14 @@ export const $$: api.CcreateSerializer = ($d) => {
         $i.indent(($i) => {
             $i.line(($i) => {
                 $i.snippet(`'definition': `)
-                $d.cb_serializeModuleDefinition($.definition, $i)
+                $d.serializeModuleDefinition($.definition, $i)
                 $i.snippet(`,`)
             })
             if ($.implementation !== undefined) {
                 pl.cc($.implementation, ($) => {
                     $i.line(($i) => {
                         $i.snippet(`'implementation': `)
-                        $d.cb_serializeImplementation($, $i)
+                        $d.serializeImplementation($, $i)
                         $i.snippet(`,`)
                     })
                 })

@@ -12,7 +12,7 @@ import {
     number as nr,
     nested,
     template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, parameter, namespacedTypeReference
+    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, parameter
 } from "../../glossary/api/shorthands.p"
 
 
@@ -215,14 +215,14 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     'functions': d({
                         "Enrich": {
                             'return type': ['data', {
-                                'type': namespacedTypeReference(["resolved"], "Root"),
+                                'type': typeReference("Root"), //resolved
                                 'asynchronous': false,
                             }],
-                            'data': namespacedTypeReference(["unresolved"], "Root"),
+                            'data': typeReference("Root"), //unresolved
                         },
                         "Serialize": {
                             'return type': ['nothing', null],
-                            'data': namespacedTypeReference(["unresolved"], "Root"),
+                            'data': typeReference("Root"), //unresolved
                             'output interface': {
                                 'context': ['import', "fp"],
                                 'interface': "Line"
@@ -283,11 +283,11 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                         'constructor': true,
                         'type': ['function', {
                             'block': <malgorithm.TFunctionBlock>{
-                                'innerFunctions': $d.sf_addKeysToDictionary($.model.globalTypes.dictionary).map(($) => {
+                                'innerFunctions': $d.addKeysToDictionary($.model.globalTypes.dictionary).map(($) => {
                                     return {
                                         'definition': {
-                                            'data': namespacedTypeReference(["unresolved"], $.key),
-                                            'return value': namespacedTypeReference(["resolved"], $.key),
+                                            'data': typeReference($.key),
+                                            'return value': externalReference("resolved", $.key),
                                         },
                                         'block': generateBlock($.value.type)
                                     }

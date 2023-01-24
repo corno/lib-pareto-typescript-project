@@ -5,10 +5,11 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference
+    array, dictionary, group, member, taggedUnion, types, _function, typeReference, externalInterfaceReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import { callback } from './liana_flat.p'
 
 
 const d = pr.wrapRawDictionary
@@ -47,20 +48,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             'interfaces': d({}),
 
         },
-        'functions': d({}),
-        'callbacks': d({
-            "Serialize": {
-                'data':  typeReference("Module"),
-                'context': ['import', "fp"],
-                'interface': "Line",
-            },
-            "SerializeWithContext": {
-                'data':  typeReference("Module"),
-                'context': ['import', "fp"],
-                'interface': "Writer",
-            },
+        'functions': d({
+            "Serialize": callback(typeReference("Module"), externalInterfaceReference("fp", "Line")),
+            "SerializeWithContext": callback(typeReference("Module"), externalInterfaceReference("fp", "Writer")),
+
         }),
-        'pipes': d({}),
     },
     'api': {
         'imports': d({
@@ -71,32 +63,32 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": {
-                'definition': ['callback', {
-                    'callback': "Serialize"
-                }],
+                'definition': {
+                    'function': "Serialize"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "serializeModuleDefinition": ['callback', {
+                        "serializeModuleDefinition":{
                             'context': ['import', "moduleDefinition"],
-                            'callback': "Serialize"
-                        }],
-                        "serializeImplementation": ['callback', {
+                            'function': "Serialize"
+                        },
+                        "serializeImplementation": {
                             'context': ['import', "algorithm"],
-                            'callback': "Serialize"
-                        }],
+                            'function': "Serialize"
+                        },
                         // "arrayForEach": ['callback', {
                         //     'context': ['import', "temp"],
                         //     'callback': "ArrayForEach",
                         // }],
-                        "dictionaryForEach": ['callback', {
+                        "dictionaryForEach": {
                             'context': ['import', "temp"],
-                            'callback': "DictionaryForEach",
-                        }],
-                        "enrichedArrayForEach": ['callback', {
+                            'function': "DictionaryForEach",
+                        },
+                        "enrichedArrayForEach": {
                             'context': ['import', "temp"],
-                            'callback': "EnrichedArrayForEach",
-                        }],
+                            'function': "EnrichedArrayForEach",
+                        },
                         // "enrichedDictionaryForEach": ['callback', {
                         //     'context': ['import', "temp"],
                         //     'callback': "EnrichedDictionaryForEach",
@@ -105,15 +97,15 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }],
             },
             "createSerializerWithContext": {
-                'definition': ['callback', {
-                    'callback': "SerializeWithContext"
-                }],
+                'definition': {
+                    'function': "SerializeWithContext"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "serialize": ['callback', {
-                            'callback': "Serialize"
-                        }],
+                        "serialize": {
+                            'function': "Serialize"
+                        },
                     }),
                 }],
             },

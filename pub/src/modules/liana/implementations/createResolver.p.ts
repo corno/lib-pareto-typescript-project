@@ -9,7 +9,7 @@ import { TXGlobalType } from '../api'
 export const $$: api.CcreateResolver = ($d) => {
     let hasErrors = false
     function onError($: string) {
-        $d.pr_onError($)
+        $d.onError($)
         hasErrors = true
     }
     function filter<T>($: AnnotatedUnsafeDictionary<T>): api.MDictionary<T> {

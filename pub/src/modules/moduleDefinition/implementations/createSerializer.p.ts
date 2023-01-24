@@ -18,20 +18,6 @@ export const $$: api.CcreateSerializer = ($d) => {
                     $i.snippet(`,`)
                 })
                 $i.line(($i) => {
-                    $i.snippet(`'namespaces': a([`)
-                    $d.cb_enrichedArrayForEach($.namespaces, {
-                        onEmpty: () => {
-
-                        },
-                        onNotEmpty: ($c) => {
-                            $c(($) => {
-                                $i.snippet(`${$.isFirst ? `` : `, `}"${$.value}"`)
-                            })
-                        }
-                    })
-                    $i.snippet(`]),`)
-                })
-                $i.line(($i) => {
                     $i.snippet(`'type': "${$.type}",`)
                 })
             })
@@ -75,7 +61,7 @@ export const $$: api.CcreateSerializer = ($d) => {
         $i.indent(($i) => {
             $i.line(($i) => {
                 $i.snippet(`'glossary': `)
-                $d.cb_serializeGlossary($.glossary, $i)
+                $d.serializeGlossary($.glossary, $i)
                 $i.snippet(`,`)
             }),
                 $i.line(($i) => {
@@ -85,7 +71,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                         $i.line(($i) => {
                             $i.snippet(`'imports': d({`)
                             $i.indent(($i) => {
-                                $d.cb_dictionaryForEach($.api.imports, ($) => {
+                                $d.dictionaryForEach($.api.imports, ($) => {
                                     $i.line(($i) => {
                                         $i.snippet(`'${$.key}': "${$.value}"`)
                                     })
@@ -96,7 +82,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                             $i.line(($i) => {
                                 $i.snippet(`'algorithms': d({`)
                                 $i.indent(($i) => {
-                                    $d.cb_dictionaryForEach($.api.algorithms, ($) => {
+                                    $d.dictionaryForEach($.api.algorithms, ($) => {
                                         $i.line(($i) => {
                                             $i.snippet(`'${$.key}': {`)
                                             $i.indent(($i) => {
@@ -126,7 +112,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                     $i.line(($i) => {
                                                                         $i.snippet(`'dependencies': d({`)
                                                                         $i.indent(($i) => {
-                                                                            $d.cb_dictionaryForEach($.dependencies, ($) => {
+                                                                            $d.dictionaryForEach($.dependencies, ($) => {
                                                                                 $i.line(($i) => {
                                                                                     $i.snippet(`'${$.key}': `)
                                                                                     serializeDefinitionReference($.value, $i)

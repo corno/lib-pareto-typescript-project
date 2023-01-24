@@ -6,11 +6,11 @@ import * as mcollation from "res-pareto-collation"
 import * as mtemp from "../../temp"
 
 export type CcreateSerializer = ($d: {
-    readonly 'cb_arrayForEach': mtemp.XArrayForEach
-    readonly 'cb_dictionaryForEach': mtemp.XDictionaryForEach
-    readonly 'cb_enrichedArrayForEach': mtemp.XEnrichedArrayForEach
-    readonly 'cb_enrichedDictionaryForEach': mtemp.XEnrichedDictionaryForEach
-}) => glo.XSerialize
+    readonly 'arrayForEach': mtemp.FArrayForEach
+    readonly 'dictionaryForEach': mtemp.FDictionaryForEach
+    readonly 'enrichedArrayForEach': mtemp.FEnrichedArrayForEach
+    readonly 'enrichedDictionaryForEach': mtemp.FEnrichedDictionaryForEach
+}) => glo.FSerialize
 
 export type API = {
     createSerializer: CcreateSerializer

@@ -6,7 +6,7 @@ import * as api from "../api"
 export const $$: api.CcreateEnrichedDictionaryForEach = ($d) => {
     return ($, $i) => {
         let empty = true
-        $.forEach((a, b) => $d.sf_compare({ a: a, b: b }), ($) => {
+        $.forEach((a, b) => $d.compare({ a: a, b: b }), ($) => {
             empty = false
         })
         if (empty) {
@@ -14,7 +14,7 @@ export const $$: api.CcreateEnrichedDictionaryForEach = ($d) => {
         } else {
             $i.onNotEmpty(($i) => {
                 let first = true
-                $.forEach((a, b) => $d.sf_compare({ a: a, b: b }), ($, key) => {
+                $.forEach((a, b) => $d.compare({ a: a, b: b }), ($, key) => {
                     $i({
                         isFirst: first,
                         key: key,

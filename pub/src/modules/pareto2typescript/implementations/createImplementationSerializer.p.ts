@@ -28,7 +28,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.snippet(`{`)
                         $i.indent(($i) => {
-                            $d.cb_dictionaryForEach($.properties, ($) => {
+                            $d.dictionaryForEach($.properties, ($) => {
                                 $i.line(($i) => {
                                     $i.snippet(`'${$.key}': `)
                                     serializeExpression($.value, $i)
@@ -70,7 +70,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                             $i.line(($i) => {
                                 $i.snippet(`switch ($) {`)
                                 $i.indent(($i) => {
-                                    $d.cb_dictionaryForEach($.cases, ($) => {
+                                    $d.dictionaryForEach($.cases, ($) => {
                                         $i.line(($i) => {
                                             $i.snippet(`case '${$.key}': `)
                                             serializeFunctionBlock($.value, $i)
@@ -91,7 +91,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
             $i.indent(($i) => {
                 if ($.innerCallbacks !== undefined) {
                     pl.cc($.innerCallbacks, ($) => {
-                        $d.cb_dictionaryForEach($, ($) => {
+                        $d.dictionaryForEach($, ($) => {
                             $i.line(($i) => {
                                 $i.snippet(`function ${$.key}() `)
                                 serializeCallbackBlock($.value.block, $i)
@@ -109,7 +109,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
             $i.indent(($i) => {
                 if ($.innerFunctions !== undefined) {
                     pl.cc($.innerFunctions, ($) => {
-                        $d.cb_dictionaryForEach($, ($) => {
+                        $d.dictionaryForEach($, ($) => {
                             $i.line(($i) => {
                                 $i.snippet(`function ${$.key}() `)
                                 serializeFunctionBlock($.value.block, $i)
@@ -124,7 +124,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-        $d.cb_dictionaryForEach($.implementations, ($) => {
+        $d.dictionaryForEach($.implementations, ($) => {
             function body($i: mfp.ILine) {
                 switch ($.value.type[0]) {
                     case 'callback':

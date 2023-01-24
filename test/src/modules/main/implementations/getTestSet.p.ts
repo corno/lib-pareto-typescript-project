@@ -38,10 +38,10 @@ import { $ as simpleModel } from "../../../data/lianaModels/simpleModel.p"
 import { $ as lianaModel } from "../../../data/lianaModels/glossary.p"
 import { $ as accountingModel } from "../../../data/lianaModels/accounting.p"
 
-export const $$: api.CgetTestSet = ($) => {
+export const $$: api.CgetTestSet = ($XXX) => {
     pub.$a.generateProject({
         'mainData': {
-            'arguments': pr.wrapRawArray([`${$.testDirectory}/project`]),
+            'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/project`]),
         },
         'project': {
             'modules': d({
@@ -80,20 +80,20 @@ export const $$: api.CgetTestSet = ($) => {
     //     pr.wrapRawArray(["foo"])
     // )
     const resolve = mliana.$a.createResolver({
-        'pr_onError': ($) => {
+        'onError': ($) => {
             pl.logDebugMessage($)
         }
     })
 
     const writer = mfp.$a.createWriter({
-        pr_onError: ($) => {
+        onError: ($) => {
             pl.logDebugMessage($)
         },
-        pr_reportSuperfluousNode: ($) => {
+        reportSuperfluousNode: ($) => {
             pl.logDebugMessage(mfp.$a.createSuperfluousNodeMessage($))
         },
     })
-    writer([$.testDirectory, 'flat'], ($i) => {
+    writer([$XXX.testDirectory, 'flat'], ($i) => {
         mliana_flat.$a.createSerializer({
 
         })(accountingModel, $i)
@@ -129,7 +129,7 @@ export const $$: api.CgetTestSet = ($) => {
 
     mliana2Pareto.$a.generateProject({
         'mainData': {
-            'arguments': pr.wrapRawArray([`${$.testDirectory}/liana/glossary`]),
+            'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/liana/glossary`]),
         },
         'model': {
             'model': lianaModel,
@@ -141,7 +141,7 @@ export const $$: api.CgetTestSet = ($) => {
     })
     mliana2Pareto.$a.generateProject({
         'mainData': {
-            'arguments': pr.wrapRawArray([`${$.testDirectory}/liana/accounting`]),
+            'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/liana/accounting`]),
 
         },
         'model': {

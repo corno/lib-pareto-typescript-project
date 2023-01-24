@@ -72,4 +72,4 @@ export type TImplementation = {
     }>
 }
 
-export type XSerialize = ($: TImplementation, $i: mfp.ILine) => void
+export type FSerialize = ($: TImplementation,$i: mfp.ILine,) => void

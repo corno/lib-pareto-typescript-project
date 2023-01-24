@@ -11,14 +11,11 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
         function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {
             $i.file("types.generated.ts", ($i) => {
-                $d.cb_serializeGlossary($, $i)
+                $d.serializeGlossary($, $i)
             })
         }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
             serializeContext($.context, $i)
-            $.namespaces.forEach(($) => {
-                $i.snippet(`N${$}.`)
-            })
             $i.snippet(`T${$.type}`)
         }
         function serializeContext($: mmoduleDefinition.TContext | undefined, $i: mfp.ILine) {
@@ -61,12 +58,12 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
             $i.literal(``)
             $i.literal(`import * as glo from "./types.generated"`)
             $i.literal(``)
-            $d.cb_dictionaryForEach($.api.imports, ($) => {
+            $d.dictionaryForEach($.api.imports, ($) => {
                 $i.line(($i) => {
                     $i.snippet(`import * as m${$.key} from "${$.value}"`)
                 })
             })
-            $d.cb_dictionaryForEach($.api.algorithms, ($) => {
+            $d.dictionaryForEach($.api.algorithms, ($) => {
                 const definition = $.value.definition
                 $i.literal(``)
                 $i.line(($i) => {
@@ -84,7 +81,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                                 }
                                 $i.snippet(`$d: {`)
                                 $i.indent(($i) => {
-                                    $d.cb_dictionaryForEach($.dependencies, ($) => {
+                                    $d.dictionaryForEach($.dependencies, ($) => {
                                         $i.line(($i) => {
                                             $i.snippet(`readonly '${$.key}': `)
                                             serializeDefinitionReference($.value, $i)
@@ -96,14 +93,14 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                                 //     $i.snippet(`$d: {`)
                                 //     $i.indent(($i) => {
                                 //         // if ($.callbacks !== undefined) {
-                                //         //     $d.cb_dictionaryForEach($.callbacks, ($, key) => {
+                                //         //     $d.dictionaryForEach($.callbacks, ($, key) => {
                                 //         //         $i.line(($i) => {
                                 //         //             $i.snippet(`readonly "cb${key}": `)
                                 //         //             serializeCallbackReference($, $i)
                                 //         //         })
                                 //         //     })
                                 //         // }
-                                //         $d.cb_dictionaryForEach($.functions, ($, key) => {
+                                //         $d.dictionaryForEach($.functions, ($, key) => {
                                 //             $i.line(($i) => {
                                 //                 $i.snippet(`readonly "f${key}": `)
                                 //                 serializeFunctionReference($, $i)
@@ -136,7 +133,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
             $i.line(($i) => {
                 $i.snippet(`export type API = {`)
                 $i.indent(($i) => {
-                    $d.cb_dictionaryForEach($.api.algorithms, ($) => {
+                    $d.dictionaryForEach($.api.algorithms, ($) => {
                         $i.literal(`${$.key}: C${$.key}`)
                     })
                 })

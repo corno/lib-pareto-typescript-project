@@ -8,15 +8,15 @@ import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mtemp from "../../temp"
 
 export type CcreateSerializer = ($d: {
-    readonly 'cb_dictionaryForEach': mtemp.XDictionaryForEach
-    readonly 'cb_enrichedArrayForEach': mtemp.XEnrichedArrayForEach
-    readonly 'cb_serializeImplementation': malgorithm.XSerialize
-    readonly 'cb_serializeModuleDefinition': mmoduleDefinition.XSerialize
-}) => glo.XSerialize
+    readonly 'dictionaryForEach': mtemp.FDictionaryForEach
+    readonly 'enrichedArrayForEach': mtemp.FEnrichedArrayForEach
+    readonly 'serializeImplementation': malgorithm.FSerialize
+    readonly 'serializeModuleDefinition': mmoduleDefinition.FSerialize
+}) => glo.FSerialize
 
 export type CcreateSerializerWithContext = ($d: {
-    readonly 'cb_serialize': glo.XSerialize
-}) => glo.XSerializeWithContext
+    readonly 'serialize': glo.FSerialize
+}) => glo.FSerializeWithContext
 
 export type API = {
     createSerializer: CcreateSerializer

@@ -5,13 +5,14 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference
+    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, externalInterfaceReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
 import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import { callback } from './liana_flat.p'
 const d = pr.wrapRawDictionary
 
 function def($: mmoduleDefinition.TModuleDefinition): mmoduleDefinition.TModuleDefinition {
@@ -34,35 +35,11 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             }),
         },
         'functions': d({
-        }),
-        'callbacks': d({
-            "SerializeGlossary": {
-                'data': externalTypeReference("glossary", "Glossary"),
-                'context': ['import', "fp"],
-                'interface': "Block",
-            },
-            "SerializeImplementation": {
-                'data': externalTypeReference("algorithm", "Implementation"),
-                'context': ['import', "fp"],
-                'interface': "Writer",
-            },
-            "SerializeModuleDefinition": {
-                'data': externalTypeReference("moduleDefinition", "ModuleDefinition"),
-                'context': ['import', "fp"],
-                'interface': "Writer",
-            },
-            "SerializeProject": {
-                'data': externalTypeReference("project", "Project"),
-                'context': ['import', "fp"],
-                'interface': "Writer",
-            },
-            "SerializeTemplate": {
-                'data': externalTypeReference("project", "Project"),
-                'context': ['import', "fp"],
-                'interface': "Writer",
-            },
-        }),
-        'pipes': d({
+            "SerializeGlossary": callback(externalTypeReference("glossary", "Glossary"), externalInterfaceReference("fp", "Block")),
+            "SerializeImplementation": callback(externalTypeReference("algorithm", "Implementation"), externalInterfaceReference("fp", "Writer")),
+            "SerializeModuleDefinition": callback(externalTypeReference("moduleDefinition", "ModuleDefinition"), externalInterfaceReference("fp", "Writer")),
+            "SerializeProject": callback(externalTypeReference("project", "Project"), externalInterfaceReference("fp", "Writer")),
+            "SerializeTemplate": callback(externalTypeReference("project", "Project"), externalInterfaceReference("fp", "Writer")),
         }),
     },
     'api': {
@@ -74,116 +51,108 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
         }),
         'algorithms': d({
             "createModuleDefinitionSerializer": {
-                'definition': ['callback', {
-                    'callback': "SerializeModuleDefinition"
-                }],
+                'definition': {
+                    'function': "SerializeModuleDefinition"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "dictionaryForEach": ['callback', {
+                        "dictionaryForEach":  {
                             'context': ['import', "temp"],
-                            'callback': "DictionaryForEach",
-                        }],
-                        "serializeGlossary": ['callback', {
+                            'function': "DictionaryForEach",
+                        },
+                        "serializeGlossary": {
                             //'context': ['import', "glossary"],
-                            'callback': "SerializeGlossary"
-                        }],
+                            'function': "SerializeGlossary"
+                        },
                         // "serializeLeafType": ['callback', {
                         //     //'context': ['import', "glossary"],
                         //     'callback': "SerializeLeafType"
                         // }],
                     }),
-                    'callback': {
-                        'callback': "SerializeModuleDefinition"
-                    }
                 }],
             },
             "createProjectSerializer": {
-                'definition': ['callback', {
-                    'callback': "SerializeProject"
-                }],
+                'definition': {
+                    'function': "SerializeProject"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "dictionaryForEach": ['callback', {
+                        "dictionaryForEach":  {
                             'context': ['import', "temp"],
-                            'callback': "DictionaryForEach",
-                        }],
-                        "serializeModuleDefinition": ['callback', {
+                            'function': "DictionaryForEach",
+                        },
+                        "serializeModuleDefinition": {
                             //'context': ['import', "api"],
-                            'callback': "SerializeModuleDefinition"
-                        }],
+                            'function': "SerializeModuleDefinition"
+                        },
                         // "serializeLeafType": ['callback', {
                         //     //'context': ['import', "glossary"],
                         //     'callback': "SerializeLeafType"
                         // }],
-                        "serializeImplementation": ['callback', {
+                        "serializeImplementation":  {
                             //'context': ['import', "project"],
-                            'callback': "SerializeImplementation",
-                        }],
+                            'function': "SerializeImplementation",
+                        },
                     }),
-                    'callback': {
-                        'callback': "SerializeProject"
-                    }
                 }]
             },
             "createTemplateSerializer": {
-                'definition': ['callback', {
-                    'callback': "SerializeTemplate"
-                }],
+                'definition': {
+                    'function': "SerializeTemplate"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "dictionaryForEach": ['callback', {
+                        "dictionaryForEach": {
                             'context': ['import', "temp"],
-                            'callback': "DictionaryForEach",
-                        }],
+                            'function': "DictionaryForEach",
+                        },
                     }),
-                    'callback': {
-                    }
                 }]
             },
             "createGlossarySerializer": {
-                'definition': ['callback', {
-                    'callback': "SerializeGlossary"
-                }],
+                'definition': {
+                    'function': "SerializeGlossary"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "dictionaryForEach": ['callback', {
+                        "dictionaryForEach":  {
                             'context': ['import', "temp"],
-                            'callback': "DictionaryForEach",
-                        }],
-                        "enrichedDictionaryForEach": ['callback', {
+                            'function': "DictionaryForEach",
+                        },
+                        "enrichedDictionaryForEach": {
                             'context': ['import', "temp"],
-                            'callback': "EnrichedDictionaryForEach",
-                        }],
+                            'function': "EnrichedDictionaryForEach",
+                        },
                     })
                 }]
             },
             "createImplementationSerializer": {
-                'definition': ['callback', {
-                    'callback': "SerializeImplementation"
-                }],
+                'definition': {
+                    'function': "SerializeImplementation"
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "arrayForEach": ['callback', {
+                        "arrayForEach": {
                             'context': ['import', "temp"],
-                            'callback': "ArrayForEach",
-                        }],
-                        "dictionaryForEach": ['callback', {
+                            'function': "ArrayForEach",
+                        },
+                        "dictionaryForEach":  {
                             'context': ['import', "temp"],
-                            'callback': "DictionaryForEach",
-                        }],
-                        "enrichedArrayForEach": ['callback', {
+                            'function': "DictionaryForEach",
+                        },
+                        "enrichedArrayForEach":  {
                             'context': ['import', "temp"],
-                            'callback': "EnrichedArrayForEach",
-                        }],
-                        "enrichedDictionaryForEach": ['callback', {
+                            'function': "EnrichedArrayForEach",
+                        },
+                        "enrichedDictionaryForEach":  {
                             'context': ['import', "temp"],
-                            'callback': "EnrichedDictionaryForEach",
-                        }],
+                            'function': "EnrichedDictionaryForEach",
+                        },
                     })
                 }]
             },

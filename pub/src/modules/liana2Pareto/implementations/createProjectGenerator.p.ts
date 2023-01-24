@@ -13,29 +13,7 @@ export const $$: api.CcreateProjectGenerator = ($d) => {
 
         const model = $.model
         mmain.$a.createParametersParser({
-            pr_callback: ($) => {
-
-                mfp.$a.createWriter(
-                    {
-                        pr_onError: $d.pr_logError,
-                        pr_reportSuperfluousNode: ($) => {
-                            $d.pr_logError(mfp.$a.createSuperfluousNodeMessage($))
-                        }
-                    },
-                )(
-                    $,
-                    ($i) => {
-                        const module = $d.sf_mapLiana2Pareto(model)
-
-                        $d.cb_serializeProject(
-                            module,
-                            $i,
-                        )
-                    }
-                )
-
-            },
-            pr_onError: ($) => {
+            onError: ($) => {
                 switch ($[0]) {
                     case 'missing':
                         pl.cc($[1], ($) => {
@@ -52,7 +30,30 @@ export const $$: api.CcreateProjectGenerator = ($d) => {
                     default: pl.au($[0])
                 }
             }
-        })($.mainData.arguments)
+        })(
+            $.mainData.arguments,
+            ($) => {
+                mfp.$a.createWriter(
+                    {
+                        onError: $d.logError,
+                        reportSuperfluousNode: ($) => {
+                            $d.logError(mfp.$a.createSuperfluousNodeMessage($))
+                        }
+                    },
+                )(
+                    $.testDirectory,
+                    ($i) => {
+                        const module = $d.mapLiana2Pareto(model)
+
+                        $d.serializeProject(
+                            module,
+                            $i,
+                        )
+                    }
+                )
+
+            }
+        )
 
     }
 

@@ -82,7 +82,6 @@ export function reference(type: string): t.TType {
 export function typeReference(type: string): t.TTypeReference {
     return {
         'context': ['local', null],
-        'namespaces': wa([]),
         'type': type,
     }
 }
@@ -97,13 +96,6 @@ export function externalInterfaceReference(context: string, inf: string): t.TInt
         'interface': inf
     }
 }
-export function namespacedTypeReference(namespaces: string[], type: string): t.TTypeReference {
-    return {
-        'context': ['local', null],
-        'namespaces': wa(namespaces),
-        'type': type,
-    }
-}
 
 export function externalReference(context: string, type: string): t.TType {
     return ['reference', {
@@ -115,12 +107,11 @@ export function externalReference(context: string, type: string): t.TType {
 export function externalTypeReference(context: string, type: string): t.TTypeReference {
     return {
         'context': ['import', context],
-        'namespaces': wa([]),
         'type': type,
     }
 }
 
-export function _function(data: t.TTypeReference, returnValue: t.TTypeReference, async?: boolean): t.TFunction {
+export function _function(data: t.TTypeReference, returnValue: t.TTypeReference, async?: boolean): t.T_Function {
     return {
         'return type': ['data', {
             'type': returnValue,
@@ -132,7 +123,7 @@ export function _function(data: t.TTypeReference, returnValue: t.TTypeReference,
     }
 }
 
-export function procedure(data: t.TTypeReference): t.TFunction {
+export function procedure(data: t.TTypeReference): t.T_Function {
     return {
         'return type': ['nothing', null],
         'data': data,
@@ -141,15 +132,15 @@ export function procedure(data: t.TTypeReference): t.TFunction {
     }
 }
 
-export function callback(data: t.TTypeReference, inf: t.TInterfaceReference): t.TFunction {
+export function callback(data: t.TTypeReference, inf: t.TInterfaceReference): t.T_Function {
     return {
-        'return type': ['interface', inf],
+        'return type': ['nothing', null],
         'data': data,
         'managed input interface': null,
-        'output interface': null,
+        'output interface': inf,
     }
 }
-export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.TFunction {
+export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.T_Function {
     return {
         'return type': ['nothing', null],
         'data': data,
@@ -157,7 +148,7 @@ export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReferenc
         'output interface': out_inf,
     }
 }
-export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.TFunction {
+export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.T_Function {
     return {
         'return type': ['interface', in_inf],
         'data': data,

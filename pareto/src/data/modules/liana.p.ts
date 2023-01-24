@@ -224,30 +224,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
 
         },
         'functions': d({
-            "Resolve": {
-                'data': typeReference("Model"),
-                'return value': typeReference("PossibleModel"),
-            }
+            "Resolve": _function(typeReference("Model"), typeReference("PossibleModel")),
         }),
-        'callbacks': d({
-
-            // "SerializeGlossary": {
-            //     'data': ['type', externalReference("glossary", "Glossary")],
-            //     'context': ['import', "fp"],
-            //     'interface': "Block",
-            // },
-            // "SerializeLeafType": {
-            //     'data': ['type', externalReference("glossary", "LeafType")],
-            //     'context': ['import', "fp"],
-            //     'interface': "Line",
-            // },
-            // "SerializeModuleDefinition": {
-            //     'data': ['type', externalReference("moduleDefinition", "ModuleDefinition")],
-            //     'context': ['import', "fp"],
-            //     'interface': "Writer",
-            // },
-        }),
-        'pipes': d({}),
     },
     'api': {
         'imports': d({
@@ -256,13 +234,16 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createResolver": {
-                'definition': ['function', {
+                'definition': {
                     'function': "Resolve"
-                }],
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "onError": ['procedure', externalTypeReference("common", "String")]
+                        "onError": {
+                            'context': ['import', "common"],
+                            'function': "Log",
+                        }
                     }),
                 }],
             },

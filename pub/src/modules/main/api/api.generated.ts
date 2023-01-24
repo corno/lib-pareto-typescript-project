@@ -9,19 +9,18 @@ import * as mpareto2typescript from "../../pareto2typescript"
 import * as mtemp from "../../temp"
 
 export type CcreateParametersParser = ($d: {
-    readonly 'pr_callback': pt.Procedure<glo.TParameters>
-    readonly 'pr_onError': pt.Procedure<glo.TArgumentError>
-}) => pt.Procedure<glo.TArguments>
+    readonly 'onError': glo.FHandleArgumentError
+}) => glo.FParseArguments2
 
 export type CcreateProjectGenerator = ($d: {
-    readonly 'sf_addKeysToDictionary': mtemp.FAddKeysToDictionary
-    readonly 'af_getSingleArgument': glo.AGetSingleArgument
-    readonly 'pr_logError': pt.Procedure<mcommon.TString>
-    readonly 'cb_serializeProject': mpareto2typescript.XSerializeProject
-    readonly 'cb_serializeTemplate': mpareto2typescript.XSerializeTemplate
-}) => pt.Procedure<glo.TProjectSettings>
+    readonly 'addKeysToDictionary': mtemp.FAddKeysToDictionary
+    readonly 'getSingleArgument': glo.FGetSingleArgument
+    readonly 'logError': mcommon.FLog
+    readonly 'serializeProject': mpareto2typescript.FSerializeProject
+    readonly 'serializeTemplate': mpareto2typescript.FSerializeTemplate
+}) => glo.FGenerateProject
 
-export type CgenerateProject = pt.Procedure<glo.TProjectSettings>
+export type CgenerateProject = glo.FGenerateProject
 
 export type API = {
     createParametersParser: CcreateParametersParser

@@ -30,12 +30,12 @@ export const $$: api.CcreateTemplateSerializer = (
                     $i.directory("src", ($i) => {
                         $i.directory("modules", ($i) => {
 
-                            $d.cb_dictionaryForEach($.modules, ($) => {
+                            $d.dictionaryForEach($.modules, ($) => {
                                 const moduleName = $.key
 
                                 $i.directory(moduleName, ($i) => {
                                     $i.directory("implementations", ($i) => {
-                                        $d.cb_dictionaryForEach($.value.definition.api.algorithms, ($) => {
+                                        $d.dictionaryForEach($.value.definition.api.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.literal(`import * as pl from 'pareto-core-lib'`)
                                                 $i.literal(``)
@@ -114,11 +114,11 @@ export const $$: api.CcreateTemplateSerializer = (
                     $i.directory("src", ($i) => {
                         $i.directory("modules", ($i) => {
 
-                            $d.cb_dictionaryForEach($.modules, ($) => {
+                            $d.dictionaryForEach($.modules, ($) => {
                                 const moduleName = $.key
 
                                 $i.directory($.key, ($i) => {
-                                    $d.cb_dictionaryForEach($.value.definition.api.algorithms, ($) => {
+                                    $d.dictionaryForEach($.value.definition.api.algorithms, ($) => {
                                         $i.file(`${$.key}.p.ts`, ($i) => {
                                             $i.literal(`import * as pl from 'pareto-core-lib'`)
                                             $i.literal(``)

@@ -5,7 +5,7 @@ import * as api from "../api"
 
 export const $$: api.CcreateDictionaryForEach = ($d) => {
     return ($, $i) => {
-        const compare = (a: string, b: string) => $d.sf_compare({ a: a, b: b })
+        const compare = (a: string, b: string) => $d.compare({ a: a, b: b })
 
         $.forEach(compare, ($, key) => {
             $i({

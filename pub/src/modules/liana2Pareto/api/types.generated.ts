@@ -16,4 +16,6 @@ export type TMappedModel = {
     >
 }
 
-export type FMapLiana2Pareto = ($: TMappedModel) => mproject.TModule
+export type FGenerateProject = ($: TConfiguration,) => void
+
+export type FMapLiana2Pareto = ($: TMappedModel,) => mproject.TModule

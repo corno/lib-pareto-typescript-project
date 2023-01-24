@@ -27,4 +27,4 @@ export type TModuleDefinition = {
     readonly 'glossary': mglossary.TGlossary
 }
 
-export type XSerialize = ($: TModuleDefinition, $i: mfp.ILine) => void
+export type FSerialize = ($: TModuleDefinition,$i: mfp.ILine,) => void

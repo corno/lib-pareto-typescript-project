@@ -7,14 +7,14 @@ export type FAddKeysToDictionary = <T> (
     value: T
 }>
 
-export type XArrayForEach = <T> (
+export type FArrayForEach = <T> (
     $: pt.Array<T>,
     $i: ($i: {
         value: T,
     }) => void
 ) => void
 
-export type XDictionaryForEach = <T> (
+export type FDictionaryForEach = <T> (
     $: pt.Dictionary<T>,
     $i: ($i: {
         key: string
@@ -22,7 +22,7 @@ export type XDictionaryForEach = <T> (
     }) => void
 ) => void
 
-export type XEnrichedDictionaryForEach = <T> (
+export type FEnrichedDictionaryForEach = <T> (
     $: pt.Dictionary<T>,
     $i: {
         onEmpty: () => void
@@ -34,7 +34,7 @@ export type XEnrichedDictionaryForEach = <T> (
     }
 ) => void
 
-export type XEnrichedArrayForEach = <T> (
+export type FEnrichedArrayForEach = <T> (
     $: pt.Array<T>,
     $i: {
         onEmpty: () => void

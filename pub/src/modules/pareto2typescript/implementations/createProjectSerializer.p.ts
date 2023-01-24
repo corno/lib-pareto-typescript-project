@@ -297,7 +297,7 @@ export const $$: api.CcreateProjectSerializer = (
                                     $i.literal(`export const $$: api.Cmain = ($) => {`)
                                     $i.literal(``)
                                     $i.literal(`    mtest.$a.createTestProgram({`)
-                                    $i.literal(`        af_getTestSet: $a.getTestSet,`)
+                                    $i.literal(`        getTestSet: $a.getTestSet,`)
                                     $i.literal(`        log: mmain.$a.log,`)
                                     $i.literal(`        logError: mmain.$a.logError,`)
                                     $i.literal(`        onTestErrors: mmain.$a.setExitCodeToFailed`)

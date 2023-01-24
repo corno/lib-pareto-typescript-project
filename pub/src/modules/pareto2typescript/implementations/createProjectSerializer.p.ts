@@ -7,6 +7,7 @@ export const $$: api.CcreateProjectSerializer = (
     $d,
 ) => {
     return ($, $i) => {
+        const isResource = $.type[0] === 'resource'
         function tsConfig(
             $: {
                 isResource: boolean
@@ -154,16 +155,16 @@ export const $$: api.CcreateProjectSerializer = (
                                     })
                                 } else {
                                     $d.dictionaryForEach($.value.definition.api.algorithms, ($) => {
-                                        $i.allowed(`${$.key}.p.ts`)
+                                        $i.allowed(`${$.key}.${isResource ? `native` : `p`}.ts`)
                                     })
                                 }
                             })
-                            // $d.dictionaryForEach($.definition.api.algorithms, ($, key) => {
-                            //     $i.directory(`${key}`, ($i) => {
-                            //     })
-                            // })
                             $i.file("implementation.generated.ts", ($i) => {
-                                const suffix = $.value.implementation !== undefined ? `generated` : `p`
+                                const suffix = isResource
+                                    ? `native`
+                                    : $.value.implementation !== undefined
+                                        ? `generated`
+                                        : `p`
                                 $i.literal(`import { API } from "./api"`)
                                 $d.dictionaryForEach($.value.definition.api.algorithms, ($) => {
                                     $i.literal(`import { $$ as i${$.key} } from "./implementations/${$.key}.${suffix}"`)

@@ -40,7 +40,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "resource": null_(),
                         "glossary": null_(),
                         "library": null_(),
-                    }), true),
+                    })),
                     "modules": member(dictionary(ref("Module"))),
                     "main": member(str()),
                 }),

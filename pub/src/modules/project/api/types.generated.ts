@@ -15,7 +15,7 @@ export type TModule = {
 export type TProject = {
     readonly 'main': string
     readonly 'modules': pt.Dictionary<TModule>
-    readonly 'type'?: 
+    readonly 'type': 
         | ['glossary', null]
         | ['library', null]
         | ['resource', null]

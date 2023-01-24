@@ -2,7 +2,7 @@ import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
-import * as mtemp from "../../temp"
+import * as mtemp from "../../temp/implementation.generated"
 import * as mcoll from "res-pareto-collation"
 import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mmain from "lib-pareto-main"

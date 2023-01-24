@@ -4,7 +4,7 @@ import * as api from "../api"
 
 import * as mpareto2typescript from "../../pareto2typescript"
 
-import * as mtemp from "../../temp"
+import * as mtemp from "../../temp/implementation.generated"
 import * as mcoll from "res-pareto-collation"
 import * as mmain from "lib-pareto-main"
 

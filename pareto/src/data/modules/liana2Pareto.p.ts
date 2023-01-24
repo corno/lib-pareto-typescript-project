@@ -8,6 +8,7 @@ import {
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import { constructor } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
 
 
 const d = pr.wrapRawDictionary
@@ -60,40 +61,34 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'definition': {
                     'function': "GenerateProject"
                 },
-                'type': ['constructor', {
-                    'configuration data': null,
-                    'dependencies': d({
-                        "decorateDictionaryEntriesWithKey": {
-                            'context': ['import', "temp"],
-                            'function': "DecorateDictionaryEntriesWithKey"
-                        },
-                        "logError": {
-                            'context': ['import', "common"],
-                            'function': "Log"
-                        },
-                        "mapLiana2Pareto": {
-                            'function': "MapLiana2Pareto",
-                        },
-                        "serializeProject":  {
-                            'context': ['import', "project"],
-                            'function': "SerializeWithContext"
-                        },
-                    }),
-                }],
+                'type': constructor(null, {
+                    "decorateDictionaryEntriesWithKey": {
+                        'context': ['import', "temp"],
+                        'function': "DecorateDictionaryEntriesWithKey"
+                    },
+                    "logError": {
+                        'context': ['import', "common"],
+                        'function': "Log"
+                    },
+                    "mapLiana2Pareto": {
+                        'function': "MapLiana2Pareto",
+                    },
+                    "serializeProject": {
+                        'context': ['import', "project"],
+                        'function': "SerializeWithContext"
+                    },
+                }),
             },
             "createLiana2ParetoMapper": {
-                'definition':  {
+                'definition': {
                     'function': "MapLiana2Pareto"
                 },
-                'type': ['constructor', {
-                    'configuration data': null,
-                    'dependencies': d({
-                        "decorateDictionaryEntriesWithKey": {
-                            'context': ['import', "temp"],
-                            'function': "DecorateDictionaryEntriesWithKey"
-                        },
-                    })
-                }]
+                'type': constructor(null, {
+                    "decorateDictionaryEntriesWithKey": {
+                        'context': ['import', "temp"],
+                        'function': "DecorateDictionaryEntriesWithKey"
+                    },
+                }),
             },
         })
     },

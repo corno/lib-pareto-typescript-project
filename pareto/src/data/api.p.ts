@@ -5,11 +5,11 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, managedPipe, interfaceReference, procedure, callback
+    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, managedPipe, interfaceReference, procedure, callback, method
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
-import {definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
 import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -61,18 +61,9 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 }),
             }),
             'interfaces': d({
-                "ParseArguments": ['method', {
-                    'data': externalNamespacedTypeReference("main", "Arguments"),
-                    'interface': null,
-                }],
-                "ProcessArgument": ['method', {
-                    'data': externalNamespacedTypeReference("common", "String"),
-                    'interface': null,
-                }],
-                "HandleParameters": ['method', {
-                    'data': namespacedTypeReference("Parameters"),
-                    'interface': null,
-                }],
+                "ParseArguments": method(externalNamespacedTypeReference("main", "Arguments")),
+                "ProcessArgument": method(externalNamespacedTypeReference("common", "String")),
+                "HandleParameters": method(namespacedTypeReference("Parameters")),
             }),
         },
         'functions': d({

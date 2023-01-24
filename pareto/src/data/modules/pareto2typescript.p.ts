@@ -9,7 +9,7 @@ import {
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
-import {definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 const d = pr.wrapRawDictionary
@@ -57,7 +57,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "dictionaryForEach":  {
+                        "dictionaryForEach": {
                             'context': ['import', "temp"],
                             'function': "DictionaryForEach",
                         },
@@ -76,27 +76,24 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'definition': {
                     'function': "SerializeProject"
                 },
-                'type': ['constructor', {
-                    'configuration data': null,
-                    'dependencies': d({
-                        "dictionaryForEach":  {
-                            'context': ['import', "temp"],
-                            'function': "DictionaryForEach",
-                        },
-                        "serializeModuleDefinition": {
-                            //'context': ['import', "api"],
-                            'function': "SerializeModuleDefinition"
-                        },
-                        // "serializeLeafType": ['callback', {
-                        //     //'context': ['import', "glossary"],
-                        //     'callback': "SerializeLeafType"
-                        // }],
-                        "serializeImplementation":  {
-                            //'context': ['import', "project"],
-                            'function': "SerializeImplementation",
-                        },
-                    }),
-                }]
+                'type': constructor(null, {
+                    "dictionaryForEach": {
+                        'context': ['import', "temp"],
+                        'function': "DictionaryForEach",
+                    },
+                    "serializeModuleDefinition": {
+                        //'context': ['import', "api"],
+                        'function': "SerializeModuleDefinition"
+                    },
+                    // "serializeLeafType": ['callback', {
+                    //     //'context': ['import', "glossary"],
+                    //     'callback': "SerializeLeafType"
+                    // }],
+                    "serializeImplementation": {
+                        //'context': ['import', "project"],
+                        'function': "SerializeImplementation",
+                    },
+                }),
             },
             "createTemplateSerializer": {
                 'definition': {
@@ -119,7 +116,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "dictionaryForEach":  {
+                        "dictionaryForEach": {
                             'context': ['import', "temp"],
                             'function': "DictionaryForEach",
                         },
@@ -141,15 +138,15 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                             'context': ['import', "temp"],
                             'function': "ArrayForEach",
                         },
-                        "dictionaryForEach":  {
+                        "dictionaryForEach": {
                             'context': ['import', "temp"],
                             'function': "DictionaryForEach",
                         },
-                        "enrichedArrayForEach":  {
+                        "enrichedArrayForEach": {
                             'context': ['import', "temp"],
                             'function': "EnrichedArrayForEach",
                         },
-                        "enrichedDictionaryForEach":  {
+                        "enrichedDictionaryForEach": {
                             'context': ['import', "temp"],
                             'function': "EnrichedDictionaryForEach",
                         },

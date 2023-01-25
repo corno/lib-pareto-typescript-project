@@ -42,7 +42,7 @@ export const $$: api.CcreateTemplateSerializer = (
                                                 $i.literal(`import * as api from "../api"`)
                                                 $i.literal(``)
                                                 $i.line(($i) => {
-                                                    $i.snippet(`export const $$: api.C${$.key}`)
+                                                    $i.snippet(`export const $$: api.${$d.createIdentifier(`C${$.key}`)}`)
                                                     $i.snippet(` = ($c, $d) => {`)
                                                     $i.indent(($i) => {
                                                         $i.line(($i) => {

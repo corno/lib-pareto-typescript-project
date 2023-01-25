@@ -48,6 +48,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             "main": "lib-pareto-main",
             "collation": "res-pareto-collation",
             "temp": "../../temp",
+            "ts": "res-typescript",
         }),
         'algorithms': d({
             "createModuleDefinitionSerializer": {
@@ -65,6 +66,10 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                             //'context': ['import', "glossary"],
                             'function': "SerializeGlossary"
                         },
+                        "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                        "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
+                        "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
+                        "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
                         // "serializeLeafType": ['callback', {
                         //     //'context': ['import', "glossary"],
                         //     'callback': "SerializeLeafType"
@@ -93,6 +98,10 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                         //'context': ['import', "project"],
                         'function': "SerializeImplementation",
                     },
+                    "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                    "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
+                    "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
+                    "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
                 }),
             },
             "createTemplateSerializer": {
@@ -106,6 +115,10 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                             'context': ['import', "temp"],
                             'function': "DictionaryForEach",
                         },
+                        "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                        "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
+                        "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
+                        "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
                     }),
                 }]
             },
@@ -124,6 +137,10 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                             'context': ['import', "temp"],
                             'function': "EnrichedDictionaryForEach",
                         },
+                        "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                        "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
+                        "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
+                        "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
                     })
                 }]
             },
@@ -150,6 +167,10 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                             'context': ['import', "temp"],
                             'function': "EnrichedDictionaryForEach",
                         },
+                        "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                        "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
+                        "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
+                        "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
                     })
                 }]
             },

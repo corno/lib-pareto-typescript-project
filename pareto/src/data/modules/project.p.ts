@@ -10,7 +10,6 @@ import {
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
-
 const d = pr.wrapRawDictionary
 
 export const $: mmoduleDefinition.TModuleDefinition = {

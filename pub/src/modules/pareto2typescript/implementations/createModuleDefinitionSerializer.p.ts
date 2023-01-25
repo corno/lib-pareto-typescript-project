@@ -16,7 +16,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
         }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
             serializeContext($.context, $i)
-            $i.snippet(`T${$.type}`)
+            $i.snippet($d.createIdentifier(`T${$.type}`))
         }
         function serializeContext($: mmoduleDefinition.TContext | undefined, $i: mfp.ILine) {
 
@@ -48,7 +48,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
 
         function serializeDefinitionReference($: mmoduleDefinition.TDefinitionReference, $i: mfp.ILine) {
             serializeContext($.context, $i)
-            $i.snippet(`F${$.function}`)
+            $i.snippet($d.createIdentifier(`F${$.function}`))
         }
         glossary($.glossary, $i)
         $i.allowed("shorthands.p.ts")
@@ -67,7 +67,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                 const definition = $.value.definition
                 $i.literal(``)
                 $i.line(($i) => {
-                    $i.snippet(`export type C${$.key} = `)
+                    $i.snippet(`export type ${$d.createIdentifier(`C${$.key}`)} = `)
                     switch ($.value.type[0]) {
                         case 'constructor':
                             pl.cc($.value.type[1], ($) => {
@@ -134,7 +134,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                 $i.snippet(`export type API = {`)
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.api.algorithms, ($) => {
-                        $i.literal(`${$.key}: C${$.key}`)
+                        $i.literal(`${$.key}: ${$d.createIdentifier(`C${$.key}`)}`)
                     })
                 })
                 $i.snippet(`}`)

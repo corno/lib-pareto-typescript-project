@@ -19,7 +19,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                     $i.snippet(`<`)
                     $c(($) => {
                         $i.snippet($.isFirst ? `` : `, `)
-                        $i.snippet(`PG${$.key}`)
+                        $i.snippet($d.createIdentifier(`PG${$.key}`))
                     })
 
                     $i.snippet(`>`)
@@ -29,13 +29,13 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
         function serializeNamespacedTypeReference($: mglossary.TNamespacedTypeReference, $i: mfp.ILine) {
             serializeContext($.context, $i)
             $.namespaces.forEach(($) => {
-                $i.snippet(`N${$}.`)
+                $i.snippet(`${$d.createIdentifier(`N${$}`)}.`)
             })
-            $i.snippet(`T${$.type}`)
+            $i.snippet(`${$d.createIdentifier(`T${$.type}`)}`)
         }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
             serializeContext($.context, $i)
-            $i.snippet(`T${$.type}`)
+            $i.snippet($d.createIdentifier(`T${$.type}`))
         }
         function serializeType($: mglossary.TType, $i: mfp.ILine) {
             switch ($[0]) {
@@ -90,7 +90,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                         $i.indent(($i) => {
                             $d.dictionaryForEach($, ($) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`readonly '${$.key}'${$.value.optional === undefined || $.value.optional === false ? `` : `?`}: `)
+                                    $i.snippet(`readonly ${$d.createApostrophedString($.key)}${$.value.optional === undefined || $.value.optional === false ? `` : `?`}: `)
                                     serializeType($.value.type, $i)
                                 })
                             })
@@ -113,7 +113,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                     break
                 case 'parameter':
                     pl.cc($[1], ($) => {
-                        $i.snippet(`A${$}`)
+                        $i.snippet($d.createIdentifier(`A${$}`))
                     })
                     break
                 case 'taggedUnion':
@@ -121,7 +121,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                         $i.indent(($i) => {
                             $d.dictionaryForEach($, ($) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`| ['${$.key}', `)
+                                    $i.snippet(`| [${$d.createApostrophedString($.key)}, `)
                                     serializeType($.value, $i)
                                     $i.snippet(`]`)
                                 })
@@ -134,7 +134,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                         if ($.context !== undefined) {
                             serializeContext($.context, $i)
                         }
-                        $i.snippet(`M${$.template}`)
+                        $i.snippet($d.createIdentifier(`M${$.template}`))
                         $d.enrichedDictionaryForEach($.arguments, {
                             onNotEmpty: ($c) => {
                                 $i.snippet(`<`)
@@ -176,7 +176,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             if ($.context !== undefined) {
                 serializeContext($.context, $i)
             }
-            $i.snippet(`I${$.interface}`)
+            $i.snippet($d.createIdentifier(`I${$.interface}`))
 
         }
         function serializeInterface($: mglossary.TInterface, $i: mfp.ILine) {
@@ -188,7 +188,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                         $i.indent(($i) => {
                             $d.dictionaryForEach($.members, ($) => {
                                 $i.line(($i) => {
-                                    $i.snippet(`'${$.key}': `)
+                                    $i.snippet(`${$d.createApostrophedString($.key)}: `)
                                     serializeInterface($.value, $i)
                                 })
                             })
@@ -249,7 +249,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 $d.dictionaryForEach($.namespaces, ($) => {
                     $i.literal(``)
                     $i.line(($i) => {
-                        $i.snippet(`export namespace N${$.key} {`)
+                        $i.snippet(`export namespace ${$d.createIdentifier(`N${$.key}`)} {`)
                         $i.indent(($i) => {
                             serializeNamespace($.value, $i)
                         })
@@ -261,7 +261,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 $d.dictionaryForEach($.templates, ($) => {
                     $i.literal(``)
                     $i.line(($i) => {
-                        $i.snippet(`export type M${$.key}`)
+                        $i.snippet(`export type ${$d.createIdentifier(`M${$.key}`)}`)
                         $d.enrichedDictionaryForEach($.value.parameters, {
                             onEmpty: () => {
                                 //nothing
@@ -283,14 +283,14 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             $d.dictionaryForEach($.types, ($) => {
                 $i.literal(``)
                 $i.line(($i) => {
-                    $i.snippet(`export type T${$.key} = `)
+                    $i.snippet(`export type ${$d.createIdentifier(`T${$.key}`)} = `)
                     serializeType($.value, $i)
                 })
             })
             $d.dictionaryForEach($.interfaces, ($) => {
                 $i.literal(``)
                 $i.line(($i) => {
-                    $i.snippet(`export type I${$.key} = `)
+                    $i.snippet(`export type ${$d.createIdentifier(`I${$.key}`)} = `)
                     serializeInterface($.value, $i)
                 })
             })
@@ -315,7 +315,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
         $d.dictionaryForEach($.functions, ($) => {
             $i.literal(``)
             $i.line(($i) => {
-                $i.snippet(`export type F${$.key} = `)
+                $i.snippet(`export type ${$d.createIdentifier(`F${$.key}`)} = `)
                 serializeParameters(parameters, $i)
                 pl.cc($.value, ($) => {
 

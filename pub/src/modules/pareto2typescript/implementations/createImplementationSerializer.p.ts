@@ -133,12 +133,12 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                             serializeCallbackBlock($.block, $i)
                         })
                         break
-                        case 'function':
-                            pl.cc($.value.type[1], ($) => {
-                                $i.snippet(`($) => `)
-                                serializeFunctionBlock($.block, $i)
-                            })
-                            break
+                    case 'function':
+                        pl.cc($.value.type[1], ($) => {
+                            $i.snippet(`($) => `)
+                            serializeFunctionBlock($.block, $i)
+                        })
+                        break
                     default: pl.au($.value.type[0])
                 }
             }
@@ -149,7 +149,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                 $i.literal(`import * as api from "../api"`)
 
                 $i.line(($i) => {
-                    $i.snippet(`export const $$: api.C${$.key} = `)
+                    $i.snippet(`export const $$: api.${$d.createIdentifier(`C${$.key}`)} = `)
                     if ($.value.constructor) {
                         $i.snippet(`($d) => {`)
                         $i.indent(($i) => {

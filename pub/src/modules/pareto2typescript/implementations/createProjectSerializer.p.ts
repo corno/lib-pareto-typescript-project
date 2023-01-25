@@ -167,14 +167,14 @@ export const $$: api.CcreateProjectSerializer = (
                                         : `p`
                                 $i.literal(`import { API } from "./api"`)
                                 $d.dictionaryForEach($.value.definition.api.algorithms, ($) => {
-                                    $i.literal(`import { $$ as i${$.key} } from "./implementations/${$.key}.${suffix}"`)
+                                    $i.literal(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
                                 })
                                 $i.literal(``)
                                 $i.line(($i) => {
                                     $i.snippet(`export const $a: API = {`)
                                     $i.indent(($i) => {
                                         $d.dictionaryForEach($.value.definition.api.algorithms, ($) => {
-                                            $i.literal(`'${$.key}': i${$.key},`)
+                                            $i.literal(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
                                         })
                                     })
                                     $i.snippet(`}`)
@@ -220,7 +220,7 @@ export const $$: api.CcreateProjectSerializer = (
                 //     //     $i.literal(``)
                 //     //     $d.dictionaryForEach($.implementation.implementations, ($, key) => {
                 //     //         $i.line(($i) => {
-                //     //             $i.snippet(`export type I${key} = `)
+                //     //             $i.snippet(`export type ${$d.createIdentifier(`I${$.key}`)} = `)
                 //     //             serializeAlgorithmDefinition($.definition, $i)
                 //     //         })
                 //     //     })

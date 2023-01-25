@@ -8,7 +8,7 @@ import {
     array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalTypeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import {definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
 
@@ -38,15 +38,17 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'imports': d({
             "collation": "res-pareto-collation",
             "temp": "../../temp",
+            "ts": "res-typescript",
         }),
         'algorithms': d({
             "createSerializer": {
-                'definition':{
+                'definition': {
                     'function': "Serialize"
                 },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
+                        "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
                         // "arrayForEach": ['callback', {
                         //     'context': ['import', "temp"],
                         //     'callback': "ArrayForEach",

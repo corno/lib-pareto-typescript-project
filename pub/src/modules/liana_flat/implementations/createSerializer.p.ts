@@ -10,8 +10,14 @@ import * as mcommon from "glo-pareto-common"
 import * as mtostring from "res-pareto-tostring"
 
 export const $$: api.CcreateSerializer = ($d) => {
-
     return ($, $i) => {
+        function getPathID($: mcommon.TPath) {
+
+            return $d.createIdentifier(mtostring.$a.joinNestedStrings({
+                'strings': $,
+                'separator': `_`,
+            }))
+        }
         function doDictionaries($: {
             $: mliana.TLocalType,
             path: mcommon.TPath,
@@ -46,38 +52,45 @@ export const $$: api.CcreateSerializer = ($d) => {
                         break
                     case 'dictionary':
                         pl.cc($[1], ($) => {
-                            const newIDPath = [idPath, currentName]
+                            const parentPathAsArray = pr.wrapRawArray(pi.flatten(idPath))
                             $i.file(
                                 `${mtostring.$a.joinNestedStrings({
                                     'strings': path,
-                                    'separator': ".",
+                                    'separator': "_",
                                 })}.generated.ts`,
                                 ($i) => {
                                     $i.literal(`import * as pl from 'pareto-core-lib'`)
+                                    $i.literal(``)
+                                    $i.literal(`function assertNotNull($: null | string): string { if ($ === null) { throw new Error("UNEXPECTED NULL") }; return $ }`)
+                                    $i.literal(``)
                                     $i.line(($i) => {
 
                                         $i.snippet(`export function $$(`)
                                         $i.indent(($i) => {
-                                            pr.wrapRawArray(pi.flatten(newIDPath)).forEach(($) => {
-                                                $i.line(($i) => {
-                                                    $i.snippet(`${$}: string,`)
-                                                })
+                                            parentPathAsArray.forEach(($) => {
+                                                $i.literal(`parent_${$d.createIdentifier($)}: string,`)
                                             })
+                                            $i.literal(`id: string,`)
+                                            $i.literal(`item_operation: string,`)
                                             $i.literal(`//////`)
                                             function doScalars(
                                                 $: {
                                                     $: mliana.TLocalType,
+                                                    isRoot: boolean,
                                                     path: mcommon.TPath,
                                                 }
                                             ) {
                                                 const path = $.path
-                                                pl.cc($.$, ($) => {
+                                                const pathID = getPathID(path)
+                                                const type = `${$.isRoot ? `` : `null | `}string`
 
+                                                pl.cc($.$, ($) => {
                                                     switch ($[0]) {
                                                         case 'array':
                                                             pl.cc($[1], ($) => {
                                                                 doScalars({
                                                                     $: $.type,
+                                                                    isRoot: false,
                                                                     path: path,
                                                                 })
                                                             })
@@ -101,6 +114,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                 $.properties.dictionary.forEach(() => false, ($, key) => {
                                                                     doScalars({
                                                                         $: $.type,
+                                                                        isRoot: false,
                                                                         path: [path, key],
                                                                     })
                                                                 })
@@ -109,28 +123,17 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                             break
                                                         case 'string':
                                                             pl.cc($[1], ($) => {
-                                                                $i.line(($i) => {
-                                                                    $i.snippet(`${mtostring.$a.joinNestedStrings({
-                                                                        strings: path,
-                                                                        'separator': '_',
-                                                                    })}: string,`)
-                                                                })
+                                                                $i.literal(`prop_${pathID}: ${type},`)
                                                             })
                                                             break
                                                         case 'taggedUnion':
                                                             pl.cc($[1], ($) => {
-                                                                $i.line(($i) => {
-                                                                    $i.snippet(`${mtostring.$a.joinNestedStrings({
-                                                                        strings: path,
-                                                                        'separator': '_',
-                                                                    })}: string,`)
-                                                                })
-                                                                $i.line(($i) => {
-                                                                    $i.snippet(`operation: string,`)
-                                                                })
+                                                                $i.literal(`prop_${pathID}: ${type},`)
+                                                                $i.literal(`operation_${pathID}: ${type},`)
                                                                 $.options.dictionary.forEach(() => false, ($, key) => {
                                                                     doScalars({
                                                                         $: $.type,
+                                                                        isRoot: false,
                                                                         path: [path, key],
                                                                     })
                                                                 })
@@ -142,6 +145,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                             }
                                             doScalars({
                                                 $: $.type,
+                                                isRoot: true,
                                                 path: [],
                                             })
 
@@ -149,104 +153,166 @@ export const $$: api.CcreateSerializer = ($d) => {
                                         $i.snippet(`) {`)
                                         $i.indent(($i) => {
                                             $i.line(($i) => {
-                                                $i.snippet(`return `)
+                                                $i.snippet(`return  {`)
+                                                $i.indent(($i) => {
+                                                    $i.line(($i) => {
+                                                        $i.snippet(`'parents': {`)
+                                                        $i.indent(($i) => {
+                                                            parentPathAsArray.forEach(($) => {
+                                                                $i.literal(`'${$}': parent_${$d.createIdentifier($)},`)
+                                                            })
+                                                        })
+                                                        $i.snippet(`},`)
+                                                    })
 
-                                                function writeUnflattener($: {
-                                                    $: mliana.TLocalType,
-                                                    currentName: string,
-                                                }, $i: mfp.ILine) {
-                                                    const currentName =$.currentName
-                                                    pl.cc($.$, ($) => {
-                                                        
-                                                        switch ($[0]) {
-                                                            case 'array':
-                                                                pl.cc($[1], ($) => {
-                                                                    $i.snippet(`[]`)
-                                                                })
-                                                                break
-                                                            case 'boolean':
-                                                                pl.cc($[1], ($) => {
-                                                                    $i.snippet(`FIXBOOLEAN`)
-                                                                })
-                                                                break
-                                                            case 'component':
-                                                                pl.cc($[1], ($) => {
-                                                                    $i.snippet(`FIXCOMPONENT`)
-                                                                })
-                                                                break
-                                                            case 'dictionary':
-                                                                pl.cc($[1], ($) => {
-                                                                    $i.snippet(`{}`)
-                                                                })
-                                                                break
-                                                            case 'group':
-                                                                pl.cc($[1], ($) => {
-                                                                    $i.snippet(`{`)
-                                                                    $i.indent(($i) => {
-                                                                        $.properties.dictionary.forEach(() => false, ($, key) => {
-                                                                            $i.line(($i) => {
-                                                                                $i.snippet(`'${key}': `)
-                                                                                writeUnflattener({
-                                                                                    $: $.type,
-                                                                                    currentName: key,
-                                                                                }, $i)
-                                                                                $i.snippet(`,`)
-                                                                            })
+                                                    $i.literal(`'id': id,`)
+                                                    $i.line(($i) => {
+                                                        $i.snippet(`'data': `)
+                                                        function writeUnflattener($: {
+                                                            $: mliana.TLocalType,
+                                                            path: mcommon.TPath,
+                                                            currentName: string,
+                                                        }, $i: mfp.ILine) {
+                                                            const path = $.path
+                                                            const pathID = `prop_${getPathID(path)}`
+                                                            const currentName = $.currentName
+                                                            pl.cc($.$, ($) => {
+
+                                                                switch ($[0]) {
+                                                                    case 'array':
+                                                                        pl.cc($[1], ($) => {
+                                                                            $i.snippet(`[]`)
                                                                         })
-    
-                                                                    })
-                                                                    $i.snippet(`}`)
-                                                                })
-                                                                break
-                                                            case 'string':
-                                                                pl.cc($[1], ($) => {
-                                                                    $i.snippet(`FIXSTRING`)
-                                                                })
-                                                                break
-                                                            case 'taggedUnion':
-                                                                pl.cc($[1], ($) => {
-                                                                    $i.snippet(`pl.cc(${currentName}, ($) => {`)
-                                                                    $i.indent(($i) => {
-                                                                        $i.line(($i) => {
-                                                                            $i.snippet(`switch ($) {`)
+                                                                        break
+                                                                    case 'boolean':
+                                                                        pl.cc($[1], ($) => {
+                                                                            $i.snippet(`FIXBOOLEAN`)
+                                                                        })
+                                                                        break
+                                                                    case 'component':
+                                                                        pl.cc($[1], ($) => {
+                                                                            $i.snippet(`FIXCOMPONENT`)
+                                                                        })
+                                                                        break
+                                                                    case 'dictionary':
+                                                                        pl.cc($[1], ($) => {
+                                                                            $i.snippet(`{}`)
+                                                                        })
+                                                                        break
+                                                                    case 'group':
+                                                                        pl.cc($[1], ($) => {
+                                                                            $i.snippet(`{`)
                                                                             $i.indent(($i) => {
-                                                                                $.options.dictionary.forEach(() => false, ($, key) => {
+                                                                                $.properties.dictionary.forEach(() => false, ($, key) => {
                                                                                     $i.line(($i) => {
-                                                                                        $i.snippet(`case "${key}": {`)
-                                                                                        $i.indent(($i) => {
-                                                                                            $i.line(($i) => {
-                                                                                                $i.snippet(`return ['${key}', `)
-                                                                                                writeUnflattener({
-                                                                                                    $: $.type,
-                                                                                                    currentName: currentName
-                                                                                                }, $i)
-                                                                                                $i.snippet(`]`)
-                                                                                            })
-                                                                                        })
-                                                                                        $i.snippet(`}`)
+                                                                                        $i.snippet(`'${key}': `)
+                                                                                        writeUnflattener({
+                                                                                            $: $.type,
+                                                                                            path: [path, key],
+                                                                                            currentName: key,
+                                                                                        }, $i)
+                                                                                        $i.snippet(`,`)
                                                                                     })
                                                                                 })
-                                                                                $i.line(($i) => {
-                                                                                    $i.snippet(`default: pl.panic(\`UNEXPECTED VALUE: \${${currentName}}\`)`)
-                                                                                })
+
                                                                             })
                                                                             $i.snippet(`}`)
                                                                         })
-                                                                    })
-                                                                    $i.snippet(`})`)
-                                                                    // $.options.dictionary.forEach(() => false, ($, key) => {
-                                                                    //     writeUnflattener($.type, $i)
-                                                                    // })
-                                                                })
-                                                                break
-                                                            default: pl.au($[0])
+                                                                        break
+                                                                    case 'string':
+                                                                        pl.cc($[1], ($) => {
+                                                                            switch ($.constrained[0]) {
+                                                                                case 'no':
+                                                                                    pl.cc($.constrained[1], ($) => {
+                                                                                        const type = pl.cc($, ($): string => {
+                                                                                            switch ($.type.name) {
+                                                                                                case "bedrag": {
+                                                                                                    return "number"
+                                                                                                }
+                                                                                                case "bestand": {
+                                                                                                    return "undefined"
+                                                                                                }
+                                                                                                case "dagen": {
+                                                                                                    return "number"
+                                                                                                }
+                                                                                                case "datum": {
+                                                                                                    return "number"
+                                                                                                }
+                                                                                                case "identifier": {
+                                                                                                    return "string"
+                                                                                                }
+                                                                                                case "multiline text": {
+                                                                                                    return "string"
+                                                                                                }
+                                                                                                case "promillage": {
+                                                                                                    return "number"
+                                                                                                }
+                                                                                                case "single line text": {
+                                                                                                    return "string"
+                                                                                                }
+                                                                                                default: pl.panic(`Unknown string type: ${$.type.name}`)
+                                                                                            }
+                                                                                        })
+                                                                                        $i.snippet(type === "number" ? `parseInt(assertNotNull(${pathID}))` : `assertNotNull(${pathID})`)
+                                                                                    })
+                                                                                    break
+                                                                                case 'yes':
+                                                                                    pl.cc($.constrained[1], ($) => {
+                                                                                        $i.snippet(pathID)
+                                                                                    })
+                                                                                    break
+                                                                                default: pl.au($.constrained[0])
+                                                                            }
+                                                                        })
+                                                                        break
+                                                                    case 'taggedUnion':
+                                                                        pl.cc($[1], ($) => {
+                                                                            $i.snippet(`pl.cc(prop_${$d.createIdentifier(currentName)}, ($) => {`)
+                                                                            $i.indent(($i) => {
+                                                                                $i.line(($i) => {
+                                                                                    $i.snippet(`switch ($) {`)
+                                                                                    $i.indent(($i) => {
+                                                                                        $.options.dictionary.forEach(() => false, ($, key) => {
+                                                                                            $i.line(($i) => {
+                                                                                                $i.snippet(`case "${key}": {`)
+                                                                                                $i.indent(($i) => {
+                                                                                                    $i.line(($i) => {
+                                                                                                        $i.snippet(`return ['${key}', `)
+                                                                                                        writeUnflattener({
+                                                                                                            $: $.type,
+                                                                                                            path: [path, key],
+                                                                                                            currentName: currentName
+                                                                                                        }, $i)
+                                                                                                        $i.snippet(`]`)
+                                                                                                    })
+                                                                                                })
+                                                                                                $i.snippet(`}`)
+                                                                                            })
+                                                                                        })
+                                                                                        $i.literal(`default: pl.panic(\`UNEXPECTED VALUE: '\${${pathID}}'\`)`)
+                                                                                    })
+                                                                                    $i.snippet(`}`)
+                                                                                })
+                                                                            })
+                                                                            $i.snippet(`})`)
+                                                                            // $.options.dictionary.forEach(() => false, ($, key) => {
+                                                                            //     writeUnflattener($.type, $i)
+                                                                            // })
+                                                                        })
+                                                                        break
+                                                                    default: pl.au($[0])
+                                                                }
+                                                            })
                                                         }
+                                                        writeUnflattener({
+                                                            $: $.type,
+                                                            path: [],
+                                                            currentName: currentName
+                                                        }, $i)
+
                                                     })
-                                                }
-                                                writeUnflattener({
-                                                    $: $.type,
-                                                    currentName: currentName
-                                                }, $i)
+                                                })
+                                                $i.snippet(`}`)
                                             })
                                         })
                                         $i.snippet(`}`)
@@ -256,7 +322,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                             doDictionaries({
                                 $: $.type,
                                 path: path,
-                                idPath: newIDPath,
+                                idPath: [idPath, currentName],
                                 currentName: currentName,
                             })
                         })

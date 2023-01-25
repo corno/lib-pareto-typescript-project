@@ -3,21 +3,23 @@ import * as pl from 'pareto-core-lib'
 function assertNotNull($: null | string): string { if ($ === null) { throw new Error("UNEXPECTED NULL") }; return $ }
 
 export function $$(
+    parent_Jaren: string,
     id: string,
     item_operation: string,
     //////
-    prop_Grootboekrekening: null | string,
     prop_Beginsaldo: null | string,
     prop_Nieuw: null | string,
     operation_Nieuw: null | string,
     prop_Nieuw_$Nee_$Jaar: null | string,
     prop_Nieuw_$Nee_$Rekening: null | string,
+    prop_Grootboekrekening: null | string,
 ) {
     return  {
-        'parents': {},
+        'parents': {
+            'Jaren': parent_Jaren,
+        },
         'id': id,
         'data': {
-            'Grootboekrekening': prop_Grootboekrekening,
             'Beginsaldo': parseInt(assertNotNull(prop_Beginsaldo)),
             'Nieuw': pl.cc(prop_Nieuw, ($) => {
                 switch ($) {
@@ -33,6 +35,8 @@ export function $$(
                     default: pl.panic(`UNEXPECTED VALUE: '${prop_Nieuw}'`)
                 }
             }),
+            'Grootboekrekening': prop_Grootboekrekening,
+            'Mutaties': {},
         }
     }
 }

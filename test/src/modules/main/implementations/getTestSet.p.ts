@@ -25,6 +25,7 @@ import * as mproject from "../../../../../pub/dist/modules/project"
 import * as mliana from "../../../../../pub/dist/modules/liana"
 import * as mliana2Pareto from "../../../../../pub/dist/modules/liana2Pareto"
 import * as mfp from "lib-fountain-pen"
+import * as mts from "res-typescript"
 const d = pr.wrapRawDictionary
 
 
@@ -95,7 +96,7 @@ export const $$: api.CgetTestSet = ($XXX) => {
     })
     writer([$XXX.testDirectory, 'flat'], ($i) => {
         mliana_flat.$a.createSerializer({
-
+            createIdentifier: mts.$a.createIdentifier
         })(accountingModel, $i)
 
     })

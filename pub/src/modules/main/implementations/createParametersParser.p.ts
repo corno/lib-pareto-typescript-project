@@ -21,7 +21,7 @@ export const $$: api.CcreateParametersParser = (
             } else {
                 $i({
                     testDirectory: state
-                })//FIXME THIS IS NOT THE RIGHT TYPE
+                })
             }
 
         })

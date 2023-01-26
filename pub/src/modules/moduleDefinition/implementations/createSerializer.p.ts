@@ -41,6 +41,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                     $i.snippet(`,`)
                 })
             })
+            $i.snippet(`}`)
         }
         function serializeContext($: mglossary.TContext, $i: mfp.ILine) {
             switch ($[0]) {

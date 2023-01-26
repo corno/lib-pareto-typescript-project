@@ -16,7 +16,14 @@ export const $: mproject.TModule = {
             'parameters': d({
                 "Annotation": null,
             }),
-            'templates': d({}),
+            'templates': d({
+                "Reference": {
+                    'parameters': d({
+                        "ReferencedType": null,
+                    }),
+                    'type': <mglossary.TType>['group', d({})],
+                },
+            }),
             'types': d({
                 "Context": <mglossary.TType>['taggedUnion', d({
                     "import": <mglossary.TType>['template', {
@@ -24,7 +31,7 @@ export const $: mproject.TModule = {
                         'arguments': d({
                             "RererencedType": <mglossary.TType>['reference', {
                                 'context': <mglossary.TContext>['local', null],
-                                'type': "FIXMEFIXMEFIXME",
+                                'type': "string",
                             }],
                         }),
                         'template': "Reference",
@@ -56,7 +63,7 @@ export const $: mproject.TModule = {
                                     'arguments': d({
                                         "RererencedType": <mglossary.TType>['reference', {
                                             'context': <mglossary.TContext>['local', null],
-                                            'type': "FIXMEFIXMEFIXME",
+                                            'type': "string",
                                         }],
                                     }),
                                     'template': "Reference",
@@ -157,7 +164,7 @@ export const $: mproject.TModule = {
                                                 'arguments': d({
                                                     "RererencedType": <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', null],
-                                                        'type': "FIXMEFIXMEFIXME",
+                                                        'type': "string",
                                                     }],
                                                 }),
                                                 'template': "Reference",
@@ -191,7 +198,7 @@ export const $: mproject.TModule = {
                             'arguments': d({
                                 "RererencedType": <mglossary.TType>['reference', {
                                     'context': <mglossary.TContext>['local', null],
-                                    'type': "FIXMEFIXMEFIXME",
+                                    'type': "string",
                                 }],
                             }),
                             'template': "Reference",
@@ -260,7 +267,7 @@ export const $: mproject.TModule = {
                             'arguments': d({
                                 "RererencedType": <mglossary.TType>['reference', {
                                     'context': <mglossary.TContext>['local', null],
-                                    'type': "FIXMEFIXMEFIXME",
+                                    'type': "string",
                                 }],
                             }),
                             'template': "Reference",
@@ -273,7 +280,7 @@ export const $: mproject.TModule = {
                             'arguments': d({
                                 "RererencedType": <mglossary.TType>['reference', {
                                     'context': <mglossary.TContext>['local', null],
-                                    'type': "FIXMEFIXMEFIXME",
+                                    'type': "string",
                                 }],
                             }),
                             'template': "Reference",
@@ -304,7 +311,10 @@ export const $: mproject.TModule = {
                         'type': "Root",
                     },
                     'managed input interface': null,
-                    'output interface': <mglossary.TContext>['import', "fp"]ILine,
+                    'output interface': {
+                        'context': <mglossary.TContext>['import', "fp"],
+                        'interface': "Line",
+                    },
                     'return type': ['nothing', null],
                 },
             }),
@@ -317,7 +327,7 @@ export const $: mproject.TModule = {
                 'createEnricher': {
                     'definition': {
                         'function': "undefined",
-                    ,
+                    },
                     'type': ['constructor', {
                         'configuration data': null,
                         'dependencies': d({}),
@@ -326,7 +336,7 @@ export const $: mproject.TModule = {
                 'createSerializer': {
                     'definition': {
                         'function': "undefined",
-                    ,
+                    },
                     'type': ['constructor', {
                         'configuration data': null,
                         'dependencies': d({}),

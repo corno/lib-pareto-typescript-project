@@ -34,7 +34,7 @@ const d = pr.wrapRawDictionary
 
 
 import * as pub from "../../../../../pub"
-import { $ as module } from "../../../data/project.p"
+import { $ as module } from "../../../data/project.test"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 

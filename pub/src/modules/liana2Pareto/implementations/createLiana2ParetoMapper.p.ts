@@ -145,7 +145,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                                 'template': "Reference",
                                                 'context': ['local', null],
                                                 'arguments': pr.wrapRawDictionary({
-                                                    "RererencedType": ref("FIXMEFIXMEFIXME")
+                                                    "RererencedType": ref("string")//FIXME
                                                 }),
                                             }]
                                         })
@@ -175,6 +175,14 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             }),
                             'parameters': pr.wrapRawDictionary({
                                 "Annotation": null,
+                            }),
+                            'templates': pr.wrapRawDictionary<mglossary.GGlossary.Ptemplates.D>({
+                                "Reference": {
+                                    'parameters': pr.wrapRawDictionary({
+                                        "ReferencedType": null, 
+                                    }),
+                                    'type': <mglossary.GType>['group', pr.wrapRawDictionary({})],
+                                }
                             }),
                             'types': createTypes({
                                 'model': $.model,

@@ -195,10 +195,18 @@ export const $$: api.CcreateSerializer = ($d) => {
         }
     }
     function serializeInterfaceReference($: mglossary.TInterfaceReference, $i: mfp.ILine) {
-        if ($.context !== undefined) {
-            serializeContext($.context, $i)
-        }
-        $i.snippet(`I${$.interface}`)
+        $i.snippet(`{`)
+        $i.indent(($i) => {
+            $i.nestedLine(($i) => {
+                $i.snippet(`'context': `)
+                serializeContext($.context, $i)
+                $i.snippet(`,`)
+            })
+            $i.nestedLine(($i) => {
+                $i.snippet(`'interface': "${$.interface}",`)
+            })
+        })
+        $i.snippet(`}`)
 
     }
     function serializeInterface($: mglossary.TInterface, $i: mfp.ILine) {
@@ -206,7 +214,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             case 'group':
                 pl.cc($[1], ($) => {
 
-                    $i.snippet(`d({`)
+                    $i.snippet(`['group', d({`)
                     $i.indent(($i) => {
                         $d.dictionaryForEach($.members, ($) => {
                             $i.nestedLine(($i) => {
@@ -215,43 +223,51 @@ export const $$: api.CcreateSerializer = ($d) => {
                             })
                         })
                     })
-                    $i.snippet(`})`)
+                    $i.snippet(`})]`)
                 })
                 break
             case 'method':
                 pl.cc($[1], ($) => {
+                    $i.snippet(`['method', {`)
+                    $i.indent(($i) => {
+                        pl.cc($.data, ($) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'data': `)
+                                if ($ === null) {
+                                    $i.snippet(`null`)
+                                } else {
+                                    serializeTypeReference($, $i)
+                                }
+                            })
+                        })
+                        pl.cc($.interface, ($) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'interface': `)
+                                if ($ === null) {
+                                    $i.snippet(`null`)
+                                } else {
+                                    $i.snippet(`{`)
+                                    $i.indent(($i) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'managed': ${$.managed}`)
+                                        })
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'interface': `)
+                                            if ($.interface === null) {
+                                                $i.snippet(`null`)
+                                            } else {
+                                                serializeInterface($.interface, $i)
+                                            }
+                                        })
 
-                    $i.snippet(`(`)
-                    pl.cc($.data, ($) => {
-                        if ($ === null) {
-                            $i.snippet(`null`)
-                        } else {
-                            serializeTypeReference($, $i)
-                        }
+                                    })
+                                    $i.snippet(`}`)
+                                }
+                            })
+                        })
                     })
-                    pl.cc($.interface, ($) => {
-                        if ($ === null) {
+                    $i.snippet(`}]`)
 
-                        } else {
-                            if ($.managed) {
-                                $i.snippet(`$c: ($i: `)
-                                serializeInterface($.interface, $i)
-                                $i.snippet(`) => void`)
-                            }
-                        }
-                    })
-                    $i.snippet(`) => `)
-                    pl.cc($.interface, ($) => {
-                        if ($ === null) {
-                            $i.snippet(`void`)
-                        } else {
-                            if ($.managed) {
-                                $i.snippet(`void`)
-                            } else {
-                                serializeInterface($.interface, $i)
-                            }
-                        }
-                    })
                 })
                 break
             case 'reference':

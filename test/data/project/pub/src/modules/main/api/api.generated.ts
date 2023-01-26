@@ -2,7 +2,13 @@ import * as pt from 'pareto-core-types'
 
 import * as glo from "./glossary"
 
-import * as mcollation from "res-pareto-collation"
-import * as mtemp from "../../temp"
+import * as mcommon from "glo-pareto-common"
 
-export type API = {}
+export type CcreateEnricher = ($d: {}) => glo.Fundefined
+
+export type CcreateSerializer = ($d: {}) => glo.Fundefined
+
+export type API = {
+    createEnricher: CcreateEnricher
+    createSerializer: CcreateSerializer
+}

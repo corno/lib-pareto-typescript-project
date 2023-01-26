@@ -573,8 +573,8 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
         })
         $i.file(`public.generated.ts`, ($i) => {
 
-            const parameters: mglossary.T_$Parameters = $.parameters !== undefined ? $.parameters : pl.createEmptyDictionary()
-            function serializeParameters($: mglossary.T_$Parameters, $i: mfp.ILine) {
+            const parameters: mglossary.GGlossary.G.Pparameters.$ = $.parameters !== undefined ? $.parameters : pl.createEmptyDictionary()
+            function serializeParameters($: mglossary.GGlossary.G.Pparameters.$, $i: mfp.ILine) {
                 $d.enrichedDictionaryForEach($, {
                     onEmpty: () => {
 

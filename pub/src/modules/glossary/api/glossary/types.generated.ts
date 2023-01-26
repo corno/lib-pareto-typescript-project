@@ -2,60 +2,6 @@ import * as pt from 'pareto-core-types'
 
 import * as mfp from "lib-fountain-pen"
 
-export namespace G_$Function {
-    
-    export namespace G {
-        
-        export namespace Pmanaged__input__interface {
-            export type $ = null | GInterfaceReference.$
-        }
-        
-        export namespace Poutput__interface {
-            export type $ = null | GInterfaceReference.$
-        }
-        
-        export namespace Preturn__type {
-            
-            export namespace Odata {
-                export type $ = {
-                    readonly 'asynchronous': boolean
-                    readonly 'type': GTypeReference.$
-                }
-            }
-            export type $ = 
-                | ['data', Odata.$]
-                | ['interface', GInterfaceReference.$]
-                | ['nothing', null]
-        }
-        export type $ = {
-            readonly 'data': GTypeReference.$
-            readonly 'managed input interface': Pmanaged__input__interface.$
-            readonly 'output interface': Poutput__interface.$
-            readonly 'return type': Preturn__type.$
-        }
-    }
-    export type $ = G.$
-}
-
-export namespace G_$MethodInterface {
-    
-    export namespace G {
-        export type $ = {
-            readonly 'interface': GInterface.$
-            readonly 'managed': boolean
-        }
-    }
-    export type $ = G.$
-}
-
-export namespace G_$Parameters {
-    
-    export namespace G {
-        export type $ = pt.Dictionary<null>
-    }
-    export type $ = G.$
-}
-
 export namespace GContext {
     
     export namespace G {
@@ -71,7 +17,38 @@ export namespace GGlossary {
     export namespace G {
         
         export namespace Pfunctions {
-            export type $ = pt.Dictionary<G_$Function.$>
+            
+            export namespace D {
+                
+                export namespace Pmanaged__input__interface {
+                    export type $ = null | GInterfaceReference.$
+                }
+                
+                export namespace Poutput__interface {
+                    export type $ = null | GInterfaceReference.$
+                }
+                
+                export namespace Preturn__type {
+                    
+                    export namespace Odata {
+                        export type $ = {
+                            readonly 'asynchronous': boolean
+                            readonly 'type': GTypeReference.$
+                        }
+                    }
+                    export type $ = 
+                        | ['data', Odata.$]
+                        | ['interface', GInterfaceReference.$]
+                        | ['nothing', null]
+                }
+                export type $ = {
+                    readonly 'data': GTypeReference.$
+                    readonly 'managed input interface': Pmanaged__input__interface.$
+                    readonly 'output interface': Poutput__interface.$
+                    readonly 'return type': Preturn__type.$
+                }
+            }
+            export type $ = pt.Dictionary<D.$>
         }
         
         export namespace Pimports {
@@ -80,6 +57,10 @@ export namespace GGlossary {
         
         export namespace Pinterfaces {
             export type $ = pt.Dictionary<GInterface.$>
+        }
+        
+        export namespace Pparameters {
+            export type $ = pt.Dictionary<null>
         }
         
         export namespace Ptemplates {
@@ -104,7 +85,7 @@ export namespace GGlossary {
             readonly 'functions': Pfunctions.$
             readonly 'imports': Pimports.$
             readonly 'interfaces': Pinterfaces.$
-            readonly 'parameters': G_$Parameters.$
+            readonly 'parameters': Pparameters.$
             readonly 'templates'?: Ptemplates.$
             readonly 'types': Ptypes.$
         }
@@ -133,7 +114,14 @@ export namespace GInterface {
             }
             
             export namespace Pinterface {
-                export type $ = null | G_$MethodInterface.$
+                
+                export namespace O {
+                    export type $ = {
+                        readonly 'interface': GInterface.$
+                        readonly 'managed': boolean
+                    }
+                }
+                export type $ = null | O.$
             }
             export type $ = {
                 readonly 'data': Pdata.$

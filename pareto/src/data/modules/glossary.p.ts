@@ -22,31 +22,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'parameters': d({}),
         'types': types({
-            "_Function": group({
-                "return type": member(taggedUnion({
-                    "data": group({
-                        "asynchronous": member(bln()),
-                        "type": member(ref("TypeReference")),
-                    }),
-                    "interface": ref("InterfaceReference"),
-                    "nothing": null_(),
-                })),
-                "data": member(ref("TypeReference")),
-                "managed input interface": member(optional(ref("InterfaceReference"))),
-                "output interface": member(optional(ref("InterfaceReference"))),
-            }),
-            "_MethodInterface": group({
-                "managed": member(boolean()),
-                "interface": member(ref("Interface"))
-            }),
-            "_Parameters": dictionary(null_()),
-
             "Context": taggedUnion({
                 "local": null_(),
                 "import": str(),
             }),
             "Glossary": group({
-                "parameters": member(ref("_Parameters")),
+                "parameters": member(dictionary(null_())),
                 "imports": member(dictionary(str())),
                 "templates": member(dictionary(group({
                     "parameters": member(['dictionary', null_()]),
@@ -54,7 +35,19 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 })), true),
                 "types": member(dictionary(ref("Type"))),
                 "interfaces": member(dictionary(ref("Interface"))),
-                "functions": member(dictionary(ref("_Function"))),
+                "functions": member(dictionary(group({
+                    "return type": member(taggedUnion({
+                        "data": group({
+                            "asynchronous": member(bln()),
+                            "type": member(ref("TypeReference")),
+                        }),
+                        "interface": ref("InterfaceReference"),
+                        "nothing": null_(),
+                    })),
+                    "data": member(ref("TypeReference")),
+                    "managed input interface": member(optional(ref("InterfaceReference"))),
+                    "output interface": member(optional(ref("InterfaceReference"))),
+                }))),
             }),
             "Interface": taggedUnion({
                 "group": group({
@@ -62,7 +55,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
                 "method": group({
                     "data": member(optional(ref("TypeReference"))),
-                    "interface": member(optional(ref("_MethodInterface"))),
+                    "interface": member(optional(group({
+                        "managed": member(boolean()),
+                        "interface": member(ref("Interface"))
+                    }))),
                 }),
                 "reference": group({
                     "context": member(ref("Context")),

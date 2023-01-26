@@ -112,7 +112,7 @@ export function externalTypeReference(context: string, type: string): t.TTypeRef
     }
 }
 
-export function _function(data: t.TTypeReference, returnValue: t.TTypeReference, async?: boolean): t.T_$Function {
+export function _function(data: t.TTypeReference, returnValue: t.TTypeReference, async?: boolean): t.GGlossary.G.Pfunctions.D.$ {
     return {
         'return type': ['data', {
             'type': returnValue,
@@ -124,7 +124,7 @@ export function _function(data: t.TTypeReference, returnValue: t.TTypeReference,
     }
 }
 
-export function procedure(data: t.TTypeReference): t.T_$Function {
+export function procedure(data: t.TTypeReference): t.GGlossary.G.Pfunctions.D.$ {
     return {
         'return type': ['nothing', null],
         'data': data,
@@ -133,7 +133,7 @@ export function procedure(data: t.TTypeReference): t.T_$Function {
     }
 }
 
-export function callback(data: t.TTypeReference, inf: t.TInterfaceReference): t.T_$Function {
+export function callback(data: t.TTypeReference, inf: t.TInterfaceReference): t.GGlossary.G.Pfunctions.D.$ {
     return {
         'return type': ['nothing', null],
         'data': data,
@@ -141,7 +141,7 @@ export function callback(data: t.TTypeReference, inf: t.TInterfaceReference): t.
         'output interface': inf,
     }
 }
-export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.T_$Function {
+export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.GGlossary.G.Pfunctions.D.$ {
     return {
         'return type': ['nothing', null],
         'data': data,
@@ -149,7 +149,7 @@ export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReferenc
         'output interface': out_inf,
     }
 }
-export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.T_$Function {
+export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.GGlossary.G.Pfunctions.D.$ {
     return {
         'return type': ['interface', in_inf],
         'data': data,

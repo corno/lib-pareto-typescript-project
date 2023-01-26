@@ -95,15 +95,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                             break
                         case 'computed':
                             pl.cc($[1], ($) => {
-                                $i.snippet(`() => `)
-                                doType(
-                                    {
-                                        $: $,
-                                        name: name,
-                                    },
-                                    $parameters,
-                                    $i,
-                                )
+                                doNamespacedType($i)
                             })
                             break
                         case 'array':
@@ -128,15 +120,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                             break
                         case 'optional':
                             pl.cc($[1], ($) => {
-                                $i.snippet(`null | `)
-                                doType(
-                                    {
-                                        $: $,
-                                        name: name
-                                    },
-                                    $parameters,
-                                    $i
-                                )
+                                doNamespacedType($i)
                             })
                             break
                         case 'parameter':
@@ -210,6 +194,29 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                             break
                         case 'computed':
                             pl.cc($[1], ($) => {
+                                createInstanceNamespace(
+                                    ($i) => {
+                                        serializeType2(
+                                            {
+                                                $: $,
+                                                name: `C`
+                                            },
+                                            $parameters,
+                                            $i
+                                        )
+                                    },
+                                    ($i) => {
+                                        $i.snippet(`() => `)
+                                        doType(
+                                            {
+                                                $: $,
+                                                name: `A`,
+                                            },
+                                            $parameters,
+                                            $i
+                                        )
+                                    }
+                                )
                             })
                             break
                         case 'array':
@@ -337,6 +344,29 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                             break
                         case 'optional':
                             pl.cc($[1], ($) => {
+                                createInstanceNamespace(
+                                    ($i) => {
+                                        serializeType2(
+                                            {
+                                                $: $,
+                                                name: `O`
+                                            },
+                                            $parameters,
+                                            $i
+                                        )
+                                    },
+                                    ($i) => {
+                                        $i.snippet(`null | `)
+                                        doType(
+                                            {
+                                                $: $,
+                                                name: `A`,
+                                            },
+                                            $parameters,
+                                            $i
+                                        )
+                                    }
+                                )
                             })
                             break
                         case 'parameter':

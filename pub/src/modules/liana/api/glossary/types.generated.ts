@@ -9,7 +9,7 @@ export namespace VComputedReference {
     }
 }
 
-export type MComputedReference<AReferencedType> =  VComputedReference.$<AReferencedType>
+export type MComputedReference<AReferencedType> = VComputedReference.$<AReferencedType>
 
 export namespace VConstrainedDictionary {
     
@@ -26,7 +26,7 @@ export namespace VConstrainedDictionary {
     }
 }
 
-export type MConstrainedDictionary<AReferencedType, AType> =  VConstrainedDictionary.$<AReferencedType, AType>
+export type MConstrainedDictionary<AReferencedType, AType> = VConstrainedDictionary.$<AReferencedType, AType>
 
 export namespace VConstrainedDictionaryEntry {
     export type $<AReferencedType, AType> = {
@@ -35,7 +35,7 @@ export namespace VConstrainedDictionaryEntry {
     }
 }
 
-export type MConstrainedDictionaryEntry<AReferencedType, AType> =  VConstrainedDictionaryEntry.$<AReferencedType, AType>
+export type MConstrainedDictionaryEntry<AReferencedType, AType> = VConstrainedDictionaryEntry.$<AReferencedType, AType>
 
 export namespace VDictionary {
     
@@ -48,7 +48,7 @@ export namespace VDictionary {
     }
 }
 
-export type MDictionary<AType> =  VDictionary.$<AType>
+export type MDictionary<AType> = VDictionary.$<AType>
 
 export namespace VPossibly {
     export type $<AType> = 
@@ -56,7 +56,7 @@ export namespace VPossibly {
         | ['set', AType]
 }
 
-export type MPossibly<AType> =  VPossibly.$<AType>
+export type MPossibly<AType> = VPossibly.$<AType>
 
 export namespace VReference {
     export type $<AReferencedType> = {
@@ -66,7 +66,7 @@ export namespace VReference {
     }
 }
 
-export type MReference<AReferencedType> =  VReference.$<AReferencedType>
+export type MReference<AReferencedType> = VReference.$<AReferencedType>
 
 export namespace G_$Reference {
     

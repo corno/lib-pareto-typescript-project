@@ -37,10 +37,7 @@ export const $: mproject.TModule = {
                                                 'type': <mglossary.TType>['template', {
                                                     'context': <mglossary.TContext>['local', null],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                            'context': <mglossary.TContext>['local', null],
-                                                            'type': "string",
-                                                        }],
+                                                        "RererencedType": <mglossary.TType>['null', null],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -50,10 +47,7 @@ export const $: mproject.TModule = {
                                                 'type': <mglossary.TType>['template', {
                                                     'context': <mglossary.TContext>['local', null],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                            'context': <mglossary.TContext>['local', null],
-                                                            'type': "string",
-                                                        }],
+                                                        "RererencedType": <mglossary.TType>['null', null],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -78,10 +72,7 @@ export const $: mproject.TModule = {
                                                         'type': <mglossary.TType>['template', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['reference', {
-                                                                    'context': <mglossary.TContext>['local', null],
-                                                                    'type': "string",
-                                                                }],
+                                                                "RererencedType": <mglossary.TType>['null', null],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -91,10 +82,7 @@ export const $: mproject.TModule = {
                                                         'type': <mglossary.TType>['template', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['reference', {
-                                                                    'context': <mglossary.TContext>['local', null],
-                                                                    'type': "string",
-                                                                }],
+                                                                "RererencedType": <mglossary.TType>['null', null],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -169,10 +157,7 @@ export const $: mproject.TModule = {
                                                 'type': <mglossary.TType>['template', {
                                                     'context': <mglossary.TContext>['local', null],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                            'context': <mglossary.TContext>['local', null],
-                                                            'type': "string",
-                                                        }],
+                                                        "RererencedType": <mglossary.TType>['null', null],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -182,10 +167,7 @@ export const $: mproject.TModule = {
                                                 'type': <mglossary.TType>['template', {
                                                     'context': <mglossary.TContext>['local', null],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['reference', {
-                                                            'context': <mglossary.TContext>['local', null],
-                                                            'type': "string",
-                                                        }],
+                                                        "RererencedType": <mglossary.TType>['null', null],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -203,10 +185,7 @@ export const $: mproject.TModule = {
                                                                         'type': <mglossary.TType>['template', {
                                                                             'context': <mglossary.TContext>['local', null],
                                                                             'arguments': d({
-                                                                                "RererencedType": <mglossary.TType>['reference', {
-                                                                                    'context': <mglossary.TContext>['local', null],
-                                                                                    'type': "string",
-                                                                                }],
+                                                                                "RererencedType": <mglossary.TType>['null', null],
                                                                             }),
                                                                             'template': "Reference",
                                                                         }],
@@ -232,10 +211,7 @@ export const $: mproject.TModule = {
                                                         'type': <mglossary.TType>['template', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['reference', {
-                                                                    'context': <mglossary.TContext>['local', null],
-                                                                    'type': "string",
-                                                                }],
+                                                                "RererencedType": <mglossary.TType>['null', null],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -245,10 +221,7 @@ export const $: mproject.TModule = {
                                                         'type': <mglossary.TType>['template', {
                                                             'context': <mglossary.TContext>['local', null],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['reference', {
-                                                                    'context': <mglossary.TContext>['local', null],
-                                                                    'type': "string",
-                                                                }],
+                                                                "RererencedType": <mglossary.TType>['null', null],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -360,10 +333,7 @@ export const $: mproject.TModule = {
                             'type': <mglossary.TType>['template', {
                                 'context': <mglossary.TContext>['local', null],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
-                                        'type': "string",
-                                    }],
+                                    "RererencedType": <mglossary.TType>['null', null],
                                 }),
                                 'template': "Reference",
                             }],
@@ -373,10 +343,7 @@ export const $: mproject.TModule = {
                             'type': <mglossary.TType>['template', {
                                 'context': <mglossary.TContext>['local', null],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
-                                        'type': "string",
-                                    }],
+                                    "RererencedType": <mglossary.TType>['null', null],
                                 }),
                                 'template': "Reference",
                             }],
@@ -388,10 +355,7 @@ export const $: mproject.TModule = {
                             'type': <mglossary.TType>['template', {
                                 'context': <mglossary.TContext>['local', null],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
-                                        'type': "string",
-                                    }],
+                                    "RererencedType": <mglossary.TType>['null', null],
                                 }),
                                 'template': "Reference",
                             }],
@@ -403,10 +367,7 @@ export const $: mproject.TModule = {
                             'type': <mglossary.TType>['template', {
                                 'context': <mglossary.TContext>['local', null],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
-                                        'type': "string",
-                                    }],
+                                    "RererencedType": <mglossary.TType>['null', null],
                                 }),
                                 'template': "Reference",
                             }],
@@ -416,10 +377,7 @@ export const $: mproject.TModule = {
                             'type': <mglossary.TType>['template', {
                                 'context': <mglossary.TContext>['local', null],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
-                                        'type': "string",
-                                    }],
+                                    "RererencedType": <mglossary.TType>['null', null],
                                 }),
                                 'template': "Reference",
                             }],
@@ -431,10 +389,7 @@ export const $: mproject.TModule = {
                             'type': <mglossary.TType>['template', {
                                 'context': <mglossary.TContext>['local', null],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
-                                        'type': "string",
-                                    }],
+                                    "RererencedType": <mglossary.TType>['null', null],
                                 }),
                                 'template': "Reference",
                             }],
@@ -444,10 +399,7 @@ export const $: mproject.TModule = {
                             'type': <mglossary.TType>['template', {
                                 'context': <mglossary.TContext>['local', null],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
-                                        'type': "string",
-                                    }],
+                                    "RererencedType": <mglossary.TType>['null', null],
                                 }),
                                 'template': "Reference",
                             }],
@@ -459,10 +411,7 @@ export const $: mproject.TModule = {
                             'type': <mglossary.TType>['template', {
                                 'context': <mglossary.TContext>['local', null],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
-                                        'type': "string",
-                                    }],
+                                    "RererencedType": <mglossary.TType>['null', null],
                                 }),
                                 'template': "Reference",
                             }],
@@ -479,10 +428,7 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['template', {
                             'context': <mglossary.TContext>['local', null],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "string",
-                                }],
+                                "RererencedType": <mglossary.TType>['null', null],
                             }),
                             'template': "Reference",
                         }],
@@ -497,10 +443,7 @@ export const $: mproject.TModule = {
                                     'type': <mglossary.TType>['template', {
                                         'context': <mglossary.TContext>['local', null],
                                         'arguments': d({
-                                            "RererencedType": <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'type': "string",
-                                            }],
+                                            "RererencedType": <mglossary.TType>['null', null],
                                         }),
                                         'template': "Reference",
                                     }],
@@ -510,10 +453,7 @@ export const $: mproject.TModule = {
                                     'type': <mglossary.TType>['template', {
                                         'context': <mglossary.TContext>['local', null],
                                         'arguments': d({
-                                            "RererencedType": <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'type': "string",
-                                            }],
+                                            "RererencedType": <mglossary.TType>['null', null],
                                         }),
                                         'template': "Reference",
                                     }],
@@ -555,10 +495,7 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['template', {
                                     'context': <mglossary.TContext>['local', null],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['reference', {
-                                            'context': <mglossary.TContext>['local', null],
-                                            'type': "string",
-                                        }],
+                                        "RererencedType": <mglossary.TType>['null', null],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -605,10 +542,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -618,10 +552,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -691,10 +622,7 @@ export const $: mproject.TModule = {
                                     'type': <mglossary.TType>['template', {
                                         'context': <mglossary.TContext>['local', null],
                                         'arguments': d({
-                                            "RererencedType": <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'type': "string",
-                                            }],
+                                            "RererencedType": <mglossary.TType>['null', null],
                                         }),
                                         'template': "Reference",
                                     }],
@@ -707,10 +635,7 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['template', {
                             'context': <mglossary.TContext>['local', null],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "string",
-                                }],
+                                "RererencedType": <mglossary.TType>['null', null],
                             }),
                             'template': "Reference",
                         }],
@@ -720,10 +645,7 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['template', {
                             'context': <mglossary.TContext>['local', null],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "string",
-                                }],
+                                "RererencedType": <mglossary.TType>['null', null],
                             }),
                             'template': "Reference",
                         }],
@@ -733,10 +655,7 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['template', {
                             'context': <mglossary.TContext>['local', null],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "string",
-                                }],
+                                "RererencedType": <mglossary.TType>['null', null],
                             }),
                             'template': "Reference",
                         }],
@@ -746,10 +665,7 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['template', {
                             'context': <mglossary.TContext>['local', null],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "string",
-                                }],
+                                "RererencedType": <mglossary.TType>['null', null],
                             }),
                             'template': "Reference",
                         }],
@@ -759,10 +675,7 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['template', {
                             'context': <mglossary.TContext>['local', null],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "string",
-                                }],
+                                "RererencedType": <mglossary.TType>['null', null],
                             }),
                             'template': "Reference",
                         }],
@@ -772,10 +685,7 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['template', {
                             'context': <mglossary.TContext>['local', null],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "string",
-                                }],
+                                "RererencedType": <mglossary.TType>['null', null],
                             }),
                             'template': "Reference",
                         }],
@@ -785,10 +695,7 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['template', {
                             'context': <mglossary.TContext>['local', null],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "string",
-                                }],
+                                "RererencedType": <mglossary.TType>['null', null],
                             }),
                             'template': "Reference",
                         }],
@@ -819,10 +726,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -853,10 +757,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -868,10 +769,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -883,10 +781,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -898,10 +793,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -913,10 +805,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -965,10 +854,7 @@ export const $: mproject.TModule = {
                                                     'type': <mglossary.TType>['template', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['reference', {
-                                                                'context': <mglossary.TContext>['local', null],
-                                                                'type': "string",
-                                                            }],
+                                                            "RererencedType": <mglossary.TType>['null', null],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -980,10 +866,7 @@ export const $: mproject.TModule = {
                                                     'type': <mglossary.TType>['template', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['reference', {
-                                                                'context': <mglossary.TContext>['local', null],
-                                                                'type': "string",
-                                                            }],
+                                                            "RererencedType": <mglossary.TType>['null', null],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1003,10 +886,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1022,10 +902,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1037,10 +914,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1050,10 +924,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1065,10 +936,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1090,10 +958,7 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['template', {
                                     'context': <mglossary.TContext>['local', null],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['reference', {
-                                            'context': <mglossary.TContext>['local', null],
-                                            'type': "string",
-                                        }],
+                                        "RererencedType": <mglossary.TType>['null', null],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -1114,10 +979,7 @@ export const $: mproject.TModule = {
                                         'type': <mglossary.TType>['template', {
                                             'context': <mglossary.TContext>['local', null],
                                             'arguments': d({
-                                                "RererencedType": <mglossary.TType>['reference', {
-                                                    'context': <mglossary.TContext>['local', null],
-                                                    'type': "string",
-                                                }],
+                                                "RererencedType": <mglossary.TType>['null', null],
                                             }),
                                             'template': "Reference",
                                         }],
@@ -1138,10 +1000,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1151,10 +1010,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1189,10 +1045,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1221,10 +1074,7 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['template', {
                                     'context': <mglossary.TContext>['local', null],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['reference', {
-                                            'context': <mglossary.TContext>['local', null],
-                                            'type': "string",
-                                        }],
+                                        "RererencedType": <mglossary.TType>['null', null],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -1238,10 +1088,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1253,10 +1100,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1266,10 +1110,7 @@ export const $: mproject.TModule = {
                                             'type': <mglossary.TType>['template', {
                                                 'context': <mglossary.TContext>['local', null],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
-                                                        'type': "string",
-                                                    }],
+                                                    "RererencedType": <mglossary.TType>['null', null],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1282,10 +1123,7 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['template', {
                                     'context': <mglossary.TContext>['local', null],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['reference', {
-                                            'context': <mglossary.TContext>['local', null],
-                                            'type': "string",
-                                        }],
+                                        "RererencedType": <mglossary.TType>['null', null],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -1310,10 +1148,7 @@ export const $: mproject.TModule = {
                                                     'type': <mglossary.TType>['template', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['reference', {
-                                                                'context': <mglossary.TContext>['local', null],
-                                                                'type': "string",
-                                                            }],
+                                                            "RererencedType": <mglossary.TType>['null', null],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1330,10 +1165,7 @@ export const $: mproject.TModule = {
                                                     'type': <mglossary.TType>['template', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['reference', {
-                                                                'context': <mglossary.TContext>['local', null],
-                                                                'type': "string",
-                                                            }],
+                                                            "RererencedType": <mglossary.TType>['null', null],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1346,10 +1178,7 @@ export const $: mproject.TModule = {
                                                     'type': <mglossary.TType>['template', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['reference', {
-                                                                'context': <mglossary.TContext>['local', null],
-                                                                'type': "string",
-                                                            }],
+                                                            "RererencedType": <mglossary.TType>['null', null],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1370,10 +1199,7 @@ export const $: mproject.TModule = {
                                                     'type': <mglossary.TType>['template', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['reference', {
-                                                                'context': <mglossary.TContext>['local', null],
-                                                                'type': "string",
-                                                            }],
+                                                            "RererencedType": <mglossary.TType>['null', null],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1385,10 +1211,7 @@ export const $: mproject.TModule = {
                                                     'type': <mglossary.TType>['template', {
                                                         'context': <mglossary.TContext>['local', null],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['reference', {
-                                                                'context': <mglossary.TContext>['local', null],
-                                                                'type': "string",
-                                                            }],
+                                                            "RererencedType": <mglossary.TType>['null', null],
                                                         }),
                                                         'template': "Reference",
                                                     }],

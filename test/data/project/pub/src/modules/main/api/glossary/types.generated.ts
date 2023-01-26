@@ -25,10 +25,10 @@ export namespace GAccounting {
                 export namespace D {
                     
                     export namespace PHoofdcategorie {}
-                    export type PHoofdcategorie = MReference<UFIXMEFIXMEFIXME>
+                    export type PHoofdcategorie = MReference<null>
                     
                     export namespace PSubcategorie {}
-                    export type PSubcategorie = MReference<UFIXMEFIXMEFIXME>
+                    export type PSubcategorie = MReference<null>
                     
                     export namespace PZijde {
                         
@@ -59,10 +59,10 @@ export namespace GAccounting {
                         export namespace D {
                             
                             export namespace PHoofdcategorie__fiscus {}
-                            export type PHoofdcategorie__fiscus = MReference<UFIXMEFIXMEFIXME>
+                            export type PHoofdcategorie__fiscus = MReference<null>
                             
                             export namespace PSubcategorie__fiscus {}
-                            export type PSubcategorie__fiscus = MReference<UFIXMEFIXMEFIXME>
+                            export type PSubcategorie__fiscus = MReference<null>
                         }
                         export type D = {
                             readonly 'Hoofdcategorie fiscus': D.PHoofdcategorie__fiscus
@@ -173,10 +173,10 @@ export namespace GAccounting {
                 export namespace D {
                     
                     export namespace PHoofdcategorie {}
-                    export type PHoofdcategorie = MReference<UFIXMEFIXMEFIXME>
+                    export type PHoofdcategorie = MReference<null>
                     
                     export namespace PSubcategorie {}
-                    export type PSubcategorie = MReference<UFIXMEFIXMEFIXME>
+                    export type PSubcategorie = MReference<null>
                     
                     export namespace PZijde {
                         
@@ -187,7 +187,7 @@ export namespace GAccounting {
                                 export namespace OJa {
                                     
                                     export namespace PCorrectietype {}
-                                    export type PCorrectietype = MReference<UFIXMEFIXMEFIXME>
+                                    export type PCorrectietype = MReference<null>
                                 }
                                 export type OJa = {
                                     readonly 'Correctietype': OJa.PCorrectietype
@@ -228,10 +228,10 @@ export namespace GAccounting {
                         export namespace D {
                             
                             export namespace PHoofdcategorie__fiscus {}
-                            export type PHoofdcategorie__fiscus = MReference<UFIXMEFIXMEFIXME>
+                            export type PHoofdcategorie__fiscus = MReference<null>
                             
                             export namespace PSubcategorie__fiscus {}
-                            export type PSubcategorie__fiscus = MReference<UFIXMEFIXMEFIXME>
+                            export type PSubcategorie__fiscus = MReference<null>
                         }
                         export type D = {
                             readonly 'Hoofdcategorie fiscus': D.PHoofdcategorie__fiscus
@@ -411,10 +411,10 @@ export namespace GAfhandeling {
     export namespace OBTW_miperiode {
         
         export namespace PBTW_miperiode {}
-        export type PBTW_miperiode = MReference<UFIXMEFIXMEFIXME>
+        export type PBTW_miperiode = MReference<null>
         
         export namespace PJaar {}
-        export type PJaar = MReference<UFIXMEFIXMEFIXME>
+        export type PJaar = MReference<null>
     }
     export type OBTW_miperiode = {
         readonly 'BTW-periode': OBTW_miperiode.PBTW_miperiode
@@ -424,7 +424,7 @@ export namespace GAfhandeling {
     export namespace OInformele__rekening {
         
         export namespace PInformele__rekening {}
-        export type PInformele__rekening = MReference<UFIXMEFIXMEFIXME>
+        export type PInformele__rekening = MReference<null>
     }
     export type OInformele__rekening = {
         readonly 'Informele rekening': OInformele__rekening.PInformele__rekening
@@ -433,10 +433,10 @@ export namespace GAfhandeling {
     export namespace OInkoop {
         
         export namespace PInkoop {}
-        export type PInkoop = MReference<UFIXMEFIXMEFIXME>
+        export type PInkoop = MReference<null>
         
         export namespace PJaar {}
-        export type PJaar = MReference<UFIXMEFIXMEFIXME>
+        export type PJaar = MReference<null>
     }
     export type OInkoop = {
         readonly 'Inkoop': OInkoop.PInkoop
@@ -446,10 +446,10 @@ export namespace GAfhandeling {
     export namespace OVerkoop {
         
         export namespace PInkoop {}
-        export type PInkoop = MReference<UFIXMEFIXMEFIXME>
+        export type PInkoop = MReference<null>
         
         export namespace PJaar {}
-        export type PJaar = MReference<UFIXMEFIXMEFIXME>
+        export type PJaar = MReference<null>
     }
     export type OVerkoop = {
         readonly 'Inkoop': OVerkoop.PInkoop
@@ -459,7 +459,7 @@ export namespace GAfhandeling {
     export namespace OVerrekenpost {
         
         export namespace PVerrekenpost {}
-        export type PVerrekenpost = MReference<UFIXMEFIXMEFIXME>
+        export type PVerrekenpost = MReference<null>
     }
     export type OVerrekenpost = {
         readonly 'Verrekenpost': OVerrekenpost.PVerrekenpost
@@ -478,7 +478,7 @@ export namespace GInformele__Rekeningen {
     export namespace D {
         
         export namespace PGrootboekrekening {}
-        export type PGrootboekrekening = MReference<UFIXMEFIXMEFIXME>
+        export type PGrootboekrekening = MReference<null>
         
         export namespace PNieuw {
             
@@ -488,10 +488,10 @@ export namespace GInformele__Rekeningen {
             export namespace ONee {
                 
                 export namespace PJaar {}
-                export type PJaar = MReference<UFIXMEFIXMEFIXME>
+                export type PJaar = MReference<null>
                 
                 export namespace PRekening {}
-                export type PRekening = MReference<UFIXMEFIXMEFIXME>
+                export type PRekening = MReference<null>
             }
             export type ONee = {
                 readonly 'Jaar': ONee.PJaar
@@ -558,7 +558,7 @@ export namespace GJaren {
             export namespace D {
                 
                 export namespace PGrootboekrekening {}
-                export type PGrootboekrekening = MReference<UFIXMEFIXMEFIXME>
+                export type PGrootboekrekening = MReference<null>
                 
                 export namespace PMutaties {
                     
@@ -595,10 +595,10 @@ export namespace GJaren {
                     export namespace ONee {
                         
                         export namespace PJaar {}
-                        export type PJaar = MReference<UFIXMEFIXMEFIXME>
+                        export type PJaar = MReference<null>
                         
                         export namespace PRekening {}
-                        export type PRekening = MReference<UFIXMEFIXMEFIXME>
+                        export type PRekening = MReference<null>
                     }
                     export type ONee = {
                         readonly 'Jaar': ONee.PJaar
@@ -671,7 +671,7 @@ export namespace GJaren {
             export namespace ONee {
                 
                 export namespace PVorig__boekjaar {}
-                export type PVorig__boekjaar = MReference<UFIXMEFIXMEFIXME>
+                export type PVorig__boekjaar = MReference<null>
             }
             export type ONee = {
                 readonly 'Vorig boekjaar': ONee.PVorig__boekjaar
@@ -682,25 +682,25 @@ export namespace GJaren {
             | ['Nee', PEerste__boekjaar.ONee]
         
         export namespace PGrootboek__BTW__periode {}
-        export type PGrootboek__BTW__periode = MReference<UFIXMEFIXMEFIXME>
+        export type PGrootboek__BTW__periode = MReference<null>
         
         export namespace PGrootboek__inkoop__saldo {}
-        export type PGrootboek__inkoop__saldo = MReference<UFIXMEFIXMEFIXME>
+        export type PGrootboek__inkoop__saldo = MReference<null>
         
         export namespace PGrootboek__verkoop__saldo {}
-        export type PGrootboek__verkoop__saldo = MReference<UFIXMEFIXMEFIXME>
+        export type PGrootboek__verkoop__saldo = MReference<null>
         
         export namespace PGrootboekrekening__voor__BTW__afrondingen {}
-        export type PGrootboekrekening__voor__BTW__afrondingen = MReference<UFIXMEFIXMEFIXME>
+        export type PGrootboekrekening__voor__BTW__afrondingen = MReference<null>
         
         export namespace PGrootboekrekening__voor__nog__aan__te__geven__BTW {}
-        export type PGrootboekrekening__voor__nog__aan__te__geven__BTW = MReference<UFIXMEFIXMEFIXME>
+        export type PGrootboekrekening__voor__nog__aan__te__geven__BTW = MReference<null>
         
         export namespace PGrootboekrekening__voor__resultaat__dit__jaar {}
-        export type PGrootboekrekening__voor__resultaat__dit__jaar = MReference<UFIXMEFIXMEFIXME>
+        export type PGrootboekrekening__voor__resultaat__dit__jaar = MReference<null>
         
         export namespace PGrootboekrekening__voor__winstreserve {}
-        export type PGrootboekrekening__voor__winstreserve = MReference<UFIXMEFIXMEFIXME>
+        export type PGrootboekrekening__voor__winstreserve = MReference<null>
         
         export namespace PInkopen {
             
@@ -719,7 +719,7 @@ export namespace GJaren {
                     export namespace ORekening__courant {
                         
                         export namespace PRekening__courant {}
-                        export type PRekening__courant = MReference<UFIXMEFIXMEFIXME>
+                        export type PRekening__courant = MReference<null>
                     }
                     export type ORekening__courant = {
                         readonly 'Rekening courant': ORekening__courant.PRekening__courant
@@ -757,7 +757,7 @@ export namespace GJaren {
                     export namespace OBinnenland__heffing__verlegd {
                         
                         export namespace PBTW_miperiode {}
-                        export type PBTW_miperiode = MReference<UFIXMEFIXMEFIXME>
+                        export type PBTW_miperiode = MReference<null>
                     }
                     export type OBinnenland__heffing__verlegd = {
                         readonly 'BTW-periode': OBinnenland__heffing__verlegd.PBTW_miperiode
@@ -766,7 +766,7 @@ export namespace GJaren {
                     export namespace OGeen__BTW__van__toepassing {
                         
                         export namespace PBTW_miperiode {}
-                        export type PBTW_miperiode = MReference<UFIXMEFIXMEFIXME>
+                        export type PBTW_miperiode = MReference<null>
                     }
                     export type OGeen__BTW__van__toepassing = {
                         readonly 'BTW-periode': OGeen__BTW__van__toepassing.PBTW_miperiode
@@ -775,7 +775,7 @@ export namespace GJaren {
                     export namespace OImport__van__buiten__de__EU {
                         
                         export namespace PBTW_miperiode {}
-                        export type PBTW_miperiode = MReference<UFIXMEFIXMEFIXME>
+                        export type PBTW_miperiode = MReference<null>
                     }
                     export type OImport__van__buiten__de__EU = {
                         readonly 'BTW-periode': OImport__van__buiten__de__EU.PBTW_miperiode
@@ -784,7 +784,7 @@ export namespace GJaren {
                     export namespace OIntracommunautair {
                         
                         export namespace PBTW_miperiode {}
-                        export type PBTW_miperiode = MReference<UFIXMEFIXMEFIXME>
+                        export type PBTW_miperiode = MReference<null>
                     }
                     export type OIntracommunautair = {
                         readonly 'BTW-periode': OIntracommunautair.PBTW_miperiode
@@ -793,7 +793,7 @@ export namespace GJaren {
                     export namespace OStandaard {
                         
                         export namespace PBTW_miperiode {}
-                        export type PBTW_miperiode = MReference<UFIXMEFIXMEFIXME>
+                        export type PBTW_miperiode = MReference<null>
                     }
                     export type OStandaard = {
                         readonly 'BTW-periode': OStandaard.PBTW_miperiode
@@ -832,7 +832,7 @@ export namespace GJaren {
                             export namespace OBalans {
                                 
                                 export namespace PBalans__item {}
-                                export type PBalans__item = MReference<UFIXMEFIXMEFIXME>
+                                export type PBalans__item = MReference<null>
                             }
                             export type OBalans = {
                                 readonly 'Balans item': OBalans.PBalans__item
@@ -841,7 +841,7 @@ export namespace GJaren {
                             export namespace OKosten {
                                 
                                 export namespace PGrootboekrekening {}
-                                export type PGrootboekrekening = MReference<UFIXMEFIXMEFIXME>
+                                export type PGrootboekrekening = MReference<null>
                             }
                             export type OKosten = {
                                 readonly 'Grootboekrekening': OKosten.PGrootboekrekening
@@ -867,7 +867,7 @@ export namespace GJaren {
                     export namespace OInkoop___pomet__crediteur_pc {
                         
                         export namespace PCrediteur {}
-                        export type PCrediteur = MReference<UFIXMEFIXMEFIXME>
+                        export type PCrediteur = MReference<null>
                     }
                     export type OInkoop___pomet__crediteur_pc = {
                         readonly 'Crediteur': OInkoop___pomet__crediteur_pc.PCrediteur
@@ -877,7 +877,7 @@ export namespace GJaren {
                     export namespace OLoonheffing {
                         
                         export namespace PRonde {}
-                        export type PRonde = MReference<UFIXMEFIXMEFIXME>
+                        export type PRonde = MReference<null>
                     }
                     export type OLoonheffing = {
                         readonly 'Ronde': OLoonheffing.PRonde
@@ -886,10 +886,10 @@ export namespace GJaren {
                     export namespace OSalaris {
                         
                         export namespace PMedewerker {}
-                        export type PMedewerker = MReference<UFIXMEFIXMEFIXME>
+                        export type PMedewerker = MReference<null>
                         
                         export namespace PRonde {}
-                        export type PRonde = MReference<UFIXMEFIXMEFIXME>
+                        export type PRonde = MReference<null>
                     }
                     export type OSalaris = {
                         readonly 'Medewerker': OSalaris.PMedewerker
@@ -899,7 +899,7 @@ export namespace GJaren {
                     export namespace OWBSO {
                         
                         export namespace PRonde {}
-                        export type PRonde = MReference<UFIXMEFIXMEFIXME>
+                        export type PRonde = MReference<null>
                     }
                     export type OWBSO = {
                         readonly 'Ronde': OWBSO.PRonde
@@ -928,14 +928,14 @@ export namespace GJaren {
             export namespace D {
                 
                 export namespace PGrootboekrekening {}
-                export type PGrootboekrekening = MReference<UFIXMEFIXMEFIXME>
+                export type PGrootboekrekening = MReference<null>
                 
                 export namespace PMemoriaal__boekingen {
                     
                     export namespace D {
                         
                         export namespace PGrootboekrekening {}
-                        export type PGrootboekrekening = MReference<UFIXMEFIXMEFIXME>
+                        export type PGrootboekrekening = MReference<null>
                     }
                     export type D = {
                         readonly 'Bedrag': number
@@ -954,10 +954,10 @@ export namespace GJaren {
                     export namespace ONee {
                         
                         export namespace PBalans__item {}
-                        export type PBalans__item = MReference<UFIXMEFIXMEFIXME>
+                        export type PBalans__item = MReference<null>
                         
                         export namespace PJaar {}
-                        export type PJaar = MReference<UFIXMEFIXMEFIXME>
+                        export type PJaar = MReference<null>
                     }
                     export type ONee = {
                         readonly 'Balans item': ONee.PBalans__item
@@ -1003,7 +1003,7 @@ export namespace GJaren {
                     export namespace ORekening__courant {
                         
                         export namespace PRekening__courant {}
-                        export type PRekening__courant = MReference<UFIXMEFIXMEFIXME>
+                        export type PRekening__courant = MReference<null>
                     }
                     export type ORekening__courant = {
                         readonly 'Rekening courant': ORekening__courant.PRekening__courant
@@ -1028,14 +1028,14 @@ export namespace GJaren {
                     | ['Toegevoegd', PBrondocument.OToegevoegd]
                 
                 export namespace PBTW_miperiode {}
-                export type PBTW_miperiode = MReference<UFIXMEFIXMEFIXME>
+                export type PBTW_miperiode = MReference<null>
                 
                 export namespace PContracttype {
                     
                     export namespace OLicentieovereenkomst {
                         
                         export namespace POvereenkomst {}
-                        export type POvereenkomst = MReference<UFIXMEFIXMEFIXME>
+                        export type POvereenkomst = MReference<null>
                     }
                     export type OLicentieovereenkomst = {
                         readonly 'Overeenkomst': OLicentieovereenkomst.POvereenkomst
@@ -1044,10 +1044,10 @@ export namespace GJaren {
                     export namespace OProject {
                         
                         export namespace POfferte {}
-                        export type POfferte = MReference<UFIXMEFIXMEFIXME>
+                        export type POfferte = MReference<null>
                         
                         export namespace PProject {}
-                        export type PProject = MReference<UFIXMEFIXMEFIXME>
+                        export type PProject = MReference<null>
                     }
                     export type OProject = {
                         readonly 'Offerte': OProject.POfferte
@@ -1059,7 +1059,7 @@ export namespace GJaren {
                     | ['Project', PContracttype.OProject]
                 
                 export namespace PDebiteur {}
-                export type PDebiteur = MReference<UFIXMEFIXMEFIXME>
+                export type PDebiteur = MReference<null>
                 
                 export namespace PRegels {
                     
@@ -1082,7 +1082,7 @@ export namespace GJaren {
                             export namespace OStandaard {
                                 
                                 export namespace PBTW_micateogrie {}
-                                export type PBTW_micateogrie = MReference<UFIXMEFIXMEFIXME>
+                                export type PBTW_micateogrie = MReference<null>
                             }
                             export type OStandaard = {
                                 readonly 'BTW-cateogrie': OStandaard.PBTW_micateogrie
@@ -1100,7 +1100,7 @@ export namespace GJaren {
                             export namespace OLicentieovereenkomst {
                                 
                                 export namespace PPeriode {}
-                                export type PPeriode = MReference<UFIXMEFIXMEFIXME>
+                                export type PPeriode = MReference<null>
                             }
                             export type OLicentieovereenkomst = {
                                 readonly 'Periode': OLicentieovereenkomst.PPeriode
@@ -1112,7 +1112,7 @@ export namespace GJaren {
                             export namespace OProject {
                                 
                                 export namespace POpbrengst {}
-                                export type POpbrengst = MReference<UFIXMEFIXMEFIXME>
+                                export type POpbrengst = MReference<null>
                             }
                             export type OProject = {
                                 readonly 'Opbrengst': OProject.POpbrengst
@@ -1128,7 +1128,7 @@ export namespace GJaren {
                             export namespace OBalans {
                                 
                                 export namespace PBalans__item {}
-                                export type PBalans__item = MReference<UFIXMEFIXMEFIXME>
+                                export type PBalans__item = MReference<null>
                             }
                             export type OBalans = {
                                 readonly 'Balans item': OBalans.PBalans__item
@@ -1137,7 +1137,7 @@ export namespace GJaren {
                             export namespace OOpbrengsten {
                                 
                                 export namespace PGrootboekrekening {}
-                                export type PGrootboekrekening = MReference<UFIXMEFIXMEFIXME>
+                                export type PGrootboekrekening = MReference<null>
                             }
                             export type OOpbrengsten = {
                                 readonly 'Grootboekrekening': OOpbrengsten.PGrootboekrekening

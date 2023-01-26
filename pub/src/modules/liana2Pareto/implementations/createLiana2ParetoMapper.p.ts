@@ -145,7 +145,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                                 'template': "Reference",
                                                 'context': ['local', null],
                                                 'arguments': pr.wrapRawDictionary({
-                                                    "RererencedType": ref("string")//FIXME
+                                                    "RererencedType": <mglossary.GType>['null', null], //FIXME
                                                 }),
                                             }]
                                         })

@@ -9,30 +9,36 @@ import * as mproject from "../../../project"
 export namespace GArgumentError {
     
     export namespace G {
-        export type $ = 
+        export type /*FIXME REMOVE*/$ = 
             | ['missing', null]
             | ['too many', null]
     }
-    export type $ = G.$
+    export type G = G.$
+    export type /*FIXME REMOVE*/$ = G
 }
+export type GArgumentError = GArgumentError.$
 
 export namespace GParameters {
     
     export namespace G {
-        export type $ = {
+        export type /*FIXME REMOVE*/$ = {
             readonly 'testDirectory': string
         }
     }
-    export type $ = G.$
+    export type G = G.$
+    export type /*FIXME REMOVE*/$ = G
 }
+export type GParameters = GParameters.$
 
 export namespace GProjectSettings {
     
     export namespace G {
-        export type $ = {
+        export type /*FIXME REMOVE*/$ = {
             readonly 'mainData': mmain.TMainData
             readonly 'project': mproject.TProject
         }
     }
-    export type $ = G.$
+    export type G = G.$
+    export type /*FIXME REMOVE*/$ = G
 }
+export type GProjectSettings = GProjectSettings.$

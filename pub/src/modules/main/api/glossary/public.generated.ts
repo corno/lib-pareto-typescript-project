@@ -8,11 +8,11 @@ import * as mmain from "lib-pareto-main"
 import * as mpareto2typescript from "../../../pareto2typescript"
 import * as mproject from "../../../project"
 
-export type TArgumentError = t.GArgumentError.$
+export type TArgumentError = t.GArgumentError
 
-export type TParameters = t.GParameters.$
+export type TParameters = t.GParameters
 
-export type TProjectSettings = t.GProjectSettings.$
+export type TProjectSettings = t.GProjectSettings
 
 export type IHandleParameters = ($: TParameters, ) => void
 

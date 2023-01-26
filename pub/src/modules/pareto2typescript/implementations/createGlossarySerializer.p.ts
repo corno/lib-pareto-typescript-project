@@ -28,17 +28,6 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             $i.line(`export * from "./public.generated"`)
         })
         $i.file(`types.generated.ts`, ($i) => {
-            function ns($: string, $i: mfp.IBlock, $content: ($i: mfp.IBlock) => void) {
-                $i.line(``)
-                $i.nestedLine(($i) => {
-                    $i.snippet(`export namespace ${$d.createIdentifier($)} {`)
-                    $i.indent(($i) => {
-                        $content($i)
-                    })
-                    $i.snippet(`}`)
-
-                })
-            }
             function serializeType(
                 $: {
                     $: mglossary.TType,
@@ -150,6 +139,17 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                     $namespaces: ($i: mfp.IBlock) => void,
                     $c: ($i: mfp.ILine) => void
                 ) {
+                    function ns($: string, $i: mfp.IBlock, $content: ($i: mfp.IBlock) => void) {
+                        $i.line(``)
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`export namespace ${$d.createIdentifier($)} {`)
+                            $i.indent(($i) => {
+                                $content($i)
+                            })
+                            $i.snippet(`}`)
+        
+                        })
+                    }
                     ns(
                         nameXX,
                         $i,
@@ -547,32 +547,14 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 })
             }
             $d.dictionaryForEach($.types, ($) => {
-                ns(
-                    `G${$.key}`,
-                    $i,
-                    ($i) => {
-                        serializeComplexType(
-                            {
-                                $: $.value,
-                                name: `G`
-                            },
-                            () => { },
-                            $i
-                        )
-                    }
+                serializeComplexType(
+                    {
+                        $: $.value,
+                        name: `G${$.key}`
+                    },
+                    () => { },
+                    $i
                 )
-                $i.nestedLine(($i) => {
-                    $i.snippet(`export type ${$d.createIdentifier(`G${$.key}`)} = `)
-                    serializeType(
-                        {
-                            $: $.value,
-                        },
-                        ($i) => {
-                            $i.snippet(`${$d.createIdentifier(`G${$.key}`)}.G`)
-                        },
-                        $i
-                    )
-                })
             })
 
         })

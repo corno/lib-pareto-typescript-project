@@ -20,7 +20,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
             "fp": "lib-fountain-pen",
-            "liana": "../../liana"
+            "liana": "../../liana",
+            "liana2Pareto": "../../liana2Pareto",
         }),
         'parameters': d({}),
         'namespace': {
@@ -31,13 +32,16 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         },
         'functions': d({
 
-            "Serialize": callback(externalTypeReference("liana", "Model"), externalInterfaceReference("fp", "Writer")),
+            "Serialize": callback(externalTypeReference("liana2Pareto", "MappedModel"), externalInterfaceReference("fp", "Writer")),
         }),
     },
     'api': {
         'imports': d({
             "collation": "res-pareto-collation",
+            "liana2Pareto": "../../liana2Pareto",
+            "pareto2typescript": "../../pareto2typescript",
             "temp": "../../temp",
+            "tostring": "res-pareto-tostring",
             "ts": "res-typescript",
         }),
         'algorithms': d({
@@ -49,6 +53,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'configuration data': null,
                     'dependencies': d({
                         "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                        "joinNestedStrings": externalDefinitionReference("tostring", "JoinNestedStrings"),
+                        "mapLiana2States": externalDefinitionReference("liana2Pareto", "MapLiana2States"),
+                        "serializeStates": externalDefinitionReference("pareto2typescript", "SerializeStates")
                         // "arrayForEach": ['callback', {
                         //     'context': ['import', "temp"],
                         //     'callback': "ArrayForEach",

@@ -24,6 +24,10 @@ import * as mliana_flat from "../../../../../pub/dist/modules/liana_flat"
 import * as mproject from "../../../../../pub/dist/modules/project"
 import * as mliana from "../../../../../pub/dist/modules/liana"
 import * as mliana2Pareto from "../../../../../pub/dist/modules/liana2Pareto"
+import * as mpareto2typescript from "../../../../../pub/dist/modules/pareto2typescript"
+import * as mtostring from "res-pareto-tostring"
+import * as mtemp from "../../../../../pub/dist/modules/temp"
+import * as mcoll from "res-pareto-collation"
 import * as mfp from "lib-fountain-pen"
 import * as mts from "res-typescript"
 const d = pr.wrapRawDictionary
@@ -96,7 +100,31 @@ export const $$: api.CgetTestSet = ($XXX) => {
     })
     writer([$XXX.testDirectory, 'flat'], ($i) => {
         mliana_flat.$a.createSerializer({
-            createIdentifier: mts.$a.createIdentifier
+            createIdentifier: mts.$a.createIdentifier,
+            mapLiana2States: mliana2Pareto.$a.createLiana2StatesMapper({
+                decorateDictionaryEntriesWithKey: mtemp.$a.decorateDictionaryEntriesWithKey,
+            }),
+            serializeStates: mpareto2typescript.$a.createStatesSerializer({
+                arrayForEach: mtemp.$a.createArrayForEach({
+                    compare: mcoll.$a.localeIsABeforeB
+                }),
+                dictionaryForEach: mtemp.$a.createDictionaryForEach({
+                    compare: mcoll.$a.localeIsABeforeB
+
+                }),
+                enrichedArrayForEach: mtemp.$a.createEnrichedArrayForEach({
+                    compare: mcoll.$a.localeIsABeforeB
+
+                }),
+                enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
+                    compare: mcoll.$a.localeIsABeforeB
+
+                }),
+                createIdentifier: mts.$a.createIdentifier,
+                createApostrophedString: mts.$a.createApostrophedString,
+                
+            }),
+            joinNestedStrings: mtostring.$a.joinNestedStrings,
         })(accountingModel, $i)
 
     })
@@ -125,7 +153,7 @@ export const $$: api.CgetTestSet = ($XXX) => {
         }
     }
     // x(lianaModel)
-    x(accountingModel)
+    x(accountingModel.model)
     x(simpleModel)
 
     mliana2Pareto.$a.generateProject({
@@ -143,21 +171,8 @@ export const $$: api.CgetTestSet = ($XXX) => {
     mliana2Pareto.$a.generateProject({
         'mainData': {
             'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/liana/accounting`]),
-
         },
-        'model': {
-            'model': accountingModel,
-            'stringmapping': pr.wrapRawDictionary({
-                "bedrag": ['number', null],
-                "bestand": ['string', null],
-                "dagen": ['number', null],
-                "datum": ['number', null],
-                "identifier": ['string', null],
-                "multiline text": ['string', null],
-                "promillage": ['number', null],
-                "single line text": ['string', null],
-            }),
-        },
+        'model': accountingModel,
     })
 
 

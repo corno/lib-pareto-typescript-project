@@ -16,6 +16,7 @@ const d = pr.wrapRawDictionary
 export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
+            "algorithm": "../../algorithm",
             "liana": "../../liana",
             "project": "../../project",
             // "fp": "lib-fountain-pen",
@@ -40,8 +41,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
 
         },
         'functions': d({
-            "MapLiana2Pareto": _function(typeReference("MappedModel"), externalTypeReference("project", "Module")),
             "GenerateProject": procedure(typeReference("Configuration")),
+            "MapLiana2Pareto": _function(typeReference("MappedModel"), externalTypeReference("project", "Module")),
+            "MapLiana2States": _function(typeReference("MappedModel"), externalTypeReference("algorithm", "States")),
         }),
     },
     'api': {
@@ -82,6 +84,17 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "createLiana2ParetoMapper": {
                 'definition': {
                     'function': "MapLiana2Pareto"
+                },
+                'type': constructor(null, {
+                    "decorateDictionaryEntriesWithKey": {
+                        'context': ['import', "temp"],
+                        'function': "DecorateDictionaryEntriesWithKey"
+                    },
+                }),
+            },
+            "createLiana2StatesMapper": {
+                'definition': {
+                    'function': "MapLiana2States"
                 },
                 'type': constructor(null, {
                     "decorateDictionaryEntriesWithKey": {

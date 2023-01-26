@@ -72,4 +72,21 @@ export type TImplementation = {
     }>
 }
 
-export type FSerialize = ($: TImplementation, $i: mfp.ILine,) => void
+export type TStates = pt.Dictionary<TType>
+
+export type TType = 
+    | ['array', TType]
+    | ['boolean', null]
+    | ['dictionary', TType]
+    | ['group', pt.Dictionary<{
+        readonly 'type': TType
+    }>]
+    | ['null', null]
+    | ['number', null]
+    | ['optional', TType]
+    | ['parameter', string]
+    | ['reference', string]
+    | ['string', null]
+    | ['taggedUnion', pt.Dictionary<TType>]
+
+export type FSerializeImplementation = ($: TImplementation, $i: mfp.ILine,) => void

@@ -47,6 +47,15 @@ export type CcreateProjectSerializer = ($d: {
     readonly 'serializeModuleDefinition': glo.FSerializeModuleDefinition
 }) => glo.FSerializeProject
 
+export type CcreateStatesSerializer = ($d: {
+    readonly 'arrayForEach': mtemp.FArrayForEach
+    readonly 'createApostrophedString': mts.FCreateApostrophedString
+    readonly 'createIdentifier': mts.FCreateIdentifier
+    readonly 'dictionaryForEach': mtemp.FDictionaryForEach
+    readonly 'enrichedArrayForEach': mtemp.FEnrichedArrayForEach
+    readonly 'enrichedDictionaryForEach': mtemp.FEnrichedDictionaryForEach
+}) => glo.FSerializeStates
+
 export type CcreateTemplateSerializer = ($d: {
     readonly 'createApostrophedString': mts.FCreateApostrophedString
     readonly 'createBacktickedString': mts.FCreateBacktickedString
@@ -60,5 +69,6 @@ export type API = {
     createImplementationSerializer: CcreateImplementationSerializer
     createModuleDefinitionSerializer: CcreateModuleDefinitionSerializer
     createProjectSerializer: CcreateProjectSerializer
+    createStatesSerializer: CcreateStatesSerializer
     createTemplateSerializer: CcreateTemplateSerializer
 }

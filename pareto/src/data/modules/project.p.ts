@@ -33,6 +33,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
 
                     // }))
                     "implementation": member(er("algorithm", "Implementation"), true),
+                    "states": member(er("algorithm", "States"), true)
                 }),
                 "Project": group({
                     "type": member(taggedUnion({
@@ -74,7 +75,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         },
                         "serializeImplementation": {
                             'context': ['import', "algorithm"],
-                            'function': "Serialize"
+                            'function': "SerializeImplementation"
                         },
                         // "arrayForEach": ['callback', {
                         //     'context': ['import', "temp"],

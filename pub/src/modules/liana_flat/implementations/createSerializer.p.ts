@@ -7,13 +7,17 @@ import * as api from "../api"
 import * as mliana from "../../liana"
 import * as mfp from "lib-fountain-pen"
 import * as mcommon from "glo-pareto-common"
-import * as mtostring from "res-pareto-tostring"
 
 export const $$: api.CcreateSerializer = ($d) => {
     return ($, $i) => {
+
+        $i.file(`states.generated.ts`, ($i) => {
+            $d.serializeStates($d.mapLiana2States($), $i)
+
+        })
         function getPathID($: mcommon.TPath) {
 
-            return $d.createIdentifier(mtostring.$a.joinNestedStrings({
+            return $d.createIdentifier($d.joinNestedStrings({
                 'strings': $,
                 'separator': `_`,
             }))
@@ -54,7 +58,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                         pl.cc($[1], ($) => {
                             const parentPathAsArray = pr.wrapRawArray(pi.flatten(idPath))
                             $i.file(
-                                `${mtostring.$a.joinNestedStrings({
+                                `${$d.joinNestedStrings({
                                     'strings': path,
                                     'separator': "_",
                                 })}.generated.ts`,
@@ -361,7 +365,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 }
             })
         }
-        $.globalTypes.dictionary.forEach(() => false, ($, key) => {
+        $.model.globalTypes.dictionary.forEach(() => false, ($, key) => {
             doDictionaries({
                 $: $.type,
                 path: [key],

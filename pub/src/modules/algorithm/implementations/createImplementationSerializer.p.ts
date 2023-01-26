@@ -5,7 +5,7 @@ import * as api from "../api"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
-export const $$: api.CcreateSerializer = ($d) => {
+export const $$: api.CcreateImplementationSerializer = ($d) => {
 
     return ($, $i) => {
         function serializeExpression($: api.TExpression, $i: mfp.ILine) {

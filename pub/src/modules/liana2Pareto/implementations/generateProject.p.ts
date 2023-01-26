@@ -49,7 +49,7 @@ export const $$: api.CgenerateProject = ($) => {
                             enrichedDictionaryForEach: ed,
                         })
                     }),
-                    serializeImplementation: malgorithm.$a.createSerializer({
+                    serializeImplementation: malgorithm.$a.createImplementationSerializer({
                         arrayForEach: a,
                         dictionaryForEach: d,
                         enrichedArrayForEach: ea,

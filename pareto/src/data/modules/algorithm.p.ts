@@ -2,13 +2,13 @@ import * as pr from 'pareto-core-raw'
 import {
     externalReference as er,
     string as str,
-   null_,
+    null_,
     reference as ref,
     boolean as bln,
     array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import {definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -93,12 +93,28 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         }))
                     }))),
                 }),
+                "States": dictionary(ref("Type")),
+                "Type": taggedUnion({
+                    "array": ref("Type"),
+                    "optional": ref("Type"),
+                    "dictionary": ref("Type"),
+                    "null": null_(),
+                    "boolean": null_(),
+                    "string": null_(),
+                    "number": null_(),
+                    "reference": str(),
+                    "group": dictionary(group({
+                        "type": member(ref("Type")),
+                    })),
+                    "parameter": str(),
+                    "taggedUnion": dictionary(ref("Type")),
+                }),
             }),
             'interfaces': d({}),
 
         },
         'functions': d({
-            "Serialize": callback(typeReference("Implementation"), externalInterfaceReference("fp", "Line")),
+            "SerializeImplementation": callback(typeReference("Implementation"), externalInterfaceReference("fp", "Line")),
         }),
     },
     'api': {
@@ -107,31 +123,16 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "temp": "../../temp",
         }),
         'algorithms': d({
-            "createSerializer": {
+            "createImplementationSerializer": {
                 'definition': {
-                    'function': "Serialize"
+                    'function': "SerializeImplementation"
                 },
-                'type': ['constructor', {
-                    'configuration data': null,
-                    'dependencies': d({
-                        "arrayForEach": {
-                            'context': ['import', "temp"],
-                            'function': "ArrayForEach",
-                        },
-                        "dictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "DictionaryForEach",
-                        },
-                        "enrichedArrayForEach": {
-                            'context': ['import', "temp"],
-                            'function': "EnrichedArrayForEach",
-                        },
-                        "enrichedDictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "EnrichedDictionaryForEach",
-                        },
-                    })
-                }]
+                'type': constructor(null, {
+                    "arrayForEach": externalDefinitionReference("temp", "ArrayForEach"),
+                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
+                    "enrichedArrayForEach": externalDefinitionReference("temp", "EnrichedArrayForEach"),
+                    "enrichedDictionaryForEach": externalDefinitionReference("temp", "EnrichedDictionaryForEach"),
+                })
             },
         })
     },

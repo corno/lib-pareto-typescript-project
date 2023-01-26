@@ -13,4 +13,6 @@ export type FSerializeModuleDefinition = ($: mmoduleDefinition.TModuleDefinition
 
 export type FSerializeProject = ($: mproject.TProject, $i: mfp.IWriter,) => void
 
+export type FSerializeStates = ($: malgorithm.TStates, $i: mfp.IBlock,) => void
+
 export type FSerializeTemplate = ($: mproject.TProject, $i: mfp.IWriter,) => void

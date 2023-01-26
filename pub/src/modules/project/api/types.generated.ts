@@ -10,6 +10,7 @@ export type TImplementation = pt.Dictionary<TAlgorithmImplementation>
 export type TModule = {
     readonly 'definition': mmoduleDefinition.TModuleDefinition
     readonly 'implementation'?: malgorithm.TImplementation
+    readonly 'states'?: malgorithm.TStates
 }
 
 export type TProject = {

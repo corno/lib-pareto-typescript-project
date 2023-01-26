@@ -10,6 +10,10 @@ export type CcreateLiana2ParetoMapper = ($d: {
     readonly 'decorateDictionaryEntriesWithKey': mtemp.FDecorateDictionaryEntriesWithKey
 }) => glo.FMapLiana2Pareto
 
+export type CcreateLiana2StatesMapper = ($d: {
+    readonly 'decorateDictionaryEntriesWithKey': mtemp.FDecorateDictionaryEntriesWithKey
+}) => glo.FMapLiana2States
+
 export type CcreateProjectGenerator = ($d: {
     readonly 'decorateDictionaryEntriesWithKey': mtemp.FDecorateDictionaryEntriesWithKey
     readonly 'logError': mcommon.FLog
@@ -21,6 +25,7 @@ export type CgenerateProject = glo.FGenerateProject
 
 export type API = {
     createLiana2ParetoMapper: CcreateLiana2ParetoMapper
+    createLiana2StatesMapper: CcreateLiana2StatesMapper
     createProjectGenerator: CcreateProjectGenerator
     generateProject: CgenerateProject
 }

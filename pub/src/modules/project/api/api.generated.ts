@@ -10,7 +10,7 @@ import * as mtemp from "../../temp"
 export type CcreateSerializer = ($d: {
     readonly 'dictionaryForEach': mtemp.FDictionaryForEach
     readonly 'enrichedArrayForEach': mtemp.FEnrichedArrayForEach
-    readonly 'serializeImplementation': malgorithm.FSerialize
+    readonly 'serializeImplementation': malgorithm.FSerializeImplementation
     readonly 'serializeModuleDefinition': mmoduleDefinition.FSerialize
 }) => glo.FSerialize
 

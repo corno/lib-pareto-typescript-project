@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "lib-fountain-pen": "^0.29.0",
-    "lib-pareto-main": "^0.10.0",
+    "lib-fountain-pen": "^0.30.0",
+    "lib-pareto-main": "^0.11.0",
     "lib-pareto-test": "^0.25.0",
     "pareto-core-exe": "^0.15.1",
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.4",
     "pareto-core-state": "^0.12.0",
-    "res-typescript": "^0.5.0"
+    "res-typescript": "^0.6.0"
   }
 }

@@ -16,30 +16,27 @@ const d = pr.wrapRawDictionary
 export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
-            "algorithm": "../../algorithm",
-            "liana": "../../liana",
-            "project": "../../project",
+            "algorithm": "../../../algorithm",
+            "liana": "../../../liana",
+            "project": "../../../project",
             // "fp": "lib-fountain-pen",
             "main": "lib-pareto-main",
         }),
         'parameters': d({}),
-        'namespace': {
-            'types': types({
-                "Configuration": group({
-                    "model": member(ref("MappedModel")),
-                    "mainData": member(er("main", "MainData")),
-                }),
-                "MappedModel": group({
-                    "model": member(er("liana", "Model")),
-                    "stringmapping": member(dictionary(taggedUnion({
-                        "number": null_(),
-                        "string": null_(),
-                    }))),
-                })
+        'types': types({
+            "Configuration": group({
+                "model": member(ref("MappedModel")),
+                "mainData": member(er("main", "MainData")),
             }),
-            'interfaces': d({}),
-
-        },
+            "MappedModel": group({
+                "model": member(er("liana", "Model")),
+                "stringmapping": member(dictionary(taggedUnion({
+                    "number": null_(),
+                    "string": null_(),
+                }))),
+            })
+        }),
+        'interfaces': d({}),
         'functions': d({
             "GenerateProject": procedure(typeReference("Configuration")),
             "MapLiana2Pareto": _function(typeReference("MappedModel"), externalTypeReference("project", "Module")),

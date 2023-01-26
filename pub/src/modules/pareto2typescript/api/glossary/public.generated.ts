@@ -1,9 +1,12 @@
 import * as pt from 'pareto-core-types'
-import * as malgorithm from "../../algorithm"
+
+import * as t from './types.generated'
+
+import * as malgorithm from "../../../algorithm"
 import * as mfp from "lib-fountain-pen"
-import * as mglossary from "../../glossary"
-import * as mmoduleDefinition from "../../moduleDefinition"
-import * as mproject from "../../project"
+import * as mglossary from "../../../glossary"
+import * as mmoduleDefinition from "../../../moduleDefinition"
+import * as mproject from "../../../project"
 
 export type FSerializeGlossary = ($: mglossary.TGlossary, $i: mfp.IWriter,) => void
 

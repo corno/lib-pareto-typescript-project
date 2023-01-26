@@ -1,7 +1,7 @@
 
 import * as pr from 'pareto-core-raw'
 
-import * as t from "./types.generated"
+import * as t from "./glossary"
 
 
 

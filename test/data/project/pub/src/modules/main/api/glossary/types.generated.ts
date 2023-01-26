@@ -16,7 +16,7 @@ export namespace GFunction {
     
     export namespace G {
         
-        export namespace Preturn_$_$type {
+        export namespace Preturn__type {
             
             export namespace Odata {
                 export type $ = {
@@ -33,7 +33,7 @@ export namespace GFunction {
             readonly 'data': GTypeReference.$
             readonly 'managed input interface': null | GInterfaceReference.$
             readonly 'output interface': null | GInterfaceReference.$
-            readonly 'return type': G.$
+            readonly 'return type': Preturn__type.$
         }
     }
     export type $ = G.$
@@ -51,8 +51,8 @@ export namespace GGlossary {
             export type $ = pt.Dictionary<string>
         }
         export type $ = {
-            readonly 'functions': G.$
-            readonly 'imports': G.$
+            readonly 'functions': Pfunctions.$
+            readonly 'imports': Pimports.$
             readonly 'namespace': GNamespace.$
             readonly 'parameters'?: GParameters.$
         }
@@ -70,7 +70,7 @@ export namespace GInterface {
                 export type $ = pt.Dictionary<GInterface.$>
             }
             export type $ = {
-                readonly 'members': Ogroup.$
+                readonly 'members': Pmembers.$
             }
         }
         
@@ -119,10 +119,10 @@ export namespace GNamespace {
             export type $ = pt.Dictionary<GType.$>
         }
         export type $ = {
-            readonly 'interfaces': G.$
-            readonly 'namespaces'?: G.$
-            readonly 'templates'?: G.$
-            readonly 'types': G.$
+            readonly 'interfaces': Pinterfaces.$
+            readonly 'namespaces'?: Pnamespaces.$
+            readonly 'templates'?: Ptemplates.$
+            readonly 'types': Ptypes.$
         }
     }
     export type $ = G.$
@@ -144,7 +144,7 @@ export namespace GTemplate {
             export type $ = pt.Dictionary<null>
         }
         export type $ = {
-            readonly 'parameters': G.$
+            readonly 'parameters': Pparameters.$
             readonly 'type': GType.$
         }
     }
@@ -176,7 +176,7 @@ export namespace GType {
                 export type $ = pt.Dictionary<GType.$>
             }
             export type $ = {
-                readonly 'arguments': Otemplate.$
+                readonly 'arguments': Parguments.$
                 readonly 'context'?: GContext.$
                 readonly 'template': string
             }
@@ -209,7 +209,7 @@ export namespace GTypeReference {
         }
         export type $ = {
             readonly 'context': GContext.$
-            readonly 'namespaces': G.$
+            readonly 'namespaces': Pnamespaces.$
             readonly 'type': string
         }
     }

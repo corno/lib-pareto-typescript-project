@@ -8,7 +8,7 @@ import {
     array, dictionary, group, member, taggedUnion, types, _function, typeReference, optional, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import {definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
@@ -18,48 +18,45 @@ const d = pr.wrapRawDictionary
 export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
-            "glossary": "../../glossary",
+            "glossary": "../../../glossary",
             "fp": "lib-fountain-pen",
         }),
         'parameters': d({}),
-        'namespace': {
-            'types': types({
-                "_AlgorithmType": taggedUnion({
-                    "reference": null_(),
-                    "constructor": group({
-                        "configuration data": member(optional(er("glossary", "TypeReference"))),
-                        "dependencies": member(dictionary(ref("DefinitionReference"))),
-                    }),
+        'types': types({
+            "_AlgorithmType": taggedUnion({
+                "reference": null_(),
+                "constructor": group({
+                    "configuration data": member(optional(er("glossary", "TypeReference"))),
+                    "dependencies": member(dictionary(ref("DefinitionReference"))),
                 }),
-                "DefinitionReference": group({
-                    "context": member(ref("Context"), true),
-                    "function": member(str()),
-                }),
-                "Context": taggedUnion({
-                    "local": null_(),
-                    "import": str(),
-                }),
-                "ModuleDefinition": group({
-                    "glossary": member(er("glossary", "Glossary")),
-                    "api": member(group({
-                        "imports": member(dictionary(str())),
-                        "algorithms": member(dictionary(group({
-                            "definition": member(ref("DefinitionReference")),
-                            "type": member(ref("_AlgorithmType"))
-                        }))),
-                    })),
-                }),
-                // "TypeReference": group({
-                //     "context": member(ref("Context")),
-                //     "namespaces": member(array(str())),
-                //     "type": member(str()),
-                // }),
             }),
-            'interfaces': d({}),
-
-        },
+            "DefinitionReference": group({
+                "context": member(ref("Context"), true),
+                "function": member(str()),
+            }),
+            "Context": taggedUnion({
+                "local": null_(),
+                "import": str(),
+            }),
+            "ModuleDefinition": group({
+                "glossary": member(er("glossary", "Glossary")),
+                "api": member(group({
+                    "imports": member(dictionary(str())),
+                    "algorithms": member(dictionary(group({
+                        "definition": member(ref("DefinitionReference")),
+                        "type": member(ref("_AlgorithmType"))
+                    }))),
+                })),
+            }),
+            // "TypeReference": group({
+            //     "context": member(ref("Context")),
+            //     "namespaces": member(array(str())),
+            //     "type": member(str()),
+            // }),
+        }),
+        'interfaces': d({}),
         'functions': d({
-            "Serialize": callback( typeReference("ModuleDefinition"), externalInterfaceReference("fp", "Line")),
+            "Serialize": callback(typeReference("ModuleDefinition"), externalInterfaceReference("fp", "Line")),
         }),
     },
     'api': {
@@ -70,13 +67,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": {
-                'definition':  {
+                'definition': {
                     'function': "Serialize"
                 },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "serializeGlossary":{
+                        "serializeGlossary": {
                             'context': ['import', "glossary"],
                             'function': "Serialize"
                         },

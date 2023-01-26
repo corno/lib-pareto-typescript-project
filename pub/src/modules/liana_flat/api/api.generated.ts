@@ -1,6 +1,6 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./types.generated"
+import * as glo from "./glossary"
 
 import * as mcollation from "res-pareto-collation"
 import * as mliana2Pareto from "../../liana2Pareto"

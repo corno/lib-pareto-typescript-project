@@ -1,22 +1,18 @@
 import * as pt from 'pareto-core-types'
+
+import * as t from './types.generated'
+
 import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
 import * as mmain from "lib-pareto-main"
-import * as mpareto2typescript from "../../pareto2typescript"
-import * as mproject from "../../project"
+import * as mpareto2typescript from "../../../pareto2typescript"
+import * as mproject from "../../../project"
 
-export type TArgumentError = 
-    | ['missing', null]
-    | ['too many', null]
+export type TArgumentError = t.GArgumentError.$
 
-export type TParameters = {
-    readonly 'testDirectory': string
-}
+export type TParameters = t.GParameters.$
 
-export type TProjectSettings = {
-    readonly 'mainData': mmain.TMainData
-    readonly 'project': mproject.TProject
-}
+export type TProjectSettings = t.GProjectSettings.$
 
 export type IHandleParameters = ($: TParameters, ) => void
 

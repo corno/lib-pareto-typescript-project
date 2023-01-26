@@ -4,7 +4,6 @@ import * as pr from 'pareto-core-raw'
 import * as ps from 'pareto-core-state'
 
 import * as api from "../api"
-import { TXGlobalType } from '../api'
 
 export const $$: api.CcreateResolver = ($d) => {
     let hasErrors = false

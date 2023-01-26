@@ -20,16 +20,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
             "fp": "lib-fountain-pen",
-            "liana": "../../liana",
-            "liana2Pareto": "../../liana2Pareto",
+            "liana": "../../../liana",
+            "liana2Pareto": "../../../liana2Pareto",
         }),
         'parameters': d({}),
-        'namespace': {
-            'types': types({
-            }),
-            'interfaces': d({}),
-
-        },
+        'types': types({
+        }),
+        'interfaces': d({}),
         'functions': d({
 
             "Serialize": callback(externalTypeReference("liana2Pareto", "MappedModel"), externalInterfaceReference("fp", "Writer")),

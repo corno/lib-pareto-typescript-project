@@ -142,7 +142,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
             })
         })
         $i.file("index.ts", ($i) => {
-            $i.line(`export * from "./types.generated"`)
+            $i.line(`export * from "./glossary"`)
             $i.line(`export * from "./api.generated"`)
         })
     }

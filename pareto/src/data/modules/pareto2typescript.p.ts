@@ -21,19 +21,17 @@ function def($: mmoduleDefinition.TModuleDefinition): mmoduleDefinition.TModuleD
 export const $: mmoduleDefinition.TModuleDefinition = def({
     'glossary': {
         'imports': d({
-            "algorithm": "../../algorithm",
+            "algorithm": "../../../algorithm",
             "fp": "lib-fountain-pen",
-            "glossary": "../../glossary",
-            "moduleDefinition": "../../moduleDefinition",
-            "project": "../../project",
+            "glossary": "../../../glossary",
+            "moduleDefinition": "../../../moduleDefinition",
+            "project": "../../../project",
         }),
         'parameters': d({}),
-        'namespace': {
-            'types': types({
-            }),
-            'interfaces': d({
-            }),
-        },
+        'types': types({
+        }),
+        'interfaces': d({
+        }),
         'functions': d({
             "SerializeGlossary": callback(externalTypeReference("glossary", "Glossary"), externalInterfaceReference("fp", "Writer")),
             "SerializeImplementation": callback(externalTypeReference("algorithm", "Implementation"), externalInterfaceReference("fp", "Writer")),

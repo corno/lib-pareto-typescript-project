@@ -19,53 +19,35 @@ function def($: mmoduleDefinition.TModuleDefinition): mmoduleDefinition.TModuleD
     return $
 }
 
-
-export function externalNamespacedTypeReference(context: string, type: string): mglossary.TNamespacedTypeReference {
-    return {
-        'context': ['import', context],
-        'namespaces': pr.wrapRawArray([]),
-        'type': type,
-    }
-}
-export function namespacedTypeReference(type: string): mglossary.TNamespacedTypeReference {
-    return {
-        'context': ['local', null],
-        'namespaces': pr.wrapRawArray([]),
-        'type': type,
-    }
-}
-
 export const $: mmoduleDefinition.TModuleDefinition = def({
     'glossary': {
         'parameters': d({}),
         'imports': d({
-            "pareto2typescript": "../../pareto2typescript",
+            "pareto2typescript": "../../../pareto2typescript",
 
             "common": "glo-pareto-common",
             "fp": "lib-fountain-pen",
             "main": "lib-pareto-main",
-            "project": "../../project",
+            "project": "../../../project",
         }),
-        'namespace': {
-            'types': types({
-                "ArgumentError": taggedUnion({
-                    "missing": null_(),
-                    "too many": null_(),
-                }),
-                "ProjectSettings": group({
-                    "project": member(er("project", "Project")),
-                    "mainData": member(er("main", "MainData")),
-                }),
-                "Parameters": group({
-                    "testDirectory": member(str()),
-                }),
+        'types': types({
+            "ArgumentError": taggedUnion({
+                "missing": null_(),
+                "too many": null_(),
             }),
-            'interfaces': d({
-                "ParseArguments": method(externalNamespacedTypeReference("main", "Arguments")),
-                "ProcessArgument": method(externalNamespacedTypeReference("common", "String")),
-                "HandleParameters": method(namespacedTypeReference("Parameters")),
+            "ProjectSettings": group({
+                "project": member(er("project", "Project")),
+                "mainData": member(er("main", "MainData")),
             }),
-        },
+            "Parameters": group({
+                "testDirectory": member(str()),
+            }),
+        }),
+        'interfaces': d({
+            "ParseArguments": method(externalTypeReference("main", "Arguments")),
+            "ProcessArgument": method(externalTypeReference("common", "String")),
+            "HandleParameters": method(typeReference("Parameters")),
+        }),
         'functions': d({
             "GenerateProject": procedure(typeReference("ProjectSettings")),
             "GetSingleArgument": _function(externalTypeReference("main", "Arguments"), externalTypeReference("common", "String"), true),

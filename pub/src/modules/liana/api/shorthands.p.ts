@@ -8,7 +8,7 @@ import {
     TReference,
     TString,
     T_$Reference,
-} from "./types.generated";
+} from "./glossary";
 
 function r_imp(name: string, annotation: string): T_$Reference {
     return {

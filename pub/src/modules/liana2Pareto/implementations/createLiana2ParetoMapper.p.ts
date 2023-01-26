@@ -103,7 +103,6 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                     return pl.cc($[1], ($) => {
                                         return ['reference', {
                                             'context': ['local', null],
-                                            'namespaces': pl.createEmptyArray(),
                                             'type': $.type.name,
                                         }]
                                     })

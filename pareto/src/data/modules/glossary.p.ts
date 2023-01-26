@@ -49,7 +49,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "Glossary": group({
                     "parameters": member(ref("_Parameters")),
                     "imports": member(dictionary(str())),
-                    "namespace": member(ref("Namespace")),
+                    "templates": member(dictionary(group({
+                        "parameters": member(['dictionary', null_()]),
+                        "type": member(ref("Type"))
+                    })), true),
+                    "types": member(dictionary(ref("Type"))),
+                    "interfaces": member(dictionary(ref("Interface"))),
                     "functions": member(dictionary(ref("_Function"))),
                 }),
                 "Interface": taggedUnion({
@@ -57,32 +62,17 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "members": member(dictionary(ref("Interface")))
                     }),
                     "method": group({
-                        "data": member(optional(ref("NamespacedTypeReference"))),
+                        "data": member(optional(ref("TypeReference"))),
                         "interface": member(optional(ref("_MethodInterface"))),
                     }),
                     "reference": group({
                         "context": member(ref("Context")),
-                        "namespaces": member(array(str())),// shouldn't this be a singular optional namespace?
                         "interface": member(str())
                     }),
                 }),
                 "InterfaceReference": group({
                     "context": member(ref("Context")),
                     "interface": member(str())
-                }),
-                "Namespace": group({
-                    "namespaces": member(dictionary(ref("Namespace")), true),
-                    "templates": member(dictionary(group({
-                        "parameters": member(['dictionary', null_()]),
-                        "type": member(ref("Type"))
-                    })), true),
-                    "types": member(dictionary(ref("Type"))),
-                    "interfaces": member(dictionary(ref("Interface"))),
-                }),
-                "NamespacedTypeReference": group({
-                    "context": member(ref("Context")),
-                    "namespaces": member(array(str())),// shouldn't this be a singular optional namespace?
-                    "type": member(str()),
                 }),
                 "Type": taggedUnion({
                     "array": ref("Type"),
@@ -95,7 +85,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "boolean": null_(),
                     "string": null_(),
                     "number": null_(),
-                    "reference": ref("NamespacedTypeReference"),
+                    "reference": ref("TypeReference"),
                     "group": dictionary(group({
                         "type": member(ref("Type")),
                         "optional": member(bln())

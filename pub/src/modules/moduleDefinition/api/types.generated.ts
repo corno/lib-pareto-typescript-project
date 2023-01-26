@@ -2,7 +2,7 @@ import * as pt from 'pareto-core-types'
 import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../glossary"
 
-export type T_AlgorithmType = 
+export type T_$AlgorithmType = 
     | ['constructor', {
         readonly 'configuration data': null | mglossary.TTypeReference
         readonly 'dependencies': pt.Dictionary<TDefinitionReference>
@@ -22,7 +22,7 @@ export type TModuleDefinition = {
     readonly 'api': {
         readonly 'algorithms': pt.Dictionary<{
             readonly 'definition': TDefinitionReference
-            readonly 'type': T_AlgorithmType
+            readonly 'type': T_$AlgorithmType
         }>
         readonly 'imports': pt.Dictionary<string>
     }

@@ -12,12 +12,12 @@ export const $$: api.CcreateSerializer = ($d) => {
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`'context': `)
                     serializeContext($.context, $i)
                     $i.snippet(`,`)
                 })
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`'type': "${$.type}",`)
                 })
             })
@@ -29,14 +29,14 @@ export const $$: api.CcreateSerializer = ($d) => {
                 if ($.context !== undefined) {
                     pl.cc($.context, ($) => {
 
-                        $i.line(($i) => {
+                        $i.nestedLine(($i) => {
                             $i.snippet(`'context': `)
                             serializeContext($, $i)
                             $i.snippet(`,`)
                         })
                     })
                 }
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`'function': "${$.function}"`)
                     $i.snippet(`,`)
                 })
@@ -59,39 +59,39 @@ export const $$: api.CcreateSerializer = ($d) => {
         }
         $i.snippet(`{`)
         $i.indent(($i) => {
-            $i.line(($i) => {
+            $i.nestedLine(($i) => {
                 $i.snippet(`'glossary': `)
                 $d.serializeGlossary($.glossary, $i)
                 $i.snippet(`,`)
             }),
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`'api': `)
                     $i.snippet(`{`)
                     $i.indent(($i) => {
-                        $i.line(($i) => {
+                        $i.nestedLine(($i) => {
                             $i.snippet(`'imports': d({`)
                             $i.indent(($i) => {
                                 $d.dictionaryForEach($.api.imports, ($) => {
-                                    $i.line(($i) => {
+                                    $i.nestedLine(($i) => {
                                         $i.snippet(`'${$.key}': "${$.value}"`)
                                     })
                                 })
                             })
                             $i.snippet(`}),`)
                         }),
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`'algorithms': d({`)
                                 $i.indent(($i) => {
                                     $d.dictionaryForEach($.api.algorithms, ($) => {
-                                        $i.line(($i) => {
+                                        $i.nestedLine(($i) => {
                                             $i.snippet(`'${$.key}': {`)
                                             $i.indent(($i) => {
-                                                $i.line(($i) => {
+                                                $i.nestedLine(($i) => {
                                                     $i.snippet(`'definition': `)
                                                     serializeDefinitionReference($.value.definition, $i)
                                                     $i.snippet(`,`)
                                                 })
-                                                $i.line(($i) => {
+                                                $i.nestedLine(($i) => {
                                                     $i.snippet(`'type': `)
                                                     switch ($.value.type[0]) {
                                                         case 'constructor':
@@ -100,7 +100,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                 $i.snippet(`['constructor', {`)
                                                                 $i.indent(($i) => {
 
-                                                                    $i.line(($i) => {
+                                                                    $i.nestedLine(($i) => {
                                                                         $i.snippet(`'configuration data': `)
                                                                         if ($['configuration data'] === null) {
                                                                             $i.snippet(`null`)
@@ -109,11 +109,11 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                         }
                                                                         $i.snippet(`,`)
                                                                     })
-                                                                    $i.line(($i) => {
+                                                                    $i.nestedLine(($i) => {
                                                                         $i.snippet(`'dependencies': d({`)
                                                                         $i.indent(($i) => {
                                                                             $d.dictionaryForEach($.dependencies, ($) => {
-                                                                                $i.line(($i) => {
+                                                                                $i.nestedLine(($i) => {
                                                                                     $i.snippet(`'${$.key}': `)
                                                                                     serializeDefinitionReference($.value, $i)
                                                                                     $i.snippet(`,`)

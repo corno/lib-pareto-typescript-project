@@ -31,7 +31,7 @@ export type MReference<AReferencedType> = {
     readonly 'referenced value': AReferencedType
 }
 
-export type T_Reference = {
+export type T_$Reference = {
     readonly 'annotation': string
     readonly 'name': string
 }
@@ -48,7 +48,7 @@ export type TLocalType =
     | ['boolean', null]
     | ['component', {
         readonly 'arguments': MDictionary<null>
-        readonly 'type': T_Reference
+        readonly 'type': T_$Reference
     }]
     | ['dictionary', {
         readonly 'key': TString
@@ -59,7 +59,7 @@ export type TLocalType =
     }]
     | ['string', TString]
     | ['taggedUnion', {
-        readonly 'default': T_Reference
+        readonly 'default': T_$Reference
         readonly 'options': MDictionary<{
             readonly 'type': TLocalType
         }>
@@ -67,11 +67,11 @@ export type TLocalType =
 
 export type TModel = {
     readonly 'globalTypes': MDictionary<TGlobalType>
-    readonly 'root': T_Reference
+    readonly 'root': T_$Reference
     readonly 'stringTypes': MDictionary<null>
 }
 
-export type TParameter = T_Reference
+export type TParameter = T_$Reference
 
 export type TParameters = MDictionary<TParameter>
 
@@ -90,20 +90,20 @@ export type TProperty = {
 export type TReference = {
     readonly 'steps': pt.Array<
         | ['array', null]
-        | ['group', T_Reference]
+        | ['group', T_$Reference]
         | ['reference', null]
-        | ['tagged union', T_Reference]
+        | ['tagged union', T_$Reference]
     >
     readonly 'type': 
         | ['other', null]
-        | ['parameter', T_Reference]
-        | ['sibling', T_Reference]
+        | ['parameter', T_$Reference]
+        | ['sibling', T_$Reference]
 }
 
 export type TString = {
     readonly 'constrained': 
         | ['no', {
-            readonly 'type': T_Reference
+            readonly 'type': T_$Reference
         }]
         | ['yes', TReference]
 }

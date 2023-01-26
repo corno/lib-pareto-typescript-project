@@ -10,8 +10,9 @@ import * as mfp from "lib-fountain-pen"
 export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
         function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {
-            $i.file("types.generated.ts", ($i) => {
+            $i.directory(`glossary`, ($i) => {
                 $d.serializeGlossary($, $i)
+
             })
         }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
@@ -54,19 +55,19 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
         $i.allowed("shorthands.p.ts")
 
         $i.file("api.generated.ts", ($i) => {
-            $i.literal(`import * as pt from 'pareto-core-types'`)
-            $i.literal(``)
-            $i.literal(`import * as glo from "./types.generated"`)
-            $i.literal(``)
+            $i.line(`import * as pt from 'pareto-core-types'`)
+            $i.line(``)
+            $i.line(`import * as glo from "./glossary"`)
+            $i.line(``)
             $d.dictionaryForEach($.api.imports, ($) => {
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`import * as m${$.key} from "${$.value}"`)
                 })
             })
             $d.dictionaryForEach($.api.algorithms, ($) => {
                 const definition = $.value.definition
-                $i.literal(``)
-                $i.line(($i) => {
+                $i.line(``)
+                $i.nestedLine(($i) => {
                     $i.snippet(`export type ${$d.createIdentifier(`C${$.key}`)} = `)
                     switch ($.value.type[0]) {
                         case 'constructor':
@@ -82,7 +83,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                                 $i.snippet(`$d: {`)
                                 $i.indent(($i) => {
                                     $d.dictionaryForEach($.dependencies, ($) => {
-                                        $i.line(($i) => {
+                                        $i.nestedLine(($i) => {
                                             $i.snippet(`readonly '${$.key}': `)
                                             serializeDefinitionReference($.value, $i)
                                         })
@@ -94,21 +95,21 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                                 //     $i.indent(($i) => {
                                 //         // if ($.callbacks !== undefined) {
                                 //         //     $d.dictionaryForEach($.callbacks, ($, key) => {
-                                //         //         $i.line(($i) => {
+                                //         //         $i.nestedLine(($i) => {
                                 //         //             $i.snippet(`readonly "cb${key}": `)
                                 //         //             serializeCallbackReference($, $i)
                                 //         //         })
                                 //         //     })
                                 //         // }
                                 //         $d.dictionaryForEach($.functions, ($, key) => {
-                                //             $i.line(($i) => {
+                                //             $i.nestedLine(($i) => {
                                 //                 $i.snippet(`readonly "f${key}": `)
                                 //                 serializeFunctionReference($, $i)
                                 //             })
                                 //         })
                                 //         if ($["side effects"] !== undefined) {
                                 //             $["side effects"].forEach(compare, ($, key) => {
-                                //                 $i.line(($i) => {
+                                //                 $i.nestedLine(($i) => {
                                 //                     $i.snippet(`readonly "se${key}": `)
                                 //                     serializeProcedure($, $i)
                                 //                 })
@@ -129,20 +130,20 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                     serializeDefinitionReference(definition, $i)
                 })
             })
-            $i.literal(``)
-            $i.line(($i) => {
+            $i.line(``)
+            $i.nestedLine(($i) => {
                 $i.snippet(`export type API = {`)
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.api.algorithms, ($) => {
-                        $i.literal(`${$.key}: ${$d.createIdentifier(`C${$.key}`)}`)
+                        $i.line(`${$.key}: ${$d.createIdentifier(`C${$.key}`)}`)
                     })
                 })
                 $i.snippet(`}`)
             })
         })
         $i.file("index.ts", ($i) => {
-            $i.literal(`export * from "./types.generated"`)
-            $i.literal(`export * from "./api.generated"`)
+            $i.line(`export * from "./types.generated"`)
+            $i.line(`export * from "./api.generated"`)
         })
     }
 }

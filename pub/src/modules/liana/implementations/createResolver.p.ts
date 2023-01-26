@@ -21,7 +21,7 @@ export const $$: api.CcreateResolver = ($d) => {
         }
     }
 
-    type ComputedReference<T> = (ref: api.T_Reference) => () => T
+    type ComputedReference<T> = (ref: api.T_$Reference) => () => T
 
     type UnsafeDictionary<T> = pt.Dictionary<api.MPossibly<T>>
     type AnnotatedUnsafeDictionary<T> = {
@@ -66,7 +66,7 @@ export const $$: api.CcreateResolver = ($d) => {
             dictionary: builder.getDictionary()
         }
     }
-    function computedReference<T>($: api.T_Reference, ref: () => T): api.MComputedReference<T> {
+    function computedReference<T>($: api.T_$Reference, ref: () => T): api.MComputedReference<T> {
         return {
             'name': $.name,
             'annotation': $.annotation,
@@ -76,7 +76,7 @@ export const $$: api.CcreateResolver = ($d) => {
     function resolve<T>(
         target: string,
         dict: OptionalAnnotatedUnsafeDictionary<T>,
-        key: api.T_Reference,
+        key: api.T_$Reference,
     ): api.MPossibly<api.MReference<T>> {
         if (dict === null) {
             onError(`${key.annotation}: no dictionary`)

@@ -14,7 +14,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.snippet(`['call', {`)
                         $i.indent(($i) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`'function': "${$.function}"`)
                                 $i.snippet(`,`)
                             })
@@ -26,7 +26,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.snippet(`['contextChange', {`)
                         $i.indent(($i) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`'block': `)
                                 serializeFunctionBlock($.block, $i)
                                 $i.snippet(`,`)
@@ -39,11 +39,11 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.snippet(`['groupInitializer', {`)
                         $i.indent(($i) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`'properties': d({`)
                                 $i.indent(($i) => {
                                     $d.dictionaryForEach($.properties, ($) => {
-                                        $i.line(($i) => {
+                                        $i.nestedLine(($i) => {
                                             $i.snippet(`"${$.key}": `)
                                             serializeExpression($.value, $i)
                                             $i.snippet(`,`)
@@ -66,7 +66,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.snippet(`['mapArray', {`)
                         $i.indent(($i) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`'block': `)
                                 serializeFunctionBlock($.block, $i)
                                 $i.snippet(`,`)
@@ -79,7 +79,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.snippet(`['mapDictionary', {`)
                         $i.indent(($i) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`'block': `)
                                 serializeFunctionBlock($.block, $i)
                                 $i.snippet(`,`)
@@ -94,7 +94,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.snippet(`['propertySelection', {`)
                         $i.indent(($i) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`'name': ${$.name},`)
                             })
                         })
@@ -105,11 +105,11 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.snippet(`['switch', {`)
                         $i.indent(($i) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`'cases': d({`)
                                 $i.indent(($i) => {
                                     $d.dictionaryForEach($.cases, ($) => {
-                                        $i.line(($i) => {
+                                        $i.nestedLine(($i) => {
                                             $i.snippet(`"${$.key}": `)
                                             serializeFunctionBlock($.value, $i)
                                             $i.snippet(`,`)
@@ -134,12 +134,12 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
 
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
-        //         $i.line(($i) => {
+        //         $i.nestedLine(($i) => {
         //             $i.snippet(`'data': `)
         //             serializeTypeReference($.data, $i)
         //             $i.snippet(`,`)
         //         })
-        //         $i.line(($i) => {
+        //         $i.nestedLine(($i) => {
         //             $i.snippet(`'returnValue': `)
         //             serializeTypeReference($['return value'], $i)
 
@@ -151,20 +151,20 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
         function serializeFunctionBlock($: api.TFunctionBlock, $i: mfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`'innerFunctions': d({`)
                     $i.indent(($i) => {
                         if ($.innerFunctions !== undefined) {
                             $d.dictionaryForEach($.innerFunctions, ($) => {
-                                $i.line(($i) => {
+                                $i.nestedLine(($i) => {
                                     $i.snippet(`"${$.key}": {`)
                                     $i.indent(($i) => {
-                                        // $i.line(($i) => {
+                                        // $i.nestedLine(($i) => {
                                         //     $i.snippet(`'definition': `)
                                         //     serializeFunction($, $i)
                                         //     $i.snippet(`,`)
                                         // })
-                                        $i.line(($i) => {
+                                        $i.nestedLine(($i) => {
                                             $i.snippet(`'block': `)
                                             serializeFunctionBlock($.value.block, $i)
                                             $i.snippet(`,`)
@@ -178,7 +178,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     $i.snippet(`}),`)
 
                 })
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`'returnExpression': `)
                     serializeExpression($.returnExpression, $i)
                     $i.snippet(`,`)
@@ -189,20 +189,20 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
         function serializeCallbackBlock($: api.TCallbackBlock, $i: mfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`'innerCallbacks': d({`)
                     $i.indent(($i) => {
                         if ($.innerCallbacks !== undefined) {
                             $d.dictionaryForEach($.innerCallbacks, ($) => {
-                                $i.line(($i) => {
+                                $i.nestedLine(($i) => {
                                     $i.snippet(`"${$.key}": {`)
                                     $i.indent(($i) => {
-                                        // $i.line(($i) => {
+                                        // $i.nestedLine(($i) => {
                                         //     $i.snippet(`'definition': `)
                                         //     serializeFunction($, $i)
                                         //     $i.snippet(`,`)
                                         // })
-                                        $i.line(($i) => {
+                                        $i.nestedLine(($i) => {
                                             $i.snippet(`'block': `)
                                             serializeCallbackBlock($.value.block, $i)
                                             $i.snippet(`,`)
@@ -216,7 +216,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     $i.snippet(`}),`)
 
                 })
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`'statements': d({`)
                     $i.indent(($i) => {
                         $.statements.forEach(($) => {
@@ -255,26 +255,26 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
         }
         $i.snippet(`{`)
         $i.indent(($i) => {
-            $i.line(($i) => {
+            $i.nestedLine(($i) => {
                 $i.snippet(`'implementations': d({`)
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.implementations, ($) => {
-                        $i.line(($i) => {
+                        $i.nestedLine(($i) => {
                             $i.snippet(`"${$.key}": {`)
                             $i.indent(($i) => {
 
-                                $i.line(($i) => {
+                                $i.nestedLine(($i) => {
                                     $i.snippet(`'constructor': ${$.value.constructor ? `true` : `false`}`)
                                     $i.snippet(`,`)
                                 })
-                                $i.line(($i) => {
+                                $i.nestedLine(($i) => {
                                     $i.snippet(`'type': `)
                                     switch ($.value.type[0]) {
                                         case 'function':
                                             pl.cc($.value.type[1], ($) => {
                                                 $i.snippet(`['function', {`)
                                                 $i.indent(($i) => {
-                                                    $i.line(($i) => {
+                                                    $i.nestedLine(($i) => {
                                                         $i.snippet(`'block': `)
                                                         serializeFunctionBlock($.block, $i)
                                                         $i.snippet(`,`)
@@ -287,7 +287,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                                             pl.cc($.value.type[1], ($) => {
                                                 $i.snippet(`['function', {`)
                                                 $i.indent(($i) => {
-                                                    $i.line(($i) => {
+                                                    $i.nestedLine(($i) => {
                                                         $i.snippet(`'block': `)
                                                         serializeCallbackBlock($.block, $i)
                                                         $i.snippet(`,`)

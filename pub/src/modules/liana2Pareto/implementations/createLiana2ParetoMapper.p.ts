@@ -3,130 +3,30 @@ import * as pr from 'pareto-core-raw'
 
 import * as api from "../api"
 
-import {
-    array,
-    externalReference as er,
-    string as str,
-    reference as ref,
-    boolean as bln,
-    number as nr,
-    nested,
-    template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, parameter
-} from "../../glossary/api/shorthands.p"
-
 import * as malgorithm from "../../algorithm"
 import * as mglossary from "../../glossary"
 import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mliana from "../../liana"
 
-
-const d = pr.wrapRawDictionary
-const a = pr.wrapRawArray
+const OPTIONAL = false
 
 
 export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
     return ($) => {
         const stringMapping = $.stringmapping
-        function generateTypes(optional: boolean): mglossary.TNamespace {
+        function ref(type: string): mglossary.TType {
+            return ['reference', {
+                'context': ['local', null],
+                'type': type,
+            }]
+        }
+        function typeReference(type: string): mglossary.TTypeReference {
             return {
-                'namespaces': d({
-                    "types": {
-                        'types': $.model.globalTypes.dictionary.map(($) => {
-                            function mapType($: mliana.TLocalType): mglossary.TType {
-                                switch ($[0]) {
-                                    case 'array':
-                                        return pl.cc($[1], ($) => {
-                                            return ['array', mapType($.type)]
-                                        })
-                                    case 'boolean':
-                                        return pl.cc($[1], ($) => {
-                                            return ['boolean', null]
-                                        })
-                                    case 'component':
-                                        return pl.cc($[1], ($) => {
-                                            return ['reference', {
-                                                'context': ['local', null],
-                                                'namespaces': pl.createEmptyArray(),
-                                                'type': $.type.name,
-                                            }]
-                                        })
-                                    case 'dictionary':
-                                        return pl.cc($[1], ($) => {
-                                            return ['dictionary', mapType($.type)]
-                                        })
-                                    case 'group':
-                                        return pl.cc($[1], ($) => {
-                                            return ['group', $.properties.dictionary.map(($) => {
-                                                return {
-                                                    'type': mapType($.type),
-                                                    'optional': optional,
-                                                }
-                                            })]
-                                        })
-                                    case 'string':
-                                        return pl.cc($[1], ($) => {
-                                            switch ($.constrained[0]) {
-                                                case 'no':
-                                                    return pl.cc($.constrained[1], ($) => {
-                                                        return pr.getEntry(
-                                                            stringMapping, $.type.name,
-                                                            ($) => {
-                                                                switch ($[0]) {
-                                                                    case 'number':
-                                                                        return pl.cc($[1], ($) => {
-                                                                            return ['number', null]
-                                                                        })
-                                                                    case 'string':
-                                                                        return pl.cc($[1], ($) => {
-                                                                            return ['string', null]
-                                                                        })
-                                                                    default: return pl.au($[0])
-                                                                }
-                                                            },
-                                                            () => {
-                                                                pl.panic(`MISSING STRING MAPPING: ${$.type}`)
-                                                            }
-                                                        )
-                                                    })
-                                                case 'yes':
-                                                    return pl.cc($.constrained[1], ($) => {
-                                                        return ['template', {
-                                                            'template': "Reference",
-                                                            'context': ['local', null],
-                                                            'arguments': d({
-                                                                "RererencedType": ref("FIXMEFIXMEFIXME")
-                                                            }),
-                                                        }]
-                                                    })
-                                                default: return pl.au($.constrained[0])
-                                            }
-                                        })
-                                    case 'taggedUnion':
-                                        return pl.cc($[1], ($) => {
-                                            return ['taggedUnion', $.options.dictionary.map(($) => {
-                                                return mapType($.type)
-                                            })]
-                                        })
-                                    default: return pl.au($[0])
-                                }
-
-                            }
-                            return mapType($.type)
-                        }),
-                        'interfaces': d({}),
-                    },
-                }),
-                'types': types({
-                    "Root": ['reference', {
-                        'context': ['local', null],
-                        'namespaces': a(["types"]),
-                        'type': $.model.root.name
-                    }]
-                }),
-                'interfaces': d({}),
+                'context': ['local', null],
+                'type': type,
             }
         }
+        
         function generateBlock($: mliana.TLocalType): malgorithm.TFunctionBlock {
             return {
                 'returnExpression': generateExpression($)
@@ -182,35 +82,96 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
         return {
             'definition': <mmoduleDefinition.TModuleDefinition>{
                 'glossary': {
-                    'imports': d({
+                    'imports': pr.wrapRawDictionary({
                         "fp": "lib-fountain-pen",
                     }),
-                    'parameters': d({
+                    'parameters': pr.wrapRawDictionary({
                         "Annotation": null,
                     }),
-                    'namespace': {
-                        'templates': d({
-                            "Reference": {
+                    'types': $.model.globalTypes.dictionary.map(($) => {
+                        function mapType($: mliana.TLocalType): mglossary.TType {
+                            switch ($[0]) {
+                                case 'array':
+                                    return pl.cc($[1], ($) => {
+                                        return ['array', mapType($.type)]
+                                    })
+                                case 'boolean':
+                                    return pl.cc($[1], ($) => {
+                                        return ['boolean', null]
+                                    })
+                                case 'component':
+                                    return pl.cc($[1], ($) => {
+                                        return ['reference', {
+                                            'context': ['local', null],
+                                            'namespaces': pl.createEmptyArray(),
+                                            'type': $.type.name,
+                                        }]
+                                    })
+                                case 'dictionary':
+                                    return pl.cc($[1], ($) => {
+                                        return ['dictionary', mapType($.type)]
+                                    })
+                                case 'group':
+                                    return pl.cc($[1], ($) => {
+                                        return ['group', $.properties.dictionary.map(($) => {
+                                            return {
+                                                'type': mapType($.type),
+                                                'optional': OPTIONAL,
+                                            }
+                                        })]
+                                    })
+                                case 'string':
+                                    return pl.cc($[1], ($) => {
+                                        switch ($.constrained[0]) {
+                                            case 'no':
+                                                return pl.cc($.constrained[1], ($) => {
+                                                    return pr.getEntry(
+                                                        stringMapping, $.type.name,
+                                                        ($) => {
+                                                            switch ($[0]) {
+                                                                case 'number':
+                                                                    return pl.cc($[1], ($) => {
+                                                                        return ['number', null]
+                                                                    })
+                                                                case 'string':
+                                                                    return pl.cc($[1], ($) => {
+                                                                        return ['string', null]
+                                                                    })
+                                                                default: return pl.au($[0])
+                                                            }
+                                                        },
+                                                        () => {
+                                                            pl.panic(`MISSING STRING MAPPING: ${$.type}`)
+                                                        }
+                                                    )
+                                                })
+                                            case 'yes':
+                                                return pl.cc($.constrained[1], ($) => {
+                                                    return ['template', {
+                                                        'template': "Reference",
+                                                        'context': ['local', null],
+                                                        'arguments': pr.wrapRawDictionary({
+                                                            "RererencedType": ref("FIXMEFIXMEFIXME")
+                                                        }),
+                                                    }]
+                                                })
+                                            default: return pl.au($.constrained[0])
+                                        }
+                                    })
+                                case 'taggedUnion':
+                                    return pl.cc($[1], ($) => {
+                                        return ['taggedUnion', $.options.dictionary.map(($) => {
+                                            return mapType($.type)
+                                        })]
+                                    })
+                                default: return pl.au($[0])
+                            }
 
-                                'type': group({
-                                    "referenced": member(parameter("ReferencedType"), true),
-                                    "annotation": member(parameter("Annotation"), true),
-                                    "value": member(str()),
-                                }),
-                                'parameters': d({
-                                    "ReferencedType": null,
-                                }),
-                            },
-                        }),
-                        'types': types({}),
-                        'interfaces': d({}),
-                        'namespaces': d({
-                            "unresolved": generateTypes(true),
-                            "resolved": generateTypes(false),
-                        }),
-
-                    },
-                    'functions': d({
+                        }
+                        return mapType($.type)
+                    }),
+                    'interfaces': pr.wrapRawDictionary({}),
+                    'functions': pr.wrapRawDictionary({
                         "Enrich": {
                             'return type': ['data', {
                                 'type': typeReference("Root"), //resolved
@@ -229,17 +190,17 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     }),
                 },
                 'api': {
-                    'imports': d({
+                    'imports': pr.wrapRawDictionary({
                         "common": "glo-pareto-common",
                     }),
-                    'algorithms': d({
+                    'algorithms': pr.wrapRawDictionary({
                         "createSerializer": {
                             'definition': ['callback', {
                                 'callback': "Serialize"
                             }],
                             'type': ['constructor', {
                                 'configuration data': null,
-                                'dependencies': d({
+                                'dependencies': pr.wrapRawDictionary({
                                 })
                             }]
                         },
@@ -249,7 +210,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             }],
                             'type': ['constructor', {
                                 'configuration data': null,
-                                'dependencies': d({
+                                'dependencies': pr.wrapRawDictionary({
                                 })
                             }]
                         },
@@ -257,7 +218,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 },
             },
             'implementation': <malgorithm.TImplementation>{
-                'implementations': d({
+                'implementations': pr.wrapRawDictionary({
                     // "createSerializer": {
                     //     'constructor': true,
                     //     'type': ['function', {
@@ -285,13 +246,16 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                     return {
                                         'definition': {
                                             'data': typeReference($.key),
-                                            'return value': er("resolved", $.key),
+                                            'return value':  {
+                                                'context': ['import', "resolved"],
+                                                'type': $.key,
+                                            },
                                         },
                                         'block': generateBlock($.value.type)
                                     }
                                 }),
                                 'returnExpression': ['switch', {
-                                    'cases': d({}),
+                                    'cases': pr.wrapRawDictionary({}),
                                 }]
                             }
                         }]

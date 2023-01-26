@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-types'
 import * as mfp from "lib-fountain-pen"
 
-export type T_Function = {
+export type T_$Function = {
     readonly 'data': TTypeReference
     readonly 'managed input interface': null | TInterfaceReference
     readonly 'output interface': null | TInterfaceReference
@@ -14,46 +14,22 @@ export type T_Function = {
         | ['nothing', null]
 }
 
-export type T_MethodInterface = {
+export type T_$MethodInterface = {
     readonly 'interface': TInterface
     readonly 'managed': boolean
 }
 
-export type T_Parameters = pt.Dictionary<null>
+export type T_$Parameters = pt.Dictionary<null>
 
 export type TContext = 
     | ['import', string]
     | ['local', null]
 
 export type TGlossary = {
-    readonly 'functions': pt.Dictionary<T_Function>
+    readonly 'functions': pt.Dictionary<T_$Function>
     readonly 'imports': pt.Dictionary<string>
-    readonly 'namespace': TNamespace
-    readonly 'parameters': T_Parameters
-}
-
-export type TInterface = 
-    | ['group', {
-        readonly 'members': pt.Dictionary<TInterface>
-    }]
-    | ['method', {
-        readonly 'data': null | TNamespacedTypeReference
-        readonly 'interface': null | T_MethodInterface
-    }]
-    | ['reference', {
-        readonly 'context': TContext
-        readonly 'interface': string
-        readonly 'namespaces': pt.Array<string>
-    }]
-
-export type TInterfaceReference = {
-    readonly 'context': TContext
-    readonly 'interface': string
-}
-
-export type TNamespace = {
     readonly 'interfaces': pt.Dictionary<TInterface>
-    readonly 'namespaces'?: pt.Dictionary<TNamespace>
+    readonly 'parameters': T_$Parameters
     readonly 'templates'?: pt.Dictionary<{
         readonly 'parameters': pt.Dictionary<null>
         readonly 'type': TType
@@ -61,10 +37,22 @@ export type TNamespace = {
     readonly 'types': pt.Dictionary<TType>
 }
 
-export type TNamespacedTypeReference = {
+export type TInterface = 
+    | ['group', {
+        readonly 'members': pt.Dictionary<TInterface>
+    }]
+    | ['method', {
+        readonly 'data': null | TTypeReference
+        readonly 'interface': null | T_$MethodInterface
+    }]
+    | ['reference', {
+        readonly 'context': TContext
+        readonly 'interface': string
+    }]
+
+export type TInterfaceReference = {
     readonly 'context': TContext
-    readonly 'namespaces': pt.Array<string>
-    readonly 'type': string
+    readonly 'interface': string
 }
 
 export type TType = 
@@ -81,7 +69,7 @@ export type TType =
     | ['number', null]
     | ['optional', TType]
     | ['parameter', string]
-    | ['reference', TNamespacedTypeReference]
+    | ['reference', TTypeReference]
     | ['string', null]
     | ['taggedUnion', pt.Dictionary<TType>]
     | ['template', {

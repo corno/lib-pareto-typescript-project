@@ -9,14 +9,14 @@ export const $$: api.CcreateSerializer = ($d) => {
     return ($, $i) => {
         $i.snippet(`{`)
         $i.indent(($i) => {
-            $i.line(($i) => {
+            $i.nestedLine(($i) => {
                 $i.snippet(`'definition': `)
                 $d.serializeModuleDefinition($.definition, $i)
                 $i.snippet(`,`)
             })
             if ($.implementation !== undefined) {
                 pl.cc($.implementation, ($) => {
-                    $i.line(($i) => {
+                    $i.nestedLine(($i) => {
                         $i.snippet(`'implementation': `)
                         $d.serializeImplementation($, $i)
                         $i.snippet(`,`)

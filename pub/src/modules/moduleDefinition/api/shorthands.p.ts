@@ -25,7 +25,7 @@ export function externalDefinitionReference(context: string, func: string): api.
     }
 }
 
-export function constructor(data: null | mglossary.TTypeReference, deps: {[key:string]: api.TDefinitionReference}): api.T_AlgorithmType {
+export function constructor(data: null | mglossary.TTypeReference, deps: {[key:string]: api.TDefinitionReference}): api.T_$AlgorithmType {
     return ['constructor', {
         'configuration data': data,
         'dependencies': d(deps)

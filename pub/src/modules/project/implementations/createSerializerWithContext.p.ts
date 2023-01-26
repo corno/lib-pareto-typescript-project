@@ -9,17 +9,17 @@ export const $$: api.CcreateSerializerWithContext = ($d) => {
 
     return ($, $i) => {
         $i.file("module.generated.ts", ($i) => {
-            $i.literal(`import * as pr from 'pareto-core-raw'`)
-            $i.literal(``)
-            $i.literal(`import * as mmoduleDefinition from "../../../pub/dist/modules/moduleDefinition"`)
-            $i.literal(`import * as mproject from "../../../pub/dist/modules/project"`)
-            $i.literal(`import * as mglossary from "../../../pub/dist/modules/glossary"`)
-            $i.literal(``)
-            $i.literal(`const d = pr.wrapRawDictionary`)
-            $i.literal(`const a = pr.wrapRawArray`)
-            $i.line(($i) => {
+            $i.line(`import * as pr from 'pareto-core-raw'`)
+            $i.line(``)
+            $i.line(`import * as mmoduleDefinition from "../../../pub/dist/modules/moduleDefinition"`)
+            $i.line(`import * as mproject from "../../../pub/dist/modules/project"`)
+            $i.line(`import * as mglossary from "../../../pub/dist/modules/glossary"`)
+            $i.line(``)
+            $i.line(`const d = pr.wrapRawDictionary`)
+            $i.line(`const a = pr.wrapRawArray`)
+            $i.nestedLine(($i) => {
             })
-            $i.line(($i) => {
+            $i.nestedLine(($i) => {
                 $i.snippet(`export const $: mproject.TModule = `)
                 $d.serialize($, $i)
             })

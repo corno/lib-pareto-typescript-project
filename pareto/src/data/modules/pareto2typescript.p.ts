@@ -35,7 +35,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             }),
         },
         'functions': d({
-            "SerializeGlossary": callback(externalTypeReference("glossary", "Glossary"), externalInterfaceReference("fp", "Block")),
+            "SerializeGlossary": callback(externalTypeReference("glossary", "Glossary"), externalInterfaceReference("fp", "Writer")),
             "SerializeImplementation": callback(externalTypeReference("algorithm", "Implementation"), externalInterfaceReference("fp", "Writer")),
             "SerializeModuleDefinition": callback(externalTypeReference("moduleDefinition", "ModuleDefinition"), externalInterfaceReference("fp", "Writer")),
             "SerializeProject": callback(externalTypeReference("project", "Project"), externalInterfaceReference("fp", "Writer")),

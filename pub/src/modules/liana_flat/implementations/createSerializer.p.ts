@@ -63,20 +63,20 @@ export const $$: api.CcreateSerializer = ($d) => {
                                     'separator': "_",
                                 })}.generated.ts`,
                                 ($i) => {
-                                    $i.literal(`import * as pl from 'pareto-core-lib'`)
-                                    $i.literal(``)
-                                    $i.literal(`function assertNotNull($: null | string): string { if ($ === null) { throw new Error("UNEXPECTED NULL") }; return $ }`)
-                                    $i.literal(``)
-                                    $i.line(($i) => {
+                                    $i.line(`import * as pl from 'pareto-core-lib'`)
+                                    $i.line(``)
+                                    $i.line(`function assertNotNull($: null | string): string { if ($ === null) { throw new Error("UNEXPECTED NULL") }; return $ }`)
+                                    $i.line(``)
+                                    $i.nestedLine(($i) => {
 
                                         $i.snippet(`export function $$(`)
                                         $i.indent(($i) => {
                                             parentPathAsArray.forEach(($) => {
-                                                $i.literal(`parent_${$d.createIdentifier($)}: string,`)
+                                                $i.line(`parent_${$d.createIdentifier($)}: string,`)
                                             })
-                                            $i.literal(`id: string,`)
-                                            $i.literal(`item_operation: string,`)
-                                            $i.literal(`//////`)
+                                            $i.line(`id: string,`)
+                                            $i.line(`item_operation: string,`)
+                                            $i.line(`//////`)
                                             function doScalars(
                                                 $: {
                                                     $: mliana.TLocalType,
@@ -127,13 +127,13 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                             break
                                                         case 'string':
                                                             pl.cc($[1], ($) => {
-                                                                $i.literal(`prop_${pathID}: ${type},`)
+                                                                $i.line(`prop_${pathID}: ${type},`)
                                                             })
                                                             break
                                                         case 'taggedUnion':
                                                             pl.cc($[1], ($) => {
-                                                                $i.literal(`prop_${pathID}: ${type},`)
-                                                                $i.literal(`operation_${pathID}: ${type},`)
+                                                                $i.line(`prop_${pathID}: ${type},`)
+                                                                $i.line(`operation_${pathID}: ${type},`)
                                                                 $.options.dictionary.forEach(() => false, ($, key) => {
                                                                     doScalars({
                                                                         $: $.type,
@@ -156,21 +156,21 @@ export const $$: api.CcreateSerializer = ($d) => {
                                         })
                                         $i.snippet(`) {`)
                                         $i.indent(($i) => {
-                                            $i.line(($i) => {
+                                            $i.nestedLine(($i) => {
                                                 $i.snippet(`return  {`)
                                                 $i.indent(($i) => {
-                                                    $i.line(($i) => {
+                                                    $i.nestedLine(($i) => {
                                                         $i.snippet(`'parents': {`)
                                                         $i.indent(($i) => {
                                                             parentPathAsArray.forEach(($) => {
-                                                                $i.literal(`'${$}': parent_${$d.createIdentifier($)},`)
+                                                                $i.line(`'${$}': parent_${$d.createIdentifier($)},`)
                                                             })
                                                         })
                                                         $i.snippet(`},`)
                                                     })
 
-                                                    $i.literal(`'id': id,`)
-                                                    $i.line(($i) => {
+                                                    $i.line(`'id': id,`)
+                                                    $i.nestedLine(($i) => {
                                                         $i.snippet(`'data': `)
                                                         function writeUnflattener($: {
                                                             $: mliana.TLocalType,
@@ -208,7 +208,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                             $i.snippet(`{`)
                                                                             $i.indent(($i) => {
                                                                                 $.properties.dictionary.forEach(() => false, ($, key) => {
-                                                                                    $i.line(($i) => {
+                                                                                    $i.nestedLine(($i) => {
                                                                                         $i.snippet(`'${key}': `)
                                                                                         writeUnflattener({
                                                                                             $: $.type,
@@ -273,14 +273,14 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                         pl.cc($[1], ($) => {
                                                                             $i.snippet(`pl.cc(prop_${$d.createIdentifier(currentName)}, ($) => {`)
                                                                             $i.indent(($i) => {
-                                                                                $i.line(($i) => {
+                                                                                $i.nestedLine(($i) => {
                                                                                     $i.snippet(`switch ($) {`)
                                                                                     $i.indent(($i) => {
                                                                                         $.options.dictionary.forEach(() => false, ($, key) => {
-                                                                                            $i.line(($i) => {
+                                                                                            $i.nestedLine(($i) => {
                                                                                                 $i.snippet(`case "${key}": {`)
                                                                                                 $i.indent(($i) => {
-                                                                                                    $i.line(($i) => {
+                                                                                                    $i.nestedLine(($i) => {
                                                                                                         $i.snippet(`return ['${key}', `)
                                                                                                         writeUnflattener({
                                                                                                             $: $.type,
@@ -293,7 +293,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                                                 $i.snippet(`}`)
                                                                                             })
                                                                                         })
-                                                                                        $i.literal(`default: pl.panic(\`UNEXPECTED VALUE: '\${${pathID}}'\`)`)
+                                                                                        $i.line(`default: pl.panic(\`UNEXPECTED VALUE: '\${${pathID}}'\`)`)
                                                                                     })
                                                                                     $i.snippet(`}`)
                                                                                 })

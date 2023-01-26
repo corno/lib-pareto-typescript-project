@@ -29,7 +29,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                         $i.snippet(`{`)
                         $i.indent(($i) => {
                             $d.dictionaryForEach($.properties, ($) => {
-                                $i.line(($i) => {
+                                $i.nestedLine(($i) => {
                                     $i.snippet(`'${$.key}': `)
                                     serializeExpression($.value, $i)
                                     $i.snippet(`,`)
@@ -67,11 +67,11 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.snippet(`pl.cc($, ($) => {`)
                         $i.indent(($i) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`switch ($) {`)
                                 $i.indent(($i) => {
                                     $d.dictionaryForEach($.cases, ($) => {
-                                        $i.line(($i) => {
+                                        $i.nestedLine(($i) => {
                                             $i.snippet(`case '${$.key}': `)
                                             serializeFunctionBlock($.value, $i)
                                         })
@@ -92,7 +92,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                 if ($.innerCallbacks !== undefined) {
                     pl.cc($.innerCallbacks, ($) => {
                         $d.dictionaryForEach($, ($) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`function ${$.key}() `)
                                 serializeCallbackBlock($.value.block, $i)
                             })
@@ -110,14 +110,14 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                 if ($.innerFunctions !== undefined) {
                     pl.cc($.innerFunctions, ($) => {
                         $d.dictionaryForEach($, ($) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`function ${$.key}() `)
                                 serializeFunctionBlock($.value.block, $i)
                             })
                         })
                     })
                 }
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`return `)
                     serializeExpression($.returnExpression, $i)
                 })
@@ -143,17 +143,17 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                 }
             }
             $i.file(`${$.key}.generated.ts`, ($i) => {
-                $i.literal(`import * as pl from 'pareto-core-lib'`)
-                $i.literal(``)
+                $i.line(`import * as pl from 'pareto-core-lib'`)
+                $i.line(``)
 
-                $i.literal(`import * as api from "../api"`)
+                $i.line(`import * as api from "../api"`)
 
-                $i.line(($i) => {
+                $i.nestedLine(($i) => {
                     $i.snippet(`export const $$: api.${$d.createIdentifier(`C${$.key}`)} = `)
                     if ($.value.constructor) {
                         $i.snippet(`($d) => {`)
                         $i.indent(($i) => {
-                            $i.line(($i) => {
+                            $i.nestedLine(($i) => {
                                 $i.snippet(`return `)
                                 body($i)
                             })

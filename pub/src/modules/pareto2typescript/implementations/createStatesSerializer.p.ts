@@ -61,7 +61,7 @@ export const $$: api.CcreateStatesSerializer = ($d) => {
                         $i.snippet(`{`)
                         $i.indent(($i) => {
                             $d.dictionaryForEach($, ($) => {
-                                $i.line(($i) => {
+                                $i.nestedLine(($i) => {
                                     $i.snippet(`${$d.createApostrophedString($.key)}: `)
                                     serializeType($.value.type, $i)
                                 })
@@ -92,7 +92,7 @@ export const $$: api.CcreateStatesSerializer = ($d) => {
                     pl.cc($[1], ($) => {
                         $i.indent(($i) => {
                             $d.dictionaryForEach($, ($) => {
-                                $i.line(($i) => {
+                                $i.nestedLine(($i) => {
                                     $i.snippet(`| [${$d.createApostrophedString($.key)}, `)
                                     serializeType($.value, $i)
                                     $i.snippet(`]`)
@@ -129,12 +129,12 @@ export const $$: api.CcreateStatesSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        $i.line(($i) => {
+        $i.nestedLine(($i) => {
             $i.snippet(`import * as pl from './templib'`)
         })
         $d.dictionaryForEach($, ($) => {
 
-            $i.line(($i) => {
+            $i.nestedLine(($i) => {
                 $i.snippet(`export type ${$d.createIdentifier(`S${$.key}`)} = `)
                 serializeType($.value, $i)
             })

@@ -7,10 +7,10 @@ import {
     TLocalType,
     TReference,
     TString,
-    T_Reference,
+    T_$Reference,
 } from "./types.generated";
 
-function r_imp(name: string, annotation: string): T_Reference {
+function r_imp(name: string, annotation: string): T_$Reference {
     return {
         name: name,
         annotation: annotation
@@ -36,7 +36,7 @@ export function d<T>($: { [key: string]: T }) {
     return d_imp($, li)
 }
 
-export function r(name: string): T_Reference {
+export function r(name: string): T_$Reference {
     const li = pr.getLocationInfo(1)
     return r_imp(name, li)
 }

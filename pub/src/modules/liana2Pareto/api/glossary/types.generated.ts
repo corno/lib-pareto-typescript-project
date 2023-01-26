@@ -5,32 +5,26 @@ import * as mliana from "../../../liana"
 import * as mmain from "lib-pareto-main"
 import * as mproject from "../../../project"
 
-export namespace GConfiguration {
-    
-    export namespace G {}
-    export type G = {
-        readonly 'mainData': mmain.TMainData
-        readonly 'model': GMappedModel
-    }
+export namespace UConfiguration {}
+export type UConfiguration = {
+    readonly 'mainData': mmain.TMainData
+    readonly 'model': GMappedModel
 }
-export type GConfiguration = GConfiguration.G
+export type GConfiguration = UConfiguration
 
-export namespace GMappedModel {
+export namespace UMappedModel {
     
-    export namespace G {
+    export namespace Pstringmapping {
         
-        export namespace Pstringmapping {
-            
-            export namespace D {}
-            export type D = 
-                | ['number', null]
-                | ['string', null]
-        }
-        export type Pstringmapping = pt.Dictionary<Pstringmapping.D>
+        export namespace D {}
+        export type D = 
+            | ['number', null]
+            | ['string', null]
     }
-    export type G = {
-        readonly 'model': mliana.TModel
-        readonly 'stringmapping': G.Pstringmapping
-    }
+    export type Pstringmapping = pt.Dictionary<Pstringmapping.D>
 }
-export type GMappedModel = GMappedModel.G
+export type UMappedModel = {
+    readonly 'model': mliana.TModel
+    readonly 'stringmapping': UMappedModel.Pstringmapping
+}
+export type GMappedModel = UMappedModel

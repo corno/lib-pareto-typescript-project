@@ -550,18 +550,30 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 serializeComplexType(
                     {
                         $: $.value,
-                        name: `G${$.key}`
+                        name: `g${$.key}`
                     },
                     () => { },
                     $i
                 )
+                $i.nestedLine(($i) => {
+                    $i.snippet(`export type ${$d.createIdentifier(`U${$.key}`)} = `)
+                    serializeType(
+                        {
+                            $: $.value,
+                        },
+                        ($i) => {
+                            $i.snippet(`${$d.createIdentifier(`G${$.key}`)}`)
+                        },
+                        $i
+                    )
+                })
             })
 
         })
         $i.file(`public.generated.ts`, ($i) => {
 
-            const parameters: mglossary.GGlossary.G.Pparameters = $.parameters !== undefined ? $.parameters : pl.createEmptyDictionary()
-            function serializeParameters($: mglossary.GGlossary.G.Pparameters, $i: mfp.ILine) {
+            const parameters: mglossary.UGlossary.Pparameters = $.parameters !== undefined ? $.parameters : pl.createEmptyDictionary()
+            function serializeParameters($: mglossary.UGlossary.Pparameters, $i: mfp.ILine) {
                 $d.enrichedDictionaryForEach($, {
                     onEmpty: () => {
 

@@ -6,30 +6,21 @@ import * as mmain from "lib-pareto-main"
 import * as mpareto2typescript from "../../../pareto2typescript"
 import * as mproject from "../../../project"
 
-export namespace GArgumentError {
-    
-    export namespace G {}
-    export type G = 
-        | ['missing', null]
-        | ['too many', null]
-}
-export type GArgumentError = GArgumentError.G
+export namespace UArgumentError {}
+export type UArgumentError = 
+    | ['missing', null]
+    | ['too many', null]
+export type GArgumentError = UArgumentError
 
-export namespace GParameters {
-    
-    export namespace G {}
-    export type G = {
-        readonly 'testDirectory': string
-    }
+export namespace UParameters {}
+export type UParameters = {
+    readonly 'testDirectory': string
 }
-export type GParameters = GParameters.G
+export type GParameters = UParameters
 
-export namespace GProjectSettings {
-    
-    export namespace G {}
-    export type G = {
-        readonly 'mainData': mmain.TMainData
-        readonly 'project': mproject.TProject
-    }
+export namespace UProjectSettings {}
+export type UProjectSettings = {
+    readonly 'mainData': mmain.TMainData
+    readonly 'project': mproject.TProject
 }
-export type GProjectSettings = GProjectSettings.G
+export type GProjectSettings = UProjectSettings

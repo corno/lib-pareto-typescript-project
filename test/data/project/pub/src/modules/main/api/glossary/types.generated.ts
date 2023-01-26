@@ -2,12 +2,13 @@ import * as pt from 'pareto-core-types'
 
 import * as mfp from "lib-fountain-pen"
 
-export namespace GContext {}
-export type GContext = 
+export namespace gContext {}
+export type gContext = 
     | ['import', string]
     | ['local', null]
+export type UContext = GContext
 
-export namespace GFunction {
+export namespace gFunction {
     
     export namespace Pmanaged__input__interface {}
     export type Pmanaged__input__interface = null | GInterfaceReference
@@ -28,14 +29,15 @@ export namespace GFunction {
         | ['interface', GInterfaceReference]
         | ['nothing', null]
 }
-export type GFunction = {
+export type gFunction = {
     readonly 'data': GTypeReference
-    readonly 'managed input interface': GFunction.Pmanaged__input__interface
-    readonly 'output interface': GFunction.Poutput__interface
-    readonly 'return type': GFunction.Preturn__type
+    readonly 'managed input interface': gFunction.Pmanaged__input__interface
+    readonly 'output interface': gFunction.Poutput__interface
+    readonly 'return type': gFunction.Preturn__type
 }
+export type UFunction = GFunction
 
-export namespace GGlossary {
+export namespace gGlossary {
     
     export namespace Pfunctions {}
     export type Pfunctions = pt.Dictionary<GFunction>
@@ -43,14 +45,15 @@ export namespace GGlossary {
     export namespace Pimports {}
     export type Pimports = pt.Dictionary<string>
 }
-export type GGlossary = {
-    readonly 'functions': GGlossary.Pfunctions
-    readonly 'imports': GGlossary.Pimports
+export type gGlossary = {
+    readonly 'functions': gGlossary.Pfunctions
+    readonly 'imports': gGlossary.Pimports
     readonly 'namespace': GNamespace
     readonly 'parameters'?: GParameters
 }
+export type UGlossary = GGlossary
 
-export namespace GInterface {
+export namespace gInterface {
     
     export namespace Ogroup {
         
@@ -74,18 +77,20 @@ export namespace GInterface {
         readonly 'interface': Omethod.Pinterface
     }
 }
-export type GInterface = 
-    | ['group', GInterface.Ogroup]
-    | ['method', GInterface.Omethod]
+export type gInterface = 
+    | ['group', gInterface.Ogroup]
+    | ['method', gInterface.Omethod]
     | ['reference', GInterfaceReference]
+export type UInterface = GInterface
 
-export namespace GInterfaceReference {}
-export type GInterfaceReference = {
+export namespace gInterfaceReference {}
+export type gInterfaceReference = {
     readonly 'context'?: GContext
     readonly 'interface': string
 }
+export type UInterfaceReference = GInterfaceReference
 
-export namespace GNamespace {
+export namespace gNamespace {
     
     export namespace Pinterfaces {}
     export type Pinterfaces = pt.Dictionary<GInterface>
@@ -99,27 +104,30 @@ export namespace GNamespace {
     export namespace Ptypes {}
     export type Ptypes = pt.Dictionary<GType>
 }
-export type GNamespace = {
-    readonly 'interfaces': GNamespace.Pinterfaces
-    readonly 'namespaces'?: GNamespace.Pnamespaces
-    readonly 'templates'?: GNamespace.Ptemplates
-    readonly 'types': GNamespace.Ptypes
+export type gNamespace = {
+    readonly 'interfaces': gNamespace.Pinterfaces
+    readonly 'namespaces'?: gNamespace.Pnamespaces
+    readonly 'templates'?: gNamespace.Ptemplates
+    readonly 'types': gNamespace.Ptypes
 }
+export type UNamespace = GNamespace
 
-export namespace GParameters {}
-export type GParameters = pt.Dictionary<null>
+export namespace gParameters {}
+export type gParameters = pt.Dictionary<null>
+export type UParameters = GParameters
 
-export namespace GTemplate {
+export namespace gTemplate {
     
     export namespace Pparameters {}
     export type Pparameters = pt.Dictionary<null>
 }
-export type GTemplate = {
-    readonly 'parameters': GTemplate.Pparameters
+export type gTemplate = {
+    readonly 'parameters': gTemplate.Pparameters
     readonly 'type': GType
 }
+export type UTemplate = GTemplate
 
-export namespace GType {
+export namespace gType {
     
     export namespace Ogroup {
         
@@ -145,12 +153,12 @@ export namespace GType {
         readonly 'template': string
     }
 }
-export type GType = 
+export type gType = 
     | ['array', GType]
     | ['boolean', null]
     | ['computed', GType]
     | ['dictionary', GType]
-    | ['group', GType.Ogroup]
+    | ['group', gType.Ogroup]
     | ['nested', GType]
     | ['null', null]
     | ['number', null]
@@ -158,16 +166,18 @@ export type GType =
     | ['parameter', string]
     | ['reference', GTypeReference]
     | ['string', null]
-    | ['taggedUnion', GType.OtaggedUnion]
-    | ['template', GType.Otemplate]
+    | ['taggedUnion', gType.OtaggedUnion]
+    | ['template', gType.Otemplate]
+export type UType = GType
 
-export namespace GTypeReference {
+export namespace gTypeReference {
     
     export namespace Pnamespaces {}
     export type Pnamespaces = pt.Array<string>
 }
-export type GTypeReference = {
+export type gTypeReference = {
     readonly 'context': GContext
-    readonly 'namespaces': GTypeReference.Pnamespaces
+    readonly 'namespaces': gTypeReference.Pnamespaces
     readonly 'type': string
 }
+export type UTypeReference = GTypeReference

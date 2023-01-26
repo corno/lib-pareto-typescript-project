@@ -6,6 +6,14 @@ export namespace G_$Function {
     
     export namespace G {
         
+        export namespace Pmanaged__input__interface {
+            export type $ = null | GInterfaceReference.$
+        }
+        
+        export namespace Poutput__interface {
+            export type $ = null | GInterfaceReference.$
+        }
+        
         export namespace Preturn__type {
             
             export namespace Odata {
@@ -21,8 +29,8 @@ export namespace G_$Function {
         }
         export type $ = {
             readonly 'data': GTypeReference.$
-            readonly 'managed input interface': null | GInterfaceReference.$
-            readonly 'output interface': null | GInterfaceReference.$
+            readonly 'managed input interface': Pmanaged__input__interface.$
+            readonly 'output interface': Poutput__interface.$
             readonly 'return type': Preturn__type.$
         }
     }
@@ -119,9 +127,17 @@ export namespace GInterface {
         }
         
         export namespace Omethod {
+            
+            export namespace Pdata {
+                export type $ = null | GTypeReference.$
+            }
+            
+            export namespace Pinterface {
+                export type $ = null | G_$MethodInterface.$
+            }
             export type $ = {
-                readonly 'data': null | GTypeReference.$
-                readonly 'interface': null | G_$MethodInterface.$
+                readonly 'data': Pdata.$
+                readonly 'interface': Pinterface.$
             }
         }
         

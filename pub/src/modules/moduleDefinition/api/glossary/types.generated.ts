@@ -9,11 +9,15 @@ export namespace G_$AlgorithmType {
         
         export namespace Oconstructor {
             
+            export namespace Pconfiguration__data {
+                export type $ = null | mglossary.TTypeReference
+            }
+            
             export namespace Pdependencies {
                 export type $ = pt.Dictionary<GDefinitionReference.$>
             }
             export type $ = {
-                readonly 'configuration data': null | mglossary.TTypeReference
+                readonly 'configuration data': Pconfiguration__data.$
                 readonly 'dependencies': Pdependencies.$
             }
         }

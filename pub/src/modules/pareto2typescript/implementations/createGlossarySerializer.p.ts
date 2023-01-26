@@ -210,7 +210,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                         doType(
                                             {
                                                 $: $,
-                                                name: `A`,
+                                                name: `C`,
                                             },
                                             $parameters,
                                             $i
@@ -360,7 +360,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                         doType(
                                             {
                                                 $: $,
-                                                name: `A`,
+                                                name: `O`,
                                             },
                                             $parameters,
                                             $i

@@ -2,10 +2,14 @@ import * as pt from 'pareto-core-types'
 
 
 export namespace VComputedReference {
+    
+    export namespace Preferenced__value {
+        export type $<AReferencedType> = () => AReferencedType
+    }
     export type $<AReferencedType> = {
         readonly 'annotation': string
         readonly 'name': string
-        readonly 'referenced value': () => AReferencedType
+        readonly 'referenced value': Preferenced__value.$<AReferencedType>
     }
 }
 
@@ -424,8 +428,12 @@ export namespace GXProperty {
 export namespace GXReference {
     
     export namespace G {
+        
+        export namespace Presolved__type {
+            export type $ = null | GLocalType.$
+        }
         export type $ = {
-            readonly 'resolved type': null | GLocalType.$
+            readonly 'resolved type': Presolved__type.$
         }
     }
     export type $ = G.$

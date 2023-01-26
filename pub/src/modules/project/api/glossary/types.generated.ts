@@ -4,26 +4,26 @@ import * as malgorithm from "../../../algorithm"
 import * as mfp from "lib-fountain-pen"
 import * as mmoduleDefinition from "../../../moduleDefinition"
 
-export namespace UAlgorithmImplementation {}
-export type UAlgorithmImplementation = {}
-export type GAlgorithmImplementation = UAlgorithmImplementation
+export namespace GAlgorithmImplementation {}
+export type GAlgorithmImplementation = {}
+export type UAlgorithmImplementation = GAlgorithmImplementation
 
-export namespace UImplementation {}
-export type UImplementation = pt.Dictionary<GAlgorithmImplementation>
-export type GImplementation = UImplementation
+export namespace GImplementation {}
+export type GImplementation = pt.Dictionary<UAlgorithmImplementation>
+export type UImplementation = GImplementation
 
-export namespace UModule {}
-export type UModule = {
+export namespace GModule {}
+export type GModule = {
     readonly 'definition': mmoduleDefinition.TModuleDefinition
     readonly 'implementation'?: malgorithm.TImplementation
     readonly 'states'?: malgorithm.TStates
 }
-export type GModule = UModule
+export type UModule = GModule
 
-export namespace UProject {
+export namespace GProject {
     
     export namespace Pmodules {}
-    export type Pmodules = pt.Dictionary<GModule>
+    export type Pmodules = pt.Dictionary<UModule>
     
     export namespace Ptype {}
     export type Ptype = 
@@ -31,9 +31,9 @@ export namespace UProject {
         | ['library', null]
         | ['resource', null]
 }
-export type UProject = {
+export type GProject = {
     readonly 'main': string
-    readonly 'modules': UProject.Pmodules
-    readonly 'type': UProject.Ptype
+    readonly 'modules': GProject.Pmodules
+    readonly 'type': GProject.Ptype
 }
-export type GProject = UProject
+export type UProject = GProject

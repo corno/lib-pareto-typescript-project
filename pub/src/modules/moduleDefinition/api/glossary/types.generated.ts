@@ -3,7 +3,7 @@ import * as pt from 'pareto-core-types'
 import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../../glossary"
 
-export namespace U_$AlgorithmType {
+export namespace G_$AlgorithmType {
     
     export namespace Oconstructor {
         
@@ -11,32 +11,32 @@ export namespace U_$AlgorithmType {
         export type Pconfiguration__data = null | mglossary.TTypeReference
         
         export namespace Pdependencies {}
-        export type Pdependencies = pt.Dictionary<GDefinitionReference>
+        export type Pdependencies = pt.Dictionary<UDefinitionReference>
     }
     export type Oconstructor = {
         readonly 'configuration data': Oconstructor.Pconfiguration__data
         readonly 'dependencies': Oconstructor.Pdependencies
     }
 }
-export type U_$AlgorithmType = 
-    | ['constructor', U_$AlgorithmType.Oconstructor]
+export type G_$AlgorithmType = 
+    | ['constructor', G_$AlgorithmType.Oconstructor]
     | ['reference', null]
-export type G_$AlgorithmType = U_$AlgorithmType
+export type U_$AlgorithmType = G_$AlgorithmType
 
-export namespace UContext {}
-export type UContext = 
+export namespace GContext {}
+export type GContext = 
     | ['import', string]
     | ['local', null]
-export type GContext = UContext
+export type UContext = GContext
 
-export namespace UDefinitionReference {}
-export type UDefinitionReference = {
-    readonly 'context'?: GContext
+export namespace GDefinitionReference {}
+export type GDefinitionReference = {
+    readonly 'context'?: UContext
     readonly 'function': string
 }
-export type GDefinitionReference = UDefinitionReference
+export type UDefinitionReference = GDefinitionReference
 
-export namespace UModuleDefinition {
+export namespace GModuleDefinition {
     
     export namespace Papi {
         
@@ -44,8 +44,8 @@ export namespace UModuleDefinition {
             
             export namespace D {}
             export type D = {
-                readonly 'definition': GDefinitionReference
-                readonly 'type': G_$AlgorithmType
+                readonly 'definition': UDefinitionReference
+                readonly 'type': U_$AlgorithmType
             }
         }
         export type Palgorithms = pt.Dictionary<Palgorithms.D>
@@ -58,8 +58,8 @@ export namespace UModuleDefinition {
         readonly 'imports': Papi.Pimports
     }
 }
-export type UModuleDefinition = {
-    readonly 'api': UModuleDefinition.Papi
+export type GModuleDefinition = {
+    readonly 'api': GModuleDefinition.Papi
     readonly 'glossary': mglossary.TGlossary
 }
-export type GModuleDefinition = UModuleDefinition
+export type UModuleDefinition = GModuleDefinition

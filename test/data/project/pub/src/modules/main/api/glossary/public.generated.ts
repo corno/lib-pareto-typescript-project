@@ -4,22 +4,22 @@ import * as t from './types.generated'
 
 import * as mfp from "lib-fountain-pen"
 
-export type TContext = t.GContext
+export type TContext = t.UContext
 
-export type TFunction = t.GFunction
+export type TFunction = t.UFunction
 
-export type TGlossary = t.GGlossary
+export type TGlossary = t.UGlossary
 
-export type TInterface = t.GInterface
+export type TInterface = t.UInterface
 
-export type TInterfaceReference = t.GInterfaceReference
+export type TInterfaceReference = t.UInterfaceReference
 
-export type TNamespace = t.GNamespace
+export type TNamespace = t.UNamespace
 
-export type TParameters = t.GParameters
+export type TParameters = t.UParameters
 
-export type TTemplate = t.GTemplate
+export type TTemplate = t.UTemplate
 
-export type TType = t.GType
+export type TType = t.UType
 
-export type TTypeReference = t.GTypeReference
+export type TTypeReference = t.UTypeReference

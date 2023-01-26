@@ -19,7 +19,7 @@ export namespace VConstrainedDictionary {
     export namespace Pdictionary {
         
         export namespace D {}
-        export type D<AReferencedType, AType> = MConstrainedDictionaryEntry<GXGlobalType, GXArgument>
+        export type D<AReferencedType, AType> = MConstrainedDictionaryEntry<UXGlobalType, UXArgument>
     }
     export type Pdictionary<AReferencedType, AType> = pt.Dictionary<Pdictionary.D<AReferencedType, AType>>
 }
@@ -66,25 +66,25 @@ export type VReference<AReferencedType> = {
 
 export type MReference<AReferencedType> = VReference<AReferencedType>
 
-export namespace U_$Reference {}
-export type U_$Reference = {
+export namespace G_$Reference {}
+export type G_$Reference = {
     readonly 'annotation': string
     readonly 'name': string
 }
-export type G_$Reference = U_$Reference
+export type U_$Reference = G_$Reference
 
-export namespace UGlobalType {}
-export type UGlobalType = {
-    readonly 'parameters': GParameters
-    readonly 'type': GLocalType
+export namespace GGlobalType {}
+export type GGlobalType = {
+    readonly 'parameters': UParameters
+    readonly 'type': ULocalType
 }
-export type GGlobalType = UGlobalType
+export type UGlobalType = GGlobalType
 
-export namespace ULocalType {
+export namespace GLocalType {
     
     export namespace Oarray {}
     export type Oarray = {
-        readonly 'type': GLocalType
+        readonly 'type': ULocalType
     }
     
     export namespace Ocomponent {
@@ -94,18 +94,18 @@ export namespace ULocalType {
     }
     export type Ocomponent = {
         readonly 'arguments': Ocomponent.Parguments
-        readonly 'type': G_$Reference
+        readonly 'type': U_$Reference
     }
     
     export namespace Odictionary {}
     export type Odictionary = {
-        readonly 'key': GString
-        readonly 'type': GLocalType
+        readonly 'key': UString
+        readonly 'type': ULocalType
     }
     
     export namespace Ogroup {}
     export type Ogroup = {
-        readonly 'properties': GProperties
+        readonly 'properties': UProperties
     }
     
     export namespace OtaggedUnion {
@@ -114,140 +114,140 @@ export namespace ULocalType {
             
             export namespace TPType {}
             export type TPType = {
-                readonly 'type': GLocalType
+                readonly 'type': ULocalType
             }
         }
         export type Poptions = MDictionary<Poptions.TPType>
     }
     export type OtaggedUnion = {
-        readonly 'default': G_$Reference
+        readonly 'default': U_$Reference
         readonly 'options': OtaggedUnion.Poptions
     }
 }
-export type ULocalType = 
-    | ['array', ULocalType.Oarray]
+export type GLocalType = 
+    | ['array', GLocalType.Oarray]
     | ['boolean', null]
-    | ['component', ULocalType.Ocomponent]
-    | ['dictionary', ULocalType.Odictionary]
-    | ['group', ULocalType.Ogroup]
-    | ['string', GString]
-    | ['taggedUnion', ULocalType.OtaggedUnion]
-export type GLocalType = ULocalType
+    | ['component', GLocalType.Ocomponent]
+    | ['dictionary', GLocalType.Odictionary]
+    | ['group', GLocalType.Ogroup]
+    | ['string', UString]
+    | ['taggedUnion', GLocalType.OtaggedUnion]
+export type ULocalType = GLocalType
 
-export namespace UModel {
+export namespace GModel {
     
     export namespace PglobalTypes {}
-    export type PglobalTypes = MDictionary<GGlobalType>
+    export type PglobalTypes = MDictionary<UGlobalType>
     
     export namespace PstringTypes {}
     export type PstringTypes = MDictionary<null>
 }
-export type UModel = {
-    readonly 'globalTypes': UModel.PglobalTypes
-    readonly 'root': G_$Reference
-    readonly 'stringTypes': UModel.PstringTypes
+export type GModel = {
+    readonly 'globalTypes': GModel.PglobalTypes
+    readonly 'root': U_$Reference
+    readonly 'stringTypes': GModel.PstringTypes
 }
-export type GModel = UModel
-export type GParameter = G_$Reference
+export type UModel = GModel
+export type UParameter = U_$Reference
 
-export namespace UParameters {}
-export type UParameters = MDictionary<GParameter>
-export type GParameters = UParameters
+export namespace GParameters {}
+export type GParameters = MDictionary<UParameter>
+export type UParameters = GParameters
 
-export namespace UPossibleModel {
+export namespace GPossibleModel {
     
     export namespace TPType {}
     export type TPType = {
         readonly 'has errors': boolean
-        readonly 'model': GXModel
+        readonly 'model': UXModel
     }
 }
-export type UPossibleModel = MPossibly<UPossibleModel.TPType>
-export type GPossibleModel = UPossibleModel
+export type GPossibleModel = MPossibly<GPossibleModel.TPType>
+export type UPossibleModel = GPossibleModel
 
-export namespace UProperties {}
-export type UProperties = MDictionary<GProperty>
-export type GProperties = UProperties
+export namespace GProperties {}
+export type GProperties = MDictionary<UProperty>
+export type UProperties = GProperties
 
-export namespace UProperty {
+export namespace GProperty {
     
     export namespace Psibling__dependencies {}
     export type Psibling__dependencies = MDictionary<null>
 }
-export type UProperty = {
-    readonly 'sibling dependencies': UProperty.Psibling__dependencies
-    readonly 'type': GLocalType
+export type GProperty = {
+    readonly 'sibling dependencies': GProperty.Psibling__dependencies
+    readonly 'type': ULocalType
 }
-export type GProperty = UProperty
+export type UProperty = GProperty
 
-export namespace UReference {
+export namespace GReference {
     
     export namespace Psteps {
         
         export namespace A {}
         export type A = 
             | ['array', null]
-            | ['group', G_$Reference]
+            | ['group', U_$Reference]
             | ['reference', null]
-            | ['tagged union', G_$Reference]
+            | ['tagged union', U_$Reference]
     }
     export type Psteps = pt.Array<Psteps.A>
     
     export namespace Ptype {}
     export type Ptype = 
         | ['other', null]
-        | ['parameter', G_$Reference]
-        | ['sibling', G_$Reference]
+        | ['parameter', U_$Reference]
+        | ['sibling', U_$Reference]
 }
-export type UReference = {
-    readonly 'steps': UReference.Psteps
-    readonly 'type': UReference.Ptype
+export type GReference = {
+    readonly 'steps': GReference.Psteps
+    readonly 'type': GReference.Ptype
 }
-export type GReference = UReference
+export type UReference = GReference
 
-export namespace UString {
+export namespace GString {
     
     export namespace Pconstrained {
         
         export namespace Ono {}
         export type Ono = {
-            readonly 'type': G_$Reference
+            readonly 'type': U_$Reference
         }
     }
     export type Pconstrained = 
         | ['no', Pconstrained.Ono]
-        | ['yes', GReference]
+        | ['yes', UReference]
 }
-export type UString = {
-    readonly 'constrained': UString.Pconstrained
+export type GString = {
+    readonly 'constrained': GString.Pconstrained
 }
-export type GString = UString
+export type UString = GString
 
-export namespace UXArgument {}
-export type UXArgument = MComputedReference<GXGlobalType>
-export type GXArgument = UXArgument
+export namespace GXArgument {}
+export type GXArgument = MComputedReference<UXGlobalType>
+export type UXArgument = GXArgument
 
-export namespace UXGlobalType {}
-export type UXGlobalType = {
-    readonly 'parameters': GXParameters
-    readonly 'type': GXLocalType
+export namespace GXGlobalType {}
+export type GXGlobalType = {
+    readonly 'parameters': UXParameters
+    readonly 'type': UXLocalType
 }
-export type GXGlobalType = UXGlobalType
+export type UXGlobalType = GXGlobalType
 
-export namespace UXLocalType {
+export namespace GXLocalType {
     
     export namespace Oarray {}
     export type Oarray = {
-        readonly 'type': GXLocalType
+        readonly 'type': UXLocalType
     }
     
     export namespace Ocomponent {
         
         export namespace Parguments {}
-        export type Parguments = MConstrainedDictionary<GXParameter, GXArgument>
+        export type Parguments = MConstrainedDictionary<UXParameter, UXArgument>
         
         export namespace Ptype {}
-        export type Ptype = MComputedReference<GXGlobalType>
+        export type Ptype = MComputedReference<UXGlobalType>
     }
     export type Ocomponent = {
         readonly 'arguments': Ocomponent.Parguments
@@ -256,95 +256,95 @@ export namespace UXLocalType {
     
     export namespace Odictionary {}
     export type Odictionary = {
-        readonly 'key': GXString
-        readonly 'type': GXLocalType
+        readonly 'key': UXString
+        readonly 'type': UXLocalType
     }
     
     export namespace Ogroup {}
     export type Ogroup = {
-        readonly 'properties': GXProperties
+        readonly 'properties': UXProperties
     }
     
     export namespace OtaggedUnion {
         
         export namespace Pdefault {}
-        export type Pdefault = MReference<GXOption>
+        export type Pdefault = MReference<UXOption>
         
         export namespace Poptions {}
-        export type Poptions = MDictionary<GXOption>
+        export type Poptions = MDictionary<UXOption>
     }
     export type OtaggedUnion = {
         readonly 'default': OtaggedUnion.Pdefault
         readonly 'options': OtaggedUnion.Poptions
     }
 }
-export type UXLocalType = 
-    | ['array', UXLocalType.Oarray]
+export type GXLocalType = 
+    | ['array', GXLocalType.Oarray]
     | ['boolean', null]
-    | ['component', UXLocalType.Ocomponent]
-    | ['dictionary', UXLocalType.Odictionary]
-    | ['group', UXLocalType.Ogroup]
-    | ['string', GXString]
-    | ['taggedUnion', UXLocalType.OtaggedUnion]
-export type GXLocalType = UXLocalType
+    | ['component', GXLocalType.Ocomponent]
+    | ['dictionary', GXLocalType.Odictionary]
+    | ['group', GXLocalType.Ogroup]
+    | ['string', UXString]
+    | ['taggedUnion', GXLocalType.OtaggedUnion]
+export type UXLocalType = GXLocalType
 
-export namespace UXModel {
+export namespace GXModel {
     
     export namespace PglobalTypes {}
-    export type PglobalTypes = MDictionary<GXGlobalType>
+    export type PglobalTypes = MDictionary<UXGlobalType>
     
     export namespace Proot {}
-    export type Proot = MReference<GXGlobalType>
+    export type Proot = MReference<UXGlobalType>
     
     export namespace PstringTypes {}
-    export type PstringTypes = MDictionary<GXStringType>
+    export type PstringTypes = MDictionary<UXStringType>
 }
-export type UXModel = {
-    readonly 'globalTypes': UXModel.PglobalTypes
-    readonly 'root': UXModel.Proot
-    readonly 'stringTypes': UXModel.PstringTypes
+export type GXModel = {
+    readonly 'globalTypes': GXModel.PglobalTypes
+    readonly 'root': GXModel.Proot
+    readonly 'stringTypes': GXModel.PstringTypes
 }
-export type GXModel = UXModel
+export type UXModel = GXModel
 
-export namespace UXOption {}
-export type UXOption = {
-    readonly 'type': GXLocalType
+export namespace GXOption {}
+export type GXOption = {
+    readonly 'type': UXLocalType
 }
-export type GXOption = UXOption
-export type GXParameter = null
+export type UXOption = GXOption
+export type UXParameter = null
 
-export namespace UXParameters {}
-export type UXParameters = MDictionary<GXParameter>
-export type GXParameters = UXParameters
+export namespace GXParameters {}
+export type GXParameters = MDictionary<UXParameter>
+export type UXParameters = GXParameters
 
-export namespace UXProperties {}
-export type UXProperties = MDictionary<GXProperty>
-export type GXProperties = UXProperties
+export namespace GXProperties {}
+export type GXProperties = MDictionary<UXProperty>
+export type UXProperties = GXProperties
 
-export namespace UXProperty {}
-export type UXProperty = {
-    readonly 'type': GXLocalType
+export namespace GXProperty {}
+export type GXProperty = {
+    readonly 'type': UXLocalType
 }
-export type GXProperty = UXProperty
+export type UXProperty = GXProperty
 
-export namespace UXReference {
+export namespace GXReference {
     
     export namespace Presolved__type {}
-    export type Presolved__type = null | GLocalType
+    export type Presolved__type = null | ULocalType
 }
-export type UXReference = {
-    readonly 'resolved type': UXReference.Presolved__type
+export type GXReference = {
+    readonly 'resolved type': GXReference.Presolved__type
 }
-export type GXReference = UXReference
+export type UXReference = GXReference
 
-export namespace UXString {
+export namespace GXString {
     
     export namespace Pconstrained {
         
         export namespace Ono {
             
             export namespace Ptype {}
-            export type Ptype = MReference<GXStringType>
+            export type Ptype = MReference<UXStringType>
         }
         export type Ono = {
             readonly 'type': Ono.Ptype
@@ -352,10 +352,10 @@ export namespace UXString {
     }
     export type Pconstrained = 
         | ['no', Pconstrained.Ono]
-        | ['yes', GXReference]
+        | ['yes', UXReference]
 }
-export type UXString = {
-    readonly 'constrained': UXString.Pconstrained
+export type GXString = {
+    readonly 'constrained': GXString.Pconstrained
 }
-export type GXString = UXString
-export type GXStringType = null
+export type UXString = GXString
+export type UXStringType = null

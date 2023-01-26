@@ -59,7 +59,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                         break
                                     case 'local':
                                         pl.cc($.context[1], ($) => {
-                                            $i.snippet(`${$d.createIdentifier(`G${type}`)}`)
+                                            $i.snippet(`${$d.createIdentifier(`U${type}`)}`)
                                         })
                                         break
                                     default: pl.au($.context[0])
@@ -550,7 +550,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 serializeComplexType(
                     {
                         $: $.value,
-                        name: `g${$.key}`
+                        name: `G${$.key}`
                     },
                     () => { },
                     $i
@@ -572,8 +572,8 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
         })
         $i.file(`public.generated.ts`, ($i) => {
 
-            const parameters: mglossary.UGlossary.Pparameters = $.parameters !== undefined ? $.parameters : pl.createEmptyDictionary()
-            function serializeParameters($: mglossary.UGlossary.Pparameters, $i: mfp.ILine) {
+            const parameters: mglossary.GGlossary.Pparameters = $.parameters !== undefined ? $.parameters : pl.createEmptyDictionary()
+            function serializeParameters($: mglossary.GGlossary.Pparameters, $i: mfp.ILine) {
                 $d.enrichedDictionaryForEach($, {
                     onEmpty: () => {
 
@@ -681,7 +681,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             $d.dictionaryForEach($.types, ($) => {
                 $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`export type ${$d.createIdentifier(`T${$.key}`)} = t.G${$d.createIdentifier($.key)}`)
+                    $i.snippet(`export type ${$d.createIdentifier(`T${$.key}`)} = t.U${$d.createIdentifier($.key)}`)
                 })
             })
             $d.dictionaryForEach($.interfaces, ($) => {

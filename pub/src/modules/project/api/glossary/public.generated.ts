@@ -6,13 +6,13 @@ import * as malgorithm from "../../../algorithm"
 import * as mfp from "lib-fountain-pen"
 import * as mmoduleDefinition from "../../../moduleDefinition"
 
-export type TAlgorithmImplementation = t.GAlgorithmImplementation
+export type TAlgorithmImplementation = t.UAlgorithmImplementation
 
-export type TImplementation = t.GImplementation
+export type TImplementation = t.UImplementation
 
-export type TModule = t.GModule
+export type TModule = t.UModule
 
-export type TProject = t.GProject
+export type TProject = t.UProject
 
 export type FSerialize = ($: TModule, $i: mfp.ILine,) => void
 

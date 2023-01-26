@@ -7,9 +7,9 @@ import * as mliana from "../../../liana"
 import * as mmain from "lib-pareto-main"
 import * as mproject from "../../../project"
 
-export type TConfiguration = t.GConfiguration
+export type TConfiguration = t.UConfiguration
 
-export type TMappedModel = t.GMappedModel
+export type TMappedModel = t.UMappedModel
 
 export type FGenerateProject = ($: TConfiguration,) => void
 

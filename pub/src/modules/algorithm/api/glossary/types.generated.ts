@@ -2,13 +2,13 @@ import * as pt from 'pareto-core-types'
 
 import * as mfp from "lib-fountain-pen"
 
-export namespace UCallbackBlock {
+export namespace GCallbackBlock {
     
     export namespace PinnerCallbacks {
         
         export namespace D {}
         export type D = {
-            readonly 'block': GCallbackBlock
+            readonly 'block': UCallbackBlock
         }
     }
     export type PinnerCallbacks = pt.Dictionary<PinnerCallbacks.D>
@@ -19,20 +19,20 @@ export namespace UCallbackBlock {
             
             export namespace OdependencyCall {}
             export type OdependencyCall = {
-                readonly 'callback'?: GCallbackBlock
+                readonly 'callback'?: UCallbackBlock
                 readonly 'data'?: string
             }
             
             export namespace OinnerCallbackCall {}
             export type OinnerCallbackCall = {
-                readonly 'data'?: GExpression
+                readonly 'data'?: UExpression
                 readonly 'innerCallback': string
                 readonly 'interface'?: string
             }
             
             export namespace OinterfaceCall {}
             export type OinterfaceCall = {
-                readonly 'callback'?: GCallbackBlock
+                readonly 'callback'?: UCallbackBlock
                 readonly 'data'?: string
                 readonly 'property': string
             }
@@ -40,7 +40,7 @@ export namespace UCallbackBlock {
             export namespace Oswitch {
                 
                 export namespace Pcases {}
-                export type Pcases = pt.Dictionary<GCallbackBlock>
+                export type Pcases = pt.Dictionary<UCallbackBlock>
                 
                 export namespace Ppath {}
                 export type Ppath = pt.Array<string>
@@ -58,13 +58,13 @@ export namespace UCallbackBlock {
     }
     export type Pstatements = pt.Array<Pstatements.A>
 }
-export type UCallbackBlock = {
-    readonly 'innerCallbacks'?: UCallbackBlock.PinnerCallbacks
-    readonly 'statements': UCallbackBlock.Pstatements
+export type GCallbackBlock = {
+    readonly 'innerCallbacks'?: GCallbackBlock.PinnerCallbacks
+    readonly 'statements': GCallbackBlock.Pstatements
 }
-export type GCallbackBlock = UCallbackBlock
+export type UCallbackBlock = GCallbackBlock
 
-export namespace UExpression {
+export namespace GExpression {
     
     export namespace Ocall {}
     export type Ocall = {
@@ -73,14 +73,14 @@ export namespace UExpression {
     
     export namespace OcontextChange {}
     export type OcontextChange = {
-        readonly 'block': GFunctionBlock
+        readonly 'block': UFunctionBlock
         readonly 'property': string
     }
     
     export namespace OgroupInitializer {
         
         export namespace Pproperties {}
-        export type Pproperties = pt.Dictionary<GExpression>
+        export type Pproperties = pt.Dictionary<UExpression>
     }
     export type OgroupInitializer = {
         readonly 'properties': OgroupInitializer.Pproperties
@@ -88,12 +88,12 @@ export namespace UExpression {
     
     export namespace OmapArray {}
     export type OmapArray = {
-        readonly 'block': GFunctionBlock
+        readonly 'block': UFunctionBlock
     }
     
     export namespace OmapDictionary {}
     export type OmapDictionary = {
-        readonly 'block': GFunctionBlock
+        readonly 'block': UFunctionBlock
     }
     
     export namespace OpropertySelection {}
@@ -104,41 +104,41 @@ export namespace UExpression {
     export namespace Oswitch {
         
         export namespace Pcases {}
-        export type Pcases = pt.Dictionary<GFunctionBlock>
+        export type Pcases = pt.Dictionary<UFunctionBlock>
     }
     export type Oswitch = {
         readonly 'cases': Oswitch.Pcases
     }
 }
-export type UExpression = 
-    | ['call', UExpression.Ocall]
-    | ['contextChange', UExpression.OcontextChange]
-    | ['groupInitializer', UExpression.OgroupInitializer]
+export type GExpression = 
+    | ['call', GExpression.Ocall]
+    | ['contextChange', GExpression.OcontextChange]
+    | ['groupInitializer', GExpression.OgroupInitializer]
     | ['implementMe', string]
-    | ['mapArray', UExpression.OmapArray]
-    | ['mapDictionary', UExpression.OmapDictionary]
-    | ['propertySelection', UExpression.OpropertySelection]
-    | ['switch', UExpression.Oswitch]
-export type GExpression = UExpression
+    | ['mapArray', GExpression.OmapArray]
+    | ['mapDictionary', GExpression.OmapDictionary]
+    | ['propertySelection', GExpression.OpropertySelection]
+    | ['switch', GExpression.Oswitch]
+export type UExpression = GExpression
 
-export namespace UFunctionBlock {
+export namespace GFunctionBlock {
     
     export namespace PinnerFunctions {
         
         export namespace D {}
         export type D = {
-            readonly 'block': GFunctionBlock
+            readonly 'block': UFunctionBlock
         }
     }
     export type PinnerFunctions = pt.Dictionary<PinnerFunctions.D>
 }
-export type UFunctionBlock = {
-    readonly 'innerFunctions'?: UFunctionBlock.PinnerFunctions
-    readonly 'returnExpression': GExpression
+export type GFunctionBlock = {
+    readonly 'innerFunctions'?: GFunctionBlock.PinnerFunctions
+    readonly 'returnExpression': UExpression
 }
-export type GFunctionBlock = UFunctionBlock
+export type UFunctionBlock = GFunctionBlock
 
-export namespace UImplementation {
+export namespace GImplementation {
     
     export namespace Pimplementations {
         
@@ -148,12 +148,12 @@ export namespace UImplementation {
                 
                 export namespace Ocallback {}
                 export type Ocallback = {
-                    readonly 'block': GCallbackBlock
+                    readonly 'block': UCallbackBlock
                 }
                 
                 export namespace Ofunction {}
                 export type Ofunction = {
-                    readonly 'block': GFunctionBlock
+                    readonly 'block': UFunctionBlock
                 }
             }
             export type Ptype = 
@@ -167,39 +167,39 @@ export namespace UImplementation {
     }
     export type Pimplementations = pt.Dictionary<Pimplementations.D>
 }
-export type UImplementation = {
-    readonly 'implementations': UImplementation.Pimplementations
+export type GImplementation = {
+    readonly 'implementations': GImplementation.Pimplementations
 }
-export type GImplementation = UImplementation
+export type UImplementation = GImplementation
 
-export namespace UStates {}
-export type UStates = pt.Dictionary<GType>
-export type GStates = UStates
+export namespace GStates {}
+export type GStates = pt.Dictionary<UType>
+export type UStates = GStates
 
-export namespace UType {
+export namespace GType {
     
     export namespace Ogroup {
         
         export namespace D {}
         export type D = {
-            readonly 'type': GType
+            readonly 'type': UType
         }
     }
     export type Ogroup = pt.Dictionary<Ogroup.D>
     
     export namespace OtaggedUnion {}
-    export type OtaggedUnion = pt.Dictionary<GType>
+    export type OtaggedUnion = pt.Dictionary<UType>
 }
-export type UType = 
-    | ['array', GType]
+export type GType = 
+    | ['array', UType]
     | ['boolean', null]
-    | ['dictionary', GType]
-    | ['group', UType.Ogroup]
+    | ['dictionary', UType]
+    | ['group', GType.Ogroup]
     | ['null', null]
     | ['number', null]
-    | ['optional', GType]
+    | ['optional', UType]
     | ['parameter', string]
     | ['reference', string]
     | ['string', null]
-    | ['taggedUnion', UType.OtaggedUnion]
-export type GType = UType
+    | ['taggedUnion', GType.OtaggedUnion]
+export type UType = GType

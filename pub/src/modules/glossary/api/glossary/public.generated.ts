@@ -4,16 +4,16 @@ import * as t from './types.generated'
 
 import * as mfp from "lib-fountain-pen"
 
-export type TContext = t.GContext
+export type TContext = t.UContext
 
-export type TGlossary = t.GGlossary
+export type TGlossary = t.UGlossary
 
-export type TInterface = t.GInterface
+export type TInterface = t.UInterface
 
-export type TInterfaceReference = t.GInterfaceReference
+export type TInterfaceReference = t.UInterfaceReference
 
-export type TType = t.GType
+export type TType = t.UType
 
-export type TTypeReference = t.GTypeReference
+export type TTypeReference = t.UTypeReference
 
 export type FSerialize = ($: TGlossary, $i: mfp.ILine,) => void

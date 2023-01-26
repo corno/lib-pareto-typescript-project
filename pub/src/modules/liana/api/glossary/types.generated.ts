@@ -3,17 +3,14 @@ import * as pt from 'pareto-core-types'
 
 export namespace VComputedReference {
     
-    export namespace Preferenced__value {
-        export type /*FIXME REMOVE*/$<AReferencedType> = () => AReferencedType
-    }
-    export type Preferenced__value<AReferencedType> = Preferenced__value.$<AReferencedType>
-    export type /*FIXME REMOVE*/$<AReferencedType> = {
-        readonly 'annotation': string
-        readonly 'name': string
-        readonly 'referenced value': Preferenced__value<AReferencedType>
-    }
+    export namespace Preferenced__value {}
+    export type Preferenced__value<AReferencedType> = () => AReferencedType
 }
-export type VComputedReference<AReferencedType> = VComputedReference.$<AReferencedType>
+export type VComputedReference<AReferencedType> = {
+    readonly 'annotation': string
+    readonly 'name': string
+    readonly 'referenced value': VComputedReference.Preferenced__value<AReferencedType>
+}
 
 export type MComputedReference<AReferencedType> = VComputedReference<AReferencedType>
 
@@ -21,249 +18,193 @@ export namespace VConstrainedDictionary {
     
     export namespace Pdictionary {
         
-        export namespace D {
-            export type /*FIXME REMOVE*/$<AReferencedType, AType> = MConstrainedDictionaryEntry<GXGlobalType, GXArgument>
-        }
-        export type D<AReferencedType, AType> = D.$<AReferencedType, AType>
-        export type /*FIXME REMOVE*/$<AReferencedType, AType> = pt.Dictionary<D<AReferencedType, AType>>
+        export namespace D {}
+        export type D<AReferencedType, AType> = MConstrainedDictionaryEntry<GXGlobalType, GXArgument>
     }
-    export type Pdictionary<AReferencedType, AType> = Pdictionary.$<AReferencedType, AType>
-    export type /*FIXME REMOVE*/$<AReferencedType, AType> = {
-        readonly 'annotation': string
-        readonly 'dictionary': Pdictionary<AReferencedType, AType>
-    }
+    export type Pdictionary<AReferencedType, AType> = pt.Dictionary<Pdictionary.D<AReferencedType, AType>>
 }
-export type VConstrainedDictionary<AReferencedType, AType> = VConstrainedDictionary.$<AReferencedType, AType>
+export type VConstrainedDictionary<AReferencedType, AType> = {
+    readonly 'annotation': string
+    readonly 'dictionary': VConstrainedDictionary.Pdictionary<AReferencedType, AType>
+}
 
 export type MConstrainedDictionary<AReferencedType, AType> = VConstrainedDictionary<AReferencedType, AType>
 
-export namespace VConstrainedDictionaryEntry {
-    export type /*FIXME REMOVE*/$<AReferencedType, AType> = {
-        readonly 'referenced value': AReferencedType
-        readonly 'value': AType
-    }
+export namespace VConstrainedDictionaryEntry {}
+export type VConstrainedDictionaryEntry<AReferencedType, AType> = {
+    readonly 'referenced value': AReferencedType
+    readonly 'value': AType
 }
-export type VConstrainedDictionaryEntry<AReferencedType, AType> = VConstrainedDictionaryEntry.$<AReferencedType, AType>
 
 export type MConstrainedDictionaryEntry<AReferencedType, AType> = VConstrainedDictionaryEntry<AReferencedType, AType>
 
 export namespace VDictionary {
     
-    export namespace Pdictionary {
-        export type /*FIXME REMOVE*/$<AType> = pt.Dictionary<AType>
-    }
-    export type Pdictionary<AType> = Pdictionary.$<AType>
-    export type /*FIXME REMOVE*/$<AType> = {
-        readonly 'annotation': string
-        readonly 'dictionary': Pdictionary<AType>
-    }
+    export namespace Pdictionary {}
+    export type Pdictionary<AType> = pt.Dictionary<AType>
 }
-export type VDictionary<AType> = VDictionary.$<AType>
+export type VDictionary<AType> = {
+    readonly 'annotation': string
+    readonly 'dictionary': VDictionary.Pdictionary<AType>
+}
 
 export type MDictionary<AType> = VDictionary<AType>
 
-export namespace VPossibly {
-    export type /*FIXME REMOVE*/$<AType> = 
-        | ['not set', null]
-        | ['set', AType]
-}
-export type VPossibly<AType> = VPossibly.$<AType>
+export namespace VPossibly {}
+export type VPossibly<AType> = 
+    | ['not set', null]
+    | ['set', AType]
 
 export type MPossibly<AType> = VPossibly<AType>
 
-export namespace VReference {
-    export type /*FIXME REMOVE*/$<AReferencedType> = {
-        readonly 'annotation': string
-        readonly 'name': string
-        readonly 'referenced value': AReferencedType
-    }
+export namespace VReference {}
+export type VReference<AReferencedType> = {
+    readonly 'annotation': string
+    readonly 'name': string
+    readonly 'referenced value': AReferencedType
 }
-export type VReference<AReferencedType> = VReference.$<AReferencedType>
 
 export type MReference<AReferencedType> = VReference<AReferencedType>
 
 export namespace G_$Reference {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'annotation': string
-            readonly 'name': string
-        }
+    export namespace G {}
+    export type G = {
+        readonly 'annotation': string
+        readonly 'name': string
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
 }
-export type G_$Reference = G_$Reference.$
+export type G_$Reference = G_$Reference.G
 
 export namespace GGlobalType {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'parameters': GParameters
-            readonly 'type': GLocalType
-        }
+    export namespace G {}
+    export type G = {
+        readonly 'parameters': GParameters
+        readonly 'type': GLocalType
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
 }
-export type GGlobalType = GGlobalType.$
+export type GGlobalType = GGlobalType.G
 
 export namespace GLocalType {
     
     export namespace G {
         
-        export namespace Oarray {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'type': GLocalType
-            }
+        export namespace Oarray {}
+        export type Oarray = {
+            readonly 'type': GLocalType
         }
-        export type Oarray = Oarray.$
         
         export namespace Ocomponent {
             
-            export namespace Parguments {
-                export type /*FIXME REMOVE*/$ = MDictionary<null>
-            }
-            export type Parguments = Parguments.$
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'arguments': Parguments
-                readonly 'type': G_$Reference
-            }
+            export namespace Parguments {}
+            export type Parguments = MDictionary<null>
         }
-        export type Ocomponent = Ocomponent.$
+        export type Ocomponent = {
+            readonly 'arguments': Ocomponent.Parguments
+            readonly 'type': G_$Reference
+        }
         
-        export namespace Odictionary {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'key': GString
-                readonly 'type': GLocalType
-            }
+        export namespace Odictionary {}
+        export type Odictionary = {
+            readonly 'key': GString
+            readonly 'type': GLocalType
         }
-        export type Odictionary = Odictionary.$
         
-        export namespace Ogroup {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'properties': GProperties
-            }
+        export namespace Ogroup {}
+        export type Ogroup = {
+            readonly 'properties': GProperties
         }
-        export type Ogroup = Ogroup.$
         
         export namespace OtaggedUnion {
             
             export namespace Poptions {
                 
-                export namespace TPType {
-                    export type /*FIXME REMOVE*/$ = {
-                        readonly 'type': GLocalType
-                    }
+                export namespace TPType {}
+                export type TPType = {
+                    readonly 'type': GLocalType
                 }
-                export type TPType = TPType.$
-                export type /*FIXME REMOVE*/$ = MDictionary<TPType>
             }
-            export type Poptions = Poptions.$
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'default': G_$Reference
-                readonly 'options': Poptions
-            }
+            export type Poptions = MDictionary<Poptions.TPType>
         }
-        export type OtaggedUnion = OtaggedUnion.$
-        export type /*FIXME REMOVE*/$ = 
-            | ['array', Oarray]
-            | ['boolean', null]
-            | ['component', Ocomponent]
-            | ['dictionary', Odictionary]
-            | ['group', Ogroup]
-            | ['string', GString]
-            | ['taggedUnion', OtaggedUnion]
+        export type OtaggedUnion = {
+            readonly 'default': G_$Reference
+            readonly 'options': OtaggedUnion.Poptions
+        }
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = 
+        | ['array', G.Oarray]
+        | ['boolean', null]
+        | ['component', G.Ocomponent]
+        | ['dictionary', G.Odictionary]
+        | ['group', G.Ogroup]
+        | ['string', GString]
+        | ['taggedUnion', G.OtaggedUnion]
 }
-export type GLocalType = GLocalType.$
+export type GLocalType = GLocalType.G
 
 export namespace GModel {
     
     export namespace G {
         
-        export namespace PglobalTypes {
-            export type /*FIXME REMOVE*/$ = MDictionary<GGlobalType>
-        }
-        export type PglobalTypes = PglobalTypes.$
+        export namespace PglobalTypes {}
+        export type PglobalTypes = MDictionary<GGlobalType>
         
-        export namespace PstringTypes {
-            export type /*FIXME REMOVE*/$ = MDictionary<null>
-        }
-        export type PstringTypes = PstringTypes.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'globalTypes': PglobalTypes
-            readonly 'root': G_$Reference
-            readonly 'stringTypes': PstringTypes
-        }
+        export namespace PstringTypes {}
+        export type PstringTypes = MDictionary<null>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'globalTypes': G.PglobalTypes
+        readonly 'root': G_$Reference
+        readonly 'stringTypes': G.PstringTypes
+    }
 }
-export type GModel = GModel.$
+export type GModel = GModel.G
 
-export namespace GParameter {
-    export type /*FIXME REMOVE*/$ = G_$Reference
-}
-export type GParameter = GParameter.$
+export namespace GParameter {}
+export type GParameter = G_$Reference
 
 export namespace GParameters {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = MDictionary<GParameter>
-    }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export namespace G {}
+    export type G = MDictionary<GParameter>
 }
-export type GParameters = GParameters.$
+export type GParameters = GParameters.G
 
 export namespace GPossibleModel {
     
     export namespace G {
         
-        export namespace TPType {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'has errors': boolean
-                readonly 'model': GXModel
-            }
+        export namespace TPType {}
+        export type TPType = {
+            readonly 'has errors': boolean
+            readonly 'model': GXModel
         }
-        export type TPType = TPType.$
-        export type /*FIXME REMOVE*/$ = MPossibly<TPType>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = MPossibly<G.TPType>
 }
-export type GPossibleModel = GPossibleModel.$
+export type GPossibleModel = GPossibleModel.G
 
 export namespace GProperties {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = MDictionary<GProperty>
-    }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export namespace G {}
+    export type G = MDictionary<GProperty>
 }
-export type GProperties = GProperties.$
+export type GProperties = GProperties.G
 
 export namespace GProperty {
     
     export namespace G {
         
-        export namespace Psibling__dependencies {
-            export type /*FIXME REMOVE*/$ = MDictionary<null>
-        }
-        export type Psibling__dependencies = Psibling__dependencies.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'sibling dependencies': Psibling__dependencies
-            readonly 'type': GLocalType
-        }
+        export namespace Psibling__dependencies {}
+        export type Psibling__dependencies = MDictionary<null>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'sibling dependencies': G.Psibling__dependencies
+        readonly 'type': GLocalType
+    }
 }
-export type GProperty = GProperty.$
+export type GProperty = GProperty.G
 
 export namespace GReference {
     
@@ -271,34 +212,27 @@ export namespace GReference {
         
         export namespace Psteps {
             
-            export namespace A {
-                export type /*FIXME REMOVE*/$ = 
-                    | ['array', null]
-                    | ['group', G_$Reference]
-                    | ['reference', null]
-                    | ['tagged union', G_$Reference]
-            }
-            export type A = A.$
-            export type /*FIXME REMOVE*/$ = pt.Array<A>
+            export namespace A {}
+            export type A = 
+                | ['array', null]
+                | ['group', G_$Reference]
+                | ['reference', null]
+                | ['tagged union', G_$Reference]
         }
-        export type Psteps = Psteps.$
+        export type Psteps = pt.Array<Psteps.A>
         
-        export namespace Ptype {
-            export type /*FIXME REMOVE*/$ = 
-                | ['other', null]
-                | ['parameter', G_$Reference]
-                | ['sibling', G_$Reference]
-        }
-        export type Ptype = Ptype.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'steps': Psteps
-            readonly 'type': Ptype
-        }
+        export namespace Ptype {}
+        export type Ptype = 
+            | ['other', null]
+            | ['parameter', G_$Reference]
+            | ['sibling', G_$Reference]
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'steps': G.Psteps
+        readonly 'type': G.Ptype
+    }
 }
-export type GReference = GReference.$
+export type GReference = GReference.G
 
 export namespace GString {
     
@@ -306,218 +240,163 @@ export namespace GString {
         
         export namespace Pconstrained {
             
-            export namespace Ono {
-                export type /*FIXME REMOVE*/$ = {
-                    readonly 'type': G_$Reference
-                }
+            export namespace Ono {}
+            export type Ono = {
+                readonly 'type': G_$Reference
             }
-            export type Ono = Ono.$
-            export type /*FIXME REMOVE*/$ = 
-                | ['no', Ono]
-                | ['yes', GReference]
         }
-        export type Pconstrained = Pconstrained.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'constrained': Pconstrained
-        }
+        export type Pconstrained = 
+            | ['no', Pconstrained.Ono]
+            | ['yes', GReference]
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'constrained': G.Pconstrained
+    }
 }
-export type GString = GString.$
+export type GString = GString.G
 
 export namespace GXArgument {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = MComputedReference<GXGlobalType>
-    }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export namespace G {}
+    export type G = MComputedReference<GXGlobalType>
 }
-export type GXArgument = GXArgument.$
+export type GXArgument = GXArgument.G
 
 export namespace GXGlobalType {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'parameters': GXParameters
-            readonly 'type': GXLocalType
-        }
+    export namespace G {}
+    export type G = {
+        readonly 'parameters': GXParameters
+        readonly 'type': GXLocalType
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
 }
-export type GXGlobalType = GXGlobalType.$
+export type GXGlobalType = GXGlobalType.G
 
 export namespace GXLocalType {
     
     export namespace G {
         
-        export namespace Oarray {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'type': GXLocalType
-            }
+        export namespace Oarray {}
+        export type Oarray = {
+            readonly 'type': GXLocalType
         }
-        export type Oarray = Oarray.$
         
         export namespace Ocomponent {
             
-            export namespace Parguments {
-                export type /*FIXME REMOVE*/$ = MConstrainedDictionary<GXParameter, GXArgument>
-            }
-            export type Parguments = Parguments.$
+            export namespace Parguments {}
+            export type Parguments = MConstrainedDictionary<GXParameter, GXArgument>
             
-            export namespace Ptype {
-                export type /*FIXME REMOVE*/$ = MComputedReference<GXGlobalType>
-            }
-            export type Ptype = Ptype.$
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'arguments': Parguments
-                readonly 'type': Ptype
-            }
+            export namespace Ptype {}
+            export type Ptype = MComputedReference<GXGlobalType>
         }
-        export type Ocomponent = Ocomponent.$
+        export type Ocomponent = {
+            readonly 'arguments': Ocomponent.Parguments
+            readonly 'type': Ocomponent.Ptype
+        }
         
-        export namespace Odictionary {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'key': GXString
-                readonly 'type': GXLocalType
-            }
+        export namespace Odictionary {}
+        export type Odictionary = {
+            readonly 'key': GXString
+            readonly 'type': GXLocalType
         }
-        export type Odictionary = Odictionary.$
         
-        export namespace Ogroup {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'properties': GXProperties
-            }
+        export namespace Ogroup {}
+        export type Ogroup = {
+            readonly 'properties': GXProperties
         }
-        export type Ogroup = Ogroup.$
         
         export namespace OtaggedUnion {
             
-            export namespace Pdefault {
-                export type /*FIXME REMOVE*/$ = MReference<GXOption>
-            }
-            export type Pdefault = Pdefault.$
+            export namespace Pdefault {}
+            export type Pdefault = MReference<GXOption>
             
-            export namespace Poptions {
-                export type /*FIXME REMOVE*/$ = MDictionary<GXOption>
-            }
-            export type Poptions = Poptions.$
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'default': Pdefault
-                readonly 'options': Poptions
-            }
+            export namespace Poptions {}
+            export type Poptions = MDictionary<GXOption>
         }
-        export type OtaggedUnion = OtaggedUnion.$
-        export type /*FIXME REMOVE*/$ = 
-            | ['array', Oarray]
-            | ['boolean', null]
-            | ['component', Ocomponent]
-            | ['dictionary', Odictionary]
-            | ['group', Ogroup]
-            | ['string', GXString]
-            | ['taggedUnion', OtaggedUnion]
+        export type OtaggedUnion = {
+            readonly 'default': OtaggedUnion.Pdefault
+            readonly 'options': OtaggedUnion.Poptions
+        }
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = 
+        | ['array', G.Oarray]
+        | ['boolean', null]
+        | ['component', G.Ocomponent]
+        | ['dictionary', G.Odictionary]
+        | ['group', G.Ogroup]
+        | ['string', GXString]
+        | ['taggedUnion', G.OtaggedUnion]
 }
-export type GXLocalType = GXLocalType.$
+export type GXLocalType = GXLocalType.G
 
 export namespace GXModel {
     
     export namespace G {
         
-        export namespace PglobalTypes {
-            export type /*FIXME REMOVE*/$ = MDictionary<GXGlobalType>
-        }
-        export type PglobalTypes = PglobalTypes.$
+        export namespace PglobalTypes {}
+        export type PglobalTypes = MDictionary<GXGlobalType>
         
-        export namespace Proot {
-            export type /*FIXME REMOVE*/$ = MReference<GXGlobalType>
-        }
-        export type Proot = Proot.$
+        export namespace Proot {}
+        export type Proot = MReference<GXGlobalType>
         
-        export namespace PstringTypes {
-            export type /*FIXME REMOVE*/$ = MDictionary<GXStringType>
-        }
-        export type PstringTypes = PstringTypes.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'globalTypes': PglobalTypes
-            readonly 'root': Proot
-            readonly 'stringTypes': PstringTypes
-        }
+        export namespace PstringTypes {}
+        export type PstringTypes = MDictionary<GXStringType>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'globalTypes': G.PglobalTypes
+        readonly 'root': G.Proot
+        readonly 'stringTypes': G.PstringTypes
+    }
 }
-export type GXModel = GXModel.$
+export type GXModel = GXModel.G
 
 export namespace GXOption {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'type': GXLocalType
-        }
+    export namespace G {}
+    export type G = {
+        readonly 'type': GXLocalType
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
 }
-export type GXOption = GXOption.$
+export type GXOption = GXOption.G
 
-export namespace GXParameter {
-    export type /*FIXME REMOVE*/$ = null
-}
-export type GXParameter = GXParameter.$
+export namespace GXParameter {}
+export type GXParameter = null
 
 export namespace GXParameters {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = MDictionary<GXParameter>
-    }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export namespace G {}
+    export type G = MDictionary<GXParameter>
 }
-export type GXParameters = GXParameters.$
+export type GXParameters = GXParameters.G
 
 export namespace GXProperties {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = MDictionary<GXProperty>
-    }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export namespace G {}
+    export type G = MDictionary<GXProperty>
 }
-export type GXProperties = GXProperties.$
+export type GXProperties = GXProperties.G
 
 export namespace GXProperty {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'type': GXLocalType
-        }
+    export namespace G {}
+    export type G = {
+        readonly 'type': GXLocalType
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
 }
-export type GXProperty = GXProperty.$
+export type GXProperty = GXProperty.G
 
 export namespace GXReference {
     
     export namespace G {
         
-        export namespace Presolved__type {
-            export type /*FIXME REMOVE*/$ = null | GLocalType
-        }
-        export type Presolved__type = Presolved__type.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'resolved type': Presolved__type
-        }
+        export namespace Presolved__type {}
+        export type Presolved__type = null | GLocalType
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'resolved type': G.Presolved__type
+    }
 }
-export type GXReference = GXReference.$
+export type GXReference = GXReference.G
 
 export namespace GXString {
     
@@ -527,30 +406,22 @@ export namespace GXString {
             
             export namespace Ono {
                 
-                export namespace Ptype {
-                    export type /*FIXME REMOVE*/$ = MReference<GXStringType>
-                }
-                export type Ptype = Ptype.$
-                export type /*FIXME REMOVE*/$ = {
-                    readonly 'type': Ptype
-                }
+                export namespace Ptype {}
+                export type Ptype = MReference<GXStringType>
             }
-            export type Ono = Ono.$
-            export type /*FIXME REMOVE*/$ = 
-                | ['no', Ono]
-                | ['yes', GXReference]
+            export type Ono = {
+                readonly 'type': Ono.Ptype
+            }
         }
-        export type Pconstrained = Pconstrained.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'constrained': Pconstrained
-        }
+        export type Pconstrained = 
+            | ['no', Pconstrained.Ono]
+            | ['yes', GXReference]
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'constrained': G.Pconstrained
+    }
 }
-export type GXString = GXString.$
+export type GXString = GXString.G
 
-export namespace GXStringType {
-    export type /*FIXME REMOVE*/$ = null
-}
-export type GXStringType = GXStringType.$
+export namespace GXStringType {}
+export type GXStringType = null

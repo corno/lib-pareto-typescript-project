@@ -7,16 +7,13 @@ import * as mproject from "../../../project"
 
 export namespace GConfiguration {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'mainData': mmain.TMainData
-            readonly 'model': GMappedModel
-        }
+    export namespace G {}
+    export type G = {
+        readonly 'mainData': mmain.TMainData
+        readonly 'model': GMappedModel
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
 }
-export type GConfiguration = GConfiguration.$
+export type GConfiguration = GConfiguration.G
 
 export namespace GMappedModel {
     
@@ -24,21 +21,16 @@ export namespace GMappedModel {
         
         export namespace Pstringmapping {
             
-            export namespace D {
-                export type /*FIXME REMOVE*/$ = 
-                    | ['number', null]
-                    | ['string', null]
-            }
-            export type D = D.$
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<D>
+            export namespace D {}
+            export type D = 
+                | ['number', null]
+                | ['string', null]
         }
-        export type Pstringmapping = Pstringmapping.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'model': mliana.TModel
-            readonly 'stringmapping': Pstringmapping
-        }
+        export type Pstringmapping = pt.Dictionary<Pstringmapping.D>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'model': mliana.TModel
+        readonly 'stringmapping': G.Pstringmapping
+    }
 }
-export type GMappedModel = GMappedModel.$
+export type GMappedModel = GMappedModel.G

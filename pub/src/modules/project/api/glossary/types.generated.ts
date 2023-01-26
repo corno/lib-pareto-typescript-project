@@ -6,61 +6,46 @@ import * as mmoduleDefinition from "../../../moduleDefinition"
 
 export namespace GAlgorithmImplementation {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = {}
-    }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export namespace G {}
+    export type G = {}
 }
-export type GAlgorithmImplementation = GAlgorithmImplementation.$
+export type GAlgorithmImplementation = GAlgorithmImplementation.G
 
 export namespace GImplementation {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = pt.Dictionary<GAlgorithmImplementation>
-    }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export namespace G {}
+    export type G = pt.Dictionary<GAlgorithmImplementation>
 }
-export type GImplementation = GImplementation.$
+export type GImplementation = GImplementation.G
 
 export namespace GModule {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'definition': mmoduleDefinition.TModuleDefinition
-            readonly 'implementation'?: malgorithm.TImplementation
-            readonly 'states'?: malgorithm.TStates
-        }
+    export namespace G {}
+    export type G = {
+        readonly 'definition': mmoduleDefinition.TModuleDefinition
+        readonly 'implementation'?: malgorithm.TImplementation
+        readonly 'states'?: malgorithm.TStates
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
 }
-export type GModule = GModule.$
+export type GModule = GModule.G
 
 export namespace GProject {
     
     export namespace G {
         
-        export namespace Pmodules {
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<GModule>
-        }
-        export type Pmodules = Pmodules.$
+        export namespace Pmodules {}
+        export type Pmodules = pt.Dictionary<GModule>
         
-        export namespace Ptype {
-            export type /*FIXME REMOVE*/$ = 
-                | ['glossary', null]
-                | ['library', null]
-                | ['resource', null]
-        }
-        export type Ptype = Ptype.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'main': string
-            readonly 'modules': Pmodules
-            readonly 'type': Ptype
-        }
+        export namespace Ptype {}
+        export type Ptype = 
+            | ['glossary', null]
+            | ['library', null]
+            | ['resource', null]
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'main': string
+        readonly 'modules': G.Pmodules
+        readonly 'type': G.Ptype
+    }
 }
-export type GProject = GProject.$
+export type GProject = GProject.G

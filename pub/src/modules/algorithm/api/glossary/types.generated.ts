@@ -8,160 +8,124 @@ export namespace GCallbackBlock {
         
         export namespace PinnerCallbacks {
             
-            export namespace D {
-                export type /*FIXME REMOVE*/$ = {
-                    readonly 'block': GCallbackBlock
-                }
+            export namespace D {}
+            export type D = {
+                readonly 'block': GCallbackBlock
             }
-            export type D = D.$
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<D>
         }
-        export type PinnerCallbacks = PinnerCallbacks.$
+        export type PinnerCallbacks = pt.Dictionary<PinnerCallbacks.D>
         
         export namespace Pstatements {
             
             export namespace A {
                 
-                export namespace OdependencyCall {
-                    export type /*FIXME REMOVE*/$ = {
-                        readonly 'callback'?: GCallbackBlock
-                        readonly 'data'?: string
-                    }
+                export namespace OdependencyCall {}
+                export type OdependencyCall = {
+                    readonly 'callback'?: GCallbackBlock
+                    readonly 'data'?: string
                 }
-                export type OdependencyCall = OdependencyCall.$
                 
-                export namespace OinnerCallbackCall {
-                    export type /*FIXME REMOVE*/$ = {
-                        readonly 'data'?: GExpression
-                        readonly 'innerCallback': string
-                        readonly 'interface'?: string
-                    }
+                export namespace OinnerCallbackCall {}
+                export type OinnerCallbackCall = {
+                    readonly 'data'?: GExpression
+                    readonly 'innerCallback': string
+                    readonly 'interface'?: string
                 }
-                export type OinnerCallbackCall = OinnerCallbackCall.$
                 
-                export namespace OinterfaceCall {
-                    export type /*FIXME REMOVE*/$ = {
-                        readonly 'callback'?: GCallbackBlock
-                        readonly 'data'?: string
-                        readonly 'property': string
-                    }
+                export namespace OinterfaceCall {}
+                export type OinterfaceCall = {
+                    readonly 'callback'?: GCallbackBlock
+                    readonly 'data'?: string
+                    readonly 'property': string
                 }
-                export type OinterfaceCall = OinterfaceCall.$
                 
                 export namespace Oswitch {
                     
-                    export namespace Pcases {
-                        export type /*FIXME REMOVE*/$ = pt.Dictionary<GCallbackBlock>
-                    }
-                    export type Pcases = Pcases.$
+                    export namespace Pcases {}
+                    export type Pcases = pt.Dictionary<GCallbackBlock>
                     
-                    export namespace Ppath {
-                        export type /*FIXME REMOVE*/$ = pt.Array<string>
-                    }
-                    export type Ppath = Ppath.$
-                    export type /*FIXME REMOVE*/$ = {
-                        readonly 'cases': Pcases
-                        readonly 'path': Ppath
-                    }
+                    export namespace Ppath {}
+                    export type Ppath = pt.Array<string>
                 }
-                export type Oswitch = Oswitch.$
-                export type /*FIXME REMOVE*/$ = 
-                    | ['dependencyCall', OdependencyCall]
-                    | ['innerCallbackCall', OinnerCallbackCall]
-                    | ['interfaceCall', OinterfaceCall]
-                    | ['switch', Oswitch]
+                export type Oswitch = {
+                    readonly 'cases': Oswitch.Pcases
+                    readonly 'path': Oswitch.Ppath
+                }
             }
-            export type A = A.$
-            export type /*FIXME REMOVE*/$ = pt.Array<A>
+            export type A = 
+                | ['dependencyCall', A.OdependencyCall]
+                | ['innerCallbackCall', A.OinnerCallbackCall]
+                | ['interfaceCall', A.OinterfaceCall]
+                | ['switch', A.Oswitch]
         }
-        export type Pstatements = Pstatements.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'innerCallbacks'?: PinnerCallbacks
-            readonly 'statements': Pstatements
-        }
+        export type Pstatements = pt.Array<Pstatements.A>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'innerCallbacks'?: G.PinnerCallbacks
+        readonly 'statements': G.Pstatements
+    }
 }
-export type GCallbackBlock = GCallbackBlock.$
+export type GCallbackBlock = GCallbackBlock.G
 
 export namespace GExpression {
     
     export namespace G {
         
-        export namespace Ocall {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'function': string
-            }
+        export namespace Ocall {}
+        export type Ocall = {
+            readonly 'function': string
         }
-        export type Ocall = Ocall.$
         
-        export namespace OcontextChange {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'block': GFunctionBlock
-                readonly 'property': string
-            }
+        export namespace OcontextChange {}
+        export type OcontextChange = {
+            readonly 'block': GFunctionBlock
+            readonly 'property': string
         }
-        export type OcontextChange = OcontextChange.$
         
         export namespace OgroupInitializer {
             
-            export namespace Pproperties {
-                export type /*FIXME REMOVE*/$ = pt.Dictionary<GExpression>
-            }
-            export type Pproperties = Pproperties.$
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'properties': Pproperties
-            }
+            export namespace Pproperties {}
+            export type Pproperties = pt.Dictionary<GExpression>
         }
-        export type OgroupInitializer = OgroupInitializer.$
+        export type OgroupInitializer = {
+            readonly 'properties': OgroupInitializer.Pproperties
+        }
         
-        export namespace OmapArray {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'block': GFunctionBlock
-            }
+        export namespace OmapArray {}
+        export type OmapArray = {
+            readonly 'block': GFunctionBlock
         }
-        export type OmapArray = OmapArray.$
         
-        export namespace OmapDictionary {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'block': GFunctionBlock
-            }
+        export namespace OmapDictionary {}
+        export type OmapDictionary = {
+            readonly 'block': GFunctionBlock
         }
-        export type OmapDictionary = OmapDictionary.$
         
-        export namespace OpropertySelection {
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'name': string
-            }
+        export namespace OpropertySelection {}
+        export type OpropertySelection = {
+            readonly 'name': string
         }
-        export type OpropertySelection = OpropertySelection.$
         
         export namespace Oswitch {
             
-            export namespace Pcases {
-                export type /*FIXME REMOVE*/$ = pt.Dictionary<GFunctionBlock>
-            }
-            export type Pcases = Pcases.$
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'cases': Pcases
-            }
+            export namespace Pcases {}
+            export type Pcases = pt.Dictionary<GFunctionBlock>
         }
-        export type Oswitch = Oswitch.$
-        export type /*FIXME REMOVE*/$ = 
-            | ['call', Ocall]
-            | ['contextChange', OcontextChange]
-            | ['groupInitializer', OgroupInitializer]
-            | ['implementMe', string]
-            | ['mapArray', OmapArray]
-            | ['mapDictionary', OmapDictionary]
-            | ['propertySelection', OpropertySelection]
-            | ['switch', Oswitch]
+        export type Oswitch = {
+            readonly 'cases': Oswitch.Pcases
+        }
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = 
+        | ['call', G.Ocall]
+        | ['contextChange', G.OcontextChange]
+        | ['groupInitializer', G.OgroupInitializer]
+        | ['implementMe', string]
+        | ['mapArray', G.OmapArray]
+        | ['mapDictionary', G.OmapDictionary]
+        | ['propertySelection', G.OpropertySelection]
+        | ['switch', G.Oswitch]
 }
-export type GExpression = GExpression.$
+export type GExpression = GExpression.G
 
 export namespace GFunctionBlock {
     
@@ -169,24 +133,19 @@ export namespace GFunctionBlock {
         
         export namespace PinnerFunctions {
             
-            export namespace D {
-                export type /*FIXME REMOVE*/$ = {
-                    readonly 'block': GFunctionBlock
-                }
+            export namespace D {}
+            export type D = {
+                readonly 'block': GFunctionBlock
             }
-            export type D = D.$
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<D>
         }
-        export type PinnerFunctions = PinnerFunctions.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'innerFunctions'?: PinnerFunctions
-            readonly 'returnExpression': GExpression
-        }
+        export type PinnerFunctions = pt.Dictionary<PinnerFunctions.D>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'innerFunctions'?: G.PinnerFunctions
+        readonly 'returnExpression': GExpression
+    }
 }
-export type GFunctionBlock = GFunctionBlock.$
+export type GFunctionBlock = GFunctionBlock.G
 
 export namespace GImplementation {
     
@@ -198,51 +157,39 @@ export namespace GImplementation {
                 
                 export namespace Ptype {
                     
-                    export namespace Ocallback {
-                        export type /*FIXME REMOVE*/$ = {
-                            readonly 'block': GCallbackBlock
-                        }
+                    export namespace Ocallback {}
+                    export type Ocallback = {
+                        readonly 'block': GCallbackBlock
                     }
-                    export type Ocallback = Ocallback.$
                     
-                    export namespace Ofunction {
-                        export type /*FIXME REMOVE*/$ = {
-                            readonly 'block': GFunctionBlock
-                        }
+                    export namespace Ofunction {}
+                    export type Ofunction = {
+                        readonly 'block': GFunctionBlock
                     }
-                    export type Ofunction = Ofunction.$
-                    export type /*FIXME REMOVE*/$ = 
-                        | ['callback', Ocallback]
-                        | ['function', Ofunction]
                 }
-                export type Ptype = Ptype.$
-                export type /*FIXME REMOVE*/$ = {
-                    readonly 'constructor': boolean
-                    readonly 'type': Ptype
-                }
+                export type Ptype = 
+                    | ['callback', Ptype.Ocallback]
+                    | ['function', Ptype.Ofunction]
             }
-            export type D = D.$
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<D>
+            export type D = {
+                readonly 'constructor': boolean
+                readonly 'type': D.Ptype
+            }
         }
-        export type Pimplementations = Pimplementations.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'implementations': Pimplementations
-        }
+        export type Pimplementations = pt.Dictionary<Pimplementations.D>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'implementations': G.Pimplementations
+    }
 }
-export type GImplementation = GImplementation.$
+export type GImplementation = GImplementation.G
 
 export namespace GStates {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = pt.Dictionary<GType>
-    }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export namespace G {}
+    export type G = pt.Dictionary<GType>
 }
-export type GStates = GStates.$
+export type GStates = GStates.G
 
 export namespace GType {
     
@@ -250,34 +197,27 @@ export namespace GType {
         
         export namespace Ogroup {
             
-            export namespace D {
-                export type /*FIXME REMOVE*/$ = {
-                    readonly 'type': GType
-                }
+            export namespace D {}
+            export type D = {
+                readonly 'type': GType
             }
-            export type D = D.$
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<D>
         }
-        export type Ogroup = Ogroup.$
+        export type Ogroup = pt.Dictionary<Ogroup.D>
         
-        export namespace OtaggedUnion {
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<GType>
-        }
-        export type OtaggedUnion = OtaggedUnion.$
-        export type /*FIXME REMOVE*/$ = 
-            | ['array', GType]
-            | ['boolean', null]
-            | ['dictionary', GType]
-            | ['group', Ogroup]
-            | ['null', null]
-            | ['number', null]
-            | ['optional', GType]
-            | ['parameter', string]
-            | ['reference', string]
-            | ['string', null]
-            | ['taggedUnion', OtaggedUnion]
+        export namespace OtaggedUnion {}
+        export type OtaggedUnion = pt.Dictionary<GType>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = 
+        | ['array', GType]
+        | ['boolean', null]
+        | ['dictionary', GType]
+        | ['group', G.Ogroup]
+        | ['null', null]
+        | ['number', null]
+        | ['optional', GType]
+        | ['parameter', string]
+        | ['reference', string]
+        | ['string', null]
+        | ['taggedUnion', G.OtaggedUnion]
 }
-export type GType = GType.$
+export type GType = GType.G

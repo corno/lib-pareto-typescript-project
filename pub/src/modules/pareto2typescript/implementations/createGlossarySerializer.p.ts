@@ -50,7 +50,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 const name = $.name
                 pl.cc($.$, $ => {
                     function doNamespacedType($i: mfp.ILine) {
-                        $i.snippet(`${$d.createIdentifier(name)}.$`)
+                        $i.snippet(`${$d.createIdentifier(name)}`)
                         $parameters($i)
                     }
 
@@ -76,7 +76,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                         break
                                     case 'local':
                                         pl.cc($.context[1], ($) => {
-                                            $i.snippet(`${$d.createIdentifier(`G${type}`)}.$`)
+                                            $i.snippet(`${$d.createIdentifier(`G${type}`)}`)
                                         })
                                         break
                                     default: pl.au($.context[0])
@@ -162,13 +162,20 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                         ($i) => {
                             $namespaces($i)
                             $i.nestedLine(($i) => {
-                                $i.snippet(`export type $`)
+                                $i.snippet(`export type /*FIXME REMOVE*/$`)
                                 $parameters($i)
                                 $i.snippet(` = `)
                                 $c($i)
                             })
                         }
                     )
+                    $i.nestedLine(($i) => {
+                        $i.snippet(`export type ${$d.createIdentifier(name)}`)
+                        $parameters($i)
+                        $i.snippet(` = `)
+                        $i.snippet(`${$d.createIdentifier(name)}.$`)
+                        $parameters($i)
+                    })
                 }
                 pl.cc($.$, ($) => {
                     switch ($[0]) {
@@ -555,7 +562,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                             $i
                         )
                         $i.nestedLine(($i) => {
-                            $i.snippet(`export type $ = `)
+                            $i.snippet(`export type /*FIXME REMOVE*/$ = `)
 
                             doType(
                                 {
@@ -568,6 +575,9 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                         })
                     }
                 )
+                $i.nestedLine(($i) => {
+                    $i.snippet(`export type ${$d.createIdentifier(`G${$.key}`)} = ${$d.createIdentifier(`G${$.key}`)}.$`)
+                })
             })
 
         })
@@ -682,7 +692,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             $d.dictionaryForEach($.types, ($) => {
                 $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`export type ${$d.createIdentifier(`T${$.key}`)} = t.G${$d.createIdentifier($.key)}.$`)
+                    $i.snippet(`export type ${$d.createIdentifier(`T${$.key}`)} = t.G${$d.createIdentifier($.key)}`)
                 })
             })
             $d.dictionaryForEach($.interfaces, ($) => {

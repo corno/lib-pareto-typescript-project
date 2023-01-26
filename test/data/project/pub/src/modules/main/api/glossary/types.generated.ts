@@ -4,81 +4,63 @@ import * as mfp from "lib-fountain-pen"
 
 export namespace GContext {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = 
-            | ['import', string]
-            | ['local', null]
-    }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export namespace G {}
+    export type G = 
+        | ['import', string]
+        | ['local', null]
 }
-export type GContext = GContext.$
+export type GContext = GContext.G
 
 export namespace GFunction {
     
     export namespace G {
         
-        export namespace Pmanaged__input__interface {
-            export type /*FIXME REMOVE*/$ = null | GInterfaceReference
-        }
-        export type Pmanaged__input__interface = Pmanaged__input__interface.$
+        export namespace Pmanaged__input__interface {}
+        export type Pmanaged__input__interface = null | GInterfaceReference
         
-        export namespace Poutput__interface {
-            export type /*FIXME REMOVE*/$ = null | GInterfaceReference
-        }
-        export type Poutput__interface = Poutput__interface.$
+        export namespace Poutput__interface {}
+        export type Poutput__interface = null | GInterfaceReference
         
         export namespace Preturn__type {
             
-            export namespace Odata {
-                export type /*FIXME REMOVE*/$ = {
-                    readonly 'asynchronous': boolean
-                    readonly 'type': GTypeReference
-                }
+            export namespace Odata {}
+            export type Odata = {
+                readonly 'asynchronous': boolean
+                readonly 'type': GTypeReference
             }
-            export type Odata = Odata.$
-            export type /*FIXME REMOVE*/$ = 
-                | ['data', Odata]
-                | ['interface', GInterfaceReference]
-                | ['nothing', null]
         }
-        export type Preturn__type = Preturn__type.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'data': GTypeReference
-            readonly 'managed input interface': Pmanaged__input__interface
-            readonly 'output interface': Poutput__interface
-            readonly 'return type': Preturn__type
-        }
+        export type Preturn__type = 
+            | ['data', Preturn__type.Odata]
+            | ['interface', GInterfaceReference]
+            | ['nothing', null]
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'data': GTypeReference
+        readonly 'managed input interface': G.Pmanaged__input__interface
+        readonly 'output interface': G.Poutput__interface
+        readonly 'return type': G.Preturn__type
+    }
 }
-export type GFunction = GFunction.$
+export type GFunction = GFunction.G
 
 export namespace GGlossary {
     
     export namespace G {
         
-        export namespace Pfunctions {
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<GFunction>
-        }
-        export type Pfunctions = Pfunctions.$
+        export namespace Pfunctions {}
+        export type Pfunctions = pt.Dictionary<GFunction>
         
-        export namespace Pimports {
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<string>
-        }
-        export type Pimports = Pimports.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'functions': Pfunctions
-            readonly 'imports': Pimports
-            readonly 'namespace': GNamespace
-            readonly 'parameters'?: GParameters
-        }
+        export namespace Pimports {}
+        export type Pimports = pt.Dictionary<string>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'functions': G.Pfunctions
+        readonly 'imports': G.Pimports
+        readonly 'namespace': GNamespace
+        readonly 'parameters'?: GParameters
+    }
 }
-export type GGlossary = GGlossary.$
+export type GGlossary = GGlossary.G
 
 export namespace GInterface {
     
@@ -86,118 +68,88 @@ export namespace GInterface {
         
         export namespace Ogroup {
             
-            export namespace Pmembers {
-                export type /*FIXME REMOVE*/$ = pt.Dictionary<GInterface>
-            }
-            export type Pmembers = Pmembers.$
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'members': Pmembers
-            }
+            export namespace Pmembers {}
+            export type Pmembers = pt.Dictionary<GInterface>
         }
-        export type Ogroup = Ogroup.$
+        export type Ogroup = {
+            readonly 'members': Ogroup.Pmembers
+        }
         
         export namespace Omethod {
             
-            export namespace Pdata {
-                export type /*FIXME REMOVE*/$ = null | GTypeReference
-            }
-            export type Pdata = Pdata.$
+            export namespace Pdata {}
+            export type Pdata = null | GTypeReference
             
-            export namespace Pinterface {
-                export type /*FIXME REMOVE*/$ = null | GInterface
-            }
-            export type Pinterface = Pinterface.$
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'data': Pdata
-                readonly 'interface': Pinterface
-            }
+            export namespace Pinterface {}
+            export type Pinterface = null | GInterface
         }
-        export type Omethod = Omethod.$
-        export type /*FIXME REMOVE*/$ = 
-            | ['group', Ogroup]
-            | ['method', Omethod]
-            | ['reference', GInterfaceReference]
+        export type Omethod = {
+            readonly 'data': Omethod.Pdata
+            readonly 'interface': Omethod.Pinterface
+        }
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = 
+        | ['group', G.Ogroup]
+        | ['method', G.Omethod]
+        | ['reference', GInterfaceReference]
 }
-export type GInterface = GInterface.$
+export type GInterface = GInterface.G
 
 export namespace GInterfaceReference {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'context'?: GContext
-            readonly 'interface': string
-        }
+    export namespace G {}
+    export type G = {
+        readonly 'context'?: GContext
+        readonly 'interface': string
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
 }
-export type GInterfaceReference = GInterfaceReference.$
+export type GInterfaceReference = GInterfaceReference.G
 
 export namespace GNamespace {
     
     export namespace G {
         
-        export namespace Pinterfaces {
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<GInterface>
-        }
-        export type Pinterfaces = Pinterfaces.$
+        export namespace Pinterfaces {}
+        export type Pinterfaces = pt.Dictionary<GInterface>
         
-        export namespace Pnamespaces {
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<GNamespace>
-        }
-        export type Pnamespaces = Pnamespaces.$
+        export namespace Pnamespaces {}
+        export type Pnamespaces = pt.Dictionary<GNamespace>
         
-        export namespace Ptemplates {
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<GTemplate>
-        }
-        export type Ptemplates = Ptemplates.$
+        export namespace Ptemplates {}
+        export type Ptemplates = pt.Dictionary<GTemplate>
         
-        export namespace Ptypes {
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<GType>
-        }
-        export type Ptypes = Ptypes.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'interfaces': Pinterfaces
-            readonly 'namespaces'?: Pnamespaces
-            readonly 'templates'?: Ptemplates
-            readonly 'types': Ptypes
-        }
+        export namespace Ptypes {}
+        export type Ptypes = pt.Dictionary<GType>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'interfaces': G.Pinterfaces
+        readonly 'namespaces'?: G.Pnamespaces
+        readonly 'templates'?: G.Ptemplates
+        readonly 'types': G.Ptypes
+    }
 }
-export type GNamespace = GNamespace.$
+export type GNamespace = GNamespace.G
 
 export namespace GParameters {
     
-    export namespace G {
-        export type /*FIXME REMOVE*/$ = pt.Dictionary<null>
-    }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export namespace G {}
+    export type G = pt.Dictionary<null>
 }
-export type GParameters = GParameters.$
+export type GParameters = GParameters.G
 
 export namespace GTemplate {
     
     export namespace G {
         
-        export namespace Pparameters {
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<null>
-        }
-        export type Pparameters = Pparameters.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'parameters': Pparameters
-            readonly 'type': GType
-        }
+        export namespace Pparameters {}
+        export type Pparameters = pt.Dictionary<null>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'parameters': G.Pparameters
+        readonly 'type': GType
+    }
 }
-export type GTemplate = GTemplate.$
+export type GTemplate = GTemplate.G
 
 export namespace GType {
     
@@ -205,71 +157,57 @@ export namespace GType {
         
         export namespace Ogroup {
             
-            export namespace D {
-                export type /*FIXME REMOVE*/$ = {
-                    readonly 'optional'?: boolean
-                    readonly 'type': GType
-                }
+            export namespace D {}
+            export type D = {
+                readonly 'optional'?: boolean
+                readonly 'type': GType
             }
-            export type D = D.$
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<D>
         }
-        export type Ogroup = Ogroup.$
+        export type Ogroup = pt.Dictionary<Ogroup.D>
         
-        export namespace OtaggedUnion {
-            export type /*FIXME REMOVE*/$ = pt.Dictionary<GType>
-        }
-        export type OtaggedUnion = OtaggedUnion.$
+        export namespace OtaggedUnion {}
+        export type OtaggedUnion = pt.Dictionary<GType>
         
         export namespace Otemplate {
             
-            export namespace Parguments {
-                export type /*FIXME REMOVE*/$ = pt.Dictionary<GType>
-            }
-            export type Parguments = Parguments.$
-            export type /*FIXME REMOVE*/$ = {
-                readonly 'arguments': Parguments
-                readonly 'context'?: GContext
-                readonly 'template': string
-            }
+            export namespace Parguments {}
+            export type Parguments = pt.Dictionary<GType>
         }
-        export type Otemplate = Otemplate.$
-        export type /*FIXME REMOVE*/$ = 
-            | ['array', GType]
-            | ['boolean', null]
-            | ['computed', GType]
-            | ['dictionary', GType]
-            | ['group', Ogroup]
-            | ['nested', GType]
-            | ['null', null]
-            | ['number', null]
-            | ['optional', GType]
-            | ['parameter', string]
-            | ['reference', GTypeReference]
-            | ['string', null]
-            | ['taggedUnion', OtaggedUnion]
-            | ['template', Otemplate]
+        export type Otemplate = {
+            readonly 'arguments': Otemplate.Parguments
+            readonly 'context'?: GContext
+            readonly 'template': string
+        }
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = 
+        | ['array', GType]
+        | ['boolean', null]
+        | ['computed', GType]
+        | ['dictionary', GType]
+        | ['group', G.Ogroup]
+        | ['nested', GType]
+        | ['null', null]
+        | ['number', null]
+        | ['optional', GType]
+        | ['parameter', string]
+        | ['reference', GTypeReference]
+        | ['string', null]
+        | ['taggedUnion', G.OtaggedUnion]
+        | ['template', G.Otemplate]
 }
-export type GType = GType.$
+export type GType = GType.G
 
 export namespace GTypeReference {
     
     export namespace G {
         
-        export namespace Pnamespaces {
-            export type /*FIXME REMOVE*/$ = pt.Array<string>
-        }
-        export type Pnamespaces = Pnamespaces.$
-        export type /*FIXME REMOVE*/$ = {
-            readonly 'context': GContext
-            readonly 'namespaces': Pnamespaces
-            readonly 'type': string
-        }
+        export namespace Pnamespaces {}
+        export type Pnamespaces = pt.Array<string>
     }
-    export type G = G.$
-    export type /*FIXME REMOVE*/$ = G
+    export type G = {
+        readonly 'context': GContext
+        readonly 'namespaces': G.Pnamespaces
+        readonly 'type': string
+    }
 }
-export type GTypeReference = GTypeReference.$
+export type GTypeReference = GTypeReference.G

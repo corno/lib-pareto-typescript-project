@@ -1,14 +1,14 @@
 {
   "author": "Corno",
   "dependencies": {
-    "glo-pareto-common": "^0.7.0",
+    "glo-pareto-common": "^0.8.0",
     "lib-fountain-pen": "^0.29.0",
     "lib-pareto-main": "^0.10.0",
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.4",
     "pareto-core-state": "^0.12.0",
     "res-pareto-collation": "^0.12.0",
-    "res-pareto-filesystem": "^0.33.0",
+    "res-pareto-filesystem": "^0.34.0",
     "res-typescript": "^0.5.0"
   },
   "description": "generates a pareto typescript project structure",
@@ -24,5 +24,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.61.2",
-  "content-fingerprint": "3dcd5e6de5e23adab96439e4f059d0e1a663b6c5"
+  "content-fingerprint": "633c0be02edec3e94fa64dfc42e95ede0047f059"
 }

@@ -43,18 +43,18 @@ export const $$: api.CcreateProjectGenerator = ($d) => {
                 )(
                     $.testDirectory,
                     ($i) => {
-                        const module = $d.mapLiana2Pareto(model)
-
-                        $d.serializeProject(
-                            module,
-                            $i,
-                        )
+                        const modules = $d.mapLiana2Pareto(model)
+                        $d.dictionaryForEach(modules.modules, ($) => {
+                            $i.directory($.key, ($i) => {
+                                $d.serializeProject(
+                                    $.value,
+                                    $i,
+                                )
+                            })
+                        })
                     }
                 )
-
             }
         )
-
     }
-
 }

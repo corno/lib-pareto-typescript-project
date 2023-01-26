@@ -358,9 +358,66 @@ export const $$: api.CcreateSerializer = ($d) => {
                             $i.snippet(`"${$.key}": {`)
                             $i.indent(($i) => {
                                 $i.nestedLine(($i) => {
-                                    $i.snippet(`'async': XXX,`)
-                                    $i.snippet(`'data': XXX,`)
-                                    $i.snippet(`'return value': XXX,`)
+                                    $i.snippet(`'data': `)
+                                    serializeTypeReference($.value.data, $i)
+                                    $i.snippet(`,`)
+                                })
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`'managed input interface': `)
+                                    if ($.value['managed input interface'] === null) {
+                                        $i.snippet(`null`)
+                                    } else {
+                                        serializeInterfaceReference($.value['managed input interface'], $i)
+                                    }
+                                    $i.snippet(`,`)
+                                })
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`'output interface': `)
+                                    if ($.value['output interface'] === null) {
+                                        $i.snippet(`null`)
+                                    } else {
+                                        serializeInterfaceReference($.value['output interface'], $i)
+                                    }
+                                    $i.snippet(`,`)
+                                })
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`'return type': `)
+                                    switch ($.value['return type'][0]) {
+                                        case 'data':
+                                            pl.cc($.value['return type'][1], ($) => {
+                                                $i.snippet(`['data', {`)
+                                                $i.indent(($i) => {
+
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`'type': `)
+                                                        serializeTypeReference($.type, $i)
+                                                        $i.snippet(`,`)
+                                                    })
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`'asynchronous': ${$.asynchronous}`)
+                                                        $i.snippet(`,`)
+                                                    })
+                                                })
+                                                $i.snippet(`}]`)
+                                            })
+                                            break
+                                        case 'interface':
+                                            pl.cc($.value['return type'][1], ($) => {
+                                                $i.snippet(`['interface', `)
+                                                serializeInterfaceReference($, $i)
+                                                $i.snippet(`]`)
+
+                                            })
+                                            break
+                                        case 'nothing':
+                                            pl.cc($.value['return type'][1], ($) => {
+                                                $i.snippet(`['nothing', null]`)
+
+                                            })
+                                            break
+                                        default: pl.au($.value['return type'][0])
+                                    }
+                                    $i.snippet(`,`)
                                 })
                             })
                             $i.snippet(`},`)

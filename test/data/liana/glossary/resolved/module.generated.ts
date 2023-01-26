@@ -1,8 +1,8 @@
 import * as pr from 'pareto-core-raw'
 
-import * as mmoduleDefinition from "../../../pub/dist/modules/moduleDefinition"
-import * as mproject from "../../../pub/dist/modules/project"
-import * as mglossary from "../../../pub/dist/modules/glossary"
+import * as mmoduleDefinition from "./import_moduleDefinition"
+import * as mproject from "./import_project"
+import * as mglossary from "./import_glossary"
 
 const d = pr.wrapRawDictionary
 const a = pr.wrapRawArray
@@ -284,10 +284,28 @@ export const $: mproject.TModule = {
             'interfaces': d({}),
             'functions': d({
                 "Enrich": {
-                    'async': XXX,'data': XXX,'return value': XXX,
+                    'data': {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Root",
+                    },
+                    'managed input interface': null,
+                    'output interface': null,
+                    'return type': ['data', {
+                        'type': {
+                            'context': <mglossary.TContext>['local', null],
+                            'type': "Root",
+                        },
+                        'asynchronous': false,
+                    }],
                 },
                 "Serialize": {
-                    'async': XXX,'data': XXX,'return value': XXX,
+                    'data': {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Root",
+                    },
+                    'managed input interface': null,
+                    'output interface': <mglossary.TContext>['import', "fp"]ILine,
+                    'return type': ['nothing', null],
                 },
             }),
         },

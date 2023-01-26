@@ -11,9 +11,11 @@ export const $$: api.CcreateSerializerWithContext = ($d) => {
         $i.file("module.generated.ts", ($i) => {
             $i.line(`import * as pr from 'pareto-core-raw'`)
             $i.line(``)
-            $i.line(`import * as mmoduleDefinition from "../../../pub/dist/modules/moduleDefinition"`)
-            $i.line(`import * as mproject from "../../../pub/dist/modules/project"`)
-            $i.line(`import * as mglossary from "../../../pub/dist/modules/glossary"`)
+            $.definition.api.imports
+            $.definition.glossary.imports
+            $i.line(`import * as mmoduleDefinition from "./import_moduleDefinition"`)
+            $i.line(`import * as mproject from "./import_project"`)
+            $i.line(`import * as mglossary from "./import_glossary"`)
             $i.line(``)
             $i.line(`const d = pr.wrapRawDictionary`)
             $i.line(`const a = pr.wrapRawArray`)

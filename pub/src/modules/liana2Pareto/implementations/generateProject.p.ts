@@ -29,6 +29,9 @@ export const $$: api.CgenerateProject = ($) => {
 
     $a.createProjectGenerator(
         {
+            dictionaryForEach: mtemp.$a.createDictionaryForEach({
+                compare: mcoll.$a.localeIsABeforeB,
+            }),
             decorateDictionaryEntriesWithKey: mtemp.$a.decorateDictionaryEntriesWithKey,
             logError: mmain.$a.logError,
             mapLiana2Pareto: $a.createLiana2ParetoMapper({

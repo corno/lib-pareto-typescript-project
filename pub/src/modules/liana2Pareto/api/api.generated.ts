@@ -16,6 +16,7 @@ export type CcreateLiana2StatesMapper = ($d: {
 
 export type CcreateProjectGenerator = ($d: {
     readonly 'decorateDictionaryEntriesWithKey': mtemp.FDecorateDictionaryEntriesWithKey
+    readonly 'dictionaryForEach': mtemp.FDictionaryForEach
     readonly 'logError': mcommon.FLog
     readonly 'mapLiana2Pareto': glo.FMapLiana2Pareto
     readonly 'serializeProject': mproject.FSerializeWithContext

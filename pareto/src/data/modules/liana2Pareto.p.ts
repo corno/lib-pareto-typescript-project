@@ -34,12 +34,15 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "number": null_(),
                     "string": null_(),
                 }))),
-            })
+            }),
+            "Modules": group(({
+                "modules": member(dictionary(er("project", "Module")))
+            }))
         }),
         'interfaces': d({}),
         'functions': d({
             "GenerateProject": procedure(typeReference("Configuration")),
-            "MapLiana2Pareto": _function(typeReference("MappedModel"), externalTypeReference("project", "Module")),
+            "MapLiana2Pareto": _function(typeReference("MappedModel"), typeReference("Modules")),
             "MapLiana2States": _function(typeReference("MappedModel"), externalTypeReference("algorithm", "States")),
         }),
     },
@@ -75,6 +78,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "serializeProject": {
                         'context': ['import', "project"],
                         'function': "SerializeWithContext"
+                    },
+                    "dictionaryForEach": {
+                        'context': ['import', "temp"],
+                        'function': "DictionaryForEach",
                     },
                 }),
             },

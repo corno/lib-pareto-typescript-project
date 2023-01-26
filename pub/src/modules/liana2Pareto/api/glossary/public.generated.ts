@@ -11,8 +11,10 @@ export type TConfiguration = t.UConfiguration
 
 export type TMappedModel = t.UMappedModel
 
+export type TModules = t.UModules
+
 export type FGenerateProject = ($: TConfiguration,) => void
 
-export type FMapLiana2Pareto = ($: TMappedModel,) => mproject.TModule
+export type FMapLiana2Pareto = ($: TMappedModel,) => TModules
 
 export type FMapLiana2States = ($: TMappedModel,) => malgorithm.TStates

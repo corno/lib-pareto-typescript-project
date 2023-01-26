@@ -28,3 +28,13 @@ export type GMappedModel = {
     readonly 'stringmapping': GMappedModel.Pstringmapping
 }
 export type UMappedModel = GMappedModel
+
+export namespace GModules {
+    
+    export namespace Pmodules {}
+    export type Pmodules = pt.Dictionary<mproject.TModule>
+}
+export type GModules = {
+    readonly 'modules': GModules.Pmodules
+}
+export type UModules = GModules

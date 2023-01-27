@@ -4,10 +4,10 @@ import {
     reference,
     boolean,
     template,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference, interfaceReference, externalInterfaceReference, callback, parameter
+    array, dictionary, group, member, taggedUnion, types, _function, typeReference, interfaceReference, callback, parameter
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -112,7 +112,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'interfaces': d({}),
         'functions': d({
-            "Serialize": callback(typeReference("Glossary"), externalInterfaceReference("fp", "Line")),
+            "Serialize": callback(typeReference("Glossary"), interfaceReference("fp", "Line")),
         }),
     },
     'api': {
@@ -121,17 +121,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "temp": "../../temp",
         }),
         'algorithms': d({
-            "createSerializer": {
-                'definition': {
-                    'function': "Serialize"
-                },
-                'type': constructor(null, {
-                    "arrayForEach": externalDefinitionReference("temp", "ArrayForEach"),
-                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
-                    "enrichedArrayForEach": externalDefinitionReference("temp", "EnrichedArrayForEach"),
-                    "enrichedDictionaryForEach": externalDefinitionReference("temp", "EnrichedDictionaryForEach"),
-                }),
-            },
+            "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
+                "arrayForEach": definitionReference("temp", "ArrayForEach"),
+                "dictionaryForEach": definitionReference("temp", "DictionaryForEach"),
+                "enrichedArrayForEach": definitionReference("temp", "EnrichedArrayForEach"),
+                "enrichedDictionaryForEach": definitionReference("temp", "EnrichedDictionaryForEach"),
+            })),
         })
     },
 }

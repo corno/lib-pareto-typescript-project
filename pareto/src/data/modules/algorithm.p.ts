@@ -3,10 +3,10 @@ import {
     reference,
     boolean,
     string,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference, externalInterfaceReference, callback
+    array, dictionary, group, member, taggedUnion, types, _function, typeReference, interfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -132,7 +132,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'interfaces': d({}),
         'functions': d({
-            "SerializeImplementation": callback(typeReference("Implementation"), externalInterfaceReference("fp", "Line")),
+            "SerializeImplementation": callback(typeReference("Implementation"), interfaceReference("fp", "Line")),
         }),
     },
     'api': {
@@ -146,10 +146,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'function': "SerializeImplementation"
                 },
                 'type': constructor(null, {
-                    "arrayForEach": externalDefinitionReference("temp", "ArrayForEach"),
-                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
-                    "enrichedArrayForEach": externalDefinitionReference("temp", "EnrichedArrayForEach"),
-                    "enrichedDictionaryForEach": externalDefinitionReference("temp", "EnrichedDictionaryForEach"),
+                    "arrayForEach": definitionReference("temp", "ArrayForEach"),
+                    "dictionaryForEach": definitionReference("temp", "DictionaryForEach"),
+                    "enrichedArrayForEach": definitionReference("temp", "EnrichedArrayForEach"),
+                    "enrichedDictionaryForEach": definitionReference("temp", "EnrichedDictionaryForEach"),
                 })
             },
         })

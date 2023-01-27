@@ -1,13 +1,13 @@
 import * as pr from 'pareto-core-raw'
 import {
-    externalReference,
     string,
     null_,
-    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, managedPipe, interfaceReference, procedure, callback, method
+    reference,
+    array, dictionary, group, member, taggedUnion, types, _function, typeReference, managedPipe, interfaceReference, procedure, callback, method
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
-import { definitionReference, externalDefinitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
 import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -35,23 +35,23 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 "too many": null_(),
             }),
             "ProjectSettings": group({
-                "project": member(externalReference("project", "Project")),
-                "mainData": member(externalReference("main", "MainData")),
+                "project": member(reference("project", "Project")),
+                "mainData": member(reference("main", "MainData")),
             }),
             "Parameters": group({
                 "testDirectory": member(string()),
             }),
         }),
         'interfaces': d({
-            "ParseArguments": method(externalTypeReference("main", "Arguments")),
-            "ProcessArgument": method(externalTypeReference("common", "String")),
+            "ParseArguments": method(typeReference("main", "Arguments")),
+            "ProcessArgument": method(typeReference("common", "String")),
             "HandleParameters": method(typeReference("Parameters")),
         }),
         'functions': d({
             "GenerateProject": procedure(typeReference("ProjectSettings")),
-            "GetSingleArgument": _function(externalTypeReference("main", "Arguments"), externalTypeReference("common", "String"), true),
+            "GetSingleArgument": _function(typeReference("main", "Arguments"), typeReference("common", "String"), true),
             "HandleArgumentError": procedure(typeReference("ArgumentError")),
-            "ParseArguments2": callback(externalTypeReference("main", "Arguments"), interfaceReference("HandleParameters")),
+            "ParseArguments2": callback(typeReference("main", "Arguments"), interfaceReference("HandleParameters")),
         }),
 
     },
@@ -67,18 +67,13 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             "createParametersParser": algorithm(definitionReference("ParseArguments2"), constructor(null, {
                 "onError": definitionReference("HandleArgumentError"),
             })),
-            "generateProject": algorithm(definitionReference("GenerateProject"), undefined),
-            "createProjectGenerator": {
-                'definition': {
-                    'function': "GenerateProject"
-                },
-                'type': constructor(null, {
-                    "decorateDictionaryEntriesWithKey": externalDefinitionReference("temp", "DecorateDictionaryEntriesWithKey"),
-                    "logError": externalDefinitionReference("common", "Log"),
-                    "serializeProject": externalDefinitionReference("pareto2typescript", "SerializeProject"),
-                    "serializeTemplate": externalDefinitionReference("pareto2typescript", "SerializeTemplate"),
-                }),
-            }
+            "generateProject": algorithm(definitionReference("GenerateProject")),
+            "createProjectGenerator": algorithm(definitionReference("GenerateProject"), constructor(null, {
+                "decorateDictionaryEntriesWithKey": definitionReference("temp", "DecorateDictionaryEntriesWithKey"),
+                "logError": definitionReference("common", "Log"),
+                "serializeProject": definitionReference("pareto2typescript", "SerializeProject"),
+                "serializeTemplate": definitionReference("pareto2typescript", "SerializeTemplate"),
+            })),
         })
     },
 })

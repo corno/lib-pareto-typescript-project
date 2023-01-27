@@ -1,15 +1,15 @@
 import * as pr from 'pareto-core-raw'
 import {
-    externalReference,
     string,
     null_,
     reference,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference, externalInterfaceReference, callback,
+    array, dictionary, group, member, taggedUnion, types, _function, typeReference,
+    interfaceReference, callback,
     parameter,
     template,
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
@@ -42,7 +42,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "import": string(),
             }),
             "ModuleDefinition": group({
-                "glossary": member(externalReference("glossary", "Glossary")),
+                "glossary": member(reference("glossary", "Glossary")),
                 "api": member(group({
                     "imports": member(dictionary(string())),
                     "algorithms": member(dictionary(group({
@@ -50,7 +50,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "type": member(taggedUnion({
                             "reference": group({}),
                             "constructor": group({
-                                "configuration data": member(template("Optional", { "Type": externalReference("glossary", "TypeReference") })),
+                                "configuration data": member(template("Optional", { "Type": reference("glossary", "TypeReference") })),
                                 "dependencies": member(dictionary(reference("DefinitionReference"))),
                             }),
                         }))
@@ -65,7 +65,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'interfaces': d({}),
         'functions': d({
-            "Serialize": callback(typeReference("ModuleDefinition"), externalInterfaceReference("fp", "Line")),
+            "Serialize": callback(typeReference("ModuleDefinition"), interfaceReference("fp", "Line")),
         }),
     },
     'api': {
@@ -75,26 +75,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "glossary": "../../glossary",
         }),
         'algorithms': d({
-            "createSerializer": {
-                'definition': definitionReference("Serialize"),
-                'type': constructor(null, {
-                    "serializeGlossary": externalDefinitionReference("glossary", "Serialize"),
-                    // "arrayForEach": ['callback', {
-                    //     'context': ['import', "temp"],
-                    //     'callback': "ArrayForEach",
-                    // }],
-                    // "enrichedDictionaryForEach": ['callback', {
-                    //     'context': ['import', "temp"],
-                    //     'callback': "EnrichedDictionaryForEach",
-                    // }],
-                    // "serializeLeafType": ['callback', {
-                    //     //'context': ['import', "glossary"],
-                    //     'callback': "SerializeLeafType"
-                    // }],
-                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
-                    "enrichedArrayForEach": externalDefinitionReference("temp", "EnrichedArrayForEach"),
-                }),
-            },
+            "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
+                "serializeGlossary": definitionReference("glossary", "Serialize"),
+                "dictionaryForEach": definitionReference("temp", "DictionaryForEach"),
+                "enrichedArrayForEach": definitionReference("temp", "EnrichedArrayForEach"),
+            })),
         })
     },
 }

@@ -1,10 +1,9 @@
 import * as pr from 'pareto-core-raw'
-import {types, _function, externalTypeReference, externalInterfaceReference, callback
+import {
+    types, _function, typeReference, interfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
-
-import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
@@ -23,8 +22,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'interfaces': d({}),
         'functions': d({
-
-            "Serialize": callback(externalTypeReference("liana2Pareto", "MappedModel"), externalInterfaceReference("fp", "Writer")),
+            "Serialize": callback(typeReference("liana2Pareto", "MappedModel"), interfaceReference("fp", "Writer")),
         }),
     },
     'api': {
@@ -37,15 +35,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "ts": "res-typescript",
         }),
         'algorithms': d({
-            "createSerializer": {
-                'definition': definitionReference("Serialize"),
-                'type': constructor(null, {
-                    "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
-                    "joinNestedStrings": externalDefinitionReference("tostring", "JoinNestedStrings"),
-                    "mapLiana2States": externalDefinitionReference("liana2Pareto", "MapLiana2States"),
-                    "serializeStates": externalDefinitionReference("pareto2typescript", "SerializeStates"),
-                }),
-            },
+            "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
+                "createIdentifier": definitionReference("ts", "CreateIdentifier"),
+                "joinNestedStrings": definitionReference("tostring", "JoinNestedStrings"),
+                "mapLiana2States": definitionReference("liana2Pareto", "MapLiana2States"),
+                "serializeStates": definitionReference("pareto2typescript", "SerializeStates"),
+            })),
         })
     },
 }

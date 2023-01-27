@@ -3,7 +3,7 @@ import * as pr from 'pareto-core-raw'
 import * as mmoduleDefinition from "./import_moduleDefinition"
 import * as mproject from "./import_project"
 import * as mglossary from "./import_glossary"
-import { constructor, definitionReference, externalDefinitionReference } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
+import { constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
 
 const d = pr.wrapRawDictionary
 const a = pr.wrapRawArray
@@ -317,10 +317,10 @@ export const $: mproject.TModule = {
                 'createSerializer': {
                     'definition': definitionReference("Serialize"),
                     'type': constructor(null, {
-                        'arrayForEach': externalDefinitionReference("temp", "ArrayForEach"),
-                        'dictionaryForEach': externalDefinitionReference("temp", "DictionaryForEach"),
-                        'enrichedArrayForEach': externalDefinitionReference("temp", "EnrichedArrayForEach"),
-                        'enrichedDictionaryForEach': externalDefinitionReference("temp", "EnrichedDictionaryForEach"),
+                        'arrayForEach': definitionReference("temp", "ArrayForEach"),
+                        'dictionaryForEach': definitionReference("temp", "DictionaryForEach"),
+                        'enrichedArrayForEach': definitionReference("temp", "EnrichedArrayForEach"),
+                        'enrichedDictionaryForEach': definitionReference("temp", "EnrichedDictionaryForEach"),
                     }),
                 },
             }),

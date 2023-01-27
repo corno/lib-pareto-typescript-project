@@ -1,13 +1,12 @@
 import * as pr from 'pareto-core-raw'
 import {
-    externalReference,
     string,
     reference,
-    dictionary, group, member, taggedUnion, types, _function, typeReference, externalInterfaceReference, callback
+    dictionary, group, member, taggedUnion, types, _function, typeReference, interfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
-import { constructor, definitionReference, externalDefinitionReference } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
+import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
 
 const d = pr.wrapRawDictionary
 
@@ -24,15 +23,15 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "AlgorithmImplementation": group({}),
             "Implementation": dictionary(reference("AlgorithmImplementation")),
             "Module": group({
-                "definition": member(externalReference("moduleDefinition", "ModuleDefinition")),
+                "definition": member(reference("moduleDefinition", "ModuleDefinition")),
                 // "type": member(taggedUnion({
                 //     "binding": nll(),
                 //     "resource": nll(),
                 //     "logic": nll(),
 
                 // }))
-                "implementation": member(externalReference("algorithm", "Implementation"), true),
-                "states": member(externalReference("algorithm", "States"), true)
+                "implementation": member(reference("algorithm", "Implementation"), true),
+                "states": member(reference("algorithm", "States"), true)
             }),
             "Project": group({
                 "type": member(taggedUnion({
@@ -46,8 +45,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'interfaces': d({}),
         'functions': d({
-            "Serialize": callback(typeReference("Module"), externalInterfaceReference("fp", "Line")),
-            "SerializeWithContext": callback(typeReference("Module"), externalInterfaceReference("fp", "Writer")),
+            "Serialize": callback(typeReference("Module"), interfaceReference("fp", "Line")),
+            "SerializeWithContext": callback(typeReference("Module"), interfaceReference("fp", "Writer")),
         }),
     },
     'api': {
@@ -58,21 +57,15 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "algorithm": "../../algorithm",
         }),
         'algorithms': d({
-            "createSerializer": {
-                'definition': definitionReference("Serialize"),
-                'type': constructor(null, {
-                    "serializeModuleDefinition":externalDefinitionReference("moduleDefinition", "Serialize"),
-                    "serializeImplementation":externalDefinitionReference("algorithm", "SerializeImplementation"),
-                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
-                    "enrichedArrayForEach": externalDefinitionReference("temp", "EnrichedArrayForEach"),
-                }),
-            },
-            "createSerializerWithContext": {
-                'definition': definitionReference("SerializeWithContext"),
-                'type': constructor(null, {
-                    "serialize": definitionReference("Serialize"),
-                }),
-            },
+            "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
+                "serializeModuleDefinition": definitionReference("moduleDefinition", "Serialize"),
+                "serializeImplementation": definitionReference("algorithm", "SerializeImplementation"),
+                "dictionaryForEach": definitionReference("temp", "DictionaryForEach"),
+                "enrichedArrayForEach": definitionReference("temp", "EnrichedArrayForEach"),
+            })),
+            "createSerializerWithContext": algorithm(definitionReference("SerializeWithContext"), constructor(null, {
+                "serialize": definitionReference("Serialize"),
+            })),
         })
     },
 }

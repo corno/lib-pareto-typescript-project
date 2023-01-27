@@ -8,7 +8,7 @@ import {
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
-import { constructor, definitionReference, externalDefinitionReference } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
+import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
 
 
 const d = pr.wrapRawDictionary
@@ -242,12 +242,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "common": "glo-pareto-common",
         }),
         'algorithms': d({
-            "createResolver": {
-                'definition': definitionReference("Resolve"),
-                'type': constructor(null, {
-                    "onError": externalDefinitionReference("common", "Log"),
-                }),
-            },
+            "createResolver": algorithm(definitionReference("Resolve"), constructor(null, {
+                "onError": definitionReference("common", "Log"),
+            })),
         })
     },
 }

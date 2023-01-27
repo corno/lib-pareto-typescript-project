@@ -195,7 +195,6 @@ export type GType =
     | ['nested', UType]
     | ['null', GType.Onull]
     | ['number', GType.Onumber]
-    | ['optional', UType]
     | ['parameter', string]
     | ['reference', UTypeReference]
     | ['string', GType.Ostring]

@@ -32,14 +32,14 @@ export const $: mliana2Pareto.TMappedModel = {
     }),
     'model': {
         'stringTypes': d({
-            "bedrag": null,
-            "bestand": null,
-            "dagen": null,
-            "datum": null,
-            "multiline text": null,
-            "promillage": null,
-            "identifier": null,
-            "single line text": null,
+            "bedrag": {},
+            "bestand": {},
+            "dagen": {},
+            "datum": {},
+            "multiline text": {},
+            "promillage": {},
+            "identifier": {},
+            "single line text": {},
         }),
         'globalTypes': d({
             "Accounting": globalType({}, group({

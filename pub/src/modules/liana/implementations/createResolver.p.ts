@@ -55,7 +55,7 @@ export const $$: api.CcreateResolver = ($d) => {
                 }
             })
             if (value === undefined) {
-                builder.add(key, ['not set', null])
+                builder.add(key, ['not set', {}])
             } else {
                 builder.add(key, ['set', value])
             }
@@ -79,14 +79,14 @@ export const $$: api.CcreateResolver = ($d) => {
     ): api.MPossibly<api.MReference<T>> {
         if (dict === null) {
             onError(`${key.annotation}: no dictionary`)
-            return ['not set', null]
+            return ['not set', {}]
         } else {
             return pr.getEntry(
                 dict.dictionary,
                 key.name,
                 ($): api.MPossibly<api.MReference<T>> => {
                     if ($[0] === 'not set') {
-                        return ['not set', null]
+                        return ['not set', {}]
                     } else {
                         return ['set', {
                             annotation: key.annotation,
@@ -97,7 +97,7 @@ export const $$: api.CcreateResolver = ($d) => {
                 },
                 () => {
                     onError(`${key.annotation}: no such '${target}' "${key.name}" @ ${dict.annotation}`)
-                    return ['not set', null]
+                    return ['not set', {}]
                 }
             )
         }
@@ -117,7 +117,7 @@ export const $$: api.CcreateResolver = ($d) => {
                         return pl.cc($.constrained[1], ($) => {
                             const r_type = resolve("string type", support.stringTypes, $.type)
                             if (r_type[0] === 'not set') {
-                                return ['not set', null]
+                                return ['not set', {}]
                             } else {
                                 return ['set', {
                                     'constrained': ['no', {
@@ -224,7 +224,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                 }
                             })
                             //onError(`IMPLEMENT REFERENCE`)
-                            return ['not set', null] ///HIER
+                            return ['not set', {}] ///HIER
 
                         })
                     default: return pl.au($.constrained[0])
@@ -234,7 +234,7 @@ export const $$: api.CcreateResolver = ($d) => {
         function resolveType($: {
             $: api.TLocalType,
             support: {
-                stringTypes: OptionalAnnotatedUnsafeDictionary<null>
+                stringTypes: OptionalAnnotatedUnsafeDictionary<{}>
                 globalTypes: ComputedReference<api.TXGlobalType>
                 siblings: OptionalAnnotatedUnsafeDictionary<api.TXProperty>
             }
@@ -261,12 +261,12 @@ export const $$: api.CcreateResolver = ($d) => {
                                 }]]
 
                             } else {
-                                return ['not set', null] ///HIER
+                                return ['not set', {}] ///HIER
                             }
                         })
                     case 'boolean':
                         return pl.cc($[1], ($) => {
-                            return ['set', ['boolean', null]]
+                            return ['set', ['boolean', {}]]
                         })
                     case 'component':
                         return pl.cc($[1], ($): api.MPossibly<api.TXLocalType> => {
@@ -281,7 +281,7 @@ export const $$: api.CcreateResolver = ($d) => {
                             //     'arguments': filter(r_arguments),
                             // }]]
                             //onError(`IMPLEMENT COMPONENT`)
-                            return ['not set', null]
+                            return ['not set', {}]
                         })
                     case 'dictionary':
                         return pl.cc($[1], ($) => {
@@ -310,7 +310,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                 }]]
 
                             } else {
-                                return ['not set', null] ///HIER
+                                return ['not set', {}] ///HIER
                             }
                         })
                     case 'group':
@@ -347,7 +347,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                 }
                             })
                             if (r_[0] === 'not set') {
-                                return ['not set', null] ///HIER
+                                return ['not set', {}] ///HIER
                             } else {
                                 const xxx = r_[1]
                                 return ['set', ['string', xxx]]
@@ -386,7 +386,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                 }]]
 
                             } else {
-                                return ['not set', null] ///HIER
+                                return ['not set', {}] ///HIER
                             }
 
                         })
@@ -394,12 +394,12 @@ export const $$: api.CcreateResolver = ($d) => {
                 }
             })
         }
-        const r_stringTypes = buildDictionary<null, null>($.stringTypes, ($, $i) => {
-            return null
+        const r_stringTypes = buildDictionary<{}, {}>($.stringTypes, ($, $i) => {
+            return {}
         })
         const r_globalTypes = buildDictionary<api.TGlobalType, api.TXGlobalType>($.globalTypes, ($, $i) => {
             const r_parameters = buildDictionary<api.TParameter, api.TXParameter>($.parameters, ($, $i) => {
-                return null
+                return {}
             })
             let r_type: api.MPossibly<api.TXLocalType> = resolveType({
                 $: $.type,
@@ -435,7 +435,7 @@ export const $$: api.CcreateResolver = ($d) => {
                 'has errors': hasErrors
             }]
         } else {
-            return ['not set', null] ///HIER
+            return ['not set', {}] ///HIER
         }
     }
 }

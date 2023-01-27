@@ -3,12 +3,23 @@ import * as pt from 'pareto-core-types'
 import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../../glossary"
 
+export namespace VOptional {
+    
+    export namespace Onot__set {}
+    export type Onot__set<AType> = {}
+}
+export type VOptional<AType> = 
+    | ['not set', VOptional.Onot__set<AType>]
+    | ['set', AType]
+
+export type MOptional<AType> = VOptional<AType>
+
 export namespace G_$AlgorithmType {
     
     export namespace Oconstructor {
         
         export namespace Pconfiguration__data {}
-        export type Pconfiguration__data = null | mglossary.TTypeReference
+        export type Pconfiguration__data = MOptional<mglossary.TTypeReference>
         
         export namespace Pdependencies {}
         export type Pdependencies = pt.Dictionary<UDefinitionReference>
@@ -17,16 +28,23 @@ export namespace G_$AlgorithmType {
         readonly 'configuration data': Oconstructor.Pconfiguration__data
         readonly 'dependencies': Oconstructor.Pdependencies
     }
+    
+    export namespace Oreference {}
+    export type Oreference = {}
 }
 export type G_$AlgorithmType = 
     | ['constructor', G_$AlgorithmType.Oconstructor]
-    | ['reference', null]
+    | ['reference', G_$AlgorithmType.Oreference]
 export type U_$AlgorithmType = G_$AlgorithmType
 
-export namespace GContext {}
+export namespace GContext {
+    
+    export namespace Olocal {}
+    export type Olocal = {}
+}
 export type GContext = 
     | ['import', string]
-    | ['local', null]
+    | ['local', GContext.Olocal]
 export type UContext = GContext
 
 export namespace GDefinitionReference {}

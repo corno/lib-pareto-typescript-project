@@ -14,21 +14,21 @@ export const $: mproject.TModule = {
                 "fp": "lib-fountain-pen",
             }),
             'parameters': d({
-                "Annotation": null,
+                "Annotation": {},
             }),
             'templates': d({
                 "Reference": {
                     'parameters': d({
-                        "ReferencedType": null,
+                        "ReferencedType": {},
                     }),
                     'type': <mglossary.TType>['group', d({
                         "annotation": {
                             'optional': false,
-                            'type': <mglossary.TType>['string', null],
+                            'type': <mglossary.TType>['string', {}],
                         },
                         "name": {
                             'optional': false,
-                            'type': <mglossary.TType>['string', null],
+                            'type': <mglossary.TType>['string', {}],
                         },
                     })],
                 },
@@ -36,9 +36,9 @@ export const $: mproject.TModule = {
             'types': d({
                 "Context": <mglossary.TType>['taggedUnion', d({
                     "import": <mglossary.TType>['template', {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'arguments': d({
-                            "RererencedType": <mglossary.TType>['null', null],
+                            "RererencedType": <mglossary.TType>['null', {}],
                         }),
                         'template': "Reference",
                     }],
@@ -51,7 +51,7 @@ export const $: mproject.TModule = {
                             "data": {
                                 'optional': false,
                                 'type': <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'type': "TypeReference",
                                 }],
                             },
@@ -60,7 +60,7 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['taggedUnion', d({
                                     "not set": <mglossary.TType>['group', d({})],
                                     "set": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
+                                        'context': <mglossary.TContext>['local', {}],
                                         'type': "InterfaceReference",
                                     }],
                                 })],
@@ -70,7 +70,7 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['taggedUnion', d({
                                     "not set": <mglossary.TType>['group', d({})],
                                     "set": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
+                                        'context': <mglossary.TContext>['local', {}],
                                         'type': "InterfaceReference",
                                     }],
                                 })],
@@ -81,18 +81,18 @@ export const $: mproject.TModule = {
                                     "data": <mglossary.TType>['group', d({
                                         "asynchronous": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['boolean', null],
+                                            'type': <mglossary.TType>['boolean', {}],
                                         },
                                         "type": {
                                             'optional': false,
                                             'type': <mglossary.TType>['reference', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'type': "TypeReference",
                                             }],
                                         },
                                     })],
                                     "interface": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
+                                        'context': <mglossary.TContext>['local', {}],
                                         'type': "InterfaceReference",
                                     }],
                                     "nothing": <mglossary.TType>['group', d({})],
@@ -107,7 +107,7 @@ export const $: mproject.TModule = {
                     "interfaces": {
                         'optional': false,
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'type': "Interface",
                         }]],
                     },
@@ -125,7 +125,7 @@ export const $: mproject.TModule = {
                             "type": {
                                 'optional': false,
                                 'type': <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'type': "Type",
                                 }],
                             },
@@ -134,7 +134,7 @@ export const $: mproject.TModule = {
                     "types": {
                         'optional': false,
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'type': "Type",
                         }]],
                     },
@@ -144,7 +144,7 @@ export const $: mproject.TModule = {
                         "members": {
                             'optional': false,
                             'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'type': "Interface",
                             }]],
                         },
@@ -155,7 +155,7 @@ export const $: mproject.TModule = {
                             'type': <mglossary.TType>['taggedUnion', d({
                                 "not set": <mglossary.TType>['group', d({})],
                                 "set": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'type': "TypeReference",
                                 }],
                             })],
@@ -165,14 +165,14 @@ export const $: mproject.TModule = {
                             'type': <mglossary.TType>['taggedUnion', d({
                                 "not set": <mglossary.TType>['group', d({})],
                                 "set": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'type': "InterfaceReference",
                                 }],
                             })],
                         },
                     })],
                     "reference": <mglossary.TType>['reference', {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "InterfaceReference",
                     }],
                 })],
@@ -180,16 +180,16 @@ export const $: mproject.TModule = {
                     "context": {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'type': "Context",
                         }],
                     },
                     "interface": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -197,69 +197,69 @@ export const $: mproject.TModule = {
                 })],
                 "Type": <mglossary.TType>['taggedUnion', d({
                     "array": <mglossary.TType>['reference', {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "Type",
                     }],
                     "boolean": <mglossary.TType>['group', d({})],
                     "computed": <mglossary.TType>['reference', {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "Type",
                     }],
                     "dictionary": <mglossary.TType>['reference', {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "Type",
                     }],
                     "group": <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                         "optional": {
                             'optional': false,
-                            'type': <mglossary.TType>['boolean', null],
+                            'type': <mglossary.TType>['boolean', {}],
                         },
                         "type": {
                             'optional': false,
                             'type': <mglossary.TType>['reference', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'type': "Type",
                             }],
                         },
                     })]],
                     "nested": <mglossary.TType>['reference', {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "Type",
                     }],
                     "null": <mglossary.TType>['group', d({})],
                     "number": <mglossary.TType>['group', d({})],
                     "optional": <mglossary.TType>['reference', {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "Type",
                     }],
-                    "parameter": <mglossary.TType>['string', null],
+                    "parameter": <mglossary.TType>['string', {}],
                     "reference": <mglossary.TType>['reference', {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "TypeReference",
                     }],
                     "string": <mglossary.TType>['group', d({})],
                     "taggedUnion": <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "Type",
                     }]],
                     "template": <mglossary.TType>['group', d({
                         "arguments": {
                             'optional': false,
                             'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'type': "Type",
                             }]],
                         },
                         "context": {
                             'optional': false,
                             'type': <mglossary.TType>['reference', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'type': "Context",
                             }],
                         },
                         "template": {
                             'optional': false,
-                            'type': <mglossary.TType>['string', null],
+                            'type': <mglossary.TType>['string', {}],
                         },
                     })],
                 })],
@@ -267,16 +267,16 @@ export const $: mproject.TModule = {
                     "context": {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'type': "Context",
                         }],
                     },
                     "type": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -287,15 +287,15 @@ export const $: mproject.TModule = {
             'functions': d({
                 "Serialize": {
                     'data': {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "Glossary",
                     },
-                    'managed input interface': ['not set', null],
+                    'managed input interface': ['not set', {}],
                     'output interface': ['set', {
                         'context': <mglossary.TContext>['import', "fp"],
                         'interface': "Line",
                     }],
-                    'return type': ['nothing', null],
+                    'return type': ['nothing', {}],
                 },
             }),
         },

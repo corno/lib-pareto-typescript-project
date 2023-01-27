@@ -25,11 +25,21 @@ export namespace GProject {
     export namespace Pmodules {}
     export type Pmodules = pt.Dictionary<UModule>
     
-    export namespace Ptype {}
+    export namespace Ptype {
+        
+        export namespace Oglossary {}
+        export type Oglossary = {}
+        
+        export namespace Olibrary {}
+        export type Olibrary = {}
+        
+        export namespace Oresource {}
+        export type Oresource = {}
+    }
     export type Ptype = 
-        | ['glossary', null]
-        | ['library', null]
-        | ['resource', null]
+        | ['glossary', Ptype.Oglossary]
+        | ['library', Ptype.Olibrary]
+        | ['resource', Ptype.Oresource]
 }
 export type GProject = {
     readonly 'main': string

@@ -9,6 +9,28 @@ import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
+        function doOptional<T>(
+            $: mglossary.MOptional<T>,
+            $i: mfp.ILine,
+            $c: {
+                onSet: ($: T, $i: mfp.ILine) => void,
+                onNotset: ($: {}, $i: mfp.ILine) => void,
+            },
+        ) {
+            switch ($[0]) {
+                case 'not set':
+                    pl.cc($[1], ($) => {
+                        $c.onNotset($, $i)
+                    })
+                    break
+                case 'set':
+                    pl.cc($[1], ($) => {
+                        $c.onSet($, $i)
+                    })
+                    break
+                default: pl.au($[0])
+            }
+        }
         function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {
             $i.directory(`glossary`, ($i) => {
                 $d.serializeGlossary($, $i)
@@ -95,13 +117,15 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                         case 'constructor':
                             pl.cc($.value.type[1], ($) => {
                                 $i.snippet(`(`)
-                                if ($['configuration data'] === null) {
-                                    //
-                                } else {
-                                    $i.snippet(`$: `)
-                                    serializeTypeReference($['configuration data'], $i)
-                                    $i.snippet(`, `)
-                                }
+                                doOptional($['configuration data'], $i, {
+                                    onNotset: () => { },
+                                    onSet: ($, $i) => {
+
+                                        $i.snippet(`$: `)
+                                        serializeTypeReference($, $i)
+                                        $i.snippet(`, `)
+                                    }
+                                })
                                 $i.snippet(`$d: {`)
                                 $i.indent(($i) => {
                                     $d.dictionaryForEach($.dependencies, ($) => {

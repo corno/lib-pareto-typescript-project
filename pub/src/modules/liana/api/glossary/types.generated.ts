@@ -50,9 +50,24 @@ export type VDictionary<AType> = {
 
 export type MDictionary<AType> = VDictionary<AType>
 
-export namespace VPossibly {}
+export namespace VOptional {
+    
+    export namespace Onot__set {}
+    export type Onot__set<AType> = {}
+}
+export type VOptional<AType> = 
+    | ['not set', VOptional.Onot__set<AType>]
+    | ['set', AType]
+
+export type MOptional<AType> = VOptional<AType>
+
+export namespace VPossibly {
+    
+    export namespace Onot__set {}
+    export type Onot__set<AType> = {}
+}
 export type VPossibly<AType> = 
-    | ['not set', null]
+    | ['not set', VPossibly.Onot__set<AType>]
     | ['set', AType]
 
 export type MPossibly<AType> = VPossibly<AType>
@@ -87,10 +102,17 @@ export namespace GLocalType {
         readonly 'type': ULocalType
     }
     
+    export namespace Oboolean {}
+    export type Oboolean = {}
+    
     export namespace Ocomponent {
         
-        export namespace Parguments {}
-        export type Parguments = MDictionary<null>
+        export namespace Parguments {
+            
+            export namespace TPType {}
+            export type TPType = {}
+        }
+        export type Parguments = MDictionary<Parguments.TPType>
     }
     export type Ocomponent = {
         readonly 'arguments': Ocomponent.Parguments
@@ -126,7 +148,7 @@ export namespace GLocalType {
 }
 export type GLocalType = 
     | ['array', GLocalType.Oarray]
-    | ['boolean', null]
+    | ['boolean', GLocalType.Oboolean]
     | ['component', GLocalType.Ocomponent]
     | ['dictionary', GLocalType.Odictionary]
     | ['group', GLocalType.Ogroup]
@@ -139,8 +161,12 @@ export namespace GModel {
     export namespace PglobalTypes {}
     export type PglobalTypes = MDictionary<UGlobalType>
     
-    export namespace PstringTypes {}
-    export type PstringTypes = MDictionary<null>
+    export namespace PstringTypes {
+        
+        export namespace TPType {}
+        export type TPType = {}
+    }
+    export type PstringTypes = MDictionary<PstringTypes.TPType>
 }
 export type GModel = {
     readonly 'globalTypes': GModel.PglobalTypes
@@ -171,8 +197,12 @@ export type UProperties = GProperties
 
 export namespace GProperty {
     
-    export namespace Psibling__dependencies {}
-    export type Psibling__dependencies = MDictionary<null>
+    export namespace Psibling__dependencies {
+        
+        export namespace TPType {}
+        export type TPType = {}
+    }
+    export type Psibling__dependencies = MDictionary<Psibling__dependencies.TPType>
 }
 export type GProperty = {
     readonly 'sibling dependencies': GProperty.Psibling__dependencies
@@ -184,18 +214,29 @@ export namespace GReference {
     
     export namespace Psteps {
         
-        export namespace A {}
+        export namespace A {
+            
+            export namespace Oarray {}
+            export type Oarray = {}
+            
+            export namespace Oreference {}
+            export type Oreference = {}
+        }
         export type A = 
-            | ['array', null]
+            | ['array', A.Oarray]
             | ['group', U_$Reference]
-            | ['reference', null]
+            | ['reference', A.Oreference]
             | ['tagged union', U_$Reference]
     }
     export type Psteps = pt.Array<Psteps.A>
     
-    export namespace Ptype {}
+    export namespace Ptype {
+        
+        export namespace Oother {}
+        export type Oother = {}
+    }
     export type Ptype = 
-        | ['other', null]
+        | ['other', Ptype.Oother]
         | ['parameter', U_$Reference]
         | ['sibling', U_$Reference]
 }
@@ -241,6 +282,9 @@ export namespace GXLocalType {
         readonly 'type': UXLocalType
     }
     
+    export namespace Oboolean {}
+    export type Oboolean = {}
+    
     export namespace Ocomponent {
         
         export namespace Parguments {}
@@ -280,7 +324,7 @@ export namespace GXLocalType {
 }
 export type GXLocalType = 
     | ['array', GXLocalType.Oarray]
-    | ['boolean', null]
+    | ['boolean', GXLocalType.Oboolean]
     | ['component', GXLocalType.Ocomponent]
     | ['dictionary', GXLocalType.Odictionary]
     | ['group', GXLocalType.Ogroup]
@@ -311,7 +355,10 @@ export type GXOption = {
     readonly 'type': UXLocalType
 }
 export type UXOption = GXOption
-export type UXParameter = null
+
+export namespace GXParameter {}
+export type GXParameter = {}
+export type UXParameter = GXParameter
 
 export namespace GXParameters {}
 export type GXParameters = MDictionary<UXParameter>
@@ -330,7 +377,7 @@ export type UXProperty = GXProperty
 export namespace GXReference {
     
     export namespace Presolved__type {}
-    export type Presolved__type = null | ULocalType
+    export type Presolved__type = MOptional<ULocalType>
 }
 export type GXReference = {
     readonly 'resolved type': GXReference.Presolved__type
@@ -358,4 +405,7 @@ export type GXString = {
     readonly 'constrained': GXString.Pconstrained
 }
 export type UXString = GXString
-export type UXStringType = null
+
+export namespace GXStringType {}
+export type GXStringType = {}
+export type UXStringType = GXStringType

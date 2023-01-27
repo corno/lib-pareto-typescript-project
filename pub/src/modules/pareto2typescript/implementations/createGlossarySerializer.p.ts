@@ -123,11 +123,6 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                 $namespacedType($i)
                             })
                             break
-                        case 'optional':
-                            pl.cc($[1], ($) => {
-                                $namespacedType($i)
-                            })
-                            break
                         case 'parameter':
                             pl.cc($[1], ($) => {
                                 $i.snippet($d.createIdentifier(`A${$}`))
@@ -367,32 +362,6 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                             $i
                                         )
                                         $i.snippet(`>`)
-                                    }
-                                )
-                            })
-                            break
-                        case 'optional':
-                            pl.cc($[1], ($) => {
-                                createInstanceNamespace(
-                                    ($i) => {
-                                        serializeComplexType(
-                                            {
-                                                $: $,
-                                                name: `O`
-                                            },
-                                            $parameters,
-                                            $i
-                                        )
-                                    },
-                                    ($i) => {
-                                        $i.snippet(`null | `)
-                                        serializeTypeX(
-                                            {
-                                                $: $,
-                                                name: `O`,
-                                            },
-                                            $i,
-                                        )
                                     }
                                 )
                             })

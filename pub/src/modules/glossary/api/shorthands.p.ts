@@ -3,11 +3,8 @@ import * as pr from 'pareto-core-raw'
 
 import * as t from "./glossary"
 
-
-
 const d = pr.wrapRawDictionary
 const wa = pr.wrapRawArray
-
 
 export function null_(): t.TType {
     return ['null', {}]
@@ -16,18 +13,23 @@ export function null_(): t.TType {
 export function boolean(): t.TType {
     return ['boolean', {}]
 }
+
 export function string(): t.TType {
     return ['string', {}]
 }
+
 export function number(): t.TType {
     return ['number', {}]
 }
+
 export function types($: { [key: string]: t.TType }) {
     return d($)
 }
+
 export function taggedUnion($: { [key: string]: t.TType }): t.TType {
     return ['taggedUnion', d($)]
 }
+
 export function dictionary($: t.TType): t.TType {
     return ['dictionary', $]
 }
@@ -35,9 +37,11 @@ export function dictionary($: t.TType): t.TType {
 export function nullDictionary(): t.TType {
     return ['dictionary', ['null', {}]]
 }
+
 export function parameter($: string): t.TType {
     return ['parameter', $]
 }
+
 export function template(template: string, $: { [key: string]: t.TType }): t.TType {
     return ['template', {
         'template': template,
@@ -45,18 +49,19 @@ export function template(template: string, $: { [key: string]: t.TType }): t.TTy
         'arguments': d($),
     }]
 }
+
 export function array($: t.TType): t.TType {
     return ['array', $]
 }
+
 export function computed($: t.TType): t.TType {
     return ['computed', $]
 }
+
 export function nested($: t.TType): t.TType {
     return ['nested', $]
 }
-export function optional($: t.TType): t.TType {
-    return ['optional', $]
-}
+
 export function group($: {
     [key: string]: {
         type: t.TType
@@ -94,6 +99,7 @@ export function interfaceReference(inf: string): t.TInterfaceReference {
         'interface': inf
     }
 }
+
 export function externalInterfaceReference(context: string, inf: string): t.TInterfaceReference {
     return {
         'context': ['import', context],
@@ -141,6 +147,7 @@ export function callback(data: t.TTypeReference, inf: t.TInterfaceReference): t.
         'output interface': ['set', inf],
     }
 }
+
 export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.GGlossary.Pfunctions.D {
     return {
         'return type': ['nothing', {}],
@@ -149,6 +156,7 @@ export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReferenc
         'output interface': ['set', out_inf],
     }
 }
+
 export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.GGlossary.Pfunctions.D {
     return {
         'return type': ['interface', in_inf],
@@ -157,6 +165,7 @@ export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceRefere
         'output interface': ['set', out_inf],
     }
 }
+
 export function method(data: null | t.TTypeReference, inf?: null | t.TInterface, managed?: boolean): t.TInterface {
     return ['method', {
         'data': data === null

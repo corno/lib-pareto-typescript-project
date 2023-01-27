@@ -13,7 +13,7 @@ const a = pr.wrapRawArray
 
 export function definitionReference(func: string): api.TDefinitionReference  {
     return {
-        'context': ['local', null],
+        'context': ['local', {}],
         'function': func
     }
 }
@@ -27,7 +27,7 @@ export function externalDefinitionReference(context: string, func: string): api.
 
 export function constructor(data: null | mglossary.TTypeReference, deps: {[key:string]: api.TDefinitionReference}): api.T_$AlgorithmType {
     return ['constructor', {
-        'configuration data': data,
+        'configuration data': ['not set', {}],
         'dependencies': d(deps)
     }]
 }

@@ -220,7 +220,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         'callback': "Serialize"
                                     }],
                                     'type': ['constructor', {
-                                        'configuration data': null,
+                                        'configuration data': ['not set', {}],
                                         'dependencies': pr.wrapRawDictionary({
                                         })
                                     }]
@@ -230,7 +230,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         'function': "Enrich"
                                     }],
                                     'type': ['constructor', {
-                                        'configuration data': null,
+                                        'configuration data': ['not set', {}],
                                         'dependencies': pr.wrapRawDictionary({
                                         })
                                     }]
@@ -332,11 +332,11 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             'algorithms': pr.wrapRawDictionary({
                                 "createSerializer": {
                                     'definition': {
-                                        'context': ['local', null],
+                                        'context': ['local', {}],
                                         'function': "Serialize"
                                     },
                                     'type': ['constructor', {
-                                        'configuration data': null,
+                                        'configuration data': ['not set', {}],
                                         'dependencies': pr.wrapRawDictionary({
                                             "arrayForEach": {
                                                 'context': ['import', "temp"],

@@ -321,7 +321,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.parameters, ($) => {
                         $i.nestedLine(($i) => {
-                            $i.snippet(`"${$.key}": null,`)
+                            $i.snippet(`"${$.key}": {},`)
                         })
                     })
                 })
@@ -340,7 +340,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                     $i.indent(($i) => {
                                         $d.dictionaryForEach($.value.parameters, ($) => {
                                             $i.nestedLine(($i) => {
-                                                $i.snippet(`"${$.key}": null,`)
+                                                $i.snippet(`"${$.key}": {},`)
                                             })
                                         })
                                     })

@@ -132,13 +132,6 @@ export const $$: api.CcreateSerializer = ($d) => {
                     $i.snippet(`]`)
                 })
                 break
-            case 'optional':
-                pl.cc($[1], ($) => {
-                    $i.snippet(`['optional', `)
-                    serializeType($, $i)
-                    $i.snippet(`]`)
-                })
-                break
             case 'parameter':
                 pl.cc($[1], ($) => {
                     $i.snippet(`['parameter', `)
@@ -312,7 +305,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.parameters, ($) => {
                         $i.nestedLine(($i) => {
-                            $i.snippet(`"${$.key}": null,`)
+                            $i.snippet(`"${$.key}": {},`)
                         })
                     })
                 })
@@ -331,7 +324,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                     $i.indent(($i) => {
                                         $d.dictionaryForEach($.value.parameters, ($) => {
                                             $i.nestedLine(($i) => {
-                                                $i.snippet(`"${$.key}": null,`)
+                                                $i.snippet(`"${$.key}": {},`)
                                             })
                                         })
                                     })

@@ -90,9 +90,9 @@ export function group(properties: { [key: string]: [string[], TLocalType] }): TL
     const li = pr.getLocationInfo(1)
     return ['group', {
         'properties': d_mappedimp(properties, li, ($) => {
-            const temp: { [key: string]: null } = {}
+            const temp: { [key: string]: {} } = {}
             pr.wrapRawArray($[0]).forEach(($) => {
-                temp[$] = null
+                temp[$] = {}
             })
             return {
                 'sibling dependencies': d_imp(temp, li),
@@ -139,7 +139,7 @@ export function string(type: string): TLocalType {
 }
 
 export function boolean(): TLocalType {
-    return ['boolean', null]
+    return ['boolean', {}]
 }
 
 export type ReferenceType =
@@ -166,11 +166,11 @@ function referenceX($: ReferenceType, steps: Step[], annotation: string): TRefer
                     })
                 case 'parent':
                     return pl.cc($[1], ($) => {
-                        return ['other', null]
+                        return ['other', {}]
                     })
                 case 'self':
                     return pl.cc($[1], ($) => {
-                        return ['other', null]
+                        return ['other', {}]
                     })
                 case 'sibling':
                     return pl.cc($[1], ($) => {
@@ -183,7 +183,7 @@ function referenceX($: ReferenceType, steps: Step[], annotation: string): TRefer
             switch ($[0]) {
                 case 'array':
                     return pl.cc($[1], ($) => {
-                        return ['array', null]
+                        return ['array', {}]
                     })
                 case 'group':
                     return pl.cc($[1], ($) => {
@@ -191,7 +191,7 @@ function referenceX($: ReferenceType, steps: Step[], annotation: string): TRefer
                     })
                 case 'reference':
                     return pl.cc($[1], ($) => {
-                        return ['reference', null]
+                        return ['reference', {}]
                     })
                 case 'tagged union':
                     return pl.cc($[1], ($) => {
@@ -214,7 +214,7 @@ export function reference(
     }]
 }
 
-export function component(type: string, args: {[key:string]: null}): TLocalType {
+export function component(type: string, args: {[key:string]: {}}): TLocalType {
     const li = pr.getLocationInfo(1)
     return ['component', {
         'type': {

@@ -17,8 +17,8 @@ import {
 
 export const $: mliana.TModel = {
     'stringTypes': d({
-        "text": null,
-        "identifier": null,
+        "text": {},
+        "identifier": {},
     }),
     'globalTypes': d({
         "Root": globalType({ "parameterA": "Sub"}, group({

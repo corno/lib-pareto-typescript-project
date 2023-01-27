@@ -9,6 +9,27 @@ import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateSerializer = ($d) => {
     return ($, $i) => {
+        function doOptional<T>(
+            $: api.MOptional<T>,
+            $i: mfp.ILine,
+            $c: ($: T, $i: mfp.ILine) => void,
+        ) {
+            switch ($[0]) {
+                case 'not set':
+                    pl.cc($[1], ($) => {
+                        $i.snippet(`['not set', {}]`)
+                    })
+                    break
+                case 'set':
+                    pl.cc($[1], ($) => {
+                        $i.snippet(`['set', `)
+                        $c($, $i)
+                        $i.snippet(`]`)
+                    })
+                    break
+                default: pl.au($[0])
+            }
+        }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
@@ -118,10 +139,11 @@ export const $$: api.CcreateSerializer = ($d) => {
 
                                                                     $i.nestedLine(($i) => {
                                                                         $i.snippet(`'configuration data': `)
+                                                                        doOptional($['configuration data'], $i, ($, $i) => {
+                                                                            serializeTypeReference($, $i)
+                                                                        })
                                                                         if ($['configuration data'] === null) {
-                                                                            $i.snippet(`null`)
                                                                         } else {
-                                                                            serializeTypeReference($['configuration data'], $i)
                                                                         }
                                                                         $i.snippet(`,`)
                                                                     })

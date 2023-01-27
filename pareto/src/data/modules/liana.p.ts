@@ -6,7 +6,7 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, string, optional, typeReference, parameter, template, externalTypeReference
+    array, dictionary, group, member, taggedUnion, types, _function, string, typeReference, parameter, template, externalTypeReference
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -25,7 +25,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'templates': d({
             "Dictionary": {
                 'parameters': d({
-                    "Type": null
+                    "Type": {}
                 }),
                 'type': group({
                     "annotation": member(str()),
@@ -34,8 +34,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             },
             "ConstrainedDictionary": {
                 'parameters': d({
-                    "ReferencedType": null,
-                    "Type": null
+                    "ReferencedType": {},
+                    "Type": {}
                 }),
                 'type': group({
                     "annotation": member(str()),
@@ -47,8 +47,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             },
             "ConstrainedDictionaryEntry": {
                 'parameters': d({
-                    "ReferencedType": null,
-                    "Type": null
+                    "ReferencedType": {},
+                    "Type": {}
                 }),
                 'type': group({
                     "referenced value": member(parameter("ReferencedType")),
@@ -60,16 +60,16 @@ export const $: mmoduleDefinition.TModuleDefinition = {
 
             "Possibly": {
                 'parameters': d({
-                    "Type": null
+                    "Type": {}
                 }),
                 'type': taggedUnion({
                     "set": parameter("Type"),
-                    "not set": null_()
+                    "not set": group({})
                 }),
             },
             "Reference": {
                 'parameters': d({
-                    "ReferencedType": null
+                    "ReferencedType": {}
                 }),
                 'type': group({
                     "referenced value": member(parameter("ReferencedType")),
@@ -79,13 +79,21 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             },
             "ComputedReference": {
                 'parameters': d({
-                    "ReferencedType": null
+                    "ReferencedType": {}
                 }),
                 'type': group({
                     "referenced value": member(computed(parameter("ReferencedType"))),
                     "annotation": member(str()),
                     "name": member(str()),
                 }),
+            },
+
+            "Optional": {
+                'parameters': d({ "Type": {}, }),
+                'type': taggedUnion({
+                    "set": parameter("Type"),
+                    "not set": group({}),
+                })
             }
         }),
         'types': types({
@@ -99,7 +107,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             }),
             "LocalType": taggedUnion({
                 "string": ref("String"),
-                "boolean": null_(),
+                "boolean": group({}),
                 "dictionary": group({
                     "key": member(ref("String")),
                     "type": member(ref("LocalType"))
@@ -120,18 +128,18 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
                 "component": group({
                     "type": member(ref("_Reference")),
-                    "arguments": member(template("Dictionary", { "Type": null_() })),
+                    "arguments": member(template("Dictionary", { "Type": group({}) })),
                 }),
             }),
             "Model": group({
-                "stringTypes": member(template("Dictionary", { "Type": null_() })),
+                "stringTypes": member(template("Dictionary", { "Type": group({}) })),
                 "globalTypes": member(template("Dictionary", { "Type": ref("GlobalType") })),
                 "root": member(ref("_Reference"))
             }),
             "Parameter": ref("_Reference"),
             "Parameters": template("Dictionary", { "Type": ref("Parameter") }),
             "Property": group({
-                "sibling dependencies": member(template("Dictionary", { "Type": null_() })),
+                "sibling dependencies": member(template("Dictionary", { "Type": group({}) })),
                 "type": member(ref("LocalType"))
             }),
             "Properties": template("Dictionary", { "Type": ref("Property") }),
@@ -139,13 +147,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "type": member(taggedUnion({
                     "parameter": ref("_Reference"),
                     "sibling": ref("_Reference"),
-                    "other": null_(),
+                    "other": group({}),
                 })),
                 "steps": member(array(taggedUnion({
                     "group": ref("_Reference"),
                     "tagged union": ref("_Reference"),
-                    "reference": null_(),
-                    "array": null_(),
+                    "reference": group({}),
+                    "array": group({}),
                 }))),
             }),
             "String": group({
@@ -164,7 +172,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             }),
             "XLocalType": taggedUnion({
                 "string": ref("XString"),
-                "boolean": null_(),
+                "boolean": group({}),
                 "dictionary": group({
                     "key": member(ref("XString")),
                     "type": member(ref("XLocalType"))
@@ -195,7 +203,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "XOption": group({
                 "type": member(ref("XLocalType"))
             }),
-            "XParameter": null_(),
+            "XParameter": group({}),
             //"XParameter": template("ComputedReference", { "ReferencedType": ref("XGlobalType") }),
 
             "XParameters": template("Dictionary", { "Type": ref("XParameter") }),
@@ -204,7 +212,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             }),
             "XProperties": template("Dictionary", { "Type": ref("XProperty") }),
             "XReference": group({
-                "resolved type": member(optional(ref("LocalType"))),
+                "resolved type": member(template("Optional", {"Type": ref("LocalType")})),
             }),
             "XString": group({
                 "constrained": member(taggedUnion({
@@ -214,7 +222,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "yes": ref("XReference")
                 }))
             }),
-            "XStringType": null_(),
+            "XStringType": group({}),
             ////
             "PossibleModel": template("Possibly", {
                 "Type": group({

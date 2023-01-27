@@ -22,7 +22,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'parameters': d({}),
         'templates': d({
             "Optional": {
-                'parameters': d({ "Type": null, }),
+                'parameters': d({ "Type": {}, }),
                 'type': taggedUnion({
                     "set": parameter("Type"),
                     "not set": group({}),
@@ -85,7 +85,6 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "Type": taggedUnion({
                 "array": reference("Type"),
                 "nested": reference("Type"),
-                "optional": reference("Type"),
                 "dictionary": reference("Type"),
                 "computed": reference("Type"),
 

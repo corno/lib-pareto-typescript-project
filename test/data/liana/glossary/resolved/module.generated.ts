@@ -14,12 +14,12 @@ export const $: mproject.TModule = {
                 "fp": "lib-fountain-pen",
             }),
             'parameters': d({
-                "Annotation": null,
+                "Annotation": {},
             }),
             'templates': d({
                 "Reference": {
                     'parameters': d({
-                        "ReferencedType": null,
+                        "ReferencedType": {},
                     }),
                     'type': <mglossary.TType>['group', d({})],
                 },
@@ -324,7 +324,7 @@ export const $: mproject.TModule = {
                         'function': "undefined",
                     },
                     'type': ['constructor', {
-                        'configuration data': null,
+                        'configuration data': ['not set', {}],
                         'dependencies': d({}),
                     }],
                 },
@@ -333,7 +333,7 @@ export const $: mproject.TModule = {
                         'function': "undefined",
                     },
                     'type': ['constructor', {
-                        'configuration data': null,
+                        'configuration data': ['not set', {}],
                         'dependencies': d({}),
                     }],
                 },

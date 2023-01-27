@@ -13,16 +13,16 @@ export const $$: api.Cmain = ($) => {
     pl.logDebugMessage("HIER")
 
 
-    mliana2Pareto.$a.generateProject({
-        'mainData': {
-            'arguments': pr.wrapRawArray([`../../pareto/src/data/glossary`]),
-        },
-        'model': {
-            'model': glossary,
+    // mliana2Pareto.$a.generateProject({
+    //     'mainData': {
+    //         'arguments': pr.wrapRawArray([`../../pareto/src/data/glossary`]),
+    //     },
+    //     'model': {
+    //         'model': glossary,
 
-            'stringmapping': pr.wrapRawDictionary({
-                "identifier": ['string', null]
-            }),
-        },
-    })
+    //         'stringmapping': pr.wrapRawDictionary({
+    //             "identifier": ['string', null]
+    //         }),
+    //     },
+    // })
 }

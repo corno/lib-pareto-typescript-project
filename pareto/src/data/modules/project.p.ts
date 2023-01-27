@@ -37,9 +37,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             }),
             "Project": group({
                 "type": member(taggedUnion({
-                    "resource": null_(),
-                    "glossary": null_(),
-                    "library": null_(),
+                    "resource": group({}),
+                    "glossary": group({}),
+                    "library": group({}),
                 })),
                 "modules": member(dictionary(ref("Module"))),
                 "main": member(str()),

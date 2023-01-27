@@ -17,7 +17,7 @@ import {
 
 export const $: mliana.TModel = {
     'stringTypes': d({
-        "text": null,
+        "text": {},
     }),
     'globalTypes': d({
         "Context": globalType({}, taggedUnion({

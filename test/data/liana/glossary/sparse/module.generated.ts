@@ -14,7 +14,7 @@ export const $: mproject.TModule = {
                 "fp": "lib-fountain-pen",
             }),
             'parameters': d({
-                "Annotation": null,
+                "Annotation": {},
             }),
             'templates': d({}),
             'types': d({

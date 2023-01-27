@@ -11,7 +11,6 @@ import {
     number as nr,
     nested,
     template,
-    optional,
     dictionary, group as grp, member, taggedUnion, types, _function, group, externalTypeReference
 } from "../../../pub/dist/modules/glossary/api/shorthands.p"
 

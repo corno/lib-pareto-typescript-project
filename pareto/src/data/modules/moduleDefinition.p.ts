@@ -5,7 +5,9 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference, optional, externalInterfaceReference, callback
+    array, dictionary, group, member, taggedUnion, types, _function, typeReference, externalInterfaceReference, callback,
+    parameter,
+    template,
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -22,12 +24,20 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "fp": "lib-fountain-pen",
         }),
         'parameters': d({}),
-        'templates': d({}),
+        'templates': d({
+            "Optional": {
+                'parameters': d({ "Type": {}, }),
+                'type': taggedUnion({
+                    "set": parameter("Type"),
+                    "not set": group({}),
+                })
+            }
+        }),
         'types': types({
             "_AlgorithmType": taggedUnion({
-                "reference": null_(),
+                "reference": group({}),
                 "constructor": group({
-                    "configuration data": member(optional(er("glossary", "TypeReference"))),
+                    "configuration data": member(template("Optional", { "Type": er("glossary", "TypeReference") })),
                     "dependencies": member(dictionary(ref("DefinitionReference"))),
                 }),
             }),
@@ -36,7 +46,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "function": member(str()),
             }),
             "Context": taggedUnion({
-                "local": null_(),
+                "local": group({}),
                 "import": str(),
             }),
             "ModuleDefinition": group({

@@ -169,7 +169,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
             'modules':  pr.wrapRawDictionary({
                 "resolved": {
                     'definition': <mmoduleDefinition.TModuleDefinition>{
-                        'glossary': {
+                        'glossary': <mglossary.TGlossary>{
                             'imports': pr.wrapRawDictionary({
                                 "fp": "lib-fountain-pen",
                             }),
@@ -286,12 +286,27 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 },
                 "unresolved": {
                     'definition': <mmoduleDefinition.TModuleDefinition>{
-                        'glossary': {
+                        'glossary':  <mglossary.TGlossary>{
                             'imports': pr.wrapRawDictionary({
-                                "fp": "lib-fountain-pen",
+                                //"fp": "lib-fountain-pen",
                             }),
                             'parameters': pr.wrapRawDictionary({
                                 "Annotation": null,
+                            }),
+                            'templates': pr.wrapRawDictionary({
+                                "Reference": {
+                                    'parameters': pr.wrapRawDictionary({
+                                        "ReferencedType": null, 
+                                    }),
+                                    'type': <mglossary.GType>['group', pr.wrapRawDictionary({
+                                        "annotation": {
+                                            'type': ['string', null],
+                                        },
+                                        "name": {
+                                            'type': ['string', null],
+                                        },
+                                    })],
+                                }
                             }),
                             'types': createTypes({
                                 'model': $.model,
@@ -316,13 +331,14 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 },
                 "sparse": {
                     'definition': <mmoduleDefinition.TModuleDefinition>{
-                        'glossary': {
+                        'glossary':  <mglossary.TGlossary>{
                             'imports': pr.wrapRawDictionary({
                                 "fp": "lib-fountain-pen",
                             }),
                             'parameters': pr.wrapRawDictionary({
                                 "Annotation": null,
                             }),
+                            'templates': pr.wrapRawDictionary({}),
                             'types': createTypes({
                                 'model': $.model,
                                 'optional': true,

@@ -10,13 +10,27 @@ const a = pr.wrapRawArray
 export const $: mproject.TModule = {
     'definition': {
         'glossary': {
-            'imports': d({
-                "fp": "lib-fountain-pen",
-            }),
+            'imports': d({}),
             'parameters': d({
                 "Annotation": null,
             }),
-            'templates': d({}),
+            'templates': d({
+                "Reference": {
+                    'parameters': d({
+                        "ReferencedType": null,
+                    }),
+                    'type': <mglossary.TType>['group', d({
+                        "annotation": {
+                            'optional': false,
+                            'type': <mglossary.TType>['string', null],
+                        },
+                        "name": {
+                            'optional': false,
+                            'type': <mglossary.TType>['string', null],
+                        },
+                    })],
+                },
+            }),
             'types': d({
                 "Accounting": <mglossary.TType>['group', d({
                     "Bankrekeningen": {

@@ -10,13 +10,27 @@ const a = pr.wrapRawArray
 export const $: mproject.TModule = {
     'definition': {
         'glossary': {
-            'imports': d({
-                "fp": "lib-fountain-pen",
-            }),
+            'imports': d({}),
             'parameters': d({
                 "Annotation": null,
             }),
-            'templates': d({}),
+            'templates': d({
+                "Reference": {
+                    'parameters': d({
+                        "ReferencedType": null,
+                    }),
+                    'type': <mglossary.TType>['group', d({
+                        "annotation": {
+                            'optional': false,
+                            'type': <mglossary.TType>['string', null],
+                        },
+                        "name": {
+                            'optional': false,
+                            'type': <mglossary.TType>['string', null],
+                        },
+                    })],
+                },
+            }),
             'types': d({
                 "Context": <mglossary.TType>['taggedUnion', d({
                     "import": <mglossary.TType>['template', {
@@ -29,42 +43,9 @@ export const $: mproject.TModule = {
                     "local": <mglossary.TType>['group', d({})],
                 })],
                 "Glossary": <mglossary.TType>['group', d({
-                    "callbacks": {
-                        'optional': false,
-                        'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                            "context": {
-                                'optional': false,
-                                'type': <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "Context",
-                                }],
-                            },
-                            "data": {
-                                'optional': false,
-                                'type': <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "OptionalTypeReference",
-                                }],
-                            },
-                            "interface": {
-                                'optional': false,
-                                'type': <mglossary.TType>['template', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'arguments': d({
-                                        "RererencedType": <mglossary.TType>['null', null],
-                                    }),
-                                    'template': "Reference",
-                                }],
-                            },
-                        })]],
-                    },
                     "functions": {
                         'optional': false,
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                            "async": {
-                                'optional': false,
-                                'type': <mglossary.TType>['boolean', null],
-                            },
                             "data": {
                                 'optional': false,
                                 'type': <mglossary.TType>['reference', {
@@ -72,12 +53,48 @@ export const $: mproject.TModule = {
                                     'type': "TypeReference",
                                 }],
                             },
-                            "return value": {
+                            "managed input interface": {
                                 'optional': false,
-                                'type': <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "TypeReference",
-                                }],
+                                'type': <mglossary.TType>['taggedUnion', d({
+                                    "not set": <mglossary.TType>['group', d({})],
+                                    "set": <mglossary.TType>['reference', {
+                                        'context': <mglossary.TContext>['local', null],
+                                        'type': "InterfaceReference",
+                                    }],
+                                })],
+                            },
+                            "output interface": {
+                                'optional': false,
+                                'type': <mglossary.TType>['taggedUnion', d({
+                                    "not set": <mglossary.TType>['group', d({})],
+                                    "set": <mglossary.TType>['reference', {
+                                        'context': <mglossary.TContext>['local', null],
+                                        'type': "InterfaceReference",
+                                    }],
+                                })],
+                            },
+                            "return type": {
+                                'optional': false,
+                                'type': <mglossary.TType>['taggedUnion', d({
+                                    "data": <mglossary.TType>['group', d({
+                                        "asynchronous": {
+                                            'optional': false,
+                                            'type': <mglossary.TType>['boolean', null],
+                                        },
+                                        "type": {
+                                            'optional': false,
+                                            'type': <mglossary.TType>['reference', {
+                                                'context': <mglossary.TContext>['local', null],
+                                                'type': "TypeReference",
+                                            }],
+                                        },
+                                    })],
+                                    "interface": <mglossary.TType>['reference', {
+                                        'context': <mglossary.TContext>['local', null],
+                                        'type': "InterfaceReference",
+                                    }],
+                                    "nothing": <mglossary.TType>['group', d({})],
+                                })],
                             },
                         })]],
                     },
@@ -85,108 +102,6 @@ export const $: mproject.TModule = {
                         'optional': false,
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
                     },
-                    "namespace": {
-                        'optional': false,
-                        'type': <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
-                            'type': "Namespace",
-                        }],
-                    },
-                    "parameters": {
-                        'optional': false,
-                        'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
-                    },
-                    "pipes": {
-                        'optional': false,
-                        'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
-                            "in": {
-                                'optional': false,
-                                'type': <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "InterfaceReference",
-                                }],
-                            },
-                            "out": {
-                                'optional': false,
-                                'type': <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "InterfaceReference",
-                                }],
-                            },
-                        })]],
-                    },
-                })],
-                "Interface": <mglossary.TType>['group', d({
-                    "group": {
-                        'optional': false,
-                        'type': <mglossary.TType>['group', d({
-                            "members": {
-                                'optional': false,
-                                'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "Interface",
-                                }]],
-                            },
-                        })],
-                    },
-                    "method": {
-                        'optional': false,
-                        'type': <mglossary.TType>['group', d({
-                            "data": {
-                                'optional': false,
-                                'type': <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "OptionalTypeReference",
-                                }],
-                            },
-                            "interface": {
-                                'optional': false,
-                                'type': <mglossary.TType>['taggedUnion', d({
-                                    "null": <mglossary.TType>['group', d({})],
-                                    "set": <mglossary.TType>['group', d({
-                                        "interface": {
-                                            'optional': false,
-                                            'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
-                                                'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
-                                                }),
-                                                'template': "Reference",
-                                            }],
-                                        },
-                                    })],
-                                })],
-                            },
-                        })],
-                    },
-                    "reference": {
-                        'optional': false,
-                        'type': <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
-                            'type': "InterfaceReference",
-                        }],
-                    },
-                })],
-                "InterfaceReference": <mglossary.TType>['group', d({
-                    "context": {
-                        'optional': false,
-                        'type': <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
-                            'type': "Context",
-                        }],
-                    },
-                    "interface": {
-                        'optional': false,
-                        'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
-                            'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
-                            }),
-                            'template': "Reference",
-                        }],
-                    },
-                })],
-                "Namespace": <mglossary.TType>['group', d({
                     "interfaces": {
                         'optional': false,
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
@@ -194,12 +109,9 @@ export const $: mproject.TModule = {
                             'type': "Interface",
                         }]],
                     },
-                    "namespaces": {
+                    "parameters": {
                         'optional': false,
-                        'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
-                            'type': "Namespace",
-                        }]],
+                        'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
                     },
                     "templates": {
                         'optional': false,
@@ -225,15 +137,44 @@ export const $: mproject.TModule = {
                         }]],
                     },
                 })],
-                "OptionalTypeReference": <mglossary.TType>['taggedUnion', d({
-                    "not set": <mglossary.TType>['group', d({})],
-                    "set": <mglossary.TType>['reference', {
+                "Interface": <mglossary.TType>['taggedUnion', d({
+                    "group": <mglossary.TType>['group', d({
+                        "members": {
+                            'optional': false,
+                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
+                                'context': <mglossary.TContext>['local', null],
+                                'type': "Interface",
+                            }]],
+                        },
+                    })],
+                    "method": <mglossary.TType>['group', d({
+                        "data": {
+                            'optional': false,
+                            'type': <mglossary.TType>['taggedUnion', d({
+                                "not set": <mglossary.TType>['group', d({})],
+                                "set": <mglossary.TType>['reference', {
+                                    'context': <mglossary.TContext>['local', null],
+                                    'type': "TypeReference",
+                                }],
+                            })],
+                        },
+                        "interface": {
+                            'optional': false,
+                            'type': <mglossary.TType>['taggedUnion', d({
+                                "not set": <mglossary.TType>['group', d({})],
+                                "set": <mglossary.TType>['reference', {
+                                    'context': <mglossary.TContext>['local', null],
+                                    'type': "InterfaceReference",
+                                }],
+                            })],
+                        },
+                    })],
+                    "reference": <mglossary.TType>['reference', {
                         'context': <mglossary.TContext>['local', null],
-                        'type': "TypeReference",
+                        'type': "InterfaceReference",
                     }],
                 })],
-                "Type": <mglossary.TType>['group', d({})],
-                "TypeReference": <mglossary.TType>['group', d({
+                "InterfaceReference": <mglossary.TType>['group', d({
                     "context": {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
@@ -241,15 +182,92 @@ export const $: mproject.TModule = {
                             'type': "Context",
                         }],
                     },
-                    "namespaces": {
+                    "interface": {
                         'optional': false,
-                        'type': <mglossary.TType>['array', <mglossary.TType>['template', {
+                        'type': <mglossary.TType>['template', {
                             'context': <mglossary.TContext>['local', null],
                             'arguments': d({
                                 "RererencedType": <mglossary.TType>['null', null],
                             }),
                             'template': "Reference",
-                        }]],
+                        }],
+                    },
+                })],
+                "Type": <mglossary.TType>['taggedUnion', d({
+                    "array": <mglossary.TType>['reference', {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Type",
+                    }],
+                    "boolean": <mglossary.TType>['group', d({})],
+                    "computed": <mglossary.TType>['reference', {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Type",
+                    }],
+                    "dictionary": <mglossary.TType>['reference', {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Type",
+                    }],
+                    "group": <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                        "optional": {
+                            'optional': false,
+                            'type': <mglossary.TType>['boolean', null],
+                        },
+                        "type": {
+                            'optional': false,
+                            'type': <mglossary.TType>['reference', {
+                                'context': <mglossary.TContext>['local', null],
+                                'type': "Type",
+                            }],
+                        },
+                    })]],
+                    "nested": <mglossary.TType>['reference', {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Type",
+                    }],
+                    "null": <mglossary.TType>['group', d({})],
+                    "number": <mglossary.TType>['group', d({})],
+                    "optional": <mglossary.TType>['reference', {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Type",
+                    }],
+                    "parameter": <mglossary.TType>['string', null],
+                    "reference": <mglossary.TType>['reference', {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "TypeReference",
+                    }],
+                    "string": <mglossary.TType>['group', d({})],
+                    "taggedUnion": <mglossary.TType>['reference', {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Type",
+                    }],
+                    "template": <mglossary.TType>['group', d({
+                        "arguments": {
+                            'optional': false,
+                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
+                                'context': <mglossary.TContext>['local', null],
+                                'type': "Type",
+                            }]],
+                        },
+                        "context": {
+                            'optional': false,
+                            'type': <mglossary.TType>['reference', {
+                                'context': <mglossary.TContext>['local', null],
+                                'type': "Context",
+                            }],
+                        },
+                        "template": {
+                            'optional': false,
+                            'type': <mglossary.TType>['string', null],
+                        },
+                    })],
+                })],
+                "TypeReference": <mglossary.TType>['group', d({
+                    "context": {
+                        'optional': false,
+                        'type': <mglossary.TType>['reference', {
+                            'context': <mglossary.TContext>['local', null],
+                            'type': "Context",
+                        }],
                     },
                     "type": {
                         'optional': false,

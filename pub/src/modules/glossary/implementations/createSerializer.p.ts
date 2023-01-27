@@ -2,11 +2,32 @@ import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
-import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateSerializer = ($d) => {
-    function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
+
+    function doOptional<T>(
+        $: api.MOptional<T>,
+        $i: mfp.ILine,
+        $c: ($: T, $i: mfp.ILine) => void,
+    ) {
+        switch ($[0]) {
+            case 'not set':
+                pl.cc($[1], ($) => {
+                    $i.snippet(`['not set', null]`)
+                })
+                break
+            case 'set':
+                pl.cc($[1], ($) => {
+                    $i.snippet(`['set', `)
+                    $c($, $i)
+                    $i.snippet(`]`)
+                })
+                break
+            default: pl.au($[0])
+        }
+    }
+    function serializeTypeReference($: api.TTypeReference, $i: mfp.ILine) {
         $i.snippet(`{`)
         $i.indent(($i) => {
             $i.nestedLine(($i) => {
@@ -21,7 +42,7 @@ export const $$: api.CcreateSerializer = ($d) => {
         $i.snippet(`}`)
     }
 
-    function serializeType($: mglossary.TType, $i: mfp.ILine) {
+    function serializeType($: api.TType, $i: mfp.ILine) {
         $i.snippet(`<mglossary.TType>`)
 
         switch ($[0]) {
@@ -81,11 +102,9 @@ export const $$: api.CcreateSerializer = ($d) => {
                             $i.nestedLine(($i) => {
                                 $i.snippet(`"${$.key}": {`)
                                 $i.indent(($i) => {
-                                    if ($.value.optional !== undefined) {
-                                        $i.nestedLine(($i) => {
-                                            $i.snippet(`'optional': ${$.value.optional ? `true` : `false`},`)
-                                        })
-                                    }
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`'optional': ${$.value.optional ? `true` : `false`},`)
+                                    })
                                     $i.nestedLine(($i) => {
                                         $i.snippet(`'type': `)
                                         serializeType($.value.type, $i)
@@ -146,15 +165,13 @@ export const $$: api.CcreateSerializer = ($d) => {
                 pl.cc($[1], ($) => {
                     $i.snippet(`['template', {`)
                     $i.indent(($i) => {
-                        if ($.context !== undefined) {
-                            pl.cc($.context, ($) => {
-                                $i.nestedLine(($i) => {
-                                    $i.snippet(`'context': `)
-                                    serializeContext($, $i)
-                                    $i.snippet(`,`)
-                                })
+                        pl.cc($.context, ($) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'context': `)
+                                serializeContext($, $i)
+                                $i.snippet(`,`)
                             })
-                        }
+                        })
                         $i.nestedLine(($i) => {
                             $i.snippet(`'arguments': d({`)
                             $i.indent(($i) => {
@@ -178,7 +195,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             default: pl.au($[0])
         }
     }
-    function serializeContext($: mglossary.TContext, $i: mfp.ILine) {
+    function serializeContext($: api.TContext, $i: mfp.ILine) {
         $i.snippet(`<mglossary.TContext>`)
         switch ($[0]) {
             case 'import':
@@ -194,7 +211,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             default: pl.au($[0])
         }
     }
-    function serializeInterfaceReference($: mglossary.TInterfaceReference, $i: mfp.ILine) {
+    function serializeInterfaceReference($: api.TInterfaceReference, $i: mfp.ILine) {
         $i.snippet(`{`)
         $i.indent(($i) => {
             $i.nestedLine(($i) => {
@@ -209,7 +226,7 @@ export const $$: api.CcreateSerializer = ($d) => {
         $i.snippet(`}`)
 
     }
-    function serializeInterface($: mglossary.TInterface, $i: mfp.ILine) {
+    function serializeInterface($: api.TInterface, $i: mfp.ILine) {
         switch ($[0]) {
             case 'group':
                 pl.cc($[1], ($) => {
@@ -243,9 +260,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                         pl.cc($.interface, ($) => {
                             $i.nestedLine(($i) => {
                                 $i.snippet(`'interface': `)
-                                if ($ === null) {
-                                    $i.snippet(`null`)
-                                } else {
+                                doOptional($, $i, ($, $i) => {
                                     $i.snippet(`{`)
                                     $i.indent(($i) => {
                                         $i.nestedLine(($i) => {
@@ -262,7 +277,8 @@ export const $$: api.CcreateSerializer = ($d) => {
 
                                     })
                                     $i.snippet(`}`)
-                                }
+
+                                })
                             })
                         })
                     })
@@ -296,46 +312,42 @@ export const $$: api.CcreateSerializer = ($d) => {
             $i.nestedLine(($i) => {
                 $i.snippet(`'parameters': d({`)
                 $i.indent(($i) => {
-                    if ($.parameters !== undefined) {
-                        $d.dictionaryForEach($.parameters, ($) => {
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`"${$.key}": null,`)
-                            })
+                    $d.dictionaryForEach($.parameters, ($) => {
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`"${$.key}": null,`)
                         })
-                    }
+                    })
                 })
                 $i.snippet(`}),`)
             })
             $i.nestedLine(($i) => {
                 $i.snippet(`'templates': d({`)
                 $i.indent(($i) => {
-                    if ($.templates !== undefined) {
-                        $d.dictionaryForEach($.templates, ($) => {
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`"${$.key}": {`)
-                                $i.indent(($i) => {
+                    $d.dictionaryForEach($.templates, ($) => {
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`"${$.key}": {`)
+                            $i.indent(($i) => {
 
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'parameters': d({`)
-                                        $i.indent(($i) => {
-                                            $d.dictionaryForEach($.value.parameters, ($) => {
-                                                $i.nestedLine(($i) => {
-                                                    $i.snippet(`"${$.key}": null,`)
-                                                })
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`'parameters': d({`)
+                                    $i.indent(($i) => {
+                                        $d.dictionaryForEach($.value.parameters, ($) => {
+                                            $i.nestedLine(($i) => {
+                                                $i.snippet(`"${$.key}": null,`)
                                             })
                                         })
-                                        $i.snippet(`}),`)
                                     })
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'type': `)
-                                        serializeType($.value.type, $i)
-                                        $i.snippet(`,`)
-                                    })
+                                    $i.snippet(`}),`)
                                 })
-                                $i.snippet(`},`)
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`'type': `)
+                                    serializeType($.value.type, $i)
+                                    $i.snippet(`,`)
+                                })
                             })
+                            $i.snippet(`},`)
                         })
-                    }
+                    })
                 })
                 $i.snippet(`}),`)
             })

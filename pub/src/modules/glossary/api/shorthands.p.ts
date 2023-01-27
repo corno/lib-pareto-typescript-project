@@ -161,12 +161,12 @@ export function method(data: null | t.TTypeReference, inf?: null | t.TInterface,
     return ['method', {
         'data': data,
         'interface': inf === undefined
-            ? null
+            ? ['not set', null]
             : inf === null
-                ? null
-                : {
+                ? ['not set', null]
+                : ['set', {
                     'interface': inf,
                     'managed': managed === undefined ? false : managed
-                },
+                }],
     }]
 }

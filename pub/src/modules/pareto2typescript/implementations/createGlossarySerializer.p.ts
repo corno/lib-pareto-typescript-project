@@ -8,6 +8,28 @@ import * as mfp from "lib-fountain-pen"
 export const $$: api.CcreateGlossarySerializer = ($d) => {
 
     return ($, $i) => {
+        function doOptional<T>(
+            $: mglossary.MOptional<T>,
+            $i: mfp.ILine,
+            $c: {
+                onSet: ($: T, $i: mfp.ILine) => void,
+                onNotset: ($: null, $i: mfp.ILine) => void,
+            },
+        ) {
+            switch ($[0]) {
+                case 'not set':
+                    pl.cc($[1], ($) => {
+                        $c.onNotset($, $i)
+                    })
+                    break
+                case 'set':
+                    pl.cc($[1], ($) => {
+                        $c.onSet($, $i)
+                    })
+                    break
+                default: pl.au($[0])
+            }
+        }
         function serializeContext($: mglossary.TContext, $i: mfp.ILine) {
             switch ($[0]) {
                 case 'import':
@@ -147,7 +169,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                 $content($i)
                             })
                             $i.snippet(`}`)
-        
+
                         })
                     }
                     ns(
@@ -632,27 +654,29 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                 }
                             })
                             pl.cc($.interface, ($) => {
-                                if ($ === null) {
-
-                                } else {
-                                    if ($.managed) {
-                                        $i.snippet(`$c: ($i: `)
-                                        serializeInterface($.interface, $i)
-                                        $i.snippet(`) => void`)
+                                doOptional($, $i, {
+                                    onNotset: () => { },
+                                    onSet: ($, $i) => {
+                                        if ($.managed) {
+                                            $i.snippet(`$c: ($i: `)
+                                            serializeInterface($.interface, $i)
+                                            $i.snippet(`) => void`)
+                                        }
                                     }
-                                }
+                                })
                             })
                             $i.snippet(`) => `)
                             pl.cc($.interface, ($) => {
-                                if ($ === null) {
-                                    $i.snippet(`void`)
-                                } else {
-                                    if ($.managed) {
-                                        $i.snippet(`void`)
-                                    } else {
-                                        serializeInterface($.interface, $i)
+                                doOptional($, $i, {
+                                    onNotset: () => { },
+                                    onSet: ($, $i) => {
+                                        if ($.managed) {
+                                            $i.snippet(`void`)
+                                        } else {
+                                            serializeInterface($.interface, $i)
+                                        }
                                     }
-                                }
+                                })
                             })
                         })
                         break

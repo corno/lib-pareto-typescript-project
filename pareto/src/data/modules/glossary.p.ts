@@ -5,7 +5,8 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, interfaceReference, externalInterfaceReference, callback, boolean
+    template,
+    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, interfaceReference, externalInterfaceReference, callback, boolean, parameter
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -21,6 +22,15 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "fp": "lib-fountain-pen",
         }),
         'parameters': d({}),
+        'templates': d({
+            "Optional": {
+                'parameters': d({ "Type": null, }),
+                'type': taggedUnion({
+                    "set": parameter("Type"),
+                    "not set": null_(),
+                })
+            }
+        }),
         'types': types({
             "Context": taggedUnion({
                 "local": null_(),
@@ -30,9 +40,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "parameters": member(dictionary(null_())),
                 "imports": member(dictionary(str())),
                 "templates": member(dictionary(group({
-                    "parameters": member(['dictionary', null_()]),
-                    "type": member(ref("Type"))
-                })), true),
+                    "parameters": member(dictionary(null_())),
+                    "type": member(ref("Type")),
+                }))),
                 "types": member(dictionary(ref("Type"))),
                 "interfaces": member(dictionary(ref("Interface"))),
                 "functions": member(dictionary(group({
@@ -55,10 +65,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
                 "method": group({
                     "data": member(optional(ref("TypeReference"))),
-                    "interface": member(optional(group({
-                        "managed": member(boolean()),
-                        "interface": member(ref("Interface"))
-                    }))),
+                    "interface": member(template("Optional", {
+                        "Type": group({
+                            "managed": member(boolean()),
+                            "interface": member(ref("Interface"))
+                        })
+                    })),
                 }),
                 "reference": ref("InterfaceReference"),
             }),

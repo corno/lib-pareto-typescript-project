@@ -2,6 +2,13 @@ import * as pt from 'pareto-core-types'
 
 import * as mfp from "lib-fountain-pen"
 
+export namespace VOptional {}
+export type VOptional<AType> = 
+    | ['not set', null]
+    | ['set', AType]
+
+export type MOptional<AType> = VOptional<AType>
+
 export namespace GContext {}
 export type GContext = 
     | ['import', string]
@@ -73,7 +80,7 @@ export type GGlossary = {
     readonly 'imports': GGlossary.Pimports
     readonly 'interfaces': GGlossary.Pinterfaces
     readonly 'parameters': GGlossary.Pparameters
-    readonly 'templates'?: GGlossary.Ptemplates
+    readonly 'templates': GGlossary.Ptemplates
     readonly 'types': GGlossary.Ptypes
 }
 export type UGlossary = GGlossary
@@ -96,13 +103,13 @@ export namespace GInterface {
         
         export namespace Pinterface {
             
-            export namespace O {}
-            export type O = {
+            export namespace TPType {}
+            export type TPType = {
                 readonly 'interface': UInterface
                 readonly 'managed': boolean
             }
         }
-        export type Pinterface = null | Pinterface.O
+        export type Pinterface = MOptional<Pinterface.TPType>
     }
     export type Omethod = {
         readonly 'data': Omethod.Pdata

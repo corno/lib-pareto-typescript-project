@@ -24,6 +24,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "liana2Pareto": "../../../liana2Pareto",
         }),
         'parameters': d({}),
+        'templates': d({}),
         'types': types({
         }),
         'interfaces': d({}),

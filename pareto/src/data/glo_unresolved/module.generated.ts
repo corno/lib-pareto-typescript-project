@@ -299,11 +299,11 @@ export const $: mproject.TModule = {
                         'context': <mglossary.TContext>['local', null],
                         'type': "Glossary",
                     },
-                    'managed input interface': null,
-                    'output interface': {
+                    'managed input interface': ['not set', null],
+                    'output interface': ['set', {
                         'context': <mglossary.TContext>['import', "fp"],
                         'interface': "Line",
-                    },
+                    }],
                     'return type': ['nothing', null],
                 },
             }),

@@ -30,6 +30,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             "main": "lib-pareto-main",
             "project": "../../../project",
         }),
+        'templates': d({}),
         'types': types({
             "ArgumentError": taggedUnion({
                 "missing": null_(),

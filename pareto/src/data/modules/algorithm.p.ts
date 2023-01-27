@@ -22,6 +22,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "fp": "lib-fountain-pen",
         }),
         'parameters': d({}),
+        'templates': d({}),
         'types': types({
             "FunctionBlock": group({
                 "innerFunctions": member(dictionary(group({

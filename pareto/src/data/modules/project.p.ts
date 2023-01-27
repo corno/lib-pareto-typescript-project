@@ -20,6 +20,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "fp": "lib-fountain-pen",
         }),
         'parameters': d({}),
+        'templates': d({}),
         'types': types({
             "AlgorithmImplementation": group({}),
             "Implementation": dictionary(ref("AlgorithmImplementation")),

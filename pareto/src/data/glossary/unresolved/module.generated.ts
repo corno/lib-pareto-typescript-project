@@ -16,7 +16,23 @@ export const $: mproject.TModule = {
             'parameters': d({
                 "Annotation": null,
             }),
-            'templates': d({}),
+            'templates': d({
+                "Reference": {
+                    'parameters': d({
+                        "ReferencedType": null,
+                    }),
+                    'type': <mglossary.TType>['group', d({
+                        "annotation": {
+                            'optional': false,
+                            'type': <mglossary.TType>['string', null],
+                        },
+                        "name": {
+                            'optional': false,
+                            'type': <mglossary.TType>['string', null],
+                        },
+                    })],
+                },
+            }),
             'types': d({
                 "Context": <mglossary.TType>['taggedUnion', d({
                     "import": <mglossary.TType>['template', {
@@ -268,13 +284,54 @@ export const $: mproject.TModule = {
                 })],
             }),
             'interfaces': d({}),
-            'functions': d({}),
+            'functions': d({
+                "Serialize": {
+                    'data': {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Glossary",
+                    },
+                    'managed input interface': ['not set', null],
+                    'output interface': ['set', {
+                        'context': <mglossary.TContext>['import', "fp"],
+                        'interface': "Line",
+                    }],
+                    'return type': ['nothing', null],
+                },
+            }),
         },
         'api': {
             'imports': d({
-                'common': "glo-pareto-common"
+                'temp': "../../temp",
             }),
-            'algorithms': d({}),
+            'algorithms': d({
+                'createSerializer': {
+                    'definition': {
+                        'context': ['local', null],
+                        'function': "Serialize",
+                    },
+                    'type': ['constructor', {
+                        'configuration data': null,
+                        'dependencies': d({
+                            'arrayForEach': {
+                                'context': ['import', "temp"],
+                                'function': "ArrayForEach",
+                            },
+                            'dictionaryForEach': {
+                                'context': ['import', "temp"],
+                                'function': "DictionaryForEach",
+                            },
+                            'enrichedArrayForEach': {
+                                'context': ['import', "temp"],
+                                'function': "EnrichedArrayForEach",
+                            },
+                            'enrichedDictionaryForEach': {
+                                'context': ['import', "temp"],
+                                'function': "EnrichedDictionaryForEach",
+                            },
+                        }),
+                    }],
+                },
+            }),
         },
     },
     'implementation': {

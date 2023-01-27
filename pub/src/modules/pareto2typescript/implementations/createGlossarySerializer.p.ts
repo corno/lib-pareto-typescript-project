@@ -675,7 +675,9 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                             $i.snippet(`) => `)
                             pl.cc($.interface, ($) => {
                                 doOptional($, $i, {
-                                    onNotset: () => { },
+                                    onNotset: () => {
+                                        $i.snippet(`void`)
+                                    },
                                     onSet: ($, $i) => {
                                         if ($.managed) {
                                             $i.snippet(`void`)

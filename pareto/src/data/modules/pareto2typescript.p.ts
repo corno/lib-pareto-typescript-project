@@ -28,6 +28,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             "project": "../../../project",
         }),
         'parameters': d({}),
+        'templates': d({}),
         'types': types({
         }),
         'interfaces': d({

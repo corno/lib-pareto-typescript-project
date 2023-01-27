@@ -648,16 +648,14 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                 if ($ === null) {
                                     //
                                 } else {
-                                    $i.snippet(`$: `)
                                     doOptional($, $i, {
-                                        onNotset: ($, $i) => {
-                                            $i.snippet(`null`)
-                                        },
+                                        onNotset: ($, $i) => { },
                                         onSet: ($, $i) => {
+                                            $i.snippet(`$: `)
                                             serializeTypeReference($, $i)
+                                            $i.snippet(`, `)
                                         }
                                     })
-                                    $i.snippet(`, `)
                                 }
                             })
                             pl.cc($.interface, ($) => {
@@ -746,7 +744,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
 
                         }
                         doOptional($['output interface'], $i, {
-                            onNotset: () => {},
+                            onNotset: () => { },
                             onSet: ($, $i) => {
                                 $i.snippet(` $i: `)
                                 serializeInterfaceReference($, $i)

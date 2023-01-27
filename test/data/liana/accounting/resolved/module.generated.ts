@@ -42,9 +42,9 @@ export const $: mproject.TModule = {
                                             "Hoofdcategorie": {
                                                 'optional': false,
                                                 'type': <mglossary.TType>['template', {
-                                                    'context': <mglossary.TContext>['local', null],
+                                                    'context': <mglossary.TContext>['local', {}],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['null', null],
+                                                        "RererencedType": <mglossary.TType>['null', {}],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -52,9 +52,9 @@ export const $: mproject.TModule = {
                                             "Subcategorie": {
                                                 'optional': false,
                                                 'type': <mglossary.TType>['template', {
-                                                    'context': <mglossary.TContext>['local', null],
+                                                    'context': <mglossary.TContext>['local', {}],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['null', null],
+                                                        "RererencedType": <mglossary.TType>['null', {}],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -77,9 +77,9 @@ export const $: mproject.TModule = {
                                                     "Hoofdcategorie fiscus": {
                                                         'optional': false,
                                                         'type': <mglossary.TType>['template', {
-                                                            'context': <mglossary.TContext>['local', null],
+                                                            'context': <mglossary.TContext>['local', {}],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['null', null],
+                                                                "RererencedType": <mglossary.TType>['null', {}],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -87,9 +87,9 @@ export const $: mproject.TModule = {
                                                     "Subcategorie fiscus": {
                                                         'optional': false,
                                                         'type': <mglossary.TType>['template', {
-                                                            'context': <mglossary.TContext>['local', null],
+                                                            'context': <mglossary.TContext>['local', {}],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['null', null],
+                                                                "RererencedType": <mglossary.TType>['null', {}],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -132,7 +132,7 @@ export const $: mproject.TModule = {
                                             "Ja": <mglossary.TType>['group', d({
                                                 "BTW-promillage": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['number', null],
+                                                    'type': <mglossary.TType>['number', {}],
                                                 },
                                             })],
                                             "Nee": <mglossary.TType>['group', d({})],
@@ -145,7 +145,7 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                     "Volledige naam": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                 })]],
                             },
@@ -162,9 +162,9 @@ export const $: mproject.TModule = {
                                             "Hoofdcategorie": {
                                                 'optional': false,
                                                 'type': <mglossary.TType>['template', {
-                                                    'context': <mglossary.TContext>['local', null],
+                                                    'context': <mglossary.TContext>['local', {}],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['null', null],
+                                                        "RererencedType": <mglossary.TType>['null', {}],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -172,9 +172,9 @@ export const $: mproject.TModule = {
                                             "Subcategorie": {
                                                 'optional': false,
                                                 'type': <mglossary.TType>['template', {
-                                                    'context': <mglossary.TContext>['local', null],
+                                                    'context': <mglossary.TContext>['local', {}],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['null', null],
+                                                        "RererencedType": <mglossary.TType>['null', {}],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -190,9 +190,9 @@ export const $: mproject.TModule = {
                                                                     "Correctietype": {
                                                                         'optional': false,
                                                                         'type': <mglossary.TType>['template', {
-                                                                            'context': <mglossary.TContext>['local', null],
+                                                                            'context': <mglossary.TContext>['local', {}],
                                                                             'arguments': d({
-                                                                                "RererencedType": <mglossary.TType>['null', null],
+                                                                                "RererencedType": <mglossary.TType>['null', {}],
                                                                             }),
                                                                             'template': "Reference",
                                                                         }],
@@ -216,9 +216,9 @@ export const $: mproject.TModule = {
                                                     "Hoofdcategorie fiscus": {
                                                         'optional': false,
                                                         'type': <mglossary.TType>['template', {
-                                                            'context': <mglossary.TContext>['local', null],
+                                                            'context': <mglossary.TContext>['local', {}],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['null', null],
+                                                                "RererencedType": <mglossary.TType>['null', {}],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -226,9 +226,9 @@ export const $: mproject.TModule = {
                                                     "Subcategorie fiscus": {
                                                         'optional': false,
                                                         'type': <mglossary.TType>['template', {
-                                                            'context': <mglossary.TContext>['local', null],
+                                                            'context': <mglossary.TContext>['local', {}],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['null', null],
+                                                                "RererencedType": <mglossary.TType>['null', {}],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -271,7 +271,7 @@ export const $: mproject.TModule = {
                     "Jaren": {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'type': "Jaren",
                         }],
                     },
@@ -286,7 +286,7 @@ export const $: mproject.TModule = {
                                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                             "Bedrag": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['number', null],
+                                                'type': <mglossary.TType>['number', {}],
                                             },
                                         })]],
                                     },
@@ -307,11 +307,11 @@ export const $: mproject.TModule = {
                                                             "Project": <mglossary.TType>['group', d({
                                                                 "Bedrag": {
                                                                     'optional': false,
-                                                                    'type': <mglossary.TType>['number', null],
+                                                                    'type': <mglossary.TType>['number', {}],
                                                                 },
                                                                 "Betaaldatum": {
                                                                     'optional': false,
-                                                                    'type': <mglossary.TType>['number', null],
+                                                                    'type': <mglossary.TType>['number', {}],
                                                                 },
                                                             })],
                                                         })],
@@ -338,9 +338,9 @@ export const $: mproject.TModule = {
                         "BTW-periode": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -348,9 +348,9 @@ export const $: mproject.TModule = {
                         "Jaar": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -360,9 +360,9 @@ export const $: mproject.TModule = {
                         "Informele rekening": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -372,9 +372,9 @@ export const $: mproject.TModule = {
                         "Inkoop": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -382,9 +382,9 @@ export const $: mproject.TModule = {
                         "Jaar": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -394,9 +394,9 @@ export const $: mproject.TModule = {
                         "Inkoop": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -404,9 +404,9 @@ export const $: mproject.TModule = {
                         "Jaar": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -416,9 +416,9 @@ export const $: mproject.TModule = {
                         "Verrekenpost": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -428,14 +428,14 @@ export const $: mproject.TModule = {
                 "Informele Rekeningen": <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                     "Beginsaldo": {
                         'optional': false,
-                        'type': <mglossary.TType>['number', null],
+                        'type': <mglossary.TType>['number', {}],
                     },
                     "Grootboekrekening": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -448,9 +448,9 @@ export const $: mproject.TModule = {
                                 "Jaar": {
                                     'optional': false,
                                     'type': <mglossary.TType>['template', {
-                                        'context': <mglossary.TContext>['local', null],
+                                        'context': <mglossary.TContext>['local', {}],
                                         'arguments': d({
-                                            "RererencedType": <mglossary.TType>['null', null],
+                                            "RererencedType": <mglossary.TType>['null', {}],
                                         }),
                                         'template': "Reference",
                                     }],
@@ -458,9 +458,9 @@ export const $: mproject.TModule = {
                                 "Rekening": {
                                     'optional': false,
                                     'type': <mglossary.TType>['template', {
-                                        'context': <mglossary.TContext>['local', null],
+                                        'context': <mglossary.TContext>['local', {}],
                                         'arguments': d({
-                                            "RererencedType": <mglossary.TType>['null', null],
+                                            "RererencedType": <mglossary.TType>['null', {}],
                                         }),
                                         'template': "Reference",
                                     }],
@@ -495,14 +495,14 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                             "Beginsaldo": {
                                 'optional': false,
-                                'type': <mglossary.TType>['number', null],
+                                'type': <mglossary.TType>['number', {}],
                             },
                             "Grootboekrekening": {
                                 'optional': false,
                                 'type': <mglossary.TType>['template', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['null', null],
+                                        "RererencedType": <mglossary.TType>['null', {}],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -512,15 +512,15 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                     "Bedrag": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                     "Datum": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                     "Omschrijving": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                     "Status": {
                                         'optional': false,
@@ -530,7 +530,7 @@ export const $: mproject.TModule = {
                                                 "Afhandeling": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'type': "Afhandeling",
                                                     }],
                                                 },
@@ -547,9 +547,9 @@ export const $: mproject.TModule = {
                                         "Jaar": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -557,9 +557,9 @@ export const $: mproject.TModule = {
                                         "Rekening": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -571,11 +571,11 @@ export const $: mproject.TModule = {
                     },
                     "Beginsaldo nog aan te geven BTW": {
                         'optional': false,
-                        'type': <mglossary.TType>['number', null],
+                        'type': <mglossary.TType>['number', {}],
                     },
                     "Beginsaldo Winstreserve": {
                         'optional': false,
-                        'type': <mglossary.TType>['number', null],
+                        'type': <mglossary.TType>['number', {}],
                     },
                     "BTW periodes": {
                         'optional': false,
@@ -589,13 +589,13 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                     "Bestand": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                 })]],
                             },
                             "Omschrijving": {
                                 'optional': false,
-                                'type': <mglossary.TType>['string', null],
+                                'type': <mglossary.TType>['string', {}],
                             },
                             "Status": {
                                 'optional': false,
@@ -603,15 +603,15 @@ export const $: mproject.TModule = {
                                     "Aangegeven": <mglossary.TType>['group', d({
                                         "Afronding": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', null],
+                                            'type': <mglossary.TType>['number', {}],
                                         },
                                         "Bedrag": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', null],
+                                            'type': <mglossary.TType>['number', {}],
                                         },
                                         "Datum": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', null],
+                                            'type': <mglossary.TType>['number', {}],
                                         },
                                     })],
                                     "Openstaand": <mglossary.TType>['group', d({})],
@@ -627,9 +627,9 @@ export const $: mproject.TModule = {
                                 "Vorig boekjaar": {
                                     'optional': false,
                                     'type': <mglossary.TType>['template', {
-                                        'context': <mglossary.TContext>['local', null],
+                                        'context': <mglossary.TContext>['local', {}],
                                         'arguments': d({
-                                            "RererencedType": <mglossary.TType>['null', null],
+                                            "RererencedType": <mglossary.TType>['null', {}],
                                         }),
                                         'template': "Reference",
                                     }],
@@ -640,9 +640,9 @@ export const $: mproject.TModule = {
                     "Grootboek BTW periode": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -650,9 +650,9 @@ export const $: mproject.TModule = {
                     "Grootboek inkoop saldo": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -660,9 +660,9 @@ export const $: mproject.TModule = {
                     "Grootboek verkoop saldo": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -670,9 +670,9 @@ export const $: mproject.TModule = {
                     "Grootboekrekening voor BTW afrondingen": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -680,9 +680,9 @@ export const $: mproject.TModule = {
                     "Grootboekrekening voor nog aan te geven BTW": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -690,9 +690,9 @@ export const $: mproject.TModule = {
                     "Grootboekrekening voor resultaat dit jaar": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -700,9 +700,9 @@ export const $: mproject.TModule = {
                     "Grootboekrekening voor winstreserve": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -710,7 +710,7 @@ export const $: mproject.TModule = {
                     "Informele rekeningen": {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'type': "Informele Rekeningen",
                         }],
                     },
@@ -724,16 +724,16 @@ export const $: mproject.TModule = {
                                     "Nog te betalen": <mglossary.TType>['group', d({
                                         "Betalingstermijn": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', null],
+                                            'type': <mglossary.TType>['number', {}],
                                         },
                                     })],
                                     "Rekening courant": <mglossary.TType>['group', d({
                                         "Rekening courant": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -750,7 +750,7 @@ export const $: mproject.TModule = {
                                     "Toegevoegd": <mglossary.TType>['group', d({
                                         "Document": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', null],
+                                            'type': <mglossary.TType>['string', {}],
                                         },
                                     })],
                                 })],
@@ -762,9 +762,9 @@ export const $: mproject.TModule = {
                                         "BTW-periode": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -774,9 +774,9 @@ export const $: mproject.TModule = {
                                         "BTW-periode": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -786,9 +786,9 @@ export const $: mproject.TModule = {
                                         "BTW-periode": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -798,9 +798,9 @@ export const $: mproject.TModule = {
                                         "BTW-periode": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -810,9 +810,9 @@ export const $: mproject.TModule = {
                                         "BTW-periode": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -822,7 +822,7 @@ export const $: mproject.TModule = {
                             },
                             "Datum": {
                                 'optional': false,
-                                'type': <mglossary.TType>['number', null],
+                                'type': <mglossary.TType>['number', {}],
                             },
                             "Regels": {
                                 'optional': false,
@@ -833,24 +833,24 @@ export const $: mproject.TModule = {
                                             "Bekend": <mglossary.TType>['group', d({
                                                 "Bedrag inclusief BTW": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['number', null],
+                                                    'type': <mglossary.TType>['number', {}],
                                                 },
                                                 "BTW": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['number', null],
+                                                    'type': <mglossary.TType>['number', {}],
                                                 },
                                             })],
                                             "Nog niet bekend": <mglossary.TType>['group', d({
                                                 "Aantekeningen": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['string', null],
+                                                    'type': <mglossary.TType>['string', {}],
                                                 },
                                             })],
                                         })],
                                     },
                                     "Omschrijving": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                     "Type": {
                                         'optional': false,
@@ -859,9 +859,9 @@ export const $: mproject.TModule = {
                                                 "Balans item": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -871,9 +871,9 @@ export const $: mproject.TModule = {
                                                 "Grootboekrekening": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -891,25 +891,25 @@ export const $: mproject.TModule = {
                                         "Crediteur": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
                                         },
                                         "Factuurnummer": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', null],
+                                            'type': <mglossary.TType>['string', {}],
                                         },
                                     })],
                                     "Loonheffing": <mglossary.TType>['group', d({
                                         "Ronde": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -919,9 +919,9 @@ export const $: mproject.TModule = {
                                         "Medewerker": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -929,9 +929,9 @@ export const $: mproject.TModule = {
                                         "Ronde": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -941,9 +941,9 @@ export const $: mproject.TModule = {
                                         "Ronde": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -958,14 +958,14 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                             "Beginsaldo": {
                                 'optional': false,
-                                'type': <mglossary.TType>['number', null],
+                                'type': <mglossary.TType>['number', {}],
                             },
                             "Grootboekrekening": {
                                 'optional': false,
                                 'type': <mglossary.TType>['template', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['null', null],
+                                        "RererencedType": <mglossary.TType>['null', {}],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -975,25 +975,25 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                     "Bedrag": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                     "Datum": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                     "Grootboekrekening": {
                                         'optional': false,
                                         'type': <mglossary.TType>['template', {
-                                            'context': <mglossary.TContext>['local', null],
+                                            'context': <mglossary.TContext>['local', {}],
                                             'arguments': d({
-                                                "RererencedType": <mglossary.TType>['null', null],
+                                                "RererencedType": <mglossary.TType>['null', {}],
                                             }),
                                             'template': "Reference",
                                         }],
                                     },
                                     "Omschrijving": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                 })]],
                             },
@@ -1005,9 +1005,9 @@ export const $: mproject.TModule = {
                                         "Balans item": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1015,9 +1015,9 @@ export const $: mproject.TModule = {
                                         "Jaar": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1037,7 +1037,7 @@ export const $: mproject.TModule = {
                     },
                     "Startdatum boekjaar": {
                         'optional': false,
-                        'type': <mglossary.TType>['number', null],
+                        'type': <mglossary.TType>['number', {}],
                     },
                     "Verkopen": {
                         'optional': false,
@@ -1050,9 +1050,9 @@ export const $: mproject.TModule = {
                                         "Rekening courant": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1062,7 +1062,7 @@ export const $: mproject.TModule = {
                             },
                             "Betalingstermijn": {
                                 'optional': false,
-                                'type': <mglossary.TType>['number', null],
+                                'type': <mglossary.TType>['number', {}],
                             },
                             "Brondocument": {
                                 'optional': false,
@@ -1071,7 +1071,7 @@ export const $: mproject.TModule = {
                                     "Toegevoegd": <mglossary.TType>['group', d({
                                         "Document": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', null],
+                                            'type': <mglossary.TType>['string', {}],
                                         },
                                     })],
                                 })],
@@ -1079,9 +1079,9 @@ export const $: mproject.TModule = {
                             "BTW-periode": {
                                 'optional': false,
                                 'type': <mglossary.TType>['template', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['null', null],
+                                        "RererencedType": <mglossary.TType>['null', {}],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -1093,9 +1093,9 @@ export const $: mproject.TModule = {
                                         "Overeenkomst": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1105,9 +1105,9 @@ export const $: mproject.TModule = {
                                         "Offerte": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1115,9 +1115,9 @@ export const $: mproject.TModule = {
                                         "Project": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1128,9 +1128,9 @@ export const $: mproject.TModule = {
                             "Debiteur": {
                                 'optional': false,
                                 'type': <mglossary.TType>['template', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['null', null],
+                                        "RererencedType": <mglossary.TType>['null', {}],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -1140,7 +1140,7 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                     "Bedrag exclusief BTW": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                     "BTW-regime": {
                                         'optional': false,
@@ -1153,9 +1153,9 @@ export const $: mproject.TModule = {
                                                 "BTW-cateogrie": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1170,9 +1170,9 @@ export const $: mproject.TModule = {
                                                 "Periode": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1183,9 +1183,9 @@ export const $: mproject.TModule = {
                                                 "Opbrengst": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1195,7 +1195,7 @@ export const $: mproject.TModule = {
                                     },
                                     "Omschrijving": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                     "Type": {
                                         'optional': false,
@@ -1204,9 +1204,9 @@ export const $: mproject.TModule = {
                                                 "Balans item": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1216,9 +1216,9 @@ export const $: mproject.TModule = {
                                                 "Grootboekrekening": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1239,13 +1239,13 @@ export const $: mproject.TModule = {
                                     "Afhandeling": {
                                         'optional': false,
                                         'type': <mglossary.TType>['reference', {
-                                            'context': <mglossary.TContext>['local', null],
+                                            'context': <mglossary.TContext>['local', {}],
                                             'type': "Afhandeling",
                                         }],
                                     },
                                     "Bedrag": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                 })]],
                             },
@@ -1257,14 +1257,14 @@ export const $: mproject.TModule = {
             'functions': d({
                 "Enrich": {
                     'data': {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "Root",
                     },
-                    'managed input interface': ['not set', null],
-                    'output interface': ['not set', null],
+                    'managed input interface': ['not set', {}],
+                    'output interface': ['not set', {}],
                     'return type': ['data', {
                         'type': {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'type': "Root",
                         },
                         'asynchronous': false,
@@ -1272,15 +1272,15 @@ export const $: mproject.TModule = {
                 },
                 "Serialize": {
                     'data': {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "Root",
                     },
-                    'managed input interface': ['not set', null],
+                    'managed input interface': ['not set', {}],
                     'output interface': ['set', {
                         'context': <mglossary.TContext>['import', "fp"],
                         'interface': "Line",
                     }],
-                    'return type': ['nothing', null],
+                    'return type': ['nothing', {}],
                 },
             }),
         },
@@ -1311,1136 +1311,6 @@ export const $: mproject.TModule = {
         },
     },
     'implementation': {
-        'implementations': d({
-            "createEnricher": {
-                'constructor': true,
-                'type': ['function', {
-                    'block': {
-                        'innerFunctions': d({
-                            "Accounting": {
-                                'block': {
-                                    'innerFunctions': d({}),
-                                    'returnExpression': ['groupInitializer', {
-                                        'properties': d({
-                                            "Bankrekeningen": ['mapDictionary', {
-                                                'block': {
-                                                    'innerFunctions': d({}),
-                                                    'returnExpression': ['groupInitializer', {
-                                                        'properties': d({})
-                                                    }],
-                                                },
-                                            }],
-                                            "Beheer": ['groupInitializer', {
-                                                'properties': d({
-                                                    "Balans": ['groupInitializer', {
-                                                        'properties': d({
-                                                            "Grootboekrekeningen": ['mapDictionary', {
-                                                                'block': {
-                                                                    'innerFunctions': d({}),
-                                                                    'returnExpression': ['groupInitializer', {
-                                                                        'properties': d({
-                                                                            "Hoofdcategorie": ['implementMe', "liana2Pareto"],
-                                                                            "Subcategorie": ['implementMe', "liana2Pareto"],
-                                                                            "Zijde": ['switch', {
-                                                                                'cases': d({
-                                                                                    "Activa": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                    "Passiva": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                })
-                                                                            }],
-                                                                        })
-                                                                    }],
-                                                                },
-                                                            }],
-                                                            "Hoofdcategorieen": ['mapDictionary', {
-                                                                'block': {
-                                                                    'innerFunctions': d({}),
-                                                                    'returnExpression': ['groupInitializer', {
-                                                                        'properties': d({
-                                                                            "Subcategorieen": ['mapDictionary', {
-                                                                                'block': {
-                                                                                    'innerFunctions': d({}),
-                                                                                    'returnExpression': ['groupInitializer', {
-                                                                                        'properties': d({
-                                                                                            "Hoofdcategorie fiscus": ['implementMe', "liana2Pareto"],
-                                                                                            "Subcategorie fiscus": ['implementMe', "liana2Pareto"],
-                                                                                        })
-                                                                                    }],
-                                                                                },
-                                                                            }],
-                                                                            "Zijde": ['switch', {
-                                                                                'cases': d({
-                                                                                    "Activa": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                    "Passiva": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                })
-                                                                            }],
-                                                                        })
-                                                                    }],
-                                                                },
-                                                            }],
-                                                            "Hoofdcategorieen fiscus": ['mapDictionary', {
-                                                                'block': {
-                                                                    'innerFunctions': d({}),
-                                                                    'returnExpression': ['groupInitializer', {
-                                                                        'properties': d({
-                                                                            "Subcategorieen": ['mapDictionary', {
-                                                                                'block': {
-                                                                                    'innerFunctions': d({}),
-                                                                                    'returnExpression': ['groupInitializer', {
-                                                                                        'properties': d({})
-                                                                                    }],
-                                                                                },
-                                                                            }],
-                                                                            "Zijde": ['switch', {
-                                                                                'cases': d({
-                                                                                    "Activa": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                    "Passiva": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                })
-                                                                            }],
-                                                                        })
-                                                                    }],
-                                                                },
-                                                            }],
-                                                        })
-                                                    }],
-                                                    "BTW-categorieen": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({
-                                                                    "BTW-heffing": ['switch', {
-                                                                        'cases': d({
-                                                                            "Ja": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "BTW-promillage": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "Nee": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                })
-                                                            }],
-                                                        },
-                                                    }],
-                                                    "Gebruikers": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({
-                                                                    "Volledige naam": ['implementMe', "liana2Pareto"],
-                                                                })
-                                                            }],
-                                                        },
-                                                    }],
-                                                    "Resultaat": ['groupInitializer', {
-                                                        'properties': d({
-                                                            "Correctietypes vennootschapsbelasting": ['mapDictionary', {
-                                                                'block': {
-                                                                    'innerFunctions': d({}),
-                                                                    'returnExpression': ['groupInitializer', {
-                                                                        'properties': d({})
-                                                                    }],
-                                                                },
-                                                            }],
-                                                            "Grootboekrekeningen": ['mapDictionary', {
-                                                                'block': {
-                                                                    'innerFunctions': d({}),
-                                                                    'returnExpression': ['groupInitializer', {
-                                                                        'properties': d({
-                                                                            "Hoofdcategorie": ['implementMe', "liana2Pareto"],
-                                                                            "Subcategorie": ['implementMe', "liana2Pareto"],
-                                                                            "Zijde": ['switch', {
-                                                                                'cases': d({
-                                                                                    "Kosten": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({
-                                                                                                "Correctie op vennootschapsbelasting": ['switch', {
-                                                                                                    'cases': d({
-                                                                                                        "Ja": {
-                                                                                                            'innerFunctions': d({}),
-                                                                                                            'returnExpression': ['groupInitializer', {
-                                                                                                                'properties': d({
-                                                                                                                    "Correctietype": ['implementMe', "liana2Pareto"],
-                                                                                                                })
-                                                                                                            }],
-                                                                                                        },
-                                                                                                        "Nee": {
-                                                                                                            'innerFunctions': d({}),
-                                                                                                            'returnExpression': ['groupInitializer', {
-                                                                                                                'properties': d({})
-                                                                                                            }],
-                                                                                                        },
-                                                                                                    })
-                                                                                                }],
-                                                                                            })
-                                                                                        }],
-                                                                                    },
-                                                                                    "Opbrengsten": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                })
-                                                                            }],
-                                                                        })
-                                                                    }],
-                                                                },
-                                                            }],
-                                                            "Hoofdcategorieen": ['mapDictionary', {
-                                                                'block': {
-                                                                    'innerFunctions': d({}),
-                                                                    'returnExpression': ['groupInitializer', {
-                                                                        'properties': d({
-                                                                            "Subcategorieen": ['mapDictionary', {
-                                                                                'block': {
-                                                                                    'innerFunctions': d({}),
-                                                                                    'returnExpression': ['groupInitializer', {
-                                                                                        'properties': d({
-                                                                                            "Hoofdcategorie fiscus": ['implementMe', "liana2Pareto"],
-                                                                                            "Subcategorie fiscus": ['implementMe', "liana2Pareto"],
-                                                                                        })
-                                                                                    }],
-                                                                                },
-                                                                            }],
-                                                                            "Zijde": ['switch', {
-                                                                                'cases': d({
-                                                                                    "Kosten": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                    "Opbrengsten": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                })
-                                                                            }],
-                                                                        })
-                                                                    }],
-                                                                },
-                                                            }],
-                                                            "Hoofdcategorieen fiscus": ['mapDictionary', {
-                                                                'block': {
-                                                                    'innerFunctions': d({}),
-                                                                    'returnExpression': ['groupInitializer', {
-                                                                        'properties': d({
-                                                                            "Subcategorieen": ['mapDictionary', {
-                                                                                'block': {
-                                                                                    'innerFunctions': d({}),
-                                                                                    'returnExpression': ['groupInitializer', {
-                                                                                        'properties': d({})
-                                                                                    }],
-                                                                                },
-                                                                            }],
-                                                                            "Zijde": ['switch', {
-                                                                                'cases': d({
-                                                                                    "Kosten": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                    "Opbrengsten": {
-                                                                                        'innerFunctions': d({}),
-                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                            'properties': d({})
-                                                                                        }],
-                                                                                    },
-                                                                                })
-                                                                            }],
-                                                                        })
-                                                                    }],
-                                                                },
-                                                            }],
-                                                        })
-                                                    }],
-                                                })
-                                            }],
-                                            "Informele rekeningen": ['mapDictionary', {
-                                                'block': {
-                                                    'innerFunctions': d({}),
-                                                    'returnExpression': ['groupInitializer', {
-                                                        'properties': d({})
-                                                    }],
-                                                },
-                                            }],
-                                            "Jaren": ['call', {
-                                                'function': "Jaren",
-                                            }],
-                                            "Klanten": ['mapDictionary', {
-                                                'block': {
-                                                    'innerFunctions': d({}),
-                                                    'returnExpression': ['groupInitializer', {
-                                                        'properties': d({
-                                                            "Licentieovereenkomsten": ['mapDictionary', {
-                                                                'block': {
-                                                                    'innerFunctions': d({}),
-                                                                    'returnExpression': ['groupInitializer', {
-                                                                        'properties': d({
-                                                                            "Periodes": ['mapDictionary', {
-                                                                                'block': {
-                                                                                    'innerFunctions': d({}),
-                                                                                    'returnExpression': ['groupInitializer', {
-                                                                                        'properties': d({
-                                                                                            "Bedrag": ['implementMe', "liana2Pareto"],
-                                                                                        })
-                                                                                    }],
-                                                                                },
-                                                                            }],
-                                                                        })
-                                                                    }],
-                                                                },
-                                                            }],
-                                                            "Projecten": ['mapDictionary', {
-                                                                'block': {
-                                                                    'innerFunctions': d({}),
-                                                                    'returnExpression': ['groupInitializer', {
-                                                                        'properties': d({
-                                                                            "Offertes": ['mapDictionary', {
-                                                                                'block': {
-                                                                                    'innerFunctions': d({}),
-                                                                                    'returnExpression': ['groupInitializer', {
-                                                                                        'properties': d({
-                                                                                            "Opbrengsten": ['mapDictionary', {
-                                                                                                'block': {
-                                                                                                    'innerFunctions': d({}),
-                                                                                                    'returnExpression': ['groupInitializer', {
-                                                                                                        'properties': d({
-                                                                                                            "Type": ['switch', {
-                                                                                                                'cases': d({
-                                                                                                                    "Project": {
-                                                                                                                        'innerFunctions': d({}),
-                                                                                                                        'returnExpression': ['groupInitializer', {
-                                                                                                                            'properties': d({
-                                                                                                                                "Bedrag": ['implementMe', "liana2Pareto"],
-                                                                                                                                "Betaaldatum": ['implementMe', "liana2Pareto"],
-                                                                                                                            })
-                                                                                                                        }],
-                                                                                                                    },
-                                                                                                                })
-                                                                                                            }],
-                                                                                                        })
-                                                                                                    }],
-                                                                                                },
-                                                                                            }],
-                                                                                        })
-                                                                                    }],
-                                                                                },
-                                                                            }],
-                                                                        })
-                                                                    }],
-                                                                },
-                                                            }],
-                                                        })
-                                                    }],
-                                                },
-                                            }],
-                                            "Leveranciers": ['mapDictionary', {
-                                                'block': {
-                                                    'innerFunctions': d({}),
-                                                    'returnExpression': ['groupInitializer', {
-                                                        'properties': d({})
-                                                    }],
-                                                },
-                                            }],
-                                            "Medewerkers": ['mapDictionary', {
-                                                'block': {
-                                                    'innerFunctions': d({}),
-                                                    'returnExpression': ['groupInitializer', {
-                                                        'properties': d({})
-                                                    }],
-                                                },
-                                            }],
-                                        })
-                                    }],
-                                },
-                            },
-                            "Afhandeling": {
-                                'block': {
-                                    'innerFunctions': d({}),
-                                    'returnExpression': ['switch', {
-                                        'cases': d({
-                                            "BTW-periode": {
-                                                'innerFunctions': d({}),
-                                                'returnExpression': ['groupInitializer', {
-                                                    'properties': d({
-                                                        "BTW-periode": ['implementMe', "liana2Pareto"],
-                                                        "Jaar": ['implementMe', "liana2Pareto"],
-                                                    })
-                                                }],
-                                            },
-                                            "Informele rekening": {
-                                                'innerFunctions': d({}),
-                                                'returnExpression': ['groupInitializer', {
-                                                    'properties': d({
-                                                        "Informele rekening": ['implementMe', "liana2Pareto"],
-                                                    })
-                                                }],
-                                            },
-                                            "Inkoop": {
-                                                'innerFunctions': d({}),
-                                                'returnExpression': ['groupInitializer', {
-                                                    'properties': d({
-                                                        "Inkoop": ['implementMe', "liana2Pareto"],
-                                                        "Jaar": ['implementMe', "liana2Pareto"],
-                                                    })
-                                                }],
-                                            },
-                                            "Verkoop": {
-                                                'innerFunctions': d({}),
-                                                'returnExpression': ['groupInitializer', {
-                                                    'properties': d({
-                                                        "Inkoop": ['implementMe', "liana2Pareto"],
-                                                        "Jaar": ['implementMe', "liana2Pareto"],
-                                                    })
-                                                }],
-                                            },
-                                            "Verrekenpost": {
-                                                'innerFunctions': d({}),
-                                                'returnExpression': ['groupInitializer', {
-                                                    'properties': d({
-                                                        "Verrekenpost": ['implementMe', "liana2Pareto"],
-                                                    })
-                                                }],
-                                            },
-                                        })
-                                    }],
-                                },
-                            },
-                            "Informele Rekeningen": {
-                                'block': {
-                                    'innerFunctions': d({}),
-                                    'returnExpression': ['mapDictionary', {
-                                        'block': {
-                                            'innerFunctions': d({}),
-                                            'returnExpression': ['groupInitializer', {
-                                                'properties': d({
-                                                    "Beginsaldo": ['implementMe', "liana2Pareto"],
-                                                    "Grootboekrekening": ['implementMe', "liana2Pareto"],
-                                                    "Nieuw": ['switch', {
-                                                        'cases': d({
-                                                            "Ja": {
-                                                                'innerFunctions': d({}),
-                                                                'returnExpression': ['groupInitializer', {
-                                                                    'properties': d({})
-                                                                }],
-                                                            },
-                                                            "Nee": {
-                                                                'innerFunctions': d({}),
-                                                                'returnExpression': ['groupInitializer', {
-                                                                    'properties': d({
-                                                                        "Jaar": ['implementMe', "liana2Pareto"],
-                                                                        "Rekening": ['implementMe', "liana2Pareto"],
-                                                                    })
-                                                                }],
-                                                            },
-                                                        })
-                                                    }],
-                                                })
-                                            }],
-                                        },
-                                    }],
-                                },
-                            },
-                            "Jaren": {
-                                'block': {
-                                    'innerFunctions': d({}),
-                                    'returnExpression': ['mapDictionary', {
-                                        'block': {
-                                            'innerFunctions': d({}),
-                                            'returnExpression': ['groupInitializer', {
-                                                'properties': d({
-                                                    "Afgesloten": ['switch', {
-                                                        'cases': d({
-                                                            "Ja": {
-                                                                'innerFunctions': d({}),
-                                                                'returnExpression': ['groupInitializer', {
-                                                                    'properties': d({})
-                                                                }],
-                                                            },
-                                                            "Nee": {
-                                                                'innerFunctions': d({}),
-                                                                'returnExpression': ['groupInitializer', {
-                                                                    'properties': d({})
-                                                                }],
-                                                            },
-                                                        })
-                                                    }],
-                                                    "Balans grootboekrekeningen": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({
-                                                                    "Type": ['switch', {
-                                                                        'cases': d({
-                                                                            "Bankrekening": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Informele rekening": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Overig": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                })
-                                                            }],
-                                                        },
-                                                    }],
-                                                    "Bankrekeningen": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({
-                                                                    "Beginsaldo": ['implementMe', "liana2Pareto"],
-                                                                    "Grootboekrekening": ['implementMe', "liana2Pareto"],
-                                                                    "Mutaties": ['mapDictionary', {
-                                                                        'block': {
-                                                                            'innerFunctions': d({}),
-                                                                            'returnExpression': ['groupInitializer', {
-                                                                                'properties': d({
-                                                                                    "Bedrag": ['implementMe', "liana2Pareto"],
-                                                                                    "Datum": ['implementMe', "liana2Pareto"],
-                                                                                    "Omschrijving": ['implementMe', "liana2Pareto"],
-                                                                                    "Status": ['switch', {
-                                                                                        'cases': d({
-                                                                                            "Nog te verwerken": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({})
-                                                                                                }],
-                                                                                            },
-                                                                                            "Verwerkt": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({
-                                                                                                        "Afhandeling": ['call', {
-                                                                                                            'function': "Afhandeling",
-                                                                                                        }],
-                                                                                                    })
-                                                                                                }],
-                                                                                            },
-                                                                                        })
-                                                                                    }],
-                                                                                })
-                                                                            }],
-                                                                        },
-                                                                    }],
-                                                                    "Nieuw": ['switch', {
-                                                                        'cases': d({
-                                                                            "Ja": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Nee": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Jaar": ['implementMe', "liana2Pareto"],
-                                                                                        "Rekening": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                })
-                                                            }],
-                                                        },
-                                                    }],
-                                                    "Beginsaldo nog aan te geven BTW": ['implementMe', "liana2Pareto"],
-                                                    "Beginsaldo Winstreserve": ['implementMe', "liana2Pareto"],
-                                                    "BTW periodes": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({
-                                                                    "1. BTW-categorieen": ['mapDictionary', {
-                                                                        'block': {
-                                                                            'innerFunctions': d({}),
-                                                                            'returnExpression': ['groupInitializer', {
-                                                                                'properties': d({})
-                                                                            }],
-                                                                        },
-                                                                    }],
-                                                                    "Documenten": ['mapDictionary', {
-                                                                        'block': {
-                                                                            'innerFunctions': d({}),
-                                                                            'returnExpression': ['groupInitializer', {
-                                                                                'properties': d({
-                                                                                    "Bestand": ['implementMe', "liana2Pareto"],
-                                                                                })
-                                                                            }],
-                                                                        },
-                                                                    }],
-                                                                    "Omschrijving": ['implementMe', "liana2Pareto"],
-                                                                    "Status": ['switch', {
-                                                                        'cases': d({
-                                                                            "Aangegeven": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Afronding": ['implementMe', "liana2Pareto"],
-                                                                                        "Bedrag": ['implementMe', "liana2Pareto"],
-                                                                                        "Datum": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "Openstaand": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                })
-                                                            }],
-                                                        },
-                                                    }],
-                                                    "Eerste boekjaar": ['switch', {
-                                                        'cases': d({
-                                                            "Ja": {
-                                                                'innerFunctions': d({}),
-                                                                'returnExpression': ['groupInitializer', {
-                                                                    'properties': d({})
-                                                                }],
-                                                            },
-                                                            "Nee": {
-                                                                'innerFunctions': d({}),
-                                                                'returnExpression': ['groupInitializer', {
-                                                                    'properties': d({
-                                                                        "Vorig boekjaar": ['implementMe', "liana2Pareto"],
-                                                                    })
-                                                                }],
-                                                            },
-                                                        })
-                                                    }],
-                                                    "Grootboek BTW periode": ['implementMe', "liana2Pareto"],
-                                                    "Grootboek inkoop saldo": ['implementMe', "liana2Pareto"],
-                                                    "Grootboek verkoop saldo": ['implementMe', "liana2Pareto"],
-                                                    "Grootboekrekening voor BTW afrondingen": ['implementMe', "liana2Pareto"],
-                                                    "Grootboekrekening voor nog aan te geven BTW": ['implementMe', "liana2Pareto"],
-                                                    "Grootboekrekening voor resultaat dit jaar": ['implementMe', "liana2Pareto"],
-                                                    "Grootboekrekening voor winstreserve": ['implementMe', "liana2Pareto"],
-                                                    "Informele rekeningen": ['call', {
-                                                        'function': "Informele Rekeningen",
-                                                    }],
-                                                    "Inkopen": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({
-                                                                    "Afhandeling": ['switch', {
-                                                                        'cases': d({
-                                                                            "Mutaties": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Nog te betalen": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Betalingstermijn": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "Rekening courant": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Rekening courant": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                    "Brondocument": ['switch', {
-                                                                        'cases': d({
-                                                                            "Niet van toepassing": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Nog toevoegen": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Ontbreekt": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Toegevoegd": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Document": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                    "BTW-regime": ['switch', {
-                                                                        'cases': d({
-                                                                            "Binnenland heffing verlegd": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "BTW-periode": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "Geen BTW van toepassing": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "BTW-periode": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "Import van buiten de EU": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "BTW-periode": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "Intracommunautair": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "BTW-periode": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "Standaard": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "BTW-periode": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                    "Datum": ['implementMe', "liana2Pareto"],
-                                                                    "Regels": ['mapDictionary', {
-                                                                        'block': {
-                                                                            'innerFunctions': d({}),
-                                                                            'returnExpression': ['groupInitializer', {
-                                                                                'properties': d({
-                                                                                    "Bedrag": ['switch', {
-                                                                                        'cases': d({
-                                                                                            "Bekend": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({
-                                                                                                        "Bedrag inclusief BTW": ['implementMe', "liana2Pareto"],
-                                                                                                        "BTW": ['implementMe', "liana2Pareto"],
-                                                                                                    })
-                                                                                                }],
-                                                                                            },
-                                                                                            "Nog niet bekend": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({
-                                                                                                        "Aantekeningen": ['implementMe', "liana2Pareto"],
-                                                                                                    })
-                                                                                                }],
-                                                                                            },
-                                                                                        })
-                                                                                    }],
-                                                                                    "Omschrijving": ['implementMe', "liana2Pareto"],
-                                                                                    "Type": ['switch', {
-                                                                                        'cases': d({
-                                                                                            "Balans": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({
-                                                                                                        "Balans item": ['implementMe', "liana2Pareto"],
-                                                                                                    })
-                                                                                                }],
-                                                                                            },
-                                                                                            "Kosten": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({
-                                                                                                        "Grootboekrekening": ['implementMe', "liana2Pareto"],
-                                                                                                    })
-                                                                                                }],
-                                                                                            },
-                                                                                        })
-                                                                                    }],
-                                                                                })
-                                                                            }],
-                                                                        },
-                                                                    }],
-                                                                    "Type": ['switch', {
-                                                                        'cases': d({
-                                                                            "Bonnetje": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Inkoop (met crediteur)": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Crediteur": ['implementMe', "liana2Pareto"],
-                                                                                        "Factuurnummer": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "Loonheffing": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Ronde": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "Salaris": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Medewerker": ['implementMe', "liana2Pareto"],
-                                                                                        "Ronde": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "WBSO": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Ronde": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                })
-                                                            }],
-                                                        },
-                                                    }],
-                                                    "Overige balans items": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({
-                                                                    "Beginsaldo": ['implementMe', "liana2Pareto"],
-                                                                    "Grootboekrekening": ['implementMe', "liana2Pareto"],
-                                                                    "Memoriaal boekingen": ['mapDictionary', {
-                                                                        'block': {
-                                                                            'innerFunctions': d({}),
-                                                                            'returnExpression': ['groupInitializer', {
-                                                                                'properties': d({
-                                                                                    "Bedrag": ['implementMe', "liana2Pareto"],
-                                                                                    "Datum": ['implementMe', "liana2Pareto"],
-                                                                                    "Grootboekrekening": ['implementMe', "liana2Pareto"],
-                                                                                    "Omschrijving": ['implementMe', "liana2Pareto"],
-                                                                                })
-                                                                            }],
-                                                                        },
-                                                                    }],
-                                                                    "Nieuw": ['switch', {
-                                                                        'cases': d({
-                                                                            "Ja": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Nee": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Balans item": ['implementMe', "liana2Pareto"],
-                                                                                        "Jaar": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                })
-                                                            }],
-                                                        },
-                                                    }],
-                                                    "Resultaat grootboekrekeningen": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({})
-                                                            }],
-                                                        },
-                                                    }],
-                                                    "Salarisrondes": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({})
-                                                            }],
-                                                        },
-                                                    }],
-                                                    "Startdatum boekjaar": ['implementMe', "liana2Pareto"],
-                                                    "Verkopen": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({
-                                                                    "Afhandeling": ['switch', {
-                                                                        'cases': d({
-                                                                            "Mutaties": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Rekening courant": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Rekening courant": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                    "Betalingstermijn": ['implementMe', "liana2Pareto"],
-                                                                    "Brondocument": ['switch', {
-                                                                        'cases': d({
-                                                                            "Nog toevoegen": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({})
-                                                                                }],
-                                                                            },
-                                                                            "Toegevoegd": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Document": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                    "BTW-periode": ['implementMe', "liana2Pareto"],
-                                                                    "Contracttype": ['switch', {
-                                                                        'cases': d({
-                                                                            "Licentieovereenkomst": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Overeenkomst": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                            "Project": {
-                                                                                'innerFunctions': d({}),
-                                                                                'returnExpression': ['groupInitializer', {
-                                                                                    'properties': d({
-                                                                                        "Offerte": ['implementMe', "liana2Pareto"],
-                                                                                        "Project": ['implementMe', "liana2Pareto"],
-                                                                                    })
-                                                                                }],
-                                                                            },
-                                                                        })
-                                                                    }],
-                                                                    "Debiteur": ['implementMe', "liana2Pareto"],
-                                                                    "Regels": ['mapDictionary', {
-                                                                        'block': {
-                                                                            'innerFunctions': d({}),
-                                                                            'returnExpression': ['groupInitializer', {
-                                                                                'properties': d({
-                                                                                    "Bedrag exclusief BTW": ['implementMe', "liana2Pareto"],
-                                                                                    "BTW-regime": ['switch', {
-                                                                                        'cases': d({
-                                                                                            "Binnenland heffing verlegd": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({})
-                                                                                                }],
-                                                                                            },
-                                                                                            "Export buiten de EU": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({})
-                                                                                                }],
-                                                                                            },
-                                                                                            "Installatie of afstandsverkopen binnen de EU": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({})
-                                                                                                }],
-                                                                                            },
-                                                                                            "Intracommunautair": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({})
-                                                                                                }],
-                                                                                            },
-                                                                                            "Standaard": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({
-                                                                                                        "BTW-cateogrie": ['implementMe', "liana2Pareto"],
-                                                                                                    })
-                                                                                                }],
-                                                                                            },
-                                                                                        })
-                                                                                    }],
-                                                                                    "Contracttype": ['switch', {
-                                                                                        'cases': d({
-                                                                                            "Licentieovereenkomst": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({
-                                                                                                        "Periode": ['implementMe', "liana2Pareto"],
-                                                                                                    })
-                                                                                                }],
-                                                                                            },
-                                                                                            "Los": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({})
-                                                                                                }],
-                                                                                            },
-                                                                                            "Project": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({
-                                                                                                        "Opbrengst": ['implementMe', "liana2Pareto"],
-                                                                                                    })
-                                                                                                }],
-                                                                                            },
-                                                                                        })
-                                                                                    }],
-                                                                                    "Omschrijving": ['implementMe', "liana2Pareto"],
-                                                                                    "Type": ['switch', {
-                                                                                        'cases': d({
-                                                                                            "Balans": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({
-                                                                                                        "Balans item": ['implementMe', "liana2Pareto"],
-                                                                                                    })
-                                                                                                }],
-                                                                                            },
-                                                                                            "Opbrengsten": {
-                                                                                                'innerFunctions': d({}),
-                                                                                                'returnExpression': ['groupInitializer', {
-                                                                                                    'properties': d({
-                                                                                                        "Grootboekrekening": ['implementMe', "liana2Pareto"],
-                                                                                                    })
-                                                                                                }],
-                                                                                            },
-                                                                                        })
-                                                                                    }],
-                                                                                })
-                                                                            }],
-                                                                        },
-                                                                    }],
-                                                                })
-                                                            }],
-                                                        },
-                                                    }],
-                                                    "Verrekenposten": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['groupInitializer', {
-                                                                'properties': d({
-                                                                    "Mutaties": ['mapDictionary', {
-                                                                        'block': {
-                                                                            'innerFunctions': d({}),
-                                                                            'returnExpression': ['groupInitializer', {
-                                                                                'properties': d({
-                                                                                    "Afhandeling": ['call', {
-                                                                                        'function': "Afhandeling",
-                                                                                    }],
-                                                                                    "Bedrag": ['implementMe', "liana2Pareto"],
-                                                                                })
-                                                                            }],
-                                                                        },
-                                                                    }],
-                                                                })
-                                                            }],
-                                                        },
-                                                    }],
-                                                })
-                                            }],
-                                        },
-                                    }],
-                                },
-                            },
-                        }),
-                        'returnExpression': ['switch', {
-                            'cases': d({})
-                        }],
-                    },
-                }],
-            },
-        }),
+        'implementations': d({}),
     },
 }

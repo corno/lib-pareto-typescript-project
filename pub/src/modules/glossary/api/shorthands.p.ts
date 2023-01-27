@@ -10,17 +10,17 @@ const wa = pr.wrapRawArray
 
 
 export function null_(): t.TType {
-    return ['null', null]
+    return ['null', {}]
 }
 
 export function boolean(): t.TType {
-    return ['boolean', null]
+    return ['boolean', {}]
 }
 export function string(): t.TType {
-    return ['string', null]
+    return ['string', {}]
 }
 export function number(): t.TType {
-    return ['number', null]
+    return ['number', {}]
 }
 export function types($: { [key: string]: t.TType }) {
     return d($)
@@ -33,7 +33,7 @@ export function dictionary($: t.TType): t.TType {
 }
 
 export function nullDictionary(): t.TType {
-    return ['dictionary', ['null', null]]
+    return ['dictionary', ['null', {}]]
 }
 export function parameter($: string): t.TType {
     return ['parameter', $]
@@ -41,7 +41,7 @@ export function parameter($: string): t.TType {
 export function template(template: string, $: { [key: string]: t.TType }): t.TType {
     return ['template', {
         'template': template,
-        'context': ['local', null],
+        'context': ['local', {}],
         'arguments': d($),
     }]
 }
@@ -75,7 +75,7 @@ export function member($: t.TType, optional?: boolean): { type: t.TType, optiona
 
 export function reference(type: string): t.TType {
     return ['reference', {
-        'context': ['local', null],
+        'context': ['local', {}],
         'type': type,
     }]
 }
@@ -83,14 +83,14 @@ export function reference(type: string): t.TType {
 
 export function typeReference(type: string): t.TTypeReference {
     return {
-        'context': ['local', null],
+        'context': ['local', {}],
         'type': type,
     }
 }
 
 export function interfaceReference(inf: string): t.TInterfaceReference {
     return {
-        'context': ['local', null],
+        'context': ['local', {}],
         'interface': inf
     }
 }
@@ -119,31 +119,31 @@ export function _function(data: t.TTypeReference, returnValue: t.TTypeReference,
             'asynchronous': async === undefined ? false : async,
         }],
         'data': data,
-        'managed input interface': ['not set', null],
-        'output interface': ['not set', null],
+        'managed input interface': ['not set', {}],
+        'output interface': ['not set', {}],
     }
 }
 
 export function procedure(data: t.TTypeReference): t.GGlossary.Pfunctions.D {
     return {
-        'return type': ['nothing', null],
+        'return type': ['nothing', {}],
         'data': data,
-        'managed input interface': ['not set', null],
-        'output interface': ['not set', null],
+        'managed input interface': ['not set', {}],
+        'output interface': ['not set', {}],
     }
 }
 
 export function callback(data: t.TTypeReference, inf: t.TInterfaceReference): t.GGlossary.Pfunctions.D {
     return {
-        'return type': ['nothing', null],
+        'return type': ['nothing', {}],
         'data': data,
-        'managed input interface': ['not set', null],
+        'managed input interface': ['not set', {}],
         'output interface': ['set', inf],
     }
 }
 export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.GGlossary.Pfunctions.D {
     return {
-        'return type': ['nothing', null],
+        'return type': ['nothing', {}],
         'data': data,
         'managed input interface': ['set', in_inf],
         'output interface': ['set', out_inf],
@@ -153,19 +153,19 @@ export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceRefere
     return {
         'return type': ['interface', in_inf],
         'data': data,
-        'managed input interface': ['not set', null],
+        'managed input interface': ['not set', {}],
         'output interface': ['set', out_inf],
     }
 }
 export function method(data: null | t.TTypeReference, inf?: null | t.TInterface, managed?: boolean): t.TInterface {
     return ['method', {
         'data': data === null
-            ? ['not set', null]
+            ? ['not set', {}]
             : ['set', data],
         'interface': inf === undefined
-            ? ['not set', null]
+            ? ['not set', {}]
             : inf === null
-                ? ['not set', null]
+                ? ['not set', {}]
                 : ['set', {
                     'interface': inf,
                     'managed': managed === undefined ? false : managed

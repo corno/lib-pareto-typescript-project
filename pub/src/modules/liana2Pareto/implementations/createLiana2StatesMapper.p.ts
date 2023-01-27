@@ -37,7 +37,7 @@ export const $$: api.CcreateLiana2StatesMapper = ($d) => {
                         })
                     case 'boolean':
                         return pl.cc($[1], ($) => {
-                            return ['boolean', null]
+                            return ['boolean', {}]
                         })
                     case 'component':
                         return pl.cc($[1], ($) => {
@@ -66,11 +66,11 @@ export const $$: api.CcreateLiana2StatesMapper = ($d) => {
                                                 switch ($[0]) {
                                                     case 'number':
                                                         return pl.cc($[1], ($) => {
-                                                            return ['number', null]
+                                                            return ['number', {}]
                                                         })
                                                     case 'string':
                                                         return pl.cc($[1], ($) => {
-                                                            return ['string', null]
+                                                            return ['string', {}]
                                                         })
                                                     default: return pl.au($[0])
                                                 }
@@ -82,7 +82,7 @@ export const $$: api.CcreateLiana2StatesMapper = ($d) => {
                                     })
                                 case 'yes':
                                     return pl.cc($.constrained[1], ($) => {
-                                        return ['string', null]
+                                        return ['string', {}]
 
                                         // return ['template', {
                                         //     'template': "Reference",

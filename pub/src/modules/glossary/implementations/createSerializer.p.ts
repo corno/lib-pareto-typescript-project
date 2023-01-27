@@ -14,7 +14,7 @@ export const $$: api.CcreateSerializer = ($d) => {
         switch ($[0]) {
             case 'not set':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['not set', null]`)
+                    $i.snippet(`['not set', {}]`)
                 })
                 break
             case 'set':
@@ -55,12 +55,12 @@ export const $$: api.CcreateSerializer = ($d) => {
                 break
             case 'null':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['null', null]`)
+                    $i.snippet(`['null', {}]`)
                 })
                 break
             case 'boolean':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['boolean', null]`)
+                    $i.snippet(`['boolean', {}]`)
                 })
                 break
             case 'reference':
@@ -72,12 +72,12 @@ export const $$: api.CcreateSerializer = ($d) => {
                 break
             case 'number':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['number', null]`)
+                    $i.snippet(`['number', {}]`)
                 })
                 break
             case 'string':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['string', null]`)
+                    $i.snippet(`['string', {}]`)
                 })
                 break
             case 'array':
@@ -205,7 +205,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 break
             case 'local':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['local', null]`)
+                    $i.snippet(`['local', {}]`)
                 })
                 break
             default: pl.au($[0])
@@ -433,7 +433,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                             break
                                         case 'nothing':
                                             pl.cc($.value['return type'][1], ($) => {
-                                                $i.snippet(`['nothing', null]`)
+                                                $i.snippet(`['nothing', {}]`)
 
                                             })
                                             break

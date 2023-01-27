@@ -2,17 +2,25 @@ import * as pt from 'pareto-core-types'
 
 import * as mfp from "lib-fountain-pen"
 
-export namespace VOptional {}
+export namespace VOptional {
+    
+    export namespace Onot__set {}
+    export type Onot__set<AType> = {}
+}
 export type VOptional<AType> = 
-    | ['not set', null]
+    | ['not set', VOptional.Onot__set<AType>]
     | ['set', AType]
 
 export type MOptional<AType> = VOptional<AType>
 
-export namespace GContext {}
+export namespace GContext {
+    
+    export namespace Olocal {}
+    export type Olocal = {}
+}
 export type GContext = 
     | ['import', string]
-    | ['local', null]
+    | ['local', GContext.Olocal]
 export type UContext = GContext
 
 export namespace GGlossary {
@@ -34,11 +42,14 @@ export namespace GGlossary {
                     readonly 'asynchronous': boolean
                     readonly 'type': UTypeReference
                 }
+                
+                export namespace Onothing {}
+                export type Onothing = {}
             }
             export type Preturn__type = 
                 | ['data', Preturn__type.Odata]
                 | ['interface', UInterfaceReference]
-                | ['nothing', null]
+                | ['nothing', Preturn__type.Onothing]
         }
         export type D = {
             readonly 'data': UTypeReference
@@ -55,15 +66,23 @@ export namespace GGlossary {
     export namespace Pinterfaces {}
     export type Pinterfaces = pt.Dictionary<UInterface>
     
-    export namespace Pparameters {}
-    export type Pparameters = pt.Dictionary<null>
+    export namespace Pparameters {
+        
+        export namespace D {}
+        export type D = {}
+    }
+    export type Pparameters = pt.Dictionary<Pparameters.D>
     
     export namespace Ptemplates {
         
         export namespace D {
             
-            export namespace Pparameters {}
-            export type Pparameters = pt.Dictionary<null>
+            export namespace Pparameters {
+                
+                export namespace D {}
+                export type D = {}
+            }
+            export type Pparameters = pt.Dictionary<Pparameters.D>
         }
         export type D = {
             readonly 'parameters': D.Pparameters
@@ -131,6 +150,9 @@ export type UInterfaceReference = GInterfaceReference
 
 export namespace GType {
     
+    export namespace Oboolean {}
+    export type Oboolean = {}
+    
     export namespace Ogroup {
         
         export namespace D {}
@@ -140,6 +162,15 @@ export namespace GType {
         }
     }
     export type Ogroup = pt.Dictionary<Ogroup.D>
+    
+    export namespace Onull {}
+    export type Onull = {}
+    
+    export namespace Onumber {}
+    export type Onumber = {}
+    
+    export namespace Ostring {}
+    export type Ostring = {}
     
     export namespace OtaggedUnion {}
     export type OtaggedUnion = pt.Dictionary<UType>
@@ -157,17 +188,17 @@ export namespace GType {
 }
 export type GType = 
     | ['array', UType]
-    | ['boolean', null]
+    | ['boolean', GType.Oboolean]
     | ['computed', UType]
     | ['dictionary', UType]
     | ['group', GType.Ogroup]
     | ['nested', UType]
-    | ['null', null]
-    | ['number', null]
+    | ['null', GType.Onull]
+    | ['number', GType.Onumber]
     | ['optional', UType]
     | ['parameter', string]
     | ['reference', UTypeReference]
-    | ['string', null]
+    | ['string', GType.Ostring]
     | ['taggedUnion', GType.OtaggedUnion]
     | ['template', GType.Otemplate]
 export type UType = GType

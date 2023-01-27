@@ -31,7 +31,7 @@ export const $$: api.CcreateSerializer = ($d) => {
 
                         $i.nestedLine(($i) => {
                             $i.snippet(`'context': `)
-                            serializeContext($, $i)
+                            serializeContext2($, $i)
                             $i.snippet(`,`)
                         })
                     })
@@ -52,7 +52,22 @@ export const $$: api.CcreateSerializer = ($d) => {
                     break
                 case 'local':
                     pl.cc($[1], ($) => {
-                        $i.snippet(`['local', null]`)
+                        $i.snippet(`['local', {}]`)
+                    })
+                    break
+                default: pl.au($[0])
+            }
+        }
+        function serializeContext2($: api.TContext, $i: mfp.ILine) {
+            switch ($[0]) {
+                case 'import':
+                    pl.cc($[1], ($) => {
+                        $i.snippet(`['import', "${$}"]`)
+                    })
+                    break
+                case 'local':
+                    pl.cc($[1], ($) => {
+                        $i.snippet(`['local', {}]`)
                     })
                     break
                 default: pl.au($[0])
@@ -130,7 +145,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                         case 'reference':
                                                             pl.cc($.value.type[1], ($) => {
 
-                                                                $i.snippet(`['reference', null]`)
+                                                                $i.snippet(`['reference', {}]`)
                                                             })
                                                             break
                                                         default: pl.au($.value.type[0])

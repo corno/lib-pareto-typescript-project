@@ -4,15 +4,21 @@ import * as t from './types.generated'
 
 import * as mfp from "lib-fountain-pen"
 
-export type TCallbackBlock = t.UCallbackBlock
+export type TAsynchronousExpression = t.UAsynchronousExpression
 
-export type TExpression = t.UExpression
-
-export type TFunctionBlock = t.UFunctionBlock
+export type TAsynchronousFunctionBlock = t.UAsynchronousFunctionBlock
 
 export type TImplementation = t.UImplementation
 
+export type TInterfaceInitializerBlock = t.UInterfaceInitializerBlock
+
+export type TProcedureBlock = t.UProcedureBlock
+
 export type TStates = t.UStates
+
+export type TSynchronousExpression = t.USynchronousExpression
+
+export type TSynchronousFunctionBlock = t.USynchronousFunctionBlock
 
 export type TType = t.UType
 

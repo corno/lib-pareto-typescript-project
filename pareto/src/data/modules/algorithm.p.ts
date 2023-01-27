@@ -1,10 +1,8 @@
 import * as pr from 'pareto-core-raw'
 import {
-    externalReference as er,
-    string as str,
-    null_,
-    reference as ref,
-    boolean as bln,
+    reference,
+    boolean,
+    string,
     array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
@@ -24,90 +22,112 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'parameters': d({}),
         'templates': d({}),
         'types': types({
-            "FunctionBlock": group({
+            "SynchronousFunctionBlock": group({
                 "innerFunctions": member(dictionary(group({
-                    "block": member(ref("FunctionBlock"))
+                    "block": member(reference("SynchronousFunctionBlock"))
                 })), true),
-                "returnExpression": member(ref("Expression"))
+                "returnExpression": member(reference("SynchronousExpression"))
             }),
-            "CallbackBlock": group({
+            "AsynchronousFunctionBlock": group({
+                "innerFunctions": member(dictionary(group({
+                    "block": member(reference("AsynchronousFunctionBlock"))
+                })), true),
+                "returnExpression": member(reference("AsynchronousExpression"))
+            }),
+            "ProcedureBlock": group({
                 "innerCallbacks": member(dictionary(group({
-                    "block": member(ref("CallbackBlock"))
+                    "block": member(reference("ProcedureBlock"))
                 })), true),
                 "statements": member(array(taggedUnion({
                     "dependencyCall": group({
-                        "data": member(str(), true),
-                        "callback": member(ref("CallbackBlock"), true)
+                        "data": member(string(), true),
+                        "callback": member(reference("ProcedureBlock"), true)
                     }),
                     "innerCallbackCall": group({
-                        "innerCallback": member(str()),
-                        "data": member(ref("Expression"), true),
-                        "interface": member(str(), true),
+                        "innerCallback": member(string()),
+                        "data": member(reference("SynchronousExpression"), true),
+                        "interface": member(string(), true),
                     }),
                     "interfaceCall": group({
-                        "property": member(str()),
-                        "data": member(str(), true),
-                        "callback": member(ref("CallbackBlock"), true)
+                        "property": member(string()),
+                        "data": member(string(), true),
+                        "callback": member(reference("ProcedureBlock"), true)
                     }),
                     "switch": group({
-                        "path": member(array(str())),
-                        "cases": member(dictionary(ref("CallbackBlock")))
+                        "path": member(array(string())),
+                        "cases": member(dictionary(reference("ProcedureBlock")))
                     })
                 })))
             }),
-            "Expression": taggedUnion({
+            "AsynchronousExpression": taggedUnion({
                 "call": group({
-                    "function": member(str()),
+                    "function": member(string()),
                 }),
-                "implementMe": str(),
+            }),
+            "InterfaceInitializerBlock": taggedUnion({
+                "call": group({
+                    "function": member(string()),
+                }),
+            }),
+            "SynchronousExpression": taggedUnion({
+                "call": group({
+                    "function": member(string()),
+                }),
+                "implementMe": string(),
                 "groupInitializer": group({
-                    "properties": member(dictionary(ref("Expression"))),
+                    "properties": member(dictionary(reference("SynchronousExpression"))),
                 }),
                 "switch": group({
-                    "cases": member(dictionary(ref("FunctionBlock")))
+                    "cases": member(dictionary(reference("SynchronousFunctionBlock")))
                 }),
                 "propertySelection": group({
-                    "name": member(str()),
+                    "name": member(string()),
                 }),
                 "contextChange": group({
-                    "property": member(str()),
-                    "block": member(ref("FunctionBlock"))
+                    "property": member(string()),
+                    "block": member(reference("SynchronousFunctionBlock"))
                 }),
                 "mapDictionary": group({
-                    "block": member(ref("FunctionBlock")),
+                    "block": member(reference("SynchronousFunctionBlock")),
                 }),
                 "mapArray": group({
-                    "block": member(ref("FunctionBlock")),
+                    "block": member(reference("SynchronousFunctionBlock")),
                 }),
             }),
             "Implementation": group({
                 "implementations": member(dictionary(group({
-                    "constructor": member(bln()),
+                    "constructor": member(boolean()),
                     "type": member(taggedUnion({
-                        "function": group({
-                            "block": member(ref("FunctionBlock"))
+                        "synchronous function": group({
+                            "block": member(reference("SynchronousFunctionBlock"))
                         }),
-                        "callback": group({
-                            "block": member(ref("CallbackBlock"))
+                        "asynchronous function": group({
+                            "block": member(reference("AsynchronousFunctionBlock"))
+                        }),
+                        "procedure": group({
+                            "block": member(reference("ProcedureBlock"))
+                        }),
+                        "interface initializer": group({
+                            "block": member(reference("InterfaceInitializerBlock"))
                         }),
                     }))
                 }))),
             }),
-            "States": dictionary(ref("Type")),
+            "States": dictionary(reference("Type")),
             "Type": taggedUnion({
-                "array": ref("Type"),
-                "optional": ref("Type"),
-                "dictionary": ref("Type"),
-                "null": null_(),
-                "boolean": null_(),
-                "string": null_(),
-                "number": null_(),
-                "reference": str(),
+                "array": reference("Type"),
+                "optional": reference("Type"),
+                "dictionary": reference("Type"),
+                "null": group({}),
+                "boolean": group({}),
+                "string": group({}),
+                "number": group({}),
+                "reference": string(),
                 "group": dictionary(group({
-                    "type": member(ref("Type")),
+                    "type": member(reference("Type")),
                 })),
-                "parameter": str(),
-                "taggedUnion": dictionary(ref("Type")),
+                "parameter": string(),
+                "taggedUnion": dictionary(reference("Type")),
             }),
         }),
         'interfaces': d({}),

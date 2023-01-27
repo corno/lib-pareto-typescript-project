@@ -13,7 +13,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             $i: mfp.ILine,
             $c: {
                 onSet: ($: T, $i: mfp.ILine) => void,
-                onNotset: ($: null, $i: mfp.ILine) => void,
+                onNotset: ($: {}, $i: mfp.ILine) => void,
             },
         ) {
             switch ($[0]) {

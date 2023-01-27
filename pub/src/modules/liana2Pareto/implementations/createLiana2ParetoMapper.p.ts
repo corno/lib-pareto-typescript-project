@@ -15,69 +15,69 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
         const stringMapping = $.stringmapping
         function ref(type: string): mglossary.TType {
             return ['reference', {
-                'context': ['local', null],
+                'context': ['local', {}],
                 'type': type,
             }]
         }
         function typeReference(type: string): mglossary.TTypeReference {
             return {
-                'context': ['local', null],
+                'context': ['local', {}],
                 'type': type,
             }
         }
 
-        function generateBlock($: mliana.TLocalType): malgorithm.TFunctionBlock {
-            return {
-                'returnExpression': generateExpression($)
-            }
-        }
-        function generateExpression($: mliana.TLocalType): malgorithm.TExpression {
-            switch ($[0]) {
-                case 'array':
-                    return pl.cc($[1], ($) => {
-                        return ['mapArray', {
-                            'block': generateBlock($.type),
-                        }]
-                    })
-                case 'boolean':
-                    return pl.cc($[1], ($) => {
-                        return ['implementMe', "liana2Pareto"]
-                    })
-                case 'component':
-                    return pl.cc($[1], ($) => {
-                        return ['call', {
-                            'function': $.type.name
-                        }]
-                    })
-                case 'dictionary':
-                    return pl.cc($[1], ($) => {
-                        return ['mapDictionary', {
-                            'block': generateBlock($.type),
-                        }]
-                    })
-                case 'group':
-                    return pl.cc($[1], ($) => {
-                        return ['groupInitializer', {
-                            'properties': $.properties.dictionary.map(($) => {
-                                return generateExpression($.type)
-                            })
-                        }]
-                    })
-                case 'string':
-                    return pl.cc($[1], ($) => {
-                        return ['implementMe', "liana2Pareto"]
-                    })
-                case 'taggedUnion':
-                    return pl.cc($[1], ($) => {
-                        return ['switch', {
-                            'cases': $.options.dictionary.map(($) => {
-                                return generateBlock($.type)
-                            })
-                        }]
-                    })
-                default: return pl.au($[0])
-            }
-        }
+        // function generateBlock($: mliana.TLocalType): malgorithm.TFunctionBlock {
+        //     return {
+        //         'returnExpression': generateExpression($)
+        //     }
+        // }
+        // function generateExpression($: mliana.TLocalType): malgorithm.TExpression {
+        //     switch ($[0]) {
+        //         case 'array':
+        //             return pl.cc($[1], ($) => {
+        //                 return ['mapArray', {
+        //                     'block': generateBlock($.type),
+        //                 }]
+        //             })
+        //         case 'boolean':
+        //             return pl.cc($[1], ($) => {
+        //                 return ['implementMe', "liana2Pareto"]
+        //             })
+        //         case 'component':
+        //             return pl.cc($[1], ($) => {
+        //                 return ['call', {
+        //                     'function': $.type.name
+        //                 }]
+        //             })
+        //         case 'dictionary':
+        //             return pl.cc($[1], ($) => {
+        //                 return ['mapDictionary', {
+        //                     'block': generateBlock($.type),
+        //                 }]
+        //             })
+        //         case 'group':
+        //             return pl.cc($[1], ($) => {
+        //                 return ['groupInitializer', {
+        //                     'properties': $.properties.dictionary.map(($) => {
+        //                         return generateExpression($.type)
+        //                     })
+        //                 }]
+        //             })
+        //         case 'string':
+        //             return pl.cc($[1], ($) => {
+        //                 return ['implementMe', "liana2Pareto"]
+        //             })
+        //         case 'taggedUnion':
+        //             return pl.cc($[1], ($) => {
+        //                 return ['switch', {
+        //                     'cases': $.options.dictionary.map(($) => {
+        //                         return generateBlock($.type)
+        //                     })
+        //                 }]
+        //             })
+        //         default: return pl.au($[0])
+        //     }
+        // }
         function createTypes($: {
             optional: boolean,
             model: mliana.TModel
@@ -92,12 +92,12 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             })
                         case 'boolean':
                             return pl.cc($[1], ($) => {
-                                return ['boolean', null]
+                                return ['boolean', {}]
                             })
                         case 'component':
                             return pl.cc($[1], ($) => {
                                 return ['reference', {
-                                    'context': ['local', null],
+                                    'context': ['local', {}],
                                     'type': $.type.name,
                                 }]
                             })
@@ -125,11 +125,11 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                                     switch ($[0]) {
                                                         case 'number':
                                                             return pl.cc($[1], ($) => {
-                                                                return ['number', null]
+                                                                return ['number', {}]
                                                             })
                                                         case 'string':
                                                             return pl.cc($[1], ($) => {
-                                                                return ['string', null]
+                                                                return ['string', {}]
                                                             })
                                                         default: return pl.au($[0])
                                                     }
@@ -143,9 +143,9 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         return pl.cc($.constrained[1], ($) => {
                                             return ['template', {
                                                 'template': "Reference",
-                                                'context': ['local', null],
+                                                'context': ['local', {}],
                                                 'arguments': pr.wrapRawDictionary({
-                                                    "RererencedType": <mglossary.GType>['null', null], //FIXME
+                                                    "RererencedType": <mglossary.GType>['null', {}], //FIXME
                                                 }),
                                             }]
                                         })
@@ -174,12 +174,12 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                 "fp": "lib-fountain-pen",
                             }),
                             'parameters': pr.wrapRawDictionary({
-                                "Annotation": null,
+                                "Annotation": {},
                             }),
                             'templates': pr.wrapRawDictionary<mglossary.GGlossary.Ptemplates.D>({
                                 "Reference": {
                                     'parameters': pr.wrapRawDictionary({
-                                        "ReferencedType": null,
+                                        "ReferencedType": {},
                                     }),
                                     'type': <mglossary.GType>['group', pr.wrapRawDictionary({})],
                                 }
@@ -195,14 +195,14 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         'type': typeReference("Root"), //resolved
                                         'asynchronous': false,
                                     }],
-                                    'managed input interface': ['not set', null],
-                                    'output interface': ['not set', null],
+                                    'managed input interface': ['not set', {}],
+                                    'output interface': ['not set', {}],
                                     'data': typeReference("Root"), //unresolved
                                 },
                                 "Serialize": {
                                     'return type': ['nothing', null],
                                     'data': typeReference("Root"), //unresolved
-                                    'managed input interface': ['not set', null],
+                                    'managed input interface': ['not set', {}],
                                     'output interface': ['set', {
                                         'context': ['import', "fp"],
                                         'interface': "Line"
@@ -259,28 +259,28 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             //         }
                             //     }]
                             // },
-                            "createEnricher": {
-                                'constructor': true,
-                                'type': ['function', {
-                                    'block': <malgorithm.TFunctionBlock>{
-                                        'innerFunctions': $d.decorateDictionaryEntriesWithKey($.model.globalTypes.dictionary).map(($) => {
-                                            return {
-                                                'definition': {
-                                                    'data': typeReference($.key),
-                                                    'return value': {
-                                                        'context': ['import', "resolved"],
-                                                        'type': $.key,
-                                                    },
-                                                },
-                                                'block': generateBlock($.value.type)
-                                            }
-                                        }),
-                                        'returnExpression': ['switch', {
-                                            'cases': pr.wrapRawDictionary({}),
-                                        }]
-                                    }
-                                }]
-                            }
+                            // "createEnricher": {
+                            //     'constructor': true,
+                            //     'type': ['function', {
+                            //         'block': <malgorithm.TFunctionBlock>{
+                            //             'innerFunctions': $d.decorateDictionaryEntriesWithKey($.model.globalTypes.dictionary).map(($) => {
+                            //                 return {
+                            //                     'definition': {
+                            //                         'data': typeReference($.key),
+                            //                         'return value': {
+                            //                             'context': ['import', "resolved"],
+                            //                             'type': $.key,
+                            //                         },
+                            //                     },
+                            //                     'block': generateBlock($.value.type)
+                            //                 }
+                            //             }),
+                            //             'returnExpression': ['switch', {
+                            //                 'cases': pr.wrapRawDictionary({}),
+                            //             }]
+                            //         }
+                            //     }]
+                            // }
                         }),
                     },
                 },
@@ -291,19 +291,19 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                 "fp": "lib-fountain-pen",
                             }),
                             'parameters': pr.wrapRawDictionary({
-                                "Annotation": null,
+                                "Annotation": {},
                             }),
                             'templates': pr.wrapRawDictionary({
                                 "Reference": {
                                     'parameters': pr.wrapRawDictionary({
-                                        "ReferencedType": null,
+                                        "ReferencedType": {},
                                     }),
                                     'type': <mglossary.GType>['group', pr.wrapRawDictionary({
                                         "annotation": {
-                                            'type': ['string', null],
+                                            'type': ['string', {}],
                                         },
                                         "name": {
-                                            'type': ['string', null],
+                                            'type': ['string', {}],
                                         },
                                     })],
                                 }
@@ -315,9 +315,9 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             'interfaces': pr.wrapRawDictionary({}),
                             'functions': pr.wrapRawDictionary({
                                 "Serialize": {
-                                    'return type': ['nothing', null],
+                                    'return type': ['nothing', {}],
                                     'data': typeReference($.model.root.name), //unresolved
-                                    'managed input interface': ['not set', null],
+                                    'managed input interface': ['not set', {}],
                                     'output interface': ['set', {
                                         'context': ['import', "fp"],
                                         'interface': "Line"
@@ -372,7 +372,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                 "fp": "lib-fountain-pen",
                             }),
                             'parameters': pr.wrapRawDictionary({
-                                "Annotation": null,
+                                "Annotation": {},
                             }),
                             'templates': pr.wrapRawDictionary({}),
                             'types': createTypes({

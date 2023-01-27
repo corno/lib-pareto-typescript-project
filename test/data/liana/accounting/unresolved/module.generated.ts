@@ -24,11 +24,11 @@ export const $: mproject.TModule = {
                     'type': <mglossary.TType>['group', d({
                         "annotation": {
                             'optional': false,
-                            'type': <mglossary.TType>['string', null],
+                            'type': <mglossary.TType>['string', {}],
                         },
                         "name": {
                             'optional': false,
-                            'type': <mglossary.TType>['string', null],
+                            'type': <mglossary.TType>['string', {}],
                         },
                     })],
                 },
@@ -51,9 +51,9 @@ export const $: mproject.TModule = {
                                             "Hoofdcategorie": {
                                                 'optional': false,
                                                 'type': <mglossary.TType>['template', {
-                                                    'context': <mglossary.TContext>['local', null],
+                                                    'context': <mglossary.TContext>['local', {}],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['null', null],
+                                                        "RererencedType": <mglossary.TType>['null', {}],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -61,9 +61,9 @@ export const $: mproject.TModule = {
                                             "Subcategorie": {
                                                 'optional': false,
                                                 'type': <mglossary.TType>['template', {
-                                                    'context': <mglossary.TContext>['local', null],
+                                                    'context': <mglossary.TContext>['local', {}],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['null', null],
+                                                        "RererencedType": <mglossary.TType>['null', {}],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -86,9 +86,9 @@ export const $: mproject.TModule = {
                                                     "Hoofdcategorie fiscus": {
                                                         'optional': false,
                                                         'type': <mglossary.TType>['template', {
-                                                            'context': <mglossary.TContext>['local', null],
+                                                            'context': <mglossary.TContext>['local', {}],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['null', null],
+                                                                "RererencedType": <mglossary.TType>['null', {}],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -96,9 +96,9 @@ export const $: mproject.TModule = {
                                                     "Subcategorie fiscus": {
                                                         'optional': false,
                                                         'type': <mglossary.TType>['template', {
-                                                            'context': <mglossary.TContext>['local', null],
+                                                            'context': <mglossary.TContext>['local', {}],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['null', null],
+                                                                "RererencedType": <mglossary.TType>['null', {}],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -141,7 +141,7 @@ export const $: mproject.TModule = {
                                             "Ja": <mglossary.TType>['group', d({
                                                 "BTW-promillage": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['number', null],
+                                                    'type': <mglossary.TType>['number', {}],
                                                 },
                                             })],
                                             "Nee": <mglossary.TType>['group', d({})],
@@ -154,7 +154,7 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                     "Volledige naam": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                 })]],
                             },
@@ -171,9 +171,9 @@ export const $: mproject.TModule = {
                                             "Hoofdcategorie": {
                                                 'optional': false,
                                                 'type': <mglossary.TType>['template', {
-                                                    'context': <mglossary.TContext>['local', null],
+                                                    'context': <mglossary.TContext>['local', {}],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['null', null],
+                                                        "RererencedType": <mglossary.TType>['null', {}],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -181,9 +181,9 @@ export const $: mproject.TModule = {
                                             "Subcategorie": {
                                                 'optional': false,
                                                 'type': <mglossary.TType>['template', {
-                                                    'context': <mglossary.TContext>['local', null],
+                                                    'context': <mglossary.TContext>['local', {}],
                                                     'arguments': d({
-                                                        "RererencedType": <mglossary.TType>['null', null],
+                                                        "RererencedType": <mglossary.TType>['null', {}],
                                                     }),
                                                     'template': "Reference",
                                                 }],
@@ -199,9 +199,9 @@ export const $: mproject.TModule = {
                                                                     "Correctietype": {
                                                                         'optional': false,
                                                                         'type': <mglossary.TType>['template', {
-                                                                            'context': <mglossary.TContext>['local', null],
+                                                                            'context': <mglossary.TContext>['local', {}],
                                                                             'arguments': d({
-                                                                                "RererencedType": <mglossary.TType>['null', null],
+                                                                                "RererencedType": <mglossary.TType>['null', {}],
                                                                             }),
                                                                             'template': "Reference",
                                                                         }],
@@ -225,9 +225,9 @@ export const $: mproject.TModule = {
                                                     "Hoofdcategorie fiscus": {
                                                         'optional': false,
                                                         'type': <mglossary.TType>['template', {
-                                                            'context': <mglossary.TContext>['local', null],
+                                                            'context': <mglossary.TContext>['local', {}],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['null', null],
+                                                                "RererencedType": <mglossary.TType>['null', {}],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -235,9 +235,9 @@ export const $: mproject.TModule = {
                                                     "Subcategorie fiscus": {
                                                         'optional': false,
                                                         'type': <mglossary.TType>['template', {
-                                                            'context': <mglossary.TContext>['local', null],
+                                                            'context': <mglossary.TContext>['local', {}],
                                                             'arguments': d({
-                                                                "RererencedType": <mglossary.TType>['null', null],
+                                                                "RererencedType": <mglossary.TType>['null', {}],
                                                             }),
                                                             'template': "Reference",
                                                         }],
@@ -280,7 +280,7 @@ export const $: mproject.TModule = {
                     "Jaren": {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'type': "Jaren",
                         }],
                     },
@@ -295,7 +295,7 @@ export const $: mproject.TModule = {
                                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                             "Bedrag": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['number', null],
+                                                'type': <mglossary.TType>['number', {}],
                                             },
                                         })]],
                                     },
@@ -316,11 +316,11 @@ export const $: mproject.TModule = {
                                                             "Project": <mglossary.TType>['group', d({
                                                                 "Bedrag": {
                                                                     'optional': false,
-                                                                    'type': <mglossary.TType>['number', null],
+                                                                    'type': <mglossary.TType>['number', {}],
                                                                 },
                                                                 "Betaaldatum": {
                                                                     'optional': false,
-                                                                    'type': <mglossary.TType>['number', null],
+                                                                    'type': <mglossary.TType>['number', {}],
                                                                 },
                                                             })],
                                                         })],
@@ -347,9 +347,9 @@ export const $: mproject.TModule = {
                         "BTW-periode": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -357,9 +357,9 @@ export const $: mproject.TModule = {
                         "Jaar": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -369,9 +369,9 @@ export const $: mproject.TModule = {
                         "Informele rekening": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -381,9 +381,9 @@ export const $: mproject.TModule = {
                         "Inkoop": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -391,9 +391,9 @@ export const $: mproject.TModule = {
                         "Jaar": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -403,9 +403,9 @@ export const $: mproject.TModule = {
                         "Inkoop": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -413,9 +413,9 @@ export const $: mproject.TModule = {
                         "Jaar": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -425,9 +425,9 @@ export const $: mproject.TModule = {
                         "Verrekenpost": {
                             'optional': false,
                             'type': <mglossary.TType>['template', {
-                                'context': <mglossary.TContext>['local', null],
+                                'context': <mglossary.TContext>['local', {}],
                                 'arguments': d({
-                                    "RererencedType": <mglossary.TType>['null', null],
+                                    "RererencedType": <mglossary.TType>['null', {}],
                                 }),
                                 'template': "Reference",
                             }],
@@ -437,14 +437,14 @@ export const $: mproject.TModule = {
                 "Informele Rekeningen": <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                     "Beginsaldo": {
                         'optional': false,
-                        'type': <mglossary.TType>['number', null],
+                        'type': <mglossary.TType>['number', {}],
                     },
                     "Grootboekrekening": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -457,9 +457,9 @@ export const $: mproject.TModule = {
                                 "Jaar": {
                                     'optional': false,
                                     'type': <mglossary.TType>['template', {
-                                        'context': <mglossary.TContext>['local', null],
+                                        'context': <mglossary.TContext>['local', {}],
                                         'arguments': d({
-                                            "RererencedType": <mglossary.TType>['null', null],
+                                            "RererencedType": <mglossary.TType>['null', {}],
                                         }),
                                         'template': "Reference",
                                     }],
@@ -467,9 +467,9 @@ export const $: mproject.TModule = {
                                 "Rekening": {
                                     'optional': false,
                                     'type': <mglossary.TType>['template', {
-                                        'context': <mglossary.TContext>['local', null],
+                                        'context': <mglossary.TContext>['local', {}],
                                         'arguments': d({
-                                            "RererencedType": <mglossary.TType>['null', null],
+                                            "RererencedType": <mglossary.TType>['null', {}],
                                         }),
                                         'template': "Reference",
                                     }],
@@ -504,14 +504,14 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                             "Beginsaldo": {
                                 'optional': false,
-                                'type': <mglossary.TType>['number', null],
+                                'type': <mglossary.TType>['number', {}],
                             },
                             "Grootboekrekening": {
                                 'optional': false,
                                 'type': <mglossary.TType>['template', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['null', null],
+                                        "RererencedType": <mglossary.TType>['null', {}],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -521,15 +521,15 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                     "Bedrag": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                     "Datum": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                     "Omschrijving": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                     "Status": {
                                         'optional': false,
@@ -539,7 +539,7 @@ export const $: mproject.TModule = {
                                                 "Afhandeling": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['reference', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'type': "Afhandeling",
                                                     }],
                                                 },
@@ -556,9 +556,9 @@ export const $: mproject.TModule = {
                                         "Jaar": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -566,9 +566,9 @@ export const $: mproject.TModule = {
                                         "Rekening": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -580,11 +580,11 @@ export const $: mproject.TModule = {
                     },
                     "Beginsaldo nog aan te geven BTW": {
                         'optional': false,
-                        'type': <mglossary.TType>['number', null],
+                        'type': <mglossary.TType>['number', {}],
                     },
                     "Beginsaldo Winstreserve": {
                         'optional': false,
-                        'type': <mglossary.TType>['number', null],
+                        'type': <mglossary.TType>['number', {}],
                     },
                     "BTW periodes": {
                         'optional': false,
@@ -598,13 +598,13 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                     "Bestand": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                 })]],
                             },
                             "Omschrijving": {
                                 'optional': false,
-                                'type': <mglossary.TType>['string', null],
+                                'type': <mglossary.TType>['string', {}],
                             },
                             "Status": {
                                 'optional': false,
@@ -612,15 +612,15 @@ export const $: mproject.TModule = {
                                     "Aangegeven": <mglossary.TType>['group', d({
                                         "Afronding": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', null],
+                                            'type': <mglossary.TType>['number', {}],
                                         },
                                         "Bedrag": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', null],
+                                            'type': <mglossary.TType>['number', {}],
                                         },
                                         "Datum": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', null],
+                                            'type': <mglossary.TType>['number', {}],
                                         },
                                     })],
                                     "Openstaand": <mglossary.TType>['group', d({})],
@@ -636,9 +636,9 @@ export const $: mproject.TModule = {
                                 "Vorig boekjaar": {
                                     'optional': false,
                                     'type': <mglossary.TType>['template', {
-                                        'context': <mglossary.TContext>['local', null],
+                                        'context': <mglossary.TContext>['local', {}],
                                         'arguments': d({
-                                            "RererencedType": <mglossary.TType>['null', null],
+                                            "RererencedType": <mglossary.TType>['null', {}],
                                         }),
                                         'template': "Reference",
                                     }],
@@ -649,9 +649,9 @@ export const $: mproject.TModule = {
                     "Grootboek BTW periode": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -659,9 +659,9 @@ export const $: mproject.TModule = {
                     "Grootboek inkoop saldo": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -669,9 +669,9 @@ export const $: mproject.TModule = {
                     "Grootboek verkoop saldo": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -679,9 +679,9 @@ export const $: mproject.TModule = {
                     "Grootboekrekening voor BTW afrondingen": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -689,9 +689,9 @@ export const $: mproject.TModule = {
                     "Grootboekrekening voor nog aan te geven BTW": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -699,9 +699,9 @@ export const $: mproject.TModule = {
                     "Grootboekrekening voor resultaat dit jaar": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -709,9 +709,9 @@ export const $: mproject.TModule = {
                     "Grootboekrekening voor winstreserve": {
                         'optional': false,
                         'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', null],
+                                "RererencedType": <mglossary.TType>['null', {}],
                             }),
                             'template': "Reference",
                         }],
@@ -719,7 +719,7 @@ export const $: mproject.TModule = {
                     "Informele rekeningen": {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
+                            'context': <mglossary.TContext>['local', {}],
                             'type': "Informele Rekeningen",
                         }],
                     },
@@ -733,16 +733,16 @@ export const $: mproject.TModule = {
                                     "Nog te betalen": <mglossary.TType>['group', d({
                                         "Betalingstermijn": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', null],
+                                            'type': <mglossary.TType>['number', {}],
                                         },
                                     })],
                                     "Rekening courant": <mglossary.TType>['group', d({
                                         "Rekening courant": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -759,7 +759,7 @@ export const $: mproject.TModule = {
                                     "Toegevoegd": <mglossary.TType>['group', d({
                                         "Document": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', null],
+                                            'type': <mglossary.TType>['string', {}],
                                         },
                                     })],
                                 })],
@@ -771,9 +771,9 @@ export const $: mproject.TModule = {
                                         "BTW-periode": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -783,9 +783,9 @@ export const $: mproject.TModule = {
                                         "BTW-periode": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -795,9 +795,9 @@ export const $: mproject.TModule = {
                                         "BTW-periode": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -807,9 +807,9 @@ export const $: mproject.TModule = {
                                         "BTW-periode": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -819,9 +819,9 @@ export const $: mproject.TModule = {
                                         "BTW-periode": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -831,7 +831,7 @@ export const $: mproject.TModule = {
                             },
                             "Datum": {
                                 'optional': false,
-                                'type': <mglossary.TType>['number', null],
+                                'type': <mglossary.TType>['number', {}],
                             },
                             "Regels": {
                                 'optional': false,
@@ -842,24 +842,24 @@ export const $: mproject.TModule = {
                                             "Bekend": <mglossary.TType>['group', d({
                                                 "Bedrag inclusief BTW": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['number', null],
+                                                    'type': <mglossary.TType>['number', {}],
                                                 },
                                                 "BTW": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['number', null],
+                                                    'type': <mglossary.TType>['number', {}],
                                                 },
                                             })],
                                             "Nog niet bekend": <mglossary.TType>['group', d({
                                                 "Aantekeningen": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['string', null],
+                                                    'type': <mglossary.TType>['string', {}],
                                                 },
                                             })],
                                         })],
                                     },
                                     "Omschrijving": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                     "Type": {
                                         'optional': false,
@@ -868,9 +868,9 @@ export const $: mproject.TModule = {
                                                 "Balans item": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -880,9 +880,9 @@ export const $: mproject.TModule = {
                                                 "Grootboekrekening": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -900,25 +900,25 @@ export const $: mproject.TModule = {
                                         "Crediteur": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
                                         },
                                         "Factuurnummer": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', null],
+                                            'type': <mglossary.TType>['string', {}],
                                         },
                                     })],
                                     "Loonheffing": <mglossary.TType>['group', d({
                                         "Ronde": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -928,9 +928,9 @@ export const $: mproject.TModule = {
                                         "Medewerker": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -938,9 +938,9 @@ export const $: mproject.TModule = {
                                         "Ronde": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -950,9 +950,9 @@ export const $: mproject.TModule = {
                                         "Ronde": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -967,14 +967,14 @@ export const $: mproject.TModule = {
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                             "Beginsaldo": {
                                 'optional': false,
-                                'type': <mglossary.TType>['number', null],
+                                'type': <mglossary.TType>['number', {}],
                             },
                             "Grootboekrekening": {
                                 'optional': false,
                                 'type': <mglossary.TType>['template', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['null', null],
+                                        "RererencedType": <mglossary.TType>['null', {}],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -984,25 +984,25 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                     "Bedrag": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                     "Datum": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                     "Grootboekrekening": {
                                         'optional': false,
                                         'type': <mglossary.TType>['template', {
-                                            'context': <mglossary.TContext>['local', null],
+                                            'context': <mglossary.TContext>['local', {}],
                                             'arguments': d({
-                                                "RererencedType": <mglossary.TType>['null', null],
+                                                "RererencedType": <mglossary.TType>['null', {}],
                                             }),
                                             'template': "Reference",
                                         }],
                                     },
                                     "Omschrijving": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                 })]],
                             },
@@ -1014,9 +1014,9 @@ export const $: mproject.TModule = {
                                         "Balans item": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1024,9 +1024,9 @@ export const $: mproject.TModule = {
                                         "Jaar": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1046,7 +1046,7 @@ export const $: mproject.TModule = {
                     },
                     "Startdatum boekjaar": {
                         'optional': false,
-                        'type': <mglossary.TType>['number', null],
+                        'type': <mglossary.TType>['number', {}],
                     },
                     "Verkopen": {
                         'optional': false,
@@ -1059,9 +1059,9 @@ export const $: mproject.TModule = {
                                         "Rekening courant": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1071,7 +1071,7 @@ export const $: mproject.TModule = {
                             },
                             "Betalingstermijn": {
                                 'optional': false,
-                                'type': <mglossary.TType>['number', null],
+                                'type': <mglossary.TType>['number', {}],
                             },
                             "Brondocument": {
                                 'optional': false,
@@ -1080,7 +1080,7 @@ export const $: mproject.TModule = {
                                     "Toegevoegd": <mglossary.TType>['group', d({
                                         "Document": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', null],
+                                            'type': <mglossary.TType>['string', {}],
                                         },
                                     })],
                                 })],
@@ -1088,9 +1088,9 @@ export const $: mproject.TModule = {
                             "BTW-periode": {
                                 'optional': false,
                                 'type': <mglossary.TType>['template', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['null', null],
+                                        "RererencedType": <mglossary.TType>['null', {}],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -1102,9 +1102,9 @@ export const $: mproject.TModule = {
                                         "Overeenkomst": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1114,9 +1114,9 @@ export const $: mproject.TModule = {
                                         "Offerte": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1124,9 +1124,9 @@ export const $: mproject.TModule = {
                                         "Project": {
                                             'optional': false,
                                             'type': <mglossary.TType>['template', {
-                                                'context': <mglossary.TContext>['local', null],
+                                                'context': <mglossary.TContext>['local', {}],
                                                 'arguments': d({
-                                                    "RererencedType": <mglossary.TType>['null', null],
+                                                    "RererencedType": <mglossary.TType>['null', {}],
                                                 }),
                                                 'template': "Reference",
                                             }],
@@ -1137,9 +1137,9 @@ export const $: mproject.TModule = {
                             "Debiteur": {
                                 'optional': false,
                                 'type': <mglossary.TType>['template', {
-                                    'context': <mglossary.TContext>['local', null],
+                                    'context': <mglossary.TContext>['local', {}],
                                     'arguments': d({
-                                        "RererencedType": <mglossary.TType>['null', null],
+                                        "RererencedType": <mglossary.TType>['null', {}],
                                     }),
                                     'template': "Reference",
                                 }],
@@ -1149,7 +1149,7 @@ export const $: mproject.TModule = {
                                 'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                                     "Bedrag exclusief BTW": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                     "BTW-regime": {
                                         'optional': false,
@@ -1162,9 +1162,9 @@ export const $: mproject.TModule = {
                                                 "BTW-cateogrie": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1179,9 +1179,9 @@ export const $: mproject.TModule = {
                                                 "Periode": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1192,9 +1192,9 @@ export const $: mproject.TModule = {
                                                 "Opbrengst": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1204,7 +1204,7 @@ export const $: mproject.TModule = {
                                     },
                                     "Omschrijving": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['string', null],
+                                        'type': <mglossary.TType>['string', {}],
                                     },
                                     "Type": {
                                         'optional': false,
@@ -1213,9 +1213,9 @@ export const $: mproject.TModule = {
                                                 "Balans item": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1225,9 +1225,9 @@ export const $: mproject.TModule = {
                                                 "Grootboekrekening": {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['template', {
-                                                        'context': <mglossary.TContext>['local', null],
+                                                        'context': <mglossary.TContext>['local', {}],
                                                         'arguments': d({
-                                                            "RererencedType": <mglossary.TType>['null', null],
+                                                            "RererencedType": <mglossary.TType>['null', {}],
                                                         }),
                                                         'template': "Reference",
                                                     }],
@@ -1248,13 +1248,13 @@ export const $: mproject.TModule = {
                                     "Afhandeling": {
                                         'optional': false,
                                         'type': <mglossary.TType>['reference', {
-                                            'context': <mglossary.TContext>['local', null],
+                                            'context': <mglossary.TContext>['local', {}],
                                             'type': "Afhandeling",
                                         }],
                                     },
                                     "Bedrag": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['number', null],
+                                        'type': <mglossary.TType>['number', {}],
                                     },
                                 })]],
                             },
@@ -1266,15 +1266,15 @@ export const $: mproject.TModule = {
             'functions': d({
                 "Serialize": {
                     'data': {
-                        'context': <mglossary.TContext>['local', null],
+                        'context': <mglossary.TContext>['local', {}],
                         'type': "Accounting",
                     },
-                    'managed input interface': ['not set', null],
+                    'managed input interface': ['not set', {}],
                     'output interface': ['set', {
                         'context': <mglossary.TContext>['import', "fp"],
                         'interface': "Line",
                     }],
-                    'return type': ['nothing', null],
+                    'return type': ['nothing', {}],
                 },
             }),
         },
@@ -1285,7 +1285,7 @@ export const $: mproject.TModule = {
             'algorithms': d({
                 'createSerializer': {
                     'definition': {
-                        'context': ['local', null],
+                        'context': ['local', {}],
                         'function': "Serialize",
                     },
                     'type': ['constructor', {

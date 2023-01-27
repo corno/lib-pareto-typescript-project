@@ -16,8 +16,30 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
             })
         }
         function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
-            serializeContext($.context, $i)
+            serializeContext2($.context, $i)
             $i.snippet($d.createIdentifier(`T${$.type}`))
+        }
+        function serializeContext2($: mglossary.TContext, $i: mfp.ILine) {
+            pl.cc($, ($) => {
+                switch ($[0]) {
+                    // case 'api':
+                    //     pl.cc($[1], ($) => {
+                    //         $i.snippet(`api`)
+                    //     })
+                    //     break
+                    case 'import':
+                        pl.cc($[1], ($) => {
+                            $i.snippet(`m${$}.`)
+                        })
+                        break
+                    case 'local':
+                        pl.cc($[1], ($) => {
+                            $i.snippet(`glo.`)
+                        })
+                        break
+                    default: pl.au($[0])
+                }
+            })
         }
         function serializeContext($: mmoduleDefinition.TContext | undefined, $i: mfp.ILine) {
 

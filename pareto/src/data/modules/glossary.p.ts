@@ -1,12 +1,10 @@
 import * as pr from 'pareto-core-raw'
 import {
-    externalReference as er,
-    string as str,
-    null_,
-    reference as ref,
-    boolean as bln,
+    string,
+    reference,
+    boolean,
     template,
-    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, interfaceReference, externalInterfaceReference, callback, boolean, parameter
+    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, interfaceReference, externalInterfaceReference, callback, parameter
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -27,90 +25,90 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'parameters': d({ "Type": null, }),
                 'type': taggedUnion({
                     "set": parameter("Type"),
-                    "not set": null_(),
+                    "not set": group({}),
                 })
             }
         }),
         'types': types({
             "Context": taggedUnion({
-                "local": null_(),
-                "import": str(),
+                "local": group({}),
+                "import": string(),
             }),
             "Glossary": group({
-                "parameters": member(dictionary(null_())),
-                "imports": member(dictionary(str())),
+                "parameters": member(dictionary(group({}))),
+                "imports": member(dictionary(string())),
                 "templates": member(dictionary(group({
-                    "parameters": member(dictionary(null_())),
-                    "type": member(ref("Type")),
+                    "parameters": member(dictionary(group({}))),
+                    "type": member(reference("Type")),
                 }))),
-                "types": member(dictionary(ref("Type"))),
-                "interfaces": member(dictionary(ref("Interface"))),
+                "types": member(dictionary(reference("Type"))),
+                "interfaces": member(dictionary(reference("Interface"))),
                 "functions": member(dictionary(group({
                     "return type": member(taggedUnion({
                         "data": group({
-                            "asynchronous": member(bln()),
-                            "type": member(ref("TypeReference")),
+                            "asynchronous": member(boolean()),
+                            "type": member(reference("TypeReference")),
                         }),
-                        "interface": ref("InterfaceReference"),
-                        "nothing": null_(),
+                        "interface": reference("InterfaceReference"),
+                        "nothing": group({}),
                     })),
-                    "data": member(ref("TypeReference")),
+                    "data": member(reference("TypeReference")),
                     "managed input interface": member(template("Optional", {
-                        "Type": ref("InterfaceReference")
+                        "Type": reference("InterfaceReference")
                     })),
                     "output interface": member(template("Optional", {
-                        "Type": ref("InterfaceReference")
+                        "Type": reference("InterfaceReference")
                     })),
                 }))),
             }),
             "Interface": taggedUnion({
                 "group": group({
-                    "members": member(dictionary(ref("Interface")))
+                    "members": member(dictionary(reference("Interface")))
                 }),
                 "method": group({
                     "data": member(template("Optional", {
-                        "Type": ref("TypeReference")
+                        "Type": reference("TypeReference")
                     })),
                     "interface": member(template("Optional", {
                         "Type": group({
                             "managed": member(boolean()),
-                            "interface": member(ref("Interface"))
+                            "interface": member(reference("Interface"))
                         })
                     })),
                 }),
-                "reference": ref("InterfaceReference"),
+                "reference": reference("InterfaceReference"),
             }),
             "InterfaceReference": group({
-                "context": member(ref("Context")),
-                "interface": member(str())
+                "context": member(reference("Context")),
+                "interface": member(string())
             }),
             "Type": taggedUnion({
-                "array": ref("Type"),
-                "nested": ref("Type"),
-                "optional": ref("Type"),
-                "dictionary": ref("Type"),
-                "computed": ref("Type"),
+                "array": reference("Type"),
+                "nested": reference("Type"),
+                "optional": reference("Type"),
+                "dictionary": reference("Type"),
+                "computed": reference("Type"),
 
-                "null": null_(),
-                "boolean": null_(),
-                "string": null_(),
-                "number": null_(),
-                "reference": ref("TypeReference"),
+                "null": group({}),
+                "boolean": group({}),
+                "string": group({}),
+                "number": group({}),
+                "reference": reference("TypeReference"),
                 "group": dictionary(group({
-                    "type": member(ref("Type")),
-                    "optional": member(bln())
+                    "type": member(reference("Type")),
+                    "optional": member(boolean())
                 })),
-                "parameter": str(),
+                "parameter": string(),
                 "template": group({
-                    "context": member(ref("Context")),
-                    "template": member(str()),
-                    "arguments": member(dictionary(ref("Type")))
+                    "context": member(reference("Context")),
+                    "template": member(string()),
+                    "arguments": member(dictionary(reference("Type")))
                 }),
-                "taggedUnion": dictionary(ref("Type")),
+                "taggedUnion": dictionary(reference("Type")),
             }),
             "TypeReference": group({
-                "context": member(ref("Context")),
-                "type": member(str()),
+                "context": member(reference("Context")),
+                "type": member(string()),
             }),
         }),
         'interfaces': d({}),

@@ -44,34 +44,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": {
-                'definition': {
-                    'function': "Serialize"
-                },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
-                        "joinNestedStrings": externalDefinitionReference("tostring", "JoinNestedStrings"),
-                        "mapLiana2States": externalDefinitionReference("liana2Pareto", "MapLiana2States"),
-                        "serializeStates": externalDefinitionReference("pareto2typescript", "SerializeStates")
-                        // "arrayForEach": ['callback', {
-                        //     'context': ['import', "temp"],
-                        //     'callback': "ArrayForEach",
-                        // }],
-                        // "dictionaryForEach": ['callback', {
-                        //     'context': ['import', "temp"],
-                        //     'callback': "DictionaryForEach",
-                        // }],
-                        // "enrichedArrayForEach": ['callback', {
-                        //     'context': ['import', "temp"],
-                        //     'callback': "EnrichedArrayForEach",
-                        // }],
-                        // "enrichedDictionaryForEach": ['callback', {
-                        //     'context': ['import', "temp"],
-                        //     'callback': "EnrichedDictionaryForEach",
-                        // }],
-                    })
-                }]
+                'definition': definitionReference("Serialize"),
+                'type': constructor(null, {
+                    "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                    "joinNestedStrings": externalDefinitionReference("tostring", "JoinNestedStrings"),
+                    "mapLiana2States": externalDefinitionReference("liana2Pareto", "MapLiana2States"),
+                    "serializeStates": externalDefinitionReference("pareto2typescript", "SerializeStates"),
+                }),
             },
         })
     },

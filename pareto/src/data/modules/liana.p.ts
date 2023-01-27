@@ -10,6 +10,7 @@ import {
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import { constructor, definitionReference, externalDefinitionReference } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
 
 
 const d = pr.wrapRawDictionary
@@ -212,7 +213,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             }),
             "XProperties": template("Dictionary", { "Type": ref("XProperty") }),
             "XReference": group({
-                "resolved type": member(template("Optional", {"Type": ref("LocalType")})),
+                "resolved type": member(template("Optional", { "Type": ref("LocalType") })),
             }),
             "XString": group({
                 "constrained": member(taggedUnion({
@@ -244,18 +245,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createResolver": {
-                'definition': {
-                    'function': "Resolve"
-                },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "onError": {
-                            'context': ['import', "common"],
-                            'function': "Log",
-                        }
-                    }),
-                }],
+                'definition': definitionReference("Resolve"),
+                'type': constructor(null, {
+                    "onError": externalDefinitionReference("common", "Log"),
+                }),
             },
         })
     },

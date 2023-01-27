@@ -8,7 +8,7 @@ import {
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
-import { constructor } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
+import { constructor, definitionReference, externalDefinitionReference } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
 
 
 const d = pr.wrapRawDictionary
@@ -65,25 +65,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'function': "GenerateProject"
                 },
                 'type': constructor(null, {
-                    "decorateDictionaryEntriesWithKey": {
-                        'context': ['import', "temp"],
-                        'function': "DecorateDictionaryEntriesWithKey"
-                    },
-                    "logError": {
-                        'context': ['import', "common"],
-                        'function': "Log"
-                    },
-                    "mapLiana2Pareto": {
-                        'function': "MapLiana2Pareto",
-                    },
-                    "serializeProject": {
-                        'context': ['import', "project"],
-                        'function': "SerializeWithContext"
-                    },
-                    "dictionaryForEach": {
-                        'context': ['import', "temp"],
-                        'function': "DictionaryForEach",
-                    },
+                    "decorateDictionaryEntriesWithKey": externalDefinitionReference("temp", "DecorateDictionaryEntriesWithKey"),
+                    "logError": externalDefinitionReference("common", "Log"),
+                    "mapLiana2Pareto": definitionReference("MapLiana2Pareto"),
+                    "serializeProject": externalDefinitionReference("project", "SerializeWithContext"),
+                    "dictionaryForEach":externalDefinitionReference("temp", "DictionaryForEach"),
                 }),
             },
             "createLiana2ParetoMapper": {

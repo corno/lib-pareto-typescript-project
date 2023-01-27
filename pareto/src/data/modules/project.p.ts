@@ -1,14 +1,13 @@
 import * as pr from 'pareto-core-raw'
 import {
-    externalReference as er,
-    string as str,
-    null_,
-    reference as ref,
-    boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference, externalInterfaceReference, callback
+    externalReference,
+    string,
+    reference,
+    dictionary, group, member, taggedUnion, types, _function, typeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import { constructor, definitionReference, externalDefinitionReference } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
 
 const d = pr.wrapRawDictionary
 
@@ -23,17 +22,17 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'templates': d({}),
         'types': types({
             "AlgorithmImplementation": group({}),
-            "Implementation": dictionary(ref("AlgorithmImplementation")),
+            "Implementation": dictionary(reference("AlgorithmImplementation")),
             "Module": group({
-                "definition": member(er("moduleDefinition", "ModuleDefinition")),
+                "definition": member(externalReference("moduleDefinition", "ModuleDefinition")),
                 // "type": member(taggedUnion({
                 //     "binding": nll(),
                 //     "resource": nll(),
                 //     "logic": nll(),
 
                 // }))
-                "implementation": member(er("algorithm", "Implementation"), true),
-                "states": member(er("algorithm", "States"), true)
+                "implementation": member(externalReference("algorithm", "Implementation"), true),
+                "states": member(externalReference("algorithm", "States"), true)
             }),
             "Project": group({
                 "type": member(taggedUnion({
@@ -41,15 +40,14 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "glossary": group({}),
                     "library": group({}),
                 })),
-                "modules": member(dictionary(ref("Module"))),
-                "main": member(str()),
+                "modules": member(dictionary(reference("Module"))),
+                "main": member(string()),
             }),
         }),
         'interfaces': d({}),
         'functions': d({
             "Serialize": callback(typeReference("Module"), externalInterfaceReference("fp", "Line")),
             "SerializeWithContext": callback(typeReference("Module"), externalInterfaceReference("fp", "Writer")),
-
         }),
     },
     'api': {
@@ -61,51 +59,19 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": {
-                'definition': {
-                    'function': "Serialize"
-                },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "serializeModuleDefinition": {
-                            'context': ['import', "moduleDefinition"],
-                            'function': "Serialize"
-                        },
-                        "serializeImplementation": {
-                            'context': ['import', "algorithm"],
-                            'function': "SerializeImplementation"
-                        },
-                        // "arrayForEach": ['callback', {
-                        //     'context': ['import', "temp"],
-                        //     'callback': "ArrayForEach",
-                        // }],
-                        "dictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "DictionaryForEach",
-                        },
-                        "enrichedArrayForEach": {
-                            'context': ['import', "temp"],
-                            'function': "EnrichedArrayForEach",
-                        },
-                        // "enrichedDictionaryForEach": ['callback', {
-                        //     'context': ['import', "temp"],
-                        //     'callback': "EnrichedDictionaryForEach",
-                        // }],
-                    }),
-                }],
+                'definition': definitionReference("Serialize"),
+                'type': constructor(null, {
+                    "serializeModuleDefinition":externalDefinitionReference("moduleDefinition", "Serialize"),
+                    "serializeImplementation":externalDefinitionReference("algorithm", "SerializeImplementation"),
+                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
+                    "enrichedArrayForEach": externalDefinitionReference("temp", "EnrichedArrayForEach"),
+                }),
             },
             "createSerializerWithContext": {
-                'definition': {
-                    'function': "SerializeWithContext"
-                },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "serialize": {
-                            'function': "Serialize"
-                        },
-                    }),
-                }],
+                'definition': definitionReference("SerializeWithContext"),
+                'type': constructor(null, {
+                    "serialize": definitionReference("Serialize"),
+                }),
             },
         })
     },

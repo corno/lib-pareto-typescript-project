@@ -310,30 +310,30 @@ export const $: mproject.TModule = {
         },
         'api': {
             'imports': d({
-                'temp': "../../temp",
+                "temp": "../../temp",
             }),
             'algorithms': d({
-                'createSerializer': {
+                "createSerializer": {
                     'definition': {
                         'context': ['local', {}],
                         'function': "Serialize",
                     },
-                    'type': ['constructor', {
+                    'type': ['foo', {
                         'configuration data': ['not set', {}],
                         'dependencies': d({
-                            'arrayForEach': {
+                            "arrayForEach": {
                                 'context': ['import', "temp"],
                                 'function': "ArrayForEach",
                             },
-                            'dictionaryForEach': {
+                            "dictionaryForEach": {
                                 'context': ['import', "temp"],
                                 'function': "DictionaryForEach",
                             },
-                            'enrichedArrayForEach': {
+                            "enrichedArrayForEach": {
                                 'context': ['import', "temp"],
                                 'function': "EnrichedArrayForEach",
                             },
-                            'enrichedDictionaryForEach': {
+                            "enrichedDictionaryForEach": {
                                 'context': ['import', "temp"],
                                 'function': "EnrichedDictionaryForEach",
                             },

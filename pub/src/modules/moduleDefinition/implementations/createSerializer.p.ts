@@ -110,7 +110,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                             $i.indent(($i) => {
                                 $d.dictionaryForEach($.api.imports, ($) => {
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`'${$.key}': "${$.value}",`)
+                                        $i.snippet(`"${$.key}": "${$.value}",`)
                                     })
                                 })
                             })
@@ -121,7 +121,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                 $i.indent(($i) => {
                                     $d.dictionaryForEach($.api.algorithms, ($) => {
                                         $i.nestedLine(($i) => {
-                                            $i.snippet(`'${$.key}': {`)
+                                            $i.snippet(`"${$.key}": {`)
                                             $i.indent(($i) => {
                                                 $i.nestedLine(($i) => {
                                                     $i.snippet(`'definition': `)
@@ -134,7 +134,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                         case 'constructor':
                                                             pl.cc($.value.type[1], ($) => {
 
-                                                                $i.snippet(`['constructor', {`)
+                                                                $i.snippet(`['foo', {`)
                                                                 $i.indent(($i) => {
 
                                                                     $i.nestedLine(($i) => {
@@ -152,7 +152,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                         $i.indent(($i) => {
                                                                             $d.dictionaryForEach($.dependencies, ($) => {
                                                                                 $i.nestedLine(($i) => {
-                                                                                    $i.snippet(`'${$.key}': `)
+                                                                                    $i.snippet(`"${$.key}": `)
                                                                                     serializeDefinitionReference($.value, $i)
                                                                                     $i.snippet(`,`)
                                                                                 })
@@ -167,7 +167,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                         case 'reference':
                                                             pl.cc($.value.type[1], ($) => {
 
-                                                                $i.snippet(`['reference', {}]`)
+                                                                $i.snippet(`['foo]`)
                                                             })
                                                             break
                                                         default: pl.au($.value.type[0])

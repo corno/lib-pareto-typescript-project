@@ -3,6 +3,7 @@ import * as pr from 'pareto-core-raw'
 import * as mmoduleDefinition from "./import_moduleDefinition"
 import * as mproject from "./import_project"
 import * as mglossary from "./import_glossary"
+import { constructor, definitionReference, externalDefinitionReference } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
 
 const d = pr.wrapRawDictionary
 const a = pr.wrapRawArray
@@ -314,31 +315,13 @@ export const $: mproject.TModule = {
             }),
             'algorithms': d({
                 'createSerializer': {
-                    'definition': {
-                        'context': ['local', {}],
-                        'function': "Serialize",
-                    },
-                    'type': ['constructor', {
-                        'configuration data': ['not set', {}],
-                        'dependencies': d({
-                            'arrayForEach': {
-                                'context': ['import', "temp"],
-                                'function': "ArrayForEach",
-                            },
-                            'dictionaryForEach': {
-                                'context': ['import', "temp"],
-                                'function': "DictionaryForEach",
-                            },
-                            'enrichedArrayForEach': {
-                                'context': ['import', "temp"],
-                                'function': "EnrichedArrayForEach",
-                            },
-                            'enrichedDictionaryForEach': {
-                                'context': ['import', "temp"],
-                                'function': "EnrichedDictionaryForEach",
-                            },
-                        }),
-                    }],
+                    'definition': definitionReference("Serialize"),
+                    'type': constructor(null, {
+                        'arrayForEach': externalDefinitionReference("temp", "ArrayForEach"),
+                        'dictionaryForEach': externalDefinitionReference("temp", "DictionaryForEach"),
+                        'enrichedArrayForEach': externalDefinitionReference("temp", "EnrichedArrayForEach"),
+                        'enrichedDictionaryForEach': externalDefinitionReference("temp", "EnrichedDictionaryForEach"),
+                    }),
                 },
             }),
         },

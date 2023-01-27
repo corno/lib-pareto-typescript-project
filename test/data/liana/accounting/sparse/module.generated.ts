@@ -1251,7 +1251,7 @@ export const $: mproject.TModule = {
         },
         'api': {
             'imports': d({
-                'common': "glo-pareto-common",
+                "common": "glo-pareto-common",
             }),
             'algorithms': d({}),
         },

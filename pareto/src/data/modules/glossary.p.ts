@@ -125,27 +125,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'definition': {
                     'function': "Serialize"
                 },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "arrayForEach": {
-                            'context': ['import', "temp"],
-                            'function': "ArrayForEach",
-                        },
-                        "dictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "DictionaryForEach",
-                        },
-                        "enrichedArrayForEach": {
-                            'context': ['import', "temp"],
-                            'function': "EnrichedArrayForEach",
-                        },
-                        "enrichedDictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "EnrichedDictionaryForEach",
-                        },
-                    })
-                }]
+                'type': constructor(null, {
+                    "arrayForEach": externalDefinitionReference("temp", "ArrayForEach"),
+                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
+                    "enrichedArrayForEach": externalDefinitionReference("temp", "EnrichedArrayForEach"),
+                    "enrichedDictionaryForEach": externalDefinitionReference("temp", "EnrichedDictionaryForEach"),
+                }),
             },
         })
     },

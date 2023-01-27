@@ -310,24 +310,24 @@ export const $: mproject.TModule = {
                 'common': "glo-pareto-common",
             }),
             'algorithms': d({
-                'createEnricher': {
-                    'definition': {
-                        'function': "undefined",
-                    },
-                    'type': ['constructor', {
-                        'configuration data': ['not set', {}],
-                        'dependencies': d({}),
-                    }],
-                },
-                'createSerializer': {
-                    'definition': {
-                        'function': "undefined",
-                    },
-                    'type': ['constructor', {
-                        'configuration data': ['not set', {}],
-                        'dependencies': d({}),
-                    }],
-                },
+                // 'createEnricher': {
+                //     'definition': {
+                //         'function': "undefined",
+                //     },
+                //     'type': ['foo', {
+                //         'configuration data': ['not set', {}],
+                //         'dependencies': d({}),
+                //     }],
+                // },
+                // 'createSerializer': {
+                //     'definition': {
+                //         'function': "undefined",
+                //     },
+                //     'type': ['foo', {
+                //         'configuration data': ['not set', {}],
+                //         'dependencies': d({}),
+                //     }],
+                // },
             }),
         },
     },

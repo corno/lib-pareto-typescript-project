@@ -70,15 +70,12 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'definition': {
                     'function': "ParseArguments2"
                 },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "onError": {
-                            'function': "HandleArgumentError"
-                        },
+                'type': constructor(null, {
+                    "onError": {
+                        'function': "HandleArgumentError"
+                    },
 
-                    }),
-                }],
+                }),
             },
             "generateProject": {
                 'definition': {
@@ -90,27 +87,12 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'definition': {
                     'function': "GenerateProject"
                 },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "decorateDictionaryEntriesWithKey": {
-                            'context': ['import', "temp"],
-                            'function': "DecorateDictionaryEntriesWithKey"
-                        },
-                        "logError": {
-                            'context': ['import', "common"],
-                            'function': "Log"
-                        },
-                        "serializeProject": {
-                            'context': ['import', "pareto2typescript"],
-                            'function': "SerializeProject",
-                        },
-                        "serializeTemplate": {
-                            'context': ['import', "pareto2typescript"],
-                            'function': "SerializeTemplate",
-                        },
-                    }),
-                }],
+                'type': constructor(null, {
+                    "decorateDictionaryEntriesWithKey": externalDefinitionReference("temp", "DecorateDictionaryEntriesWithKey"),
+                    "logError": externalDefinitionReference("common", "Log"),
+                    "serializeProject": externalDefinitionReference("pareto2typescript", "SerializeProject"),
+                    "serializeTemplate": externalDefinitionReference("pareto2typescript", "SerializeTemplate"),
+                }),
             }
         })
     },

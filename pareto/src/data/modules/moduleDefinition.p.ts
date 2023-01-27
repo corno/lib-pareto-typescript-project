@@ -77,38 +77,24 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": {
-                'definition': {
-                    'function': "Serialize"
-                },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "serializeGlossary": {
-                            'context': ['import', "glossary"],
-                            'function': "Serialize"
-                        },
-                        // "arrayForEach": ['callback', {
-                        //     'context': ['import', "temp"],
-                        //     'callback': "ArrayForEach",
-                        // }],
-                        "dictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "DictionaryForEach",
-                        },
-                        "enrichedArrayForEach": {
-                            'context': ['import', "temp"],
-                            'function': "EnrichedArrayForEach",
-                        },
-                        // "enrichedDictionaryForEach": ['callback', {
-                        //     'context': ['import', "temp"],
-                        //     'callback': "EnrichedDictionaryForEach",
-                        // }],
-                        // "serializeLeafType": ['callback', {
-                        //     //'context': ['import', "glossary"],
-                        //     'callback': "SerializeLeafType"
-                        // }],
-                    }),
-                }],
+                'definition': definitionReference("Serialize"),
+                'type': constructor(null, {
+                    "serializeGlossary": externalDefinitionReference("glossary", "Serialize"),
+                    // "arrayForEach": ['callback', {
+                    //     'context': ['import', "temp"],
+                    //     'callback': "ArrayForEach",
+                    // }],
+                    // "enrichedDictionaryForEach": ['callback', {
+                    //     'context': ['import', "temp"],
+                    //     'callback': "EnrichedDictionaryForEach",
+                    // }],
+                    // "serializeLeafType": ['callback', {
+                    //     //'context': ['import', "glossary"],
+                    //     'callback': "SerializeLeafType"
+                    // }],
+                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
+                    "enrichedArrayForEach": externalDefinitionReference("temp", "EnrichedArrayForEach"),
+                }),
             },
         })
     },

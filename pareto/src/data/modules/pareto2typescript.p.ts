@@ -1,11 +1,6 @@
 import * as pr from 'pareto-core-raw'
 import {
-    externalReference as er,
-    string as str,
-    null_,
-    reference as ref,
-    boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, externalInterfaceReference, callback
+    types, _function, externalTypeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
@@ -52,104 +47,46 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
         }),
         'algorithms': d({
             "createModuleDefinitionSerializer": {
-                'definition': {
-                    'function': "SerializeModuleDefinition"
-                },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "dictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "DictionaryForEach",
-                        },
-                        "serializeGlossary": {
-                            //'context': ['import', "glossary"],
-                            'function': "SerializeGlossary"
-                        },
-                        "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
-                        "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
-                        "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
-                        "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
-                        // "serializeLeafType": ['callback', {
-                        //     //'context': ['import', "glossary"],
-                        //     'callback': "SerializeLeafType"
-                        // }],
-                    }),
-                }],
+                'definition': definitionReference("SerializeModuleDefinition"),
+                'type': constructor(null, {
+                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
+                    "serializeGlossary": definitionReference("SerializeGlossary"),
+                    "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                    "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
+                    "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
+                    "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
+                }),
             },
             "createGlossarySerializer": {
-                'definition': {
-                    'function': "SerializeGlossary"
-                },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "dictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "DictionaryForEach",
-                        },
-                        "enrichedDictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "EnrichedDictionaryForEach",
-                        },
-                        "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
-                        "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
-                        "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
-                        "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
-                    })
-                }]
+                'definition': definitionReference("SerializeGlossary"),
+                'type': constructor(null, {
+                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
+                    "enrichedDictionaryForEach": externalDefinitionReference("temp", "EnrichedDictionaryForEach"),
+                    "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                    "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
+                    "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
+                    "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
+                })
             },
             "createImplementationSerializer": {
-                'definition': {
-                    'function': "SerializeImplementation"
-                },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "arrayForEach": {
-                            'context': ['import', "temp"],
-                            'function': "ArrayForEach",
-                        },
-                        "dictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "DictionaryForEach",
-                        },
-                        "enrichedArrayForEach": {
-                            'context': ['import', "temp"],
-                            'function': "EnrichedArrayForEach",
-                        },
-                        "enrichedDictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "EnrichedDictionaryForEach",
-                        },
-                        "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
-                        "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
-                        "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
-                        "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
-                    })
-                }]
+                'definition': definitionReference("SerializeImplementation"),
+                'type': constructor(null, {
+                    "arrayForEach": externalDefinitionReference("temp", "ArrayForEach"),
+                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
+                    "enrichedArrayForEach": externalDefinitionReference("temp", "EnrichedArrayForEach"),
+                    "enrichedDictionaryForEach": externalDefinitionReference("temp", "EnrichedDictionaryForEach"),
+                    "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                    "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
+                    "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
+                    "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
+                }),
             },
             "createProjectSerializer": {
-                'definition': {
-                    'function': "SerializeProject"
-                },
+                'definition': definitionReference("SerializeProject"),
                 'type': constructor(null, {
-                    "dictionaryForEach": {
-                        'context': ['import', "temp"],
-                        'function': "DictionaryForEach",
-                    },
-                    "serializeModuleDefinition": {
-                        //'context': ['import', "api"],
-                        'function': "SerializeModuleDefinition"
-                    },
-                    // "serializeLeafType": ['callback', {
-                    //     //'context': ['import', "glossary"],
-                    //     'callback': "SerializeLeafType"
-                    // }],
-                    "serializeImplementation": {
-                        //'context': ['import', "project"],
-                        'function': "SerializeImplementation",
-                    },
+                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
+                    "serializeModuleDefinition": definitionReference("SerializeModuleDefinition"),
+                    "serializeImplementation": definitionReference("SerializeImplementation"),
                     "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
                     "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
                     "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
@@ -157,9 +94,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 }),
             },
             "createStatesSerializer": {
-                'definition': {
-                    'function': "SerializeStates"
-                },
+                'definition': definitionReference("SerializeStates"),
                 'type': constructor(null, {
                     "arrayForEach": externalDefinitionReference("temp", "ArrayForEach"),
                     "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
@@ -167,27 +102,17 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                     "enrichedDictionaryForEach": externalDefinitionReference("temp", "EnrichedDictionaryForEach"),
                     "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
                     "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
-
-
                 })
             },
             "createTemplateSerializer": {
-                'definition': {
-                    'function': "SerializeTemplate"
-                },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "dictionaryForEach": {
-                            'context': ['import', "temp"],
-                            'function': "DictionaryForEach",
-                        },
-                        "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
-                        "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
-                        "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
-                        "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
-                    }),
-                }]
+                'definition': definitionReference("SerializeTemplate"),
+                'type': constructor(null, {
+                    "dictionaryForEach": externalDefinitionReference("temp", "DictionaryForEach"),
+                    "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
+                    "createApostrophedString": externalDefinitionReference("ts", "CreateApostrophedString"),
+                    "createQuotedString": externalDefinitionReference("ts", "CreateQuotedString"),
+                    "createBacktickedString": externalDefinitionReference("ts", "CreateBacktickedString"),
+                }),
             },
         })
     },

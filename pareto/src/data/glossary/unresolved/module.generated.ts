@@ -304,33 +304,33 @@ export const $: mproject.TModule = {
                 'temp': "../../temp",
             }),
             'algorithms': d({
-                'createSerializer': {
-                    'definition': {
-                        'context': ['local', {}],
-                        'function': "Serialize",
-                    },
-                    'type': ['constructor', {
-                        'configuration data': ['not set', {}],
-                        'dependencies': d({
-                            'arrayForEach': {
-                                'context': ['import', "temp"],
-                                'function': "ArrayForEach",
-                            },
-                            'dictionaryForEach': {
-                                'context': ['import', "temp"],
-                                'function': "DictionaryForEach",
-                            },
-                            'enrichedArrayForEach': {
-                                'context': ['import', "temp"],
-                                'function': "EnrichedArrayForEach",
-                            },
-                            'enrichedDictionaryForEach': {
-                                'context': ['import', "temp"],
-                                'function': "EnrichedDictionaryForEach",
-                            },
-                        }),
-                    }],
-                },
+                // 'createSerializer': {
+                //     'definition': {
+                //         'context': ['local', {}],
+                //         'function': "Serialize",
+                //     },
+                //     'type': ['foo', {
+                //         'configuration data': ['not set', {}],
+                //         'dependencies': d({
+                //             'arrayForEach': {
+                //                 'context': ['import', "temp"],
+                //                 'function': "ArrayForEach",
+                //             },
+                //             'dictionaryForEach': {
+                //                 'context': ['import', "temp"],
+                //                 'function': "DictionaryForEach",
+                //             },
+                //             'enrichedArrayForEach': {
+                //                 'context': ['import', "temp"],
+                //                 'function': "EnrichedArrayForEach",
+                //             },
+                //             'enrichedDictionaryForEach': {
+                //                 'context': ['import', "temp"],
+                //                 'function': "EnrichedDictionaryForEach",
+                //             },
+                //         }),
+                //     }],
+                // },
             }),
         },
     },

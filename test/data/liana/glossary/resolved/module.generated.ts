@@ -316,23 +316,23 @@ export const $: mproject.TModule = {
         },
         'api': {
             'imports': d({
-                'common': "glo-pareto-common",
+                "common": "glo-pareto-common",
             }),
             'algorithms': d({
-                'createEnricher': {
+                "createEnricher": {
                     'definition': {
                         'function': "undefined",
                     },
-                    'type': ['constructor', {
+                    'type': ['foo', {
                         'configuration data': ['not set', {}],
                         'dependencies': d({}),
                     }],
                 },
-                'createSerializer': {
+                "createSerializer": {
                     'definition': {
                         'function': "undefined",
                     },
-                    'type': ['constructor', {
+                    'type': ['foo', {
                         'configuration data': ['not set', {}],
                         'dependencies': d({}),
                     }],

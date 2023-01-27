@@ -17,7 +17,7 @@ import { $ as glossary_test} from "../data/glo_unresolved/module.generated"
 const d = pr.wrapRawDictionary
 
 export const $: mproject.TProject = {
-    'type': ['library', null],
+    'type': ['library', {}],
     'modules': d({
         "algorithm": {
             'definition': algorithm,

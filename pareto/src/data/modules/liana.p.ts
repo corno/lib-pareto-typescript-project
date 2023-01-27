@@ -248,7 +248,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'function': "Resolve"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "onError": {
                             'context': ['import', "common"],

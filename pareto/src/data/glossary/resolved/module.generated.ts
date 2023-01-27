@@ -315,7 +315,7 @@ export const $: mproject.TModule = {
                         'function': "undefined",
                     },
                     'type': ['constructor', {
-                        'configuration data': null,
+                        'configuration data': ['not set', {}],
                         'dependencies': d({}),
                     }],
                 },
@@ -324,7 +324,7 @@ export const $: mproject.TModule = {
                         'function': "undefined",
                     },
                     'type': ['constructor', {
-                        'configuration data': null,
+                        'configuration data': ['not set', {}],
                         'dependencies': d({}),
                     }],
                 },

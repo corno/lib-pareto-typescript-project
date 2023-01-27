@@ -71,7 +71,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                     'function': "ParseArguments2"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "onError": {
                             'function': "HandleArgumentError"
@@ -84,14 +84,14 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 'definition': {
                     'function': "GenerateProject"
                 },
-                'type': ['reference', null],
+                'type': ['reference', {}],
             },
             "createProjectGenerator": {
                 'definition': {
                     'function': "GenerateProject"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "decorateDictionaryEntriesWithKey": {
                             'context': ['import', "temp"],

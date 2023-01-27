@@ -315,11 +315,11 @@ export const $: mproject.TModule = {
             'algorithms': d({
                 'createSerializer': {
                     'definition': {
-                        'context': ['local', null],
+                        'context': ['local', {}],
                         'function': "Serialize",
                     },
                     'type': ['constructor', {
-                        'configuration data': null,
+                        'configuration data': ['not set', {}],
                         'dependencies': d({
                             'arrayForEach': {
                                 'context': ['import', "temp"],

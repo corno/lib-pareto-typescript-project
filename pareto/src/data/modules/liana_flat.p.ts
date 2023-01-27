@@ -5,7 +5,7 @@ import {
     null_,
     reference as ref,
     boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalTypeReference, externalInterfaceReference, callback
+    array, dictionary, group, member, taggedUnion, types, _function, typeReference, externalTypeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
@@ -48,7 +48,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'function': "Serialize"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "createIdentifier": externalDefinitionReference("ts", "CreateIdentifier"),
                         "joinNestedStrings": externalDefinitionReference("tostring", "JoinNestedStrings"),

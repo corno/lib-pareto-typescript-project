@@ -3,7 +3,7 @@ import {
     reference,
     boolean,
     string,
-    array, dictionary, group, member, taggedUnion, types, _function, optional, typeReference, externalInterfaceReference, callback
+    array, dictionary, group, member, taggedUnion, types, _function, typeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"

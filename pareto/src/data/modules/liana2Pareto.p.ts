@@ -58,7 +58,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 'definition': {
                     'function': "GenerateProject"
                 },
-                'type': ['reference', null],
+                'type': ['reference', {}],
             },
             "createProjectGenerator": {
                 'definition': {

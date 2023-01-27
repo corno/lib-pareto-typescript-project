@@ -82,7 +82,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'function': "Serialize"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "serializeGlossary": {
                             'context': ['import', "glossary"],

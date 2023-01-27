@@ -65,7 +65,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'function': "Serialize"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "serializeModuleDefinition": {
                             'context': ['import', "moduleDefinition"],
@@ -99,7 +99,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     'function': "SerializeWithContext"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "serialize": {
                             'function': "Serialize"

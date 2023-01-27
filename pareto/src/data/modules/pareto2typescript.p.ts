@@ -56,7 +56,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                     'function': "SerializeModuleDefinition"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "dictionaryForEach": {
                             'context': ['import', "temp"],
@@ -82,7 +82,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                     'function': "SerializeGlossary"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "dictionaryForEach": {
                             'context': ['import', "temp"],
@@ -104,7 +104,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                     'function': "SerializeImplementation"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "arrayForEach": {
                             'context': ['import', "temp"],
@@ -176,7 +176,7 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                     'function': "SerializeTemplate"
                 },
                 'type': ['constructor', {
-                    'configuration data': null,
+                    'configuration data': ['not set', {}],
                     'dependencies': d({
                         "dictionaryForEach": {
                             'context': ['import', "temp"],

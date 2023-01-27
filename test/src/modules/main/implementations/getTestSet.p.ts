@@ -39,7 +39,7 @@ import { $ as module } from "../../../data/project.test"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
 import { $ as simpleModel } from "../../../data/lianaModels/simpleModel.p"
-import { $ as lianaModel } from "../../../data/lianaModels/glossary.p"
+import { $ as glossary } from "../../../data/lianaModels/glossary.p"
 import { $ as accountingModel } from "../../../data/lianaModels/accounting.p"
 
 export const $$: api.CgetTestSet = ($XXX) => {
@@ -161,7 +161,7 @@ export const $$: api.CgetTestSet = ($XXX) => {
             'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/liana/glossary`]),
         },
         'model': {
-            'model': lianaModel,
+            'model': glossary,
 
             'stringmapping': pr.wrapRawDictionary({
                 "identifier": ['string', null]

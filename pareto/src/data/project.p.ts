@@ -12,6 +12,8 @@ import { $ as moduleDefinition } from "./modules/moduleDefinition.p"
 import { $ as pareto2typescript } from "./modules/pareto2typescript.p"
 import { $ as project } from "./modules/project.p"
 
+// import { $ as glossary_test} from "../data/glossary/sparse/module.generated"
+
 const d = pr.wrapRawDictionary
 
 export const $: mproject.TProject = {
@@ -23,6 +25,7 @@ export const $: mproject.TProject = {
         "glossary": {
             'definition': glossary,
         },
+        //"glossary_test": glossary_test,
         "liana": {
             'definition': liana,
         },

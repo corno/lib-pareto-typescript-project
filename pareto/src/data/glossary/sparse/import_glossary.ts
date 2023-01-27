@@ -1,0 +1,1 @@
+export * from "lib-pareto-typescript-project/dist/modules/glossary"

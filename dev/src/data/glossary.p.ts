@@ -13,6 +13,7 @@ import {
     reference,
     //string,
     taggedUnion,
+    string,
 } from "lib-pareto-typescript-project/dist/modules/liana/api/shorthands.p"
 
 export const $: mliana.TModel = {
@@ -27,20 +28,30 @@ export const $: mliana.TModel = {
         "Glossary": globalType({}, group({
             "imports": [[], dictionary(group({}))],
             "parameters": [[], dictionary(group({}))],
-            "namespace": [["imports"], component("Namespace", {})],
+            "templates": [[], dictionary(group({
+                "parameters": [[], dictionary(group({}))],
+                "type": [[], component("Type", {})],
+            }))],
+            "types": [["namespaces", "templates"], dictionary(component("Type", {}))],
+            "interfaces": [["types"], dictionary(component("Interface", {}))],
             "functions": [["namespace"], dictionary(group({
-                "async": [[], boolean()],
+                "return type": [[], taggedUnion({
+                    "data": group({
+                        "asynchronous": [[], boolean()],
+                        "type": [[], component("TypeReference", {})]
+                    }),
+                    "interface": component("InterfaceReference", {}),
+                    "nothing": group({})
+                })],
                 "data": [[], component("TypeReference", {})],
-                "return value": [[], component("TypeReference", {})],
-            }))],
-            "callbacks": [["namespace"], dictionary(group({
-                "data": [[], component("OptionalTypeReference", {})],
-                "context": [[], component("Context", {})],
-                "interface": [["context"], reference(['sibling', "context"], [])]
-            }))],
-            "pipes": [["namespace"], dictionary(group({
-                "in": [[], component("InterfaceReference", {})],
-                "out": [[], component("InterfaceReference", {})],
+                "managed input interface": [[], taggedUnion({
+                    "set": component("InterfaceReference", {}),
+                    "not set": group({}),
+                })],
+                "output interface": [[], taggedUnion({
+                    "set": component("InterfaceReference", {}),
+                    "not set": group({}),
+                })],
             }))],
         })),
         "Interface": globalType({}, group({
@@ -48,13 +59,14 @@ export const $: mliana.TModel = {
                 "members": [[], dictionary(component("Interface", {}))]
             })],
             "method": [[], group({
-                "data": [[], component("OptionalTypeReference", {})],
+                "data": [[], taggedUnion({
+                    "set": component("TypeReference", {}),
+                    "not set": group({}),
+                })],
                 "interface": [[], taggedUnion({
-                    "null": group({}),
-                    "set": group({
-                        "interface": [[], reference(['parent', null], [])]
-                    }),
-                })]
+                    "set": component("InterfaceReference", {}),
+                    "not set": group({}),
+                })],
             })],
             "reference": [[], component("InterfaceReference", {})],
         })),
@@ -62,24 +74,31 @@ export const $: mliana.TModel = {
             "context": [[], component("Context", {})],
             "interface": [["context"], reference(['sibling', "context"], [])],
         })),
-        "Namespace": globalType({}, group({
-            "namespaces": [[], dictionary(component("Namespace", {}))],
-            "templates": [[], dictionary(group({
-                "parameters": [[], dictionary(group({}))],
+        "Type": globalType({}, taggedUnion({
+            "array": component("Type", {}),
+            "nested": component("Type", {}),
+            "optional": component("Type", {}),
+            "dictionary": component("Type", {}),
+            "computed": component("Type", {}),
+            "null": group({}),
+            "boolean": group({}),
+            "string": group({}),
+            "number": group({}),
+            "reference": component("TypeReference", {}),
+            "group": dictionary(group({
                 "type": [[], component("Type", {})],
-            }))],
-            "types": [["namespaces", "templates"], dictionary(component("Type", {}))],
-            "interfaces": [["types"], dictionary(component("Interface", {}))]
-        })),
-        "OptionalTypeReference": globalType({}, taggedUnion({
-            "not set": group({}),
-            "set": component("TypeReference", {}),
-        })),
-        "Type": globalType({}, group({
+                "optional": [[], boolean()],
+            })),
+            "parameter": string("identifier"),
+            "template": group({
+                "context": [[], component("Context", {})],
+                "template": [[], string("identifier")],
+                "arguments": [[], dictionary(component("Type", {}))]
+            }),
+            "taggedUnion": component("Type", {}),
         })),
         "TypeReference": globalType({}, group({
             "context": [[], component("Context", {})],
-            "namespaces": [["context"], array(reference(['sibling', "context"], []))],
             "type": [["namespace"], reference(['sibling', "namespaces"], [])],
         }))
     }),

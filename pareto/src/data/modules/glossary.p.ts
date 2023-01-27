@@ -60,10 +60,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "interface": member(ref("Interface"))
                     }))),
                 }),
-                "reference": group({
-                    "context": member(ref("Context")),
-                    "interface": member(str())
-                }),
+                "reference": ref("InterfaceReference"),
             }),
             "InterfaceReference": group({
                 "context": member(ref("Context")),

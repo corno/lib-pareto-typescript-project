@@ -108,17 +108,11 @@ export namespace GInterface {
         readonly 'data': Omethod.Pdata
         readonly 'interface': Omethod.Pinterface
     }
-    
-    export namespace Oreference {}
-    export type Oreference = {
-        readonly 'context': UContext
-        readonly 'interface': string
-    }
 }
 export type GInterface = 
     | ['group', GInterface.Ogroup]
     | ['method', GInterface.Omethod]
-    | ['reference', GInterface.Oreference]
+    | ['reference', UInterfaceReference]
 export type UInterface = GInterface
 
 export namespace GInterfaceReference {}

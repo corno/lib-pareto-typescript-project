@@ -22,10 +22,10 @@ export namespace GGlossary {
         export namespace D {
             
             export namespace Pmanaged__input__interface {}
-            export type Pmanaged__input__interface = null | UInterfaceReference
+            export type Pmanaged__input__interface = MOptional<UInterfaceReference>
             
             export namespace Poutput__interface {}
-            export type Poutput__interface = null | UInterfaceReference
+            export type Poutput__interface = MOptional<UInterfaceReference>
             
             export namespace Preturn__type {
                 
@@ -99,7 +99,7 @@ export namespace GInterface {
     export namespace Omethod {
         
         export namespace Pdata {}
-        export type Pdata = null | UTypeReference
+        export type Pdata = MOptional<UTypeReference>
         
         export namespace Pinterface {
             

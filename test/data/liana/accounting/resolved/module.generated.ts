@@ -1260,8 +1260,8 @@ export const $: mproject.TModule = {
                         'context': <mglossary.TContext>['local', null],
                         'type': "Root",
                     },
-                    'managed input interface': null,
-                    'output interface': null,
+                    'managed input interface': ['not set', null],
+                    'output interface': ['not set', null],
                     'return type': ['data', {
                         'type': {
                             'context': <mglossary.TContext>['local', null],
@@ -1275,11 +1275,11 @@ export const $: mproject.TModule = {
                         'context': <mglossary.TContext>['local', null],
                         'type': "Root",
                     },
-                    'managed input interface': null,
-                    'output interface': {
+                    'managed input interface': ['not set', null],
+                    'output interface': ['set', {
                         'context': <mglossary.TContext>['import', "fp"],
                         'interface': "Line",
-                    },
+                    }],
                     'return type': ['nothing', null],
                 },
             }),

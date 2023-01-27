@@ -119,8 +119,8 @@ export function _function(data: t.TTypeReference, returnValue: t.TTypeReference,
             'asynchronous': async === undefined ? false : async,
         }],
         'data': data,
-        'managed input interface': null,
-        'output interface': null,
+        'managed input interface': ['not set', null],
+        'output interface': ['not set', null],
     }
 }
 
@@ -128,8 +128,8 @@ export function procedure(data: t.TTypeReference): t.GGlossary.Pfunctions.D {
     return {
         'return type': ['nothing', null],
         'data': data,
-        'managed input interface': null,
-        'output interface': null,
+        'managed input interface': ['not set', null],
+        'output interface': ['not set', null],
     }
 }
 
@@ -137,29 +137,31 @@ export function callback(data: t.TTypeReference, inf: t.TInterfaceReference): t.
     return {
         'return type': ['nothing', null],
         'data': data,
-        'managed input interface': null,
-        'output interface': inf,
+        'managed input interface': ['not set', null],
+        'output interface': ['set', inf],
     }
 }
 export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.GGlossary.Pfunctions.D {
     return {
         'return type': ['nothing', null],
         'data': data,
-        'managed input interface': in_inf,
-        'output interface': out_inf,
+        'managed input interface': ['set', in_inf],
+        'output interface': ['set', out_inf],
     }
 }
 export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.GGlossary.Pfunctions.D {
     return {
         'return type': ['interface', in_inf],
         'data': data,
-        'managed input interface': null,
-        'output interface': out_inf,
+        'managed input interface': ['not set', null],
+        'output interface': ['set', out_inf],
     }
 }
 export function method(data: null | t.TTypeReference, inf?: null | t.TInterface, managed?: boolean): t.TInterface {
     return ['method', {
-        'data': data,
+        'data': data === null
+            ? ['not set', null]
+            : ['set', data],
         'interface': inf === undefined
             ? ['not set', null]
             : inf === null

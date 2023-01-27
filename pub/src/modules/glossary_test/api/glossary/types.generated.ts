@@ -121,16 +121,16 @@ export type UGlossary = GGlossary
 
 export namespace GInterface {
     
-    export namespace Pgroup {
+    export namespace Ogroup {
         
         export namespace Pmembers {}
         export type Pmembers = pt.Dictionary<UInterface>
     }
-    export type Pgroup = {
-        readonly 'members': Pgroup.Pmembers
+    export type Ogroup = {
+        readonly 'members': Ogroup.Pmembers
     }
     
-    export namespace Pmethod {
+    export namespace Omethod {
         
         export namespace Pdata {
             
@@ -150,16 +150,15 @@ export namespace GInterface {
             | ['not set', Pinterface.Onot__set]
             | ['set', UInterfaceReference]
     }
-    export type Pmethod = {
-        readonly 'data': Pmethod.Pdata
-        readonly 'interface': Pmethod.Pinterface
+    export type Omethod = {
+        readonly 'data': Omethod.Pdata
+        readonly 'interface': Omethod.Pinterface
     }
 }
-export type GInterface = {
-    readonly 'group': GInterface.Pgroup
-    readonly 'method': GInterface.Pmethod
-    readonly 'reference': UInterfaceReference
-}
+export type GInterface = 
+    | ['group', GInterface.Ogroup]
+    | ['method', GInterface.Omethod]
+    | ['reference', UInterfaceReference]
 export type UInterface = GInterface
 
 export namespace GInterfaceReference {

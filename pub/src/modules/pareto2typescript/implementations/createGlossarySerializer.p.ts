@@ -649,7 +649,14 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                     //
                                 } else {
                                     $i.snippet(`$: `)
-                                    serializeTypeReference($, $i)
+                                    doOptional($, $i, {
+                                        onNotset: ($, $i) => {
+                                            $i.snippet(`null`)
+                                        },
+                                        onSet: ($, $i) => {
+                                            serializeTypeReference($, $i)
+                                        }
+                                    })
                                     $i.snippet(`, `)
                                 }
                             })
@@ -726,17 +733,24 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                         serializeTypeReference($.data, $i)
                         $i.snippet(`,`)
                         if ($['managed input interface'] !== null) {
+                            doOptional($['managed input interface'], $i, {
+                                onNotset: () => { },
+                                onSet: ($, $i) => {
+                                    $i.snippet(` $c: ($i: `)
+                                    serializeInterfaceReference($, $i)
+                                    $i.snippet(`) => void,`)
+                                },
+                            })
 
-                            $i.snippet(` $c: ($i: `)
-                            serializeInterfaceReference($['managed input interface'], $i)
-                            $i.snippet(`) => void,`)
                         }
-                        if ($['output interface'] !== null) {
-
-                            $i.snippet(` $i: `)
-                            serializeInterfaceReference($['output interface'], $i)
-                            $i.snippet(`,`)
-                        }
+                        doOptional($['output interface'], $i, {
+                            onNotset: () => {},
+                            onSet: ($, $i) => {
+                                $i.snippet(` $i: `)
+                                serializeInterfaceReference($, $i)
+                                $i.snippet(`,`)
+                            }
+                        })
                         $i.snippet(`) => `)
                         pl.cc($['return type'], ($) => {
                             switch ($[0]) {

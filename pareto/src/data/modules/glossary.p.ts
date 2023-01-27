@@ -55,8 +55,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "nothing": null_(),
                     })),
                     "data": member(ref("TypeReference")),
-                    "managed input interface": member(optional(ref("InterfaceReference"))),
-                    "output interface": member(optional(ref("InterfaceReference"))),
+                    "managed input interface": member(template("Optional", {
+                        "Type": ref("InterfaceReference")
+                    })),
+                    "output interface": member(template("Optional", {
+                        "Type": ref("InterfaceReference")
+                    })),
                 }))),
             }),
             "Interface": taggedUnion({
@@ -64,7 +68,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "members": member(dictionary(ref("Interface")))
                 }),
                 "method": group({
-                    "data": member(optional(ref("TypeReference"))),
+                    "data": member(template("Optional", {
+                        "Type": ref("TypeReference")
+                    })),
                     "interface": member(template("Optional", {
                         "Type": group({
                             "managed": member(boolean()),

@@ -250,11 +250,9 @@ export const $$: api.CcreateSerializer = ($d) => {
                         pl.cc($.data, ($) => {
                             $i.nestedLine(($i) => {
                                 $i.snippet(`'data': `)
-                                if ($ === null) {
-                                    $i.snippet(`null`)
-                                } else {
+                                doOptional($, $i, ($, $i) => {
                                     serializeTypeReference($, $i)
-                                }
+                                })
                             })
                         })
                         pl.cc($.interface, ($) => {
@@ -392,20 +390,16 @@ export const $$: api.CcreateSerializer = ($d) => {
                                 })
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`'managed input interface': `)
-                                    if ($.value['managed input interface'] === null) {
-                                        $i.snippet(`null`)
-                                    } else {
-                                        serializeInterfaceReference($.value['managed input interface'], $i)
-                                    }
+                                    doOptional($.value['managed input interface'], $i, ($, $i) => {
+                                        serializeInterfaceReference($, $i)
+                                    })
                                     $i.snippet(`,`)
                                 })
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`'output interface': `)
-                                    if ($.value['output interface'] === null) {
-                                        $i.snippet(`null`)
-                                    } else {
-                                        serializeInterfaceReference($.value['output interface'], $i)
-                                    }
+                                    doOptional($.value['output interface'], $i, ($, $i) => {
+                                        serializeInterfaceReference($, $i)
+                                    })
                                     $i.snippet(`,`)
                                 })
                                 $i.nestedLine(($i) => {

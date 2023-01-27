@@ -195,18 +195,18 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         'type': typeReference("Root"), //resolved
                                         'asynchronous': false,
                                     }],
-                                    'managed input interface': null,
-                                    'output interface': null,
+                                    'managed input interface': ['not set', null],
+                                    'output interface': ['not set', null],
                                     'data': typeReference("Root"), //unresolved
                                 },
                                 "Serialize": {
                                     'return type': ['nothing', null],
                                     'data': typeReference("Root"), //unresolved
-                                    'managed input interface': null,
-                                    'output interface': {
+                                    'managed input interface': ['not set', null],
+                                    'output interface': ['set', {
                                         'context': ['import', "fp"],
                                         'interface': "Line"
-                                    },
+                                    }],
                                 },
                             }),
                         },

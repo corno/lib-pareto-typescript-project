@@ -14,29 +14,6 @@ export type VOptional<AType> =
 
 export type MOptional<AType> = VOptional<AType>
 
-export namespace G_$AlgorithmType {
-    
-    export namespace Oconstructor {
-        
-        export namespace Pconfiguration__data {}
-        export type Pconfiguration__data = MOptional<mglossary.TTypeReference>
-        
-        export namespace Pdependencies {}
-        export type Pdependencies = pt.Dictionary<UDefinitionReference>
-    }
-    export type Oconstructor = {
-        readonly 'configuration data': Oconstructor.Pconfiguration__data
-        readonly 'dependencies': Oconstructor.Pdependencies
-    }
-    
-    export namespace Oreference {}
-    export type Oreference = {}
-}
-export type G_$AlgorithmType = 
-    | ['constructor', G_$AlgorithmType.Oconstructor]
-    | ['reference', G_$AlgorithmType.Oreference]
-export type U_$AlgorithmType = G_$AlgorithmType
-
 export namespace GContext {
     
     export namespace Olocal {}
@@ -60,10 +37,33 @@ export namespace GModuleDefinition {
         
         export namespace Palgorithms {
             
-            export namespace D {}
+            export namespace D {
+                
+                export namespace Ptype {
+                    
+                    export namespace Oconstructor {
+                        
+                        export namespace Pconfiguration__data {}
+                        export type Pconfiguration__data = MOptional<mglossary.TTypeReference>
+                        
+                        export namespace Pdependencies {}
+                        export type Pdependencies = pt.Dictionary<UDefinitionReference>
+                    }
+                    export type Oconstructor = {
+                        readonly 'configuration data': Oconstructor.Pconfiguration__data
+                        readonly 'dependencies': Oconstructor.Pdependencies
+                    }
+                    
+                    export namespace Oreference {}
+                    export type Oreference = {}
+                }
+                export type Ptype = 
+                    | ['constructor', Ptype.Oconstructor]
+                    | ['reference', Ptype.Oreference]
+            }
             export type D = {
                 readonly 'definition': UDefinitionReference
-                readonly 'type': U_$AlgorithmType
+                readonly 'type': D.Ptype
             }
         }
         export type Palgorithms = pt.Dictionary<Palgorithms.D>

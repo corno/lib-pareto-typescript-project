@@ -1,9 +1,7 @@
 import * as pr from 'pareto-core-raw'
 import {
-    externalReference as er,
-    string as str,
-    reference as ref,
-    boolean as bln,
+    externalReference,
+    reference,
     array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, null_, procedure
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
@@ -26,18 +24,18 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'templates': d({}),
         'types': types({
             "Configuration": group({
-                "model": member(ref("MappedModel")),
-                "mainData": member(er("main", "MainData")),
+                "model": member(reference("MappedModel")),
+                "mainData": member(externalReference("main", "MainData")),
             }),
             "MappedModel": group({
-                "model": member(er("liana", "Model")),
+                "model": member(externalReference("liana", "Model")),
                 "stringmapping": member(dictionary(taggedUnion({
                     "number": null_(),
                     "string": null_(),
                 }))),
             }),
             "Modules": group(({
-                "modules": member(dictionary(er("project", "Module")))
+                "modules": member(dictionary(externalReference("project", "Module")))
             }))
         }),
         'interfaces': d({}),

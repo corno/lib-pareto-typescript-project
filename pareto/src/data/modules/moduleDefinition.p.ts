@@ -1,10 +1,9 @@
 import * as pr from 'pareto-core-raw'
 import {
-    externalReference as er,
-    string as str,
+    externalReference,
+    string,
     null_,
-    reference as ref,
-    boolean as bln,
+    reference,
     array, dictionary, group, member, taggedUnion, types, _function, typeReference, externalInterfaceReference, callback,
     parameter,
     template,
@@ -35,24 +34,24 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'types': types({
             "DefinitionReference": group({
-                "context": member(ref("Context"), true),
-                "function": member(str()),
+                "context": member(reference("Context"), true),
+                "function": member(string()),
             }),
             "Context": taggedUnion({
                 "local": group({}),
-                "import": str(),
+                "import": string(),
             }),
             "ModuleDefinition": group({
-                "glossary": member(er("glossary", "Glossary")),
+                "glossary": member(externalReference("glossary", "Glossary")),
                 "api": member(group({
-                    "imports": member(dictionary(str())),
+                    "imports": member(dictionary(string())),
                     "algorithms": member(dictionary(group({
-                        "definition": member(ref("DefinitionReference")),
+                        "definition": member(reference("DefinitionReference")),
                         "type": member(taggedUnion({
                             "reference": group({}),
                             "constructor": group({
-                                "configuration data": member(template("Optional", { "Type": er("glossary", "TypeReference") })),
-                                "dependencies": member(dictionary(ref("DefinitionReference"))),
+                                "configuration data": member(template("Optional", { "Type": externalReference("glossary", "TypeReference") })),
+                                "dependencies": member(dictionary(reference("DefinitionReference"))),
                             }),
                         }))
                     }))),

@@ -9,14 +9,7 @@ import * as api from "../api"
 // import * as us from "res-pareto-ugly-stuff"
 
 import {
-    externalReference as er,
-    string as str,
-    reference as ref,
-    boolean as bln,
-    number as nr,
-    nested,
-    template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group
+    dictionary, member, taggedUnion, types, _function, group
 } from "../../../../../pub/dist/modules/glossary/api/shorthands.p"
 
 

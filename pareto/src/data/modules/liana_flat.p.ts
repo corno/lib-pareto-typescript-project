@@ -1,11 +1,5 @@
 import * as pr from 'pareto-core-raw'
-import {
-    externalReference as er,
-    string as str,
-    null_,
-    reference as ref,
-    boolean as bln,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference, externalTypeReference, externalInterfaceReference, callback
+import {types, _function, externalTypeReference, externalInterfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"

@@ -78,43 +78,45 @@ export function member($: t.TType, optional?: boolean): { type: t.TType, optiona
     }
 }
 
-export function reference(type: string): t.TType {
-    return ['reference', {
-        'context': ['local', {}],
-        'type': type,
-    }]
-}
+export function reference(a: string, b?: string): t.TType {
+    if (b === undefined) {
+        return ['reference', {
+            'context': ['local', {}],
+            'type': a,
+        }]
+    } else {
+        return ['reference', typeReference(a, b)]
 
-
-export function typeReference(type: string): t.TTypeReference {
-    return {
-        'context': ['local', {}],
-        'type': type,
     }
 }
 
-export function interfaceReference(inf: string): t.TInterfaceReference {
-    return {
-        'context': ['local', {}],
-        'interface': inf
+
+export function typeReference(a: string, b?: string): t.TTypeReference {
+    if (b === undefined) {
+        return {
+            'context': ['local', {}],
+            'type': a,
+        }
+    } else {
+        return {
+            'context': ['import', a],
+            'type': b,
+        }
+
     }
 }
 
-export function externalInterfaceReference(context: string, inf: string): t.TInterfaceReference {
-    return {
-        'context': ['import', context],
-        'interface': inf
-    }
-}
-
-export function externalReference(context: string, type: string): t.TType {
-    return ['reference', externalTypeReference(context, type)]
-}
-
-export function externalTypeReference(context: string, type: string): t.TTypeReference {
-    return {
-        'context': ['import', context],
-        'type': type,
+export function interfaceReference(a: string, b?: string): t.TInterfaceReference {
+    if (b === undefined) {
+        return {
+            'context': ['local', {}],
+            'interface': a
+        }
+    } else {
+        return {
+            'context': ['import', a],
+            'interface': b
+        }
     }
 }
 

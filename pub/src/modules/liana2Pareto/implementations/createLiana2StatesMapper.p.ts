@@ -4,15 +4,6 @@ import * as pr from 'pareto-core-raw'
 import * as api from "../api"
 
 import {
-    array,
-    externalReference as er,
-    string as str,
-    reference as ref,
-    boolean as bln,
-    number as nr,
-    nested,
-    template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group, typeReference, externalTypeReference, parameter
 } from "../../glossary/api/shorthands.p"
 
 import * as malgorithm from "../../algorithm"

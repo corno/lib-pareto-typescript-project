@@ -11,17 +11,18 @@ import * as mglossary from "../../glossary"
 const d = pr.wrapRawDictionary
 const a = pr.wrapRawArray
 
-export function definitionReference(func: string): api.TDefinitionReference {
-    return {
-        'context': ['local', {}],
-        'function': func
-    }
-}
+export function definitionReference(a: string, b?: string): api.TDefinitionReference {
+    if (b === undefined) {
 
-export function externalDefinitionReference(context: string, func: string): api.TDefinitionReference {
-    return {
-        'context': ['import', context],
-        'function': func
+        return {
+            'context': ['local', {}],
+            'function': a
+        }
+    } else {
+        return {
+            'context': ['import', a],
+            'function': b
+        }
     }
 }
 
@@ -34,7 +35,7 @@ export function constructor(data: null | mglossary.TTypeReference, deps: { [key:
     }]
 }
 
-export function algorithm(def: api.TDefinitionReference, type: undefined | api.GModuleDefinition.Papi.Palgorithms.D.Ptype): api.GModuleDefinition.Papi.Palgorithms.D {
+export function algorithm(def: api.TDefinitionReference, type?: api.GModuleDefinition.Papi.Palgorithms.D.Ptype): api.GModuleDefinition.Papi.Palgorithms.D {
     return {
         'definition': def,
         'type': type === undefined

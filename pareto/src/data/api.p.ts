@@ -1,15 +1,13 @@
 import * as pr from 'pareto-core-raw'
 import {
-    externalReference as er,
-    string as str,
+    externalReference,
+    string,
     null_,
-    reference as ref,
-    boolean as bln,
     array, dictionary, group, member, taggedUnion, types, _function, externalTypeReference, typeReference, managedPipe, interfaceReference, procedure, callback, method
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
-import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, externalDefinitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
 import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
@@ -37,11 +35,11 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
                 "too many": null_(),
             }),
             "ProjectSettings": group({
-                "project": member(er("project", "Project")),
-                "mainData": member(er("main", "MainData")),
+                "project": member(externalReference("project", "Project")),
+                "mainData": member(externalReference("main", "MainData")),
             }),
             "Parameters": group({
-                "testDirectory": member(str()),
+                "testDirectory": member(string()),
             }),
         }),
         'interfaces': d({
@@ -66,23 +64,10 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             "temp": "../../temp",
         }),
         'algorithms': d({
-            "createParametersParser": {
-                'definition': {
-                    'function': "ParseArguments2"
-                },
-                'type': constructor(null, {
-                    "onError": {
-                        'function': "HandleArgumentError"
-                    },
-
-                }),
-            },
-            "generateProject": {
-                'definition': {
-                    'function': "GenerateProject"
-                },
-                'type': ['reference', {}],
-            },
+            "createParametersParser": algorithm(definitionReference("ParseArguments2"), constructor(null, {
+                "onError": definitionReference("HandleArgumentError"),
+            })),
+            "generateProject": algorithm(definitionReference("GenerateProject"), undefined),
             "createProjectGenerator": {
                 'definition': {
                     'function': "GenerateProject"

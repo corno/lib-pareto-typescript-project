@@ -1,17 +1,6 @@
 import * as pr from 'pareto-core-raw'
 import {
-    array,
-    externalReference as er,
-    null_,
-    string as str,
-    reference,
-    reference as ref,
-    typeReference,
-    boolean as bln,
-    number as nr,
-    nested,
-    template,
-    dictionary, group as grp, member, taggedUnion, types, _function, group, externalTypeReference
+    dictionary, group as grp, member, taggedUnion, types, _function, group
 } from "../../../pub/dist/modules/glossary/api/shorthands.p"
 
 import * as mproject from "../../../pub/dist/modules/project"

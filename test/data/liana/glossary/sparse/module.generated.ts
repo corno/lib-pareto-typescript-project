@@ -148,10 +148,19 @@ export const $: mproject.TModule = {
                             'optional': true,
                             'type': <mglossary.TType>['taggedUnion', d({
                                 "not set": <mglossary.TType>['group', d({})],
-                                "set": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "InterfaceReference",
-                                }],
+                                "set": <mglossary.TType>['group', d({
+                                    "interface": {
+                                        'optional': true,
+                                        'type': <mglossary.TType>['reference', {
+                                            'context': <mglossary.TContext>['local', null],
+                                            'type': "Interface",
+                                        }],
+                                    },
+                                    "managed": {
+                                        'optional': true,
+                                        'type': <mglossary.TType>['boolean', null],
+                                    },
+                                })],
                             })],
                         },
                     })],
@@ -222,10 +231,10 @@ export const $: mproject.TModule = {
                         'type': "TypeReference",
                     }],
                     "string": <mglossary.TType>['group', d({})],
-                    "taggedUnion": <mglossary.TType>['reference', {
+                    "taggedUnion": <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
                         'context': <mglossary.TContext>['local', null],
                         'type': "Type",
-                    }],
+                    }]],
                     "template": <mglossary.TType>['group', d({
                         "arguments": {
                             'optional': true,
@@ -272,7 +281,7 @@ export const $: mproject.TModule = {
         },
         'api': {
             'imports': d({
-                'common': "glo-pareto-common"
+                'common': "glo-pareto-common",
             }),
             'algorithms': d({}),
         },

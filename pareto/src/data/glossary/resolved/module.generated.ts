@@ -130,51 +130,42 @@ export const $: mproject.TModule = {
                         }]],
                     },
                 })],
-                "Interface": <mglossary.TType>['group', d({
-                    "group": {
-                        'optional': false,
-                        'type': <mglossary.TType>['group', d({
-                            "members": {
-                                'optional': false,
-                                'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
+                "Interface": <mglossary.TType>['taggedUnion', d({
+                    "group": <mglossary.TType>['group', d({
+                        "members": {
+                            'optional': false,
+                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
+                                'context': <mglossary.TContext>['local', null],
+                                'type': "Interface",
+                            }]],
+                        },
+                    })],
+                    "method": <mglossary.TType>['group', d({
+                        "data": {
+                            'optional': false,
+                            'type': <mglossary.TType>['taggedUnion', d({
+                                "not set": <mglossary.TType>['group', d({})],
+                                "set": <mglossary.TType>['reference', {
                                     'context': <mglossary.TContext>['local', null],
-                                    'type': "Interface",
-                                }]],
-                            },
-                        })],
-                    },
-                    "method": {
-                        'optional': false,
-                        'type': <mglossary.TType>['group', d({
-                            "data": {
-                                'optional': false,
-                                'type': <mglossary.TType>['taggedUnion', d({
-                                    "not set": <mglossary.TType>['group', d({})],
-                                    "set": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
-                                        'type': "TypeReference",
-                                    }],
-                                })],
-                            },
-                            "interface": {
-                                'optional': false,
-                                'type': <mglossary.TType>['taggedUnion', d({
-                                    "not set": <mglossary.TType>['group', d({})],
-                                    "set": <mglossary.TType>['reference', {
-                                        'context': <mglossary.TContext>['local', null],
-                                        'type': "InterfaceReference",
-                                    }],
-                                })],
-                            },
-                        })],
-                    },
-                    "reference": {
-                        'optional': false,
-                        'type': <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', null],
-                            'type': "InterfaceReference",
-                        }],
-                    },
+                                    'type': "TypeReference",
+                                }],
+                            })],
+                        },
+                        "interface": {
+                            'optional': false,
+                            'type': <mglossary.TType>['taggedUnion', d({
+                                "not set": <mglossary.TType>['group', d({})],
+                                "set": <mglossary.TType>['reference', {
+                                    'context': <mglossary.TContext>['local', null],
+                                    'type': "InterfaceReference",
+                                }],
+                            })],
+                        },
+                    })],
+                    "reference": <mglossary.TType>['reference', {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "InterfaceReference",
+                    }],
                 })],
                 "InterfaceReference": <mglossary.TType>['group', d({
                     "context": {
@@ -238,10 +229,10 @@ export const $: mproject.TModule = {
                         'type': "TypeReference",
                     }],
                     "string": <mglossary.TType>['group', d({})],
-                    "taggedUnion": <mglossary.TType>['reference', {
+                    "taggedUnion": <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
                         'context': <mglossary.TContext>['local', null],
                         'type': "Type",
-                    }],
+                    }]],
                     "template": <mglossary.TType>['group', d({
                         "arguments": {
                             'optional': false,
@@ -501,59 +492,68 @@ export const $: mproject.TModule = {
                             "Interface": {
                                 'block': {
                                     'innerFunctions': d({}),
-                                    'returnExpression': ['groupInitializer', {
-                                        'properties': d({
-                                            "group": ['groupInitializer', {
-                                                'properties': d({
-                                                    "members": ['mapDictionary', {
-                                                        'block': {
-                                                            'innerFunctions': d({}),
-                                                            'returnExpression': ['call', {
-                                                                'function': "Interface",
-                                                            }],
-                                                        },
-                                                    }],
-                                                })
-                                            }],
-                                            "method": ['groupInitializer', {
-                                                'properties': d({
-                                                    "data": ['switch', {
-                                                        'cases': d({
-                                                            "not set": {
-                                                                'innerFunctions': d({}),
-                                                                'returnExpression': ['groupInitializer', {
-                                                                    'properties': d({})
-                                                                }],
-                                                            },
-                                                            "set": {
+                                    'returnExpression': ['switch', {
+                                        'cases': d({
+                                            "group": {
+                                                'innerFunctions': d({}),
+                                                'returnExpression': ['groupInitializer', {
+                                                    'properties': d({
+                                                        "members": ['mapDictionary', {
+                                                            'block': {
                                                                 'innerFunctions': d({}),
                                                                 'returnExpression': ['call', {
-                                                                    'function': "TypeReference",
+                                                                    'function': "Interface",
                                                                 }],
                                                             },
-                                                        })
-                                                    }],
-                                                    "interface": ['switch', {
-                                                        'cases': d({
-                                                            "not set": {
-                                                                'innerFunctions': d({}),
-                                                                'returnExpression': ['groupInitializer', {
-                                                                    'properties': d({})
-                                                                }],
-                                                            },
-                                                            "set": {
-                                                                'innerFunctions': d({}),
-                                                                'returnExpression': ['call', {
-                                                                    'function': "InterfaceReference",
-                                                                }],
-                                                            },
-                                                        })
-                                                    }],
-                                                })
-                                            }],
-                                            "reference": ['call', {
-                                                'function': "InterfaceReference",
-                                            }],
+                                                        }],
+                                                    })
+                                                }],
+                                            },
+                                            "method": {
+                                                'innerFunctions': d({}),
+                                                'returnExpression': ['groupInitializer', {
+                                                    'properties': d({
+                                                        "data": ['switch', {
+                                                            'cases': d({
+                                                                "not set": {
+                                                                    'innerFunctions': d({}),
+                                                                    'returnExpression': ['groupInitializer', {
+                                                                        'properties': d({})
+                                                                    }],
+                                                                },
+                                                                "set": {
+                                                                    'innerFunctions': d({}),
+                                                                    'returnExpression': ['call', {
+                                                                        'function': "TypeReference",
+                                                                    }],
+                                                                },
+                                                            })
+                                                        }],
+                                                        "interface": ['switch', {
+                                                            'cases': d({
+                                                                "not set": {
+                                                                    'innerFunctions': d({}),
+                                                                    'returnExpression': ['groupInitializer', {
+                                                                        'properties': d({})
+                                                                    }],
+                                                                },
+                                                                "set": {
+                                                                    'innerFunctions': d({}),
+                                                                    'returnExpression': ['call', {
+                                                                        'function': "InterfaceReference",
+                                                                    }],
+                                                                },
+                                                            })
+                                                        }],
+                                                    })
+                                                }],
+                                            },
+                                            "reference": {
+                                                'innerFunctions': d({}),
+                                                'returnExpression': ['call', {
+                                                    'function': "InterfaceReference",
+                                                }],
+                                            },
                                         })
                                     }],
                                 },
@@ -658,8 +658,13 @@ export const $: mproject.TModule = {
                                             },
                                             "taggedUnion": {
                                                 'innerFunctions': d({}),
-                                                'returnExpression': ['call', {
-                                                    'function': "Type",
+                                                'returnExpression': ['mapDictionary', {
+                                                    'block': {
+                                                        'innerFunctions': d({}),
+                                                        'returnExpression': ['call', {
+                                                            'function': "Type",
+                                                        }],
+                                                    },
                                                 }],
                                             },
                                             "template": {

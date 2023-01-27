@@ -10,7 +10,9 @@ const a = pr.wrapRawArray
 export const $: mproject.TModule = {
     'definition': {
         'glossary': {
-            'imports': d({}),
+            'imports': d({
+                "fp": "lib-fountain-pen",
+            }),
             'parameters': d({
                 "Annotation": null,
             }),
@@ -1261,13 +1263,54 @@ export const $: mproject.TModule = {
                 })]],
             }),
             'interfaces': d({}),
-            'functions': d({}),
+            'functions': d({
+                "Serialize": {
+                    'data': {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Accounting",
+                    },
+                    'managed input interface': ['not set', null],
+                    'output interface': ['set', {
+                        'context': <mglossary.TContext>['import', "fp"],
+                        'interface': "Line",
+                    }],
+                    'return type': ['nothing', null],
+                },
+            }),
         },
         'api': {
             'imports': d({
-                'common': "glo-pareto-common"
+                'temp': "../../temp",
             }),
-            'algorithms': d({}),
+            'algorithms': d({
+                'createSerializer': {
+                    'definition': {
+                        'context': ['local', null],
+                        'function': "Serialize",
+                    },
+                    'type': ['constructor', {
+                        'configuration data': null,
+                        'dependencies': d({
+                            'arrayForEach': {
+                                'context': ['import', "temp"],
+                                'function': "ArrayForEach",
+                            },
+                            'dictionaryForEach': {
+                                'context': ['import', "temp"],
+                                'function': "DictionaryForEach",
+                            },
+                            'enrichedArrayForEach': {
+                                'context': ['import', "temp"],
+                                'function': "EnrichedArrayForEach",
+                            },
+                            'enrichedDictionaryForEach': {
+                                'context': ['import', "temp"],
+                                'function': "EnrichedDictionaryForEach",
+                            },
+                        }),
+                    }],
+                },
+            }),
         },
     },
     'implementation': {

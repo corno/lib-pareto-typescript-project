@@ -10,7 +10,9 @@ const a = pr.wrapRawArray
 export const $: mproject.TModule = {
     'definition': {
         'glossary': {
-            'imports': d({}),
+            'imports': d({
+                "fp": "lib-fountain-pen",
+            }),
             'parameters': d({
                 "Annotation": null,
             }),
@@ -162,10 +164,19 @@ export const $: mproject.TModule = {
                             'optional': false,
                             'type': <mglossary.TType>['taggedUnion', d({
                                 "not set": <mglossary.TType>['group', d({})],
-                                "set": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "InterfaceReference",
-                                }],
+                                "set": <mglossary.TType>['group', d({
+                                    "interface": {
+                                        'optional': false,
+                                        'type': <mglossary.TType>['reference', {
+                                            'context': <mglossary.TContext>['local', null],
+                                            'type': "Interface",
+                                        }],
+                                    },
+                                    "managed": {
+                                        'optional': false,
+                                        'type': <mglossary.TType>['boolean', null],
+                                    },
+                                })],
                             })],
                         },
                     })],
@@ -236,10 +247,10 @@ export const $: mproject.TModule = {
                         'type': "TypeReference",
                     }],
                     "string": <mglossary.TType>['group', d({})],
-                    "taggedUnion": <mglossary.TType>['reference', {
+                    "taggedUnion": <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
                         'context': <mglossary.TContext>['local', null],
                         'type': "Type",
-                    }],
+                    }]],
                     "template": <mglossary.TType>['group', d({
                         "arguments": {
                             'optional': false,
@@ -282,13 +293,54 @@ export const $: mproject.TModule = {
                 })],
             }),
             'interfaces': d({}),
-            'functions': d({}),
+            'functions': d({
+                "Serialize": {
+                    'data': {
+                        'context': <mglossary.TContext>['local', null],
+                        'type': "Glossary",
+                    },
+                    'managed input interface': ['not set', null],
+                    'output interface': ['set', {
+                        'context': <mglossary.TContext>['import', "fp"],
+                        'interface': "Line",
+                    }],
+                    'return type': ['nothing', null],
+                },
+            }),
         },
         'api': {
             'imports': d({
-                'common': "glo-pareto-common"
+                'temp': "../../temp",
             }),
-            'algorithms': d({}),
+            'algorithms': d({
+                'createSerializer': {
+                    'definition': {
+                        'context': ['local', null],
+                        'function': "Serialize",
+                    },
+                    'type': ['constructor', {
+                        'configuration data': null,
+                        'dependencies': d({
+                            'arrayForEach': {
+                                'context': ['import', "temp"],
+                                'function': "ArrayForEach",
+                            },
+                            'dictionaryForEach': {
+                                'context': ['import', "temp"],
+                                'function': "DictionaryForEach",
+                            },
+                            'enrichedArrayForEach': {
+                                'context': ['import', "temp"],
+                                'function': "EnrichedArrayForEach",
+                            },
+                            'enrichedDictionaryForEach': {
+                                'context': ['import', "temp"],
+                                'function': "EnrichedDictionaryForEach",
+                            },
+                        }),
+                    }],
+                },
+            }),
         },
     },
     'implementation': {

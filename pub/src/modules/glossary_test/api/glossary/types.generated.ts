@@ -1,5 +1,6 @@
 import * as pt from 'pareto-core-types'
 
+import * as mfp from "lib-fountain-pen"
 
 export namespace VReference {}
 export type VReference<AReferencedType> = {
@@ -145,10 +146,16 @@ export namespace GInterface {
             
             export namespace Onot__set {}
             export type Onot__set = {}
+            
+            export namespace Oset {}
+            export type Oset = {
+                readonly 'interface': UInterface
+                readonly 'managed': boolean
+            }
         }
         export type Pinterface = 
             | ['not set', Pinterface.Onot__set]
-            | ['set', UInterfaceReference]
+            | ['set', Pinterface.Oset]
     }
     export type Omethod = {
         readonly 'data': Omethod.Pdata
@@ -196,6 +203,9 @@ export namespace GType {
     export namespace Ostring {}
     export type Ostring = {}
     
+    export namespace OtaggedUnion {}
+    export type OtaggedUnion = pt.Dictionary<UType>
+    
     export namespace Otemplate {
         
         export namespace Parguments {}
@@ -220,7 +230,7 @@ export type GType =
     | ['parameter', string]
     | ['reference', UTypeReference]
     | ['string', GType.Ostring]
-    | ['taggedUnion', UType]
+    | ['taggedUnion', GType.OtaggedUnion]
     | ['template', GType.Otemplate]
 export type UType = GType
 

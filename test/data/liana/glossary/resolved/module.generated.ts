@@ -155,10 +155,19 @@ export const $: mproject.TModule = {
                             'optional': false,
                             'type': <mglossary.TType>['taggedUnion', d({
                                 "not set": <mglossary.TType>['group', d({})],
-                                "set": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', null],
-                                    'type': "InterfaceReference",
-                                }],
+                                "set": <mglossary.TType>['group', d({
+                                    "interface": {
+                                        'optional': false,
+                                        'type': <mglossary.TType>['reference', {
+                                            'context': <mglossary.TContext>['local', null],
+                                            'type': "Interface",
+                                        }],
+                                    },
+                                    "managed": {
+                                        'optional': false,
+                                        'type': <mglossary.TType>['boolean', null],
+                                    },
+                                })],
                             })],
                         },
                     })],
@@ -229,10 +238,10 @@ export const $: mproject.TModule = {
                         'type': "TypeReference",
                     }],
                     "string": <mglossary.TType>['group', d({})],
-                    "taggedUnion": <mglossary.TType>['reference', {
+                    "taggedUnion": <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
                         'context': <mglossary.TContext>['local', null],
                         'type': "Type",
-                    }],
+                    }]],
                     "template": <mglossary.TType>['group', d({
                         "arguments": {
                             'optional': false,
@@ -307,7 +316,7 @@ export const $: mproject.TModule = {
         },
         'api': {
             'imports': d({
-                'common': "glo-pareto-common"
+                'common': "glo-pareto-common",
             }),
             'algorithms': d({
                 'createEnricher': {
@@ -539,8 +548,13 @@ export const $: mproject.TModule = {
                                                                 },
                                                                 "set": {
                                                                     'innerFunctions': d({}),
-                                                                    'returnExpression': ['call', {
-                                                                        'function': "InterfaceReference",
+                                                                    'returnExpression': ['groupInitializer', {
+                                                                        'properties': d({
+                                                                            "interface": ['call', {
+                                                                                'function': "Interface",
+                                                                            }],
+                                                                            "managed": ['implementMe', "liana2Pareto"],
+                                                                        })
                                                                     }],
                                                                 },
                                                             })
@@ -658,8 +672,13 @@ export const $: mproject.TModule = {
                                             },
                                             "taggedUnion": {
                                                 'innerFunctions': d({}),
-                                                'returnExpression': ['call', {
-                                                    'function': "Type",
+                                                'returnExpression': ['mapDictionary', {
+                                                    'block': {
+                                                        'innerFunctions': d({}),
+                                                        'returnExpression': ['call', {
+                                                            'function': "Type",
+                                                        }],
+                                                    },
                                                 }],
                                             },
                                             "template": {

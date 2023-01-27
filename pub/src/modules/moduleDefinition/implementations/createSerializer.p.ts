@@ -74,7 +74,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                             $i.indent(($i) => {
                                 $d.dictionaryForEach($.api.imports, ($) => {
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`'${$.key}': "${$.value}"`)
+                                        $i.snippet(`'${$.key}': "${$.value}",`)
                                     })
                                 })
                             })

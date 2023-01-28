@@ -2,7 +2,7 @@ import * as pt from 'pareto-core-types'
 
 import * as malgorithm from "../../../algorithm"
 import * as mliana from "../../../liana"
-import * as mmain from "lib-pareto-main"
+import * as mmain from "res-pareto-main"
 import * as mproject from "../../../project"
 
 export namespace GConfiguration {}

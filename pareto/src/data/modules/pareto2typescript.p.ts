@@ -36,7 +36,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     'api': {
         'imports': d({
             "project": "../../project",
-            "main": "lib-pareto-main",
+            "main": "res-pareto-main",
             "collation": "res-pareto-collation",
             "temp": "../../temp",
             "ts": "res-typescript",

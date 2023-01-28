@@ -3,7 +3,7 @@ import * as pt from 'pareto-core-types'
 import * as glo from "./glossary"
 
 import * as mcollation from "res-pareto-collation"
-import * as mmain from "lib-pareto-main"
+import * as mmain from "res-pareto-main"
 import * as mproject from "../../project"
 import * as mtemp from "../../temp"
 import * as mts from "res-typescript"

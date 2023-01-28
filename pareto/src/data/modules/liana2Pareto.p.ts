@@ -16,7 +16,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "algorithm": "../../../algorithm",
             "liana": "../../../liana",
             "project": "../../../project",
-            "main": "lib-pareto-main",
+            "main": "res-pareto-main",
         }),
         'parameters': d({}),
         'templates': d({}),

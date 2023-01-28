@@ -19,7 +19,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "pareto2typescript": "../../../pareto2typescript",
             "common": "glo-pareto-common",
             "fp": "lib-fountain-pen",
-            "main": "lib-pareto-main",
+            "main": "res-pareto-main",
             "project": "../../../project",
         }),
         'templates': d({}),
@@ -52,7 +52,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'imports': d({
             "common": "glo-pareto-common",
             "collation": "res-pareto-collation",
-            "main": "lib-pareto-main",
+            "main": "res-pareto-main",
             "pareto2typescript": "../../pareto2typescript",
             "temp": "../../temp",
         }),

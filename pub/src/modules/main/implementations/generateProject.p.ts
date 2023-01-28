@@ -6,7 +6,7 @@ import * as mpareto2typescript from "../../pareto2typescript"
 
 import * as mtemp from "../../temp/implementation.generated"
 import * as mcoll from "res-pareto-collation"
-import * as mmain from "lib-pareto-main"
+import * as mmain from "res-pareto-main"
 import * as mts from "res-typescript"
 
 import { $a } from "../index"

@@ -4,7 +4,7 @@ import * as t from './types.generated'
 
 import * as malgorithm from "../../../algorithm"
 import * as mliana from "../../../liana"
-import * as mmain from "lib-pareto-main"
+import * as mmain from "res-pareto-main"
 import * as mproject from "../../../project"
 
 export type TConfiguration = t.UConfiguration

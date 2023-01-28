@@ -10,9 +10,6 @@ import { $ as glossary } from "../../../data/glossary.p"
 
 export const $$: api.Cmain = ($) => {
 
-    pl.logDebugMessage("HIER")
-
-
     // mliana2Pareto.$a.generateProject({
     //     'mainData': {
     //         'arguments': pr.wrapRawArray([`../../pareto/src/data/glossary`]),

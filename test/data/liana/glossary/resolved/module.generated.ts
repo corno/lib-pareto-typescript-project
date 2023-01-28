@@ -26,13 +26,7 @@ export const $: mproject.TModule = {
             }),
             'types': d({
                 "Context": <mglossary.TType>['taggedUnion', d({
-                    "import": <mglossary.TType>['template', {
-                        'context': <mglossary.TContext>['local', {}],
-                        'arguments': d({
-                            "RererencedType": <mglossary.TType>['null', {}],
-                        }),
-                        'template': "Reference",
-                    }],
+                    "import": <mglossary.TType>['string', {}],
                     "local": <mglossary.TType>['group', d({})],
                 })],
                 "Glossary": <mglossary.TType>['group', d({
@@ -177,13 +171,7 @@ export const $: mproject.TModule = {
                     },
                     "interface": {
                         'optional': false,
-                        'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', {}],
-                            'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', {}],
-                            }),
-                            'template': "Reference",
-                        }],
+                        'type': <mglossary.TType>['string', {}],
                     },
                 })],
                 "Type": <mglossary.TType>['taggedUnion', d({
@@ -260,13 +248,7 @@ export const $: mproject.TModule = {
                     },
                     "type": {
                         'optional': false,
-                        'type': <mglossary.TType>['template', {
-                            'context': <mglossary.TContext>['local', {}],
-                            'arguments': d({
-                                "RererencedType": <mglossary.TType>['null', {}],
-                            }),
-                            'template': "Reference",
-                        }],
+                        'type': <mglossary.TType>['string', {}],
                     },
                 })],
             }),

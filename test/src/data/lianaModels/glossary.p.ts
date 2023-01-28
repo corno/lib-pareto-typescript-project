@@ -22,7 +22,8 @@ export const $: mliana.TModel = {
     'globalTypes': d({
         "Context": globalType({}, taggedUnion({
             "local": group({}),
-            "import": reference(['parent', null], []),
+            //"import": reference(['parent', null], []),
+            "import": string("identifier"),
         })),
         "Glossary": globalType({}, group({
             "imports": [[], dictionary(group({}))],
@@ -71,7 +72,8 @@ export const $: mliana.TModel = {
         })),
         "InterfaceReference": globalType({}, group({
             "context": [[], component("Context", {})],
-            "interface": [["context"], reference(['sibling', "context"], [])],
+            //"interface": [["context"], reference(['sibling', "context"], [])],
+            "interface": [[], string("identifier")],
         })),
         "Type": globalType({}, taggedUnion({
             "array": component("Type", {}),
@@ -97,7 +99,8 @@ export const $: mliana.TModel = {
         })),
         "TypeReference": globalType({}, group({
             "context": [[], component("Context", {})],
-            "type": [["namespace"], reference(['sibling', "namespaces"], [])],
+            //"type": [["namespace"], reference(['sibling', "namespaces"], [])],
+            "type": [[], string("identifier")],
         }))
     }),
     'root': r("Glossary"),

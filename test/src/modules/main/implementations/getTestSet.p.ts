@@ -46,6 +46,11 @@ export const $$: api.CgetTestSet = ($XXX) => {
                 "main": module
             }),
             'main': "main",
+            'name': "FOOBAR",
+            'pubdependencies': d({
+                "lib-pareto-fubar": {}
+            }),
+            'testdependencies': d({}),
         },
     })
     // pub.$a.createTestProgram(null, {

@@ -25,6 +25,20 @@ export namespace GProject {
     export namespace Pmodules {}
     export type Pmodules = pt.Dictionary<UModule>
     
+    export namespace Ppubdependencies {
+        
+        export namespace D {}
+        export type D = {}
+    }
+    export type Ppubdependencies = pt.Dictionary<Ppubdependencies.D>
+    
+    export namespace Ptestdependencies {
+        
+        export namespace D {}
+        export type D = {}
+    }
+    export type Ptestdependencies = pt.Dictionary<Ptestdependencies.D>
+    
     export namespace Ptype {
         
         export namespace Oglossary {}
@@ -44,6 +58,9 @@ export namespace GProject {
 export type GProject = {
     readonly 'main': string
     readonly 'modules': GProject.Pmodules
+    readonly 'name': string
+    readonly 'pubdependencies': GProject.Ppubdependencies
+    readonly 'testdependencies': GProject.Ptestdependencies
     readonly 'type': GProject.Ptype
 }
 export type UProject = GProject

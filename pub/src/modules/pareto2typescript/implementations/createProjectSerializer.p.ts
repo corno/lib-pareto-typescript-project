@@ -52,12 +52,33 @@ export const $$: api.CcreateProjectSerializer = (
         }
         //$i.allowed("tmp") //already defined in 'generateTemplate'
         $i.allowed(".git")
-        $i.allowed("build")
+        $i.directory("build", ($i) => {
+            $i.file("package.json", ($i) => {
+                $i.line(`{`)
+                $i.line(`  "dependencies": {`)
+                $i.line(`    "pareto-buildenvironment": "^0.0.0"`)
+                $i.line(`  }`)
+                $i.line(`}`)
+                $i.line(``)
+            })
+        })
         $i.directory("pareto", ($i) => {
             $i.allowed("dist")
             $i.allowed("node_modules")
             $i.allowed("package-lock.json")
-            $i.allowed("package.json")
+            $i.file("package.json", ($i) => {
+                $i.line(`{`)
+                $i.line(`  "dependencies": {`)
+                $i.line(`    "lib-pareto-typescript-project": "^0.0.0",`)
+                $i.line(`    "pareto-core-exe": "^0.0.0",`)
+                $i.line(`    "pareto-core-lib": "^0.0.0",`)
+                $i.line(`    "pareto-core-raw": "^0.0.0",`)
+                $i.line(`    "pareto-core-state": "^0.0.0",`)
+                $i.line(`    "res-pareto-main": "^0.0.0"`)
+                $i.line(`  }`)
+                $i.line(`}`)
+                $i.line(``)
+            })
             $i.directory("src", ($i) => {
                 globals($i)
                 $i.directory("bin", ($i) => {
@@ -136,7 +157,32 @@ export const $$: api.CcreateProjectSerializer = (
             $i.allowed("dist")
             $i.allowed("node_modules")
             $i.allowed("package-lock.json")
-            $i.allowed("package.json")
+            $i.file("package.json", ($i) => {
+                $i.line(`{`)
+                $i.line(`  "author": "Corno",`)
+                $i.line(`  "dependencies": {`)
+                $d.dictionaryForEach($.pubdependencies, ($) => {
+                    $i.line(`    "${$.key}": "^0.0.0",`)
+                })
+                $i.line(`    "pareto-core-lib": "^0.0.0",`)
+                $i.line(`    "pareto-core-raw": "^0.0.0",`)
+                $i.line(`    "pareto-core-state": "^0.0.0"`)
+                $i.line(`  },`)
+                $i.line(`  "description": "TBD",`)
+                $i.line(`  "files": [`)
+                $i.line(`    "dist"`)
+                $i.line(`  ],`)
+                $i.line(`  "license": "ISC",`)
+                $i.line(`  "main": "dist/index.js",`)
+                $i.line(`  "name": "${$.name}",`)
+                $i.line(`  "repository": {`)
+                $i.line(`    "type": "git",`)
+                $i.line(`    "url": "http://github.com/corno/${$.name}.git"`)
+                $i.line(`  },`)
+                $i.line(`  "types": "dist/index.d.ts",`)
+                $i.line(`}`)
+                $i.line(``)
+            })
             $i.directory("src", ($i) => {
                 if ($.type === undefined || $.type[0] !== 'resource') {
                     globals($i)
@@ -245,7 +291,24 @@ export const $$: api.CcreateProjectSerializer = (
                 $i.allowed("dist")
                 $i.allowed("node_modules")
                 $i.allowed("package-lock.json")
-                $i.allowed("package.json")
+                $i.file("package.json", ($i) => {
+                    $i.line(`{`)
+                    $i.line(`  "dependencies": {`)
+                    if ($.testdependencies !== undefined) {
+                        $d.dictionaryForEach($.testdependencies, ($) => {
+                            $i.line(`    "${$.key}": "^0.0.0",`)
+                        })
+                    }
+                    $i.line(`    "lib-pareto-test": "^0.0.0",`)
+                    $i.line(`    "pareto-core-exe": "^0.0.0",`)
+                    $i.line(`    "pareto-core-lib": "^0.0.0",`)
+                    $i.line(`    "pareto-core-raw": "^0.0.0",`)
+                    $i.line(`    "pareto-core-state": "^0.0.0",`)
+                    $i.line(`    "res-pareto-main": "^0.0.0"`)
+                    $i.line(`  }`)
+                    $i.line(`}`)
+                    $i.line(``)
+                })
                 $i.directory("src", ($i) => {
                     globals($i)
                     $i.directory("bin", ($i) => {

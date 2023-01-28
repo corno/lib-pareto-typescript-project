@@ -7,6 +7,6 @@
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.4",
     "pareto-core-state": "^0.12.0",
-    "res-typescript": "^0.6.0"
+    "res-typescript": "^0.7.0"
   }
 }

@@ -1,1 +1,1 @@
-export * from "../../../../../pub/dist/modules/glossary"
+export * from "lib-pareto-typescript-project/dist/modules/glossary"

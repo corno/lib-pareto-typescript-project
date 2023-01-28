@@ -1,1 +1,1 @@
-export * from "../../../../../pub/dist/modules/project"
+export * from "lib-pareto-typescript-project/dist/modules/project"

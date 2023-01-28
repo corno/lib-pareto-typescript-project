@@ -6,23 +6,17 @@ import {
     array, dictionary, group, member, taggedUnion, types, _function, typeReference, managedPipe, interfaceReference, procedure, callback, method
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
-import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
-import * as mglossary from "lib-pareto-typescript-project/dist/modules/glossary"
+
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+
 const d = pr.wrapRawDictionary
 
-function def($: mmoduleDefinition.TModuleDefinition): mmoduleDefinition.TModuleDefinition {
-    return $
-}
-
-export const $: mmoduleDefinition.TModuleDefinition = def({
+export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'parameters': d({}),
         'imports': d({
             "pareto2typescript": "../../../pareto2typescript",
-
             "common": "glo-pareto-common",
             "fp": "lib-fountain-pen",
             "main": "lib-pareto-main",
@@ -53,7 +47,6 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             "HandleArgumentError": procedure(typeReference("ArgumentError")),
             "ParseArguments2": callback(typeReference("main", "Arguments"), interfaceReference("HandleParameters")),
         }),
-
     },
     'api': {
         'imports': d({
@@ -76,4 +69,4 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             })),
         })
     },
-})
+}

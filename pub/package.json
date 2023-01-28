@@ -1,13 +1,13 @@
 {
   "author": "Corno",
   "dependencies": {
-    "glo-pareto-common": "^0.8.0",
+    "glo-pareto-common": "^0.9.0",
     "lib-fountain-pen": "^0.30.0",
     "lib-pareto-main": "^0.11.0",
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.4",
     "pareto-core-state": "^0.12.0",
-    "res-pareto-collation": "^0.13.0",
+    "res-pareto-collation": "^0.14.0",
     "res-pareto-filesystem": "^0.35.0",
     "res-typescript": "^0.6.0"
   },
@@ -24,5 +24,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.71.0",
-  "content-fingerprint": "6977be4e64958a21c042b169756eeaa237708037"
+  "content-fingerprint": "07f8572d817e1dc19d572837f72b2a266b8281b3"
 }

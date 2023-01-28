@@ -3,17 +3,13 @@ import {
     types, _function, typeReference, interfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
-import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
+
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+
 const d = pr.wrapRawDictionary
 
-function def($: mmoduleDefinition.TModuleDefinition): mmoduleDefinition.TModuleDefinition {
-    return $
-}
-
-export const $: mmoduleDefinition.TModuleDefinition = def({
+export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
             "algorithm": "../../../algorithm",
@@ -98,4 +94,4 @@ export const $: mmoduleDefinition.TModuleDefinition = def({
             })),
         })
     },
-})
+}

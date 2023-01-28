@@ -5,8 +5,9 @@ import {
     dictionary, group, member, taggedUnion, types, _function, typeReference, interfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
+
+import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
 const d = pr.wrapRawDictionary
 

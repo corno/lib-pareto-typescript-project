@@ -1,4 +1,5 @@
 import * as pr from 'pareto-core-raw'
+
 import {
     reference,
     boolean,
@@ -6,11 +7,9 @@ import {
     array, dictionary, group, member, taggedUnion, types, _function, typeReference, interfaceReference, callback
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import { definitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
-
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
-
 
 const d = pr.wrapRawDictionary
 
@@ -141,17 +140,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "temp": "../../temp",
         }),
         'algorithms': d({
-            "createImplementationSerializer": {
-                'definition': {
-                    'function': "SerializeImplementation"
-                },
-                'type': constructor(null, {
-                    "arrayForEach": definitionReference("temp", "ArrayForEach"),
-                    "dictionaryForEach": definitionReference("temp", "DictionaryForEach"),
-                    "enrichedArrayForEach": definitionReference("temp", "EnrichedArrayForEach"),
-                    "enrichedDictionaryForEach": definitionReference("temp", "EnrichedDictionaryForEach"),
-                })
-            },
+            "createImplementationSerializer": algorithm(definitionReference("SerializeImplementation"), constructor(null, {
+                "arrayForEach": definitionReference("temp", "ArrayForEach"),
+                "dictionaryForEach": definitionReference("temp", "DictionaryForEach"),
+                "enrichedArrayForEach": definitionReference("temp", "EnrichedArrayForEach"),
+                "enrichedDictionaryForEach": definitionReference("temp", "EnrichedDictionaryForEach"),
+            })),
         })
     },
 }

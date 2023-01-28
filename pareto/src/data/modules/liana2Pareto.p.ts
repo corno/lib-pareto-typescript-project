@@ -4,8 +4,9 @@ import {
     array, dictionary, group, member, taggedUnion, types, _function, typeReference, null_, procedure
 } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
-import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 import { algorithm, constructor, definitionReference, } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+
+import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
 const d = pr.wrapRawDictionary
 
@@ -15,7 +16,6 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "algorithm": "../../../algorithm",
             "liana": "../../../liana",
             "project": "../../../project",
-            // "fp": "lib-fountain-pen",
             "main": "lib-pareto-main",
         }),
         'parameters': d({}),

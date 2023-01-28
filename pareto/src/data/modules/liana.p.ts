@@ -16,9 +16,6 @@ const d = pr.wrapRawDictionary
 export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
-            // "glossary": "../../../glossary",
-            // "moduleDefinition": "../../../moduleDefinition",
-            // "fp": "lib-fountain-pen",
         }),
         'parameters': d({}),
         'templates': d({
@@ -54,9 +51,6 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "value": member(parameter("Type"))
                 })
             },
-
-
-
             "Possibly": {
                 'parameters': d({
                     "Type": {}
@@ -86,7 +80,6 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "name": member(string()),
                 }),
             },
-
             "Optional": {
                 'parameters': d({ "Type": {}, }),
                 'type': taggedUnion({

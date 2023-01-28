@@ -1277,7 +1277,7 @@ export const $: mproject.TModule = {
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['set', {
-                        'context': <mglossary.TContext>['import', fp],
+                        'context': <mglossary.TContext>['import', "fp"],
                         'interface': "Line",
                     }],
                     'return type': ['nothing', {}],

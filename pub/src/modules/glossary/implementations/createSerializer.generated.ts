@@ -3,7 +3,6 @@ import * as pl from 'pareto-core-lib'
 import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
-import { MReference } from '../../glossary_test'
 
 export namespace VOptional {}
 export type VOptional<AType> = 
@@ -14,7 +13,7 @@ export type MOptional<AType> = VOptional<AType>
 
 export const $$: api.CcreateSerializer = ($d) => {
     function doReference<T>(
-        $: MReference<T>,
+        $: api.MReference<T>,
         $i: mfp.ILine,
         //$c: ($: T, $i: mfp.ILine) => void
     ) {

@@ -10,16 +10,16 @@ import { $ as glossary } from "../../../data/glossary.p"
 
 export const $$: api.Cmain = ($) => {
 
-    // mliana2Pareto.$a.generateProject({
-    //     'mainData': {
-    //         'arguments': pr.wrapRawArray([`../../pareto/src/data/glossary`]),
-    //     },
-    //     'model': {
-    //         'model': glossary,
+    mliana2Pareto.$a.generateProject({
+        'mainData': {
+            'arguments': pr.wrapRawArray([`../../pareto/src/data/glossary`]),
+        },
+        'model': {
+            'model': glossary,
 
-    //         'stringmapping': pr.wrapRawDictionary({
-    //             "identifier": ['string', null]
-    //         }),
-    //     },
-    // })
+            'stringmapping': pr.wrapRawDictionary({
+                "identifier": ['string', null]
+            }),
+        },
+    })
 }

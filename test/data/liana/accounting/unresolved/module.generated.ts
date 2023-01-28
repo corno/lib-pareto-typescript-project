@@ -1288,7 +1288,7 @@ export const $: mproject.TModule = {
                         'context': ['local', {}],
                         'function': "Serialize",
                     },
-                    'type': ['foo', {
+                    'type': ['constructor', {
                         'configuration data': ['not set', {}],
                         'dependencies': d({
                             "arrayForEach": {

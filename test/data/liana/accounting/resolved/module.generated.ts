@@ -1291,18 +1291,18 @@ export const $: mproject.TModule = {
             'algorithms': d({
                 "createEnricher": {
                     'definition': {
-                        'function': "undefined",
+                        'function': "Enrich",
                     },
-                    'type': ['foo', {
+                    'type': ['constructor', {
                         'configuration data': ['not set', {}],
                         'dependencies': d({}),
                     }],
                 },
                 "createSerializer": {
                     'definition': {
-                        'function': "undefined",
+                        'function': "Serialize",
                     },
-                    'type': ['foo', {
+                    'type': ['constructor', {
                         'configuration data': ['not set', {}],
                         'dependencies': d({}),
                     }],

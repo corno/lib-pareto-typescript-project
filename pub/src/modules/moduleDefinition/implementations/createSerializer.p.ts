@@ -134,7 +134,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                         case 'constructor':
                                                             pl.cc($.value.type[1], ($) => {
 
-                                                                $i.snippet(`['foo', {`)
+                                                                $i.snippet(`['constructor', {`)
                                                                 $i.indent(($i) => {
 
                                                                     $i.nestedLine(($i) => {

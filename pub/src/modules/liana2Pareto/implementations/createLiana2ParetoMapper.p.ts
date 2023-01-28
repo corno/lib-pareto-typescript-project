@@ -225,11 +225,11 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             'imports': pr.wrapRawDictionary({
                                 "common": "glo-pareto-common",
                             }),
-                            'algorithms': pr.wrapRawDictionary({
+                            'algorithms': pr.wrapRawDictionary<mmoduleDefinition.GModuleDefinition.Papi.Palgorithms.D>({
                                 "createSerializer": {
-                                    'definition': ['callback', {
-                                        'callback': "Serialize"
-                                    }],
+                                    'definition': {
+                                        'function': "Serialize"
+                                    },
                                     'type': ['constructor', {
                                         'configuration data': ['not set', {}],
                                         'dependencies': pr.wrapRawDictionary({
@@ -237,9 +237,9 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                     }]
                                 },
                                 "createEnricher": {
-                                    'definition': ['function', {
+                                    'definition': {
                                         'function': "Enrich"
-                                    }],
+                                    },
                                     'type': ['constructor', {
                                         'configuration data': ['not set', {}],
                                         'dependencies': pr.wrapRawDictionary({

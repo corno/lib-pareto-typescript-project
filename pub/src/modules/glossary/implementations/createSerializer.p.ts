@@ -222,7 +222,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 pl.cc($[1], ($) => {
                     $i.snippet(`['import', `)
                     //doReference($, $i)
-                    $i.snippet($)
+                    $i.snippet(`"` + $ + `"`)
                     $i.snippet(`]`)
                 })
                 break

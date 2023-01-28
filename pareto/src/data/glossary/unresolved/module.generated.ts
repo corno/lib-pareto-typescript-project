@@ -21,7 +21,16 @@ export const $: mproject.TModule = {
                     'parameters': d({
                         "ReferencedType": {},
                     }),
-                    'type': <mglossary.TType>['group', d({})],
+                    'type': <mglossary.TType>['group', d({
+                        "annotation": {
+                            'optional': false,
+                            'type': <mglossary.TType>['string', {}],
+                        },
+                        "name": {
+                            'optional': false,
+                            'type': <mglossary.TType>['string', {}],
+                        },
+                    })],
                 },
             }),
             'types': d({
@@ -254,29 +263,14 @@ export const $: mproject.TModule = {
             }),
             'interfaces': d({}),
             'functions': d({
-                "Enrich": {
-                    'data': {
-                        'context': <mglossary.TContext>['local', {}],
-                        'type': "Root",
-                    },
-                    'managed input interface': ['not set', {}],
-                    'output interface': ['not set', {}],
-                    'return type': ['data', {
-                        'type': {
-                            'context': <mglossary.TContext>['local', {}],
-                            'type': "Root",
-                        },
-                        'asynchronous': false,
-                    }],
-                },
                 "Serialize": {
                     'data': {
                         'context': <mglossary.TContext>['local', {}],
-                        'type': "Root",
+                        'type': "Glossary",
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['set', {
-                        'context': <mglossary.TContext>['import', fp],
+                        'context': <mglossary.TContext>['import', "fp"],
                         'interface': "Line",
                     }],
                     'return type': ['nothing', {}],
@@ -285,25 +279,34 @@ export const $: mproject.TModule = {
         },
         'api': {
             'imports': d({
-                "common": "glo-pareto-common",
+                "temp": "../../temp",
             }),
             'algorithms': d({
-                "createEnricher": {
-                    'definition': {
-                        'function': "Enrich",
-                    },
-                    'type': ['constructor', {
-                        'configuration data': ['not set', {}],
-                        'dependencies': d({}),
-                    }],
-                },
                 "createSerializer": {
                     'definition': {
+                        'context': ['local', {}],
                         'function': "Serialize",
                     },
                     'type': ['constructor', {
                         'configuration data': ['not set', {}],
-                        'dependencies': d({}),
+                        'dependencies': d({
+                            "arrayForEach": {
+                                'context': ['import', "temp"],
+                                'function': "ArrayForEach",
+                            },
+                            "dictionaryForEach": {
+                                'context': ['import', "temp"],
+                                'function': "DictionaryForEach",
+                            },
+                            "enrichedArrayForEach": {
+                                'context': ['import', "temp"],
+                                'function': "EnrichedArrayForEach",
+                            },
+                            "enrichedDictionaryForEach": {
+                                'context': ['import', "temp"],
+                                'function': "EnrichedDictionaryForEach",
+                            },
+                        }),
                     }],
                 },
             }),

@@ -22,9 +22,7 @@ export const $: mproject.TProject = {
         "algorithm": {
             'definition': algorithm,
         },
-        "glossary": {
-            'definition': glossary,
-        },
+        "glossary": glossary_test,
         "glossary_test": glossary_test,
         "liana": {
             'definition': liana,

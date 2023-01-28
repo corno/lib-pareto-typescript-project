@@ -82,7 +82,10 @@ export function reference(a: string, b?: string): t.TType {
     if (b === undefined) {
         return ['reference', {
             'context': ['local', {}],
-            'type': a,
+            'type': {
+                'annotation': "SSDF",
+                'name': a
+            },
         }]
     } else {
         return ['reference', typeReference(a, b)]
@@ -95,12 +98,21 @@ export function typeReference(a: string, b?: string): t.TTypeReference {
     if (b === undefined) {
         return {
             'context': ['local', {}],
-            'type': a,
+            'type': {
+                'annotation': "SSDF",
+                'name': a
+            },
         }
     } else {
         return {
-            'context': ['import', a],
-            'type': b,
+            'context': ['import', {
+                'annotation': "SSDF",
+                'name': a
+            },],
+            'type': {
+                'annotation': "SSDF",
+                'name': b
+            },
         }
 
     }
@@ -110,12 +122,21 @@ export function interfaceReference(a: string, b?: string): t.TInterfaceReference
     if (b === undefined) {
         return {
             'context': ['local', {}],
-            'interface': a
+            'interface': {
+                'annotation': "SSDF",
+                'name': a
+            },
         }
     } else {
         return {
-            'context': ['import', a],
-            'interface': b
+            'context': ['import', {
+                'annotation': "SSDF",
+                'name': a
+            },],
+            'interface': {
+                'annotation': "SSDF",
+                'name': b
+            },
         }
     }
 }

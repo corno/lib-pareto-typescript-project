@@ -27,7 +27,7 @@ const d = pr.wrapRawDictionary
 
 
 import * as pub from "../../../../../pub"
-import { $ as module } from "../../../data/project.test"
+//import { $ as module } from "../../../data/project.test"
 // import * as pubTypes from "../../../../pub/dist/modules/public"
 // import * as pubPrivate from "../../../../pub/dist/modules/private"
 
@@ -36,18 +36,18 @@ import { $ as glossary } from "../../../data/lianaModels/glossary.p"
 import { $ as accountingModel } from "../../../data/lianaModels/accounting.p"
 
 export const $$: api.CgetTestSet = ($XXX) => {
-    pub.$a.generateProject({
-        'mainData': {
-            'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/project`]),
-        },
-        'project': {
-            'type': ['library', {}],
-            'modules': d({
-                "main": module
-            }),
-            'main': "main",
-        },
-    })
+    // pub.$a.generateProject({
+    //     'mainData': {
+    //         'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/project`]),
+    //     },
+    //     'project': {
+    //         'type': ['library', {}],
+    //         'modules': d({
+    //             "main": module
+    //         }),
+    //         'main': "main",
+    //     },
+    // })
     // pub.$a.createTestProgram(null, {
     //     getTestSet: () => {
     //         pl.panic("@@@")

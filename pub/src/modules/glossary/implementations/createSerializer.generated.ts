@@ -3,11 +3,35 @@ import * as pl from 'pareto-core-lib'
 import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
+import { MReference } from '../../glossary_test'
+
+export namespace VOptional {}
+export type VOptional<AType> = 
+    | ['not set', {}]
+    | ['set', AType]
+
+export type MOptional<AType> = VOptional<AType>
 
 export const $$: api.CcreateSerializer = ($d) => {
+    function doReference<T>(
+        $: MReference<T>,
+        $i: mfp.ILine,
+        //$c: ($: T, $i: mfp.ILine) => void
+    ) {
+        $i.snippet(`{`)
+        $i.indent(($i) => {
+            $i.nestedLine(($i) => {
+                $i.snippet(`'annotation': "${$.annotation}",`)
+            })
+            $i.nestedLine(($i) => {
+                $i.snippet(`'name': "${$.name}",`)
+            })
+        })
+        $i.snippet(`}`)
+    }
 
     function doOptional<T>(
-        $: api.MOptional<T>,
+        $: MOptional<T>,
         $i: mfp.ILine,
         $c: ($: T, $i: mfp.ILine) => void,
     ) {
@@ -36,7 +60,9 @@ export const $$: api.CcreateSerializer = ($d) => {
                 $i.snippet(`,`)
             })
             $i.nestedLine(($i) => {
-                $i.snippet(`'type': "${$.type}",`)
+                $i.snippet(`'type': `)
+                doReference($.type, $i)
+                $i.snippet(`,`)
             })
         })
         $i.snippet(`}`)
@@ -193,7 +219,9 @@ export const $$: api.CcreateSerializer = ($d) => {
         switch ($[0]) {
             case 'import':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['import', "${$}"]`)
+                    $i.snippet(`['import', `)
+                    doReference($, $i)
+                    $i.snippet(`]`)
                 })
                 break
             case 'local':
@@ -294,7 +322,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.imports, ($) => {
                         $i.nestedLine(($i) => {
-                            $i.snippet(`"${$.key}": "${$.value}",`)
+                            $i.snippet(`"${$.key}": {},`)
                         })
                     })
                 })

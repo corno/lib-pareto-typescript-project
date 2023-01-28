@@ -16,4 +16,4 @@ export type TType = t.UType
 
 export type TTypeReference = t.UTypeReference
 
-export type FSerialize = ($: TGlossary, $i: mfp.ILine,) => void
+export type FSerialize = <PGAnnotation>($: TGlossary, $i: mfp.ILine,) => void

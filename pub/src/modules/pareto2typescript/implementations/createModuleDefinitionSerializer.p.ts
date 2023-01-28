@@ -7,10 +7,17 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 
+export namespace VOptional {}
+export type VOptional<AType> = 
+    | ['not set', {}]
+    | ['set', AType]
+
+export type MOptional<AType> = VOptional<AType>
+
 export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
         function doOptional<T>(
-            $: mglossary.MOptional<T>,
+            $: MOptional<T>,
             $i: mfp.ILine,
             $c: {
                 onSet: ($: T, $i: mfp.ILine) => void,

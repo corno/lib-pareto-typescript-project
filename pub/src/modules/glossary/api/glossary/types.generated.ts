@@ -2,24 +2,24 @@ import * as pt from 'pareto-core-types'
 
 import * as mfp from "lib-fountain-pen"
 
-export namespace VOptional {
-    
-    export namespace Onot__set {}
-    export type Onot__set<AType> = {}
+export namespace VReference {}
+export type VReference<AReferencedType> = {
+    readonly 'annotation': string
+    readonly 'name': string
 }
-export type VOptional<AType> = 
-    | ['not set', VOptional.Onot__set<AType>]
-    | ['set', AType]
 
-export type MOptional<AType> = VOptional<AType>
+export type MReference<AReferencedType> = VReference<AReferencedType>
 
 export namespace GContext {
+    
+    export namespace Oimport {}
+    export type Oimport = MReference<null>
     
     export namespace Olocal {}
     export type Olocal = {}
 }
 export type GContext = 
-    | ['import', string]
+    | ['import', GContext.Oimport]
     | ['local', GContext.Olocal]
 export type UContext = GContext
 
@@ -29,11 +29,23 @@ export namespace GGlossary {
         
         export namespace D {
             
-            export namespace Pmanaged__input__interface {}
-            export type Pmanaged__input__interface = MOptional<UInterfaceReference>
+            export namespace Pmanaged__input__interface {
+                
+                export namespace Onot__set {}
+                export type Onot__set = {}
+            }
+            export type Pmanaged__input__interface = 
+                | ['not set', Pmanaged__input__interface.Onot__set]
+                | ['set', UInterfaceReference]
             
-            export namespace Poutput__interface {}
-            export type Poutput__interface = MOptional<UInterfaceReference>
+            export namespace Poutput__interface {
+                
+                export namespace Onot__set {}
+                export type Onot__set = {}
+            }
+            export type Poutput__interface = 
+                | ['not set', Poutput__interface.Onot__set]
+                | ['set', UInterfaceReference]
             
             export namespace Preturn__type {
                 
@@ -60,8 +72,12 @@ export namespace GGlossary {
     }
     export type Pfunctions = pt.Dictionary<Pfunctions.D>
     
-    export namespace Pimports {}
-    export type Pimports = pt.Dictionary<string>
+    export namespace Pimports {
+        
+        export namespace D {}
+        export type D = {}
+    }
+    export type Pimports = pt.Dictionary<Pimports.D>
     
     export namespace Pinterfaces {}
     export type Pinterfaces = pt.Dictionary<UInterface>
@@ -117,18 +133,29 @@ export namespace GInterface {
     
     export namespace Omethod {
         
-        export namespace Pdata {}
-        export type Pdata = MOptional<UTypeReference>
+        export namespace Pdata {
+            
+            export namespace Onot__set {}
+            export type Onot__set = {}
+        }
+        export type Pdata = 
+            | ['not set', Pdata.Onot__set]
+            | ['set', UTypeReference]
         
         export namespace Pinterface {
             
-            export namespace TPType {}
-            export type TPType = {
+            export namespace Onot__set {}
+            export type Onot__set = {}
+            
+            export namespace Oset {}
+            export type Oset = {
                 readonly 'interface': UInterface
                 readonly 'managed': boolean
             }
         }
-        export type Pinterface = MOptional<Pinterface.TPType>
+        export type Pinterface = 
+            | ['not set', Pinterface.Onot__set]
+            | ['set', Pinterface.Oset]
     }
     export type Omethod = {
         readonly 'data': Omethod.Pdata
@@ -141,10 +168,14 @@ export type GInterface =
     | ['reference', UInterfaceReference]
 export type UInterface = GInterface
 
-export namespace GInterfaceReference {}
+export namespace GInterfaceReference {
+    
+    export namespace Pinterface {}
+    export type Pinterface = MReference<null>
+}
 export type GInterfaceReference = {
     readonly 'context': UContext
-    readonly 'interface': string
+    readonly 'interface': GInterfaceReference.Pinterface
 }
 export type UInterfaceReference = GInterfaceReference
 
@@ -202,9 +233,13 @@ export type GType =
     | ['template', GType.Otemplate]
 export type UType = GType
 
-export namespace GTypeReference {}
+export namespace GTypeReference {
+    
+    export namespace Ptype {}
+    export type Ptype = MReference<null>
+}
 export type GTypeReference = {
     readonly 'context': UContext
-    readonly 'type': string
+    readonly 'type': GTypeReference.Ptype
 }
 export type UTypeReference = GTypeReference

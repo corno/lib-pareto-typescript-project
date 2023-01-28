@@ -11,7 +11,7 @@ export const $: mproject.TModule = {
     'definition': {
         'glossary': {
             'imports': d({
-                "fp": "lib-fountain-pen",
+                "fp": {},
             }),
             'parameters': d({
                 "Annotation": {},
@@ -265,7 +265,10 @@ export const $: mproject.TModule = {
                         'optional': true,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': "Jaren",
+                            'type': {
+                                'annotation': "XXX",
+                                'name': "Jaren",
+                            },
                         }],
                     },
                     "Klanten": {
@@ -524,7 +527,10 @@ export const $: mproject.TModule = {
                                                     'optional': true,
                                                     'type': <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', {}],
-                                                        'type': "Afhandeling",
+                                                        'type': {
+                                                            'annotation': "XXX",
+                                                            'name': "Afhandeling",
+                                                        },
                                                     }],
                                                 },
                                             })],
@@ -704,7 +710,10 @@ export const $: mproject.TModule = {
                         'optional': true,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': "Informele Rekeningen",
+                            'type': {
+                                'annotation': "XXX",
+                                'name': "Informele Rekeningen",
+                            },
                         }],
                     },
                     "Inkopen": {
@@ -1233,7 +1242,10 @@ export const $: mproject.TModule = {
                                         'optional': true,
                                         'type': <mglossary.TType>['reference', {
                                             'context': <mglossary.TContext>['local', {}],
-                                            'type': "Afhandeling",
+                                            'type': {
+                                                'annotation': "XXX",
+                                                'name': "Afhandeling",
+                                            },
                                         }],
                                     },
                                     "Bedrag": {

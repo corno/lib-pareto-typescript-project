@@ -141,13 +141,6 @@ export const $$: api.CcreateSerializer = ($d) => {
                     $i.snippet(`]`)
                 })
                 break
-            case 'optional':
-                pl.cc($[1], ($) => {
-                    $i.snippet(`['optional', `)
-                    serializeType($, $i)
-                    $i.snippet(`]`)
-                })
-                break
             case 'parameter':
                 pl.cc($[1], ($) => {
                     $i.snippet(`['parameter', `)

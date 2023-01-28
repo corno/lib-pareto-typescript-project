@@ -5,11 +5,18 @@ import * as api from "../api"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
+export namespace VOptional {}
+export type VOptional<AType> = 
+    | ['not set', {}]
+    | ['set', AType]
+
+export type MOptional<AType> = VOptional<AType>
+
 export const $$: api.CcreateGlossarySerializer = ($d) => {
 
     return ($, $i) => {
         function doOptional<T>(
-            $: mglossary.MOptional<T>,
+            $: MOptional<T>,
             $i: mfp.ILine,
             $c: {
                 onSet: ($: T, $i: mfp.ILine) => void,
@@ -34,7 +41,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             switch ($[0]) {
                 case 'import':
                     pl.cc($[1], ($) => {
-                        $i.snippet(`m${$}.`)
+                        $i.snippet(`m${$.name}.`)
                     })
                     break
                 case 'local':
@@ -76,12 +83,12 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                 switch ($.context[0]) {
                                     case 'import':
                                         pl.cc($.context[1], ($) => {
-                                            $i.snippet(`m${$}.${$d.createIdentifier(`T${type}`)}`)
+                                            $i.snippet(`m${$}.${$d.createIdentifier(`T${type.name}`)}`)
                                         })
                                         break
                                     case 'local':
                                         pl.cc($.context[1], ($) => {
-                                            $i.snippet(`${$d.createIdentifier(`U${type}`)}`)
+                                            $i.snippet(`${$d.createIdentifier(`U${type.name}`)}`)
                                         })
                                         break
                                     default: pl.au($.context[0])
@@ -583,7 +590,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             }
             function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
                 serializeContext($.context, $i)
-                $i.snippet($d.createIdentifier(`T${$.type}`))
+                $i.snippet($d.createIdentifier(`T${$.type.name}`))
             }
             function serializeInterfaceReference($: mglossary.TInterfaceReference, $i: mfp.ILine) {
                 if ($.context !== undefined) {

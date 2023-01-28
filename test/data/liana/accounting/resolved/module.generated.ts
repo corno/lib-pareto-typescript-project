@@ -11,7 +11,7 @@ export const $: mproject.TModule = {
     'definition': {
         'glossary': {
             'imports': d({
-                "fp": "lib-fountain-pen",
+                "fp": {},
             }),
             'parameters': d({
                 "Annotation": {},
@@ -272,7 +272,10 @@ export const $: mproject.TModule = {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': "Jaren",
+                            'type': {
+                                'annotation': "XXX",
+                                'name': "Jaren",
+                            },
                         }],
                     },
                     "Klanten": {
@@ -531,7 +534,10 @@ export const $: mproject.TModule = {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', {}],
-                                                        'type': "Afhandeling",
+                                                        'type': {
+                                                            'annotation': "XXX",
+                                                            'name': "Afhandeling",
+                                                        },
                                                     }],
                                                 },
                                             })],
@@ -711,7 +717,10 @@ export const $: mproject.TModule = {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': "Informele Rekeningen",
+                            'type': {
+                                'annotation': "XXX",
+                                'name': "Informele Rekeningen",
+                            },
                         }],
                     },
                     "Inkopen": {
@@ -1240,7 +1249,10 @@ export const $: mproject.TModule = {
                                         'optional': false,
                                         'type': <mglossary.TType>['reference', {
                                             'context': <mglossary.TContext>['local', {}],
-                                            'type': "Afhandeling",
+                                            'type': {
+                                                'annotation': "XXX",
+                                                'name': "Afhandeling",
+                                            },
                                         }],
                                     },
                                     "Bedrag": {
@@ -1258,14 +1270,20 @@ export const $: mproject.TModule = {
                 "Enrich": {
                     'data': {
                         'context': <mglossary.TContext>['local', {}],
-                        'type': "Root",
+                        'type': {
+                            'annotation': "SSDF",
+                            'name': "Root",
+                        },
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['not set', {}],
                     'return type': ['data', {
                         'type': {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': "Root",
+                            'type': {
+                                'annotation': "SSDF",
+                                'name': "Root",
+                            },
                         },
                         'asynchronous': false,
                     }],
@@ -1273,11 +1291,17 @@ export const $: mproject.TModule = {
                 "Serialize": {
                     'data': {
                         'context': <mglossary.TContext>['local', {}],
-                        'type': "Root",
+                        'type': {
+                            'annotation': "SSDF",
+                            'name': "Root",
+                        },
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['set', {
-                        'context': <mglossary.TContext>['import', "fp"],
+                        'context': <mglossary.TContext>['import', {
+                            'annotation': "undefined",
+                            'name': "undefined",
+                        }],
                         'interface': "Line",
                     }],
                     'return type': ['nothing', {}],

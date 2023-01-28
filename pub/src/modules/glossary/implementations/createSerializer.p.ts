@@ -61,7 +61,8 @@ export const $$: api.CcreateSerializer = ($d) => {
             })
             $i.nestedLine(($i) => {
                 $i.snippet(`'type': `)
-                doReference($.type, $i)
+                $i.snippet($.type)
+                //doReference($.type, $i)
                 $i.snippet(`,`)
             })
         })
@@ -220,7 +221,8 @@ export const $$: api.CcreateSerializer = ($d) => {
             case 'import':
                 pl.cc($[1], ($) => {
                     $i.snippet(`['import', `)
-                    doReference($, $i)
+                    //doReference($, $i)
+                    $i.snippet($)
                     $i.snippet(`]`)
                 })
                 break

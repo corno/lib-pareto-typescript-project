@@ -265,10 +265,7 @@ export const $: mproject.TModule = {
                         'optional': true,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': {
-                                'annotation': "XXX",
-                                'name': "Jaren",
-                            },
+                            'type': Jaren,
                         }],
                     },
                     "Klanten": {
@@ -527,10 +524,7 @@ export const $: mproject.TModule = {
                                                     'optional': true,
                                                     'type': <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', {}],
-                                                        'type': {
-                                                            'annotation': "XXX",
-                                                            'name': "Afhandeling",
-                                                        },
+                                                        'type': Afhandeling,
                                                     }],
                                                 },
                                             })],
@@ -710,10 +704,7 @@ export const $: mproject.TModule = {
                         'optional': true,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': {
-                                'annotation': "XXX",
-                                'name': "Informele Rekeningen",
-                            },
+                            'type': Informele Rekeningen,
                         }],
                     },
                     "Inkopen": {
@@ -1242,10 +1233,7 @@ export const $: mproject.TModule = {
                                         'optional': true,
                                         'type': <mglossary.TType>['reference', {
                                             'context': <mglossary.TContext>['local', {}],
-                                            'type': {
-                                                'annotation': "XXX",
-                                                'name': "Afhandeling",
-                                            },
+                                            'type': Afhandeling,
                                         }],
                                     },
                                     "Bedrag": {

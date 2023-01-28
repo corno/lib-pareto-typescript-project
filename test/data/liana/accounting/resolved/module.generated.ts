@@ -272,10 +272,7 @@ export const $: mproject.TModule = {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': {
-                                'annotation': "XXX",
-                                'name': "Jaren",
-                            },
+                            'type': Jaren,
                         }],
                     },
                     "Klanten": {
@@ -534,10 +531,7 @@ export const $: mproject.TModule = {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', {}],
-                                                        'type': {
-                                                            'annotation': "XXX",
-                                                            'name': "Afhandeling",
-                                                        },
+                                                        'type': Afhandeling,
                                                     }],
                                                 },
                                             })],
@@ -717,10 +711,7 @@ export const $: mproject.TModule = {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': {
-                                'annotation': "XXX",
-                                'name': "Informele Rekeningen",
-                            },
+                            'type': Informele Rekeningen,
                         }],
                     },
                     "Inkopen": {
@@ -1249,10 +1240,7 @@ export const $: mproject.TModule = {
                                         'optional': false,
                                         'type': <mglossary.TType>['reference', {
                                             'context': <mglossary.TContext>['local', {}],
-                                            'type': {
-                                                'annotation': "XXX",
-                                                'name': "Afhandeling",
-                                            },
+                                            'type': Afhandeling,
                                         }],
                                     },
                                     "Bedrag": {
@@ -1270,20 +1258,14 @@ export const $: mproject.TModule = {
                 "Enrich": {
                     'data': {
                         'context': <mglossary.TContext>['local', {}],
-                        'type': {
-                            'annotation': "SSDF",
-                            'name': "Root",
-                        },
+                        'type': Root,
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['not set', {}],
                     'return type': ['data', {
                         'type': {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': {
-                                'annotation': "SSDF",
-                                'name': "Root",
-                            },
+                            'type': Root,
                         },
                         'asynchronous': false,
                     }],
@@ -1291,17 +1273,11 @@ export const $: mproject.TModule = {
                 "Serialize": {
                     'data': {
                         'context': <mglossary.TContext>['local', {}],
-                        'type': {
-                            'annotation': "SSDF",
-                            'name': "Root",
-                        },
+                        'type': Root,
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['set', {
-                        'context': <mglossary.TContext>['import', {
-                            'annotation': "undefined",
-                            'name': "undefined",
-                        }],
+                        'context': <mglossary.TContext>['import', fp],
                         'interface': "Line",
                     }],
                     'return type': ['nothing', {}],

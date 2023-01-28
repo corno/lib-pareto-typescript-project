@@ -281,10 +281,7 @@ export const $: mproject.TModule = {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': {
-                                'annotation': "XXX",
-                                'name': "Jaren",
-                            },
+                            'type': Jaren,
                         }],
                     },
                     "Klanten": {
@@ -543,10 +540,7 @@ export const $: mproject.TModule = {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', {}],
-                                                        'type': {
-                                                            'annotation': "XXX",
-                                                            'name': "Afhandeling",
-                                                        },
+                                                        'type': Afhandeling,
                                                     }],
                                                 },
                                             })],
@@ -726,10 +720,7 @@ export const $: mproject.TModule = {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': {
-                                'annotation': "XXX",
-                                'name': "Informele Rekeningen",
-                            },
+                            'type': Informele Rekeningen,
                         }],
                     },
                     "Inkopen": {
@@ -1258,10 +1249,7 @@ export const $: mproject.TModule = {
                                         'optional': false,
                                         'type': <mglossary.TType>['reference', {
                                             'context': <mglossary.TContext>['local', {}],
-                                            'type': {
-                                                'annotation': "XXX",
-                                                'name': "Afhandeling",
-                                            },
+                                            'type': Afhandeling,
                                         }],
                                     },
                                     "Bedrag": {
@@ -1279,18 +1267,12 @@ export const $: mproject.TModule = {
                 "Serialize": {
                     'data': {
                         'context': <mglossary.TContext>['local', {}],
-                        'type': {
-                            'annotation': "SSDF",
-                            'name': "Accounting",
-                        },
+                        'type': Accounting,
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['set', {
-                        'context': <mglossary.TContext>['import', {
-                            'annotation': "FFF",
-                            'name': "fp",
-                        }],
-                        'interface': "[object Object]",
+                        'context': <mglossary.TContext>['import', fp],
+                        'interface': "Line",
                     }],
                     'return type': ['nothing', {}],
                 },

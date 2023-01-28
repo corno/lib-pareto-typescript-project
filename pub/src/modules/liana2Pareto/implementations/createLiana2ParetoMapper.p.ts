@@ -13,22 +13,23 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
     return ($) => {
         const model = $.model
         const stringMapping = $.stringmapping
-        function ref(type: string): mglossary.TType {
-            return ['reference', {
-                'context': ['local', {}],
-                'type': {
-                    'annotation': "SSDF",
-                    'name': type
-                },
-            }]
-        }
+        // function ref(type: string): mglossary.TType {
+        //     return ['reference', {
+        //         'context': ['local', {}],
+        //         'type': {
+        //             'annotation': "SSDF",
+        //             'name': type
+        //         },
+        //     }]
+        // }
         function typeReference(type: string): mglossary.TTypeReference {
             return {
                 'context': ['local', {}],
-                'type': {
-                    'annotation': "SSDF",
-                    'name': type
-                },
+                'type': type,
+                // 'type': {
+                //     'annotation': "SSDF",
+                //     'name': type
+                // },
             }
         }
 
@@ -104,10 +105,11 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             return pl.cc($[1], ($) => {
                                 return ['reference', {
                                     'context': ['local', {}],
-                                    'type': {
-                                        'annotation': "XXX",
-                                        'name': $.type.name,
-                                    },
+                                    'type': $.type.name,
+                                    // 'type': {
+                                    //     'annotation': "XXX",
+                                    //     'name': $.type.name,
+                                    // },
                                 }]
                             })
                         case 'dictionary':
@@ -297,10 +299,11 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     'definition': <mmoduleDefinition.TModuleDefinition>{
                         'glossary': <mglossary.TGlossary>{
                             'imports': pr.wrapRawDictionary({
-                                "fp": {
-                                    'name': "lib-fountain-pen",
-                                    'annotation': "FFF",
-                                },
+                                // "fp": {
+                                //     'name': "lib-fountain-pen",
+                                //     'annotation': "FFF",
+                                // },
+                                "fp": "lib-fountain-pen",
                             }),
                             'parameters': pr.wrapRawDictionary({
                                 "Annotation": {},
@@ -331,14 +334,16 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                     'data': typeReference($.model.root.name), //unresolved
                                     'managed input interface': ['not set', {}],
                                     'output interface': ['set', {
-                                        'context': ['import', {
-                                            'name': "fp",
-                                            'annotation': "FFF",
-                                        }],
-                                        'interface': {
-                                            'name': "Line",
-                                            'annotation': "FFF",
-                                        }
+                                        'context': ['import', "fp"],
+                                        'interface': "Line"
+                                        // 'context': ['import', {
+                                        //     'name': "fp",
+                                        //     'annotation': "FFF",
+                                        // }],
+                                        // 'interface': {
+                                        //     'name': "Line",
+                                        //     'annotation': "FFF",
+                                        // }
                                     }],
                                 },
                             }),

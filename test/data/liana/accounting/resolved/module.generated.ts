@@ -11,7 +11,7 @@ export const $: mproject.TModule = {
     'definition': {
         'glossary': {
             'imports': d({
-                "fp": {},
+                "fp": "lib-fountain-pen",
             }),
             'parameters': d({
                 "Annotation": {},
@@ -272,7 +272,7 @@ export const $: mproject.TModule = {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': Jaren,
+                            'type': "Jaren",
                         }],
                     },
                     "Klanten": {
@@ -531,7 +531,7 @@ export const $: mproject.TModule = {
                                                     'optional': false,
                                                     'type': <mglossary.TType>['reference', {
                                                         'context': <mglossary.TContext>['local', {}],
-                                                        'type': Afhandeling,
+                                                        'type': "Afhandeling",
                                                     }],
                                                 },
                                             })],
@@ -711,7 +711,7 @@ export const $: mproject.TModule = {
                         'optional': false,
                         'type': <mglossary.TType>['reference', {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': Informele Rekeningen,
+                            'type': "Informele Rekeningen",
                         }],
                     },
                     "Inkopen": {
@@ -1240,7 +1240,7 @@ export const $: mproject.TModule = {
                                         'optional': false,
                                         'type': <mglossary.TType>['reference', {
                                             'context': <mglossary.TContext>['local', {}],
-                                            'type': Afhandeling,
+                                            'type': "Afhandeling",
                                         }],
                                     },
                                     "Bedrag": {
@@ -1258,14 +1258,14 @@ export const $: mproject.TModule = {
                 "Enrich": {
                     'data': {
                         'context': <mglossary.TContext>['local', {}],
-                        'type': Root,
+                        'type': "Root",
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['not set', {}],
                     'return type': ['data', {
                         'type': {
                             'context': <mglossary.TContext>['local', {}],
-                            'type': Root,
+                            'type': "Root",
                         },
                         'asynchronous': false,
                     }],
@@ -1273,7 +1273,7 @@ export const $: mproject.TModule = {
                 "Serialize": {
                     'data': {
                         'context': <mglossary.TContext>['local', {}],
-                        'type': Root,
+                        'type': "Root",
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['set', {

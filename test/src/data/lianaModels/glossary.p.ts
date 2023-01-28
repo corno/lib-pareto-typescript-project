@@ -63,10 +63,7 @@ export const $: mliana.TModel = {
                     "not set": group({}),
                 })],
                 "interface": [[], taggedUnion({
-                    "set": group({
-                        "managed": [[], boolean()],
-                        "interface": [[], component("Interface", {})],
-                    }),
+                    "set": component("InterfaceReference", {}),
                     "not set": group({}),
                 })],
             }),
@@ -79,7 +76,6 @@ export const $: mliana.TModel = {
         "Type": globalType({}, taggedUnion({
             "array": component("Type", {}),
             "nested": component("Type", {}),
-            "optional": component("Type", {}),
             "dictionary": component("Type", {}),
             "computed": component("Type", {}),
             "null": group({}),

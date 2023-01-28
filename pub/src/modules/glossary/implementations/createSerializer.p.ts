@@ -61,7 +61,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             })
             $i.nestedLine(($i) => {
                 $i.snippet(`'type': `)
-                $i.snippet($.type)
+                $i.snippet(`"` + $.type + `"`)
                 //doReference($.type, $i)
                 $i.snippet(`,`)
             })
@@ -324,7 +324,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.imports, ($) => {
                         $i.nestedLine(($i) => {
-                            $i.snippet(`"${$.key}": {},`)
+                            $i.snippet(`"${$.key}": "${$.value}",`)
                         })
                     })
                 })

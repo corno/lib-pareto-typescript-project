@@ -3,7 +3,7 @@ import * as pl from 'pareto-core-lib'
 import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
-
+import { MReference } from '../../glossary_test'
 
 export namespace VOptional {}
 export type VOptional<AType> = 
@@ -12,8 +12,23 @@ export type VOptional<AType> =
 
 export type MOptional<AType> = VOptional<AType>
 
-
 export const $$: api.CcreateSerializer = ($d) => {
+    function doReference<T>(
+        $: MReference<T>,
+        $i: mfp.ILine,
+        //$c: ($: T, $i: mfp.ILine) => void
+    ) {
+        $i.snippet(`{`)
+        $i.indent(($i) => {
+            $i.nestedLine(($i) => {
+                $i.snippet(`'annotation': "${$.annotation}",`)
+            })
+            $i.nestedLine(($i) => {
+                $i.snippet(`'name': "${$.name}",`)
+            })
+        })
+        $i.snippet(`}`)
+    }
 
     function doOptional<T>(
         $: MOptional<T>,
@@ -23,7 +38,7 @@ export const $$: api.CcreateSerializer = ($d) => {
         switch ($[0]) {
             case 'not set':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['not set', null]`)
+                    $i.snippet(`['not set', {}]`)
                 })
                 break
             case 'set':
@@ -45,7 +60,10 @@ export const $$: api.CcreateSerializer = ($d) => {
                 $i.snippet(`,`)
             })
             $i.nestedLine(($i) => {
-                $i.snippet(`'type': "${$.type}",`)
+                $i.snippet(`'type': `)
+                $i.snippet(`"` + $.type + `"`)
+                //doReference($.type, $i)
+                $i.snippet(`,`)
             })
         })
         $i.snippet(`}`)
@@ -64,12 +82,12 @@ export const $$: api.CcreateSerializer = ($d) => {
                 break
             case 'null':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['null', null]`)
+                    $i.snippet(`['null', {}]`)
                 })
                 break
             case 'boolean':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['boolean', null]`)
+                    $i.snippet(`['boolean', {}]`)
                 })
                 break
             case 'reference':
@@ -81,12 +99,12 @@ export const $$: api.CcreateSerializer = ($d) => {
                 break
             case 'number':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['number', null]`)
+                    $i.snippet(`['number', {}]`)
                 })
                 break
             case 'string':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['string', null]`)
+                    $i.snippet(`['string', {}]`)
                 })
                 break
             case 'array':
@@ -202,12 +220,15 @@ export const $$: api.CcreateSerializer = ($d) => {
         switch ($[0]) {
             case 'import':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['import', "${$}"]`)
+                    $i.snippet(`['import', `)
+                    //doReference($, $i)
+                    $i.snippet(`"` + $ + `"`)
+                    $i.snippet(`]`)
                 })
                 break
             case 'local':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['local', null]`)
+                    $i.snippet(`['local', {}]`)
                 })
                 break
             default: pl.au($[0])
@@ -435,7 +456,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                             break
                                         case 'nothing':
                                             pl.cc($.value['return type'][1], ($) => {
-                                                $i.snippet(`['nothing', null]`)
+                                                $i.snippet(`['nothing', {}]`)
 
                                             })
                                             break

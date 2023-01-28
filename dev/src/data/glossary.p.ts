@@ -65,7 +65,10 @@ export const $: mliana.TModel = {
                     "not set": group({}),
                 })],
                 "interface": [[], taggedUnion({
-                    "set": component("InterfaceReference", {}),
+                    "set": group({
+                        "managed": [[], boolean()],
+                        "interface": [[], component("Interface", {})],
+                    }),
                     "not set": group({}),
                 })],
             }),

@@ -142,10 +142,19 @@ export const $: mproject.TModule = {
                             'optional': true,
                             'type': <mglossary.TType>['taggedUnion', d({
                                 "not set": <mglossary.TType>['group', d({})],
-                                "set": <mglossary.TType>['reference', {
-                                    'context': <mglossary.TContext>['local', {}],
-                                    'type': "InterfaceReference",
-                                }],
+                                "set": <mglossary.TType>['group', d({
+                                    "interface": {
+                                        'optional': true,
+                                        'type': <mglossary.TType>['reference', {
+                                            'context': <mglossary.TContext>['local', {}],
+                                            'type': "Interface",
+                                        }],
+                                    },
+                                    "managed": {
+                                        'optional': true,
+                                        'type': <mglossary.TType>['boolean', {}],
+                                    },
+                                })],
                             })],
                         },
                     })],

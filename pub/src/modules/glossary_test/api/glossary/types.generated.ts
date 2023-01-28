@@ -12,14 +12,11 @@ export type MReference<AReferencedType> = VReference<AReferencedType>
 
 export namespace GContext {
     
-    export namespace Oimport {}
-    export type Oimport = MReference<null>
-    
     export namespace Olocal {}
     export type Olocal = {}
 }
 export type GContext = 
-    | ['import', GContext.Oimport]
+    | ['import', string]
     | ['local', GContext.Olocal]
 export type UContext = GContext
 
@@ -168,14 +165,10 @@ export type GInterface =
     | ['reference', UInterfaceReference]
 export type UInterface = GInterface
 
-export namespace GInterfaceReference {
-    
-    export namespace Pinterface {}
-    export type Pinterface = MReference<null>
-}
+export namespace GInterfaceReference {}
 export type GInterfaceReference = {
     readonly 'context': UContext
-    readonly 'interface': GInterfaceReference.Pinterface
+    readonly 'interface': string
 }
 export type UInterfaceReference = GInterfaceReference
 
@@ -233,13 +226,9 @@ export type GType =
     | ['template', GType.Otemplate]
 export type UType = GType
 
-export namespace GTypeReference {
-    
-    export namespace Ptype {}
-    export type Ptype = MReference<null>
-}
+export namespace GTypeReference {}
 export type GTypeReference = {
     readonly 'context': UContext
-    readonly 'type': GTypeReference.Ptype
+    readonly 'type': string
 }
 export type UTypeReference = GTypeReference

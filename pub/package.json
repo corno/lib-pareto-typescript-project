@@ -18,7 +18,7 @@
   "license": "ISC",
   "main": "dist/index.js",
   "name": "lib-pareto-typescript-project",
-  "version": "0.0.0",
+  "version": "0.80.0",
   "repository": {
     "type": "git",
     "url": "http://github.com/corno/lib-pareto-typescript-project.git"

@@ -8,6 +8,8 @@ import * as mproject from "../../project"
 import * as mtemp from "../../temp"
 import * as mts from "res-typescript"
 
+export type CcreateBuildEnvironmentSerializer = ($d: {}) => glo.FSerializeBuildEnvironment
+
 export type CcreateGlossarySerializer = ($d: {
     readonly 'createApostrophedString': mts.FCreateApostrophedString
     readonly 'createBacktickedString': mts.FCreateBacktickedString
@@ -37,6 +39,8 @@ export type CcreateModuleDefinitionSerializer = ($d: {
     readonly 'serializeGlossary': glo.FSerializeGlossary
 }) => glo.FSerializeModuleDefinition
 
+export type CcreateParetoEnvironmentSerializer = ($d: {}) => glo.FSerializeParetoEnvironment
+
 export type CcreateProjectSerializer = ($d: {
     readonly 'createApostrophedString': mts.FCreateApostrophedString
     readonly 'createBacktickedString': mts.FCreateBacktickedString
@@ -65,9 +69,11 @@ export type CcreateTemplateSerializer = ($d: {
 }) => glo.FSerializeTemplate
 
 export type API = {
+    createBuildEnvironmentSerializer: CcreateBuildEnvironmentSerializer
     createGlossarySerializer: CcreateGlossarySerializer
     createImplementationSerializer: CcreateImplementationSerializer
     createModuleDefinitionSerializer: CcreateModuleDefinitionSerializer
+    createParetoEnvironmentSerializer: CcreateParetoEnvironmentSerializer
     createProjectSerializer: CcreateProjectSerializer
     createStatesSerializer: CcreateStatesSerializer
     createTemplateSerializer: CcreateTemplateSerializer

@@ -13,6 +13,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
             "algorithm": "../../../algorithm",
+            "common": "glo-pareto-common",
             "fp": "lib-fountain-pen",
             "glossary": "../../../glossary",
             "moduleDefinition": "../../../moduleDefinition",
@@ -28,6 +29,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "SerializeGlossary": callback(typeReference("glossary", "Glossary"), interfaceReference("fp", "Writer")),
             "SerializeImplementation": callback(typeReference("algorithm", "Implementation"), interfaceReference("fp", "Writer")),
             "SerializeModuleDefinition": callback(typeReference("moduleDefinition", "ModuleDefinition"), interfaceReference("fp", "Writer")),
+            "SerializeParetoEnvironment": callback(typeReference("common", "Null"), interfaceReference("fp", "Writer")),
+            "SerializeBuildEnvironment": callback(typeReference("common", "Null"), interfaceReference("fp", "Writer")),
             "SerializeProject": callback(typeReference("project", "Project"), interfaceReference("fp", "Writer")),
             "SerializeTemplate": callback(typeReference("project", "Project"), interfaceReference("fp", "Writer")),
             "SerializeStates": callback(typeReference("algorithm", "States"), interfaceReference("fp", "Block")),
@@ -76,6 +79,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "createApostrophedString": definitionReference("ts", "CreateApostrophedString"),
                 "createQuotedString": definitionReference("ts", "CreateQuotedString"),
                 "createBacktickedString": definitionReference("ts", "CreateBacktickedString"),
+            })),
+            "createParetoEnvironmentSerializer": algorithm(definitionReference("SerializeParetoEnvironment"), constructor(null, {
+            })),
+            "createBuildEnvironmentSerializer": algorithm(definitionReference("SerializeBuildEnvironment"), constructor(null, {
             })),
             "createStatesSerializer": algorithm(definitionReference("SerializeStates"), constructor(null, {
                 "arrayForEach": definitionReference("temp", "ArrayForEach"),

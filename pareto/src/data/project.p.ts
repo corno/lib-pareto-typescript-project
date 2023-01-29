@@ -49,9 +49,6 @@ export const $: mproject.TProject = {
     'pubdependencies': d({
         "glo-pareto-common": {},
         "lib-fountain-pen": {},
-        "pareto-core-lib": {},
-        "pareto-core-raw": {},
-        "pareto-core-state": {},
         "res-pareto-collation": {},
         "res-pareto-filesystem": {},
         "res-pareto-main": {},

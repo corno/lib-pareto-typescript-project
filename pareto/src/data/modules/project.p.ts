@@ -36,8 +36,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             }),
             "Project": group({
                 "type": member(taggedUnion({
-                    "resource": group({}),
-                    "glossary": group({}),
+                    "resource": group({
+                        "devDependencies": member(dictionary(group({}))),
+                    }),
+                    "glossary": group({
+
+                    }),
                     "library": group({}),
                 })),
                 "modules": member(dictionary(reference("Module"))),

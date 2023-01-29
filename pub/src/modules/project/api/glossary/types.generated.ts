@@ -47,8 +47,18 @@ export namespace GProject {
         export namespace Olibrary {}
         export type Olibrary = {}
         
-        export namespace Oresource {}
-        export type Oresource = {}
+        export namespace Oresource {
+            
+            export namespace PdevDependencies {
+                
+                export namespace D {}
+                export type D = {}
+            }
+            export type PdevDependencies = pt.Dictionary<PdevDependencies.D>
+        }
+        export type Oresource = {
+            readonly 'devDependencies': Oresource.PdevDependencies
+        }
     }
     export type Ptype = 
         | ['glossary', Ptype.Oglossary]

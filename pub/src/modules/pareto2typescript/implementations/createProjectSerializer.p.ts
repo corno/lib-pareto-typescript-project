@@ -65,10 +65,36 @@ export const $$: api.CcreateProjectSerializer = (
                 $d.dictionaryForEach($.pubdependencies, ($) => {
                     $i.line(`    "${$.key}": "^0.0.0",`)
                 })
-                $i.line(`    "pareto-core-lib": "^0.0.0",`)
-                $i.line(`    "pareto-core-raw": "^0.0.0",`)
-                $i.line(`    "pareto-core-state": "^0.0.0"`)
+                switch ($.type[0]) {
+                    case 'glossary':
+                        pl.cc($.type[1], ($) => {
+                            $i.line(`    "pareto-core-types": "^0.0.0",`)
+                        })
+                        break
+                    case 'library':
+                        pl.cc($.type[1], ($) => {
+                            $i.line(`    "pareto-core-lib": "^0.0.0",`)
+                            $i.line(`    "pareto-core-raw": "^0.0.0",`)
+                            $i.line(`    "pareto-core-state": "^0.0.0"`)
+                        })
+                        break
+                    case 'resource':
+                        pl.cc($.type[1], ($) => {
+                            $i.line(`    "pareto-core-internals": "^0.0.0",`)
+                        })
+                        break
+                    default: pl.au($.type[0])
+                }
                 $i.line(`  },`)
+                //devDependencies
+                if ($.type[0] === 'resource') {
+
+                    $i.line(`  "devDependencies": {`)
+                    $d.dictionaryForEach($.type[1].devDependencies, ($) => {
+                        $i.line(`    "${$.key}": "^0.0.0",`)
+                    })
+                    $i.line(`  },`)
+                }
                 $i.line(`  "description": "TBD",`)
                 $i.line(`  "files": [`)
                 $i.line(`    "dist"`)

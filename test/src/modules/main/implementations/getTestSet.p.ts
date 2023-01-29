@@ -41,6 +41,10 @@ export const $$: api.CgetTestSet = ($XXX) => {
             'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/project`]),
         },
         'project': {
+            'name': "FOOBAR",
+            'author': "Corno",
+            'description': "TBD",
+            'license': "ISC",
             'type': ['resource', {
                 'devDependencies': d({
                     "a": {},
@@ -52,7 +56,6 @@ export const $$: api.CgetTestSet = ($XXX) => {
                 "main": module
             }),
             'main': "main",
-            'name': "FOOBAR",
             'pubdependencies': d({
                 "lib-pareto-fubar": {}
             }),

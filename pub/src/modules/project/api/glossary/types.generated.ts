@@ -66,6 +66,9 @@ export namespace GProject {
         | ['resource', Ptype.Oresource]
 }
 export type GProject = {
+    readonly 'author': string
+    readonly 'description': string
+    readonly 'license': string
     readonly 'main': string
     readonly 'modules': GProject.Pmodules
     readonly 'name': string

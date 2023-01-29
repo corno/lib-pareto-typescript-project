@@ -1,5 +1,9 @@
 {
+  "name": "FOOBAR",
   "author": "Corno",
+  "license": "ISC",
+  "description": "TBD",
+
   "dependencies": {
     "lib-pareto-fubar": "^0.0.0",
     "pareto-core-internals": "^0.0.0"
@@ -8,17 +12,14 @@
     "a": "^0.0.0",
     "b": "^0.0.0"
   },
-  "description": "TBD",
   "files": [
     "dist"
   ],
-  "license": "ISC",
-  "main": "dist/index.js",
-  "name": "FOOBAR",
-  "version": "0.0.0",
   "repository": {
     "type": "git",
     "url": "http://github.com/corno/FOOBAR.git"
   },
-  "types": "dist/index.d.ts"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "version": "0.0.0"
 }

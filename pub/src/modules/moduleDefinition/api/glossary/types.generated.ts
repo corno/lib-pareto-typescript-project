@@ -67,17 +67,29 @@ export namespace GModuleDefinition {
             }
         }
         export type Palgorithms = pt.Dictionary<Palgorithms.D>
-        
-        export namespace Pimports {}
-        export type Pimports = pt.Dictionary<string>
     }
     export type Papi = {
         readonly 'algorithms': Papi.Palgorithms
-        readonly 'imports': Papi.Pimports
     }
+    
+    export namespace Parguments {
+        
+        export namespace D {}
+        export type D = {}
+    }
+    export type Parguments = pt.Dictionary<Parguments.D>
+    
+    export namespace Pimports {
+        
+        export namespace D {}
+        export type D = {}
+    }
+    export type Pimports = pt.Dictionary<Pimports.D>
 }
 export type GModuleDefinition = {
     readonly 'api': GModuleDefinition.Papi
+    readonly 'arguments': GModuleDefinition.Parguments
     readonly 'glossary': mglossary.TGlossary
+    readonly 'imports': GModuleDefinition.Pimports
 }
 export type UModuleDefinition = GModuleDefinition

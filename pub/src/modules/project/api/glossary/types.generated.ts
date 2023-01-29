@@ -2,28 +2,27 @@ import * as pt from 'pareto-core-types'
 
 import * as malgorithm from "../../../algorithm"
 import * as mfp from "lib-fountain-pen"
+import * as mglossary from "../../../glossary"
 import * as mmoduleDefinition from "../../../moduleDefinition"
 
-export namespace GAlgorithmImplementation {}
-export type GAlgorithmImplementation = {}
-export type UAlgorithmImplementation = GAlgorithmImplementation
-
-export namespace GImplementation {}
-export type GImplementation = pt.Dictionary<UAlgorithmImplementation>
-export type UImplementation = GImplementation
-
-export namespace GModule {}
+export namespace GModule {
+    
+    export namespace Parguments {}
+    export type Parguments = pt.Dictionary<string>
+    
+    export namespace Pparameters {}
+    export type Pparameters = pt.Dictionary<string>
+}
 export type GModule = {
+    readonly 'arguments': GModule.Parguments
     readonly 'definition': mmoduleDefinition.TModuleDefinition
     readonly 'implementation'?: malgorithm.TImplementation
+    readonly 'parameters': GModule.Pparameters
     readonly 'states'?: malgorithm.TStates
 }
 export type UModule = GModule
 
 export namespace GProject {
-    
-    export namespace Pmodules {}
-    export type Pmodules = pt.Dictionary<UModule>
     
     export namespace Ppubdependencies {
         
@@ -41,11 +40,44 @@ export namespace GProject {
     
     export namespace Ptype {
         
-        export namespace Oglossary {}
-        export type Oglossary = {}
+        export namespace Oglossary {
+            
+            export namespace Parguments {}
+            export type Parguments = pt.Dictionary<string>
+        }
+        export type Oglossary = {
+            readonly 'arguments': Oglossary.Parguments
+            readonly 'definition': mglossary.TGlossary
+        }
         
-        export namespace Olibrary {}
-        export type Olibrary = {}
+        export namespace Olibrary {
+            
+            export namespace Psubmodules {
+                
+                export namespace D {
+                    
+                    export namespace Parguments {
+                        
+                        export namespace Omain {}
+                        export type Omain = {}
+                    }
+                    export type Parguments = 
+                        | ['external', string]
+                        | ['main', Parguments.Omain]
+                        | ['sibling', string]
+                }
+                export type D = {
+                    readonly 'arguments': D.Parguments
+                    readonly 'module': UModule
+                }
+            }
+            export type Psubmodules = pt.Dictionary<Psubmodules.D>
+        }
+        export type Olibrary = {
+            readonly 'arguments': string
+            readonly 'main': UModule
+            readonly 'submodules': Olibrary.Psubmodules
+        }
         
         export namespace Oresource {
             
@@ -57,6 +89,7 @@ export namespace GProject {
             export type PdevDependencies = pt.Dictionary<PdevDependencies.D>
         }
         export type Oresource = {
+            readonly 'definition': mmoduleDefinition.TModuleDefinition
             readonly 'devDependencies': Oresource.PdevDependencies
         }
     }
@@ -69,8 +102,6 @@ export type GProject = {
     readonly 'author': string
     readonly 'description': string
     readonly 'license': string
-    readonly 'main': string
-    readonly 'modules': GProject.Pmodules
     readonly 'name': string
     readonly 'pubdependencies': GProject.Ppubdependencies
     readonly 'testdependencies': GProject.Ptestdependencies

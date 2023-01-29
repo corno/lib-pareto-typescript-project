@@ -3,7 +3,7 @@ import * as pl from 'pareto-core-lib'
 import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
-export const $$: api.CcreateProjectSerializer = (
+export const $$: api.CcreateParetoEnvironmentSerializer = (
     $d,
 ) => {
     return ($, $i) => {

@@ -30,6 +30,7 @@ export type FEnrichedDictionaryForEach = <T> (
             key: string
             value: T,
             isFirst: boolean
+            isLast: boolean
         }) => void) => void) => void
     }
 ) => void
@@ -41,6 +42,7 @@ export type FEnrichedArrayForEach = <T> (
         onNotEmpty: ($c: ($i: ($: {
             value: T,
             isFirst: boolean
+            isLast: boolean
         }) => void) => void) => void
     }
 ) => void

@@ -47,6 +47,7 @@ export type CcreateProjectSerializer = ($d: {
     readonly 'createIdentifier': mts.FCreateIdentifier
     readonly 'createQuotedString': mts.FCreateQuotedString
     readonly 'dictionaryForEach': mtemp.FDictionaryForEach
+    readonly 'enrichedDictionaryForEach': mtemp.FEnrichedDictionaryForEach
     readonly 'serializeImplementation': glo.FSerializeImplementation
     readonly 'serializeModuleDefinition': glo.FSerializeModuleDefinition
 }) => glo.FSerializeProject

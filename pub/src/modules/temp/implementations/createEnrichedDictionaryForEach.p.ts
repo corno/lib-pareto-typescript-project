@@ -5,22 +5,20 @@ import * as api from "../api"
 
 export const $$: api.CcreateEnrichedDictionaryForEach = ($d) => {
     return ($, $i) => {
-        let empty = true
-        $.forEach((a, b) => $d.compare({ a: a, b: b }), ($) => {
-            empty = false
-        })
-        if (empty) {
+        let length = $.reduce(0, (current) => current + 1)
+        if (length === 0) {
             $i.onEmpty()
         } else {
             $i.onNotEmpty(($i) => {
-                let first = true
+                let current = 0
                 $.forEach((a, b) => $d.compare({ a: a, b: b }), ($, key) => {
                     $i({
-                        isFirst: first,
+                        isFirst: current === 0,
+                        isLast: current === length - 1,
                         key: key,
                         value: $,
                     })
-                    first = false
+                    current += 1
                 })
             })
         }

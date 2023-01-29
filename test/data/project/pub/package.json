@@ -2,9 +2,11 @@
   "author": "Corno",
   "dependencies": {
     "lib-pareto-fubar": "^0.0.0",
-    "pareto-core-lib": "^0.0.0",
-    "pareto-core-raw": "^0.0.0",
-    "pareto-core-state": "^0.0.0"
+    "pareto-core-internals": "^0.0.0"
+  },
+  "devDependencies": {
+    "a": "^0.0.0",
+    "b": "^0.0.0"
   },
   "description": "TBD",
   "files": [

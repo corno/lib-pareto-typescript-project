@@ -41,7 +41,13 @@ export const $$: api.CgetTestSet = ($XXX) => {
             'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/project`]),
         },
         'project': {
-            'type': ['library', {}],
+            'type': ['resource', {
+                'devDependencies': d({
+                    "a": {},
+                    "b": {},
+                }),
+
+            }],
             'modules': d({
                 "main": module
             }),

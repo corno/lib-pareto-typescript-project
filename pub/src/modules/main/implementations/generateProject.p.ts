@@ -30,6 +30,7 @@ export const $$: api.CgenerateProject = ($) => {
             serializeProject: mpareto2typescript.$a.createProjectSerializer(
                 {
                     dictionaryForEach: d,
+                    enrichedDictionaryForEach: ed,
                     serializeModuleDefinition: mpareto2typescript.$a.createModuleDefinitionSerializer(
                         {
                             dictionaryForEach: d,

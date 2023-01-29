@@ -68,7 +68,7 @@ export const $$: api.CcreateProjectSerializer = (
                 switch ($.type[0]) {
                     case 'glossary':
                         pl.cc($.type[1], ($) => {
-                            $i.line(`    "pareto-core-types": "^0.0.0",`)
+                            $i.line(`    "pareto-core-types": "^0.0.0"`)
                         })
                         break
                     case 'library':
@@ -80,7 +80,7 @@ export const $$: api.CcreateProjectSerializer = (
                         break
                     case 'resource':
                         pl.cc($.type[1], ($) => {
-                            $i.line(`    "pareto-core-internals": "^0.0.0",`)
+                            $i.line(`    "pareto-core-internals": "^0.0.0"`)
                         })
                         break
                     default: pl.au($.type[0])
@@ -89,11 +89,18 @@ export const $$: api.CcreateProjectSerializer = (
                 //devDependencies
                 if ($.type[0] === 'resource') {
 
-                    $i.line(`  "devDependencies": {`)
-                    $d.dictionaryForEach($.type[1].devDependencies, ($) => {
-                        $i.line(`    "${$.key}": "^0.0.0",`)
+                    $d.enrichedDictionaryForEach($.type[1].devDependencies, {
+                        onEmpty: () => {
+
+                        },
+                        onNotEmpty: ($c) => {
+                                $i.line(`  "devDependencies": {`)
+                                $c(($) => {
+                                    $i.line(`    "${$.key}": "^0.0.0"${$.isLast ? ``: `,`}`)
+                                })
+                                $i.line(`  },`)
+                        }
                     })
-                    $i.line(`  },`)
                 }
                 $i.line(`  "description": "TBD",`)
                 $i.line(`  "files": [`)

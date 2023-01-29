@@ -5,22 +5,20 @@ import * as api from "../api"
 
 export const $$: api.CcreateEnrichedArrayForEach = ($d) => {
     return ($, $i) => {
+        let length = $.reduce(0, (current) => current + 1)
 
-        let empty = true
-        $.forEach(($) => {
-            empty = false
-        })
-        if (empty) {
+        if (length === 0) {
             $i.onEmpty()
         } else {
             $i.onNotEmpty(($i) => {
-                let first = true
+                let current = 0
                 $.forEach(($) => {
                     $i({
-                        isFirst: first,
+                        isFirst: current === 0,
+                        isLast: current === length - 1,
                         value: $,
                     })
-                    first = false
+                    current += 1
                 })
             })
         }

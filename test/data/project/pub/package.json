@@ -13,9 +13,10 @@
   "license": "ISC",
   "main": "dist/index.js",
   "name": "FOOBAR",
+  "version": "0.0.0",
   "repository": {
     "type": "git",
     "url": "http://github.com/corno/FOOBAR.git"
   },
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d.ts"
 }

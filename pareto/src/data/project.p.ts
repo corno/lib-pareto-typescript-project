@@ -44,5 +44,22 @@ export const $: mproject.TProject = {
             'definition': pareto2typescript,
         },
     }),
-    'main': "main"
+    'main': "main",
+    'name': "lib-pareto-typescript-project",
+    'pubdependencies': d({
+        "glo-pareto-common": {},
+        "lib-fountain-pen": {},
+        "pareto-core-lib": {},
+        "pareto-core-raw": {},
+        "pareto-core-state": {},
+        "res-pareto-collation": {},
+        "res-pareto-filesystem": {},
+        "res-pareto-main": {},
+        "res-typescript": {},
+    }),
+    'testdependencies': d({
+        "lib-fountain-pen": {},
+        "res-typescript": {},
+
+    }),
 }

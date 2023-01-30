@@ -65,18 +65,6 @@ export const $$: api.CcreateProjectSerializer = (
                 $i.line(`  "license": "${$.license}",`)
                 $i.line(`  "description": "${$.description}",`)
                 $i.line(``)
-
-
-
-                // "keywords": [],
-                // "main": "./dist/index.js",
-                // "bugs": {
-                //   "url": "https://github.com/corno/pareto/issues"
-                // },
-                // "description": "",
-                // "homepage": "https://github.com/corno/pareto#readme",
-
-
                 $i.line(`  "dependencies": {`)
                 $d.dictionaryForEach($.pubdependencies, ($) => {
                     $i.line(`    "${$.key}": "^0.0.0",`)
@@ -233,7 +221,7 @@ export const $$: api.CcreateProjectSerializer = (
             })
             tsConfig({ isResource: $.type !== undefined && $.type[0] === 'resource' }, $i)
         })
-        if ($.type[0] !== 'glossary') {
+        if ($.type === undefined || $.type[0] !== 'glossary') {
             $i.directory("test", ($i) => {
                 $i.allowed("data")
                 $i.allowed("dist")

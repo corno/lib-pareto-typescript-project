@@ -14,21 +14,20 @@ const d = pr.wrapRawDictionary
 export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
+            "moduleDefinition": "../../../moduleDefinition",
             "algorithm": "../../../algorithm",
             "fp": "lib-fountain-pen",
-            "glossary": "../../../glossary",
-            "moduleDefinition": "../../../moduleDefinition",
         }),
         'parameters': d({}),
         'templates': d({}),
         'types': types({
+            "AlgorithmImplementation": group({}),
+            "Implementation": dictionary(reference("AlgorithmImplementation")),
             "Module": group({
-                "parameters": member(dictionary(string())),
                 "definition": member(reference("moduleDefinition", "ModuleDefinition")),
-                "arguments": member(dictionary(string())),
-
                 // "type": member(taggedUnion({
                 //     "binding": nll(),
+                //     "resource": nll(),
                 //     "logic": nll(),
 
                 // }))
@@ -40,29 +39,18 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "author": member(string()),
                 "license": member(string()),
                 "description": member(string()),
-                "pubdependencies": member(dictionary(group({}))),
                 "type": member(taggedUnion({
                     "resource": group({
                         "devDependencies": member(dictionary(group({}))),
-                        "definition": member(reference("moduleDefinition", "ModuleDefinition")),
                     }),
                     "glossary": group({
-                        "definition": member(reference("glossary", "Glossary")),
-                        "arguments": member(dictionary(string())),
+
                     }),
-                    "library": group({
-                        "main": member(reference("Module")),
-                        "arguments": member(string()),
-                        "submodules": member(dictionary(group({
-                            "module": member( reference("Module")),
-                            "arguments": member(taggedUnion({
-                                "sibling": string(),
-                                "main": group({}),
-                                "external": string(),
-                            }))
-                        }))),
-                    }),
+                    "library": group({}),
                 })),
+                "modules": member(dictionary(reference("Module"))),
+                "main": member(string()),
+                "pubdependencies": member(dictionary(group({}))),
                 "testdependencies": member(dictionary(group({}))),
             }),
         }),

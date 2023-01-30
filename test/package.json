@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "lib-fountain-pen": "^0.30.0",
-    "res-typescript": "^0.8.0",
+    "res-typescript": "^0.7.0",
     "lib-pareto-test": "^0.26.0",
     "pareto-core-exe": "^0.15.1",
     "pareto-core-lib": "^0.18.0",

@@ -42,10 +42,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "import": string(),
             }),
             "ModuleDefinition": group({
-                "imports": member(dictionary(group({}))),
                 "glossary": member(reference("glossary", "Glossary")),
-                "arguments": member(dictionary(group({}))),
                 "api": member(group({
+                    "imports": member(dictionary(string())),
                     "algorithms": member(dictionary(group({
                         "definition": member(reference("DefinitionReference")),
                         "type": member(taggedUnion({

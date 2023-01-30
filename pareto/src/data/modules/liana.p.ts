@@ -4,11 +4,11 @@ import {
     string,
     reference,
     boolean,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference, parameter, template
-} from "lib-pareto-typescript-project/dist/submodules/glossary/api/shorthands.p"
+    array, dictionary, group, member, taggedUnion, types, typeReference, parameter, template, func, data
+} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
-import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/submodules/moduleDefinition/api/shorthands.p'
+import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p'
 
 
 const d = pr.wrapRawDictionary
@@ -226,7 +226,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'interfaces': d({
         }),
         'functions': d({
-            "Resolve": _function(typeReference("Model"), typeReference("PossibleModel")),
+            "Resolve": func(typeReference("Model"), null, null, data(typeReference("PossibleModel"), false)),
         }),
     },
     'api': {

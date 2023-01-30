@@ -3,10 +3,10 @@ import {
     string,
     null_,
     reference,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference, managedPipe, interfaceReference, procedure, callback, method
-} from "lib-pareto-typescript-project/dist/submodules/glossary/api/shorthands.p"
+    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, method, func, data
+} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
@@ -42,10 +42,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "HandleParameters": method(typeReference("Parameters")),
         }),
         'functions': d({
-            "GenerateProject": procedure(typeReference("ProjectSettings")),
-            "GetSingleArgument": _function(typeReference("main", "Arguments"), typeReference("common", "String"), true),
-            "HandleArgumentError": procedure(typeReference("ArgumentError")),
-            "ParseArguments2": callback(typeReference("main", "Arguments"), interfaceReference("HandleParameters")),
+            "GenerateProject": func(typeReference("ProjectSettings"), null, null, null),
+            "GetSingleArgument": func(typeReference("main", "Arguments"), null, null, data(typeReference("common", "String"), true)),
+            "HandleArgumentError": func(typeReference("ArgumentError"), null, null, null),
+            "ParseArguments2": func(typeReference("main", "Arguments"), null, interfaceReference("HandleParameters"), null),
         }),
     },
     'api': {

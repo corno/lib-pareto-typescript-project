@@ -8,7 +8,9 @@ import {
     TReference,
     TString,
     T_$Reference,
-} from "./glossary";
+} from "./api/glossary";
+
+type RawDictionary<T> = { [key: string]: T }
 
 function r_imp(name: string, annotation: string): T_$Reference {
     return {
@@ -17,21 +19,21 @@ function r_imp(name: string, annotation: string): T_$Reference {
     }
 }
 
-function d_imp<T>($: { [key: string]: T }, annotation: string): MDictionary<T> {
+function d_imp<T>($: RawDictionary<T>, annotation: string): MDictionary<T> {
     return {
         'annotation': annotation,
         'dictionary': pr.wrapRawDictionary($),
     }
 }
 
-function d_mappedimp<T, RT>($: { [key: string]: T }, annotation: string, cb: ($: T) => RT): MDictionary<RT> {
+function d_mappedimp<T, RT>($: RawDictionary<T>, annotation: string, cb: ($: T) => RT): MDictionary<RT> {
     return {
         'annotation': annotation,
         'dictionary': pr.wrapRawDictionary($).map(cb),
     }
 }
 
-export function d<T>($: { [key: string]: T }) {
+export function d<T>($: RawDictionary<T>) {
     const li = pr.getLocationInfo(1)
     return d_imp($, li)
 }
@@ -76,7 +78,7 @@ export function dictionary(type: TLocalType): TLocalType {
     }]
 }
 
-export function globalType(parameters: { [key: string]: string }, type: TLocalType): TGlobalType {
+export function globalType(parameters: RawDictionary<string>, type: TLocalType): TGlobalType {
     const li = pr.getLocationInfo(1)
     return {
         'type': type,
@@ -86,11 +88,11 @@ export function globalType(parameters: { [key: string]: string }, type: TLocalTy
     }
 }
 
-export function group(properties: { [key: string]: [string[], TLocalType] }): TLocalType {
+export function group(properties: RawDictionary<[string[], TLocalType]>): TLocalType {
     const li = pr.getLocationInfo(1)
     return ['group', {
         'properties': d_mappedimp(properties, li, ($) => {
-            const temp: { [key: string]: {} } = {}
+            const temp: RawDictionary<{}> = {}
             pr.wrapRawArray($[0]).forEach(($) => {
                 temp[$] = {}
             })
@@ -102,7 +104,7 @@ export function group(properties: { [key: string]: [string[], TLocalType] }): TL
     }]
 }
 
-export function taggedUnion(options: { [key: string]: TLocalType }): TLocalType {
+export function taggedUnion(options: RawDictionary<TLocalType>): TLocalType {
     const li = pr.getLocationInfo(1)
     let firstKey: null | string = null
     pr.wrapRawDictionary(options).map(($, key) => {
@@ -155,8 +157,6 @@ export type Step =
     | ["array", null]
 
 function referenceX($: ReferenceType, steps: Step[], annotation: string): TReference {
-
-
     return {
         'type': pl.cc($, ($) => {
             switch ($[0]) {
@@ -214,7 +214,7 @@ export function reference(
     }]
 }
 
-export function component(type: string, args: {[key:string]: {}}): TLocalType {
+export function component(type: string, args: RawDictionary<{}>): TLocalType {
     const li = pr.getLocationInfo(1)
     return ['component', {
         'type': {

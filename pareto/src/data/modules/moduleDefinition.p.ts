@@ -3,13 +3,14 @@ import {
     string,
     null_,
     reference,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference,
-    interfaceReference, callback,
+    array, dictionary, group, member, taggedUnion, types, typeReference,
+    interfaceReference,
     parameter,
     template,
-} from "lib-pareto-typescript-project/dist/submodules/glossary/api/shorthands.p"
+    func,
+} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
@@ -65,7 +66,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'interfaces': d({}),
         'functions': d({
-            "Serialize": callback(typeReference("ModuleDefinition"), interfaceReference("fp", "Line")),
+            "Serialize": func(typeReference("ModuleDefinition"), null, interfaceReference("fp", "Line"), null),
         }),
     },
     'api': {

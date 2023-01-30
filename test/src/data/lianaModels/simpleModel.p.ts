@@ -13,7 +13,7 @@ import {
     reference,
     string,
     taggedUnion,
-} from "../../../../pub/dist/submodules/liana/api/shorthands.p"
+} from "../../../../pub/dist/submodules/liana/shorthands.p"
 
 export const $: mliana.TModel = {
     'stringTypes': d({

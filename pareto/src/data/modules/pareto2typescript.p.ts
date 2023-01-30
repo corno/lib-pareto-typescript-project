@@ -1,9 +1,9 @@
 import * as pr from 'pareto-core-raw'
 import {
-    types, _function, typeReference, interfaceReference, callback
-} from "lib-pareto-typescript-project/dist/submodules/glossary/api/shorthands.p"
+    types, typeReference, interfaceReference, func
+} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
@@ -26,14 +26,14 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'interfaces': d({
         }),
         'functions': d({
-            "SerializeGlossary": callback(typeReference("glossary", "Glossary"), interfaceReference("fp", "Writer")),
-            "SerializeImplementation": callback(typeReference("algorithm", "Implementation"), interfaceReference("fp", "Writer")),
-            "SerializeModuleDefinition": callback(typeReference("moduleDefinition", "ModuleDefinition"), interfaceReference("fp", "Writer")),
-            "SerializeParetoEnvironment": callback(typeReference("common", "Null"), interfaceReference("fp", "Writer")),
-            "SerializeBuildEnvironment": callback(typeReference("common", "Null"), interfaceReference("fp", "Writer")),
-            "SerializeProject": callback(typeReference("project", "Project"), interfaceReference("fp", "Writer")),
-            "SerializeTemplate": callback(typeReference("project", "Project"), interfaceReference("fp", "Writer")),
-            "SerializeStates": callback(typeReference("algorithm", "States"), interfaceReference("fp", "Block")),
+            "SerializeGlossary": func(typeReference("glossary", "Glossary"), null, interfaceReference("fp", "Writer"), null),
+            "SerializeImplementation": func(typeReference("algorithm", "Implementation"), null, interfaceReference("fp", "Writer"), null),
+            "SerializeModuleDefinition": func(typeReference("moduleDefinition", "ModuleDefinition"), null, interfaceReference("fp", "Writer"), null),
+            "SerializeParetoEnvironment": func(typeReference("common", "Null"), null, interfaceReference("fp", "Writer"), null),
+            "SerializeBuildEnvironment": func(typeReference("common", "Null"), null, interfaceReference("fp", "Writer"), null),
+            "SerializeProject": func(typeReference("project", "Project"), null, interfaceReference("fp", "Writer"), null),
+            "SerializeTemplate": func(typeReference("project", "Project"), null, interfaceReference("fp", "Writer"), null),
+            "SerializeStates": func(typeReference("algorithm", "States"), null, interfaceReference("fp", "Block"), null),
         }),
     },
     'api': {

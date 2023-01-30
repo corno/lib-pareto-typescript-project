@@ -1,10 +1,10 @@
 import * as pr from 'pareto-core-raw'
 import {
     reference,
-    array, dictionary, group, member, taggedUnion, types, _function, typeReference, null_, procedure
-} from "lib-pareto-typescript-project/dist/submodules/glossary/api/shorthands.p"
+    array, dictionary, group, member, taggedUnion, types, typeReference, null_, func, data
+} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
-import { algorithm, constructor, definitionReference, } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/api/shorthands.p"
+import { algorithm, constructor, definitionReference, } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
@@ -38,9 +38,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'interfaces': d({}),
         'functions': d({
-            "GenerateProject": procedure(typeReference("Configuration")),
-            "MapLiana2Pareto": _function(typeReference("MappedModel"), typeReference("Modules")),
-            "MapLiana2States": _function(typeReference("MappedModel"), typeReference("algorithm", "States")),
+            "GenerateProject": func(typeReference("Configuration"), null, null, null),
+            "MapLiana2Pareto": func(typeReference("MappedModel"), null, null, data( typeReference("Modules"), false)),
+            "MapLiana2States": func(typeReference("MappedModel"),null, null, data( typeReference("algorithm", "States"), false)),
         }),
     },
     'api': {

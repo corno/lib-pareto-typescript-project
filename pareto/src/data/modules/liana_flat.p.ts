@@ -1,10 +1,10 @@
 import * as pr from 'pareto-core-raw'
 
 import {
-    types, _function, typeReference, interfaceReference, callback
-} from "lib-pareto-typescript-project/dist/submodules/glossary/api/shorthands.p"
+    types, typeReference, interfaceReference, func
+} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
@@ -23,7 +23,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'interfaces': d({}),
         'functions': d({
-            "Serialize": callback(typeReference("liana2Pareto", "MappedModel"), interfaceReference("fp", "Writer")),
+            "Serialize": func(typeReference("liana2Pareto", "MappedModel"), null, interfaceReference("fp", "Writer"), null),
         }),
     },
     'api': {

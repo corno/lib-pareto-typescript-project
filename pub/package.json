@@ -23,6 +23,6 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "version": "0.0.0",
+  "version": "0.87.0",
   "content-fingerprint": "d784b6ff4fd5dfb4837602db0dbf15cd29b50f59"
 }

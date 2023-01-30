@@ -5,8 +5,8 @@ import * as glo from "./glossary"
 import * as mcollation from "res-pareto-collation"
 import * as mcommon from "glo-pareto-common"
 import * as mmain from "res-pareto-main"
-import * as mpareto2typescript from "../../pareto2typescript"
-import * as mtemp from "../../temp"
+import * as mpareto2typescript from "../../submodules/pareto2typescript"
+import * as mtemp from "../../submodules/temp"
 
 export type CcreateParametersParser = ($d: {
     readonly 'onError': glo.FHandleArgumentError

@@ -10,16 +10,16 @@ import * as api from "../api"
 
 import {
     dictionary, member, taggedUnion, types, _function, group
-} from "../../../../../pub/dist/modules/glossary/api/shorthands.p"
+} from "../../../../../pub/dist/submodules/glossary/api/shorthands.p"
 
 
-import * as mliana_flat from "../../../../../pub/dist/modules/liana_flat"
-import * as mproject from "../../../../../pub/dist/modules/project"
-import * as mliana from "../../../../../pub/dist/modules/liana"
-import * as mliana2Pareto from "../../../../../pub/dist/modules/liana2Pareto"
-import * as mpareto2typescript from "../../../../../pub/dist/modules/pareto2typescript"
+import * as mliana_flat from "../../../../../pub/dist/submodules/liana_flat"
+import * as mproject from "../../../../../pub/dist/submodules/project"
+import * as mliana from "../../../../../pub/dist/submodules/liana"
+import * as mliana2Pareto from "../../../../../pub/dist/submodules/liana2Pareto"
+import * as mpareto2typescript from "../../../../../pub/dist/submodules/pareto2typescript"
 import * as mtostring from "res-pareto-tostring"
-import * as mtemp from "../../../../../pub/dist/modules/temp"
+import * as mtemp from "../../../../../pub/dist/submodules/temp"
 import * as mcoll from "res-pareto-collation"
 import * as mfp from "lib-fountain-pen"
 import * as mts from "res-typescript"
@@ -28,8 +28,8 @@ const d = pr.wrapRawDictionary
 
 import * as pub from "../../../../../pub"
 import { $ as module } from "../../../data/project.test"
-// import * as pubTypes from "../../../../pub/dist/modules/public"
-// import * as pubPrivate from "../../../../pub/dist/modules/private"
+// import * as pubTypes from "../../../../pub/dist/submodules/public"
+// import * as pubPrivate from "../../../../pub/dist/submodules/private"
 
 import { $ as simpleModel } from "../../../data/lianaModels/simpleModel.p"
 import { $ as glossary } from "../../../data/lianaModels/glossary.p"

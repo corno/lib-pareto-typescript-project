@@ -5,8 +5,8 @@ import * as t from './types.generated'
 import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
 import * as mmain from "res-pareto-main"
-import * as mpareto2typescript from "../../../pareto2typescript"
-import * as mproject from "../../../project"
+import * as mpareto2typescript from "../../../submodules/pareto2typescript"
+import * as mproject from "../../../submodules/project"
 
 export type TArgumentError = t.UArgumentError
 

@@ -16,11 +16,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'parameters': d({}),
         'imports': d({
-            "pareto2typescript": "../../../pareto2typescript",
+            "pareto2typescript": "../../../submodules/pareto2typescript",
             "common": "glo-pareto-common",
             "fp": "lib-fountain-pen",
             "main": "res-pareto-main",
-            "project": "../../../project",
+            "project": "../../../submodules/project",
         }),
         'templates': d({}),
         'types': types({
@@ -53,8 +53,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "common": "glo-pareto-common",
             "collation": "res-pareto-collation",
             "main": "res-pareto-main",
-            "pareto2typescript": "../../pareto2typescript",
-            "temp": "../../temp",
+            "pareto2typescript": "../../submodules/pareto2typescript",
+            "temp": "../../submodules/temp",
         }),
         'algorithms': d({
             "createParametersParser": algorithm(definitionReference("ParseArguments2"), constructor(null, {

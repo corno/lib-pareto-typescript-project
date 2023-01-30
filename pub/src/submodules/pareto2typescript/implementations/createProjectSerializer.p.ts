@@ -54,6 +54,7 @@ export const $$: api.CcreateProjectSerializer = (
         }
         //$i.allowed("tmp") //already defined in 'generateTemplate'
         $i.allowed(".git")
+        $i.allowed("dev")
         $i.allowed("build")
         $i.allowed("pareto")
         $i.directory("pub", ($i) => {
@@ -176,10 +177,10 @@ export const $$: api.CcreateProjectSerializer = (
                             }
                             globals($i)
 
+                            $i.directory("main", ($i) => {
+                                doModule($.main, $i)
+                            })
                             $i.directory("submodules", ($i) => {
-                                $i.directory("main", ($i) => {
-                                    doModule($.main, $i)
-                                })
                                 $d.dictionaryForEach($.submodules, ($) => {
                                     $i.directory(`${$.key}`, ($i) => {
                                         doModule($.value, $i)
@@ -221,6 +222,7 @@ export const $$: api.CcreateProjectSerializer = (
                                     $i.snippet(`}`)
                                 })
                             })
+                            $i.allowed("native")
                             $i.file("index.ts", ($i) => {
                                 $i.line(`export * from "./api"`)
                                 $i.line(`export { $a } from "./implementation.generated"`)

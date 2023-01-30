@@ -2,9 +2,9 @@ import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
-import * as mpareto2typescript from "../../pareto2typescript"
+import * as mpareto2typescript from "../../submodules/pareto2typescript"
 
-import * as mtemp from "../../temp/implementation.generated"
+import * as mtemp from "../../submodules/temp/implementation.generated"
 import * as mcoll from "res-pareto-collation"
 import * as mmain from "res-pareto-main"
 import * as mts from "res-typescript"

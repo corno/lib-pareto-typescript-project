@@ -1,2 +1,2 @@
-export { $a } from "./modules/main"
-export * from "./modules/main/api"
+export { $a } from "./main"
+export * from "./main"

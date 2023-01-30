@@ -6,7 +6,7 @@ import * as api from "../api"
 import * as mfp from "lib-fountain-pen"
 import * as mtostring from "res-pareto-tostring"
 import * as mfs from "res-pareto-filesystem"
-import * as mmain from "../../main"
+import * as mmain from "../../../main"
 
 export const $$: api.CcreateProjectGenerator = ($d) => {
     return ($) => {

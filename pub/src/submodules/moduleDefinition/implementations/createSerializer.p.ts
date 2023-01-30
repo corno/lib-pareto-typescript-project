@@ -2,7 +2,7 @@ import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
-import * as mmoduleDefinition from "../../moduleDefinition"
+import * as mmoduleDefinition from ".."
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 

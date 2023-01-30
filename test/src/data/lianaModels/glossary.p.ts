@@ -1,6 +1,6 @@
 import * as pr from 'pareto-core-raw'
 
-import * as mliana from "../../../../pub/dist/modules/liana"
+import * as mliana from "../../../../pub/dist/submodules/liana"
 import {
     d,
     array,
@@ -13,7 +13,7 @@ import {
     reference,
     string,
     taggedUnion,
-} from "../../../../pub/dist/modules/liana/api/shorthands.p"
+} from "../../../../pub/dist/submodules/liana/api/shorthands.p"
 
 export const $: mliana.TModel = {
     'stringTypes': d({

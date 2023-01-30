@@ -1,7 +1,7 @@
 
 import * as pr from 'pareto-core-raw'
 
-import * as api from "../api"
+import * as api from "."
 
 import * as mglossary from "../../glossary"
 

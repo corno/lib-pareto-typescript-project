@@ -4,7 +4,7 @@ import * as pr from 'pareto-core-raw'
 import * as api from "../api"
 
 import * as mpareto from "lib-pareto-typescript-project"
-import * as mliana2Pareto from "lib-pareto-typescript-project/dist/modules/liana2Pareto"
+import * as mliana2Pareto from "lib-pareto-typescript-project/dist/submodules/liana2Pareto"
 
 import { $ as glossary } from "../../../data/glossary.p"
 

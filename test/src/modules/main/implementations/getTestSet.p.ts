@@ -9,8 +9,8 @@ import * as api from "../api"
 // import * as us from "res-pareto-ugly-stuff"
 
 import {
-    dictionary, member, taggedUnion, types, _function, group
-} from "../../../../../pub/dist/submodules/glossary/api/shorthands.p"
+    dictionary, member, taggedUnion, types, group
+} from "../../../../../pub/dist/submodules/glossary/shorthands.p"
 
 
 import * as mliana_flat from "../../../../../pub/dist/submodules/liana_flat"

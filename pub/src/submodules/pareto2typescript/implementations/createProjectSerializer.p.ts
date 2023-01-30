@@ -134,6 +134,7 @@ export const $$: api.CcreateProjectSerializer = (
                         pl.cc($.type[1], ($) => {
                             function doModule($: mproject.TModule, $i: mfp.IWriter) {
 
+                                $i.allowed("shorthands.p.ts")
                                 $i.directory("api", ($i) => {
                                     $d.serializeModuleDefinition($.definition, $i)
                                 })

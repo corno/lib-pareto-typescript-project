@@ -1,6 +1,6 @@
 import * as pr from 'pareto-core-raw'
 
-import * as mproject from "lib-pareto-typescript-project/dist/modules/project"
+import * as mproject from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as api } from "./api.p"
 import { $ as algorithm } from "./modules/algorithm.p"

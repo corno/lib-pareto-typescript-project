@@ -1,10 +1,11 @@
 
 import * as pr from 'pareto-core-raw'
 
-import * as t from "./glossary"
+import * as t from "./api"
 
 const d = pr.wrapRawDictionary
-const wa = pr.wrapRawArray
+
+type RawDictionary<T> = { [key: string]: T }
 
 export function null_(): t.TType {
     return ['null', {}]
@@ -22,27 +23,22 @@ export function number(): t.TType {
     return ['number', {}]
 }
 
-export function types($: { [key: string]: t.TType }) {
+export function types($: RawDictionary<t.TType>) {
     return d($)
 }
 
-export function taggedUnion($: { [key: string]: t.TType }): t.TType {
+export function taggedUnion($: RawDictionary<t.TType>): t.TType {
     return ['taggedUnion', d($)]
 }
 
 export function dictionary($: t.TType): t.TType {
     return ['dictionary', $]
 }
-
-export function nullDictionary(): t.TType {
-    return ['dictionary', ['null', {}]]
-}
-
 export function parameter($: string): t.TType {
     return ['parameter', $]
 }
 
-export function template(template: string, $: { [key: string]: t.TType }): t.TType {
+export function template(template: string, $: RawDictionary<t.TType>): t.TType {
     return ['template', {
         'template': template,
         'context': ['local', {}],
@@ -78,28 +74,15 @@ export function member($: t.TType, optional?: boolean): { type: t.TType, optiona
     }
 }
 
-export function reference(a: string, b?: string): t.TType {
-    if (b === undefined) {
-        return ['reference', {
-            'context': ['local', {}],
-            'type': a,
-            // 'type': {
-            //     'annotation': "SSDF",
-            //     'name': a
-            // },
-        }]
-    } else {
-        return ['reference', typeReference(a, b)]
-
-    }
+export function reference(contextOrType: string, type?: string): t.TType {
+    return ['reference', typeReference(contextOrType, type)]
 }
 
-
-export function typeReference(a: string, b?: string): t.TTypeReference {
-    if (b === undefined) {
+export function typeReference(contextOrType: string, type?: string): t.TTypeReference {
+    if (type === undefined) {
         return {
             'context': ['local', {}],
-            'type': a,
+            'type': contextOrType,
             // 'type': {
             //     'annotation': "SSDF",
             //     'name': a
@@ -107,8 +90,8 @@ export function typeReference(a: string, b?: string): t.TTypeReference {
         }
     } else {
         return {
-            'context': ['import', a],
-            'type': b,
+            'context': ['import', contextOrType],
+            'type': type,
             // 'context': ['import', {
             //     'annotation': "SSDF",
             //     'name': a
@@ -148,51 +131,33 @@ export function interfaceReference(a: string, b?: string): t.TInterfaceReference
     }
 }
 
-export function _function(data: t.TTypeReference, returnValue: t.TTypeReference, async?: boolean): t.GGlossary.Pfunctions.D {
-    return {
-        'return type': ['data', {
-            'type': returnValue,
-            'asynchronous': async === undefined ? false : async,
-        }],
-        'data': data,
-        'managed input interface': ['not set', {}],
-        'output interface': ['not set', {}],
-    }
+export function nothing(): t.GGlossary.Pfunctions.D.Preturn__type {
+    return ['nothing', {}]
 }
 
-export function procedure(data: t.TTypeReference): t.GGlossary.Pfunctions.D {
-    return {
-        'return type': ['nothing', {}],
-        'data': data,
-        'managed input interface': ['not set', {}],
-        'output interface': ['not set', {}],
-    }
+export function data($: t.TTypeReference, async: boolean): t.GGlossary.Pfunctions.D.Preturn__type {
+    return ['data', {
+        'type': $,
+        'asynchronous': async,
+    }]
 }
 
-export function callback(data: t.TTypeReference, inf: t.TInterfaceReference): t.GGlossary.Pfunctions.D {
-    return {
-        'return type': ['nothing', {}],
-        'data': data,
-        'managed input interface': ['not set', {}],
-        'output interface': ['set', inf],
-    }
+export function inf($: t.TInterfaceReference): t.GGlossary.Pfunctions.D.Preturn__type {
+    return ['interface', $]
 }
 
-export function managedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.GGlossary.Pfunctions.D {
+export function func(data: t.TTypeReference, mii: t.TInterfaceReference | null, oi: t.TInterfaceReference | null, returnType: null | t.GGlossary.Pfunctions.D.Preturn__type): t.GGlossary.Pfunctions.D {
     return {
-        'return type': ['nothing', {}],
+        'return type': returnType === null
+            ? ['nothing', {}]
+            : returnType,
         'data': data,
-        'managed input interface': ['set', in_inf],
-        'output interface': ['set', out_inf],
-    }
-}
-
-export function unmanagedPipe(data: t.TTypeReference, in_inf: t.TInterfaceReference, out_inf: t.TInterfaceReference): t.GGlossary.Pfunctions.D {
-    return {
-        'return type': ['interface', in_inf],
-        'data': data,
-        'managed input interface': ['not set', {}],
-        'output interface': ['set', out_inf],
+        'managed input interface': mii === null
+            ? ['not set', {}]
+            : ['set', mii],
+        'output interface': oi === null
+            ? ['not set', {}]
+            : ['set', oi],
     }
 }
 

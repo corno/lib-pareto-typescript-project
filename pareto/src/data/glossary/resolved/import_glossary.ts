@@ -1,1 +1,1 @@
-export * from "lib-pareto-typescript-project/dist/modules/glossary"
+export * from "lib-pareto-typescript-project/dist/submodules/glossary"

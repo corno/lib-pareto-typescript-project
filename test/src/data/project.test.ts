@@ -1,7 +1,7 @@
 import * as pr from 'pareto-core-raw'
 import {
-    dictionary, group as grp, member, taggedUnion, types, _function, group
-} from "../../../pub/dist/submodules/glossary/api/shorthands.p"
+    dictionary, group as grp, member, taggedUnion, types, group
+} from "../../../pub/dist/submodules/glossary/shorthands.p"
 
 import * as mproject from "../../../pub/dist/submodules/project"
 

@@ -4,7 +4,7 @@ import * as pr from 'pareto-core-raw'
 import * as api from "../api"
 
 import {
-} from "../../glossary/api/shorthands.p"
+} from "../../glossary/shorthands.p"
 
 import * as malgorithm from "../../algorithm"
 import * as mglossary from "../../glossary"

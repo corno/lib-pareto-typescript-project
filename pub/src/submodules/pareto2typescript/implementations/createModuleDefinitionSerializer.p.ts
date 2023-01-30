@@ -103,7 +103,6 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
             $i.snippet($d.createIdentifier(`F${$.function}`))
         }
         glossary($.glossary, $i)
-        $i.allowed("shorthands.p.ts")
 
         $i.file("api.generated.ts", ($i) => {
             $i.line(`import * as pt from 'pareto-core-types'`)

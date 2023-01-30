@@ -2,11 +2,11 @@ import * as pr from 'pareto-core-raw'
 
 import {
     types, _function, typeReference, interfaceReference, callback
-} from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
+} from "lib-pareto-typescript-project/dist/submodules/glossary/api/shorthands.p"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/api/shorthands.p"
 
-import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
 const d = pr.wrapRawDictionary
 

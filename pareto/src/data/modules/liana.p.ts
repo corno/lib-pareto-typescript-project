@@ -5,10 +5,10 @@ import {
     reference,
     boolean,
     array, dictionary, group, member, taggedUnion, types, _function, typeReference, parameter, template
-} from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
+} from "lib-pareto-typescript-project/dist/submodules/glossary/api/shorthands.p"
 
-import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
-import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p'
+import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
+import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/submodules/moduleDefinition/api/shorthands.p'
 
 
 const d = pr.wrapRawDictionary

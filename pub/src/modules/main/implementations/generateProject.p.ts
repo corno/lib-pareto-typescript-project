@@ -25,23 +25,26 @@ export const $$: api.CgenerateProject = ($) => {
         compare: mcoll.$a.localeIsABeforeB,
     })
 
+    const sg = mpareto2typescript.$a.createGlossarySerializer({
+        enrichedDictionaryForEach: ed,
+        dictionaryForEach: d,
+        createIdentifier: mts.$a.createIdentifier,
+        createApostrophedString: mts.$a.createApostrophedString,
+        createBacktickedString: mts.$a.createBacktickedString,
+        createQuotedString: mts.$a.createQuotedString,
+    })
+
     $a.createProjectGenerator(
         {
             serializeProject: mpareto2typescript.$a.createProjectSerializer(
                 {
                     dictionaryForEach: d,
                     enrichedDictionaryForEach: ed,
+                    serializeGlossary: sg,
                     serializeModuleDefinition: mpareto2typescript.$a.createModuleDefinitionSerializer(
                         {
                             dictionaryForEach: d,
-                            serializeGlossary: mpareto2typescript.$a.createGlossarySerializer({
-                                enrichedDictionaryForEach: ed,
-                                dictionaryForEach: d,
-                                createIdentifier: mts.$a.createIdentifier,
-                                createApostrophedString: mts.$a.createApostrophedString,
-                                createBacktickedString: mts.$a.createBacktickedString,
-                                createQuotedString: mts.$a.createQuotedString,
-                            }),
+                            serializeGlossary: sg,
                             createIdentifier: mts.$a.createIdentifier,
                             createApostrophedString: mts.$a.createApostrophedString,
                             createBacktickedString: mts.$a.createBacktickedString,

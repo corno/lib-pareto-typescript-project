@@ -3,6 +3,8 @@ import * as pl from 'pareto-core-lib'
 import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
+import * as mproject from "../../project"
+
 export const $$: api.CcreateProjectSerializer = (
     $d,
 ) => {
@@ -98,11 +100,11 @@ export const $$: api.CcreateProjectSerializer = (
 
                         },
                         onNotEmpty: ($c) => {
-                                $i.line(`  "devDependencies": {`)
-                                $c(($) => {
-                                    $i.line(`    "${$.key}": "^0.0.0"${$.isLast ? ``: `,`}`)
-                                })
-                                $i.line(`  },`)
+                            $i.line(`  "devDependencies": {`)
+                            $c(($) => {
+                                $i.line(`    "${$.key}": "^0.0.0"${$.isLast ? `` : `,`}`)
+                            })
+                            $i.line(`  },`)
                         }
                     })
                 }
@@ -120,42 +122,99 @@ export const $$: api.CcreateProjectSerializer = (
                 $i.line(``)
             })
             $i.directory("src", ($i) => {
-                if ($.type === undefined || $.type[0] !== 'resource') {
-                    globals($i)
-                }
-                $i.directory("modules", ($i) => {
-                    $d.dictionaryForEach($.modules, ($) => {
-                        $i.directory(`${$.key}`, ($i) => {
+                switch ($.type[0]) {
+                    case 'glossary':
+                        pl.cc($.type[1], ($) => {
+                            globals($i)
+                            $d.serializeGlossary($.glossary, $i)
+                        })
+                        break
+                    case 'library':
+                        pl.cc($.type[1], ($) => {
+                            function doModule($: mproject.TModule, $i: mfp.IWriter) {
+
+                                $i.directory("api", ($i) => {
+                                    $d.serializeModuleDefinition($.definition, $i)
+                                })
+
+                                $i.directory("implementations", ($i) => {
+                                    if ($.implementation !== undefined) {
+                                        pl.cc($.implementation, ($) => {
+                                            $d.serializeImplementation($, $i)
+                                        })
+                                    } else {
+                                        $d.dictionaryForEach($.definition.api.algorithms, ($) => {
+                                            $i.allowed(`${$.key}.${isResource ? `native` : `p`}.ts`)
+                                        })
+                                    }
+                                })
+                                $i.file("implementation.generated.ts", ($i) => {
+                                    const suffix = isResource
+                                        ? `native`
+                                        : $.implementation !== undefined
+                                            ? `generated`
+                                            : `p`
+                                    $i.line(`import { API } from "./api"`)
+                                    $d.dictionaryForEach($.definition.api.algorithms, ($) => {
+                                        $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
+                                    })
+                                    $i.line(``)
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`export const $a: API = {`)
+                                        $i.indent(($i) => {
+                                            $d.dictionaryForEach($.definition.api.algorithms, ($) => {
+                                                $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
+                                            })
+                                        })
+                                        $i.snippet(`}`)
+                                    })
+                                })
+                                $i.file("index.ts", ($i) => {
+                                    $i.line(`export * from "./api"`)
+                                    $i.line(`export * from "./implementation.generated"`)
+                                })
+                            }
+                            globals($i)
+
+                            $i.directory("submodules", ($i) => {
+                                $i.directory("main", ($i) => {
+                                    doModule($.main, $i)
+                                })
+                                $d.dictionaryForEach($.submodules, ($) => {
+                                    $i.directory(`${$.key}`, ($i) => {
+                                        doModule($.value, $i)
+                                    })
+                                })
+                            })
+                            $i.file("index.ts", ($i) => {
+                                $i.line(`export { $a } from "./main"`)
+                                $i.line(`export * from "./main"`)
+                            })
+                        })
+                        break
+                    case 'resource':
+                        pl.cc($.type[1], ($) => {
+
                             $i.directory("api", ($i) => {
-                                $d.serializeModuleDefinition($.value.definition, $i)
+                                $d.serializeModuleDefinition($.definition, $i)
                             })
 
                             $i.directory("implementations", ($i) => {
-                                if ($.value.implementation !== undefined) {
-                                    pl.cc($.value.implementation, ($) => {
-                                        $d.serializeImplementation($, $i)
-                                    })
-                                } else {
-                                    $d.dictionaryForEach($.value.definition.api.algorithms, ($) => {
-                                        $i.allowed(`${$.key}.${isResource ? `native` : `p`}.ts`)
-                                    })
-                                }
+                                $d.dictionaryForEach($.definition.api.algorithms, ($) => {
+                                    $i.allowed(`${$.key}.${isResource ? `native` : `p`}.ts`)
+                                })
                             })
                             $i.file("implementation.generated.ts", ($i) => {
-                                const suffix = isResource
-                                    ? `native`
-                                    : $.value.implementation !== undefined
-                                        ? `generated`
-                                        : `p`
+
                                 $i.line(`import { API } from "./api"`)
-                                $d.dictionaryForEach($.value.definition.api.algorithms, ($) => {
-                                    $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
+                                $d.dictionaryForEach($.definition.api.algorithms, ($) => {
+                                    $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.native"`)
                                 })
                                 $i.line(``)
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`export const $a: API = {`)
                                     $i.indent(($i) => {
-                                        $d.dictionaryForEach($.value.definition.api.algorithms, ($) => {
+                                        $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                             $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
                                         })
                                     })
@@ -164,64 +223,17 @@ export const $$: api.CcreateProjectSerializer = (
                             })
                             $i.file("index.ts", ($i) => {
                                 $i.line(`export * from "./api"`)
-                                $i.line(`export * from "./implementation.generated"`)
+                                $i.line(`export { $a } from "./implementation.generated"`)
                             })
                         })
-                    })
-                })
-                // $i.directory("implementation", ($i) => {
-                //     // $i.directory("private_definitions", ($i) => {
-                //     //     moduleDefintion($["private definitions"], $i)
-                //     // })
-                //     // function implementations($: mproject.Implementation, $i: IWriter) {
-                //     //     $i.file("index.ts", ($i) => {
-                //     //         $.forEach(compare, ($, key) => {
-                //     //             $i.line(`import { i${key} } from "./${$.type[0] === "binding" ? "binding" : "pure"}/${key}.p"`)
-                //     //         })
-                //     //         $i.line(``)
-                //     //         $i.nestedLine(($i) => {
-                //     //             $i.snippet(`export const $a = {`)
-                //     //             $i.indent(($i) => {
-                //     //                 $.forEach(compare, ($, key) => {
-                //     //                     $i.line(`'${key}': i${key},`)
-                //     //                 })
-                //     //             })
-                //     //             $i.snippet(`}`)
-                //     //         })
-                //     //     })
-                //     // }
-                //     // $i.directory("private", ($i) => {
-                //     //     implementations($["private implementations"], $i)
-                //     // })
-                //     // $i.directory("public", ($i) => {
-                //     //     implementations($["public implementations"], $i)
-                //     // })
-                //     // $i.file("implementationDeclarations.ts", ($i) => {
-                //     //     $i.line(`import * as glo from "./internal_glossary"`)
-                //     //     $i.line(`import * as api from "../api"`)
-                //     //     $i.line(``)
-                //     //     $d.dictionaryForEach($.implementation.implementations, ($, key) => {
-                //     //         $i.nestedLine(($i) => {
-                //     //             $i.snippet(`export type ${$d.createIdentifier(`I${$.key}`)} = `)
-                //     //             serializeAlgorithmDefinition($.definition, $i)
-                //     //         })
-                //     //     })
-                //     // })
-                //     $i.file("index.ts", ($i) => {
-                //         $i.line(`export * from "./private_definitions"`)
-                //         $i.line(`export { $a as $x } from "./private"`)
-                //         $i.line(`export * from "./public"`)
-                //         $i.line(``)
-                //     })
-                // })
-                $i.file("index.ts", ($i) => {
-                    $i.line(`export { $a } from "./modules/${$.main}"`)
-                    $i.line(`export * from "./modules/${$.main}/api"`)
-                })
+                        break
+                    default: pl.au($.type[0])
+                }
             })
             tsConfig({ isResource: $.type !== undefined && $.type[0] === 'resource' }, $i)
         })
-        if ($.type === undefined || $.type[0] !== 'glossary') {
+        function doTest($: mproject.TTest, $i: mfp.IWriter) {
+
             $i.directory("test", ($i) => {
                 $i.allowed("data")
                 $i.allowed("dist")
@@ -230,11 +242,9 @@ export const $$: api.CcreateProjectSerializer = (
                 $i.file("package.json", ($i) => {
                     $i.line(`{`)
                     $i.line(`  "dependencies": {`)
-                    if ($.testdependencies !== undefined) {
-                        $d.dictionaryForEach($.testdependencies, ($) => {
-                            $i.line(`    "${$.key}": "^0.0.0",`)
-                        })
-                    }
+                    $d.dictionaryForEach($.dependencies, ($) => {
+                        $i.line(`    "${$.key}": "^0.0.0",`)
+                    })
                     $i.line(`    "lib-pareto-test": "^0.0.0",`)
                     $i.line(`    "pareto-core-exe": "^0.0.0",`)
                     $i.line(`    "pareto-core-lib": "^0.0.0",`)
@@ -447,6 +457,25 @@ export const $$: api.CcreateProjectSerializer = (
                 })
                 tsConfig({ isResource: false }, $i)
             })
+        }
+        switch ($.type[0]) {
+            case 'glossary':
+                pl.cc($.type[1], ($) => {
+
+                })
+                break
+            case 'library':
+                pl.cc($.type[1], ($) => {
+                    doTest($.test, $i)
+                })
+                break
+            case 'resource':
+                pl.cc($.type[1], ($) => {
+                    doTest($.test, $i)
+
+                })
+                break
+            default: pl.au($.type[0])
         }
         $i.file(".gitignore", ($i) => {
             $i.line(`/build/node_modules/`)

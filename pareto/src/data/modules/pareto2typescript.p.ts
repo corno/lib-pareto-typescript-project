@@ -38,9 +38,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     },
     'api': {
         'imports': d({
-            "project": "../../project",
-            "main": "res-pareto-main",
             "collation": "res-pareto-collation",
+            "glossary": "../../glossary",
+            "main": "res-pareto-main",
+            "project": "../../project",
             "temp": "../../temp",
             "ts": "res-typescript",
         }),
@@ -74,6 +75,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "createProjectSerializer": algorithm(definitionReference("SerializeProject"), constructor(null, {
                 "dictionaryForEach": definitionReference("temp", "DictionaryForEach"),
                 "enrichedDictionaryForEach": definitionReference("temp", "EnrichedDictionaryForEach"),
+                "serializeGlossary": definitionReference("SerializeGlossary"),
                 "serializeModuleDefinition": definitionReference("SerializeModuleDefinition"),
                 "serializeImplementation": definitionReference("SerializeImplementation"),
                 "createIdentifier": definitionReference("ts", "CreateIdentifier"),

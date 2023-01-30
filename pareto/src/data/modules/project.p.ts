@@ -14,9 +14,10 @@ const d = pr.wrapRawDictionary
 export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
-            "moduleDefinition": "../../../moduleDefinition",
             "algorithm": "../../../algorithm",
+            "glossary": "../../../glossary",
             "fp": "lib-fountain-pen",
+            "moduleDefinition": "../../../moduleDefinition",
         }),
         'parameters': d({}),
         'templates': d({}),
@@ -39,19 +40,26 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "author": member(string()),
                 "license": member(string()),
                 "description": member(string()),
+
+                "pubdependencies": member(dictionary(group({}))),
                 "type": member(taggedUnion({
                     "resource": group({
                         "devDependencies": member(dictionary(group({}))),
+                        "definition": member(reference("moduleDefinition", "ModuleDefinition")),
+                        "test": member(reference("Test")),
                     }),
                     "glossary": group({
-
+                        "glossary": member(reference("glossary", "Glossary")),
                     }),
-                    "library": group({}),
+                    "library": group({
+                        "main": member(reference("Module")),
+                        "submodules": member(dictionary(reference("Module"))),
+                        "test": member(reference("Test")),
+                    }),
                 })),
-                "modules": member(dictionary(reference("Module"))),
-                "main": member(string()),
-                "pubdependencies": member(dictionary(group({}))),
-                "testdependencies": member(dictionary(group({}))),
+            }),
+            "Test": group({
+                "dependencies": member(dictionary(group({})))
             }),
         }),
         'interfaces': d({}),
@@ -62,10 +70,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     },
     'api': {
         'imports': d({
-            "collation": "res-pareto-collation",
-            "temp": "../../temp",
-            "moduleDefinition": "../../moduleDefinition",
             "algorithm": "../../algorithm",
+            "collation": "res-pareto-collation",
+            "moduleDefinition": "../../moduleDefinition",
+            "temp": "../../temp",
         }),
         'algorithms': d({
             "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {

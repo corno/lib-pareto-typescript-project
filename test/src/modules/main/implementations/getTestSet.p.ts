@@ -45,21 +45,19 @@ export const $$: api.CgetTestSet = ($XXX) => {
             'author': "Corno",
             'description': "TBD",
             'license': "ISC",
+            'pubdependencies': d({
+                "lib-pareto-fubar": {}
+            }),
             'type': ['resource', {
                 'devDependencies': d({
                     "a": {},
                     "b": {},
                 }),
-
+                'definition': module.definition,
+                'test': {
+                    'dependencies': d({}),
+                },
             }],
-            'modules': d({
-                "main": module
-            }),
-            'main': "main",
-            'pubdependencies': d({
-                "lib-pareto-fubar": {}
-            }),
-            'testdependencies': d({}),
         },
     })
     // pub.$a.createTestProgram(null, {
@@ -129,7 +127,7 @@ export const $$: api.CgetTestSet = ($XXX) => {
                 }),
                 createIdentifier: mts.$a.createIdentifier,
                 createApostrophedString: mts.$a.createApostrophedString,
-                
+
             }),
             joinNestedStrings: mtostring.$a.joinNestedStrings,
         })(accountingModel, $i)

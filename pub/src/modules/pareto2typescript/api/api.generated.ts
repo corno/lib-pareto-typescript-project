@@ -3,6 +3,7 @@ import * as pt from 'pareto-core-types'
 import * as glo from "./glossary"
 
 import * as mcollation from "res-pareto-collation"
+import * as mglossary from "../../glossary"
 import * as mmain from "res-pareto-main"
 import * as mproject from "../../project"
 import * as mtemp from "../../temp"
@@ -48,6 +49,7 @@ export type CcreateProjectSerializer = ($d: {
     readonly 'createQuotedString': mts.FCreateQuotedString
     readonly 'dictionaryForEach': mtemp.FDictionaryForEach
     readonly 'enrichedDictionaryForEach': mtemp.FEnrichedDictionaryForEach
+    readonly 'serializeGlossary': glo.FSerializeGlossary
     readonly 'serializeImplementation': glo.FSerializeImplementation
     readonly 'serializeModuleDefinition': glo.FSerializeModuleDefinition
 }) => glo.FSerializeProject

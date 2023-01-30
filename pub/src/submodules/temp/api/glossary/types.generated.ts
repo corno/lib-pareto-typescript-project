@@ -1,14 +1,20 @@
 import * as pt from 'pareto-core-types'
 
-export type FDecorateDictionaryEntriesWithKey = <T> (
-    $: pt.Dictionary<T>
-) => pt.Dictionary<{
+export type TTypedArray<T> = pt.Array<T>
+
+export type TTypedDictionary<T> = pt.Dictionary<T>
+
+export type TTypedKeyValueDictionary<T> = pt.Dictionary<{
     key: string
     value: T
 }>
 
+export type FDecorateDictionaryEntriesWithKey = <T> (
+    $: TTypedDictionary<T>
+) => TTypedKeyValueDictionary<T>
+
 export type FArrayForEach = <T> (
-    $: pt.Array<T>,
+    $: TTypedArray<T>,
     $i: ($i: {
         value: T,
     }) => void

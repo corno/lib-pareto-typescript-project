@@ -8,6 +8,7 @@ import * as mproject from "../../project"
 import * as mglossary from "../../glossary"
 import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mliana from "../../liana"
+import { data, func, interfaceReference } from '../../glossary/shorthands.p'
 
 export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
     return ($) => {
@@ -201,24 +202,8 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             }),
                             'interfaces': pr.wrapRawDictionary({}),
                             'functions': pr.wrapRawDictionary({
-                                "Enrich": {
-                                    'return type': ['data', {
-                                        'type': typeReference("Root"), //resolved
-                                        'asynchronous': false,
-                                    }],
-                                    'managed input interface': ['not set', {}],
-                                    'output interface': ['not set', {}],
-                                    'data': typeReference("Root"), //unresolved
-                                },
-                                "Serialize": {
-                                    'return type': ['nothing', null],
-                                    'data': typeReference("Root"), //unresolved
-                                    'managed input interface': ['not set', {}],
-                                    'output interface': ['set', {
-                                        'context': ['import', "fp"],
-                                        'interface': "Line"
-                                    }],
-                                },
+                                "Enrich": func(typeReference("Root"), null, null, data(typeReference("Root"), false)),
+                                "Serialize": func(typeReference("Root"), null, interfaceReference("fp", "Line"), null),
                             }),
                         },
                         'api': {

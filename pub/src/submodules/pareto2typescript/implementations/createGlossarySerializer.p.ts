@@ -5,8 +5,8 @@ import * as api from "../api"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
-export namespace VOptional {}
-export type VOptional<AType> = 
+export namespace VOptional { }
+export type VOptional<AType> =
     | ['not set', {}]
     | ['set', AType]
 
@@ -15,6 +15,7 @@ export type MOptional<AType> = VOptional<AType>
 export const $$: api.CcreateGlossarySerializer = ($d) => {
 
     return ($, $i) => {
+        const globalParameters = $.parameters
         function doOptional<T>(
             $: MOptional<T>,
             $i: mfp.ILine,
@@ -52,6 +53,55 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
+        function serializeGlobalParametersOnly(
+            $i: mfp.ILine
+        ) {
+            $d.enrichedDictionaryForEach(globalParameters, {
+                onEmpty: () => {
+                },
+                onNotEmpty: ($c) => {
+                    $i.snippet(`<`)
+
+                    $c(($) => {
+                        $i.snippet(`GP${$.key}${$.isLast ? `` : `, `}`)
+                    })
+                    $i.snippet(`>`)
+
+                }
+            })
+
+        }
+        function serializeParameters(
+            $: {
+                templateParameters: null | mglossary.GGlossary.Ptemplates.D.Pparameters,
+            },
+            $i: mfp.ILine,
+        ) {
+            if ($.templateParameters !== null) {
+
+                $d.enrichedDictionaryForEach($.templateParameters, {
+                    onEmpty: () => {
+                        //nothing
+                        //weird!!!!
+                        serializeGlobalParametersOnly($i)
+                    },
+                    onNotEmpty: ($c) => {
+                        $i.snippet(`<`)
+
+                        $d.dictionaryForEach(globalParameters, ($) => {
+                            $i.snippet(`GP${$.key}, `)
+                        })
+                        $c(($) => {
+                            $i.snippet(`A${$.key}${$.isLast ? `` : `, `}`)
+                        })
+                        $i.snippet(`>`)
+
+                    }
+                })
+            } else {
+                serializeGlobalParametersOnly($i)
+            }
+        }
         $i.file(`index.ts`, ($i) => {
             $i.line(`export * from "./types.generated"`)
             $i.line(`export * from "./public.generated"`)
@@ -60,11 +110,12 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             function serializeType(
                 $: {
                     $: mglossary.TType,
+                    templateParameters: null | mglossary.GGlossary.Ptemplates.D.Pparameters,
                 },
                 $namespacedType: ($i: mfp.ILine) => void,
                 $i: mfp.ILine,
             ): void {
-
+                const templateParameters = $.templateParameters
                 pl.cc($.$, $ => {
                     switch ($[0]) {
                         case 'null':
@@ -89,6 +140,12 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                     case 'local':
                                         pl.cc($.context[1], ($) => {
                                             $i.snippet(`${$d.createIdentifier(`U${type/*.name*/}`)}`)
+                                            serializeParameters(
+                                                {
+                                                    templateParameters: templateParameters
+                                                },
+                                                $i
+                                            )
                                         })
                                         break
                                     default: pl.au($.context[0])
@@ -152,12 +209,13 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             }
             function serializeComplexType(
                 $: {
-                    $: mglossary.TType,
+                    type: mglossary.TType,
+                    templateParameters: null | mglossary.GGlossary.Ptemplates.D.Pparameters,
                     name: string,
                 },
-                $parameters: ($i: mfp.ILine) => void,
                 $i: mfp.IBlock
             ) {
+                const templateParameters = $.templateParameters
                 const nameXX = $.name
                 function createInstanceNamespace(
                     $namespaces: ($i: mfp.IBlock) => void,
@@ -183,30 +241,42 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                     )
                     $i.nestedLine(($i) => {
                         $i.snippet(`export type ${$d.createIdentifier(nameXX)}`)
-                        $parameters($i)
+                        serializeParameters(
+                            {
+                                templateParameters: $.templateParameters,
+                            },
+                            $i,
+                        )
                         $i.snippet(` = `)
                         $c($i)
                     })
                 }
-                function serializeTypeX(
+                function serializeReferenceToType(
                     $: {
-                        $: mglossary.TType,
+                        type: mglossary.TType,
+                        templateParameters: null | mglossary.GGlossary.Ptemplates.D.Pparameters,
                         name: string,
                     },
                     $i: mfp.ILine,
                 ): void {
                     serializeType(
                         {
-                            $: $.$,
+                            $: $.type,
+                            templateParameters: templateParameters,
                         },
                         ($i) => {
                             $i.snippet(`${$d.createIdentifier(nameXX)}.${$d.createIdentifier($.name)}`)
-                            $parameters($i)
+                            serializeParameters(
+                                {
+                                    templateParameters: $.templateParameters,
+                                },
+                                $i,
+                            )
                         },
                         $i,
                     )
                 }
-                pl.cc($.$, ($) => {
+                pl.cc($.type, ($) => {
                     switch ($[0]) {
                         case 'null':
                             pl.cc($[1], ($) => {
@@ -234,18 +304,19 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                     ($i) => {
                                         serializeComplexType(
                                             {
-                                                $: $,
+                                                type: $,
+                                                templateParameters: templateParameters,
                                                 name: `C`
                                             },
-                                            $parameters,
                                             $i
                                         )
                                     },
                                     ($i) => {
                                         $i.snippet(`() => `)
-                                        serializeTypeX(
+                                        serializeReferenceToType(
                                             {
-                                                $: $,
+                                                type: $,
+                                                templateParameters: templateParameters,
                                                 name: `C`,
                                             },
                                             $i,
@@ -260,18 +331,19 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                     ($i) => {
                                         serializeComplexType(
                                             {
-                                                $: $,
+                                                type: $,
+                                                templateParameters: templateParameters,
                                                 name: `A`
                                             },
-                                            $parameters,
                                             $i
                                         )
                                     },
                                     ($i) => {
                                         $i.snippet(`pt.Array<`)
-                                        serializeTypeX(
+                                        serializeReferenceToType(
                                             {
-                                                $: $,
+                                                type: $,
+                                                templateParameters: templateParameters,
                                                 name: `A`,
                                             },
                                             $i,
@@ -287,18 +359,19 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                     ($i) => {
                                         serializeComplexType(
                                             {
-                                                $: $,
+                                                type: $,
+                                                templateParameters: templateParameters,
                                                 name: `D`
                                             },
-                                            $parameters,
                                             $i
                                         )
                                     },
                                     ($i) => {
                                         $i.snippet(`pt.Dictionary<`)
-                                        serializeTypeX(
+                                        serializeReferenceToType(
                                             {
-                                                $: $,
+                                                type: $,
+                                                templateParameters: templateParameters,
                                                 name: `D`,
                                             },
                                             $i,
@@ -315,10 +388,10 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                         $d.dictionaryForEach($, ($) => {
                                             serializeComplexType(
                                                 {
-                                                    $: $.value.type,
+                                                    type: $.value.type,
+                                                    templateParameters: templateParameters,
                                                     name: `P${$.key}`
                                                 },
-                                                $parameters,
                                                 $i
                                             )
 
@@ -331,9 +404,10 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                                 $i.nestedLine(($i) => {
                                                     $i.snippet(`readonly ${$d.createApostrophedString($.key)}${$.value.optional === undefined || $.value.optional === false ? `` : `?`}: `)
 
-                                                    serializeTypeX(
+                                                    serializeReferenceToType(
                                                         {
-                                                            $: $.value.type,
+                                                            type: $.value.type,
+                                                            templateParameters: templateParameters,
                                                             'name': `P${$.key}`,
                                                         },
                                                         $i,
@@ -352,18 +426,19 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                     ($i) => {
                                         serializeComplexType(
                                             {
-                                                $: $,
+                                                type: $,
+                                                templateParameters: templateParameters,
                                                 name: `N`
                                             },
-                                            $parameters,
                                             $i
                                         )
                                     },
                                     ($i) => {
                                         $i.snippet(`pt.Nested<`)
-                                        serializeTypeX(
+                                        serializeReferenceToType(
                                             {
-                                                $: $,
+                                                type: $,
+                                                templateParameters: templateParameters,
                                                 name: `N`,
                                             },
                                             $i
@@ -384,10 +459,10 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                         $d.dictionaryForEach($, ($) => {
                                             serializeComplexType(
                                                 {
-                                                    $: $.value,
+                                                    type: $.value,
+                                                    templateParameters: templateParameters,
                                                     name: `O${$.key}`
                                                 },
-                                                $parameters,
                                                 $i
                                             )
 
@@ -400,9 +475,10 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                             $d.dictionaryForEach($, ($) => {
                                                 $i.nestedLine(($i) => {
                                                     $i.snippet(`| [${$d.createApostrophedString($.key)}, `)
-                                                    serializeTypeX(
+                                                    serializeReferenceToType(
                                                         {
-                                                            $: $.value,
+                                                            type: $.value,
+                                                            templateParameters: templateParameters,
                                                             name: `O${$.key}`,
                                                         },
                                                         $i,
@@ -425,10 +501,10 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
 
                                             serializeComplexType(
                                                 {
-                                                    $: $.value,
+                                                    type: $.value,
+                                                    templateParameters: templateParameters,//FIX is this the right one?
                                                     name: `TP${$.key}`
                                                 },
-                                                $parameters,
                                                 $i
                                             )
                                         })
@@ -442,21 +518,27 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                         $d.enrichedDictionaryForEach($.arguments, {
                                             onNotEmpty: ($c) => {
                                                 $i.snippet(`<`)
+                                                $d.dictionaryForEach(globalParameters, ($) => {
+                                                    $i.snippet(`GP${$.key}, `)
+                                                })
                                                 $c(($) => {
-                                                    $i.snippet($.isFirst ? `` : `, `)
-                                                    serializeTypeX(
+                                                    serializeReferenceToType(
                                                         {
-                                                            $: $.value,
+                                                            type: $.value,
+                                                            templateParameters: templateParameters, //FIX is this the right one?
                                                             name: `TP${$.key}`,
                                                         },
                                                         $i
                                                     )
+                                                    $i.snippet($.isLast ? `` : `, `)
                                                 })
 
                                                 $i.snippet(`>`)
                                             },
                                             onEmpty: () => {
+                                                serializeGlobalParametersOnly($i)
                                                 //nothing to do
+                                                //weird
                                             }
                                         })
                                     }
@@ -477,90 +559,75 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                     $i.snippet(`import * as m${$.key} from "${$.value}"`)
                 })
             })
-            if ($.templates !== undefined) {
-                $d.dictionaryForEach($.templates, ($) => {
+            $d.dictionaryForEach($.templates, ($) => {
 
-                    serializeComplexType(
+                serializeComplexType(
+                    {
+                        type: $.value.type,
+                        templateParameters: $.value.parameters,
+                        name: `V${$.key}`,
+                    },
+                    $i,
+                )
+                $i.line(``)
+                $i.nestedLine(($i) => {
+                    $i.snippet(`export type ${$d.createIdentifier(`M${$.key}`)}`)
+                    serializeParameters(
                         {
-                            $: $.value.type,
-                            name: `V${$.key}`,
-                        },
-                        ($i) => {
-                            $d.enrichedDictionaryForEach($.value.parameters, {
-                                onEmpty: () => {
-                                    //nothing
-                                },
-                                onNotEmpty: ($c) => {
-                                    $i.snippet(`<`)
-                                    $c(($) => {
-                                        $i.snippet(`${$.isFirst ? `` : `, `}A${$.key}`)
-                                    })
-                                    $i.snippet(`>`)
-
-                                }
-                            })
+                            templateParameters: $.value.parameters,
                         },
                         $i,
                     )
-                    $i.line(``)
-                    $i.nestedLine(($i) => {
-                        $i.snippet(`export type ${$d.createIdentifier(`M${$.key}`)}`)
-                        $d.enrichedDictionaryForEach($.value.parameters, {
-                            onEmpty: () => {
-                                //nothing
-                            },
-                            onNotEmpty: ($c) => {
-                                $i.snippet(`<`)
-                                $c(($) => {
-                                    $i.snippet(`${$.isFirst ? `` : `, `}A${$.key}`)
-                                })
-                                $i.snippet(`>`)
-
-                            }
-                        })
-                        $i.snippet(` = `)
-                        serializeType(
-                            {
-                                $: $.value.type,
-                            },
-                            ($i) => {
-                                $i.snippet($d.createIdentifier(`V${$.key}`))
-                                $d.enrichedDictionaryForEach($.value.parameters, {
-                                    onEmpty: () => {
-                                        //nothing
-                                    },
-                                    onNotEmpty: ($c) => {
-                                        $i.snippet(`<`)
-                                        $c(($) => {
-                                            $i.snippet(`${$.isFirst ? `` : `, `}A${$.key}`)
-                                        })
-                                        $i.snippet(`>`)
-
-                                    }
-                                })
-                            },
-                            $i
-                        )
-                    })
+                    $i.snippet(` = `)
+                    serializeType(
+                        {
+                            $: $.value.type,
+                            templateParameters: $.value.parameters,
+                        },
+                        ($i) => {
+                            $i.snippet($d.createIdentifier(`V${$.key}`))
+                            serializeParameters(
+                                {
+                                    templateParameters: $.value.parameters,
+                                },
+                                $i,
+                            )
+                        },
+                        $i
+                    )
                 })
-            }
+            })
             $d.dictionaryForEach($.types, ($) => {
                 serializeComplexType(
                     {
-                        $: $.value,
+                        type: $.value,
+                        templateParameters: null,
                         name: `G${$.key}`
                     },
-                    () => { },
                     $i
                 )
                 $i.nestedLine(($i) => {
-                    $i.snippet(`export type ${$d.createIdentifier(`U${$.key}`)} = `)
+                    $i.snippet(`export type ${$d.createIdentifier(`U${$.key}`)}`)
+                    serializeParameters(
+                        {
+                            templateParameters: null,
+                        },
+                        $i,
+                    )
+                    $i.snippet(` = `)
                     serializeType(
                         {
                             $: $.value,
+                            templateParameters: null,
                         },
                         ($i) => {
                             $i.snippet(`${$d.createIdentifier(`G${$.key}`)}`)
+                            serializeParameters(
+                                {
+                                    templateParameters: null,
+                                },
+                                $i,
+                            )
                         },
                         $i
                     )
@@ -571,23 +638,23 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
         $i.file(`public.generated.ts`, ($i) => {
 
             const parameters: mglossary.GGlossary.Pparameters = $.parameters !== undefined ? $.parameters : pl.createEmptyDictionary()
-            function serializeParameters($: mglossary.GGlossary.Pparameters, $i: mfp.ILine) {
-                $d.enrichedDictionaryForEach($, {
-                    onEmpty: () => {
+            // function serializeParameters($: mglossary.GGlossary.Pparameters, $i: mfp.ILine) {
+            //     $d.enrichedDictionaryForEach($, {
+            //         onEmpty: () => {
 
-                    },
-                    onNotEmpty: ($c) => {
+            //         },
+            //         onNotEmpty: ($c) => {
 
-                        $i.snippet(`<`)
-                        $c(($) => {
-                            $i.snippet($.isFirst ? `` : `, `)
-                            $i.snippet($d.createIdentifier(`PG${$.key}`))
-                        })
+            //             $i.snippet(`<`)
+            //             $c(($) => {
+            //                 $i.snippet($.isFirst ? `` : `, `)
+            //                 $i.snippet($d.createIdentifier(`PG${$.key}`))
+            //             })
 
-                        $i.snippet(`>`)
-                    }
-                })
-            }
+            //             $i.snippet(`>`)
+            //         }
+            //     })
+            // }
             function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
                 serializeContext($.context, $i)
                 $i.snippet($d.createIdentifier(`T${$.type/*.name*/}`))
@@ -688,7 +755,21 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             $d.dictionaryForEach($.types, ($) => {
                 $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`export type ${$d.createIdentifier(`T${$.key}`)} = t.U${$d.createIdentifier($.key)}`)
+                    $i.snippet(`export type ${$d.createIdentifier(`T${$.key}`)}`)
+
+                    serializeParameters(
+                        {
+                            templateParameters: null,
+                        },
+                        $i,
+                    )
+                    $i.snippet(` = t.U${$d.createIdentifier($.key)}`)
+                    serializeParameters(
+                        {
+                            templateParameters: null,
+                        },
+                        $i,
+                    )
                 })
             })
             $d.dictionaryForEach($.interfaces, ($) => {
@@ -702,7 +783,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 $i.line(``)
                 $i.nestedLine(($i) => {
                     $i.snippet(`export type ${$d.createIdentifier(`F${$.key}`)} = `)
-                    serializeParameters(parameters, $i)
+                    serializeGlobalParametersOnly($i)
                     pl.cc($.value, ($) => {
 
                         $i.snippet(`($: `)

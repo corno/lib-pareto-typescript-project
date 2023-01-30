@@ -3,14 +3,14 @@ import * as pt from 'pareto-core-types'
 import * as t from './types.generated'
 
 
-export type TContext = t.UContext
+export type TContext<GPAnnotation> = t.UContext<GPAnnotation>
 
-export type TGlossary = t.UGlossary
+export type TGlossary<GPAnnotation> = t.UGlossary<GPAnnotation>
 
-export type TInterface = t.UInterface
+export type TInterface<GPAnnotation> = t.UInterface<GPAnnotation>
 
-export type TInterfaceReference = t.UInterfaceReference
+export type TInterfaceReference<GPAnnotation> = t.UInterfaceReference<GPAnnotation>
 
-export type TType = t.UType
+export type TType<GPAnnotation> = t.UType<GPAnnotation>
 
-export type TTypeReference = t.UTypeReference
+export type TTypeReference<GPAnnotation> = t.UTypeReference<GPAnnotation>

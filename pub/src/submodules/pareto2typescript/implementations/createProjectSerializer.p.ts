@@ -63,7 +63,6 @@ export const $$: api.CcreateProjectSerializer = (
             $i.allowed("package-lock.json")
             $i.file("package.json", ($i) => {
                 $i.line(`{`)
-                $i.line(`  "name": "${$.name}",`)
                 $i.line(`  "author": "${$.author}",`)
                 $i.line(`  "license": "${$.license}",`)
                 $i.line(`  "description": "${$.description}",`)
@@ -123,6 +122,7 @@ export const $$: api.CcreateProjectSerializer = (
                 $i.line(``)
             })
             $i.directory("src", ($i) => {
+                pl.logDebugMessage("KF:SJDKFSJD:FLSJDLKFSJFLKSJF:LKSJDF")
                 switch ($.type[0]) {
                     case 'glossary':
                         pl.cc($.type[1], ($) => {
@@ -140,7 +140,9 @@ export const $$: api.CcreateProjectSerializer = (
                                 })
 
                                 $i.directory("implementations", ($i) => {
+
                                     if ($.implementation !== undefined) {
+                                        pl.logDebugMessage("HIER2?")
                                         pl.cc($.implementation, ($) => {
                                             $d.serializeImplementation($, $i)
                                         })
@@ -196,7 +198,7 @@ export const $$: api.CcreateProjectSerializer = (
                         break
                     case 'resource':
                         pl.cc($.type[1], ($) => {
-
+                            pl.logDebugMessage("HIER?")
                             $i.directory("api", ($i) => {
                                 $d.serializeModuleDefinition($.definition, $i)
                             })

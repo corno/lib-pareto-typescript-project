@@ -313,6 +313,13 @@ export const $: mproject.TModule = {
         },
     },
     'implementation': {
-        'implementations': d({}),
+        'implementations': d({
+            "createSerializer": {
+                'constructor': true,
+                'type': ['function', {
+                    'block': ,
+                }],
+            },
+        }),
     },
 }

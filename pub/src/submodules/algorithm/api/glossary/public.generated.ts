@@ -10,6 +10,8 @@ export type TAsynchronousFunctionBlock = t.UAsynchronousFunctionBlock
 
 export type TImplementation = t.UImplementation
 
+export type TImplementationType = t.UImplementationType
+
 export type TInterfaceInitializerBlock = t.UInterfaceInitializerBlock
 
 export type TProcedureBlock = t.UProcedureBlock

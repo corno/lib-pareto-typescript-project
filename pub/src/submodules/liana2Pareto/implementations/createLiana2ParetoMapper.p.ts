@@ -1,5 +1,6 @@
 import * as pl from 'pareto-core-lib'
 import * as pr from 'pareto-core-raw'
+import * as ps from 'pareto-core-state'
 
 import * as api from "../api"
 
@@ -369,8 +370,101 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                         },
                     },
                     'implementation': <malgorithm.TImplementation>{
-                        'implementations': pr.wrapRawDictionary({
-                        }),
+                        'implementations': pr.wrapRawDictionary<malgorithm.GImplementation.Pimplementations.D>({
+                            "createSerializer": {
+                                'type': ['procedure', {
+                                    'block': {
+                                        'innerFunctions': $.model.globalTypes.dictionary.map(($) => {
+                                            function doType($: mliana.TLocalType): malgorithm.GProcedureBlock.Pstatements {
+                                                const builder = ps.createArrayBuilder<malgorithm.GProcedureBlock.Pstatements.A>()
+                                                function snippet($: string) {
+                                                    
+                                                    builder.push(<malgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
+                                                        'child path': pr.wrapRawArray(["snippet"]),
+                                                        //'property': pr.wrapRawArray([]),
+                                                        'data': ['set',  ['string literal', $]],
+                                                        'callback': ['not set', {}],
+                                                    }])
+                                                }
+                                                function indent($i: () => malgorithm.GProcedureBlock) {
+                                                    // builder.push(<malgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
+                                                    //     'child path': pr.wrapRawArray(["snippet"]),
+                                                    //     //'property': pr.wrapRawArray([]),
+                                                    //     'data': ['set',  ['string literal', $]],
+                                                    //     'callback': ['not set', {}],
+                                                    // }])
+                                    
+                                                }
+                                                switch ($[0]) {
+                                                    case 'array':
+                                                        pl.cc($[1], ($) => {
+                                                            snippet("ARRAY")
+                                                        })
+                                                        break
+                                                    case 'boolean':
+                                                        pl.cc($[1], ($) => {
+                                                            snippet("BOOLEAN")
+
+                                                        })
+                                                        break
+                                                    case 'component':
+                                                        pl.cc($[1], ($) => {
+                                                            snippet("COMPONENT")
+
+                                                        })
+                                                        break
+                                                    case 'dictionary':
+                                                        pl.cc($[1], ($) => {
+                                                            snippet("DICTIONARY")
+
+                                                        })
+                                                        break
+                                                    case 'group':
+                                                        pl.cc($[1], ($) => {
+                                                            pl.logDebugMessage("GROPUSFDSDKLF:JF")
+                                                            // snippet("{")
+                                                            // indent(($) => {
+                                                                
+                                                            // })
+                                                            // snippet("}")
+                                                            // $.
+
+                                                        })
+                                                        break
+                                                    case 'string':
+                                                        pl.cc($[1], ($) => {
+                                                            snippet("STRING")
+
+                                                        })
+                                                        break
+                                                    case 'taggedUnion':
+                                                        pl.cc($[1], ($) => {
+                                                            snippet("TAGGEDUNION")
+
+                                                        })
+                                                        break
+                                                    default: pl.au($[0])
+                                                }
+                                                return builder.getArray()
+                                            }
+
+                                            return <malgorithm.GProcedureBlock.PinnerFunctions.D>{
+                                                'type': ['procedure', {
+                                                    'block': {
+                                                        'innerFunctions': pr.wrapRawDictionary({}),
+                                                        'statements': doType($.type),
+                                                    },
+                                                }]
+                                            }
+                                        }),
+                                        'statements': pr.wrapRawArray([
+
+                                        ])
+                                    }
+                                }],
+                                'constructor': true,
+                            }
+                        })
                     },
                 },
                 "sparse": {

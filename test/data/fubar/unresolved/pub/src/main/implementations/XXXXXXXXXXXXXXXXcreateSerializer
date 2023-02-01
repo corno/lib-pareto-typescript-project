@@ -1,0 +1,20 @@
+import * as api from "../api"
+
+import * as mfp from "lib-fountain-pen"
+
+export const $$: api.CcreateSerializer = ($d) => {
+    return ($, $i) => {
+        function Context($: api.TContext, $i: mfp.ILine) {
+            $i.snippet("TAGGEDUNION", )
+        }
+        function Glossary($: api.TGlossary, $i: mfp.ILine) {}
+        function Interface($: api.TInterface, $i: mfp.ILine) {
+            $i.snippet("TAGGEDUNION", )
+        }
+        function InterfaceReference($: api.TInterfaceReference, $i: mfp.ILine) {}
+        function Type($: api.TType, $i: mfp.ILine) {
+            $i.snippet("TAGGEDUNION", )
+        }
+        function TypeReference($: api.TTypeReference, $i: mfp.ILine) {}
+    }
+}

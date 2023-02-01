@@ -16,11 +16,13 @@ import {
 import * as mliana_flat from "../../../../../pub/dist/submodules/liana_flat"
 import * as mproject from "../../../../../pub/dist/submodules/project"
 import * as mliana from "../../../../../pub/dist/submodules/liana"
+import * as mmoduleDefinition from "../../../../../pub/dist/submodules/moduleDefinition"
 import * as mliana2Pareto from "../../../../../pub/dist/submodules/liana2Pareto"
 import * as mpareto2typescript from "../../../../../pub/dist/submodules/pareto2typescript"
 import * as mtostring from "res-pareto-tostring"
 import * as mtemp from "../../../../../pub/dist/submodules/temp"
 import * as mcoll from "res-pareto-collation"
+import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
 import * as mts from "res-typescript"
 
@@ -37,30 +39,43 @@ import { $ as glossary } from "../../../data/lianaModels/glossary.p"
 import { $ as accountingModel } from "../../../data/lianaModels/accounting.p"
 
 export const $$: api.CgetTestSet = ($XXX) => {
-    pub.$a.generateProject({
-        'mainData': {
-            'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/project`]),
-        },
-        'project': {
-            'name': "FOOBAR",
-            'author': "Corno",
-            'description': "TBD",
-            'license': "ISC",
-            'pubdependencies': d({
-                "lib-pareto-fubar": {}
-            }),
-            'type': ['resource', {
-                'devDependencies': d({
-                    "a": {},
-                    "b": {},
+
+    function genProj(dir: string, module: mproject.TModule) {
+        pub.$a.generateProject({
+            'mainData': {
+                'arguments': pr.wrapRawArray([dir]),
+            },
+            'project': {
+                'name': "FOOBAR",
+                'author': "Corno",
+                'description': "TBD",
+                'license': "ISC",
+                'pubdependencies': d({
+                    "lib-pareto-fubar": {}
                 }),
-                'definition': module.definition,
-                'test': {
-                    'dependencies': d({}),
-                },
-            }],
-        },
-    })
+                'type': ['library', {
+       
+                    'main': module,
+                    'submodules': d({}),
+                    'test': {
+                        'dependencies': d({}),
+                    },
+                }],
+                // 'type': ['resource', {
+                //     'devDependencies': d({
+                //         "a": {},
+                //         "b": {},
+                //     }),
+                //     'definition': definition,
+                //     'test': {
+                //         'dependencies': d({}),
+                //     },
+                // }],
+            },
+        })
+
+    }
+    //genProj(`${$XXX.testDirectory}/project`, module.definition)
     // pub.$a.createTestProgram(null, {
     //     getTestSet: () => {
     //         pl.panic("@@@")
@@ -161,6 +176,19 @@ export const $$: api.CgetTestSet = ($XXX) => {
     // x(lianaModel)
     x(accountingModel.model)
     x(simpleModel)
+
+    const mappedGlossary = mliana2Pareto.$a.createLiana2ParetoMapper({
+        decorateDictionaryEntriesWithKey: mtemp.$a.decorateDictionaryEntriesWithKey
+    })({
+        'model': glossary,
+
+        'stringmapping': pr.wrapRawDictionary({
+            "identifier": ['string', null]
+        }),
+    })
+    mappedGlossary.modules.forEach(() => false, ($, key) => {
+       genProj(`${$XXX.testDirectory}/fubar/${key}`, $)
+    })
 
     mliana2Pareto.$a.generateProject({
         'mainData': {

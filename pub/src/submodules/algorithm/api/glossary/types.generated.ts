@@ -34,39 +34,10 @@ export namespace GImplementation {
     
     export namespace Pimplementations {
         
-        export namespace D {
-            
-            export namespace Ptype {
-                
-                export namespace Oasynchronous__function {}
-                export type Oasynchronous__function = {
-                    readonly 'block': UAsynchronousFunctionBlock
-                }
-                
-                export namespace Ointerface__initializer {}
-                export type Ointerface__initializer = {
-                    readonly 'block': UInterfaceInitializerBlock
-                }
-                
-                export namespace Oprocedure {}
-                export type Oprocedure = {
-                    readonly 'block': UProcedureBlock
-                }
-                
-                export namespace Osynchronous__function {}
-                export type Osynchronous__function = {
-                    readonly 'block': USynchronousFunctionBlock
-                }
-            }
-            export type Ptype = 
-                | ['asynchronous function', Ptype.Oasynchronous__function]
-                | ['interface initializer', Ptype.Ointerface__initializer]
-                | ['procedure', Ptype.Oprocedure]
-                | ['synchronous function', Ptype.Osynchronous__function]
-        }
+        export namespace D {}
         export type D = {
             readonly 'constructor': boolean
-            readonly 'type': D.Ptype
+            readonly 'type': UImplementationType
         }
     }
     export type Pimplementations = pt.Dictionary<Pimplementations.D>
@@ -75,6 +46,35 @@ export type GImplementation = {
     readonly 'implementations': GImplementation.Pimplementations
 }
 export type UImplementation = GImplementation
+
+export namespace GImplementationType {
+    
+    export namespace Oasynchronous__function {}
+    export type Oasynchronous__function = {
+        readonly 'block': UAsynchronousFunctionBlock
+    }
+    
+    export namespace Ointerface__initializer {}
+    export type Ointerface__initializer = {
+        readonly 'block': UInterfaceInitializerBlock
+    }
+    
+    export namespace Oprocedure {}
+    export type Oprocedure = {
+        readonly 'block': UProcedureBlock
+    }
+    
+    export namespace Osynchronous__function {}
+    export type Osynchronous__function = {
+        readonly 'block': USynchronousFunctionBlock
+    }
+}
+export type GImplementationType = 
+    | ['asynchronous function', GImplementationType.Oasynchronous__function]
+    | ['interface initializer', GImplementationType.Ointerface__initializer]
+    | ['procedure', GImplementationType.Oprocedure]
+    | ['synchronous function', GImplementationType.Osynchronous__function]
+export type UImplementationType = GImplementationType
 
 export namespace GInterfaceInitializerBlock {
     
@@ -89,14 +89,14 @@ export type UInterfaceInitializerBlock = GInterfaceInitializerBlock
 
 export namespace GProcedureBlock {
     
-    export namespace PinnerCallbacks {
+    export namespace PinnerFunctions {
         
         export namespace D {}
         export type D = {
-            readonly 'block': UProcedureBlock
+            readonly 'type': UImplementationType
         }
     }
-    export type PinnerCallbacks = pt.Dictionary<PinnerCallbacks.D>
+    export type PinnerFunctions = pt.Dictionary<PinnerFunctions.D>
     
     export namespace Pstatements {
         
@@ -115,11 +115,33 @@ export namespace GProcedureBlock {
                 readonly 'interface'?: string
             }
             
-            export namespace OinterfaceCall {}
+            export namespace OinterfaceCall {
+                
+                export namespace Pcallback {
+                    
+                    export namespace Onot__set {}
+                    export type Onot__set = {}
+                }
+                export type Pcallback = 
+                    | ['not set', Pcallback.Onot__set]
+                    | ['set', UProcedureBlock]
+                
+                export namespace Pchild__path {}
+                export type Pchild__path = pt.Array<string>
+                
+                export namespace Pdata {
+                    
+                    export namespace Onot__set {}
+                    export type Onot__set = {}
+                }
+                export type Pdata = 
+                    | ['not set', Pdata.Onot__set]
+                    | ['set', USynchronousExpression]
+            }
             export type OinterfaceCall = {
-                readonly 'callback'?: UProcedureBlock
-                readonly 'data'?: string
-                readonly 'property': string
+                readonly 'callback': OinterfaceCall.Pcallback
+                readonly 'child path': OinterfaceCall.Pchild__path
+                readonly 'data': OinterfaceCall.Pdata
             }
             
             export namespace Oswitch {
@@ -144,7 +166,7 @@ export namespace GProcedureBlock {
     export type Pstatements = pt.Array<Pstatements.A>
 }
 export type GProcedureBlock = {
-    readonly 'innerCallbacks'?: GProcedureBlock.PinnerCallbacks
+    readonly 'innerFunctions'?: GProcedureBlock.PinnerFunctions
     readonly 'statements': GProcedureBlock.Pstatements
 }
 export type UProcedureBlock = GProcedureBlock
@@ -207,6 +229,7 @@ export type GSynchronousExpression =
     | ['mapArray', GSynchronousExpression.OmapArray]
     | ['mapDictionary', GSynchronousExpression.OmapDictionary]
     | ['propertySelection', GSynchronousExpression.OpropertySelection]
+    | ['string literal', string]
     | ['switch', GSynchronousExpression.Oswitch]
 export type USynchronousExpression = GSynchronousExpression
 

@@ -34,8 +34,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "returnExpression": member(reference("AsynchronousExpression"))
             }),
             "ProcedureBlock": group({
-                "innerCallbacks": member(dictionary(group({
-                    "block": member(reference("ProcedureBlock"))
+                "innerFunctions": member(dictionary(group({
+                    "type": member(reference("ImplementationType"))
                 })), true),
                 "statements": member(array(taggedUnion({
                     "dependencyCall": group({
@@ -48,9 +48,16 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "interface": member(string(), true),
                     }),
                     "interfaceCall": group({
-                        "property": member(string()),
-                        "data": member(string(), true),
-                        "callback": member(reference("ProcedureBlock"), true)
+                        "child path": member(array(string())),
+                        //"property": member(array(string())),
+                        "data": member(taggedUnion({
+                            "not set": group({}),
+                            "set": reference("SynchronousExpression"),
+                        })),
+                        "callback": member(taggedUnion({
+                            "not set": group({}),
+                            "set": reference("ProcedureBlock"),
+                        }))
                     }),
                     "switch": group({
                         "path": member(array(string())),
@@ -86,6 +93,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "property": member(string()),
                     "block": member(reference("SynchronousFunctionBlock"))
                 }),
+                "string literal": string(),
                 "mapDictionary": group({
                     "block": member(reference("SynchronousFunctionBlock")),
                 }),
@@ -96,21 +104,22 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "Implementation": group({
                 "implementations": member(dictionary(group({
                     "constructor": member(boolean()),
-                    "type": member(taggedUnion({
-                        "synchronous function": group({
-                            "block": member(reference("SynchronousFunctionBlock"))
-                        }),
-                        "asynchronous function": group({
-                            "block": member(reference("AsynchronousFunctionBlock"))
-                        }),
-                        "procedure": group({
-                            "block": member(reference("ProcedureBlock"))
-                        }),
-                        "interface initializer": group({
-                            "block": member(reference("InterfaceInitializerBlock"))
-                        }),
-                    }))
+                    "type": member(reference("ImplementationType"))
                 }))),
+            }),
+            "ImplementationType": taggedUnion({
+                "synchronous function": group({
+                    "block": member(reference("SynchronousFunctionBlock"))
+                }),
+                "asynchronous function": group({
+                    "block": member(reference("AsynchronousFunctionBlock"))
+                }),
+                "procedure": group({
+                    "block": member(reference("ProcedureBlock"))
+                }),
+                "interface initializer": group({
+                    "block": member(reference("InterfaceInitializerBlock"))
+                }),
             }),
             "States": dictionary(reference("Type")),
             "Type": taggedUnion({

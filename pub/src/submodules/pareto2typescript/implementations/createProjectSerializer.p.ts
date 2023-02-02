@@ -112,17 +112,14 @@ export const $$: api.CcreateProjectSerializer = (
                 $i.line(`    "dist"`)
                 $i.line(`  ],`)
                 $i.line(`  "repository": {`)
-                $i.line(`    "type": "git",`)
-                $i.line(`    "url": "http://github.com/corno/${$.name}.git"`)
+                $i.line(`    "type": "git"`)
                 $i.line(`  },`)
                 $i.line(`  "main": "dist/index.js",`)
-                $i.line(`  "types": "dist/index.d.ts",`)
-                $i.line(`  "version": "0.0.0"`)
+                $i.line(`  "types": "dist/index.d.ts"`)
                 $i.line(`}`)
                 $i.line(``)
             })
             $i.directory("src", ($i) => {
-                pl.logDebugMessage("KF:SJDKFSJD:FLSJDLKFSJFLKSJF:LKSJDF")
                 switch ($.type[0]) {
                     case 'glossary':
                         pl.cc($.type[1], ($) => {

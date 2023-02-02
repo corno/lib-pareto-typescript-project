@@ -56,19 +56,19 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
         function serializeGlobalParametersOnly(
             $i: mfp.ILine
         ) {
-            $d.enrichedDictionaryForEach(globalParameters, {
-                onEmpty: () => {
-                },
-                onNotEmpty: ($c) => {
-                    $i.snippet(`<`)
+            // $d.enrichedDictionaryForEach(globalParameters, {
+            //     onEmpty: () => {
+            //     },
+            //     onNotEmpty: ($c) => {
+            //         $i.snippet(`<`)
 
-                    $c(($) => {
-                        $i.snippet(`GP${$.key}${$.isLast ? `` : `, `}`)
-                    })
-                    $i.snippet(`>`)
+            //         $c(($) => {
+            //             $i.snippet(`GP${$.key}${$.isLast ? `` : `, `}`)
+            //         })
+            //         $i.snippet(`>`)
 
-                }
-            })
+            //     }
+            // })
 
         }
         function serializeParameters(
@@ -88,9 +88,9 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                     onNotEmpty: ($c) => {
                         $i.snippet(`<`)
 
-                        $d.dictionaryForEach(globalParameters, ($) => {
-                            $i.snippet(`GP${$.key}, `)
-                        })
+                        // $d.dictionaryForEach(globalParameters, ($) => {
+                        //     $i.snippet(`GP${$.key}, `)
+                        // })
                         $c(($) => {
                             $i.snippet(`A${$.key}${$.isLast ? `` : `, `}`)
                         })
@@ -518,9 +518,9 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                         $d.enrichedDictionaryForEach($.arguments, {
                                             onNotEmpty: ($c) => {
                                                 $i.snippet(`<`)
-                                                $d.dictionaryForEach(globalParameters, ($) => {
-                                                    $i.snippet(`GP${$.key}, `)
-                                                })
+                                                // $d.dictionaryForEach(globalParameters, ($) => {
+                                                //     $i.snippet(`GP${$.key}, `)
+                                                // })
                                                 $c(($) => {
                                                     serializeReferenceToType(
                                                         {

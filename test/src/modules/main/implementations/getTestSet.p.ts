@@ -46,7 +46,6 @@ export const $$: api.CgetTestSet = ($XXX) => {
                 'arguments': pr.wrapRawArray([dir]),
             },
             'project': {
-                'name': "FOOBAR",
                 'author': "Corno",
                 'description': "TBD",
                 'license': "ISC",

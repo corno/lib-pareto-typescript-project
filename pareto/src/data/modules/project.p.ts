@@ -36,11 +36,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "states": member(reference("algorithm", "States"), true)
             }),
             "Project": group({
-                "name": member(string()),
                 "author": member(string()),
                 "license": member(string()),
                 "description": member(string()),
-
                 "pubdependencies": member(dictionary(group({}))),
                 "type": member(taggedUnion({
                     "resource": group({

@@ -16,8 +16,6 @@ import { $ as glossary } from "../data/glossary/unresolved/module.generated"
 const d = pr.wrapRawDictionary
 
 export const $: mproject.TProject = {
-    'name': "lib-pareto-typescript-project",
-
     'author': "Corno",
     'description': "A library to generate a typescript project environment for Pareto",
     'license': "ISC",

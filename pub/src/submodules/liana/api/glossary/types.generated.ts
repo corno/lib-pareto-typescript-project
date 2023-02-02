@@ -19,7 +19,7 @@ export namespace VConstrainedDictionary {
     export namespace Pdictionary {
         
         export namespace D {}
-        export type D<AReferencedType, AType> = MConstrainedDictionaryEntry<UXGlobalType, UXArgument>
+        export type D<AReferencedType, AType> = MConstrainedDictionaryEntry<UXGlobalType<AReferencedType, AType>, UXArgument<AReferencedType, AType>>
     }
     export type Pdictionary<AReferencedType, AType> = pt.Dictionary<Pdictionary.D<AReferencedType, AType>>
 }

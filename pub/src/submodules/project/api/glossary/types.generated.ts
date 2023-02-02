@@ -72,7 +72,6 @@ export type GProject = {
     readonly 'author': string
     readonly 'description': string
     readonly 'license': string
-    readonly 'name': string
     readonly 'pubdependencies': GProject.Ppubdependencies
     readonly 'type': GProject.Ptype
 }

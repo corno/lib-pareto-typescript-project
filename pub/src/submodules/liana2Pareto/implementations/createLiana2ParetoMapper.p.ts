@@ -371,99 +371,99 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     },
                     'implementation': <malgorithm.TImplementation>{
                         'implementations': pr.wrapRawDictionary<malgorithm.GImplementation.Pimplementations.D>({
-                            "createSerializer": {
-                                'type': ['procedure', {
-                                    'block': {
-                                        'innerFunctions': $.model.globalTypes.dictionary.map(($) => {
-                                            function doType($: mliana.TLocalType): malgorithm.GProcedureBlock.Pstatements {
-                                                const builder = ps.createArrayBuilder<malgorithm.GProcedureBlock.Pstatements.A>()
-                                                function snippet($: string) {
+                            // "createSerializer": {
+                            //     'type': ['procedure', {
+                            //         'block': {
+                            //             'innerFunctions': $.model.globalTypes.dictionary.map(($) => {
+                            //                 function doType($: mliana.TLocalType): malgorithm.GProcedureBlock.Pstatements {
+                            //                     const builder = ps.createArrayBuilder<malgorithm.GProcedureBlock.Pstatements.A>()
+                            //                     function snippet($: string) {
                                                     
-                                                    builder.push(<malgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
-                                                        'child path': pr.wrapRawArray(["snippet"]),
-                                                        //'property': pr.wrapRawArray([]),
-                                                        'data': ['set',  ['string literal', $]],
-                                                        'callback': ['not set', {}],
-                                                    }])
-                                                }
-                                                function indent($i: () => malgorithm.GProcedureBlock) {
-                                                    // builder.push(<malgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
-                                                    //     'child path': pr.wrapRawArray(["snippet"]),
-                                                    //     //'property': pr.wrapRawArray([]),
-                                                    //     'data': ['set',  ['string literal', $]],
-                                                    //     'callback': ['not set', {}],
-                                                    // }])
+                            //                         builder.push(<malgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
+                            //                             'child path': pr.wrapRawArray(["snippet"]),
+                            //                             //'property': pr.wrapRawArray([]),
+                            //                             'data': ['set',  ['string literal', $]],
+                            //                             'callback': ['not set', {}],
+                            //                         }])
+                            //                     }
+                            //                     function indent($i: () => malgorithm.GProcedureBlock) {
+                            //                         // builder.push(<malgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
+                            //                         //     'child path': pr.wrapRawArray(["snippet"]),
+                            //                         //     //'property': pr.wrapRawArray([]),
+                            //                         //     'data': ['set',  ['string literal', $]],
+                            //                         //     'callback': ['not set', {}],
+                            //                         // }])
                                     
-                                                }
-                                                switch ($[0]) {
-                                                    case 'array':
-                                                        pl.cc($[1], ($) => {
-                                                            snippet("ARRAY")
-                                                        })
-                                                        break
-                                                    case 'boolean':
-                                                        pl.cc($[1], ($) => {
-                                                            snippet("BOOLEAN")
+                            //                     }
+                            //                     switch ($[0]) {
+                            //                         case 'array':
+                            //                             pl.cc($[1], ($) => {
+                            //                                 snippet("ARRAY")
+                            //                             })
+                            //                             break
+                            //                         case 'boolean':
+                            //                             pl.cc($[1], ($) => {
+                            //                                 snippet("BOOLEAN")
 
-                                                        })
-                                                        break
-                                                    case 'component':
-                                                        pl.cc($[1], ($) => {
-                                                            snippet("COMPONENT")
+                            //                             })
+                            //                             break
+                            //                         case 'component':
+                            //                             pl.cc($[1], ($) => {
+                            //                                 snippet("COMPONENT")
 
-                                                        })
-                                                        break
-                                                    case 'dictionary':
-                                                        pl.cc($[1], ($) => {
-                                                            snippet("DICTIONARY")
+                            //                             })
+                            //                             break
+                            //                         case 'dictionary':
+                            //                             pl.cc($[1], ($) => {
+                            //                                 snippet("DICTIONARY")
 
-                                                        })
-                                                        break
-                                                    case 'group':
-                                                        pl.cc($[1], ($) => {
-                                                            pl.logDebugMessage("GROPUSFDSDKLF:JF")
-                                                            // snippet("{")
-                                                            // indent(($) => {
+                            //                             })
+                            //                             break
+                            //                         case 'group':
+                            //                             pl.cc($[1], ($) => {
+                            //                                 pl.logDebugMessage("GROPUSFDSDKLF:JF")
+                            //                                 // snippet("{")
+                            //                                 // indent(($) => {
                                                                 
-                                                            // })
-                                                            // snippet("}")
-                                                            // $.
+                            //                                 // })
+                            //                                 // snippet("}")
+                            //                                 // $.
 
-                                                        })
-                                                        break
-                                                    case 'string':
-                                                        pl.cc($[1], ($) => {
-                                                            snippet("STRING")
+                            //                             })
+                            //                             break
+                            //                         case 'string':
+                            //                             pl.cc($[1], ($) => {
+                            //                                 snippet("STRING")
 
-                                                        })
-                                                        break
-                                                    case 'taggedUnion':
-                                                        pl.cc($[1], ($) => {
-                                                            snippet("TAGGEDUNION")
+                            //                             })
+                            //                             break
+                            //                         case 'taggedUnion':
+                            //                             pl.cc($[1], ($) => {
+                            //                                 snippet("TAGGEDUNION")
 
-                                                        })
-                                                        break
-                                                    default: pl.au($[0])
-                                                }
-                                                return builder.getArray()
-                                            }
+                            //                             })
+                            //                             break
+                            //                         default: pl.au($[0])
+                            //                     }
+                            //                     return builder.getArray()
+                            //                 }
 
-                                            return <malgorithm.GProcedureBlock.PinnerFunctions.D>{
-                                                'type': ['procedure', {
-                                                    'block': {
-                                                        'innerFunctions': pr.wrapRawDictionary({}),
-                                                        'statements': doType($.type),
-                                                    },
-                                                }]
-                                            }
-                                        }),
-                                        'statements': pr.wrapRawArray([
+                            //                 return <malgorithm.GProcedureBlock.PinnerFunctions.D>{
+                            //                     'type': ['procedure', {
+                            //                         'block': {
+                            //                             'innerFunctions': pr.wrapRawDictionary({}),
+                            //                             'statements': doType($.type),
+                            //                         },
+                            //                     }]
+                            //                 }
+                            //             }),
+                            //             'statements': pr.wrapRawArray([
 
-                                        ])
-                                    }
-                                }],
-                                'constructor': true,
-                            }
+                            //             ])
+                            //         }
+                            //     }],
+                            //     'constructor': true,
+                            // }
                         })
                     },
                 },

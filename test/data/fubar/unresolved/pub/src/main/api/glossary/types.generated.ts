@@ -3,22 +3,22 @@ import * as pt from 'pareto-core-types'
 import * as mfp from "lib-fountain-pen"
 
 export namespace VReference {}
-export type VReference<GPAnnotation, AReferencedType> = {
+export type VReference<AReferencedType> = {
     readonly 'annotation': string
     readonly 'name': string
 }
 
-export type MReference<GPAnnotation, AReferencedType> = VReference<GPAnnotation, AReferencedType>
+export type MReference<AReferencedType> = VReference<AReferencedType>
 
 export namespace GContext {
     
     export namespace Olocal {}
-    export type Olocal<GPAnnotation> = {}
+    export type Olocal = {}
 }
-export type GContext<GPAnnotation> = 
+export type GContext = 
     | ['import', string]
-    | ['local', GContext.Olocal<GPAnnotation>]
-export type UContext<GPAnnotation> = GContext<GPAnnotation>
+    | ['local', GContext.Olocal]
+export type UContext = GContext
 
 export namespace GGlossary {
     
@@ -29,62 +29,62 @@ export namespace GGlossary {
             export namespace Pmanaged__input__interface {
                 
                 export namespace Onot__set {}
-                export type Onot__set<GPAnnotation> = {}
+                export type Onot__set = {}
             }
-            export type Pmanaged__input__interface<GPAnnotation> = 
-                | ['not set', Pmanaged__input__interface.Onot__set<GPAnnotation>]
-                | ['set', UInterfaceReference<GPAnnotation>]
+            export type Pmanaged__input__interface = 
+                | ['not set', Pmanaged__input__interface.Onot__set]
+                | ['set', UInterfaceReference]
             
             export namespace Poutput__interface {
                 
                 export namespace Onot__set {}
-                export type Onot__set<GPAnnotation> = {}
+                export type Onot__set = {}
             }
-            export type Poutput__interface<GPAnnotation> = 
-                | ['not set', Poutput__interface.Onot__set<GPAnnotation>]
-                | ['set', UInterfaceReference<GPAnnotation>]
+            export type Poutput__interface = 
+                | ['not set', Poutput__interface.Onot__set]
+                | ['set', UInterfaceReference]
             
             export namespace Preturn__type {
                 
                 export namespace Odata {}
-                export type Odata<GPAnnotation> = {
+                export type Odata = {
                     readonly 'asynchronous': boolean
-                    readonly 'type': UTypeReference<GPAnnotation>
+                    readonly 'type': UTypeReference
                 }
                 
                 export namespace Onothing {}
-                export type Onothing<GPAnnotation> = {}
+                export type Onothing = {}
             }
-            export type Preturn__type<GPAnnotation> = 
-                | ['data', Preturn__type.Odata<GPAnnotation>]
-                | ['interface', UInterfaceReference<GPAnnotation>]
-                | ['nothing', Preturn__type.Onothing<GPAnnotation>]
+            export type Preturn__type = 
+                | ['data', Preturn__type.Odata]
+                | ['interface', UInterfaceReference]
+                | ['nothing', Preturn__type.Onothing]
         }
-        export type D<GPAnnotation> = {
-            readonly 'data': UTypeReference<GPAnnotation>
-            readonly 'managed input interface': D.Pmanaged__input__interface<GPAnnotation>
-            readonly 'output interface': D.Poutput__interface<GPAnnotation>
-            readonly 'return type': D.Preturn__type<GPAnnotation>
+        export type D = {
+            readonly 'data': UTypeReference
+            readonly 'managed input interface': D.Pmanaged__input__interface
+            readonly 'output interface': D.Poutput__interface
+            readonly 'return type': D.Preturn__type
         }
     }
-    export type Pfunctions<GPAnnotation> = pt.Dictionary<Pfunctions.D<GPAnnotation>>
+    export type Pfunctions = pt.Dictionary<Pfunctions.D>
     
     export namespace Pimports {
         
         export namespace D {}
-        export type D<GPAnnotation> = {}
+        export type D = {}
     }
-    export type Pimports<GPAnnotation> = pt.Dictionary<Pimports.D<GPAnnotation>>
+    export type Pimports = pt.Dictionary<Pimports.D>
     
     export namespace Pinterfaces {}
-    export type Pinterfaces<GPAnnotation> = pt.Dictionary<UInterface<GPAnnotation>>
+    export type Pinterfaces = pt.Dictionary<UInterface>
     
     export namespace Pparameters {
         
         export namespace D {}
-        export type D<GPAnnotation> = {}
+        export type D = {}
     }
-    export type Pparameters<GPAnnotation> = pt.Dictionary<Pparameters.D<GPAnnotation>>
+    export type Pparameters = pt.Dictionary<Pparameters.D>
     
     export namespace Ptemplates {
         
@@ -93,39 +93,39 @@ export namespace GGlossary {
             export namespace Pparameters {
                 
                 export namespace D {}
-                export type D<GPAnnotation> = {}
+                export type D = {}
             }
-            export type Pparameters<GPAnnotation> = pt.Dictionary<Pparameters.D<GPAnnotation>>
+            export type Pparameters = pt.Dictionary<Pparameters.D>
         }
-        export type D<GPAnnotation> = {
-            readonly 'parameters': D.Pparameters<GPAnnotation>
-            readonly 'type': UType<GPAnnotation>
+        export type D = {
+            readonly 'parameters': D.Pparameters
+            readonly 'type': UType
         }
     }
-    export type Ptemplates<GPAnnotation> = pt.Dictionary<Ptemplates.D<GPAnnotation>>
+    export type Ptemplates = pt.Dictionary<Ptemplates.D>
     
     export namespace Ptypes {}
-    export type Ptypes<GPAnnotation> = pt.Dictionary<UType<GPAnnotation>>
+    export type Ptypes = pt.Dictionary<UType>
 }
-export type GGlossary<GPAnnotation> = {
-    readonly 'functions': GGlossary.Pfunctions<GPAnnotation>
-    readonly 'imports': GGlossary.Pimports<GPAnnotation>
-    readonly 'interfaces': GGlossary.Pinterfaces<GPAnnotation>
-    readonly 'parameters': GGlossary.Pparameters<GPAnnotation>
-    readonly 'templates': GGlossary.Ptemplates<GPAnnotation>
-    readonly 'types': GGlossary.Ptypes<GPAnnotation>
+export type GGlossary = {
+    readonly 'functions': GGlossary.Pfunctions
+    readonly 'imports': GGlossary.Pimports
+    readonly 'interfaces': GGlossary.Pinterfaces
+    readonly 'parameters': GGlossary.Pparameters
+    readonly 'templates': GGlossary.Ptemplates
+    readonly 'types': GGlossary.Ptypes
 }
-export type UGlossary<GPAnnotation> = GGlossary<GPAnnotation>
+export type UGlossary = GGlossary
 
 export namespace GInterface {
     
     export namespace Ogroup {
         
         export namespace Pmembers {}
-        export type Pmembers<GPAnnotation> = pt.Dictionary<UInterface<GPAnnotation>>
+        export type Pmembers = pt.Dictionary<UInterface>
     }
-    export type Ogroup<GPAnnotation> = {
-        readonly 'members': Ogroup.Pmembers<GPAnnotation>
+    export type Ogroup = {
+        readonly 'members': Ogroup.Pmembers
     }
     
     export namespace Omethod {
@@ -133,96 +133,96 @@ export namespace GInterface {
         export namespace Pdata {
             
             export namespace Onot__set {}
-            export type Onot__set<GPAnnotation> = {}
+            export type Onot__set = {}
         }
-        export type Pdata<GPAnnotation> = 
-            | ['not set', Pdata.Onot__set<GPAnnotation>]
-            | ['set', UTypeReference<GPAnnotation>]
+        export type Pdata = 
+            | ['not set', Pdata.Onot__set]
+            | ['set', UTypeReference]
         
         export namespace Pinterface {
             
             export namespace Onot__set {}
-            export type Onot__set<GPAnnotation> = {}
+            export type Onot__set = {}
         }
-        export type Pinterface<GPAnnotation> = 
-            | ['not set', Pinterface.Onot__set<GPAnnotation>]
-            | ['set', UInterfaceReference<GPAnnotation>]
+        export type Pinterface = 
+            | ['not set', Pinterface.Onot__set]
+            | ['set', UInterfaceReference]
     }
-    export type Omethod<GPAnnotation> = {
-        readonly 'data': Omethod.Pdata<GPAnnotation>
-        readonly 'interface': Omethod.Pinterface<GPAnnotation>
+    export type Omethod = {
+        readonly 'data': Omethod.Pdata
+        readonly 'interface': Omethod.Pinterface
     }
 }
-export type GInterface<GPAnnotation> = 
-    | ['group', GInterface.Ogroup<GPAnnotation>]
-    | ['method', GInterface.Omethod<GPAnnotation>]
-    | ['reference', UInterfaceReference<GPAnnotation>]
-export type UInterface<GPAnnotation> = GInterface<GPAnnotation>
+export type GInterface = 
+    | ['group', GInterface.Ogroup]
+    | ['method', GInterface.Omethod]
+    | ['reference', UInterfaceReference]
+export type UInterface = GInterface
 
 export namespace GInterfaceReference {}
-export type GInterfaceReference<GPAnnotation> = {
-    readonly 'context': UContext<GPAnnotation>
+export type GInterfaceReference = {
+    readonly 'context': UContext
     readonly 'interface': string
 }
-export type UInterfaceReference<GPAnnotation> = GInterfaceReference<GPAnnotation>
+export type UInterfaceReference = GInterfaceReference
 
 export namespace GType {
     
     export namespace Oboolean {}
-    export type Oboolean<GPAnnotation> = {}
+    export type Oboolean = {}
     
     export namespace Ogroup {
         
         export namespace D {}
-        export type D<GPAnnotation> = {
+        export type D = {
             readonly 'optional': boolean
-            readonly 'type': UType<GPAnnotation>
+            readonly 'type': UType
         }
     }
-    export type Ogroup<GPAnnotation> = pt.Dictionary<Ogroup.D<GPAnnotation>>
+    export type Ogroup = pt.Dictionary<Ogroup.D>
     
     export namespace Onull {}
-    export type Onull<GPAnnotation> = {}
+    export type Onull = {}
     
     export namespace Onumber {}
-    export type Onumber<GPAnnotation> = {}
+    export type Onumber = {}
     
     export namespace Ostring {}
-    export type Ostring<GPAnnotation> = {}
+    export type Ostring = {}
     
     export namespace OtaggedUnion {}
-    export type OtaggedUnion<GPAnnotation> = pt.Dictionary<UType<GPAnnotation>>
+    export type OtaggedUnion = pt.Dictionary<UType>
     
     export namespace Otemplate {
         
         export namespace Parguments {}
-        export type Parguments<GPAnnotation> = pt.Dictionary<UType<GPAnnotation>>
+        export type Parguments = pt.Dictionary<UType>
     }
-    export type Otemplate<GPAnnotation> = {
-        readonly 'arguments': Otemplate.Parguments<GPAnnotation>
-        readonly 'context': UContext<GPAnnotation>
+    export type Otemplate = {
+        readonly 'arguments': Otemplate.Parguments
+        readonly 'context': UContext
         readonly 'template': string
     }
 }
-export type GType<GPAnnotation> = 
-    | ['array', UType<GPAnnotation>]
-    | ['boolean', GType.Oboolean<GPAnnotation>]
-    | ['computed', UType<GPAnnotation>]
-    | ['dictionary', UType<GPAnnotation>]
-    | ['group', GType.Ogroup<GPAnnotation>]
-    | ['nested', UType<GPAnnotation>]
-    | ['null', GType.Onull<GPAnnotation>]
-    | ['number', GType.Onumber<GPAnnotation>]
+export type GType = 
+    | ['array', UType]
+    | ['boolean', GType.Oboolean]
+    | ['computed', UType]
+    | ['dictionary', UType]
+    | ['group', GType.Ogroup]
+    | ['nested', UType]
+    | ['null', GType.Onull]
+    | ['number', GType.Onumber]
     | ['parameter', string]
-    | ['reference', UTypeReference<GPAnnotation>]
-    | ['string', GType.Ostring<GPAnnotation>]
-    | ['taggedUnion', GType.OtaggedUnion<GPAnnotation>]
-    | ['template', GType.Otemplate<GPAnnotation>]
-export type UType<GPAnnotation> = GType<GPAnnotation>
+    | ['reference', UTypeReference]
+    | ['string', GType.Ostring]
+    | ['taggedUnion', GType.OtaggedUnion]
+    | ['template', GType.Otemplate]
+export type UType = GType
 
 export namespace GTypeReference {}
-export type GTypeReference<GPAnnotation> = {
-    readonly 'context': UContext<GPAnnotation>
+export type GTypeReference = {
+    readonly 'context': UContext
     readonly 'type': string
 }
-export type UTypeReference<GPAnnotation> = GTypeReference<GPAnnotation>
+export type UTypeReference = GTypeReference

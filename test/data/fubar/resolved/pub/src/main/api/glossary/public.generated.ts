@@ -4,18 +4,18 @@ import * as t from './types.generated'
 
 import * as mfp from "lib-fountain-pen"
 
-export type TContext<GPAnnotation> = t.UContext<GPAnnotation>
+export type TContext = t.UContext
 
-export type TGlossary<GPAnnotation> = t.UGlossary<GPAnnotation>
+export type TGlossary = t.UGlossary
 
-export type TInterface<GPAnnotation> = t.UInterface<GPAnnotation>
+export type TInterface = t.UInterface
 
-export type TInterfaceReference<GPAnnotation> = t.UInterfaceReference<GPAnnotation>
+export type TInterfaceReference = t.UInterfaceReference
 
-export type TType<GPAnnotation> = t.UType<GPAnnotation>
+export type TType = t.UType
 
-export type TTypeReference<GPAnnotation> = t.UTypeReference<GPAnnotation>
+export type TTypeReference = t.UTypeReference
 
-export type FEnrich = <GPAnnotation>($: TRoot,) => TRoot
+export type FEnrich = ($: TRoot,) => TRoot
 
-export type FSerialize = <GPAnnotation>($: TRoot, $i: mfp.ILine,) => void
+export type FSerialize = ($: TRoot, $i: mfp.ILine,) => void

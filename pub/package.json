@@ -4,7 +4,7 @@
   "description": "A library to generate a typescript project environment for Pareto",
 
   "dependencies": {
-    "glo-pareto-common": "^0.10.0",
+    "glo-pareto-common": "^0.11.0",
     "lib-fountain-pen": "^0.30.0",
     "res-pareto-collation": "^0.16.0",
     "res-pareto-filesystem": "^0.36.0",

@@ -2,14 +2,14 @@ import * as pr from 'pareto-core-raw'
 
 import * as mproject from "lib-pareto-typescript-project/dist/submodules/project"
 
-import { $ as api } from "./api.p"
-import { $ as algorithm } from "./modules/algorithm.p"
-import { $ as liana } from "./modules/liana.p"
-import { $ as liana_flat } from "./modules/liana_flat.p"
-import { $ as liana2Pareto } from "./modules/liana2Pareto.p"
-import { $ as moduleDefinition } from "./modules/moduleDefinition.p"
-import { $ as pareto2typescript } from "./modules/pareto2typescript.p"
-import { $ as project } from "./modules/project.p"
+import { $ as api } from "./api.data"
+import { $ as algorithm } from "./modules/algorithm.data"
+import { $ as liana } from "./modules/liana.data"
+import { $ as liana_flat } from "./modules/liana_flat.data"
+import { $ as liana2Pareto } from "./modules/liana2Pareto.data"
+import { $ as moduleDefinition } from "./modules/moduleDefinition.data"
+import { $ as pareto2typescript } from "./modules/pareto2typescript.data"
+import { $ as project } from "./modules/project.data"
 
 import { $ as glossary } from "../data/glossary/unresolved/module.generated"
 

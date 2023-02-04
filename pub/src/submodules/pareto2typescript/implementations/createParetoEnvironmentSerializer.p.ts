@@ -110,7 +110,7 @@ export const $$: api.CcreateParetoEnvironmentSerializer = (
                             $i.line(`import * as pl from 'pareto-core-lib'`)
                             $i.line(`import * as api from "../api"`)
                             $i.line(``)
-                            $i.line(`import { $ as project } from "../../../data/project.p"`)
+                            $i.line(`import { $ as project } from "../../../data/project.data"`)
                             $i.line(`import * as mpareto from "lib-pareto-typescript-project"`)
                             $i.line(``)
                             $i.line(`export const $$: api.Cmain = ($) => {`)

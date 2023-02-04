@@ -6,7 +6,7 @@ import * as api from "../api"
 import * as mpareto from "lib-pareto-typescript-project"
 import * as mliana2Pareto from "lib-pareto-typescript-project/dist/submodules/liana2Pareto"
 
-import { $ as glossary } from "../../../data/glossary.p"
+import { $ as glossary } from "../../../data/glossary.data"
 
 export const $$: api.Cmain = ($) => {
 

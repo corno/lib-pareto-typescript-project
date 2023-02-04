@@ -35,7 +35,7 @@ import { $ as module } from "../../../data/project.test"
 // import * as pubPrivate from "../../../../pub/dist/submodules/private"
 
 import { $ as simpleModel } from "../../../data/lianaModels/simpleModel.p"
-import { $ as glossary } from "../../../data/lianaModels/glossary.p"
+import { $ as glossary } from "../../../data/lianaModels/glossary.data"
 import { $ as accountingModel } from "../../../data/lianaModels/accounting.p"
 
 export const $$: api.CgetTestSet = ($XXX) => {

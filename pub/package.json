@@ -17,11 +17,12 @@
     "dist"
   ],
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "http://github.com/corno/lib-pareto-typescript-project.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "name": "x",
+  "name": "lib-pareto-typescript-project",
   "version": "0.90.5",
-  "content-fingerprint": "96d146da2bf457b9cfb31aece2fe4dcaf8aa8b3c"
+  "content-fingerprint": "e34e5255b737add780518630892fffafcdd612d8"
 }

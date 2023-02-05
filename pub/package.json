@@ -2,17 +2,16 @@
   "author": "Corno",
   "license": "ISC",
   "description": "A library to generate a typescript project environment for Pareto",
-
   "dependencies": {
     "glo-pareto-common": "^0.11.0",
     "lib-fountain-pen": "^0.30.0",
+    "pareto-core-lib": "^0.18.1",
+    "pareto-core-raw": "^0.7.4",
+    "pareto-core-state": "^0.12.0",
     "res-pareto-collation": "^0.17.0",
     "res-pareto-filesystem": "^0.37.0",
     "res-pareto-main": "^0.12.0",
-    "res-typescript": "^0.9.0",
-    "pareto-core-lib": "^0.18.1",
-    "pareto-core-raw": "^0.7.4",
-    "pareto-core-state": "^0.12.0"
+    "res-typescript": "^0.9.0"
   },
   "files": [
     "dist"
@@ -21,5 +20,8 @@
     "type": "git"
   },
   "main": "dist/index.js",
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "name": "x",
+  "version": "0.90.5",
+  "content-fingerprint": "96d146da2bf457b9cfb31aece2fe4dcaf8aa8b3c"
 }

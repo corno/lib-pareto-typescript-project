@@ -166,9 +166,16 @@ export const $$: api.CcreateSerializer = ($d) => {
                     $i.snippet(`]`)
                 })
                 break
-            case 'parameter':
+            case 'type parameter':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['parameter', `)
+                    $i.snippet(`['type parameter', `)
+                    $i.snippet(`"${$}"`)
+                    $i.snippet(`]`)
+                })
+                break
+            case 'glossary parameter':
+                pl.cc($[1], ($) => {
+                    $i.snippet(`['glossary parameter', `)
                     $i.snippet(`"${$}"`)
                     $i.snippet(`]`)
                 })

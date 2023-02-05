@@ -9,7 +9,7 @@ import {
     number,
     types,
     taggedUnion,
-    parameter,
+    glossaryParameter,
     group,
     func,
     member,
@@ -30,10 +30,10 @@ export const $: mglossary.TGlossary = {
     'templates': d({
     }),
     'types': types({
-        "Annotation": parameter("Annotation"),
+        "Annotation": glossaryParameter("Annotation"),
         "AnnotatedToken": group({
             "token": member(reference("Token")),
-            "annotation": member(parameter("Annotation"))
+            "annotation": member(glossaryParameter("Annotation"))
         }),
         "MultilineStringData": group({
             "lines": member(array(string()))

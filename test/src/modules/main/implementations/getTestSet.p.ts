@@ -30,10 +30,21 @@ import { $ as module } from "../../../data/project/module/project.test"
 import { $ as simpleModel } from "../../../data/liana/model/simpleModel.data"
 import { $ as glossary } from "../../../data/liana/model/glossary.data"
 import { $ as accountingModel } from "../../../data/liana2Pareto/mappedModel/accounting.data"
+import { $ as tc } from "../../../data/project/project/tokenconsumer/project.data"
 
-export const $$: api.CgetTestSet = ($XXX) => {
+export const $$: api.CgetTestSet = ($) => {
+    const $XXX = $
 
-    function genProj(dir: string, module: mproject.TModule) {
+    function genProj(dir: string, proj: mproject.TProject) {
+        pub.$a.generateProject({
+            'mainData': {
+                'arguments': pr.wrapRawArray([dir]),
+            },
+            'project': proj,
+        })
+
+    }
+    function generateModule(dir: string, module: mproject.TModule) {
         pub.$a.generateProject({
             'mainData': {
                 'arguments': pr.wrapRawArray([dir]),
@@ -67,6 +78,7 @@ export const $$: api.CgetTestSet = ($XXX) => {
         })
 
     }
+    genProj(`${$XXX.testDirectory}/TOKENCONSUMER`, tc)
     //genProj(`${$XXX.testDirectory}/project`, module.definition)
     // pub.$a.createTestProgram(null, {
     //     getTestSet: () => {
@@ -149,7 +161,7 @@ export const $$: api.CgetTestSet = ($XXX) => {
         }),
     })
     mappedGlossary.modules.forEach(() => false, ($, key) => {
-       genProj(`${$XXX.testDirectory}/fubar/${key}`, $)
+       generateModule(`${$XXX.testDirectory}/fubar/${key}`, $)
     })
 
     mliana2Pareto.$a.generateProject({

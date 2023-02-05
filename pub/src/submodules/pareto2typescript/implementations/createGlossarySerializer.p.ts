@@ -192,9 +192,14 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                 $namespacedType($i)
                             })
                             break
-                        case 'parameter':
+                        case 'type parameter':
                             pl.cc($[1], ($) => {
                                 $i.snippet($d.createIdentifier(`A${$}`))
+                            })
+                            break
+                        case 'glossary parameter':
+                            pl.cc($[1], ($) => {
+                                $i.snippet($d.createIdentifier(`H${$}`))
                             })
                             break
                         case 'taggedUnion':
@@ -482,7 +487,11 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                 )
                             })
                             break
-                        case 'parameter':
+                        case 'type parameter':
+                            pl.cc($[1], ($) => {
+                            })
+                            break
+                        case 'glossary parameter':
                             pl.cc($[1], ($) => {
                             })
                             break

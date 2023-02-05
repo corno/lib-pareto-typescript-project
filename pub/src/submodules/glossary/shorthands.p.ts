@@ -34,8 +34,13 @@ export function taggedUnion($: RawDictionary<t.TType>): t.TType {
 export function dictionary($: t.TType): t.TType {
     return ['dictionary', $]
 }
-export function parameter($: string): t.TType {
-    return ['parameter', $]
+
+export function typeParameter($: string): t.TType {
+    return ['type parameter', $]
+}
+
+export function glossaryParameter($: string): t.TType {
+    return ['glossary parameter', $]
 }
 
 export function template(template: string, $: RawDictionary<t.TType>): t.TType {
@@ -48,6 +53,10 @@ export function template(template: string, $: RawDictionary<t.TType>): t.TType {
 
 export function array($: t.TType): t.TType {
     return ['array', $]
+}
+
+export function optional($: t.TType): t.TType {
+    return ['optional', $]
 }
 
 export function computed($: t.TType): t.TType {

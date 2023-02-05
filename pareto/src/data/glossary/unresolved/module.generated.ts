@@ -229,7 +229,8 @@ export const $: mproject.TModule = {
                         'context': <mglossary.TContext>['local', {}],
                         'type': "Type",
                     }],
-                    "parameter": <mglossary.TType>['string', {}],
+                    "type parameter": <mglossary.TType>['string', {}],
+                    "glossary parameter": <mglossary.TType>['string', {}],
                     "reference": <mglossary.TType>['reference', {
                         'context': <mglossary.TContext>['local', {}],
                         'type': "TypeReference",

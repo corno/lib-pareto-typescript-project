@@ -215,16 +215,17 @@ export type GType =
     | ['boolean', GType.Oboolean]
     | ['computed', UType]
     | ['dictionary', UType]
+    | ['glossary parameter', string]
     | ['group', GType.Ogroup]
     | ['nested', UType]
     | ['null', GType.Onull]
     | ['number', GType.Onumber]
     | ['optional', UType]
-    | ['parameter', string]
     | ['reference', UTypeReference]
     | ['string', GType.Ostring]
     | ['taggedUnion', GType.OtaggedUnion]
     | ['template', GType.Otemplate]
+    | ['type parameter', string]
 export type UType = GType
 
 export namespace GTypeReference {}

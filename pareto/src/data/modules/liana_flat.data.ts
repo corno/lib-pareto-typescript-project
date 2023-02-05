@@ -40,6 +40,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "mapLiana2States": definitionReference("liana2Pareto", "MapLiana2States"),
                 "serializeStates": definitionReference("pareto2typescript", "SerializeStates"),
             })),
+            "serialize": algorithm(definitionReference("Serialize")),
         })
     },
 }

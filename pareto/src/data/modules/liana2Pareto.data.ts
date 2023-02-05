@@ -61,6 +61,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "createLiana2ParetoMapper": algorithm(definitionReference("MapLiana2Pareto"), constructor(null, {
                 "decorateDictionaryEntriesWithKey": definitionReference("foreach", "DecorateDictionaryEntriesWithKey"),
             })),
+            "mapLiana2Pareto": algorithm(definitionReference("MapLiana2Pareto")),
             "createLiana2StatesMapper": algorithm(definitionReference("MapLiana2States"), constructor(null, {
                 "decorateDictionaryEntriesWithKey": definitionReference("foreach", "DecorateDictionaryEntriesWithKey"),
             })),

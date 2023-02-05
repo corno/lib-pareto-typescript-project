@@ -2,6 +2,7 @@ import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
+import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 export namespace VOptional { }
@@ -13,7 +14,7 @@ export type MOptional<AType> = VOptional<AType>
 
 export const $$: api.CcreateSerializer = ($d) => {
     function doReference<T>(
-        $: api.MReference<T>,
+        $: mglossary.MReference<T>,
         $i: mfp.ILine,
         //$c: ($: T, $i: mfp.ILine) => void
     ) {
@@ -50,7 +51,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             default: pl.au($[0])
         }
     }
-    function serializeTypeReference($: api.TTypeReference, $i: mfp.ILine) {
+    function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
         $i.snippet(`{`)
         $i.indent(($i) => {
             $i.nestedLine(($i) => {
@@ -68,7 +69,7 @@ export const $$: api.CcreateSerializer = ($d) => {
         $i.snippet(`}`)
     }
 
-    function serializeType($: api.TType, $i: mfp.ILine) {
+    function serializeType($: mglossary.TType, $i: mfp.ILine) {
         $i.snippet(`<mglossary.TType>`)
 
         switch ($[0]) {
@@ -221,7 +222,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             default: pl.au($[0])
         }
     }
-    function serializeContext($: api.TContext, $i: mfp.ILine) {
+    function serializeContext($: mglossary.TContext, $i: mfp.ILine) {
         $i.snippet(`<mglossary.TContext>`)
         switch ($[0]) {
             case 'import':
@@ -240,7 +241,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             default: pl.au($[0])
         }
     }
-    function serializeInterfaceReference($: api.TInterfaceReference, $i: mfp.ILine) {
+    function serializeInterfaceReference($: mglossary.TInterfaceReference, $i: mfp.ILine) {
         $i.snippet(`{`)
         $i.indent(($i) => {
             $i.nestedLine(($i) => {
@@ -255,7 +256,7 @@ export const $$: api.CcreateSerializer = ($d) => {
         $i.snippet(`}`)
 
     }
-    function serializeInterface($: api.TInterface, $i: mfp.ILine) {
+    function serializeInterface($: mglossary.TInterface, $i: mfp.ILine) {
         switch ($[0]) {
             case 'group':
                 pl.cc($[1], ($) => {

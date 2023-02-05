@@ -11,7 +11,8 @@ import { $ as moduleDefinition } from "./modules/moduleDefinition.data"
 import { $ as pareto2typescript } from "./modules/pareto2typescript.data"
 import { $ as project } from "./modules/project.data"
 
-import { $ as glossary } from "../data/glossary/unresolved/module.generated"
+import { $ as glossary_temp } from "./modules/glossary_temp.data"
+import { $ as glossary } from "./glossary/unresolved/module.generated"
 
 const d = pr.wrapRawDictionary
 
@@ -39,6 +40,9 @@ export const $: mproject.TProject = {
                 'definition': algorithm,
             },
             "glossary": glossary,
+            "glossary_temp": {
+                'definition': glossary_temp,
+            },
             "liana": {
                 'definition': liana,
             },

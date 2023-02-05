@@ -292,36 +292,36 @@ export const $: mproject.TModule = {
         },
         'api': {
             'imports': d({
-                "temp": "../../temp",
+                "foreach": "res-pareto-foreach",
             }),
             'algorithms': d({
-                "createSerializer": {
-                    'definition': {
-                        'context': ['local', {}],
-                        'function': "Serialize",
-                    },
-                    'type': ['constructor', {
-                        'configuration data': ['not set', {}],
-                        'dependencies': d({
-                            "arrayForEach": {
-                                'context': ['import', "temp"],
-                                'function': "ArrayForEach",
-                            },
-                            "dictionaryForEach": {
-                                'context': ['import', "temp"],
-                                'function': "DictionaryForEach",
-                            },
-                            "enrichedArrayForEach": {
-                                'context': ['import', "temp"],
-                                'function': "EnrichedArrayForEach",
-                            },
-                            "enrichedDictionaryForEach": {
-                                'context': ['import', "temp"],
-                                'function': "EnrichedDictionaryForEach",
-                            },
-                        }),
-                    }],
-                },
+                // "createSerializer": {
+                //     'definition': {
+                //         'context': ['local', {}],
+                //         'function': "Serialize",
+                //     },
+                //     'type': ['constructor', {
+                //         'configuration data': ['not set', {}],
+                //         'dependencies': d({
+                //             "arrayForEach": {
+                //                 'context': ['import', "foreach"],
+                //                 'function': "ArrayForEach",
+                //             },
+                //             "dictionaryForEach": {
+                //                 'context': ['import', "foreach"],
+                //                 'function': "DictionaryForEach",
+                //             },
+                //             "enrichedArrayForEach": {
+                //                 'context': ['import', "foreach"],
+                //                 'function': "EnrichedArrayForEach",
+                //             },
+                //             "enrichedDictionaryForEach": {
+                //                 'context': ['import', "foreach"],
+                //                 'function': "EnrichedDictionaryForEach",
+                //             },
+                //         }),
+                //     }],
+                // },
             }),
         },
     },

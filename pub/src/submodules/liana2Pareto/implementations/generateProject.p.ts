@@ -2,40 +2,40 @@ import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
 
-import * as mtemp from "../../temp/implementation.generated"
+import * as mforeach from "res-pareto-foreach"
 import * as mcoll from "res-pareto-collation"
 import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mmain from "res-pareto-main"
 import * as mproject from "../../project"
-import * as mglossary from "../../glossary"
+import * as mglossary_temp from "../../glossary_temp"
 import * as malgorithm from "../../algorithm"
 
 import { $a } from "../index"
 
 export const $$: api.CgenerateProject = ($) => {
-    const a = mtemp.$a.createArrayForEach({
+    const a = mforeach.$a.createArrayForEach({
         compare: mcoll.$a.localeIsABeforeB,
     })
-    const d = mtemp.$a.createDictionaryForEach({
+    const d = mforeach.$a.createDictionaryForEach({
         compare: mcoll.$a.localeIsABeforeB,
     })
-    const ea = mtemp.$a.createEnrichedArrayForEach({
+    const ea = mforeach.$a.createEnrichedArrayForEach({
         compare: mcoll.$a.localeIsABeforeB,
     })
-    const ed = mtemp.$a.createEnrichedDictionaryForEach({
+    const ed = mforeach.$a.createEnrichedDictionaryForEach({
         compare: mcoll.$a.localeIsABeforeB,
     })
 
 
     $a.createProjectGenerator(
         {
-            dictionaryForEach: mtemp.$a.createDictionaryForEach({
+            dictionaryForEach: mforeach.$a.createDictionaryForEach({
                 compare: mcoll.$a.localeIsABeforeB,
             }),
-            decorateDictionaryEntriesWithKey: mtemp.$a.decorateDictionaryEntriesWithKey,
+            decorateDictionaryEntriesWithKey: mforeach.$a.decorateDictionaryEntriesWithKey,
             logError: mmain.$a.logError,
             mapLiana2Pareto: $a.createLiana2ParetoMapper({
-                decorateDictionaryEntriesWithKey: mtemp.$a.decorateDictionaryEntriesWithKey,
+                decorateDictionaryEntriesWithKey: mforeach.$a.decorateDictionaryEntriesWithKey,
             }),
             serializeProject: mproject.$a.createSerializerWithContext({
                 serialize: mproject.$a.createSerializer({
@@ -45,7 +45,7 @@ export const $$: api.CgenerateProject = ($) => {
 
                         dictionaryForEach: d,
                         enrichedArrayForEach: ea,
-                        serializeGlossary: mglossary.$a.createSerializer({
+                        serializeGlossary: mglossary_temp.$a.createSerializer({
                             arrayForEach: a,
                             dictionaryForEach: d,
                             enrichedArrayForEach: ea,

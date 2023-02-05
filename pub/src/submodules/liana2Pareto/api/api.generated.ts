@@ -24,9 +24,12 @@ export type CcreateProjectGenerator = ($d: {
 
 export type CgenerateProject = glo.FGenerateProject
 
+export type CmapLiana2Pareto = glo.FMapLiana2Pareto
+
 export type API = {
     createLiana2ParetoMapper: CcreateLiana2ParetoMapper
     createLiana2StatesMapper: CcreateLiana2StatesMapper
     createProjectGenerator: CcreateProjectGenerator
     generateProject: CgenerateProject
+    mapLiana2Pareto: CmapLiana2Pareto
 }

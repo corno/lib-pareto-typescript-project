@@ -14,6 +14,9 @@ export type CcreateSerializer = ($d: {
     readonly 'serializeStates': mpareto2typescript.FSerializeStates
 }) => glo.FSerialize
 
+export type Cserialize = glo.FSerialize
+
 export type API = {
     createSerializer: CcreateSerializer
+    serialize: Cserialize
 }

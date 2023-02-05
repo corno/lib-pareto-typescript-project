@@ -4,7 +4,7 @@ import * as api from "../api"
 
 import * as mpareto2typescript from "../../submodules/pareto2typescript"
 
-import * as mtemp from "../../submodules/temp/implementation.generated"
+import * as mforeach from "res-pareto-foreach"
 import * as mcoll from "res-pareto-collation"
 import * as mmain from "res-pareto-main"
 import * as mts from "res-typescript"
@@ -12,16 +12,16 @@ import * as mts from "res-typescript"
 import { $a } from "../index"
 
 export const $$: api.CgenerateProject = ($) => {
-    const a = mtemp.$a.createArrayForEach({
+    const a = mforeach.$a.createArrayForEach({
         compare: mcoll.$a.localeIsABeforeB,
     })
-    const d = mtemp.$a.createDictionaryForEach({
+    const d = mforeach.$a.createDictionaryForEach({
         compare: mcoll.$a.localeIsABeforeB,
     })
-    const ea = mtemp.$a.createEnrichedArrayForEach({
+    const ea = mforeach.$a.createEnrichedArrayForEach({
         compare: mcoll.$a.localeIsABeforeB,
     })
-    const ed = mtemp.$a.createEnrichedDictionaryForEach({
+    const ed = mforeach.$a.createEnrichedDictionaryForEach({
         compare: mcoll.$a.localeIsABeforeB,
     })
 
@@ -79,7 +79,7 @@ export const $$: api.CgenerateProject = ($) => {
                 }
             ),
             logError: mmain.$a.logError,
-            decorateDictionaryEntriesWithKey: mtemp.$a.decorateDictionaryEntriesWithKey,
+            decorateDictionaryEntriesWithKey: mforeach.$a.decorateDictionaryEntriesWithKey,
             //cbgetSingleArgument: mexe.p_getSingleArgument,
         }
     )($)

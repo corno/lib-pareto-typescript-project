@@ -16,15 +16,8 @@ import {
 import * as mliana_flat from "../../../../../pub/dist/submodules/liana_flat"
 import * as mproject from "../../../../../pub/dist/submodules/project"
 import * as mliana from "../../../../../pub/dist/submodules/liana"
-import * as mmoduleDefinition from "../../../../../pub/dist/submodules/moduleDefinition"
 import * as mliana2Pareto from "../../../../../pub/dist/submodules/liana2Pareto"
-import * as mpareto2typescript from "../../../../../pub/dist/submodules/pareto2typescript"
-import * as mtostring from "res-pareto-tostring"
-import * as mtemp from "../../../../../pub/dist/submodules/temp"
-import * as mcoll from "res-pareto-collation"
-import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
-import * as mts from "res-typescript"
 
 const d = pr.wrapRawDictionary
 
@@ -118,34 +111,7 @@ export const $$: api.CgetTestSet = ($XXX) => {
         },
     })
     writer([$XXX.testDirectory, 'flat'], ($i) => {
-        mliana_flat.$a.createSerializer({
-            createIdentifier: mts.$a.createIdentifier,
-            mapLiana2States: mliana2Pareto.$a.createLiana2StatesMapper({
-                decorateDictionaryEntriesWithKey: mtemp.$a.decorateDictionaryEntriesWithKey,
-            }),
-            serializeStates: mpareto2typescript.$a.createStatesSerializer({
-                arrayForEach: mtemp.$a.createArrayForEach({
-                    compare: mcoll.$a.localeIsABeforeB
-                }),
-                dictionaryForEach: mtemp.$a.createDictionaryForEach({
-                    compare: mcoll.$a.localeIsABeforeB
-
-                }),
-                enrichedArrayForEach: mtemp.$a.createEnrichedArrayForEach({
-                    compare: mcoll.$a.localeIsABeforeB
-
-                }),
-                enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
-                    compare: mcoll.$a.localeIsABeforeB
-
-                }),
-                createIdentifier: mts.$a.createIdentifier,
-                createApostrophedString: mts.$a.createApostrophedString,
-
-            }),
-            joinNestedStrings: mtostring.$a.joinNestedStrings,
-        })(accountingModel, $i)
-
+        mliana_flat.$a.serialize(accountingModel, $i)
     })
 
     function x($: mliana.TModel) {
@@ -175,9 +141,7 @@ export const $$: api.CgetTestSet = ($XXX) => {
     x(accountingModel.model)
     x(simpleModel)
 
-    const mappedGlossary = mliana2Pareto.$a.createLiana2ParetoMapper({
-        decorateDictionaryEntriesWithKey: mtemp.$a.decorateDictionaryEntriesWithKey
-    })({
+    const mappedGlossary = mliana2Pareto.$a.mapLiana2Pareto({
         'model': glossary,
 
         'stringmapping': pr.wrapRawDictionary({

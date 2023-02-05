@@ -1,11 +1,11 @@
 import * as pr from 'pareto-core-raw'
 import {
     dictionary, group as grp, member, taggedUnion, types, group
-} from "../../../pub/dist/submodules/glossary/shorthands.p"
+} from "../../../../../pub/dist/submodules/glossary/shorthands.p"
 
-import * as mproject from "../../../pub/dist/submodules/project"
+import * as mproject from "../../../../../pub/dist/submodules/project"
 
-import * as mglossary from "../../../pub/dist/submodules/glossary"
+import * as mglossary from "../../../../../pub/dist/submodules/glossary"
 
 type GRP = {
     type: mglossary.TType

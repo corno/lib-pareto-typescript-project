@@ -23,13 +23,13 @@ const d = pr.wrapRawDictionary
 
 
 import * as pub from "../../../../../pub"
-import { $ as module } from "../../../data/project.test"
+import { $ as module } from "../../../data/project/module/project.test"
 // import * as pubTypes from "../../../../pub/dist/submodules/public"
 // import * as pubPrivate from "../../../../pub/dist/submodules/private"
 
-import { $ as simpleModel } from "../../../data/lianaModels/simpleModel.data"
-import { $ as glossary } from "../../../data/lianaModels/glossary.data"
-import { $ as accountingModel } from "../../../data/lianaModels/accounting.data"
+import { $ as simpleModel } from "../../../data/liana/model/simpleModel.data"
+import { $ as glossary } from "../../../data/liana/model/glossary.data"
+import { $ as accountingModel } from "../../../data/liana2Pareto/mappedModel/accounting.data"
 
 export const $$: api.CgetTestSet = ($XXX) => {
 

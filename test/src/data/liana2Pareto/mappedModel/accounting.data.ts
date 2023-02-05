@@ -1,7 +1,7 @@
 import * as pr from 'pareto-core-raw'
 
-import * as mliana from "../../../../pub/dist/submodules/liana"
-import * as mliana2Pareto from "../../../../pub/dist/submodules/liana2Pareto"
+import * as mliana from "../../../../../pub/dist/submodules/liana"
+import * as mliana2Pareto from "../../../../../pub/dist/submodules/liana2Pareto"
 import {
     d,
     r,
@@ -15,7 +15,7 @@ import {
     reference,
     string,
     taggedUnion,
-} from "../../../../pub/dist/submodules/liana/shorthands.p"
+} from "../../../../../pub/dist/submodules/liana/shorthands.p"
 
 
 

@@ -110,7 +110,6 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                                                                     break
                                                                 case 'interfaceCall':
                                                                     pl.cc($[1], ($) => {
-                                                                        pl.logDebugMessage(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
                                                                         $i.nestedLine($i => {
                                                                             $i.snippet(`$i`)
                                                                             $['child path'].forEach(($) => {
@@ -187,7 +186,6 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                 })
             })
         })
-        pl.logDebugMessage("HERISOIJSDFKLSDF:SDFJKSF")
         // function serializeExpression($: malgorithm.TExpression, $i: mfp.ILine) {
         //     switch ($[0]) {
         //         case 'call':

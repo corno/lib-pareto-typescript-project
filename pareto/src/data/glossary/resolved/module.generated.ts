@@ -216,6 +216,10 @@ export const $: mproject.TModule = {
                     }],
                     "null": <mglossary.TType>['group', d({})],
                     "number": <mglossary.TType>['group', d({})],
+                    "optional": <mglossary.TType>['reference', {
+                        'context': <mglossary.TContext>['local', {}],
+                        'type': "Type",
+                    }],
                     "parameter": <mglossary.TType>['string', {}],
                     "reference": <mglossary.TType>['reference', {
                         'context': <mglossary.TContext>['local', {}],

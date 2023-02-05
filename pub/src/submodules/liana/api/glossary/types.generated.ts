@@ -14,30 +14,6 @@ export type VComputedReference<AReferencedType> = {
 
 export type MComputedReference<AReferencedType> = VComputedReference<AReferencedType>
 
-export namespace VConstrainedDictionary {
-    
-    export namespace Pdictionary {
-        
-        export namespace D {}
-        export type D<AReferencedType, AType> = MConstrainedDictionaryEntry<UXGlobalType<AReferencedType, AType>, UXArgument<AReferencedType, AType>>
-    }
-    export type Pdictionary<AReferencedType, AType> = pt.Dictionary<Pdictionary.D<AReferencedType, AType>>
-}
-export type VConstrainedDictionary<AReferencedType, AType> = {
-    readonly 'annotation': string
-    readonly 'dictionary': VConstrainedDictionary.Pdictionary<AReferencedType, AType>
-}
-
-export type MConstrainedDictionary<AReferencedType, AType> = VConstrainedDictionary<AReferencedType, AType>
-
-export namespace VConstrainedDictionaryEntry {}
-export type VConstrainedDictionaryEntry<AReferencedType, AType> = {
-    readonly 'referenced value': AReferencedType
-    readonly 'value': AType
-}
-
-export type MConstrainedDictionaryEntry<AReferencedType, AType> = VConstrainedDictionaryEntry<AReferencedType, AType>
-
 export namespace VDictionary {
     
     export namespace Pdictionary {}
@@ -288,7 +264,7 @@ export namespace GXLocalType {
     export namespace Ocomponent {
         
         export namespace Parguments {}
-        export type Parguments = MConstrainedDictionary<UXParameter, UXArgument>
+        export type Parguments = pt.Dictionary<string>
         
         export namespace Ptype {}
         export type Ptype = MComputedReference<UXGlobalType>

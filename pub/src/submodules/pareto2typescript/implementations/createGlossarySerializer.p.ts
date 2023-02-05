@@ -167,6 +167,11 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                 $namespacedType($i)
                             })
                             break
+                        case 'optional':
+                            pl.cc($[1], ($) => {
+                                $namespacedType($i)
+                            })
+                            break
                         case 'array':
                             pl.cc($[1], ($) => {
                                 $namespacedType($i)
@@ -321,6 +326,35 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                             },
                                             $i,
                                         )
+                                    }
+                                )
+                            })
+                            break
+                        case 'optional':
+                            pl.cc($[1], ($) => {
+                                createInstanceNamespace(
+                                    ($i) => {
+                                        serializeComplexType(
+                                            {
+                                                type: $,
+                                                templateParameters: templateParameters,
+                                                name: `W`
+                                            },
+                                            $i
+                                        )
+                                    },
+                                    ($i) => {
+                                        $i.snippet(`[ false ] | [ true, `)
+                                        serializeReferenceToType(
+                                            {
+                                                type: $,
+                                                templateParameters: templateParameters,
+                                                name: `W`,
+                                            },
+                                            $i,
+                                        )
+                                        $i.snippet(`]`)
+
                                     }
                                 )
                             })
@@ -525,7 +559,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                                     serializeReferenceToType(
                                                         {
                                                             type: $.value,
-                                                            templateParameters: templateParameters, //FIX is this the right one?
+                                                            templateParameters: null, //FIX what is the right one?
                                                             name: `TP${$.key}`,
                                                         },
                                                         $i

@@ -28,29 +28,29 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "dictionary": member(dictionary(parameter("Type"))),
                 })
             },
-            "ConstrainedDictionary": {
-                'parameters': d({
-                    "ReferencedType": {},
-                    "Type": {}
-                }),
-                'type': group({
-                    "annotation": member(string()),
-                    "dictionary": member(dictionary(template("ConstrainedDictionaryEntry", {
-                        "Type": reference("XArgument"),
-                        "ReferencedType": reference("XGlobalType"),
-                    }))),
-                })
-            },
-            "ConstrainedDictionaryEntry": {
-                'parameters': d({
-                    "ReferencedType": {},
-                    "Type": {}
-                }),
-                'type': group({
-                    "referenced value": member(parameter("ReferencedType")),
-                    "value": member(parameter("Type"))
-                })
-            },
+            // "ConstrainedDictionary": {
+            //     'parameters': d({
+            //         "ReferencedType": {},
+            //         "Type": {}
+            //     }),
+            //     'type': group({
+            //         "annotation": member(string()),
+            //         "dictionary": member(dictionary(template("ConstrainedDictionaryEntry", {
+            //             "Type": reference("XArgument"),
+            //             "ReferencedType": reference("XGlobalType"),
+            //         }))),
+            //     })
+            // },
+            // "ConstrainedDictionaryEntry": {
+            //     'parameters': d({
+            //         "ReferencedType": {},
+            //         "Type": {}
+            //     }),
+            //     'type': group({
+            //         "referenced value": member(parameter("ReferencedType")),
+            //         "value": member(parameter("Type"))
+            //     })
+            // },
             "Possibly": {
                 'parameters': d({
                     "Type": {}
@@ -181,10 +181,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
                 "component": group({
                     "type": member(template("ComputedReference", { "ReferencedType": reference("XGlobalType") })),
-                    "arguments": member(template("ConstrainedDictionary", {
-                        "ReferencedType": reference("XParameter"),
-                        "Type": reference("XArgument"),
-                    })),
+                    // "arguments": member(template("ConstrainedDictionary", {
+                    //     "ReferencedType": reference("XParameter"),
+                    //     "Type": reference("XArgument"),
+                    // })),
+                    "arguments": member(dictionary(string())),
                 }),
             }),
             "XModel": group({

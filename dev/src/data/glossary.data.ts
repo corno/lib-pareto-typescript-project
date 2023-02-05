@@ -84,6 +84,7 @@ export const $: mliana.TModel = {
             "nested": component("Type", {}),
             "dictionary": component("Type", {}),
             "computed": component("Type", {}),
+            "optional": component("Type", {}),
             "null": group({}),
             "boolean": group({}),
             "string": group({}),

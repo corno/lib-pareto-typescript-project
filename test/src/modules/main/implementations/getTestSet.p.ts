@@ -34,9 +34,9 @@ import { $ as module } from "../../../data/project.test"
 // import * as pubTypes from "../../../../pub/dist/submodules/public"
 // import * as pubPrivate from "../../../../pub/dist/submodules/private"
 
-import { $ as simpleModel } from "../../../data/lianaModels/simpleModel.p"
+import { $ as simpleModel } from "../../../data/lianaModels/simpleModel.data"
 import { $ as glossary } from "../../../data/lianaModels/glossary.data"
-import { $ as accountingModel } from "../../../data/lianaModels/accounting.p"
+import { $ as accountingModel } from "../../../data/lianaModels/accounting.data"
 
 export const $$: api.CgetTestSet = ($XXX) => {
 
@@ -98,7 +98,6 @@ export const $$: api.CgetTestSet = ($XXX) => {
     //             })
     //         },
     //         log: ($) => {
-    //             pl.logDebugMessage($)
     //         }
     //     }
     // )(

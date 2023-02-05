@@ -139,7 +139,6 @@ export const $$: api.CcreateProjectSerializer = (
                                 $i.directory("implementations", ($i) => {
 
                                     if ($.implementation !== undefined) {
-                                        pl.logDebugMessage("HIER2?")
                                         pl.cc($.implementation, ($) => {
                                             $d.serializeImplementation($, $i)
                                         })
@@ -195,7 +194,6 @@ export const $$: api.CcreateProjectSerializer = (
                         break
                     case 'resource':
                         pl.cc($.type[1], ($) => {
-                            pl.logDebugMessage("HIER?")
                             $i.directory("api", ($i) => {
                                 $d.serializeModuleDefinition($.definition, $i)
                             })

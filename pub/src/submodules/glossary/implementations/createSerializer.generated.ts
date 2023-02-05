@@ -4,8 +4,8 @@ import * as api from "../api"
 
 import * as mfp from "lib-fountain-pen"
 
-export namespace VOptional {}
-export type VOptional<AType> = 
+export namespace VOptional { }
+export type VOptional<AType> =
     | ['not set', {}]
     | ['set', AType]
 
@@ -75,6 +75,13 @@ export const $$: api.CcreateSerializer = ($d) => {
             case 'computed':
                 pl.cc($[1], ($) => {
                     $i.snippet(`['computed', `)
+                    serializeType($, $i)
+                    $i.snippet(`]`)
+                })
+                break
+            case 'optional':
+                pl.cc($[1], ($) => {
+                    $i.snippet(`['optional', `)
                     serializeType($, $i)
                     $i.snippet(`]`)
                 })

@@ -3,20 +3,20 @@ import * as pt from 'pareto-core-types'
 import * as glo from "./glossary"
 
 import * as mcommon from "glo-pareto-common"
+import * as mforeach from "res-pareto-foreach"
 import * as mproject from "../../project"
-import * as mtemp from "../../temp"
 
 export type CcreateLiana2ParetoMapper = ($d: {
-    readonly 'decorateDictionaryEntriesWithKey': mtemp.FDecorateDictionaryEntriesWithKey
+    readonly 'decorateDictionaryEntriesWithKey': mforeach.FDecorateDictionaryEntriesWithKey
 }) => glo.FMapLiana2Pareto
 
 export type CcreateLiana2StatesMapper = ($d: {
-    readonly 'decorateDictionaryEntriesWithKey': mtemp.FDecorateDictionaryEntriesWithKey
+    readonly 'decorateDictionaryEntriesWithKey': mforeach.FDecorateDictionaryEntriesWithKey
 }) => glo.FMapLiana2States
 
 export type CcreateProjectGenerator = ($d: {
-    readonly 'decorateDictionaryEntriesWithKey': mtemp.FDecorateDictionaryEntriesWithKey
-    readonly 'dictionaryForEach': mtemp.FDictionaryForEach
+    readonly 'decorateDictionaryEntriesWithKey': mforeach.FDecorateDictionaryEntriesWithKey
+    readonly 'dictionaryForEach': mforeach.FDictionaryForEach
     readonly 'logError': mcommon.FLog
     readonly 'mapLiana2Pareto': glo.FMapLiana2Pareto
     readonly 'serializeProject': mproject.FSerializeWithContext

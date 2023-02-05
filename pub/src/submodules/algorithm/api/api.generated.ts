@@ -3,13 +3,13 @@ import * as pt from 'pareto-core-types'
 import * as glo from "./glossary"
 
 import * as mcollation from "res-pareto-collation"
-import * as mtemp from "../../temp"
+import * as mforeach from "res-pareto-foreach"
 
 export type CcreateImplementationSerializer = ($d: {
-    readonly 'arrayForEach': mtemp.FArrayForEach
-    readonly 'dictionaryForEach': mtemp.FDictionaryForEach
-    readonly 'enrichedArrayForEach': mtemp.FEnrichedArrayForEach
-    readonly 'enrichedDictionaryForEach': mtemp.FEnrichedDictionaryForEach
+    readonly 'arrayForEach': mforeach.FArrayForEach
+    readonly 'dictionaryForEach': mforeach.FDictionaryForEach
+    readonly 'enrichedArrayForEach': mforeach.FEnrichedArrayForEach
+    readonly 'enrichedDictionaryForEach': mforeach.FEnrichedDictionaryForEach
 }) => glo.FSerializeImplementation
 
 export type API = {

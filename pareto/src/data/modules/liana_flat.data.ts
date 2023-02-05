@@ -28,10 +28,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     },
     'api': {
         'imports': d({
-            "collation": "res-pareto-collation",
             "liana2Pareto": "../../liana2Pareto",
             "pareto2typescript": "../../pareto2typescript",
-            "temp": "../../temp",
             "tostring": "res-pareto-tostring",
             "ts": "res-typescript",
         }),

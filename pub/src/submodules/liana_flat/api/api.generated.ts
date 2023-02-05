@@ -2,10 +2,8 @@ import * as pt from 'pareto-core-types'
 
 import * as glo from "./glossary"
 
-import * as mcollation from "res-pareto-collation"
 import * as mliana2Pareto from "../../liana2Pareto"
 import * as mpareto2typescript from "../../pareto2typescript"
-import * as mtemp from "../../temp"
 import * as mtostring from "res-pareto-tostring"
 import * as mts from "res-typescript"
 

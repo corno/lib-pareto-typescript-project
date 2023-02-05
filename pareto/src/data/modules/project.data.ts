@@ -71,14 +71,14 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "algorithm": "../../algorithm",
             "collation": "res-pareto-collation",
             "moduleDefinition": "../../moduleDefinition",
-            "temp": "../../temp",
+            "foreach": "res-pareto-foreach",
         }),
         'algorithms': d({
             "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
                 "serializeModuleDefinition": definitionReference("moduleDefinition", "Serialize"),
                 "serializeImplementation": definitionReference("algorithm", "SerializeImplementation"),
-                "dictionaryForEach": definitionReference("temp", "DictionaryForEach"),
-                "enrichedArrayForEach": definitionReference("temp", "EnrichedArrayForEach"),
+                "dictionaryForEach": definitionReference("foreach", "DictionaryForEach"),
+                "enrichedArrayForEach": definitionReference("foreach", "EnrichedArrayForEach"),
             })),
             "createSerializerWithContext": algorithm(definitionReference("SerializeWithContext"), constructor(null, {
                 "serialize": definitionReference("Serialize"),

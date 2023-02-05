@@ -28,6 +28,7 @@ export const $: mproject.TProject = {
         "res-pareto-filesystem": {},
         "res-pareto-main": {},
         "res-typescript": {},
+        "res-pareto-foreach": {},
     }),
     'type': ['library', {
         'main': {

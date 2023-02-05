@@ -279,7 +279,7 @@ export const $: mproject.TModule = {
         },
         'api': {
             'imports': d({
-                "temp": "../../temp",
+                "foreach": "res-pareto-foreach",
             }),
             'algorithms': d({
                 "createSerializer": {
@@ -291,19 +291,19 @@ export const $: mproject.TModule = {
                         'configuration data': ['not set', {}],
                         'dependencies': d({
                             "arrayForEach": {
-                                'context': ['import', "temp"],
+                                'context': ['import', "foreach"],
                                 'function': "ArrayForEach",
                             },
                             "dictionaryForEach": {
-                                'context': ['import', "temp"],
+                                'context': ['import', "foreach"],
                                 'function': "DictionaryForEach",
                             },
                             "enrichedArrayForEach": {
-                                'context': ['import', "temp"],
+                                'context': ['import', "foreach"],
                                 'function': "EnrichedArrayForEach",
                             },
                             "enrichedDictionaryForEach": {
-                                'context': ['import', "temp"],
+                                'context': ['import', "foreach"],
                                 'function': "EnrichedDictionaryForEach",
                             },
                         }),

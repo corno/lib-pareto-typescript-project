@@ -47,22 +47,22 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'imports': d({
             "common": "glo-pareto-common",
             "project": "../../project",
-            "temp": "../../temp",
+            "foreach": "res-pareto-foreach",
         }),
         'algorithms': d({
             "generateProject": algorithm(definitionReference("GenerateProject")),
             "createProjectGenerator": algorithm(definitionReference("GenerateProject"), constructor(null, {
-                "decorateDictionaryEntriesWithKey": definitionReference("temp", "DecorateDictionaryEntriesWithKey"),
+                "decorateDictionaryEntriesWithKey": definitionReference("foreach", "DecorateDictionaryEntriesWithKey"),
                 "logError": definitionReference("common", "Log"),
                 "mapLiana2Pareto": definitionReference("MapLiana2Pareto"),
                 "serializeProject": definitionReference("project", "SerializeWithContext"),
-                "dictionaryForEach": definitionReference("temp", "DictionaryForEach"),
+                "dictionaryForEach": definitionReference("foreach", "DictionaryForEach"),
             })),
             "createLiana2ParetoMapper": algorithm(definitionReference("MapLiana2Pareto"), constructor(null, {
-                "decorateDictionaryEntriesWithKey": definitionReference("temp", "DecorateDictionaryEntriesWithKey"),
+                "decorateDictionaryEntriesWithKey": definitionReference("foreach", "DecorateDictionaryEntriesWithKey"),
             })),
             "createLiana2StatesMapper": algorithm(definitionReference("MapLiana2States"), constructor(null, {
-                "decorateDictionaryEntriesWithKey": definitionReference("temp", "DecorateDictionaryEntriesWithKey"),
+                "decorateDictionaryEntriesWithKey": definitionReference("foreach", "DecorateDictionaryEntriesWithKey"),
             })),
         })
     },

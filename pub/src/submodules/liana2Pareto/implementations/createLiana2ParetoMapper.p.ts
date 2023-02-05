@@ -336,7 +336,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                         },
                         'api': {
                             'imports': pr.wrapRawDictionary({
-                                "temp": "../../temp",
+                                "foreach": "res-pareto-foreach",
                             }),
                             'algorithms': pr.wrapRawDictionary({
                                 "createSerializer": {
@@ -348,19 +348,19 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         'configuration data': ['not set', {}],
                                         'dependencies': pr.wrapRawDictionary({
                                             "arrayForEach": {
-                                                'context': ['import', "temp"],
+                                                'context':['import', "foreach"],
                                                 'function': "ArrayForEach",
                                             },
                                             "dictionaryForEach": {
-                                                'context': ['import', "temp"],
+                                                'context':['import', "foreach"],
                                                 'function': "DictionaryForEach",
                                             },
                                             "enrichedArrayForEach": {
-                                                'context': ['import', "temp"],
+                                                'context':['import', "foreach"],
                                                 'function': "EnrichedArrayForEach",
                                             },
                                             "enrichedDictionaryForEach": {
-                                                'context': ['import', "temp"],
+                                                'context':['import', "foreach"],
                                                 'function': "EnrichedDictionaryForEach",
                                             },
                                         })

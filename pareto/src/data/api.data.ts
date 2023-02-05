@@ -54,7 +54,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "collation": "res-pareto-collation",
             "main": "res-pareto-main",
             "pareto2typescript": "../../submodules/pareto2typescript",
-            "temp": "../../submodules/temp",
+            "foreach": "res-pareto-foreach",
         }),
         'algorithms': d({
             "createParametersParser": algorithm(definitionReference("ParseArguments2"), constructor(null, {
@@ -62,7 +62,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             })),
             "generateProject": algorithm(definitionReference("GenerateProject")),
             "createProjectGenerator": algorithm(definitionReference("GenerateProject"), constructor(null, {
-                "decorateDictionaryEntriesWithKey": definitionReference("temp", "DecorateDictionaryEntriesWithKey"),
+                "decorateDictionaryEntriesWithKey": definitionReference("foreach", "DecorateDictionaryEntriesWithKey"),
                 "logError": definitionReference("common", "Log"),
                 "serializeProject": definitionReference("pareto2typescript", "SerializeProject"),
                 "serializeTemplate": definitionReference("pareto2typescript", "SerializeTemplate"),

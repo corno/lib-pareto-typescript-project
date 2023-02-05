@@ -72,14 +72,14 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     'api': {
         'imports': d({
             "collation": "res-pareto-collation",
-            "temp": "../../temp",
+            "foreach": "res-pareto-foreach",
             "glossary": "../../glossary",
         }),
         'algorithms': d({
             "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
                 "serializeGlossary": definitionReference("glossary", "Serialize"),
-                "dictionaryForEach": definitionReference("temp", "DictionaryForEach"),
-                "enrichedArrayForEach": definitionReference("temp", "EnrichedArrayForEach"),
+                "dictionaryForEach": definitionReference("foreach", "DictionaryForEach"),
+                "enrichedArrayForEach": definitionReference("foreach", "EnrichedArrayForEach"),
             })),
         })
     },

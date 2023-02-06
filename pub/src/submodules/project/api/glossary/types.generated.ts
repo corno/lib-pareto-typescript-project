@@ -39,10 +39,18 @@ export namespace GProject {
         
         export namespace Olibrary {
             
+            export namespace Pexecutables {
+                
+                export namespace D {}
+                export type D = {}
+            }
+            export type Pexecutables = pt.Dictionary<Pexecutables.D>
+            
             export namespace Psubmodules {}
             export type Psubmodules = pt.Dictionary<UModule>
         }
         export type Olibrary = {
+            readonly 'executables': Olibrary.Pexecutables
             readonly 'main': UModule
             readonly 'submodules': Olibrary.Psubmodules
             readonly 'test': UTest

@@ -175,7 +175,24 @@ export const $$: api.CcreateProjectSerializer = (
                                 })
                             }
                             globals($i)
+                            $d.enrichedDictionaryForEach($.executables, {
+                                'onEmpty': () => {
 
+                                },
+                                'onNotEmpty': ($c) => {
+                                    $i.directory("bin", ($i) => {
+                                        $c(($) => {
+                                            $i.file(`${$.key}.generated.ts`, ($i) => {
+                                                $i.line(`import * as pe from 'pareto-core-exe'`)
+                                                $i.line(``)
+                                                $i.line(`import * as mmain from "../main"`)
+                                                $i.line(``)
+                                                $i.line(`pe.runProgram(mmain.$a.${$d.createIdentifier($.key)})`)
+                                            })
+                                        })
+                                    })
+                                }
+                            })
                             $i.directory("main", ($i) => {
                                 doModule($.main, $i)
                             })

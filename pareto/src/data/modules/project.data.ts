@@ -52,6 +52,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "library": group({
                         "main": member(reference("Module")),
                         "submodules": member(dictionary(reference("Module"))),
+                        "executables": member(dictionary(group({}))),
                         "test": member(reference("Test")),
                     }),
                 })),

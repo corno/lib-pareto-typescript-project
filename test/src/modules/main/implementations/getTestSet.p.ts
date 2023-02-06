@@ -60,6 +60,7 @@ export const $$: api.CgetTestSet = ($) => {
        
                     'main': module,
                     'submodules': d({}),
+                    'executables': d({}),
                     'test': {
                         'dependencies': d({}),
                     },

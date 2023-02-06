@@ -3,11 +3,11 @@ import * as pt from 'pareto-core-types'
 
 export namespace GAnnotatedToken {}
 export type GAnnotatedToken = {
-    readonly 'annotation': Annotation
+    readonly 'annotation': HAnnotation
     readonly 'token': UToken
 }
 export type UAnnotatedToken = GAnnotatedToken
-export type UAnnotation = Annotation
+export type UAnnotation = HAnnotation
 
 export namespace GMultilineStringData {
     

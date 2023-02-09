@@ -11,6 +11,8 @@ import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mliana from "../../liana"
 import { data, func, interfaceReference } from '../../glossary/shorthands.p'
 
+const d = pr.wrapRawDictionary
+
 export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
     return ($) => {
         const model = $.model
@@ -32,6 +34,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 //     'annotation': "SSDF",
                 //     'name': type
                 // },
+                'arguments': d({}),
             }
         }
 
@@ -108,6 +111,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                 return ['reference', {
                                     'context': ['local', {}],
                                     'type': $.type.name,
+                                    'arguments': d({}),
                                     // 'type': {
                                     //     'annotation': "XXX",
                                     //     'name': $.type.name,
@@ -153,12 +157,15 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                             )
                                         })
                                     case 'yes':
-                                        return pl.cc($.constrained[1], ($) => {
-                                            return ['template', {
-                                                'template': "Reference",
-                                                'context': ['local', {}],
+                                        return pl.cc($.constrained[1], ($): mglossary.TType => {
+                                            return ['reference', {
+                                                'context': ['import', {
+                                                    'glossary': "common",
+                                                    'arguments': d({}),
+                                                }],
+                                                'type': "Reference",
                                                 'arguments': pr.wrapRawDictionary({
-                                                    "RererencedType": <mglossary.GType>['null', {}], //FIXME
+                                                    //"ReferencedType": <mglossary.GTypeReference>['null', {}], //FIXME
                                                 }),
                                             }]
                                         })
@@ -175,7 +182,10 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     }
 
                 }
-                return mapType($.type)
+                return {
+                    'parameters': d({}),
+                    'type': mapType($.type),
+                }
             })
         }
         return {
@@ -189,14 +199,14 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             'parameters': pr.wrapRawDictionary({
                                 "Annotation": {},
                             }),
-                            'templates': pr.wrapRawDictionary<mglossary.GGlossary.Ptemplates.D>({
-                                "Reference": {
-                                    'parameters': pr.wrapRawDictionary({
-                                        "ReferencedType": {},
-                                    }),
-                                    'type': <mglossary.GType>['group', pr.wrapRawDictionary({})],
-                                }
-                            }),
+                            // 'templates': pr.wrapRawDictionary<mglossary.GGlossary.Ptemplates.D>({
+                            //     "Reference": {
+                            //         'parameters': pr.wrapRawDictionary({
+                            //             "ReferencedType": {},
+                            //         }),
+                            //         'type': <mglossary.GType>['group', pr.wrapRawDictionary({})],
+                            //     }
+                            // }),
                             'types': createTypes({
                                 'model': $.model,
                                 'optional': false,
@@ -320,7 +330,10 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                     'data': typeReference($.model.root.name), //unresolved
                                     'managed input interface': ['not set', {}],
                                     'output interface': ['set', {
-                                        'context': ['import', "fp"],
+                                        'context': ['import', {
+                                            'glossary': "fp",
+                                            'arguments': d({}),
+                                        }],
                                         'interface': "Line"
                                         // 'context': ['import', {
                                         //     'name': "fp",
@@ -348,19 +361,31 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         'configuration data': ['not set', {}],
                                         'dependencies': pr.wrapRawDictionary({
                                             "arrayForEach": {
-                                                'context':['import', "foreach"],
+                                                'context':['import', {
+                                                    'glossary': "foreach",
+                                                    'arguments': d({}),
+                                                }],
                                                 'function': "ArrayForEach",
                                             },
                                             "dictionaryForEach": {
-                                                'context':['import', "foreach"],
+                                                'context':['import', {
+                                                    'glossary': "foreach",
+                                                    'arguments': d({}),
+                                                }],
                                                 'function': "DictionaryForEach",
                                             },
                                             "enrichedArrayForEach": {
-                                                'context':['import', "foreach"],
+                                                'context':['import', {
+                                                    'glossary': "foreach",
+                                                    'arguments': d({}),
+                                                }],
                                                 'function': "EnrichedArrayForEach",
                                             },
                                             "enrichedDictionaryForEach": {
-                                                'context':['import', "foreach"],
+                                                'context':['import', {
+                                                    'glossary': "foreach",
+                                                    'arguments': d({}),
+                                                }],
                                                 'function': "EnrichedDictionaryForEach",
                                             },
                                         })

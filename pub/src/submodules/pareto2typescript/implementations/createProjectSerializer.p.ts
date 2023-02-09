@@ -79,6 +79,14 @@ export const $$: api.CcreateProjectSerializer = (
                         break
                     case 'library':
                         pl.cc($.type[1], ($) => {
+                            $d.enrichedDictionaryForEach($.executables, {
+                                onEmpty: () => {
+
+                                },
+                                onNotEmpty: ($c) => {
+                                    $i.line(`    "pareto-core-exe": "^0.0.0",`)
+                                }
+                            })
                             $i.line(`    "pareto-core-lib": "^0.0.0",`)
                             $i.line(`    "pareto-core-raw": "^0.0.0",`)
                             $i.line(`    "pareto-core-state": "^0.0.0"`)
@@ -92,21 +100,47 @@ export const $$: api.CcreateProjectSerializer = (
                     default: pl.au($.type[0])
                 }
                 $i.line(`  },`)
-                //devDependencies
-                if ($.type[0] === 'resource') {
+                switch ($.type[0]) {
+                    case 'glossary':
+                        pl.cc($.type[1], ($) => {
 
-                    $d.enrichedDictionaryForEach($.type[1].devDependencies, {
-                        onEmpty: () => {
+                        })
+                        break
+                    case 'library':
+                        pl.cc($.type[1], ($) => {
+                            $d.enrichedDictionaryForEach($.executables, {
+                                onEmpty: () => {
 
-                        },
-                        onNotEmpty: ($c) => {
-                            $i.line(`  "devDependencies": {`)
-                            $c(($) => {
-                                $i.line(`    "${$.key}": "^0.0.0"${$.isLast ? `` : `,`}`)
+                                },
+                                onNotEmpty: ($c) => {
+                                    $i.line(`  "bin": {`)
+                                    $c(($) => {
+                                        $i.line(`    "${$.key}": "dist/bin/${$.key}.js"${$.isLast ? `` : `,`}`)
+                                    })
+                                    $i.line(`  },`)
+                                }
                             })
-                            $i.line(`  },`)
-                        }
-                    })
+
+                        })
+                        break
+                    case 'resource':
+                        pl.cc($.type[1], ($) => {
+                            $d.enrichedDictionaryForEach($.devDependencies, {
+                                onEmpty: () => {
+
+                                },
+                                onNotEmpty: ($c) => {
+                                    $i.line(`  "devDependencies": {`)
+                                    $c(($) => {
+                                        $i.line(`    "${$.key}": "^0.0.0"${$.isLast ? `` : `,`}`)
+                                    })
+                                    $i.line(`  },`)
+                                }
+                            })
+
+                        })
+                        break
+                    default: pl.au($.type[0])
                 }
                 $i.line(`  "files": [`)
                 $i.line(`    "dist"`)
@@ -183,6 +217,8 @@ export const $$: api.CcreateProjectSerializer = (
                                     $i.directory("bin", ($i) => {
                                         $c(($) => {
                                             $i.file(`${$.key}.generated.ts`, ($i) => {
+                                                $i.line(`#!/usr/bin/env node`)
+                                                $i.line(``)
                                                 $i.line(`import * as pe from 'pareto-core-exe'`)
                                                 $i.line(``)
                                                 $i.line(`import * as mmain from "../main"`)

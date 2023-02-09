@@ -12,11 +12,21 @@ export type MReference<AReferencedType> = VReference<AReferencedType>
 
 export namespace GContext {
     
+    export namespace Oimport {
+        
+        export namespace Parguments {}
+        export type Parguments = pt.Dictionary<UTypeReference>
+    }
+    export type Oimport = {
+        readonly 'arguments': Oimport.Parguments
+        readonly 'glossary': string
+    }
+    
     export namespace Olocal {}
     export type Olocal = {}
 }
 export type GContext = 
-    | ['import', string]
+    | ['import', GContext.Oimport]
     | ['local', GContext.Olocal]
 export type UContext = GContext
 
@@ -86,7 +96,7 @@ export namespace GGlossary {
     }
     export type Pparameters = pt.Dictionary<Pparameters.D>
     
-    export namespace Ptemplates {
+    export namespace Ptypes {
         
         export namespace D {
             
@@ -102,17 +112,13 @@ export namespace GGlossary {
             readonly 'type': UType
         }
     }
-    export type Ptemplates = pt.Dictionary<Ptemplates.D>
-    
-    export namespace Ptypes {}
-    export type Ptypes = pt.Dictionary<UType>
+    export type Ptypes = pt.Dictionary<Ptypes.D>
 }
 export type GGlossary = {
     readonly 'functions': GGlossary.Pfunctions
     readonly 'imports': GGlossary.Pimports
     readonly 'interfaces': GGlossary.Pinterfaces
     readonly 'parameters': GGlossary.Pparameters
-    readonly 'templates': GGlossary.Ptemplates
     readonly 'types': GGlossary.Ptypes
 }
 export type UGlossary = GGlossary
@@ -198,17 +204,6 @@ export namespace GType {
     
     export namespace OtaggedUnion {}
     export type OtaggedUnion = pt.Dictionary<UType>
-    
-    export namespace Otemplate {
-        
-        export namespace Parguments {}
-        export type Parguments = pt.Dictionary<UType>
-    }
-    export type Otemplate = {
-        readonly 'arguments': Otemplate.Parguments
-        readonly 'context': UContext
-        readonly 'template': string
-    }
 }
 export type GType = 
     | ['array', UType]
@@ -224,12 +219,16 @@ export type GType =
     | ['reference', UTypeReference]
     | ['string', GType.Ostring]
     | ['taggedUnion', GType.OtaggedUnion]
-    | ['template', GType.Otemplate]
     | ['type parameter', string]
 export type UType = GType
 
-export namespace GTypeReference {}
+export namespace GTypeReference {
+    
+    export namespace Parguments {}
+    export type Parguments = pt.Dictionary<UTypeReference>
+}
 export type GTypeReference = {
+    readonly 'arguments': GTypeReference.Parguments
     readonly 'context': UContext
     readonly 'type': string
 }

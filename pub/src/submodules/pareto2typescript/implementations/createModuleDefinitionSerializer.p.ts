@@ -58,7 +58,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                     //     break
                     case 'import':
                         pl.cc($[1], ($) => {
-                            $i.snippet(`m${$}.`)
+                            $i.snippet(`m${$.glossary}.`)
                         })
                         break
                     case 'local':
@@ -82,7 +82,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                         //     break
                         case 'import':
                             pl.cc($[1], ($) => {
-                                $i.snippet(`m${$}.`)
+                                $i.snippet(`m${$.glossary}.`)
                             })
                             break
                         case 'local':

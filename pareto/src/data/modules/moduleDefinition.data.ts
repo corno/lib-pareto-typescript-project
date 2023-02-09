@@ -40,7 +40,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             }),
             "Context": taggedUnion({
                 "local": group({}),
-                "import": string(),
+                "import": group({
+                    "glossary": member(string()),
+                    "arguments": member(dictionary(reference("glossary", "TypeReference")))
+                }),
             }),
             "ModuleDefinition": group({
                 "glossary": member(reference("glossary", "Glossary")),

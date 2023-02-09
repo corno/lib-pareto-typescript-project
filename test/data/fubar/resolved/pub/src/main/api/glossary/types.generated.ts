@@ -2,11 +2,6 @@ import * as pt from 'pareto-core-types'
 
 import * as mfp from "lib-fountain-pen"
 
-export namespace VReference {}
-export type VReference<AReferencedType> = {}
-
-export type MReference<AReferencedType> = VReference<AReferencedType>
-
 export namespace GContext {
     
     export namespace Olocal {}

@@ -16,6 +16,7 @@ import {
     reference,
     array,
     method,
+    type,
 } from "../../../../../../pub/dist/submodules/glossary/shorthands.p"
 
 import * as mglossary from "../../../../../../pub/dist/submodules/glossary"
@@ -27,25 +28,23 @@ export const $: mglossary.TGlossary = {
     'parameters': d({
         "Annotation": {},
     }),
-    'templates': d({
-    }),
-    'types': types({
-        "Annotation": glossaryParameter("Annotation"),
-        "AnnotatedToken": group({
+    'types': d({
+        "Annotation": type(glossaryParameter("Annotation")),
+        "AnnotatedToken": type(group({
             "token": member(reference("Token")),
             "annotation": member(glossaryParameter("Annotation"))
-        }),
-        "MultilineStringData": group({
+        })),
+        "MultilineStringData": type(group({
             "lines": member(array(string()))
-        }),
-        "SimpleStringData": group({
+        })),
+        "SimpleStringData": type(group({
             "wrapping": member(reference("Wrapping")),
             "value": member(string()),
-        }),
-        "StructuralTokenData": group({
+        })),
+        "StructuralTokenData": type(group({
             "type": member(reference("StructuralTokenType"))
-        }),
-        "StructuralTokenType": taggedUnion({
+        })),
+        "StructuralTokenType": type(taggedUnion({
             "tagged union start": group({}),
             "open shorthand group": group({}),
             "close shorthand group": group({}),
@@ -55,18 +54,18 @@ export const $: mglossary.TGlossary = {
             "close dictionary": group({}),
             "open list": group({}),
             "close list": group({}),
-        }),
-        "Token": taggedUnion({
+        })),
+        "Token": type(taggedUnion({
             "header start": group({}),
             "structural": reference("StructuralTokenData"),
             "simple string": reference("SimpleStringData"),
             "multiline string": reference("MultilineStringData"),
-        }),
-        "Wrapping": taggedUnion({
+        })),
+        "Wrapping": type(taggedUnion({
             "quote": group({}),
             "apostrophe": group({}),
             "none": group({}),
-        }),
+        })),
 
     }),
     'interfaces': d({

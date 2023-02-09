@@ -65,6 +65,19 @@ export const $$: api.CcreateSerializer = ($d) => {
                 //doReference($.type, $i)
                 $i.snippet(`,`)
             })
+            $i.nestedLine(($i) => {
+                $i.snippet(`'arguments': d({`)
+                $i.indent(($i) => {
+                    $d.dictionaryForEach($.arguments, ($) => {
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`"${$.key}": `)
+                            serializeTypeReference($.value, $i)
+                            $i.snippet(`,`)
+                        })
+                    })
+                })
+                $i.snippet(`}),`)
+            })
         })
         $i.snippet(`}`)
     }
@@ -195,37 +208,6 @@ export const $$: api.CcreateSerializer = ($d) => {
                     $i.snippet(`})]`)
                 })
                 break
-            case 'template':
-                pl.cc($[1], ($) => {
-                    $i.snippet(`['template', {`)
-                    $i.indent(($i) => {
-                        pl.cc($.context, ($) => {
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`'context': `)
-                                serializeContext($, $i)
-                                $i.snippet(`,`)
-                            })
-                        })
-                        $i.nestedLine(($i) => {
-                            $i.snippet(`'arguments': d({`)
-                            $i.indent(($i) => {
-                                $d.dictionaryForEach($.arguments, ($) => {
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`"${$.key}": `)
-                                        serializeType($.value, $i)
-                                        $i.snippet(`,`)
-                                    })
-                                })
-                            })
-                            $i.snippet(`}),`)
-                        })
-                        $i.nestedLine(($i) => {
-                            $i.snippet(`'template': "${$.template}",`)
-                        })
-                    })
-                    $i.snippet(`}]`)
-                })
-                break
             default: pl.au($[0])
         }
     }
@@ -234,10 +216,25 @@ export const $$: api.CcreateSerializer = ($d) => {
         switch ($[0]) {
             case 'import':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['import', `)
-                    //doReference($, $i)
-                    $i.snippet(`"` + $ + `"`)
-                    $i.snippet(`]`)
+                    $i.snippet(`['import', {`)
+                    $i.indent(($i) => {
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`'glossary': "${$.glossary}",`)
+                        })
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`'arguments': d({`)
+                            $i.indent(($i) => {
+                                $d.dictionaryForEach($.arguments, ($) => {
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`"${$.key}": `)
+                                        serializeTypeReference($.value, $i)
+                                    })
+                                })
+                            })
+                            $i.snippet(`}),`)
+                        })
+                    })
+                    $i.snippet(`}]`)
                 })
                 break
             case 'local':
@@ -356,13 +353,13 @@ export const $$: api.CcreateSerializer = ($d) => {
                 $i.snippet(`}),`)
             })
             $i.nestedLine(($i) => {
-                $i.snippet(`'templates': d({`)
+                $i.snippet(`'types': d({`)
                 $i.indent(($i) => {
-                    $d.dictionaryForEach($.templates, ($) => {
+                    $d.dictionaryForEach($.types, ($) => {
+
                         $i.nestedLine(($i) => {
                             $i.snippet(`"${$.key}": {`)
                             $i.indent(($i) => {
-
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`'parameters': d({`)
                                     $i.indent(($i) => {
@@ -377,23 +374,10 @@ export const $$: api.CcreateSerializer = ($d) => {
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`'type': `)
                                     serializeType($.value.type, $i)
-                                    $i.snippet(`,`)
+
                                 })
                             })
                             $i.snippet(`},`)
-                        })
-                    })
-                })
-                $i.snippet(`}),`)
-            })
-            $i.nestedLine(($i) => {
-                $i.snippet(`'types': d({`)
-                $i.indent(($i) => {
-                    $d.dictionaryForEach($.types, ($) => {
-                        $i.nestedLine(($i) => {
-                            $i.snippet(`"${$.key}": `)
-                            serializeType($.value, $i)
-                            $i.snippet(`,`)
                         })
                     })
                 })

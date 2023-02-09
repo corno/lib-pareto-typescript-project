@@ -3,6 +3,7 @@ import * as pr from 'pareto-core-raw'
 import * as mmoduleDefinition from "./import_moduleDefinition"
 import * as mproject from "./import_project"
 import * as mglossary from "./import_glossary"
+import { dictionary, member, reference, string } from 'lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p'
 
 const d = pr.wrapRawDictionary
 const a = pr.wrapRawArray
@@ -35,7 +36,10 @@ export const $: mproject.TModule = {
             }),
             'types': d({
                 "Context": <mglossary.TType>['taggedUnion', d({
-                    "import": <mglossary.TType>['string', {}],
+                    "import": <mglossary.TType>['group', d({
+                        "glossary": member(string()),
+                        "arguments": member(dictionary(reference("TypeReference")))
+                    })],
                     "local": <mglossary.TType>['group', d({})],
                 })],
                 "Glossary": <mglossary.TType>['group', d({
@@ -109,7 +113,7 @@ export const $: mproject.TModule = {
                         'optional': false,
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
                     },
-                    "templates": {
+                    "types": {
                         'optional': false,
                         'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
                             "parameters": {
@@ -124,13 +128,6 @@ export const $: mproject.TModule = {
                                 }],
                             },
                         })]],
-                    },
-                    "types": {
-                        'optional': false,
-                        'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                            'context': <mglossary.TContext>['local', {}],
-                            'type': "Type",
-                        }]],
                     },
                 })],
                 "Interface": <mglossary.TType>['taggedUnion', d({
@@ -240,26 +237,6 @@ export const $: mproject.TModule = {
                         'context': <mglossary.TContext>['local', {}],
                         'type': "Type",
                     }]],
-                    "template": <mglossary.TType>['group', d({
-                        "arguments": {
-                            'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
-                                'context': <mglossary.TContext>['local', {}],
-                                'type': "Type",
-                            }]],
-                        },
-                        "context": {
-                            'optional': false,
-                            'type': <mglossary.TType>['reference', {
-                                'context': <mglossary.TContext>['local', {}],
-                                'type': "Context",
-                            }],
-                        },
-                        "template": {
-                            'optional': false,
-                            'type': <mglossary.TType>['string', {}],
-                        },
-                    })],
                 })],
                 "TypeReference": <mglossary.TType>['group', d({
                     "context": {
@@ -272,6 +249,13 @@ export const $: mproject.TModule = {
                     "type": {
                         'optional': false,
                         'type': <mglossary.TType>['string', {}],
+                    },
+                    "arguments": {
+                        'optional': false,
+                        'type': <mglossary.TType>['dictionary', <mglossary.TType>['reference', {
+                            'context': <mglossary.TContext>['local', {}],
+                            'type': "TypeReference",
+                        }]],
                     },
                 })],
             }),

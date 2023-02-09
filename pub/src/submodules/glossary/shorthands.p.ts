@@ -1,4 +1,4 @@
-
+import * as pl from 'pareto-core-lib'
 import * as pr from 'pareto-core-raw'
 
 import * as t from "./api"
@@ -35,20 +35,26 @@ export function dictionary($: t.TType): t.TType {
     return ['dictionary', $]
 }
 
+export function parametrizedType(parameters: RawDictionary<{}>, type: t.TType): t.GGlossary.Ptypes.D {
+    return {
+        'parameters': d(parameters),
+        'type': type,
+    }
+}
+
+export function type(type: t.TType): t.GGlossary.Ptypes.D {
+    return {
+        'parameters': d({}),
+        'type': type,
+    }
+}
+
 export function typeParameter($: string): t.TType {
     return ['type parameter', $]
 }
 
 export function glossaryParameter($: string): t.TType {
     return ['glossary parameter', $]
-}
-
-export function template(template: string, $: RawDictionary<t.TType>): t.TType {
-    return ['template', {
-        'template': template,
-        'context': ['local', {}],
-        'arguments': d($),
-    }]
 }
 
 export function array($: t.TType): t.TType {
@@ -87,38 +93,63 @@ export function reference(contextOrType: string, type?: string): t.TType {
     return ['reference', typeReference(contextOrType, type)]
 }
 
-export function typeReference(contextOrType: string, type?: string): t.TTypeReference {
-    if (type === undefined) {
-        return {
-            'context': ['local', {}],
-            'type': contextOrType,
-            // 'type': {
-            //     'annotation': "SSDF",
-            //     'name': a
-            // },
-        }
+export function context(glossary?: string, args?: RawDictionary<t.TTypeReference>): t.TContext {
+    if (glossary === undefined) {
+        return ['local', {}]
     } else {
-        return {
-            'context': ['import', contextOrType],
-            'type': type,
-            // 'context': ['import', {
-            //     'annotation': "SSDF",
-            //     'name': a
-            // }],
-            // 'type': {
-            //     'annotation': "SSDF",
-            //     'name': b
-            // },
-        }
-
+        return ['import', {
+            'glossary': glossary,
+            'arguments': d(args === undefined ? {} : args)
+        }]
     }
 }
 
-export function interfaceReference(a: string, b?: string): t.TInterfaceReference {
-    if (b === undefined) {
+export function parametrizedTypeReference(
+    contextOrType: string,
+    glossaryArgsOrTypeArgs: RawDictionary<t.TTypeReference>,
+    type?: string,
+    typeArgs?: RawDictionary<t.TTypeReference>
+): t.TTypeReference {
+    if (type === undefined) {
+        return {
+            'context': context(),
+            'type': contextOrType,
+            'arguments': d(glossaryArgsOrTypeArgs),
+        }
+    } else {
+
+        return {
+            'context': context(contextOrType, glossaryArgsOrTypeArgs),
+            'type': type,
+            'arguments': d(typeArgs === undefined ? {}: typeArgs),
+        }
+    }
+}
+
+export function typeReference(
+    contextOrType: string,
+    type?: string,
+): t.TTypeReference {
+    if (type === undefined) {
+        return {
+            'context': context(),
+            'type': contextOrType,
+            'arguments': d({}),
+        }
+    } else {
+        return {
+            'context': context(contextOrType),
+            'type': type,
+            'arguments': d({}),
+        }
+    }
+}
+
+export function interfaceReference(contextOrInterface: string, inf?: string): t.TInterfaceReference {
+    if (inf === undefined) {
         return {
             'context': ['local', {}],
-            'interface': a,
+            'interface': contextOrInterface,
             // 'interface': {
             //     'annotation': "SSDF",
             //     'name': a
@@ -126,8 +157,8 @@ export function interfaceReference(a: string, b?: string): t.TInterfaceReference
         }
     } else {
         return {
-            'context': ['import', a],
-            'interface': b,
+            'context': context(contextOrInterface),
+            'interface': inf,
             // 'context': ['import', {
             //     'annotation': "SSDF",
             //     'name': a

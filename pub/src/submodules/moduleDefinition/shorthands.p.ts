@@ -13,7 +13,7 @@ const a = pr.wrapRawArray
 
 type RawDictionary<T> = { [key: string]: T }
 
-export function definitionReference(contextOrDefinition: string, definition?: string): api.TDefinitionReference {
+export function definitionReference(contextOrDefinition: string, definition?: string, args?: RawDictionary<mglossary.TTypeReference>): api.TDefinitionReference {
     if (definition === undefined) {
 
         return {
@@ -22,7 +22,10 @@ export function definitionReference(contextOrDefinition: string, definition?: st
         }
     } else {
         return {
-            'context': ['import', contextOrDefinition],
+            'context': ['import', {
+                'glossary': contextOrDefinition,
+                'arguments': d(args === undefined ? {}: args)
+            }],
             'function': definition
         }
     }

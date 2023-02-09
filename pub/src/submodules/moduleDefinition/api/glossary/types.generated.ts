@@ -16,11 +16,21 @@ export type MOptional<AType> = VOptional<AType>
 
 export namespace GContext {
     
+    export namespace Oimport {
+        
+        export namespace Parguments {}
+        export type Parguments = pt.Dictionary<mglossary.TTypeReference>
+    }
+    export type Oimport = {
+        readonly 'arguments': Oimport.Parguments
+        readonly 'glossary': string
+    }
+    
     export namespace Olocal {}
     export type Olocal = {}
 }
 export type GContext = 
-    | ['import', string]
+    | ['import', GContext.Oimport]
     | ['local', GContext.Olocal]
 export type UContext = GContext
 

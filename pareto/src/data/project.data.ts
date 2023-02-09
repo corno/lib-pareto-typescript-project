@@ -62,6 +62,7 @@ export const $: mproject.TProject = {
                 'definition': pareto2typescript,
             },
         }),
+        'executables': d({}),
         'test': {
             'dependencies': d({
                 "lib-fountain-pen": {},

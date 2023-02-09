@@ -5,7 +5,7 @@ import {
     reference,
     array, dictionary, group, member, taggedUnion, types, typeReference,
     interfaceReference,
-    parameter,
+    typeParameter,
     template,
     func,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
@@ -28,7 +28,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "Optional": {
                 'parameters': d({ "Type": {}, }),
                 'type': taggedUnion({
-                    "set": parameter("Type"),
+                    "set": typeParameter("Type"),
                     "not set": group({}),
                 })
             }

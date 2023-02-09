@@ -4,7 +4,7 @@ import {
     string,
     reference,
     boolean,
-    array, dictionary, group, member, taggedUnion, types, typeReference, parameter, template, func, data
+    array, dictionary, group, member, taggedUnion, types, typeReference, typeParameter, template, func, data
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
@@ -25,7 +25,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
                 'type': group({
                     "annotation": member(string()),
-                    "dictionary": member(dictionary(parameter("Type"))),
+                    "dictionary": member(dictionary(typeParameter("Type"))),
                 })
             },
             // "ConstrainedDictionary": {
@@ -56,7 +56,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "Type": {}
                 }),
                 'type': taggedUnion({
-                    "set": parameter("Type"),
+                    "set": typeParameter("Type"),
                     "not set": group({})
                 }),
             },
@@ -65,7 +65,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "ReferencedType": {}
                 }),
                 'type': group({
-                    "referenced value": member(parameter("ReferencedType")),
+                    "referenced value": member(typeParameter("ReferencedType")),
                     "annotation": member(string()),
                     "name": member(string()),
                 }),
@@ -75,7 +75,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "ReferencedType": {}
                 }),
                 'type': group({
-                    "referenced value": member(computed(parameter("ReferencedType"))),
+                    "referenced value": member(computed(typeParameter("ReferencedType"))),
                     "annotation": member(string()),
                     "name": member(string()),
                 }),
@@ -83,7 +83,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "Optional": {
                 'parameters': d({ "Type": {}, }),
                 'type': taggedUnion({
-                    "set": parameter("Type"),
+                    "set": typeParameter("Type"),
                     "not set": group({}),
                 })
             }

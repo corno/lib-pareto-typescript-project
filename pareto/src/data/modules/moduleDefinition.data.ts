@@ -10,6 +10,8 @@ import {
     type,
     parametrizedType,
     parametrizedTypeReference,
+    optional,
+    parametrizedReference,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
@@ -28,10 +30,6 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
         }),
         'parameters': d({}),
         'types': d({
-            "Optional": parametrizedType({ "Type": {}, }, taggedUnion({
-                "set": typeParameter("Type"),
-                "not set": group({}),
-            })),
             "DefinitionReference": type(group({
                 "context": member(reference("Context"), true),
                 "function": member(string()),
@@ -52,7 +50,7 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
                         "type": member(taggedUnion({
                             "reference": group({}),
                             "constructor": group({
-                                "configuration data": member(['reference', parametrizedTypeReference("Optional", { "Type": parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "TypeReference") })]),
+                                "configuration data": member(optional(parametrizedReference("glossary", { "Type": typeReference("common", "String") }, "TypeReference"))),
                                 "dependencies": member(dictionary(reference("DefinitionReference"))),
                             }),
                         }))

@@ -227,7 +227,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         'function': "Serialize"
                                     },
                                     'type': ['constructor', {
-                                        'configuration data': ['not set', {}],
+                                        'configuration data': [false],
                                         'dependencies': pr.wrapRawDictionary({
                                         })
                                     }]
@@ -237,7 +237,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         'function': "Enrich"
                                     },
                                     'type': ['constructor', {
-                                        'configuration data': ['not set', {}],
+                                        'configuration data': [false],
                                         'dependencies': pr.wrapRawDictionary({
                                         })
                                     }]
@@ -358,31 +358,31 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                         'function': "Serialize"
                                     },
                                     'type': ['constructor', {
-                                        'configuration data': ['not set', {}],
+                                        'configuration data': [false],
                                         'dependencies': pr.wrapRawDictionary({
                                             "arrayForEach": {
-                                                'context':['import', {
+                                                'context': ['import', {
                                                     'glossary': "foreach",
                                                     'arguments': d({}),
                                                 }],
                                                 'function': "ArrayForEach",
                                             },
                                             "dictionaryForEach": {
-                                                'context':['import', {
+                                                'context': ['import', {
                                                     'glossary': "foreach",
                                                     'arguments': d({}),
                                                 }],
                                                 'function': "DictionaryForEach",
                                             },
                                             "enrichedArrayForEach": {
-                                                'context':['import', {
+                                                'context': ['import', {
                                                     'glossary': "foreach",
                                                     'arguments': d({}),
                                                 }],
                                                 'function': "EnrichedArrayForEach",
                                             },
                                             "enrichedDictionaryForEach": {
-                                                'context':['import', {
+                                                'context': ['import', {
                                                     'glossary': "foreach",
                                                     'arguments': d({}),
                                                 }],
@@ -403,7 +403,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             //                 function doType($: mliana.T.LocalType): malgorithm.GProcedureBlock.Pstatements {
                             //                     const builder = ps.createArrayBuilder<malgorithm.GProcedureBlock.Pstatements.A>()
                             //                     function snippet($: string) {
-                                                    
+
                             //                         builder.push(<malgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
                             //                             'child path': pr.wrapRawArray(["snippet"]),
                             //                             //'property': pr.wrapRawArray([]),
@@ -418,7 +418,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             //                         //     'data': ['set',  ['string literal', $]],
                             //                         //     'callback': ['not set', {}],
                             //                         // }])
-                                    
+
                             //                     }
                             //                     switch ($[0]) {
                             //                         case 'array':
@@ -448,7 +448,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             //                             pl.cc($[1], ($) => {
                             //                                 // snippet("{")
                             //                                 // indent(($) => {
-                                                                
+
                             //                                 // })
                             //                                 // snippet("}")
                             //                                 // $.

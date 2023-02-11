@@ -34,8 +34,8 @@ export function definitionReference(contextOrDefinition: string, args?: RawDicti
 export function constructor(data: null | mglossary.T.TypeReference<string>, deps: RawDictionary<api.T.DefinitionReference>): api.T.ModuleDefinition.api.algorithms.D._ltype {
     return ['constructor', {
         'configuration data': data === null
-            ? ['not set', {}]
-            : ['set', data],
+            ? [false]
+            : [true, data],
         'dependencies': d(deps),
     }]
 }

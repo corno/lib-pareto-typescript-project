@@ -4,7 +4,7 @@ import {
     string,
     reference,
     boolean,
-    array, dictionary, group, member, taggedUnion, types, typeReference, typeParameter, parametrizedTypeReference, func, data, type, parametrizedType
+    array, dictionary, group, member, taggedUnion, types, typeReference, typeParameter, parametrizedTypeReference, func, data, type, parametrizedType, optional
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
@@ -38,10 +38,10 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
                 "annotation": member(string()),
                 "name": member(string()),
             })),
-            "Optional": parametrizedType({ "Type": {} }, taggedUnion({
-                "set": typeParameter("Type"),
-                "not set": group({}),
-            })),
+            // "Optional": parametrizedType({ "Type": {} }, taggedUnion({
+            //     "set": typeParameter("Type"),
+            //     "not set": group({}),
+            // })),
             ////
             "_Reference": type(group({
                 "name": member(string()),
@@ -157,7 +157,7 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             })),
             "XProperties": type(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("XProperty") })]),
             "XReference": type(group({
-                "resolved type": member(['reference', parametrizedTypeReference("Optional", { "Type": typeReference("LocalType") })]),
+                "resolved type": member(optional(reference("LocalType"))),
             })),
             "XString": type(group({
                 "constrained": member(taggedUnion({

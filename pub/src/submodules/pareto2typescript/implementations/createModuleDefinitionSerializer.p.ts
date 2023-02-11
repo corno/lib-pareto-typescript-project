@@ -6,36 +6,20 @@ import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
-
-export namespace VOptional {}
-export type VOptional<AType> = 
-    | ['not set', {}]
-    | ['set', AType]
-
-export type MOptional<AType> = VOptional<AType>
-
 export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
     return ($, $i) => {
         function doOptional<T>(
-            $: MOptional<T>,
+            $: [false] | [true, T],
             $i: mfp.ILine,
             $c: {
                 onSet: ($: T, $i: mfp.ILine) => void,
-                onNotset: ($: {}, $i: mfp.ILine) => void,
+                onNotset: ($: null, $i: mfp.ILine) => void,
             },
         ) {
-            switch ($[0]) {
-                case 'not set':
-                    pl.cc($[1], ($) => {
-                        $c.onNotset($, $i)
-                    })
-                    break
-                case 'set':
-                    pl.cc($[1], ($) => {
-                        $c.onSet($, $i)
-                    })
-                    break
-                default: pl.au($[0])
+            if ($[0] === true) {
+                $c.onSet($[1], $i)
+            } else {
+                $c.onNotset(null, $i)
             }
         }
         function glossary($: mglossary.T.Glossary<string>, $i: mfp.IWriter) {
@@ -45,34 +29,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
             })
         }
         function serializeTypeReference($: mglossary.T.TypeReference<string>, $i: mfp.ILine) {
-            serializeContext2($.context, $i)
-            $i.snippet($d.createIdentifier(`T${$.type}`))
-        }
-        function serializeContext2($: mglossary.T.Context<string>, $i: mfp.ILine) {
-            pl.cc($, ($) => {
-                switch ($[0]) {
-                    // case 'api':
-                    //     pl.cc($[1], ($) => {
-                    //         $i.snippet(`api`)
-                    //     })
-                    //     break
-                    case 'import':
-                        pl.cc($[1], ($) => {
-                            $i.snippet(`m${$.glossary}.`)
-                        })
-                        break
-                    case 'local':
-                        pl.cc($[1], ($) => {
-                            $i.snippet(`glo.`)
-                        })
-                        break
-                    default: pl.au($[0])
-                }
-            })
-        }
-        function serializeContext($: mmoduleDefinition.T.Context | undefined, $i: mfp.ILine) {
-
-            if ($ !== undefined) {
+            function serializeContext2($: mglossary.T.Context<string>, $i: mfp.ILine) {
                 pl.cc($, ($) => {
                     switch ($[0]) {
                         // case 'api':
@@ -93,12 +50,39 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                         default: pl.au($[0])
                     }
                 })
-            } else {
-                $i.snippet(`glo.`)
             }
+            serializeContext2($.context, $i)
+            $i.snippet(`T.${$d.createIdentifier($.type)}`)
         }
 
         function serializeDefinitionReference($: mmoduleDefinition.T.DefinitionReference, $i: mfp.ILine) {
+            function serializeContext($: mmoduleDefinition.T.Context | undefined, $i: mfp.ILine) {
+    
+                if ($ !== undefined) {
+                    pl.cc($, ($) => {
+                        switch ($[0]) {
+                            // case 'api':
+                            //     pl.cc($[1], ($) => {
+                            //         $i.snippet(`api`)
+                            //     })
+                            //     break
+                            case 'import':
+                                pl.cc($[1], ($) => {
+                                    $i.snippet(`m${$.glossary}.`)
+                                })
+                                break
+                            case 'local':
+                                pl.cc($[1], ($) => {
+                                    $i.snippet(`glo.`)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
+                } else {
+                    $i.snippet(`glo.`)
+                }
+            }
             serializeContext($.context, $i)
             $i.snippet($d.createIdentifier(`F${$.function}`))
         }

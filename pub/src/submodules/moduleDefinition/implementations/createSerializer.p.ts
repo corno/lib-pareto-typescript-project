@@ -10,24 +10,16 @@ import * as mfp from "lib-fountain-pen"
 export const $$: api.CcreateSerializer = ($d) => {
     return ($, $i) => {
         function doOptional<T>(
-            $: api.T.Optional<T>,
+            $: [false] | [true, T],
             $i: mfp.ILine,
             $c: ($: T, $i: mfp.ILine) => void,
         ) {
-            switch ($[0]) {
-                case 'not set':
-                    pl.cc($[1], ($) => {
-                        $i.snippet(`['not set', {}]`)
-                    })
-                    break
-                case 'set':
-                    pl.cc($[1], ($) => {
-                        $i.snippet(`['set', `)
-                        $c($, $i)
-                        $i.snippet(`]`)
-                    })
-                    break
-                default: pl.au($[0])
+            if ($[0] === true) {
+                $i.snippet(`[true, `)
+                $c($[1], $i)
+                $i.snippet(`]`)
+            } else {
+                $i.snippet(`[false]`)
             }
         }
         function serializeTypeReference($: mglossary.T.TypeReference<string>, $i: mfp.ILine) {

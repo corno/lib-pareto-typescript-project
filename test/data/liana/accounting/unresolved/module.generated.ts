@@ -1351,7 +1351,7 @@ export const $: mproject.TModule = {
                         'function': "Serialize",
                     },
                     'type': ['constructor', {
-                        'configuration data': ['not set', {}],
+                        'configuration data': [false],
                         'dependencies': d({
                             "arrayForEach": {
                                 'context': ['import', "[object Object]"],

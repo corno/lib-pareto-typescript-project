@@ -96,7 +96,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                                                         if ($.innerFunctions !== undefined) {
                                                             $d.dictionaryForEach($.innerFunctions, ($) => {
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`function ${$.key}($: api.T${$.key}, $i: mfp.ILine) `)
+                                                                    $i.snippet(`function ${$.key}($: api.T.${$d.createIdentifier($.key)}, $i: mfp.ILine) `)
                                                                     doImplementationType($.value.type, $i)
                                                                 })
                                                             })

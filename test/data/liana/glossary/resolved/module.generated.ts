@@ -332,7 +332,7 @@ export const $: mproject.TModule = {
                         'function': "Enrich",
                     },
                     'type': ['constructor', {
-                        'configuration data': ['not set', {}],
+                        'configuration data': [false],
                         'dependencies': d({}),
                     }],
                 },
@@ -341,7 +341,7 @@ export const $: mproject.TModule = {
                         'function': "Serialize",
                     },
                     'type': ['constructor', {
-                        'configuration data': ['not set', {}],
+                        'configuration data': [false],
                         'dependencies': d({}),
                     }],
                 },

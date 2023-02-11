@@ -165,19 +165,6 @@ export namespace T {
         readonly 'stringTypes': T.Dictionary<mcommon.T.Null>
     }
     
-    export namespace Optional {
-        
-        export namespace not__set {}
-        
-        export type not__set<AType> = {}
-        
-        export type _lset<AType> = AType
-    }
-    
-    export type Optional<AType> = 
-        | ['not set', {}]
-        | ['set', AType]
-    
     export type Parameter = T._$Reference
     
     export type Parameters = T.Dictionary<T.Parameter>
@@ -464,11 +451,16 @@ export namespace T {
     
     export namespace XReference {
         
-        export type resolved__type = T.Optional<T.LocalType>
+        export namespace resolved__type {
+            
+            export type O = T.LocalType
+        }
+        
+        export type resolved__type = [ false ] | [ true, T.LocalType]
     }
     
     export type XReference = {
-        readonly 'resolved type': T.Optional<T.LocalType>
+        readonly 'resolved type': [ false ] | [ true, T.LocalType]
     }
     
     export namespace XString {

@@ -63,7 +63,12 @@ export namespace T {
                         
                         export namespace _lconstructor {
                             
-                            export type configuration__data = T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                            export namespace configuration__data {
+                                
+                                export type O = mglossary.T.TypeReference<mcommon.T.String>
+                            }
+                            
+                            export type configuration__data = [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
                             
                             export namespace dependencies {
                                 
@@ -74,7 +79,7 @@ export namespace T {
                         }
                         
                         export type _lconstructor = {
-                            readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                            readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
                             readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
                         }
                         
@@ -85,7 +90,7 @@ export namespace T {
                     
                     export type _ltype = 
                         | ['constructor', {
-                            readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                            readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
                             readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
                         }]
                         | ['reference', {}]
@@ -95,7 +100,7 @@ export namespace T {
                     readonly 'definition': T.DefinitionReference
                     readonly 'type': 
                         | ['constructor', {
-                            readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                            readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
                             readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
                         }]
                         | ['reference', {}]
@@ -106,7 +111,7 @@ export namespace T {
                 readonly 'definition': T.DefinitionReference
                 readonly 'type': 
                     | ['constructor', {
-                        readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                        readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
                         readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
                     }]
                     | ['reference', {}]
@@ -125,7 +130,7 @@ export namespace T {
                 readonly 'definition': T.DefinitionReference
                 readonly 'type': 
                     | ['constructor', {
-                        readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                        readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
                         readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
                     }]
                     | ['reference', {}]
@@ -142,7 +147,7 @@ export namespace T {
                 readonly 'definition': T.DefinitionReference
                 readonly 'type': 
                     | ['constructor', {
-                        readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                        readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
                         readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
                     }]
                     | ['reference', {}]
@@ -151,17 +156,4 @@ export namespace T {
         }
         readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
     }
-    
-    export namespace Optional {
-        
-        export namespace not__set {}
-        
-        export type not__set<AType> = {}
-        
-        export type _lset<AType> = AType
-    }
-    
-    export type Optional<AType> = 
-        | ['not set', {}]
-        | ['set', AType]
 }

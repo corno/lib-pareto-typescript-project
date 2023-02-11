@@ -2,31 +2,26 @@ import * as pr from 'pareto-core-raw'
 import * as pl from 'pareto-core-lib'
 
 import {
-    MDictionary,
-    TGlobalType,
-    TLocalType,
-    TReference,
-    TString,
-    T_$Reference,
+    T
 } from "./api/glossary";
 
 type RawDictionary<T> = { [key: string]: T }
 
-function r_imp(name: string, annotation: string): T_$Reference {
+function r_imp(name: string, annotation: string): T._$Reference {
     return {
         name: name,
         annotation: annotation
     }
 }
 
-function d_imp<T>($: RawDictionary<T>, annotation: string): MDictionary<T> {
+function d_imp<T>($: RawDictionary<T>, annotation: string): T.Dictionary<T> {
     return {
         'annotation': annotation,
         'dictionary': pr.wrapRawDictionary($),
     }
 }
 
-function d_mappedimp<T, RT>($: RawDictionary<T>, annotation: string, cb: ($: T) => RT): MDictionary<RT> {
+function d_mappedimp<T, RT>($: RawDictionary<T>, annotation: string, cb: ($: T) => RT): T.Dictionary<RT> {
     return {
         'annotation': annotation,
         'dictionary': pr.wrapRawDictionary($).map(cb),
@@ -38,24 +33,24 @@ export function d<T>($: RawDictionary<T>) {
     return d_imp($, li)
 }
 
-export function r(name: string): T_$Reference {
+export function r(name: string): T._$Reference {
     const li = pr.getLocationInfo(1)
     return r_imp(name, li)
 }
 
-export function array(type: TLocalType): TLocalType {
+export function array(type: T.LocalType): T.LocalType {
     return ['array', {
         'type': type
     }]
 }
 
-function constrainedString($: ReferenceType, steps: Step[], annotation: string): TString {
+function constrainedString($: ReferenceType, steps: Step[], annotation: string): T.String {
     return {
         'constrained': ['yes', referenceX($, steps, annotation)],
     }
 }
 
-export function constrainedDictionary($: ReferenceType, steps: Step[], type: TLocalType): TLocalType {
+export function constrainedDictionary($: ReferenceType, steps: Step[], type: T.LocalType): T.LocalType {
     const li = pr.getLocationInfo(1)
     return ['dictionary', {
         // 'annotation': li,
@@ -64,7 +59,7 @@ export function constrainedDictionary($: ReferenceType, steps: Step[], type: TLo
     }]
 }
 
-export function dictionary(type: TLocalType): TLocalType {
+export function dictionary(type: T.LocalType): T.LocalType {
     const li = pr.getLocationInfo(1)
 
     return ['dictionary', {
@@ -78,7 +73,7 @@ export function dictionary(type: TLocalType): TLocalType {
     }]
 }
 
-export function globalType(parameters: RawDictionary<string>, type: TLocalType): TGlobalType {
+export function globalType(parameters: RawDictionary<string>, type: T.LocalType): T.GlobalType {
     const li = pr.getLocationInfo(1)
     return {
         'type': type,
@@ -88,13 +83,13 @@ export function globalType(parameters: RawDictionary<string>, type: TLocalType):
     }
 }
 
-export function group(properties: RawDictionary<[string[], TLocalType]>): TLocalType {
+export function group(properties: RawDictionary<[string[], T.LocalType]>): T.LocalType {
     const li = pr.getLocationInfo(1)
     return ['group', {
         'properties': d_mappedimp(properties, li, ($) => {
-            const temp: RawDictionary<{}> = {}
+            const temp: RawDictionary<null> = {}
             pr.wrapRawArray($[0]).forEach(($) => {
-                temp[$] = {}
+                temp[$] = null
             })
             return {
                 'sibling dependencies': d_imp(temp, li),
@@ -104,7 +99,7 @@ export function group(properties: RawDictionary<[string[], TLocalType]>): TLocal
     }]
 }
 
-export function taggedUnion(options: RawDictionary<TLocalType>): TLocalType {
+export function taggedUnion(options: RawDictionary<T.LocalType>): T.LocalType {
     const li = pr.getLocationInfo(1)
     let firstKey: null | string = null
     pr.wrapRawDictionary(options).map(($, key) => {
@@ -119,9 +114,7 @@ export function taggedUnion(options: RawDictionary<TLocalType>): TLocalType {
 
         return ['taggedUnion', {
             'options': d_mappedimp(options, li, ($) => {
-                return {
-                    'type': $
-                }
+                return $
             }),
             'default': {
                 'name': $,
@@ -131,7 +124,7 @@ export function taggedUnion(options: RawDictionary<TLocalType>): TLocalType {
     })
 }
 
-export function string(type: string): TLocalType {
+export function string(type: string): T.LocalType {
     const li = pr.getLocationInfo(1)
     return ['string', {
         'constrained': ['no', {
@@ -140,7 +133,7 @@ export function string(type: string): TLocalType {
     }]
 }
 
-export function boolean(): TLocalType {
+export function boolean(): T.LocalType {
     return ['boolean', {}]
 }
 
@@ -156,7 +149,7 @@ export type Step =
     | ["reference", null]
     | ["array", null]
 
-function referenceX($: ReferenceType, steps: Step[], annotation: string): TReference {
+function referenceX($: ReferenceType, steps: Step[], annotation: string): T.Reference {
     return {
         'type': pl.cc($, ($) => {
             switch ($[0]) {
@@ -207,14 +200,14 @@ function referenceX($: ReferenceType, steps: Step[], annotation: string): TRefer
 export function reference(
     type: ReferenceType,
     steps: Step[],
-): TLocalType {
+): T.LocalType {
     const li = pr.getLocationInfo(1)
     return ['string', {
         'constrained': ['yes', referenceX(type, steps, li)],
     }]
 }
 
-export function component(type: string, args: RawDictionary<{}>): TLocalType {
+export function component(type: string, args: RawDictionary<null>): T.LocalType {
     const li = pr.getLocationInfo(1)
     return ['component', {
         'type': {

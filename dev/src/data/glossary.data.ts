@@ -16,9 +16,9 @@ import {
     string,
 } from "lib-pareto-typescript-project/dist/submodules/liana/shorthands.p"
 
-export const $: mliana.TModel = {
+export const $: mliana.T.Model = {
     'stringTypes': d({
-        "text": {},
+        "text": null,
     }),
     'globalTypes': d({
         "Context": globalType({}, taggedUnion({

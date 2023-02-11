@@ -2,234 +2,429 @@ import * as pt from 'pareto-core-types'
 
 import * as mfp from "lib-fountain-pen"
 
-export namespace VReference {}
-export type VReference<AReferencedType> = {
-    readonly 'annotation': string
-    readonly 'name': string
-}
-
-export type MReference<AReferencedType> = VReference<AReferencedType>
-
-export namespace GContext {
+export namespace T {
     
-    export namespace Oimport {
+    export namespace Context {
         
-        export namespace Parguments {}
-        export type Parguments = pt.Dictionary<UTypeReference>
-    }
-    export type Oimport = {
-        readonly 'arguments': Oimport.Parguments
-        readonly 'glossary': string
-    }
-    
-    export namespace Olocal {}
-    export type Olocal = {}
-}
-export type GContext = 
-    | ['import', GContext.Oimport]
-    | ['local', GContext.Olocal]
-export type UContext = GContext
-
-export namespace GGlossary {
-    
-    export namespace Pfunctions {
+        export namespace _limport {
+            
+            export namespace arguments {
+                
+                export type D<GPAnnotation> = T.TypeReference<GPAnnotation>
+            }
+            
+            export type arguments<GPAnnotation> = pt.Dictionary<T.TypeReference<GPAnnotation>>
+            
+            export type glossary<GPAnnotation> = string
+        }
         
-        export namespace D {
+        export type _limport<GPAnnotation> = {
+            readonly 'arguments': pt.Dictionary<T.TypeReference<GPAnnotation>>
+            readonly 'glossary': string
+        }
+        
+        export namespace local {}
+        
+        export type local<GPAnnotation> = {}
+    }
+    
+    export type Context<GPAnnotation> = 
+        | ['import', {
+            readonly 'arguments': pt.Dictionary<T.TypeReference<GPAnnotation>>
+            readonly 'glossary': string
+        }]
+        | ['local', {}]
+    
+    export namespace Glossary {
+        
+        export namespace functions {
             
-            export namespace Pmanaged__input__interface {
+            export namespace D {
                 
-                export namespace Onot__set {}
-                export type Onot__set = {}
-            }
-            export type Pmanaged__input__interface = 
-                | ['not set', Pmanaged__input__interface.Onot__set]
-                | ['set', UInterfaceReference]
-            
-            export namespace Poutput__interface {
+                export type data<GPAnnotation> = T.TypeReference<GPAnnotation>
                 
-                export namespace Onot__set {}
-                export type Onot__set = {}
-            }
-            export type Poutput__interface = 
-                | ['not set', Poutput__interface.Onot__set]
-                | ['set', UInterfaceReference]
-            
-            export namespace Preturn__type {
-                
-                export namespace Odata {}
-                export type Odata = {
-                    readonly 'asynchronous': boolean
-                    readonly 'type': UTypeReference
+                export namespace managed__input__interface {
+                    
+                    export namespace not__set {}
+                    
+                    export type not__set<GPAnnotation> = {}
+                    
+                    export type _lset<GPAnnotation> = T.InterfaceReference<GPAnnotation>
                 }
                 
-                export namespace Onothing {}
-                export type Onothing = {}
-            }
-            export type Preturn__type = 
-                | ['data', Preturn__type.Odata]
-                | ['interface', UInterfaceReference]
-                | ['nothing', Preturn__type.Onothing]
-        }
-        export type D = {
-            readonly 'data': UTypeReference
-            readonly 'managed input interface': D.Pmanaged__input__interface
-            readonly 'output interface': D.Poutput__interface
-            readonly 'return type': D.Preturn__type
-        }
-    }
-    export type Pfunctions = pt.Dictionary<Pfunctions.D>
-    
-    export namespace Pimports {
-        
-        export namespace D {}
-        export type D = {}
-    }
-    export type Pimports = pt.Dictionary<Pimports.D>
-    
-    export namespace Pinterfaces {}
-    export type Pinterfaces = pt.Dictionary<UInterface>
-    
-    export namespace Pparameters {
-        
-        export namespace D {}
-        export type D = {}
-    }
-    export type Pparameters = pt.Dictionary<Pparameters.D>
-    
-    export namespace Ptypes {
-        
-        export namespace D {
-            
-            export namespace Pparameters {
+                export type managed__input__interface<GPAnnotation> = 
+                    | ['not set', {}]
+                    | ['set', T.InterfaceReference<GPAnnotation>]
                 
-                export namespace D {}
-                export type D = {}
+                export namespace output__interface {
+                    
+                    export namespace not__set {}
+                    
+                    export type not__set<GPAnnotation> = {}
+                    
+                    export type _lset<GPAnnotation> = T.InterfaceReference<GPAnnotation>
+                }
+                
+                export type output__interface<GPAnnotation> = 
+                    | ['not set', {}]
+                    | ['set', T.InterfaceReference<GPAnnotation>]
+                
+                export namespace return__type {
+                    
+                    export namespace data {
+                        
+                        export type asynchronous<GPAnnotation> = boolean
+                        
+                        export type _ltype<GPAnnotation> = T.TypeReference<GPAnnotation>
+                    }
+                    
+                    export type data<GPAnnotation> = {
+                        readonly 'asynchronous': boolean
+                        readonly 'type': T.TypeReference<GPAnnotation>
+                    }
+                    
+                    export type _linterface<GPAnnotation> = T.InterfaceReference<GPAnnotation>
+                    
+                    export namespace nothing {}
+                    
+                    export type nothing<GPAnnotation> = {}
+                }
+                
+                export type return__type<GPAnnotation> = 
+                    | ['data', {
+                        readonly 'asynchronous': boolean
+                        readonly 'type': T.TypeReference<GPAnnotation>
+                    }]
+                    | ['interface', T.InterfaceReference<GPAnnotation>]
+                    | ['nothing', {}]
             }
-            export type Pparameters = pt.Dictionary<Pparameters.D>
-        }
-        export type D = {
-            readonly 'parameters': D.Pparameters
-            readonly 'type': UType
-        }
-    }
-    export type Ptypes = pt.Dictionary<Ptypes.D>
-}
-export type GGlossary = {
-    readonly 'functions': GGlossary.Pfunctions
-    readonly 'imports': GGlossary.Pimports
-    readonly 'interfaces': GGlossary.Pinterfaces
-    readonly 'parameters': GGlossary.Pparameters
-    readonly 'types': GGlossary.Ptypes
-}
-export type UGlossary = GGlossary
-
-export namespace GInterface {
-    
-    export namespace Ogroup {
-        
-        export namespace Pmembers {}
-        export type Pmembers = pt.Dictionary<UInterface>
-    }
-    export type Ogroup = {
-        readonly 'members': Ogroup.Pmembers
-    }
-    
-    export namespace Omethod {
-        
-        export namespace Pdata {
             
-            export namespace Onot__set {}
-            export type Onot__set = {}
-        }
-        export type Pdata = 
-            | ['not set', Pdata.Onot__set]
-            | ['set', UTypeReference]
-        
-        export namespace Pinterface {
-            
-            export namespace Onot__set {}
-            export type Onot__set = {}
-            
-            export namespace Oset {}
-            export type Oset = {
-                readonly 'interface': UInterface
-                readonly 'managed': boolean
+            export type D<GPAnnotation> = {
+                readonly 'data': T.TypeReference<GPAnnotation>
+                readonly 'managed input interface': 
+                    | ['not set', {}]
+                    | ['set', T.InterfaceReference<GPAnnotation>]
+                readonly 'output interface': 
+                    | ['not set', {}]
+                    | ['set', T.InterfaceReference<GPAnnotation>]
+                readonly 'return type': 
+                    | ['data', {
+                        readonly 'asynchronous': boolean
+                        readonly 'type': T.TypeReference<GPAnnotation>
+                    }]
+                    | ['interface', T.InterfaceReference<GPAnnotation>]
+                    | ['nothing', {}]
             }
         }
-        export type Pinterface = 
-            | ['not set', Pinterface.Onot__set]
-            | ['set', Pinterface.Oset]
-    }
-    export type Omethod = {
-        readonly 'data': Omethod.Pdata
-        readonly 'interface': Omethod.Pinterface
-    }
-}
-export type GInterface = 
-    | ['group', GInterface.Ogroup]
-    | ['method', GInterface.Omethod]
-    | ['reference', UInterfaceReference]
-export type UInterface = GInterface
-
-export namespace GInterfaceReference {}
-export type GInterfaceReference = {
-    readonly 'context': UContext
-    readonly 'interface': string
-}
-export type UInterfaceReference = GInterfaceReference
-
-export namespace GType {
-    
-    export namespace Oboolean {}
-    export type Oboolean = {}
-    
-    export namespace Ogroup {
         
-        export namespace D {}
-        export type D = {
+        export type functions<GPAnnotation> = pt.Dictionary<{
+            readonly 'data': T.TypeReference<GPAnnotation>
+            readonly 'managed input interface': 
+                | ['not set', {}]
+                | ['set', T.InterfaceReference<GPAnnotation>]
+            readonly 'output interface': 
+                | ['not set', {}]
+                | ['set', T.InterfaceReference<GPAnnotation>]
+            readonly 'return type': 
+                | ['data', {
+                    readonly 'asynchronous': boolean
+                    readonly 'type': T.TypeReference<GPAnnotation>
+                }]
+                | ['interface', T.InterfaceReference<GPAnnotation>]
+                | ['nothing', {}]
+        }>
+        
+        export namespace imports {
+            
+            export namespace D {}
+            
+            export type D<GPAnnotation> = {}
+        }
+        
+        export type imports<GPAnnotation> = pt.Dictionary<{}>
+        
+        export namespace interfaces {
+            
+            export type D<GPAnnotation> = T.Interface<GPAnnotation>
+        }
+        
+        export type interfaces<GPAnnotation> = pt.Dictionary<T.Interface<GPAnnotation>>
+        
+        export namespace parameters {
+            
+            export namespace D {}
+            
+            export type D<GPAnnotation> = {}
+        }
+        
+        export type parameters<GPAnnotation> = pt.Dictionary<{}>
+        
+        export namespace types {
+            
+            export namespace D {
+                
+                export namespace parameters {
+                    
+                    export namespace D {}
+                    
+                    export type D<GPAnnotation> = {}
+                }
+                
+                export type parameters<GPAnnotation> = pt.Dictionary<{}>
+                
+                export type _ltype<GPAnnotation> = T.Type<GPAnnotation>
+            }
+            
+            export type D<GPAnnotation> = {
+                readonly 'parameters': pt.Dictionary<{}>
+                readonly 'type': T.Type<GPAnnotation>
+            }
+        }
+        
+        export type types<GPAnnotation> = pt.Dictionary<{
+            readonly 'parameters': pt.Dictionary<{}>
+            readonly 'type': T.Type<GPAnnotation>
+        }>
+    }
+    
+    export type Glossary<GPAnnotation> = {
+        readonly 'functions': pt.Dictionary<{
+            readonly 'data': T.TypeReference<GPAnnotation>
+            readonly 'managed input interface': 
+                | ['not set', {}]
+                | ['set', T.InterfaceReference<GPAnnotation>]
+            readonly 'output interface': 
+                | ['not set', {}]
+                | ['set', T.InterfaceReference<GPAnnotation>]
+            readonly 'return type': 
+                | ['data', {
+                    readonly 'asynchronous': boolean
+                    readonly 'type': T.TypeReference<GPAnnotation>
+                }]
+                | ['interface', T.InterfaceReference<GPAnnotation>]
+                | ['nothing', {}]
+        }>
+        readonly 'imports': pt.Dictionary<{}>
+        readonly 'interfaces': pt.Dictionary<T.Interface<GPAnnotation>>
+        readonly 'parameters': pt.Dictionary<{}>
+        readonly 'types': pt.Dictionary<{
+            readonly 'parameters': pt.Dictionary<{}>
+            readonly 'type': T.Type<GPAnnotation>
+        }>
+    }
+    
+    export namespace Interface {
+        
+        export namespace group {
+            
+            export namespace members {
+                
+                export type D<GPAnnotation> = T.Interface<GPAnnotation>
+            }
+            
+            export type members<GPAnnotation> = pt.Dictionary<T.Interface<GPAnnotation>>
+        }
+        
+        export type group<GPAnnotation> = {
+            readonly 'members': pt.Dictionary<T.Interface<GPAnnotation>>
+        }
+        
+        export namespace method {
+            
+            export namespace data {
+                
+                export namespace not__set {}
+                
+                export type not__set<GPAnnotation> = {}
+                
+                export type _lset<GPAnnotation> = T.TypeReference<GPAnnotation>
+            }
+            
+            export type data<GPAnnotation> = 
+                | ['not set', {}]
+                | ['set', T.TypeReference<GPAnnotation>]
+            
+            export namespace _linterface {
+                
+                export namespace not__set {}
+                
+                export type not__set<GPAnnotation> = {}
+                
+                export namespace _lset {
+                    
+                    export type _linterface<GPAnnotation> = T.Interface<GPAnnotation>
+                    
+                    export type managed<GPAnnotation> = boolean
+                }
+                
+                export type _lset<GPAnnotation> = {
+                    readonly 'interface': T.Interface<GPAnnotation>
+                    readonly 'managed': boolean
+                }
+            }
+            
+            export type _linterface<GPAnnotation> = 
+                | ['not set', {}]
+                | ['set', {
+                    readonly 'interface': T.Interface<GPAnnotation>
+                    readonly 'managed': boolean
+                }]
+        }
+        
+        export type method<GPAnnotation> = {
+            readonly 'data': 
+                | ['not set', {}]
+                | ['set', T.TypeReference<GPAnnotation>]
+            readonly 'interface': 
+                | ['not set', {}]
+                | ['set', {
+                    readonly 'interface': T.Interface<GPAnnotation>
+                    readonly 'managed': boolean
+                }]
+        }
+        
+        export type reference<GPAnnotation> = T.InterfaceReference<GPAnnotation>
+    }
+    
+    export type Interface<GPAnnotation> = 
+        | ['group', {
+            readonly 'members': pt.Dictionary<T.Interface<GPAnnotation>>
+        }]
+        | ['method', {
+            readonly 'data': 
+                | ['not set', {}]
+                | ['set', T.TypeReference<GPAnnotation>]
+            readonly 'interface': 
+                | ['not set', {}]
+                | ['set', {
+                    readonly 'interface': T.Interface<GPAnnotation>
+                    readonly 'managed': boolean
+                }]
+        }]
+        | ['reference', T.InterfaceReference<GPAnnotation>]
+    
+    export namespace InterfaceReference {
+        
+        export type context<GPAnnotation> = T.Context<GPAnnotation>
+        
+        export type _linterface<GPAnnotation> = string
+    }
+    
+    export type InterfaceReference<GPAnnotation> = {
+        readonly 'context': T.Context<GPAnnotation>
+        readonly 'interface': string
+    }
+    
+    export namespace Reference {
+        
+        export type annotation<GPAnnotation, AReferencedType> = string
+        
+        export type name<GPAnnotation, AReferencedType> = string
+    }
+    
+    export type Reference<GPAnnotation, AReferencedType> = {
+        readonly 'annotation': string
+        readonly 'name': string
+    }
+    
+    export namespace Type {
+        
+        export type array<GPAnnotation> = T.Type<GPAnnotation>
+        
+        export namespace _lboolean {}
+        
+        export type _lboolean<GPAnnotation> = {}
+        
+        export type computed<GPAnnotation> = T.Type<GPAnnotation>
+        
+        export type dictionary<GPAnnotation> = T.Type<GPAnnotation>
+        
+        export type glossary__parameter<GPAnnotation> = string
+        
+        export namespace group {
+            
+            export namespace D {
+                
+                export type optional<GPAnnotation> = boolean
+                
+                export type _ltype<GPAnnotation> = T.Type<GPAnnotation>
+            }
+            
+            export type D<GPAnnotation> = {
+                readonly 'optional': boolean
+                readonly 'type': T.Type<GPAnnotation>
+            }
+        }
+        
+        export type group<GPAnnotation> = pt.Dictionary<{
             readonly 'optional': boolean
-            readonly 'type': UType
+            readonly 'type': T.Type<GPAnnotation>
+        }>
+        
+        export type nested<GPAnnotation> = T.Type<GPAnnotation>
+        
+        export namespace _lnull {}
+        
+        export type _lnull<GPAnnotation> = {}
+        
+        export namespace _lnumber {}
+        
+        export type _lnumber<GPAnnotation> = {}
+        
+        export type optional<GPAnnotation> = T.Type<GPAnnotation>
+        
+        export type reference<GPAnnotation> = T.TypeReference<GPAnnotation>
+        
+        export namespace _lstring {}
+        
+        export type _lstring<GPAnnotation> = {}
+        
+        export namespace taggedUnion {
+            
+            export type D<GPAnnotation> = T.Type<GPAnnotation>
         }
+        
+        export type taggedUnion<GPAnnotation> = pt.Dictionary<T.Type<GPAnnotation>>
+        
+        export type type__parameter<GPAnnotation> = string
     }
-    export type Ogroup = pt.Dictionary<Ogroup.D>
     
-    export namespace Onull {}
-    export type Onull = {}
+    export type Type<GPAnnotation> = 
+        | ['array', T.Type<GPAnnotation>]
+        | ['boolean', {}]
+        | ['computed', T.Type<GPAnnotation>]
+        | ['dictionary', T.Type<GPAnnotation>]
+        | ['glossary parameter', string]
+        | ['group', pt.Dictionary<{
+            readonly 'optional': boolean
+            readonly 'type': T.Type<GPAnnotation>
+        }>]
+        | ['nested', T.Type<GPAnnotation>]
+        | ['null', {}]
+        | ['number', {}]
+        | ['optional', T.Type<GPAnnotation>]
+        | ['reference', T.TypeReference<GPAnnotation>]
+        | ['string', {}]
+        | ['taggedUnion', pt.Dictionary<T.Type<GPAnnotation>>]
+        | ['type parameter', string]
     
-    export namespace Onumber {}
-    export type Onumber = {}
+    export namespace TypeReference {
+        
+        export namespace arguments {
+            
+            export type D<GPAnnotation> = T.TypeReference<GPAnnotation>
+        }
+        
+        export type arguments<GPAnnotation> = pt.Dictionary<T.TypeReference<GPAnnotation>>
+        
+        export type context<GPAnnotation> = T.Context<GPAnnotation>
+        
+        export type _ltype<GPAnnotation> = string
+    }
     
-    export namespace Ostring {}
-    export type Ostring = {}
-    
-    export namespace OtaggedUnion {}
-    export type OtaggedUnion = pt.Dictionary<UType>
+    export type TypeReference<GPAnnotation> = {
+        readonly 'arguments': pt.Dictionary<T.TypeReference<GPAnnotation>>
+        readonly 'context': T.Context<GPAnnotation>
+        readonly 'type': string
+    }
 }
-export type GType = 
-    | ['array', UType]
-    | ['boolean', GType.Oboolean]
-    | ['computed', UType]
-    | ['dictionary', UType]
-    | ['glossary parameter', string]
-    | ['group', GType.Ogroup]
-    | ['nested', UType]
-    | ['null', GType.Onull]
-    | ['number', GType.Onumber]
-    | ['optional', UType]
-    | ['reference', UTypeReference]
-    | ['string', GType.Ostring]
-    | ['taggedUnion', GType.OtaggedUnion]
-    | ['type parameter', string]
-export type UType = GType
-
-export namespace GTypeReference {
-    
-    export namespace Parguments {}
-    export type Parguments = pt.Dictionary<UTypeReference>
-}
-export type GTypeReference = {
-    readonly 'arguments': GTypeReference.Parguments
-    readonly 'context': UContext
-    readonly 'type': string
-}
-export type UTypeReference = GTypeReference

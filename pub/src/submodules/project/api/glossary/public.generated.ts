@@ -1,22 +1,13 @@
 import * as pt from 'pareto-core-types'
 
-import * as t from './types.generated'
+import { T   } from './types.generated'
 
 import * as malgorithm from "../../../algorithm"
+import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../../glossary"
 import * as mmoduleDefinition from "../../../moduleDefinition"
 
-export type TAlgorithmImplementation = t.UAlgorithmImplementation
+export type FSerialize = ($: T.Module, $i: mfp.ILine,) => void
 
-export type TImplementation = t.UImplementation
-
-export type TModule = t.UModule
-
-export type TProject = t.UProject
-
-export type TTest = t.UTest
-
-export type FSerialize = ($: TModule, $i: mfp.ILine,) => void
-
-export type FSerializeWithContext = ($: TModule, $i: mfp.IWriter,) => void
+export type FSerializeWithContext = ($: T.Module, $i: mfp.IWriter,) => void

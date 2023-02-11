@@ -7,93 +7,93 @@ const d = pr.wrapRawDictionary
 
 type RawDictionary<T> = { [key: string]: T }
 
-export function null_(): t.TType {
+export function null_(): t.T.Type<string> {
     return ['null', {}]
 }
 
-export function boolean(): t.TType {
+export function boolean(): t.T.Type<string> {
     return ['boolean', {}]
 }
 
-export function string(): t.TType {
+export function string(): t.T.Type<string> {
     return ['string', {}]
 }
 
-export function number(): t.TType {
+export function number(): t.T.Type<string> {
     return ['number', {}]
 }
 
-export function types($: RawDictionary<t.TType>) {
+export function types($: RawDictionary<t.T.Type<string>>) {
     return d($)
 }
 
-export function taggedUnion($: RawDictionary<t.TType>): t.TType {
+export function taggedUnion($: RawDictionary<t.T.Type<string>>): t.T.Type<string> {
     return ['taggedUnion', d($)]
 }
 
-export function dictionary($: t.TType): t.TType {
+export function dictionary($: t.T.Type<string>): t.T.Type<string> {
     return ['dictionary', $]
 }
 
-export function parametrizedType(parameters: RawDictionary<{}>, type: t.TType): t.GGlossary.Ptypes.D {
+export function parametrizedType(parameters: RawDictionary<{}>, type: t.T.Type<string>): t.T.Glossary.types.D<string> {
     return {
         'parameters': d(parameters),
         'type': type,
     }
 }
 
-export function type(type: t.TType): t.GGlossary.Ptypes.D {
+export function type(type: t.T.Type<string>): t.T.Glossary.types.D<string> {
     return {
         'parameters': d({}),
         'type': type,
     }
 }
 
-export function typeParameter($: string): t.TType {
+export function typeParameter($: string): t.T.Type<string> {
     return ['type parameter', $]
 }
 
-export function glossaryParameter($: string): t.TType {
+export function glossaryParameter($: string): t.T.Type<string> {
     return ['glossary parameter', $]
 }
 
-export function array($: t.TType): t.TType {
+export function array($: t.T.Type<string>): t.T.Type<string> {
     return ['array', $]
 }
 
-export function optional($: t.TType): t.TType {
+export function optional($: t.T.Type<string>): t.T.Type<string> {
     return ['optional', $]
 }
 
-export function computed($: t.TType): t.TType {
+export function computed($: t.T.Type<string>): t.T.Type<string> {
     return ['computed', $]
 }
 
-export function nested($: t.TType): t.TType {
+export function nested($: t.T.Type<string>): t.T.Type<string> {
     return ['nested', $]
 }
 
 export function group($: {
     [key: string]: {
-        type: t.TType
+        type: t.T.Type<string>
         optional: boolean
     }
-}): t.TType {
+}): t.T.Type<string> {
     return ['group', d($)]
 }
 
-export function member($: t.TType, optional?: boolean): { type: t.TType, optional: boolean } {
+export function member($: t.T.Type<string>, optional?: boolean): { type: t.T.Type<string>, optional: boolean } {
     return {
         optional: optional === undefined ? false : optional,
         type: $
     }
 }
 
-export function reference(contextOrType: string, type?: string): t.TType {
+export function reference(contextOrType: string, type?: string): t.T.Type<string> {
     return ['reference', typeReference(contextOrType, type)]
 }
 
-export function context(glossary?: string, args?: RawDictionary<t.TTypeReference>): t.TContext {
+export function context(glossary?: string, args?: RawDictionary<t.T.TypeReference<string>>): t.T.Context<string> {
     if (glossary === undefined) {
         return ['local', {}]
     } else {
@@ -104,12 +104,26 @@ export function context(glossary?: string, args?: RawDictionary<t.TTypeReference
     }
 }
 
+export function parametrizedReference(
+    contextOrType: string,
+    glossaryArgsOrTypeArgs: RawDictionary<t.T.TypeReference<string>>,
+    type?: string,
+    typeArgs?: RawDictionary<t.T.TypeReference<string>>
+): t.T.Type<string> {
+    return ['reference', parametrizedTypeReference(
+        contextOrType,
+        glossaryArgsOrTypeArgs,
+        type,
+        typeArgs
+    )]
+}
+
 export function parametrizedTypeReference(
     contextOrType: string,
-    glossaryArgsOrTypeArgs: RawDictionary<t.TTypeReference>,
+    glossaryArgsOrTypeArgs: RawDictionary<t.T.TypeReference<string>>,
     type?: string,
-    typeArgs?: RawDictionary<t.TTypeReference>
-): t.TTypeReference {
+    typeArgs?: RawDictionary<t.T.TypeReference<string>>
+): t.T.TypeReference<string> {
     if (type === undefined) {
         return {
             'context': context(),
@@ -117,11 +131,10 @@ export function parametrizedTypeReference(
             'arguments': d(glossaryArgsOrTypeArgs),
         }
     } else {
-
         return {
             'context': context(contextOrType, glossaryArgsOrTypeArgs),
             'type': type,
-            'arguments': d(typeArgs === undefined ? {}: typeArgs),
+            'arguments': d(typeArgs === undefined ? {} : typeArgs),
         }
     }
 }
@@ -129,23 +142,15 @@ export function parametrizedTypeReference(
 export function typeReference(
     contextOrType: string,
     type?: string,
-): t.TTypeReference {
+): t.T.TypeReference<string> {
     if (type === undefined) {
-        return {
-            'context': context(),
-            'type': contextOrType,
-            'arguments': d({}),
-        }
+        return parametrizedTypeReference(contextOrType, {})
     } else {
-        return {
-            'context': context(contextOrType),
-            'type': type,
-            'arguments': d({}),
-        }
+        return parametrizedTypeReference(contextOrType, {}, type, {})
     }
 }
 
-export function interfaceReference(contextOrInterface: string, inf?: string): t.TInterfaceReference {
+export function interfaceReference(contextOrInterface: string, inf?: string): t.T.InterfaceReference<string> {
     if (inf === undefined) {
         return {
             'context': ['local', {}],
@@ -171,22 +176,22 @@ export function interfaceReference(contextOrInterface: string, inf?: string): t.
     }
 }
 
-export function nothing(): t.GGlossary.Pfunctions.D.Preturn__type {
+export function nothing(): t.T.Glossary.functions.D.return__type<string> {
     return ['nothing', {}]
 }
 
-export function data($: t.TTypeReference, async: boolean): t.GGlossary.Pfunctions.D.Preturn__type {
+export function data($: t.T.TypeReference<string>, async: boolean): t.T.Glossary.functions.D.return__type<string> {
     return ['data', {
         'type': $,
         'asynchronous': async,
     }]
 }
 
-export function inf($: t.TInterfaceReference): t.GGlossary.Pfunctions.D.Preturn__type {
+export function inf($: t.T.InterfaceReference<string>): t.T.Glossary.functions.D.return__type<string> {
     return ['interface', $]
 }
 
-export function func(data: t.TTypeReference, mii: t.TInterfaceReference | null, oi: t.TInterfaceReference | null, returnType: null | t.GGlossary.Pfunctions.D.Preturn__type): t.GGlossary.Pfunctions.D {
+export function func(data: t.T.TypeReference<string>, mii: t.T.InterfaceReference<string> | null, oi: t.T.InterfaceReference<string> | null, returnType: null | t.T.Glossary.functions.D.return__type<string>): t.T.Glossary.functions.D<string> {
     return {
         'return type': returnType === null
             ? ['nothing', {}]
@@ -201,7 +206,7 @@ export function func(data: t.TTypeReference, mii: t.TInterfaceReference | null, 
     }
 }
 
-export function method(data: null | t.TTypeReference, inf?: null | t.TInterface, managed?: boolean): t.TInterface {
+export function method(data: null | t.T.TypeReference<string>, inf?: null | t.T.Interface<string>, managed?: boolean): t.T.Interface<string> {
     return ['method', {
         'data': data === null
             ? ['not set', {}]

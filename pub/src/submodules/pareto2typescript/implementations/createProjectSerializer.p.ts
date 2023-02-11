@@ -163,7 +163,7 @@ export const $$: api.CcreateProjectSerializer = (
                         break
                     case 'library':
                         pl.cc($.type[1], ($) => {
-                            function doModule($: mproject.TModule, $i: mfp.IWriter) {
+                            function doModule($: mproject.T.Module, $i: mfp.IWriter) {
 
                                 $i.allowed("shorthands.p.ts")
                                 $i.directory("api", ($i) => {
@@ -285,7 +285,7 @@ export const $$: api.CcreateProjectSerializer = (
             })
             tsConfig({ isResource: $.type !== undefined && $.type[0] === 'resource' }, $i)
         })
-        function doTest($: mproject.TTest, $i: mfp.IWriter) {
+        function doTest($: mproject.T.Test, $i: mfp.IWriter) {
 
             $i.directory("test", ($i) => {
                 $i.allowed("data")
@@ -332,7 +332,7 @@ export const $$: api.CcreateProjectSerializer = (
                                     $i.line(``)
                                     $i.line(`export type CgetTestSet = mtest.FGetTestSet`)
                                     $i.line(``)
-                                    $i.line(`export type Cmain = pt.Procedure<mmain.TMainData>`)
+                                    $i.line(`export type Cmain = pt.Procedure<mmain.T.MainData>`)
                                     $i.line(``)
                                     $i.line(`export type API = {`)
                                     $i.line(`    getTestSet: CgetTestSet`)

@@ -91,7 +91,7 @@ export const $$: api.CcreateParetoEnvironmentSerializer = (
                             $i.line(``)
                             $i.line(`import * as mmain from "res-pareto-main"`)
                             $i.line(``)
-                            $i.line(`export type Cmain = pt.Procedure<mmain.TMainData>`)
+                            $i.line(`export type Cmain = pt.Procedure<mmain.T.MainData>`)
                             $i.line(``)
                             $i.line(`export type API = {`)
                             $i.line(`    main: Cmain`)

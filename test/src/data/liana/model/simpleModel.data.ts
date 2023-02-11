@@ -15,10 +15,10 @@ import {
     taggedUnion,
 } from "../../../../../pub/dist/submodules/liana/shorthands.p"
 
-export const $: mliana.TModel = {
+export const $: mliana.T.Model = {
     'stringTypes': d({
-        "text": {},
-        "identifier": {},
+        "text": null,
+        "identifier": null,
     }),
     'globalTypes': d({
         "Root": globalType({ "parameterA": "Sub"}, group({

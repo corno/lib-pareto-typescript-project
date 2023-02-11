@@ -23,7 +23,7 @@ import * as mglossary from "../../../../../../pub/dist/submodules/glossary"
 
 const d = pr.wrapRawDictionary
 
-export const $: mglossary.TGlossary = {
+export const $: mglossary.T.Glossary<string> = {
     'imports': d({}),
     'parameters': d({
         "Annotation": {},

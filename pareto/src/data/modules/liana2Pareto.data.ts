@@ -1,7 +1,7 @@
 import * as pr from 'pareto-core-raw'
 import {
     reference,
-    array, dictionary, group, member, taggedUnion, types, typeReference, null_, func, data
+    array, dictionary, group, member, taggedUnion, types, typeReference, null_, func, data, type
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import { algorithm, constructor, definitionReference, } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
@@ -10,7 +10,7 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
         'imports': d({
             "algorithm": "../../../algorithm",
@@ -19,28 +19,27 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "main": "res-pareto-main",
         }),
         'parameters': d({}),
-        'templates': d({}),
-        'types': types({
-            "Configuration": group({
+        'types': d({
+            "Configuration": type(group({
                 "model": member(reference("MappedModel")),
                 "mainData": member(reference("main", "MainData")),
-            }),
-            "MappedModel": group({
+            })),
+            "MappedModel": type(group({
                 "model": member(reference("liana", "Model")),
                 "stringmapping": member(dictionary(taggedUnion({
                     "number": null_(),
                     "string": null_(),
                 }))),
-            }),
-            "Modules": group(({
+            })),
+            "Modules": type(group(({
                 "modules": member(dictionary(reference("project", "Module")))
-            }))
+            }))),
         }),
         'interfaces': d({}),
         'functions': d({
             "GenerateProject": func(typeReference("Configuration"), null, null, null),
-            "MapLiana2Pareto": func(typeReference("MappedModel"), null, null, data( typeReference("Modules"), false)),
-            "MapLiana2States": func(typeReference("MappedModel"),null, null, data( typeReference("algorithm", "States"), false)),
+            "MapLiana2Pareto": func(typeReference("MappedModel"), null, null, data(typeReference("Modules"), false)),
+            "MapLiana2States": func(typeReference("MappedModel"), null, null, data(typeReference("algorithm", "States"), false)),
         }),
     },
     'api': {
@@ -52,18 +51,18 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'algorithms': d({
             "generateProject": algorithm(definitionReference("GenerateProject")),
             "createProjectGenerator": algorithm(definitionReference("GenerateProject"), constructor(null, {
-                "decorateDictionaryEntriesWithKey": definitionReference("foreach", "DecorateDictionaryEntriesWithKey"),
-                "logError": definitionReference("common", "Log"),
+                "decorateDictionaryEntriesWithKey": definitionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
+                "logError": definitionReference("common", {}, "Log"),
                 "mapLiana2Pareto": definitionReference("MapLiana2Pareto"),
-                "serializeProject": definitionReference("project", "SerializeWithContext"),
-                "dictionaryForEach": definitionReference("foreach", "DictionaryForEach"),
+                "serializeProject": definitionReference("project", {}, "SerializeWithContext"),
+                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
             })),
             "createLiana2ParetoMapper": algorithm(definitionReference("MapLiana2Pareto"), constructor(null, {
-                "decorateDictionaryEntriesWithKey": definitionReference("foreach", "DecorateDictionaryEntriesWithKey"),
+                "decorateDictionaryEntriesWithKey": definitionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
             })),
             "mapLiana2Pareto": algorithm(definitionReference("MapLiana2Pareto")),
             "createLiana2StatesMapper": algorithm(definitionReference("MapLiana2States"), constructor(null, {
-                "decorateDictionaryEntriesWithKey": definitionReference("foreach", "DecorateDictionaryEntriesWithKey"),
+                "decorateDictionaryEntriesWithKey": definitionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
             })),
         })
     },

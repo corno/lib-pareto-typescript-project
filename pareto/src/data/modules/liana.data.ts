@@ -4,7 +4,7 @@ import {
     string,
     reference,
     boolean,
-    array, dictionary, group, member, taggedUnion, types, typeReference, typeParameter, template, func, data
+    array, dictionary, group, member, taggedUnion, types, typeReference, typeParameter, parametrizedTypeReference, func, data, type, parametrizedType
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
@@ -13,91 +13,45 @@ import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescr
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
         'imports': d({
+            "common": "glo-pareto-common",
         }),
         'parameters': d({}),
-        'templates': d({
-            "Dictionary": {
-                'parameters': d({
-                    "Type": {}
-                }),
-                'type': group({
-                    "annotation": member(string()),
-                    "dictionary": member(dictionary(typeParameter("Type"))),
-                })
-            },
-            // "ConstrainedDictionary": {
-            //     'parameters': d({
-            //         "ReferencedType": {},
-            //         "Type": {}
-            //     }),
-            //     'type': group({
-            //         "annotation": member(string()),
-            //         "dictionary": member(dictionary(template("ConstrainedDictionaryEntry", {
-            //             "Type": reference("XArgument"),
-            //             "ReferencedType": reference("XGlobalType"),
-            //         }))),
-            //     })
-            // },
-            // "ConstrainedDictionaryEntry": {
-            //     'parameters': d({
-            //         "ReferencedType": {},
-            //         "Type": {}
-            //     }),
-            //     'type': group({
-            //         "referenced value": member(parameter("ReferencedType")),
-            //         "value": member(parameter("Type"))
-            //     })
-            // },
-            "Possibly": {
-                'parameters': d({
-                    "Type": {}
-                }),
-                'type': taggedUnion({
-                    "set": typeParameter("Type"),
-                    "not set": group({})
-                }),
-            },
-            "Reference": {
-                'parameters': d({
-                    "ReferencedType": {}
-                }),
-                'type': group({
-                    "referenced value": member(typeParameter("ReferencedType")),
-                    "annotation": member(string()),
-                    "name": member(string()),
-                }),
-            },
-            "ComputedReference": {
-                'parameters': d({
-                    "ReferencedType": {}
-                }),
-                'type': group({
-                    "referenced value": member(computed(typeParameter("ReferencedType"))),
-                    "annotation": member(string()),
-                    "name": member(string()),
-                }),
-            },
-            "Optional": {
-                'parameters': d({ "Type": {}, }),
-                'type': taggedUnion({
-                    "set": typeParameter("Type"),
-                    "not set": group({}),
-                })
-            }
-        }),
-        'types': types({
-            "_Reference": group({
+        'types': d({
+            "Dictionary": parametrizedType({ "Type": {} }, group({
+                "annotation": member(string()),
+                "dictionary": member(dictionary(typeParameter("Type"))),
+            })),
+            "Possibly": parametrizedType({ "Type": {} }, taggedUnion({
+                "set": typeParameter("Type"),
+                "not set": group({})
+            })),
+            "YReference": parametrizedType({ "ReferencedType": {} }, group({
+                "referenced value": member(typeParameter("ReferencedType")),
+                "annotation": member(string()),
+                "name": member(string()),
+            })),
+            "ComputedReference": parametrizedType({ "ReferencedType": {} }, group({
+                "referenced value": member(computed(typeParameter("ReferencedType"))),
+                "annotation": member(string()),
+                "name": member(string()),
+            })),
+            "Optional": parametrizedType({ "Type": {} }, taggedUnion({
+                "set": typeParameter("Type"),
+                "not set": group({}),
+            })),
+            ////
+            "_Reference": type(group({
                 "name": member(string()),
                 "annotation": member(string()),
-            }),
-            "GlobalType": group({
+            })),
+            "GlobalType": type(group({
                 "parameters": member(reference("Parameters")),
                 "type": member(reference("LocalType"))
-            }),
-            "LocalType": taggedUnion({
+            })),
+            "LocalType": type(taggedUnion({
                 "string": reference("String"),
                 "boolean": group({}),
                 "dictionary": group({
@@ -108,11 +62,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "type": member(reference("LocalType"))
                 }),
                 "taggedUnion": group({
-                    "options": member(template("Dictionary", {
-                        "Type": group({
-                            "type": member(reference("LocalType"))
-                        })
-                    })),
+                    "options": member(['reference', parametrizedTypeReference("Dictionary", {
+                        "Type": typeReference("LocalType")
+                    })]),
                     "default": member(reference("_Reference"))
                 }),
                 "group": group({
@@ -120,22 +72,22 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }),
                 "component": group({
                     "type": member(reference("_Reference")),
-                    "arguments": member(template("Dictionary", { "Type": group({}) })),
+                    "arguments": member(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("common", "Null") })]),
                 }),
-            }),
-            "Model": group({
-                "stringTypes": member(template("Dictionary", { "Type": group({}) })),
-                "globalTypes": member(template("Dictionary", { "Type": reference("GlobalType") })),
+            })),
+            "Model": type(group({
+                "stringTypes": member(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("common", "Null") })]),
+                "globalTypes": member(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("GlobalType") })]),
                 "root": member(reference("_Reference"))
-            }),
-            "Parameter": reference("_Reference"),
-            "Parameters": template("Dictionary", { "Type": reference("Parameter") }),
-            "Property": group({
-                "sibling dependencies": member(template("Dictionary", { "Type": group({}) })),
+            })),
+            "Parameter": type(reference("_Reference")),
+            "Parameters": type(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("Parameter") })]),
+            "Property": type(group({
+                "sibling dependencies": member(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("common", "Null") })]),
                 "type": member(reference("LocalType"))
-            }),
-            "Properties": template("Dictionary", { "Type": reference("Property") }),
-            "Reference": group({
+            })),
+            "Properties": type(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("Property") })]),
+            "Reference": type(group({
                 "type": member(taggedUnion({
                     "parameter": reference("_Reference"),
                     "sibling": reference("_Reference"),
@@ -147,22 +99,22 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "reference": group({}),
                     "array": group({}),
                 }))),
-            }),
-            "String": group({
+            })),
+            "String": type(group({
                 "constrained": member(taggedUnion({
                     "no": group({
                         "type": member(reference("_Reference")),
                     }),
                     "yes": reference("Reference")
                 }))
-            }),
+            })),
             /////
-            "XArgument": template("ComputedReference", { "ReferencedType": reference("XGlobalType") }),
-            "XGlobalType": group({
+            "XArgument": type(['reference', parametrizedTypeReference("ComputedReference", { "ReferencedType": typeReference("XGlobalType") })]),
+            "XGlobalType": type(group({
                 "parameters": member(reference("XParameters")),
                 "type": member(reference("XLocalType"))
-            }),
-            "XLocalType": taggedUnion({
+            })),
+            "XLocalType": type(taggedUnion({
                 "string": reference("XString"),
                 "boolean": group({}),
                 "dictionary": group({
@@ -173,56 +125,57 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "type": member(reference("XLocalType"))
                 }),
                 "taggedUnion": group({
-                    "options": member(template("Dictionary", { "Type": reference("XOption") })),
-                    "default": member(template("Reference", { "ReferencedType": reference("XOption") }))
+                    "options": member(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("XOption") })]),
+                    "default": member(['reference', parametrizedTypeReference("YReference", { "ReferencedType": typeReference("XOption") })]),
                 }),
                 "group": group({
                     "properties": member(reference("XProperties"))
                 }),
                 "component": group({
-                    "type": member(template("ComputedReference", { "ReferencedType": reference("XGlobalType") })),
+                    "type": member(['reference', parametrizedTypeReference("ComputedReference", { "ReferencedType": typeReference("XGlobalType") })]),
                     // "arguments": member(template("ConstrainedDictionary", {
                     //     "ReferencedType": reference("XParameter"),
                     //     "Type": reference("XArgument"),
                     // })),
                     "arguments": member(dictionary(string())),
                 }),
-            }),
-            "XModel": group({
-                "stringTypes": member(template("Dictionary", { "Type": reference("XStringType") })),
-                "globalTypes": member(template("Dictionary", { "Type": reference("XGlobalType") })),
-                "root": member(template("Reference", { "ReferencedType": reference("XGlobalType") }))
-            }),
-            "XOption": group({
+            })),
+            "XModel": type(group({
+                "stringTypes": member(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("XStringType") })]),
+                "globalTypes": member(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("XGlobalType") })]),
+                "root": member(['reference', parametrizedTypeReference("YReference", { "ReferencedType": typeReference("XGlobalType") })]),
+            })),
+            "XOption": type(group({
                 "type": member(reference("XLocalType"))
-            }),
-            "XParameter": group({}),
+            })),
+            "XParameter": type(group({})),
             //"XParameter": template("ComputedReference", { "ReferencedType": ref("XGlobalType") }),
 
-            "XParameters": template("Dictionary", { "Type": reference("XParameter") }),
-            "XProperty": group({
+            "XParameters": type(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("XParameter") })]),
+            "XProperty": type(group({
                 "type": member(reference("XLocalType"))
-            }),
-            "XProperties": template("Dictionary", { "Type": reference("XProperty") }),
-            "XReference": group({
-                "resolved type": member(template("Optional", { "Type": reference("LocalType") })),
-            }),
-            "XString": group({
+            })),
+            "XProperties": type(['reference', parametrizedTypeReference("Dictionary", { "Type": typeReference("XProperty") })]),
+            "XReference": type(group({
+                "resolved type": member(['reference', parametrizedTypeReference("Optional", { "Type": typeReference("LocalType") })]),
+            })),
+            "XString": type(group({
                 "constrained": member(taggedUnion({
                     "no": group({
-                        "type": member(template("Reference", { "ReferencedType": reference("XStringType") }))
+                        "type": member(['reference', parametrizedTypeReference("YReference", { "ReferencedType": typeReference("XStringType") })]),
                     }),
                     "yes": reference("XReference")
                 }))
-            }),
-            "XStringType": group({}),
+            })),
+            "XStringType": type(group({})),
             ////
-            "PossibleModel": template("Possibly", {
-                "Type": group({
-                    "model": member(reference("XModel")),
-                    "has errors": member(boolean()),
-                })
-            })
+            "PM": type(group({
+                "model": member(reference("XModel")),
+                "has errors": member(boolean()),
+            })),
+            "PossibleModel": type(['reference', parametrizedTypeReference("Possibly", {
+                "Type": typeReference("PM"),
+            })])
         }),
         'interfaces': d({
         }),
@@ -237,7 +190,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createResolver": algorithm(definitionReference("Resolve"), constructor(null, {
-                "onError": definitionReference("common", "Log"),
+                "onError": definitionReference("common", {}, "Log"),
             })),
         })
     },

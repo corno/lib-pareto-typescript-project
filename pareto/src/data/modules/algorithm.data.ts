@@ -4,7 +4,7 @@ import {
     reference,
     boolean,
     string,
-    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func,
+    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
@@ -13,27 +13,26 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
         'imports': d({
             "fp": "lib-fountain-pen",
         }),
         'parameters': d({}),
-        'templates': d({}),
-        'types': types({
-            "SynchronousFunctionBlock": group({
+        'types': d({
+            "SynchronousFunctionBlock": type(group({
                 "innerFunctions": member(dictionary(group({
                     "block": member(reference("SynchronousFunctionBlock"))
                 })), true),
                 "returnExpression": member(reference("SynchronousExpression"))
-            }),
-            "AsynchronousFunctionBlock": group({
+            })),
+            "AsynchronousFunctionBlock": type(group({
                 "innerFunctions": member(dictionary(group({
                     "block": member(reference("AsynchronousFunctionBlock"))
                 })), true),
                 "returnExpression": member(reference("AsynchronousExpression"))
-            }),
-            "ProcedureBlock": group({
+            })),
+            "ProcedureBlock": type(group({
                 "innerFunctions": member(dictionary(group({
                     "type": member(reference("ImplementationType"))
                 })), true),
@@ -64,18 +63,18 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "cases": member(dictionary(reference("ProcedureBlock")))
                     })
                 })))
-            }),
-            "AsynchronousExpression": taggedUnion({
+            })),
+            "AsynchronousExpression": type(taggedUnion({
                 "call": group({
                     "function": member(string()),
                 }),
-            }),
-            "InterfaceInitializerBlock": taggedUnion({
+            })),
+            "InterfaceInitializerBlock": type(taggedUnion({
                 "call": group({
                     "function": member(string()),
                 }),
-            }),
-            "SynchronousExpression": taggedUnion({
+            })),
+            "SynchronousExpression": type(taggedUnion({
                 "call": group({
                     "function": member(string()),
                 }),
@@ -100,14 +99,14 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "mapArray": group({
                     "block": member(reference("SynchronousFunctionBlock")),
                 }),
-            }),
-            "Implementation": group({
+            })),
+            "Implementation": type(group({
                 "implementations": member(dictionary(group({
                     "constructor": member(boolean()),
                     "type": member(reference("ImplementationType"))
                 }))),
-            }),
-            "ImplementationType": taggedUnion({
+            })),
+            "ImplementationType": type(taggedUnion({
                 "synchronous function": group({
                     "block": member(reference("SynchronousFunctionBlock"))
                 }),
@@ -120,9 +119,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "interface initializer": group({
                     "block": member(reference("InterfaceInitializerBlock"))
                 }),
-            }),
-            "States": dictionary(reference("Type")),
-            "Type": taggedUnion({
+            })),
+            "States": type(dictionary(reference("Type"))),
+            "Type": type(taggedUnion({
                 "array": reference("Type"),
                 "optional": reference("Type"),
                 "dictionary": reference("Type"),
@@ -136,7 +135,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 })),
                 "parameter": string(),
                 "taggedUnion": dictionary(reference("Type")),
-            }),
+            })),
         }),
         'interfaces': d({}),
         'functions': d({
@@ -150,10 +149,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createImplementationSerializer": algorithm(definitionReference("SerializeImplementation"), constructor(null, {
-                "arrayForEach": definitionReference("foreach", "ArrayForEach"),
-                "dictionaryForEach": definitionReference("foreach", "DictionaryForEach"),
-                "enrichedArrayForEach": definitionReference("foreach", "EnrichedArrayForEach"),
-                "enrichedDictionaryForEach": definitionReference("foreach", "EnrichedDictionaryForEach"),
+                "arrayForEach": definitionReference("foreach", {}, "ArrayForEach"),
+                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
+                "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
+                "enrichedDictionaryForEach": definitionReference("foreach", {}, "EnrichedDictionaryForEach"),
             })),
         })
     },

@@ -1,93 +1,167 @@
 import * as pt from 'pareto-core-types'
 
+import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../../glossary"
 
-export namespace VOptional {
+export namespace T {
     
-    export namespace Onot__set {}
-    export type Onot__set<AType> = {}
-}
-export type VOptional<AType> = 
-    | ['not set', VOptional.Onot__set<AType>]
-    | ['set', AType]
-
-export type MOptional<AType> = VOptional<AType>
-
-export namespace GContext {
-    
-    export namespace Oimport {
+    export namespace Context {
         
-        export namespace Parguments {}
-        export type Parguments = pt.Dictionary<mglossary.TTypeReference>
-    }
-    export type Oimport = {
-        readonly 'arguments': Oimport.Parguments
-        readonly 'glossary': string
-    }
-    
-    export namespace Olocal {}
-    export type Olocal = {}
-}
-export type GContext = 
-    | ['import', GContext.Oimport]
-    | ['local', GContext.Olocal]
-export type UContext = GContext
-
-export namespace GDefinitionReference {}
-export type GDefinitionReference = {
-    readonly 'context'?: UContext
-    readonly 'function': string
-}
-export type UDefinitionReference = GDefinitionReference
-
-export namespace GModuleDefinition {
-    
-    export namespace Papi {
-        
-        export namespace Palgorithms {
+        export namespace _limport {
             
-            export namespace D {
+            export namespace arguments {
                 
-                export namespace Ptype {
-                    
-                    export namespace Oconstructor {
-                        
-                        export namespace Pconfiguration__data {}
-                        export type Pconfiguration__data = MOptional<mglossary.TTypeReference>
-                        
-                        export namespace Pdependencies {}
-                        export type Pdependencies = pt.Dictionary<UDefinitionReference>
-                    }
-                    export type Oconstructor = {
-                        readonly 'configuration data': Oconstructor.Pconfiguration__data
-                        readonly 'dependencies': Oconstructor.Pdependencies
-                    }
-                    
-                    export namespace Oreference {}
-                    export type Oreference = {}
-                }
-                export type Ptype = 
-                    | ['constructor', Ptype.Oconstructor]
-                    | ['reference', Ptype.Oreference]
+                export type D = mglossary.T.TypeReference<mcommon.T.String>
             }
-            export type D = {
-                readonly 'definition': UDefinitionReference
-                readonly 'type': D.Ptype
-            }
+            
+            export type arguments = pt.Dictionary<mglossary.T.TypeReference<mcommon.T.String>>
+            
+            export type glossary = string
         }
-        export type Palgorithms = pt.Dictionary<Palgorithms.D>
         
-        export namespace Pimports {}
-        export type Pimports = pt.Dictionary<string>
+        export type _limport = {
+            readonly 'arguments': pt.Dictionary<mglossary.T.TypeReference<mcommon.T.String>>
+            readonly 'glossary': string
+        }
+        
+        export namespace local {}
+        
+        export type local = {}
     }
-    export type Papi = {
-        readonly 'algorithms': Papi.Palgorithms
-        readonly 'imports': Papi.Pimports
+    
+    export type Context = 
+        | ['import', {
+            readonly 'arguments': pt.Dictionary<mglossary.T.TypeReference<mcommon.T.String>>
+            readonly 'glossary': string
+        }]
+        | ['local', {}]
+    
+    export namespace DefinitionReference {
+        
+        export type context = T.Context
+        
+        export type _lfunction = string
     }
+    
+    export type DefinitionReference = {
+        readonly 'context'?: T.Context
+        readonly 'function': string
+    }
+    
+    export namespace ModuleDefinition {
+        
+        export namespace api {
+            
+            export namespace algorithms {
+                
+                export namespace D {
+                    
+                    export type definition = T.DefinitionReference
+                    
+                    export namespace _ltype {
+                        
+                        export namespace _lconstructor {
+                            
+                            export type configuration__data = T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                            
+                            export namespace dependencies {
+                                
+                                export type D = T.DefinitionReference
+                            }
+                            
+                            export type dependencies = pt.Dictionary<T.DefinitionReference>
+                        }
+                        
+                        export type _lconstructor = {
+                            readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                        }
+                        
+                        export namespace reference {}
+                        
+                        export type reference = {}
+                    }
+                    
+                    export type _ltype = 
+                        | ['constructor', {
+                            readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                        }]
+                        | ['reference', {}]
+                }
+                
+                export type D = {
+                    readonly 'definition': T.DefinitionReference
+                    readonly 'type': 
+                        | ['constructor', {
+                            readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                        }]
+                        | ['reference', {}]
+                }
+            }
+            
+            export type algorithms = pt.Dictionary<{
+                readonly 'definition': T.DefinitionReference
+                readonly 'type': 
+                    | ['constructor', {
+                        readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                    }]
+                    | ['reference', {}]
+            }>
+            
+            export namespace imports {
+                
+                export type D = string
+            }
+            
+            export type imports = pt.Dictionary<string>
+        }
+        
+        export type api = {
+            readonly 'algorithms': pt.Dictionary<{
+                readonly 'definition': T.DefinitionReference
+                readonly 'type': 
+                    | ['constructor', {
+                        readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                    }]
+                    | ['reference', {}]
+            }>
+            readonly 'imports': pt.Dictionary<string>
+        }
+        
+        export type glossary = mglossary.T.Glossary<mcommon.T.String>
+    }
+    
+    export type ModuleDefinition = {
+        readonly 'api': {
+            readonly 'algorithms': pt.Dictionary<{
+                readonly 'definition': T.DefinitionReference
+                readonly 'type': 
+                    | ['constructor', {
+                        readonly 'configuration data': T.Optional<mglossary.T.TypeReference<mcommon.T.String>>
+                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                    }]
+                    | ['reference', {}]
+            }>
+            readonly 'imports': pt.Dictionary<string>
+        }
+        readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
+    }
+    
+    export namespace Optional {
+        
+        export namespace not__set {}
+        
+        export type not__set<AType> = {}
+        
+        export type _lset<AType> = AType
+    }
+    
+    export type Optional<AType> = 
+        | ['not set', {}]
+        | ['set', AType]
 }
-export type GModuleDefinition = {
-    readonly 'api': GModuleDefinition.Papi
-    readonly 'glossary': mglossary.TGlossary
-}
-export type UModuleDefinition = GModuleDefinition

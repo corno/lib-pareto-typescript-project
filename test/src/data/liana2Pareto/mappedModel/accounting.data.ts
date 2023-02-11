@@ -19,7 +19,7 @@ import {
 
 
 
-export const $: mliana2Pareto.TMappedModel = {
+export const $: mliana2Pareto.T.MappedModel = {
     'stringmapping': pr.wrapRawDictionary({
         "bedrag": ['number', null],
         "bestand": ['string', null],
@@ -32,14 +32,14 @@ export const $: mliana2Pareto.TMappedModel = {
     }),
     'model': {
         'stringTypes': d({
-            "bedrag": {},
-            "bestand": {},
-            "dagen": {},
-            "datum": {},
-            "multiline text": {},
-            "promillage": {},
-            "identifier": {},
-            "single line text": {},
+            "bedrag": null,
+            "bestand": null,
+            "dagen": null,
+            "datum": null,
+            "multiline text": null,
+            "promillage": null,
+            "identifier": null,
+            "single line text": null,
         }),
         'globalTypes': d({
             "Accounting": globalType({}, group({

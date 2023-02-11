@@ -9,7 +9,7 @@ export const $$: api.CcreateStatesSerializer = ($d) => {
 
     return ($, $i) => {
 
-        function serializeType($: malgorithm.TType, $i: mfp.ILine) {
+        function serializeType($: malgorithm.T.Type, $i: mfp.ILine) {
             switch ($[0]) {
                 case 'null':
                     pl.cc($[1], ($) => {

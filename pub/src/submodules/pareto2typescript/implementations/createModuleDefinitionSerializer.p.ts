@@ -38,17 +38,17 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function glossary($: mglossary.TGlossary, $i: mfp.IWriter) {
+        function glossary($: mglossary.T.Glossary<string>, $i: mfp.IWriter) {
             $i.directory(`glossary`, ($i) => {
                 $d.serializeGlossary($, $i)
 
             })
         }
-        function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
+        function serializeTypeReference($: mglossary.T.TypeReference<string>, $i: mfp.ILine) {
             serializeContext2($.context, $i)
             $i.snippet($d.createIdentifier(`T${$.type}`))
         }
-        function serializeContext2($: mglossary.TContext, $i: mfp.ILine) {
+        function serializeContext2($: mglossary.T.Context<string>, $i: mfp.ILine) {
             pl.cc($, ($) => {
                 switch ($[0]) {
                     // case 'api':
@@ -70,7 +70,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                 }
             })
         }
-        function serializeContext($: mmoduleDefinition.TContext | undefined, $i: mfp.ILine) {
+        function serializeContext($: mmoduleDefinition.T.Context | undefined, $i: mfp.ILine) {
 
             if ($ !== undefined) {
                 pl.cc($, ($) => {
@@ -98,7 +98,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
             }
         }
 
-        function serializeDefinitionReference($: mmoduleDefinition.TDefinitionReference, $i: mfp.ILine) {
+        function serializeDefinitionReference($: mmoduleDefinition.T.DefinitionReference, $i: mfp.ILine) {
             serializeContext($.context, $i)
             $i.snippet($d.createIdentifier(`F${$.function}`))
         }

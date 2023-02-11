@@ -2,7 +2,7 @@ import * as pr from 'pareto-core-raw'
 import {
     string,
     reference,
-    dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func
+    dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, parametrizedTypeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p'
@@ -11,20 +11,20 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
         'imports': d({
             "algorithm": "../../../algorithm",
+            "common": "glo-pareto-common",
             "glossary": "../../../glossary",
             "fp": "lib-fountain-pen",
             "moduleDefinition": "../../../moduleDefinition",
         }),
         'parameters': d({}),
-        'templates': d({}),
-        'types': types({
-            "AlgorithmImplementation": group({}),
-            "Implementation": dictionary(reference("AlgorithmImplementation")),
-            "Module": group({
+        'types': d({
+            "AlgorithmImplementation": type(group({})),
+            "Implementation": type(dictionary(reference("AlgorithmImplementation"))),
+            "Module": type(group({
                 "definition": member(reference("moduleDefinition", "ModuleDefinition")),
                 // "type": member(taggedUnion({
                 //     "binding": nll(),
@@ -34,8 +34,8 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 // }))
                 "implementation": member(reference("algorithm", "Implementation"), true),
                 "states": member(reference("algorithm", "States"), true)
-            }),
-            "Project": group({
+            })),
+            "Project": type(group({
                 "author": member(string()),
                 "license": member(string()),
                 "description": member(string()),
@@ -47,7 +47,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "test": member(reference("Test")),
                     }),
                     "glossary": group({
-                        "glossary": member(reference("glossary", "Glossary")),
+                        "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "Glossary")]),
                     }),
                     "library": group({
                         "main": member(reference("Module")),
@@ -56,10 +56,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "test": member(reference("Test")),
                     }),
                 })),
-            }),
-            "Test": group({
+            })),
+            "Test": type(group({
                 "dependencies": member(dictionary(group({})))
-            }),
+            })),
         }),
         'interfaces': d({}),
         'functions': d({
@@ -76,10 +76,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
-                "serializeModuleDefinition": definitionReference("moduleDefinition", "Serialize"),
-                "serializeImplementation": definitionReference("algorithm", "SerializeImplementation"),
-                "dictionaryForEach": definitionReference("foreach", "DictionaryForEach"),
-                "enrichedArrayForEach": definitionReference("foreach", "EnrichedArrayForEach"),
+                "serializeModuleDefinition": definitionReference("moduleDefinition", {}, "Serialize"),
+                "serializeImplementation": definitionReference("algorithm", {}, "SerializeImplementation"),
+                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
+                "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
             })),
             "createSerializerWithContext": algorithm(definitionReference("SerializeWithContext"), constructor(null, {
                 "serialize": definitionReference("Serialize"),

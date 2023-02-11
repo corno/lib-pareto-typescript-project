@@ -6,3 +6,5 @@ import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../../glossary"
 import * as mmoduleDefinition from "../../../moduleDefinition"
 import * as mproject from "../../../project"
+
+export namespace T {}

@@ -21,7 +21,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                         $i.snippet(`($d) => {`)
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
-                                function doSynchronousExpression($: malgorithm.TSynchronousExpression, $i: mfp.ILine) {
+                                function doSynchronousExpression($: malgorithm.T.SynchronousExpression, $i: mfp.ILine) {
                                     switch ($[0]) {
                                         case 'call':
                                             pl.cc($[1], ($) => {
@@ -71,7 +71,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                                         default: pl.au($[0])
                                     }
                                 }
-                                function doImplementationType($: malgorithm.TImplementationType, $i: mfp.ILine) {
+                                function doImplementationType($: malgorithm.T.ImplementationType, $i: mfp.ILine) {
 
                                     switch ($[0]) {
                                         case 'asynchronous function':
@@ -87,7 +87,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                                         case 'procedure':
                                             pl.cc($[1], ($) => {
                                                 function doBlock(
-                                                    $: malgorithm.TProcedureBlock,
+                                                    $: malgorithm.T.ProcedureBlock,
                                                     $i: mfp.ILine,
                                                 ) {
 

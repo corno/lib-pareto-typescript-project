@@ -16,7 +16,7 @@ import { $ as glossary } from "./glossary/unresolved/module.generated"
 
 const d = pr.wrapRawDictionary
 
-export const $: mproject.TProject = {
+export const $: mproject.T.Project = {
     'author': "Corno",
     'description': "A library to generate a typescript project environment for Pareto",
     'license': "ISC",

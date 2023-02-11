@@ -1,103 +1,143 @@
 import * as pt from 'pareto-core-types'
 
 
-export namespace GAnnotatedToken {}
-export type GAnnotatedToken = {
-    readonly 'annotation': HAnnotation
-    readonly 'token': UToken
+export namespace T {
+    
+    export namespace AnnotatedToken {
+        
+        export type annotation<GPAnnotation> = HAnnotation
+        
+        export type token<GPAnnotation> = T.Token<GPAnnotation>
+    }
+    
+    export type AnnotatedToken<GPAnnotation> = {
+        readonly 'annotation': HAnnotation
+        readonly 'token': T.Token<GPAnnotation>
+    }
+    
+    export type Annotation<GPAnnotation> = HAnnotation
+    
+    export namespace MultilineStringData {
+        
+        export namespace lines {
+            
+            export type A<GPAnnotation> = string
+        }
+        
+        export type lines<GPAnnotation> = pt.Array<string>
+    }
+    
+    export type MultilineStringData<GPAnnotation> = {
+        readonly 'lines': pt.Array<string>
+    }
+    
+    export namespace SimpleStringData {
+        
+        export type value<GPAnnotation> = string
+        
+        export type wrapping<GPAnnotation> = T.Wrapping<GPAnnotation>
+    }
+    
+    export type SimpleStringData<GPAnnotation> = {
+        readonly 'value': string
+        readonly 'wrapping': T.Wrapping<GPAnnotation>
+    }
+    
+    export namespace StructuralTokenData {
+        
+        export type _ltype<GPAnnotation> = T.StructuralTokenType<GPAnnotation>
+    }
+    
+    export type StructuralTokenData<GPAnnotation> = {
+        readonly 'type': T.StructuralTokenType<GPAnnotation>
+    }
+    
+    export namespace StructuralTokenType {
+        
+        export namespace close__dictionary {}
+        
+        export type close__dictionary<GPAnnotation> = {}
+        
+        export namespace close__list {}
+        
+        export type close__list<GPAnnotation> = {}
+        
+        export namespace close__shorthand__group {}
+        
+        export type close__shorthand__group<GPAnnotation> = {}
+        
+        export namespace close__verbose__group {}
+        
+        export type close__verbose__group<GPAnnotation> = {}
+        
+        export namespace open__dictionary {}
+        
+        export type open__dictionary<GPAnnotation> = {}
+        
+        export namespace open__list {}
+        
+        export type open__list<GPAnnotation> = {}
+        
+        export namespace open__shorthand__group {}
+        
+        export type open__shorthand__group<GPAnnotation> = {}
+        
+        export namespace open__verbose__group {}
+        
+        export type open__verbose__group<GPAnnotation> = {}
+        
+        export namespace tagged__union__start {}
+        
+        export type tagged__union__start<GPAnnotation> = {}
+    }
+    
+    export type StructuralTokenType<GPAnnotation> = 
+        | ['close dictionary', {}]
+        | ['close list', {}]
+        | ['close shorthand group', {}]
+        | ['close verbose group', {}]
+        | ['open dictionary', {}]
+        | ['open list', {}]
+        | ['open shorthand group', {}]
+        | ['open verbose group', {}]
+        | ['tagged union start', {}]
+    
+    export namespace Token {
+        
+        export namespace header__start {}
+        
+        export type header__start<GPAnnotation> = {}
+        
+        export type multiline__string<GPAnnotation> = T.MultilineStringData<GPAnnotation>
+        
+        export type simple__string<GPAnnotation> = T.SimpleStringData<GPAnnotation>
+        
+        export type structural<GPAnnotation> = T.StructuralTokenData<GPAnnotation>
+    }
+    
+    export type Token<GPAnnotation> = 
+        | ['header start', {}]
+        | ['multiline string', T.MultilineStringData<GPAnnotation>]
+        | ['simple string', T.SimpleStringData<GPAnnotation>]
+        | ['structural', T.StructuralTokenData<GPAnnotation>]
+    
+    export namespace Wrapping {
+        
+        export namespace apostrophe {}
+        
+        export type apostrophe<GPAnnotation> = {}
+        
+        export namespace none {}
+        
+        export type none<GPAnnotation> = {}
+        
+        export namespace quote {}
+        
+        export type quote<GPAnnotation> = {}
+    }
+    
+    export type Wrapping<GPAnnotation> = 
+        | ['apostrophe', {}]
+        | ['none', {}]
+        | ['quote', {}]
 }
-export type UAnnotatedToken = GAnnotatedToken
-export type UAnnotation = HAnnotation
-
-export namespace GMultilineStringData {
-    
-    export namespace Plines {}
-    export type Plines = pt.Array<string>
-}
-export type GMultilineStringData = {
-    readonly 'lines': GMultilineStringData.Plines
-}
-export type UMultilineStringData = GMultilineStringData
-
-export namespace GSimpleStringData {}
-export type GSimpleStringData = {
-    readonly 'value': string
-    readonly 'wrapping': UWrapping
-}
-export type USimpleStringData = GSimpleStringData
-
-export namespace GStructuralTokenData {}
-export type GStructuralTokenData = {
-    readonly 'type': UStructuralTokenType
-}
-export type UStructuralTokenData = GStructuralTokenData
-
-export namespace GStructuralTokenType {
-    
-    export namespace Oclose__dictionary {}
-    export type Oclose__dictionary = {}
-    
-    export namespace Oclose__list {}
-    export type Oclose__list = {}
-    
-    export namespace Oclose__shorthand__group {}
-    export type Oclose__shorthand__group = {}
-    
-    export namespace Oclose__verbose__group {}
-    export type Oclose__verbose__group = {}
-    
-    export namespace Oopen__dictionary {}
-    export type Oopen__dictionary = {}
-    
-    export namespace Oopen__list {}
-    export type Oopen__list = {}
-    
-    export namespace Oopen__shorthand__group {}
-    export type Oopen__shorthand__group = {}
-    
-    export namespace Oopen__verbose__group {}
-    export type Oopen__verbose__group = {}
-    
-    export namespace Otagged__union__start {}
-    export type Otagged__union__start = {}
-}
-export type GStructuralTokenType = 
-    | ['close dictionary', GStructuralTokenType.Oclose__dictionary]
-    | ['close list', GStructuralTokenType.Oclose__list]
-    | ['close shorthand group', GStructuralTokenType.Oclose__shorthand__group]
-    | ['close verbose group', GStructuralTokenType.Oclose__verbose__group]
-    | ['open dictionary', GStructuralTokenType.Oopen__dictionary]
-    | ['open list', GStructuralTokenType.Oopen__list]
-    | ['open shorthand group', GStructuralTokenType.Oopen__shorthand__group]
-    | ['open verbose group', GStructuralTokenType.Oopen__verbose__group]
-    | ['tagged union start', GStructuralTokenType.Otagged__union__start]
-export type UStructuralTokenType = GStructuralTokenType
-
-export namespace GToken {
-    
-    export namespace Oheader__start {}
-    export type Oheader__start = {}
-}
-export type GToken = 
-    | ['header start', GToken.Oheader__start]
-    | ['multiline string', UMultilineStringData]
-    | ['simple string', USimpleStringData]
-    | ['structural', UStructuralTokenData]
-export type UToken = GToken
-
-export namespace GWrapping {
-    
-    export namespace Oapostrophe {}
-    export type Oapostrophe = {}
-    
-    export namespace Onone {}
-    export type Onone = {}
-    
-    export namespace Oquote {}
-    export type Oquote = {}
-}
-export type GWrapping = 
-    | ['apostrophe', GWrapping.Oapostrophe]
-    | ['none', GWrapping.Onone]
-    | ['quote', GWrapping.Oquote]
-export type UWrapping = GWrapping

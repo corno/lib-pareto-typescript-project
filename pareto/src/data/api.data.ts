@@ -3,7 +3,7 @@ import {
     string,
     null_,
     reference,
-    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, method, func, data
+    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, method, func, data, type
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
@@ -12,7 +12,7 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
         'parameters': d({}),
         'imports': d({
@@ -22,19 +22,18 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "main": "res-pareto-main",
             "project": "../../../submodules/project",
         }),
-        'templates': d({}),
-        'types': types({
-            "ArgumentError": taggedUnion({
+        'types': d({
+            "ArgumentError": type(taggedUnion({
                 "missing": null_(),
                 "too many": null_(),
-            }),
-            "ProjectSettings": group({
+            })),
+            "ProjectSettings": type(group({
                 "project": member(reference("project", "Project")),
                 "mainData": member(reference("main", "MainData")),
-            }),
-            "Parameters": group({
+            })),
+            "Parameters": type(group({
                 "testDirectory": member(string()),
-            }),
+            })),
         }),
         'interfaces': d({
             "ParseArguments": method(typeReference("main", "Arguments")),
@@ -62,10 +61,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             })),
             "generateProject": algorithm(definitionReference("GenerateProject")),
             "createProjectGenerator": algorithm(definitionReference("GenerateProject"), constructor(null, {
-                "decorateDictionaryEntriesWithKey": definitionReference("foreach", "DecorateDictionaryEntriesWithKey"),
-                "logError": definitionReference("common", "Log"),
-                "serializeProject": definitionReference("pareto2typescript", "SerializeProject"),
-                "serializeTemplate": definitionReference("pareto2typescript", "SerializeTemplate"),
+                "decorateDictionaryEntriesWithKey": definitionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
+                "logError": definitionReference("common", {}, "Log"),
+                "serializeProject": definitionReference("pareto2typescript",{},  "SerializeProject"),
+                "serializeTemplate": definitionReference("pareto2typescript", {}, "SerializeTemplate"),
             })),
         })
     },

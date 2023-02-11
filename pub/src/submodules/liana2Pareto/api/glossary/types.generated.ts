@@ -5,36 +5,63 @@ import * as mliana from "../../../liana"
 import * as mmain from "res-pareto-main"
 import * as mproject from "../../../project"
 
-export namespace GConfiguration {}
-export type GConfiguration = {
-    readonly 'mainData': mmain.TMainData
-    readonly 'model': UMappedModel
-}
-export type UConfiguration = GConfiguration
-
-export namespace GMappedModel {
+export namespace T {
     
-    export namespace Pstringmapping {
+    export namespace Configuration {
         
-        export namespace D {}
-        export type D = 
+        export type mainData = mmain.T.MainData
+        
+        export type model = T.MappedModel
+    }
+    
+    export type Configuration = {
+        readonly 'mainData': mmain.T.MainData
+        readonly 'model': T.MappedModel
+    }
+    
+    export namespace MappedModel {
+        
+        export type model = mliana.T.Model
+        
+        export namespace stringmapping {
+            
+            export namespace D {
+                
+                export type _lnumber = null
+                
+                export type _lstring = null
+            }
+            
+            export type D = 
+                | ['number', null]
+                | ['string', null]
+        }
+        
+        export type stringmapping = pt.Dictionary<
             | ['number', null]
             | ['string', null]
+        >
     }
-    export type Pstringmapping = pt.Dictionary<Pstringmapping.D>
-}
-export type GMappedModel = {
-    readonly 'model': mliana.TModel
-    readonly 'stringmapping': GMappedModel.Pstringmapping
-}
-export type UMappedModel = GMappedModel
-
-export namespace GModules {
     
-    export namespace Pmodules {}
-    export type Pmodules = pt.Dictionary<mproject.TModule>
+    export type MappedModel = {
+        readonly 'model': mliana.T.Model
+        readonly 'stringmapping': pt.Dictionary<
+            | ['number', null]
+            | ['string', null]
+        >
+    }
+    
+    export namespace Modules {
+        
+        export namespace modules {
+            
+            export type D = mproject.T.Module
+        }
+        
+        export type modules = pt.Dictionary<mproject.T.Module>
+    }
+    
+    export type Modules = {
+        readonly 'modules': pt.Dictionary<mproject.T.Module>
+    }
 }
-export type GModules = {
-    readonly 'modules': GModules.Pmodules
-}
-export type UModules = GModules

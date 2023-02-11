@@ -10,7 +10,7 @@ import * as mfp from "lib-fountain-pen"
 export const $$: api.CcreateSerializer = ($d) => {
     return ($, $i) => {
         function doOptional<T>(
-            $: api.MOptional<T>,
+            $: api.T.Optional<T>,
             $i: mfp.ILine,
             $c: ($: T, $i: mfp.ILine) => void,
         ) {
@@ -30,7 +30,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
+        function serializeTypeReference($: mglossary.T.TypeReference<string>, $i: mfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -44,7 +44,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-        function serializeDefinitionReference($: api.TDefinitionReference, $i: mfp.ILine) {
+        function serializeDefinitionReference($: api.T.DefinitionReference, $i: mfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 if ($.context !== undefined) {
@@ -64,7 +64,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-        function serializeContext($: mglossary.TContext, $i: mfp.ILine) {
+        function serializeContext($: mglossary.T.Context<string>, $i: mfp.ILine) {
             switch ($[0]) {
                 case 'import':
                     pl.cc($[1], ($) => {
@@ -79,7 +79,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeContext2($: api.TContext, $i: mfp.ILine) {
+        function serializeContext2($: api.T.Context, $i: mfp.ILine) {
             switch ($[0]) {
                 case 'import':
                     pl.cc($[1], ($) => {

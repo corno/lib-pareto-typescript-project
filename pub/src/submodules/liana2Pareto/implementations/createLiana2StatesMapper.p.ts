@@ -20,7 +20,7 @@ export const $$: api.CcreateLiana2StatesMapper = ($d) => {
     return ($) => {
         const stringMapping = $.stringmapping
         return $.model.globalTypes.dictionary.map(($) => {
-            function mapType($: mliana.TLocalType): malgorithm.TType {
+            function mapType($: mliana.T.LocalType): malgorithm.T.Type {
                 switch ($[0]) {
                     case 'array':
                         return pl.cc($[1], ($) => {
@@ -89,7 +89,7 @@ export const $$: api.CcreateLiana2StatesMapper = ($d) => {
                     case 'taggedUnion':
                         return pl.cc($[1], ($) => {
                             return ['taggedUnion', $.options.dictionary.map(($) => {
-                                return mapType($.type)
+                                return mapType($)
                             })]
                         })
                     default: return pl.au($[0])

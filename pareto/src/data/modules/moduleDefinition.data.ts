@@ -6,8 +6,10 @@ import {
     array, dictionary, group, member, taggedUnion, types, typeReference,
     interfaceReference,
     typeParameter,
-    template,
     func,
+    type,
+    parametrizedType,
+    parametrizedTypeReference,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
@@ -17,36 +19,32 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
         'imports': d({
             "glossary": "../../../glossary",
             "fp": "lib-fountain-pen",
+            "common": "glo-pareto-common",
         }),
         'parameters': d({}),
-        'templates': d({
-            "Optional": {
-                'parameters': d({ "Type": {}, }),
-                'type': taggedUnion({
-                    "set": typeParameter("Type"),
-                    "not set": group({}),
-                })
-            }
-        }),
-        'types': types({
-            "DefinitionReference": group({
+        'types': d({
+            "Optional": parametrizedType({ "Type": {}, }, taggedUnion({
+                "set": typeParameter("Type"),
+                "not set": group({}),
+            })),
+            "DefinitionReference": type(group({
                 "context": member(reference("Context"), true),
                 "function": member(string()),
-            }),
-            "Context": taggedUnion({
+            })),
+            "Context": type(taggedUnion({
                 "local": group({}),
                 "import": group({
                     "glossary": member(string()),
-                    "arguments": member(dictionary(reference("glossary", "TypeReference")))
+                    "arguments": member(dictionary(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "TypeReference")]))
                 }),
-            }),
-            "ModuleDefinition": group({
-                "glossary": member(reference("glossary", "Glossary")),
+            })),
+            "ModuleDefinition": type(group({
+                "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "Glossary")]),
                 "api": member(group({
                     "imports": member(dictionary(string())),
                     "algorithms": member(dictionary(group({
@@ -54,13 +52,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                         "type": member(taggedUnion({
                             "reference": group({}),
                             "constructor": group({
-                                "configuration data": member(template("Optional", { "Type": reference("glossary", "TypeReference") })),
+                                "configuration data": member(['reference', parametrizedTypeReference("Optional", { "Type": parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "TypeReference") })]),
                                 "dependencies": member(dictionary(reference("DefinitionReference"))),
                             }),
                         }))
                     }))),
                 })),
-            }),
+            })),
             // "TypeReference": group({
             //     "context": member(ref("Context")),
             //     "namespaces": member(array(str())),
@@ -80,9 +78,9 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
-                "serializeGlossary": definitionReference("glossary", "Serialize"),
-                "dictionaryForEach": definitionReference("foreach", "DictionaryForEach"),
-                "enrichedArrayForEach": definitionReference("foreach", "EnrichedArrayForEach"),
+                "serializeGlossary": definitionReference("glossary", {}, "Serialize"),
+                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
+                "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
             })),
         })
     },

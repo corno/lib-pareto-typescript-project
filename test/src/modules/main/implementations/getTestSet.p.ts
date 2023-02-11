@@ -35,7 +35,7 @@ import { $ as tc } from "../../../data/project/project/tokenconsumer/project.dat
 export const $$: api.CgetTestSet = ($) => {
     const $XXX = $
 
-    function genProj(dir: string, proj: mproject.TProject) {
+    function genProj(dir: string, proj: mproject.T.Project) {
         pub.$a.generateProject({
             'mainData': {
                 'arguments': pr.wrapRawArray([dir]),
@@ -44,7 +44,7 @@ export const $$: api.CgetTestSet = ($) => {
         })
 
     }
-    function generateModule(dir: string, module: mproject.TModule) {
+    function generateModule(dir: string, module: mproject.T.Module) {
         pub.$a.generateProject({
             'mainData': {
                 'arguments': pr.wrapRawArray([dir]),
@@ -127,7 +127,7 @@ export const $$: api.CgetTestSet = ($) => {
         mliana_flat.$a.serialize(accountingModel, $i)
     })
 
-    function x($: mliana.TModel) {
+    function x($: mliana.T.Model) {
         const res = resolve($)
         switch (res[0]) {
             case 'not set':

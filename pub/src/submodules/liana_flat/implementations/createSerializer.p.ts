@@ -15,7 +15,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             $d.serializeStates($d.mapLiana2States($), $i)
 
         })
-        function getPathID($: mcommon.TPath) {
+        function getPathID($: mcommon.T.Path) {
 
             return $d.createIdentifier($d.joinNestedStrings({
                 'strings': $,
@@ -23,9 +23,9 @@ export const $$: api.CcreateSerializer = ($d) => {
             }))
         }
         function doDictionaries($: {
-            $: mliana.TLocalType,
-            path: mcommon.TPath,
-            idPath: mcommon.TPath,
+            $: mliana.T.LocalType,
+            path: mcommon.T.Path,
+            idPath: mcommon.T.Path,
             currentName: string,
         }) {
             const path = $.path
@@ -79,9 +79,9 @@ export const $$: api.CcreateSerializer = ($d) => {
                                             $i.line(`//////`)
                                             function doScalars(
                                                 $: {
-                                                    $: mliana.TLocalType,
+                                                    $: mliana.T.LocalType,
                                                     isRoot: boolean,
-                                                    path: mcommon.TPath,
+                                                    path: mcommon.T.Path,
                                                 }
                                             ) {
                                                 const path = $.path
@@ -136,7 +136,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                 $i.line(`operation_${pathID}: ${type},`)
                                                                 $.options.dictionary.forEach(() => false, ($, key) => {
                                                                     doScalars({
-                                                                        $: $.type,
+                                                                        $: $,
                                                                         isRoot: false,
                                                                         path: [path, key],
                                                                     })
@@ -173,8 +173,8 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                     $i.nestedLine(($i) => {
                                                         $i.snippet(`'data': `)
                                                         function writeUnflattener($: {
-                                                            $: mliana.TLocalType,
-                                                            path: mcommon.TPath,
+                                                            $: mliana.T.LocalType,
+                                                            path: mcommon.T.Path,
                                                             currentName: string,
                                                         }, $i: mfp.ILine) {
                                                             const path = $.path
@@ -283,7 +283,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                                                     $i.nestedLine(($i) => {
                                                                                                         $i.snippet(`return ['${key}', `)
                                                                                                         writeUnflattener({
-                                                                                                            $: $.type,
+                                                                                                            $: $,
                                                                                                             path: [path, key],
                                                                                                             currentName: currentName
                                                                                                         }, $i)
@@ -353,7 +353,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                         pl.cc($[1], ($) => {
                             $.options.dictionary.forEach(() => false, ($, key) => {
                                 doDictionaries({
-                                    $: $.type,
+                                    $: $,
                                     path: [path, key],
                                     idPath: idPath,
                                     currentName: currentName,

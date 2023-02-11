@@ -1,20 +1,14 @@
 import * as pt from 'pareto-core-types'
 
-import * as t from './types.generated'
+import { T   } from './types.generated'
 
 import * as malgorithm from "../../../algorithm"
 import * as mliana from "../../../liana"
 import * as mmain from "res-pareto-main"
 import * as mproject from "../../../project"
 
-export type TConfiguration = t.UConfiguration
+export type FGenerateProject = ($: T.Configuration,) => void
 
-export type TMappedModel = t.UMappedModel
+export type FMapLiana2Pareto = ($: T.MappedModel,) => T.Modules
 
-export type TModules = t.UModules
-
-export type FGenerateProject = ($: TConfiguration,) => void
-
-export type FMapLiana2Pareto = ($: TMappedModel,) => TModules
-
-export type FMapLiana2States = ($: TMappedModel,) => malgorithm.TStates
+export type FMapLiana2States = ($: T.MappedModel,) => malgorithm.T.States

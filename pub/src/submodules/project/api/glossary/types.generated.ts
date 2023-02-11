@@ -1,100 +1,172 @@
 import * as pt from 'pareto-core-types'
 
 import * as malgorithm from "../../../algorithm"
+import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../../glossary"
 import * as mmoduleDefinition from "../../../moduleDefinition"
 
-export namespace GAlgorithmImplementation {}
-export type GAlgorithmImplementation = {}
-export type UAlgorithmImplementation = GAlgorithmImplementation
-
-export namespace GImplementation {}
-export type GImplementation = pt.Dictionary<UAlgorithmImplementation>
-export type UImplementation = GImplementation
-
-export namespace GModule {}
-export type GModule = {
-    readonly 'definition': mmoduleDefinition.TModuleDefinition
-    readonly 'implementation'?: malgorithm.TImplementation
-    readonly 'states'?: malgorithm.TStates
-}
-export type UModule = GModule
-
-export namespace GProject {
+export namespace T {
     
-    export namespace Ppubdependencies {
+    export namespace AlgorithmImplementation {}
+    
+    export type AlgorithmImplementation = {}
+    
+    export namespace Implementation {
         
-        export namespace D {}
-        export type D = {}
+        export type D = T.AlgorithmImplementation
     }
-    export type Ppubdependencies = pt.Dictionary<Ppubdependencies.D>
     
-    export namespace Ptype {
+    export type Implementation = pt.Dictionary<T.AlgorithmImplementation>
+    
+    export namespace Module {
         
-        export namespace Oglossary {}
-        export type Oglossary = {
-            readonly 'glossary': mglossary.TGlossary
+        export type definition = mmoduleDefinition.T.ModuleDefinition
+        
+        export type implementation = malgorithm.T.Implementation
+        
+        export type states = malgorithm.T.States
+    }
+    
+    export type Module = {
+        readonly 'definition': mmoduleDefinition.T.ModuleDefinition
+        readonly 'implementation'?: malgorithm.T.Implementation
+        readonly 'states'?: malgorithm.T.States
+    }
+    
+    export namespace Project {
+        
+        export type author = string
+        
+        export type description = string
+        
+        export type license = string
+        
+        export namespace pubdependencies {
+            
+            export namespace D {}
+            
+            export type D = {}
         }
         
-        export namespace Olibrary {
+        export type pubdependencies = pt.Dictionary<{}>
+        
+        export namespace _ltype {
             
-            export namespace Pexecutables {
+            export namespace glossary {
                 
-                export namespace D {}
-                export type D = {}
+                export type glossary = mglossary.T.Glossary<mcommon.T.String>
             }
-            export type Pexecutables = pt.Dictionary<Pexecutables.D>
             
-            export namespace Psubmodules {}
-            export type Psubmodules = pt.Dictionary<UModule>
-        }
-        export type Olibrary = {
-            readonly 'executables': Olibrary.Pexecutables
-            readonly 'main': UModule
-            readonly 'submodules': Olibrary.Psubmodules
-            readonly 'test': UTest
-        }
-        
-        export namespace Oresource {
+            export type glossary = {
+                readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
+            }
             
-            export namespace PdevDependencies {
+            export namespace library {
                 
-                export namespace D {}
-                export type D = {}
+                export namespace executables {
+                    
+                    export namespace D {}
+                    
+                    export type D = {}
+                }
+                
+                export type executables = pt.Dictionary<{}>
+                
+                export type main = T.Module
+                
+                export namespace submodules {
+                    
+                    export type D = T.Module
+                }
+                
+                export type submodules = pt.Dictionary<T.Module>
+                
+                export type test = T.Test
             }
-            export type PdevDependencies = pt.Dictionary<PdevDependencies.D>
+            
+            export type library = {
+                readonly 'executables': pt.Dictionary<{}>
+                readonly 'main': T.Module
+                readonly 'submodules': pt.Dictionary<T.Module>
+                readonly 'test': T.Test
+            }
+            
+            export namespace resource {
+                
+                export type definition = mmoduleDefinition.T.ModuleDefinition
+                
+                export namespace devDependencies {
+                    
+                    export namespace D {}
+                    
+                    export type D = {}
+                }
+                
+                export type devDependencies = pt.Dictionary<{}>
+                
+                export type test = T.Test
+            }
+            
+            export type resource = {
+                readonly 'definition': mmoduleDefinition.T.ModuleDefinition
+                readonly 'devDependencies': pt.Dictionary<{}>
+                readonly 'test': T.Test
+            }
         }
-        export type Oresource = {
-            readonly 'definition': mmoduleDefinition.TModuleDefinition
-            readonly 'devDependencies': Oresource.PdevDependencies
-            readonly 'test': UTest
-        }
-    }
-    export type Ptype = 
-        | ['glossary', Ptype.Oglossary]
-        | ['library', Ptype.Olibrary]
-        | ['resource', Ptype.Oresource]
-}
-export type GProject = {
-    readonly 'author': string
-    readonly 'description': string
-    readonly 'license': string
-    readonly 'pubdependencies': GProject.Ppubdependencies
-    readonly 'type': GProject.Ptype
-}
-export type UProject = GProject
-
-export namespace GTest {
-    
-    export namespace Pdependencies {
         
-        export namespace D {}
-        export type D = {}
+        export type _ltype = 
+            | ['glossary', {
+                readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
+            }]
+            | ['library', {
+                readonly 'executables': pt.Dictionary<{}>
+                readonly 'main': T.Module
+                readonly 'submodules': pt.Dictionary<T.Module>
+                readonly 'test': T.Test
+            }]
+            | ['resource', {
+                readonly 'definition': mmoduleDefinition.T.ModuleDefinition
+                readonly 'devDependencies': pt.Dictionary<{}>
+                readonly 'test': T.Test
+            }]
     }
-    export type Pdependencies = pt.Dictionary<Pdependencies.D>
+    
+    export type Project = {
+        readonly 'author': string
+        readonly 'description': string
+        readonly 'license': string
+        readonly 'pubdependencies': pt.Dictionary<{}>
+        readonly 'type': 
+            | ['glossary', {
+                readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
+            }]
+            | ['library', {
+                readonly 'executables': pt.Dictionary<{}>
+                readonly 'main': T.Module
+                readonly 'submodules': pt.Dictionary<T.Module>
+                readonly 'test': T.Test
+            }]
+            | ['resource', {
+                readonly 'definition': mmoduleDefinition.T.ModuleDefinition
+                readonly 'devDependencies': pt.Dictionary<{}>
+                readonly 'test': T.Test
+            }]
+    }
+    
+    export namespace Test {
+        
+        export namespace dependencies {
+            
+            export namespace D {}
+            
+            export type D = {}
+        }
+        
+        export type dependencies = pt.Dictionary<{}>
+    }
+    
+    export type Test = {
+        readonly 'dependencies': pt.Dictionary<{}>
+    }
 }
-export type GTest = {
-    readonly 'dependencies': GTest.Pdependencies
-}
-export type UTest = GTest

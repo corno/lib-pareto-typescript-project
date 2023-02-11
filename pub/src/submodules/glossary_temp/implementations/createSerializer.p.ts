@@ -13,22 +13,22 @@ export type VOptional<AType> =
 export type MOptional<AType> = VOptional<AType>
 
 export const $$: api.CcreateSerializer = ($d) => {
-    function doReference<T>(
-        $: mglossary.MReference<T>,
-        $i: mfp.ILine,
-        //$c: ($: T, $i: mfp.ILine) => void
-    ) {
-        $i.snippet(`{`)
-        $i.indent(($i) => {
-            $i.nestedLine(($i) => {
-                $i.snippet(`'annotation': "${$.annotation}",`)
-            })
-            $i.nestedLine(($i) => {
-                $i.snippet(`'name': "${$.name}",`)
-            })
-        })
-        $i.snippet(`}`)
-    }
+    // function doReference<T>(
+    //     $: mglossary.MReference<T>,
+    //     $i: mfp.ILine,
+    //     //$c: ($: T, $i: mfp.ILine) => void
+    // ) {
+    //     $i.snippet(`{`)
+    //     $i.indent(($i) => {
+    //         $i.nestedLine(($i) => {
+    //             $i.snippet(`'annotation': "${$.annotation}",`)
+    //         })
+    //         $i.nestedLine(($i) => {
+    //             $i.snippet(`'name': "${$.name}",`)
+    //         })
+    //     })
+    //     $i.snippet(`}`)
+    // }
 
     function doOptional<T>(
         $: MOptional<T>,
@@ -51,7 +51,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             default: pl.au($[0])
         }
     }
-    function serializeTypeReference($: mglossary.TTypeReference, $i: mfp.ILine) {
+    function serializeTypeReference($: mglossary.T.TypeReference<string>, $i: mfp.ILine) {
         $i.snippet(`{`)
         $i.indent(($i) => {
             $i.nestedLine(($i) => {
@@ -82,8 +82,8 @@ export const $$: api.CcreateSerializer = ($d) => {
         $i.snippet(`}`)
     }
 
-    function serializeType($: mglossary.TType, $i: mfp.ILine) {
-        $i.snippet(`<mglossary.TType>`)
+    function serializeType($: mglossary.T.Type<string>, $i: mfp.ILine) {
+        $i.snippet(`<mglossary.T.Type>`)
 
         switch ($[0]) {
             case 'computed':
@@ -211,7 +211,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             default: pl.au($[0])
         }
     }
-    function serializeContext($: mglossary.TContext, $i: mfp.ILine) {
+    function serializeContext($: mglossary.T.Context<string>, $i: mfp.ILine) {
         $i.snippet(`<mglossary.TContext>`)
         switch ($[0]) {
             case 'import':
@@ -245,7 +245,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             default: pl.au($[0])
         }
     }
-    function serializeInterfaceReference($: mglossary.TInterfaceReference, $i: mfp.ILine) {
+    function serializeInterfaceReference($: mglossary.T.InterfaceReference<string>, $i: mfp.ILine) {
         $i.snippet(`{`)
         $i.indent(($i) => {
             $i.nestedLine(($i) => {
@@ -260,7 +260,7 @@ export const $$: api.CcreateSerializer = ($d) => {
         $i.snippet(`}`)
 
     }
-    function serializeInterface($: mglossary.TInterface, $i: mfp.ILine) {
+    function serializeInterface($: mglossary.T.Interface<string>, $i: mfp.ILine) {
         switch ($[0]) {
             case 'group':
                 pl.cc($[1], ($) => {

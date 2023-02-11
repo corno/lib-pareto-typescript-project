@@ -1,7 +1,7 @@
 import * as pr from 'pareto-core-raw'
 
 import {
-    types, typeReference, interfaceReference, func
+    types, typeReference, interfaceReference, func, context, parametrizedTypeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
@@ -10,30 +10,19 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
         'imports': d({
+            "common": "glo-pareto-common",
             "glossary": "../../../glossary",
             "fp": "lib-fountain-pen",
         }),
         'parameters': d({}),
-        'templates': d({}),
-        'types': types({
+        'types': d({
         }),
         'interfaces': d({}),
         'functions': d({
-            "Serialize": {
-                'data': {
-                    'context': ['import', "glossary"],
-                    'type': "Glossary",
-                },
-                'managed input interface': ['not set', {}],
-                'output interface': ['set', {
-                    'context': ['import', "fp"],
-                    'interface': "Line",
-                }],
-                'return type': ['nothing', {}],
-            },
+            "Serialize": func(parametrizedTypeReference("glossary", { "Type": typeReference("common", "String")}, "Glossary"), null, interfaceReference("fp", "Line"), null),
         }),
     },
     'api': {
@@ -41,33 +30,12 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "foreach": "res-pareto-foreach",
         }),
         'algorithms': d({
-            "createSerializer": {
-                'definition': {
-                    'context': ['local', {}],
-                    'function': "Serialize",
-                },
-                'type': ['constructor', {
-                    'configuration data': ['not set', {}],
-                    'dependencies': d({
-                        "arrayForEach": {
-                            'context': ['import', "foreach"],
-                            'function': "ArrayForEach",
-                        },
-                        "dictionaryForEach": {
-                            'context': ['import', "foreach"],
-                            'function': "DictionaryForEach",
-                        },
-                        "enrichedArrayForEach": {
-                            'context': ['import', "foreach"],
-                            'function': "EnrichedArrayForEach",
-                        },
-                        "enrichedDictionaryForEach": {
-                            'context': ['import', "foreach"],
-                            'function': "EnrichedDictionaryForEach",
-                        },
-                    }),
-                }],
-            },
+            "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
+                "arrayForEach": definitionReference("foreach", {}, "ArrayForEach"),
+                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
+                "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
+                "enrichedDictionaryForEach": definitionReference("foreach", {}, "EnrichedDictionaryForEach"),
+            }))
         })
     },
 }

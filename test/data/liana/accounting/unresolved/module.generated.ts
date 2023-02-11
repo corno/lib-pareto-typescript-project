@@ -19,23 +19,23 @@ export const $: mproject.TModule = {
             'types': d({
                 "Accounting": {
                     'parameters': d({}),
-                    'type': <mglossary.TType>['group', d({
+                    'type': <mglossary.T.Type>['group', d({
                         "Bankrekeningen": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({})]],
                         },
                         "Beheer": {
                             'optional': false,
-                            'type': <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['group', d({
                                 "Balans": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['group', d({
                                         "Grootboekrekeningen": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                 "Hoofdcategorie": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
+                                                    'type': <mglossary.T.Type>['reference', {
                                                         'context': <mglossary.TContext>['import', {
                                                             'glossary': "common",
                                                             'arguments': d({}),
@@ -46,7 +46,7 @@ export const $: mproject.TModule = {
                                                 },
                                                 "Subcategorie": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
+                                                    'type': <mglossary.T.Type>['reference', {
                                                         'context': <mglossary.TContext>['import', {
                                                             'glossary': "common",
                                                             'arguments': d({}),
@@ -57,22 +57,22 @@ export const $: mproject.TModule = {
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['taggedUnion', d({
-                                                        "Activa": <mglossary.TType>['group', d({})],
-                                                        "Passiva": <mglossary.TType>['group', d({})],
+                                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                                        "Activa": <mglossary.T.Type>['group', d({})],
+                                                        "Passiva": <mglossary.T.Type>['group', d({})],
                                                     })],
                                                 },
                                             })]],
                                         },
                                         "Hoofdcategorieen": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                 "Subcategorieen": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                         "Hoofdcategorie fiscus": {
                                                             'optional': false,
-                                                            'type': <mglossary.TType>['reference', {
+                                                            'type': <mglossary.T.Type>['reference', {
                                                                 'context': <mglossary.TContext>['import', {
                                                                     'glossary': "common",
                                                                     'arguments': d({}),
@@ -83,7 +83,7 @@ export const $: mproject.TModule = {
                                                         },
                                                         "Subcategorie fiscus": {
                                                             'optional': false,
-                                                            'type': <mglossary.TType>['reference', {
+                                                            'type': <mglossary.T.Type>['reference', {
                                                                 'context': <mglossary.TContext>['import', {
                                                                     'glossary': "common",
                                                                     'arguments': d({}),
@@ -96,25 +96,25 @@ export const $: mproject.TModule = {
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['taggedUnion', d({
-                                                        "Activa": <mglossary.TType>['group', d({})],
-                                                        "Passiva": <mglossary.TType>['group', d({})],
+                                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                                        "Activa": <mglossary.T.Type>['group', d({})],
+                                                        "Passiva": <mglossary.T.Type>['group', d({})],
                                                     })],
                                                 },
                                             })]],
                                         },
                                         "Hoofdcategorieen fiscus": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                 "Subcategorieen": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({})]],
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['taggedUnion', d({
-                                                        "Activa": <mglossary.TType>['group', d({})],
-                                                        "Passiva": <mglossary.TType>['group', d({})],
+                                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                                        "Activa": <mglossary.T.Type>['group', d({})],
+                                                        "Passiva": <mglossary.T.Type>['group', d({})],
                                                     })],
                                                 },
                                             })]],
@@ -123,43 +123,43 @@ export const $: mproject.TModule = {
                                 },
                                 "BTW-categorieen": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                         "BTW-heffing": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['taggedUnion', d({
-                                                "Ja": <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                                "Ja": <mglossary.T.Type>['group', d({
                                                     "BTW-promillage": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['number', {}],
+                                                        'type': <mglossary.T.Type>['number', {}],
                                                     },
                                                 })],
-                                                "Nee": <mglossary.TType>['group', d({})],
+                                                "Nee": <mglossary.T.Type>['group', d({})],
                                             })],
                                         },
                                     })]],
                                 },
                                 "Gebruikers": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                         "Volledige naam": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', {}],
+                                            'type': <mglossary.T.Type>['string', {}],
                                         },
                                     })]],
                                 },
                                 "Resultaat": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['group', d({
                                         "Correctietypes vennootschapsbelasting": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({})]],
                                         },
                                         "Grootboekrekeningen": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                 "Hoofdcategorie": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
+                                                    'type': <mglossary.T.Type>['reference', {
                                                         'context': <mglossary.TContext>['import', {
                                                             'glossary': "common",
                                                             'arguments': d({}),
@@ -170,7 +170,7 @@ export const $: mproject.TModule = {
                                                 },
                                                 "Subcategorie": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['reference', {
+                                                    'type': <mglossary.T.Type>['reference', {
                                                         'context': <mglossary.TContext>['import', {
                                                             'glossary': "common",
                                                             'arguments': d({}),
@@ -181,15 +181,15 @@ export const $: mproject.TModule = {
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['taggedUnion', d({
-                                                        "Kosten": <mglossary.TType>['group', d({
+                                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                                        "Kosten": <mglossary.T.Type>['group', d({
                                                             "Correctie op vennootschapsbelasting": {
                                                                 'optional': false,
-                                                                'type': <mglossary.TType>['taggedUnion', d({
-                                                                    "Ja": <mglossary.TType>['group', d({
+                                                                'type': <mglossary.T.Type>['taggedUnion', d({
+                                                                    "Ja": <mglossary.T.Type>['group', d({
                                                                         "Correctietype": {
                                                                             'optional': false,
-                                                                            'type': <mglossary.TType>['reference', {
+                                                                            'type': <mglossary.T.Type>['reference', {
                                                                                 'context': <mglossary.TContext>['import', {
                                                                                     'glossary': "common",
                                                                                     'arguments': d({}),
@@ -199,24 +199,24 @@ export const $: mproject.TModule = {
                                                                             }],
                                                                         },
                                                                     })],
-                                                                    "Nee": <mglossary.TType>['group', d({})],
+                                                                    "Nee": <mglossary.T.Type>['group', d({})],
                                                                 })],
                                                             },
                                                         })],
-                                                        "Opbrengsten": <mglossary.TType>['group', d({})],
+                                                        "Opbrengsten": <mglossary.T.Type>['group', d({})],
                                                     })],
                                                 },
                                             })]],
                                         },
                                         "Hoofdcategorieen": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                 "Subcategorieen": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                         "Hoofdcategorie fiscus": {
                                                             'optional': false,
-                                                            'type': <mglossary.TType>['reference', {
+                                                            'type': <mglossary.T.Type>['reference', {
                                                                 'context': <mglossary.TContext>['import', {
                                                                     'glossary': "common",
                                                                     'arguments': d({}),
@@ -227,7 +227,7 @@ export const $: mproject.TModule = {
                                                         },
                                                         "Subcategorie fiscus": {
                                                             'optional': false,
-                                                            'type': <mglossary.TType>['reference', {
+                                                            'type': <mglossary.T.Type>['reference', {
                                                                 'context': <mglossary.TContext>['import', {
                                                                     'glossary': "common",
                                                                     'arguments': d({}),
@@ -240,25 +240,25 @@ export const $: mproject.TModule = {
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['taggedUnion', d({
-                                                        "Kosten": <mglossary.TType>['group', d({})],
-                                                        "Opbrengsten": <mglossary.TType>['group', d({})],
+                                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                                        "Kosten": <mglossary.T.Type>['group', d({})],
+                                                        "Opbrengsten": <mglossary.T.Type>['group', d({})],
                                                     })],
                                                 },
                                             })]],
                                         },
                                         "Hoofdcategorieen fiscus": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                 "Subcategorieen": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({})]],
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['taggedUnion', d({
-                                                        "Kosten": <mglossary.TType>['group', d({})],
-                                                        "Opbrengsten": <mglossary.TType>['group', d({})],
+                                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                                        "Kosten": <mglossary.T.Type>['group', d({})],
+                                                        "Opbrengsten": <mglossary.T.Type>['group', d({})],
                                                     })],
                                                 },
                                             })]],
@@ -269,11 +269,11 @@ export const $: mproject.TModule = {
                         },
                         "Informele rekeningen": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({})]],
                         },
                         "Jaren": {
                             'optional': false,
-                            'type': <mglossary.TType>['reference', {
+                            'type': <mglossary.T.Type>['reference', {
                                 'context': <mglossary.TContext>['local', {}],
                                 'type': "Jaren",
                                 'arguments': d({}),
@@ -281,16 +281,16 @@ export const $: mproject.TModule = {
                         },
                         "Klanten": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                 "Licentieovereenkomsten": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                         "Periodes": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                 "Bedrag": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['number', {}],
+                                                    'type': <mglossary.T.Type>['number', {}],
                                                 },
                                             })]],
                                         },
@@ -298,24 +298,24 @@ export const $: mproject.TModule = {
                                 },
                                 "Projecten": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                         "Offertes": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                 "Opbrengsten": {
                                                     'optional': false,
-                                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                                         "Type": {
                                                             'optional': false,
-                                                            'type': <mglossary.TType>['taggedUnion', d({
-                                                                "Project": <mglossary.TType>['group', d({
+                                                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                                                "Project": <mglossary.T.Type>['group', d({
                                                                     "Bedrag": {
                                                                         'optional': false,
-                                                                        'type': <mglossary.TType>['number', {}],
+                                                                        'type': <mglossary.T.Type>['number', {}],
                                                                     },
                                                                     "Betaaldatum": {
                                                                         'optional': false,
-                                                                        'type': <mglossary.TType>['number', {}],
+                                                                        'type': <mglossary.T.Type>['number', {}],
                                                                     },
                                                                 })],
                                                             })],
@@ -330,21 +330,21 @@ export const $: mproject.TModule = {
                         },
                         "Leveranciers": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({})]],
                         },
                         "Medewerkers": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({})]],
                         },
                     })]
                 },
                 "Afhandeling": {
                     'parameters': d({}),
-                    'type': <mglossary.TType>['taggedUnion', d({
-                        "BTW-periode": <mglossary.TType>['group', d({
+                    'type': <mglossary.T.Type>['taggedUnion', d({
+                        "BTW-periode": <mglossary.T.Type>['group', d({
                             "BTW-periode": {
                                 'optional': false,
-                                'type': <mglossary.TType>['reference', {
+                                'type': <mglossary.T.Type>['reference', {
                                     'context': <mglossary.TContext>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
@@ -355,7 +355,7 @@ export const $: mproject.TModule = {
                             },
                             "Jaar": {
                                 'optional': false,
-                                'type': <mglossary.TType>['reference', {
+                                'type': <mglossary.T.Type>['reference', {
                                     'context': <mglossary.TContext>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
@@ -365,10 +365,10 @@ export const $: mproject.TModule = {
                                 }],
                             },
                         })],
-                        "Informele rekening": <mglossary.TType>['group', d({
+                        "Informele rekening": <mglossary.T.Type>['group', d({
                             "Informele rekening": {
                                 'optional': false,
-                                'type': <mglossary.TType>['reference', {
+                                'type': <mglossary.T.Type>['reference', {
                                     'context': <mglossary.TContext>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
@@ -378,10 +378,10 @@ export const $: mproject.TModule = {
                                 }],
                             },
                         })],
-                        "Inkoop": <mglossary.TType>['group', d({
+                        "Inkoop": <mglossary.T.Type>['group', d({
                             "Inkoop": {
                                 'optional': false,
-                                'type': <mglossary.TType>['reference', {
+                                'type': <mglossary.T.Type>['reference', {
                                     'context': <mglossary.TContext>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
@@ -392,7 +392,7 @@ export const $: mproject.TModule = {
                             },
                             "Jaar": {
                                 'optional': false,
-                                'type': <mglossary.TType>['reference', {
+                                'type': <mglossary.T.Type>['reference', {
                                     'context': <mglossary.TContext>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
@@ -402,10 +402,10 @@ export const $: mproject.TModule = {
                                 }],
                             },
                         })],
-                        "Verkoop": <mglossary.TType>['group', d({
+                        "Verkoop": <mglossary.T.Type>['group', d({
                             "Inkoop": {
                                 'optional': false,
-                                'type': <mglossary.TType>['reference', {
+                                'type': <mglossary.T.Type>['reference', {
                                     'context': <mglossary.TContext>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
@@ -416,7 +416,7 @@ export const $: mproject.TModule = {
                             },
                             "Jaar": {
                                 'optional': false,
-                                'type': <mglossary.TType>['reference', {
+                                'type': <mglossary.T.Type>['reference', {
                                     'context': <mglossary.TContext>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
@@ -426,10 +426,10 @@ export const $: mproject.TModule = {
                                 }],
                             },
                         })],
-                        "Verrekenpost": <mglossary.TType>['group', d({
+                        "Verrekenpost": <mglossary.T.Type>['group', d({
                             "Verrekenpost": {
                                 'optional': false,
-                                'type': <mglossary.TType>['reference', {
+                                'type': <mglossary.T.Type>['reference', {
                                     'context': <mglossary.TContext>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
@@ -443,14 +443,14 @@ export const $: mproject.TModule = {
                 },
                 "Informele Rekeningen": {
                     'parameters': d({}),
-                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                         "Beginsaldo": {
                             'optional': false,
-                            'type': <mglossary.TType>['number', {}],
+                            'type': <mglossary.T.Type>['number', {}],
                         },
                         "Grootboekrekening": {
                             'optional': false,
-                            'type': <mglossary.TType>['reference', {
+                            'type': <mglossary.T.Type>['reference', {
                                 'context': <mglossary.TContext>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
@@ -461,12 +461,12 @@ export const $: mproject.TModule = {
                         },
                         "Nieuw": {
                             'optional': false,
-                            'type': <mglossary.TType>['taggedUnion', d({
-                                "Ja": <mglossary.TType>['group', d({})],
-                                "Nee": <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                "Ja": <mglossary.T.Type>['group', d({})],
+                                "Nee": <mglossary.T.Type>['group', d({
                                     "Jaar": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['reference', {
+                                        'type': <mglossary.T.Type>['reference', {
                                             'context': <mglossary.TContext>['import', {
                                                 'glossary': "common",
                                                 'arguments': d({}),
@@ -477,7 +477,7 @@ export const $: mproject.TModule = {
                                     },
                                     "Rekening": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['reference', {
+                                        'type': <mglossary.T.Type>['reference', {
                                             'context': <mglossary.TContext>['import', {
                                                 'glossary': "common",
                                                 'arguments': d({}),
@@ -493,37 +493,37 @@ export const $: mproject.TModule = {
                 },
                 "Jaren": {
                     'parameters': d({}),
-                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                         "Afgesloten": {
                             'optional': false,
-                            'type': <mglossary.TType>['taggedUnion', d({
-                                "Ja": <mglossary.TType>['group', d({})],
-                                "Nee": <mglossary.TType>['group', d({})],
+                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                "Ja": <mglossary.T.Type>['group', d({})],
+                                "Nee": <mglossary.T.Type>['group', d({})],
                             })],
                         },
                         "Balans grootboekrekeningen": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                 "Type": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Bankrekening": <mglossary.TType>['group', d({})],
-                                        "Informele rekening": <mglossary.TType>['group', d({})],
-                                        "Overig": <mglossary.TType>['group', d({})],
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Bankrekening": <mglossary.T.Type>['group', d({})],
+                                        "Informele rekening": <mglossary.T.Type>['group', d({})],
+                                        "Overig": <mglossary.T.Type>['group', d({})],
                                     })],
                                 },
                             })]],
                         },
                         "Bankrekeningen": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                 "Beginsaldo": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['number', {}],
+                                    'type': <mglossary.T.Type>['number', {}],
                                 },
                                 "Grootboekrekening": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['reference', {
+                                    'type': <mglossary.T.Type>['reference', {
                                         'context': <mglossary.TContext>['import', {
                                             'glossary': "common",
                                             'arguments': d({}),
@@ -534,27 +534,27 @@ export const $: mproject.TModule = {
                                 },
                                 "Mutaties": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                         "Bedrag": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', {}],
+                                            'type': <mglossary.T.Type>['number', {}],
                                         },
                                         "Datum": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', {}],
+                                            'type': <mglossary.T.Type>['number', {}],
                                         },
                                         "Omschrijving": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', {}],
+                                            'type': <mglossary.T.Type>['string', {}],
                                         },
                                         "Status": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['taggedUnion', d({
-                                                "Nog te verwerken": <mglossary.TType>['group', d({})],
-                                                "Verwerkt": <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                                "Nog te verwerken": <mglossary.T.Type>['group', d({})],
+                                                "Verwerkt": <mglossary.T.Type>['group', d({
                                                     "Afhandeling": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['reference', {
+                                                        'type': <mglossary.T.Type>['reference', {
                                                             'context': <mglossary.TContext>['local', {}],
                                                             'type': "Afhandeling",
                                                             'arguments': d({}),
@@ -567,12 +567,12 @@ export const $: mproject.TModule = {
                                 },
                                 "Nieuw": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Ja": <mglossary.TType>['group', d({})],
-                                        "Nee": <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Ja": <mglossary.T.Type>['group', d({})],
+                                        "Nee": <mglossary.T.Type>['group', d({
                                             "Jaar": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -583,7 +583,7 @@ export const $: mproject.TModule = {
                                             },
                                             "Rekening": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -599,62 +599,62 @@ export const $: mproject.TModule = {
                         },
                         "Beginsaldo nog aan te geven BTW": {
                             'optional': false,
-                            'type': <mglossary.TType>['number', {}],
+                            'type': <mglossary.T.Type>['number', {}],
                         },
                         "Beginsaldo Winstreserve": {
                             'optional': false,
-                            'type': <mglossary.TType>['number', {}],
+                            'type': <mglossary.T.Type>['number', {}],
                         },
                         "BTW periodes": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                 "1. BTW-categorieen": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({})]],
                                 },
                                 "Documenten": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                         "Bestand": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', {}],
+                                            'type': <mglossary.T.Type>['string', {}],
                                         },
                                     })]],
                                 },
                                 "Omschrijving": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['string', {}],
+                                    'type': <mglossary.T.Type>['string', {}],
                                 },
                                 "Status": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Aangegeven": <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Aangegeven": <mglossary.T.Type>['group', d({
                                             "Afronding": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['number', {}],
+                                                'type': <mglossary.T.Type>['number', {}],
                                             },
                                             "Bedrag": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['number', {}],
+                                                'type': <mglossary.T.Type>['number', {}],
                                             },
                                             "Datum": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['number', {}],
+                                                'type': <mglossary.T.Type>['number', {}],
                                             },
                                         })],
-                                        "Openstaand": <mglossary.TType>['group', d({})],
+                                        "Openstaand": <mglossary.T.Type>['group', d({})],
                                     })],
                                 },
                             })]],
                         },
                         "Eerste boekjaar": {
                             'optional': false,
-                            'type': <mglossary.TType>['taggedUnion', d({
-                                "Ja": <mglossary.TType>['group', d({})],
-                                "Nee": <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                "Ja": <mglossary.T.Type>['group', d({})],
+                                "Nee": <mglossary.T.Type>['group', d({
                                     "Vorig boekjaar": {
                                         'optional': false,
-                                        'type': <mglossary.TType>['reference', {
+                                        'type': <mglossary.T.Type>['reference', {
                                             'context': <mglossary.TContext>['import', {
                                                 'glossary': "common",
                                                 'arguments': d({}),
@@ -668,7 +668,7 @@ export const $: mproject.TModule = {
                         },
                         "Grootboek BTW periode": {
                             'optional': false,
-                            'type': <mglossary.TType>['reference', {
+                            'type': <mglossary.T.Type>['reference', {
                                 'context': <mglossary.TContext>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
@@ -679,7 +679,7 @@ export const $: mproject.TModule = {
                         },
                         "Grootboek inkoop saldo": {
                             'optional': false,
-                            'type': <mglossary.TType>['reference', {
+                            'type': <mglossary.T.Type>['reference', {
                                 'context': <mglossary.TContext>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
@@ -690,7 +690,7 @@ export const $: mproject.TModule = {
                         },
                         "Grootboek verkoop saldo": {
                             'optional': false,
-                            'type': <mglossary.TType>['reference', {
+                            'type': <mglossary.T.Type>['reference', {
                                 'context': <mglossary.TContext>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
@@ -701,7 +701,7 @@ export const $: mproject.TModule = {
                         },
                         "Grootboekrekening voor BTW afrondingen": {
                             'optional': false,
-                            'type': <mglossary.TType>['reference', {
+                            'type': <mglossary.T.Type>['reference', {
                                 'context': <mglossary.TContext>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
@@ -712,7 +712,7 @@ export const $: mproject.TModule = {
                         },
                         "Grootboekrekening voor nog aan te geven BTW": {
                             'optional': false,
-                            'type': <mglossary.TType>['reference', {
+                            'type': <mglossary.T.Type>['reference', {
                                 'context': <mglossary.TContext>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
@@ -723,7 +723,7 @@ export const $: mproject.TModule = {
                         },
                         "Grootboekrekening voor resultaat dit jaar": {
                             'optional': false,
-                            'type': <mglossary.TType>['reference', {
+                            'type': <mglossary.T.Type>['reference', {
                                 'context': <mglossary.TContext>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
@@ -734,7 +734,7 @@ export const $: mproject.TModule = {
                         },
                         "Grootboekrekening voor winstreserve": {
                             'optional': false,
-                            'type': <mglossary.TType>['reference', {
+                            'type': <mglossary.T.Type>['reference', {
                                 'context': <mglossary.TContext>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
@@ -745,7 +745,7 @@ export const $: mproject.TModule = {
                         },
                         "Informele rekeningen": {
                             'optional': false,
-                            'type': <mglossary.TType>['reference', {
+                            'type': <mglossary.T.Type>['reference', {
                                 'context': <mglossary.TContext>['local', {}],
                                 'type': "Informele Rekeningen",
                                 'arguments': d({}),
@@ -753,21 +753,21 @@ export const $: mproject.TModule = {
                         },
                         "Inkopen": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                 "Afhandeling": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Mutaties": <mglossary.TType>['group', d({})],
-                                        "Nog te betalen": <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Mutaties": <mglossary.T.Type>['group', d({})],
+                                        "Nog te betalen": <mglossary.T.Type>['group', d({
                                             "Betalingstermijn": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['number', {}],
+                                                'type': <mglossary.T.Type>['number', {}],
                                             },
                                         })],
-                                        "Rekening courant": <mglossary.TType>['group', d({
+                                        "Rekening courant": <mglossary.T.Type>['group', d({
                                             "Rekening courant": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -781,25 +781,25 @@ export const $: mproject.TModule = {
                                 },
                                 "Brondocument": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Niet van toepassing": <mglossary.TType>['group', d({})],
-                                        "Nog toevoegen": <mglossary.TType>['group', d({})],
-                                        "Ontbreekt": <mglossary.TType>['group', d({})],
-                                        "Toegevoegd": <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Niet van toepassing": <mglossary.T.Type>['group', d({})],
+                                        "Nog toevoegen": <mglossary.T.Type>['group', d({})],
+                                        "Ontbreekt": <mglossary.T.Type>['group', d({})],
+                                        "Toegevoegd": <mglossary.T.Type>['group', d({
                                             "Document": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['string', {}],
+                                                'type': <mglossary.T.Type>['string', {}],
                                             },
                                         })],
                                     })],
                                 },
                                 "BTW-regime": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Binnenland heffing verlegd": <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Binnenland heffing verlegd": <mglossary.T.Type>['group', d({
                                             "BTW-periode": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -809,10 +809,10 @@ export const $: mproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Geen BTW van toepassing": <mglossary.TType>['group', d({
+                                        "Geen BTW van toepassing": <mglossary.T.Type>['group', d({
                                             "BTW-periode": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -822,10 +822,10 @@ export const $: mproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Import van buiten de EU": <mglossary.TType>['group', d({
+                                        "Import van buiten de EU": <mglossary.T.Type>['group', d({
                                             "BTW-periode": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -835,10 +835,10 @@ export const $: mproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Intracommunautair": <mglossary.TType>['group', d({
+                                        "Intracommunautair": <mglossary.T.Type>['group', d({
                                             "BTW-periode": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -848,10 +848,10 @@ export const $: mproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Standaard": <mglossary.TType>['group', d({
+                                        "Standaard": <mglossary.T.Type>['group', d({
                                             "BTW-periode": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -865,43 +865,43 @@ export const $: mproject.TModule = {
                                 },
                                 "Datum": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['number', {}],
+                                    'type': <mglossary.T.Type>['number', {}],
                                 },
                                 "Regels": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                         "Bedrag": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['taggedUnion', d({
-                                                "Bekend": <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                                "Bekend": <mglossary.T.Type>['group', d({
                                                     "Bedrag inclusief BTW": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['number', {}],
+                                                        'type': <mglossary.T.Type>['number', {}],
                                                     },
                                                     "BTW": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['number', {}],
+                                                        'type': <mglossary.T.Type>['number', {}],
                                                     },
                                                 })],
-                                                "Nog niet bekend": <mglossary.TType>['group', d({
+                                                "Nog niet bekend": <mglossary.T.Type>['group', d({
                                                     "Aantekeningen": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['string', {}],
+                                                        'type': <mglossary.T.Type>['string', {}],
                                                     },
                                                 })],
                                             })],
                                         },
                                         "Omschrijving": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', {}],
+                                            'type': <mglossary.T.Type>['string', {}],
                                         },
                                         "Type": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['taggedUnion', d({
-                                                "Balans": <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                                "Balans": <mglossary.T.Type>['group', d({
                                                     "Balans item": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['reference', {
+                                                        'type': <mglossary.T.Type>['reference', {
                                                             'context': <mglossary.TContext>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
@@ -911,10 +911,10 @@ export const $: mproject.TModule = {
                                                         }],
                                                     },
                                                 })],
-                                                "Kosten": <mglossary.TType>['group', d({
+                                                "Kosten": <mglossary.T.Type>['group', d({
                                                     "Grootboekrekening": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['reference', {
+                                                        'type': <mglossary.T.Type>['reference', {
                                                             'context': <mglossary.TContext>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
@@ -930,12 +930,12 @@ export const $: mproject.TModule = {
                                 },
                                 "Type": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Bonnetje": <mglossary.TType>['group', d({})],
-                                        "Inkoop (met crediteur)": <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Bonnetje": <mglossary.T.Type>['group', d({})],
+                                        "Inkoop (met crediteur)": <mglossary.T.Type>['group', d({
                                             "Crediteur": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -946,13 +946,13 @@ export const $: mproject.TModule = {
                                             },
                                             "Factuurnummer": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['string', {}],
+                                                'type': <mglossary.T.Type>['string', {}],
                                             },
                                         })],
-                                        "Loonheffing": <mglossary.TType>['group', d({
+                                        "Loonheffing": <mglossary.T.Type>['group', d({
                                             "Ronde": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -962,10 +962,10 @@ export const $: mproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Salaris": <mglossary.TType>['group', d({
+                                        "Salaris": <mglossary.T.Type>['group', d({
                                             "Medewerker": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -976,7 +976,7 @@ export const $: mproject.TModule = {
                                             },
                                             "Ronde": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -986,10 +986,10 @@ export const $: mproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "WBSO": <mglossary.TType>['group', d({
+                                        "WBSO": <mglossary.T.Type>['group', d({
                                             "Ronde": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -1005,14 +1005,14 @@ export const $: mproject.TModule = {
                         },
                         "Overige balans items": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                 "Beginsaldo": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['number', {}],
+                                    'type': <mglossary.T.Type>['number', {}],
                                 },
                                 "Grootboekrekening": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['reference', {
+                                    'type': <mglossary.T.Type>['reference', {
                                         'context': <mglossary.TContext>['import', {
                                             'glossary': "common",
                                             'arguments': d({}),
@@ -1023,18 +1023,18 @@ export const $: mproject.TModule = {
                                 },
                                 "Memoriaal boekingen": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                         "Bedrag": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', {}],
+                                            'type': <mglossary.T.Type>['number', {}],
                                         },
                                         "Datum": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', {}],
+                                            'type': <mglossary.T.Type>['number', {}],
                                         },
                                         "Grootboekrekening": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['reference', {
+                                            'type': <mglossary.T.Type>['reference', {
                                                 'context': <mglossary.TContext>['import', {
                                                     'glossary': "common",
                                                     'arguments': d({}),
@@ -1045,18 +1045,18 @@ export const $: mproject.TModule = {
                                         },
                                         "Omschrijving": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', {}],
+                                            'type': <mglossary.T.Type>['string', {}],
                                         },
                                     })]],
                                 },
                                 "Nieuw": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Ja": <mglossary.TType>['group', d({})],
-                                        "Nee": <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Ja": <mglossary.T.Type>['group', d({})],
+                                        "Nee": <mglossary.T.Type>['group', d({
                                             "Balans item": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -1067,7 +1067,7 @@ export const $: mproject.TModule = {
                                             },
                                             "Jaar": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -1083,27 +1083,27 @@ export const $: mproject.TModule = {
                         },
                         "Resultaat grootboekrekeningen": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({})]],
                         },
                         "Salarisrondes": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({})]],
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({})]],
                         },
                         "Startdatum boekjaar": {
                             'optional': false,
-                            'type': <mglossary.TType>['number', {}],
+                            'type': <mglossary.T.Type>['number', {}],
                         },
                         "Verkopen": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                 "Afhandeling": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Mutaties": <mglossary.TType>['group', d({})],
-                                        "Rekening courant": <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Mutaties": <mglossary.T.Type>['group', d({})],
+                                        "Rekening courant": <mglossary.T.Type>['group', d({
                                             "Rekening courant": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -1117,23 +1117,23 @@ export const $: mproject.TModule = {
                                 },
                                 "Betalingstermijn": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['number', {}],
+                                    'type': <mglossary.T.Type>['number', {}],
                                 },
                                 "Brondocument": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Nog toevoegen": <mglossary.TType>['group', d({})],
-                                        "Toegevoegd": <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Nog toevoegen": <mglossary.T.Type>['group', d({})],
+                                        "Toegevoegd": <mglossary.T.Type>['group', d({
                                             "Document": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['string', {}],
+                                                'type': <mglossary.T.Type>['string', {}],
                                             },
                                         })],
                                     })],
                                 },
                                 "BTW-periode": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['reference', {
+                                    'type': <mglossary.T.Type>['reference', {
                                         'context': <mglossary.TContext>['import', {
                                             'glossary': "common",
                                             'arguments': d({}),
@@ -1144,11 +1144,11 @@ export const $: mproject.TModule = {
                                 },
                                 "Contracttype": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['taggedUnion', d({
-                                        "Licentieovereenkomst": <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['taggedUnion', d({
+                                        "Licentieovereenkomst": <mglossary.T.Type>['group', d({
                                             "Overeenkomst": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -1158,10 +1158,10 @@ export const $: mproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Project": <mglossary.TType>['group', d({
+                                        "Project": <mglossary.T.Type>['group', d({
                                             "Offerte": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -1172,7 +1172,7 @@ export const $: mproject.TModule = {
                                             },
                                             "Project": {
                                                 'optional': false,
-                                                'type': <mglossary.TType>['reference', {
+                                                'type': <mglossary.T.Type>['reference', {
                                                     'context': <mglossary.TContext>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
@@ -1186,7 +1186,7 @@ export const $: mproject.TModule = {
                                 },
                                 "Debiteur": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['reference', {
+                                    'type': <mglossary.T.Type>['reference', {
                                         'context': <mglossary.TContext>['import', {
                                             'glossary': "common",
                                             'arguments': d({}),
@@ -1197,22 +1197,22 @@ export const $: mproject.TModule = {
                                 },
                                 "Regels": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                         "Bedrag exclusief BTW": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', {}],
+                                            'type': <mglossary.T.Type>['number', {}],
                                         },
                                         "BTW-regime": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['taggedUnion', d({
-                                                "Binnenland heffing verlegd": <mglossary.TType>['group', d({})],
-                                                "Export buiten de EU": <mglossary.TType>['group', d({})],
-                                                "Installatie of afstandsverkopen binnen de EU": <mglossary.TType>['group', d({})],
-                                                "Intracommunautair": <mglossary.TType>['group', d({})],
-                                                "Standaard": <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                                "Binnenland heffing verlegd": <mglossary.T.Type>['group', d({})],
+                                                "Export buiten de EU": <mglossary.T.Type>['group', d({})],
+                                                "Installatie of afstandsverkopen binnen de EU": <mglossary.T.Type>['group', d({})],
+                                                "Intracommunautair": <mglossary.T.Type>['group', d({})],
+                                                "Standaard": <mglossary.T.Type>['group', d({
                                                     "BTW-cateogrie": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['reference', {
+                                                        'type': <mglossary.T.Type>['reference', {
                                                             'context': <mglossary.TContext>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
@@ -1226,11 +1226,11 @@ export const $: mproject.TModule = {
                                         },
                                         "Contracttype": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['taggedUnion', d({
-                                                "Licentieovereenkomst": <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                                "Licentieovereenkomst": <mglossary.T.Type>['group', d({
                                                     "Periode": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['reference', {
+                                                        'type': <mglossary.T.Type>['reference', {
                                                             'context': <mglossary.TContext>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
@@ -1240,11 +1240,11 @@ export const $: mproject.TModule = {
                                                         }],
                                                     },
                                                 })],
-                                                "Los": <mglossary.TType>['group', d({})],
-                                                "Project": <mglossary.TType>['group', d({
+                                                "Los": <mglossary.T.Type>['group', d({})],
+                                                "Project": <mglossary.T.Type>['group', d({
                                                     "Opbrengst": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['reference', {
+                                                        'type': <mglossary.T.Type>['reference', {
                                                             'context': <mglossary.TContext>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
@@ -1258,15 +1258,15 @@ export const $: mproject.TModule = {
                                         },
                                         "Omschrijving": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['string', {}],
+                                            'type': <mglossary.T.Type>['string', {}],
                                         },
                                         "Type": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['taggedUnion', d({
-                                                "Balans": <mglossary.TType>['group', d({
+                                            'type': <mglossary.T.Type>['taggedUnion', d({
+                                                "Balans": <mglossary.T.Type>['group', d({
                                                     "Balans item": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['reference', {
+                                                        'type': <mglossary.T.Type>['reference', {
                                                             'context': <mglossary.TContext>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
@@ -1276,10 +1276,10 @@ export const $: mproject.TModule = {
                                                         }],
                                                     },
                                                 })],
-                                                "Opbrengsten": <mglossary.TType>['group', d({
+                                                "Opbrengsten": <mglossary.T.Type>['group', d({
                                                     "Grootboekrekening": {
                                                         'optional': false,
-                                                        'type': <mglossary.TType>['reference', {
+                                                        'type': <mglossary.T.Type>['reference', {
                                                             'context': <mglossary.TContext>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
@@ -1297,13 +1297,13 @@ export const $: mproject.TModule = {
                         },
                         "Verrekenposten": {
                             'optional': false,
-                            'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                            'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                 "Mutaties": {
                                     'optional': false,
-                                    'type': <mglossary.TType>['dictionary', <mglossary.TType>['group', d({
+                                    'type': <mglossary.T.Type>['dictionary', <mglossary.T.Type>['group', d({
                                         "Afhandeling": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['reference', {
+                                            'type': <mglossary.T.Type>['reference', {
                                                 'context': <mglossary.TContext>['local', {}],
                                                 'type': "Afhandeling",
                                                 'arguments': d({}),
@@ -1311,7 +1311,7 @@ export const $: mproject.TModule = {
                                         },
                                         "Bedrag": {
                                             'optional': false,
-                                            'type': <mglossary.TType>['number', {}],
+                                            'type': <mglossary.T.Type>['number', {}],
                                         },
                                     })]],
                                 },

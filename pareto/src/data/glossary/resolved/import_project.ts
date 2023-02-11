@@ -1,1 +1,0 @@
-export * from "lib-pareto-typescript-project/dist/submodules/project"

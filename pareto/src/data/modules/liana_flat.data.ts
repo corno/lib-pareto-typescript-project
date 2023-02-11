@@ -10,7 +10,7 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
         'imports': d({
             "fp": "lib-fountain-pen",
@@ -18,8 +18,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "liana2Pareto": "../../../liana2Pareto",
         }),
         'parameters': d({}),
-        'templates': d({}),
-        'types': types({
+        'types': d({
         }),
         'interfaces': d({}),
         'functions': d({
@@ -35,10 +34,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
-                "createIdentifier": definitionReference("ts", "CreateIdentifier"),
-                "joinNestedStrings": definitionReference("tostring", "JoinNestedStrings"),
-                "mapLiana2States": definitionReference("liana2Pareto", "MapLiana2States"),
-                "serializeStates": definitionReference("pareto2typescript", "SerializeStates"),
+                "createIdentifier": definitionReference("ts", {}, "CreateIdentifier"),
+                "joinNestedStrings": definitionReference("tostring", {}, "JoinNestedStrings"),
+                "mapLiana2States": definitionReference("liana2Pareto", {}, "MapLiana2States"),
+                "serializeStates": definitionReference("pareto2typescript", {}, "SerializeStates"),
             })),
             "serialize": algorithm(definitionReference("Serialize")),
         })

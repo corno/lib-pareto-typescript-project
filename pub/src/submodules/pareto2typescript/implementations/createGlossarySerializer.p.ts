@@ -88,19 +88,9 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                             break
                         case 'local':
                             pl.cc($.context[1], ($) => {
-                                $d.enrichedDictionaryForEach(globalParameters, {
-                                    'onEmpty': () => {
-
-                                    },
-                                    'onNotEmpty': ($c) => {
-                                        $i.snippet(`<`)
-                                        $c(($) => {
-                                            $i.snippet(`GP${$.key}${$.isLast ? `` : `, `}`)
-                                        })
-                                        $i.snippet(`>`)
-                                    }
+                                $d.dictionaryForEach(globalParameters, ($) => {
+                                    $i.snippet(`GP${$.key}, `)
                                 })
-
                             })
                             break
                         default: pl.au($.context[0])

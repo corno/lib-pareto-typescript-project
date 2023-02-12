@@ -877,7 +877,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                                             break
                                         case 'glossary parameter':
                                             pl.cc($[1], ($) => {
-                                                $i.snippet($d.createIdentifier(`H${$}`))
+                                                $i.snippet($d.createIdentifier(`GP${$}`))
                                             })
                                             break
                                         case 'taggedUnion':
@@ -1025,6 +1025,7 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 $i.nestedLine(($i) => {
                     $i.snippet(`export type ${$d.createIdentifier(`I${$.key}`)} = `)
                     serializeInterface($.value, $i)
+                    serializeGlobalParametersOnly($i)
                 })
             })
             $d.dictionaryForEach($.functions, ($) => {

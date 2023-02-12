@@ -5,17 +5,17 @@ export namespace T {
     
     export namespace AnnotatedToken {
         
-        export type annotation<GPAnnotation> = HAnnotation
+        export type annotation<GPAnnotation> = GPAnnotation
         
         export type token<GPAnnotation> = T.Token<GPAnnotation>
     }
     
     export type AnnotatedToken<GPAnnotation> = {
-        readonly 'annotation': HAnnotation
+        readonly 'annotation': GPAnnotation
         readonly 'token': T.Token<GPAnnotation>
     }
     
-    export type Annotation<GPAnnotation> = HAnnotation
+    export type Annotation<GPAnnotation> = GPAnnotation
     
     export namespace MultilineStringData {
         

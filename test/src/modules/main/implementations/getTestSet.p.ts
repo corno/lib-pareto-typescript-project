@@ -190,7 +190,7 @@ export const $$: api.CgetTestSet = ($) => {
     // })(mliana2Pareto.$a.createLiana2ParetoMapper({})(model), )
     // mliana2Pareto.$a.createLiana2ParetoMapper({})(model)
 
-    const builder = ps.createUnsafeDictionaryBuilder<mtst.TTestElement>()
+    const builder = ps.createUnsafeDictionaryBuilder<mtst.T.TestElement>()
     function createTest(name: string, actual: string, expected: string) {
         builder.add(name, {
             type: ['test', {

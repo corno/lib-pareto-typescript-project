@@ -1023,9 +1023,10 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             $d.dictionaryForEach($.interfaces, ($) => {
                 $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`export type ${$d.createIdentifier(`I${$.key}`)} = `)
-                    serializeInterface($.value, $i)
+                    $i.snippet(`export type ${$d.createIdentifier(`I${$.key}`)}`)
                     serializeGlobalParametersOnly($i)
+                    $i.snippet(` = `)
+                    serializeInterface($.value, $i)
                 })
             })
             $d.dictionaryForEach($.functions, ($) => {

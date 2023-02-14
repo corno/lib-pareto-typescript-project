@@ -155,24 +155,19 @@ export function interfaceReference(contextOrInterface: string, inf?: string): t.
         return {
             'context': ['local', {}],
             'interface': contextOrInterface,
-            // 'interface': {
-            //     'annotation': "SSDF",
-            //     'name': a
-            // },
         }
     } else {
         return {
             'context': context(contextOrInterface),
             'interface': inf,
-            // 'context': ['import', {
-            //     'annotation': "SSDF",
-            //     'name': a
-            // }],
-            // 'interface': {
-            //     'annotation': "SSDF",
-            //     'name': b
-            // },
         }
+    }
+}
+
+export function parametrizedInterfaceReference(contextOrInterface: string, args: RawDictionary<t.T.TypeReference<string>>, inf: string): t.T.InterfaceReference<string> {
+    return {
+        'context': context(contextOrInterface, args),
+        'interface': inf,
     }
 }
 

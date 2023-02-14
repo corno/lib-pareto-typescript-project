@@ -68,20 +68,22 @@ export const $$: api.CcreateProjectSerializer = (
                 $i.line(`  "description": "${$.description}",`)
                 $i.line(``)
                 $i.line(`  "dependencies": {`)
-                $d.dictionaryForEach($.pubdependencies, ($) => {
-                    $i.line(`    "${$.key}": "^0.0.0",`)
-                })
                 switch ($.type[0]) {
                     case 'glossary':
                         pl.cc($.type[1], ($) => {
+                            $d.dictionaryForEach($.dependencies, ($) => {
+                                $i.line(`    "${$.key}": "^0.0.0",`)
+                            })
                             $i.line(`    "pareto-core-types": "^0.0.0"`)
                         })
                         break
                     case 'library':
                         pl.cc($.type[1], ($) => {
+                            $d.dictionaryForEach($.dependencies, ($) => {
+                                $i.line(`    "${$.key}": "^0.0.0",`)
+                            })
                             $d.enrichedDictionaryForEach($.executables, {
                                 onEmpty: () => {
-
                                 },
                                 onNotEmpty: ($c) => {
                                     $i.line(`    "pareto-core-exe": "^0.0.0",`)
@@ -94,6 +96,9 @@ export const $$: api.CcreateProjectSerializer = (
                         break
                     case 'resource':
                         pl.cc($.type[1], ($) => {
+                            $d.dictionaryForEach($.dependencies, ($) => {
+                                $i.line(`    "${$.key}": "^0.0.0",`)
+                            })
                             $i.line(`    "pareto-core-internals": "^0.0.0"`)
                         })
                         break

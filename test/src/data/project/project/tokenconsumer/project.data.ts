@@ -11,8 +11,8 @@ export const $: mproject.T.Project = {
     'description': "common types and functions for Pareto",
     'license': "ISC",
 
-    'pubdependencies': d({}),
     'type': ['glossary', {
+        'dependencies': d({}),
         'glossary': glossary
     }],
 }

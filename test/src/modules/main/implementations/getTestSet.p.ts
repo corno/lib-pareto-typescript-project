@@ -53,11 +53,11 @@ export const $$: api.CgetTestSet = ($) => {
                 'author': "Corno",
                 'description': "TBD",
                 'license': "ISC",
-                'pubdependencies': d({
-                    "lib-pareto-fubar": {}
-                }),
                 'type': ['library', {
        
+                    'dependencies': d({
+                        "lib-pareto-fubar": {}
+                    }),
                     'main': module,
                     'submodules': d({}),
                     'executables': d({}),

@@ -42,27 +42,37 @@ export namespace T {
         
         export type license = string
         
-        export namespace pubdependencies {
-            
-            export namespace D {}
-            
-            export type D = {}
-        }
-        
-        export type pubdependencies = pt.Dictionary<{}>
-        
         export namespace _ltype {
             
             export namespace glossary {
+                
+                export namespace dependencies {
+                    
+                    export namespace D {}
+                    
+                    export type D = {}
+                }
+                
+                export type dependencies = pt.Dictionary<{}>
                 
                 export type glossary = mglossary.T.Glossary<mcommon.T.String>
             }
             
             export type glossary = {
+                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
             }
             
             export namespace library {
+                
+                export namespace dependencies {
+                    
+                    export namespace D {}
+                    
+                    export type D = {}
+                }
+                
+                export type dependencies = pt.Dictionary<{}>
                 
                 export namespace executables {
                     
@@ -86,6 +96,7 @@ export namespace T {
             }
             
             export type library = {
+                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'executables': pt.Dictionary<{}>
                 readonly 'main': T.Module
                 readonly 'submodules': pt.Dictionary<T.Module>
@@ -95,6 +106,15 @@ export namespace T {
             export namespace resource {
                 
                 export type definition = mmoduleDefinition.T.ModuleDefinition
+                
+                export namespace dependencies {
+                    
+                    export namespace D {}
+                    
+                    export type D = {}
+                }
+                
+                export type dependencies = pt.Dictionary<{}>
                 
                 export namespace devDependencies {
                     
@@ -110,6 +130,7 @@ export namespace T {
             
             export type resource = {
                 readonly 'definition': mmoduleDefinition.T.ModuleDefinition
+                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test
             }
@@ -117,9 +138,11 @@ export namespace T {
         
         export type _ltype = 
             | ['glossary', {
+                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
             }]
             | ['library', {
+                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'executables': pt.Dictionary<{}>
                 readonly 'main': T.Module
                 readonly 'submodules': pt.Dictionary<T.Module>
@@ -127,6 +150,7 @@ export namespace T {
             }]
             | ['resource', {
                 readonly 'definition': mmoduleDefinition.T.ModuleDefinition
+                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test
             }]
@@ -136,12 +160,13 @@ export namespace T {
         readonly 'author': string
         readonly 'description': string
         readonly 'license': string
-        readonly 'pubdependencies': pt.Dictionary<{}>
         readonly 'type': 
             | ['glossary', {
+                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
             }]
             | ['library', {
+                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'executables': pt.Dictionary<{}>
                 readonly 'main': T.Module
                 readonly 'submodules': pt.Dictionary<T.Module>
@@ -149,6 +174,7 @@ export namespace T {
             }]
             | ['resource', {
                 readonly 'definition': mmoduleDefinition.T.ModuleDefinition
+                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test
             }]

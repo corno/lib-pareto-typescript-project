@@ -39,17 +39,19 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
                 "author": member(string()),
                 "license": member(string()),
                 "description": member(string()),
-                "pubdependencies": member(dictionary(group({}))),
                 "type": member(taggedUnion({
                     "resource": group({
+                        "dependencies": member(dictionary(group({}))),
                         "devDependencies": member(dictionary(group({}))),
                         "definition": member(reference("moduleDefinition", "ModuleDefinition")),
                         "test": member(reference("Test")),
                     }),
                     "glossary": group({
+                        "dependencies": member(dictionary(group({}))),
                         "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "Glossary")]),
                     }),
                     "library": group({
+                        "dependencies": member(dictionary(group({}))),
                         "main": member(reference("Module")),
                         "submodules": member(dictionary(reference("Module"))),
                         "executables": member(dictionary(group({}))),

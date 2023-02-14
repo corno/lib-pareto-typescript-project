@@ -38,6 +38,15 @@ export namespace T {
         
         export type author = string
         
+        export namespace dependencies {
+            
+            export namespace D {}
+            
+            export type D = {}
+        }
+        
+        export type dependencies = pt.Dictionary<{}>
+        
         export type description = string
         
         export type license = string
@@ -46,33 +55,14 @@ export namespace T {
             
             export namespace glossary {
                 
-                export namespace dependencies {
-                    
-                    export namespace D {}
-                    
-                    export type D = {}
-                }
-                
-                export type dependencies = pt.Dictionary<{}>
-                
                 export type glossary = mglossary.T.Glossary<mcommon.T.String>
             }
             
             export type glossary = {
-                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
             }
             
             export namespace library {
-                
-                export namespace dependencies {
-                    
-                    export namespace D {}
-                    
-                    export type D = {}
-                }
-                
-                export type dependencies = pt.Dictionary<{}>
                 
                 export namespace executables {
                     
@@ -96,7 +86,6 @@ export namespace T {
             }
             
             export type library = {
-                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'executables': pt.Dictionary<{}>
                 readonly 'main': T.Module
                 readonly 'submodules': pt.Dictionary<T.Module>
@@ -107,15 +96,6 @@ export namespace T {
                 
                 export type definition = mmoduleDefinition.T.ModuleDefinition
                 
-                export namespace dependencies {
-                    
-                    export namespace D {}
-                    
-                    export type D = {}
-                }
-                
-                export type dependencies = pt.Dictionary<{}>
-                
                 export namespace devDependencies {
                     
                     export namespace D {}
@@ -125,24 +105,31 @@ export namespace T {
                 
                 export type devDependencies = pt.Dictionary<{}>
                 
+                export namespace nativeDependencies {
+                    
+                    export namespace D {}
+                    
+                    export type D = {}
+                }
+                
+                export type nativeDependencies = pt.Dictionary<{}>
+                
                 export type test = T.Test
             }
             
             export type resource = {
                 readonly 'definition': mmoduleDefinition.T.ModuleDefinition
-                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'devDependencies': pt.Dictionary<{}>
+                readonly 'nativeDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test
             }
         }
         
         export type _ltype = 
             | ['glossary', {
-                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
             }]
             | ['library', {
-                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'executables': pt.Dictionary<{}>
                 readonly 'main': T.Module
                 readonly 'submodules': pt.Dictionary<T.Module>
@@ -150,23 +137,22 @@ export namespace T {
             }]
             | ['resource', {
                 readonly 'definition': mmoduleDefinition.T.ModuleDefinition
-                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'devDependencies': pt.Dictionary<{}>
+                readonly 'nativeDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test
             }]
     }
     
     export type Project = {
         readonly 'author': string
+        readonly 'dependencies': pt.Dictionary<{}>
         readonly 'description': string
         readonly 'license': string
         readonly 'type': 
             | ['glossary', {
-                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
             }]
             | ['library', {
-                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'executables': pt.Dictionary<{}>
                 readonly 'main': T.Module
                 readonly 'submodules': pt.Dictionary<T.Module>
@@ -174,8 +160,8 @@ export namespace T {
             }]
             | ['resource', {
                 readonly 'definition': mmoduleDefinition.T.ModuleDefinition
-                readonly 'dependencies': pt.Dictionary<{}>
                 readonly 'devDependencies': pt.Dictionary<{}>
+                readonly 'nativeDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test
             }]
     }

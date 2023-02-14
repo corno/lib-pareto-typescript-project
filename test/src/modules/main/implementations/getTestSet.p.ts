@@ -53,11 +53,11 @@ export const $$: api.CgetTestSet = ($) => {
                 'author': "Corno",
                 'description': "TBD",
                 'license': "ISC",
+                'dependencies': d({
+                    "lib-pareto-fubar": {}
+                }),
                 'type': ['library', {
-       
-                    'dependencies': d({
-                        "lib-pareto-fubar": {}
-                    }),
+
                     'main': module,
                     'submodules': d({}),
                     'executables': d({}),
@@ -162,7 +162,7 @@ export const $$: api.CgetTestSet = ($) => {
         }),
     })
     mappedGlossary.modules.forEach(() => false, ($, key) => {
-       generateModule(`${$XXX.testDirectory}/fubar/${key}`, $)
+        generateModule(`${$XXX.testDirectory}/fubar/${key}`, $)
     })
 
     mliana2Pareto.$a.generateProject({

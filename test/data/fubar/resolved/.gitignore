@@ -6,6 +6,8 @@
 /pareto/node_modules/
 /pub/dist/
 /pub/node_modules/
+/pub/package.json
 /test/dist/
 /test/node_modules/
+/test/package.json
 /tmp

@@ -22,7 +22,7 @@ export const $: mproject.T.Project = {
     'license': "ISC",
 
 
-    'pubdependencies': d({
+    'dependencies': d({
         "glo-pareto-common": {},
         "lib-fountain-pen": {},
         "res-pareto-collation": {},
@@ -69,6 +69,13 @@ export const $: mproject.T.Project = {
                 "res-typescript": {},
 
             }),
+            'glossary': {
+                'functions': d({}),
+                'imports': d({}),
+                'parameters': d({}),
+                'types': d({}),
+                'interfaces': d({}),
+            },
         },
 
     }],

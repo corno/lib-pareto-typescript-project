@@ -176,9 +176,12 @@ export namespace T {
         }
         
         export type dependencies = pt.Dictionary<{}>
+        
+        export type glossary = mglossary.T.Glossary<mcommon.T.String>
     }
     
     export type Test = {
         readonly 'dependencies': pt.Dictionary<{}>
+        readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
     }
 }

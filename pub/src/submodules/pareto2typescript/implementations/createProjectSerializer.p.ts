@@ -386,7 +386,9 @@ export const $$: api.CcreateProjectSerializer = (
                             })
                         })
                     })
-
+                    $i.directory("glossary", ($i) => {
+                        $d.serializeGlossary($.glossary, $i)
+                    })
 
                     // $i.file("testXXXXX.generated.ts", ($i) => {
                     //     $i.line(`import * as pt from 'pareto-core-types'`)

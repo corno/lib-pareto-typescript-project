@@ -59,7 +59,8 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
                 })),
             })),
             "Test": type(group({
-                "dependencies": member(dictionary(group({})))
+                "dependencies": member(dictionary(group({}))),
+                "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "Glossary")]),
             })),
         }),
         'interfaces': d({}),

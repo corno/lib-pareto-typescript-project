@@ -63,6 +63,13 @@ export const $$: api.CgetTestSet = ($) => {
                     'executables': d({}),
                     'test': {
                         'dependencies': d({}),
+                        'glossary': {
+                            'functions': d({}),
+                            'imports': d({}),
+                            'parameters': d({}),
+                            'types': d({}),
+                            'interfaces': d({}),
+                        },
                     },
                 }],
                 // 'type': ['resource', {

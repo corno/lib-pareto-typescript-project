@@ -7,11 +7,6 @@ import * as mproject from "../../../../../pub/dist/submodules/project"
 
 import * as mglossary from "../../../../../pub/dist/submodules/glossary"
 
-type GRP = {
-    type: mglossary.T.Type<string>
-    optional?: boolean
-}
-
 const d = pd.wrapRawDictionary
 
 export const $: mproject.T.Module = {

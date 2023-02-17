@@ -3,7 +3,7 @@ import * as pd from 'pareto-core-data'
 import * as mmoduleDefinition from "./import_moduleDefinition"
 import * as mproject from "./import_project"
 import * as mglossary from "./import_glossary"
-import { dictionary, member, reference, string, type } from 'lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p'
+import { dictionary, member, reference, string, type } from 'lib-pareto-typescript-project/dist/submodules/glossary/shorthands'
 
 const d = pd.wrapRawDictionary
 const a = pd.wrapRawArray

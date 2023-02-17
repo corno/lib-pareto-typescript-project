@@ -14,7 +14,7 @@ import {
     //string,
     taggedUnion,
     string,
-} from "lib-pareto-typescript-project/dist/submodules/liana/shorthands.p"
+} from "lib-pareto-typescript-project/dist/submodules/liana/shorthands"
 
 export const $: mliana.T.Model = {
     'stringTypes': d({

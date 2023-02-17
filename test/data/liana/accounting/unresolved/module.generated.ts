@@ -1,4 +1,4 @@
-import * as pr from 'pareto-core-raw'
+import * as pr from 'pareto-core-data'
 
 import * as mmoduleDefinition from "./import_moduleDefinition"
 import * as mproject from "./import_project"

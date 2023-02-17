@@ -58,7 +58,7 @@ export const $$: api.CcreateParetoEnvironmentSerializer = (
             $i.line(`    "lib-pareto-typescript-project": "^0.0.0",`)
             $i.line(`    "pareto-core-exe": "^0.0.0",`)
             $i.line(`    "pareto-core-lib": "^0.0.0",`)
-            $i.line(`    "pareto-core-raw": "^0.0.0",`)
+            $i.line(`    "pareto-core-data": "^0.0.0",`)
             $i.line(`    "pareto-core-state": "^0.0.0",`)
             $i.line(`    "res-pareto-main": "^0.0.0"`)
             $i.line(`  }`)

@@ -87,7 +87,7 @@ export const $$: api.CcreateProjectSerializer = (
                                 }
                             })
                             $i.line(`    "pareto-core-lib": "^0.0.0",`)
-                            $i.line(`    "pareto-core-raw": "^0.0.0",`)
+                            $i.line(`    "pareto-core-data": "^0.0.0",`)
                             $i.line(`    "pareto-core-state": "^0.0.0"`)
                         })
                         break
@@ -303,7 +303,7 @@ export const $$: api.CcreateProjectSerializer = (
                     $i.line(`    "lib-pareto-test": "^0.0.0",`)
                     $i.line(`    "pareto-core-exe": "^0.0.0",`)
                     $i.line(`    "pareto-core-lib": "^0.0.0",`)
-                    $i.line(`    "pareto-core-raw": "^0.0.0",`)
+                    $i.line(`    "pareto-core-data": "^0.0.0",`)
                     $i.line(`    "pareto-core-state": "^0.0.0",`)
                     $i.line(`    "res-pareto-main": "^0.0.0"`)
                     $i.line(`  }`)
@@ -392,7 +392,7 @@ export const $$: api.CcreateProjectSerializer = (
 
                     // $i.file("testXXXXX.generated.ts", ($i) => {
                     //     $i.line(`import * as pt from 'pareto-core-types'`)
-                    //     $i.line(`import * as pr from 'pareto-core-raw'`)
+                    //     $i.line(`import * as pr from 'pareto-core-data'`)
                     //     $i.line(`import * as pl from 'pareto-core-lib'`)
                     //     $i.line(`import * as tst from "lib-pareto-test"`)
                     //     $i.line(``)

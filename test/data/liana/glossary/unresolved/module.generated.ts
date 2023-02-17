@@ -4,7 +4,7 @@ import * as mmoduleDefinition from "./import_moduleDefinition"
 import * as mproject from "./import_project"
 import * as mglossary from "./import_glossary"
 
-const d = pr.wrapRawDictionary
+const d = pd.wrapRawDictionary
 const a = pr.wrapRawArray
 
 export const $: mproject.TModule = {

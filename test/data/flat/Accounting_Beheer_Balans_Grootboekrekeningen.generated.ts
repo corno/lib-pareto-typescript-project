@@ -3,6 +3,7 @@ import * as pl from 'pareto-core-lib'
 function assertNotNull($: null | string): string { if ($ === null) { throw new Error("UNEXPECTED NULL") }; return $ }
 
 export function $$(
+    FIX PARENT PATH
     id: string,
     item_operation: string,
     //////
@@ -12,7 +13,9 @@ export function $$(
     operation_Zijde: null | string,
 ) {
     return  {
-        'parents': {},
+        'parents': {
+            FIX PARENT PATH
+        },
         'id': id,
         'data': {
             'Hoofdcategorie': prop_Hoofdcategorie,

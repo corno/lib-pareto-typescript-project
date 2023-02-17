@@ -1,5 +1,5 @@
 
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 
 import * as api from "./api"
 
@@ -8,8 +8,8 @@ import * as mglossary from "../glossary"
 // import { Function, Glossary, LeafType, Type } from "./types.p"
 
 
-const d = pr.wrapRawDictionary
-const a = pr.wrapRawArray
+const d = pd.wrapRawDictionary
+const a = pd.wrapRawArray
 
 type RawDictionary<T> = { [key: string]: T }
 

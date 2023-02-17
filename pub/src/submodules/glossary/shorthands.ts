@@ -1,9 +1,9 @@
 import * as pl from 'pareto-core-lib'
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 
 import * as t from "./api"
 
-const d = pr.wrapRawDictionary
+const d = pd.wrapRawDictionary
 
 type RawDictionary<T> = { [key: string]: T }
 

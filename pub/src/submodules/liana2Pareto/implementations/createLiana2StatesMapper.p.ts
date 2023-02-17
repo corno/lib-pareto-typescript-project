@@ -1,20 +1,32 @@
+import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 
 import * as api from "../api"
 
-import {
-} from "../../glossary/shorthands.p"
+import { types } from "../../glossary/shorthands"
 
 import * as malgorithm from "../../algorithm"
-import * as mglossary from "../../glossary"
-import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mliana from "../../liana"
 
-
-const d = pr.wrapRawDictionary
-const a = pr.wrapRawArray
-
+function getEntry<T, RT>(
+    dictionary: pt.Dictionary<T>,
+    key: string,
+    exists: ($: T) => RT,
+    notExists: () => RT
+): RT {
+    let entry: T | undefined = undefined
+    dictionary.map(($, thisKey) => {
+        if (thisKey === key) {
+            entry = $
+        }
+    })
+    if (entry !== undefined) {
+        return exists(entry)
+    } else {
+        return notExists()
+    }
+}
 
 export const $$: api.CcreateLiana2StatesMapper = ($d) => {
     return ($) => {
@@ -51,7 +63,7 @@ export const $$: api.CcreateLiana2StatesMapper = ($d) => {
                             switch ($.constrained[0]) {
                                 case 'no':
                                     return pl.cc($.constrained[1], ($) => {
-                                        return pr.getEntry(
+                                        return getEntry(
                                             stringMapping, $.type.name,
                                             ($) => {
                                                 switch ($[0]) {

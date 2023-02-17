@@ -1,7 +1,7 @@
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 import {
     dictionary, group as grp, member, taggedUnion, types, group, type
-} from "../../../../../pub/dist/submodules/glossary/shorthands.p"
+} from "../../../../../pub/dist/submodules/glossary/shorthands"
 
 import * as mproject from "../../../../../pub/dist/submodules/project"
 
@@ -12,8 +12,7 @@ type GRP = {
     optional?: boolean
 }
 
-const d = pr.wrapRawDictionary
-const a = pr.wrapRawArray
+const d = pd.wrapRawDictionary
 
 export const $: mproject.T.Module = {
     'definition': {

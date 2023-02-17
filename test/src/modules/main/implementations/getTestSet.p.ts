@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
 import * as ps from 'pareto-core-state'
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 
 import * as mtst from "lib-pareto-test"
 
@@ -10,7 +10,7 @@ import * as api from "../api"
 
 import {
     dictionary, member, taggedUnion, types, group
-} from "../../../../../pub/dist/submodules/glossary/shorthands.p"
+} from "../../../../../pub/dist/submodules/glossary/shorthands"
 
 
 import * as mliana_flat from "../../../../../pub/dist/submodules/liana_flat"
@@ -19,7 +19,7 @@ import * as mliana from "../../../../../pub/dist/submodules/liana"
 import * as mliana2Pareto from "../../../../../pub/dist/submodules/liana2Pareto"
 import * as mfp from "lib-fountain-pen"
 
-const d = pr.wrapRawDictionary
+const d = pd.wrapRawDictionary
 
 
 import * as pub from "../../../../../pub"
@@ -38,7 +38,7 @@ export const $$: api.CgetTestSet = ($) => {
     function genProj(dir: string, proj: mproject.T.Project) {
         pub.$a.generateProject({
             'mainData': {
-                'arguments': pr.wrapRawArray([dir]),
+                'arguments': pd.wrapRawArray([dir]),
             },
             'project': proj,
         })
@@ -47,7 +47,7 @@ export const $$: api.CgetTestSet = ($) => {
     function generateModule(dir: string, module: mproject.T.Module) {
         pub.$a.generateProject({
             'mainData': {
-                'arguments': pr.wrapRawArray([dir]),
+                'arguments': pd.wrapRawArray([dir]),
             },
             'project': {
                 'author': "Corno",
@@ -107,7 +107,7 @@ export const $$: api.CgetTestSet = ($) => {
     //     {
     //         getTestSet: ($) => {
     //             return pl.asyncValue({
-    //                 elements: pr.wrapRawDictionary({})
+    //                 elements: pd.wrapRawDictionary({})
     //             })
     //         },
     //         log: ($) => {
@@ -164,7 +164,7 @@ export const $$: api.CgetTestSet = ($) => {
     const mappedGlossary = mliana2Pareto.$a.mapLiana2Pareto({
         'model': glossary,
 
-        'stringmapping': pr.wrapRawDictionary({
+        'stringmapping': pd.wrapRawDictionary({
             "identifier": ['string', null]
         }),
     })
@@ -174,19 +174,19 @@ export const $$: api.CgetTestSet = ($) => {
 
     mliana2Pareto.$a.generateProject({
         'mainData': {
-            'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/liana/glossary`]),
+            'arguments': pd.wrapRawArray([`${$XXX.testDirectory}/liana/glossary`]),
         },
         'model': {
             'model': glossary,
 
-            'stringmapping': pr.wrapRawDictionary({
+            'stringmapping': pd.wrapRawDictionary({
                 "identifier": ['string', null]
             }),
         },
     })
     mliana2Pareto.$a.generateProject({
         'mainData': {
-            'arguments': pr.wrapRawArray([`${$XXX.testDirectory}/liana/accounting`]),
+            'arguments': pd.wrapRawArray([`${$XXX.testDirectory}/liana/accounting`]),
         },
         'model': accountingModel,
     })

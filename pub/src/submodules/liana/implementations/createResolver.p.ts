@@ -1,9 +1,28 @@
 import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 import * as ps from 'pareto-core-state'
 
 import * as api from "../api"
+
+function getEntry<T, RT>(
+    dictionary: pt.Dictionary<T>,
+    key: string,
+    exists: ($: T) => RT,
+    notExists: () => RT
+): RT {
+    let entry: T | undefined = undefined
+    dictionary.map(($, thisKey) => {
+        if (thisKey === key) {
+            entry = $
+        }
+    })
+    if (entry !== undefined) {
+        return exists(entry)
+    } else {
+        return notExists()
+    }
+}
 
 export const $$: api.CcreateResolver = ($d) => {
     let hasErrors = false
@@ -81,7 +100,7 @@ export const $$: api.CcreateResolver = ($d) => {
             onError(`${key.annotation}: no dictionary`)
             return ['not set', {}]
         } else {
-            return pr.getEntry(
+            return getEntry(
                 dict.dictionary,
                 key.name,
                 ($): api.T.Possibly<api.T.YReference<T>> => {

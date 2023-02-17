@@ -1,6 +1,4 @@
 import * as pl from 'pareto-core-lib'
-import * as pi from 'pareto-core-internals'//FIXME shouldn't be used
-import * as pr from 'pareto-core-raw'//FIXME shouldn't be used
 
 import * as api from "../api"
 
@@ -56,7 +54,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                         break
                     case 'dictionary':
                         pl.cc($[1], ($) => {
-                            const parentPathAsArray = pr.wrapRawArray(pi.flatten(idPath))
+                            //const parentPathAsArray = pr.wrapRawArray(pi.flatten(idPath))
                             $i.file(
                                 `${$d.joinNestedStrings({
                                     'strings': path,
@@ -71,9 +69,10 @@ export const $$: api.CcreateSerializer = ($d) => {
 
                                         $i.snippet(`export function $$(`)
                                         $i.indent(($i) => {
-                                            parentPathAsArray.forEach(($) => {
-                                                $i.line(`parent_${$d.createIdentifier($)}: string,`)
-                                            })
+                                            $i.line(`FIX PARENT PATH`)
+                                            // parentPathAsArray.forEach(($) => {
+                                            //     $i.line(`parent_${$d.createIdentifier($)}: string,`)
+                                            // })
                                             $i.line(`id: string,`)
                                             $i.line(`item_operation: string,`)
                                             $i.line(`//////`)
@@ -162,9 +161,10 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                     $i.nestedLine(($i) => {
                                                         $i.snippet(`'parents': {`)
                                                         $i.indent(($i) => {
-                                                            parentPathAsArray.forEach(($) => {
-                                                                $i.line(`'${$}': parent_${$d.createIdentifier($)},`)
-                                                            })
+                                                            $i.line(`FIX PARENT PATH`)
+                                                            // parentPathAsArray.forEach(($) => {
+                                                            //     $i.line(`'${$}': parent_${$d.createIdentifier($)},`)
+                                                            // })
                                                         })
                                                         $i.snippet(`},`)
                                                     })

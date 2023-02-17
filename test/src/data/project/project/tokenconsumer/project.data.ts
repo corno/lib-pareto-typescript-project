@@ -1,8 +1,8 @@
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 
 import * as mproject from "../../../../../../pub/dist/submodules/project"
 
-const d = pr.wrapRawDictionary
+const d = pd.wrapRawDictionary
 
 import { $ as glossary } from "./glossary.data"
 

@@ -1,4 +1,4 @@
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 import * as pl from 'pareto-core-lib'
 
 import {
@@ -17,24 +17,24 @@ function r_imp(name: string, annotation: string): T._$Reference {
 function d_imp<T>($: RawDictionary<T>, annotation: string): T.Dictionary<T> {
     return {
         'annotation': annotation,
-        'dictionary': pr.wrapRawDictionary($),
+        'dictionary': pd.wrapRawDictionary($),
     }
 }
 
 function d_mappedimp<T, RT>($: RawDictionary<T>, annotation: string, cb: ($: T) => RT): T.Dictionary<RT> {
     return {
         'annotation': annotation,
-        'dictionary': pr.wrapRawDictionary($).map(cb),
+        'dictionary': pd.wrapRawDictionary($).map(cb),
     }
 }
 
 export function d<T>($: RawDictionary<T>) {
-    const li = pr.getLocationInfo(1)
+    const li = pd.getLocationInfo(1)
     return d_imp($, li)
 }
 
 export function r(name: string): T._$Reference {
-    const li = pr.getLocationInfo(1)
+    const li = pd.getLocationInfo(1)
     return r_imp(name, li)
 }
 
@@ -51,7 +51,7 @@ function constrainedString($: ReferenceType, steps: Step[], annotation: string):
 }
 
 export function constrainedDictionary($: ReferenceType, steps: Step[], type: T.LocalType): T.LocalType {
-    const li = pr.getLocationInfo(1)
+    const li = pd.getLocationInfo(1)
     return ['dictionary', {
         // 'annotation': li,
         'key': constrainedString($, steps, li),
@@ -60,7 +60,7 @@ export function constrainedDictionary($: ReferenceType, steps: Step[], type: T.L
 }
 
 export function dictionary(type: T.LocalType): T.LocalType {
-    const li = pr.getLocationInfo(1)
+    const li = pd.getLocationInfo(1)
 
     return ['dictionary', {
         // 'annotation': li,
@@ -74,7 +74,7 @@ export function dictionary(type: T.LocalType): T.LocalType {
 }
 
 export function globalType(parameters: RawDictionary<string>, type: T.LocalType): T.GlobalType {
-    const li = pr.getLocationInfo(1)
+    const li = pd.getLocationInfo(1)
     return {
         'type': type,
         'parameters': d_mappedimp(parameters, li, ($) => {
@@ -84,11 +84,11 @@ export function globalType(parameters: RawDictionary<string>, type: T.LocalType)
 }
 
 export function group(properties: RawDictionary<[string[], T.LocalType]>): T.LocalType {
-    const li = pr.getLocationInfo(1)
+    const li = pd.getLocationInfo(1)
     return ['group', {
         'properties': d_mappedimp(properties, li, ($) => {
             const temp: RawDictionary<null> = {}
-            pr.wrapRawArray($[0]).forEach(($) => {
+            pd.wrapRawArray($[0]).forEach(($) => {
                 temp[$] = null
             })
             return {
@@ -100,9 +100,9 @@ export function group(properties: RawDictionary<[string[], T.LocalType]>): T.Loc
 }
 
 export function taggedUnion(options: RawDictionary<T.LocalType>): T.LocalType {
-    const li = pr.getLocationInfo(1)
+    const li = pd.getLocationInfo(1)
     let firstKey: null | string = null
-    pr.wrapRawDictionary(options).map(($, key) => {
+    pd.wrapRawDictionary(options).map(($, key) => {
         if (firstKey === null) {
             firstKey = key
         }
@@ -125,7 +125,7 @@ export function taggedUnion(options: RawDictionary<T.LocalType>): T.LocalType {
 }
 
 export function string(type: string): T.LocalType {
-    const li = pr.getLocationInfo(1)
+    const li = pd.getLocationInfo(1)
     return ['string', {
         'constrained': ['no', {
             'type': r_imp(type, li),
@@ -172,7 +172,7 @@ function referenceX($: ReferenceType, steps: Step[], annotation: string): T.Refe
                 default: return pl.au($[0])
             }
         }),
-        'steps': pr.wrapRawArray(steps).map(($) => {
+        'steps': pd.wrapRawArray(steps).map(($) => {
             switch ($[0]) {
                 case 'array':
                     return pl.cc($[1], ($) => {
@@ -201,14 +201,14 @@ export function reference(
     type: ReferenceType,
     steps: Step[],
 ): T.LocalType {
-    const li = pr.getLocationInfo(1)
+    const li = pd.getLocationInfo(1)
     return ['string', {
         'constrained': ['yes', referenceX(type, steps, li)],
     }]
 }
 
 export function component(type: string, args: RawDictionary<null>): T.LocalType {
-    const li = pr.getLocationInfo(1)
+    const li = pd.getLocationInfo(1)
     return ['component', {
         'type': {
             'name': type,

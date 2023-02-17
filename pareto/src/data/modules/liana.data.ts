@@ -1,4 +1,4 @@
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 import {
     computed,
     string,
@@ -11,7 +11,7 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p'
 
 
-const d = pr.wrapRawDictionary
+const d = pd.wrapRawDictionary
 
 export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {

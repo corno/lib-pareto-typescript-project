@@ -1,5 +1,5 @@
 import * as pl from 'pareto-core-lib'
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 
 import * as api from "../api"
 
@@ -17,7 +17,7 @@ export const $$: api.Cmain = ($) => {
     //     'model': {
     //         'model': glossary,
 
-    //         'stringmapping': pr.wrapRawDictionary({
+    //         'stringmapping': pd.wrapRawDictionary({
     //             "identifier": ['string', null]
     //         }),
     //     },

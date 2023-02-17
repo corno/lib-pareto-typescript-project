@@ -1,4 +1,4 @@
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 
 import * as mliana from "lib-pareto-typescript-project/dist/submodules/liana"
 import {

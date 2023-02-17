@@ -167,7 +167,7 @@ export const $$: api.CcreateProjectSerializer = (
                         pl.cc($.type[1], ($) => {
                             function doModule($: mproject.T.Module, $i: mfp.IWriter) {
 
-                                $i.allowed("shorthands.p.ts")
+                                $i.allowed("shorthands.ts")
                                 $i.directory("api", ($i) => {
                                     $d.serializeModuleDefinition($.definition, $i)
                                 })
@@ -406,12 +406,12 @@ export const $$: api.CcreateProjectSerializer = (
                     //     })
                     //     $i.line(``)
                     //     $i.nestedLine(($i) => {
-                    //         $i.snippet(`const x = pr.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({`)
+                    //         $i.snippet(`const x = pd.wrapRawDictionary<pt.Dictionary<() => pt.AsyncValue<tst.TTestElement>>>({`)
                     //         $i.indent(($i) => {
                     //             $d.dictionaryForEach($.modules, ($, key) => {
                     //                 const moduleName = key
                     //                 $i.nestedLine(($i) => {
-                    //                     $i.snippet(`'${key}': pr.wrapRawDictionary({`)
+                    //                     $i.snippet(`'${key}': pd.wrapRawDictionary({`)
                     //                     $i.indent(($i) => {
                     //                         $d.dictionaryForEach($.definition.api.algorithms, ($, key) => {
                     //                             $i.nestedLine(($i) => {

@@ -1,4 +1,4 @@
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 
 import * as mliana from "../../../../../pub/dist/submodules/liana"
 import * as mliana2Pareto from "../../../../../pub/dist/submodules/liana2Pareto"
@@ -15,12 +15,12 @@ import {
     reference,
     string,
     taggedUnion,
-} from "../../../../../pub/dist/submodules/liana/shorthands.p"
+} from "../../../../../pub/dist/submodules/liana/shorthands"
 
 
 
 export const $: mliana2Pareto.T.MappedModel = {
-    'stringmapping': pr.wrapRawDictionary({
+    'stringmapping': pd.wrapRawDictionary({
         "bedrag": ['number', null],
         "bestand": ['string', null],
         "dagen": ['number', null],

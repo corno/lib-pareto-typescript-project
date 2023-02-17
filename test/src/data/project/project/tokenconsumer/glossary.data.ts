@@ -1,4 +1,4 @@
-import * as pr from 'pareto-core-raw'
+import * as pd from 'pareto-core-data'
 
 import {
     nested,
@@ -17,11 +17,11 @@ import {
     array,
     method,
     type,
-} from "../../../../../../pub/dist/submodules/glossary/shorthands.p"
+} from "../../../../../../pub/dist/submodules/glossary/shorthands"
 
 import * as mglossary from "../../../../../../pub/dist/submodules/glossary"
 
-const d = pr.wrapRawDictionary
+const d = pd.wrapRawDictionary
 
 export const $: mglossary.T.Glossary<string> = {
     'imports': d({}),

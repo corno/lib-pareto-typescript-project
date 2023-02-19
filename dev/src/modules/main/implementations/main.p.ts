@@ -1,5 +1,5 @@
 import * as pl from 'pareto-core-lib'
-import * as pd from 'pareto-core-data'
+import * as pd from 'pareto-core-dev'
 
 import * as api from "../api"
 
@@ -9,7 +9,7 @@ import * as mliana2Pareto from "lib-pareto-typescript-project/dist/submodules/li
 import { $ as glossary } from "../../../data/glossary.data"
 
 export const $$: api.Cmain = ($) => {
-    pl.logDebugMessage("REENABLE LIANA GENERATION")
+    pd.logDebugMessage("REENABLE LIANA GENERATION")
     // mliana2Pareto.$a.generateProject({
     //     'mainData': {
     //         'arguments': pr.wrapRawArray([`../../pareto/src/data/glossary`]),

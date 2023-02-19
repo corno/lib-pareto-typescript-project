@@ -218,7 +218,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
         //             break
         //         case 'implementMe':
         //             pl.cc($[1], ($) => {
-        //                 $i.snippet(`pl.implementMe(\`${$}\`)`)
+        //                 $i.snippet(`pd.implementMe(\`${$}\`)`)
         //             })
         //             break
         //         case 'mapArray':
@@ -277,7 +277,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
         //             })
         //         }
         //         $.statements
-        //         pl.implementMe(`SFSDFSDR`)
+        //         pd.implementMe(`SFSDFSDR`)
         //     })
         //     $i.snippet(`}`)
         // }

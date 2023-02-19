@@ -1,6 +1,6 @@
 import * as pt from 'pareto-core-types'
+import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
-import * as pd from 'pareto-core-data'
 import * as ps from 'pareto-core-state'
 
 import * as api from "../api"
@@ -69,9 +69,9 @@ export const $$: api.CcreateResolver = ($d) => {
                         }
                     },
                     subscribeToSibling: () => {
-                        pl.implementMe(`implement subscription`)
+                        pd.implementMe(`implement subscription`)
                         return () => {
-                            pl.implementMe(`SKDFSL:FSF`)
+                            pd.implementMe(`SKDFSL:FSF`)
                         }
                     }
                 })
@@ -210,16 +210,16 @@ export const $$: api.CcreateResolver = ($d) => {
                                     case 'other':
                                         return pl.cc($[1], ($) => {
                                             //onError(`IMPLEMENT OTHER`)
-                                            //pl.implementMe(`case`)
+                                            //pd.implementMe(`case`)
                                         })
                                     case 'parameter':
                                         return pl.cc($[1], ($) => {
-                                            //pl.implementMe(`case`)
+                                            //pd.implementMe(`case`)
                                         })
                                     case 'sibling':
                                         return pl.cc($[1], ($) => {
                                             if (support.siblings === null) {
-                                                pl.implementMe(`NO SIBLINGS`)
+                                                pd.implementMe(`NO SIBLINGS`)
                                             } else {
                                                 const annotation = $.annotation
                                                 const current = resolve("sibling", support.siblings, $)

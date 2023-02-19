@@ -37,7 +37,7 @@ export const $$: api.CcreateTemplateSerializer = (
                                                             $i.snippet(`return ($) => {`)
                                                             $i.indent(($i) => {
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`pl.implementMe("IMPLEMENT ${$.key}")`)
+                                                                    $i.snippet(`pd.implementMe("IMPLEMENT ${$.key}")`)
                                                                 })
                                                             })
                                                             $i.snippet(`}`)
@@ -117,7 +117,7 @@ export const $$: api.CcreateTemplateSerializer = (
                                                             $i.snippet(`return ($) => {`)
                                                             $i.indent(($i) => {
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`pl.implementMe("IMPLEMENT ${$.key}")`)
+                                                                    $i.snippet(`pd.implementMe("IMPLEMENT ${$.key}")`)
                                                                 })
                                                             })
                                                             $i.snippet(`}`)

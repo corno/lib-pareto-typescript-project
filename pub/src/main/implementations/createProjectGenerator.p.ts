@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core-types'
+import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
 
 import * as api from "../api"
@@ -19,13 +19,13 @@ export const $$: api.CcreateProjectGenerator = ($d) => {
                 switch ($[0]) {
                     case 'missing':
                         pl.cc($[1], ($) => {
-                            pl.implementMe(`@@@@NA`)
+                            pd.implementMe(`@@@@NA`)
 
                         })
                         break
                     case 'too many':
                         pl.cc($[1], ($) => {
-                            pl.implementMe(`@@@@2M`)
+                            pd.implementMe(`@@@@2M`)
 
                         })
                         break

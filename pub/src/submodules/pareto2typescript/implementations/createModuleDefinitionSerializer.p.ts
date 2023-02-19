@@ -22,7 +22,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
                 $c.onNotset(null, $i)
             }
         }
-        function glossary($: mglossary.T.Glossary<pd.SourceLocation>, $i: mfp.IWriter) {
+        function glossary($: mglossary.T.Glossary<Annotation>, $i: mfp.IWriter) {
             $i.directory(`glossary`, ($i) => {
                 $d.serializeGlossary($, $i)
 

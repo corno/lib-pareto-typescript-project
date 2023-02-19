@@ -224,7 +224,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
         //                             break
         //                         default: pl.au($[0])
         //                     }
-        //                     pl.implementMe(`SSDFSS`)
+        //                     pd.implementMe(`SSDFSS`)
         //                 })
         //             })
         //             $i.snippet(`}),`)

@@ -512,7 +512,7 @@ export const $$: api.CcreateProjectSerializer = (
                     //                     $i.nestedLine(($i) => {
                     //                         $i.snippet(`export function test(): pt.AsyncValue<tst.TTestElement> {`)
                     //                         $i.indent(($i) => {
-                    //                             $i.line(`pl.implementMe(\`${moduleName}:${key}\`)`)
+                    //                             $i.line(`pd.implementMe(\`${moduleName}:${key}\`)`)
                     //                         })
                     //                         $i.snippet(`}`)
                     //                     })

@@ -2,6 +2,8 @@ import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
 import * as ps from 'pareto-core-state'
 import * as pd from 'pareto-core-data'
+import * as pv from 'pareto-core-dev'
+
 
 import * as mtst from "lib-pareto-test"
 
@@ -118,16 +120,16 @@ export const $$: api.CgetTestSet = ($) => {
     // )
     const resolve = mliana.$a.createResolver({
         'onError': ($) => {
-            pl.logDebugMessage($)
+            pv.logDebugMessage($)
         }
     })
 
     const writer = mfp.$a.createWriter({
         onError: ($) => {
-            pl.logDebugMessage($)
+            pv.logDebugMessage($)
         },
         reportSuperfluousNode: ($) => {
-            pl.logDebugMessage(mfp.$a.createSuperfluousNodeMessage($))
+            pv.logDebugMessage(mfp.$a.createSuperfluousNodeMessage($))
         },
     })
     writer([$XXX.testDirectory, 'flat'], ($i) => {

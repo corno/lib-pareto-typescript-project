@@ -313,6 +313,7 @@ export const $$: api.CcreateProjectSerializer = (
                     $i.line(`    "lib-pareto-test": "^0.0.0",`)
                     $i.line(`    "pareto-core-exe": "^0.0.0",`)
                     $i.line(`    "pareto-core-map": "^0.0.0",`)
+                    $i.line(`    "pareto-core-dev": "^0.0.0",`)
                     $i.line(`    "pareto-core-lib": "^0.0.0",`)
                     $i.line(`    "pareto-core-data": "^0.0.0",`)
                     $i.line(`    "pareto-core-state": "^0.0.0",`)

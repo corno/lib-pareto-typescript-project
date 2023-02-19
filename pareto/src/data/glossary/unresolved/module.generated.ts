@@ -5,8 +5,8 @@ import * as mproject from "./import_project"
 import * as mglossary from "./import_glossary"
 import { dictionary, member, reference, string, type } from 'lib-pareto-typescript-project/dist/submodules/glossary/shorthands'
 
-const d = pd.wrapRawDictionary
-const a = pd.wrapRawArray
+const d = pd.d
+const a = pd.a
 
 export const $: mproject.T.Module<pd.SourceLocation> = {
     'definition': {
@@ -285,13 +285,13 @@ export const $: mproject.T.Module<pd.SourceLocation> = {
                     'data': {
                         'context': <mglossary.T.Context<string>>['local', {}],
                         'type': "Glossary",
-                        'arguments': pd.wrapRawDictionary({}),
+                        'arguments': pd.d({}),
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['set', {
                         'context': <mglossary.T.Context<string>>['import', {
                             'glossary': "fp",
-                            'arguments': pd.wrapRawDictionary({}),
+                            'arguments': pd.d({}),
                         }],
                         'interface': "Line",
                     }],

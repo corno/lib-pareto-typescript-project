@@ -7,7 +7,7 @@ import * as mproject from "../../../../../pub/dist/submodules/project"
 
 import * as mglossary from "../../../../../pub/dist/submodules/glossary"
 
-const d = pd.wrapRawDictionary
+const d = pd.d
 
 export const $: mproject.T.Module<pd.SourceLocation> = {
     'definition': {

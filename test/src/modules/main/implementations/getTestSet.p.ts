@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
 import * as ps from 'pareto-core-state'
-import * as pd from 'pareto-core-data'
+import * as pm from 'pareto-core-map'
 import * as pv from 'pareto-core-dev'
 
 
@@ -21,7 +21,7 @@ import * as mliana from "../../../../../pub/dist/submodules/liana"
 import * as mliana2Pareto from "../../../../../pub/dist/submodules/liana2Pareto"
 import * as mfp from "lib-fountain-pen"
 
-const d = pd.wrapRawDictionary
+const d = pm.wrapRawDictionary
 
 
 import * as pub from "../../../../../pub"
@@ -37,19 +37,19 @@ import { $ as tc } from "../../../data/project/project/tokenconsumer/project.dat
 export const $$: api.CgetTestSet = ($) => {
     const $XXX = $
 
-    function genProj(dir: string, proj: mproject.T.Project<pd.SourceLocation>) {
+    function genProj<Annotation>(dir: string, proj: mproject.T.Project<Annotation>) {
         pub.$a.generateProject({
             'mainData': {
-                'arguments': pd.wrapRawArray([dir]),
+                'arguments': pm.wrapRawArray([dir]),
             },
             'project': proj,
         })
 
     }
-    function generateModule(dir: string, module: mproject.T.Module<pd.SourceLocation>) {
+    function generateModule<Annotation>(dir: string, module: mproject.T.Module<Annotation>) {
         pub.$a.generateProject({
             'mainData': {
-                'arguments': pd.wrapRawArray([dir]),
+                'arguments': pm.wrapRawArray([dir]),
             },
             'project': {
                 'author': "Corno",
@@ -61,7 +61,7 @@ export const $$: api.CgetTestSet = ($) => {
                 'type': ['library', {
 
                     'main': module,
-                    'submodules': d<mproject.T.Module<pd.SourceLocation>>({}),
+                    'submodules': d<mproject.T.Module<Annotation>>({}),
                     'executables': d({}),
                     'test': {
                         'dependencies': d({}),
@@ -136,7 +136,7 @@ export const $$: api.CgetTestSet = ($) => {
         mliana_flat.$a.serialize(accountingModel, $i)
     })
 
-    function x($: mliana.T.Model<pd.SourceLocation>) {
+    function x<Annotation>($: mliana.T.Model<Annotation>) {
         const res = resolve($)
         switch (res[0]) {
             case 'not set':
@@ -166,7 +166,7 @@ export const $$: api.CgetTestSet = ($) => {
     const mappedGlossary = mliana2Pareto.$a.mapLiana2Pareto({
         'model': glossary,
 
-        'stringmapping': pd.wrapRawDictionary({
+        'stringmapping': pm.wrapRawDictionary({
             "identifier": ['string', null]
         }),
     })
@@ -176,19 +176,19 @@ export const $$: api.CgetTestSet = ($) => {
 
     mliana2Pareto.$a.generateProject({
         'mainData': {
-            'arguments': pd.wrapRawArray([`${$XXX.testDirectory}/liana/glossary`]),
+            'arguments': pm.wrapRawArray([`${$XXX.testDirectory}/liana/glossary`]),
         },
         'model': {
             'model': glossary,
 
-            'stringmapping': pd.wrapRawDictionary({
+            'stringmapping': pm.wrapRawDictionary({
                 "identifier": ['string', null]
             }),
         },
     })
     mliana2Pareto.$a.generateProject({
         'mainData': {
-            'arguments': pd.wrapRawArray([`${$XXX.testDirectory}/liana/accounting`]),
+            'arguments': pm.wrapRawArray([`${$XXX.testDirectory}/liana/accounting`]),
         },
         'model': accountingModel,
     })

@@ -11,7 +11,7 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands'
 
 
-const d = pd.wrapRawDictionary
+const d = pd.d
 
 export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {

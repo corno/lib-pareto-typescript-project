@@ -20,7 +20,7 @@ import {
 
 
 export const $: mliana2Pareto.T.MappedModel<pd.SourceLocation> = {
-    'stringmapping': pd.wrapRawDictionary({
+    'stringmapping': pd.d({
         "bedrag": ['number', null],
         "bestand": ['string', null],
         "dagen": ['number', null],

@@ -210,7 +210,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
             'modules': pd.wrapRawDictionary({
                 "resolved": {
                     'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
-                        'glossary': <mglossary.T.Glossary<string>>{
+                        'glossary': <mglossary.T.Glossary<pd.SourceLocation>>{
                             'imports': pd.wrapRawDictionary({
                                 "fp": "lib-fountain-pen",
                             }),
@@ -311,7 +311,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 },
                 "unresolved": {
                     'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
-                        'glossary': <mglossary.T.Glossary<string>>{
+                        'glossary': <mglossary.T.Glossary<pd.SourceLocation>>{
                             'imports': pd.wrapRawDictionary({
                                 // "fp": {
                                 //     'name': "lib-fountain-pen",
@@ -511,7 +511,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 },
                 "sparse": {
                     'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
-                        'glossary': <mglossary.T.Glossary<string>>{
+                        'glossary': <mglossary.T.Glossary<pd.SourceLocation>>{
                             'imports': pd.wrapRawDictionary({
                                 "fp": "lib-fountain-pen",
                             }),

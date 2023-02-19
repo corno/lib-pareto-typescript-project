@@ -23,7 +23,7 @@ import * as mglossary from "../../../../../../pub/dist/submodules/glossary"
 
 const d = pd.wrapRawDictionary
 
-export const $: mglossary.T.Glossary<string> = {
+export const $: mglossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({}),
     'parameters': d({
         "Annotation": {},

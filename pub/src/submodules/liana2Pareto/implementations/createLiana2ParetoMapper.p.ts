@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
-import * as pd from 'pareto-core-data'
 import * as ps from 'pareto-core-state'
+import * as pm from 'pareto-core-map'
 
 import * as api from "../api"
 
@@ -52,7 +52,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 //     'annotation': "SSDF",
                 //     'name': type
                 // },
-                'arguments': pd.wrapRawDictionary({}),
+                'arguments': pm.wrapRawDictionary({}),
             }
         }
 
@@ -129,7 +129,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                 return ['reference', {
                                     'context': ['local', {}],
                                     'type': $.type.name,
-                                    'arguments': pd.wrapRawDictionary({}),
+                                    'arguments': pm.wrapRawDictionary({}),
                                     // 'type': {
                                     //     'annotation': "XXX",
                                     //     'name': $.type.name,
@@ -179,10 +179,10 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                             return ['reference', {
                                                 'context': ['import', {
                                                     'glossary': "common",
-                                                    'arguments': pd.wrapRawDictionary({}),
+                                                    'arguments': pm.wrapRawDictionary({}),
                                                 }],
                                                 'type': "Reference",
-                                                'arguments': pd.wrapRawDictionary({
+                                                'arguments': pm.wrapRawDictionary({
                                                     //"ReferencedType": <mglossary.GTypeReference>['null', {}], //FIXME
                                                 }),
                                             }]
@@ -201,20 +201,20 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
 
                 }
                 return {
-                    'parameters': pd.wrapRawDictionary({}),
+                    'parameters': pm.wrapRawDictionary({}),
                     'type': mapType($.type),
                 }
             })
         }
         return {
-            'modules': pd.wrapRawDictionary({
+            'modules': pm.wrapRawDictionary({
                 "resolved": {
                     'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
-                        'glossary': <mglossary.T.Glossary<pd.SourceLocation>>{
-                            'imports': pd.wrapRawDictionary({
+                        'glossary': <mglossary.T.Glossary<Annotation>>{
+                            'imports': pm.wrapRawDictionary({
                                 "fp": "lib-fountain-pen",
                             }),
-                            'parameters': pd.wrapRawDictionary({
+                            'parameters': pm.wrapRawDictionary({
                                 "Annotation": {},
                             }),
                             // 'templates': pd.wrapRawDictionary<mglossary.GGlossary.Ptemplates.D>({
@@ -229,24 +229,24 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                 'model': $.model,
                                 'optional': false,
                             }),
-                            'interfaces': pd.wrapRawDictionary({}),
-                            'functions': pd.wrapRawDictionary({
+                            'interfaces': pm.wrapRawDictionary({}),
+                            'functions': pm.wrapRawDictionary({
                                 "Enrich": func(typeReference("Root"), null, null, data(typeReference("Root"), false)),
                                 "Serialize": func(typeReference("Root"), null, interfaceReference("fp", "Line"), null),
                             }),
                         },
                         'api': {
-                            'imports': pd.wrapRawDictionary({
+                            'imports': pm.wrapRawDictionary({
                                 "common": "glo-pareto-common",
                             }),
-                            'algorithms': pd.wrapRawDictionary<mmoduleDefinition.T.ModuleDefinition.api.algorithms.D<Annotation>>({
+                            'algorithms': pm.wrapRawDictionary<mmoduleDefinition.T.ModuleDefinition.api.algorithms.D<Annotation>>({
                                 "createSerializer": {
                                     'definition': {
                                         'function': "Serialize"
                                     },
                                     'type': ['constructor', {
                                         'configuration data': [false],
-                                        'dependencies': pd.wrapRawDictionary({
+                                        'dependencies': pm.wrapRawDictionary({
                                         })
                                     }]
                                 },
@@ -256,7 +256,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                     },
                                     'type': ['constructor', {
                                         'configuration data': [false],
-                                        'dependencies': pd.wrapRawDictionary({
+                                        'dependencies': pm.wrapRawDictionary({
                                         })
                                     }]
                                 },
@@ -264,7 +264,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                         },
                     },
                     'implementation': <malgorithm.T.Implementation<Annotation>>{
-                        'implementations': pd.wrapRawDictionary({
+                        'implementations': pm.wrapRawDictionary({
                             // "createSerializer": {
                             //     'constructor': true,
                             //     'type': ['function', {
@@ -311,23 +311,23 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 },
                 "unresolved": {
                     'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
-                        'glossary': <mglossary.T.Glossary<pd.SourceLocation>>{
-                            'imports': pd.wrapRawDictionary({
+                        'glossary': <mglossary.T.Glossary<Annotation>>{
+                            'imports': pm.wrapRawDictionary({
                                 // "fp": {
                                 //     'name': "lib-fountain-pen",
                                 //     'annotation': "FFF",
                                 // },
                                 "fp": "lib-fountain-pen",
                             }),
-                            'parameters': pd.wrapRawDictionary({
+                            'parameters': pm.wrapRawDictionary({
                                 "Annotation": {},
                             }),
-                            'templates': pd.wrapRawDictionary({
+                            'templates': pm.wrapRawDictionary({
                                 "Reference": {
-                                    'parameters': pd.wrapRawDictionary({
+                                    'parameters': pm.wrapRawDictionary({
                                         "ReferencedType": {},
                                     }),
-                                    'type': <mglossary.T.Type<string>>['group', pd.wrapRawDictionary({
+                                    'type': <mglossary.T.Type<string>>['group', pm.wrapRawDictionary({
                                         "annotation": {
                                             'type': ['string', {}],
                                         },
@@ -341,8 +341,8 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                 'model': $.model,
                                 'optional': false,
                             }),
-                            'interfaces': pd.wrapRawDictionary({}),
-                            'functions': pd.wrapRawDictionary({
+                            'interfaces': pm.wrapRawDictionary({}),
+                            'functions': pm.wrapRawDictionary({
                                 "Serialize": {
                                     'return type': ['nothing', {}],
                                     'data': typeReference($.model.root.name), //unresolved
@@ -350,7 +350,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                     'output interface': ['set', {
                                         'context': ['import', {
                                             'glossary': "fp",
-                                            'arguments': pd.wrapRawDictionary({}),
+                                            'arguments': pm.wrapRawDictionary({}),
                                         }],
                                         'interface': "Line"
                                         // 'context': ['import', {
@@ -366,10 +366,10 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             }),
                         },
                         'api': {
-                            'imports': pd.wrapRawDictionary({
+                            'imports': pm.wrapRawDictionary({
                                 "foreach": "res-pareto-foreach",
                             }),
-                            'algorithms': pd.wrapRawDictionary({
+                            'algorithms': pm.wrapRawDictionary({
                                 "createSerializer": {
                                     'definition': {
                                         'context': ['local', {}],
@@ -377,32 +377,32 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                     },
                                     'type': ['constructor', {
                                         'configuration data': [false],
-                                        'dependencies': pd.wrapRawDictionary({
+                                        'dependencies': pm.wrapRawDictionary({
                                             "arrayForEach": {
                                                 'context': ['import', {
                                                     'glossary': "foreach",
-                                                    'arguments': pd.wrapRawDictionary({}),
+                                                    'arguments': pm.wrapRawDictionary({}),
                                                 }],
                                                 'function': "ArrayForEach",
                                             },
                                             "dictionaryForEach": {
                                                 'context': ['import', {
                                                     'glossary': "foreach",
-                                                    'arguments': pd.wrapRawDictionary({}),
+                                                    'arguments': pm.wrapRawDictionary({}),
                                                 }],
                                                 'function': "DictionaryForEach",
                                             },
                                             "enrichedArrayForEach": {
                                                 'context': ['import', {
                                                     'glossary': "foreach",
-                                                    'arguments': pd.wrapRawDictionary({}),
+                                                    'arguments': pm.wrapRawDictionary({}),
                                                 }],
                                                 'function': "EnrichedArrayForEach",
                                             },
                                             "enrichedDictionaryForEach": {
                                                 'context': ['import', {
                                                     'glossary': "foreach",
-                                                    'arguments': pd.wrapRawDictionary({}),
+                                                    'arguments': pm.wrapRawDictionary({}),
                                                 }],
                                                 'function': "EnrichedDictionaryForEach",
                                             },
@@ -413,7 +413,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                         },
                     },
                     'implementation': <malgorithm.T.Implementation<Annotation>>{
-                        'implementations': pd.wrapRawDictionary<malgorithm.T.Implementation.implementations.D<Annotation>>({
+                        'implementations': pm.wrapRawDictionary<malgorithm.T.Implementation.implementations.D<Annotation>>({
                             // "createSerializer": {
                             //     'type': ['procedure', {
                             //         'block': {
@@ -511,32 +511,32 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                 },
                 "sparse": {
                     'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
-                        'glossary': <mglossary.T.Glossary<pd.SourceLocation>>{
-                            'imports': pd.wrapRawDictionary({
+                        'glossary': <mglossary.T.Glossary<Annotation>>{
+                            'imports': pm.wrapRawDictionary({
                                 "fp": "lib-fountain-pen",
                             }),
-                            'parameters': pd.wrapRawDictionary({
+                            'parameters': pm.wrapRawDictionary({
                                 "Annotation": {},
                             }),
-                            'templates': pd.wrapRawDictionary({}),
+                            'templates': pm.wrapRawDictionary({}),
                             'types': createTypes({
                                 'model': $.model,
                                 'optional': true,
                             }),
-                            'interfaces': pd.wrapRawDictionary({}),
-                            'functions': pd.wrapRawDictionary({
+                            'interfaces': pm.wrapRawDictionary({}),
+                            'functions': pm.wrapRawDictionary({
                             }),
                         },
                         'api': {
-                            'imports': pd.wrapRawDictionary({
+                            'imports': pm.wrapRawDictionary({
                                 "common": "glo-pareto-common",
                             }),
-                            'algorithms': pd.wrapRawDictionary({
+                            'algorithms': pm.wrapRawDictionary({
                             })
                         },
                     },
                     'implementation': <malgorithm.T.Implementation<Annotation>>{
-                        'implementations': pd.wrapRawDictionary({
+                        'implementations': pm.wrapRawDictionary({
                         }),
                     },
                 },

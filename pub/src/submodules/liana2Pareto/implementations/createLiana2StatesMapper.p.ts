@@ -1,6 +1,6 @@
 import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
-import * as pd from 'pareto-core-data'
+import * as pm from 'pareto-core-map'
 
 import * as api from "../api"
 

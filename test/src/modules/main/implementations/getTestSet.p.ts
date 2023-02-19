@@ -141,19 +141,19 @@ export const $$: api.CgetTestSet = ($) => {
         switch (res[0]) {
             case 'not set':
                 pl.cc(res[1], ($) => {
-                    //pl.logDebugMessage(`NOT SET`)
+                    //pv.logDebugMessage(`NOT SET`)
                 })
                 break
             case 'set':
                 pl.cc(res[1], ($) => {
-                    //pl.logDebugMessage(`SET`)
+                    //pv.logDebugMessage(`SET`)
                     $.model.stringTypes.dictionary.forEach(() => false, ($, key) => {
-                        //pl.logDebugMessage(key)
+                        //pv.logDebugMessage(key)
                     })
                     $.model.globalTypes.dictionary.forEach(() => false, ($, key) => {
-                        //pl.logDebugMessage(key)
+                        //pv.logDebugMessage(key)
                     })
-                    //pl.logDebugMessage(`has errors? ${$['has errors']}`)
+                    //pv.logDebugMessage(`has errors? ${$['has errors']}`)
                 })
                 break
             default: pl.au(res[0])

@@ -3,8 +3,6 @@ import * as pd from 'pareto-core-data'
 
 import * as t from "./api"
 
-const d = pd.wrapRawDictionary
-
 type RawDictionary<T> = { [key: string]: T }
 
 export function null_(): t.T.Type<string> {
@@ -24,11 +22,11 @@ export function number(): t.T.Type<string> {
 }
 
 export function types($: RawDictionary<t.T.Type<string>>) {
-    return d($)
+    return pd.d($)
 }
 
 export function taggedUnion($: RawDictionary<t.T.Type<string>>): t.T.Type<string> {
-    return ['taggedUnion', d($)]
+    return ['taggedUnion', pd.d($)]
 }
 
 export function dictionary($: t.T.Type<string>): t.T.Type<string> {
@@ -37,14 +35,14 @@ export function dictionary($: t.T.Type<string>): t.T.Type<string> {
 
 export function parametrizedType(parameters: RawDictionary<{}>, type: t.T.Type<string>): t.T.Glossary.types.D<string> {
     return {
-        'parameters': d(parameters),
+        'parameters': pd.d(parameters),
         'type': type,
     }
 }
 
 export function type(type: t.T.Type<string>): t.T.Glossary.types.D<string> {
     return {
-        'parameters': d({}),
+        'parameters': pd.d({}),
         'type': type,
     }
 }
@@ -79,7 +77,7 @@ export function group($: {
         optional: boolean
     }
 }): t.T.Type<string> {
-    return ['group', d($)]
+    return ['group', pd.d($)]
 }
 
 export function member($: t.T.Type<string>, optional?: boolean): { type: t.T.Type<string>, optional: boolean } {
@@ -99,7 +97,7 @@ export function context(glossary?: string, args?: RawDictionary<t.T.TypeReferenc
     } else {
         return ['import', {
             'glossary': glossary,
-            'arguments': d(args === undefined ? {} : args)
+            'arguments': pd.d(args === undefined ? {} : args)
         }]
     }
 }
@@ -128,13 +126,13 @@ export function parametrizedTypeReference(
         return {
             'context': context(),
             'type': contextOrType,
-            'arguments': d(glossaryArgsOrTypeArgs),
+            'arguments': pd.d(glossaryArgsOrTypeArgs),
         }
     } else {
         return {
             'context': context(contextOrType, glossaryArgsOrTypeArgs),
             'type': type,
-            'arguments': d(typeArgs === undefined ? {} : typeArgs),
+            'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
         }
     }
 }

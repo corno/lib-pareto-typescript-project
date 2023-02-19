@@ -17,14 +17,14 @@ function r_imp(name: string, annotation: pd.SourceLocation): T._$Reference<pd.So
 function d_imp<T>($: RawDictionary<T>, annotation: pd.SourceLocation): T.Dictionary<pd.SourceLocation, T> {
     return {
         'annotation': annotation,
-        'dictionary': pd.wrapRawDictionary($),
+        'dictionary': pd.d($),
     }
 }
 
 function d_mappedimp<T, RT>($: RawDictionary<T>, annotation: pd.SourceLocation, cb: ($: T) => RT): T.Dictionary<pd.SourceLocation, RT> {
     return {
         'annotation': annotation,
-        'dictionary': pd.wrapRawDictionary($).map(cb),
+        'dictionary': pd.d($).map(cb),
     }
 }
 
@@ -88,7 +88,7 @@ export function group(properties: RawDictionary<[string[], T.LocalType<pd.Source
     return ['group', {
         'properties': d_mappedimp(properties, li, ($) => {
             const temp: RawDictionary<null> = {}
-            pd.wrapRawArray($[0]).forEach(($) => {
+            pd.a($[0]).forEach(($) => {
                 temp[$] = null
             })
             return {
@@ -102,7 +102,7 @@ export function group(properties: RawDictionary<[string[], T.LocalType<pd.Source
 export function taggedUnion(options: RawDictionary<T.LocalType<pd.SourceLocation>>): T.LocalType<pd.SourceLocation> {
     const li = pd.getLocationInfo(1)
     let firstKey: null | string = null
-    pd.wrapRawDictionary(options).map(($, key) => {
+    pd.d(options).map(($, key) => {
         if (firstKey === null) {
             firstKey = key
         }
@@ -172,7 +172,7 @@ function referenceX($: ReferenceType, steps: Step[], annotation: pd.SourceLocati
                 default: return pl.au($[0])
             }
         }),
-        'steps': pd.wrapRawArray(steps).map(($) => {
+        'steps': pd.a(steps).map(($) => {
             switch ($[0]) {
                 case 'array':
                     return pl.cc($[1], ($) => {

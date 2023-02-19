@@ -13,7 +13,7 @@ import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescr
 
 const d = pd.wrapRawDictionary
 
-export const $: mmoduleDefinition.T.ModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {
         'imports': d({
             "common": "glo-pareto-common",

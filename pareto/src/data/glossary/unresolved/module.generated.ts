@@ -8,7 +8,7 @@ import { dictionary, member, reference, string, type } from 'lib-pareto-typescri
 const d = pd.wrapRawDictionary
 const a = pd.wrapRawArray
 
-export const $: mproject.T.Module = {
+export const $: mproject.T.Module<pd.SourceLocation> = {
     'definition': {
         'glossary': {
             'imports': d({

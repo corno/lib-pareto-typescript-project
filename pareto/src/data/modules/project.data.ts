@@ -11,7 +11,7 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 
 const d = pd.wrapRawDictionary
 
-export const $: mmoduleDefinition.T.ModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {
         'imports': d({
             "algorithm": "../../../algorithm",

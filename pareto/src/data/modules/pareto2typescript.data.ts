@@ -85,10 +85,6 @@ export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
                 "createQuotedString": definitionReference("ts", {}, "CreateQuotedString"),
                 "createBacktickedString": definitionReference("ts", {}, "CreateBacktickedString"),
             })),
-            "createParetoEnvironmentSerializer": algorithm(definitionReference("SerializeParetoEnvironment"), constructor(null, {
-            })),
-            "createBuildEnvironmentSerializer": algorithm(definitionReference("SerializeBuildEnvironment"), constructor(null, {
-            })),
             "createStatesSerializer": algorithm(definitionReference("SerializeStates"), constructor(null, {
                 "arrayForEach": definitionReference("foreach", {}, "ArrayForEach"),
                 "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),

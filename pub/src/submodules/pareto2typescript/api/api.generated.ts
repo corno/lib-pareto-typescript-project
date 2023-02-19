@@ -9,8 +9,6 @@ import * as mmain from "res-pareto-main"
 import * as mproject from "../../project"
 import * as mts from "res-typescript"
 
-export type CcreateBuildEnvironmentSerializer = ($d: {}) => glo.FSerializeBuildEnvironment
-
 export type CcreateGlossarySerializer = ($d: {
     readonly 'createApostrophedString': mts.FCreateApostrophedString
     readonly 'createBacktickedString': mts.FCreateBacktickedString
@@ -39,8 +37,6 @@ export type CcreateModuleDefinitionSerializer = ($d: {
     readonly 'dictionaryForEach': mforeach.FDictionaryForEach
     readonly 'serializeGlossary': glo.FSerializeGlossary
 }) => glo.FSerializeModuleDefinition
-
-export type CcreateParetoEnvironmentSerializer = ($d: {}) => glo.FSerializeParetoEnvironment
 
 export type CcreateProjectSerializer = ($d: {
     readonly 'createApostrophedString': mts.FCreateApostrophedString
@@ -72,11 +68,9 @@ export type CcreateTemplateSerializer = ($d: {
 }) => glo.FSerializeTemplate
 
 export type API = {
-    createBuildEnvironmentSerializer: CcreateBuildEnvironmentSerializer
     createGlossarySerializer: CcreateGlossarySerializer
     createImplementationSerializer: CcreateImplementationSerializer
     createModuleDefinitionSerializer: CcreateModuleDefinitionSerializer
-    createParetoEnvironmentSerializer: CcreateParetoEnvironmentSerializer
     createProjectSerializer: CcreateProjectSerializer
     createStatesSerializer: CcreateStatesSerializer
     createTemplateSerializer: CcreateTemplateSerializer

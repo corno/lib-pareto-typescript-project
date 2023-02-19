@@ -16,10 +16,7 @@ export const $$: api.CcreateSerializer = ($d) => {
         })
         function getPathID($: mcommon.T.Path) {
 
-            return $d.createIdentifier($d.joinNestedStrings({
-                'strings': $,
-                'separator': `_`,
-            }))
+            return $d.createIdentifier($d.joinNestedStrings($))
         }
         function doDictionaries($: {
             $: mliana.T.LocalType<Annotation>,
@@ -57,10 +54,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                         pl.cc($[1], ($) => {
                             //const parentPathAsArray = pr.wrapRawArray(pi.flatten(idPath))
                             $i.file(
-                                `${$d.joinNestedStrings({
-                                    'strings': path,
-                                    'separator': "_",
-                                })}.generated.ts`,
+                                `${$d.joinNestedStrings(path)}.generated.ts`,
                                 ($i) => {
                                     $i.line(`import * as pl from 'pareto-core-lib'`)
                                     $i.line(``)

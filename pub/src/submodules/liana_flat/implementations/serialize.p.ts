@@ -34,6 +34,9 @@ export const $$: api.Cserialize = ($, $i) => {
             createIdentifier: mts.$a.createIdentifier,
             createApostrophedString: mts.$a.createApostrophedString,
         }),
-        joinNestedStrings: mtostring.$a.joinNestedStrings,
+        joinNestedStrings: mtostring.$a.joinNestedStrings({
+            'maximum': [false],
+            'separator': "_",
+        }, {}),
     })($, $i)
 }

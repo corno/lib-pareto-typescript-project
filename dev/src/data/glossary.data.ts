@@ -16,7 +16,7 @@ import {
     string,
 } from "lib-pareto-typescript-project/dist/submodules/liana/shorthands"
 
-export const $: mliana.T.Model = {
+export const $: mliana.T.Model<pd.SourceLocation> = {
     'stringTypes': d({
         "text": null,
     }),

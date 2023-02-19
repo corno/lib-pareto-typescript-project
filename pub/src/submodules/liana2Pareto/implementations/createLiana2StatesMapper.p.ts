@@ -29,10 +29,10 @@ function getEntry<T, RT>(
 }
 
 export const $$: api.CcreateLiana2StatesMapper = ($d) => {
-    return ($) => {
+    return <Annotation>($: api.T.MappedModel<Annotation>) => {
         const stringMapping = $.stringmapping
         return $.model.globalTypes.dictionary.map(($) => {
-            function mapType($: mliana.T.LocalType): malgorithm.T.Type {
+            function mapType($: mliana.T.LocalType<Annotation>): malgorithm.T.Type<Annotation> {
                 switch ($[0]) {
                     case 'array':
                         return pl.cc($[1], ($) => {

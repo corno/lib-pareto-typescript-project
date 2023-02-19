@@ -4,7 +4,7 @@ import {
     string,
     reference,
     boolean,
-    array, dictionary, group, member, taggedUnion, types, typeReference, typeParameter, parametrizedTypeReference, func, data, type, parametrizedType, optional
+    array, dictionary, group, member, taggedUnion, types, typeReference, typeParameter, parametrizedTypeReference, func, data, type, parametrizedType, optional, glossaryParameter
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
@@ -18,10 +18,12 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
         'imports': d({
             "common": "glo-pareto-common",
         }),
-        'parameters': d({}),
+        'parameters': d({
+            "Annotation": {}
+        }),
         'types': d({
             "Dictionary": parametrizedType({ "Type": {} }, group({
-                "annotation": member(string()),
+                "annotation": member(glossaryParameter("Annotation")),
                 "dictionary": member(dictionary(typeParameter("Type"))),
             })),
             "Possibly": parametrizedType({ "Type": {} }, taggedUnion({
@@ -30,12 +32,12 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             })),
             "YReference": parametrizedType({ "ReferencedType": {} }, group({
                 "referenced value": member(typeParameter("ReferencedType")),
-                "annotation": member(string()),
+                "annotation": member(glossaryParameter("Annotation")),
                 "name": member(string()),
             })),
             "ComputedReference": parametrizedType({ "ReferencedType": {} }, group({
                 "referenced value": member(computed(typeParameter("ReferencedType"))),
-                "annotation": member(string()),
+                "annotation": member(glossaryParameter("Annotation")),
                 "name": member(string()),
             })),
             // "Optional": parametrizedType({ "Type": {} }, taggedUnion({
@@ -45,7 +47,7 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             ////
             "_Reference": type(group({
                 "name": member(string()),
-                "annotation": member(string()),
+                "annotation": member(glossaryParameter("Annotation")),
             })),
             "GlobalType": type(group({
                 "parameters": member(reference("Parameters")),

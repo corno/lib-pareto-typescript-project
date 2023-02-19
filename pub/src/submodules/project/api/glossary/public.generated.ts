@@ -8,6 +8,6 @@ import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../../glossary"
 import * as mmoduleDefinition from "../../../moduleDefinition"
 
-export type FSerialize = ($: T.Module, $i: mfp.ILine,) => void
+export type FSerialize = <GPAnnotation>($: T.Module<GPAnnotation>, $i: mfp.ILine,) => void
 
-export type FSerializeWithContext = ($: T.Module, $i: mfp.IWriter,) => void
+export type FSerializeWithContext = <GPAnnotation>($: T.Module<GPAnnotation>, $i: mfp.IWriter,) => void

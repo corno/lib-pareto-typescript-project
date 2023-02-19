@@ -12,6 +12,7 @@ import {
     parametrizedTypeReference,
     optional,
     parametrizedReference,
+    glossaryParameter,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
@@ -28,8 +29,11 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             "fp": "lib-fountain-pen",
             "common": "glo-pareto-common",
         }),
-        'parameters': d({}),
+        'parameters': d({
+            "Annotation": {},
+        }),
         'types': d({
+            "Annotation": type(glossaryParameter("Annotation")),
             "DefinitionReference": type(group({
                 "context": member(reference("Context"), true),
                 "function": member(string()),
@@ -38,11 +42,11 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
                 "local": group({}),
                 "import": group({
                     "glossary": member(string()),
-                    "arguments": member(dictionary(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "TypeReference")]))
+                    "arguments": member(dictionary(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "TypeReference")]))
                 }),
             })),
             "ModuleDefinition": type(group({
-                "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "Glossary")]),
+                "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")]),
                 "api": member(group({
                     "imports": member(dictionary(string())),
                     "algorithms": member(dictionary(group({
@@ -50,7 +54,7 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
                         "type": member(taggedUnion({
                             "reference": group({}),
                             "constructor": group({
-                                "configuration data": member(optional(parametrizedReference("glossary", { "Type": typeReference("common", "String") }, "TypeReference"))),
+                                "configuration data": member(optional(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "TypeReference"))),
                                 "dependencies": member(dictionary(reference("DefinitionReference"))),
                             }),
                         }))

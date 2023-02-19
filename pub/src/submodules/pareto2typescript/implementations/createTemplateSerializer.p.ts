@@ -9,7 +9,7 @@ import * as mfp from "lib-fountain-pen"
 export const $$: api.CcreateTemplateSerializer = (
     $d
 ) => {
-    return ($, $i) => {
+    return <Annotation>($: mproject.T.Project<Annotation>, $i: mfp.IWriter) => {
         $i.directory("tmp", ($i) => {
             $i.directory("templates", ($i) => {
                 switch ($.type[0]) {
@@ -21,7 +21,7 @@ export const $$: api.CcreateTemplateSerializer = (
                     case 'library':
                         pl.cc($.type[1], ($) => {
                             $i.directory("pub", ($i) => {
-                                function doModule($: mproject.T.Module, $i: mfp.IWriter) {
+                                function doModule($: mproject.T.Module<Annotation>, $i: mfp.IWriter) {
                                     $i.directory("implementations", ($i) => {
                                         $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
@@ -65,7 +65,7 @@ export const $$: api.CcreateTemplateSerializer = (
                             })
                             $i.directory("test", ($i) => {
                                 $i.directory("src", ($i) => {
-                                    function doModule($: mproject.T.Module, $i: mfp.IWriter) {
+                                    function doModule($: mproject.T.Module<Annotation>, $i: mfp.IWriter) {
                                         $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)

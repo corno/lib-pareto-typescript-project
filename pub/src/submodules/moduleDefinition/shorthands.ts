@@ -13,7 +13,7 @@ const a = pd.wrapRawArray
 
 type RawDictionary<T> = { [key: string]: T }
 
-export function definitionReference(contextOrDefinition: string, args?: RawDictionary<mglossary.T.TypeReference<string>>, definition?: string): api.T.DefinitionReference {
+export function definitionReference(contextOrDefinition: string, args?: RawDictionary<mglossary.T.TypeReference<string>>, definition?: string): api.T.DefinitionReference<pd.SourceLocation> {
     if (definition === undefined) {
 
         return {
@@ -31,7 +31,7 @@ export function definitionReference(contextOrDefinition: string, args?: RawDicti
     }
 }
 
-export function constructor(data: null | mglossary.T.TypeReference<string>, deps: RawDictionary<api.T.DefinitionReference>): api.T.ModuleDefinition.api.algorithms.D._ltype {
+export function constructor(data: null | mglossary.T.TypeReference<string>, deps: RawDictionary<api.T.DefinitionReference<pd.SourceLocation>>): api.T.ModuleDefinition.api.algorithms.D._ltype<pd.SourceLocation> {
     return ['constructor', {
         'configuration data': data === null
             ? [false]
@@ -40,7 +40,7 @@ export function constructor(data: null | mglossary.T.TypeReference<string>, deps
     }]
 }
 
-export function algorithm(def: api.T.DefinitionReference, type?: api.T.ModuleDefinition.api.algorithms.D._ltype): api.T.ModuleDefinition.api.algorithms.D {
+export function algorithm(def: api.T.DefinitionReference<pd.SourceLocation>, type?: api.T.ModuleDefinition.api.algorithms.D._ltype<pd.SourceLocation>): api.T.ModuleDefinition.api.algorithms.D<pd.SourceLocation> {
     return {
         'definition': def,
         'type': type === undefined

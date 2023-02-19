@@ -35,7 +35,7 @@ import { $ as tc } from "../../../data/project/project/tokenconsumer/project.dat
 export const $$: api.CgetTestSet = ($) => {
     const $XXX = $
 
-    function genProj(dir: string, proj: mproject.T.Project) {
+    function genProj(dir: string, proj: mproject.T.Project<pd.SourceLocation>) {
         pub.$a.generateProject({
             'mainData': {
                 'arguments': pd.wrapRawArray([dir]),
@@ -44,7 +44,7 @@ export const $$: api.CgetTestSet = ($) => {
         })
 
     }
-    function generateModule(dir: string, module: mproject.T.Module) {
+    function generateModule(dir: string, module: mproject.T.Module<pd.SourceLocation>) {
         pub.$a.generateProject({
             'mainData': {
                 'arguments': pd.wrapRawArray([dir]),
@@ -59,7 +59,7 @@ export const $$: api.CgetTestSet = ($) => {
                 'type': ['library', {
 
                     'main': module,
-                    'submodules': d({}),
+                    'submodules': d<mproject.T.Module<pd.SourceLocation>>({}),
                     'executables': d({}),
                     'test': {
                         'dependencies': d({}),
@@ -134,7 +134,7 @@ export const $$: api.CgetTestSet = ($) => {
         mliana_flat.$a.serialize(accountingModel, $i)
     })
 
-    function x($: mliana.T.Model) {
+    function x($: mliana.T.Model<pd.SourceLocation>) {
         const res = resolve($)
         switch (res[0]) {
             case 'not set':

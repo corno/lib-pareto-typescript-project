@@ -1,10 +1,8 @@
 import * as pd from 'pareto-core-data'
 
-import {
-    types, typeReference, interfaceReference, func
-} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
+import { func, glossaryParameter, interfaceReference, parametrizedTypeReference, type, typeReference, types } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
+import { algorithm, constructor, definitionReference } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
@@ -17,12 +15,15 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             "liana": "../../../liana",
             "liana2Pareto": "../../../liana2Pareto",
         }),
-        'parameters': d({}),
+        'parameters': d({
+            "Annotation": {},
+        }),
         'types': d({
+            "Annotation": type(glossaryParameter("Annotation")),
         }),
         'interfaces': d({}),
         'functions': d({
-            "Serialize": func(typeReference("liana2Pareto", "MappedModel"), null, interfaceReference("fp", "Writer"), null),
+            "Serialize": func(parametrizedTypeReference("liana2Pareto", { "Annotation": typeReference("Annotation") }, "MappedModel"), null, interfaceReference("fp", "Writer"), null),
         }),
     },
     'api': {

@@ -10,56 +10,58 @@ export namespace T {
     
     export namespace AlgorithmImplementation {}
     
-    export type AlgorithmImplementation = {}
+    export type AlgorithmImplementation<GPAnnotation> = {}
+    
+    export type Annotation<GPAnnotation> = GPAnnotation
     
     export namespace Implementation {
         
-        export type D = T.AlgorithmImplementation
+        export type D<GPAnnotation> = T.AlgorithmImplementation<GPAnnotation>
     }
     
-    export type Implementation = pt.Dictionary<T.AlgorithmImplementation>
+    export type Implementation<GPAnnotation> = pt.Dictionary<T.AlgorithmImplementation<GPAnnotation>>
     
     export namespace Module {
         
-        export type definition = mmoduleDefinition.T.ModuleDefinition
+        export type definition<GPAnnotation> = mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
         
-        export type implementation = malgorithm.T.Implementation
+        export type implementation<GPAnnotation> = malgorithm.T.Implementation<T.Annotation<GPAnnotation>>
         
-        export type states = malgorithm.T.States
+        export type states<GPAnnotation> = malgorithm.T.States<T.Annotation<GPAnnotation>>
     }
     
-    export type Module = {
-        readonly 'definition': mmoduleDefinition.T.ModuleDefinition
-        readonly 'implementation'?: malgorithm.T.Implementation
-        readonly 'states'?: malgorithm.T.States
+    export type Module<GPAnnotation> = {
+        readonly 'definition': mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+        readonly 'implementation'?: malgorithm.T.Implementation<T.Annotation<GPAnnotation>>
+        readonly 'states'?: malgorithm.T.States<T.Annotation<GPAnnotation>>
     }
     
     export namespace Project {
         
-        export type author = string
+        export type author<GPAnnotation> = string
         
         export namespace dependencies {
             
             export namespace D {}
             
-            export type D = {}
+            export type D<GPAnnotation> = {}
         }
         
-        export type dependencies = pt.Dictionary<{}>
+        export type dependencies<GPAnnotation> = pt.Dictionary<{}>
         
-        export type description = string
+        export type description<GPAnnotation> = string
         
-        export type license = string
+        export type license<GPAnnotation> = string
         
         export namespace _ltype {
             
             export namespace glossary {
                 
-                export type glossary = mglossary.T.Glossary<mcommon.T.String>
+                export type glossary<GPAnnotation> = mglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }
             
-            export type glossary = {
-                readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
+            export type glossary<GPAnnotation> = {
+                readonly 'glossary': mglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }
             
             export namespace library {
@@ -68,101 +70,101 @@ export namespace T {
                     
                     export namespace D {}
                     
-                    export type D = {}
+                    export type D<GPAnnotation> = {}
                 }
                 
-                export type executables = pt.Dictionary<{}>
+                export type executables<GPAnnotation> = pt.Dictionary<{}>
                 
-                export type main = T.Module
+                export type main<GPAnnotation> = T.Module<GPAnnotation>
                 
                 export namespace submodules {
                     
-                    export type D = T.Module
+                    export type D<GPAnnotation> = T.Module<GPAnnotation>
                 }
                 
-                export type submodules = pt.Dictionary<T.Module>
+                export type submodules<GPAnnotation> = pt.Dictionary<T.Module<GPAnnotation>>
                 
-                export type test = T.Test
+                export type test<GPAnnotation> = T.Test<GPAnnotation>
             }
             
-            export type library = {
+            export type library<GPAnnotation> = {
                 readonly 'executables': pt.Dictionary<{}>
-                readonly 'main': T.Module
-                readonly 'submodules': pt.Dictionary<T.Module>
-                readonly 'test': T.Test
+                readonly 'main': T.Module<GPAnnotation>
+                readonly 'submodules': pt.Dictionary<T.Module<GPAnnotation>>
+                readonly 'test': T.Test<GPAnnotation>
             }
             
             export namespace resource {
                 
-                export type definition = mmoduleDefinition.T.ModuleDefinition
+                export type definition<GPAnnotation> = mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
                 
                 export namespace devDependencies {
                     
                     export namespace D {}
                     
-                    export type D = {}
+                    export type D<GPAnnotation> = {}
                 }
                 
-                export type devDependencies = pt.Dictionary<{}>
+                export type devDependencies<GPAnnotation> = pt.Dictionary<{}>
                 
                 export namespace nativeDependencies {
                     
                     export namespace D {}
                     
-                    export type D = {}
+                    export type D<GPAnnotation> = {}
                 }
                 
-                export type nativeDependencies = pt.Dictionary<{}>
+                export type nativeDependencies<GPAnnotation> = pt.Dictionary<{}>
                 
-                export type test = T.Test
+                export type test<GPAnnotation> = T.Test<GPAnnotation>
             }
             
-            export type resource = {
-                readonly 'definition': mmoduleDefinition.T.ModuleDefinition
+            export type resource<GPAnnotation> = {
+                readonly 'definition': mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'nativeDependencies': pt.Dictionary<{}>
-                readonly 'test': T.Test
+                readonly 'test': T.Test<GPAnnotation>
             }
         }
         
-        export type _ltype = 
+        export type _ltype<GPAnnotation> = 
             | ['glossary', {
-                readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
+                readonly 'glossary': mglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }]
             | ['library', {
                 readonly 'executables': pt.Dictionary<{}>
-                readonly 'main': T.Module
-                readonly 'submodules': pt.Dictionary<T.Module>
-                readonly 'test': T.Test
+                readonly 'main': T.Module<GPAnnotation>
+                readonly 'submodules': pt.Dictionary<T.Module<GPAnnotation>>
+                readonly 'test': T.Test<GPAnnotation>
             }]
             | ['resource', {
-                readonly 'definition': mmoduleDefinition.T.ModuleDefinition
+                readonly 'definition': mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'nativeDependencies': pt.Dictionary<{}>
-                readonly 'test': T.Test
+                readonly 'test': T.Test<GPAnnotation>
             }]
     }
     
-    export type Project = {
+    export type Project<GPAnnotation> = {
         readonly 'author': string
         readonly 'dependencies': pt.Dictionary<{}>
         readonly 'description': string
         readonly 'license': string
         readonly 'type': 
             | ['glossary', {
-                readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
+                readonly 'glossary': mglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }]
             | ['library', {
                 readonly 'executables': pt.Dictionary<{}>
-                readonly 'main': T.Module
-                readonly 'submodules': pt.Dictionary<T.Module>
-                readonly 'test': T.Test
+                readonly 'main': T.Module<GPAnnotation>
+                readonly 'submodules': pt.Dictionary<T.Module<GPAnnotation>>
+                readonly 'test': T.Test<GPAnnotation>
             }]
             | ['resource', {
-                readonly 'definition': mmoduleDefinition.T.ModuleDefinition
+                readonly 'definition': mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'nativeDependencies': pt.Dictionary<{}>
-                readonly 'test': T.Test
+                readonly 'test': T.Test<GPAnnotation>
             }]
     }
     
@@ -172,16 +174,16 @@ export namespace T {
             
             export namespace D {}
             
-            export type D = {}
+            export type D<GPAnnotation> = {}
         }
         
-        export type dependencies = pt.Dictionary<{}>
+        export type dependencies<GPAnnotation> = pt.Dictionary<{}>
         
-        export type glossary = mglossary.T.Glossary<mcommon.T.String>
+        export type glossary<GPAnnotation> = mglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
     
-    export type Test = {
+    export type Test<GPAnnotation> = {
         readonly 'dependencies': pt.Dictionary<{}>
-        readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
+        readonly 'glossary': mglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
 }

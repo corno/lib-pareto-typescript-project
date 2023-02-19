@@ -3,7 +3,7 @@ import {
     string,
     null_,
     reference,
-    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, method, func, data, type
+    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, method, func, data, type, glossaryParameter, parametrizedReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
@@ -14,7 +14,9 @@ const d = pd.wrapRawDictionary
 
 export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
-        'parameters': d({}),
+        'parameters': d({
+            "Annotation": {}
+        }),
         'imports': d({
             "pareto2typescript": "../../../submodules/pareto2typescript",
             "common": "glo-pareto-common",
@@ -23,12 +25,13 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             "project": "../../../submodules/project",
         }),
         'types': d({
+            "Annotation": type(glossaryParameter("Annotation")),
             "ArgumentError": type(taggedUnion({
                 "missing": null_(),
                 "too many": null_(),
             })),
             "ProjectSettings": type(group({
-                "project": member(reference("project", "Project")),
+                "project": member(parametrizedReference("project", { "Annotation": typeReference("Annotation") }, "Project")),
                 "mainData": member(reference("main", "MainData")),
             })),
             "Parameters": type(group({
@@ -63,7 +66,7 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             "createProjectGenerator": algorithm(definitionReference("GenerateProject"), constructor(null, {
                 "decorateDictionaryEntriesWithKey": definitionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
                 "logError": definitionReference("common", {}, "Log"),
-                "serializeProject": definitionReference("pareto2typescript",{},  "SerializeProject"),
+                "serializeProject": definitionReference("pareto2typescript", {}, "SerializeProject"),
                 "serializeTemplate": definitionReference("pareto2typescript", {}, "SerializeTemplate"),
             })),
         })

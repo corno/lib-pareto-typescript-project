@@ -6,4 +6,4 @@ import * as mcommon from "glo-pareto-common"
 import * as mfp from "lib-fountain-pen"
 import * as mglossary from "../../../glossary"
 
-export type FSerialize = ($: T.ModuleDefinition, $i: mfp.ILine,) => void
+export type FSerialize = <GPAnnotation>($: T.ModuleDefinition<GPAnnotation>, $i: mfp.ILine,) => void

@@ -1,10 +1,8 @@
 import * as pd from 'pareto-core-data'
-import {
-    reference,
-    array, dictionary, group, member, taggedUnion, types, typeReference, null_, func, data, type
-} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import { algorithm, constructor, definitionReference, } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
+import { data, dictionary, func, glossaryParameter, group, member, null_, parametrizedReference, parametrizedType, parametrizedTypeReference, reference, taggedUnion, type, typeReference } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
+
+import { algorithm, constructor, definitionReference } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
@@ -18,28 +16,31 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             "project": "../../../project",
             "main": "res-pareto-main",
         }),
-        'parameters': d({}),
+        'parameters': d({
+            "Annotation": {},
+        }),
         'types': d({
+            "Annotation": type(glossaryParameter("Annotation")),
             "Configuration": type(group({
                 "model": member(reference("MappedModel")),
                 "mainData": member(reference("main", "MainData")),
             })),
             "MappedModel": type(group({
-                "model": member(reference("liana", "Model")),
+                "model": member(parametrizedReference("liana", { "Annotation": typeReference("Annotation")}, "Model")),
                 "stringmapping": member(dictionary(taggedUnion({
                     "number": null_(),
                     "string": null_(),
                 }))),
             })),
             "Modules": type(group(({
-                "modules": member(dictionary(reference("project", "Module")))
+                "modules": member(dictionary(parametrizedReference("project", { "Annotation": typeReference("Annotation") }, "Module")))
             }))),
         }),
         'interfaces': d({}),
         'functions': d({
             "GenerateProject": func(typeReference("Configuration"), null, null, null),
             "MapLiana2Pareto": func(typeReference("MappedModel"), null, null, data(typeReference("Modules"), false)),
-            "MapLiana2States": func(typeReference("MappedModel"), null, null, data(typeReference("algorithm", "States"), false)),
+            "MapLiana2States": func(typeReference("MappedModel"), null, null, data(parametrizedTypeReference("algorithm", { "Annotation": typeReference("Annotation") }, "States"), false)),
         }),
     },
     'api': {

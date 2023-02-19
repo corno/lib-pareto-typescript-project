@@ -15,7 +15,7 @@ import {
     taggedUnion,
 } from "../../../../../pub/dist/submodules/liana/shorthands"
 
-export const $: mliana.T.Model = {
+export const $: mliana.T.Model<pd.SourceLocation> = {
     'stringTypes': d({
         "text": null,
     }),

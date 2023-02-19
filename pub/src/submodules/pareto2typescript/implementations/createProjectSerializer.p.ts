@@ -8,11 +8,12 @@ import * as mproject from "../../project"
 export const $$: api.CcreateProjectSerializer = (
     $d,
 ) => {
-    return ($, $i) => {
+    return <Annotation>($: mproject.T.Project<Annotation>, $i: mfp.IWriter) => {
         const isResource = $.type[0] === 'resource'
         function tsConfig(
             $: {
-                isResource: boolean
+                isResource: boolean,
+                inlineSourceMap: boolean,
             },
             $i: mfp.IWriter
         ) {
@@ -27,6 +28,7 @@ export const $$: api.CcreateProjectSerializer = (
                 $i.line(`    "rootDir": "./src",`)
                 $i.line(`    "strict": true,`)
                 $i.line(`    "esModuleInterop": true,`)
+                if ($.inlineSourceMap) { $i.line(`    "inlineSourceMap": true,`) }
                 $i.line(`    "forceConsistentCasingInFileNames": true`)
                 $i.line(`  },`)
                 $i.line(`  "include": [`)
@@ -165,7 +167,7 @@ export const $$: api.CcreateProjectSerializer = (
                         break
                     case 'library':
                         pl.cc($.type[1], ($) => {
-                            function doModule($: mproject.T.Module, $i: mfp.IWriter) {
+                            function doModule($: mproject.T.Module<Annotation>, $i: mfp.IWriter) {
 
                                 $i.allowed("shorthands.ts")
                                 $i.directory("api", ($i) => {
@@ -285,9 +287,15 @@ export const $$: api.CcreateProjectSerializer = (
                     default: pl.au($.type[0])
                 }
             })
-            tsConfig({ isResource: $.type !== undefined && $.type[0] === 'resource' }, $i)
+            tsConfig(
+                {
+                    'isResource': $.type !== undefined && $.type[0] === 'resource',
+                    'inlineSourceMap': false,
+                },
+                $i
+            )
         })
-        function doTest($: mproject.T.Test, $i: mfp.IWriter) {
+        function doTest($: mproject.T.Test<Annotation>, $i: mfp.IWriter) {
 
             $i.directory("test", ($i) => {
                 $i.allowed("data")
@@ -512,7 +520,10 @@ export const $$: api.CcreateProjectSerializer = (
                     //     })
                     // })
                 })
-                tsConfig({ isResource: false }, $i)
+                tsConfig({
+                    isResource: false,
+                    inlineSourceMap: true,
+                }, $i)
             })
         }
         switch ($.type[0]) {

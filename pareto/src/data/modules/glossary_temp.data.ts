@@ -1,10 +1,8 @@
 import * as pd from 'pareto-core-data'
 
-import {
-    types, typeReference, interfaceReference, func, context, parametrizedTypeReference
-} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
+import { context, func, interfaceReference, parametrizedTypeReference, typeReference, types } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
+import { algorithm, constructor, definitionReference } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 

@@ -4,19 +4,21 @@ import * as mfp from "lib-fountain-pen"
 
 export namespace T {
     
+    export type Annotation<GPAnnotation> = GPAnnotation
+    
     export namespace AsynchronousExpression {
         
         export namespace call {
             
-            export type _lfunction = string
+            export type _lfunction<GPAnnotation> = string
         }
         
-        export type call = {
+        export type call<GPAnnotation> = {
             readonly 'function': string
         }
     }
     
-    export type AsynchronousExpression = 
+    export type AsynchronousExpression<GPAnnotation> = 
         | ['call', {
             readonly 'function': string
         }]
@@ -27,26 +29,26 @@ export namespace T {
             
             export namespace D {
                 
-                export type block = T.AsynchronousFunctionBlock
+                export type block<GPAnnotation> = T.AsynchronousFunctionBlock<GPAnnotation>
             }
             
-            export type D = {
-                readonly 'block': T.AsynchronousFunctionBlock
+            export type D<GPAnnotation> = {
+                readonly 'block': T.AsynchronousFunctionBlock<GPAnnotation>
             }
         }
         
-        export type innerFunctions = pt.Dictionary<{
-            readonly 'block': T.AsynchronousFunctionBlock
+        export type innerFunctions<GPAnnotation> = pt.Dictionary<{
+            readonly 'block': T.AsynchronousFunctionBlock<GPAnnotation>
         }>
         
-        export type returnExpression = T.AsynchronousExpression
+        export type returnExpression<GPAnnotation> = T.AsynchronousExpression<GPAnnotation>
     }
     
-    export type AsynchronousFunctionBlock = {
+    export type AsynchronousFunctionBlock<GPAnnotation> = {
         readonly 'innerFunctions'?: pt.Dictionary<{
-            readonly 'block': T.AsynchronousFunctionBlock
+            readonly 'block': T.AsynchronousFunctionBlock<GPAnnotation>
         }>
-        readonly 'returnExpression': T.AsynchronousExpression
+        readonly 'returnExpression': T.AsynchronousExpression<GPAnnotation>
     }
     
     export namespace Implementation {
@@ -55,27 +57,27 @@ export namespace T {
             
             export namespace D {
                 
-                export type _lconstructor = boolean
+                export type _lconstructor<GPAnnotation> = boolean
                 
-                export type _ltype = T.ImplementationType
+                export type _ltype<GPAnnotation> = T.ImplementationType<GPAnnotation>
             }
             
-            export type D = {
+            export type D<GPAnnotation> = {
                 readonly 'constructor': boolean
-                readonly 'type': T.ImplementationType
+                readonly 'type': T.ImplementationType<GPAnnotation>
             }
         }
         
-        export type implementations = pt.Dictionary<{
+        export type implementations<GPAnnotation> = pt.Dictionary<{
             readonly 'constructor': boolean
-            readonly 'type': T.ImplementationType
+            readonly 'type': T.ImplementationType<GPAnnotation>
         }>
     }
     
-    export type Implementation = {
+    export type Implementation<GPAnnotation> = {
         readonly 'implementations': pt.Dictionary<{
             readonly 'constructor': boolean
-            readonly 'type': T.ImplementationType
+            readonly 'type': T.ImplementationType<GPAnnotation>
         }>
     }
     
@@ -83,68 +85,68 @@ export namespace T {
         
         export namespace asynchronous__function {
             
-            export type block = T.AsynchronousFunctionBlock
+            export type block<GPAnnotation> = T.AsynchronousFunctionBlock<GPAnnotation>
         }
         
-        export type asynchronous__function = {
-            readonly 'block': T.AsynchronousFunctionBlock
+        export type asynchronous__function<GPAnnotation> = {
+            readonly 'block': T.AsynchronousFunctionBlock<GPAnnotation>
         }
         
         export namespace interface__initializer {
             
-            export type block = T.InterfaceInitializerBlock
+            export type block<GPAnnotation> = T.InterfaceInitializerBlock<GPAnnotation>
         }
         
-        export type interface__initializer = {
-            readonly 'block': T.InterfaceInitializerBlock
+        export type interface__initializer<GPAnnotation> = {
+            readonly 'block': T.InterfaceInitializerBlock<GPAnnotation>
         }
         
         export namespace procedure {
             
-            export type block = T.ProcedureBlock
+            export type block<GPAnnotation> = T.ProcedureBlock<GPAnnotation>
         }
         
-        export type procedure = {
-            readonly 'block': T.ProcedureBlock
+        export type procedure<GPAnnotation> = {
+            readonly 'block': T.ProcedureBlock<GPAnnotation>
         }
         
         export namespace synchronous__function {
             
-            export type block = T.SynchronousFunctionBlock
+            export type block<GPAnnotation> = T.SynchronousFunctionBlock<GPAnnotation>
         }
         
-        export type synchronous__function = {
-            readonly 'block': T.SynchronousFunctionBlock
+        export type synchronous__function<GPAnnotation> = {
+            readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
         }
     }
     
-    export type ImplementationType = 
+    export type ImplementationType<GPAnnotation> = 
         | ['asynchronous function', {
-            readonly 'block': T.AsynchronousFunctionBlock
+            readonly 'block': T.AsynchronousFunctionBlock<GPAnnotation>
         }]
         | ['interface initializer', {
-            readonly 'block': T.InterfaceInitializerBlock
+            readonly 'block': T.InterfaceInitializerBlock<GPAnnotation>
         }]
         | ['procedure', {
-            readonly 'block': T.ProcedureBlock
+            readonly 'block': T.ProcedureBlock<GPAnnotation>
         }]
         | ['synchronous function', {
-            readonly 'block': T.SynchronousFunctionBlock
+            readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
         }]
     
     export namespace InterfaceInitializerBlock {
         
         export namespace call {
             
-            export type _lfunction = string
+            export type _lfunction<GPAnnotation> = string
         }
         
-        export type call = {
+        export type call<GPAnnotation> = {
             readonly 'function': string
         }
     }
     
-    export type InterfaceInitializerBlock = 
+    export type InterfaceInitializerBlock<GPAnnotation> = 
         | ['call', {
             readonly 'function': string
         }]
@@ -155,16 +157,16 @@ export namespace T {
             
             export namespace D {
                 
-                export type _ltype = T.ImplementationType
+                export type _ltype<GPAnnotation> = T.ImplementationType<GPAnnotation>
             }
             
-            export type D = {
-                readonly 'type': T.ImplementationType
+            export type D<GPAnnotation> = {
+                readonly 'type': T.ImplementationType<GPAnnotation>
             }
         }
         
-        export type innerFunctions = pt.Dictionary<{
-            readonly 'type': T.ImplementationType
+        export type innerFunctions<GPAnnotation> = pt.Dictionary<{
+            readonly 'type': T.ImplementationType<GPAnnotation>
         }>
         
         export namespace statements {
@@ -173,27 +175,27 @@ export namespace T {
                 
                 export namespace dependencyCall {
                     
-                    export type callback = T.ProcedureBlock
+                    export type callback<GPAnnotation> = T.ProcedureBlock<GPAnnotation>
                     
-                    export type data = string
+                    export type data<GPAnnotation> = string
                 }
                 
-                export type dependencyCall = {
-                    readonly 'callback'?: T.ProcedureBlock
+                export type dependencyCall<GPAnnotation> = {
+                    readonly 'callback'?: T.ProcedureBlock<GPAnnotation>
                     readonly 'data'?: string
                 }
                 
                 export namespace innerCallbackCall {
                     
-                    export type data = T.SynchronousExpression
+                    export type data<GPAnnotation> = T.SynchronousExpression<GPAnnotation>
                     
-                    export type innerCallback = string
+                    export type innerCallback<GPAnnotation> = string
                     
-                    export type _linterface = string
+                    export type _linterface<GPAnnotation> = string
                 }
                 
-                export type innerCallbackCall = {
-                    readonly 'data'?: T.SynchronousExpression
+                export type innerCallbackCall<GPAnnotation> = {
+                    readonly 'data'?: T.SynchronousExpression<GPAnnotation>
                     readonly 'innerCallback': string
                     readonly 'interface'?: string
                 }
@@ -204,145 +206,145 @@ export namespace T {
                         
                         export namespace not__set {}
                         
-                        export type not__set = {}
+                        export type not__set<GPAnnotation> = {}
                         
-                        export type _lset = T.ProcedureBlock
+                        export type _lset<GPAnnotation> = T.ProcedureBlock<GPAnnotation>
                     }
                     
-                    export type callback = 
+                    export type callback<GPAnnotation> = 
                         | ['not set', {}]
-                        | ['set', T.ProcedureBlock]
+                        | ['set', T.ProcedureBlock<GPAnnotation>]
                     
                     export namespace child__path {
                         
-                        export type A = string
+                        export type A<GPAnnotation> = string
                     }
                     
-                    export type child__path = pt.Array<string>
+                    export type child__path<GPAnnotation> = pt.Array<string>
                     
                     export namespace data {
                         
                         export namespace not__set {}
                         
-                        export type not__set = {}
+                        export type not__set<GPAnnotation> = {}
                         
-                        export type _lset = T.SynchronousExpression
+                        export type _lset<GPAnnotation> = T.SynchronousExpression<GPAnnotation>
                     }
                     
-                    export type data = 
+                    export type data<GPAnnotation> = 
                         | ['not set', {}]
-                        | ['set', T.SynchronousExpression]
+                        | ['set', T.SynchronousExpression<GPAnnotation>]
                 }
                 
-                export type interfaceCall = {
+                export type interfaceCall<GPAnnotation> = {
                     readonly 'callback': 
                         | ['not set', {}]
-                        | ['set', T.ProcedureBlock]
+                        | ['set', T.ProcedureBlock<GPAnnotation>]
                     readonly 'child path': pt.Array<string>
                     readonly 'data': 
                         | ['not set', {}]
-                        | ['set', T.SynchronousExpression]
+                        | ['set', T.SynchronousExpression<GPAnnotation>]
                 }
                 
                 export namespace _lswitch {
                     
                     export namespace cases {
                         
-                        export type D = T.ProcedureBlock
+                        export type D<GPAnnotation> = T.ProcedureBlock<GPAnnotation>
                     }
                     
-                    export type cases = pt.Dictionary<T.ProcedureBlock>
+                    export type cases<GPAnnotation> = pt.Dictionary<T.ProcedureBlock<GPAnnotation>>
                     
                     export namespace path {
                         
-                        export type A = string
+                        export type A<GPAnnotation> = string
                     }
                     
-                    export type path = pt.Array<string>
+                    export type path<GPAnnotation> = pt.Array<string>
                 }
                 
-                export type _lswitch = {
-                    readonly 'cases': pt.Dictionary<T.ProcedureBlock>
+                export type _lswitch<GPAnnotation> = {
+                    readonly 'cases': pt.Dictionary<T.ProcedureBlock<GPAnnotation>>
                     readonly 'path': pt.Array<string>
                 }
             }
             
-            export type A = 
+            export type A<GPAnnotation> = 
                 | ['dependencyCall', {
-                    readonly 'callback'?: T.ProcedureBlock
+                    readonly 'callback'?: T.ProcedureBlock<GPAnnotation>
                     readonly 'data'?: string
                 }]
                 | ['innerCallbackCall', {
-                    readonly 'data'?: T.SynchronousExpression
+                    readonly 'data'?: T.SynchronousExpression<GPAnnotation>
                     readonly 'innerCallback': string
                     readonly 'interface'?: string
                 }]
                 | ['interfaceCall', {
                     readonly 'callback': 
                         | ['not set', {}]
-                        | ['set', T.ProcedureBlock]
+                        | ['set', T.ProcedureBlock<GPAnnotation>]
                     readonly 'child path': pt.Array<string>
                     readonly 'data': 
                         | ['not set', {}]
-                        | ['set', T.SynchronousExpression]
+                        | ['set', T.SynchronousExpression<GPAnnotation>]
                 }]
                 | ['switch', {
-                    readonly 'cases': pt.Dictionary<T.ProcedureBlock>
+                    readonly 'cases': pt.Dictionary<T.ProcedureBlock<GPAnnotation>>
                     readonly 'path': pt.Array<string>
                 }]
         }
         
-        export type statements = pt.Array<
+        export type statements<GPAnnotation> = pt.Array<
             | ['dependencyCall', {
-                readonly 'callback'?: T.ProcedureBlock
+                readonly 'callback'?: T.ProcedureBlock<GPAnnotation>
                 readonly 'data'?: string
             }]
             | ['innerCallbackCall', {
-                readonly 'data'?: T.SynchronousExpression
+                readonly 'data'?: T.SynchronousExpression<GPAnnotation>
                 readonly 'innerCallback': string
                 readonly 'interface'?: string
             }]
             | ['interfaceCall', {
                 readonly 'callback': 
                     | ['not set', {}]
-                    | ['set', T.ProcedureBlock]
+                    | ['set', T.ProcedureBlock<GPAnnotation>]
                 readonly 'child path': pt.Array<string>
                 readonly 'data': 
                     | ['not set', {}]
-                    | ['set', T.SynchronousExpression]
+                    | ['set', T.SynchronousExpression<GPAnnotation>]
             }]
             | ['switch', {
-                readonly 'cases': pt.Dictionary<T.ProcedureBlock>
+                readonly 'cases': pt.Dictionary<T.ProcedureBlock<GPAnnotation>>
                 readonly 'path': pt.Array<string>
             }]
         >
     }
     
-    export type ProcedureBlock = {
+    export type ProcedureBlock<GPAnnotation> = {
         readonly 'innerFunctions'?: pt.Dictionary<{
-            readonly 'type': T.ImplementationType
+            readonly 'type': T.ImplementationType<GPAnnotation>
         }>
         readonly 'statements': pt.Array<
             | ['dependencyCall', {
-                readonly 'callback'?: T.ProcedureBlock
+                readonly 'callback'?: T.ProcedureBlock<GPAnnotation>
                 readonly 'data'?: string
             }]
             | ['innerCallbackCall', {
-                readonly 'data'?: T.SynchronousExpression
+                readonly 'data'?: T.SynchronousExpression<GPAnnotation>
                 readonly 'innerCallback': string
                 readonly 'interface'?: string
             }]
             | ['interfaceCall', {
                 readonly 'callback': 
                     | ['not set', {}]
-                    | ['set', T.ProcedureBlock]
+                    | ['set', T.ProcedureBlock<GPAnnotation>]
                 readonly 'child path': pt.Array<string>
                 readonly 'data': 
                     | ['not set', {}]
-                    | ['set', T.SynchronousExpression]
+                    | ['set', T.SynchronousExpression<GPAnnotation>]
             }]
             | ['switch', {
-                readonly 'cases': pt.Dictionary<T.ProcedureBlock>
+                readonly 'cases': pt.Dictionary<T.ProcedureBlock<GPAnnotation>>
                 readonly 'path': pt.Array<string>
             }]
         >
@@ -350,31 +352,31 @@ export namespace T {
     
     export namespace States {
         
-        export type D = T.Type
+        export type D<GPAnnotation> = T.Type<GPAnnotation>
     }
     
-    export type States = pt.Dictionary<T.Type>
+    export type States<GPAnnotation> = pt.Dictionary<T.Type<GPAnnotation>>
     
     export namespace SynchronousExpression {
         
         export namespace call {
             
-            export type _lfunction = string
+            export type _lfunction<GPAnnotation> = string
         }
         
-        export type call = {
+        export type call<GPAnnotation> = {
             readonly 'function': string
         }
         
         export namespace contextChange {
             
-            export type block = T.SynchronousFunctionBlock
+            export type block<GPAnnotation> = T.SynchronousFunctionBlock<GPAnnotation>
             
-            export type property = string
+            export type property<GPAnnotation> = string
         }
         
-        export type contextChange = {
-            readonly 'block': T.SynchronousFunctionBlock
+        export type contextChange<GPAnnotation> = {
+            readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
             readonly 'property': string
         }
         
@@ -382,86 +384,86 @@ export namespace T {
             
             export namespace properties {
                 
-                export type D = T.SynchronousExpression
+                export type D<GPAnnotation> = T.SynchronousExpression<GPAnnotation>
             }
             
-            export type properties = pt.Dictionary<T.SynchronousExpression>
+            export type properties<GPAnnotation> = pt.Dictionary<T.SynchronousExpression<GPAnnotation>>
         }
         
-        export type groupInitializer = {
-            readonly 'properties': pt.Dictionary<T.SynchronousExpression>
+        export type groupInitializer<GPAnnotation> = {
+            readonly 'properties': pt.Dictionary<T.SynchronousExpression<GPAnnotation>>
         }
         
-        export type implementMe = string
+        export type implementMe<GPAnnotation> = string
         
         export namespace mapArray {
             
-            export type block = T.SynchronousFunctionBlock
+            export type block<GPAnnotation> = T.SynchronousFunctionBlock<GPAnnotation>
         }
         
-        export type mapArray = {
-            readonly 'block': T.SynchronousFunctionBlock
+        export type mapArray<GPAnnotation> = {
+            readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
         }
         
         export namespace mapDictionary {
             
-            export type block = T.SynchronousFunctionBlock
+            export type block<GPAnnotation> = T.SynchronousFunctionBlock<GPAnnotation>
         }
         
-        export type mapDictionary = {
-            readonly 'block': T.SynchronousFunctionBlock
+        export type mapDictionary<GPAnnotation> = {
+            readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
         }
         
         export namespace propertySelection {
             
-            export type name = string
+            export type name<GPAnnotation> = string
         }
         
-        export type propertySelection = {
+        export type propertySelection<GPAnnotation> = {
             readonly 'name': string
         }
         
-        export type string__literal = string
+        export type string__literal<GPAnnotation> = string
         
         export namespace _lswitch {
             
             export namespace cases {
                 
-                export type D = T.SynchronousFunctionBlock
+                export type D<GPAnnotation> = T.SynchronousFunctionBlock<GPAnnotation>
             }
             
-            export type cases = pt.Dictionary<T.SynchronousFunctionBlock>
+            export type cases<GPAnnotation> = pt.Dictionary<T.SynchronousFunctionBlock<GPAnnotation>>
         }
         
-        export type _lswitch = {
-            readonly 'cases': pt.Dictionary<T.SynchronousFunctionBlock>
+        export type _lswitch<GPAnnotation> = {
+            readonly 'cases': pt.Dictionary<T.SynchronousFunctionBlock<GPAnnotation>>
         }
     }
     
-    export type SynchronousExpression = 
+    export type SynchronousExpression<GPAnnotation> = 
         | ['call', {
             readonly 'function': string
         }]
         | ['contextChange', {
-            readonly 'block': T.SynchronousFunctionBlock
+            readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
             readonly 'property': string
         }]
         | ['groupInitializer', {
-            readonly 'properties': pt.Dictionary<T.SynchronousExpression>
+            readonly 'properties': pt.Dictionary<T.SynchronousExpression<GPAnnotation>>
         }]
         | ['implementMe', string]
         | ['mapArray', {
-            readonly 'block': T.SynchronousFunctionBlock
+            readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
         }]
         | ['mapDictionary', {
-            readonly 'block': T.SynchronousFunctionBlock
+            readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
         }]
         | ['propertySelection', {
             readonly 'name': string
         }]
         | ['string literal', string]
         | ['switch', {
-            readonly 'cases': pt.Dictionary<T.SynchronousFunctionBlock>
+            readonly 'cases': pt.Dictionary<T.SynchronousFunctionBlock<GPAnnotation>>
         }]
     
     export namespace SynchronousFunctionBlock {
@@ -470,92 +472,92 @@ export namespace T {
             
             export namespace D {
                 
-                export type block = T.SynchronousFunctionBlock
+                export type block<GPAnnotation> = T.SynchronousFunctionBlock<GPAnnotation>
             }
             
-            export type D = {
-                readonly 'block': T.SynchronousFunctionBlock
+            export type D<GPAnnotation> = {
+                readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
             }
         }
         
-        export type innerFunctions = pt.Dictionary<{
-            readonly 'block': T.SynchronousFunctionBlock
+        export type innerFunctions<GPAnnotation> = pt.Dictionary<{
+            readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
         }>
         
-        export type returnExpression = T.SynchronousExpression
+        export type returnExpression<GPAnnotation> = T.SynchronousExpression<GPAnnotation>
     }
     
-    export type SynchronousFunctionBlock = {
+    export type SynchronousFunctionBlock<GPAnnotation> = {
         readonly 'innerFunctions'?: pt.Dictionary<{
-            readonly 'block': T.SynchronousFunctionBlock
+            readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
         }>
-        readonly 'returnExpression': T.SynchronousExpression
+        readonly 'returnExpression': T.SynchronousExpression<GPAnnotation>
     }
     
     export namespace Type {
         
-        export type array = T.Type
+        export type array<GPAnnotation> = T.Type<GPAnnotation>
         
         export namespace _lboolean {}
         
-        export type _lboolean = {}
+        export type _lboolean<GPAnnotation> = {}
         
-        export type dictionary = T.Type
+        export type dictionary<GPAnnotation> = T.Type<GPAnnotation>
         
         export namespace group {
             
             export namespace D {
                 
-                export type _ltype = T.Type
+                export type _ltype<GPAnnotation> = T.Type<GPAnnotation>
             }
             
-            export type D = {
-                readonly 'type': T.Type
+            export type D<GPAnnotation> = {
+                readonly 'type': T.Type<GPAnnotation>
             }
         }
         
-        export type group = pt.Dictionary<{
-            readonly 'type': T.Type
+        export type group<GPAnnotation> = pt.Dictionary<{
+            readonly 'type': T.Type<GPAnnotation>
         }>
         
         export namespace _lnull {}
         
-        export type _lnull = {}
+        export type _lnull<GPAnnotation> = {}
         
         export namespace _lnumber {}
         
-        export type _lnumber = {}
+        export type _lnumber<GPAnnotation> = {}
         
-        export type optional = T.Type
+        export type optional<GPAnnotation> = T.Type<GPAnnotation>
         
-        export type parameter = string
+        export type parameter<GPAnnotation> = string
         
-        export type reference = string
+        export type reference<GPAnnotation> = string
         
         export namespace _lstring {}
         
-        export type _lstring = {}
+        export type _lstring<GPAnnotation> = {}
         
         export namespace taggedUnion {
             
-            export type D = T.Type
+            export type D<GPAnnotation> = T.Type<GPAnnotation>
         }
         
-        export type taggedUnion = pt.Dictionary<T.Type>
+        export type taggedUnion<GPAnnotation> = pt.Dictionary<T.Type<GPAnnotation>>
     }
     
-    export type Type = 
-        | ['array', T.Type]
+    export type Type<GPAnnotation> = 
+        | ['array', T.Type<GPAnnotation>]
         | ['boolean', {}]
-        | ['dictionary', T.Type]
+        | ['dictionary', T.Type<GPAnnotation>]
         | ['group', pt.Dictionary<{
-            readonly 'type': T.Type
+            readonly 'type': T.Type<GPAnnotation>
         }>]
         | ['null', {}]
         | ['number', {}]
-        | ['optional', T.Type]
+        | ['optional', T.Type<GPAnnotation>]
         | ['parameter', string]
         | ['reference', string]
         | ['string', {}]
-        | ['taggedUnion', pt.Dictionary<T.Type>]
+        | ['taggedUnion', pt.Dictionary<T.Type<GPAnnotation>>]
 }

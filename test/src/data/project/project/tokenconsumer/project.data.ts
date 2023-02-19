@@ -6,7 +6,7 @@ const d = pd.wrapRawDictionary
 
 import { $ as glossary } from "./glossary.data"
 
-export const $: mproject.T.Project = {
+export const $: mproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "common types and functions for Pareto",
     'license': "ISC",

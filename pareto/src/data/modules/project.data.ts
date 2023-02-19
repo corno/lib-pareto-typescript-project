@@ -2,7 +2,7 @@ import * as pd from 'pareto-core-data'
 import {
     string,
     reference,
-    dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, parametrizedTypeReference
+    dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, parametrizedTypeReference, glossaryParameter, parametrizedReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands'
@@ -20,20 +20,23 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             "fp": "lib-fountain-pen",
             "moduleDefinition": "../../../moduleDefinition",
         }),
-        'parameters': d({}),
+        'parameters': d({
+            "Annotation": {},
+        }),
         'types': d({
+            "Annotation": type(glossaryParameter("Annotation")),
             "AlgorithmImplementation": type(group({})),
             "Implementation": type(dictionary(reference("AlgorithmImplementation"))),
             "Module": type(group({
-                "definition": member(reference("moduleDefinition", "ModuleDefinition")),
+                "definition": member(parametrizedReference("moduleDefinition", { "Annotation": typeReference("Annotation") }, "ModuleDefinition")),
                 // "type": member(taggedUnion({
                 //     "binding": nll(),
                 //     "resource": nll(),
                 //     "logic": nll(),
 
                 // }))
-                "implementation": member(reference("algorithm", "Implementation"), true),
-                "states": member(reference("algorithm", "States"), true)
+                "implementation": member(parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation"), true),
+                "states": member(parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "States"), true)
             })),
             "Project": type(group({
                 "author": member(string()),
@@ -44,11 +47,11 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
                     "resource": group({
                         "nativeDependencies": member(dictionary(group({}))),
                         "devDependencies": member(dictionary(group({}))),
-                        "definition": member(reference("moduleDefinition", "ModuleDefinition")),
+                        "definition": member(parametrizedReference("moduleDefinition", { "Annotation": typeReference("Annotation") }, "ModuleDefinition")),
                         "test": member(reference("Test")),
                     }),
                     "glossary": group({
-                        "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "Glossary")]),
+                        "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")]),
                     }),
                     "library": group({
                         "main": member(reference("Module")),
@@ -60,7 +63,7 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             })),
             "Test": type(group({
                 "dependencies": member(dictionary(group({}))),
-                "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("common", "String") }, "Glossary")]),
+                "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")]),
             })),
         }),
         'interfaces': d({}),

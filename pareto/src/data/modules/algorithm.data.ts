@@ -4,7 +4,7 @@ import {
     reference,
     boolean,
     string,
-    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type,
+    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, glossaryParameter,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
@@ -18,8 +18,11 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
         'imports': d({
             "fp": "lib-fountain-pen",
         }),
-        'parameters': d({}),
+        'parameters': d({
+            "Annotation": {},
+        }),
         'types': d({
+            "Annotation": type(glossaryParameter("Annotation")),
             "SynchronousFunctionBlock": type(group({
                 "innerFunctions": member(dictionary(group({
                     "block": member(reference("SynchronousFunctionBlock"))

@@ -9,18 +9,18 @@ import * as mglossary from "../../../glossary"
 import * as mmoduleDefinition from "../../../moduleDefinition"
 import * as mproject from "../../../project"
 
-export type FSerializeBuildEnvironment = ($: mcommon.T.Null, $i: mfp.IWriter,) => void
+export type FSerializeBuildEnvironment = <GPAnnotation>($: mcommon.T.Null, $i: mfp.IWriter,) => void
 
-export type FSerializeGlossary = ($: mglossary.T.Glossary<mcommon.T.String>, $i: mfp.IWriter,) => void
+export type FSerializeGlossary = <GPAnnotation>($: mglossary.T.Glossary<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
 
-export type FSerializeImplementation = ($: malgorithm.T.Implementation, $i: mfp.IWriter,) => void
+export type FSerializeImplementation = <GPAnnotation>($: malgorithm.T.Implementation<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
 
-export type FSerializeModuleDefinition = ($: mmoduleDefinition.T.ModuleDefinition, $i: mfp.IWriter,) => void
+export type FSerializeModuleDefinition = <GPAnnotation>($: mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
 
-export type FSerializeParetoEnvironment = ($: mcommon.T.Null, $i: mfp.IWriter,) => void
+export type FSerializeParetoEnvironment = <GPAnnotation>($: mcommon.T.Null, $i: mfp.IWriter,) => void
 
-export type FSerializeProject = ($: mproject.T.Project, $i: mfp.IWriter,) => void
+export type FSerializeProject = <GPAnnotation>($: mproject.T.Project<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
 
-export type FSerializeStates = ($: malgorithm.T.States, $i: mfp.IBlock,) => void
+export type FSerializeStates = <GPAnnotation>($: malgorithm.T.States<T.Annotation<GPAnnotation>>, $i: mfp.IBlock,) => void
 
-export type FSerializeTemplate = ($: mproject.T.Project, $i: mfp.IWriter,) => void
+export type FSerializeTemplate = <GPAnnotation>($: mproject.T.Project<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void

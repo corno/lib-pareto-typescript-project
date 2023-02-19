@@ -3,11 +3,12 @@ import * as pl from 'pareto-core-lib'
 import * as api from "../api"
 
 import * as mliana from "../../liana"
+import * as mliana2Pareto from "../../liana2Pareto"
 import * as mfp from "lib-fountain-pen"
 import * as mcommon from "glo-pareto-common"
 
 export const $$: api.CcreateSerializer = ($d) => {
-    return ($, $i) => {
+    return <Annotation>($: mliana2Pareto.T.MappedModel<Annotation>, $i: mfp.IWriter) => {
 
         $i.file(`states.generated.ts`, ($i) => {
             $d.serializeStates($d.mapLiana2States($), $i)
@@ -21,7 +22,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             }))
         }
         function doDictionaries($: {
-            $: mliana.T.LocalType,
+            $: mliana.T.LocalType<Annotation>,
             path: mcommon.T.Path,
             idPath: mcommon.T.Path,
             currentName: string,
@@ -78,7 +79,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                             $i.line(`//////`)
                                             function doScalars(
                                                 $: {
-                                                    $: mliana.T.LocalType,
+                                                    $: mliana.T.LocalType<Annotation>,
                                                     isRoot: boolean,
                                                     path: mcommon.T.Path,
                                                 }
@@ -173,7 +174,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                     $i.nestedLine(($i) => {
                                                         $i.snippet(`'data': `)
                                                         function writeUnflattener($: {
-                                                            $: mliana.T.LocalType,
+                                                            $: mliana.T.LocalType<Annotation>,
                                                             path: mcommon.T.Path,
                                                             currentName: string,
                                                         }, $i: mfp.ILine) {

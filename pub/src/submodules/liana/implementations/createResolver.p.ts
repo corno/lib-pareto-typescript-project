@@ -25,110 +25,111 @@ function getEntry<T, RT>(
 }
 
 export const $$: api.CcreateResolver = ($d) => {
-    let hasErrors = false
-    function onError($: string) {
-        $d.onError($)
-        hasErrors = true
-    }
-    function filter<T>($: AnnotatedUnsafeDictionary<T>): api.T.Dictionary<T> {
-        return {
-            'annotation': $.annotation,
-            'dictionary': $.dictionary.filter(($) => {
-                return $[0] === 'not set' ? undefined : $[1]
-            })
+
+    return <Annotation>($: api.T.Model<Annotation>) => {
+        let hasErrors = false
+        function onError($: string) {
+            $d.onError($)
+            hasErrors = true
         }
-    }
+        function filter<T>($: AnnotatedUnsafeDictionary<T>): api.T.Dictionary<Annotation, T> {
+            return {
+                'annotation': $.annotation,
+                'dictionary': $.dictionary.filter(($) => {
+                    return $[0] === 'not set' ? undefined : $[1]
+                })
+            }
+        }
 
-    type ComputedReference<T> = (ref: api.T._$Reference) => () => T
+        type ComputedReference<T> = (ref: api.T._$Reference<Annotation>) => () => T
 
-    type UnsafeDictionary<T> = pt.Dictionary<api.T.Possibly<T>>
-    type AnnotatedUnsafeDictionary<T> = {
-        annotation: string,
-        dictionary: UnsafeDictionary<T>
-    }
-    type AnnotatedDictionary<T> = {
-        annotation: string,
-        dictionary: pt.Dictionary<T>
-    }
-    type OptionalAnnotatedUnsafeDictionary<T> = null | AnnotatedUnsafeDictionary<T>
-    type PossibleValue<T> = api.T.Possibly<T>
-    function buildDictionary<TIN, TOUT>($: AnnotatedDictionary<TIN>, cb: ($: TIN, $i: {
-        getPrecedingSiblings: () => AnnotatedUnsafeDictionary<TOUT>
-        subscribeToSibling: ComputedReference<TOUT>
-    }) => TOUT | undefined): AnnotatedUnsafeDictionary<TOUT> {
-        const builder = ps.createUnsafeDictionaryBuilder<PossibleValue<TOUT>>()
-        const annotation = $.annotation
-        $.dictionary.forEach(() => false, ($, key) => {
-            const value = cb($, {
-                getPrecedingSiblings: () => {
-                    return {
-                        annotation: annotation,
-                        dictionary: builder.getDictionary()
+        type UnsafeDictionary<T> = pt.Dictionary<api.T.Possibly<Annotation, T>>
+        type AnnotatedUnsafeDictionary<T> = {
+            annotation: Annotation,
+            dictionary: UnsafeDictionary<T>
+        }
+        type AnnotatedDictionary<T> = {
+            annotation: Annotation,
+            dictionary: pt.Dictionary<T>
+        }
+        type OptionalAnnotatedUnsafeDictionary<T> = null | AnnotatedUnsafeDictionary<T>
+        type PossibleValue<T> = api.T.Possibly<Annotation, T>
+        function buildDictionary<TIN, TOUT>($: AnnotatedDictionary<TIN>, cb: ($: TIN, $i: {
+            getPrecedingSiblings: () => AnnotatedUnsafeDictionary<TOUT>
+            subscribeToSibling: ComputedReference<TOUT>
+        }) => TOUT | undefined): AnnotatedUnsafeDictionary<TOUT> {
+            const builder = ps.createUnsafeDictionaryBuilder<PossibleValue<TOUT>>()
+            const annotation = $.annotation
+            $.dictionary.forEach(() => false, ($, key) => {
+                const value = cb($, {
+                    getPrecedingSiblings: () => {
+                        return {
+                            annotation: annotation,
+                            dictionary: builder.getDictionary()
+                        }
+                    },
+                    subscribeToSibling: () => {
+                        pl.implementMe(`implement subscription`)
+                        return () => {
+                            pl.implementMe(`SKDFSL:FSF`)
+                        }
                     }
-                },
-                subscribeToSibling: () => {
-                    pl.implementMe(`implement subscription`)
-                    return () => {
-                        pl.implementMe(`SKDFSL:FSF`)
-                    }
+                })
+                if (value === undefined) {
+                    builder.add(key, ['not set', {}])
+                } else {
+                    builder.add(key, ['set', value])
                 }
             })
-            if (value === undefined) {
-                builder.add(key, ['not set', {}])
+            return {
+                annotation: annotation,
+                dictionary: builder.getDictionary()
+            }
+        }
+        function computedReference<T>($: api.T._$Reference<Annotation>, ref: () => T): api.T.ComputedReference<Annotation, T> {
+            return {
+                'name': $.name,
+                'annotation': $.annotation,
+                'referenced value': ref,
+            }
+        }
+        function resolve<T>(
+            target: string,
+            dict: OptionalAnnotatedUnsafeDictionary<T>,
+            key: api.T._$Reference<Annotation>,
+        ): api.T.Possibly<Annotation, api.T.YReference<Annotation, T>> {
+            if (dict === null) {
+                onError(`${key.annotation}: no dictionary`)
+                return ['not set', {}]
             } else {
-                builder.add(key, ['set', value])
-            }
-        })
-        return {
-            annotation: annotation,
-            dictionary: builder.getDictionary()
-        }
-    }
-    function computedReference<T>($: api.T._$Reference, ref: () => T): api.T.ComputedReference<T> {
-        return {
-            'name': $.name,
-            'annotation': $.annotation,
-            'referenced value': ref,
-        }
-    }
-    function resolve<T>(
-        target: string,
-        dict: OptionalAnnotatedUnsafeDictionary<T>,
-        key: api.T._$Reference,
-    ): api.T.Possibly<api.T.YReference<T>> {
-        if (dict === null) {
-            onError(`${key.annotation}: no dictionary`)
-            return ['not set', {}]
-        } else {
-            return getEntry(
-                dict.dictionary,
-                key.name,
-                ($): api.T.Possibly<api.T.YReference<T>> => {
-                    if ($[0] === 'not set') {
+                return getEntry(
+                    dict.dictionary,
+                    key.name,
+                    ($): api.T.Possibly<Annotation, api.T.YReference<Annotation, T>> => {
+                        if ($[0] === 'not set') {
+                            return ['not set', {}]
+                        } else {
+                            return ['set', {
+                                annotation: key.annotation,
+                                name: key.name,
+                                'referenced value': $[1],
+                            }]
+                        }
+                    },
+                    () => {
+                        onError(`${key.annotation}: no such '${target}' "${key.name}" @ ${dict.annotation}`)
                         return ['not set', {}]
-                    } else {
-                        return ['set', {
-                            annotation: key.annotation,
-                            name: key.name,
-                            'referenced value': $[1],
-                        }]
                     }
-                },
-                () => {
-                    onError(`${key.annotation}: no such '${target}' "${key.name}" @ ${dict.annotation}`)
-                    return ['not set', {}]
-                }
-            )
-        }
-    }
-    return ($) => {
-        function resolveString($: {
-            $: api.T.String,
-            support: {
-                stringTypes: OptionalAnnotatedUnsafeDictionary<api.T.XStringType>
-                siblings: OptionalAnnotatedUnsafeDictionary<api.T.XProperty>
+                )
             }
-        }): api.T.Possibly<api.T.XString> {
+        }
+        function resolveString($: {
+            $: api.T.String<Annotation>,
+            support: {
+                stringTypes: OptionalAnnotatedUnsafeDictionary<api.T.XStringType<Annotation>>
+                siblings: OptionalAnnotatedUnsafeDictionary<api.T.XProperty<Annotation>>
+            }
+        }): api.T.Possibly<Annotation, api.T.XString<Annotation>> {
             const support = $.support
             return pl.cc($.$, ($) => {
                 switch ($.constrained[0]) {
@@ -251,15 +252,15 @@ export const $$: api.CcreateResolver = ($d) => {
             })
         }
         function resolveType($: {
-            $: api.T.LocalType,
+            $: api.T.LocalType<Annotation>,
             support: {
                 stringTypes: OptionalAnnotatedUnsafeDictionary<{}>
-                globalTypes: ComputedReference<api.T.XGlobalType>
-                siblings: OptionalAnnotatedUnsafeDictionary<api.T.XProperty>
+                globalTypes: ComputedReference<api.T.XGlobalType<Annotation>>
+                siblings: OptionalAnnotatedUnsafeDictionary<api.T.XProperty<Annotation>>
             }
-        }): api.T.Possibly<api.T.XLocalType> {
+        }): api.T.Possibly<Annotation, api.T.XLocalType<Annotation>> {
             const support = $.support
-            return pl.cc($.$, ($): api.T.Possibly<api.T.XLocalType> => {
+            return pl.cc($.$, ($): api.T.Possibly<Annotation, api.T.XLocalType<Annotation>> => {
 
                 switch ($[0]) {
                     case 'array':
@@ -288,7 +289,7 @@ export const $$: api.CcreateResolver = ($d) => {
                             return ['set', ['boolean', {}]]
                         })
                     case 'component':
-                        return pl.cc($[1], ($): api.T.Possibly<api.T.XLocalType> => {
+                        return pl.cc($[1], ($): api.T.Possibly<Annotation, api.T.XLocalType<Annotation>> => {
                             // const r_arguments = buildDictionary<null, api.MConstrainedDictionaryEntry<TXGlobalType, null>>($.arguments, ($, $i) => {
                             //     resolve("global types", support.globalTypes)
                             //     return {
@@ -334,7 +335,7 @@ export const $$: api.CcreateResolver = ($d) => {
                         })
                     case 'group':
                         return pl.cc($[1], ($) => {
-                            const r_properties = buildDictionary<api.T.Property, api.T.XProperty>($.properties, ($, $i) => {
+                            const r_properties = buildDictionary<api.T.Property<Annotation>, api.T.XProperty<Annotation>>($.properties, ($, $i) => {
 
                                 const r_type = resolveType({
                                     $: $.type,
@@ -375,7 +376,7 @@ export const $$: api.CcreateResolver = ($d) => {
                         })
                     case 'taggedUnion':
                         return pl.cc($[1], ($) => {
-                            const r_options = buildDictionary<api.T.LocalType, api.T.XOption>($.options, ($, $i) => {
+                            const r_options = buildDictionary<api.T.LocalType<Annotation>, api.T.XOption<Annotation>>($.options, ($, $i) => {
 
                                 const r_type = resolveType({
                                     $: $,
@@ -393,7 +394,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                     }
                                 }
                             })
-                            let r_default: api.T.Possibly<api.T.YReference<api.T.XOption>> = resolve("option", r_options, $.default)
+                            let r_default: api.T.Possibly<Annotation, api.T.YReference<Annotation, api.T.XOption<Annotation>>> = resolve("option", r_options, $.default)
                             if (true
                                 && r_default[0] === 'set'
                             ) {
@@ -414,11 +415,11 @@ export const $$: api.CcreateResolver = ($d) => {
         const r_stringTypes = buildDictionary<null, {}>($.stringTypes, ($, $i) => {
             return {}
         })
-        const r_globalTypes = buildDictionary<api.T.GlobalType, api.T.XGlobalType>($.globalTypes, ($, $i) => {
-            const r_parameters = buildDictionary<api.T.Parameter, api.T.XParameter>($.parameters, ($, $i) => {
+        const r_globalTypes = buildDictionary<api.T.GlobalType<Annotation>, api.T.XGlobalType<Annotation>>($.globalTypes, ($, $i) => {
+            const r_parameters = buildDictionary<api.T.Parameter<Annotation>, api.T.XParameter<Annotation>>($.parameters, ($, $i) => {
                 return {}
             })
-            let r_type: api.T.Possibly<api.T.XLocalType> = resolveType({
+            let r_type: api.T.Possibly<Annotation, api.T.XLocalType<Annotation>> = resolveType({
                 $: $.type,
                 support: {
                     siblings: null,
@@ -438,11 +439,11 @@ export const $$: api.CcreateResolver = ($d) => {
             }
         })
 
-        let r_root: api.T.Possibly<api.T.YReference<api.T.XGlobalType>> = resolve("global type", r_globalTypes, $.root)
+        let r_root: api.T.Possibly<Annotation, api.T.YReference<Annotation, api.T.XGlobalType<Annotation>>> = resolve("global type", r_globalTypes, $.root)
         if (true
             && r_root[0] === 'set'
         ) {
-            const x: api.T.XModel = {
+            const x: api.T.XModel<Annotation> = {
                 'stringTypes': filter(r_stringTypes),
                 'globalTypes': filter(r_globalTypes),
                 'root': r_root[1],

@@ -7,7 +7,7 @@ import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
-    return ($, $i) => {
+    return <Annotation>($:mmoduleDefinition.T.ModuleDefinition<Annotation>, $i:mfp.IWriter) => {
         function doOptional<T>(
             $: [false] | [true, T],
             $i: mfp.ILine,
@@ -55,8 +55,8 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
             $i.snippet(`T.${$d.createIdentifier($.type)}`)
         }
 
-        function serializeDefinitionReference($: mmoduleDefinition.T.DefinitionReference, $i: mfp.ILine) {
-            function serializeContext($: mmoduleDefinition.T.Context | undefined, $i: mfp.ILine) {
+        function serializeDefinitionReference($: mmoduleDefinition.T.DefinitionReference<Annotation>, $i: mfp.ILine) {
+            function serializeContext($: mmoduleDefinition.T.Context<Annotation> | undefined, $i: mfp.ILine) {
     
                 if ($ !== undefined) {
                     pl.cc($, ($) => {

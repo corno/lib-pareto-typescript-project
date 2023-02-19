@@ -8,35 +8,37 @@ import * as mproject from "../../../submodules/project"
 
 export namespace T {
     
+    export type Annotation<GPAnnotation> = GPAnnotation
+    
     export namespace ArgumentError {
         
-        export type missing = null
+        export type missing<GPAnnotation> = null
         
-        export type too__many = null
+        export type too__many<GPAnnotation> = null
     }
     
-    export type ArgumentError = 
+    export type ArgumentError<GPAnnotation> = 
         | ['missing', null]
         | ['too many', null]
     
     export namespace Parameters {
         
-        export type testDirectory = string
+        export type testDirectory<GPAnnotation> = string
     }
     
-    export type Parameters = {
+    export type Parameters<GPAnnotation> = {
         readonly 'testDirectory': string
     }
     
     export namespace ProjectSettings {
         
-        export type mainData = mmain.T.MainData
+        export type mainData<GPAnnotation> = mmain.T.MainData
         
-        export type project = mproject.T.Project
+        export type project<GPAnnotation> = mproject.T.Project<T.Annotation<GPAnnotation>>
     }
     
-    export type ProjectSettings = {
+    export type ProjectSettings<GPAnnotation> = {
         readonly 'mainData': mmain.T.MainData
-        readonly 'project': mproject.T.Project
+        readonly 'project': mproject.T.Project<T.Annotation<GPAnnotation>>
     }
 }

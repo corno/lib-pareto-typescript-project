@@ -32,7 +32,7 @@ function getEntry<T, RT>(
 }
 
 export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
-    return ($) => {
+    return <Annotation>($: api.T.MappedModel<Annotation>) => {
         const model = $.model
         const stringMapping = $.stringmapping
         // function ref(type: string): mglossary.T.Type {
@@ -110,11 +110,11 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
         // }
         function createTypes($: {
             optional: boolean,
-            model: mliana.T.Model
+            model: mliana.T.Model<Annotation>
         }): mglossary.T.Glossary.types<string> {
             const optional = $.optional
             return model.globalTypes.dictionary.map(($) => {
-                function mapType($: mliana.T.LocalType): mglossary.T.Type<string> {
+                function mapType($: mliana.T.LocalType<Annotation>): mglossary.T.Type<string> {
                     switch ($[0]) {
                         case 'array':
                             return pl.cc($[1], ($) => {
@@ -209,7 +209,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
         return {
             'modules': pd.wrapRawDictionary({
                 "resolved": {
-                    'definition': <mmoduleDefinition.T.ModuleDefinition>{
+                    'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
                         'glossary': <mglossary.T.Glossary<string>>{
                             'imports': pd.wrapRawDictionary({
                                 "fp": "lib-fountain-pen",
@@ -239,7 +239,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             'imports': pd.wrapRawDictionary({
                                 "common": "glo-pareto-common",
                             }),
-                            'algorithms': pd.wrapRawDictionary<mmoduleDefinition.T.ModuleDefinition.api.algorithms.D>({
+                            'algorithms': pd.wrapRawDictionary<mmoduleDefinition.T.ModuleDefinition.api.algorithms.D<Annotation>>({
                                 "createSerializer": {
                                     'definition': {
                                         'function': "Serialize"
@@ -263,7 +263,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             })
                         },
                     },
-                    'implementation': <malgorithm.T.Implementation>{
+                    'implementation': <malgorithm.T.Implementation<Annotation>>{
                         'implementations': pd.wrapRawDictionary({
                             // "createSerializer": {
                             //     'constructor': true,
@@ -310,7 +310,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     },
                 },
                 "unresolved": {
-                    'definition': <mmoduleDefinition.T.ModuleDefinition>{
+                    'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
                         'glossary': <mglossary.T.Glossary<string>>{
                             'imports': pd.wrapRawDictionary({
                                 // "fp": {
@@ -412,14 +412,14 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             })
                         },
                     },
-                    'implementation': <malgorithm.T.Implementation>{
-                        'implementations': pd.wrapRawDictionary<malgorithm.T.Implementation.implementations.D>({
+                    'implementation': <malgorithm.T.Implementation<Annotation>>{
+                        'implementations': pd.wrapRawDictionary<malgorithm.T.Implementation.implementations.D<Annotation>>({
                             // "createSerializer": {
                             //     'type': ['procedure', {
                             //         'block': {
                             //             'innerFunctions': $.model.globalTypes.dictionary.map(($) => {
                             //                 function doType($: mliana.T.LocalType): malgorithm.GProcedureBlock.Pstatements {
-                            //                     const builder = ps.createArrayBuilder<malgorithm.GProcedureBlock.Pstatements.A>()
+                            //                     const builder = ps.createArrayBuilderFIXME<malgorithm.GProcedureBlock.Pstatements.A>()
                             //                     function snippet($: string) {
 
                             //                         builder.push(<malgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
@@ -510,7 +510,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                     },
                 },
                 "sparse": {
-                    'definition': <mmoduleDefinition.T.ModuleDefinition>{
+                    'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
                         'glossary': <mglossary.T.Glossary<string>>{
                             'imports': pd.wrapRawDictionary({
                                 "fp": "lib-fountain-pen",
@@ -535,7 +535,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             })
                         },
                     },
-                    'implementation': <malgorithm.T.Implementation>{
+                    'implementation': <malgorithm.T.Implementation<Annotation>>{
                         'implementations': pd.wrapRawDictionary({
                         }),
                     },

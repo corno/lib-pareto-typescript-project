@@ -7,4 +7,7 @@ import * as mglossary from "../../../glossary"
 import * as mmoduleDefinition from "../../../moduleDefinition"
 import * as mproject from "../../../project"
 
-export namespace T {}
+export namespace T {
+    
+    export type Annotation<GPAnnotation> = GPAnnotation
+}

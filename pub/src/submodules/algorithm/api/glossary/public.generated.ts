@@ -4,4 +4,4 @@ import { T   } from './types.generated'
 
 import * as mfp from "lib-fountain-pen"
 
-export type FSerializeImplementation = ($: T.Implementation, $i: mfp.ILine,) => void
+export type FSerializeImplementation = <GPAnnotation>($: T.Implementation<GPAnnotation>, $i: mfp.ILine,) => void

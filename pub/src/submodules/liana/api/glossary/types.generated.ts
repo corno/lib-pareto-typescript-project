@@ -6,208 +6,208 @@ export namespace T {
     
     export namespace _$Reference {
         
-        export type annotation = string
+        export type annotation<GPAnnotation> = GPAnnotation
         
-        export type name = string
+        export type name<GPAnnotation> = string
     }
     
-    export type _$Reference = {
-        readonly 'annotation': string
+    export type _$Reference<GPAnnotation> = {
+        readonly 'annotation': GPAnnotation
         readonly 'name': string
     }
     
     export namespace ComputedReference {
         
-        export type annotation<AReferencedType> = string
+        export type annotation<GPAnnotation, AReferencedType> = GPAnnotation
         
-        export type name<AReferencedType> = string
+        export type name<GPAnnotation, AReferencedType> = string
         
         export namespace referenced__value {
             
-            export type C<AReferencedType> = AReferencedType
+            export type C<GPAnnotation, AReferencedType> = AReferencedType
         }
         
-        export type referenced__value<AReferencedType> = () => AReferencedType
+        export type referenced__value<GPAnnotation, AReferencedType> = () => AReferencedType
     }
     
-    export type ComputedReference<AReferencedType> = {
-        readonly 'annotation': string
+    export type ComputedReference<GPAnnotation, AReferencedType> = {
+        readonly 'annotation': GPAnnotation
         readonly 'name': string
         readonly 'referenced value': () => AReferencedType
     }
     
     export namespace Dictionary {
         
-        export type annotation<AType> = string
+        export type annotation<GPAnnotation, AType> = GPAnnotation
         
         export namespace dictionary {
             
-            export type D<AType> = AType
+            export type D<GPAnnotation, AType> = AType
         }
         
-        export type dictionary<AType> = pt.Dictionary<AType>
+        export type dictionary<GPAnnotation, AType> = pt.Dictionary<AType>
     }
     
-    export type Dictionary<AType> = {
-        readonly 'annotation': string
+    export type Dictionary<GPAnnotation, AType> = {
+        readonly 'annotation': GPAnnotation
         readonly 'dictionary': pt.Dictionary<AType>
     }
     
     export namespace GlobalType {
         
-        export type parameters = T.Parameters
+        export type parameters<GPAnnotation> = T.Parameters<GPAnnotation>
         
-        export type _ltype = T.LocalType
+        export type _ltype<GPAnnotation> = T.LocalType<GPAnnotation>
     }
     
-    export type GlobalType = {
-        readonly 'parameters': T.Parameters
-        readonly 'type': T.LocalType
+    export type GlobalType<GPAnnotation> = {
+        readonly 'parameters': T.Parameters<GPAnnotation>
+        readonly 'type': T.LocalType<GPAnnotation>
     }
     
     export namespace LocalType {
         
         export namespace array {
             
-            export type _ltype = T.LocalType
+            export type _ltype<GPAnnotation> = T.LocalType<GPAnnotation>
         }
         
-        export type array = {
-            readonly 'type': T.LocalType
+        export type array<GPAnnotation> = {
+            readonly 'type': T.LocalType<GPAnnotation>
         }
         
         export namespace _lboolean {}
         
-        export type _lboolean = {}
+        export type _lboolean<GPAnnotation> = {}
         
         export namespace component {
             
-            export type arguments = T.Dictionary<mcommon.T.Null>
+            export type arguments<GPAnnotation> = T.Dictionary<GPAnnotation, mcommon.T.Null>
             
-            export type _ltype = T._$Reference
+            export type _ltype<GPAnnotation> = T._$Reference<GPAnnotation>
         }
         
-        export type component = {
-            readonly 'arguments': T.Dictionary<mcommon.T.Null>
-            readonly 'type': T._$Reference
+        export type component<GPAnnotation> = {
+            readonly 'arguments': T.Dictionary<GPAnnotation, mcommon.T.Null>
+            readonly 'type': T._$Reference<GPAnnotation>
         }
         
         export namespace dictionary {
             
-            export type key = T.String
+            export type key<GPAnnotation> = T.String<GPAnnotation>
             
-            export type _ltype = T.LocalType
+            export type _ltype<GPAnnotation> = T.LocalType<GPAnnotation>
         }
         
-        export type dictionary = {
-            readonly 'key': T.String
-            readonly 'type': T.LocalType
+        export type dictionary<GPAnnotation> = {
+            readonly 'key': T.String<GPAnnotation>
+            readonly 'type': T.LocalType<GPAnnotation>
         }
         
         export namespace group {
             
-            export type properties = T.Properties
+            export type properties<GPAnnotation> = T.Properties<GPAnnotation>
         }
         
-        export type group = {
-            readonly 'properties': T.Properties
+        export type group<GPAnnotation> = {
+            readonly 'properties': T.Properties<GPAnnotation>
         }
         
-        export type _lstring = T.String
+        export type _lstring<GPAnnotation> = T.String<GPAnnotation>
         
         export namespace taggedUnion {
             
-            export type _ldefault = T._$Reference
+            export type _ldefault<GPAnnotation> = T._$Reference<GPAnnotation>
             
-            export type options = T.Dictionary<T.LocalType>
+            export type options<GPAnnotation> = T.Dictionary<GPAnnotation, T.LocalType<GPAnnotation>>
         }
         
-        export type taggedUnion = {
-            readonly 'default': T._$Reference
-            readonly 'options': T.Dictionary<T.LocalType>
+        export type taggedUnion<GPAnnotation> = {
+            readonly 'default': T._$Reference<GPAnnotation>
+            readonly 'options': T.Dictionary<GPAnnotation, T.LocalType<GPAnnotation>>
         }
     }
     
-    export type LocalType = 
+    export type LocalType<GPAnnotation> = 
         | ['array', {
-            readonly 'type': T.LocalType
+            readonly 'type': T.LocalType<GPAnnotation>
         }]
         | ['boolean', {}]
         | ['component', {
-            readonly 'arguments': T.Dictionary<mcommon.T.Null>
-            readonly 'type': T._$Reference
+            readonly 'arguments': T.Dictionary<GPAnnotation, mcommon.T.Null>
+            readonly 'type': T._$Reference<GPAnnotation>
         }]
         | ['dictionary', {
-            readonly 'key': T.String
-            readonly 'type': T.LocalType
+            readonly 'key': T.String<GPAnnotation>
+            readonly 'type': T.LocalType<GPAnnotation>
         }]
         | ['group', {
-            readonly 'properties': T.Properties
+            readonly 'properties': T.Properties<GPAnnotation>
         }]
-        | ['string', T.String]
+        | ['string', T.String<GPAnnotation>]
         | ['taggedUnion', {
-            readonly 'default': T._$Reference
-            readonly 'options': T.Dictionary<T.LocalType>
+            readonly 'default': T._$Reference<GPAnnotation>
+            readonly 'options': T.Dictionary<GPAnnotation, T.LocalType<GPAnnotation>>
         }]
     
     export namespace Model {
         
-        export type globalTypes = T.Dictionary<T.GlobalType>
+        export type globalTypes<GPAnnotation> = T.Dictionary<GPAnnotation, T.GlobalType<GPAnnotation>>
         
-        export type root = T._$Reference
+        export type root<GPAnnotation> = T._$Reference<GPAnnotation>
         
-        export type stringTypes = T.Dictionary<mcommon.T.Null>
+        export type stringTypes<GPAnnotation> = T.Dictionary<GPAnnotation, mcommon.T.Null>
     }
     
-    export type Model = {
-        readonly 'globalTypes': T.Dictionary<T.GlobalType>
-        readonly 'root': T._$Reference
-        readonly 'stringTypes': T.Dictionary<mcommon.T.Null>
+    export type Model<GPAnnotation> = {
+        readonly 'globalTypes': T.Dictionary<GPAnnotation, T.GlobalType<GPAnnotation>>
+        readonly 'root': T._$Reference<GPAnnotation>
+        readonly 'stringTypes': T.Dictionary<GPAnnotation, mcommon.T.Null>
     }
     
-    export type Parameter = T._$Reference
+    export type Parameter<GPAnnotation> = T._$Reference<GPAnnotation>
     
-    export type Parameters = T.Dictionary<T.Parameter>
+    export type Parameters<GPAnnotation> = T.Dictionary<GPAnnotation, T.Parameter<GPAnnotation>>
     
     export namespace PM {
         
-        export type has__errors = boolean
+        export type has__errors<GPAnnotation> = boolean
         
-        export type model = T.XModel
+        export type model<GPAnnotation> = T.XModel<GPAnnotation>
     }
     
-    export type PM = {
+    export type PM<GPAnnotation> = {
         readonly 'has errors': boolean
-        readonly 'model': T.XModel
+        readonly 'model': T.XModel<GPAnnotation>
     }
     
-    export type PossibleModel = T.Possibly<T.PM>
+    export type PossibleModel<GPAnnotation> = T.Possibly<GPAnnotation, T.PM<GPAnnotation>>
     
     export namespace Possibly {
         
         export namespace not__set {}
         
-        export type not__set<AType> = {}
+        export type not__set<GPAnnotation, AType> = {}
         
-        export type _lset<AType> = AType
+        export type _lset<GPAnnotation, AType> = AType
     }
     
-    export type Possibly<AType> = 
+    export type Possibly<GPAnnotation, AType> = 
         | ['not set', {}]
         | ['set', AType]
     
-    export type Properties = T.Dictionary<T.Property>
+    export type Properties<GPAnnotation> = T.Dictionary<GPAnnotation, T.Property<GPAnnotation>>
     
     export namespace Property {
         
-        export type sibling__dependencies = T.Dictionary<mcommon.T.Null>
+        export type sibling__dependencies<GPAnnotation> = T.Dictionary<GPAnnotation, mcommon.T.Null>
         
-        export type _ltype = T.LocalType
+        export type _ltype<GPAnnotation> = T.LocalType<GPAnnotation>
     }
     
-    export type Property = {
-        readonly 'sibling dependencies': T.Dictionary<mcommon.T.Null>
-        readonly 'type': T.LocalType
+    export type Property<GPAnnotation> = {
+        readonly 'sibling dependencies': T.Dictionary<GPAnnotation, mcommon.T.Null>
+        readonly 'type': T.LocalType<GPAnnotation>
     }
     
     export namespace Reference {
@@ -218,59 +218,59 @@ export namespace T {
                 
                 export namespace array {}
                 
-                export type array = {}
+                export type array<GPAnnotation> = {}
                 
-                export type group = T._$Reference
+                export type group<GPAnnotation> = T._$Reference<GPAnnotation>
                 
                 export namespace reference {}
                 
-                export type reference = {}
+                export type reference<GPAnnotation> = {}
                 
-                export type tagged__union = T._$Reference
+                export type tagged__union<GPAnnotation> = T._$Reference<GPAnnotation>
             }
             
-            export type A = 
+            export type A<GPAnnotation> = 
                 | ['array', {}]
-                | ['group', T._$Reference]
+                | ['group', T._$Reference<GPAnnotation>]
                 | ['reference', {}]
-                | ['tagged union', T._$Reference]
+                | ['tagged union', T._$Reference<GPAnnotation>]
         }
         
-        export type steps = pt.Array<
+        export type steps<GPAnnotation> = pt.Array<
             | ['array', {}]
-            | ['group', T._$Reference]
+            | ['group', T._$Reference<GPAnnotation>]
             | ['reference', {}]
-            | ['tagged union', T._$Reference]
+            | ['tagged union', T._$Reference<GPAnnotation>]
         >
         
         export namespace _ltype {
             
             export namespace other {}
             
-            export type other = {}
+            export type other<GPAnnotation> = {}
             
-            export type parameter = T._$Reference
+            export type parameter<GPAnnotation> = T._$Reference<GPAnnotation>
             
-            export type sibling = T._$Reference
+            export type sibling<GPAnnotation> = T._$Reference<GPAnnotation>
         }
         
-        export type _ltype = 
+        export type _ltype<GPAnnotation> = 
             | ['other', {}]
-            | ['parameter', T._$Reference]
-            | ['sibling', T._$Reference]
+            | ['parameter', T._$Reference<GPAnnotation>]
+            | ['sibling', T._$Reference<GPAnnotation>]
     }
     
-    export type Reference = {
+    export type Reference<GPAnnotation> = {
         readonly 'steps': pt.Array<
             | ['array', {}]
-            | ['group', T._$Reference]
+            | ['group', T._$Reference<GPAnnotation>]
             | ['reference', {}]
-            | ['tagged union', T._$Reference]
+            | ['tagged union', T._$Reference<GPAnnotation>]
         >
         readonly 'type': 
             | ['other', {}]
-            | ['parameter', T._$Reference]
-            | ['sibling', T._$Reference]
+            | ['parameter', T._$Reference<GPAnnotation>]
+            | ['sibling', T._$Reference<GPAnnotation>]
     }
     
     export namespace String {
@@ -279,188 +279,188 @@ export namespace T {
             
             export namespace no {
                 
-                export type _ltype = T._$Reference
+                export type _ltype<GPAnnotation> = T._$Reference<GPAnnotation>
             }
             
-            export type no = {
-                readonly 'type': T._$Reference
+            export type no<GPAnnotation> = {
+                readonly 'type': T._$Reference<GPAnnotation>
             }
             
-            export type yes = T.Reference
+            export type yes<GPAnnotation> = T.Reference<GPAnnotation>
         }
         
-        export type constrained = 
+        export type constrained<GPAnnotation> = 
             | ['no', {
-                readonly 'type': T._$Reference
+                readonly 'type': T._$Reference<GPAnnotation>
             }]
-            | ['yes', T.Reference]
+            | ['yes', T.Reference<GPAnnotation>]
     }
     
-    export type String = {
+    export type String<GPAnnotation> = {
         readonly 'constrained': 
             | ['no', {
-                readonly 'type': T._$Reference
+                readonly 'type': T._$Reference<GPAnnotation>
             }]
-            | ['yes', T.Reference]
+            | ['yes', T.Reference<GPAnnotation>]
     }
     
-    export type XArgument = T.ComputedReference<T.XGlobalType>
+    export type XArgument<GPAnnotation> = T.ComputedReference<GPAnnotation, T.XGlobalType<GPAnnotation>>
     
     export namespace XGlobalType {
         
-        export type parameters = T.XParameters
+        export type parameters<GPAnnotation> = T.XParameters<GPAnnotation>
         
-        export type _ltype = T.XLocalType
+        export type _ltype<GPAnnotation> = T.XLocalType<GPAnnotation>
     }
     
-    export type XGlobalType = {
-        readonly 'parameters': T.XParameters
-        readonly 'type': T.XLocalType
+    export type XGlobalType<GPAnnotation> = {
+        readonly 'parameters': T.XParameters<GPAnnotation>
+        readonly 'type': T.XLocalType<GPAnnotation>
     }
     
     export namespace XLocalType {
         
         export namespace array {
             
-            export type _ltype = T.XLocalType
+            export type _ltype<GPAnnotation> = T.XLocalType<GPAnnotation>
         }
         
-        export type array = {
-            readonly 'type': T.XLocalType
+        export type array<GPAnnotation> = {
+            readonly 'type': T.XLocalType<GPAnnotation>
         }
         
         export namespace _lboolean {}
         
-        export type _lboolean = {}
+        export type _lboolean<GPAnnotation> = {}
         
         export namespace component {
             
             export namespace arguments {
                 
-                export type D = string
+                export type D<GPAnnotation> = string
             }
             
-            export type arguments = pt.Dictionary<string>
+            export type arguments<GPAnnotation> = pt.Dictionary<string>
             
-            export type _ltype = T.ComputedReference<T.XGlobalType>
+            export type _ltype<GPAnnotation> = T.ComputedReference<GPAnnotation, T.XGlobalType<GPAnnotation>>
         }
         
-        export type component = {
+        export type component<GPAnnotation> = {
             readonly 'arguments': pt.Dictionary<string>
-            readonly 'type': T.ComputedReference<T.XGlobalType>
+            readonly 'type': T.ComputedReference<GPAnnotation, T.XGlobalType<GPAnnotation>>
         }
         
         export namespace dictionary {
             
-            export type key = T.XString
+            export type key<GPAnnotation> = T.XString<GPAnnotation>
             
-            export type _ltype = T.XLocalType
+            export type _ltype<GPAnnotation> = T.XLocalType<GPAnnotation>
         }
         
-        export type dictionary = {
-            readonly 'key': T.XString
-            readonly 'type': T.XLocalType
+        export type dictionary<GPAnnotation> = {
+            readonly 'key': T.XString<GPAnnotation>
+            readonly 'type': T.XLocalType<GPAnnotation>
         }
         
         export namespace group {
             
-            export type properties = T.XProperties
+            export type properties<GPAnnotation> = T.XProperties<GPAnnotation>
         }
         
-        export type group = {
-            readonly 'properties': T.XProperties
+        export type group<GPAnnotation> = {
+            readonly 'properties': T.XProperties<GPAnnotation>
         }
         
-        export type _lstring = T.XString
+        export type _lstring<GPAnnotation> = T.XString<GPAnnotation>
         
         export namespace taggedUnion {
             
-            export type _ldefault = T.YReference<T.XOption>
+            export type _ldefault<GPAnnotation> = T.YReference<GPAnnotation, T.XOption<GPAnnotation>>
             
-            export type options = T.Dictionary<T.XOption>
+            export type options<GPAnnotation> = T.Dictionary<GPAnnotation, T.XOption<GPAnnotation>>
         }
         
-        export type taggedUnion = {
-            readonly 'default': T.YReference<T.XOption>
-            readonly 'options': T.Dictionary<T.XOption>
+        export type taggedUnion<GPAnnotation> = {
+            readonly 'default': T.YReference<GPAnnotation, T.XOption<GPAnnotation>>
+            readonly 'options': T.Dictionary<GPAnnotation, T.XOption<GPAnnotation>>
         }
     }
     
-    export type XLocalType = 
+    export type XLocalType<GPAnnotation> = 
         | ['array', {
-            readonly 'type': T.XLocalType
+            readonly 'type': T.XLocalType<GPAnnotation>
         }]
         | ['boolean', {}]
         | ['component', {
             readonly 'arguments': pt.Dictionary<string>
-            readonly 'type': T.ComputedReference<T.XGlobalType>
+            readonly 'type': T.ComputedReference<GPAnnotation, T.XGlobalType<GPAnnotation>>
         }]
         | ['dictionary', {
-            readonly 'key': T.XString
-            readonly 'type': T.XLocalType
+            readonly 'key': T.XString<GPAnnotation>
+            readonly 'type': T.XLocalType<GPAnnotation>
         }]
         | ['group', {
-            readonly 'properties': T.XProperties
+            readonly 'properties': T.XProperties<GPAnnotation>
         }]
-        | ['string', T.XString]
+        | ['string', T.XString<GPAnnotation>]
         | ['taggedUnion', {
-            readonly 'default': T.YReference<T.XOption>
-            readonly 'options': T.Dictionary<T.XOption>
+            readonly 'default': T.YReference<GPAnnotation, T.XOption<GPAnnotation>>
+            readonly 'options': T.Dictionary<GPAnnotation, T.XOption<GPAnnotation>>
         }]
     
     export namespace XModel {
         
-        export type globalTypes = T.Dictionary<T.XGlobalType>
+        export type globalTypes<GPAnnotation> = T.Dictionary<GPAnnotation, T.XGlobalType<GPAnnotation>>
         
-        export type root = T.YReference<T.XGlobalType>
+        export type root<GPAnnotation> = T.YReference<GPAnnotation, T.XGlobalType<GPAnnotation>>
         
-        export type stringTypes = T.Dictionary<T.XStringType>
+        export type stringTypes<GPAnnotation> = T.Dictionary<GPAnnotation, T.XStringType<GPAnnotation>>
     }
     
-    export type XModel = {
-        readonly 'globalTypes': T.Dictionary<T.XGlobalType>
-        readonly 'root': T.YReference<T.XGlobalType>
-        readonly 'stringTypes': T.Dictionary<T.XStringType>
+    export type XModel<GPAnnotation> = {
+        readonly 'globalTypes': T.Dictionary<GPAnnotation, T.XGlobalType<GPAnnotation>>
+        readonly 'root': T.YReference<GPAnnotation, T.XGlobalType<GPAnnotation>>
+        readonly 'stringTypes': T.Dictionary<GPAnnotation, T.XStringType<GPAnnotation>>
     }
     
     export namespace XOption {
         
-        export type _ltype = T.XLocalType
+        export type _ltype<GPAnnotation> = T.XLocalType<GPAnnotation>
     }
     
-    export type XOption = {
-        readonly 'type': T.XLocalType
+    export type XOption<GPAnnotation> = {
+        readonly 'type': T.XLocalType<GPAnnotation>
     }
     
     export namespace XParameter {}
     
-    export type XParameter = {}
+    export type XParameter<GPAnnotation> = {}
     
-    export type XParameters = T.Dictionary<T.XParameter>
+    export type XParameters<GPAnnotation> = T.Dictionary<GPAnnotation, T.XParameter<GPAnnotation>>
     
-    export type XProperties = T.Dictionary<T.XProperty>
+    export type XProperties<GPAnnotation> = T.Dictionary<GPAnnotation, T.XProperty<GPAnnotation>>
     
     export namespace XProperty {
         
-        export type _ltype = T.XLocalType
+        export type _ltype<GPAnnotation> = T.XLocalType<GPAnnotation>
     }
     
-    export type XProperty = {
-        readonly 'type': T.XLocalType
+    export type XProperty<GPAnnotation> = {
+        readonly 'type': T.XLocalType<GPAnnotation>
     }
     
     export namespace XReference {
         
         export namespace resolved__type {
             
-            export type O = T.LocalType
+            export type O<GPAnnotation> = T.LocalType<GPAnnotation>
         }
         
-        export type resolved__type = [ false ] | [ true, T.LocalType]
+        export type resolved__type<GPAnnotation> = [ false ] | [ true, T.LocalType<GPAnnotation>]
     }
     
-    export type XReference = {
-        readonly 'resolved type': [ false ] | [ true, T.LocalType]
+    export type XReference<GPAnnotation> = {
+        readonly 'resolved type': [ false ] | [ true, T.LocalType<GPAnnotation>]
     }
     
     export namespace XString {
@@ -469,46 +469,46 @@ export namespace T {
             
             export namespace no {
                 
-                export type _ltype = T.YReference<T.XStringType>
+                export type _ltype<GPAnnotation> = T.YReference<GPAnnotation, T.XStringType<GPAnnotation>>
             }
             
-            export type no = {
-                readonly 'type': T.YReference<T.XStringType>
+            export type no<GPAnnotation> = {
+                readonly 'type': T.YReference<GPAnnotation, T.XStringType<GPAnnotation>>
             }
             
-            export type yes = T.XReference
+            export type yes<GPAnnotation> = T.XReference<GPAnnotation>
         }
         
-        export type constrained = 
+        export type constrained<GPAnnotation> = 
             | ['no', {
-                readonly 'type': T.YReference<T.XStringType>
+                readonly 'type': T.YReference<GPAnnotation, T.XStringType<GPAnnotation>>
             }]
-            | ['yes', T.XReference]
+            | ['yes', T.XReference<GPAnnotation>]
     }
     
-    export type XString = {
+    export type XString<GPAnnotation> = {
         readonly 'constrained': 
             | ['no', {
-                readonly 'type': T.YReference<T.XStringType>
+                readonly 'type': T.YReference<GPAnnotation, T.XStringType<GPAnnotation>>
             }]
-            | ['yes', T.XReference]
+            | ['yes', T.XReference<GPAnnotation>]
     }
     
     export namespace XStringType {}
     
-    export type XStringType = {}
+    export type XStringType<GPAnnotation> = {}
     
     export namespace YReference {
         
-        export type annotation<AReferencedType> = string
+        export type annotation<GPAnnotation, AReferencedType> = GPAnnotation
         
-        export type name<AReferencedType> = string
+        export type name<GPAnnotation, AReferencedType> = string
         
-        export type referenced__value<AReferencedType> = AReferencedType
+        export type referenced__value<GPAnnotation, AReferencedType> = AReferencedType
     }
     
-    export type YReference<AReferencedType> = {
-        readonly 'annotation': string
+    export type YReference<GPAnnotation, AReferencedType> = {
+        readonly 'annotation': GPAnnotation
         readonly 'name': string
         readonly 'referenced value': AReferencedType
     }

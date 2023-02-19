@@ -6,10 +6,8 @@ import * as malgorithm from "../../algorithm"
 import * as mfp from "lib-fountain-pen"
 
 export const $$: api.CcreateStatesSerializer = ($d) => {
-
-    return ($, $i) => {
-
-        function serializeType($: malgorithm.T.Type, $i: mfp.ILine) {
+    return <Annotation>($: malgorithm.T.States<Annotation>, $i: mfp.IBlock) => {
+        function serializeType($: malgorithm.T.Type<Annotation>, $i: mfp.ILine) {
             switch ($[0]) {
                 case 'null':
                     pl.cc($[1], ($) => {

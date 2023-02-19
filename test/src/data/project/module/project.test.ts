@@ -9,7 +9,7 @@ import * as mglossary from "../../../../../pub/dist/submodules/glossary"
 
 const d = pd.wrapRawDictionary
 
-export const $: mproject.T.Module = {
+export const $: mproject.T.Module<pd.SourceLocation> = {
     'definition': {
         'glossary': {
             'imports': d({}),

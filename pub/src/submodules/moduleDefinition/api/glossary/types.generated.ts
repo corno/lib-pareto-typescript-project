@@ -6,46 +6,48 @@ import * as mglossary from "../../../glossary"
 
 export namespace T {
     
+    export type Annotation<GPAnnotation> = GPAnnotation
+    
     export namespace Context {
         
         export namespace _limport {
             
             export namespace arguments {
                 
-                export type D = mglossary.T.TypeReference<mcommon.T.String>
+                export type D<GPAnnotation> = mglossary.T.TypeReference<T.Annotation<GPAnnotation>>
             }
             
-            export type arguments = pt.Dictionary<mglossary.T.TypeReference<mcommon.T.String>>
+            export type arguments<GPAnnotation> = pt.Dictionary<mglossary.T.TypeReference<T.Annotation<GPAnnotation>>>
             
-            export type glossary = string
+            export type glossary<GPAnnotation> = string
         }
         
-        export type _limport = {
-            readonly 'arguments': pt.Dictionary<mglossary.T.TypeReference<mcommon.T.String>>
+        export type _limport<GPAnnotation> = {
+            readonly 'arguments': pt.Dictionary<mglossary.T.TypeReference<T.Annotation<GPAnnotation>>>
             readonly 'glossary': string
         }
         
         export namespace local {}
         
-        export type local = {}
+        export type local<GPAnnotation> = {}
     }
     
-    export type Context = 
+    export type Context<GPAnnotation> = 
         | ['import', {
-            readonly 'arguments': pt.Dictionary<mglossary.T.TypeReference<mcommon.T.String>>
+            readonly 'arguments': pt.Dictionary<mglossary.T.TypeReference<T.Annotation<GPAnnotation>>>
             readonly 'glossary': string
         }]
         | ['local', {}]
     
     export namespace DefinitionReference {
         
-        export type context = T.Context
+        export type context<GPAnnotation> = T.Context<GPAnnotation>
         
-        export type _lfunction = string
+        export type _lfunction<GPAnnotation> = string
     }
     
-    export type DefinitionReference = {
-        readonly 'context'?: T.Context
+    export type DefinitionReference<GPAnnotation> = {
+        readonly 'context'?: T.Context<GPAnnotation>
         readonly 'function': string
     }
     
@@ -57,7 +59,7 @@ export namespace T {
                 
                 export namespace D {
                     
-                    export type definition = T.DefinitionReference
+                    export type definition<GPAnnotation> = T.DefinitionReference<GPAnnotation>
                     
                     export namespace _ltype {
                         
@@ -65,95 +67,95 @@ export namespace T {
                             
                             export namespace configuration__data {
                                 
-                                export type O = mglossary.T.TypeReference<mcommon.T.String>
+                                export type O<GPAnnotation> = mglossary.T.TypeReference<T.Annotation<GPAnnotation>>
                             }
                             
-                            export type configuration__data = [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
+                            export type configuration__data<GPAnnotation> = [ false ] | [ true, mglossary.T.TypeReference<T.Annotation<GPAnnotation>>]
                             
                             export namespace dependencies {
                                 
-                                export type D = T.DefinitionReference
+                                export type D<GPAnnotation> = T.DefinitionReference<GPAnnotation>
                             }
                             
-                            export type dependencies = pt.Dictionary<T.DefinitionReference>
+                            export type dependencies<GPAnnotation> = pt.Dictionary<T.DefinitionReference<GPAnnotation>>
                         }
                         
-                        export type _lconstructor = {
-                            readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
-                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                        export type _lconstructor<GPAnnotation> = {
+                            readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<T.Annotation<GPAnnotation>>]
+                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GPAnnotation>>
                         }
                         
                         export namespace reference {}
                         
-                        export type reference = {}
+                        export type reference<GPAnnotation> = {}
                     }
                     
-                    export type _ltype = 
+                    export type _ltype<GPAnnotation> = 
                         | ['constructor', {
-                            readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
-                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                            readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<T.Annotation<GPAnnotation>>]
+                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GPAnnotation>>
                         }]
                         | ['reference', {}]
                 }
                 
-                export type D = {
-                    readonly 'definition': T.DefinitionReference
+                export type D<GPAnnotation> = {
+                    readonly 'definition': T.DefinitionReference<GPAnnotation>
                     readonly 'type': 
                         | ['constructor', {
-                            readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
-                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                            readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<T.Annotation<GPAnnotation>>]
+                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GPAnnotation>>
                         }]
                         | ['reference', {}]
                 }
             }
             
-            export type algorithms = pt.Dictionary<{
-                readonly 'definition': T.DefinitionReference
+            export type algorithms<GPAnnotation> = pt.Dictionary<{
+                readonly 'definition': T.DefinitionReference<GPAnnotation>
                 readonly 'type': 
                     | ['constructor', {
-                        readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
-                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                        readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<T.Annotation<GPAnnotation>>]
+                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GPAnnotation>>
                     }]
                     | ['reference', {}]
             }>
             
             export namespace imports {
                 
-                export type D = string
+                export type D<GPAnnotation> = string
             }
             
-            export type imports = pt.Dictionary<string>
+            export type imports<GPAnnotation> = pt.Dictionary<string>
         }
         
-        export type api = {
+        export type api<GPAnnotation> = {
             readonly 'algorithms': pt.Dictionary<{
-                readonly 'definition': T.DefinitionReference
+                readonly 'definition': T.DefinitionReference<GPAnnotation>
                 readonly 'type': 
                     | ['constructor', {
-                        readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
-                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                        readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<T.Annotation<GPAnnotation>>]
+                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GPAnnotation>>
                     }]
                     | ['reference', {}]
             }>
             readonly 'imports': pt.Dictionary<string>
         }
         
-        export type glossary = mglossary.T.Glossary<mcommon.T.String>
+        export type glossary<GPAnnotation> = mglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
     
-    export type ModuleDefinition = {
+    export type ModuleDefinition<GPAnnotation> = {
         readonly 'api': {
             readonly 'algorithms': pt.Dictionary<{
-                readonly 'definition': T.DefinitionReference
+                readonly 'definition': T.DefinitionReference<GPAnnotation>
                 readonly 'type': 
                     | ['constructor', {
-                        readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<mcommon.T.String>]
-                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference>
+                        readonly 'configuration data': [ false ] | [ true, mglossary.T.TypeReference<T.Annotation<GPAnnotation>>]
+                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GPAnnotation>>
                     }]
                     | ['reference', {}]
             }>
             readonly 'imports': pt.Dictionary<string>
         }
-        readonly 'glossary': mglossary.T.Glossary<mcommon.T.String>
+        readonly 'glossary': mglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
 }

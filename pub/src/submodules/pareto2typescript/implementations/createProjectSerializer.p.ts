@@ -57,8 +57,27 @@ export const $$: api.CcreateProjectSerializer = (
         //$i.allowed("tmp") //already defined in 'generateTemplate'
         $i.allowed(".git")
         $i.allowed("dev")
-        $i.allowed("build")
-        $i.allowed("pareto")
+        $i.directory("build", ($i) => {
+            $i.allowed("node_modules")
+            $i.allowed("scripts")
+            $i.allowed("initialize.sh")
+            $i.allowed("package.json")
+            $i.allowed("package-lock.json")
+        })
+        $i.directory("pareto", ($i) => {
+            $i.allowed("dist")
+            $i.allowed("node_modules")
+            $i.allowed("tsconfig.json")
+            $i.allowed("package.json")
+            $i.allowed("package-lock.json")
+            $i.directory("src", ($i) => {
+                $i.allowed("globals.generated.ts")
+                $i.directory("bin", ($i) => {
+                    $i.allowed("generateCode.generated.ts")
+                })
+                $i.allowed("data")
+            })
+        })
         $i.directory("pub", ($i) => {
             $i.allowed("dist")
             $i.allowed("node_modules")

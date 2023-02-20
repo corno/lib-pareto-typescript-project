@@ -8,7 +8,7 @@ export const $$: api.CcreateParametersParser = (
     return ($, $i) => {
         type State = null | string
         let state: State = null
-        $.forEach(($) => {
+        $.__forEach(($) => {
             if (state !== null) {
                 $d.onError(['too many', null])
             } else {

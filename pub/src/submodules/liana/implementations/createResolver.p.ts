@@ -12,7 +12,7 @@ function getEntry<T, RT>(
     notExists: () => RT
 ): RT {
     let entry: T | undefined = undefined
-    dictionary.map(($, thisKey) => {
+    dictionary.__mapWithKey(($, thisKey) => {
         if (thisKey === key) {
             entry = $
         }
@@ -33,11 +33,15 @@ export const $$: api.CcreateResolver = ($d) => {
             hasErrors = true
         }
         function filter<T>($: AnnotatedUnsafeDictionary<T>): api.T.Dictionary<Annotation, T> {
+            const db = ps.createUnsafeDictionaryBuilder<T>()
+            $.dictionary.__forEach(() => false, ($, key) => {
+                if ($[0] === 'set') {
+                    db.add(key, $[1])
+                }
+            })
             return {
                 'annotation': $.annotation,
-                'dictionary': $.dictionary.filter(($) => {
-                    return $[0] === 'not set' ? undefined : $[1]
-                })
+                'dictionary': db.getDictionary()
             }
         }
 
@@ -60,7 +64,7 @@ export const $$: api.CcreateResolver = ($d) => {
         }) => TOUT | undefined): AnnotatedUnsafeDictionary<TOUT> {
             const builder = ps.createUnsafeDictionaryBuilder<PossibleValue<TOUT>>()
             const annotation = $.annotation
-            $.dictionary.forEach(() => false, ($, key) => {
+            $.dictionary.__forEach(() => false, ($, key) => {
                 const value = cb($, {
                     getPrecedingSiblings: () => {
                         return {
@@ -151,7 +155,7 @@ export const $$: api.CcreateResolver = ($d) => {
                         return pl.cc($.constrained[1], ($) => {
                             //const annotation = $.annotation
                             function doTail() {
-                                $.steps.forEach(($) => {
+                                $.steps.__forEach(($) => {
                                     switch ($[0]) {
                                         case 'array':
                                             pl.cc($[1], ($) => {

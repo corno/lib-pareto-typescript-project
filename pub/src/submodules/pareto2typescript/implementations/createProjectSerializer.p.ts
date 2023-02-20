@@ -365,7 +365,7 @@ export const $$: api.CcreateProjectSerializer = (
                                     $i.line(``)
                                     $i.line(`export type CgetTestSet = mtest.FGetTestSet`)
                                     $i.line(``)
-                                    $i.line(`export type Cmain = pt.Procedure<mmain.T.MainData>`)
+                                    $i.line(`export type Cmain = ($: mmain.T.MainData) => void`)
                                     $i.line(``)
                                     $i.line(`export type API = {`)
                                     $i.line(`    getTestSet: CgetTestSet`)

@@ -109,7 +109,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                             break
                                                         case 'group':
                                                             pl.cc($[1], ($) => {
-                                                                $.properties.dictionary.forEach(() => false, ($, key) => {
+                                                                $.properties.dictionary.__forEach(() => false, ($, key) => {
                                                                     doScalars({
                                                                         $: $.type,
                                                                         isRoot: false,
@@ -128,7 +128,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                             pl.cc($[1], ($) => {
                                                                 $i.line(`prop_${pathID}: ${type},`)
                                                                 $i.line(`operation_${pathID}: ${type},`)
-                                                                $.options.dictionary.forEach(() => false, ($, key) => {
+                                                                $.options.dictionary.__forEach(() => false, ($, key) => {
                                                                     doScalars({
                                                                         $: $,
                                                                         isRoot: false,
@@ -202,7 +202,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                         pl.cc($[1], ($) => {
                                                                             $i.snippet(`{`)
                                                                             $i.indent(($i) => {
-                                                                                $.properties.dictionary.forEach(() => false, ($, key) => {
+                                                                                $.properties.dictionary.__forEach(() => false, ($, key) => {
                                                                                     $i.nestedLine(($i) => {
                                                                                         $i.snippet(`'${key}': `)
                                                                                         writeUnflattener({
@@ -271,7 +271,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                                 $i.nestedLine(($i) => {
                                                                                     $i.snippet(`switch ($) {`)
                                                                                     $i.indent(($i) => {
-                                                                                        $.options.dictionary.forEach(() => false, ($, key) => {
+                                                                                        $.options.dictionary.__forEach(() => false, ($, key) => {
                                                                                             $i.nestedLine(($i) => {
                                                                                                 $i.snippet(`case "${key}": {`)
                                                                                                 $i.indent(($i) => {
@@ -328,7 +328,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                         break
                     case 'group':
                         pl.cc($[1], ($) => {
-                            $.properties.dictionary.forEach(() => false, ($, key) => {
+                            $.properties.dictionary.__forEach(() => false, ($, key) => {
                                 doDictionaries({
                                     $: $.type,
                                     path: [path, key],
@@ -346,7 +346,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                         break
                     case 'taggedUnion':
                         pl.cc($[1], ($) => {
-                            $.options.dictionary.forEach(() => false, ($, key) => {
+                            $.options.dictionary.__forEach(() => false, ($, key) => {
                                 doDictionaries({
                                     $: $,
                                     path: [path, key],
@@ -360,7 +360,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 }
             })
         }
-        $.model.globalTypes.dictionary.forEach(() => false, ($, key) => {
+        $.model.globalTypes.dictionary.__forEach(() => false, ($, key) => {
             doDictionaries({
                 $: $.type,
                 path: [key],

@@ -88,7 +88,7 @@ export function group(properties: RawDictionary<[string[], T.LocalType<pd.Source
     return ['group', {
         'properties': d_mappedimp(properties, li, ($) => {
             const temp: RawDictionary<null> = {}
-            pd.a($[0]).forEach(($) => {
+            pd.a($[0]).__forEach(($) => {
                 temp[$] = null
             })
             return {
@@ -102,7 +102,7 @@ export function group(properties: RawDictionary<[string[], T.LocalType<pd.Source
 export function taggedUnion(options: RawDictionary<T.LocalType<pd.SourceLocation>>): T.LocalType<pd.SourceLocation> {
     const li = pd.getLocationInfo(1)
     let firstKey: null | string = null
-    pd.d(options).map(($, key) => {
+    pd.d(options).__mapWithKey(($, key) => {
         if (firstKey === null) {
             firstKey = key
         }

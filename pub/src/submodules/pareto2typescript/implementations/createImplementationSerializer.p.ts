@@ -101,7 +101,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                                                                 })
                                                             })
                                                         }
-                                                        $.statements.forEach(($) => {
+                                                        $.statements.__forEach(($) => {
                                                             switch ($[0]) {
                                                                 case 'dependencyCall':
                                                                     pl.cc($[1], ($) => {
@@ -112,7 +112,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                                                                     pl.cc($[1], ($) => {
                                                                         $i.nestedLine($i => {
                                                                             $i.snippet(`$i`)
-                                                                            $['child path'].forEach(($) => {
+                                                                            $['child path'].__forEach(($) => {
                                                                                 $i.snippet(`.${$}`)
                                                                             })
                                                                             $i.snippet(`(`)

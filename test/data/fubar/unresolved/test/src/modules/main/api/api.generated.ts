@@ -7,7 +7,7 @@ import * as mtest from "lib-pareto-test"
 
 export type CgetTestSet = mtest.FGetTestSet
 
-export type Cmain = pt.Procedure<mmain.T.MainData>
+export type Cmain = ($: mmain.T.MainData) => void
 
 export type API = {
     getTestSet: CgetTestSet

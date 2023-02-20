@@ -147,10 +147,10 @@ export const $$: api.CgetTestSet = ($) => {
             case 'set':
                 pl.cc(res[1], ($) => {
                     //pv.logDebugMessage(`SET`)
-                    $.model.stringTypes.dictionary.forEach(() => false, ($, key) => {
+                    $.model.stringTypes.dictionary.__forEach(() => false, ($, key) => {
                         //pv.logDebugMessage(key)
                     })
-                    $.model.globalTypes.dictionary.forEach(() => false, ($, key) => {
+                    $.model.globalTypes.dictionary.__forEach(() => false, ($, key) => {
                         //pv.logDebugMessage(key)
                     })
                     //pv.logDebugMessage(`has errors? ${$['has errors']}`)
@@ -170,7 +170,7 @@ export const $$: api.CgetTestSet = ($) => {
             "identifier": ['string', null]
         }),
     })
-    mappedGlossary.modules.forEach(() => false, ($, key) => {
+    mappedGlossary.modules.__forEach(() => false, ($, key) => {
         generateModule(`${$XXX.testDirectory}/fubar/${key}`, $)
     })
 

@@ -19,7 +19,7 @@ function getEntry<T, RT>(
     notExists: () => RT
 ): RT {
     let entry: T | undefined = undefined
-    dictionary.map(($, thisKey) => {
+    dictionary.__mapWithKey(($, thisKey) => {
         if (thisKey === key) {
             entry = $
         }

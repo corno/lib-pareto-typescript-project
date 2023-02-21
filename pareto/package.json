@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "lib-pareto-typescript-project": "0.113.0",
+    "lib-pareto-typescript-project": "0.114.0",
     "pareto-core-exe": "^0.17.0",
     "pareto-core-data": "^0.2.0"
   }

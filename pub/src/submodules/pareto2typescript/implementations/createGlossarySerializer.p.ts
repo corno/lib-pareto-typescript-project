@@ -627,8 +627,9 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
             $d.dictionaryForEach($.functions, ($) => {
                 $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`export type ${$d.createIdentifier(`F${$.key}`)} = `)
+                    $i.snippet(`export type ${$d.createIdentifier(`F${$.key}`)}`)
                     serializeGlobalParametersOnly($i)
+                    $i.snippet(` = `)
                     pl.cc($.value, ($) => {
 
                         $i.snippet(`($: `)

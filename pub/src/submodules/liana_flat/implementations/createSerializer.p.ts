@@ -40,6 +40,16 @@ export const $$: api.CcreateSerializer = ($d) => {
                             })
                         })
                         break
+                    case 'optional':
+                        pl.cc($[1], ($) => {
+                            doDictionaries({
+                                $: $.type,
+                                path: path,
+                                idPath: idPath,
+                                currentName: currentName,
+                            })
+                        })
+                        break
                     case 'boolean':
                         pl.cc($[1], ($) => {
 
@@ -85,6 +95,15 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                 pl.cc($.$, ($) => {
                                                     switch ($[0]) {
                                                         case 'array':
+                                                            pl.cc($[1], ($) => {
+                                                                doScalars({
+                                                                    $: $.type,
+                                                                    isRoot: false,
+                                                                    path: path,
+                                                                })
+                                                            })
+                                                            break
+                                                        case 'optional':
                                                             pl.cc($[1], ($) => {
                                                                 doScalars({
                                                                     $: $.type,
@@ -183,6 +202,11 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                             $i.snippet(`[]`)
                                                                         })
                                                                         break
+                                                                    case 'optional':
+                                                                        pl.cc($[1], ($) => {
+                                                                            $i.snippet(`[false]`)
+                                                                        })
+                                                                        break
                                                                     case 'boolean':
                                                                         pl.cc($[1], ($) => {
                                                                             $i.snippet(`FIXBOOLEAN`)
@@ -224,7 +248,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                                 case 'no':
                                                                                     pl.cc($.constrained[1], ($) => {
                                                                                         const type = pl.cc($, ($): string => {
-                                                                                            switch ($.type.name) {
+                                                                                            switch ($.type.key) {
                                                                                                 case "bedrag": {
                                                                                                     return "number"
                                                                                                 }
@@ -249,7 +273,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                                                 case "single line text": {
                                                                                                     return "string"
                                                                                                 }
-                                                                                                default: pl.panic(`Unknown string type: ${$.type.name}`)
+                                                                                                default: pl.panic(`Unknown string type: ${$.type.key}`)
                                                                                             }
                                                                                         })
                                                                                         $i.snippet(type === "number" ? `parseInt(assertNotNull(${pathID}))` : `assertNotNull(${pathID})`)

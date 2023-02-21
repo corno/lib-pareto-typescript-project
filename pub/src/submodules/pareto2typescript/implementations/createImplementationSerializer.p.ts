@@ -117,12 +117,9 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                                                                             })
                                                                             $i.snippet(`(`)
                                                                             switch ($.data[0]) {
-                                                                                case 'not set':
-                                                                                    pl.cc($.data[1], ($) => {
-
-                                                                                    })
+                                                                                case false:
                                                                                     break
-                                                                                case 'set':
+                                                                                case true:
                                                                                     pl.cc($.data[1], ($) => {
                                                                                         $i.snippet(`"`)
                                                                                         doSynchronousExpression($, $i)
@@ -132,12 +129,9 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                                                                                 default: pl.au($.data[0])
                                                                             }
                                                                             switch ($.callback[0]) {
-                                                                                case 'not set':
-                                                                                    pl.cc($.callback[1], ($) => {
-
-                                                                                    })
+                                                                                case false:
                                                                                     break
-                                                                                case 'set':
+                                                                                case true:
                                                                                     pl.cc($.callback[1], ($) => {
                                                                                         $i.snippet(`($i) => `)
                                                                                         doBlock($, $i)

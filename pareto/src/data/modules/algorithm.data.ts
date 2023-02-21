@@ -4,7 +4,7 @@ import {
     reference,
     boolean,
     string,
-    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, glossaryParameter,
+    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, glossaryParameter, optional,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
@@ -52,14 +52,8 @@ export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
                     "interfaceCall": group({
                         "child path": member(array(string())),
                         //"property": member(array(string())),
-                        "data": member(taggedUnion({
-                            "not set": group({}),
-                            "set": reference("SynchronousExpression"),
-                        })),
-                        "callback": member(taggedUnion({
-                            "not set": group({}),
-                            "set": reference("ProcedureBlock"),
-                        }))
+                        "data": member(optional(reference("SynchronousExpression"))),
+                        "callback": member(optional(reference("ProcedureBlock"),))
                     }),
                     "switch": group({
                         "path": member(array(string())),

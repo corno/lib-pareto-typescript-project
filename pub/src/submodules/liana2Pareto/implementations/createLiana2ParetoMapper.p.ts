@@ -120,6 +120,10 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             return pl.cc($[1], ($) => {
                                 return ['array', mapType($.type)]
                             })
+                            case 'optional':
+                                return pl.cc($[1], ($) => {
+                                    return ['optional', mapType($.type)]
+                                })
                         case 'boolean':
                             return pl.cc($[1], ($) => {
                                 return ['boolean', {}]
@@ -128,7 +132,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             return pl.cc($[1], ($) => {
                                 return ['reference', {
                                     'context': ['local', {}],
-                                    'type': $.type.name,
+                                    'type': $.type.key,
                                     'arguments': pm.wrapRawDictionary({}),
                                     // 'type': {
                                     //     'annotation': "XXX",
@@ -155,7 +159,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                                     case 'no':
                                         return pl.cc($.constrained[1], ($) => {
                                             return getEntry(
-                                                stringMapping, $.type.name,
+                                                stringMapping, $.type.key,
                                                 ($) => {
                                                     switch ($[0]) {
                                                         case 'number':
@@ -345,7 +349,7 @@ export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
                             'functions': pm.wrapRawDictionary({
                                 "Serialize": {
                                     'return type': ['nothing', {}],
-                                    'data': typeReference($.model.root.name), //unresolved
+                                    'data': typeReference($.model.root.key), //unresolved
                                     'managed input interface': ['not set', {}],
                                     'output interface': ['set', {
                                         'context': ['import', {

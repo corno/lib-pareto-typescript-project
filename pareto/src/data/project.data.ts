@@ -5,6 +5,7 @@ import * as mproject from "lib-pareto-typescript-project/dist/submodules/project
 import { $ as api } from "./api.data"
 import { $ as algorithm } from "./modules/algorithm.data"
 import { $ as liana } from "./modules/liana.data"
+import { $ as liana_resolved } from "./modules/liana_resolved.data"
 import { $ as liana_flat } from "./modules/liana_flat.data"
 import { $ as liana2Pareto } from "./modules/liana2Pareto.data"
 import { $ as moduleDefinition } from "./modules/moduleDefinition.data"
@@ -45,6 +46,9 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
             },
             "liana": {
                 'definition': liana,
+            },
+            "liana_resolved": {
+                'definition': liana_resolved,
             },
             "liana_flat": {
                 'definition': liana_flat,

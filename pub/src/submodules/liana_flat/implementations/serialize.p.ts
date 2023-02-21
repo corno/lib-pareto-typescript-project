@@ -19,15 +19,11 @@ export const $$: api.Cserialize = ($, $i) => {
             decorateDictionaryEntriesWithKey: mforeach.$a.decorateDictionaryEntriesWithKey,
         }),
         serializeStates: mpareto2typescript.$a.createStatesSerializer({
-            arrayForEach: mforeach.$a.createArrayForEach({
-                compare: mcoll.$a.localeIsABeforeB
-            }),
+            arrayForEach: mforeach.$a.arrayForEach,
             dictionaryForEach: mforeach.$a.createDictionaryForEach({
                 compare: mcoll.$a.localeIsABeforeB
             }),
-            enrichedArrayForEach: mforeach.$a.createEnrichedArrayForEach({
-                compare: mcoll.$a.localeIsABeforeB
-            }),
+            enrichedArrayForEach: mforeach.$a.enrichedArrayForEach,
             enrichedDictionaryForEach: mforeach.$a.createEnrichedDictionaryForEach({
                 compare: mcoll.$a.localeIsABeforeB
             }),

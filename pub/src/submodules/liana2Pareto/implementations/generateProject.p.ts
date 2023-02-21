@@ -13,15 +13,11 @@ import * as malgorithm from "../../algorithm"
 import { $a } from "../index"
 
 export const $$: api.CgenerateProject = ($) => {
-    const a = mforeach.$a.createArrayForEach({
-        compare: mcoll.$a.localeIsABeforeB,
-    })
+    const a = mforeach.$a.arrayForEach
     const d = mforeach.$a.createDictionaryForEach({
         compare: mcoll.$a.localeIsABeforeB,
     })
-    const ea = mforeach.$a.createEnrichedArrayForEach({
-        compare: mcoll.$a.localeIsABeforeB,
-    })
+    const ea = mforeach.$a.enrichedArrayForEach
     const ed = mforeach.$a.createEnrichedDictionaryForEach({
         compare: mcoll.$a.localeIsABeforeB,
     })

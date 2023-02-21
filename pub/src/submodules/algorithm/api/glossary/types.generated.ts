@@ -204,16 +204,10 @@ export namespace T {
                     
                     export namespace callback {
                         
-                        export namespace not__set {}
-                        
-                        export type not__set<GPAnnotation> = {}
-                        
-                        export type _lset<GPAnnotation> = T.ProcedureBlock<GPAnnotation>
+                        export type O<GPAnnotation> = T.ProcedureBlock<GPAnnotation>
                     }
                     
-                    export type callback<GPAnnotation> = 
-                        | ['not set', {}]
-                        | ['set', T.ProcedureBlock<GPAnnotation>]
+                    export type callback<GPAnnotation> = [ false ] | [ true, T.ProcedureBlock<GPAnnotation>]
                     
                     export namespace child__path {
                         
@@ -224,26 +218,16 @@ export namespace T {
                     
                     export namespace data {
                         
-                        export namespace not__set {}
-                        
-                        export type not__set<GPAnnotation> = {}
-                        
-                        export type _lset<GPAnnotation> = T.SynchronousExpression<GPAnnotation>
+                        export type O<GPAnnotation> = T.SynchronousExpression<GPAnnotation>
                     }
                     
-                    export type data<GPAnnotation> = 
-                        | ['not set', {}]
-                        | ['set', T.SynchronousExpression<GPAnnotation>]
+                    export type data<GPAnnotation> = [ false ] | [ true, T.SynchronousExpression<GPAnnotation>]
                 }
                 
                 export type interfaceCall<GPAnnotation> = {
-                    readonly 'callback': 
-                        | ['not set', {}]
-                        | ['set', T.ProcedureBlock<GPAnnotation>]
+                    readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GPAnnotation>]
                     readonly 'child path': pt.Array<string>
-                    readonly 'data': 
-                        | ['not set', {}]
-                        | ['set', T.SynchronousExpression<GPAnnotation>]
+                    readonly 'data': [ false ] | [ true, T.SynchronousExpression<GPAnnotation>]
                 }
                 
                 export namespace _lswitch {
@@ -280,13 +264,9 @@ export namespace T {
                     readonly 'interface'?: string
                 }]
                 | ['interfaceCall', {
-                    readonly 'callback': 
-                        | ['not set', {}]
-                        | ['set', T.ProcedureBlock<GPAnnotation>]
+                    readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GPAnnotation>]
                     readonly 'child path': pt.Array<string>
-                    readonly 'data': 
-                        | ['not set', {}]
-                        | ['set', T.SynchronousExpression<GPAnnotation>]
+                    readonly 'data': [ false ] | [ true, T.SynchronousExpression<GPAnnotation>]
                 }]
                 | ['switch', {
                     readonly 'cases': pt.Dictionary<T.ProcedureBlock<GPAnnotation>>
@@ -305,13 +285,9 @@ export namespace T {
                 readonly 'interface'?: string
             }]
             | ['interfaceCall', {
-                readonly 'callback': 
-                    | ['not set', {}]
-                    | ['set', T.ProcedureBlock<GPAnnotation>]
+                readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GPAnnotation>]
                 readonly 'child path': pt.Array<string>
-                readonly 'data': 
-                    | ['not set', {}]
-                    | ['set', T.SynchronousExpression<GPAnnotation>]
+                readonly 'data': [ false ] | [ true, T.SynchronousExpression<GPAnnotation>]
             }]
             | ['switch', {
                 readonly 'cases': pt.Dictionary<T.ProcedureBlock<GPAnnotation>>
@@ -335,13 +311,9 @@ export namespace T {
                 readonly 'interface'?: string
             }]
             | ['interfaceCall', {
-                readonly 'callback': 
-                    | ['not set', {}]
-                    | ['set', T.ProcedureBlock<GPAnnotation>]
+                readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GPAnnotation>]
                 readonly 'child path': pt.Array<string>
-                readonly 'data': 
-                    | ['not set', {}]
-                    | ['set', T.SynchronousExpression<GPAnnotation>]
+                readonly 'data': [ false ] | [ true, T.SynchronousExpression<GPAnnotation>]
             }]
             | ['switch', {
                 readonly 'cases': pt.Dictionary<T.ProcedureBlock<GPAnnotation>>

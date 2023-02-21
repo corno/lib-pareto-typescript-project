@@ -139,12 +139,10 @@ export const $$: api.CgetTestSet = ($) => {
     function x<Annotation>($: mliana.T.Model<Annotation>) {
         const res = resolve($)
         switch (res[0]) {
-            case 'not set':
-                pl.cc(res[1], ($) => {
+            case false:
                     //pv.logDebugMessage(`NOT SET`)
-                })
                 break
-            case 'set':
+            case true:
                 pl.cc(res[1], ($) => {
                     //pv.logDebugMessage(`SET`)
                     $.model.stringTypes.dictionary.__forEach(() => false, ($, key) => {

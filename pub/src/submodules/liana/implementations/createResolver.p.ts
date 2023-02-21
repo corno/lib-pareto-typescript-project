@@ -3,7 +3,9 @@ import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
 import * as ps from 'pareto-core-state'
 
-import * as api from "../api"
+import * as mapi from "../api"
+import * as mcommon from "glo-pareto-common"
+import * as mresolved from "../../liana_resolved"
 
 function getEntry<T, RT>(
     dictionary: pt.Dictionary<T>,
@@ -24,18 +26,18 @@ function getEntry<T, RT>(
     }
 }
 
-export const $$: api.CcreateResolver = ($d) => {
+export const $$: mapi.CcreateResolver = ($d) => {
 
-    return <Annotation>($: api.T.Model<Annotation>) => {
+    return <Annotation>($: mapi.T.Model<Annotation>) => {
         let hasErrors = false
         function onError($: string) {
             $d.onError($)
             hasErrors = true
         }
-        function filter<T>($: AnnotatedUnsafeDictionary<T>): api.T.Dictionary<Annotation, T> {
+        function filter<T>($: AnnotatedUnsafeDictionary<T>): mcommon.T.AnnotatedDictionary<Annotation, T> {
             const db = ps.createUnsafeDictionaryBuilder<T>()
             $.dictionary.__forEach(() => false, ($, key) => {
-                if ($[0] === 'set') {
+                if ($[0] === true) {
                     db.add(key, $[1])
                 }
             })
@@ -45,9 +47,9 @@ export const $$: api.CcreateResolver = ($d) => {
             }
         }
 
-        type ComputedReference<T> = (ref: api.T._$Reference<Annotation>) => () => T
+        type ComputedReference<T> = (ref: mcommon.T.AnnotatedKey<Annotation>) => () => T
 
-        type UnsafeDictionary<T> = pt.Dictionary<api.T.Possibly<Annotation, T>>
+        type UnsafeDictionary<T> = pt.Dictionary<pt.OptionalValue<T>>
         type AnnotatedUnsafeDictionary<T> = {
             annotation: Annotation,
             dictionary: UnsafeDictionary<T>
@@ -57,12 +59,11 @@ export const $$: api.CcreateResolver = ($d) => {
             dictionary: pt.Dictionary<T>
         }
         type OptionalAnnotatedUnsafeDictionary<T> = null | AnnotatedUnsafeDictionary<T>
-        type PossibleValue<T> = api.T.Possibly<Annotation, T>
         function buildDictionary<TIN, TOUT>($: AnnotatedDictionary<TIN>, cb: ($: TIN, $i: {
             getPrecedingSiblings: () => AnnotatedUnsafeDictionary<TOUT>
             subscribeToSibling: ComputedReference<TOUT>
         }) => TOUT | undefined): AnnotatedUnsafeDictionary<TOUT> {
-            const builder = ps.createUnsafeDictionaryBuilder<PossibleValue<TOUT>>()
+            const builder = ps.createUnsafeDictionaryBuilder<pt.OptionalValue<TOUT>>()
             const annotation = $.annotation
             $.dictionary.__forEach(() => false, ($, key) => {
                 const value = cb($, {
@@ -80,9 +81,9 @@ export const $$: api.CcreateResolver = ($d) => {
                     }
                 })
                 if (value === undefined) {
-                    builder.add(key, ['not set', {}])
+                    builder.add(key, [false])
                 } else {
-                    builder.add(key, ['set', value])
+                    builder.add(key, [true, value])
                 }
             })
             return {
@@ -90,9 +91,9 @@ export const $$: api.CcreateResolver = ($d) => {
                 dictionary: builder.getDictionary()
             }
         }
-        function computedReference<T>($: api.T._$Reference<Annotation>, ref: () => T): api.T.ComputedReference<Annotation, T> {
+        function computedReference<T>($: mcommon.T.AnnotatedKey<Annotation>, ref: () => T): mresolved.T._$ComputedReference<Annotation, T> {
             return {
-                'name': $.name,
+                'key': $.key,
                 'annotation': $.annotation,
                 'referenced value': ref,
             }
@@ -100,50 +101,50 @@ export const $$: api.CcreateResolver = ($d) => {
         function resolve<T>(
             target: string,
             dict: OptionalAnnotatedUnsafeDictionary<T>,
-            key: api.T._$Reference<Annotation>,
-        ): api.T.Possibly<Annotation, api.T.YReference<Annotation, T>> {
+            key: mcommon.T.AnnotatedKey<Annotation>,
+        ): pt.OptionalValue<mresolved.T._$Reference<Annotation, T>> {
             if (dict === null) {
                 onError(`${key.annotation}: no dictionary`)
-                return ['not set', {}]
+                return [false]
             } else {
                 return getEntry(
                     dict.dictionary,
-                    key.name,
-                    ($): api.T.Possibly<Annotation, api.T.YReference<Annotation, T>> => {
-                        if ($[0] === 'not set') {
-                            return ['not set', {}]
+                    key.key,
+                    ($): pt.OptionalValue<mresolved.T._$Reference<Annotation, T>> => {
+                        if ($[0] === false) {
+                            return [false]
                         } else {
-                            return ['set', {
-                                annotation: key.annotation,
-                                name: key.name,
+                            return [true, {
+                                'annotation': key.annotation,
+                                'key': key.key,
                                 'referenced value': $[1],
                             }]
                         }
                     },
                     () => {
-                        onError(`${key.annotation}: no such '${target}' "${key.name}" @ ${dict.annotation}`)
-                        return ['not set', {}]
+                        onError(`${key.annotation}: no such '${target}' "${key.key}" @ ${dict.annotation}`)
+                        return [false]
                     }
                 )
             }
         }
         function resolveString($: {
-            $: api.T.String<Annotation>,
+            $: mapi.T.String<Annotation>,
             support: {
-                stringTypes: OptionalAnnotatedUnsafeDictionary<api.T.XStringType<Annotation>>
-                siblings: OptionalAnnotatedUnsafeDictionary<api.T.XProperty<Annotation>>
+                stringTypes: OptionalAnnotatedUnsafeDictionary<mresolved.T.XStringType<Annotation>>
+                siblings: OptionalAnnotatedUnsafeDictionary<mresolved.T.XProperty<Annotation>>
             }
-        }): api.T.Possibly<Annotation, api.T.XString<Annotation>> {
+        }): pt.OptionalValue<mresolved.T.XString<Annotation>> {
             const support = $.support
             return pl.cc($.$, ($) => {
                 switch ($.constrained[0]) {
                     case 'no':
                         return pl.cc($.constrained[1], ($) => {
                             const r_type = resolve("string type", support.stringTypes, $.type)
-                            if (r_type[0] === 'not set') {
-                                return ['not set', {}]
+                            if (r_type[0] === false) {
+                                return [false]
                             } else {
-                                return ['set', {
+                                return [true, {
                                     'constrained': ['no', {
                                         'type': r_type[1],
                                     }]
@@ -228,12 +229,10 @@ export const $$: api.CcreateResolver = ($d) => {
                                                 const annotation = $.annotation
                                                 const current = resolve("sibling", support.siblings, $)
                                                 switch (current[0]) {
-                                                    case 'not set':
-                                                        pl.cc(current[1], ($) => {
-                                                            //what to do
-                                                        })
+                                                    case false:
+                                                        //what to do
                                                         break
-                                                    case 'set':
+                                                    case true:
                                                         pl.cc(current[1], ($) => {
                                                             if ($['referenced value'].type[0] !== 'dictionary') {
                                                                 onError(`${annotation} not a dictionary`)
@@ -248,7 +247,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                 }
                             })
                             //onError(`IMPLEMENT REFERENCE`)
-                            return ['not set', {}] ///HIER
+                            return [false] ///HIER
 
                         })
                     default: return pl.au($.constrained[0])
@@ -256,15 +255,15 @@ export const $$: api.CcreateResolver = ($d) => {
             })
         }
         function resolveType($: {
-            $: api.T.LocalType<Annotation>,
+            $: mapi.T.LocalType<Annotation>,
             support: {
                 stringTypes: OptionalAnnotatedUnsafeDictionary<{}>
-                globalTypes: ComputedReference<api.T.XGlobalType<Annotation>>
-                siblings: OptionalAnnotatedUnsafeDictionary<api.T.XProperty<Annotation>>
+                globalTypes: ComputedReference<mresolved.T.XGlobalType<Annotation>>
+                siblings: OptionalAnnotatedUnsafeDictionary<mresolved.T.XProperty<Annotation>>
             }
-        }): api.T.Possibly<Annotation, api.T.XLocalType<Annotation>> {
+        }): pt.OptionalValue<mresolved.T.XLocalType<Annotation>> {
             const support = $.support
-            return pl.cc($.$, ($): api.T.Possibly<Annotation, api.T.XLocalType<Annotation>> => {
+            return pl.cc($.$, ($): pt.OptionalValue<mresolved.T.XLocalType<Annotation>> => {
 
                 switch ($[0]) {
                     case 'array':
@@ -278,34 +277,55 @@ export const $$: api.CcreateResolver = ($d) => {
                                 }
                             })
                             if (true
-                                && r_type[0] === 'set'
+                                && r_type[0] === true
                             ) {
-                                return ['set', ['array', {
+                                return [true, ['array', {
                                     'type': r_type[1],
                                 }]]
 
                             } else {
-                                return ['not set', {}] ///HIER
+                                return [false] ///HIER
+                            }
+                        })
+                    case 'optional':
+                        return pl.cc($[1], ($) => {
+                            const r_type = resolveType({
+                                $: $.type,
+                                support: {
+                                    stringTypes: support.stringTypes,
+                                    globalTypes: support.globalTypes,
+                                    siblings: support.siblings,
+                                }
+                            })
+                            if (true
+                                && r_type[0] === true
+                            ) {
+                                return [true, ['array', {
+                                    'type': r_type[1],
+                                }]]
+
+                            } else {
+                                return [false] ///HIER
                             }
                         })
                     case 'boolean':
                         return pl.cc($[1], ($) => {
-                            return ['set', ['boolean', {}]]
+                            return [true, ['boolean', {}]]
                         })
                     case 'component':
-                        return pl.cc($[1], ($): api.T.Possibly<Annotation, api.T.XLocalType<Annotation>> => {
+                        return pl.cc($[1], ($): pt.OptionalValue<mresolved.T.XLocalType<Annotation>> => {
                             // const r_arguments = buildDictionary<null, api.MConstrainedDictionaryEntry<TXGlobalType, null>>($.arguments, ($, $i) => {
                             //     resolve("global types", support.globalTypes)
                             //     return {
                             //         'value': null
                             //     }
                             // })
-                            // return ['set', ['component', {
+                            // return [true, ['component', {
                             //     'type': computedReference($.type, support.globalTypes($.type)),
                             //     'arguments': filter(r_arguments),
                             // }]]
                             //onError(`IMPLEMENT COMPONENT`)
-                            return ['not set', {}]
+                            return [false]
                         })
                     case 'dictionary':
                         return pl.cc($[1], ($) => {
@@ -325,21 +345,21 @@ export const $$: api.CcreateResolver = ($d) => {
                                 }
                             })
                             if (true
-                                && r_key[0] === 'set'
-                                && r_type[0] === 'set'
+                                && r_key[0] === true
+                                && r_type[0] === true
                             ) {
-                                return ['set', ['dictionary', {
+                                return [true, ['dictionary', {
                                     'key': r_key[1],
                                     'type': r_type[1],
                                 }]]
 
                             } else {
-                                return ['not set', {}] ///HIER
+                                return [false] ///HIER
                             }
                         })
                     case 'group':
                         return pl.cc($[1], ($) => {
-                            const r_properties = buildDictionary<api.T.Property<Annotation>, api.T.XProperty<Annotation>>($.properties, ($, $i) => {
+                            const r_properties = buildDictionary<mapi.T.Property<Annotation>, mresolved.T.XProperty<Annotation>>($.properties, ($, $i) => {
 
                                 const r_type = resolveType({
                                     $: $.type,
@@ -349,7 +369,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                         siblings: $i.getPrecedingSiblings(),
                                     }
                                 })
-                                if (r_type[0] === 'not set') {
+                                if (r_type[0] === false) {
                                     return undefined
                                 } else {
                                     return {
@@ -357,7 +377,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                     }
                                 }
                             })
-                            return ['set', ['group', {
+                            return [true, ['group', {
                                 'properties': filter(r_properties),
                             }]]
                         })
@@ -370,17 +390,17 @@ export const $$: api.CcreateResolver = ($d) => {
                                     siblings: support.siblings,
                                 }
                             })
-                            if (r_[0] === 'not set') {
-                                return ['not set', {}] ///HIER
+                            if (r_[0] === false) {
+                                return [false] ///HIER
                             } else {
                                 const xxx = r_[1]
-                                return ['set', ['string', xxx]]
+                                return [true, ['string', xxx]]
                             }
 
                         })
                     case 'taggedUnion':
                         return pl.cc($[1], ($) => {
-                            const r_options = buildDictionary<api.T.LocalType<Annotation>, api.T.XOption<Annotation>>($.options, ($, $i) => {
+                            const r_options = buildDictionary<mapi.T.LocalType<Annotation>, mresolved.T.XOption<Annotation>>($.options, ($, $i) => {
 
                                 const r_type = resolveType({
                                     $: $,
@@ -390,7 +410,7 @@ export const $$: api.CcreateResolver = ($d) => {
                                         siblings: $i.getPrecedingSiblings(),
                                     }
                                 })
-                                if (r_type[0] === 'not set') {
+                                if (r_type[0] === false) {
                                     return undefined
                                 } else {
                                     return {
@@ -398,17 +418,17 @@ export const $$: api.CcreateResolver = ($d) => {
                                     }
                                 }
                             })
-                            let r_default: api.T.Possibly<Annotation, api.T.YReference<Annotation, api.T.XOption<Annotation>>> = resolve("option", r_options, $.default)
+                            let r_default: pt.OptionalValue<mresolved.T._$Reference<Annotation, mresolved.T.XOption<Annotation>>> = resolve("option", r_options, $.default)
                             if (true
-                                && r_default[0] === 'set'
+                                && r_default[0] === true
                             ) {
-                                return ['set', ['taggedUnion', {
+                                return [true, ['taggedUnion', {
                                     'options': filter(r_options),
                                     'default': r_default[1],
                                 }]]
 
                             } else {
-                                return ['not set', {}] ///HIER
+                                return [false] ///HIER
                             }
 
                         })
@@ -419,11 +439,11 @@ export const $$: api.CcreateResolver = ($d) => {
         const r_stringTypes = buildDictionary<null, {}>($.stringTypes, ($, $i) => {
             return {}
         })
-        const r_globalTypes = buildDictionary<api.T.GlobalType<Annotation>, api.T.XGlobalType<Annotation>>($.globalTypes, ($, $i) => {
-            const r_parameters = buildDictionary<api.T.Parameter<Annotation>, api.T.XParameter<Annotation>>($.parameters, ($, $i) => {
+        const r_globalTypes = buildDictionary<mapi.T.GlobalType<Annotation>, mresolved.T.XGlobalType<Annotation>>($.globalTypes, ($, $i) => {
+            const r_parameters = buildDictionary<mapi.T.Parameter<Annotation>, mresolved.T.XParameter<Annotation>>($.parameters, ($, $i) => {
                 return {}
             })
-            let r_type: api.T.Possibly<Annotation, api.T.XLocalType<Annotation>> = resolveType({
+            let r_type: pt.OptionalValue<mresolved.T.XLocalType<Annotation>> = resolveType({
                 $: $.type,
                 support: {
                     siblings: null,
@@ -432,7 +452,7 @@ export const $$: api.CcreateResolver = ($d) => {
                 }
             })
             if (true
-                && r_type[0] === 'set'
+                && r_type[0] === true
             ) {
                 return {
                     'parameters': filter(r_parameters),
@@ -443,21 +463,21 @@ export const $$: api.CcreateResolver = ($d) => {
             }
         })
 
-        let r_root: api.T.Possibly<Annotation, api.T.YReference<Annotation, api.T.XGlobalType<Annotation>>> = resolve("global type", r_globalTypes, $.root)
+        let r_root: pt.OptionalValue<mresolved.T._$Reference<Annotation, mresolved.T.XGlobalType<Annotation>>> = resolve("global type", r_globalTypes, $.root)
         if (true
-            && r_root[0] === 'set'
+            && r_root[0] === true
         ) {
-            const x: api.T.XModel<Annotation> = {
+            const x: mresolved.T.XModel<Annotation> = {
                 'stringTypes': filter(r_stringTypes),
                 'globalTypes': filter(r_globalTypes),
                 'root': r_root[1],
             }
-            return ['set', {
+            return [true, {
                 'model': x,
                 'has errors': hasErrors
             }]
         } else {
-            return ['not set', {}] ///HIER
+            return [false] ///HIER
         }
     }
 }

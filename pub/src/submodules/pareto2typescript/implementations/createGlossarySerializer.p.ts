@@ -628,8 +628,8 @@ export const $$: api.CcreateGlossarySerializer = ($d) => {
                 $i.line(``)
                 $i.nestedLine(($i) => {
                     $i.snippet(`export type ${$d.createIdentifier(`F${$.key}`)}`)
-                    serializeGlobalParametersOnly($i)
                     $i.snippet(` = `)
+                    serializeGlobalParametersOnly($i)
                     pl.cc($.value, ($) => {
 
                         $i.snippet(`($: `)

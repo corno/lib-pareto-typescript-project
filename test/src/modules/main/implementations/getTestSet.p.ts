@@ -1,8 +1,8 @@
-import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
 import * as ps from 'pareto-core-state'
 import * as pm from 'pareto-core-map'
 import * as pv from 'pareto-core-dev'
+import * as pa from 'pareto-core-async'
 
 
 import * as mtst from "lib-pareto-test"
@@ -217,8 +217,8 @@ export const $$: api.CgetTestSet = ($) => {
         "TODO: ACTUALLY TEST THE LIB",
     )
 
-    return pl.asyncValue(null).map(() => {
-        return pl.asyncValue({
+    return pa.asyncValue(null).map(() => {
+        return pa.asyncValue({
             elements: builder.getDictionary()
         })
     })

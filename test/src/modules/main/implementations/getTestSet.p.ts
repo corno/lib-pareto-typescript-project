@@ -179,7 +179,6 @@ export const $$:CgetTestSet = ($) => {
         'model': accountingModel,
     })
 
-
     // mserialize.$a.createModuleDefinitionSerializer({
 
     // })(mliana2pareto.$a.createLiana2paretoMapper({})(model), )
@@ -196,7 +195,6 @@ export const $$:CgetTestSet = ($) => {
             }]
         })
     }
-
 
     //test that a failing test indeed fails!!! now it will make the program exit with an error code
     createTest(

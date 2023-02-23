@@ -22,7 +22,6 @@ export const $$:CgenerateProject = ($) => {
         compare: gcoll.$a.localeIsABeforeB,
     })
 
-
     $a.createProjectGenerator(
         {
             dictionaryForEach: gforeach.$a.createDictionaryForEach({

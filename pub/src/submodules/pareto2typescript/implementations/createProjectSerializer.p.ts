@@ -1,6 +1,5 @@
 import * as pl from 'pareto-core-lib'
 
-
 import * as gfp from "lib-fountain-pen"
 import * as gproject from "../../project"
 

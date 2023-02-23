@@ -1,6 +1,5 @@
 import * as pl from 'pareto-core-lib'
 
-
 import * as gglossary from "../../glossary"
 import * as gfp from "lib-fountain-pen"
 
@@ -88,7 +87,6 @@ export const $$:CcreateImplementationSerializer = ($d) => {
         //                 })
         //                 $i.snippet(`}]`)
 
-
         //             })
         //             break
         //         case 'propertySelection':
@@ -121,7 +119,6 @@ export const $$:CcreateImplementationSerializer = ($d) => {
         //                     })
         //                 })
         //                 $i.snippet(`}]`)
-
 
         //             })
         //             break

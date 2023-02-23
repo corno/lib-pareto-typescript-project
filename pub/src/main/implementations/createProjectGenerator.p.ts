@@ -1,7 +1,6 @@
 import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
 
-
 import * as gfp from "lib-fountain-pen"
 
 import { $a } from "../index"
@@ -12,7 +11,6 @@ export const $$:CcreateProjectGenerator = ($d) => {
     return ($) => {
 
         const project = $.project
-
 
         $a.createParametersParser({
             onError: ($) => {

@@ -4,7 +4,6 @@ import * as gapi from "../api"
 import * as gglossary from "../../glossary"
 import * as gfp from "lib-fountain-pen"
 
-
 import { CcreateSerializer } from "../api"
 
 export const $$:CcreateSerializer = ($d) => {

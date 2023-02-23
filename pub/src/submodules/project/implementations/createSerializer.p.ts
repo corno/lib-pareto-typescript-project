@@ -1,7 +1,5 @@
 import * as pl from 'pareto-core-lib'
 
-
-
 import { CcreateSerializer } from "../api"
 
 export const $$:CcreateSerializer = ($d) => {

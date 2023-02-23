@@ -3,7 +3,7 @@ import * as pl from 'pareto-core-lib'
 
 import * as gfp from "lib-fountain-pen"
 
-import { $a } from "../index"
+import { $a } from ".."
 
 import { CcreateProjectGenerator } from "../api"
 

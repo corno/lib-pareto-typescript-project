@@ -5,25 +5,6 @@ import * as gapi from "../api"
 import * as galgorithm from "../../algorithm"
 import * as gliana from "../../liana"
 
-function getEntry<T, RT>(
-    dictionary: pt.Dictionary<T>,
-    key: string,
-    exists: ($: T) => RT,
-    notExists: () => RT
-): RT {
-    let entry: T | undefined = undefined
-    dictionary.__mapWithKey(($, thisKey) => {
-        if (thisKey === key) {
-            entry = $
-        }
-    })
-    if (entry !== undefined) {
-        return exists(entry)
-    } else {
-        return notExists()
-    }
-}
-
 import { CcreateLiana2StatesMapper } from "../api"
 
 export const $$:CcreateLiana2StatesMapper = ($d) => {
@@ -65,8 +46,8 @@ export const $$:CcreateLiana2StatesMapper = ($d) => {
                             switch ($.constrained[0]) {
                                 case 'no':
                                     return pl.cc($.constrained[1], ($) => {
-                                        return getEntry(
-                                            stringMapping, $.type.key,
+                                        return stringMapping.__getEntry(
+                                            $.type.key,
                                             ($) => {
                                                 switch ($[0]) {
                                                     case 'number':

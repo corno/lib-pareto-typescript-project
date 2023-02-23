@@ -7,25 +7,6 @@ import * as gapi from "../api"
 import * as gcommon from "glo-pareto-common"
 import * as gresolved from "../../liana_resolved"
 
-function getEntry<T, RT>(
-    dictionary: pt.Dictionary<T>,
-    key: string,
-    exists: ($: T) => RT,
-    notExists: () => RT
-): RT {
-    let entry: T | undefined = undefined
-    dictionary.__mapWithKey(($, thisKey) => {
-        if (thisKey === key) {
-            entry = $
-        }
-    })
-    if (entry !== undefined) {
-        return exists(entry)
-    } else {
-        return notExists()
-    }
-}
-
 import { CcreateResolver } from "../api"
 
 export const $$:CcreateResolver = ($d) => {
@@ -109,8 +90,7 @@ export const $$:CcreateResolver = ($d) => {
                 onError(`${key.annotation}: no dictionary`)
                 return [false]
             } else {
-                return getEntry(
-                    dict.dictionary,
+                return dict.dictionary.__getEntry(
                     key.key,
                     ($): pt.OptionalValue<gresolved.T._$Reference<Annotation, T>> => {
                         if ($[0] === false) {

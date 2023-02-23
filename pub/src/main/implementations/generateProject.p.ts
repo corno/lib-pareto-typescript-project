@@ -4,7 +4,7 @@ import * as gcoll from "res-pareto-collation"
 import * as gmain from "res-pareto-main"
 import * as gts from "res-typescript"
 
-import { $a } from "../index"
+import { $a } from ".."
 
 import { CgenerateProject } from "../api"
 
@@ -73,7 +73,6 @@ export const $$:CgenerateProject = ($) => {
             ),
             logError: gmain.$a.logError,
             decorateDictionaryEntriesWithKey: gforeach.$a.decorateDictionaryEntriesWithKey,
-            //cbgetSingleArgument: mexe.p_getSingleArgument,
         }
     )($)
 }

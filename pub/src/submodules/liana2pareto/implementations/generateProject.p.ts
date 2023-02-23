@@ -53,34 +53,8 @@ export const $$:CgenerateProject = ($) => {
                         enrichedArrayForEach: ea,
                         enrichedDictionaryForEach: ed,
                     }),
-                    //serializeLeafType: mserialize.$a,
                 })
             })
-            // serializeProject: foo.$a.createProjectSerializer(
-            //     {
-            //         compare: gcoll.$a.localeIsABeforeB,
-            //         serializeModuleDefinition: foo.$a.createModuleDefinitionSerializer(
-            //             {
-            //                 compare: gcoll.$a.localeIsABeforeB,
-            //                 serializeGlossary: foo.$a.createGlossarySerializer({
-            //                     compare: gcoll.$a.localeIsABeforeB,
-            //                     enrichedDictionaryForEach: mtemp.$a.createEnrichedDictionaryForEach({
-            //                         compare: gcoll.$a.localeIsABeforeB,
-            //                     })
-            //                 }),
-            //                 serializeLeafType: foo.$a.serializeLeafType,
-            //             }
-            //         ),
-            //         serializeLeafType: foo.$a.serializeLeafType,
-            //     }
-            // ),
-            // serializeTemplate: foo.$a.createTemplateSerializer(
-            //     {
-            //         compare: gcoll.$a.localeIsABeforeB,
-            //     }
-            // ),
-            //af_getSingleArgument: () => { pl.panic(`SSDFSFSF`)},
-            //cbgetSingleArgument: mexe.p_getSingleArgument,
         }
     )($)
 }

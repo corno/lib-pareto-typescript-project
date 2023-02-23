@@ -8,28 +8,9 @@ import * as gglossary from "../../glossary"
 import * as gmoduleDefinition from "../../moduleDefinition"
 import * as gliana from "../../liana"
 
-function getEntry<T, RT>(
-    dictionary: pt.Dictionary<T>,
-    key: string,
-    exists: ($: T) => RT,
-    notExists: () => RT
-): RT {
-    let entry: T | undefined = undefined
-    dictionary.__mapWithKey(($, thisKey) => {
-        if (thisKey === key) {
-            entry = $
-        }
-    })
-    if (entry !== undefined) {
-        return exists(entry)
-    } else {
-        return notExists()
-    }
-}
-
 import { CcreateLiana2paretoMapper } from "../api"
 
-export const $$:CcreateLiana2paretoMapper = ($d) => {
+export const $$: CcreateLiana2paretoMapper = ($d) => {
     return <Annotation>($: gapi.T.MappedModel<Annotation>) => {
         const model = $.model
         const stringMapping = $.stringmapping
@@ -118,10 +99,10 @@ export const $$:CcreateLiana2paretoMapper = ($d) => {
                             return pl.cc($[1], ($) => {
                                 return ['array', mapType($.type)]
                             })
-                            case 'optional':
-                                return pl.cc($[1], ($) => {
-                                    return ['optional', mapType($.type)]
-                                })
+                        case 'optional':
+                            return pl.cc($[1], ($) => {
+                                return ['optional', mapType($.type)]
+                            })
                         case 'boolean':
                             return pl.cc($[1], ($) => {
                                 return ['boolean', {}]
@@ -156,8 +137,8 @@ export const $$:CcreateLiana2paretoMapper = ($d) => {
                                 switch ($.constrained[0]) {
                                     case 'no':
                                         return pl.cc($.constrained[1], ($) => {
-                                            return getEntry(
-                                                stringMapping, $.type.key,
+                                            return stringMapping.__getEntry(
+                                                $.type.key,
                                                 ($) => {
                                                     switch ($[0]) {
                                                         case 'number':

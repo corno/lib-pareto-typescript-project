@@ -1,20 +1,22 @@
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as mfp from "lib-fountain-pen"
-import * as mproject from "../../project"
 
-export const $$: mapi.CcreateProjectSerializer = (
+import * as gfp from "lib-fountain-pen"
+import * as gproject from "../../project"
+
+import { CcreateProjectSerializer } from "../api"
+
+export const $$:CcreateProjectSerializer = (
     $d,
 ) => {
-    return <Annotation>($: mproject.T.Project<Annotation>, $i: mfp.IWriter) => {
+    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.IWriter) => {
         const isResource = $.type[0] === 'resource'
         function tsConfig(
             $: {
                 isResource: boolean,
                 inlineSourceMap: boolean,
             },
-            $i: mfp.IWriter
+            $i: gfp.IWriter
         ) {
             $i.file("tsconfig.json", ($i) => {
                 $i.line(`{`)
@@ -36,7 +38,7 @@ export const $$: mapi.CcreateProjectSerializer = (
                 $i.line(`}`)
             })
         }
-        function globals($i: mfp.IWriter) {
+        function globals($i: gfp.IWriter) {
             $i.file("globals.generated.ts", ($i) => {
                 $i.line(`interface Array<T> {`)
                 $i.line(`    [n: number]: T`)
@@ -188,7 +190,7 @@ export const $$: mapi.CcreateProjectSerializer = (
                         break
                     case 'library':
                         pl.cc($.type[1], ($) => {
-                            function doModule($: mproject.T.Module<Annotation>, $i: mfp.IWriter) {
+                            function doModule($: gproject.T.Module<Annotation>, $i: gfp.IWriter) {
 
                                 $i.allowed("shorthands.ts")
                                 $i.directory("api", ($i) => {
@@ -246,9 +248,9 @@ export const $$: mapi.CcreateProjectSerializer = (
                                                 $i.line(``)
                                                 $i.line(`import * as pe from 'pareto-core-exe'`)
                                                 $i.line(``)
-                                                $i.line(`import * as mmain from "../main"`)
+                                                $i.line(`import * as gmain from "../main"`)
                                                 $i.line(``)
-                                                $i.line(`pe.runProgram(mmain.$a.${$d.createIdentifier($.key)})`)
+                                                $i.line(`pe.runProgram(gmain.$a.${$d.createIdentifier($.key)})`)
                                             })
                                         })
                                     })
@@ -316,7 +318,7 @@ export const $$: mapi.CcreateProjectSerializer = (
                 $i
             )
         })
-        function doTest($: mproject.T.Test<Annotation>, $i: mfp.IWriter) {
+        function doTest($: gproject.T.Test<Annotation>, $i: gfp.IWriter) {
 
             $i.directory("test", ($i) => {
                 $i.allowed("data")
@@ -348,9 +350,9 @@ export const $$: mapi.CcreateProjectSerializer = (
                         $i.file("test.generated.ts", ($i) => {
                             $i.line(`import * as pe from 'pareto-core-exe'`)
                             $i.line(``)
-                            $i.line(`import * as mmain from "../modules/main"`)
+                            $i.line(`import * as gmain from "../modules/main"`)
                             $i.line(``)
-                            $i.line(`exe.runProgram(mmain.$a.main)`)
+                            $i.line(`exe.runProgram(gmain.$a.main)`)
                         })
                     })
                     $i.allowed("data")
@@ -360,11 +362,11 @@ export const $$: mapi.CcreateProjectSerializer = (
                                 $i.file("api.generated.ts", ($i) => {
                                     $i.line(`import * as pt from 'pareto-core-types'`)
                                     $i.line(``)
-                                    $i.line(`import * as mmain from "res-pareto-main"`)
-                                    $i.line(`import * as mtest from "lib-pareto-test"`)
+                                    $i.line(`import * as gmain from "res-pareto-main"`)
+                                    $i.line(`import * as gtest from "lib-pareto-test"`)
                                     $i.line(``)
-                                    $i.line(`export type CgetTestSet = mtest.FGetTestSet`)
-                                    $i.line(`export type Cmain = ($: mmain.T.MainData) => void`)
+                                    $i.line(`export type CgetTestSet = gtest.FGetTestSet`)
+                                    $i.line(`export type Cmain = ($: gmain.T.MainData) => void`)
                                     $i.line(``)
                                     $i.line(`export type API = {`)
                                     $i.line(`    getTestSet: CgetTestSet`)
@@ -384,19 +386,21 @@ export const $$: mapi.CcreateProjectSerializer = (
                                 $i.file("main.generated.ts", ($i) => {
                                     $i.line(`import * as pl from 'pareto-core-lib'`)
                                     $i.line(``)
-                                    $i.line(`import * as mapi from "../api"`)
-                                    $i.line(`import * as mmain from "res-pareto-main"`)
-                                    $i.line(`import * as mtest from "lib-pareto-test"`)
+                                    $i.line(``)
+                                    $i.line(`import * as gmain from "res-pareto-main"`)
+                                    $i.line(`import * as gtest from "lib-pareto-test"`)
                                     $i.line(``)
                                     $i.line(`import { $a } from "../index"`)
                                     $i.line(``)
-                                    $i.line(`export const $$: mapi.Cmain = ($) => {`)
+                                    $i.line(`import { Cmain } from "../api"
+
+export const $$:Cmain = ($) => {`)
                                     $i.line(``)
-                                    $i.line(`    mtest.$a.createTestProgram({`)
+                                    $i.line(`    gtest.$a.createTestProgram({`)
                                     $i.line(`        getTestSet: $a.getTestSet,`)
-                                    $i.line(`        log: mmain.$a.log,`)
-                                    $i.line(`        logError: mmain.$a.logError,`)
-                                    $i.line(`        onTestErrors: mmain.$a.setExitCodeToFailed`)
+                                    $i.line(`        log: gmain.$a.log,`)
+                                    $i.line(`        logError: gmain.$a.logError,`)
+                                    $i.line(`        onTestErrors: gmain.$a.setExitCodeToFailed`)
                                     $i.line(`    })($)`)
                                     $i.line(`}`)
                                 })
@@ -426,7 +430,7 @@ export const $$: mapi.CcreateProjectSerializer = (
                     //     $i.line(`import * as pd from 'pareto-core-data'`)
                     //     $i.line(`import * as pl from 'pareto-core-lib'`)
                     //     $i.line(``)
-                    //     $i.line(`import * as mtst from "lib-pareto-test"`)
+                    //     $i.line(`import * as gtst from "lib-pareto-test"`)
                     //     $i.line(``)
                     //     $d.dictionaryForEach($.modules, ($, key) => {
                     //         const moduleName = key
@@ -471,7 +475,7 @@ export const $$: mapi.CcreateProjectSerializer = (
                     //                 //     $i.line(`import * as tst from "lib-pareto-test"`)
                     //                 //     $i.line(``)
                     //                 //     def.api.imports.forEach(compare, ($, key) => {
-                    //                 //         $i.line(`import * as m${key} from "${$}"`)
+                    //                 //         $i.line(`import * as g${key} from "${$}"`)
                     //                 //     })
                     //                 //     $i.nestedLine(($i) => {
                     //                 //         $i.snippet(`export type XX = `)

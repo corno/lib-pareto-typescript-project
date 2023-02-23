@@ -2,13 +2,11 @@ import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
 import * as pm from 'pareto-core-map'
 
-import * as mapi from "../api"
-import * as malgorithm from "../../algorithm"
-import * as mglossary from "../../glossary"
-import * as mmoduleDefinition from "../../moduleDefinition"
-import * as mliana from "../../liana"
-
-import { data, func, interfaceReference } from '../../glossary/shorthands'
+import * as gapi from "../api"
+import * as galgorithm from "../../algorithm"
+import * as gglossary from "../../glossary"
+import * as gmoduleDefinition from "../../moduleDefinition"
+import * as gliana from "../../liana"
 
 function getEntry<T, RT>(
     dictionary: pt.Dictionary<T>,
@@ -29,11 +27,13 @@ function getEntry<T, RT>(
     }
 }
 
-export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
-    return <Annotation>($: mapi.T.MappedModel<Annotation>) => {
+import { CcreateLiana2paretoMapper } from "../api"
+
+export const $$:CcreateLiana2paretoMapper = ($d) => {
+    return <Annotation>($: gapi.T.MappedModel<Annotation>) => {
         const model = $.model
         const stringMapping = $.stringmapping
-        // function ref(type: string): mglossary.T.Type {
+        // function ref(type: string): gglossary.T.Type {
         //     return ['reference', {
         //         'context': ['local', {}],
         //         'type': {
@@ -42,7 +42,7 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
         //         },
         //     }]
         // }
-        function typeReference(type: string): mglossary.T.TypeReference<string> {
+        function typeReference(type: string): gglossary.T.TypeReference<string> {
             return {
                 'context': ['local', {}],
                 'type': type,
@@ -54,12 +54,12 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
             }
         }
 
-        // function generateBlock($: mliana.T.LocalType): malgorithm.TFunctionBlock {
+        // function generateBlock($: gliana.T.LocalType): galgorithm.TFunctionBlock {
         //     return {
         //         'returnExpression': generateExpression($)
         //     }
         // }
-        // function generateExpression($: mliana.T.LocalType): malgorithm.TExpression {
+        // function generateExpression($: gliana.T.LocalType): galgorithm.TExpression {
         //     switch ($[0]) {
         //         case 'array':
         //             return pl.cc($[1], ($) => {
@@ -69,7 +69,7 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
         //             })
         //         case 'boolean':
         //             return pl.cc($[1], ($) => {
-        //                 return ['implementMe', "liana2Pareto"]
+        //                 return ['implementMe', "liana2pareto"]
         //             })
         //         case 'component':
         //             return pl.cc($[1], ($) => {
@@ -93,7 +93,7 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
         //             })
         //         case 'string':
         //             return pl.cc($[1], ($) => {
-        //                 return ['implementMe', "liana2Pareto"]
+        //                 return ['implementMe', "liana2pareto"]
         //             })
         //         case 'taggedUnion':
         //             return pl.cc($[1], ($) => {
@@ -108,11 +108,11 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
         // }
         function createTypes($: {
             optional: boolean,
-            model: mliana.T.Model<Annotation>
-        }): mglossary.T.Glossary.types<string> {
+            model: gliana.T.Model<Annotation>
+        }): gglossary.T.Glossary.types<string> {
             const optional = $.optional
             return model.globalTypes.dictionary.map(($) => {
-                function mapType($: mliana.T.LocalType<Annotation>): mglossary.T.Type<string> {
+                function mapType($: gliana.T.LocalType<Annotation>): gglossary.T.Type<string> {
                     switch ($[0]) {
                         case 'array':
                             return pl.cc($[1], ($) => {
@@ -177,7 +177,7 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                                             )
                                         })
                                     case 'yes':
-                                        return pl.cc($.constrained[1], ($): mglossary.T.Type<string> => {
+                                        return pl.cc($.constrained[1], ($): gglossary.T.Type<string> => {
                                             return ['reference', {
                                                 'context': ['import', {
                                                     'glossary': "common",
@@ -185,7 +185,7 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                                                 }],
                                                 'type': "Reference",
                                                 'arguments': pm.wrapRawDictionary({
-                                                    //"ReferencedType": <mglossary.GTypeReference>['null', {}], //FIXME
+                                                    //"ReferencedType": <gglossary.GTypeReference>['null', {}], //FIXME
                                                 }),
                                             }]
                                         })
@@ -211,20 +211,20 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
         return {
             'modules': pm.wrapRawDictionary({
                 "resolved": {
-                    'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
-                        'glossary': <mglossary.T.Glossary<Annotation>>{
+                    'definition': <gmoduleDefinition.T.ModuleDefinition<Annotation>>{
+                        'glossary': <gglossary.T.Glossary<Annotation>>{
                             'imports': pm.wrapRawDictionary({
                                 "fp": "lib-fountain-pen",
                             }),
                             'parameters': pm.wrapRawDictionary({
                                 "Annotation": {},
                             }),
-                            // 'templates': pd.wrapRawDictionary<mglossary.GGlossary.Ptemplates.D>({
+                            // 'templates': pd.wrapRawDictionary<gglossary.GGlossary.Ptemplates.D>({
                             //     "Reference": {
                             //         'parameters': pd.wrapRawDictionary({
                             //             "ReferencedType": {},
                             //         }),
-                            //         'type': <mglossary.GType>['group', pd.wrapRawDictionary({})],
+                            //         'type': <gglossary.GType>['group', pd.wrapRawDictionary({})],
                             //     }
                             // }),
                             'types': createTypes({
@@ -233,15 +233,15 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                             }),
                             'interfaces': pm.wrapRawDictionary({}),
                             'functions': pm.wrapRawDictionary({
-                                "Enrich": func(typeReference("Root"), null, null, data(typeReference("Root"), false)),
-                                "Serialize": func(typeReference("Root"), null, interfaceReference("fp", "Line"), null),
+                                // "Enrich": func(typeReference("Root"), null, null, data(typeReference("Root"), false)),
+                                // "Serialize": func(typeReference("Root"), null, interfaceReference("fp", "Line"), null),
                             }),
                         },
                         'api': {
                             'imports': pm.wrapRawDictionary({
                                 "common": "glo-pareto-common",
                             }),
-                            'algorithms': pm.wrapRawDictionary<mmoduleDefinition.T.ModuleDefinition.api.algorithms.D<Annotation>>({
+                            'algorithms': pm.wrapRawDictionary<gmoduleDefinition.T.ModuleDefinition.api.algorithms.D<Annotation>>({
                                 "createSerializer": {
                                     'definition': {
                                         'function': "Serialize"
@@ -265,12 +265,12 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                             })
                         },
                     },
-                    'implementation': <malgorithm.T.Implementation<Annotation>>{
+                    'implementation': <galgorithm.T.Implementation<Annotation>>{
                         'implementations': pm.wrapRawDictionary({
                             // "createSerializer": {
                             //     'constructor': true,
                             //     'type': ['function', {
-                            //         'block': <malgorithm.TFunctionBlock>{
+                            //         'block': <galgorithm.TFunctionBlock>{
                             //             'innerFunctions': $.globalTypes.map(($, key) => {
                             //                 return {
                             //                     'definition': {
@@ -289,7 +289,7 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                             // "createEnricher": {
                             //     'constructor': true,
                             //     'type': ['function', {
-                            //         'block': <malgorithm.TFunctionBlock>{
+                            //         'block': <galgorithm.TFunctionBlock>{
                             //             'innerFunctions': $d.decorateDictionaryEntriesWithKey($.model.globalTypes.dictionary).map(($) => {
                             //                 return {
                             //                     'definition': {
@@ -312,8 +312,8 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                     },
                 },
                 "unresolved": {
-                    'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
-                        'glossary': <mglossary.T.Glossary<Annotation>>{
+                    'definition': <gmoduleDefinition.T.ModuleDefinition<Annotation>>{
+                        'glossary': <gglossary.T.Glossary<Annotation>>{
                             'imports': pm.wrapRawDictionary({
                                 // "fp": {
                                 //     'name': "lib-fountain-pen",
@@ -329,7 +329,7 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                                     'parameters': pm.wrapRawDictionary({
                                         "ReferencedType": {},
                                     }),
-                                    'type': <mglossary.T.Type<string>>['group', pm.wrapRawDictionary({
+                                    'type': <gglossary.T.Type<string>>['group', pm.wrapRawDictionary({
                                         "annotation": {
                                             'type': ['string', {}],
                                         },
@@ -414,25 +414,25 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                             })
                         },
                     },
-                    'implementation': <malgorithm.T.Implementation<Annotation>>{
-                        'implementations': pm.wrapRawDictionary<malgorithm.T.Implementation.implementations.D<Annotation>>({
+                    'implementation': <galgorithm.T.Implementation<Annotation>>{
+                        'implementations': pm.wrapRawDictionary<galgorithm.T.Implementation.implementations.D<Annotation>>({
                             // "createSerializer": {
                             //     'type': ['procedure', {
                             //         'block': {
                             //             'innerFunctions': $.model.globalTypes.dictionary.map(($) => {
-                            //                 function doType($: mliana.T.LocalType): malgorithm.GProcedureBlock.Pstatements {
-                            //                     const builder = ps.createArrayBuilderFIXME<malgorithm.GProcedureBlock.Pstatements.A>()
+                            //                 function doType($: gliana.T.LocalType): galgorithm.GProcedureBlock.Pstatements {
+                            //                     const builder = ps.createArrayBuilderFIXME<galgorithm.GProcedureBlock.Pstatements.A>()
                             //                     function snippet($: string) {
 
-                            //                         builder.push(<malgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
+                            //                         builder.push(<galgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
                             //                             'child path': pr.wrapRawArray(["snippet"]),
                             //                             //'property': pr.wrapRawArray([]),
                             //                             'data': ['set',  ['string literal', $]],
                             //                             'callback': ['not set', {}],
                             //                         }])
                             //                     }
-                            //                     function indent($i: () => malgorithm.GProcedureBlock) {
-                            //                         // builder.push(<malgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
+                            //                     function indent($i: () => galgorithm.GProcedureBlock) {
+                            //                         // builder.push(<galgorithm.GProcedureBlock.Pstatements.A>['interfaceCall', {
                             //                         //     'child path': pr.wrapRawArray(["snippet"]),
                             //                         //     //'property': pr.wrapRawArray([]),
                             //                         //     'data': ['set',  ['string literal', $]],
@@ -492,7 +492,7 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                             //                     return builder.getArray()
                             //                 }
 
-                            //                 return <malgorithm.GProcedureBlock.PinnerFunctions.D>{
+                            //                 return <galgorithm.GProcedureBlock.PinnerFunctions.D>{
                             //                     'type': ['procedure', {
                             //                         'block': {
                             //                             'innerFunctions': pd.wrapRawDictionary({}),
@@ -512,8 +512,8 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                     },
                 },
                 "sparse": {
-                    'definition': <mmoduleDefinition.T.ModuleDefinition<Annotation>>{
-                        'glossary': <mglossary.T.Glossary<Annotation>>{
+                    'definition': <gmoduleDefinition.T.ModuleDefinition<Annotation>>{
+                        'glossary': <gglossary.T.Glossary<Annotation>>{
                             'imports': pm.wrapRawDictionary({
                                 "fp": "lib-fountain-pen",
                             }),
@@ -537,7 +537,7 @@ export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
                             })
                         },
                     },
-                    'implementation': <malgorithm.T.Implementation<Annotation>>{
+                    'implementation': <galgorithm.T.Implementation<Annotation>>{
                         'implementations': pm.wrapRawDictionary({
                         }),
                     },

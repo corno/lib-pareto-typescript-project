@@ -1,15 +1,15 @@
-import * as pl from 'pareto-core-lib'
 import * as pd from 'pareto-core-dev'
 
-import * as mapi from "../api"
-import * as mpareto from "lib-pareto-typescript-project"
-import * as mliana2Pareto from "lib-pareto-typescript-project/dist/submodules/liana2Pareto"
+import * as gpareto from "lib-pareto-typescript-project"
+//import * as gliana2pareto from "lib-pareto-typescript-project/dist/submodules/liana2pareto"
 
 import { $ as glossary } from "../../../data/glossary.data"
 
-export const $$: mapi.Cmain = ($) => {
+import { Cmain } from "../api"
+
+export const $$:Cmain = ($) => {
     pd.logDebugMessage("REENABLE LIANA GENERATION")
-    // mliana2Pareto.$a.generateProject({
+    // mliana2pareto.$a.generateProject({
     //     'mainData': {
     //         'arguments': pr.wrapRawArray([`../../pareto/src/data/glossary`]),
     //     },

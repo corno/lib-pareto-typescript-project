@@ -1,12 +1,14 @@
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as malgorithm from "../../algorithm"
-import * as mfp from "lib-fountain-pen"
 
-export const $$: mapi.CcreateStatesSerializer = ($d) => {
-    return <Annotation>($: malgorithm.T.States<Annotation>, $i: mfp.IBlock) => {
-        function serializeType($: malgorithm.T.Type<Annotation>, $i: mfp.ILine) {
+import * as galgorithm from "../../algorithm"
+import * as gfp from "lib-fountain-pen"
+
+import { CcreateStatesSerializer } from "../api"
+
+export const $$:CcreateStatesSerializer = ($d) => {
+    return <Annotation>($: galgorithm.T.States<Annotation>, $i: gfp.IBlock) => {
+        function serializeType($: galgorithm.T.Type<Annotation>, $i: gfp.ILine) {
             switch ($[0]) {
                 case 'null':
                     pl.cc($[1], ($) => {

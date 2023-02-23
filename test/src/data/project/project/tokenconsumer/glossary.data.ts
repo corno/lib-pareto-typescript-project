@@ -19,11 +19,11 @@ import {
     type,
 } from "../../../../../../pub/dist/submodules/glossary/shorthands"
 
-import * as mglossary from "../../../../../../pub/dist/submodules/glossary"
+import * as gglossary from "../../../../../../pub/dist/submodules/glossary"
 
 const d = pd.d
 
-export const $: mglossary.T.Glossary<pd.SourceLocation> = {
+export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({}),
     'parameters': d({
         "Annotation": {},

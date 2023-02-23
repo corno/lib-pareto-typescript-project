@@ -1,15 +1,17 @@
 import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as mfp from "lib-fountain-pen"
-import * as mmain from "../../../main"
 
-export const $$: mapi.CcreateProjectGenerator = ($d) => {
+import * as gfp from "lib-fountain-pen"
+import * as gmain from "../../../main"
+
+import { CcreateProjectGenerator } from "../api"
+
+export const $$:CcreateProjectGenerator = ($d) => {
     return ($) => {
 
         const model = $.model
-        mmain.$a.createParametersParser({
+        gmain.$a.createParametersParser({
             onError: ($) => {
                 switch ($[0]) {
                     case 'missing':
@@ -30,17 +32,17 @@ export const $$: mapi.CcreateProjectGenerator = ($d) => {
         })(
             $.mainData.arguments,
             ($) => {
-                mfp.$a.createWriter(
+                gfp.$a.createWriter(
                     {
                         onError: $d.logError,
                         reportSuperfluousNode: ($) => {
-                            $d.logError(mfp.$a.createSuperfluousNodeMessage($))
+                            $d.logError(gfp.$a.createSuperfluousNodeMessage($))
                         }
                     },
                 )(
                     $.testDirectory,
                     ($i) => {
-                        const modules = $d.mapLiana2Pareto(model)
+                        const modules = $d.mapLiana2pareto(model)
                         $d.dictionaryForEach(modules.modules, ($) => {
                             $i.directory($.key, ($i) => {
                                 $d.serializeProject(

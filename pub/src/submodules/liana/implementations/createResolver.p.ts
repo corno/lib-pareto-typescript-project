@@ -3,9 +3,9 @@ import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
 import * as ps from 'pareto-core-state'
 
-import * as mapi from "../api"
-import * as mcommon from "glo-pareto-common"
-import * as mresolved from "../../liana_resolved"
+import * as gapi from "../api"
+import * as gcommon from "glo-pareto-common"
+import * as gresolved from "../../liana_resolved"
 
 function getEntry<T, RT>(
     dictionary: pt.Dictionary<T>,
@@ -26,15 +26,17 @@ function getEntry<T, RT>(
     }
 }
 
-export const $$: mapi.CcreateResolver = ($d) => {
+import { CcreateResolver } from "../api"
 
-    return <Annotation>($: mapi.T.Model<Annotation>) => {
+export const $$:CcreateResolver = ($d) => {
+
+    return <Annotation>($: gapi.T.Model<Annotation>) => {
         let hasErrors = false
         function onError($: string) {
             $d.onError($)
             hasErrors = true
         }
-        function filter<T>($: AnnotatedUnsafeDictionary<T>): mcommon.T.AnnotatedDictionary<Annotation, T> {
+        function filter<T>($: AnnotatedUnsafeDictionary<T>): gcommon.T.AnnotatedDictionary<Annotation, T> {
             const db = ps.createUnsafeDictionaryBuilder<T>()
             $.dictionary.__forEach(() => false, ($, key) => {
                 if ($[0] === true) {
@@ -47,7 +49,7 @@ export const $$: mapi.CcreateResolver = ($d) => {
             }
         }
 
-        type ComputedReference<T> = (ref: mcommon.T.AnnotatedKey<Annotation>) => () => T
+        type ComputedReference<T> = (ref: gcommon.T.AnnotatedKey<Annotation>) => () => T
 
         type UnsafeDictionary<T> = pt.Dictionary<pt.OptionalValue<T>>
         type AnnotatedUnsafeDictionary<T> = {
@@ -91,7 +93,7 @@ export const $$: mapi.CcreateResolver = ($d) => {
                 dictionary: builder.getDictionary()
             }
         }
-        function computedReference<T>($: mcommon.T.AnnotatedKey<Annotation>, ref: () => T): mresolved.T._$ComputedReference<Annotation, T> {
+        function computedReference<T>($: gcommon.T.AnnotatedKey<Annotation>, ref: () => T): gresolved.T._$ComputedReference<Annotation, T> {
             return {
                 'key': $.key,
                 'annotation': $.annotation,
@@ -101,8 +103,8 @@ export const $$: mapi.CcreateResolver = ($d) => {
         function resolve<T>(
             target: string,
             dict: OptionalAnnotatedUnsafeDictionary<T>,
-            key: mcommon.T.AnnotatedKey<Annotation>,
-        ): pt.OptionalValue<mresolved.T._$Reference<Annotation, T>> {
+            key: gcommon.T.AnnotatedKey<Annotation>,
+        ): pt.OptionalValue<gresolved.T._$Reference<Annotation, T>> {
             if (dict === null) {
                 onError(`${key.annotation}: no dictionary`)
                 return [false]
@@ -110,7 +112,7 @@ export const $$: mapi.CcreateResolver = ($d) => {
                 return getEntry(
                     dict.dictionary,
                     key.key,
-                    ($): pt.OptionalValue<mresolved.T._$Reference<Annotation, T>> => {
+                    ($): pt.OptionalValue<gresolved.T._$Reference<Annotation, T>> => {
                         if ($[0] === false) {
                             return [false]
                         } else {
@@ -129,12 +131,12 @@ export const $$: mapi.CcreateResolver = ($d) => {
             }
         }
         function resolveString($: {
-            $: mapi.T.String<Annotation>,
+            $: gapi.T.String<Annotation>,
             support: {
-                stringTypes: OptionalAnnotatedUnsafeDictionary<mresolved.T.XStringType<Annotation>>
-                siblings: OptionalAnnotatedUnsafeDictionary<mresolved.T.XProperty<Annotation>>
+                stringTypes: OptionalAnnotatedUnsafeDictionary<gresolved.T.XStringType<Annotation>>
+                siblings: OptionalAnnotatedUnsafeDictionary<gresolved.T.XProperty<Annotation>>
             }
-        }): pt.OptionalValue<mresolved.T.XString<Annotation>> {
+        }): pt.OptionalValue<gresolved.T.XString<Annotation>> {
             const support = $.support
             return pl.cc($.$, ($) => {
                 switch ($.constrained[0]) {
@@ -255,15 +257,15 @@ export const $$: mapi.CcreateResolver = ($d) => {
             })
         }
         function resolveType($: {
-            $: mapi.T.LocalType<Annotation>,
+            $: gapi.T.LocalType<Annotation>,
             support: {
                 stringTypes: OptionalAnnotatedUnsafeDictionary<{}>
-                globalTypes: ComputedReference<mresolved.T.XGlobalType<Annotation>>
-                siblings: OptionalAnnotatedUnsafeDictionary<mresolved.T.XProperty<Annotation>>
+                globalTypes: ComputedReference<gresolved.T.XGlobalType<Annotation>>
+                siblings: OptionalAnnotatedUnsafeDictionary<gresolved.T.XProperty<Annotation>>
             }
-        }): pt.OptionalValue<mresolved.T.XLocalType<Annotation>> {
+        }): pt.OptionalValue<gresolved.T.XLocalType<Annotation>> {
             const support = $.support
-            return pl.cc($.$, ($): pt.OptionalValue<mresolved.T.XLocalType<Annotation>> => {
+            return pl.cc($.$, ($): pt.OptionalValue<gresolved.T.XLocalType<Annotation>> => {
 
                 switch ($[0]) {
                     case 'array':
@@ -313,7 +315,7 @@ export const $$: mapi.CcreateResolver = ($d) => {
                             return [true, ['boolean', {}]]
                         })
                     case 'component':
-                        return pl.cc($[1], ($): pt.OptionalValue<mresolved.T.XLocalType<Annotation>> => {
+                        return pl.cc($[1], ($): pt.OptionalValue<gresolved.T.XLocalType<Annotation>> => {
                             // const r_arguments = buildDictionary<null, api.MConstrainedDictionaryEntry<TXGlobalType, null>>($.arguments, ($, $i) => {
                             //     resolve("global types", support.globalTypes)
                             //     return {
@@ -359,7 +361,7 @@ export const $$: mapi.CcreateResolver = ($d) => {
                         })
                     case 'group':
                         return pl.cc($[1], ($) => {
-                            const r_properties = buildDictionary<mapi.T.Property<Annotation>, mresolved.T.XProperty<Annotation>>($.properties, ($, $i) => {
+                            const r_properties = buildDictionary<gapi.T.Property<Annotation>, gresolved.T.XProperty<Annotation>>($.properties, ($, $i) => {
 
                                 const r_type = resolveType({
                                     $: $.type,
@@ -400,7 +402,7 @@ export const $$: mapi.CcreateResolver = ($d) => {
                         })
                     case 'taggedUnion':
                         return pl.cc($[1], ($) => {
-                            const r_options = buildDictionary<mapi.T.LocalType<Annotation>, mresolved.T.XOption<Annotation>>($.options, ($, $i) => {
+                            const r_options = buildDictionary<gapi.T.LocalType<Annotation>, gresolved.T.XOption<Annotation>>($.options, ($, $i) => {
 
                                 const r_type = resolveType({
                                     $: $,
@@ -418,7 +420,7 @@ export const $$: mapi.CcreateResolver = ($d) => {
                                     }
                                 }
                             })
-                            let r_default: pt.OptionalValue<mresolved.T._$Reference<Annotation, mresolved.T.XOption<Annotation>>> = resolve("option", r_options, $.default)
+                            let r_default: pt.OptionalValue<gresolved.T._$Reference<Annotation, gresolved.T.XOption<Annotation>>> = resolve("option", r_options, $.default)
                             if (true
                                 && r_default[0] === true
                             ) {
@@ -439,11 +441,11 @@ export const $$: mapi.CcreateResolver = ($d) => {
         const r_stringTypes = buildDictionary<null, {}>($.stringTypes, ($, $i) => {
             return {}
         })
-        const r_globalTypes = buildDictionary<mapi.T.GlobalType<Annotation>, mresolved.T.XGlobalType<Annotation>>($.globalTypes, ($, $i) => {
-            const r_parameters = buildDictionary<mapi.T.Parameter<Annotation>, mresolved.T.XParameter<Annotation>>($.parameters, ($, $i) => {
+        const r_globalTypes = buildDictionary<gapi.T.GlobalType<Annotation>, gresolved.T.XGlobalType<Annotation>>($.globalTypes, ($, $i) => {
+            const r_parameters = buildDictionary<gapi.T.Parameter<Annotation>, gresolved.T.XParameter<Annotation>>($.parameters, ($, $i) => {
                 return {}
             })
-            let r_type: pt.OptionalValue<mresolved.T.XLocalType<Annotation>> = resolveType({
+            let r_type: pt.OptionalValue<gresolved.T.XLocalType<Annotation>> = resolveType({
                 $: $.type,
                 support: {
                     siblings: null,
@@ -463,11 +465,11 @@ export const $$: mapi.CcreateResolver = ($d) => {
             }
         })
 
-        let r_root: pt.OptionalValue<mresolved.T._$Reference<Annotation, mresolved.T.XGlobalType<Annotation>>> = resolve("global type", r_globalTypes, $.root)
+        let r_root: pt.OptionalValue<gresolved.T._$Reference<Annotation, gresolved.T.XGlobalType<Annotation>>> = resolve("global type", r_globalTypes, $.root)
         if (true
             && r_root[0] === true
         ) {
-            const x: mresolved.T.XModel<Annotation> = {
+            const x: gresolved.T.XModel<Annotation> = {
                 'stringTypes': filter(r_stringTypes),
                 'globalTypes': filter(r_globalTypes),
                 'root': r_root[1],

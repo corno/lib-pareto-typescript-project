@@ -4,11 +4,11 @@ import { data, dictionary, func, glossaryParameter, group, member, null_, parame
 
 import { algorithm, constructor, definitionReference } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
 
-import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
+import * as gmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
 const d = pd.d
 
-export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
+export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {
         'imports': d({
             "algorithm": "../../../algorithm",
@@ -39,7 +39,7 @@ export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
         'interfaces': d({}),
         'functions': d({
             "GenerateProject": func(typeReference("Configuration"), null, null, null),
-            "MapLiana2Pareto": func(typeReference("MappedModel"), null, null, data(typeReference("Modules"), false)),
+            "MapLiana2pareto": func(typeReference("MappedModel"), null, null, data(typeReference("Modules"), false)),
             "MapLiana2States": func(typeReference("MappedModel"), null, null, data(parametrizedTypeReference("algorithm", { "Annotation": typeReference("Annotation") }, "States"), false)),
         }),
     },
@@ -54,14 +54,14 @@ export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             "createProjectGenerator": algorithm(definitionReference("GenerateProject"), constructor(null, {
                 "decorateDictionaryEntriesWithKey": definitionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
                 "logError": definitionReference("common", {}, "Log"),
-                "mapLiana2Pareto": definitionReference("MapLiana2Pareto"),
+                "mapLiana2pareto": definitionReference("MapLiana2pareto"),
                 "serializeProject": definitionReference("project", {}, "SerializeWithContext"),
                 "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
             })),
-            "createLiana2ParetoMapper": algorithm(definitionReference("MapLiana2Pareto"), constructor(null, {
+            "createLiana2paretoMapper": algorithm(definitionReference("MapLiana2pareto"), constructor(null, {
                 "decorateDictionaryEntriesWithKey": definitionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
             })),
-            "mapLiana2Pareto": algorithm(definitionReference("MapLiana2Pareto")),
+            "mapLiana2pareto": algorithm(definitionReference("MapLiana2pareto")),
             "createLiana2StatesMapper": algorithm(definitionReference("MapLiana2States"), constructor(null, {
                 "decorateDictionaryEntriesWithKey": definitionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
             })),

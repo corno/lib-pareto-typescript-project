@@ -1,32 +1,34 @@
-import * as mapi from "../api"
-import * as mliana2Pareto from "../../liana2Pareto"
-import * as mpareto2typescript from "../../pareto2typescript"
-import * as mtostring from "res-pareto-tostring"
-import * as mcoll from "res-pareto-collation"
-import * as mts from "res-typescript"
-import * as mforeach from "res-pareto-foreach"
+
+import * as gliana2pareto from "../../liana2pareto"
+import * as gpareto2typescript from "../../pareto2typescript"
+import * as gtostring from "res-pareto-tostring"
+import * as gcoll from "res-pareto-collation"
+import * as gts from "res-typescript"
+import * as gforeach from "res-pareto-foreach"
 
 import { $$ as createSerializer } from "./createSerializer.p"
 
-export const $$: mapi.Cserialize = ($, $i) => {
+import { Cserialize } from "../api"
+
+export const $$:Cserialize = ($, $i) => {
     createSerializer({
-        createIdentifier: mts.$a.createIdentifier,
-        mapLiana2States: mliana2Pareto.$a.createLiana2StatesMapper({
-            decorateDictionaryEntriesWithKey: mforeach.$a.decorateDictionaryEntriesWithKey,
+        createIdentifier: gts.$a.createIdentifier,
+        mapLiana2States: gliana2pareto.$a.createLiana2StatesMapper({
+            decorateDictionaryEntriesWithKey: gforeach.$a.decorateDictionaryEntriesWithKey,
         }),
-        serializeStates: mpareto2typescript.$a.createStatesSerializer({
-            arrayForEach: mforeach.$a.arrayForEach,
-            dictionaryForEach: mforeach.$a.createDictionaryForEach({
-                compare: mcoll.$a.localeIsABeforeB
+        serializeStates: gpareto2typescript.$a.createStatesSerializer({
+            arrayForEach: gforeach.$a.arrayForEach,
+            dictionaryForEach: gforeach.$a.createDictionaryForEach({
+                compare: gcoll.$a.localeIsABeforeB
             }),
-            enrichedArrayForEach: mforeach.$a.enrichedArrayForEach,
-            enrichedDictionaryForEach: mforeach.$a.createEnrichedDictionaryForEach({
-                compare: mcoll.$a.localeIsABeforeB
+            enrichedArrayForEach: gforeach.$a.enrichedArrayForEach,
+            enrichedDictionaryForEach: gforeach.$a.createEnrichedDictionaryForEach({
+                compare: gcoll.$a.localeIsABeforeB
             }),
-            createIdentifier: mts.$a.createIdentifier,
-            createApostrophedString: mts.$a.createApostrophedString,
+            createIdentifier: gts.$a.createIdentifier,
+            createApostrophedString: gts.$a.createApostrophedString,
         }),
-        joinNestedStrings: mtostring.$a.joinNestedStrings({
+        joinNestedStrings: gtostring.$a.joinNestedStrings({
             'maximum': [false],
             'separator': "_",
         }, {}),

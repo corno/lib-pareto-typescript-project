@@ -1,25 +1,29 @@
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as malgorithm from "../../algorithm"
-import * as mfp from "lib-fountain-pen"
 
-export const $$: mapi.CcreateImplementationSerializer = ($d) => {
+import * as galgorithm from "../../algorithm"
+import * as gfp from "lib-fountain-pen"
 
-    return <Annotation>($: malgorithm.T.Implementation<Annotation>, $i: mfp.IWriter) => {
+import { CcreateImplementationSerializer } from "../api"
+
+export const $$:CcreateImplementationSerializer = ($d) => {
+
+    return <Annotation>($: galgorithm.T.Implementation<Annotation>, $i: gfp.IWriter) => {
         $d.dictionaryForEach($.implementations, ($) => {
             $i.file(`XXXXXXXXXXXXXXXX${$.key}`, ($i) => {
-                $i.line(`import * as mapi from "../api"`)
                 $i.line(``)
-                $i.line(`import * as mfp from "lib-fountain-pen"`)
+                $i.line(``)
+                $i.line(`import * as gfp from "lib-fountain-pen"`)
                 $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`export const $$: mapi.C${$.key} = `)
+                    $i.snippet(`import { C${$.key} } from "../api"
+
+export const $$:C${$.key} = `)
                     if ($.value.constructor) {
                         $i.snippet(`($d) => {`)
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
-                                function doSynchronousExpression($: malgorithm.T.SynchronousExpression<Annotation>, $i: mfp.ILine) {
+                                function doSynchronousExpression($: galgorithm.T.SynchronousExpression<Annotation>, $i: gfp.ILine) {
                                     switch ($[0]) {
                                         case 'call':
                                             pl.cc($[1], ($) => {
@@ -69,7 +73,7 @@ export const $$: mapi.CcreateImplementationSerializer = ($d) => {
                                         default: pl.au($[0])
                                     }
                                 }
-                                function doImplementationType($: malgorithm.T.ImplementationType<Annotation>, $i: mfp.ILine) {
+                                function doImplementationType($: galgorithm.T.ImplementationType<Annotation>, $i: gfp.ILine) {
 
                                     switch ($[0]) {
                                         case 'asynchronous function':
@@ -85,8 +89,8 @@ export const $$: mapi.CcreateImplementationSerializer = ($d) => {
                                         case 'procedure':
                                             pl.cc($[1], ($) => {
                                                 function doBlock(
-                                                    $: malgorithm.T.ProcedureBlock<Annotation>,
-                                                    $i: mfp.ILine,
+                                                    $: galgorithm.T.ProcedureBlock<Annotation>,
+                                                    $i: gfp.ILine,
                                                 ) {
 
                                                     $i.snippet(`{`)
@@ -94,7 +98,7 @@ export const $$: mapi.CcreateImplementationSerializer = ($d) => {
                                                         if ($.innerFunctions !== undefined) {
                                                             $d.dictionaryForEach($.innerFunctions, ($) => {
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`function ${$.key}($: mapi.T.${$d.createIdentifier($.key)}, $i: mfp.ILine) `)
+                                                                    $i.snippet(`function ${$.key}($: gapi.T.${$d.createIdentifier($.key)}, $i: gfp.ILine) `)
                                                                     doImplementationType($.value.type, $i)
                                                                 })
                                                             })
@@ -178,7 +182,7 @@ export const $$: mapi.CcreateImplementationSerializer = ($d) => {
                 })
             })
         })
-        // function serializeExpression($: malgorithm.TExpression, $i: mfp.ILine) {
+        // function serializeExpression($: galgorithm.TExpression, $i: gfp.ILine) {
         //     switch ($[0]) {
         //         case 'call':
         //             pl.cc($[1], ($) => {
@@ -255,7 +259,7 @@ export const $$: mapi.CcreateImplementationSerializer = ($d) => {
         //         default: pl.au($[0])
         //     }
         // }
-        // function serializeCallbackBlock($: malgorithm.TCallbackBlock, $i: mfp.ILine) {
+        // function serializeCallbackBlock($: galgorithm.TCallbackBlock, $i: gfp.ILine) {
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
         //         if ($.innerCallbacks !== undefined) {
@@ -273,7 +277,7 @@ export const $$: mapi.CcreateImplementationSerializer = ($d) => {
         //     })
         //     $i.snippet(`}`)
         // }
-        // function serializeFunctionBlock($: malgorithm.TFunctionBlock, $i: mfp.ILine) {
+        // function serializeFunctionBlock($: galgorithm.TFunctionBlock, $i: gfp.ILine) {
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
         //         if ($.innerFunctions !== undefined) {
@@ -294,7 +298,7 @@ export const $$: mapi.CcreateImplementationSerializer = ($d) => {
         //     $i.snippet(`}`)
         // }
         // $d.dictionaryForEach($.implementations, ($) => {
-        //     function body($i: mfp.ILine) {
+        //     function body($i: gfp.ILine) {
         //         switch ($.value.type[0]) {
         //             case 'callback':
         //                 pl.cc($.value.type[1], ($) => {
@@ -315,10 +319,10 @@ export const $$: mapi.CcreateImplementationSerializer = ($d) => {
         //         $i.line(`import * as pl from 'pareto-core-lib'`)
         //         $i.line(``)
 
-        //         $i.line(`import * as mapi from "../mapi"`)
+        //         $i.line(`import * as gapi from "../gapi"`)
 
         //         $i.nestedLine(($i) => {
-        //             $i.snippet(`export const $$: mapi.${$d.createIdentifier(`C${$.key}`)} = `)
+        //             $i.snippet(`export const $$: gapi.${$d.createIdentifier(`C${$.key}`)} = `)
         //             if ($.value.constructor) {
         //                 $i.snippet(`($d) => {`)
         //                 $i.indent(($i) => {

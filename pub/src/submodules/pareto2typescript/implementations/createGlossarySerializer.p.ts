@@ -1,8 +1,8 @@
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as mglossary from "../../glossary"
-import * as mfp from "lib-fountain-pen"
+
+import * as gglossary from "../../glossary"
+import * as gfp from "lib-fountain-pen"
 
 export namespace VOptional { }
 export type VOptional<AType> =
@@ -11,15 +11,17 @@ export type VOptional<AType> =
 
 export type MOptional<AType> = VOptional<AType>
 
-export const $$: mapi.CcreateGlossarySerializer = ($d) => {
+import { CcreateGlossarySerializer } from "../api"
+
+export const $$:CcreateGlossarySerializer = ($d) => {
 
     return ($, $i) => {
         const globalParameters = $.parameters
 
         function ns(
             $: string,
-            $i: mfp.IBlock,
-            $c: ($i: mfp.IBlock) => void
+            $i: gfp.IBlock,
+            $c: ($i: gfp.IBlock) => void
         ) {
             $i.line(``)
             $i.nestedLine(($i) => {
@@ -32,10 +34,10 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
         }
         function doOptional<T>(
             $: MOptional<T>,
-            $i: mfp.ILine,
+            $i: gfp.ILine,
             $c: {
-                onSet: ($: T, $i: mfp.ILine) => void,
-                onNotset: ($: {}, $i: mfp.ILine) => void,
+                onSet: ($: T, $i: gfp.ILine) => void,
+                onNotset: ($: {}, $i: gfp.ILine) => void,
             },
         ) {
             switch ($[0]) {
@@ -52,7 +54,7 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeContext($: mglossary.T.Context<string>, $i: mfp.ILine) {
+        function serializeContext($: gglossary.T.Context<string>, $i: gfp.ILine) {
             switch ($[0]) {
                 case 'import':
                     pl.cc($[1], ($) => {
@@ -67,7 +69,7 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeTypeReference($: mglossary.T.TypeReference<string>, $i: mfp.ILine) {
+        function serializeTypeReference($: gglossary.T.TypeReference<string>, $i: gfp.ILine) {
             serializeContext($.context, $i)
             $i.snippet(`T.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
             $d.enrichedDictionaryForEach($.arguments, {
@@ -103,8 +105,8 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
             })
         }
         function serializeContextArgumentsOnly(
-            $: mglossary.T.Context<string>,
-            $i: mfp.ILine,
+            $: gglossary.T.Context<string>,
+            $i: gfp.ILine,
         ) {
             switch ($[0]) {
                 case 'import':
@@ -145,7 +147,7 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
             }
         }
         function serializeGlobalParametersOnly(
-            $i: mfp.ILine
+            $i: gfp.ILine
         ) {
             $d.enrichedDictionaryForEach(globalParameters, {
                 onEmpty: () => {
@@ -173,7 +175,7 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
             $i.line(``)
             $d.dictionaryForEach($.imports, ($) => {
                 $i.nestedLine(($i) => {
-                    $i.snippet(`import * as m${$.key} from "${$.value}"`)
+                    $i.snippet(`import * as g${$.key} from "${$.value}"`)
                 })
             })
             ns(
@@ -184,15 +186,15 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
                         const typeParameters = $.value.parameters
                         function serializeTypeAliasAndPossibleNamespace(
                             $: {
-                                type: mglossary.T.Type<string>,
+                                type: gglossary.T.Type<string>,
                                 name: string,
                             },
-                            $i: mfp.IBlock,
+                            $i: gfp.IBlock,
                         ) {
                             const name = $.name
                             function serializeGlobalAndTypeParameters(
                                 $: null,
-                                $i: mfp.ILine,
+                                $i: gfp.ILine,
                             ) {
 
                                 $d.enrichedDictionaryForEach(typeParameters, {
@@ -217,7 +219,7 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
                             //create namespaces for the complex types
                             pl.cc($.type, ($) => {
                                 function createTheCurrentNamespace(
-                                    $c: ($i: mfp.IBlock) => void
+                                    $c: ($i: gfp.IBlock) => void
                                 ) {
                                     ns(
                                         name,
@@ -227,10 +229,10 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
                                 }
                                 function createCurrentAndSerializeType(
                                     $: {
-                                        type: mglossary.T.Type<string>,
+                                        type: gglossary.T.Type<string>,
                                         nextName: string,
                                     },
-                                    $i: mfp.IBlock,
+                                    $i: gfp.IBlock,
                                 ) {
                                     createTheCurrentNamespace(
                                         ($i) => {
@@ -369,8 +371,8 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
                             $i.line(``)
                             $i.nestedLine(($i) => {
                                 function serializeType(
-                                    $: mglossary.T.Type<string>,
-                                    $i: mfp.ILine,
+                                    $: gglossary.T.Type<string>,
+                                    $i: gfp.ILine,
                                 ): void {
                                     switch ($[0]) {
                                         case 'null':
@@ -522,13 +524,13 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
         })
         $i.file(`public.generated.ts`, ($i) => {
 
-            function serializeInterfaceReference($: mglossary.T.InterfaceReference<string>, $i: mfp.ILine) {
+            function serializeInterfaceReference($: gglossary.T.InterfaceReference<string>, $i: gfp.ILine) {
                 serializeContext($.context, $i)
                 $i.snippet($d.createIdentifier(`I${$.interface}`))
                 serializeContextArgumentsOnly($.context, $i)
 
             }
-            function serializeInterface($: mglossary.T.Interface<string>, $i: mfp.ILine) {
+            function serializeInterface($: gglossary.T.Interface<string>, $i: gfp.ILine) {
                 switch ($[0]) {
                     case 'group':
                         pl.cc($[1], ($) => {
@@ -611,7 +613,7 @@ export const $$: mapi.CcreateGlossarySerializer = ($d) => {
             $i.line(``)
             $d.dictionaryForEach($.imports, ($) => {
                 $i.nestedLine(($i) => {
-                    $i.snippet(`import * as m${$.key} from "${$.value}"`)
+                    $i.snippet(`import * as g${$.key} from "${$.value}"`)
                 })
             })
             $d.dictionaryForEach($.interfaces, ($) => {

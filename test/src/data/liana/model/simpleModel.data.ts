@@ -1,6 +1,6 @@
 import * as pd from 'pareto-core-data'
 
-import * as mliana from "../../../../../pub/dist/submodules/liana"
+import * as gliana from "../../../../../pub/dist/submodules/liana"
 import {
     d,
     array,
@@ -15,7 +15,7 @@ import {
     taggedUnion,
 } from "../../../../../pub/dist/submodules/liana/shorthands"
 
-export const $: mliana.T.Model<pd.SourceLocation> = {
+export const $: gliana.T.Model<pd.SourceLocation> = {
     'stringTypes': d({
         "text": null,
         "identifier": null,

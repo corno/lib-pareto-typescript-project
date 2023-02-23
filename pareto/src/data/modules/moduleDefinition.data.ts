@@ -17,12 +17,12 @@ import {
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
 
-import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
+import * as gmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
 
 const d = pd.d
 
-export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
+export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {
         'imports': d({
             "glossary": "../../../glossary",

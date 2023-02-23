@@ -1,9 +1,9 @@
 import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as malgorithm from "../../algorithm"
-import * as mliana from "../../liana"
+import * as gapi from "../api"
+import * as galgorithm from "../../algorithm"
+import * as gliana from "../../liana"
 
 function getEntry<T, RT>(
     dictionary: pt.Dictionary<T>,
@@ -24,11 +24,13 @@ function getEntry<T, RT>(
     }
 }
 
-export const $$: mapi.CcreateLiana2StatesMapper = ($d) => {
-    return <Annotation>($: mapi.T.MappedModel<Annotation>) => {
+import { CcreateLiana2StatesMapper } from "../api"
+
+export const $$:CcreateLiana2StatesMapper = ($d) => {
+    return <Annotation>($: gapi.T.MappedModel<Annotation>) => {
         const stringMapping = $.stringmapping
         return $.model.globalTypes.dictionary.map(($) => {
-            function mapType($: mliana.T.LocalType<Annotation>): malgorithm.T.Type<Annotation> {
+            function mapType($: gliana.T.LocalType<Annotation>): galgorithm.T.Type<Annotation> {
                 switch ($[0]) {
                     case 'array':
                         return pl.cc($[1], ($) => {

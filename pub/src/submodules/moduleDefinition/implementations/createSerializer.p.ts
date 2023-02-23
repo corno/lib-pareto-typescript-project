@@ -1,16 +1,18 @@
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as mglossary from "../../glossary"
-import * as mfp from "lib-fountain-pen"
+import * as gapi from "../api"
+import * as gglossary from "../../glossary"
+import * as gfp from "lib-fountain-pen"
 
 
-export const $$: mapi.CcreateSerializer = ($d) => {
-    return <Annotation>($: mapi.T.ModuleDefinition<Annotation>, $i: mfp.ILine) => {
+import { CcreateSerializer } from "../api"
+
+export const $$:CcreateSerializer = ($d) => {
+    return <Annotation>($: gapi.T.ModuleDefinition<Annotation>, $i: gfp.ILine) => {
         function doOptional<T>(
             $: [false] | [true, T],
-            $i: mfp.ILine,
-            $c: ($: T, $i: mfp.ILine) => void,
+            $i: gfp.ILine,
+            $c: ($: T, $i: gfp.ILine) => void,
         ) {
             if ($[0] === true) {
                 $i.snippet(`[true, `)
@@ -20,7 +22,7 @@ export const $$: mapi.CcreateSerializer = ($d) => {
                 $i.snippet(`[false]`)
             }
         }
-        function serializeTypeReference($: mglossary.T.TypeReference<string>, $i: mfp.ILine) {
+        function serializeTypeReference($: gglossary.T.TypeReference<string>, $i: gfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -34,7 +36,7 @@ export const $$: mapi.CcreateSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-        function serializeDefinitionReference($: mapi.T.DefinitionReference<Annotation>, $i: mfp.ILine) {
+        function serializeDefinitionReference($: gapi.T.DefinitionReference<Annotation>, $i: gfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 if ($.context !== undefined) {
@@ -54,7 +56,7 @@ export const $$: mapi.CcreateSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-        function serializeContext($: mglossary.T.Context<string>, $i: mfp.ILine) {
+        function serializeContext($: gglossary.T.Context<string>, $i: gfp.ILine) {
             switch ($[0]) {
                 case 'import':
                     pl.cc($[1], ($) => {
@@ -69,7 +71,7 @@ export const $$: mapi.CcreateSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeContext2($: mapi.T.Context<Annotation>, $i: mfp.ILine) {
+        function serializeContext2($: gapi.T.Context<Annotation>, $i: gfp.ILine) {
             switch ($[0]) {
                 case 'import':
                     pl.cc($[1], ($) => {

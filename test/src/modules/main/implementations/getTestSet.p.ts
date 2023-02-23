@@ -4,41 +4,29 @@ import * as pm from 'pareto-core-map'
 import * as pv from 'pareto-core-dev'
 import * as pa from 'pareto-core-async'
 
-
-import * as mtst from "lib-pareto-test"
-import * as mapi from "../api"
-
-// import * as us from "res-pareto-ugly-stuff"
-
-import {
-    dictionary, member, taggedUnion, types, group
-} from "../../../../../pub/dist/submodules/glossary/shorthands"
-
-
-import * as mliana_flat from "../../../../../pub/dist/submodules/liana_flat"
-import * as mproject from "../../../../../pub/dist/submodules/project"
-import * as mliana from "../../../../../pub/dist/submodules/liana"
-import * as mliana2Pareto from "../../../../../pub/dist/submodules/liana2Pareto"
-import * as mfp from "lib-fountain-pen"
+import * as gtest from "lib-pareto-test"
+import * as gliana_flat from "../../../../../pub/dist/submodules/liana_flat"
+import * as gproject from "../../../../../pub/dist/submodules/project"
+import * as gliana from "../../../../../pub/dist/submodules/liana"
+import * as gliana2pareto from "../../../../../pub/dist/submodules/liana2pareto"
+import * as gfp from "lib-fountain-pen"
+import * as gpub from "../../../../../pub"
 
 const d = pm.wrapRawDictionary
 
-
-import * as pub from "../../../../../pub"
 import { $ as module } from "../../../data/project/module/project.test"
-// import * as pubTypes from "../../../../pub/dist/submodules/public"
-// import * as pubPrivate from "../../../../pub/dist/submodules/private"
-
 import { $ as simpleModel } from "../../../data/liana/model/simpleModel.data"
 import { $ as glossary } from "../../../data/liana/model/glossary.data"
-import { $ as accountingModel } from "../../../data/liana2Pareto/mappedModel/accounting.data"
+import { $ as accountingModel } from "../../../data/liana2pareto/mappedModel/accounting.data"
 import { $ as tc } from "../../../data/project/project/tokenconsumer/project.data"
 
-export const $$: mapi.CgetTestSet = ($) => {
+import { CgetTestSet } from "../api"
+
+export const $$:CgetTestSet = ($) => {
     const $XXX = $
 
-    function genProj<Annotation>(dir: string, proj: mproject.T.Project<Annotation>) {
-        pub.$a.generateProject({
+    function genProj<Annotation>(dir: string, proj: gproject.T.Project<Annotation>) {
+        gpub.$a.generateProject({
             'mainData': {
                 'arguments': pm.wrapRawArray([dir]),
             },
@@ -46,8 +34,8 @@ export const $$: mapi.CgetTestSet = ($) => {
         })
 
     }
-    function generateModule<Annotation>(dir: string, module: mproject.T.Module<Annotation>) {
-        pub.$a.generateProject({
+    function generateModule<Annotation>(dir: string, module: gproject.T.Module<Annotation>) {
+        gpub.$a.generateProject({
             'mainData': {
                 'arguments': pm.wrapRawArray([dir]),
             },
@@ -61,7 +49,7 @@ export const $$: mapi.CgetTestSet = ($) => {
                 'type': ['library', {
 
                     'main': module,
-                    'submodules': d<mproject.T.Module<Annotation>>({}),
+                    'submodules': d<gproject.T.Module<Annotation>>({}),
                     'executables': d({}),
                     'test': {
                         'dependencies': d({}),
@@ -118,25 +106,25 @@ export const $$: mapi.CgetTestSet = ($) => {
     // )(
     //     pr.wrapRawArray(["foo"])
     // )
-    const resolve = mliana.$a.createResolver({
+    const resolve = gliana.$a.createResolver({
         'onError': ($) => {
             pv.logDebugMessage($)
         }
     })
 
-    const writer = mfp.$a.createWriter({
+    const writer = gfp.$a.createWriter({
         onError: ($) => {
             pv.logDebugMessage($)
         },
         reportSuperfluousNode: ($) => {
-            pv.logDebugMessage(mfp.$a.createSuperfluousNodeMessage($))
+            pv.logDebugMessage(gfp.$a.createSuperfluousNodeMessage($))
         },
     })
     writer([$XXX.testDirectory, 'flat'], ($i) => {
-        mliana_flat.$a.serialize(accountingModel, $i)
+        gliana_flat.$a.serialize(accountingModel, $i)
     })
 
-    function x<Annotation>($: mliana.T.Model<Annotation>) {
+    function x<Annotation>($: gliana.T.Model<Annotation>) {
         const res = resolve($)
         switch (res[0]) {
             case false:
@@ -161,7 +149,7 @@ export const $$: mapi.CgetTestSet = ($) => {
     x(accountingModel.model)
     x(simpleModel)
 
-    const mappedGlossary = mliana2Pareto.$a.mapLiana2Pareto({
+    const mappedGlossary = gliana2pareto.$a.mapLiana2pareto({
         'model': glossary,
 
         'stringmapping': pm.wrapRawDictionary({
@@ -172,7 +160,7 @@ export const $$: mapi.CgetTestSet = ($) => {
         generateModule(`${$XXX.testDirectory}/fubar/${key}`, $)
     })
 
-    mliana2Pareto.$a.generateProject({
+    gliana2pareto.$a.generateProject({
         'mainData': {
             'arguments': pm.wrapRawArray([`${$XXX.testDirectory}/liana/glossary`]),
         },
@@ -184,7 +172,7 @@ export const $$: mapi.CgetTestSet = ($) => {
             }),
         },
     })
-    mliana2Pareto.$a.generateProject({
+    gliana2pareto.$a.generateProject({
         'mainData': {
             'arguments': pm.wrapRawArray([`${$XXX.testDirectory}/liana/accounting`]),
         },
@@ -194,10 +182,10 @@ export const $$: mapi.CgetTestSet = ($) => {
 
     // mserialize.$a.createModuleDefinitionSerializer({
 
-    // })(mliana2Pareto.$a.createLiana2ParetoMapper({})(model), )
-    // mliana2Pareto.$a.createLiana2ParetoMapper({})(model)
+    // })(mliana2pareto.$a.createLiana2paretoMapper({})(model), )
+    // mliana2pareto.$a.createLiana2paretoMapper({})(model)
 
-    const builder = ps.createUnsafeDictionaryBuilder<mtst.T.TestElement>()
+    const builder = ps.createUnsafeDictionaryBuilder<gtest.T.TestElement>()
     function createTest(name: string, actual: string, expected: string) {
         builder.add(name, {
             type: ['test', {

@@ -1,26 +1,28 @@
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as mliana from "../../liana"
-import * as mliana2Pareto from "../../liana2Pareto"
-import * as mfp from "lib-fountain-pen"
-import * as mcommon from "glo-pareto-common"
 
-export const $$: mapi.CcreateSerializer = ($d) => {
-    return <Annotation>($: mliana2Pareto.T.MappedModel<Annotation>, $i: mfp.IWriter) => {
+import * as gliana from "../../liana"
+import * as gliana2pareto from "../../liana2pareto"
+import * as gfp from "lib-fountain-pen"
+import * as gcommon from "glo-pareto-common"
+
+import { CcreateSerializer } from "../api"
+
+export const $$:CcreateSerializer = ($d) => {
+    return <Annotation>($: gliana2pareto.T.MappedModel<Annotation>, $i: gfp.IWriter) => {
 
         $i.file(`states.generated.ts`, ($i) => {
             $d.serializeStates($d.mapLiana2States($), $i)
 
         })
-        function getPathID($: mcommon.T.Path) {
+        function getPathID($: gcommon.T.Path) {
 
             return $d.createIdentifier($d.joinNestedStrings($))
         }
         function doDictionaries($: {
-            $: mliana.T.LocalType<Annotation>,
-            path: mcommon.T.Path,
-            idPath: mcommon.T.Path,
+            $: gliana.T.LocalType<Annotation>,
+            path: gcommon.T.Path,
+            idPath: gcommon.T.Path,
             currentName: string,
         }) {
             const path = $.path
@@ -82,9 +84,9 @@ export const $$: mapi.CcreateSerializer = ($d) => {
                                             $i.line(`//////`)
                                             function doScalars(
                                                 $: {
-                                                    $: mliana.T.LocalType<Annotation>,
+                                                    $: gliana.T.LocalType<Annotation>,
                                                     isRoot: boolean,
-                                                    path: mcommon.T.Path,
+                                                    path: gcommon.T.Path,
                                                 }
                                             ) {
                                                 const path = $.path
@@ -186,10 +188,10 @@ export const $$: mapi.CcreateSerializer = ($d) => {
                                                     $i.nestedLine(($i) => {
                                                         $i.snippet(`'data': `)
                                                         function writeUnflattener($: {
-                                                            $: mliana.T.LocalType<Annotation>,
-                                                            path: mcommon.T.Path,
+                                                            $: gliana.T.LocalType<Annotation>,
+                                                            path: gcommon.T.Path,
                                                             currentName: string,
-                                                        }, $i: mfp.ILine) {
+                                                        }, $i: gfp.ILine) {
                                                             const path = $.path
                                                             const pathID = `prop_${getPathID(path)}`
                                                             const currentName = $.currentName

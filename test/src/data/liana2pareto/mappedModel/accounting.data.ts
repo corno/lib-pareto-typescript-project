@@ -1,7 +1,6 @@
 import * as pd from 'pareto-core-data'
 
-import * as mliana from "../../../../../pub/dist/submodules/liana"
-import * as mliana2Pareto from "../../../../../pub/dist/submodules/liana2Pareto"
+import * as gliana2pareto from "../../../../../pub/dist/submodules/liana2pareto"
 import {
     d,
     r,
@@ -19,7 +18,7 @@ import {
 
 
 
-export const $: mliana2Pareto.T.MappedModel<pd.SourceLocation> = {
+export const $: gliana2pareto.T.MappedModel<pd.SourceLocation> = {
     'stringmapping': pd.d({
         "bedrag": ['number', null],
         "bestand": ['string', null],

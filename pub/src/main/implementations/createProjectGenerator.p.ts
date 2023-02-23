@@ -1,12 +1,14 @@
 import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as mfp from "lib-fountain-pen"
+
+import * as gfp from "lib-fountain-pen"
 
 import { $a } from "../index"
 
-export const $$: mapi.CcreateProjectGenerator = ($d) => {
+import { CcreateProjectGenerator } from "../api"
+
+export const $$:CcreateProjectGenerator = ($d) => {
     return ($) => {
 
         const project = $.project
@@ -34,13 +36,13 @@ export const $$: mapi.CcreateProjectGenerator = ($d) => {
             $.mainData.arguments,
             ($) => {
 
-                mfp.$a.createWriter(
+                gfp.$a.createWriter(
                     {
                         onError: ($) => {
                             $d.logError($)
                         },
                         reportSuperfluousNode: ($) => {
-                            $d.logError(mfp.$a.createSuperfluousNodeMessage($))
+                            $d.logError(gfp.$a.createSuperfluousNodeMessage($))
                         }
                     },
                 )(

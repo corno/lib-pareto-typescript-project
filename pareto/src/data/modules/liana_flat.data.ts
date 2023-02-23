@@ -4,16 +4,16 @@ import { func, glossaryParameter, interfaceReference, parametrizedTypeReference,
 
 import { algorithm, constructor, definitionReference } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
 
-import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
+import * as gmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
 const d = pd.d
 
-export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
+export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {
         'imports': d({
             "fp": "lib-fountain-pen",
             "liana": "../../../liana",
-            "liana2Pareto": "../../../liana2Pareto",
+            "liana2pareto": "../../../liana2pareto",
         }),
         'parameters': d({
             "Annotation": {},
@@ -23,12 +23,12 @@ export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
         }),
         'interfaces': d({}),
         'functions': d({
-            "Serialize": func(parametrizedTypeReference("liana2Pareto", { "Annotation": typeReference("Annotation") }, "MappedModel"), null, interfaceReference("fp", "Writer"), null),
+            "Serialize": func(parametrizedTypeReference("liana2pareto", { "Annotation": typeReference("Annotation") }, "MappedModel"), null, interfaceReference("fp", "Writer"), null),
         }),
     },
     'api': {
         'imports': d({
-            "liana2Pareto": "../../liana2Pareto",
+            "liana2pareto": "../../liana2pareto",
             "pareto2typescript": "../../pareto2typescript",
             "tostring": "res-pareto-tostring",
             "ts": "res-typescript",
@@ -37,7 +37,7 @@ export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
                 "createIdentifier": definitionReference("ts", {}, "CreateIdentifier"),
                 "joinNestedStrings": definitionReference("tostring", {}, "JoinNestedStrings"),
-                "mapLiana2States": definitionReference("liana2Pareto", {}, "MapLiana2States"),
+                "mapLiana2States": definitionReference("liana2pareto", {}, "MapLiana2States"),
                 "serializeStates": definitionReference("pareto2typescript", {}, "SerializeStates"),
             })),
             "serialize": algorithm(definitionReference("Serialize")),

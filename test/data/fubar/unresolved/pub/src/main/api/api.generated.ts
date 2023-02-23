@@ -1,8 +1,8 @@
 import * as pt from 'pareto-core-types'
 
-import * as mglo from "./glossary"
+import * as gglo from "./glossary"
 
-import * as mforeach from "res-pareto-foreach"
+import * as gforeach from "res-pareto-foreach"
 
 export type CcreateSerializer = ($d: {
     readonly 'arrayForEach': mforeach.FArrayForEach

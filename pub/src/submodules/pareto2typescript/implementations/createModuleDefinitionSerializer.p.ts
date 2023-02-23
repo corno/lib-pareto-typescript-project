@@ -1,18 +1,20 @@
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as mmoduleDefinition from "../../moduleDefinition"
-import * as mglossary from "../../glossary"
-import * as mfp from "lib-fountain-pen"
 
-export const $$: mapi.CcreateModuleDefinitionSerializer = ($d) => {
-    return <Annotation>($:mmoduleDefinition.T.ModuleDefinition<Annotation>, $i:mfp.IWriter) => {
+import * as gmoduleDefinition from "../../moduleDefinition"
+import * as gglossary from "../../glossary"
+import * as gfp from "lib-fountain-pen"
+
+import { CcreateModuleDefinitionSerializer } from "../api"
+
+export const $$:CcreateModuleDefinitionSerializer = ($d) => {
+    return <Annotation>($:gmoduleDefinition.T.ModuleDefinition<Annotation>, $i:gfp.IWriter) => {
         function doOptional<T>(
             $: [false] | [true, T],
-            $i: mfp.ILine,
+            $i: gfp.ILine,
             $c: {
-                onSet: ($: T, $i: mfp.ILine) => void,
-                onNotset: ($: null, $i: mfp.ILine) => void,
+                onSet: ($: T, $i: gfp.ILine) => void,
+                onNotset: ($: null, $i: gfp.ILine) => void,
             },
         ) {
             if ($[0] === true) {
@@ -21,14 +23,14 @@ export const $$: mapi.CcreateModuleDefinitionSerializer = ($d) => {
                 $c.onNotset(null, $i)
             }
         }
-        function glossary($: mglossary.T.Glossary<Annotation>, $i: mfp.IWriter) {
+        function glossary($: gglossary.T.Glossary<Annotation>, $i: gfp.IWriter) {
             $i.directory(`glossary`, ($i) => {
                 $d.serializeGlossary($, $i)
 
             })
         }
-        function serializeTypeReference($: mglossary.T.TypeReference<string>, $i: mfp.ILine) {
-            function serializeContext2($: mglossary.T.Context<string>, $i: mfp.ILine) {
+        function serializeTypeReference($: gglossary.T.TypeReference<string>, $i: gfp.ILine) {
+            function serializeContext2($: gglossary.T.Context<string>, $i: gfp.ILine) {
                 pl.cc($, ($) => {
                     switch ($[0]) {
                         // case 'api':
@@ -54,8 +56,8 @@ export const $$: mapi.CcreateModuleDefinitionSerializer = ($d) => {
             $i.snippet(`T.${$d.createIdentifier($.type)}`)
         }
 
-        function serializeDefinitionReference($: mmoduleDefinition.T.DefinitionReference<Annotation>, $i: mfp.ILine) {
-            function serializeContext($: mmoduleDefinition.T.Context<Annotation> | undefined, $i: mfp.ILine) {
+        function serializeDefinitionReference($: gmoduleDefinition.T.DefinitionReference<Annotation>, $i: gfp.ILine) {
+            function serializeContext($: gmoduleDefinition.T.Context<Annotation> | undefined, $i: gfp.ILine) {
     
                 if ($ !== undefined) {
                     pl.cc($, ($) => {
@@ -90,11 +92,11 @@ export const $$: mapi.CcreateModuleDefinitionSerializer = ($d) => {
         $i.file("api.generated.ts", ($i) => {
             $i.line(`import * as pt from 'pareto-core-types'`)
             $i.line(``)
-            $i.line(`import * as mglo from "./glossary"`)
+            $i.line(`import * as gglo from "./glossary"`)
             $i.line(``)
             $d.dictionaryForEach($.api.imports, ($) => {
                 $i.nestedLine(($i) => {
-                    $i.snippet(`import * as m${$.key} from "${$.value}"`)
+                    $i.snippet(`import * as g${$.key} from "${$.value}"`)
                 })
             })
             $d.dictionaryForEach($.api.algorithms, ($) => {

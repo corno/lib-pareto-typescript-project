@@ -1,5 +1,5 @@
 import * as pe from 'pareto-core-exe'
 
-import * as mmain from "../modules/main"
+import * as gmain from "../modules/main"
 
-pe.runProgram(mmain.$a.main)
+pe.runProgram(gmain.$a.main)

@@ -1,13 +1,13 @@
 import * as pd from 'pareto-core-data'
 
-import * as mproject from "lib-pareto-typescript-project/dist/submodules/project"
+import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as api } from "./api.data"
 import { $ as algorithm } from "./modules/algorithm.data"
 import { $ as liana } from "./modules/liana.data"
 import { $ as liana_resolved } from "./modules/liana_resolved.data"
 import { $ as liana_flat } from "./modules/liana_flat.data"
-import { $ as liana2Pareto } from "./modules/liana2Pareto.data"
+import { $ as liana2pareto } from "./modules/liana2pareto.data"
 import { $ as moduleDefinition } from "./modules/moduleDefinition.data"
 import { $ as pareto2typescript } from "./modules/pareto2typescript.data"
 import { $ as project } from "./modules/project.data"
@@ -17,7 +17,7 @@ import { $ as glossary } from "./glossary/unresolved/module.generated"
 
 const d = pd.d
 
-export const $: mproject.T.Project<pd.SourceLocation> = {
+export const $: gproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "A library to generate a typescript project environment for Pareto",
     'license': "ISC",
@@ -53,8 +53,8 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
             "liana_flat": {
                 'definition': liana_flat,
             },
-            "liana2Pareto": {
-                'definition': liana2Pareto,
+            "liana2pareto": {
+                'definition': liana2pareto,
             },
             "moduleDefinition": {
                 'definition': moduleDefinition,

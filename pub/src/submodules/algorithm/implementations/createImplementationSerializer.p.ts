@@ -1,13 +1,15 @@
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
-import * as mglossary from "../../glossary"
-import * as mfp from "lib-fountain-pen"
 
-export const $$: mapi.CcreateImplementationSerializer = ($d) => {
+import * as gglossary from "../../glossary"
+import * as gfp from "lib-fountain-pen"
+
+import { CcreateImplementationSerializer } from "../api"
+
+export const $$:CcreateImplementationSerializer = ($d) => {
 
     return ($, $i) => {
-        // function serializeExpression($: api.TExpression, $i: mfp.ILine) {
+        // function serializeExpression($: api.TExpression, $i: gfp.ILine) {
         //     switch ($[0]) {
         //         case 'call':
         //             pl.cc($[1], ($) => {
@@ -126,7 +128,7 @@ export const $$: mapi.CcreateImplementationSerializer = ($d) => {
         //         default: pl.au($[0])
         //     }
         // }
-        // function serializeFunctionBlock($: api.TFunctionBlock, $i: mfp.ILine) {
+        // function serializeFunctionBlock($: api.TFunctionBlock, $i: gfp.ILine) {
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
         //         $i.nestedLine(($i) => {
@@ -164,7 +166,7 @@ export const $$: mapi.CcreateImplementationSerializer = ($d) => {
         //     })
         //     $i.snippet(`}`)
         // }
-        // function serializeCallbackBlock($: api.TCallbackBlock, $i: mfp.ILine) {
+        // function serializeCallbackBlock($: api.TCallbackBlock, $i: gfp.ILine) {
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
         //         $i.nestedLine(($i) => {

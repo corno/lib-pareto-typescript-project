@@ -3,14 +3,14 @@ import * as pd from 'pareto-core-data'
 
 import * as api from "./api"
 
-import * as mglossary from "../glossary"
+import * as gglossary from "../glossary"
 
 // import { Function, Glossary, LeafType, Type } from "./types.p"
 
 
 type RawDictionary<T> = { [key: string]: T }
 
-export function definitionReference(contextOrDefinition: string, args?: RawDictionary<mglossary.T.TypeReference<string>>, definition?: string): api.T.DefinitionReference<pd.SourceLocation> {
+export function definitionReference(contextOrDefinition: string, args?: RawDictionary<gglossary.T.TypeReference<string>>, definition?: string): api.T.DefinitionReference<pd.SourceLocation> {
     if (definition === undefined) {
 
         return {
@@ -28,7 +28,7 @@ export function definitionReference(contextOrDefinition: string, args?: RawDicti
     }
 }
 
-export function constructor(data: null | mglossary.T.TypeReference<string>, deps: RawDictionary<api.T.DefinitionReference<pd.SourceLocation>>): api.T.ModuleDefinition.api.algorithms.D._ltype<pd.SourceLocation> {
+export function constructor(data: null | gglossary.T.TypeReference<string>, deps: RawDictionary<api.T.DefinitionReference<pd.SourceLocation>>): api.T.ModuleDefinition.api.algorithms.D._ltype<pd.SourceLocation> {
     return ['constructor', {
         'configuration data': data === null
             ? [false]

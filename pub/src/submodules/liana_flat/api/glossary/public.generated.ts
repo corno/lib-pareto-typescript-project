@@ -4,6 +4,6 @@ import { T   } from './types.generated'
 
 import * as mfp from "lib-fountain-pen"
 import * as mliana from "../../../liana"
-import * as mliana2Pareto from "../../../liana2Pareto"
+import * as mliana2pareto from "../../../liana2pareto"
 
-export type FSerialize = <GPAnnotation>($: mliana2Pareto.T.MappedModel<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
+export type FSerialize = <GPAnnotation>($: mliana2pareto.T.MappedModel<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void

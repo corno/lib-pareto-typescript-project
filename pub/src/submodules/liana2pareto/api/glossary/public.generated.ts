@@ -9,6 +9,6 @@ import * as mproject from "../../../project"
 
 export type FGenerateProject = <GPAnnotation>($: T.Configuration<GPAnnotation>,) => void
 
-export type FMapLiana2Pareto = <GPAnnotation>($: T.MappedModel<GPAnnotation>,) => T.Modules<GPAnnotation>
+export type FMapLiana2pareto = <GPAnnotation>($: T.MappedModel<GPAnnotation>,) => T.Modules<GPAnnotation>
 
 export type FMapLiana2States = <GPAnnotation>($: T.MappedModel<GPAnnotation>,) => malgorithm.T.States<T.Annotation<GPAnnotation>>

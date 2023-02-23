@@ -1,8 +1,10 @@
 import * as pl from 'pareto-core-lib'
 
-import * as mapi from "../api"
 
-export const $$: mapi.CcreateSerializer = ($d) => {
+
+import { CcreateSerializer } from "../api"
+
+export const $$:CcreateSerializer = ($d) => {
     return ($, $i) => {
         $i.snippet(`{`)
         $i.indent(($i) => {

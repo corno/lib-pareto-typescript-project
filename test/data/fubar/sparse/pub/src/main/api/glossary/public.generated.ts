@@ -2,4 +2,4 @@ import * as pt from 'pareto-core-types'
 
 import { T   } from './types.generated'
 
-import * as mfp from "lib-fountain-pen"
+import * as gfp from "lib-fountain-pen"

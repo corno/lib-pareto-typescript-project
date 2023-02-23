@@ -1,12 +1,11 @@
 import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as mproject from "../../project"
 import * as mfp from "lib-fountain-pen"
 
 
-export const $$: api.CcreateTemplateSerializer = (
+export const $$: mapi.CcreateTemplateSerializer = (
     $d
 ) => {
     return <Annotation>($: mproject.T.Project<Annotation>, $i: mfp.IWriter) => {
@@ -27,10 +26,10 @@ export const $$: api.CcreateTemplateSerializer = (
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)
-                                                $i.line(`import * as api from "../api"`)
+                                                $i.line(`import * as mapi from "../api"`)
                                                 $i.line(``)
                                                 $i.nestedLine(($i) => {
-                                                    $i.snippet(`export const $$: api.${$d.createIdentifier(`C${$.key}`)}`)
+                                                    $i.snippet(`export const $$: mapi.${$d.createIdentifier(`C${$.key}`)}`)
                                                     $i.snippet(` = ($c, $d) => {`)
                                                     $i.indent(($i) => {
                                                         $i.nestedLine(($i) => {
@@ -70,7 +69,7 @@ export const $$: api.CcreateTemplateSerializer = (
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)
-                                                $i.line(`import * as api from "../api"`)
+                                                $i.line(`import * as mapi from "../api"`)
                                                 $i.line(``)
                                                 $i.nestedLine(($i) => {
                                                     $i.snippet(`export function test() {`)
@@ -107,10 +106,10 @@ export const $$: api.CcreateTemplateSerializer = (
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)
-                                                $i.line(`import * as api from "../api"`)
+                                                $i.line(`import * as mapi from "../api"`)
                                                 $i.line(``)
                                                 $i.nestedLine(($i) => {
-                                                    $i.snippet(`export const $$: api.${$d.createIdentifier(`C${$.key}`)}`)
+                                                    $i.snippet(`export const $$: mapi.${$d.createIdentifier(`C${$.key}`)}`)
                                                     $i.snippet(` = ($c, $d) => {`)
                                                     $i.indent(($i) => {
                                                         $i.nestedLine(($i) => {
@@ -138,7 +137,7 @@ export const $$: api.CcreateTemplateSerializer = (
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)
-                                                $i.line(`import * as api from "../api"`)
+                                                $i.line(`import * as mapi from "../api"`)
                                                 $i.line(``)
                                                 $i.nestedLine(($i) => {
                                                     $i.snippet(`export function test() {`)

@@ -1,11 +1,7 @@
 import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
-import * as pm from 'pareto-core-map'
 
-import * as api from "../api"
-
-import { types } from "../../glossary/shorthands"
-
+import * as mapi from "../api"
 import * as malgorithm from "../../algorithm"
 import * as mliana from "../../liana"
 
@@ -28,8 +24,8 @@ function getEntry<T, RT>(
     }
 }
 
-export const $$: api.CcreateLiana2StatesMapper = ($d) => {
-    return <Annotation>($: api.T.MappedModel<Annotation>) => {
+export const $$: mapi.CcreateLiana2StatesMapper = ($d) => {
+    return <Annotation>($: mapi.T.MappedModel<Annotation>) => {
         const stringMapping = $.stringmapping
         return $.model.globalTypes.dictionary.map(($) => {
             function mapType($: mliana.T.LocalType<Annotation>): malgorithm.T.Type<Annotation> {

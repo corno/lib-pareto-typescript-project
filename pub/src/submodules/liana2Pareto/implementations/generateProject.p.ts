@@ -1,7 +1,5 @@
-import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as mforeach from "res-pareto-foreach"
 import * as mcoll from "res-pareto-collation"
 import * as mmoduleDefinition from "../../moduleDefinition"
@@ -12,7 +10,7 @@ import * as malgorithm from "../../algorithm"
 
 import { $a } from "../index"
 
-export const $$: api.CgenerateProject = ($) => {
+export const $$: mapi.CgenerateProject = ($) => {
     const a = mforeach.$a.arrayForEach
     const d = mforeach.$a.createDictionaryForEach({
         compare: mcoll.$a.localeIsABeforeB,

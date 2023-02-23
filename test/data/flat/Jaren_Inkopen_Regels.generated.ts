@@ -27,13 +27,13 @@ export function $$(
             'Omschrijving': assertNotNull(prop_Omschrijving),
             'Bedrag': pl.cc(prop_Bedrag, ($) => {
                 switch ($) {
-                    case "Bekend": {
+                    case 'Bekend': {
                         return ['Bekend', {
                             'Bedrag inclusief BTW': parseInt(assertNotNull(prop_Bedrag_$Bekend_$Bedrag__inclusief__BTW)),
                             'BTW': parseInt(assertNotNull(prop_Bedrag_$Bekend_$BTW)),
                         }]
                     }
-                    case "Nog niet bekend": {
+                    case 'Nog niet bekend': {
                         return ['Nog niet bekend', {
                             'Aantekeningen': assertNotNull(prop_Bedrag_$Nog__niet__bekend_$Aantekeningen),
                         }]
@@ -43,12 +43,12 @@ export function $$(
             }),
             'Type': pl.cc(prop_Type, ($) => {
                 switch ($) {
-                    case "Kosten": {
+                    case 'Kosten': {
                         return ['Kosten', {
                             'Grootboekrekening': prop_Type_$Kosten_$Grootboekrekening,
                         }]
                     }
-                    case "Balans": {
+                    case 'Balans': {
                         return ['Balans', {
                             'Balans item': prop_Type_$Balans_$Balans__item,
                         }]

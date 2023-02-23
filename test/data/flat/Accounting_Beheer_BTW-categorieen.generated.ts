@@ -19,10 +19,10 @@ export function $$(
         'data': {
             'BTW-heffing': pl.cc(prop_BTW_miheffing, ($) => {
                 switch ($) {
-                    case "Nee": {
+                    case 'Nee': {
                         return ['Nee', {}]
                     }
-                    case "Ja": {
+                    case 'Ja': {
                         return ['Ja', {
                             'BTW-promillage': parseInt(assertNotNull(prop_BTW_miheffing_$Ja_$BTW_mipromillage)),
                         }]

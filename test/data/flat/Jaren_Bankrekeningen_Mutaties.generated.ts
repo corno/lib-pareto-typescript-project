@@ -24,10 +24,10 @@ export function $$(
             'Datum': parseInt(assertNotNull(prop_Datum)),
             'Status': pl.cc(prop_Status, ($) => {
                 switch ($) {
-                    case "Nog te verwerken": {
+                    case 'Nog te verwerken': {
                         return ['Nog te verwerken', {}]
                     }
-                    case "Verwerkt": {
+                    case 'Verwerkt': {
                         return ['Verwerkt', {
                             'Afhandeling': FIXCOMPONENT,
                         }]

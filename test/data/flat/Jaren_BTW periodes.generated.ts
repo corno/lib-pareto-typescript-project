@@ -23,14 +23,14 @@ export function $$(
             'Omschrijving': assertNotNull(prop_Omschrijving),
             'Status': pl.cc(prop_Status, ($) => {
                 switch ($) {
-                    case "Aangegeven": {
+                    case 'Aangegeven': {
                         return ['Aangegeven', {
                             'Bedrag': parseInt(assertNotNull(prop_Status_$Aangegeven_$Bedrag)),
                             'Afronding': parseInt(assertNotNull(prop_Status_$Aangegeven_$Afronding)),
                             'Datum': parseInt(assertNotNull(prop_Status_$Aangegeven_$Datum)),
                         }]
                     }
-                    case "Openstaand": {
+                    case 'Openstaand': {
                         return ['Openstaand', {}]
                     }
                     default: pl.panic(`UNEXPECTED VALUE: '${prop_Status}'`)

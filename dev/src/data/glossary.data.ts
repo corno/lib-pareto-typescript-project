@@ -33,7 +33,7 @@ export const $: mliana.T.Model<pd.SourceLocation> = {
                 "parameters": [[], dictionary(group({}))],
                 "type": [[], component("Type", {})],
             }))],
-            "types": [["namespaces", "templates"], dictionary(component("Type", {}))],
+            "types": [['namespaces', "templates"], dictionary(component("Type", {}))],
             "interfaces": [["types"], dictionary(component("Interface", {}))],
             "functions": [["namespace"], dictionary(group({
                 "return type": [[], taggedUnion({

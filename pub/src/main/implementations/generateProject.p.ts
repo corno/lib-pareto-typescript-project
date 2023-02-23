@@ -1,9 +1,5 @@
-import * as pl from 'pareto-core-lib'
-
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as mpareto2typescript from "../../submodules/pareto2typescript"
-
 import * as mforeach from "res-pareto-foreach"
 import * as mcoll from "res-pareto-collation"
 import * as mmain from "res-pareto-main"
@@ -11,7 +7,7 @@ import * as mts from "res-typescript"
 
 import { $a } from "../index"
 
-export const $$: api.CgenerateProject = ($) => {
+export const $$: mapi.CgenerateProject = ($) => {
     const a = mforeach.$a.arrayForEach
     const d = mforeach.$a.createDictionaryForEach({
         compare: mcoll.$a.localeIsABeforeB,

@@ -1,11 +1,8 @@
 import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
+import * as mapi from "../api"
 
-import * as mglossary from "../../glossary"
-import * as mfp from "lib-fountain-pen"
-
-export const $$: api.CcreateSerializer = ($d) => {
+export const $$: mapi.CcreateSerializer = ($d) => {
     return ($, $i) => {
         $i.snippet(`{`)
         $i.indent(($i) => {

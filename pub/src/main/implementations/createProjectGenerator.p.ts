@@ -1,14 +1,12 @@
 import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as mfp from "lib-fountain-pen"
-import * as mtostring from "res-pareto-tostring"
-import * as mfs from "res-pareto-filesystem"
+
 import { $a } from "../index"
 
-export const $$: api.CcreateProjectGenerator = ($d) => {
+export const $$: mapi.CcreateProjectGenerator = ($d) => {
     return ($) => {
 
         const project = $.project

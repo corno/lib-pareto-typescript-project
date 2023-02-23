@@ -1,14 +1,12 @@
 import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
-
-import * as mmoduleDefinition from "../../moduleDefinition"
+import * as mapi from "../api"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
 
-export const $$: api.CcreateSerializer = ($d) => {
-    return <Annotation>($: api.T.ModuleDefinition<Annotation>, $i: mfp.ILine) => {
+export const $$: mapi.CcreateSerializer = ($d) => {
+    return <Annotation>($: mapi.T.ModuleDefinition<Annotation>, $i: mfp.ILine) => {
         function doOptional<T>(
             $: [false] | [true, T],
             $i: mfp.ILine,
@@ -36,7 +34,7 @@ export const $$: api.CcreateSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-        function serializeDefinitionReference($: api.T.DefinitionReference<Annotation>, $i: mfp.ILine) {
+        function serializeDefinitionReference($: mapi.T.DefinitionReference<Annotation>, $i: mfp.ILine) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 if ($.context !== undefined) {
@@ -71,7 +69,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeContext2($: api.T.Context<Annotation>, $i: mfp.ILine) {
+        function serializeContext2($: mapi.T.Context<Annotation>, $i: mfp.ILine) {
             switch ($[0]) {
                 case 'import':
                     pl.cc($[1], ($) => {

@@ -40,18 +40,18 @@ export function $$(
             'Datum': parseInt(assertNotNull(prop_Datum)),
             'Brondocument': pl.cc(prop_Brondocument, ($) => {
                 switch ($) {
-                    case "Toegevoegd": {
+                    case 'Toegevoegd': {
                         return ['Toegevoegd', {
                             'Document': assertNotNull(prop_Brondocument_$Toegevoegd_$Document),
                         }]
                     }
-                    case "Nog toevoegen": {
+                    case 'Nog toevoegen': {
                         return ['Nog toevoegen', {}]
                     }
-                    case "Niet van toepassing": {
+                    case 'Niet van toepassing': {
                         return ['Niet van toepassing', {}]
                     }
-                    case "Ontbreekt": {
+                    case 'Ontbreekt': {
                         return ['Ontbreekt', {}]
                     }
                     default: pl.panic(`UNEXPECTED VALUE: '${prop_Brondocument}'`)
@@ -59,27 +59,27 @@ export function $$(
             }),
             'Type': pl.cc(prop_Type, ($) => {
                 switch ($) {
-                    case "Bonnetje": {
+                    case 'Bonnetje': {
                         return ['Bonnetje', {}]
                     }
-                    case "Inkoop (met crediteur)": {
+                    case 'Inkoop (met crediteur)': {
                         return ['Inkoop (met crediteur)', {
                             'Factuurnummer': assertNotNull(prop_Type_$Inkoop___pomet__crediteur_pc_$Factuurnummer),
                             'Crediteur': prop_Type_$Inkoop___pomet__crediteur_pc_$Crediteur,
                         }]
                     }
-                    case "Salaris": {
+                    case 'Salaris': {
                         return ['Salaris', {
                             'Ronde': prop_Type_$Salaris_$Ronde,
                             'Medewerker': prop_Type_$Salaris_$Medewerker,
                         }]
                     }
-                    case "Loonheffing": {
+                    case 'Loonheffing': {
                         return ['Loonheffing', {
                             'Ronde': prop_Type_$Loonheffing_$Ronde,
                         }]
                     }
-                    case "WBSO": {
+                    case 'WBSO': {
                         return ['WBSO', {
                             'Ronde': prop_Type_$WBSO_$Ronde,
                         }]
@@ -89,27 +89,27 @@ export function $$(
             }),
             'BTW-regime': pl.cc(prop_BTW_miregime, ($) => {
                 switch ($) {
-                    case "Standaard": {
+                    case 'Standaard': {
                         return ['Standaard', {
                             'BTW-periode': prop_BTW_miregime_$Standaard_$BTW_miperiode,
                         }]
                     }
-                    case "Geen BTW van toepassing": {
+                    case 'Geen BTW van toepassing': {
                         return ['Geen BTW van toepassing', {
                             'BTW-periode': prop_BTW_miregime_$Geen__BTW__van__toepassing_$BTW_miperiode,
                         }]
                     }
-                    case "Binnenland heffing verlegd": {
+                    case 'Binnenland heffing verlegd': {
                         return ['Binnenland heffing verlegd', {
                             'BTW-periode': prop_BTW_miregime_$Binnenland__heffing__verlegd_$BTW_miperiode,
                         }]
                     }
-                    case "Intracommunautair": {
+                    case 'Intracommunautair': {
                         return ['Intracommunautair', {
                             'BTW-periode': prop_BTW_miregime_$Intracommunautair_$BTW_miperiode,
                         }]
                     }
-                    case "Import van buiten de EU": {
+                    case 'Import van buiten de EU': {
                         return ['Import van buiten de EU', {
                             'BTW-periode': prop_BTW_miregime_$Import__van__buiten__de__EU_$BTW_miperiode,
                         }]
@@ -119,15 +119,15 @@ export function $$(
             }),
             'Afhandeling': pl.cc(prop_Afhandeling, ($) => {
                 switch ($) {
-                    case "Mutaties": {
+                    case 'Mutaties': {
                         return ['Mutaties', {}]
                     }
-                    case "Rekening courant": {
+                    case 'Rekening courant': {
                         return ['Rekening courant', {
                             'Rekening courant': prop_Afhandeling_$Rekening__courant_$Rekening__courant,
                         }]
                     }
-                    case "Nog te betalen": {
+                    case 'Nog te betalen': {
                         return ['Nog te betalen', {
                             'Betalingstermijn': parseInt(assertNotNull(prop_Afhandeling_$Nog__te__betalen_$Betalingstermijn)),
                         }]

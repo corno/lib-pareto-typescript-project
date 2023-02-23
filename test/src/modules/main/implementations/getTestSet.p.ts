@@ -6,8 +6,8 @@ import * as pa from 'pareto-core-async'
 
 
 import * as mtst from "lib-pareto-test"
+import * as mapi from "../api"
 
-import * as api from "../api"
 // import * as us from "res-pareto-ugly-stuff"
 
 import {
@@ -34,7 +34,7 @@ import { $ as glossary } from "../../../data/liana/model/glossary.data"
 import { $ as accountingModel } from "../../../data/liana2Pareto/mappedModel/accounting.data"
 import { $ as tc } from "../../../data/project/project/tokenconsumer/project.data"
 
-export const $$: api.CgetTestSet = ($) => {
+export const $$: mapi.CgetTestSet = ($) => {
     const $XXX = $
 
     function genProj<Annotation>(dir: string, proj: mproject.T.Project<Annotation>) {
@@ -108,7 +108,7 @@ export const $$: api.CgetTestSet = ($) => {
     // pub.$b.createTestProgram(
     //     {
     //         getTestSet: ($) => {
-    //             return pl.asyncValue({
+    //             return pa.asyncValue({
     //                 elements: pd.wrapRawDictionary({})
     //             })
     //         },

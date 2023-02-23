@@ -18,13 +18,13 @@ export function $$(
         'data': {
             'Type': pl.cc(prop_Type, ($) => {
                 switch ($) {
-                    case "Bankrekening": {
+                    case 'Bankrekening': {
                         return ['Bankrekening', {}]
                     }
-                    case "Informele rekening": {
+                    case 'Informele rekening': {
                         return ['Informele rekening', {}]
                     }
-                    case "Overig": {
+                    case 'Overig': {
                         return ['Overig', {}]
                     }
                     default: pl.panic(`UNEXPECTED VALUE: '${prop_Type}'`)

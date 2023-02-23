@@ -1,15 +1,13 @@
 import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
-import * as ps from 'pareto-core-state'
 import * as pm from 'pareto-core-map'
 
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as malgorithm from "../../algorithm"
-import * as mproject from "../../project"
 import * as mglossary from "../../glossary"
 import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mliana from "../../liana"
+
 import { data, func, interfaceReference } from '../../glossary/shorthands'
 
 function getEntry<T, RT>(
@@ -31,8 +29,8 @@ function getEntry<T, RT>(
     }
 }
 
-export const $$: api.CcreateLiana2ParetoMapper = ($d) => {
-    return <Annotation>($: api.T.MappedModel<Annotation>) => {
+export const $$: mapi.CcreateLiana2ParetoMapper = ($d) => {
+    return <Annotation>($: mapi.T.MappedModel<Annotation>) => {
         const model = $.model
         const stringMapping = $.stringmapping
         // function ref(type: string): mglossary.T.Type {

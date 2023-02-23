@@ -1,10 +1,7 @@
-import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
+import * as mapi from "../api"
 
-import * as mglossary from "../../glossary"
-
-export const $$: api.CcreateSerializerWithContext = ($d) => {
+export const $$: mapi.CcreateSerializerWithContext = ($d) => {
 
     return ($, $i) => {
         $i.file("module.generated.ts", ($i) => {

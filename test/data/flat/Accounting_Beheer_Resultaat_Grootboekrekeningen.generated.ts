@@ -25,17 +25,17 @@ export function $$(
             'Subcategorie': prop_Subcategorie,
             'Zijde': pl.cc(prop_Zijde, ($) => {
                 switch ($) {
-                    case "Opbrengsten": {
+                    case 'Opbrengsten': {
                         return ['Opbrengsten', {}]
                     }
-                    case "Kosten": {
+                    case 'Kosten': {
                         return ['Kosten', {
                             'Correctie op vennootschapsbelasting': pl.cc(prop_Correctie__op__vennootschapsbelasting, ($) => {
                                 switch ($) {
-                                    case "Nee": {
+                                    case 'Nee': {
                                         return ['Nee', {}]
                                     }
-                                    case "Ja": {
+                                    case 'Ja': {
                                         return ['Ja', {
                                             'Correctietype': prop_Zijde_$Kosten_$Correctie__op__vennootschapsbelasting_$Ja_$Correctietype,
                                         }]

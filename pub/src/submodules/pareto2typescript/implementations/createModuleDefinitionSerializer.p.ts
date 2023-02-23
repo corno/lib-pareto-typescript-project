@@ -1,12 +1,11 @@
 import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as mmoduleDefinition from "../../moduleDefinition"
 import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
-export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
+export const $$: mapi.CcreateModuleDefinitionSerializer = ($d) => {
     return <Annotation>($:mmoduleDefinition.T.ModuleDefinition<Annotation>, $i:mfp.IWriter) => {
         function doOptional<T>(
             $: [false] | [true, T],
@@ -91,7 +90,7 @@ export const $$: api.CcreateModuleDefinitionSerializer = ($d) => {
         $i.file("api.generated.ts", ($i) => {
             $i.line(`import * as pt from 'pareto-core-types'`)
             $i.line(``)
-            $i.line(`import * as glo from "./glossary"`)
+            $i.line(`import * as mglo from "./glossary"`)
             $i.line(``)
             $d.dictionaryForEach($.api.imports, ($) => {
                 $i.nestedLine(($i) => {

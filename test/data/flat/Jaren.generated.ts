@@ -32,12 +32,12 @@ export function $$(
             'Startdatum boekjaar': parseInt(assertNotNull(prop_Startdatum__boekjaar)),
             'Eerste boekjaar': pl.cc(prop_Eerste__boekjaar, ($) => {
                 switch ($) {
-                    case "Nee": {
+                    case 'Nee': {
                         return ['Nee', {
                             'Vorig boekjaar': prop_Eerste__boekjaar_$Nee_$Vorig__boekjaar,
                         }]
                     }
-                    case "Ja": {
+                    case 'Ja': {
                         return ['Ja', {}]
                     }
                     default: pl.panic(`UNEXPECTED VALUE: '${prop_Eerste__boekjaar}'`)
@@ -46,10 +46,10 @@ export function $$(
             'Beginsaldo Winstreserve': parseInt(assertNotNull(prop_Beginsaldo__Winstreserve)),
             'Afgesloten': pl.cc(prop_Afgesloten, ($) => {
                 switch ($) {
-                    case "Nee": {
+                    case 'Nee': {
                         return ['Nee', {}]
                     }
-                    case "Ja": {
+                    case 'Ja': {
                         return ['Ja', {}]
                     }
                     default: pl.panic(`UNEXPECTED VALUE: '${prop_Afgesloten}'`)

@@ -1,11 +1,10 @@
 import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as mfp from "lib-fountain-pen"
 import * as mproject from "../../project"
 
-export const $$: api.CcreateProjectSerializer = (
+export const $$: mapi.CcreateProjectSerializer = (
     $d,
 ) => {
     return <Annotation>($: mproject.T.Project<Annotation>, $i: mfp.IWriter) => {
@@ -347,7 +346,8 @@ export const $$: api.CcreateProjectSerializer = (
                     globals($i)
                     $i.directory("bin", ($i) => {
                         $i.file("test.generated.ts", ($i) => {
-                            $i.line(`import * as exe from 'pareto-core-exe'`)
+                            $i.line(`import * as pe from 'pareto-core-exe'`)
+                            $i.line(``)
                             $i.line(`import * as mmain from "../modules/main"`)
                             $i.line(``)
                             $i.line(`exe.runProgram(mmain.$a.main)`)
@@ -360,13 +360,10 @@ export const $$: api.CcreateProjectSerializer = (
                                 $i.file("api.generated.ts", ($i) => {
                                     $i.line(`import * as pt from 'pareto-core-types'`)
                                     $i.line(``)
-                                    $i.line(`import * as glo from "./types.generated"`)
-                                    $i.line(``)
                                     $i.line(`import * as mmain from "res-pareto-main"`)
                                     $i.line(`import * as mtest from "lib-pareto-test"`)
                                     $i.line(``)
                                     $i.line(`export type CgetTestSet = mtest.FGetTestSet`)
-                                    $i.line(``)
                                     $i.line(`export type Cmain = ($: mmain.T.MainData) => void`)
                                     $i.line(``)
                                     $i.line(`export type API = {`)
@@ -386,13 +383,14 @@ export const $$: api.CcreateProjectSerializer = (
                                 $i.allowed("getTestSet.p.ts")
                                 $i.file("main.generated.ts", ($i) => {
                                     $i.line(`import * as pl from 'pareto-core-lib'`)
-                                    $i.line(`import * as api from "../api"`)
                                     $i.line(``)
-                                    $i.line(`import { $a } from "../index"`)
+                                    $i.line(`import * as mapi from "../api"`)
                                     $i.line(`import * as mmain from "res-pareto-main"`)
                                     $i.line(`import * as mtest from "lib-pareto-test"`)
                                     $i.line(``)
-                                    $i.line(`export const $$: api.Cmain = ($) => {`)
+                                    $i.line(`import { $a } from "../index"`)
+                                    $i.line(``)
+                                    $i.line(`export const $$: mapi.Cmain = ($) => {`)
                                     $i.line(``)
                                     $i.line(`    mtest.$a.createTestProgram({`)
                                     $i.line(`        getTestSet: $a.getTestSet,`)
@@ -425,9 +423,10 @@ export const $$: api.CcreateProjectSerializer = (
 
                     // $i.file("testXXXXX.generated.ts", ($i) => {
                     //     $i.line(`import * as pt from 'pareto-core-types'`)
-                    //     $i.line(`import * as pr from 'pareto-core-data'`)
+                    //     $i.line(`import * as pd from 'pareto-core-data'`)
                     //     $i.line(`import * as pl from 'pareto-core-lib'`)
-                    //     $i.line(`import * as tst from "lib-pareto-test"`)
+                    //     $i.line(``)
+                    //     $i.line(`import * as mtst from "lib-pareto-test"`)
                     //     $i.line(``)
                     //     $d.dictionaryForEach($.modules, ($, key) => {
                     //         const moduleName = key

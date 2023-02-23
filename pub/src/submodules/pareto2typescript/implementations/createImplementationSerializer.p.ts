@@ -1,22 +1,20 @@
 import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as malgorithm from "../../algorithm"
-import * as mglossary from "../../glossary"
 import * as mfp from "lib-fountain-pen"
 
-export const $$: api.CcreateImplementationSerializer = ($d) => {
+export const $$: mapi.CcreateImplementationSerializer = ($d) => {
 
     return <Annotation>($: malgorithm.T.Implementation<Annotation>, $i: mfp.IWriter) => {
         $d.dictionaryForEach($.implementations, ($) => {
             $i.file(`XXXXXXXXXXXXXXXX${$.key}`, ($i) => {
-                $i.line(`import * as api from "../api"`)
+                $i.line(`import * as mapi from "../api"`)
                 $i.line(``)
                 $i.line(`import * as mfp from "lib-fountain-pen"`)
                 $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`export const $$: api.C${$.key} = `)
+                    $i.snippet(`export const $$: mapi.C${$.key} = `)
                     if ($.value.constructor) {
                         $i.snippet(`($d) => {`)
                         $i.indent(($i) => {
@@ -96,7 +94,7 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
                                                         if ($.innerFunctions !== undefined) {
                                                             $d.dictionaryForEach($.innerFunctions, ($) => {
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`function ${$.key}($: api.T.${$d.createIdentifier($.key)}, $i: mfp.ILine) `)
+                                                                    $i.snippet(`function ${$.key}($: mapi.T.${$d.createIdentifier($.key)}, $i: mfp.ILine) `)
                                                                     doImplementationType($.value.type, $i)
                                                                 })
                                                             })
@@ -317,10 +315,10 @@ export const $$: api.CcreateImplementationSerializer = ($d) => {
         //         $i.line(`import * as pl from 'pareto-core-lib'`)
         //         $i.line(``)
 
-        //         $i.line(`import * as api from "../api"`)
+        //         $i.line(`import * as mapi from "../mapi"`)
 
         //         $i.nestedLine(($i) => {
-        //             $i.snippet(`export const $$: api.${$d.createIdentifier(`C${$.key}`)} = `)
+        //             $i.snippet(`export const $$: mapi.${$d.createIdentifier(`C${$.key}`)} = `)
         //             if ($.value.constructor) {
         //                 $i.snippet(`($d) => {`)
         //                 $i.indent(($i) => {

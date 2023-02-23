@@ -138,16 +138,16 @@ export function boolean():mglo.T.LocalType<pd.SourceLocation> {
 }
 
 export type ReferenceType =
-    | ["sibling", string]
-    | ["parent", null]
-    | ["parameter", string]
-    | ["self", null]
+    | ['sibling', string]
+    | ['parent', null]
+    | ['parameter', string]
+    | ['self', null]
 
 export type Step =
-    | ["group", string]
-    | ["tagged union", string]
-    | ["reference", null]
-    | ["array", null]
+    | ['group', string]
+    | ['tagged union', string]
+    | ['reference', null]
+    | ['array', null]
 
 function referenceX($: ReferenceType, steps: Step[], annotation: pd.SourceLocation):mglo.T.Reference<pd.SourceLocation> {
     return {

@@ -24,13 +24,13 @@ export function $$(
             'Beginsaldo': parseInt(assertNotNull(prop_Beginsaldo)),
             'Nieuw': pl.cc(prop_Nieuw, ($) => {
                 switch ($) {
-                    case "Nee": {
+                    case 'Nee': {
                         return ['Nee', {
                             'Jaar': prop_Nieuw_$Nee_$Jaar,
                             'Rekening': prop_Nieuw_$Nee_$Rekening,
                         }]
                     }
-                    case "Ja": {
+                    case 'Ja': {
                         return ['Ja', {}]
                     }
                     default: pl.panic(`UNEXPECTED VALUE: '${prop_Nieuw}'`)

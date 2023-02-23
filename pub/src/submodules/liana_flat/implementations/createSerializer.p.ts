@@ -1,13 +1,12 @@
 import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as mliana from "../../liana"
 import * as mliana2Pareto from "../../liana2Pareto"
 import * as mfp from "lib-fountain-pen"
 import * as mcommon from "glo-pareto-common"
 
-export const $$: api.CcreateSerializer = ($d) => {
+export const $$: mapi.CcreateSerializer = ($d) => {
     return <Annotation>($: mliana2Pareto.T.MappedModel<Annotation>, $i: mfp.IWriter) => {
 
         $i.file(`states.generated.ts`, ($i) => {
@@ -249,28 +248,28 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                                     pl.cc($.constrained[1], ($) => {
                                                                                         const type = pl.cc($, ($): string => {
                                                                                             switch ($.type.key) {
-                                                                                                case "bedrag": {
+                                                                                                case 'bedrag': {
                                                                                                     return "number"
                                                                                                 }
-                                                                                                case "bestand": {
+                                                                                                case 'bestand': {
                                                                                                     return "undefined"
                                                                                                 }
-                                                                                                case "dagen": {
+                                                                                                case 'dagen': {
                                                                                                     return "number"
                                                                                                 }
-                                                                                                case "datum": {
+                                                                                                case 'datum': {
                                                                                                     return "number"
                                                                                                 }
-                                                                                                case "identifier": {
+                                                                                                case 'identifier': {
                                                                                                     return "string"
                                                                                                 }
-                                                                                                case "multiline text": {
+                                                                                                case 'multiline text': {
                                                                                                     return "string"
                                                                                                 }
-                                                                                                case "promillage": {
+                                                                                                case 'promillage': {
                                                                                                     return "number"
                                                                                                 }
-                                                                                                case "single line text": {
+                                                                                                case 'single line text': {
                                                                                                     return "string"
                                                                                                 }
                                                                                                 default: pl.panic(`Unknown string type: ${$.type.key}`)
@@ -297,7 +296,7 @@ export const $$: api.CcreateSerializer = ($d) => {
                                                                                     $i.indent(($i) => {
                                                                                         $.options.dictionary.__forEach(() => false, ($, key) => {
                                                                                             $i.nestedLine(($i) => {
-                                                                                                $i.snippet(`case "${key}": {`)
+                                                                                                $i.snippet(`case '${key}': {`)
                                                                                                 $i.indent(($i) => {
                                                                                                     $i.nestedLine(($i) => {
                                                                                                         $i.snippet(`return ['${key}', `)

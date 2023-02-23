@@ -1,11 +1,10 @@
 import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as malgorithm from "../../algorithm"
 import * as mfp from "lib-fountain-pen"
 
-export const $$: api.CcreateStatesSerializer = ($d) => {
+export const $$: mapi.CcreateStatesSerializer = ($d) => {
     return <Annotation>($: malgorithm.T.States<Annotation>, $i: mfp.IBlock) => {
         function serializeType($: malgorithm.T.Type<Annotation>, $i: mfp.ILine) {
             switch ($[0]) {

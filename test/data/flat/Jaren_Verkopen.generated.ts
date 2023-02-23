@@ -30,10 +30,10 @@ export function $$(
         'data': {
             'Brondocument': pl.cc(prop_Brondocument, ($) => {
                 switch ($) {
-                    case "Nog toevoegen": {
+                    case 'Nog toevoegen': {
                         return ['Nog toevoegen', {}]
                     }
-                    case "Toegevoegd": {
+                    case 'Toegevoegd': {
                         return ['Toegevoegd', {
                             'Document': assertNotNull(prop_Brondocument_$Toegevoegd_$Document),
                         }]
@@ -46,12 +46,12 @@ export function $$(
             'BTW-periode': prop_BTW_miperiode,
             'Contracttype': pl.cc(prop_Contracttype, ($) => {
                 switch ($) {
-                    case "Licentieovereenkomst": {
+                    case 'Licentieovereenkomst': {
                         return ['Licentieovereenkomst', {
                             'Overeenkomst': prop_Contracttype_$Licentieovereenkomst_$Overeenkomst,
                         }]
                     }
-                    case "Project": {
+                    case 'Project': {
                         return ['Project', {
                             'Project': prop_Contracttype_$Project_$Project,
                             'Offerte': prop_Contracttype_$Project_$Offerte,
@@ -62,10 +62,10 @@ export function $$(
             }),
             'Afhandeling': pl.cc(prop_Afhandeling, ($) => {
                 switch ($) {
-                    case "Mutaties": {
+                    case 'Mutaties': {
                         return ['Mutaties', {}]
                     }
-                    case "Rekening courant": {
+                    case 'Rekening courant': {
                         return ['Rekening courant', {
                             'Rekening courant': prop_Afhandeling_$Rekening__courant_$Rekening__courant,
                         }]

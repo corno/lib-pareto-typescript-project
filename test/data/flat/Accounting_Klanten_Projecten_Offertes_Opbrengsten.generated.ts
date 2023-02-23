@@ -20,7 +20,7 @@ export function $$(
         'data': {
             'Type': pl.cc(prop_Type, ($) => {
                 switch ($) {
-                    case "Project": {
+                    case 'Project': {
                         return ['Project', {
                             'Betaaldatum': parseInt(assertNotNull(prop_Type_$Project_$Betaaldatum)),
                             'Bedrag': parseInt(assertNotNull(prop_Type_$Project_$Bedrag)),

@@ -31,12 +31,12 @@ export function $$(
             'Bedrag exclusief BTW': parseInt(assertNotNull(prop_Bedrag__exclusief__BTW)),
             'Type': pl.cc(prop_Type, ($) => {
                 switch ($) {
-                    case "Opbrengsten": {
+                    case 'Opbrengsten': {
                         return ['Opbrengsten', {
                             'Grootboekrekening': prop_Type_$Opbrengsten_$Grootboekrekening,
                         }]
                     }
-                    case "Balans": {
+                    case 'Balans': {
                         return ['Balans', {
                             'Balans item': prop_Type_$Balans_$Balans__item,
                         }]
@@ -46,21 +46,21 @@ export function $$(
             }),
             'BTW-regime': pl.cc(prop_BTW_miregime, ($) => {
                 switch ($) {
-                    case "Standaard": {
+                    case 'Standaard': {
                         return ['Standaard', {
                             'BTW-cateogrie': prop_BTW_miregime_$Standaard_$BTW_micateogrie,
                         }]
                     }
-                    case "Binnenland heffing verlegd": {
+                    case 'Binnenland heffing verlegd': {
                         return ['Binnenland heffing verlegd', {}]
                     }
-                    case "Intracommunautair": {
+                    case 'Intracommunautair': {
                         return ['Intracommunautair', {}]
                     }
-                    case "Export buiten de EU": {
+                    case 'Export buiten de EU': {
                         return ['Export buiten de EU', {}]
                     }
-                    case "Installatie of afstandsverkopen binnen de EU": {
+                    case 'Installatie of afstandsverkopen binnen de EU': {
                         return ['Installatie of afstandsverkopen binnen de EU', {}]
                     }
                     default: pl.panic(`UNEXPECTED VALUE: '${prop_BTW_miregime}'`)
@@ -68,15 +68,15 @@ export function $$(
             }),
             'Contracttype': pl.cc(prop_Contracttype, ($) => {
                 switch ($) {
-                    case "Los": {
+                    case 'Los': {
                         return ['Los', {}]
                     }
-                    case "Licentieovereenkomst": {
+                    case 'Licentieovereenkomst': {
                         return ['Licentieovereenkomst', {
                             'Periode': prop_Contracttype_$Licentieovereenkomst_$Periode,
                         }]
                     }
-                    case "Project": {
+                    case 'Project': {
                         return ['Project', {
                             'Opbrengst': prop_Contracttype_$Project_$Opbrengst,
                         }]

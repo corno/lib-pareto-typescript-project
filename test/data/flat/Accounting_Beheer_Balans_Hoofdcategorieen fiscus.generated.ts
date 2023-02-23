@@ -18,10 +18,10 @@ export function $$(
         'data': {
             'Zijde': pl.cc(prop_Zijde, ($) => {
                 switch ($) {
-                    case "Activa": {
+                    case 'Activa': {
                         return ['Activa', {}]
                     }
-                    case "Passiva": {
+                    case 'Passiva': {
                         return ['Passiva', {}]
                     }
                     default: pl.panic(`UNEXPECTED VALUE: '${prop_Zijde}'`)

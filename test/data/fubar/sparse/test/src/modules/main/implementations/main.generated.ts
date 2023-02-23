@@ -1,11 +1,12 @@
 import * as pl from 'pareto-core-lib'
-import * as api from "../api"
 
-import { $a } from "../index"
+import * as mapi from "../api"
 import * as mmain from "res-pareto-main"
 import * as mtest from "lib-pareto-test"
 
-export const $$: api.Cmain = ($) => {
+import { $a } from "../index"
+
+export const $$: mapi.Cmain = ($) => {
 
     mtest.$a.createTestProgram({
         getTestSet: $a.getTestSet,

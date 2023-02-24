@@ -228,26 +228,26 @@ export const $$: CcreateLiana2ParetoMapper = ($d) => {
                         : pm.wrapRawDictionary({}),
                     'interfaces': pm.wrapRawDictionary({}),
                     'functions': pm.wrapRawDictionary({
-                        "Serialize": {
-                            'return type': ['nothing', {}],
-                            'data': typeReference($.mappedModel.model.root.key), //unresolved
-                            'managed input interface': ['not set', {}],
-                            'output interface': ['set', {
-                                'context': ['import', {
-                                    'glossary': "fp",
-                                    'arguments': pm.wrapRawDictionary({}),
-                                }],
-                                'interface': "Line"
-                                // 'context': ['import', {
-                                //     'name': "fp",
-                                //     'annotation': "FFF",
-                                // }],
-                                // 'interface': {
-                                //     'name': "Line",
-                                //     'annotation': "FFF",
-                                // }
-                            }],
-                        },
+                        // "Serialize": {
+                        //     'return type': ['nothing', {}],
+                        //     'data': typeReference($.mappedModel.model.root.key), //unresolved
+                        //     'managed input interface': ['not set', {}],
+                        //     'output interface': ['set', {
+                        //         'context': ['import', {
+                        //             'glossary': "fp",
+                        //             'arguments': pm.wrapRawDictionary({}),
+                        //         }],
+                        //         'interface': "Line"
+                        //         // 'context': ['import', {
+                        //         //     'name': "fp",
+                        //         //     'annotation': "FFF",
+                        //         // }],
+                        //         // 'interface': {
+                        //         //     'name': "Line",
+                        //         //     'annotation': "FFF",
+                        //         // }
+                        //     }],
+                        // },
                     }),
                 },
                 'api': {

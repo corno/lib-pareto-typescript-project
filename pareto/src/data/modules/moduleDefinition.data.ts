@@ -76,11 +76,11 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
         'imports': d({
             "collation": "res-pareto-collation",
             "foreach": "res-pareto-foreach",
-            "glossary": "../../glossary",
+            "glossary_temp": "../../glossary_temp",
         }),
         'algorithms': d({
             "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
-                "serializeGlossary": definitionReference("glossary", {}, "Serialize"),
+                "serializeGlossary": definitionReference("glossary_temp", {}, "Serialize"),
                 "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
                 "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
             })),

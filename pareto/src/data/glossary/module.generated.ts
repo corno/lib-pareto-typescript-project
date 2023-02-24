@@ -9,9 +9,7 @@ const a = pd.a
 export const $: gproject.T.Module<pd.SourceLocation> = {
     'definition': {
         'glossary': {
-            'imports': d({
-                "fp": "lib-fountain-pen",
-            }),
+            'imports': d({}),
             'parameters': d({
                 "Annotation": {},
             }),
@@ -291,24 +289,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                 },
             }),
             'interfaces': d({}),
-            'functions': d({
-                "Serialize": {
-                    'data': {
-                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                        'type': "Glossary",
-                        'arguments': d({}),
-                    },
-                    'managed input interface': ['not set', {}],
-                    'output interface': ['set', {
-                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
-                            'glossary': "fp",
-                            'arguments': d({}),
-                        }],
-                        'interface': "Line",
-                    }],
-                    'return type': ['nothing', {}],
-                },
-            }),
+            'functions': d({}),
         },
         'api': {
             'imports': d({

@@ -1318,24 +1318,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                 },
             }),
             'interfaces': d({}),
-            'functions': d({
-                "Serialize": {
-                    'data': {
-                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                        'type': "Accounting",
-                        'arguments': d({}),
-                    },
-                    'managed input interface': ['not set', {}],
-                    'output interface': ['set', {
-                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
-                            'glossary': "fp",
-                            'arguments': d({}),
-                        }],
-                        'interface': "Line",
-                    }],
-                    'return type': ['nothing', {}],
-                },
-            }),
+            'functions': d({}),
         },
         'api': {
             'imports': d({

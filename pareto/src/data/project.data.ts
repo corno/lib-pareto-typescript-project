@@ -4,10 +4,6 @@ import * as gproject from "lib-pareto-typescript-project/dist/submodules/project
 
 import { $ as api } from "./api.data"
 import { $ as algorithm } from "./modules/algorithm.data"
-import { $ as liana } from "./modules/liana.data"
-import { $ as liana_resolved } from "./modules/liana_resolved.data"
-import { $ as liana_flat } from "./modules/liana_flat.data"
-import { $ as liana2pareto } from "./modules/liana2pareto.data"
 import { $ as moduleDefinition } from "./modules/moduleDefinition.data"
 import { $ as pareto2typescript } from "./modules/pareto2typescript.data"
 import { $ as project } from "./modules/project.data"
@@ -43,18 +39,6 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
             "glossary": glossary,
             "glossary_temp": {
                 'definition': glossary_temp,
-            },
-            "liana": {
-                'definition': liana,
-            },
-            "liana_resolved": {
-                'definition': liana_resolved,
-            },
-            "liana_flat": {
-                'definition': liana_flat,
-            },
-            "liana2pareto": {
-                'definition': liana2pareto,
             },
             "moduleDefinition": {
                 'definition': moduleDefinition,

@@ -5,7 +5,7 @@ import * as gproject from "../../project"
 
 import { CcreateProjectSerializer } from "../api"
 
-export const $$:CcreateProjectSerializer = (
+export const $$: CcreateProjectSerializer = (
     $d,
 ) => {
     return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.IWriter) => {
@@ -368,8 +368,8 @@ export const $$:CcreateProjectSerializer = (
                                     $i.line(`export type Cmain = ($: gmain.T.MainData) => void`)
                                     $i.line(``)
                                     $i.line(`export type API = {`)
-                                    $i.line(`    getTestSet: CgetTestSet`)
-                                    $i.line(`    main: Cmain`)
+                                    $i.line(`    'getTestSet': CgetTestSet`)
+                                    $i.line(`    'main': Cmain`)
                                     $i.line(`}`)
                                 })
                                 $i.file("types.generated.ts", ($i) => {
@@ -391,15 +391,14 @@ export const $$:CcreateProjectSerializer = (
                                     $i.line(``)
                                     $i.line(`import { $a } from "../index"`)
                                     $i.line(``)
-                                    $i.line(`import { Cmain } from "../api"
-
-export const $$:Cmain = ($) => {`)
+                                    $i.line(`import { Cmain } from "../api"`)
                                     $i.line(``)
+                                    $i.line(`export const $$:Cmain = ($) => {`)
                                     $i.line(`    gtest.$a.createTestProgram({`)
-                                    $i.line(`        getTestSet: $a.getTestSet,`)
-                                    $i.line(`        log: gmain.$a.log,`)
-                                    $i.line(`        logError: gmain.$a.logError,`)
-                                    $i.line(`        onTestErrors: gmain.$a.setExitCodeToFailed`)
+                                    $i.line(`        'getTestSet': $a.getTestSet,`)
+                                    $i.line(`        'log': gmain.$a.log,`)
+                                    $i.line(`        'logError': gmain.$a.logError,`)
+                                    $i.line(`        'onTestErrors': gmain.$a.setExitCodeToFailed`)
                                     $i.line(`    })($)`)
                                     $i.line(`}`)
                                 })

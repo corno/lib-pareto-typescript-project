@@ -7,7 +7,7 @@ import * as gcommon from "glo-pareto-common"
 
 import { CcreateSerializer } from "../api"
 
-export const $$:CcreateSerializer = ($d) => {
+export const $$: CcreateSerializer = ($d) => {
     return <Annotation>($: gliana2pareto.T.MappedModel<Annotation>, $i: gfp.IWriter) => {
 
         $i.file(`states.generated.ts`, ($i) => {
@@ -128,11 +128,11 @@ export const $$:CcreateSerializer = ($d) => {
                                                             break
                                                         case 'group':
                                                             pl.cc($[1], ($) => {
-                                                                $.properties.dictionary.__forEach(() => false, ($, key) => {
+                                                                $d.dictionaryForEach($.properties.dictionary, ($) => {
                                                                     doScalars({
-                                                                        $: $.type,
+                                                                        $: $.value.type,
                                                                         isRoot: false,
-                                                                        path: [path, key],
+                                                                        path: [path, $.key],
                                                                     })
                                                                 })
 
@@ -147,11 +147,11 @@ export const $$:CcreateSerializer = ($d) => {
                                                             pl.cc($[1], ($) => {
                                                                 $i.line(`prop_${pathID}: ${type},`)
                                                                 $i.line(`operation_${pathID}: ${type},`)
-                                                                $.options.dictionary.__forEach(() => false, ($, key) => {
+                                                                $d.dictionaryForEach($.options.dictionary, ($) => {
                                                                     doScalars({
-                                                                        $: $,
+                                                                        $: $.value,
                                                                         isRoot: false,
-                                                                        path: [path, key],
+                                                                        path: [path, $.key],
                                                                     })
                                                                 })
                                                             })
@@ -226,13 +226,13 @@ export const $$:CcreateSerializer = ($d) => {
                                                                         pl.cc($[1], ($) => {
                                                                             $i.snippet(`{`)
                                                                             $i.indent(($i) => {
-                                                                                $.properties.dictionary.__forEach(() => false, ($, key) => {
+                                                                               $d.dictionaryForEach($.properties.dictionary, ($) => {
                                                                                     $i.nestedLine(($i) => {
-                                                                                        $i.snippet(`'${key}': `)
+                                                                                        $i.snippet(`'${$.key}': `)
                                                                                         writeUnflattener({
-                                                                                            $: $.type,
-                                                                                            path: [path, key],
-                                                                                            currentName: key,
+                                                                                            $: $.value.type,
+                                                                                            path: [path, $.key],
+                                                                                            currentName: $.key,
                                                                                         }, $i)
                                                                                         $i.snippet(`,`)
                                                                                     })
@@ -295,15 +295,15 @@ export const $$:CcreateSerializer = ($d) => {
                                                                                 $i.nestedLine(($i) => {
                                                                                     $i.snippet(`switch ($) {`)
                                                                                     $i.indent(($i) => {
-                                                                                        $.options.dictionary.__forEach(() => false, ($, key) => {
+                                                                                       $d.dictionaryForEach( $.options.dictionary, ($) => {
                                                                                             $i.nestedLine(($i) => {
-                                                                                                $i.snippet(`case '${key}': {`)
+                                                                                                $i.snippet(`case '${$.key}': {`)
                                                                                                 $i.indent(($i) => {
                                                                                                     $i.nestedLine(($i) => {
-                                                                                                        $i.snippet(`return ['${key}', `)
+                                                                                                        $i.snippet(`return ['${$.key}', `)
                                                                                                         writeUnflattener({
-                                                                                                            $: $,
-                                                                                                            path: [path, key],
+                                                                                                            $: $.value,
+                                                                                                            path: [path, $.key],
                                                                                                             currentName: currentName
                                                                                                         }, $i)
                                                                                                         $i.snippet(`]`)
@@ -352,12 +352,12 @@ export const $$:CcreateSerializer = ($d) => {
                         break
                     case 'group':
                         pl.cc($[1], ($) => {
-                            $.properties.dictionary.__forEach(() => false, ($, key) => {
+                            $d.dictionaryForEach($.properties.dictionary, ($) => {
                                 doDictionaries({
-                                    $: $.type,
-                                    path: [path, key],
+                                    $: $.value.type,
+                                    path: [path, $.key],
                                     idPath: idPath,
-                                    currentName: key,
+                                    currentName: $.key,
                                 })
                             })
 
@@ -370,10 +370,10 @@ export const $$:CcreateSerializer = ($d) => {
                         break
                     case 'taggedUnion':
                         pl.cc($[1], ($) => {
-                            $.options.dictionary.__forEach(() => false, ($, key) => {
+                            $d.dictionaryForEach($.options.dictionary, ($) => {
                                 doDictionaries({
-                                    $: $,
-                                    path: [path, key],
+                                    $: $.value,
+                                    path: [path, $.key],
                                     idPath: idPath,
                                     currentName: currentName,
                                 })
@@ -384,12 +384,12 @@ export const $$:CcreateSerializer = ($d) => {
                 }
             })
         }
-        $.model.globalTypes.dictionary.__forEach(() => false, ($, key) => {
+        $d.dictionaryForEach($.model.globalTypes.dictionary, ($) => {
             doDictionaries({
-                $: $.type,
-                path: [key],
+                $: $.value.type,
+                path: [$.key],
                 idPath: [],
-                currentName: key,
+                currentName: $.key,
             })
         })
     }

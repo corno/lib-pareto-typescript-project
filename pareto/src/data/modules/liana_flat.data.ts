@@ -31,6 +31,7 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             "liana2pareto": "../../liana2pareto",
             "pareto2typescript": "../../pareto2typescript",
             "tostring": "res-pareto-tostring",
+            "foreach": "res-pareto-foreach",
             "ts": "res-typescript",
         }),
         'algorithms': d({
@@ -39,6 +40,7 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
                 "joinNestedStrings": definitionReference("tostring", {}, "JoinNestedStrings"),
                 "mapLiana2States": definitionReference("liana2pareto", {}, "MapLiana2States"),
                 "serializeStates": definitionReference("pareto2typescript", {}, "SerializeStates"),
+                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach")
             })),
             "serialize": algorithm(definitionReference("Serialize")),
         })

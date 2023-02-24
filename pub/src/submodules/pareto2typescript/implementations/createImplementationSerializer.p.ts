@@ -5,7 +5,7 @@ import * as gfp from "lib-fountain-pen"
 
 import { CcreateImplementationSerializer } from "../api"
 
-export const $$:CcreateImplementationSerializer = ($d) => {
+export const $$: CcreateImplementationSerializer = ($d) => {
 
     return <Annotation>($: galgorithm.T.Implementation<Annotation>, $i: gfp.IWriter) => {
         $d.dictionaryForEach($.implementations, ($) => {
@@ -102,7 +102,7 @@ export const $$:C${$.key} = `)
                                                                 })
                                                             })
                                                         }
-                                                        $.statements.__forEach(($) => {
+                                                        $d.arrayForEach($.statements, ($) => {
                                                             switch ($[0]) {
                                                                 case 'dependencyCall':
                                                                     pl.cc($[1], ($) => {
@@ -113,7 +113,7 @@ export const $$:C${$.key} = `)
                                                                     pl.cc($[1], ($) => {
                                                                         $i.nestedLine($i => {
                                                                             $i.snippet(`$i`)
-                                                                            $['child path'].__forEach(($) => {
+                                                                            $d.arrayForEach($['child path'], ($) => {
                                                                                 $i.snippet(`.${$}`)
                                                                             })
                                                                             $i.snippet(`(`)

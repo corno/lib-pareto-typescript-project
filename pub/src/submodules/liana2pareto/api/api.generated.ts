@@ -6,30 +6,30 @@ import * as mcommon from "glo-pareto-common"
 import * as mforeach from "res-pareto-foreach"
 import * as mproject from "../../project"
 
-export type CcreateLiana2paretoMapper = ($d: {
+export type CcreateLiana2ParetoMapper = ($d: {
     readonly 'decorateDictionaryEntriesWithKey': mforeach.FDecorateDictionaryEntriesWithKey
-}) => glo.FMapLiana2pareto
+}) => glo.FMapLiana2Pareto
 
 export type CcreateLiana2StatesMapper = ($d: {
     readonly 'decorateDictionaryEntriesWithKey': mforeach.FDecorateDictionaryEntriesWithKey
 }) => glo.FMapLiana2States
 
-export type CcreateProjectGenerator = ($d: {
+export type CcreateModuleGenerator = ($d: {
     readonly 'decorateDictionaryEntriesWithKey': mforeach.FDecorateDictionaryEntriesWithKey
     readonly 'dictionaryForEach': mforeach.FDictionaryForEach
     readonly 'logError': mcommon.FLog
-    readonly 'mapLiana2pareto': glo.FMapLiana2pareto
+    readonly 'mapLiana2Pareto': glo.FMapLiana2Pareto
     readonly 'serializeProject': mproject.FSerializeWithContext
-}) => glo.FGenerateProject
+}) => glo.FGenerateModule
 
-export type CgenerateProject = glo.FGenerateProject
+export type CgenerateModule = glo.FGenerateModule
 
-export type CmapLiana2pareto = glo.FMapLiana2pareto
+export type CmapLiana2Pareto = glo.FMapLiana2Pareto
 
 export type API = {
-    createLiana2paretoMapper: CcreateLiana2paretoMapper
+    createLiana2ParetoMapper: CcreateLiana2ParetoMapper
     createLiana2StatesMapper: CcreateLiana2StatesMapper
-    createProjectGenerator: CcreateProjectGenerator
-    generateProject: CgenerateProject
-    mapLiana2pareto: CmapLiana2pareto
+    createModuleGenerator: CcreateModuleGenerator
+    generateModule: CgenerateModule
+    mapLiana2Pareto: CmapLiana2Pareto
 }

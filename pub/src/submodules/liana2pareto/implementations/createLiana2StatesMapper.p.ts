@@ -7,7 +7,7 @@ import * as gliana from "../../liana"
 
 import { CcreateLiana2StatesMapper } from "../api"
 
-export const $$:CcreateLiana2StatesMapper = ($d) => {
+export const $$: CcreateLiana2StatesMapper = ($d) => {
     return <Annotation>($: gapi.T.MappedModel<Annotation>) => {
         const stringMapping = $.stringmapping
         return $.model.globalTypes.dictionary.map(($) => {
@@ -50,6 +50,10 @@ export const $$:CcreateLiana2StatesMapper = ($d) => {
                                             $.type.key,
                                             ($) => {
                                                 switch ($[0]) {
+                                                    case 'boolean':
+                                                        return pl.cc($[1], ($) => {
+                                                            return ['boolean', {}]
+                                                        })
                                                     case 'number':
                                                         return pl.cc($[1], ($) => {
                                                             return ['number', {}]

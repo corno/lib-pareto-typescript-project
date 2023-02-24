@@ -22,7 +22,7 @@ import { $ as tc } from "../../../data/project/project/tokenconsumer/project.dat
 
 import { CgetTestSet } from "../api"
 
-export const $$:CgetTestSet = ($) => {
+export const $$: CgetTestSet = ($) => {
     const $XXX = $
 
     function genProj<Annotation>(dir: string, proj: gproject.T.Project<Annotation>) {
@@ -128,17 +128,12 @@ export const $$:CgetTestSet = ($) => {
         const res = resolve($)
         switch (res[0]) {
             case false:
-                    //pv.logDebugMessage(`NOT SET`)
+                //pv.logDebugMessage(`NOT SET`)
                 break
             case true:
                 pl.cc(res[1], ($) => {
                     //pv.logDebugMessage(`SET`)
-                    $.model.stringTypes.dictionary.__forEach(() => false, ($, key) => {
-                        //pv.logDebugMessage(key)
-                    })
-                    $.model.globalTypes.dictionary.__forEach(() => false, ($, key) => {
-                        //pv.logDebugMessage(key)
-                    })
+
                     //pv.logDebugMessage(`has errors? ${$['has errors']}`)
                 })
                 break
@@ -149,34 +144,61 @@ export const $$:CgetTestSet = ($) => {
     x(accountingModel.model)
     x(simpleModel)
 
-    const mappedGlossary = gliana2pareto.$a.mapLiana2pareto({
-        'model': glossary,
+    const mappedGlossary = gliana2pareto.$a.mapLiana2Pareto({
+        'mappedModel': {
 
-        'stringmapping': pm.wrapRawDictionary({
-            "identifier": ['string', null]
-        }),
-    })
-    mappedGlossary.modules.__forEach(() => false, ($, key) => {
-        generateModule(`${$XXX.testDirectory}/fubar/${key}`, $)
-    })
-
-    gliana2pareto.$a.generateProject({
-        'mainData': {
-            'arguments': pm.wrapRawArray([`${$XXX.testDirectory}/liana/glossary`]),
-        },
-        'model': {
             'model': glossary,
 
             'stringmapping': pm.wrapRawDictionary({
                 "identifier": ['string', null]
             }),
         },
-    })
-    gliana2pareto.$a.generateProject({
-        'mainData': {
-            'arguments': pm.wrapRawArray([`${$XXX.testDirectory}/liana/accounting`]),
+        'configuration': {
+
+            'datamodel': [true, {
+                'annotations': true,
+                'properties optional': false,
+                'reference mapping': ['string', {}],
+            }],
+            'algorithms': {},
         },
-        'model': accountingModel,
+
+    })
+    generateModule(`${$XXX.testDirectory}/fubar/UNRESOLVED`, mappedGlossary)
+
+    gliana2pareto.$a.generateModule({
+        'path': [`${$XXX.testDirectory}/liana/glossary`],
+        'data': {
+            'configuration': {
+                'datamodel': [true, {
+                    'annotations': true,
+                    'properties optional': false,
+                    'reference mapping': ['string', {}],
+                }],
+                'algorithms': {},
+            },
+            'mappedModel': {
+                'model': glossary,
+
+                'stringmapping': pm.wrapRawDictionary({
+                    "identifier": ['string', null]
+                }),
+            },
+        },
+    })
+    gliana2pareto.$a.generateModule({
+        'path': [`${$XXX.testDirectory}/liana/accounting`],
+        'data': {
+            'configuration': {
+                'datamodel': [true, {
+                    'annotations': true,
+                    'properties optional': false,
+                    'reference mapping': ['string', {}],
+                }],
+                'algorithms': {},
+            },
+            'mappedModel': accountingModel,
+        },
     })
 
     // mserialize.$a.createModuleDefinitionSerializer({
@@ -203,9 +225,7 @@ export const $$:CgetTestSet = ($) => {
         "TODO: ACTUALLY TEST THE LIB",
     )
 
-    return pa.asyncValue(null).map(() => {
-        return pa.asyncValue({
-            elements: builder.getDictionary()
-        })
+    return pa.asyncValue({
+        elements: builder.getDictionary()
     })
 }

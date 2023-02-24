@@ -24,16 +24,18 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
         "Context": globalType({}, taggedUnion({
             "local": group({}),
             //"import": reference(['parent', null], []),
-            "import": string("identifier"),
+            "import": group({
+                "glossary": [[], string("identifier")],
+                "arguments": [[], dictionary(component("TypeReference", {}))],
+            }),
         })),
         "Glossary": globalType({}, group({
             "imports": [[], dictionary(group({}))],
             "parameters": [[], dictionary(group({}))],
-            "templates": [[], dictionary(group({
+            "types": [["namespaces", "templates"], dictionary(group({
                 "parameters": [[], dictionary(group({}))],
                 "type": [[], component("Type", {})],
             }))],
-            "types": [["namespaces", "templates"], dictionary(component("Type", {}))],
             "interfaces": [["types"], dictionary(component("Interface", {}))],
             "functions": [["namespace"], dictionary(group({
                 "return type": [[], taggedUnion({
@@ -94,18 +96,19 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 "type": [[], component("Type", {})],
                 "optional": [[], boolean()],
             })),
-            "parameter": string("identifier"),
-            "template": group({
-                "context": [[], component("Context", {})],
-                "template": [[], string("identifier")],
-                "arguments": [[], dictionary(component("Type", {}))]
-            }),
+            "type parameter": string("identifier"),
+            "glossary parameter": string("identifier"),
+            // "template": group({
+            //     "context": [[], component("Context", {})],
+            //     "template": [[], string("identifier")],
+            // }),
             "taggedUnion": dictionary(component("Type", {})),
         })),
         "TypeReference": globalType({}, group({
             "context": [[], component("Context", {})],
             //"type": [["namespace"], reference(['sibling', "namespaces"], [])],
             "type": [[], string("identifier")],
+            "arguments": [[], dictionary(component("TypeReference", {}))],
         }))
     }),
     'root': r("Glossary"),

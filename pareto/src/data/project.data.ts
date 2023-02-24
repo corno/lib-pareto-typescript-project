@@ -13,7 +13,7 @@ import { $ as pareto2typescript } from "./modules/pareto2typescript.data"
 import { $ as project } from "./modules/project.data"
 
 import { $ as glossary_temp } from "./modules/glossary_temp.data"
-import { $ as glossary } from "./glossary/unresolved/module.generated"
+import { $ as glossary } from "./glossary/module.generated"
 
 const d = pd.d
 

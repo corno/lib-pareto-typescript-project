@@ -9,9 +9,7 @@ const a = pd.a
 export const $: gproject.T.Module<pd.SourceLocation> = {
     'definition': {
         'glossary': {
-            'imports': d({
-                "fp": "lib-fountain-pen",
-            }),
+            'imports': d({}),
             'parameters': d({
                 "Annotation": {},
             }),

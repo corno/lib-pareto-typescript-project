@@ -200,7 +200,7 @@ export const $$: CcreateLiana2ParetoMapper = ($d) => {
                         //     'name': "lib-fountain-pen",
                         //     'annotation': "FFF",
                         // },
-                        "fp": "lib-fountain-pen",
+                        //"fp": "lib-fountain-pen",
                     }),
                     'parameters': pm.wrapRawDictionary({
                         "Annotation": {},

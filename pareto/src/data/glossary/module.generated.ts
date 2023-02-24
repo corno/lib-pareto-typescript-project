@@ -9,7 +9,9 @@ const a = pd.a
 export const $: gproject.T.Module<pd.SourceLocation> = {
     'definition': {
         'glossary': {
-            'imports': d({}),
+            'imports': d({
+                "fp": "lib-fountain-pen",
+            }),
             'parameters': d({
                 "Annotation": {},
             }),
@@ -17,7 +19,20 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                 "Context": {
                     'parameters': d({}),
                     'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                        "import": <gglossary.T.Type<pd.SourceLocation>>['string', {}],
+                        "import": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                            "arguments": {
+                                'optional': false,
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                    'type': "TypeReference",
+                                    'arguments': d({}),
+                                }]],
+                            },
+                            "glossary": {
+                                'optional': false,
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
+                            },
+                        })],
                         "local": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                     })]
                 },
@@ -100,7 +115,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                             'optional': false,
                             'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                         },
-                        "templates": {
+                        "types": {
                             'optional': false,
                             'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                 "parameters": {
@@ -116,14 +131,6 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                                     }],
                                 },
                             })]],
-                        },
-                        "types": {
-                            'optional': false,
-                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                                'type': "Type",
-                                'arguments': d({}),
-                            }]],
                         },
                     })]
                 },
@@ -156,11 +163,20 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                                 'optional': false,
                                 'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
                                     "not set": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
-                                    "set": <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                                        'type': "InterfaceReference",
-                                        'arguments': d({}),
-                                    }],
+                                    "set": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                        "interface": {
+                                            'optional': false,
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                                'type': "Interface",
+                                                'arguments': d({}),
+                                            }],
+                                        },
+                                        "managed": {
+                                            'optional': false,
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['boolean', {}],
+                                        },
+                                    })],
                                 })],
                             },
                         })],
@@ -207,6 +223,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                             'type': "Type",
                             'arguments': d({}),
                         }],
+                        "glossary parameter": <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                         "group": <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                             "optional": {
                                 'optional': false,
@@ -228,7 +245,11 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                         }],
                         "null": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                         "number": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
-                        "parameter": <gglossary.T.Type<pd.SourceLocation>>['string', {}],
+                        "optional": <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                            'type': "Type",
+                            'arguments': d({}),
+                        }],
                         "reference": <gglossary.T.Type<pd.SourceLocation>>['reference', {
                             'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
                             'type': "TypeReference",
@@ -240,33 +261,20 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                             'type': "Type",
                             'arguments': d({}),
                         }]],
-                        "template": <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                            "arguments": {
-                                'optional': false,
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                    'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                                    'type': "Type",
-                                    'arguments': d({}),
-                                }]],
-                            },
-                            "context": {
-                                'optional': false,
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                    'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                                    'type': "Context",
-                                    'arguments': d({}),
-                                }],
-                            },
-                            "template": {
-                                'optional': false,
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
-                            },
-                        })],
+                        "type parameter": <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                     })]
                 },
                 "TypeReference": {
                     'parameters': d({}),
                     'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                        "arguments": {
+                            'optional': false,
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                'type': "TypeReference",
+                                'arguments': d({}),
+                            }]],
+                        },
                         "context": {
                             'optional': false,
                             'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {

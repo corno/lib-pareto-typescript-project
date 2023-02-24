@@ -315,18 +315,6 @@ export namespace T {
         readonly 'interface': string
     }
     
-    export namespace Reference {
-        
-        export type annotation<GPAnnotation, AReferencedType> = string
-        
-        export type name<GPAnnotation, AReferencedType> = string
-    }
-    
-    export type Reference<GPAnnotation, AReferencedType> = {
-        readonly 'annotation': string
-        readonly 'name': string
-    }
-    
     export namespace Type {
         
         export type array<GPAnnotation> = T.Type<GPAnnotation>

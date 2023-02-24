@@ -1,16 +1,16 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./glossary"
+import * as gglo from "./glossary"
 
-import * as mcollation from "res-pareto-collation"
-import * as mforeach from "res-pareto-foreach"
+import * as gcollation from "res-pareto-collation"
+import * as gforeach from "res-pareto-foreach"
 
 export type CcreateImplementationSerializer = ($d: {
-    readonly 'arrayForEach': mforeach.FArrayForEach
-    readonly 'dictionaryForEach': mforeach.FDictionaryForEach
-    readonly 'enrichedArrayForEach': mforeach.FEnrichedArrayForEach
-    readonly 'enrichedDictionaryForEach': mforeach.FEnrichedDictionaryForEach
-}) => glo.FSerializeImplementation
+    readonly 'arrayForEach': gforeach.FArrayForEach
+    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
+    readonly 'enrichedArrayForEach': gforeach.FEnrichedArrayForEach
+    readonly 'enrichedDictionaryForEach': gforeach.FEnrichedDictionaryForEach
+}) => gglo.FSerializeImplementation
 
 export type API = {
     createImplementationSerializer: CcreateImplementationSerializer

@@ -351,7 +351,7 @@ export const $$:CcreateProjectSerializer = (
                             $i.line(``)
                             $i.line(`import * as gmain from "../modules/main"`)
                             $i.line(``)
-                            $i.line(`exe.runProgram(gmain.$a.main)`)
+                            $i.line(`pe.runProgram(gmain.$a.main)`)
                         })
                     })
                     $i.allowed("data")

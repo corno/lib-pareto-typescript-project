@@ -2,12 +2,12 @@ import * as pt from 'pareto-core-types'
 
 import { T   } from './types.generated'
 
-import * as malgorithm from "../../../algorithm"
-import * as mcommon from "glo-pareto-common"
-import * as mfp from "lib-fountain-pen"
-import * as mglossary from "../../../glossary"
-import * as mmoduleDefinition from "../../../moduleDefinition"
+import * as galgorithm from "../../../algorithm"
+import * as gcommon from "glo-pareto-common"
+import * as gfp from "lib-fountain-pen"
+import * as gglossary from "../../../glossary"
+import * as gmoduleDefinition from "../../../moduleDefinition"
 
-export type FSerialize = <GPAnnotation>($: T.Module<GPAnnotation>, $i: mfp.ILine,) => void
+export type FSerialize = <GPAnnotation>($: T.Module<GPAnnotation>, $i: gfp.ILine,) => void
 
-export type FSerializeWithContext = <GPAnnotation>($: T.Module<GPAnnotation>, $i: mfp.IWriter,) => void
+export type FSerializeWithContext = <GPAnnotation>($: T.Module<GPAnnotation>, $i: gfp.IWriter,) => void

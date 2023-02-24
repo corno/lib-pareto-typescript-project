@@ -1,10 +1,10 @@
 import * as pt from 'pareto-core-types'
 
-import * as mcommon from "glo-pareto-common"
-import * as mfp from "lib-fountain-pen"
-import * as mmain from "res-pareto-main"
-import * as mpareto2typescript from "../../../submodules/pareto2typescript"
-import * as mproject from "../../../submodules/project"
+import * as gcommon from "glo-pareto-common"
+import * as gfp from "lib-fountain-pen"
+import * as gmain from "res-pareto-main"
+import * as gpareto2typescript from "../../../submodules/pareto2typescript"
+import * as gproject from "../../../submodules/project"
 
 export namespace T {
     
@@ -32,13 +32,13 @@ export namespace T {
     
     export namespace ProjectSettings {
         
-        export type mainData<GPAnnotation> = mmain.T.MainData
+        export type mainData<GPAnnotation> = gmain.T.MainData
         
-        export type project<GPAnnotation> = mproject.T.Project<T.Annotation<GPAnnotation>>
+        export type project<GPAnnotation> = gproject.T.Project<T.Annotation<GPAnnotation>>
     }
     
     export type ProjectSettings<GPAnnotation> = {
-        readonly 'mainData': mmain.T.MainData
-        readonly 'project': mproject.T.Project<T.Annotation<GPAnnotation>>
+        readonly 'mainData': gmain.T.MainData
+        readonly 'project': gproject.T.Project<T.Annotation<GPAnnotation>>
     }
 }

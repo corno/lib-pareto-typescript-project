@@ -2,25 +2,25 @@ import * as pt from 'pareto-core-types'
 
 import { T   } from './types.generated'
 
-import * as malgorithm from "../../../algorithm"
-import * as mcommon from "glo-pareto-common"
-import * as mfp from "lib-fountain-pen"
-import * as mglossary from "../../../glossary"
-import * as mmoduleDefinition from "../../../moduleDefinition"
-import * as mproject from "../../../project"
+import * as galgorithm from "../../../algorithm"
+import * as gcommon from "glo-pareto-common"
+import * as gfp from "lib-fountain-pen"
+import * as gglossary from "../../../glossary"
+import * as gmoduleDefinition from "../../../moduleDefinition"
+import * as gproject from "../../../project"
 
-export type FSerializeBuildEnvironment = <GPAnnotation>($: mcommon.T.Null, $i: mfp.IWriter,) => void
+export type FSerializeBuildEnvironment = <GPAnnotation>($: gcommon.T.Null, $i: gfp.IWriter,) => void
 
-export type FSerializeGlossary = <GPAnnotation>($: mglossary.T.Glossary<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
+export type FSerializeGlossary = <GPAnnotation>($: gglossary.T.Glossary<T.Annotation<GPAnnotation>>, $i: gfp.IWriter,) => void
 
-export type FSerializeImplementation = <GPAnnotation>($: malgorithm.T.Implementation<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
+export type FSerializeImplementation = <GPAnnotation>($: galgorithm.T.Implementation<T.Annotation<GPAnnotation>>, $i: gfp.IWriter,) => void
 
-export type FSerializeModuleDefinition = <GPAnnotation>($: mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
+export type FSerializeModuleDefinition = <GPAnnotation>($: gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>, $i: gfp.IWriter,) => void
 
-export type FSerializeParetoEnvironment = <GPAnnotation>($: mcommon.T.Null, $i: mfp.IWriter,) => void
+export type FSerializeParetoEnvironment = <GPAnnotation>($: gcommon.T.Null, $i: gfp.IWriter,) => void
 
-export type FSerializeProject = <GPAnnotation>($: mproject.T.Project<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
+export type FSerializeProject = <GPAnnotation>($: gproject.T.Project<T.Annotation<GPAnnotation>>, $i: gfp.IWriter,) => void
 
-export type FSerializeStates = <GPAnnotation>($: malgorithm.T.States<T.Annotation<GPAnnotation>>, $i: mfp.IBlock,) => void
+export type FSerializeStates = <GPAnnotation>($: galgorithm.T.States<T.Annotation<GPAnnotation>>, $i: gfp.IBlock,) => void
 
-export type FSerializeTemplate = <GPAnnotation>($: mproject.T.Project<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
+export type FSerializeTemplate = <GPAnnotation>($: gproject.T.Project<T.Annotation<GPAnnotation>>, $i: gfp.IWriter,) => void

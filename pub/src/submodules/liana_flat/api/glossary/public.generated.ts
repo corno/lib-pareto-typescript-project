@@ -2,8 +2,8 @@ import * as pt from 'pareto-core-types'
 
 import { T   } from './types.generated'
 
-import * as mfp from "lib-fountain-pen"
-import * as mliana from "../../../liana"
-import * as mliana2pareto from "../../../liana2pareto"
+import * as gfp from "lib-fountain-pen"
+import * as gliana from "../../../liana"
+import * as gliana2pareto from "../../../liana2pareto"
 
-export type FSerialize = <GPAnnotation>($: mliana2pareto.T.MappedModel<T.Annotation<GPAnnotation>>, $i: mfp.IWriter,) => void
+export type FSerialize = <GPAnnotation>($: gliana2pareto.T.MappedModel<T.Annotation<GPAnnotation>>, $i: gfp.IWriter,) => void

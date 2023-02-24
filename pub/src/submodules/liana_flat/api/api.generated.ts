@@ -1,22 +1,22 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./glossary"
+import * as gglo from "./glossary"
 
-import * as mforeach from "res-pareto-foreach"
-import * as mliana2pareto from "../../liana2pareto"
-import * as mpareto2typescript from "../../pareto2typescript"
-import * as mtostring from "res-pareto-tostring"
-import * as mts from "res-typescript"
+import * as gforeach from "res-pareto-foreach"
+import * as gliana2pareto from "../../liana2pareto"
+import * as gpareto2typescript from "../../pareto2typescript"
+import * as gtostring from "res-pareto-tostring"
+import * as gts from "res-typescript"
 
 export type CcreateSerializer = ($d: {
-    readonly 'createIdentifier': mts.FCreateIdentifier
-    readonly 'dictionaryForEach': mforeach.FDictionaryForEach
-    readonly 'joinNestedStrings': mtostring.FJoinNestedStrings
-    readonly 'mapLiana2States': mliana2pareto.FMapLiana2States
-    readonly 'serializeStates': mpareto2typescript.FSerializeStates
-}) => glo.FSerialize
+    readonly 'createIdentifier': gts.FCreateIdentifier
+    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
+    readonly 'joinNestedStrings': gtostring.FJoinNestedStrings
+    readonly 'mapLiana2States': gliana2pareto.FMapLiana2States
+    readonly 'serializeStates': gpareto2typescript.FSerializeStates
+}) => gglo.FSerialize
 
-export type Cserialize = glo.FSerialize
+export type Cserialize = gglo.FSerialize
 
 export type API = {
     createSerializer: CcreateSerializer

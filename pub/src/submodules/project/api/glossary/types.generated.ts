@@ -1,10 +1,10 @@
 import * as pt from 'pareto-core-types'
 
-import * as malgorithm from "../../../algorithm"
-import * as mcommon from "glo-pareto-common"
-import * as mfp from "lib-fountain-pen"
-import * as mglossary from "../../../glossary"
-import * as mmoduleDefinition from "../../../moduleDefinition"
+import * as galgorithm from "../../../algorithm"
+import * as gcommon from "glo-pareto-common"
+import * as gfp from "lib-fountain-pen"
+import * as gglossary from "../../../glossary"
+import * as gmoduleDefinition from "../../../moduleDefinition"
 
 export namespace T {
     
@@ -23,17 +23,17 @@ export namespace T {
     
     export namespace Module {
         
-        export type definition<GPAnnotation> = mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+        export type definition<GPAnnotation> = gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
         
-        export type implementation<GPAnnotation> = malgorithm.T.Implementation<T.Annotation<GPAnnotation>>
+        export type implementation<GPAnnotation> = galgorithm.T.Implementation<T.Annotation<GPAnnotation>>
         
-        export type states<GPAnnotation> = malgorithm.T.States<T.Annotation<GPAnnotation>>
+        export type states<GPAnnotation> = galgorithm.T.States<T.Annotation<GPAnnotation>>
     }
     
     export type Module<GPAnnotation> = {
-        readonly 'definition': mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
-        readonly 'implementation'?: malgorithm.T.Implementation<T.Annotation<GPAnnotation>>
-        readonly 'states'?: malgorithm.T.States<T.Annotation<GPAnnotation>>
+        readonly 'definition': gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+        readonly 'implementation'?: galgorithm.T.Implementation<T.Annotation<GPAnnotation>>
+        readonly 'states'?: galgorithm.T.States<T.Annotation<GPAnnotation>>
     }
     
     export namespace Project {
@@ -57,11 +57,11 @@ export namespace T {
             
             export namespace glossary {
                 
-                export type glossary<GPAnnotation> = mglossary.T.Glossary<T.Annotation<GPAnnotation>>
+                export type glossary<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }
             
             export type glossary<GPAnnotation> = {
-                readonly 'glossary': mglossary.T.Glossary<T.Annotation<GPAnnotation>>
+                readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }
             
             export namespace library {
@@ -96,7 +96,7 @@ export namespace T {
             
             export namespace resource {
                 
-                export type definition<GPAnnotation> = mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+                export type definition<GPAnnotation> = gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
                 
                 export namespace devDependencies {
                     
@@ -120,7 +120,7 @@ export namespace T {
             }
             
             export type resource<GPAnnotation> = {
-                readonly 'definition': mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+                readonly 'definition': gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'nativeDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test<GPAnnotation>
@@ -129,7 +129,7 @@ export namespace T {
         
         export type _ltype<GPAnnotation> = 
             | ['glossary', {
-                readonly 'glossary': mglossary.T.Glossary<T.Annotation<GPAnnotation>>
+                readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }]
             | ['library', {
                 readonly 'executables': pt.Dictionary<{}>
@@ -138,7 +138,7 @@ export namespace T {
                 readonly 'test': T.Test<GPAnnotation>
             }]
             | ['resource', {
-                readonly 'definition': mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+                readonly 'definition': gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'nativeDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test<GPAnnotation>
@@ -152,7 +152,7 @@ export namespace T {
         readonly 'license': string
         readonly 'type': 
             | ['glossary', {
-                readonly 'glossary': mglossary.T.Glossary<T.Annotation<GPAnnotation>>
+                readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }]
             | ['library', {
                 readonly 'executables': pt.Dictionary<{}>
@@ -161,7 +161,7 @@ export namespace T {
                 readonly 'test': T.Test<GPAnnotation>
             }]
             | ['resource', {
-                readonly 'definition': mmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+                readonly 'definition': gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'nativeDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test<GPAnnotation>
@@ -179,11 +179,11 @@ export namespace T {
         
         export type dependencies<GPAnnotation> = pt.Dictionary<{}>
         
-        export type glossary<GPAnnotation> = mglossary.T.Glossary<T.Annotation<GPAnnotation>>
+        export type glossary<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
     
     export type Test<GPAnnotation> = {
         readonly 'dependencies': pt.Dictionary<{}>
-        readonly 'glossary': mglossary.T.Glossary<T.Annotation<GPAnnotation>>
+        readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
 }

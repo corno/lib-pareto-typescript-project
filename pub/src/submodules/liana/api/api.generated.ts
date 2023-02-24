@@ -1,12 +1,12 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./glossary"
+import * as gglo from "./glossary"
 
-import * as mcommon from "glo-pareto-common"
+import * as gcommon from "glo-pareto-common"
 
 export type CcreateResolver = ($d: {
-    readonly 'onError': mcommon.FLog
-}) => glo.FResolve
+    readonly 'onError': gcommon.FLog
+}) => gglo.FResolve
 
 export type API = {
     createResolver: CcreateResolver

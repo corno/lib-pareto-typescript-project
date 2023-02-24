@@ -1,25 +1,25 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./glossary"
+import * as gglo from "./glossary"
 
-import * as mcollation from "res-pareto-collation"
-import * as mcommon from "glo-pareto-common"
-import * as mforeach from "res-pareto-foreach"
-import * as mmain from "res-pareto-main"
-import * as mpareto2typescript from "../../submodules/pareto2typescript"
+import * as gcollation from "res-pareto-collation"
+import * as gcommon from "glo-pareto-common"
+import * as gforeach from "res-pareto-foreach"
+import * as gmain from "res-pareto-main"
+import * as gpareto2typescript from "../../submodules/pareto2typescript"
 
 export type CcreateParametersParser = ($d: {
-    readonly 'onError': glo.FHandleArgumentError
-}) => glo.FParseArguments2
+    readonly 'onError': gglo.FHandleArgumentError
+}) => gglo.FParseArguments2
 
 export type CcreateProjectGenerator = ($d: {
-    readonly 'decorateDictionaryEntriesWithKey': mforeach.FDecorateDictionaryEntriesWithKey
-    readonly 'logError': mcommon.FLog
-    readonly 'serializeProject': mpareto2typescript.FSerializeProject
-    readonly 'serializeTemplate': mpareto2typescript.FSerializeTemplate
-}) => glo.FGenerateProject
+    readonly 'decorateDictionaryEntriesWithKey': gforeach.FDecorateDictionaryEntriesWithKey
+    readonly 'logError': gcommon.FLog
+    readonly 'serializeProject': gpareto2typescript.FSerializeProject
+    readonly 'serializeTemplate': gpareto2typescript.FSerializeTemplate
+}) => gglo.FGenerateProject
 
-export type CgenerateProject = glo.FGenerateProject
+export type CgenerateProject = gglo.FGenerateProject
 
 export type API = {
     createParametersParser: CcreateParametersParser

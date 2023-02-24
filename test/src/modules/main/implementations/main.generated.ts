@@ -1,16 +1,19 @@
 import * as pl from 'pareto-core-lib'
-import * as api from "../api"
+
+
+import * as gmain from "res-pareto-main"
+import * as gtest from "lib-pareto-test"
 
 import { $a } from "../index"
-import * as mmain from "res-pareto-main"
-import * as mtest from "lib-pareto-test"
 
-export const $$: api.Cmain = ($) => {
+import { Cmain } from "../api"
 
-    mtest.$a.createTestProgram({
+export const $$:Cmain = ($) => {
+
+    gtest.$a.createTestProgram({
         getTestSet: $a.getTestSet,
-        log: mmain.$a.log,
-        logError: mmain.$a.logError,
-        onTestErrors: mmain.$a.setExitCodeToFailed
+        log: gmain.$a.log,
+        logError: gmain.$a.logError,
+        onTestErrors: gmain.$a.setExitCodeToFailed
     })($)
 }

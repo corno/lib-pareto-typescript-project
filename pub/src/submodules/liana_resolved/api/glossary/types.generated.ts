@@ -1,6 +1,6 @@
 import * as pt from 'pareto-core-types'
 
-import * as mcommon from "glo-pareto-common"
+import * as gcommon from "glo-pareto-common"
 
 export namespace T {
     
@@ -134,12 +134,12 @@ export namespace T {
             
             export type _ldefault<GPAnnotation> = T._$Reference<GPAnnotation, T.XOption<GPAnnotation>>
             
-            export type options<GPAnnotation> = mcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XOption<GPAnnotation>>
+            export type options<GPAnnotation> = gcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XOption<GPAnnotation>>
         }
         
         export type taggedUnion<GPAnnotation> = {
             readonly 'default': T._$Reference<GPAnnotation, T.XOption<GPAnnotation>>
-            readonly 'options': mcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XOption<GPAnnotation>>
+            readonly 'options': gcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XOption<GPAnnotation>>
         }
     }
     
@@ -162,22 +162,22 @@ export namespace T {
         | ['string', T.XString<GPAnnotation>]
         | ['taggedUnion', {
             readonly 'default': T._$Reference<GPAnnotation, T.XOption<GPAnnotation>>
-            readonly 'options': mcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XOption<GPAnnotation>>
+            readonly 'options': gcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XOption<GPAnnotation>>
         }]
     
     export namespace XModel {
         
-        export type globalTypes<GPAnnotation> = mcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XGlobalType<GPAnnotation>>
+        export type globalTypes<GPAnnotation> = gcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XGlobalType<GPAnnotation>>
         
         export type root<GPAnnotation> = T._$Reference<GPAnnotation, T.XGlobalType<GPAnnotation>>
         
-        export type stringTypes<GPAnnotation> = mcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XStringType<GPAnnotation>>
+        export type stringTypes<GPAnnotation> = gcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XStringType<GPAnnotation>>
     }
     
     export type XModel<GPAnnotation> = {
-        readonly 'globalTypes': mcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XGlobalType<GPAnnotation>>
+        readonly 'globalTypes': gcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XGlobalType<GPAnnotation>>
         readonly 'root': T._$Reference<GPAnnotation, T.XGlobalType<GPAnnotation>>
-        readonly 'stringTypes': mcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XStringType<GPAnnotation>>
+        readonly 'stringTypes': gcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XStringType<GPAnnotation>>
     }
     
     export namespace XOption {
@@ -193,9 +193,9 @@ export namespace T {
     
     export type XParameter<GPAnnotation> = {}
     
-    export type XParameters<GPAnnotation> = mcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XParameter<GPAnnotation>>
+    export type XParameters<GPAnnotation> = gcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XParameter<GPAnnotation>>
     
-    export type XProperties<GPAnnotation> = mcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XProperty<GPAnnotation>>
+    export type XProperties<GPAnnotation> = gcommon.T.AnnotatedDictionary<T.Annotation<GPAnnotation>, T.XProperty<GPAnnotation>>
     
     export namespace XProperty {
         

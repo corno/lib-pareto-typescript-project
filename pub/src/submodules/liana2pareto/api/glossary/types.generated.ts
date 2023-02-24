@@ -1,10 +1,10 @@
 import * as pt from 'pareto-core-types'
 
-import * as malgorithm from "../../../algorithm"
-import * as mcommon from "glo-pareto-common"
-import * as mliana from "../../../liana"
-import * as mmain from "res-pareto-main"
-import * as mproject from "../../../project"
+import * as galgorithm from "../../../algorithm"
+import * as gcommon from "glo-pareto-common"
+import * as gliana from "../../../liana"
+import * as gmain from "res-pareto-main"
+import * as gproject from "../../../project"
 
 export namespace T {
     
@@ -14,12 +14,12 @@ export namespace T {
         
         export type data<GPAnnotation> = T.MapLiana2ParetoData<GPAnnotation>
         
-        export type path<GPAnnotation> = mcommon.T.Path
+        export type path<GPAnnotation> = gcommon.T.Path
     }
     
     export type GenerateModuleData<GPAnnotation> = {
         readonly 'data': T.MapLiana2ParetoData<GPAnnotation>
-        readonly 'path': mcommon.T.Path
+        readonly 'path': gcommon.T.Path
     }
     
     export namespace GenerationConfiguration {
@@ -103,7 +103,7 @@ export namespace T {
     
     export namespace MappedModel {
         
-        export type model<GPAnnotation> = mliana.T.Model<T.Annotation<GPAnnotation>>
+        export type model<GPAnnotation> = gliana.T.Model<T.Annotation<GPAnnotation>>
         
         export namespace stringmapping {
             
@@ -130,7 +130,7 @@ export namespace T {
     }
     
     export type MappedModel<GPAnnotation> = {
-        readonly 'model': mliana.T.Model<T.Annotation<GPAnnotation>>
+        readonly 'model': gliana.T.Model<T.Annotation<GPAnnotation>>
         readonly 'stringmapping': pt.Dictionary<
             | ['boolean', null]
             | ['number', null]
@@ -138,19 +138,19 @@ export namespace T {
         >
     }
     
-    export type Module<GPAnnotation> = mproject.T.Module<T.Annotation<GPAnnotation>>
+    export type Module<GPAnnotation> = gproject.T.Module<T.Annotation<GPAnnotation>>
     
     export namespace Modules {
         
         export namespace modules {
             
-            export type D<GPAnnotation> = mproject.T.Module<T.Annotation<GPAnnotation>>
+            export type D<GPAnnotation> = gproject.T.Module<T.Annotation<GPAnnotation>>
         }
         
-        export type modules<GPAnnotation> = pt.Dictionary<mproject.T.Module<T.Annotation<GPAnnotation>>>
+        export type modules<GPAnnotation> = pt.Dictionary<gproject.T.Module<T.Annotation<GPAnnotation>>>
     }
     
     export type Modules<GPAnnotation> = {
-        readonly 'modules': pt.Dictionary<mproject.T.Module<T.Annotation<GPAnnotation>>>
+        readonly 'modules': pt.Dictionary<gproject.T.Module<T.Annotation<GPAnnotation>>>
     }
 }

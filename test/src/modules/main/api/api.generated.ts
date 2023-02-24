@@ -1,13 +1,10 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./types.generated"
+import * as gmain from "res-pareto-main"
+import * as gtest from "lib-pareto-test"
 
-import * as mmain from "res-pareto-main"
-import * as mtest from "lib-pareto-test"
-
-export type CgetTestSet = mtest.FGetTestSet
-
-export type Cmain = ($: mmain.T.MainData) => void
+export type CgetTestSet = gtest.FGetTestSet
+export type Cmain = ($: gmain.T.MainData) => void
 
 export type API = {
     getTestSet: CgetTestSet

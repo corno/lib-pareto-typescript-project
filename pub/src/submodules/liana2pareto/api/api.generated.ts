@@ -1,30 +1,30 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./glossary"
+import * as gglo from "./glossary"
 
-import * as mcommon from "glo-pareto-common"
-import * as mforeach from "res-pareto-foreach"
-import * as mproject from "../../project"
+import * as gcommon from "glo-pareto-common"
+import * as gforeach from "res-pareto-foreach"
+import * as gproject from "../../project"
 
 export type CcreateLiana2ParetoMapper = ($d: {
-    readonly 'decorateDictionaryEntriesWithKey': mforeach.FDecorateDictionaryEntriesWithKey
-}) => glo.FMapLiana2Pareto
+    readonly 'decorateDictionaryEntriesWithKey': gforeach.FDecorateDictionaryEntriesWithKey
+}) => gglo.FMapLiana2Pareto
 
 export type CcreateLiana2StatesMapper = ($d: {
-    readonly 'decorateDictionaryEntriesWithKey': mforeach.FDecorateDictionaryEntriesWithKey
-}) => glo.FMapLiana2States
+    readonly 'decorateDictionaryEntriesWithKey': gforeach.FDecorateDictionaryEntriesWithKey
+}) => gglo.FMapLiana2States
 
 export type CcreateModuleGenerator = ($d: {
-    readonly 'decorateDictionaryEntriesWithKey': mforeach.FDecorateDictionaryEntriesWithKey
-    readonly 'dictionaryForEach': mforeach.FDictionaryForEach
-    readonly 'logError': mcommon.FLog
-    readonly 'mapLiana2Pareto': glo.FMapLiana2Pareto
-    readonly 'serializeProject': mproject.FSerializeWithContext
-}) => glo.FGenerateModule
+    readonly 'decorateDictionaryEntriesWithKey': gforeach.FDecorateDictionaryEntriesWithKey
+    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
+    readonly 'logError': gcommon.FLog
+    readonly 'mapLiana2Pareto': gglo.FMapLiana2Pareto
+    readonly 'serializeProject': gproject.FSerializeWithContext
+}) => gglo.FGenerateModule
 
-export type CgenerateModule = glo.FGenerateModule
+export type CgenerateModule = gglo.FGenerateModule
 
-export type CmapLiana2Pareto = glo.FMapLiana2Pareto
+export type CmapLiana2Pareto = gglo.FMapLiana2Pareto
 
 export type API = {
     createLiana2ParetoMapper: CcreateLiana2ParetoMapper

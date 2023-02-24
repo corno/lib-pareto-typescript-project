@@ -39,12 +39,12 @@ export const $$:CcreateModuleDefinitionSerializer = ($d) => {
                         //     break
                         case 'import':
                             pl.cc($[1], ($) => {
-                                $i.snippet(`m${$.glossary}.`)
+                                $i.snippet(`g${$.glossary}.`)
                             })
                             break
                         case 'local':
                             pl.cc($[1], ($) => {
-                                $i.snippet(`glo.`)
+                                $i.snippet(`gglo.`)
                             })
                             break
                         default: pl.au($[0])
@@ -68,19 +68,19 @@ export const $$:CcreateModuleDefinitionSerializer = ($d) => {
                             //     break
                             case 'import':
                                 pl.cc($[1], ($) => {
-                                    $i.snippet(`m${$.glossary}.`)
+                                    $i.snippet(`g${$.glossary}.`)
                                 })
                                 break
                             case 'local':
                                 pl.cc($[1], ($) => {
-                                    $i.snippet(`glo.`)
+                                    $i.snippet(`gglo.`)
                                 })
                                 break
                             default: pl.au($[0])
                         }
                     })
                 } else {
-                    $i.snippet(`glo.`)
+                    $i.snippet(`gglo.`)
                 }
             }
             serializeContext($.context, $i)

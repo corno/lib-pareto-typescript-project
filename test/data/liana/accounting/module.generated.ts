@@ -1,13 +1,12 @@
-import * as pr from 'pareto-core-data'
+import * as pd from 'pareto-core-data'
 
-import * as gmoduleDefinition from "./import_moduleDefinition"
-import * as gproject from "./import_project"
-import * as gglossary from "./import_glossary"
+import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
+import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
-const d = pd.wrapRawDictionary
-const a = pr.wrapRawArray
+const d = pd.d
+const a = pd.a
 
-export const $: gproject.TModule = {
+export const $: gproject.T.Module<pd.SourceLocation> = {
     'definition': {
         'glossary': {
             'imports': d({
@@ -19,24 +18,24 @@ export const $: gproject.TModule = {
             'types': d({
                 "Accounting": {
                     'parameters': d({}),
-                    'type': <gglossary.T.Type>['group', d({
+                    'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
                         "Bankrekeningen": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({})]],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                         },
                         "Beheer": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                 "Balans": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Grootboekrekeningen": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                 "Hoofdcategorie": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['reference', {
-                                                        'context': <gglossary.TContext>['import', {
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                             'glossary': "common",
                                                             'arguments': d({}),
                                                         }],
@@ -46,8 +45,8 @@ export const $: gproject.TModule = {
                                                 },
                                                 "Subcategorie": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['reference', {
-                                                        'context': <gglossary.TContext>['import', {
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                             'glossary': "common",
                                                             'arguments': d({}),
                                                         }],
@@ -57,23 +56,23 @@ export const $: gproject.TModule = {
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                                        "Activa": <gglossary.T.Type>['group', d({})],
-                                                        "Passiva": <gglossary.T.Type>['group', d({})],
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                        "Activa": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                        "Passiva": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                                     })],
                                                 },
                                             })]],
                                         },
                                         "Hoofdcategorieen": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                 "Subcategorieen": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                         "Hoofdcategorie fiscus": {
                                                             'optional': false,
-                                                            'type': <gglossary.T.Type>['reference', {
-                                                                'context': <gglossary.TContext>['import', {
+                                                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                     'glossary': "common",
                                                                     'arguments': d({}),
                                                                 }],
@@ -83,8 +82,8 @@ export const $: gproject.TModule = {
                                                         },
                                                         "Subcategorie fiscus": {
                                                             'optional': false,
-                                                            'type': <gglossary.T.Type>['reference', {
-                                                                'context': <gglossary.TContext>['import', {
+                                                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                     'glossary': "common",
                                                                     'arguments': d({}),
                                                                 }],
@@ -96,25 +95,25 @@ export const $: gproject.TModule = {
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                                        "Activa": <gglossary.T.Type>['group', d({})],
-                                                        "Passiva": <gglossary.T.Type>['group', d({})],
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                        "Activa": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                        "Passiva": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                                     })],
                                                 },
                                             })]],
                                         },
                                         "Hoofdcategorieen fiscus": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                 "Subcategorieen": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({})]],
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                                        "Activa": <gglossary.T.Type>['group', d({})],
-                                                        "Passiva": <gglossary.T.Type>['group', d({})],
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                        "Activa": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                        "Passiva": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                                     })],
                                                 },
                                             })]],
@@ -123,44 +122,44 @@ export const $: gproject.TModule = {
                                 },
                                 "BTW-categorieen": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "BTW-heffing": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                                "Ja": <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                "Ja": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "BTW-promillage": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['number', {}],
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                                     },
                                                 })],
-                                                "Nee": <gglossary.T.Type>['group', d({})],
+                                                "Nee": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                             })],
                                         },
                                     })]],
                                 },
                                 "Gebruikers": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Volledige naam": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['string', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                         },
                                     })]],
                                 },
                                 "Resultaat": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Correctietypes vennootschapsbelasting": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({})]],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                                         },
                                         "Grootboekrekeningen": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                 "Hoofdcategorie": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['reference', {
-                                                        'context': <gglossary.TContext>['import', {
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                             'glossary': "common",
                                                             'arguments': d({}),
                                                         }],
@@ -170,8 +169,8 @@ export const $: gproject.TModule = {
                                                 },
                                                 "Subcategorie": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['reference', {
-                                                        'context': <gglossary.TContext>['import', {
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                             'glossary': "common",
                                                             'arguments': d({}),
                                                         }],
@@ -181,16 +180,16 @@ export const $: gproject.TModule = {
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                                        "Kosten": <gglossary.T.Type>['group', d({
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                        "Kosten": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                             "Correctie op vennootschapsbelasting": {
                                                                 'optional': false,
-                                                                'type': <gglossary.T.Type>['taggedUnion', d({
-                                                                    "Ja": <gglossary.T.Type>['group', d({
+                                                                'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                                    "Ja": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                                         "Correctietype": {
                                                                             'optional': false,
-                                                                            'type': <gglossary.T.Type>['reference', {
-                                                                                'context': <gglossary.TContext>['import', {
+                                                                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                                     'glossary': "common",
                                                                                     'arguments': d({}),
                                                                                 }],
@@ -199,25 +198,25 @@ export const $: gproject.TModule = {
                                                                             }],
                                                                         },
                                                                     })],
-                                                                    "Nee": <gglossary.T.Type>['group', d({})],
+                                                                    "Nee": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                                                 })],
                                                             },
                                                         })],
-                                                        "Opbrengsten": <gglossary.T.Type>['group', d({})],
+                                                        "Opbrengsten": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                                     })],
                                                 },
                                             })]],
                                         },
                                         "Hoofdcategorieen": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                 "Subcategorieen": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                         "Hoofdcategorie fiscus": {
                                                             'optional': false,
-                                                            'type': <gglossary.T.Type>['reference', {
-                                                                'context': <gglossary.TContext>['import', {
+                                                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                     'glossary': "common",
                                                                     'arguments': d({}),
                                                                 }],
@@ -227,8 +226,8 @@ export const $: gproject.TModule = {
                                                         },
                                                         "Subcategorie fiscus": {
                                                             'optional': false,
-                                                            'type': <gglossary.T.Type>['reference', {
-                                                                'context': <gglossary.TContext>['import', {
+                                                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                     'glossary': "common",
                                                                     'arguments': d({}),
                                                                 }],
@@ -240,25 +239,25 @@ export const $: gproject.TModule = {
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                                        "Kosten": <gglossary.T.Type>['group', d({})],
-                                                        "Opbrengsten": <gglossary.T.Type>['group', d({})],
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                        "Kosten": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                        "Opbrengsten": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                                     })],
                                                 },
                                             })]],
                                         },
                                         "Hoofdcategorieen fiscus": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                 "Subcategorieen": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({})]],
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                                                 },
                                                 "Zijde": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                                        "Kosten": <gglossary.T.Type>['group', d({})],
-                                                        "Opbrengsten": <gglossary.T.Type>['group', d({})],
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                        "Kosten": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                        "Opbrengsten": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                                     })],
                                                 },
                                             })]],
@@ -269,28 +268,28 @@ export const $: gproject.TModule = {
                         },
                         "Informele rekeningen": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({})]],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                         },
                         "Jaren": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['reference', {
-                                'context': <gglossary.TContext>['local', {}],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
                                 'type': "Jaren",
                                 'arguments': d({}),
                             }],
                         },
                         "Klanten": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                 "Licentieovereenkomsten": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Periodes": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                 "Bedrag": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['number', {}],
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                                 },
                                             })]],
                                         },
@@ -298,24 +297,24 @@ export const $: gproject.TModule = {
                                 },
                                 "Projecten": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Offertes": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                 "Opbrengsten": {
                                                     'optional': false,
-                                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                         "Type": {
                                                             'optional': false,
-                                                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                                                "Project": <gglossary.T.Type>['group', d({
+                                                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                                "Project": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                                     "Bedrag": {
                                                                         'optional': false,
-                                                                        'type': <gglossary.T.Type>['number', {}],
+                                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                                                     },
                                                                     "Betaaldatum": {
                                                                         'optional': false,
-                                                                        'type': <gglossary.T.Type>['number', {}],
+                                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                                                     },
                                                                 })],
                                                             })],
@@ -330,22 +329,22 @@ export const $: gproject.TModule = {
                         },
                         "Leveranciers": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({})]],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                         },
                         "Medewerkers": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({})]],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                         },
                     })]
                 },
                 "Afhandeling": {
                     'parameters': d({}),
-                    'type': <gglossary.T.Type>['taggedUnion', d({
-                        "BTW-periode": <gglossary.T.Type>['group', d({
+                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                        "BTW-periode": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                             "BTW-periode": {
                                 'optional': false,
-                                'type': <gglossary.T.Type>['reference', {
-                                    'context': <gglossary.TContext>['import', {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
                                     }],
@@ -355,8 +354,8 @@ export const $: gproject.TModule = {
                             },
                             "Jaar": {
                                 'optional': false,
-                                'type': <gglossary.T.Type>['reference', {
-                                    'context': <gglossary.TContext>['import', {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
                                     }],
@@ -365,11 +364,11 @@ export const $: gproject.TModule = {
                                 }],
                             },
                         })],
-                        "Informele rekening": <gglossary.T.Type>['group', d({
+                        "Informele rekening": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                             "Informele rekening": {
                                 'optional': false,
-                                'type': <gglossary.T.Type>['reference', {
-                                    'context': <gglossary.TContext>['import', {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
                                     }],
@@ -378,11 +377,11 @@ export const $: gproject.TModule = {
                                 }],
                             },
                         })],
-                        "Inkoop": <gglossary.T.Type>['group', d({
+                        "Inkoop": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                             "Inkoop": {
                                 'optional': false,
-                                'type': <gglossary.T.Type>['reference', {
-                                    'context': <gglossary.TContext>['import', {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
                                     }],
@@ -392,8 +391,8 @@ export const $: gproject.TModule = {
                             },
                             "Jaar": {
                                 'optional': false,
-                                'type': <gglossary.T.Type>['reference', {
-                                    'context': <gglossary.TContext>['import', {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
                                     }],
@@ -402,11 +401,11 @@ export const $: gproject.TModule = {
                                 }],
                             },
                         })],
-                        "Verkoop": <gglossary.T.Type>['group', d({
+                        "Verkoop": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                             "Inkoop": {
                                 'optional': false,
-                                'type': <gglossary.T.Type>['reference', {
-                                    'context': <gglossary.TContext>['import', {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
                                     }],
@@ -416,8 +415,8 @@ export const $: gproject.TModule = {
                             },
                             "Jaar": {
                                 'optional': false,
-                                'type': <gglossary.T.Type>['reference', {
-                                    'context': <gglossary.TContext>['import', {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
                                     }],
@@ -426,11 +425,11 @@ export const $: gproject.TModule = {
                                 }],
                             },
                         })],
-                        "Verrekenpost": <gglossary.T.Type>['group', d({
+                        "Verrekenpost": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                             "Verrekenpost": {
                                 'optional': false,
-                                'type': <gglossary.T.Type>['reference', {
-                                    'context': <gglossary.TContext>['import', {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                         'glossary': "common",
                                         'arguments': d({}),
                                     }],
@@ -443,15 +442,15 @@ export const $: gproject.TModule = {
                 },
                 "Informele Rekeningen": {
                     'parameters': d({}),
-                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                         "Beginsaldo": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['number', {}],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                         },
                         "Grootboekrekening": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['reference', {
-                                'context': <gglossary.TContext>['import', {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
                                 }],
@@ -461,13 +460,13 @@ export const $: gproject.TModule = {
                         },
                         "Nieuw": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                "Ja": <gglossary.T.Type>['group', d({})],
-                                "Nee": <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                "Ja": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                "Nee": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                     "Jaar": {
                                         'optional': false,
-                                        'type': <gglossary.T.Type>['reference', {
-                                            'context': <gglossary.TContext>['import', {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                 'glossary': "common",
                                                 'arguments': d({}),
                                             }],
@@ -477,8 +476,8 @@ export const $: gproject.TModule = {
                                     },
                                     "Rekening": {
                                         'optional': false,
-                                        'type': <gglossary.T.Type>['reference', {
-                                            'context': <gglossary.TContext>['import', {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                 'glossary': "common",
                                                 'arguments': d({}),
                                             }],
@@ -493,38 +492,38 @@ export const $: gproject.TModule = {
                 },
                 "Jaren": {
                     'parameters': d({}),
-                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                         "Afgesloten": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                "Ja": <gglossary.T.Type>['group', d({})],
-                                "Nee": <gglossary.T.Type>['group', d({})],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                "Ja": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                "Nee": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                             })],
                         },
                         "Balans grootboekrekeningen": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                 "Type": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Bankrekening": <gglossary.T.Type>['group', d({})],
-                                        "Informele rekening": <gglossary.T.Type>['group', d({})],
-                                        "Overig": <gglossary.T.Type>['group', d({})],
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Bankrekening": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Informele rekening": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Overig": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                     })],
                                 },
                             })]],
                         },
                         "Bankrekeningen": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                 "Beginsaldo": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['number', {}],
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                 },
                                 "Grootboekrekening": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['reference', {
-                                        'context': <gglossary.TContext>['import', {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                             'glossary': "common",
                                             'arguments': d({}),
                                         }],
@@ -534,28 +533,28 @@ export const $: gproject.TModule = {
                                 },
                                 "Mutaties": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Bedrag": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['number', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                         },
                                         "Datum": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['number', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                         },
                                         "Omschrijving": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['string', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                         },
                                         "Status": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                                "Nog te verwerken": <gglossary.T.Type>['group', d({})],
-                                                "Verwerkt": <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                "Nog te verwerken": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                "Verwerkt": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "Afhandeling": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['reference', {
-                                                            'context': <gglossary.TContext>['local', {}],
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
                                                             'type': "Afhandeling",
                                                             'arguments': d({}),
                                                         }],
@@ -567,13 +566,13 @@ export const $: gproject.TModule = {
                                 },
                                 "Nieuw": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Ja": <gglossary.T.Type>['group', d({})],
-                                        "Nee": <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Ja": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Nee": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Jaar": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -583,8 +582,8 @@ export const $: gproject.TModule = {
                                             },
                                             "Rekening": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -599,63 +598,63 @@ export const $: gproject.TModule = {
                         },
                         "Beginsaldo nog aan te geven BTW": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['number', {}],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                         },
                         "Beginsaldo Winstreserve": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['number', {}],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                         },
                         "BTW periodes": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                 "1. BTW-categorieen": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({})]],
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                                 },
                                 "Documenten": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Bestand": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['string', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                         },
                                     })]],
                                 },
                                 "Omschrijving": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['string', {}],
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                 },
                                 "Status": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Aangegeven": <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Aangegeven": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Afronding": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['number', {}],
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                             },
                                             "Bedrag": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['number', {}],
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                             },
                                             "Datum": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['number', {}],
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                             },
                                         })],
-                                        "Openstaand": <gglossary.T.Type>['group', d({})],
+                                        "Openstaand": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                     })],
                                 },
                             })]],
                         },
                         "Eerste boekjaar": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                "Ja": <gglossary.T.Type>['group', d({})],
-                                "Nee": <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                "Ja": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                "Nee": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                     "Vorig boekjaar": {
                                         'optional': false,
-                                        'type': <gglossary.T.Type>['reference', {
-                                            'context': <gglossary.TContext>['import', {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                 'glossary': "common",
                                                 'arguments': d({}),
                                             }],
@@ -668,8 +667,8 @@ export const $: gproject.TModule = {
                         },
                         "Grootboek BTW periode": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['reference', {
-                                'context': <gglossary.TContext>['import', {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
                                 }],
@@ -679,8 +678,8 @@ export const $: gproject.TModule = {
                         },
                         "Grootboek inkoop saldo": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['reference', {
-                                'context': <gglossary.TContext>['import', {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
                                 }],
@@ -690,8 +689,8 @@ export const $: gproject.TModule = {
                         },
                         "Grootboek verkoop saldo": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['reference', {
-                                'context': <gglossary.TContext>['import', {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
                                 }],
@@ -701,8 +700,8 @@ export const $: gproject.TModule = {
                         },
                         "Grootboekrekening voor BTW afrondingen": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['reference', {
-                                'context': <gglossary.TContext>['import', {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
                                 }],
@@ -712,8 +711,8 @@ export const $: gproject.TModule = {
                         },
                         "Grootboekrekening voor nog aan te geven BTW": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['reference', {
-                                'context': <gglossary.TContext>['import', {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
                                 }],
@@ -723,8 +722,8 @@ export const $: gproject.TModule = {
                         },
                         "Grootboekrekening voor resultaat dit jaar": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['reference', {
-                                'context': <gglossary.TContext>['import', {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
                                 }],
@@ -734,8 +733,8 @@ export const $: gproject.TModule = {
                         },
                         "Grootboekrekening voor winstreserve": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['reference', {
-                                'context': <gglossary.TContext>['import', {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                     'glossary': "common",
                                     'arguments': d({}),
                                 }],
@@ -745,30 +744,30 @@ export const $: gproject.TModule = {
                         },
                         "Informele rekeningen": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['reference', {
-                                'context': <gglossary.TContext>['local', {}],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
                                 'type': "Informele Rekeningen",
                                 'arguments': d({}),
                             }],
                         },
                         "Inkopen": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                 "Afhandeling": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Mutaties": <gglossary.T.Type>['group', d({})],
-                                        "Nog te betalen": <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Mutaties": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Nog te betalen": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Betalingstermijn": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['number', {}],
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                             },
                                         })],
-                                        "Rekening courant": <gglossary.T.Type>['group', d({
+                                        "Rekening courant": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Rekening courant": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -781,26 +780,26 @@ export const $: gproject.TModule = {
                                 },
                                 "Brondocument": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Niet van toepassing": <gglossary.T.Type>['group', d({})],
-                                        "Nog toevoegen": <gglossary.T.Type>['group', d({})],
-                                        "Ontbreekt": <gglossary.T.Type>['group', d({})],
-                                        "Toegevoegd": <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Niet van toepassing": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Nog toevoegen": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Ontbreekt": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Toegevoegd": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Document": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['string', {}],
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                             },
                                         })],
                                     })],
                                 },
                                 "BTW-regime": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Binnenland heffing verlegd": <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Binnenland heffing verlegd": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "BTW-periode": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -809,11 +808,11 @@ export const $: gproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Geen BTW van toepassing": <gglossary.T.Type>['group', d({
+                                        "Geen BTW van toepassing": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "BTW-periode": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -822,11 +821,11 @@ export const $: gproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Import van buiten de EU": <gglossary.T.Type>['group', d({
+                                        "Import van buiten de EU": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "BTW-periode": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -835,11 +834,11 @@ export const $: gproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Intracommunautair": <gglossary.T.Type>['group', d({
+                                        "Intracommunautair": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "BTW-periode": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -848,11 +847,11 @@ export const $: gproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Standaard": <gglossary.T.Type>['group', d({
+                                        "Standaard": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "BTW-periode": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -865,44 +864,44 @@ export const $: gproject.TModule = {
                                 },
                                 "Datum": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['number', {}],
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                 },
                                 "Regels": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Bedrag": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                                "Bekend": <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                "Bekend": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "Bedrag inclusief BTW": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['number', {}],
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                                     },
                                                     "BTW": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['number', {}],
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                                     },
                                                 })],
-                                                "Nog niet bekend": <gglossary.T.Type>['group', d({
+                                                "Nog niet bekend": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "Aantekeningen": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['string', {}],
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                                     },
                                                 })],
                                             })],
                                         },
                                         "Omschrijving": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['string', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                         },
                                         "Type": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                                "Balans": <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                "Balans": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "Balans item": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['reference', {
-                                                            'context': <gglossary.TContext>['import', {
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                            'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
                                                             }],
@@ -911,11 +910,11 @@ export const $: gproject.TModule = {
                                                         }],
                                                     },
                                                 })],
-                                                "Kosten": <gglossary.T.Type>['group', d({
+                                                "Kosten": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "Grootboekrekening": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['reference', {
-                                                            'context': <gglossary.TContext>['import', {
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                            'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
                                                             }],
@@ -930,13 +929,13 @@ export const $: gproject.TModule = {
                                 },
                                 "Type": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Bonnetje": <gglossary.T.Type>['group', d({})],
-                                        "Inkoop (met crediteur)": <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Bonnetje": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Inkoop (met crediteur)": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Crediteur": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -946,14 +945,14 @@ export const $: gproject.TModule = {
                                             },
                                             "Factuurnummer": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['string', {}],
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                             },
                                         })],
-                                        "Loonheffing": <gglossary.T.Type>['group', d({
+                                        "Loonheffing": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Ronde": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -962,11 +961,11 @@ export const $: gproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Salaris": <gglossary.T.Type>['group', d({
+                                        "Salaris": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Medewerker": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -976,8 +975,8 @@ export const $: gproject.TModule = {
                                             },
                                             "Ronde": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -986,11 +985,11 @@ export const $: gproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "WBSO": <gglossary.T.Type>['group', d({
+                                        "WBSO": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Ronde": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -1005,15 +1004,15 @@ export const $: gproject.TModule = {
                         },
                         "Overige balans items": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                 "Beginsaldo": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['number', {}],
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                 },
                                 "Grootboekrekening": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['reference', {
-                                        'context': <gglossary.TContext>['import', {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                             'glossary': "common",
                                             'arguments': d({}),
                                         }],
@@ -1023,19 +1022,19 @@ export const $: gproject.TModule = {
                                 },
                                 "Memoriaal boekingen": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Bedrag": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['number', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                         },
                                         "Datum": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['number', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                         },
                                         "Grootboekrekening": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['reference', {
-                                                'context': <gglossary.TContext>['import', {
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                     'glossary': "common",
                                                     'arguments': d({}),
                                                 }],
@@ -1045,19 +1044,19 @@ export const $: gproject.TModule = {
                                         },
                                         "Omschrijving": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['string', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                         },
                                     })]],
                                 },
                                 "Nieuw": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Ja": <gglossary.T.Type>['group', d({})],
-                                        "Nee": <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Ja": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Nee": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Balans item": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -1067,8 +1066,8 @@ export const $: gproject.TModule = {
                                             },
                                             "Jaar": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -1083,28 +1082,28 @@ export const $: gproject.TModule = {
                         },
                         "Resultaat grootboekrekeningen": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({})]],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                         },
                         "Salarisrondes": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({})]],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                         },
                         "Startdatum boekjaar": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['number', {}],
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                         },
                         "Verkopen": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                 "Afhandeling": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Mutaties": <gglossary.T.Type>['group', d({})],
-                                        "Rekening courant": <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Mutaties": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Rekening courant": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Rekening courant": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -1117,24 +1116,24 @@ export const $: gproject.TModule = {
                                 },
                                 "Betalingstermijn": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['number', {}],
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                 },
                                 "Brondocument": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Nog toevoegen": <gglossary.T.Type>['group', d({})],
-                                        "Toegevoegd": <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Nog toevoegen": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "Toegevoegd": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Document": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['string', {}],
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                             },
                                         })],
                                     })],
                                 },
                                 "BTW-periode": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['reference', {
-                                        'context': <gglossary.TContext>['import', {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                             'glossary': "common",
                                             'arguments': d({}),
                                         }],
@@ -1144,12 +1143,12 @@ export const $: gproject.TModule = {
                                 },
                                 "Contracttype": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['taggedUnion', d({
-                                        "Licentieovereenkomst": <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "Licentieovereenkomst": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Overeenkomst": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -1158,11 +1157,11 @@ export const $: gproject.TModule = {
                                                 }],
                                             },
                                         })],
-                                        "Project": <gglossary.T.Type>['group', d({
+                                        "Project": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                             "Offerte": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -1172,8 +1171,8 @@ export const $: gproject.TModule = {
                                             },
                                             "Project": {
                                                 'optional': false,
-                                                'type': <gglossary.T.Type>['reference', {
-                                                    'context': <gglossary.TContext>['import', {
+                                                'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                         'glossary': "common",
                                                         'arguments': d({}),
                                                     }],
@@ -1186,8 +1185,8 @@ export const $: gproject.TModule = {
                                 },
                                 "Debiteur": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['reference', {
-                                        'context': <gglossary.TContext>['import', {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                             'glossary': "common",
                                             'arguments': d({}),
                                         }],
@@ -1197,23 +1196,23 @@ export const $: gproject.TModule = {
                                 },
                                 "Regels": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Bedrag exclusief BTW": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['number', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                         },
                                         "BTW-regime": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                                "Binnenland heffing verlegd": <gglossary.T.Type>['group', d({})],
-                                                "Export buiten de EU": <gglossary.T.Type>['group', d({})],
-                                                "Installatie of afstandsverkopen binnen de EU": <gglossary.T.Type>['group', d({})],
-                                                "Intracommunautair": <gglossary.T.Type>['group', d({})],
-                                                "Standaard": <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                "Binnenland heffing verlegd": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                "Export buiten de EU": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                "Installatie of afstandsverkopen binnen de EU": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                "Intracommunautair": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                "Standaard": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "BTW-cateogrie": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['reference', {
-                                                            'context': <gglossary.TContext>['import', {
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                            'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
                                                             }],
@@ -1226,12 +1225,12 @@ export const $: gproject.TModule = {
                                         },
                                         "Contracttype": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                                "Licentieovereenkomst": <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                "Licentieovereenkomst": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "Periode": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['reference', {
-                                                            'context': <gglossary.TContext>['import', {
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                            'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
                                                             }],
@@ -1240,12 +1239,12 @@ export const $: gproject.TModule = {
                                                         }],
                                                     },
                                                 })],
-                                                "Los": <gglossary.T.Type>['group', d({})],
-                                                "Project": <gglossary.T.Type>['group', d({
+                                                "Los": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                                "Project": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "Opbrengst": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['reference', {
-                                                            'context': <gglossary.TContext>['import', {
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                            'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
                                                             }],
@@ -1258,16 +1257,16 @@ export const $: gproject.TModule = {
                                         },
                                         "Omschrijving": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['string', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                                         },
                                         "Type": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['taggedUnion', d({
-                                                "Balans": <gglossary.T.Type>['group', d({
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                "Balans": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "Balans item": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['reference', {
-                                                            'context': <gglossary.TContext>['import', {
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                            'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
                                                             }],
@@ -1276,11 +1275,11 @@ export const $: gproject.TModule = {
                                                         }],
                                                     },
                                                 })],
-                                                "Opbrengsten": <gglossary.T.Type>['group', d({
+                                                "Opbrengsten": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                                     "Grootboekrekening": {
                                                         'optional': false,
-                                                        'type': <gglossary.T.Type>['reference', {
-                                                            'context': <gglossary.TContext>['import', {
+                                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                            'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                                                                 'glossary': "common",
                                                                 'arguments': d({}),
                                                             }],
@@ -1297,21 +1296,21 @@ export const $: gproject.TModule = {
                         },
                         "Verrekenposten": {
                             'optional': false,
-                            'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                 "Mutaties": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type>['dictionary', <gglossary.T.Type>['group', d({
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                         "Afhandeling": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['reference', {
-                                                'context': <gglossary.TContext>['local', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
                                                 'type': "Afhandeling",
                                                 'arguments': d({}),
                                             }],
                                         },
                                         "Bedrag": {
                                             'optional': false,
-                                            'type': <gglossary.T.Type>['number', {}],
+                                            'type': <gglossary.T.Type<pd.SourceLocation>>['number', {}],
                                         },
                                     })]],
                                 },
@@ -1324,13 +1323,13 @@ export const $: gproject.TModule = {
             'functions': d({
                 "Serialize": {
                     'data': {
-                        'context': <gglossary.TContext>['local', {}],
+                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
                         'type': "Accounting",
                         'arguments': d({}),
                     },
                     'managed input interface': ['not set', {}],
                     'output interface': ['set', {
-                        'context': <gglossary.TContext>['import', {
+                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                             'glossary': "fp",
                             'arguments': d({}),
                         }],
@@ -1354,19 +1353,31 @@ export const $: gproject.TModule = {
                         'configuration data': [false],
                         'dependencies': d({
                             "arrayForEach": {
-                                'context': ['import', "[object Object]"],
+                                'context': ['import', {
+                                    'glossary': "foreach",
+                                    'arguments': d({}),
+                                }],
                                 'function': "ArrayForEach",
                             },
                             "dictionaryForEach": {
-                                'context': ['import', "[object Object]"],
+                                'context': ['import', {
+                                    'glossary': "foreach",
+                                    'arguments': d({}),
+                                }],
                                 'function': "DictionaryForEach",
                             },
                             "enrichedArrayForEach": {
-                                'context': ['import', "[object Object]"],
+                                'context': ['import', {
+                                    'glossary': "foreach",
+                                    'arguments': d({}),
+                                }],
                                 'function': "EnrichedArrayForEach",
                             },
                             "enrichedDictionaryForEach": {
-                                'context': ['import', "[object Object]"],
+                                'context': ['import', {
+                                    'glossary': "foreach",
+                                    'arguments': d({}),
+                                }],
                                 'function': "EnrichedDictionaryForEach",
                             },
                         }),

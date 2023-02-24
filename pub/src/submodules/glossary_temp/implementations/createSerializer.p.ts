@@ -83,7 +83,7 @@ export const $$:CcreateSerializer = ($d) => {
     }
 
     function serializeType($: gglossary.T.Type<string>, $i: gfp.ILine) {
-        $i.snippet(`<gglossary.T.Type>`)
+        $i.snippet(`<gglossary.T.Type<pd.SourceLocation>>`)
 
         switch ($[0]) {
             case 'computed':
@@ -212,7 +212,7 @@ export const $$:CcreateSerializer = ($d) => {
         }
     }
     function serializeContext($: gglossary.T.Context<string>, $i: gfp.ILine) {
-        $i.snippet(`<gglossary.TContext>`)
+        $i.snippet(`<gglossary.T.Context<pd.SourceLocation>>`)
         switch ($[0]) {
             case 'import':
                 pl.cc($[1], ($) => {

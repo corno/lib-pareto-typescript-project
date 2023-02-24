@@ -1,4 +1,3 @@
-import * as pt from 'pareto-core-types'
 import * as pl from 'pareto-core-lib'
 import * as pm from 'pareto-core-map'
 
@@ -256,45 +255,45 @@ export const $$: CcreateLiana2ParetoMapper = ($d) => {
                         "foreach": "res-pareto-foreach",
                     }),
                     'algorithms': pm.wrapRawDictionary({
-                        "createSerializer": {
-                            'definition': {
-                                'context': ['local', {}],
-                                'function': "Serialize"
-                            },
-                            'type': ['constructor', {
-                                'configuration data': [false],
-                                'dependencies': pm.wrapRawDictionary({
-                                    "arrayForEach": {
-                                        'context': ['import', {
-                                            'glossary': "foreach",
-                                            'arguments': pm.wrapRawDictionary({}),
-                                        }],
-                                        'function': "ArrayForEach",
-                                    },
-                                    "dictionaryForEach": {
-                                        'context': ['import', {
-                                            'glossary': "foreach",
-                                            'arguments': pm.wrapRawDictionary({}),
-                                        }],
-                                        'function': "DictionaryForEach",
-                                    },
-                                    "enrichedArrayForEach": {
-                                        'context': ['import', {
-                                            'glossary': "foreach",
-                                            'arguments': pm.wrapRawDictionary({}),
-                                        }],
-                                        'function': "EnrichedArrayForEach",
-                                    },
-                                    "enrichedDictionaryForEach": {
-                                        'context': ['import', {
-                                            'glossary': "foreach",
-                                            'arguments': pm.wrapRawDictionary({}),
-                                        }],
-                                        'function': "EnrichedDictionaryForEach",
-                                    },
-                                })
-                            }]
-                        },
+                        // "createSerializer": {
+                        //     'definition': {
+                        //         'context': ['local', {}],
+                        //         'function': "Serialize"
+                        //     },
+                        //     'type': ['constructor', {
+                        //         'configuration data': [false],
+                        //         'dependencies': pm.wrapRawDictionary({
+                        //             "arrayForEach": {
+                        //                 'context': ['import', {
+                        //                     'glossary': "foreach",
+                        //                     'arguments': pm.wrapRawDictionary({}),
+                        //                 }],
+                        //                 'function': "ArrayForEach",
+                        //             },
+                        //             "dictionaryForEach": {
+                        //                 'context': ['import', {
+                        //                     'glossary': "foreach",
+                        //                     'arguments': pm.wrapRawDictionary({}),
+                        //                 }],
+                        //                 'function': "DictionaryForEach",
+                        //             },
+                        //             "enrichedArrayForEach": {
+                        //                 'context': ['import', {
+                        //                     'glossary': "foreach",
+                        //                     'arguments': pm.wrapRawDictionary({}),
+                        //                 }],
+                        //                 'function': "EnrichedArrayForEach",
+                        //             },
+                        //             "enrichedDictionaryForEach": {
+                        //                 'context': ['import', {
+                        //                     'glossary': "foreach",
+                        //                     'arguments': pm.wrapRawDictionary({}),
+                        //                 }],
+                        //                 'function': "EnrichedDictionaryForEach",
+                        //             },
+                        //         })
+                        //     }]
+                        // },
                     })
                 },
             },

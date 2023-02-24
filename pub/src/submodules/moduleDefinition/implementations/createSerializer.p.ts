@@ -59,7 +59,13 @@ export const $$:CcreateSerializer = ($d) => {
             switch ($[0]) {
                 case 'import':
                     pl.cc($[1], ($) => {
-                        $i.snippet(`['import', "${$}"]`)
+                        $i.snippet(`['import', {`)
+                        $i.indent(($i) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'FIXME': XXXXX`)
+                            })
+                        })
+                       $i.snippet (`}]`)
                     })
                     break
                 case 'local':
@@ -74,7 +80,26 @@ export const $$:CcreateSerializer = ($d) => {
             switch ($[0]) {
                 case 'import':
                     pl.cc($[1], ($) => {
-                        $i.snippet(`['import', "${$}"]`)
+                        $i.snippet(`['import', {`)
+                        $i.indent(($i) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'glossary': "${$.glossary}",`)
+                            })
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'arguments': d({`)
+                                $i.indent(($i) => {
+                                    $d.dictionaryForEach($.arguments, ($) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`"${$.key}": `)
+                                            serializeTypeReference($.value, $i)
+                                            $i.snippet(`,`)
+                                        })
+                                    })
+                                })
+                                $i.snippet(`}),`)
+                            })
+                        })
+                       $i.snippet (`}]`)
                     })
                     break
                 case 'local':

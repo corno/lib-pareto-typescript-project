@@ -308,47 +308,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
             'imports': d({
                 "foreach": "res-pareto-foreach",
             }),
-            'algorithms': d({
-                "createSerializer": {
-                    'definition': {
-                        'context': ['local', {}],
-                        'function': "Serialize",
-                    },
-                    'type': ['constructor', {
-                        'configuration data': [false],
-                        'dependencies': d({
-                            "arrayForEach": {
-                                'context': ['import', {
-                                    'glossary': "foreach",
-                                    'arguments': d({}),
-                                }],
-                                'function': "ArrayForEach",
-                            },
-                            "dictionaryForEach": {
-                                'context': ['import', {
-                                    'glossary': "foreach",
-                                    'arguments': d({}),
-                                }],
-                                'function': "DictionaryForEach",
-                            },
-                            "enrichedArrayForEach": {
-                                'context': ['import', {
-                                    'glossary': "foreach",
-                                    'arguments': d({}),
-                                }],
-                                'function': "EnrichedArrayForEach",
-                            },
-                            "enrichedDictionaryForEach": {
-                                'context': ['import', {
-                                    'glossary': "foreach",
-                                    'arguments': d({}),
-                                }],
-                                'function': "EnrichedDictionaryForEach",
-                            },
-                        }),
-                    }],
-                },
-            }),
+            'algorithms': d({}),
         },
     },
     'implementation': {

@@ -3,6 +3,5 @@
     "lib-pareto-typescript-project": "0.116.3",
     "pareto-core-exe": "^0.17.0",
     "pareto-core-data": "^0.2.0"
-  },
-  "version": "0.0.1"
+  }
 }

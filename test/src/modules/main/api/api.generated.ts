@@ -7,6 +7,6 @@ export type CgetTestSet = gtest.FGetTestSet
 export type Cmain = ($: gmain.T.MainData) => void
 
 export type API = {
-    getTestSet: CgetTestSet
-    main: Cmain
+    'getTestSet': CgetTestSet
+    'main': Cmain
 }

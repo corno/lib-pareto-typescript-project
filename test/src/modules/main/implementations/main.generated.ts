@@ -9,11 +9,10 @@ import { $a } from "../index"
 import { Cmain } from "../api"
 
 export const $$:Cmain = ($) => {
-
     gtest.$a.createTestProgram({
-        getTestSet: $a.getTestSet,
-        log: gmain.$a.log,
-        logError: gmain.$a.logError,
-        onTestErrors: gmain.$a.setExitCodeToFailed
+        'getTestSet': $a.getTestSet,
+        'log': gmain.$a.log,
+        'logError': gmain.$a.logError,
+        'onTestErrors': gmain.$a.setExitCodeToFailed
     })($)
 }

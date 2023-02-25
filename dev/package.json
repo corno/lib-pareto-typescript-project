@@ -6,6 +6,6 @@
     "pareto-core-exe": "^0.17.0",
     "pareto-core-lib": "^0.21.0",
     "pareto-core-state": "^0.15.0",
-    "res-pareto-main": "^0.15.0"
+    "res-pareto-main": "^0.16.0"
   }
 }

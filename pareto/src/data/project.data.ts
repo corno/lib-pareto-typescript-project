@@ -3,10 +3,10 @@ import * as pd from 'pareto-core-data'
 import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as api } from "./api.data"
-import { $ as algorithm } from "./modules/algorithm.data"
-import { $ as moduleDefinition } from "./modules/moduleDefinition.data"
+import { $ as algorithm } from "./modules/algorithm.deprecated"
+import { $ as moduleDefinition } from "./modules/moduleDefinition.deprecated"
 import { $ as pareto2typescript } from "./modules/pareto2typescript.data"
-import { $ as project } from "./modules/project.data"
+import { $ as project } from "./modules/project.deprecated"
 
 import { $ as glossary_temp } from "./modules/glossary_temp.data"
 import { $ as glossary } from "./glossary/module.generated"

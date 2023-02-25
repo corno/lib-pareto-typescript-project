@@ -3,7 +3,7 @@ import * as pt from 'pareto-core-types'
 
 import * as gliana2pareto from "lib-liana/dist/submodules/liana2pareto"
 
-import { $ as glossary } from "./glossary.data"
+import { $ as glossary } from "./models/glossary.data"
 
 export const $: pt.Array<gliana2pareto.T.GenerateModuleData<pd.SourceLocation>> = pd.a([
     {

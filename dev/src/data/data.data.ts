@@ -16,7 +16,9 @@ export const $: pt.Array<gliana2pareto.T.GenerateModuleData<pd.SourceLocation>> 
                     'reference mapping': ['string', {}],
                 }],
                 'visitor interface': [false],
-                'algorithms': {},
+                'algorithms': {
+                    'serialize': [false],
+                },
             },
             'mappedModel': {
                 'model': glossary,

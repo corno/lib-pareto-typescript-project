@@ -7,7 +7,7 @@ import * as gfp from "lib-fountain-pen"
 import { CcreateModuleDefinitionSerializer } from "../api"
 
 export const $$:CcreateModuleDefinitionSerializer = ($d) => {
-    return <Annotation>($:gmoduleDefinition.T.ModuleDefinition<Annotation>, $i:gfp.IWriter) => {
+    return <Annotation>($:gmoduleDefinition.T.ModuleDefinition<Annotation>, $i:gfp.IDirectory) => {
         function doOptional<T>(
             $: [false] | [true, T],
             $i: gfp.ILine,
@@ -22,7 +22,7 @@ export const $$:CcreateModuleDefinitionSerializer = ($d) => {
                 $c.onNotset(null, $i)
             }
         }
-        function glossary($: gglossary.T.Glossary<Annotation>, $i: gfp.IWriter) {
+        function glossary($: gglossary.T.Glossary<Annotation>, $i: gfp.IDirectory) {
             $i.directory(`glossary`, ($i) => {
                 $d.serializeGlossary($, $i)
 

@@ -9,14 +9,14 @@ import { CcreateProjectSerializer } from "../api"
 export const $$: CcreateProjectSerializer = (
     $d,
 ) => {
-    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.IWriter) => {
+    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.IDirectory) => {
         const isResource = $.type[0] === 'resource'
         function tsConfig(
             $: {
                 isResource: boolean,
                 inlineSourceMap: boolean,
             },
-            $i: gfp.IWriter
+            $i: gfp.IDirectory
         ) {
             $i.file("tsconfig.json", ($i) => {
                 $i.line(`{`)
@@ -38,7 +38,7 @@ export const $$: CcreateProjectSerializer = (
                 $i.line(`}`)
             })
         }
-        function globals($i: gfp.IWriter) {
+        function globals($i: gfp.IDirectory) {
             $i.file("globals.generated.ts", ($i) => {
                 $i.line(`interface Array<T> {`)
                 $i.line(`    [n: number]: T`)
@@ -190,7 +190,7 @@ export const $$: CcreateProjectSerializer = (
                         break
                     case 'library':
                         pl.cc($.type[1], ($) => {
-                            function doModule($: gproject.T.Module<Annotation>, $i: gfp.IWriter) {
+                            function doModule($: gproject.T.Module<Annotation>, $i: gfp.IDirectory) {
                                 const definition = $.definition
                                 $i.allowed("shorthands.ts")
                                 $i.directory("api", ($i) => {
@@ -332,7 +332,7 @@ export const $$: CcreateProjectSerializer = (
                 $i
             )
         })
-        function doTest($: gproject.T.Test<Annotation>, $i: gfp.IWriter) {
+        function doTest($: gproject.T.Test<Annotation>, $i: gfp.IDirectory) {
 
             $i.directory("test", ($i) => {
                 $i.allowed("data")

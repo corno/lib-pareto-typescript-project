@@ -10,4 +10,4 @@ import * as gmoduleDefinition from "../../../moduleDefinition"
 
 export type FSerialize = <GPAnnotation>($: T.Module<GPAnnotation>, $i: gfp.ILine,) => void
 
-export type FSerializeWithContext = <GPAnnotation>($: T.Module<GPAnnotation>, $i: gfp.IWriter,) => void
+export type FSerializeWithContext = <GPAnnotation>($: T.Module<GPAnnotation>, $i: gfp.IDirectory,) => void

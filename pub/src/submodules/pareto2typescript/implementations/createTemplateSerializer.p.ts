@@ -8,7 +8,7 @@ import { CcreateTemplateSerializer } from "../api"
 export const $$:CcreateTemplateSerializer = (
     $d
 ) => {
-    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.IWriter) => {
+    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.IDirectory) => {
         $i.directory("tmp", ($i) => {
             $i.directory("templates", ($i) => {
                 switch ($.type[0]) {
@@ -20,7 +20,7 @@ export const $$:CcreateTemplateSerializer = (
                     case 'library':
                         pl.cc($.type[1], ($) => {
                             $i.directory("pub", ($i) => {
-                                function doModule($: gproject.T.Module<Annotation>, $i: gfp.IWriter) {
+                                function doModule($: gproject.T.Module<Annotation>, $i: gfp.IDirectory) {
                                     $i.directory("implementations", ($i) => {
                                         $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
@@ -64,7 +64,7 @@ export const $$:CcreateTemplateSerializer = (
                             })
                             $i.directory("test", ($i) => {
                                 $i.directory("src", ($i) => {
-                                    function doModule($: gproject.T.Module<Annotation>, $i: gfp.IWriter) {
+                                    function doModule($: gproject.T.Module<Annotation>, $i: gfp.IDirectory) {
                                         $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)

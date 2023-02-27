@@ -74,7 +74,7 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
         'interfaces': d({}),
         'functions': d({
             "Serialize": func(typeReference("Module"), null, interfaceReference("fp", "Line"), null),
-            "SerializeWithContext": func(typeReference("Module"), null, interfaceReference("fp", "Writer"), null),
+            "SerializeWithContext": func(typeReference("Module"), null, interfaceReference("fp", "Directory"), null),
         }),
     },
     'api': {

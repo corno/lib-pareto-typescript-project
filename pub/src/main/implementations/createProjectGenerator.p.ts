@@ -34,7 +34,7 @@ export const $$:CcreateProjectGenerator = ($d) => {
             $.mainData.arguments,
             ($) => {
 
-                gfp.$a.createWriter(
+                gfp.$a.createDirectory(
                     {
                         onError: ($) => {
                             $d.logError($)

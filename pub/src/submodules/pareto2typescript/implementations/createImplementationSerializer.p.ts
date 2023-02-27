@@ -7,7 +7,7 @@ import { CcreateImplementationSerializer } from "../api"
 
 export const $$: CcreateImplementationSerializer = ($d) => {
 
-    return <Annotation>($: galgorithm.T.Implementation<Annotation>, $i: gfp.IWriter) => {
+    return <Annotation>($: galgorithm.T.Implementation<Annotation>, $i: gfp.IDirectory) => {
         $d.dictionaryForEach($.implementations, ($) => {
             $i.file(`XXXXXXXXXXXXXXXX${$.key}`, ($i) => {
                 $i.line(``)

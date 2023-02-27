@@ -101,7 +101,7 @@ export const $$: CgetTestSet = ($) => {
     //     pr.wrapRawArray(["foo"])
     // )
 
-    const writer = gfp.$a.createWriter({
+    const writer = gfp.$a.createDirectory({
         onError: ($) => {
             pv.logDebugMessage($)
         },

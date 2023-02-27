@@ -31,21 +31,26 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
     'type': ['library', {
         'main': {
             'definition': api,
+            'implementation': ['manual', {}],
         },
         'submodules': d({
             "algorithm": {
                 'definition': algorithm,
+                'implementation': ['manual', {}],
             },
             "glossary": glossary,
             "glossary_temp": glossary_temp,
             "moduleDefinition": {
                 'definition': moduleDefinition,
+                'implementation': ['manual', {}],
             },
             "project": {
                 'definition': project,
+                'implementation': ['manual', {}],
             },
             "pareto2typescript": {
                 'definition': pareto2typescript,
+                'implementation': ['manual', {}],
             },
         }),
         'executables': d({}),

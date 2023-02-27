@@ -216,11 +216,19 @@ export const $$: CcreateProjectSerializer = (
                                     default: pl.au($.implementation[0])
                                 }
                                 $i.file("implementation.generated.ts", ($i) => {
-                                    const suffix = isResource
-                                        ? `native`
-                                        : $.implementation !== undefined
-                                            ? `generated`
-                                            : `p`
+                                    const suffix = pl.cc($, ($) => {
+                                        switch ($.implementation[0]) {
+                                            case 'manual':
+                                                return pl.cc($.implementation[1], ($) => {
+                                                    return `p`
+                                                })
+                                            case 'generated':
+                                                return pl.cc($.implementation[1], ($) => {
+                                                    return `generated`
+                                                })
+                                            default: return pl.au($.implementation[0])
+                                        }
+                                    })
                                     $i.line(`import { API } from "./api"`)
                                     $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                         $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)

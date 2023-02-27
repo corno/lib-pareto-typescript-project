@@ -35,7 +35,7 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
         'types': d({
             "Annotation": type(glossaryParameter("Annotation")),
             "DefinitionReference": type(group({
-                "context": member(reference("Context"), true),
+                "context": member(reference("Context")),
                 "function": member(string()),
             })),
             "Context": type(taggedUnion({

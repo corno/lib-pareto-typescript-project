@@ -23,7 +23,7 @@ export const $$: CcreateSerializer = ($d) => {
                         break
                     case 'manual':
                         pl.cc($.implementation[1], ($) => {
-                            $i.snippet(`[manual, {}],`)
+                            $i.snippet(`['manual', {}]`)
                         })
                         break
                     default: pl.au($.implementation[0])

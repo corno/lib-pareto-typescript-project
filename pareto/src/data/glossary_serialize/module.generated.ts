@@ -9,7 +9,9 @@ const a = pd.a
 export const $: gproject.T.Module<pd.SourceLocation> = {
     'definition': {
         'glossary': {
-            'imports': d({}),
+            'imports': d({
+                "fp": "lib-fountain-pen",
+            }),
             'parameters': d({
                 "Annotation": {},
             }),
@@ -22,8 +24,8 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                         'type': "Glossary",
                         'arguments': d({}),
                     },
-                    'managed input interface': ['not set', {}],
-                    'output interface': ['set', {
+                    'managed input interface': [false],
+                    'output interface': [true, {
                         'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                             'glossary': "fp",
                             'arguments': d({}),
@@ -81,7 +83,5 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
             }),
         },
     },
-    'implementation': {
-        'implementations': d({}),
-    },
+    'implementation': ['manual', {}],
 }

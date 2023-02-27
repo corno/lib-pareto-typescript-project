@@ -47,7 +47,7 @@ export namespace T {
     }
     
     export type DefinitionReference<GPAnnotation> = {
-        readonly 'context'?: T.Context<GPAnnotation>
+        readonly 'context': T.Context<GPAnnotation>
         readonly 'function': string
     }
     

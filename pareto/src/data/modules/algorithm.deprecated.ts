@@ -26,28 +26,28 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             "SynchronousFunctionBlock": type(group({
                 "innerFunctions": member(dictionary(group({
                     "block": member(reference("SynchronousFunctionBlock"))
-                })), true),
+                }))),
                 "returnExpression": member(reference("SynchronousExpression"))
             })),
             "AsynchronousFunctionBlock": type(group({
                 "innerFunctions": member(dictionary(group({
                     "block": member(reference("AsynchronousFunctionBlock"))
-                })), true),
+                }))),
                 "returnExpression": member(reference("AsynchronousExpression"))
             })),
             "ProcedureBlock": type(group({
                 "innerFunctions": member(dictionary(group({
                     "type": member(reference("ImplementationType"))
-                })), true),
+                }))),
                 "statements": member(array(taggedUnion({
                     "dependencyCall": group({
-                        "data": member(string(), true),
-                        "callback": member(reference("ProcedureBlock"), true)
+                        "data": member(string()),
+                        "callback": member(reference("ProcedureBlock"))
                     }),
                     "innerCallbackCall": group({
                         "innerCallback": member(string()),
-                        "data": member(reference("SynchronousExpression"), true),
-                        "interface": member(string(), true),
+                        "data": member(reference("SynchronousExpression")),
+                        "interface": member(string()),
                     }),
                     "interfaceCall": group({
                         "child path": member(array(string())),

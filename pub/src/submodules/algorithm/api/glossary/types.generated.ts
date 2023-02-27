@@ -45,7 +45,7 @@ export namespace T {
     }
     
     export type AsynchronousFunctionBlock<GPAnnotation> = {
-        readonly 'innerFunctions'?: pt.Dictionary<{
+        readonly 'innerFunctions': pt.Dictionary<{
             readonly 'block': T.AsynchronousFunctionBlock<GPAnnotation>
         }>
         readonly 'returnExpression': T.AsynchronousExpression<GPAnnotation>
@@ -181,8 +181,8 @@ export namespace T {
                 }
                 
                 export type dependencyCall<GPAnnotation> = {
-                    readonly 'callback'?: T.ProcedureBlock<GPAnnotation>
-                    readonly 'data'?: string
+                    readonly 'callback': T.ProcedureBlock<GPAnnotation>
+                    readonly 'data': string
                 }
                 
                 export namespace innerCallbackCall {
@@ -195,9 +195,9 @@ export namespace T {
                 }
                 
                 export type innerCallbackCall<GPAnnotation> = {
-                    readonly 'data'?: T.SynchronousExpression<GPAnnotation>
+                    readonly 'data': T.SynchronousExpression<GPAnnotation>
                     readonly 'innerCallback': string
-                    readonly 'interface'?: string
+                    readonly 'interface': string
                 }
                 
                 export namespace interfaceCall {
@@ -255,13 +255,13 @@ export namespace T {
             
             export type A<GPAnnotation> = 
                 | ['dependencyCall', {
-                    readonly 'callback'?: T.ProcedureBlock<GPAnnotation>
-                    readonly 'data'?: string
+                    readonly 'callback': T.ProcedureBlock<GPAnnotation>
+                    readonly 'data': string
                 }]
                 | ['innerCallbackCall', {
-                    readonly 'data'?: T.SynchronousExpression<GPAnnotation>
+                    readonly 'data': T.SynchronousExpression<GPAnnotation>
                     readonly 'innerCallback': string
-                    readonly 'interface'?: string
+                    readonly 'interface': string
                 }]
                 | ['interfaceCall', {
                     readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GPAnnotation>]
@@ -276,13 +276,13 @@ export namespace T {
         
         export type statements<GPAnnotation> = pt.Array<
             | ['dependencyCall', {
-                readonly 'callback'?: T.ProcedureBlock<GPAnnotation>
-                readonly 'data'?: string
+                readonly 'callback': T.ProcedureBlock<GPAnnotation>
+                readonly 'data': string
             }]
             | ['innerCallbackCall', {
-                readonly 'data'?: T.SynchronousExpression<GPAnnotation>
+                readonly 'data': T.SynchronousExpression<GPAnnotation>
                 readonly 'innerCallback': string
-                readonly 'interface'?: string
+                readonly 'interface': string
             }]
             | ['interfaceCall', {
                 readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GPAnnotation>]
@@ -297,18 +297,18 @@ export namespace T {
     }
     
     export type ProcedureBlock<GPAnnotation> = {
-        readonly 'innerFunctions'?: pt.Dictionary<{
+        readonly 'innerFunctions': pt.Dictionary<{
             readonly 'type': T.ImplementationType<GPAnnotation>
         }>
         readonly 'statements': pt.Array<
             | ['dependencyCall', {
-                readonly 'callback'?: T.ProcedureBlock<GPAnnotation>
-                readonly 'data'?: string
+                readonly 'callback': T.ProcedureBlock<GPAnnotation>
+                readonly 'data': string
             }]
             | ['innerCallbackCall', {
-                readonly 'data'?: T.SynchronousExpression<GPAnnotation>
+                readonly 'data': T.SynchronousExpression<GPAnnotation>
                 readonly 'innerCallback': string
-                readonly 'interface'?: string
+                readonly 'interface': string
             }]
             | ['interfaceCall', {
                 readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GPAnnotation>]
@@ -460,7 +460,7 @@ export namespace T {
     }
     
     export type SynchronousFunctionBlock<GPAnnotation> = {
-        readonly 'innerFunctions'?: pt.Dictionary<{
+        readonly 'innerFunctions': pt.Dictionary<{
             readonly 'block': T.SynchronousFunctionBlock<GPAnnotation>
         }>
         readonly 'returnExpression': T.SynchronousExpression<GPAnnotation>

@@ -92,7 +92,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
             }),
         },
     },
-    'implementation': {
-        'implementations': d({}),
-    },
+    // 'implementation': {
+    //     'implementations': d({}),
+    // },
 }

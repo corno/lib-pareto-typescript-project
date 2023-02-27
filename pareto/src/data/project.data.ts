@@ -37,9 +37,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
                 'definition': algorithm,
             },
             "glossary": glossary,
-            "glossary_temp": {
-                'definition': glossary_temp,
-            },
+            "glossary_temp": glossary_temp,
             "moduleDefinition": {
                 'definition': moduleDefinition,
             },

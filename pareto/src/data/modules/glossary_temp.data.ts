@@ -1,39 +1,98 @@
 import * as pd from 'pareto-core-data'
 
-import { context, func, interfaceReference, parametrizedTypeReference, typeReference, types } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
-
-import { algorithm, constructor, definitionReference } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
-
-import * as gmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
+import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
+import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
+import { glossaryParameter, type, typeReference } from 'lib-pareto-typescript-project/dist/submodules/glossary/shorthands'
 
 const d = pd.d
+const a = pd.a
 
-export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
-    'glossary': {
-        'imports': d({
-            "common": "glo-pareto-common",
-            "glossary": "../../../glossary",
-            "fp": "lib-fountain-pen",
-        }),
-        'parameters': d({}),
-        'types': d({
-        }),
-        'interfaces': d({}),
-        'functions': d({
-            "Serialize": func(parametrizedTypeReference("glossary", { "Type": typeReference("common", "String")}, "Glossary"), null, interfaceReference("fp", "Line"), null),
-        }),
+export const $: gproject.T.Module<pd.SourceLocation> = {
+    'definition': {
+        'glossary': {
+            'imports': d({
+                "model": "../../../glossary",
+                "fp": "lib-fountain-pen",
+            }),
+            'parameters': d({
+                "Annotation": {},
+            }),
+            'types': d({
+                "Annotation": type(glossaryParameter("Annotation"))
+            }),
+            'interfaces': d({}),
+            'functions': d({
+                "Serialize": {
+                    'data': {
+                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
+                            'glossary': "model",
+                            'arguments': d({
+                                "Annotation": typeReference("Annotation")
+                            }),
+                        }],
+                        'type': "Glossary",
+                        'arguments': d({}),
+                    },
+                    'managed input interface': ['not set', {}],
+                    'output interface': ['set', {
+                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
+                            'glossary': "fp",
+                            'arguments': d({}),
+                        }],
+                        'interface': "Line",
+                    }],
+                    'return type': ['nothing', {}],
+                },
+            }),
+        },
+        'api': {
+            'imports': d({
+                "foreach": "res-pareto-foreach",
+            }),
+            'algorithms': d({
+                "createSerializer": {
+                    'definition': {
+                        'context': ['local', {}],
+                        'function': "Serialize",
+                    },
+                    'type': ['constructor', {
+                        'configuration data': [false],
+                        'dependencies': d({
+                            "arrayForEach": {
+                                'context': ['import', {
+                                    'glossary': "foreach",
+                                    'arguments': d({}),
+                                }],
+                                'function': "ArrayForEach",
+                            },
+                            "dictionaryForEach": {
+                                'context': ['import', {
+                                    'glossary': "foreach",
+                                    'arguments': d({}),
+                                }],
+                                'function': "DictionaryForEach",
+                            },
+                            "enrichedArrayForEach": {
+                                'context': ['import', {
+                                    'glossary': "foreach",
+                                    'arguments': d({}),
+                                }],
+                                'function': "EnrichedArrayForEach",
+                            },
+                            "enrichedDictionaryForEach": {
+                                'context': ['import', {
+                                    'glossary': "foreach",
+                                    'arguments': d({}),
+                                }],
+                                'function': "EnrichedDictionaryForEach",
+                            },
+                        }),
+                    }],
+                },
+            }),
+        },
     },
-    'api': {
-        'imports': d({
-            "foreach": "res-pareto-foreach",
-        }),
-        'algorithms': d({
-            "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
-                "arrayForEach": definitionReference("foreach", {}, "ArrayForEach"),
-                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
-                "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
-                "enrichedDictionaryForEach": definitionReference("foreach", {}, "EnrichedDictionaryForEach"),
-            }))
-        })
+    'implementation': {
+        'implementations': d({}),
     },
 }

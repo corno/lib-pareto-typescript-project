@@ -28,5 +28,26 @@ export const $: pt.Array<gliana2pareto.T.GenerateModuleData<pd.SourceLocation>> 
                 }),
             },
         }
+    },
+    {
+        'path': `../../pareto/src/data/glossary_serialize`,
+        'data': {
+            'configuration': {
+                'datamodel': [false],
+                'visitor interface': [false],
+                'algorithms': {
+                    'serialize': [true, {
+                        'datamodel location': "TBD",
+                    }],
+                },
+            },
+            'mappedModel': {
+                'model': glossary,
+
+                'stringmapping': pd.d({
+                    "identifier": ['string', null]
+                }),
+            },
+        }
     }
 ])

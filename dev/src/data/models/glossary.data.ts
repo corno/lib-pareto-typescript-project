@@ -14,6 +14,7 @@ import {
     taggedUnion,
     string,
     prop,
+    optional,
 } from "lib-liana/dist/submodules/liana/shorthands"
 
 const d = pd.d
@@ -51,14 +52,8 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                         "nothing": group({})
                     })),
                     "data": prop(component("TypeReference", {})),
-                    "managed input interface": prop(taggedUnion({
-                        "set": component("InterfaceReference", {}),
-                        "not set": group({}),
-                    })),
-                    "output interface": prop(taggedUnion({
-                        "set": component("InterfaceReference", {}),
-                        "not set": group({}),
-                    })),
+                    "managed input interface": prop(optional(component("InterfaceReference", {}))),
+                    "output interface": prop(optional(component("InterfaceReference", {}))),
                 }))),
             })),
             "Interface": globalType({}, taggedUnion({
@@ -66,17 +61,11 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                     "members": prop(dictionary(component("Interface", {})))
                 }),
                 "method": group({
-                    "data": prop(taggedUnion({
-                        "set": component("TypeReference", {}),
-                        "not set": group({}),
-                    })),
-                    "interface": prop(taggedUnion({
-                        "set": group({
-                            "managed": prop(boolean()),
-                            "interface": prop(component("Interface", {})),
-                        }),
-                        "not set": group({}),
-                    })),
+                    "data": prop(optional(component("TypeReference", {}))),
+                    "interface": prop(optional(group({
+                        "managed": prop(boolean()),
+                        "interface": prop(component("Interface", {})),
+                    }))),
                 }),
                 "reference": component("InterfaceReference", {}),
             })),
@@ -98,7 +87,6 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 "reference": component("TypeReference", {}),
                 "group": dictionary(group({
                     "type": prop(component("Type", {})),
-                    "optional": prop(boolean()),
                 })),
                 "type parameter": string("identifier"),
                 "glossary parameter": string("identifier"),

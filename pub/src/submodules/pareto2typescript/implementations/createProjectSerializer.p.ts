@@ -1,4 +1,5 @@
 import * as pl from 'pareto-core-lib'
+import * as pd from 'pareto-core-dev'
 
 import * as gfp from "lib-fountain-pen"
 import * as gproject from "../../project"
@@ -190,24 +191,30 @@ export const $$: CcreateProjectSerializer = (
                     case 'library':
                         pl.cc($.type[1], ($) => {
                             function doModule($: gproject.T.Module<Annotation>, $i: gfp.IWriter) {
-
+                                const definition = $.definition
                                 $i.allowed("shorthands.ts")
                                 $i.directory("api", ($i) => {
                                     $d.serializeModuleDefinition($.definition, $i)
                                 })
 
-                                $i.directory("implementations", ($i) => {
-
-                                    if ($.implementation !== undefined) {
-                                        pl.cc($.implementation, ($) => {
-                                            $d.serializeImplementation($, $i)
+                                switch ($.implementation[0]) {
+                                    case 'generated':
+                                        pl.cc($.implementation[1], ($) => {
+                                            pd.implementMe("IMPLEMENTATIONS")
+                                            //$d.serializeImplementation($, $i)
                                         })
-                                    } else {
-                                        $d.dictionaryForEach($.definition.api.algorithms, ($) => {
-                                            $i.allowed(`${$.key}.${isResource ? `native` : `p`}.ts`)
+                                        break
+                                    case 'manual':
+                                        pl.cc($.implementation[1], ($) => {
+                                            $i.directory("implementations", ($i) => {
+                                                $d.dictionaryForEach(definition.api.algorithms, ($) => {
+                                                    $i.allowed(`${$.key}.${isResource ? `native` : `p`}.ts`)
+                                                })
+                                            })
                                         })
-                                    }
-                                })
+                                        break
+                                    default: pl.au($.implementation[0])
+                                }
                                 $i.file("implementation.generated.ts", ($i) => {
                                     const suffix = isResource
                                         ? `native`

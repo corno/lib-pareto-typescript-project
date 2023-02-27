@@ -52,25 +52,19 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                                 },
                                 "managed input interface": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                        "not set": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
-                                        "set": <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                                            'type': "InterfaceReference",
-                                            'arguments': d({}),
-                                        }],
-                                    })],
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                        'type': "InterfaceReference",
+                                        'arguments': d({}),
+                                    }]],
                                 },
                                 "output interface": {
                                     'optional': false,
-                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                        "not set": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
-                                        "set": <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                                            'type': "InterfaceReference",
-                                            'arguments': d({}),
-                                        }],
-                                    })],
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                        'type': "InterfaceReference",
+                                        'arguments': d({}),
+                                    }]],
                                 },
                                 "return type": {
                                     'optional': false,
@@ -150,34 +144,28 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                         "method": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                             "data": {
                                 'optional': false,
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                    "not set": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
-                                    "set": <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                                        'type': "TypeReference",
-                                        'arguments': d({}),
-                                    }],
-                                })],
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                    'type': "TypeReference",
+                                    'arguments': d({}),
+                                }]],
                             },
                             "interface": {
                                 'optional': false,
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                    "not set": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
-                                    "set": <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                                        "interface": {
-                                            'optional': false,
-                                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                                                'type': "Interface",
-                                                'arguments': d({}),
-                                            }],
-                                        },
-                                        "managed": {
-                                            'optional': false,
-                                            'type': <gglossary.T.Type<pd.SourceLocation>>['boolean', {}],
-                                        },
-                                    })],
-                                })],
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                    "interface": {
+                                        'optional': false,
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                            'type': "Interface",
+                                            'arguments': d({}),
+                                        }],
+                                    },
+                                    "managed": {
+                                        'optional': false,
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['boolean', {}],
+                                    },
+                                })]],
                             },
                         })],
                         "reference": <gglossary.T.Type<pd.SourceLocation>>['reference', {
@@ -225,10 +213,6 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                         }],
                         "glossary parameter": <gglossary.T.Type<pd.SourceLocation>>['string', {}],
                         "group": <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                            "optional": {
-                                'optional': false,
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['boolean', {}],
-                            },
                             "type": {
                                 'optional': false,
                                 'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {

@@ -35,8 +35,13 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
                 //     "logic": nll(),
 
                 // }))
-                "implementation": member(parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation"), true),
-                "states": member(parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "States"), true)
+                "implementation": member(taggedUnion({
+                    "manual": group({
+                      //  parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation")
+                    }),
+                    "generated": group({}),
+                })),
+                //"states": member(parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "States"), true)
             })),
             "Project": type(group({
                 "author": member(string()),

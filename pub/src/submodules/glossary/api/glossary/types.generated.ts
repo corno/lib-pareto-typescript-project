@@ -45,29 +45,17 @@ export namespace T {
                 
                 export namespace managed__input__interface {
                     
-                    export namespace not__set {}
-                    
-                    export type not__set<GPAnnotation> = {}
-                    
-                    export type _lset<GPAnnotation> = T.InterfaceReference<GPAnnotation>
+                    export type O<GPAnnotation> = T.InterfaceReference<GPAnnotation>
                 }
                 
-                export type managed__input__interface<GPAnnotation> = 
-                    | ['not set', {}]
-                    | ['set', T.InterfaceReference<GPAnnotation>]
+                export type managed__input__interface<GPAnnotation> = [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
                 
                 export namespace output__interface {
                     
-                    export namespace not__set {}
-                    
-                    export type not__set<GPAnnotation> = {}
-                    
-                    export type _lset<GPAnnotation> = T.InterfaceReference<GPAnnotation>
+                    export type O<GPAnnotation> = T.InterfaceReference<GPAnnotation>
                 }
                 
-                export type output__interface<GPAnnotation> = 
-                    | ['not set', {}]
-                    | ['set', T.InterfaceReference<GPAnnotation>]
+                export type output__interface<GPAnnotation> = [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
                 
                 export namespace return__type {
                     
@@ -101,12 +89,8 @@ export namespace T {
             
             export type D<GPAnnotation> = {
                 readonly 'data': T.TypeReference<GPAnnotation>
-                readonly 'managed input interface': 
-                    | ['not set', {}]
-                    | ['set', T.InterfaceReference<GPAnnotation>]
-                readonly 'output interface': 
-                    | ['not set', {}]
-                    | ['set', T.InterfaceReference<GPAnnotation>]
+                readonly 'managed input interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
+                readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
                 readonly 'return type': 
                     | ['data', {
                         readonly 'asynchronous': boolean
@@ -119,12 +103,8 @@ export namespace T {
         
         export type functions<GPAnnotation> = pt.Dictionary<{
             readonly 'data': T.TypeReference<GPAnnotation>
-            readonly 'managed input interface': 
-                | ['not set', {}]
-                | ['set', T.InterfaceReference<GPAnnotation>]
-            readonly 'output interface': 
-                | ['not set', {}]
-                | ['set', T.InterfaceReference<GPAnnotation>]
+            readonly 'managed input interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
+            readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
             readonly 'return type': 
                 | ['data', {
                     readonly 'asynchronous': boolean
@@ -190,12 +170,8 @@ export namespace T {
     export type Glossary<GPAnnotation> = {
         readonly 'functions': pt.Dictionary<{
             readonly 'data': T.TypeReference<GPAnnotation>
-            readonly 'managed input interface': 
-                | ['not set', {}]
-                | ['set', T.InterfaceReference<GPAnnotation>]
-            readonly 'output interface': 
-                | ['not set', {}]
-                | ['set', T.InterfaceReference<GPAnnotation>]
+            readonly 'managed input interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
+            readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
             readonly 'return type': 
                 | ['data', {
                     readonly 'asynchronous': boolean
@@ -233,54 +209,38 @@ export namespace T {
             
             export namespace data {
                 
-                export namespace not__set {}
-                
-                export type not__set<GPAnnotation> = {}
-                
-                export type _lset<GPAnnotation> = T.TypeReference<GPAnnotation>
+                export type O<GPAnnotation> = T.TypeReference<GPAnnotation>
             }
             
-            export type data<GPAnnotation> = 
-                | ['not set', {}]
-                | ['set', T.TypeReference<GPAnnotation>]
+            export type data<GPAnnotation> = [ false ] | [ true, T.TypeReference<GPAnnotation>]
             
             export namespace _linterface {
                 
-                export namespace not__set {}
-                
-                export type not__set<GPAnnotation> = {}
-                
-                export namespace _lset {
+                export namespace O {
                     
                     export type _linterface<GPAnnotation> = T.Interface<GPAnnotation>
                     
                     export type managed<GPAnnotation> = boolean
                 }
                 
-                export type _lset<GPAnnotation> = {
+                export type O<GPAnnotation> = {
                     readonly 'interface': T.Interface<GPAnnotation>
                     readonly 'managed': boolean
                 }
             }
             
-            export type _linterface<GPAnnotation> = 
-                | ['not set', {}]
-                | ['set', {
-                    readonly 'interface': T.Interface<GPAnnotation>
-                    readonly 'managed': boolean
-                }]
+            export type _linterface<GPAnnotation> = [ false ] | [ true, {
+                readonly 'interface': T.Interface<GPAnnotation>
+                readonly 'managed': boolean
+            }]
         }
         
         export type method<GPAnnotation> = {
-            readonly 'data': 
-                | ['not set', {}]
-                | ['set', T.TypeReference<GPAnnotation>]
-            readonly 'interface': 
-                | ['not set', {}]
-                | ['set', {
-                    readonly 'interface': T.Interface<GPAnnotation>
-                    readonly 'managed': boolean
-                }]
+            readonly 'data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
+            readonly 'interface': [ false ] | [ true, {
+                readonly 'interface': T.Interface<GPAnnotation>
+                readonly 'managed': boolean
+            }]
         }
         
         export type reference<GPAnnotation> = T.InterfaceReference<GPAnnotation>
@@ -291,15 +251,11 @@ export namespace T {
             readonly 'members': pt.Dictionary<T.Interface<GPAnnotation>>
         }]
         | ['method', {
-            readonly 'data': 
-                | ['not set', {}]
-                | ['set', T.TypeReference<GPAnnotation>]
-            readonly 'interface': 
-                | ['not set', {}]
-                | ['set', {
-                    readonly 'interface': T.Interface<GPAnnotation>
-                    readonly 'managed': boolean
-                }]
+            readonly 'data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
+            readonly 'interface': [ false ] | [ true, {
+                readonly 'interface': T.Interface<GPAnnotation>
+                readonly 'managed': boolean
+            }]
         }]
         | ['reference', T.InterfaceReference<GPAnnotation>]
     
@@ -333,19 +289,15 @@ export namespace T {
             
             export namespace D {
                 
-                export type optional<GPAnnotation> = boolean
-                
                 export type _ltype<GPAnnotation> = T.Type<GPAnnotation>
             }
             
             export type D<GPAnnotation> = {
-                readonly 'optional': boolean
                 readonly 'type': T.Type<GPAnnotation>
             }
         }
         
         export type group<GPAnnotation> = pt.Dictionary<{
-            readonly 'optional': boolean
             readonly 'type': T.Type<GPAnnotation>
         }>
         
@@ -384,7 +336,6 @@ export namespace T {
         | ['dictionary', T.Type<GPAnnotation>]
         | ['glossary parameter', string]
         | ['group', pt.Dictionary<{
-            readonly 'optional': boolean
             readonly 'type': T.Type<GPAnnotation>
         }>]
         | ['nested', T.Type<GPAnnotation>]

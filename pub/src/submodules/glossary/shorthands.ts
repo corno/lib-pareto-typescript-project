@@ -5,93 +5,87 @@ import * as t from "./api"
 
 type RawDictionary<T> = { [key: string]: T }
 
-export function null_(): t.T.Type<string> {
+export function null_(): t.T.Type<pd.SourceLocation> {
     return ['null', {}]
 }
 
-export function boolean(): t.T.Type<string> {
+export function boolean(): t.T.Type<pd.SourceLocation> {
     return ['boolean', {}]
 }
 
-export function string(): t.T.Type<string> {
+export function string(): t.T.Type<pd.SourceLocation> {
     return ['string', {}]
 }
 
-export function number(): t.T.Type<string> {
+export function number(): t.T.Type<pd.SourceLocation> {
     return ['number', {}]
 }
 
-export function types($: RawDictionary<t.T.Type<string>>) {
+export function types($: RawDictionary<t.T.Type<pd.SourceLocation>>) {
     return pd.d($)
 }
 
-export function taggedUnion($: RawDictionary<t.T.Type<string>>): t.T.Type<string> {
+export function taggedUnion($: RawDictionary<t.T.Type<pd.SourceLocation>>): t.T.Type<pd.SourceLocation> {
     return ['taggedUnion', pd.d($)]
 }
 
-export function dictionary($: t.T.Type<string>): t.T.Type<string> {
+export function dictionary($: t.T.Type<pd.SourceLocation>): t.T.Type<pd.SourceLocation> {
     return ['dictionary', $]
 }
 
-export function parametrizedType(parameters: RawDictionary<{}>, type: t.T.Type<string>): t.T.Glossary.types.D<string> {
+export function parametrizedType(parameters: RawDictionary<t.T.Glossary.types.D.parameters.D<pd.SourceLocation>>, type: t.T.Type<pd.SourceLocation>): t.T.Glossary.types.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(parameters),
         'type': type,
     }
 }
 
-export function type(type: t.T.Type<string>): t.T.Glossary.types.D<string> {
+export function type(type: t.T.Type<pd.SourceLocation>): t.T.Glossary.types.D<pd.SourceLocation> {
     return {
         'parameters': pd.d({}),
         'type': type,
     }
 }
 
-export function typeParameter($: string): t.T.Type<string> {
+export function typeParameter($: string): t.T.Type<pd.SourceLocation> {
     return ['type parameter', $]
 }
 
-export function glossaryParameter($: string): t.T.Type<string> {
+export function glossaryParameter($: string): t.T.Type<pd.SourceLocation> {
     return ['glossary parameter', $]
 }
 
-export function array($: t.T.Type<string>): t.T.Type<string> {
+export function array($: t.T.Type<pd.SourceLocation>): t.T.Type<pd.SourceLocation> {
     return ['array', $]
 }
 
-export function optional($: t.T.Type<string>): t.T.Type<string> {
+export function optional($: t.T.Type<pd.SourceLocation>): t.T.Type<pd.SourceLocation> {
     return ['optional', $]
 }
 
-export function computed($: t.T.Type<string>): t.T.Type<string> {
+export function computed($: t.T.Type<pd.SourceLocation>): t.T.Type<pd.SourceLocation> {
     return ['computed', $]
 }
 
-export function nested($: t.T.Type<string>): t.T.Type<string> {
+export function nested($: t.T.Type<pd.SourceLocation>): t.T.Type<pd.SourceLocation> {
     return ['nested', $]
 }
 
-export function group($: {
-    [key: string]: {
-        type: t.T.Type<string>
-        optional: boolean
-    }
-}): t.T.Type<string> {
+export function group($: RawDictionary<t.T.Type.group.D<pd.SourceLocation>>): t.T.Type<pd.SourceLocation> {
     return ['group', pd.d($)]
 }
 
-export function member($: t.T.Type<string>, optional?: boolean): { type: t.T.Type<string>, optional: boolean } {
+export function member($: t.T.Type<pd.SourceLocation>): t.T.Type.group.D<pd.SourceLocation> {
     return {
-        optional: optional === undefined ? false : optional,
         type: $
     }
 }
 
-export function reference(contextOrType: string, type?: string): t.T.Type<string> {
+export function reference(contextOrType: string, type?: string): t.T.Type<pd.SourceLocation> {
     return ['reference', typeReference(contextOrType, type)]
 }
 
-export function context(glossary?: string, args?: RawDictionary<t.T.TypeReference<string>>): t.T.Context<string> {
+export function context(glossary?: string, args?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>): t.T.Context<pd.SourceLocation> {
     if (glossary === undefined) {
         return ['local', {}]
     } else {
@@ -104,10 +98,10 @@ export function context(glossary?: string, args?: RawDictionary<t.T.TypeReferenc
 
 export function parametrizedReference(
     contextOrType: string,
-    glossaryArgsOrTypeArgs: RawDictionary<t.T.TypeReference<string>>,
+    glossaryArgsOrTypeArgs: RawDictionary<t.T.TypeReference<pd.SourceLocation>>,
     type?: string,
-    typeArgs?: RawDictionary<t.T.TypeReference<string>>
-): t.T.Type<string> {
+    typeArgs?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>
+): t.T.Type<pd.SourceLocation> {
     return ['reference', parametrizedTypeReference(
         contextOrType,
         glossaryArgsOrTypeArgs,
@@ -118,10 +112,10 @@ export function parametrizedReference(
 
 export function parametrizedTypeReference(
     contextOrType: string,
-    glossaryArgsOrTypeArgs: RawDictionary<t.T.TypeReference<string>>,
+    glossaryArgsOrTypeArgs: RawDictionary<t.T.TypeReference<pd.SourceLocation>>,
     type?: string,
-    typeArgs?: RawDictionary<t.T.TypeReference<string>>
-): t.T.TypeReference<string> {
+    typeArgs?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>
+): t.T.TypeReference<pd.SourceLocation> {
     if (type === undefined) {
         return {
             'context': context(),
@@ -140,7 +134,7 @@ export function parametrizedTypeReference(
 export function typeReference(
     contextOrType: string,
     type?: string,
-): t.T.TypeReference<string> {
+): t.T.TypeReference<pd.SourceLocation> {
     if (type === undefined) {
         return parametrizedTypeReference(contextOrType, {})
     } else {
@@ -148,7 +142,7 @@ export function typeReference(
     }
 }
 
-export function interfaceReference(contextOrInterface: string, inf?: string): t.T.InterfaceReference<string> {
+export function interfaceReference(contextOrInterface: string, inf?: string): t.T.InterfaceReference<pd.SourceLocation> {
     if (inf === undefined) {
         return {
             'context': ['local', {}],
@@ -162,53 +156,53 @@ export function interfaceReference(contextOrInterface: string, inf?: string): t.
     }
 }
 
-export function parametrizedInterfaceReference(contextOrInterface: string, args: RawDictionary<t.T.TypeReference<string>>, inf: string): t.T.InterfaceReference<string> {
+export function parametrizedInterfaceReference(contextOrInterface: string, args: RawDictionary<t.T.TypeReference<pd.SourceLocation>>, inf: string): t.T.InterfaceReference<pd.SourceLocation> {
     return {
         'context': context(contextOrInterface, args),
         'interface': inf,
     }
 }
 
-export function nothing(): t.T.Glossary.functions.D.return__type<string> {
+export function nothing(): t.T.Glossary.functions.D.return__type<pd.SourceLocation> {
     return ['nothing', {}]
 }
 
-export function data($: t.T.TypeReference<string>, async: boolean): t.T.Glossary.functions.D.return__type<string> {
+export function data($: t.T.TypeReference<pd.SourceLocation>, async: boolean): t.T.Glossary.functions.D.return__type<pd.SourceLocation> {
     return ['data', {
         'type': $,
         'asynchronous': async,
     }]
 }
 
-export function inf($: t.T.InterfaceReference<string>): t.T.Glossary.functions.D.return__type<string> {
+export function inf($: t.T.InterfaceReference<pd.SourceLocation>): t.T.Glossary.functions.D.return__type<pd.SourceLocation> {
     return ['interface', $]
 }
 
-export function func(data: t.T.TypeReference<string>, mii: t.T.InterfaceReference<string> | null, oi: t.T.InterfaceReference<string> | null, returnType: null | t.T.Glossary.functions.D.return__type<string>): t.T.Glossary.functions.D<string> {
+export function func(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.InterfaceReference<pd.SourceLocation> | null, oi: t.T.InterfaceReference<pd.SourceLocation> | null, returnType: null | t.T.Glossary.functions.D.return__type<pd.SourceLocation>): t.T.Glossary.functions.D<pd.SourceLocation> {
     return {
         'return type': returnType === null
             ? ['nothing', {}]
             : returnType,
         'data': data,
         'managed input interface': mii === null
-            ? ['not set', {}]
-            : ['set', mii],
+            ? [false]
+            : [true, mii],
         'output interface': oi === null
-            ? ['not set', {}]
-            : ['set', oi],
+            ? [false]
+            : [true, oi],
     }
 }
 
-export function method(data: null | t.T.TypeReference<string>, inf?: null | t.T.Interface<string>, managed?: boolean): t.T.Interface<string> {
+export function method(data: null | t.T.TypeReference<pd.SourceLocation>, inf?: null | t.T.Interface<pd.SourceLocation>, managed?: boolean): t.T.Interface<pd.SourceLocation> {
     return ['method', {
         'data': data === null
-            ? ['not set', {}]
-            : ['set', data],
+            ? [false]
+            : [true, data],
         'interface': inf === undefined
-            ? ['not set', {}]
+            ? [false]
             : inf === null
-                ? ['not set', {}]
-                : ['set', {
+                ? [false]
+                : [true, {
                     'interface': inf,
                     'managed': managed === undefined ? false : managed
                 }],

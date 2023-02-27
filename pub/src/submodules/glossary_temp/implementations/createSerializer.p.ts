@@ -1,4 +1,5 @@
 import * as pl from 'pareto-core-lib'
+import * as pt from 'pareto-core-types'
 
 import * as gglossary from "../../glossary"
 import * as gfp from "lib-fountain-pen"
@@ -7,8 +8,6 @@ export namespace VOptional { }
 export type VOptional<AType> =
     | ['not set', {}]
     | ['set', AType]
-
-export type MOptional<AType> = VOptional<AType>
 
 import { CcreateSerializer } from "../api"
 
@@ -31,19 +30,17 @@ export const $$:CcreateSerializer = ($d) => {
     // }
 
     function doOptional<T>(
-        $: MOptional<T>,
+        $: pt.OptionalValue<T>,
         $i: gfp.ILine,
         $c: ($: T, $i: gfp.ILine) => void,
     ) {
         switch ($[0]) {
-            case 'not set':
-                pl.cc($[1], ($) => {
-                    $i.snippet(`['not set', {}]`)
-                })
+            case false:
+                    $i.snippet(`[false]`)
                 break
-            case 'set':
+            case true:
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['set', `)
+                    $i.snippet(`[true, `)
                     $c($, $i)
                     $i.snippet(`]`)
                 })
@@ -149,9 +146,6 @@ export const $$:CcreateSerializer = ($d) => {
                             $i.nestedLine(($i) => {
                                 $i.snippet(`"${$.key}": {`)
                                 $i.indent(($i) => {
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'optional': ${$.value.optional ? `true` : `false`},`)
-                                    })
                                     $i.nestedLine(($i) => {
                                         $i.snippet(`'type': `)
                                         serializeType($.value.type, $i)

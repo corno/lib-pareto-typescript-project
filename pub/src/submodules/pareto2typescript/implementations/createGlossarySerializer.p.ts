@@ -1,4 +1,5 @@
 import * as pl from 'pareto-core-lib'
+import * as pt from 'pareto-core-types'
 
 import * as gglossary from "../../glossary"
 import * as gfp from "lib-fountain-pen"
@@ -12,7 +13,7 @@ export type MOptional<AType> = VOptional<AType>
 
 import { CcreateGlossarySerializer } from "../api"
 
-export const $$:CcreateGlossarySerializer = ($d) => {
+export const $$: CcreateGlossarySerializer = ($d) => {
 
     return ($, $i) => {
         const globalParameters = $.parameters
@@ -32,7 +33,7 @@ export const $$:CcreateGlossarySerializer = ($d) => {
             })
         }
         function doOptional<T>(
-            $: MOptional<T>,
+            $: pt.OptionalValue<T>,
             $i: gfp.ILine,
             $c: {
                 onSet: ($: T, $i: gfp.ILine) => void,
@@ -40,12 +41,10 @@ export const $$:CcreateGlossarySerializer = ($d) => {
             },
         ) {
             switch ($[0]) {
-                case 'not set':
-                    pl.cc($[1], ($) => {
-                        $c.onNotset($, $i)
-                    })
+                case false:
+                    $c.onNotset($, $i)
                     break
-                case 'set':
+                case true:
                     pl.cc($[1], ($) => {
                         $c.onSet($, $i)
                     })
@@ -444,7 +443,7 @@ export const $$:CcreateGlossarySerializer = ($d) => {
                                                 $i.indent(($i) => {
                                                     $d.dictionaryForEach($, ($) => {
                                                         $i.nestedLine(($i) => {
-                                                            $i.snippet(`readonly ${$d.createApostrophedString($.key)}${$.value.optional === undefined || $.value.optional === false ? `` : `?`}: `)
+                                                            $i.snippet(`readonly ${$d.createApostrophedString($.key)}: `)
                                                             serializeType(
                                                                 $.value.type,
                                                                 $i,

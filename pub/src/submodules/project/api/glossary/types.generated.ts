@@ -25,15 +25,27 @@ export namespace T {
         
         export type definition<GPAnnotation> = gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
         
-        export type implementation<GPAnnotation> = galgorithm.T.Implementation<T.Annotation<GPAnnotation>>
+        export namespace implementation {
+            
+            export namespace generated {}
+            
+            export type generated<GPAnnotation> = {}
+            
+            export namespace manual {}
+            
+            export type manual<GPAnnotation> = {}
+        }
         
-        export type states<GPAnnotation> = galgorithm.T.States<T.Annotation<GPAnnotation>>
+        export type implementation<GPAnnotation> = 
+            | ['generated', {}]
+            | ['manual', {}]
     }
     
     export type Module<GPAnnotation> = {
         readonly 'definition': gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
-        readonly 'implementation'?: galgorithm.T.Implementation<T.Annotation<GPAnnotation>>
-        readonly 'states'?: galgorithm.T.States<T.Annotation<GPAnnotation>>
+        readonly 'implementation': 
+            | ['generated', {}]
+            | ['manual', {}]
     }
     
     export namespace Project {

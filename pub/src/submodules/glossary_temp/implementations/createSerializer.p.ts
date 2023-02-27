@@ -265,16 +265,23 @@ export const $$:CcreateSerializer = ($d) => {
             case 'group':
                 pl.cc($[1], ($) => {
 
-                    $i.snippet(`['group', d({`)
+                    $i.snippet(`['group', {`)
                     $i.indent(($i) => {
-                        $d.dictionaryForEach($.members, ($) => {
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`"${$.key}": `)
-                                serializeInterface($.value, $i)
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`'members': d({`)
+                            $i.indent(($i) => {
+                                $d.dictionaryForEach($.members, ($) => {
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`"${$.key}": `)
+                                        serializeInterface($.value, $i)
+                                        $i.snippet(`,`)
+                                    })
+                                })
                             })
+                            $i.snippet(`}),`)
                         })
                     })
-                    $i.snippet(`})]`)
+                    $i.snippet(`}]`)
                 })
                 break
             case 'method':
@@ -287,6 +294,7 @@ export const $$:CcreateSerializer = ($d) => {
                                 doOptional($, $i, ($, $i) => {
                                     serializeTypeReference($, $i)
                                 })
+                                $i.snippet(`,`)
                             })
                         })
                         pl.cc($.interface, ($) => {
@@ -311,6 +319,7 @@ export const $$:CcreateSerializer = ($d) => {
                                     $i.snippet(`}`)
 
                                 })
+                                $i.snippet(`,`)
                             })
                         })
                     })

@@ -9,7 +9,7 @@ import { $ as glossary } from "./glossary.data"
 export const $: gproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "common types and functions for Pareto",
-    'license': "ISC",
+    'license': "TBD",
 
     'dependencies': d({}),
     'type': ['glossary', {

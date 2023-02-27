@@ -16,7 +16,7 @@ const d = pd.d
 export const $: gproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "A library to generate a typescript project environment for Pareto",
-    'license': "ISC",
+    'license': "TBD",
 
 
     'dependencies': d({

@@ -1,6 +1,6 @@
 import * as pd from 'pareto-core-data'
 import {
-    dictionary, group as grp, member, taggedUnion, types, group, type
+    dictionary, group as grp, member, taggedUnion, types, group, type, method
 } from "../../../../../pub/dist/submodules/glossary/shorthands"
 
 import * as gproject from "../../../../../pub/dist/submodules/project"
@@ -290,7 +290,13 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                     // },
                 })]),
             }),
-            'interfaces': d({}),
+            'interfaces': d({
+                "FOO": ['group', {
+                    'members': d({
+                        "BAR": method(null, null)
+                    })
+                }]
+            }),
             'functions': d({}),
         },
         'api': {

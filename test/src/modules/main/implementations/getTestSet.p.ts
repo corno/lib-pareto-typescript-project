@@ -36,7 +36,7 @@ export const $$: CgetTestSet = ($) => {
             'project': {
                 'author': "Corno",
                 'description': "TBD",
-                'license': "ISC",
+                'license': "TBD",
                 'dependencies': d({
                     "lib-pareto-fubar": {}
                 }),

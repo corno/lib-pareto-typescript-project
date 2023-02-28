@@ -1,6 +1,6 @@
 import * as pl from 'pareto-core-lib'
 
-import * as gmoduleDefinition from "../../moduleDefinition"
+import * as gmoduleDefinition from "../../api"
 import * as gfp from "lib-fountain-pen"
 
 import { CcreateAPISerializer } from "../api"

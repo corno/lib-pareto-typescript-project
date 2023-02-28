@@ -18,7 +18,7 @@ export const $: gproject.T.ModuleDefinition<pd.SourceLocation> = {
             "common": "glo-pareto-common",
             "glossary": "../../../glossary",
             "fp": "lib-fountain-pen",
-            "moduleDefinition": "../../../moduleDefinition",
+            "moduleDefinition": "../../../api",
         }),
         'parameters': d({
             "Annotation": {},
@@ -85,7 +85,7 @@ export const $: gproject.T.ModuleDefinition<pd.SourceLocation> = {
         'imports': d({
             "algorithm": "../../algorithm",
             "collation": "res-pareto-collation",
-            "moduleDefinition": "../../moduleDefinition",
+            "moduleDefinition": "../../api",
             "foreach": "res-pareto-foreach",
             "glossary_serialize_temp": "../../glossary_serialize_temp",
             "this": "./glossary"

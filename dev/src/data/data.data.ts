@@ -1,13 +1,16 @@
 import * as pd from 'pareto-core-data'
 import * as pt from 'pareto-core-types'
+import * as pv from 'pareto-core-dev'
 
 import * as gliana2pareto from "lib-liana/dist/submodules/liana2pareto"
 
 import { $ as glossary } from "./models/glossary.data"
 
+pv.logDebugMessage("REENABLE GLOSSARY MODEL")
+
 export const $: pt.Array<gliana2pareto.T.GenerateModuleData<pd.SourceLocation>> = pd.a([
     // {
-    //     'path': `../../pareto/src/data/glossary`,
+    //     'path': `../../pareto/src/data/submodules/glossary`,
     //     'data': {
     //         'configuration': {
     //             'datamodel': [true, {
@@ -30,7 +33,7 @@ export const $: pt.Array<gliana2pareto.T.GenerateModuleData<pd.SourceLocation>> 
     //     }
     // },
     // {
-    //     'path': `../../pareto/src/data/glossary_serialize`,
+    //     'path': `../../pareto/src/data/submodules/glossary_serialize`,
     //     'data': {
     //         'configuration': {
     //             'datamodel': [false],

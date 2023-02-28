@@ -6,7 +6,7 @@ import * as galgorithm from "../../../algorithm"
 import * as gcommon from "glo-pareto-common"
 import * as gfp from "lib-fountain-pen"
 import * as gglossary from "../../../glossary"
-import * as gmoduleDefinition from "../../../moduleDefinition"
+import * as gmoduleDefinition from "../../../api"
 import * as gproject from "../../../project"
 
 export type FSerializeAPI = <GPAnnotation>($: gmoduleDefinition.T.API<T.Annotation<GPAnnotation>>, $i: gfp.IBlock,) => void

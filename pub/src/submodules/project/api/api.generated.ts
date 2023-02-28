@@ -4,7 +4,7 @@ import * as galgorithm from "../../algorithm"
 import * as gcollation from "res-pareto-collation"
 import * as gforeach from "res-pareto-foreach"
 import * as gglossary_serialize_temp from "../../glossary_serialize_temp"
-import * as gmoduleDefinition from "../../moduleDefinition"
+import * as gmoduleDefinition from "../../api"
 import * as gthis from "./glossary"
 
 export type CcreateSerializer = ($d: {

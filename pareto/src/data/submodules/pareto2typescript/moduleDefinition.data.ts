@@ -16,7 +16,7 @@ export const $: gproject.T.ModuleDefinition<pd.SourceLocation> = {
             "common": "glo-pareto-common",
             "fp": "lib-fountain-pen",
             "glossary": "../../../glossary",
-            "moduleDefinition": "../../../moduleDefinition",
+            "moduleDefinition": "../../../api",
             "project": "../../../project",
         }),
         'parameters': d({

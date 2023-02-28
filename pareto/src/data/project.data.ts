@@ -2,14 +2,14 @@ import * as pd from 'pareto-core-data'
 
 import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
-import { $ as api } from "./api.data"
-import { $ as algorithm } from "./modules/algorithm.deprecated"
-import { $ as moduleDefinition } from "./modules/moduleDefinition.deprecated"
-import { $ as pareto2typescript } from "./modules/pareto2typescript.data"
-import { $ as project } from "./modules/project.deprecated"
+import { $ as main } from "./main/module.data"
+import { $ as algorithm } from "./submodules/algorithm/module.deprecated"
+import { $ as api } from "./submodules/api/module.deprecated"
+import { $ as pareto2typescript } from "./submodules/pareto2typescript/module.data"
+import { $ as project } from "./submodules/project/module.deprecated"
 
-import { $ as glossary_serialize_temp } from "./modules/glossary_serialize_temp.data"
-import { $ as glossary } from "./glossary/module.generated"
+import { $ as glossary_serialize_temp } from "./submodules/glossary_serialize_temp/module.data"
+import { $ as glossary } from "./submodules/glossary/module.generated"
 
 const d = pd.d
 
@@ -29,29 +29,14 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
         "res-pareto-foreach": {},
     }),
     'type': ['library', {
-        'main': {
-            'definition': api,
-            'implementation': ['manual', {}],
-        },
+        'main': main,
         'submodules': d({
-            "algorithm": {
-                'definition': algorithm,
-                'implementation': ['manual', {}],
-            },
+            "algorithm": algorithm,
             "glossary": glossary,
             "glossary_serialize_temp": glossary_serialize_temp,
-            "moduleDefinition": {
-                'definition': moduleDefinition,
-                'implementation': ['manual', {}],
-            },
-            "project": {
-                'definition': project,
-                'implementation': ['manual', {}],
-            },
-            "pareto2typescript": {
-                'definition': pareto2typescript,
-                'implementation': ['manual', {}],
-            },
+            "api": api,
+            "project": project,
+            "pareto2typescript": pareto2typescript,
         }),
         'executables': d({}),
         'test': {

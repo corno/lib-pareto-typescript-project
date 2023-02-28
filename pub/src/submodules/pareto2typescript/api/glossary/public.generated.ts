@@ -3,13 +3,13 @@ import * as pt from 'pareto-core-types'
 import { T   } from './types.generated'
 
 import * as galgorithm from "../../../algorithm"
+import * as gapi from "../../../api"
 import * as gcommon from "glo-pareto-common"
 import * as gfp from "lib-fountain-pen"
 import * as gglossary from "../../../glossary"
-import * as gmoduleDefinition from "../../../api"
 import * as gproject from "../../../project"
 
-export type FSerializeAPI = <GPAnnotation>($: gmoduleDefinition.T.API<T.Annotation<GPAnnotation>>, $i: gfp.IBlock,) => void
+export type FSerializeAPI = <GPAnnotation>($: gapi.T.API<T.Annotation<GPAnnotation>>, $i: gfp.IBlock,) => void
 
 export type FSerializeBuildEnvironment = <GPAnnotation>($: gcommon.T.Null, $i: gfp.IDirectory,) => void
 

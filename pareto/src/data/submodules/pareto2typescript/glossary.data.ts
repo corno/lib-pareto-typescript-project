@@ -15,7 +15,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "common": "glo-pareto-common",
         "fp": "lib-fountain-pen",
         "glossary": "../../../glossary",
-        "moduleDefinition": "../../../api",
+        "api": "../../../api",
         "project": "../../../project",
     }),
     'parameters': d({
@@ -29,7 +29,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'functions': d({
         "SerializeGlossary": func(parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "Glossary"), null, interfaceReference("fp", "Directory"), null),
         "SerializeImplementation": func(parametrizedTypeReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation"), null, interfaceReference("fp", "Directory"), null),
-        "SerializeAPI": func(parametrizedTypeReference("moduleDefinition", { "Annotation": typeReference("Annotation") }, "API"), null, interfaceReference("fp", "Block"), null),
+        "SerializeAPI": func(parametrizedTypeReference("api", { "Annotation": typeReference("Annotation") }, "API"), null, interfaceReference("fp", "Block"), null),
         "SerializeParetoEnvironment": func(typeReference("common", "Null"), null, interfaceReference("fp", "Directory"), null),
         "SerializeBuildEnvironment": func(typeReference("common", "Null"), null, interfaceReference("fp", "Directory"), null),
         "SerializeProject": func(parametrizedTypeReference("project", { "Annotation": typeReference("Annotation") }, "Project"), null, interfaceReference("fp", "Directory"), null),

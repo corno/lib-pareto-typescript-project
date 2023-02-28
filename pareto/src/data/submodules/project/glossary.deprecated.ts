@@ -18,7 +18,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "common": "glo-pareto-common",
         "glossary": "../../../glossary",
         "fp": "lib-fountain-pen",
-        "moduleDefinition": "../../../api",
+        "api": "../../../api",
     }),
     'parameters': d({
         "Annotation": {},
@@ -45,7 +45,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         })),
         "ModuleDefinition": type(group({
             "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
-            "api": member(parametrizedReference("moduleDefinition", { "Annotation": typeReference("Annotation") }, "API")),
+            "api": member(parametrizedReference("api", { "Annotation": typeReference("Annotation") }, "API")),
         })),
         "Project": type(group({
             "author": member(string()),

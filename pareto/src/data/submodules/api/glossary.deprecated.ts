@@ -21,7 +21,6 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "Annotation": {},
     }),
     'types': d({
-        "Annotation": type(glossaryParameter("Annotation")),
         "Context": type(group({
             "glossary": member(string()),
             "arguments": member(dictionary(reference("TypeReference")))

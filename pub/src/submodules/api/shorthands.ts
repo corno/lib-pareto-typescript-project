@@ -5,7 +5,7 @@ import * as gapi from "./api"
 
 type RawDictionary<T> = { [key: string]: T }
 
-export function typeReference(context: string, args: RawDictionary<gapi.T.TypeReference<string>>, definition: string): gapi.T.TypeReference<pd.SourceLocation> {
+export function typeReference(context: string, args: RawDictionary<gapi.T.TypeReference<pd.SourceLocation>>, definition: string): gapi.T.TypeReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
@@ -15,7 +15,7 @@ export function typeReference(context: string, args: RawDictionary<gapi.T.TypeRe
     }
 }
 
-export function functionReference(context: string, args: RawDictionary<gapi.T.TypeReference<string>>, definition: string): gapi.T.FunctionReference<pd.SourceLocation> {
+export function functionReference(context: string, args: RawDictionary<gapi.T.TypeReference<pd.SourceLocation>>, definition: string): gapi.T.FunctionReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
@@ -25,7 +25,7 @@ export function functionReference(context: string, args: RawDictionary<gapi.T.Ty
     }
 }
 
-export function constructor(data: null | gapi.T.TypeReference<string>, deps: RawDictionary<gapi.T.FunctionReference<pd.SourceLocation>>): gapi.T.API.algorithms.D._ltype<pd.SourceLocation> {
+export function constructor(data: null | gapi.T.TypeReference<pd.SourceLocation>, deps: RawDictionary<gapi.T.FunctionReference<pd.SourceLocation>>): gapi.T.API.algorithms.D._ltype<pd.SourceLocation> {
     return ['constructor', {
         'configuration data': data === null
             ? [false]

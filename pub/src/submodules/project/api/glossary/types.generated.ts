@@ -1,10 +1,10 @@
 import * as pt from 'pareto-core-types'
 
 import * as galgorithm from "../../../algorithm"
+import * as gapi from "../../../api"
 import * as gcommon from "glo-pareto-common"
 import * as gfp from "lib-fountain-pen"
 import * as gglossary from "../../../glossary"
-import * as gmoduleDefinition from "../../../api"
 
 export namespace T {
     
@@ -50,13 +50,13 @@ export namespace T {
     
     export namespace ModuleDefinition {
         
-        export type api<GPAnnotation> = gmoduleDefinition.T.API<T.Annotation<GPAnnotation>>
+        export type api<GPAnnotation> = gapi.T.API<T.Annotation<GPAnnotation>>
         
         export type glossary<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
     
     export type ModuleDefinition<GPAnnotation> = {
-        readonly 'api': gmoduleDefinition.T.API<T.Annotation<GPAnnotation>>
+        readonly 'api': gapi.T.API<T.Annotation<GPAnnotation>>
         readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
     

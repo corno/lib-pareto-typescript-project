@@ -6,8 +6,6 @@ import * as gglossary from "../../../glossary"
 
 export namespace T {
     
-    export type Annotation<GPAnnotation> = GPAnnotation
-    
     export namespace API {
         
         export namespace algorithms {

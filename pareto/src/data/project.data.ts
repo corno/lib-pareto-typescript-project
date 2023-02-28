@@ -43,7 +43,6 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
             'dependencies': d({
                 "lib-fountain-pen": {},
                 "res-typescript": {},
-
             }),
             'glossary': {
                 'functions': d({}),

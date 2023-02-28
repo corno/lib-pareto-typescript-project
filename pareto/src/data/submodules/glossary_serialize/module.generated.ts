@@ -8,34 +8,6 @@ const a = pd.a
 
 export const $: gproject.T.Module<pd.SourceLocation> = {
     'definition': {
-        'glossary': {
-            'imports': d({
-                "fp": "lib-fountain-pen",
-            }),
-            'parameters': d({
-                "Annotation": {},
-            }),
-            'types': d({}),
-            'interfaces': d({}),
-            'functions': d({
-                "Serialize": {
-                    'data': {
-                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
-                        'type': "Glossary",
-                        'arguments': d({}),
-                    },
-                    'managed input interface': [false],
-                    'output interface': [true, {
-                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
-                            'glossary': "fp",
-                            'arguments': d({}),
-                        }],
-                        'interface': "Line",
-                    }],
-                    'return type': ['nothing', {}],
-                },
-            }),
-        },
         'api': {
             'imports': d({
                 "foreach": "res-pareto-foreach",
@@ -44,7 +16,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                 "createSerializer": {
                     'definition': {
                         'context': {
-                            'glossary': "this",
+                            'glossary': "XXXXXX",
                             'arguments': d({}),
                         },
                         'function': "Serialize",
@@ -82,6 +54,34 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                             },
                         }),
                     }],
+                },
+            }),
+        },
+        'glossary': {
+            'imports': d({
+                "fp": "lib-fountain-pen",
+            }),
+            'parameters': d({
+                "Annotation": {},
+            }),
+            'types': d({}),
+            'interfaces': d({}),
+            'functions': d({
+                "Serialize": {
+                    'data': {
+                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                        'type': "Glossary",
+                        'arguments': d({}),
+                    },
+                    'managed input interface': [false],
+                    'output interface': [true, {
+                        'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
+                            'glossary': "fp",
+                            'arguments': d({}),
+                        }],
+                        'interface': "Line",
+                    }],
+                    'return type': ['nothing', {}],
                 },
             }),
         },

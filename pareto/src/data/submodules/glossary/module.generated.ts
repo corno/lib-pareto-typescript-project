@@ -8,6 +8,10 @@ const a = pd.a
 
 export const $: gproject.T.Module<pd.SourceLocation> = {
     'definition': {
+        'api': {
+            'imports': d({}),
+            'algorithms': d({}),
+        },
         'glossary': {
             'imports': d({
                 "common": "glo-pareto-common",
@@ -250,10 +254,6 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
             }),
             'interfaces': d({}),
             'functions': d({}),
-        },
-        'api': {
-            'imports': d({}),
-            'algorithms': d({}),
         },
     },
     'implementation': ['typescript', {}],

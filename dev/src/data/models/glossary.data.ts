@@ -90,10 +90,6 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 })),
                 "type parameter": string("identifier"),
                 "glossary parameter": string("identifier"),
-                // "template": group({
-                //     "context": prop(component("Context", {})),
-                //     "template": prop(string("identifier")),
-                // }),
                 "taggedUnion": dictionary(component("Type", {})),
             })),
             "TypeReference": globalType({}, group({

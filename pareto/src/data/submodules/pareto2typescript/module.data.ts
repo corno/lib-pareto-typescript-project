@@ -2,9 +2,13 @@ import * as pd from 'pareto-core-data'
 
 import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
-import { $ as definition } from "./moduleDefinition.data"
+import { $ as glossary } from "./glossary.data"
+import { $ as api } from "./api.data"
 
 export const $: gproject.T.Module<pd.SourceLocation> = {
-    'definition': definition,
+    'definition': {
+        'glossary': glossary,
+        'api': api,
+    },
     'implementation': ['manual', {}],
 }

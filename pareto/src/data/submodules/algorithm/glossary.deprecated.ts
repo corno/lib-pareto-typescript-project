@@ -7,14 +7,11 @@ import {
     array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, glossaryParameter, optional,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import { functionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
-
-import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
+import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
 const d = pd.d
 
-export const $: gproject.T.ModuleDefinition<pd.SourceLocation> = {
-    'glossary': {
+export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         'imports': d({
             "fp": "lib-fountain-pen",
         }),
@@ -138,20 +135,4 @@ export const $: gproject.T.ModuleDefinition<pd.SourceLocation> = {
         'functions': d({
             "SerializeImplementation": func(typeReference("Implementation"), null, interfaceReference("fp", "Line"), null),
         }),
-    },
-    'api': {
-        'imports': d({
-            "collation": "res-pareto-collation",
-            "foreach": "res-pareto-foreach",
-            "this": "./glossary",
-        }),
-        'algorithms': d({
-            "createImplementationSerializer": algorithm(functionReference("this", {}, "SerializeImplementation"), constructor(null, {
-                "arrayForEach": functionReference("foreach", {}, "ArrayForEach"),
-                "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
-                "enrichedArrayForEach": functionReference("foreach", {}, "EnrichedArrayForEach"),
-                "enrichedDictionaryForEach": functionReference("foreach", {}, "EnrichedDictionaryForEach"),
-            })),
-        })
-    },
 }

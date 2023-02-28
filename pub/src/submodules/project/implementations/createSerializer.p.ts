@@ -35,7 +35,7 @@ export const $$: CcreateSerializer = ($d) => {
                         break
                     case 'typescript':
                         pl.cc($.implementation[1], ($) => {
-                            $i.snippet(`['manual', {}]`)
+                            $i.snippet(`['typescript', {}]`)
                         })
                         break
                     default: pl.au($.implementation[0])

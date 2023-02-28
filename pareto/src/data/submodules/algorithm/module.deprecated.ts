@@ -10,5 +10,5 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
         'glossary': glossary,
         'api': api,
     },
-    'implementation': ['manual', {}],
+    'implementation': ['typescript', {}],
 }

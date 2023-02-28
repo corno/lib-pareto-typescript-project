@@ -1,9 +1,7 @@
 import * as pt from 'pareto-core-types'
 
-import * as gcollation from "res-pareto-collation"
 import * as gcommon from "glo-pareto-common"
 import * as gforeach from "res-pareto-foreach"
-import * as gmain from "res-pareto-main"
 import * as gpareto2typescript from "../../submodules/pareto2typescript"
 import * as gthis from "./glossary"
 

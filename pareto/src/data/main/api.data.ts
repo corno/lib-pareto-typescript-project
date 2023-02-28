@@ -9,11 +9,9 @@ const d = pd.d
 export const $: gapi.T.API<pd.SourceLocation> = {
     'imports': d({
         "common": "glo-pareto-common",
-        "collation": "res-pareto-collation",
-        "main": "res-pareto-main",
-        "pareto2typescript": "../../submodules/pareto2typescript",
         "foreach": "res-pareto-foreach",
-        "this": "./glossary"
+        "pareto2typescript": "../../submodules/pareto2typescript",
+        "this": "./glossary",
     }),
     'algorithms': d({
         "createParametersParser": algorithm(functionReference("this", {}, "ParseArguments2"), constructor(null, {

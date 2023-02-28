@@ -34,53 +34,44 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
         }),
         'types': d({
             "Annotation": type(glossaryParameter("Annotation")),
-            "DefinitionReference": type(group({
+            "Context": type(group({
+                "glossary": member(string()),
+                "arguments": member(dictionary(reference("TypeReference")))
+            })),
+            "FunctionReference": type(group({
                 "context": member(reference("Context")),
                 "function": member(string()),
             })),
-            "Context": type(taggedUnion({
-                "local": group({}),
-                "import": group({
-                    "glossary": member(string()),
-                    "arguments": member(dictionary(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "TypeReference")]))
-                }),
+            "TypeReference": type(group({
+                "context": member(reference("Context")),
+                "type": member(string()),
             })),
-            "ModuleDefinition": type(group({
-                "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")]),
-                "api": member(group({
-                    "imports": member(dictionary(string())),
-                    "algorithms": member(dictionary(group({
-                        "definition": member(reference("DefinitionReference")),
-                        "type": member(taggedUnion({
-                            "reference": group({}),
-                            "constructor": group({
-                                "configuration data": member(optional(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "TypeReference"))),
-                                "dependencies": member(dictionary(reference("DefinitionReference"))),
-                            }),
-                        }))
-                    }))),
-                })),
+            "API": type(group({
+                "imports": member(dictionary(string())),
+                "algorithms": member(dictionary(group({
+                    "definition": member(reference("FunctionReference")),
+                    "type": member(taggedUnion({
+                        "reference": group({}),
+                        "constructor": group({
+                            "configuration data": member(optional(reference("TypeReference"))),
+                            "dependencies": member(dictionary(reference("FunctionReference"))),
+                        }),
+                    }))
+                }))),
             })),
-            // "TypeReference": group({
-            //     "context": member(ref("Context")),
-            //     "namespaces": member(array(str())),
-            //     "type": member(str()),
-            // }),
         }),
         'interfaces': d({}),
         'functions': d({
-            "Serialize": func(typeReference("ModuleDefinition"), null, interfaceReference("fp", "Line"), null),
+            "Serialize": func(typeReference("API"), null, interfaceReference("fp", "Line"), null),
         }),
     },
     'api': {
         'imports': d({
             "collation": "res-pareto-collation",
             "foreach": "res-pareto-foreach",
-            "glossary_temp": "../../glossary_temp",
         }),
         'algorithms': d({
             "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
-                "serializeGlossary": definitionReference("glossary_temp", {}, "Serialize"),
                 "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
                 "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
             })),

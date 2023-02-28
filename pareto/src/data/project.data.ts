@@ -8,7 +8,7 @@ import { $ as moduleDefinition } from "./modules/moduleDefinition.deprecated"
 import { $ as pareto2typescript } from "./modules/pareto2typescript.data"
 import { $ as project } from "./modules/project.deprecated"
 
-import { $ as glossary_temp } from "./modules/glossary_temp.data"
+import { $ as glossary_serialize_temp } from "./modules/glossary_serialize_temp.data"
 import { $ as glossary } from "./glossary/module.generated"
 
 const d = pd.d
@@ -39,7 +39,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
                 'implementation': ['manual', {}],
             },
             "glossary": glossary,
-            "glossary_temp": glossary_temp,
+            "glossary_serialize_temp": glossary_serialize_temp,
             "moduleDefinition": {
                 'definition': moduleDefinition,
                 'implementation': ['manual', {}],

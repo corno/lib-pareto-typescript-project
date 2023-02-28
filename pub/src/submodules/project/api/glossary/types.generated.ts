@@ -23,7 +23,7 @@ export namespace T {
     
     export namespace Module {
         
-        export type definition<GPAnnotation> = gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+        export type definition<GPAnnotation> = T.ModuleDefinition<GPAnnotation>
         
         export namespace implementation {
             
@@ -42,10 +42,22 @@ export namespace T {
     }
     
     export type Module<GPAnnotation> = {
-        readonly 'definition': gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+        readonly 'definition': T.ModuleDefinition<GPAnnotation>
         readonly 'implementation': 
             | ['generated', {}]
             | ['manual', {}]
+    }
+    
+    export namespace ModuleDefinition {
+        
+        export type api<GPAnnotation> = gmoduleDefinition.T.API<T.Annotation<GPAnnotation>>
+        
+        export type glossary<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+    }
+    
+    export type ModuleDefinition<GPAnnotation> = {
+        readonly 'api': gmoduleDefinition.T.API<T.Annotation<GPAnnotation>>
+        readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
     
     export namespace Project {
@@ -108,7 +120,7 @@ export namespace T {
             
             export namespace resource {
                 
-                export type definition<GPAnnotation> = gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+                export type definition<GPAnnotation> = T.ModuleDefinition<GPAnnotation>
                 
                 export namespace devDependencies {
                     
@@ -132,7 +144,7 @@ export namespace T {
             }
             
             export type resource<GPAnnotation> = {
-                readonly 'definition': gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+                readonly 'definition': T.ModuleDefinition<GPAnnotation>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'nativeDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test<GPAnnotation>
@@ -150,7 +162,7 @@ export namespace T {
                 readonly 'test': T.Test<GPAnnotation>
             }]
             | ['resource', {
-                readonly 'definition': gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+                readonly 'definition': T.ModuleDefinition<GPAnnotation>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'nativeDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test<GPAnnotation>
@@ -173,7 +185,7 @@ export namespace T {
                 readonly 'test': T.Test<GPAnnotation>
             }]
             | ['resource', {
-                readonly 'definition': gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>
+                readonly 'definition': T.ModuleDefinition<GPAnnotation>
                 readonly 'devDependencies': pt.Dictionary<{}>
                 readonly 'nativeDependencies': pt.Dictionary<{}>
                 readonly 'test': T.Test<GPAnnotation>

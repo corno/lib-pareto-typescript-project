@@ -9,13 +9,13 @@ import * as gglossary from "../../../glossary"
 import * as gmoduleDefinition from "../../../moduleDefinition"
 import * as gproject from "../../../project"
 
+export type FSerializeAPI = <GPAnnotation>($: gmoduleDefinition.T.API<T.Annotation<GPAnnotation>>, $i: gfp.IBlock,) => void
+
 export type FSerializeBuildEnvironment = <GPAnnotation>($: gcommon.T.Null, $i: gfp.IDirectory,) => void
 
 export type FSerializeGlossary = <GPAnnotation>($: gglossary.T.Glossary<T.Annotation<GPAnnotation>>, $i: gfp.IDirectory,) => void
 
 export type FSerializeImplementation = <GPAnnotation>($: galgorithm.T.Implementation<T.Annotation<GPAnnotation>>, $i: gfp.IDirectory,) => void
-
-export type FSerializeModuleDefinition = <GPAnnotation>($: gmoduleDefinition.T.ModuleDefinition<T.Annotation<GPAnnotation>>, $i: gfp.IDirectory,) => void
 
 export type FSerializeParetoEnvironment = <GPAnnotation>($: gcommon.T.Null, $i: gfp.IDirectory,) => void
 

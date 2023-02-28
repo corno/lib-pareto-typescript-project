@@ -18,61 +18,58 @@ export const $$:CgenerateProject = ($) => {
         compare: gcoll.$a.localeIsABeforeB,
     })
 
-    const sg = gpareto2typescript.$a.createGlossarySerializer({
-        enrichedDictionaryForEach: ed,
-        dictionaryForEach: d,
-        createIdentifier: gts.$a.createIdentifier,
-        createApostrophedString: gts.$a.createApostrophedString,
-        createBacktickedString: gts.$a.createBacktickedString,
-        createQuotedString: gts.$a.createQuotedString,
-    })
-
     $a.createProjectGenerator(
         {
-            serializeProject: gpareto2typescript.$a.createProjectSerializer(
+            'serializeProject': gpareto2typescript.$a.createProjectSerializer(
                 {
-                    dictionaryForEach: d,
-                    enrichedDictionaryForEach: ed,
-                    serializeGlossary: sg,
-                    serializeModuleDefinition: gpareto2typescript.$a.createModuleDefinitionSerializer(
+                    'dictionaryForEach': d,
+                    'enrichedDictionaryForEach': ed,
+                    'serializeGlossary': gpareto2typescript.$a.createGlossarySerializer({
+                        'enrichedDictionaryForEach': ed,
+                        'dictionaryForEach': d,
+                        'createIdentifier': gts.$a.createIdentifier,
+                        'createApostrophedString': gts.$a.createApostrophedString,
+                        'createBacktickedString': gts.$a.createBacktickedString,
+                        'createQuotedString': gts.$a.createQuotedString,
+                    }),
+                    'serializeAPI': gpareto2typescript.$a.createAPISerializer(
                         {
-                            dictionaryForEach: d,
-                            serializeGlossary: sg,
-                            createIdentifier: gts.$a.createIdentifier,
-                            createApostrophedString: gts.$a.createApostrophedString,
-                            createBacktickedString: gts.$a.createBacktickedString,
-                            createQuotedString: gts.$a.createQuotedString,
+                            'dictionaryForEach': d,
+                            'createIdentifier': gts.$a.createIdentifier,
+                            'createApostrophedString': gts.$a.createApostrophedString,
+                            'createBacktickedString': gts.$a.createBacktickedString,
+                            'createQuotedString': gts.$a.createQuotedString,
                         }
                     ),
-                    serializeImplementation: gpareto2typescript.$a.createImplementationSerializer(
+                    'serializeImplementation': gpareto2typescript.$a.createImplementationSerializer(
                         {
-                            arrayForEach: a,
-                            dictionaryForEach: d,
-                            enrichedArrayForEach: ea,
-                            enrichedDictionaryForEach: ed,
-                            createIdentifier: gts.$a.createIdentifier,
-                            createApostrophedString: gts.$a.createApostrophedString,
-                            createBacktickedString: gts.$a.createBacktickedString,
-                            createQuotedString: gts.$a.createQuotedString,
+                            'arrayForEach': a,
+                            'dictionaryForEach': d,
+                            'enrichedArrayForEach': ea,
+                            'enrichedDictionaryForEach': ed,
+                            'createIdentifier': gts.$a.createIdentifier,
+                            'createApostrophedString': gts.$a.createApostrophedString,
+                            'createBacktickedString': gts.$a.createBacktickedString,
+                            'createQuotedString': gts.$a.createQuotedString,
                         }
                     ),
-                    createIdentifier: gts.$a.createIdentifier,
-                    createApostrophedString: gts.$a.createApostrophedString,
-                    createBacktickedString: gts.$a.createBacktickedString,
-                    createQuotedString: gts.$a.createQuotedString,
+                    'createIdentifier': gts.$a.createIdentifier,
+                    'createApostrophedString': gts.$a.createApostrophedString,
+                    'createBacktickedString': gts.$a.createBacktickedString,
+                    'createQuotedString': gts.$a.createQuotedString,
                 }
             ),
-            serializeTemplate: gpareto2typescript.$a.createTemplateSerializer(
+            'serializeTemplate': gpareto2typescript.$a.createTemplateSerializer(
                 {
-                    dictionaryForEach: d,
-                    createIdentifier: gts.$a.createIdentifier,
-                    createApostrophedString: gts.$a.createApostrophedString,
-                    createBacktickedString: gts.$a.createBacktickedString,
-                    createQuotedString: gts.$a.createQuotedString,
+                    'dictionaryForEach': d,
+                    'createIdentifier': gts.$a.createIdentifier,
+                    'createApostrophedString': gts.$a.createApostrophedString,
+                    'createBacktickedString': gts.$a.createBacktickedString,
+                    'createQuotedString': gts.$a.createQuotedString,
                 }
             ),
-            logError: gmain.$a.logError,
-            decorateDictionaryEntriesWithKey: gforeach.$a.decorateDictionaryEntriesWithKey,
+            'logError': gmain.$a.logError,
+            'decorateDictionaryEntriesWithKey': gforeach.$a.decorateDictionaryEntriesWithKey,
         }
     )($)
 }

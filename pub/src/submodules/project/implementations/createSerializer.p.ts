@@ -8,9 +8,21 @@ export const $$: CcreateSerializer = ($d) => {
         $i.snippet(`{`)
         $i.indent(($i) => {
             $i.nestedLine(($i) => {
-                $i.snippet(`'definition': `)
-                $d.serializeModuleDefinition($.definition, $i)
-                $i.snippet(`,`)
+                $i.snippet(`'definition': {`)
+                $i.indent(($i) => {
+                    $i.nestedLine(($i) => {
+                        $i.snippet(`'api': `)
+                        $d.serializeAPI($.definition.api, $i)
+                        $i.snippet(`,`)
+                    })
+                    $i.nestedLine(($i) => {
+                        $i.snippet(`'glossary': `)
+                        $d.serializeGlossary($.definition.glossary, $i)
+                        $i.snippet(`,`)
+                    })
+                })
+        
+                $i.snippet(`},`)
             })
             $i.nestedLine(($i) => {
                 $i.snippet(`'implementation': `)

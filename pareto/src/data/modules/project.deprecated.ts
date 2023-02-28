@@ -28,7 +28,7 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             "AlgorithmImplementation": type(group({})),
             "Implementation": type(dictionary(reference("AlgorithmImplementation"))),
             "Module": type(group({
-                "definition": member(parametrizedReference("moduleDefinition", { "Annotation": typeReference("Annotation") }, "ModuleDefinition")),
+                "definition": member(reference("ModuleDefinition")),
                 // "type": member(taggedUnion({
                 //     "binding": nll(),
                 //     "resource": nll(),
@@ -37,11 +37,15 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
                 // }))
                 "implementation": member(taggedUnion({
                     "manual": group({
-                      //  parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation")
+                        //  parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation")
                     }),
                     "generated": group({}),
                 })),
                 //"states": member(parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "States"), true)
+            })),
+            "ModuleDefinition": type(group({
+                "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
+                "api": member(parametrizedReference("moduleDefinition", { "Annotation": typeReference("Annotation") }, "API")),
             })),
             "Project": type(group({
                 "author": member(string()),
@@ -52,11 +56,11 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
                     "resource": group({
                         "nativeDependencies": member(dictionary(group({}))),
                         "devDependencies": member(dictionary(group({}))),
-                        "definition": member(parametrizedReference("moduleDefinition", { "Annotation": typeReference("Annotation") }, "ModuleDefinition")),
+                        "definition": member(reference("ModuleDefinition")),
                         "test": member(reference("Test")),
                     }),
                     "glossary": group({
-                        "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")]),
+                        "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
                     }),
                     "library": group({
                         "main": member(reference("Module")),
@@ -68,7 +72,7 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             })),
             "Test": type(group({
                 "dependencies": member(dictionary(group({}))),
-                "glossary": member(['reference', parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")]),
+                "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
             })),
         }),
         'interfaces': d({}),
@@ -83,10 +87,13 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             "collation": "res-pareto-collation",
             "moduleDefinition": "../../moduleDefinition",
             "foreach": "res-pareto-foreach",
+            "glossary_serialize_temp": "../../glossary_serialize_temp",
+
         }),
         'algorithms': d({
             "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
-                "serializeModuleDefinition": definitionReference("moduleDefinition", {}, "Serialize"),
+                "serializeAPI": definitionReference("moduleDefinition", {}, "Serialize"),
+                "serializeGlossary": definitionReference("glossary_serialize_temp", {}, "Serialize"),
                 "serializeImplementation": definitionReference("algorithm", {}, "SerializeImplementation"),
                 "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
                 "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),

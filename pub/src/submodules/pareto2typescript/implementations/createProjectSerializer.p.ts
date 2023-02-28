@@ -181,6 +181,21 @@ export const $$: CcreateProjectSerializer = (
                 $i.line(``)
             })
             $i.directory("src", ($i) => {
+                function doModuleDefinition($: gproject.T.ModuleDefinition<Annotation>, $i: gfp.IDirectory) {
+
+                    $i.directory(`glossary`, ($i) => {
+                        $d.serializeGlossary($.glossary, $i)
+                    })
+
+                    $i.file("api.generated.ts", ($i) => {
+                        $d.serializeAPI($.api, $i)
+
+                    })
+                    $i.file("index.ts", ($i) => {
+                        $i.line(`export * from "./glossary"`)
+                        $i.line(`export * from "./api.generated"`)
+                    })
+                }
                 switch ($.type[0]) {
                     case 'glossary':
                         pl.cc($.type[1], ($) => {
@@ -190,11 +205,12 @@ export const $$: CcreateProjectSerializer = (
                         break
                     case 'library':
                         pl.cc($.type[1], ($) => {
+
                             function doModule($: gproject.T.Module<Annotation>, $i: gfp.IDirectory) {
                                 const definition = $.definition
                                 $i.allowed("shorthands.ts")
                                 $i.directory("api", ($i) => {
-                                    $d.serializeModuleDefinition($.definition, $i)
+                                    doModuleDefinition($.definition, $i)
                                 })
 
                                 switch ($.implementation[0]) {
@@ -289,7 +305,7 @@ export const $$: CcreateProjectSerializer = (
                     case 'resource':
                         pl.cc($.type[1], ($) => {
                             $i.directory("api", ($i) => {
-                                $d.serializeModuleDefinition($.definition, $i)
+                                doModuleDefinition($.definition, $i)
                             })
 
                             $i.directory("implementations", ($i) => {

@@ -1,34 +1,31 @@
 
 import * as pd from 'pareto-core-data'
 
-import * as api from "./api"
-
-import * as gglossary from "../glossary"
-
-// import { Function, Glossary, LeafType, Type } from "./types.p"
-
+import * as gapi from "./api"
 
 type RawDictionary<T> = { [key: string]: T }
 
-export function definitionReference(contextOrDefinition: string, args?: RawDictionary<gglossary.T.TypeReference<string>>, definition?: string): api.T.DefinitionReference<pd.SourceLocation> {
-    if (definition === undefined) {
-
-        return {
-            'context': ['local', {}],
-            'function': contextOrDefinition
-        }
-    } else {
-        return {
-            'context': ['import', {
-                'glossary': contextOrDefinition,
-                'arguments': pd.d(args === undefined ? {}: args)
-            }],
-            'function': definition
-        }
+export function typeReference(context: string, args: RawDictionary<gapi.T.TypeReference<string>>, definition: string): gapi.T.TypeReference<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': definition
     }
 }
 
-export function constructor(data: null | gglossary.T.TypeReference<string>, deps: RawDictionary<api.T.DefinitionReference<pd.SourceLocation>>): api.T.ModuleDefinition.api.algorithms.D._ltype<pd.SourceLocation> {
+export function functionReference(context: string, args: RawDictionary<gapi.T.TypeReference<string>>, definition: string): gapi.T.FunctionReference<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'function': definition
+    }
+}
+
+export function constructor(data: null | gapi.T.TypeReference<string>, deps: RawDictionary<gapi.T.FunctionReference<pd.SourceLocation>>): gapi.T.API.algorithms.D._ltype<pd.SourceLocation> {
     return ['constructor', {
         'configuration data': data === null
             ? [false]
@@ -37,7 +34,7 @@ export function constructor(data: null | gglossary.T.TypeReference<string>, deps
     }]
 }
 
-export function algorithm(def: api.T.DefinitionReference<pd.SourceLocation>, type?: api.T.ModuleDefinition.api.algorithms.D._ltype<pd.SourceLocation>): api.T.ModuleDefinition.api.algorithms.D<pd.SourceLocation> {
+export function algorithm(def: gapi.T.FunctionReference<pd.SourceLocation>, type?: gapi.T.API.algorithms.D._ltype<pd.SourceLocation>): gapi.T.API.algorithms.D<pd.SourceLocation> {
     return {
         'definition': def,
         'type': type === undefined

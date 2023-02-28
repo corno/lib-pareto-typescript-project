@@ -30,7 +30,7 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
         'functions': d({
             "SerializeGlossary": func(parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "Glossary"), null, interfaceReference("fp", "Directory"), null),
             "SerializeImplementation": func(parametrizedTypeReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation"), null, interfaceReference("fp", "Directory"), null),
-            "SerializeModuleDefinition": func(parametrizedTypeReference("moduleDefinition", { "Annotation": typeReference("Annotation") }, "ModuleDefinition"), null, interfaceReference("fp", "Directory"), null),
+            "SerializeAPI": func(parametrizedTypeReference("moduleDefinition", { "Annotation": typeReference("Annotation") }, "API"), null, interfaceReference("fp", "Block"), null),
             "SerializeParetoEnvironment": func(typeReference("common", "Null"), null, interfaceReference("fp", "Directory"), null),
             "SerializeBuildEnvironment": func(typeReference("common", "Null"), null, interfaceReference("fp", "Directory"), null),
             "SerializeProject": func(parametrizedTypeReference("project", { "Annotation": typeReference("Annotation") }, "Project"), null, interfaceReference("fp", "Directory"), null),
@@ -48,9 +48,8 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             "ts": "res-typescript",
         }),
         'algorithms': d({
-            "createModuleDefinitionSerializer": algorithm(definitionReference("SerializeModuleDefinition"), constructor(null, {
+            "createAPISerializer": algorithm(definitionReference("SerializeAPI"), constructor(null, {
                 "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
-                "serializeGlossary": definitionReference("SerializeGlossary"),
                 "createIdentifier": definitionReference("ts", {}, "CreateIdentifier"),
                 "createApostrophedString": definitionReference("ts", {}, "CreateApostrophedString"),
                 "createQuotedString": definitionReference("ts", {}, "CreateQuotedString"),
@@ -78,7 +77,7 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
                 "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
                 "enrichedDictionaryForEach": definitionReference("foreach", {}, "EnrichedDictionaryForEach"),
                 "serializeGlossary": definitionReference("SerializeGlossary"),
-                "serializeModuleDefinition": definitionReference("SerializeModuleDefinition"),
+                "serializeAPI": definitionReference("SerializeAPI"),
                 "serializeImplementation": definitionReference("SerializeImplementation"),
                 "createIdentifier": definitionReference("ts", {}, "CreateIdentifier"),
                 "createApostrophedString": definitionReference("ts", {}, "CreateApostrophedString"),

@@ -9,6 +9,14 @@ import * as gmain from "res-pareto-main"
 import * as gproject from "../../project"
 import * as gts from "res-typescript"
 
+export type CcreateAPISerializer = ($d: {
+    readonly 'createApostrophedString': gts.FCreateApostrophedString
+    readonly 'createBacktickedString': gts.FCreateBacktickedString
+    readonly 'createIdentifier': gts.FCreateIdentifier
+    readonly 'createQuotedString': gts.FCreateQuotedString
+    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
+}) => gglo.FSerializeAPI
+
 export type CcreateGlossarySerializer = ($d: {
     readonly 'createApostrophedString': gts.FCreateApostrophedString
     readonly 'createBacktickedString': gts.FCreateBacktickedString
@@ -29,15 +37,6 @@ export type CcreateImplementationSerializer = ($d: {
     readonly 'enrichedDictionaryForEach': gforeach.FEnrichedDictionaryForEach
 }) => gglo.FSerializeImplementation
 
-export type CcreateModuleDefinitionSerializer = ($d: {
-    readonly 'createApostrophedString': gts.FCreateApostrophedString
-    readonly 'createBacktickedString': gts.FCreateBacktickedString
-    readonly 'createIdentifier': gts.FCreateIdentifier
-    readonly 'createQuotedString': gts.FCreateQuotedString
-    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
-    readonly 'serializeGlossary': gglo.FSerializeGlossary
-}) => gglo.FSerializeModuleDefinition
-
 export type CcreateProjectSerializer = ($d: {
     readonly 'createApostrophedString': gts.FCreateApostrophedString
     readonly 'createBacktickedString': gts.FCreateBacktickedString
@@ -45,9 +44,9 @@ export type CcreateProjectSerializer = ($d: {
     readonly 'createQuotedString': gts.FCreateQuotedString
     readonly 'dictionaryForEach': gforeach.FDictionaryForEach
     readonly 'enrichedDictionaryForEach': gforeach.FEnrichedDictionaryForEach
+    readonly 'serializeAPI': gglo.FSerializeAPI
     readonly 'serializeGlossary': gglo.FSerializeGlossary
     readonly 'serializeImplementation': gglo.FSerializeImplementation
-    readonly 'serializeModuleDefinition': gglo.FSerializeModuleDefinition
 }) => gglo.FSerializeProject
 
 export type CcreateStatesSerializer = ($d: {
@@ -68,9 +67,9 @@ export type CcreateTemplateSerializer = ($d: {
 }) => gglo.FSerializeTemplate
 
 export type API = {
+    createAPISerializer: CcreateAPISerializer
     createGlossarySerializer: CcreateGlossarySerializer
     createImplementationSerializer: CcreateImplementationSerializer
-    createModuleDefinitionSerializer: CcreateModuleDefinitionSerializer
     createProjectSerializer: CcreateProjectSerializer
     createStatesSerializer: CcreateStatesSerializer
     createTemplateSerializer: CcreateTemplateSerializer

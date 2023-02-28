@@ -214,13 +214,13 @@ export const $$: CcreateProjectSerializer = (
                                 })
 
                                 switch ($.implementation[0]) {
-                                    case 'generated':
+                                    case 'pareto':
                                         pl.cc($.implementation[1], ($) => {
                                             pd.implementMe("IMPLEMENTATIONS")
                                             //$d.serializeImplementation($, $i)
                                         })
                                         break
-                                    case 'manual':
+                                    case 'typescript':
                                         pl.cc($.implementation[1], ($) => {
                                             $i.directory("implementations", ($i) => {
                                                 $d.dictionaryForEach(definition.api.algorithms, ($) => {
@@ -234,11 +234,11 @@ export const $$: CcreateProjectSerializer = (
                                 $i.file("implementation.generated.ts", ($i) => {
                                     const suffix = pl.cc($, ($) => {
                                         switch ($.implementation[0]) {
-                                            case 'manual':
+                                            case 'typescript':
                                                 return pl.cc($.implementation[1], ($) => {
                                                     return `p`
                                                 })
-                                            case 'generated':
+                                            case 'pareto':
                                                 return pl.cc($.implementation[1], ($) => {
                                                     return `generated`
                                                 })

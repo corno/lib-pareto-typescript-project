@@ -306,7 +306,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
             'algorithms': d({}),
         },
     },
-    'implementation': ['generated', {
+    'implementation': ['pareto', {
         'implementations': d({}),
     }],
 }

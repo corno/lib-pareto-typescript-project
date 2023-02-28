@@ -15,10 +15,10 @@ const d = pd.d
 export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({
         "algorithm": "../../../algorithm",
-        "common": "glo-pareto-common",
-        "glossary": "../../../glossary",
-        "fp": "lib-fountain-pen",
         "api": "../../../api",
+        "common": "glo-pareto-common",
+        "fp": "lib-fountain-pen",
+        "glossary": "../../../glossary",
     }),
     'parameters': d({
         "Annotation": {},
@@ -36,10 +36,10 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
 
             // }))
             "implementation": member(taggedUnion({
-                "manual": group({
+                "typescript": group({
                     //  parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation")
                 }),
-                "generated": group({}),
+                "pareto": group({}),
             })),
             //"states": member(parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "States"), true)
         })),

@@ -27,13 +27,13 @@ export const $$: CcreateSerializer = ($d) => {
             $i.nestedLine(($i) => {
                 $i.snippet(`'implementation': `)
                 switch ($.implementation[0]) {
-                    case 'generated':
+                    case 'pareto':
                         pl.cc($.implementation[1], ($) => {
                             pd.implementMe("HIEROS")
                             //$d.serializeImplementation($, $i)
                         })
                         break
-                    case 'manual':
+                    case 'typescript':
                         pl.cc($.implementation[1], ($) => {
                             $i.snippet(`['manual', {}]`)
                         })

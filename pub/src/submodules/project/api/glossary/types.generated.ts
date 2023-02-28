@@ -27,25 +27,25 @@ export namespace T {
         
         export namespace implementation {
             
-            export namespace generated {}
+            export namespace pareto {}
             
-            export type generated<GPAnnotation> = {}
+            export type pareto<GPAnnotation> = {}
             
-            export namespace manual {}
+            export namespace typescript {}
             
-            export type manual<GPAnnotation> = {}
+            export type typescript<GPAnnotation> = {}
         }
         
         export type implementation<GPAnnotation> = 
-            | ['generated', {}]
-            | ['manual', {}]
+            | ['pareto', {}]
+            | ['typescript', {}]
     }
     
     export type Module<GPAnnotation> = {
         readonly 'definition': T.ModuleDefinition<GPAnnotation>
         readonly 'implementation': 
-            | ['generated', {}]
-            | ['manual', {}]
+            | ['pareto', {}]
+            | ['typescript', {}]
     }
     
     export namespace ModuleDefinition {

@@ -89,72 +89,73 @@ export const $$: CcreateSerializer = ($d) => {
                     })
                 })
                 $i.snippet(`}),`)
-            }),
-                $i.nestedLine(($i) => {
-                    $i.snippet(`'algorithms': d({`)
-                    $i.indent(($i) => {
-                        $d.dictionaryForEach($.algorithms, ($) => {
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`"${$.key}": {`)
-                                $i.indent(($i) => {
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'definition': `)
-                                        serializeDefinitionReference($.value.definition, $i)
-                                        $i.snippet(`,`)
-                                    })
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'type': `)
-                                        switch ($.value.type[0]) {
-                                            case 'constructor':
-                                                pl.cc($.value.type[1], ($) => {
+            })
+            $i.nestedLine(($i) => {
+                $i.snippet(`'algorithms': d({`)
+                $i.indent(($i) => {
+                    $d.dictionaryForEach($.algorithms, ($) => {
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`"${$.key}": {`)
+                            $i.indent(($i) => {
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`'definition': `)
+                                    serializeDefinitionReference($.value.definition, $i)
+                                    $i.snippet(`,`)
+                                })
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`'type': `)
+                                    switch ($.value.type[0]) {
+                                        case 'constructor':
+                                            pl.cc($.value.type[1], ($) => {
 
-                                                    $i.snippet(`['constructor', {`)
-                                                    $i.indent(($i) => {
+                                                $i.snippet(`['constructor', {`)
+                                                $i.indent(($i) => {
 
-                                                        $i.nestedLine(($i) => {
-                                                            $i.snippet(`'configuration data': `)
-                                                            doOptional($['configuration data'], $i, ($, $i) => {
-                                                                serializeTypeReference($, $i)
-                                                            })
-                                                            if ($['configuration data'] === null) {
-                                                            } else {
-                                                            }
-                                                            $i.snippet(`,`)
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`'configuration data': `)
+                                                        doOptional($['configuration data'], $i, ($, $i) => {
+                                                            serializeTypeReference($, $i)
                                                         })
-                                                        $i.nestedLine(($i) => {
-                                                            $i.snippet(`'dependencies': d({`)
-                                                            $i.indent(($i) => {
-                                                                $d.dictionaryForEach($.dependencies, ($) => {
-                                                                    $i.nestedLine(($i) => {
-                                                                        $i.snippet(`"${$.key}": `)
-                                                                        serializeDefinitionReference($.value, $i)
-                                                                        $i.snippet(`,`)
-                                                                    })
+                                                        if ($['configuration data'] === null) {
+                                                        } else {
+                                                        }
+                                                        $i.snippet(`,`)
+                                                    })
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`'dependencies': d({`)
+                                                        $i.indent(($i) => {
+                                                            $d.dictionaryForEach($.dependencies, ($) => {
+                                                                $i.nestedLine(($i) => {
+                                                                    $i.snippet(`"${$.key}": `)
+                                                                    serializeDefinitionReference($.value, $i)
+                                                                    $i.snippet(`,`)
                                                                 })
                                                             })
-                                                            $i.snippet(`}),`)
                                                         })
+                                                        $i.snippet(`}),`)
                                                     })
-                                                    $i.snippet(`}]`)
                                                 })
-                                                break
-                                            case 'reference':
-                                                pl.cc($.value.type[1], ($) => {
+                                                $i.snippet(`}]`)
+                                            })
+                                            break
+                                        case 'reference':
+                                            pl.cc($.value.type[1], ($) => {
 
-                                                    $i.snippet(`['foo]`)
-                                                })
-                                                break
-                                            default: pl.au($.value.type[0])
-                                        }
-                                        $i.snippet(`,`)
-                                    })
+                                                $i.snippet(`['foo]`)
+                                            })
+                                            break
+                                        default: pl.au($.value.type[0])
+                                    }
+                                    $i.snippet(`,`)
                                 })
-                                $i.snippet(`},`)
                             })
+                            $i.snippet(`},`)
                         })
                     })
-                    $i.snippet(`}),`)
                 })
+                $i.snippet(`}),`)
+            })
         })
+        $i.snippet(`}`)
     }
 }

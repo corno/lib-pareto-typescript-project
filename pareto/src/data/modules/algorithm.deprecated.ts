@@ -7,13 +7,13 @@ import {
     array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, glossaryParameter, optional,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
+import { functionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
 
-import * as gmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
+import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
 const d = pd.d
 
-export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
+export const $: gproject.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {
         'imports': d({
             "fp": "lib-fountain-pen",
@@ -143,13 +143,14 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
         'imports': d({
             "collation": "res-pareto-collation",
             "foreach": "res-pareto-foreach",
+            "this": "./glossary",
         }),
         'algorithms': d({
-            "createImplementationSerializer": algorithm(definitionReference("SerializeImplementation"), constructor(null, {
-                "arrayForEach": definitionReference("foreach", {}, "ArrayForEach"),
-                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
-                "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
-                "enrichedDictionaryForEach": definitionReference("foreach", {}, "EnrichedDictionaryForEach"),
+            "createImplementationSerializer": algorithm(functionReference("this", {}, "SerializeImplementation"), constructor(null, {
+                "arrayForEach": functionReference("foreach", {}, "ArrayForEach"),
+                "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
+                "enrichedArrayForEach": functionReference("foreach", {}, "EnrichedArrayForEach"),
+                "enrichedDictionaryForEach": functionReference("foreach", {}, "EnrichedDictionaryForEach"),
             })),
         })
     },

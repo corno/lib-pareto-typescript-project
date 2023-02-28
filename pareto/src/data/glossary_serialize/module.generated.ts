@@ -43,38 +43,41 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
             'algorithms': d({
                 "createSerializer": {
                     'definition': {
-                        'context': ['local', {}],
+                        'context': {
+                            'glossary': "this",
+                            'arguments': d({}),
+                        },
                         'function': "Serialize",
                     },
                     'type': ['constructor', {
                         'configuration data': [false],
                         'dependencies': d({
                             "arrayForEach": {
-                                'context': ['import', {
+                                'context': {
                                     'glossary': "foreach",
                                     'arguments': d({}),
-                                }],
+                                },
                                 'function': "ArrayForEach",
                             },
                             "dictionaryForEach": {
-                                'context': ['import', {
+                                'context': {
                                     'glossary': "foreach",
                                     'arguments': d({}),
-                                }],
+                                },
                                 'function': "DictionaryForEach",
                             },
                             "enrichedArrayForEach": {
-                                'context': ['import', {
+                                'context': {
                                     'glossary': "foreach",
                                     'arguments': d({}),
-                                }],
+                                },
                                 'function': "EnrichedArrayForEach",
                             },
                             "enrichedDictionaryForEach": {
-                                'context': ['import', {
+                                'context': {
                                     'glossary': "foreach",
                                     'arguments': d({}),
-                                }],
+                                },
                                 'function': "EnrichedDictionaryForEach",
                             },
                         }),

@@ -1,12 +1,11 @@
 import * as pt from 'pareto-core-types'
 
-import * as gglo from "./glossary"
-
 import * as galgorithm from "../../algorithm"
 import * as gcollation from "res-pareto-collation"
 import * as gforeach from "res-pareto-foreach"
 import * as gglossary_serialize_temp from "../../glossary_serialize_temp"
 import * as gmoduleDefinition from "../../moduleDefinition"
+import * as gthis from "./glossary"
 
 export type CcreateSerializer = ($d: {
     readonly 'dictionaryForEach': gforeach.FDictionaryForEach
@@ -14,11 +13,11 @@ export type CcreateSerializer = ($d: {
     readonly 'serializeAPI': gmoduleDefinition.FSerialize
     readonly 'serializeGlossary': gglossary_serialize_temp.FSerialize
     readonly 'serializeImplementation': galgorithm.FSerializeImplementation
-}) => gglo.FSerialize
+}) => gthis.FSerialize
 
 export type CcreateSerializerWithContext = ($d: {
-    readonly 'serialize': gglo.FSerialize
-}) => gglo.FSerializeWithContext
+    readonly 'serialize': gthis.FSerialize
+}) => gthis.FSerializeWithContext
 
 export type API = {
     createSerializer: CcreateSerializer

@@ -3,13 +3,13 @@ import {
     types, typeReference, interfaceReference, func, parametrizedTypeReference, type, glossaryParameter
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
+import { functionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
 
-import * as gmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
+import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
 const d = pd.d
 
-export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
+export const $: gproject.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {
         'imports': d({
             "algorithm": "../../../algorithm",
@@ -46,58 +46,59 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             "project": "../../project",
             "foreach": "res-pareto-foreach",
             "ts": "res-typescript",
+            "this": "./glossary",
         }),
         'algorithms': d({
-            "createAPISerializer": algorithm(definitionReference("SerializeAPI"), constructor(null, {
-                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
-                "createIdentifier": definitionReference("ts", {}, "CreateIdentifier"),
-                "createApostrophedString": definitionReference("ts", {}, "CreateApostrophedString"),
-                "createQuotedString": definitionReference("ts", {}, "CreateQuotedString"),
-                "createBacktickedString": definitionReference("ts", {}, "CreateBacktickedString"),
+            "createAPISerializer": algorithm(functionReference("this", {}, "SerializeAPI"), constructor(null, {
+                "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
+                "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),
+                "createApostrophedString": functionReference("ts", {}, "CreateApostrophedString"),
+                "createQuotedString": functionReference("ts", {}, "CreateQuotedString"),
+                "createBacktickedString": functionReference("ts", {}, "CreateBacktickedString"),
             })),
-            "createGlossarySerializer": algorithm(definitionReference("SerializeGlossary"), constructor(null, {
-                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
-                "enrichedDictionaryForEach": definitionReference("foreach", {}, "EnrichedDictionaryForEach"),
-                "createIdentifier": definitionReference("ts", {}, "CreateIdentifier"),
-                "createApostrophedString": definitionReference("ts", {}, "CreateApostrophedString"),
-                "createQuotedString": definitionReference("ts", {}, "CreateQuotedString"),
-                "createBacktickedString": definitionReference("ts", {}, "CreateBacktickedString"),
+            "createGlossarySerializer": algorithm(functionReference("this", {}, "SerializeGlossary"), constructor(null, {
+                "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
+                "enrichedDictionaryForEach": functionReference("foreach", {}, "EnrichedDictionaryForEach"),
+                "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),
+                "createApostrophedString": functionReference("ts", {}, "CreateApostrophedString"),
+                "createQuotedString": functionReference("ts", {}, "CreateQuotedString"),
+                "createBacktickedString": functionReference("ts", {}, "CreateBacktickedString"),
             })),
-            "createImplementationSerializer": algorithm(definitionReference("SerializeImplementation"), constructor(null, {
-                "arrayForEach": definitionReference("foreach", {}, "ArrayForEach"),
-                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
-                "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
-                "enrichedDictionaryForEach": definitionReference("foreach", {}, "EnrichedDictionaryForEach"),
-                "createIdentifier": definitionReference("ts", {}, "CreateIdentifier"),
-                "createApostrophedString": definitionReference("ts", {}, "CreateApostrophedString"),
-                "createQuotedString": definitionReference("ts", {}, "CreateQuotedString"),
-                "createBacktickedString": definitionReference("ts", {}, "CreateBacktickedString"),
+            "createImplementationSerializer": algorithm(functionReference("this", {}, "SerializeImplementation"), constructor(null, {
+                "arrayForEach": functionReference("foreach", {}, "ArrayForEach"),
+                "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
+                "enrichedArrayForEach": functionReference("foreach", {}, "EnrichedArrayForEach"),
+                "enrichedDictionaryForEach": functionReference("foreach", {}, "EnrichedDictionaryForEach"),
+                "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),
+                "createApostrophedString": functionReference("ts", {}, "CreateApostrophedString"),
+                "createQuotedString": functionReference("ts", {}, "CreateQuotedString"),
+                "createBacktickedString": functionReference("ts", {}, "CreateBacktickedString"),
             })),
-            "createProjectSerializer": algorithm(definitionReference("SerializeProject"), constructor(null, {
-                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
-                "enrichedDictionaryForEach": definitionReference("foreach", {}, "EnrichedDictionaryForEach"),
-                "serializeGlossary": definitionReference("SerializeGlossary"),
-                "serializeAPI": definitionReference("SerializeAPI"),
-                "serializeImplementation": definitionReference("SerializeImplementation"),
-                "createIdentifier": definitionReference("ts", {}, "CreateIdentifier"),
-                "createApostrophedString": definitionReference("ts", {}, "CreateApostrophedString"),
-                "createQuotedString": definitionReference("ts", {}, "CreateQuotedString"),
-                "createBacktickedString": definitionReference("ts", {}, "CreateBacktickedString"),
+            "createProjectSerializer": algorithm(functionReference("this", {}, "SerializeProject"), constructor(null, {
+                "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
+                "enrichedDictionaryForEach": functionReference("foreach", {}, "EnrichedDictionaryForEach"),
+                "serializeGlossary": functionReference("this", {}, "SerializeGlossary"),
+                "serializeAPI": functionReference("this", {}, "SerializeAPI"),
+                "serializeImplementation": functionReference("this", {}, "SerializeImplementation"),
+                "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),
+                "createApostrophedString": functionReference("ts", {}, "CreateApostrophedString"),
+                "createQuotedString": functionReference("ts", {}, "CreateQuotedString"),
+                "createBacktickedString": functionReference("ts", {}, "CreateBacktickedString"),
             })),
-            "createStatesSerializer": algorithm(definitionReference("SerializeStates"), constructor(null, {
-                "arrayForEach": definitionReference("foreach", {}, "ArrayForEach"),
-                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
-                "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
-                "enrichedDictionaryForEach": definitionReference("foreach", {}, "EnrichedDictionaryForEach"),
-                "createApostrophedString": definitionReference("ts", {}, "CreateApostrophedString"),
-                "createIdentifier": definitionReference("ts", {}, "CreateIdentifier"),
+            "createStatesSerializer": algorithm(functionReference("this", {}, "SerializeStates"), constructor(null, {
+                "arrayForEach": functionReference("foreach", {}, "ArrayForEach"),
+                "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
+                "enrichedArrayForEach": functionReference("foreach", {}, "EnrichedArrayForEach"),
+                "enrichedDictionaryForEach": functionReference("foreach", {}, "EnrichedDictionaryForEach"),
+                "createApostrophedString": functionReference("ts", {}, "CreateApostrophedString"),
+                "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),
             })),
-            "createTemplateSerializer": algorithm(definitionReference("SerializeTemplate"), constructor(null, {
-                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
-                "createIdentifier": definitionReference("ts", {}, "CreateIdentifier"),
-                "createApostrophedString": definitionReference("ts", {}, "CreateApostrophedString"),
-                "createQuotedString": definitionReference("ts", {}, "CreateQuotedString"),
-                "createBacktickedString": definitionReference("ts", {}, "CreateBacktickedString"),
+            "createTemplateSerializer": algorithm(functionReference("this", {}, "SerializeTemplate"), constructor(null, {
+                "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
+                "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),
+                "createApostrophedString": functionReference("ts", {}, "CreateApostrophedString"),
+                "createQuotedString": functionReference("ts", {}, "CreateQuotedString"),
+                "createBacktickedString": functionReference("ts", {}, "CreateBacktickedString"),
             })),
         })
     },

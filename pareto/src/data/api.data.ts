@@ -6,13 +6,13 @@ import {
     array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, method, func, data, type, glossaryParameter, parametrizedReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
+import { functionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
 
-import * as gmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
+import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
 const d = pd.d
 
-export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
+export const $: gproject.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {
         'parameters': d({
             "Annotation": {}
@@ -57,17 +57,18 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             "main": "res-pareto-main",
             "pareto2typescript": "../../submodules/pareto2typescript",
             "foreach": "res-pareto-foreach",
+            "this": "./glossary"
         }),
         'algorithms': d({
-            "createParametersParser": algorithm(definitionReference("ParseArguments2"), constructor(null, {
-                "onError": definitionReference("HandleArgumentError"),
+            "createParametersParser": algorithm(functionReference("this", {}, "ParseArguments2"), constructor(null, {
+                "onError": functionReference("this", {}, "HandleArgumentError"),
             })),
-            "generateProject": algorithm(definitionReference("GenerateProject")),
-            "createProjectGenerator": algorithm(definitionReference("GenerateProject"), constructor(null, {
-                "decorateDictionaryEntriesWithKey": definitionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
-                "logError": definitionReference("common", {}, "Log"),
-                "serializeProject": definitionReference("pareto2typescript", {}, "SerializeProject"),
-                "serializeTemplate": definitionReference("pareto2typescript", {}, "SerializeTemplate"),
+            "generateProject": algorithm(functionReference("this", {}, "GenerateProject")),
+            "createProjectGenerator": algorithm(functionReference("this", {}, "GenerateProject"), constructor(null, {
+                "decorateDictionaryEntriesWithKey": functionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
+                "logError": functionReference("common", {}, "Log"),
+                "serializeProject": functionReference("pareto2typescript", {}, "SerializeProject"),
+                "serializeTemplate": functionReference("pareto2typescript", {}, "SerializeTemplate"),
             })),
         })
     },

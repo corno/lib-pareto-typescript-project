@@ -5,13 +5,13 @@ import {
     dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, parametrizedTypeReference, glossaryParameter, parametrizedReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import { algorithm, constructor, definitionReference, } from 'lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands'
+import { algorithm, constructor, functionReference, } from 'lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands'
 
-import * as gmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
+import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
 const d = pd.d
 
-export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
+export const $: gproject.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {
         'imports': d({
             "algorithm": "../../../algorithm",
@@ -88,18 +88,18 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             "moduleDefinition": "../../moduleDefinition",
             "foreach": "res-pareto-foreach",
             "glossary_serialize_temp": "../../glossary_serialize_temp",
-
+            "this": "./glossary"
         }),
         'algorithms': d({
-            "createSerializer": algorithm(definitionReference("Serialize"), constructor(null, {
-                "serializeAPI": definitionReference("moduleDefinition", {}, "Serialize"),
-                "serializeGlossary": definitionReference("glossary_serialize_temp", {}, "Serialize"),
-                "serializeImplementation": definitionReference("algorithm", {}, "SerializeImplementation"),
-                "dictionaryForEach": definitionReference("foreach", {}, "DictionaryForEach"),
-                "enrichedArrayForEach": definitionReference("foreach", {}, "EnrichedArrayForEach"),
+            "createSerializer": algorithm(functionReference("this", {}, "Serialize"), constructor(null, {
+                "serializeAPI": functionReference("moduleDefinition", {}, "Serialize"),
+                "serializeGlossary": functionReference("glossary_serialize_temp", {}, "Serialize"),
+                "serializeImplementation": functionReference("algorithm", {}, "SerializeImplementation"),
+                "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
+                "enrichedArrayForEach": functionReference("foreach", {}, "EnrichedArrayForEach"),
             })),
-            "createSerializerWithContext": algorithm(definitionReference("SerializeWithContext"), constructor(null, {
-                "serialize": definitionReference("Serialize"),
+            "createSerializerWithContext": algorithm(functionReference("this", {}, "SerializeWithContext"), constructor(null, {
+                "serialize": functionReference("this", {}, "Serialize"),
             })),
         })
     },

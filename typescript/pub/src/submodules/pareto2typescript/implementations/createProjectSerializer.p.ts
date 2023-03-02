@@ -415,7 +415,7 @@ export const $$: CcreateProjectSerializer = (
                                     $i.line(`}`)
                                 })
                                 $i.file("index.ts", ($i) => {
-                                    $i.line(`export * from "./api"`)
+                                    $i.line(`export * from "./definition/api.generated"`)
                                     $i.line(`export * from "./export.generated"`)
                                 })
                             })

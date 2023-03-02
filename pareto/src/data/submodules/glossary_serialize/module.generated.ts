@@ -62,14 +62,14 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                 "fp": "lib-fountain-pen",
             }),
             'parameters': d({
-                "Annotation": {},
+                "Annotation": null,
             }),
             'types': d({}),
             'interfaces': d({}),
             'functions': d({
                 "Serialize": {
                     'data': {
-                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
                         'type': "Glossary",
                         'arguments': d({}),
                     },
@@ -81,10 +81,10 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                         }],
                         'interface': "Line",
                     }],
-                    'return type': ['nothing', {}],
+                    'return type': ['nothing', null],
                 },
             }),
         },
     },
-    'implementation': ['typescript', {}],
+    'implementation': ['typescript', null],
 }

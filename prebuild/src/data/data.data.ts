@@ -14,7 +14,7 @@ export const $: pt.Array<gliana2pareto.T.GenerateModuleData<pd.SourceLocation>> 
                 'datamodel': [true, {
                     'annotations': true,
                     'properties optional': false,
-                    'reference mapping': ['string', {}],
+                    'reference mapping': ['string', null],
                 }],
                 'visitor interface': [false],
                 'algorithms': {
@@ -37,9 +37,7 @@ export const $: pt.Array<gliana2pareto.T.GenerateModuleData<pd.SourceLocation>> 
                 'datamodel': [false],
                 'visitor interface': [false],
                 'algorithms': {
-                    'serialize': [true, {
-                        'datamodel location': "TBD",
-                    }],
+                    'serialize': [true, null],
                 },
             },
             'mappedModel': {

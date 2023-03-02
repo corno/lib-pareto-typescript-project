@@ -271,7 +271,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                         "Jaren": {
                             'optional': false,
                             'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
                                 'type': "Jaren",
                                 'arguments': d({}),
                             }],
@@ -552,7 +552,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                                                     "Afhandeling": {
                                                         'optional': false,
                                                         'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
                                                             'type': "Afhandeling",
                                                             'arguments': d({}),
                                                         }],
@@ -743,7 +743,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                         "Informele rekeningen": {
                             'optional': false,
                             'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
                                 'type': "Informele Rekeningen",
                                 'arguments': d({}),
                             }],
@@ -1301,7 +1301,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                                         "Afhandeling": {
                                             'optional': false,
                                             'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', {}],
+                                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
                                                 'type': "Afhandeling",
                                                 'arguments': d({}),
                                             }],

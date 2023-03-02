@@ -15,7 +15,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                 "fp": "lib-fountain-pen",
             }),
             'parameters': d({
-                "Annotation": {},
+                "Annotation": null,
             }),
             'types': d({
                 "Annotation": type(glossaryParameter("Annotation"))
@@ -41,7 +41,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                         }],
                         'interface': "Line",
                     }],
-                    'return type': ['nothing', {}],
+                    'return type': ['nothing', null],
                 },
             }),
         },
@@ -96,7 +96,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
             }),
         },
     },
-    'implementation': ['typescript', {}],
+    'implementation': ['typescript', null],
     // 'implementation': {
     //     'implementations': d({}),
     // },

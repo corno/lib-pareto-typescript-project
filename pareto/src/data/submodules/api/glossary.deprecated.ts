@@ -18,7 +18,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "common": "glo-pareto-common",
     }),
     'parameters': d({
-        "Annotation": {},
+        "Annotation": null,
     }),
     'types': d({
         "Context": type(group({

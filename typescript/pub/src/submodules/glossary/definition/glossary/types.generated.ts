@@ -116,12 +116,10 @@ export namespace T {
         
         export namespace imports {
             
-            export namespace D {}
-            
-            export type D<GPAnnotation> = null
+            export type D<GPAnnotation> = string
         }
         
-        export type imports<GPAnnotation> = pt.Dictionary<null>
+        export type imports<GPAnnotation> = pt.Dictionary<string>
         
         export namespace interfaces {
             
@@ -180,7 +178,7 @@ export namespace T {
                 | ['interface', T.InterfaceReference<GPAnnotation>]
                 | ['nothing', null]
         }>
-        readonly 'imports': pt.Dictionary<null>
+        readonly 'imports': pt.Dictionary<string>
         readonly 'interfaces': pt.Dictionary<T.Interface<GPAnnotation>>
         readonly 'parameters': pt.Dictionary<null>
         readonly 'types': pt.Dictionary<{

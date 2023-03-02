@@ -20,14 +20,14 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
 
 
     'dependencies': d({
-        "glo-pareto-common": {},
-        "lib-fountain-pen": {},
-        "res-pareto-collation": {},
-        "res-pareto-dictionary": {},
-        "res-pareto-filesystem": {},
-        "res-pareto-main": {},
-        "res-typescript": {},
-        "res-pareto-foreach": {},
+        "glo-pareto-common": null,
+        "lib-fountain-pen": null,
+        "res-pareto-collation": null,
+        "res-pareto-dictionary": null,
+        "res-pareto-filesystem": null,
+        "res-pareto-main": null,
+        "res-typescript": null,
+        "res-pareto-foreach": null,
     }),
     'type': ['library', {
         'main': main,
@@ -42,8 +42,8 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
         'executables': d({}),
         'test': {
             'dependencies': d({
-                "lib-fountain-pen": {},
-                "res-typescript": {},
+                "lib-fountain-pen": null,
+                "res-typescript": null,
             }),
             'glossary': {
                 'functions': d({}),

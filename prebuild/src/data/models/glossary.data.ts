@@ -23,7 +23,7 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
     'type library': {
         'imports': d({}),
         'string types': d({
-            "text": {},
+            "text": null,
         }),
         'global types': d({
             "Context": globalType({}, taggedUnion({
@@ -35,7 +35,7 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 }),
             })),
             "Glossary": globalType({}, group({
-                "imports": prop(dictionary(group({}))),
+                "imports": prop(dictionary(string("identifier"))),
                 "parameters": prop(dictionary(group({}))),
                 "types": prop(dictionary(group({
                     "parameters": prop(dictionary(group({}))),

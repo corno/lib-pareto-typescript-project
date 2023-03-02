@@ -21,7 +21,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "glossary": "../../../glossary",
     }),
     'parameters': d({
-        "Annotation": {},
+        "Annotation": null,
     }),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),

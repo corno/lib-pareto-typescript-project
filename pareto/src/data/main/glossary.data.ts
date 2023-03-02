@@ -17,7 +17,7 @@ const d = pd.d
 
 export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({
-        "Annotation": {}
+        "Annotation": null,
     }),
     'imports': d({
         "pareto2typescript": "../../../submodules/pareto2typescript",

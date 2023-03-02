@@ -14,7 +14,7 @@ export namespace T {
     
     export type Context<GPAnnotation> = 
         | ['import', string]
-        | ['local', {}]
+        | ['local', null]
     
     export namespace Glossary {
         

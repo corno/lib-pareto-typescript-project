@@ -99,12 +99,12 @@ export const $$:CcreateSerializer = ($d) => {
                 break
             case 'null':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['null', {}]`)
+                    $i.snippet(`['null', null]`)
                 })
                 break
             case 'boolean':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['boolean', {}]`)
+                    $i.snippet(`['boolean', null]`)
                 })
                 break
             case 'reference':
@@ -116,12 +116,12 @@ export const $$:CcreateSerializer = ($d) => {
                 break
             case 'number':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['number', {}]`)
+                    $i.snippet(`['number', null]`)
                 })
                 break
             case 'string':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['string', {}]`)
+                    $i.snippet(`['string', null]`)
                 })
                 break
             case 'array':
@@ -233,7 +233,7 @@ export const $$:CcreateSerializer = ($d) => {
                 break
             case 'local':
                 pl.cc($[1], ($) => {
-                    $i.snippet(`['local', {}]`)
+                    $i.snippet(`['local', null]`)
                 })
                 break
             default: pl.au($[0])
@@ -349,7 +349,7 @@ export const $$:CcreateSerializer = ($d) => {
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.parameters, ($) => {
                         $i.nestedLine(($i) => {
-                            $i.snippet(`"${$.key}": {},`)
+                            $i.snippet(`"${$.key}": null,`)
                         })
                     })
                 })
@@ -368,7 +368,7 @@ export const $$:CcreateSerializer = ($d) => {
                                     $i.indent(($i) => {
                                         $d.dictionaryForEach($.value.parameters, ($) => {
                                             $i.nestedLine(($i) => {
-                                                $i.snippet(`"${$.key}": {},`)
+                                                $i.snippet(`"${$.key}": null,`)
                                             })
                                         })
                                     })
@@ -457,7 +457,7 @@ export const $$:CcreateSerializer = ($d) => {
                                             break
                                         case 'nothing':
                                             pl.cc($.value['return type'][1], ($) => {
-                                                $i.snippet(`['nothing', {}]`)
+                                                $i.snippet(`['nothing', null]`)
 
                                             })
                                             break

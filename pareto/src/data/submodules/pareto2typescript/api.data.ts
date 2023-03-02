@@ -9,6 +9,7 @@ const d = pd.d
 export const $: gapi.T.API<pd.SourceLocation> = {
     'imports': d({
         "collation": "res-pareto-collation",
+        "dictionary": "res-pareto-dictionary",
         "glossary": "../../glossary",
         "main": "res-pareto-main",
         "project": "../../project",
@@ -25,6 +26,7 @@ export const $: gapi.T.API<pd.SourceLocation> = {
             "createBacktickedString": functionReference("ts", {}, "CreateBacktickedString"),
         })),
         "createGlossarySerializer": algorithm(functionReference("this", {}, "SerializeGlossary"), constructor(null, {
+            "dictionaryIsEmpty": functionReference("dictionary", {}, "IsEmpty"),
             "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
             "enrichedDictionaryForEach": functionReference("foreach", {}, "EnrichedDictionaryForEach"),
             "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),

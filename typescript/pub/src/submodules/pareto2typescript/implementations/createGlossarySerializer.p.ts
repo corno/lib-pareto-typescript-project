@@ -439,19 +439,25 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                             break
                                         case 'group':
                                             pl.cc($[1], ($) => {
-                                                $i.snippet(`{`)
-                                                $i.indent(($i) => {
-                                                    $d.dictionaryForEach($, ($) => {
-                                                        $i.nestedLine(($i) => {
-                                                            $i.snippet(`readonly ${$d.createApostrophedString($.key)}: `)
-                                                            serializeType(
-                                                                $.value.type,
-                                                                $i,
-                                                            )
+                                                if ($d.dictionaryIsEmpty($)) {
+                                                    //typescript treats an empty object very lax therefor I make it a null
+                                                    $i.snippet(`null`)
+                                                } else {
+                                                    $i.snippet(`{`)
+                                                    $i.indent(($i) => {
+                                                        $d.dictionaryForEach($, ($) => {
+                                                            $i.nestedLine(($i) => {
+                                                                $i.snippet(`readonly ${$d.createApostrophedString($.key)}: `)
+                                                                serializeType(
+                                                                    $.value.type,
+                                                                    $i,
+                                                                )
+                                                            })
                                                         })
                                                     })
-                                                })
-                                                $i.snippet(`}`)
+                                                    $i.snippet(`}`)
+
+                                                }
                                             })
                                             break
                                         case 'nested':

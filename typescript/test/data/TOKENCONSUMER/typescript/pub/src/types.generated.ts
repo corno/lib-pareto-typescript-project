@@ -56,57 +56,57 @@ export namespace T {
         
         export namespace close__dictionary {}
         
-        export type close__dictionary<GPAnnotation> = {}
+        export type close__dictionary<GPAnnotation> = null
         
         export namespace close__list {}
         
-        export type close__list<GPAnnotation> = {}
+        export type close__list<GPAnnotation> = null
         
         export namespace close__shorthand__group {}
         
-        export type close__shorthand__group<GPAnnotation> = {}
+        export type close__shorthand__group<GPAnnotation> = null
         
         export namespace close__verbose__group {}
         
-        export type close__verbose__group<GPAnnotation> = {}
+        export type close__verbose__group<GPAnnotation> = null
         
         export namespace open__dictionary {}
         
-        export type open__dictionary<GPAnnotation> = {}
+        export type open__dictionary<GPAnnotation> = null
         
         export namespace open__list {}
         
-        export type open__list<GPAnnotation> = {}
+        export type open__list<GPAnnotation> = null
         
         export namespace open__shorthand__group {}
         
-        export type open__shorthand__group<GPAnnotation> = {}
+        export type open__shorthand__group<GPAnnotation> = null
         
         export namespace open__verbose__group {}
         
-        export type open__verbose__group<GPAnnotation> = {}
+        export type open__verbose__group<GPAnnotation> = null
         
         export namespace tagged__union__start {}
         
-        export type tagged__union__start<GPAnnotation> = {}
+        export type tagged__union__start<GPAnnotation> = null
     }
     
     export type StructuralTokenType<GPAnnotation> = 
-        | ['close dictionary', {}]
-        | ['close list', {}]
-        | ['close shorthand group', {}]
-        | ['close verbose group', {}]
-        | ['open dictionary', {}]
-        | ['open list', {}]
-        | ['open shorthand group', {}]
-        | ['open verbose group', {}]
-        | ['tagged union start', {}]
+        | ['close dictionary', null]
+        | ['close list', null]
+        | ['close shorthand group', null]
+        | ['close verbose group', null]
+        | ['open dictionary', null]
+        | ['open list', null]
+        | ['open shorthand group', null]
+        | ['open verbose group', null]
+        | ['tagged union start', null]
     
     export namespace Token {
         
         export namespace header__start {}
         
-        export type header__start<GPAnnotation> = {}
+        export type header__start<GPAnnotation> = null
         
         export type multiline__string<GPAnnotation> = T.MultilineStringData<GPAnnotation>
         
@@ -116,7 +116,7 @@ export namespace T {
     }
     
     export type Token<GPAnnotation> = 
-        | ['header start', {}]
+        | ['header start', null]
         | ['multiline string', T.MultilineStringData<GPAnnotation>]
         | ['simple string', T.SimpleStringData<GPAnnotation>]
         | ['structural', T.StructuralTokenData<GPAnnotation>]
@@ -125,19 +125,19 @@ export namespace T {
         
         export namespace apostrophe {}
         
-        export type apostrophe<GPAnnotation> = {}
+        export type apostrophe<GPAnnotation> = null
         
         export namespace none {}
         
-        export type none<GPAnnotation> = {}
+        export type none<GPAnnotation> = null
         
         export namespace quote {}
         
-        export type quote<GPAnnotation> = {}
+        export type quote<GPAnnotation> = null
     }
     
     export type Wrapping<GPAnnotation> = 
-        | ['apostrophe', {}]
-        | ['none', {}]
-        | ['quote', {}]
+        | ['apostrophe', null]
+        | ['none', null]
+        | ['quote', null]
 }

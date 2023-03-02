@@ -2,6 +2,7 @@ import * as gpareto2typescript from "../../submodules/pareto2typescript"
 import * as gforeach from "res-pareto-foreach"
 import * as gcoll from "res-pareto-collation"
 import * as gmain from "res-pareto-main"
+import * as gdictionary from "res-pareto-dictionary"
 import * as gts from "res-typescript"
 
 import { $a } from ".."
@@ -29,6 +30,7 @@ export const $$: CgenerateProject = ($) => {
                     'serializeGlossary': gpareto2typescript.$a.createGlossarySerializer({
                         'enrichedDictionaryForEach': ed,
                         'dictionaryForEach': d,
+                        'dictionaryIsEmpty': gdictionary.$r.isEmpty,
                         'createIdentifier': gts.$a.createIdentifier,
                         'createApostrophedString': gts.$a.createApostrophedString,
                         'createBacktickedString': gts.$a.createBacktickedString,

@@ -1,6 +1,7 @@
 import * as pt from 'pareto-core-types'
 
 import * as gcollation from "res-pareto-collation"
+import * as gdictionary from "res-pareto-dictionary"
 import * as gforeach from "res-pareto-foreach"
 import * as gglossary from "../../glossary"
 import * as gmain from "res-pareto-main"
@@ -24,6 +25,7 @@ export type CcreateGlossarySerializer = ($d: {
     readonly 'createIdentifier': gts.FCreateIdentifier
     readonly 'createQuotedString': gts.FCreateQuotedString
     readonly 'dictionaryForEach': gforeach.FDictionaryForEach
+    readonly 'dictionaryIsEmpty': gdictionary.FIsEmpty
     readonly 'enrichedDictionaryForEach': gforeach.FEnrichedDictionaryForEach
 }) => gthis.FSerializeGlossary
 

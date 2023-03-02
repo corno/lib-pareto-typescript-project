@@ -25,7 +25,7 @@ export namespace T {
         
         export namespace local {}
         
-        export type local<GPAnnotation> = {}
+        export type local<GPAnnotation> = null
     }
     
     export type Context<GPAnnotation> = 
@@ -33,7 +33,7 @@ export namespace T {
             readonly 'arguments': pt.Dictionary<T.TypeReference<GPAnnotation>>
             readonly 'glossary': string
         }]
-        | ['local', {}]
+        | ['local', null]
     
     export namespace Glossary {
         
@@ -75,7 +75,7 @@ export namespace T {
                     
                     export namespace nothing {}
                     
-                    export type nothing<GPAnnotation> = {}
+                    export type nothing<GPAnnotation> = null
                 }
                 
                 export type return__type<GPAnnotation> = 
@@ -84,7 +84,7 @@ export namespace T {
                         readonly 'type': T.TypeReference<GPAnnotation>
                     }]
                     | ['interface', T.InterfaceReference<GPAnnotation>]
-                    | ['nothing', {}]
+                    | ['nothing', null]
             }
             
             export type D<GPAnnotation> = {
@@ -97,7 +97,7 @@ export namespace T {
                         readonly 'type': T.TypeReference<GPAnnotation>
                     }]
                     | ['interface', T.InterfaceReference<GPAnnotation>]
-                    | ['nothing', {}]
+                    | ['nothing', null]
             }
         }
         
@@ -111,17 +111,17 @@ export namespace T {
                     readonly 'type': T.TypeReference<GPAnnotation>
                 }]
                 | ['interface', T.InterfaceReference<GPAnnotation>]
-                | ['nothing', {}]
+                | ['nothing', null]
         }>
         
         export namespace imports {
             
             export namespace D {}
             
-            export type D<GPAnnotation> = {}
+            export type D<GPAnnotation> = null
         }
         
-        export type imports<GPAnnotation> = pt.Dictionary<{}>
+        export type imports<GPAnnotation> = pt.Dictionary<null>
         
         export namespace interfaces {
             
@@ -134,10 +134,10 @@ export namespace T {
             
             export namespace D {}
             
-            export type D<GPAnnotation> = {}
+            export type D<GPAnnotation> = null
         }
         
-        export type parameters<GPAnnotation> = pt.Dictionary<{}>
+        export type parameters<GPAnnotation> = pt.Dictionary<null>
         
         export namespace types {
             
@@ -147,22 +147,22 @@ export namespace T {
                     
                     export namespace D {}
                     
-                    export type D<GPAnnotation> = {}
+                    export type D<GPAnnotation> = null
                 }
                 
-                export type parameters<GPAnnotation> = pt.Dictionary<{}>
+                export type parameters<GPAnnotation> = pt.Dictionary<null>
                 
                 export type _ltype<GPAnnotation> = T.Type<GPAnnotation>
             }
             
             export type D<GPAnnotation> = {
-                readonly 'parameters': pt.Dictionary<{}>
+                readonly 'parameters': pt.Dictionary<null>
                 readonly 'type': T.Type<GPAnnotation>
             }
         }
         
         export type types<GPAnnotation> = pt.Dictionary<{
-            readonly 'parameters': pt.Dictionary<{}>
+            readonly 'parameters': pt.Dictionary<null>
             readonly 'type': T.Type<GPAnnotation>
         }>
     }
@@ -178,13 +178,13 @@ export namespace T {
                     readonly 'type': T.TypeReference<GPAnnotation>
                 }]
                 | ['interface', T.InterfaceReference<GPAnnotation>]
-                | ['nothing', {}]
+                | ['nothing', null]
         }>
-        readonly 'imports': pt.Dictionary<{}>
+        readonly 'imports': pt.Dictionary<null>
         readonly 'interfaces': pt.Dictionary<T.Interface<GPAnnotation>>
-        readonly 'parameters': pt.Dictionary<{}>
+        readonly 'parameters': pt.Dictionary<null>
         readonly 'types': pt.Dictionary<{
-            readonly 'parameters': pt.Dictionary<{}>
+            readonly 'parameters': pt.Dictionary<null>
             readonly 'type': T.Type<GPAnnotation>
         }>
     }
@@ -277,7 +277,7 @@ export namespace T {
         
         export namespace _lboolean {}
         
-        export type _lboolean<GPAnnotation> = {}
+        export type _lboolean<GPAnnotation> = null
         
         export type computed<GPAnnotation> = T.Type<GPAnnotation>
         
@@ -305,11 +305,11 @@ export namespace T {
         
         export namespace _lnull {}
         
-        export type _lnull<GPAnnotation> = {}
+        export type _lnull<GPAnnotation> = null
         
         export namespace _lnumber {}
         
-        export type _lnumber<GPAnnotation> = {}
+        export type _lnumber<GPAnnotation> = null
         
         export type optional<GPAnnotation> = T.Type<GPAnnotation>
         
@@ -317,7 +317,7 @@ export namespace T {
         
         export namespace _lstring {}
         
-        export type _lstring<GPAnnotation> = {}
+        export type _lstring<GPAnnotation> = null
         
         export namespace taggedUnion {
             
@@ -331,7 +331,7 @@ export namespace T {
     
     export type Type<GPAnnotation> = 
         | ['array', T.Type<GPAnnotation>]
-        | ['boolean', {}]
+        | ['boolean', null]
         | ['computed', T.Type<GPAnnotation>]
         | ['dictionary', T.Type<GPAnnotation>]
         | ['glossary parameter', string]
@@ -339,11 +339,11 @@ export namespace T {
             readonly 'type': T.Type<GPAnnotation>
         }>]
         | ['nested', T.Type<GPAnnotation>]
-        | ['null', {}]
-        | ['number', {}]
+        | ['null', null]
+        | ['number', null]
         | ['optional', T.Type<GPAnnotation>]
         | ['reference', T.TypeReference<GPAnnotation>]
-        | ['string', {}]
+        | ['string', null]
         | ['taggedUnion', pt.Dictionary<T.Type<GPAnnotation>>]
         | ['type parameter', string]
     

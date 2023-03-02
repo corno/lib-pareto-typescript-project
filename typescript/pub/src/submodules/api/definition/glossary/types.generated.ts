@@ -40,7 +40,7 @@ export namespace T {
                     
                     export namespace reference {}
                     
-                    export type reference<GPAnnotation> = {}
+                    export type reference<GPAnnotation> = null
                 }
                 
                 export type _ltype<GPAnnotation> = 
@@ -48,7 +48,7 @@ export namespace T {
                         readonly 'configuration data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
                         readonly 'dependencies': pt.Dictionary<T.FunctionReference<GPAnnotation>>
                     }]
-                    | ['reference', {}]
+                    | ['reference', null]
             }
             
             export type D<GPAnnotation> = {
@@ -58,7 +58,7 @@ export namespace T {
                         readonly 'configuration data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
                         readonly 'dependencies': pt.Dictionary<T.FunctionReference<GPAnnotation>>
                     }]
-                    | ['reference', {}]
+                    | ['reference', null]
             }
         }
         
@@ -69,7 +69,7 @@ export namespace T {
                     readonly 'configuration data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
                     readonly 'dependencies': pt.Dictionary<T.FunctionReference<GPAnnotation>>
                 }]
-                | ['reference', {}]
+                | ['reference', null]
         }>
         
         export namespace imports {
@@ -88,7 +88,7 @@ export namespace T {
                     readonly 'configuration data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
                     readonly 'dependencies': pt.Dictionary<T.FunctionReference<GPAnnotation>>
                 }]
-                | ['reference', {}]
+                | ['reference', null]
         }>
         readonly 'imports': pt.Dictionary<string>
     }

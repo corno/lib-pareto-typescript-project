@@ -38,7 +38,7 @@ export function algorithm(def: gapi.T.FunctionReference<pd.SourceLocation>, type
     return {
         'definition': def,
         'type': type === undefined
-            ? ['reference', {}]
+            ? ['reference', null]
             : type,
     }
 }

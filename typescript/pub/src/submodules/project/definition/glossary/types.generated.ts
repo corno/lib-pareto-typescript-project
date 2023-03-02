@@ -10,7 +10,7 @@ export namespace T {
     
     export namespace AlgorithmImplementation {}
     
-    export type AlgorithmImplementation<GPAnnotation> = {}
+    export type AlgorithmImplementation<GPAnnotation> = null
     
     export type Annotation<GPAnnotation> = GPAnnotation
     
@@ -29,23 +29,23 @@ export namespace T {
             
             export namespace pareto {}
             
-            export type pareto<GPAnnotation> = {}
+            export type pareto<GPAnnotation> = null
             
             export namespace typescript {}
             
-            export type typescript<GPAnnotation> = {}
+            export type typescript<GPAnnotation> = null
         }
         
         export type implementation<GPAnnotation> = 
-            | ['pareto', {}]
-            | ['typescript', {}]
+            | ['pareto', null]
+            | ['typescript', null]
     }
     
     export type Module<GPAnnotation> = {
         readonly 'definition': T.ModuleDefinition<GPAnnotation>
         readonly 'implementation': 
-            | ['pareto', {}]
-            | ['typescript', {}]
+            | ['pareto', null]
+            | ['typescript', null]
     }
     
     export namespace ModuleDefinition {
@@ -68,10 +68,10 @@ export namespace T {
             
             export namespace D {}
             
-            export type D<GPAnnotation> = {}
+            export type D<GPAnnotation> = null
         }
         
-        export type dependencies<GPAnnotation> = pt.Dictionary<{}>
+        export type dependencies<GPAnnotation> = pt.Dictionary<null>
         
         export type description<GPAnnotation> = string
         
@@ -94,10 +94,10 @@ export namespace T {
                     
                     export namespace D {}
                     
-                    export type D<GPAnnotation> = {}
+                    export type D<GPAnnotation> = null
                 }
                 
-                export type executables<GPAnnotation> = pt.Dictionary<{}>
+                export type executables<GPAnnotation> = pt.Dictionary<null>
                 
                 export type main<GPAnnotation> = T.Module<GPAnnotation>
                 
@@ -112,7 +112,7 @@ export namespace T {
             }
             
             export type library<GPAnnotation> = {
-                readonly 'executables': pt.Dictionary<{}>
+                readonly 'executables': pt.Dictionary<null>
                 readonly 'main': T.Module<GPAnnotation>
                 readonly 'submodules': pt.Dictionary<T.Module<GPAnnotation>>
                 readonly 'test': T.Test<GPAnnotation>
@@ -126,27 +126,27 @@ export namespace T {
                     
                     export namespace D {}
                     
-                    export type D<GPAnnotation> = {}
+                    export type D<GPAnnotation> = null
                 }
                 
-                export type devDependencies<GPAnnotation> = pt.Dictionary<{}>
+                export type devDependencies<GPAnnotation> = pt.Dictionary<null>
                 
                 export namespace nativeDependencies {
                     
                     export namespace D {}
                     
-                    export type D<GPAnnotation> = {}
+                    export type D<GPAnnotation> = null
                 }
                 
-                export type nativeDependencies<GPAnnotation> = pt.Dictionary<{}>
+                export type nativeDependencies<GPAnnotation> = pt.Dictionary<null>
                 
                 export type test<GPAnnotation> = T.Test<GPAnnotation>
             }
             
             export type resource<GPAnnotation> = {
                 readonly 'definition': T.ModuleDefinition<GPAnnotation>
-                readonly 'devDependencies': pt.Dictionary<{}>
-                readonly 'nativeDependencies': pt.Dictionary<{}>
+                readonly 'devDependencies': pt.Dictionary<null>
+                readonly 'nativeDependencies': pt.Dictionary<null>
                 readonly 'test': T.Test<GPAnnotation>
             }
         }
@@ -156,22 +156,22 @@ export namespace T {
                 readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }]
             | ['library', {
-                readonly 'executables': pt.Dictionary<{}>
+                readonly 'executables': pt.Dictionary<null>
                 readonly 'main': T.Module<GPAnnotation>
                 readonly 'submodules': pt.Dictionary<T.Module<GPAnnotation>>
                 readonly 'test': T.Test<GPAnnotation>
             }]
             | ['resource', {
                 readonly 'definition': T.ModuleDefinition<GPAnnotation>
-                readonly 'devDependencies': pt.Dictionary<{}>
-                readonly 'nativeDependencies': pt.Dictionary<{}>
+                readonly 'devDependencies': pt.Dictionary<null>
+                readonly 'nativeDependencies': pt.Dictionary<null>
                 readonly 'test': T.Test<GPAnnotation>
             }]
     }
     
     export type Project<GPAnnotation> = {
         readonly 'author': string
-        readonly 'dependencies': pt.Dictionary<{}>
+        readonly 'dependencies': pt.Dictionary<null>
         readonly 'description': string
         readonly 'license': string
         readonly 'type': 
@@ -179,15 +179,15 @@ export namespace T {
                 readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }]
             | ['library', {
-                readonly 'executables': pt.Dictionary<{}>
+                readonly 'executables': pt.Dictionary<null>
                 readonly 'main': T.Module<GPAnnotation>
                 readonly 'submodules': pt.Dictionary<T.Module<GPAnnotation>>
                 readonly 'test': T.Test<GPAnnotation>
             }]
             | ['resource', {
                 readonly 'definition': T.ModuleDefinition<GPAnnotation>
-                readonly 'devDependencies': pt.Dictionary<{}>
-                readonly 'nativeDependencies': pt.Dictionary<{}>
+                readonly 'devDependencies': pt.Dictionary<null>
+                readonly 'nativeDependencies': pt.Dictionary<null>
                 readonly 'test': T.Test<GPAnnotation>
             }]
     }
@@ -198,16 +198,16 @@ export namespace T {
             
             export namespace D {}
             
-            export type D<GPAnnotation> = {}
+            export type D<GPAnnotation> = null
         }
         
-        export type dependencies<GPAnnotation> = pt.Dictionary<{}>
+        export type dependencies<GPAnnotation> = pt.Dictionary<null>
         
         export type glossary<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
     
     export type Test<GPAnnotation> = {
-        readonly 'dependencies': pt.Dictionary<{}>
+        readonly 'dependencies': pt.Dictionary<null>
         readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
     }
 }

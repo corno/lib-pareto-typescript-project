@@ -38,7 +38,7 @@ export const $$: CgetTestSet = ($) => {
                 'description': "TBD",
                 'license': "TBD",
                 'dependencies': d({
-                    "lib-pareto-fubar": {}
+                    "lib-pareto-fubar": null
                 }),
                 'type': ['library', {
 

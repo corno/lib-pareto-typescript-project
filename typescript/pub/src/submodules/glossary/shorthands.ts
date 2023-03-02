@@ -5,19 +5,19 @@ import * as t from "./definition/glossary"
 type RawDictionary<T> = { [key: string]: T }
 
 export function null_(): t.T.Type<pd.SourceLocation> {
-    return ['null', {}]
+    return ['null', null]
 }
 
 export function boolean(): t.T.Type<pd.SourceLocation> {
-    return ['boolean', {}]
+    return ['boolean', null]
 }
 
 export function string(): t.T.Type<pd.SourceLocation> {
-    return ['string', {}]
+    return ['string', null]
 }
 
 export function number(): t.T.Type<pd.SourceLocation> {
-    return ['number', {}]
+    return ['number', null]
 }
 
 export function types($: RawDictionary<t.T.Type<pd.SourceLocation>>) {
@@ -86,7 +86,7 @@ export function reference(contextOrType: string, type?: string): t.T.Type<pd.Sou
 
 export function context(glossary?: string, args?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>): t.T.Context<pd.SourceLocation> {
     if (glossary === undefined) {
-        return ['local', {}]
+        return ['local', null]
     } else {
         return ['import', {
             'glossary': glossary,
@@ -144,7 +144,7 @@ export function typeReference(
 export function interfaceReference(contextOrInterface: string, inf?: string): t.T.InterfaceReference<pd.SourceLocation> {
     if (inf === undefined) {
         return {
-            'context': ['local', {}],
+            'context': ['local', null],
             'interface': contextOrInterface,
         }
     } else {
@@ -163,7 +163,7 @@ export function parametrizedInterfaceReference(contextOrInterface: string, args:
 }
 
 export function nothing(): t.T.Glossary.functions.D.return__type<pd.SourceLocation> {
-    return ['nothing', {}]
+    return ['nothing', null]
 }
 
 export function data($: t.T.TypeReference<pd.SourceLocation>, async: boolean): t.T.Glossary.functions.D.return__type<pd.SourceLocation> {
@@ -180,7 +180,7 @@ export function inf($: t.T.InterfaceReference<pd.SourceLocation>): t.T.Glossary.
 export function func(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.InterfaceReference<pd.SourceLocation> | null, oi: t.T.InterfaceReference<pd.SourceLocation> | null, returnType: null | t.T.Glossary.functions.D.return__type<pd.SourceLocation>): t.T.Glossary.functions.D<pd.SourceLocation> {
     return {
         'return type': returnType === null
-            ? ['nothing', {}]
+            ? ['nothing', null]
             : returnType,
         'data': data,
         'managed input interface': mii === null

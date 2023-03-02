@@ -9,7 +9,7 @@ export type VOptional<AType> =
     | ['not set', {}]
     | ['set', AType]
 
-import { CcreateSerializer } from "../api"
+import { CcreateSerializer } from "../definition/api.generated"
 
 export const $$:CcreateSerializer = ($d) => {
     // function doReference<T>(

@@ -3,7 +3,7 @@ import * as pl from 'pareto-core-lib'
 import * as gmoduleDefinition from "../../api"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateAPISerializer } from "../api"
+import { CcreateAPISerializer } from "../definition/api.generated"
 
 export const $$: CcreateAPISerializer = ($d) => {
     return <Annotation>($: gmoduleDefinition.T.API<Annotation>, $i: gfp.IBlock) => {

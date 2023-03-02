@@ -1,10 +1,10 @@
 import * as pl from 'pareto-core-lib'
 
-import * as gapi from "../api"
+import * as gapi from "../definition/glossary"
 import * as gglossary from "../../glossary"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateSerializer } from "../api"
+import { CcreateSerializer } from "../definition/api.generated"
 
 export const $$: CcreateSerializer = ($d) => {
     return <Annotation>($: gapi.T.API<Annotation>, $i: gfp.ILine) => {

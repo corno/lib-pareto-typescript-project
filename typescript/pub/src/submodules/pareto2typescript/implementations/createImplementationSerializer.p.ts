@@ -3,7 +3,7 @@ import * as pl from 'pareto-core-lib'
 import * as galgorithm from "../../algorithm"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateImplementationSerializer } from "../api"
+import { CcreateImplementationSerializer } from "../definition/api.generated"
 
 export const $$: CcreateImplementationSerializer = ($d) => {
 
@@ -15,7 +15,7 @@ export const $$: CcreateImplementationSerializer = ($d) => {
                 $i.line(`import * as gfp from "lib-fountain-pen"`)
                 $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`import { C${$.key} } from "../api"
+                    $i.snippet(`import { C${$.key} } from "../definition/api.generated"
 
 export const $$:C${$.key} = `)
                     if ($.value.constructor) {

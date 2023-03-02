@@ -1,4 +1,4 @@
-import { API } from "./api"
+import { API } from "./definition/api.generated"
 import { $$ as icreateAPISerializer } from "./implementations/createAPISerializer.p"
 import { $$ as icreateFilesValidator } from "./implementations/createFilesValidator.p"
 import { $$ as icreateGlossarySerializer } from "./implementations/createGlossarySerializer.p"

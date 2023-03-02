@@ -3,7 +3,7 @@ import * as pl from 'pareto-core-lib'
 import * as gglossary from "../../glossary"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateImplementationSerializer } from "../api"
+import { CcreateImplementationSerializer } from "../definition/api.generated"
 
 export const $$:CcreateImplementationSerializer = ($d) => {
 

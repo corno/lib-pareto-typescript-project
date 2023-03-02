@@ -11,7 +11,7 @@ export type VOptional<AType> =
 
 export type MOptional<AType> = VOptional<AType>
 
-import { CcreateGlossarySerializer } from "../api"
+import { CcreateGlossarySerializer } from "../definition/api.generated"
 
 export const $$: CcreateGlossarySerializer = ($d) => {
 

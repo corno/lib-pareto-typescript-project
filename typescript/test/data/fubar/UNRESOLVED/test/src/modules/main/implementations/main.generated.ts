@@ -6,7 +6,7 @@ import * as gtest from "lib-pareto-test"
 
 import { $a } from "../index"
 
-import { Cmain } from "../api"
+import { Cmain } from "../definition/api.generated"
 
 export const $$:Cmain = ($) => {
 

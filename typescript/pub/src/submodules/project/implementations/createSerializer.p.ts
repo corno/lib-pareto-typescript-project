@@ -1,7 +1,7 @@
 import * as pl from 'pareto-core-lib'
 import * as pd from 'pareto-core-dev'
 
-import { CcreateSerializer } from "../api"
+import { CcreateSerializer } from "../definition/api.generated"
 
 export const $$: CcreateSerializer = ($d) => {
     return ($, $i) => {

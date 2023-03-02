@@ -1,7 +1,6 @@
-import * as pl from 'pareto-core-lib'
 import * as pd from 'pareto-core-data'
 
-import * as t from "./api"
+import * as t from "./definition/glossary"
 
 type RawDictionary<T> = { [key: string]: T }
 

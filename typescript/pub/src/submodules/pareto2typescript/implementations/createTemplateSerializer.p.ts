@@ -3,7 +3,7 @@ import * as pl from 'pareto-core-lib'
 import * as gproject from "../../project"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateTemplateSerializer } from "../api"
+import { CcreateTemplateSerializer } from "../definition/api.generated"
 
 export const $$:CcreateTemplateSerializer = (
     $d

@@ -4,7 +4,7 @@ import * as pd from 'pareto-core-dev'
 import * as gfp from "lib-fountain-pen"
 import * as gproject from "../../project"
 
-import { CcreateFilesValidator } from "../api"
+import { CcreateFilesValidator } from "../definition/api.generated"
 
 
 export const $$: CcreateFilesValidator = (

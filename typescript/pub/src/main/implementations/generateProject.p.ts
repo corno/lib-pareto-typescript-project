@@ -6,7 +6,7 @@ import * as gts from "res-typescript"
 
 import { $a } from ".."
 
-import { CgenerateProject } from "../api"
+import { CgenerateProject } from "../definition/api.generated"
 
 export const $$: CgenerateProject = ($) => {
     const a = gforeach.$a.arrayForEach

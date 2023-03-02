@@ -3,7 +3,7 @@ import * as pl from 'pareto-core-lib'
 import * as galgorithm from "../../algorithm"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateStatesSerializer } from "../api"
+import { CcreateStatesSerializer } from "../definition/api.generated"
 
 export const $$:CcreateStatesSerializer = ($d) => {
     return <Annotation>($: galgorithm.T.States<Annotation>, $i: gfp.IBlock) => {

@@ -1,6 +1,6 @@
 
 
-import { CcreateSerializerWithContext } from "../api"
+import { CcreateSerializerWithContext } from "../definition/api.generated"
 
 export const $$:CcreateSerializerWithContext = ($d) => {
 

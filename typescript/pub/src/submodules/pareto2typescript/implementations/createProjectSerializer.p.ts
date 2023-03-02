@@ -4,7 +4,7 @@ import * as pd from 'pareto-core-dev'
 import * as gfp from "lib-fountain-pen"
 import * as gproject from "../../project"
 
-import { CcreateProjectSerializer } from "../api"
+import { CcreateProjectSerializer } from "../definition/api.generated"
 
 
 export const $$: CcreateProjectSerializer = (
@@ -219,7 +219,7 @@ export const $$: CcreateProjectSerializer = (
                                                 default: return pl.au($.implementation[0])
                                             }
                                         })
-                                        $i.line(`import { API } from "./definition/api"`)
+                                        $i.line(`import { API } from "./definition/api.generated"`)
                                         $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                             $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
                                         })
@@ -235,8 +235,8 @@ export const $$: CcreateProjectSerializer = (
                                         })
                                     })
                                     $i.file("index.ts", ($i) => {
-                                        $i.line(`export * from "./definition/glosary"`)
-                                        $i.line(`export * from "./definition/api"`)
+                                        $i.line(`export * from "./definition/glossary"`)
+                                        $i.line(`export * from "./definition/api.generated"`)
                                         $i.line(`export * from "./implementation.generated"`)
                                     })
                                 }
@@ -290,7 +290,7 @@ export const $$: CcreateProjectSerializer = (
                                 })
                                 $i.file("implementation.generated.ts", ($i) => {
 
-                                    $i.line(`import { API } from "./definition/api"`)
+                                    $i.line(`import { API } from "./definition/api.generated"`)
                                     $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                         $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.native"`)
                                     })
@@ -307,7 +307,7 @@ export const $$: CcreateProjectSerializer = (
                                 })
                                 $i.allowed("native")
                                 $i.file("index.ts", ($i) => {
-                                    $i.line(`export * from "./definition/api"`)
+                                    $i.line(`export * from "./definition/api.generated"`)
                                     $i.line(`export * from "./definition/glossary"`)
                                     $i.line(`export { $a } from "./implementation.generated"`)
                                 })
@@ -389,9 +389,9 @@ export const $$: CcreateProjectSerializer = (
                                         $i.line(`import * as gmain from "res-pareto-main"`)
                                         $i.line(`import * as gtest from "lib-pareto-test"`)
                                         $i.line(``)
-                                        $i.line(`import { getTestSet } from "./getTestSet.p.ts"`)
+                                        $i.line(`import { $$ as getTestSet } from "./getTestSet.p"`)
                                         $i.line(``)
-                                        $i.line(`import { Cmain } from "../definition/api"`)
+                                        $i.line(`import { Cmain } from "../definition/api.generated"`)
                                         $i.line(``)
                                         $i.line(`export const $$:Cmain = ($) => {`)
                                         $i.line(`    gtest.$a.createTestProgram({`)
@@ -404,7 +404,7 @@ export const $$: CcreateProjectSerializer = (
                                     })
                                 })
                                 $i.file("export.generated.ts", ($i) => {
-                                    $i.line(`import { API } from "./definition/api"`)
+                                    $i.line(`import { API } from "./definition/api.generated"`)
                                     $i.line(``)
                                     $i.line(`import { $$ as imain } from "./implementations/main.generated"`)
                                     $i.line(`import { $$ as igetTestSet } from "./implementations/getTestSet.p"`)

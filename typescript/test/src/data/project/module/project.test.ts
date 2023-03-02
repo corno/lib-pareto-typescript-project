@@ -12,7 +12,6 @@ const d = pd.d
 export const $: gproject.T.Module<pd.SourceLocation> = {
     'definition': {
         'glossary': {
-            'imports': d({}),
             'parameters': d({
                 "Annotation": null,
             }),
@@ -299,6 +298,8 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
             }),
             'functions': d({}),
         },
+        'imports': d({}),
+
         'api': {
             'imports': d({
                 'common': "glo-pareto-common"

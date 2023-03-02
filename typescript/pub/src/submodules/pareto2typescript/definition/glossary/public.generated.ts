@@ -15,7 +15,7 @@ export type FSerializeAPI = <GPAnnotation>($: gapi.T.API<T.Annotation<GPAnnotati
 
 export type FSerializeBuildEnvironment = <GPAnnotation>($: gcommon.T.Null, $i: gfp.IDirectory,) => void
 
-export type FSerializeGlossary = <GPAnnotation>($: gglossary.T.Glossary<T.Annotation<GPAnnotation>>, $i: gfp.IDirectory,) => void
+export type FSerializeGlossary = <GPAnnotation>($: T.GlossarySerializationData<GPAnnotation>, $i: gfp.IDirectory,) => void
 
 export type FSerializeImplementation = <GPAnnotation>($: galgorithm.T.Implementation<T.Annotation<GPAnnotation>>, $i: gfp.IDirectory,) => void
 

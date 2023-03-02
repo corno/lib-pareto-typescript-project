@@ -8,8 +8,6 @@ export const $$:CcreateSerializerWithContext = ($d) => {
         $i.file("module.generated.ts", ($i) => {
             $i.line(`import * as pd from 'pareto-core-data'`)
             $i.line(``)
-            $.definition.api.imports
-            $.definition.glossary.imports
             //$i.line(`import * as gmoduleDefinition from "./import_moduleDefinition"`)
             $i.line(`import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"`)
             $i.line(`import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"`)

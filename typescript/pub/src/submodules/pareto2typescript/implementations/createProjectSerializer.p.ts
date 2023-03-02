@@ -162,7 +162,13 @@ export const $$: CcreateProjectSerializer = (
                     function doModuleDefinition($: gproject.T.ModuleDefinition<Annotation>, $i: gfp.IDirectory) {
 
                         $i.directory(`glossary`, ($i) => {
-                            $d.serializeGlossary($.glossary, $i)
+                            $d.serializeGlossary(
+                                {
+                                    'glossary': $.glossary,
+                                    'imports': $.imports,
+                                },
+                                $i
+                            )
                         })
 
                         $i.file("api.generated.ts", ($i) => {
@@ -174,7 +180,13 @@ export const $$: CcreateProjectSerializer = (
                         case 'glossary':
                             pl.cc($.type[1], ($) => {
                                 globals($i)
-                                $d.serializeGlossary($.glossary, $i)
+                                $d.serializeGlossary(
+                                    {
+                                        'glossary': $.glossary,
+                                        'imports': $.imports,
+                                    },
+                                    $i
+                                )
                             })
                             break
                         case 'library':
@@ -421,7 +433,13 @@ export const $$: CcreateProjectSerializer = (
                             })
                         })
                         $i.directory("glossary", ($i) => {
-                            $d.serializeGlossary($.glossary, $i)
+                            $d.serializeGlossary(
+                                {
+                                    'glossary': $.glossary,
+                                    'imports': $.imports,
+                                },
+                                $i
+                            )
                         })
 
                         // $i.file("testXXXXX.generated.ts", ($i) => {

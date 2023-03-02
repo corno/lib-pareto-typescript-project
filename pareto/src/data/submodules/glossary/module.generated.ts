@@ -88,9 +88,6 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                                 },
                             })]],
                         },
-                        "imports": {
-                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['string', null]],
-                        },
                         "interfaces": {
                             'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
                                 'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],

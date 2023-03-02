@@ -49,11 +49,11 @@ export const $$: CgetTestSet = ($) => {
                         'dependencies': d({}),
                         'glossary': {
                             'functions': d({}),
-                            'imports': d({}),
                             'parameters': d({}),
                             'types': d({}),
                             'interfaces': d({}),
                         },
+                        'imports': d({}),
                     },
                 }],
                 // 'type': ['resource', {

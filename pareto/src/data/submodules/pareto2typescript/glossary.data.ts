@@ -2,7 +2,7 @@ import * as pd from 'pareto-core-data'
 
 import {
     parametrizedTypeReference,
-    typeReference, interfaceReference, func, type, glossaryParameter,
+    typeReference, interfaceReference, func, type, glossaryParameter, member, group, parametrizedReference, dictionary, string,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -23,11 +23,15 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     }),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
+        "GlossarySerializationData": type(group({
+            "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
+            "imports": member(dictionary(string())),
+        })),
     }),
     'interfaces': d({
     }),
     'functions': d({
-        "SerializeGlossary": func(parametrizedTypeReference("glossary", { "Type": typeReference("Annotation") }, "Glossary"), null, interfaceReference("fp", "Directory"), null),
+        "SerializeGlossary": func(typeReference("GlossarySerializationData"), null, interfaceReference("fp", "Directory"), null),
         "SerializeImplementation": func(parametrizedTypeReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation"), null, interfaceReference("fp", "Directory"), null),
         "SerializeAPI": func(parametrizedTypeReference("api", { "Annotation": typeReference("Annotation") }, "API"), null, interfaceReference("fp", "Block"), null),
         "SerializeParetoEnvironment": func(typeReference("common", "Null"), null, interfaceReference("fp", "Directory"), null),

@@ -35,7 +35,7 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 }),
             })),
             "Glossary": globalType({}, group({
-                "imports": prop(dictionary(string("identifier"))),
+                //"imports": prop(dictionary(group({}))),
                 "parameters": prop(dictionary(group({}))),
                 "types": prop(dictionary(group({
                     "parameters": prop(dictionary(group({}))),

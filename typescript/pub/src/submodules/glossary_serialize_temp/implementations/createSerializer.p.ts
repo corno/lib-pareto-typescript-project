@@ -333,17 +333,17 @@ export const $$:CcreateSerializer = ($d) => {
     return ($, $i) => {
         $i.snippet(`{`)
         $i.indent(($i) => {
-            $i.nestedLine(($i) => {
-                $i.snippet(`'imports': d({`)
-                $i.indent(($i) => {
-                    $d.dictionaryForEach($.imports, ($) => {
-                        $i.nestedLine(($i) => {
-                            $i.snippet(`"${$.key}": "${$.value}",`)
-                        })
-                    })
-                })
-                $i.snippet(`}),`)
-            })
+            // $i.nestedLine(($i) => {
+            //     $i.snippet(`'imports': d({`)
+            //     $i.indent(($i) => {
+            //         $d.dictionaryForEach($.imports, ($) => {
+            //             $i.nestedLine(($i) => {
+            //                 $i.snippet(`"${$.key}": "${$.value}",`)
+            //             })
+            //         })
+            //     })
+            //     $i.snippet(`}),`)
+            // })
             $i.nestedLine(($i) => {
                 $i.snippet(`'parameters': d({`)
                 $i.indent(($i) => {

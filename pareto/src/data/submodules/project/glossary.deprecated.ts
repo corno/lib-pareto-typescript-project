@@ -45,6 +45,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         })),
         "ModuleDefinition": type(group({
             "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
+            "imports": member(dictionary(string())),
             "api": member(parametrizedReference("api", { "Annotation": typeReference("Annotation") }, "API")),
         })),
         "Project": type(group({
@@ -61,6 +62,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 }),
                 "glossary": group({
                     "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
+                    "imports": member(dictionary(string())),
                 }),
                 "library": group({
                     "main": member(reference("Module")),
@@ -73,6 +75,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "Test": type(group({
             "dependencies": member(dictionary(group({}))),
             "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
+            "imports": member(dictionary(string())),
         })),
     }),
     'interfaces': d({}),

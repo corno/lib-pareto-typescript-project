@@ -53,11 +53,19 @@ export namespace T {
         export type api<GPAnnotation> = gapi.T.API<T.Annotation<GPAnnotation>>
         
         export type glossary<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+        
+        export namespace imports {
+            
+            export type D<GPAnnotation> = string
+        }
+        
+        export type imports<GPAnnotation> = pt.Dictionary<string>
     }
     
     export type ModuleDefinition<GPAnnotation> = {
         readonly 'api': gapi.T.API<T.Annotation<GPAnnotation>>
         readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+        readonly 'imports': pt.Dictionary<string>
     }
     
     export namespace Project {
@@ -82,10 +90,18 @@ export namespace T {
             export namespace glossary {
                 
                 export type glossary<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+                
+                export namespace imports {
+                    
+                    export type D<GPAnnotation> = string
+                }
+                
+                export type imports<GPAnnotation> = pt.Dictionary<string>
             }
             
             export type glossary<GPAnnotation> = {
                 readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+                readonly 'imports': pt.Dictionary<string>
             }
             
             export namespace library {
@@ -154,6 +170,7 @@ export namespace T {
         export type _ltype<GPAnnotation> = 
             | ['glossary', {
                 readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+                readonly 'imports': pt.Dictionary<string>
             }]
             | ['library', {
                 readonly 'executables': pt.Dictionary<null>
@@ -177,6 +194,7 @@ export namespace T {
         readonly 'type': 
             | ['glossary', {
                 readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+                readonly 'imports': pt.Dictionary<string>
             }]
             | ['library', {
                 readonly 'executables': pt.Dictionary<null>
@@ -204,10 +222,18 @@ export namespace T {
         export type dependencies<GPAnnotation> = pt.Dictionary<null>
         
         export type glossary<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+        
+        export namespace imports {
+            
+            export type D<GPAnnotation> = string
+        }
+        
+        export type imports<GPAnnotation> = pt.Dictionary<string>
     }
     
     export type Test<GPAnnotation> = {
         readonly 'dependencies': pt.Dictionary<null>
         readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+        readonly 'imports': pt.Dictionary<string>
     }
 }

@@ -54,6 +54,10 @@ export const $$:CcreateProjectGenerator = ($d) => {
                             project,
                             $i,
                         )
+                        $d.validateFiles(
+                            project,
+                            $i,
+                        )
 
                     }
                 )

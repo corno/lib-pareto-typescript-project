@@ -12,8 +12,9 @@ export type CcreateParametersParser = ($d: {
 export type CcreateProjectGenerator = ($d: {
     readonly 'decorateDictionaryEntriesWithKey': gforeach.FDecorateDictionaryEntriesWithKey
     readonly 'logError': gcommon.FLog
-    readonly 'serializeProject': gpareto2typescript.FSerializeProject
-    readonly 'serializeTemplate': gpareto2typescript.FSerializeTemplate
+    readonly 'serializeProject': gpareto2typescript.FProjectToDirectory
+    readonly 'serializeTemplate': gpareto2typescript.FProjectToDirectory
+    readonly 'validateFiles': gpareto2typescript.FProjectToDirectory
 }) => gthis.FGenerateProject
 
 export type CgenerateProject = gthis.FGenerateProject

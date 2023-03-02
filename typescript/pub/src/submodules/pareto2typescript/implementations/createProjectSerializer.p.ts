@@ -6,80 +6,57 @@ import * as gproject from "../../project"
 
 import { CcreateProjectSerializer } from "../api"
 
+
 export const $$: CcreateProjectSerializer = (
     $d,
 ) => {
     return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.IDirectory) => {
-        const isResource = $.type[0] === 'resource'
-        function tsConfig(
-            $: {
-                isResource: boolean,
-                inlineSourceMap: boolean,
-            },
-            $i: gfp.IDirectory
-        ) {
-            $i.file("tsconfig.json", ($i) => {
-                $i.line(`{`)
-                $i.line(`  "compilerOptions": {`)
-                if (!$.isResource) { $i.line(`    "noLib": true,`) }
-                $i.line(`    "target": "ES2015",`)
-                $i.line(`    "module": "commonjs",`)
-                $i.line(`    "declaration": true,`)
-                $i.line(`    "outDir": "./dist",`)
-                $i.line(`    "rootDir": "./src",`)
-                $i.line(`    "strict": true,`)
-                $i.line(`    "esModuleInterop": true,`)
-                if ($.inlineSourceMap) { $i.line(`    "inlineSourceMap": true,`) }
-                $i.line(`    "forceConsistentCasingInFileNames": true`)
-                $i.line(`  },`)
-                $i.line(`  "include": [`)
-                $i.line(`    "./src"`)
-                $i.line(`  ]`)
-                $i.line(`}`)
-            })
-        }
-        function globals($i: gfp.IDirectory) {
-            $i.file("globals.generated.ts", ($i) => {
-                $i.line(`interface Array<T> {`)
-                $i.line(`    [n: number]: T`)
-                $i.line(`}`)
-                $i.line(`interface Boolean { }`)
-                $i.line(`interface CallableFunction { }`)
-                $i.line(`interface Function { }`)
-                $i.line(`interface IArguments { }`)
-                $i.line(`interface NewableFunction { }`)
-                $i.line(`interface Number { }`)
-                $i.line(`interface Object { }`)
-                $i.line(`interface RegExp { }`)
-                $i.line(`interface String { }`)
-                $i.line(``)
-            })
-        }
-        //$i.allowed("tmp") //already defined in 'generateTemplate'
-        $i.allowed(".git")
-        $i.directory("scripts", ($i) => {
-            $i.allowed("node_modules")
-            $i.allowed("scripts")
-            $i.allowed("initialize.sh")
-            $i.allowed("package.json")
-            $i.allowed("package-lock.json")
-        })
-        $i.allowed("prebuild")
-        $i.directory("pareto", ($i) => {
-            $i.allowed("dist")
-            $i.allowed("node_modules")
-            $i.allowed("tsconfig.json")
-            $i.allowed("package.json")
-            $i.allowed("package-lock.json")
-            $i.directory("src", ($i) => {
-                $i.allowed("globals.generated.ts")
-                $i.directory("bin", ($i) => {
-                    $i.allowed("generateCode.generated.ts")
-                })
-                $i.allowed("data")
-            })
-        })
+
         $i.directory("typescript", ($i) => {
+            function tsConfig(
+                $: {
+                    isResource: boolean,
+                    inlineSourceMap: boolean,
+                },
+                $i: gfp.IDirectory
+            ) {
+                $i.file("tsconfig.json", ($i) => {
+                    $i.line(`{`)
+                    $i.line(`  "compilerOptions": {`)
+                    if (!$.isResource) { $i.line(`    "noLib": true,`) }
+                    $i.line(`    "target": "ES2015",`)
+                    $i.line(`    "module": "commonjs",`)
+                    $i.line(`    "declaration": true,`)
+                    $i.line(`    "outDir": "./dist",`)
+                    $i.line(`    "rootDir": "./src",`)
+                    $i.line(`    "strict": true,`)
+                    $i.line(`    "esModuleInterop": true,`)
+                    if ($.inlineSourceMap) { $i.line(`    "inlineSourceMap": true,`) }
+                    $i.line(`    "forceConsistentCasingInFileNames": true`)
+                    $i.line(`  },`)
+                    $i.line(`  "include": [`)
+                    $i.line(`    "./src"`)
+                    $i.line(`  ]`)
+                    $i.line(`}`)
+                })
+            }
+            function globals($i: gfp.IDirectory) {
+                $i.file("globals.generated.ts", ($i) => {
+                    $i.line(`interface Array<T> {`)
+                    $i.line(`    [n: number]: T`)
+                    $i.line(`}`)
+                    $i.line(`interface Boolean { }`)
+                    $i.line(`interface CallableFunction { }`)
+                    $i.line(`interface Function { }`)
+                    $i.line(`interface IArguments { }`)
+                    $i.line(`interface NewableFunction { }`)
+                    $i.line(`interface Number { }`)
+                    $i.line(`interface Object { }`)
+                    $i.line(`interface RegExp { }`)
+                    $i.line(`interface String { }`)
+                    $i.line(``)
+                })
+            }
             $i.directory("pub", ($i) => {
                 $i.allowed("dist")
                 $i.allowed("node_modules")
@@ -131,14 +108,14 @@ export const $$: CcreateProjectSerializer = (
                     switch ($.type[0]) {
                         case 'glossary':
                             pl.cc($.type[1], ($) => {
-    
+
                             })
                             break
                         case 'library':
                             pl.cc($.type[1], ($) => {
                                 $d.enrichedDictionaryForEach($.executables, {
                                     onEmpty: () => {
-    
+
                                     },
                                     onNotEmpty: ($c) => {
                                         $i.line(`  "bin": {`)
@@ -148,14 +125,14 @@ export const $$: CcreateProjectSerializer = (
                                         $i.line(`  },`)
                                     }
                                 })
-    
+
                             })
                             break
                         case 'resource':
                             pl.cc($.type[1], ($) => {
                                 $d.enrichedDictionaryForEach($.devDependencies, {
                                     onEmpty: () => {
-    
+
                                     },
                                     onNotEmpty: ($c) => {
                                         $i.line(`  "devDependencies": {`)
@@ -165,7 +142,7 @@ export const $$: CcreateProjectSerializer = (
                                         $i.line(`  },`)
                                     }
                                 })
-    
+
                             })
                             break
                         default: pl.au($.type[0])
@@ -183,18 +160,14 @@ export const $$: CcreateProjectSerializer = (
                 })
                 $i.directory("src", ($i) => {
                     function doModuleDefinition($: gproject.T.ModuleDefinition<Annotation>, $i: gfp.IDirectory) {
-    
+
                         $i.directory(`glossary`, ($i) => {
                             $d.serializeGlossary($.glossary, $i)
                         })
-    
+
                         $i.file("api.generated.ts", ($i) => {
                             $d.serializeAPI($.api, $i)
-    
-                        })
-                        $i.file("index.ts", ($i) => {
-                            $i.line(`export * from "./glossary"`)
-                            $i.line(`export * from "./api.generated"`)
+
                         })
                     }
                     switch ($.type[0]) {
@@ -206,14 +179,14 @@ export const $$: CcreateProjectSerializer = (
                             break
                         case 'library':
                             pl.cc($.type[1], ($) => {
-    
+
                                 function doModule($: gproject.T.Module<Annotation>, $i: gfp.IDirectory) {
                                     const definition = $.definition
                                     $i.allowed("shorthands.ts")
-                                    $i.directory("api", ($i) => {
+                                    $i.directory("definition", ($i) => {
                                         doModuleDefinition($.definition, $i)
                                     })
-    
+
                                     switch ($.implementation[0]) {
                                         case 'pareto':
                                             pl.cc($.implementation[1], ($) => {
@@ -225,7 +198,7 @@ export const $$: CcreateProjectSerializer = (
                                             pl.cc($.implementation[1], ($) => {
                                                 $i.directory("implementations", ($i) => {
                                                     $d.dictionaryForEach(definition.api.algorithms, ($) => {
-                                                        $i.allowed(`${$.key}.${isResource ? `native` : `p`}.ts`)
+                                                        $i.allowed(`${$.key}.p.ts`)
                                                     })
                                                 })
                                             })
@@ -246,7 +219,7 @@ export const $$: CcreateProjectSerializer = (
                                                 default: return pl.au($.implementation[0])
                                             }
                                         })
-                                        $i.line(`import { API } from "./api"`)
+                                        $i.line(`import { API } from "./definition/api"`)
                                         $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                             $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
                                         })
@@ -262,14 +235,15 @@ export const $$: CcreateProjectSerializer = (
                                         })
                                     })
                                     $i.file("index.ts", ($i) => {
-                                        $i.line(`export * from "./api"`)
+                                        $i.line(`export * from "./definition/glosary"`)
+                                        $i.line(`export * from "./definition/api"`)
                                         $i.line(`export * from "./implementation.generated"`)
                                     })
                                 }
                                 globals($i)
                                 $d.enrichedDictionaryForEach($.executables, {
                                     'onEmpty': () => {
-    
+
                                     },
                                     'onNotEmpty': ($c) => {
                                         $i.directory("bin", ($i) => {
@@ -305,18 +279,18 @@ export const $$: CcreateProjectSerializer = (
                             break
                         case 'resource':
                             pl.cc($.type[1], ($) => {
-                                $i.directory("api", ($i) => {
+                                $i.directory("definition", ($i) => {
                                     doModuleDefinition($.definition, $i)
                                 })
-    
+
                                 $i.directory("implementations", ($i) => {
                                     $d.dictionaryForEach($.definition.api.algorithms, ($) => {
-                                        $i.allowed(`${$.key}.${isResource ? `native` : `p`}.ts`)
+                                        $i.allowed(`${$.key}.native.ts`)
                                     })
                                 })
                                 $i.file("implementation.generated.ts", ($i) => {
-    
-                                    $i.line(`import { API } from "./api"`)
+
+                                    $i.line(`import { API } from "./definition/api"`)
                                     $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                         $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.native"`)
                                     })
@@ -333,7 +307,8 @@ export const $$: CcreateProjectSerializer = (
                                 })
                                 $i.allowed("native")
                                 $i.file("index.ts", ($i) => {
-                                    $i.line(`export * from "./api"`)
+                                    $i.line(`export * from "./definition/api"`)
+                                    $i.line(`export * from "./definition/glossary"`)
                                     $i.line(`export { $a } from "./implementation.generated"`)
                                 })
                             })
@@ -350,7 +325,7 @@ export const $$: CcreateProjectSerializer = (
                 )
             })
             function doTest($: gproject.T.Test<Annotation>, $i: gfp.IDirectory) {
-    
+
                 $i.directory("test", ($i) => {
                     $i.allowed("data")
                     $i.allowed("dist")
@@ -389,7 +364,7 @@ export const $$: CcreateProjectSerializer = (
                         $i.allowed("data")
                         $i.directory("modules", ($i) => {
                             $i.directory("main", ($i) => {
-                                $i.directory("api", ($i) => {
+                                $i.directory("definition", ($i) => {
                                     $i.file("api.generated.ts", ($i) => {
                                         $i.line(`import * as pt from 'pareto-core-types'`)
                                         $i.line(``)
@@ -404,13 +379,6 @@ export const $$: CcreateProjectSerializer = (
                                         $i.line(`    'main': Cmain`)
                                         $i.line(`}`)
                                     })
-                                    $i.file("types.generated.ts", ($i) => {
-                                        $i.line(`import * as pt from 'pareto-core-types'`)
-                                    })
-                                    $i.file("index.ts", ($i) => {
-                                        $i.line(`export * from "./types.generated"`)
-                                        $i.line(`export * from "./api.generated"`)
-                                    })
                                 })
                                 $i.directory("implementations", ($i) => {
                                     $i.allowed("getTestSet.p.ts")
@@ -421,13 +389,13 @@ export const $$: CcreateProjectSerializer = (
                                         $i.line(`import * as gmain from "res-pareto-main"`)
                                         $i.line(`import * as gtest from "lib-pareto-test"`)
                                         $i.line(``)
-                                        $i.line(`import { $a } from "../index"`)
+                                        $i.line(`import { getTestSet } from "./getTestSet.p.ts"`)
                                         $i.line(``)
-                                        $i.line(`import { Cmain } from "../api"`)
+                                        $i.line(`import { Cmain } from "../definition/api"`)
                                         $i.line(``)
                                         $i.line(`export const $$:Cmain = ($) => {`)
                                         $i.line(`    gtest.$a.createTestProgram({`)
-                                        $i.line(`        'getTestSet': $a.getTestSet,`)
+                                        $i.line(`        'getTestSet': getTestSet,`)
                                         $i.line(`        'log': gmain.$a.log,`)
                                         $i.line(`        'logError': gmain.$a.logError,`)
                                         $i.line(`        'onTestErrors': gmain.$a.setExitCodeToFailed`)
@@ -436,13 +404,14 @@ export const $$: CcreateProjectSerializer = (
                                     })
                                 })
                                 $i.file("export.generated.ts", ($i) => {
-                                    $i.line(`import { API } from "./api"`)
+                                    $i.line(`import { API } from "./definition/api"`)
+                                    $i.line(``)
                                     $i.line(`import { $$ as imain } from "./implementations/main.generated"`)
                                     $i.line(`import { $$ as igetTestSet } from "./implementations/getTestSet.p"`)
                                     $i.line(``)
                                     $i.line(`export const $a: API = {`)
-                                    $i.line(`    "main": imain,`)
-                                    $i.line(`    "getTestSet": igetTestSet,`)
+                                    $i.line(`    'main': imain,`)
+                                    $i.line(`    'getTestSet': igetTestSet,`)
                                     $i.line(`}`)
                                 })
                                 $i.file("index.ts", ($i) => {
@@ -454,7 +423,7 @@ export const $$: CcreateProjectSerializer = (
                         $i.directory("glossary", ($i) => {
                             $d.serializeGlossary($.glossary, $i)
                         })
-    
+
                         // $i.file("testXXXXX.generated.ts", ($i) => {
                         //     $i.line(`import * as pt from 'pareto-core-types'`)
                         //     $i.line(`import * as pd from 'pareto-core-data'`)
@@ -587,7 +556,7 @@ export const $$: CcreateProjectSerializer = (
             switch ($.type[0]) {
                 case 'glossary':
                     pl.cc($.type[1], ($) => {
-    
+
                     })
                     break
                 case 'library':
@@ -598,28 +567,11 @@ export const $$: CcreateProjectSerializer = (
                 case 'resource':
                     pl.cc($.type[1], ($) => {
                         doTest($.test, $i)
-    
+
                     })
                     break
                 default: pl.au($.type[0])
             }
-
         })
-        $i.file(".gitignore", ($i) => {
-            $i.line(`/scripts/node_modules/`)
-            $i.line(`/scripts/scripts/`)
-            $i.line(`/prebuild/dist/`)
-            $i.line(`/prebuild/node_modules/`)
-            $i.line(`/pareto/dist/`)
-            $i.line(`/pareto/node_modules/`)
-            $i.line(`/typescript/pub/dist/`)
-            $i.line(`/typescript/pub/node_modules/`)
-            $i.line(`/typescript/pub/package.json`)
-            $i.line(`/typescript/test/dist/`)
-            $i.line(`/typescript/test/node_modules/`)
-            $i.line(`/typescript/test/package.json`)
-            $i.line(`/tmp`)
-        })
-        $i.allowed("README.md")
     }
 }

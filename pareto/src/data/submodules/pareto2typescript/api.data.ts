@@ -42,7 +42,9 @@ export const $: gapi.T.API<pd.SourceLocation> = {
             "createQuotedString": functionReference("ts", {}, "CreateQuotedString"),
             "createBacktickedString": functionReference("ts", {}, "CreateBacktickedString"),
         })),
-        "createProjectSerializer": algorithm(functionReference("this", {}, "SerializeProject"), constructor(null, {
+        "createFilesValidator": algorithm(functionReference("this", {}, "ProjectToDirectory"), constructor(null, {
+        })),
+        "createProjectSerializer": algorithm(functionReference("this", {}, "ProjectToDirectory"), constructor(null, {
             "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
             "enrichedDictionaryForEach": functionReference("foreach", {}, "EnrichedDictionaryForEach"),
             "serializeGlossary": functionReference("this", {}, "SerializeGlossary"),
@@ -61,7 +63,7 @@ export const $: gapi.T.API<pd.SourceLocation> = {
             "createApostrophedString": functionReference("ts", {}, "CreateApostrophedString"),
             "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),
         })),
-        "createTemplateSerializer": algorithm(functionReference("this", {}, "SerializeTemplate"), constructor(null, {
+        "createTemplateSerializer": algorithm(functionReference("this", {}, "ProjectToDirectory"), constructor(null, {
             "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
             "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),
             "createApostrophedString": functionReference("ts", {}, "CreateApostrophedString"),

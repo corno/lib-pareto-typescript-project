@@ -8,7 +8,7 @@ import { $a } from ".."
 
 import { CgenerateProject } from "../api"
 
-export const $$:CgenerateProject = ($) => {
+export const $$: CgenerateProject = ($) => {
     const a = gforeach.$a.arrayForEach
     const d = gforeach.$a.createDictionaryForEach({
         compare: gcoll.$a.localeIsABeforeB,
@@ -20,6 +20,8 @@ export const $$:CgenerateProject = ($) => {
 
     $a.createProjectGenerator(
         {
+
+            'validateFiles': gpareto2typescript.$a.createFilesValidator({}),
             'serializeProject': gpareto2typescript.$a.createProjectSerializer(
                 {
                     'dictionaryForEach': d,

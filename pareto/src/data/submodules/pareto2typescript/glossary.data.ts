@@ -32,8 +32,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "SerializeAPI": func(parametrizedTypeReference("api", { "Annotation": typeReference("Annotation") }, "API"), null, interfaceReference("fp", "Block"), null),
         "SerializeParetoEnvironment": func(typeReference("common", "Null"), null, interfaceReference("fp", "Directory"), null),
         "SerializeBuildEnvironment": func(typeReference("common", "Null"), null, interfaceReference("fp", "Directory"), null),
-        "SerializeProject": func(parametrizedTypeReference("project", { "Annotation": typeReference("Annotation") }, "Project"), null, interfaceReference("fp", "Directory"), null),
-        "SerializeTemplate": func(parametrizedTypeReference("project", { "Annotation": typeReference("Annotation") }, "Project"), null, interfaceReference("fp", "Directory"), null),
+        "ProjectToDirectory": func(parametrizedTypeReference("project", { "Annotation": typeReference("Annotation") }, "Project"), null, interfaceReference("fp", "Directory"), null),
         "SerializeStates": func(parametrizedTypeReference("algorithm", { "Annotation": typeReference("Annotation") }, "States"), null, interfaceReference("fp", "Block"), null),
     }),
 }

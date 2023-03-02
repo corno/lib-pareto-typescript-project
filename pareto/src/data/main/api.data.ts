@@ -21,8 +21,9 @@ export const $: gapi.T.API<pd.SourceLocation> = {
         "createProjectGenerator": algorithm(functionReference("this", {}, "GenerateProject"), constructor(null, {
             "decorateDictionaryEntriesWithKey": functionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
             "logError": functionReference("common", {}, "Log"),
-            "serializeProject": functionReference("pareto2typescript", {}, "SerializeProject"),
-            "serializeTemplate": functionReference("pareto2typescript", {}, "SerializeTemplate"),
+            "validateFiles": functionReference("pareto2typescript", {}, "ProjectToDirectory"),
+            "serializeProject": functionReference("pareto2typescript", {}, "ProjectToDirectory"),
+            "serializeTemplate": functionReference("pareto2typescript", {}, "ProjectToDirectory"),
         })),
     })
 }

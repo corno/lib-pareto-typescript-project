@@ -16,6 +16,8 @@ export type CcreateAPISerializer = ($d: {
     readonly 'dictionaryForEach': gforeach.FDictionaryForEach
 }) => gthis.FSerializeAPI
 
+export type CcreateFilesValidator = ($d: {}) => gthis.FProjectToDirectory
+
 export type CcreateGlossarySerializer = ($d: {
     readonly 'createApostrophedString': gts.FCreateApostrophedString
     readonly 'createBacktickedString': gts.FCreateBacktickedString
@@ -46,7 +48,7 @@ export type CcreateProjectSerializer = ($d: {
     readonly 'serializeAPI': gthis.FSerializeAPI
     readonly 'serializeGlossary': gthis.FSerializeGlossary
     readonly 'serializeImplementation': gthis.FSerializeImplementation
-}) => gthis.FSerializeProject
+}) => gthis.FProjectToDirectory
 
 export type CcreateStatesSerializer = ($d: {
     readonly 'arrayForEach': gforeach.FArrayForEach
@@ -63,10 +65,11 @@ export type CcreateTemplateSerializer = ($d: {
     readonly 'createIdentifier': gts.FCreateIdentifier
     readonly 'createQuotedString': gts.FCreateQuotedString
     readonly 'dictionaryForEach': gforeach.FDictionaryForEach
-}) => gthis.FSerializeTemplate
+}) => gthis.FProjectToDirectory
 
 export type API = {
     createAPISerializer: CcreateAPISerializer
+    createFilesValidator: CcreateFilesValidator
     createGlossarySerializer: CcreateGlossarySerializer
     createImplementationSerializer: CcreateImplementationSerializer
     createProjectSerializer: CcreateProjectSerializer

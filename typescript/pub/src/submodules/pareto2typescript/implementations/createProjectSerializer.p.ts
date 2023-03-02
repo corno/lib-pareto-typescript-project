@@ -296,7 +296,7 @@ export const $$: CcreateProjectSerializer = (
                                     })
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`export const $a: API = {`)
+                                        $i.snippet(`export const $r: API = {`)
                                         $i.indent(($i) => {
                                             $d.dictionaryForEach($.definition.api.algorithms, ($) => {
                                                 $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
@@ -309,7 +309,7 @@ export const $$: CcreateProjectSerializer = (
                                 $i.file("index.ts", ($i) => {
                                     $i.line(`export * from "./definition/api.generated"`)
                                     $i.line(`export * from "./definition/glossary"`)
-                                    $i.line(`export { $a } from "./implementation.generated"`)
+                                    $i.line(`export { $r } from "./implementation.generated"`)
                                 })
                             })
                             break

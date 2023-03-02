@@ -1,2 +1,2 @@
-export * from "./api"
+export * from "./definition/api.generated"
 export * from "./export.generated"

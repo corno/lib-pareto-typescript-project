@@ -4,7 +4,7 @@ import * as gproject from "lib-pareto-typescript-project/dist/submodules/project
 
 import { $ as glossary } from "./glossary.deprecated"
 import { $ as api } from "./api.deprecated"
-import { external, sibling } from 'lib-pareto-typescript-project/dist/submodules/project/shorthands'
+import { external, sibling } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
 const d = pd.d
 

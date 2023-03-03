@@ -3,8 +3,10 @@ import * as pd from 'pareto-core-data'
 import {
     external,
     submodule,
-    tempSubmodule
+    tempSubmodule,
+    this_
 } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
+
 
 import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
@@ -31,7 +33,7 @@ export const $: gproject.T.Project._ltype.library.main<pd.SourceLocation> = {
                 "common": external("glo-pareto-common"),
                 "foreach": external("res-pareto-foreach"),
                 "pareto2typescript": submodule("pareto2typescript"),
-                "this": submodule("pareto2typescript/../../main"), //FIXME!!!!
+                "this": this_(),
             }),
         },
     },

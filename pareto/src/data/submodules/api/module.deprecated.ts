@@ -4,7 +4,7 @@ import * as gproject from "lib-pareto-typescript-project/dist/submodules/project
 
 import { $ as glossary } from "./glossary.deprecated"
 import { $ as api } from "./api.deprecated"
-import { external, sibling } from 'lib-pareto-typescript-project/dist/submodules/project/shorthands'
+import { external, sibling, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
 const d = pd.d
 
@@ -25,7 +25,7 @@ export const $: gproject.T.Project._ltype.library.submodules.D<pd.SourceLocation
             'imports': d({
                 "collation": external("res-pareto-collation"),
                 "foreach": external("res-pareto-foreach"),
-                "this": sibling("api"),//FIXME self reference
+                "this": this_(),
             }),
         },
     },

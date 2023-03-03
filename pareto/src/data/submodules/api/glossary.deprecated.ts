@@ -12,11 +12,6 @@ import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossa
 const d = pd.d
 
 export const $: gglossary.T.Glossary<pd.SourceLocation> = {
-    'imports': d({
-        "glossary": "../../../glossary",
-        "fp": "lib-fountain-pen",
-        "common": "glo-pareto-common",
-    }),
     'parameters': d({
         "Annotation": null,
     }),
@@ -34,7 +29,6 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "type": member(string()),
         })),
         "API": type(group({
-            "imports": member(dictionary(string())),
             "algorithms": member(dictionary(group({
                 "definition": member(reference("FunctionReference")),
                 "type": member(taggedUnion({

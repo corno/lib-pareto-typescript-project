@@ -19,13 +19,6 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({
         "Annotation": null,
     }),
-    'imports': d({
-        "pareto2typescript": "../../../submodules/pareto2typescript",
-        "common": "glo-pareto-common",
-        "fp": "lib-fountain-pen",
-        "main": "res-pareto-main",
-        "project": "../../../submodules/project",
-    }),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
         "ArgumentError": type(taggedUnion({

@@ -13,40 +13,18 @@ import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossa
 const d = pd.d
 
 export const $: gglossary.T.Glossary<pd.SourceLocation> = {
-    'imports': d({
-        "algorithm": "../../../algorithm",
-        "api": "../../../api",
-        "common": "glo-pareto-common",
-        "fp": "lib-fountain-pen",
-        "glossary": "../../../glossary",
-    }),
     'parameters': d({
         "Annotation": null,
     }),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
         "AlgorithmImplementation": type(group({})),
-        "Implementation": type(dictionary(reference("AlgorithmImplementation"))),
-        "Module": type(group({
-            "definition": member(reference("ModuleDefinition")),
-            // "type": member(taggedUnion({
-            //     "binding": nll(),
-            //     "resource": nll(),
-            //     "logic": nll(),
-
-            // }))
-            "implementation": member(taggedUnion({
-                "typescript": group({
-                    //  parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation")
-                }),
-                "pareto": group({}),
-            })),
-            //"states": member(parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "States"), true)
-        })),
-        "ModuleDefinition": type(group({
-            "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
-            "imports": member(dictionary(string())),
-            "api": member(parametrizedReference("api", { "Annotation": typeReference("Annotation") }, "API")),
+        //"Implementation": type(dictionary(reference("AlgorithmImplementation"))),
+        "Implementation": type(taggedUnion({
+            "typescript": group({
+                //  parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "AlgorithmImplementation")
+            }),
+            "pareto": group({}),
         })),
         "Project": type(group({
             "author": member(string()),
@@ -57,7 +35,16 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 "resource": group({
                     "nativeDependencies": member(dictionary(group({}))),
                     "devDependencies": member(dictionary(group({}))),
-                    "definition": member(reference("ModuleDefinition")),
+                    "definition": member(group({
+                        "glossary": member(group({
+                            "root": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
+                            "imports": member(dictionary(string())),
+                        })),
+                        "api": member(group({
+                            "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
+                            "imports": member(dictionary(string())),
+                        })),
+                    })),
                     "test": member(reference("Test")),
                 }),
                 "glossary": group({
@@ -65,8 +52,45 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                     "imports": member(dictionary(string())),
                 }),
                 "library": group({
-                    "main": member(reference("Module")),
-                    "submodules": member(dictionary(reference("Module"))),
+                    "main": member(group({
+                        "definition": member(group({
+                            "glossary": member(group({
+                                "root": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
+                                "imports": member(dictionary(taggedUnion({
+                                    "temp submodule": string(),
+                                    "external": string(),
+                                }))),
+                            })),
+                            "api": member(group({
+                                "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
+                                "imports": member(dictionary(taggedUnion({
+                                    "submodule": string(),
+                                    "external": string(),
+                                }))),
+                            })),
+                        })),
+                        "implementation": member(reference("Implementation")),
+                    })),
+                    "submodules": member(dictionary(group({
+                        "definition": member(group({
+                            "glossary": member(group({
+                                "root": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
+                                "imports": member(dictionary(taggedUnion({
+                                    "sibling": string(),
+                                    "main": group({}),
+                                    "external": string(),
+                                }))),
+                            })),
+                            "api": member(group({
+                                "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
+                                "imports": member(dictionary(taggedUnion({
+                                    "sibling": string(),
+                                    "external": string(),
+                                }))),
+                            })),
+                        })),
+                        "implementation": member(reference("Implementation")),
+                    }))),
                     "executables": member(dictionary(group({}))),
                     "test": member(reference("Test")),
                 }),
@@ -80,7 +104,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     }),
     'interfaces': d({}),
     'functions': d({
-        "Serialize": func(typeReference("Module"), null, interfaceReference("fp", "Line"), null),
-        "SerializeWithContext": func(typeReference("Module"), null, interfaceReference("fp", "Directory"), null),
+        // "Serialize": func(typeReference("Module"), null, interfaceReference("fp", "Line"), null),
+        // "SerializeWithContext": func(typeReference("Module"), null, interfaceReference("fp", "Directory"), null),
     }),
 }

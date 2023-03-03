@@ -1,7 +1,6 @@
 import * as pl from 'pareto-core-lib'
 
 import * as gapi from "../definition/glossary"
-import * as gglossary from "../../glossary"
 import * as gfp from "lib-fountain-pen"
 
 import { CcreateSerializer } from "../definition/api.generated"
@@ -80,17 +79,6 @@ export const $$: CcreateSerializer = ($d) => {
         $i.snippet(`{`)
         $i.indent(($i) => {
             $i.nestedLine(($i) => {
-                $i.snippet(`'imports': d({`)
-                $i.indent(($i) => {
-                    $d.dictionaryForEach($.imports, ($) => {
-                        $i.nestedLine(($i) => {
-                            $i.snippet(`"${$.key}": "${$.value}",`)
-                        })
-                    })
-                })
-                $i.snippet(`}),`)
-            })
-            $i.nestedLine(($i) => {
                 $i.snippet(`'algorithms': d({`)
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.algorithms, ($) => {
@@ -116,9 +104,6 @@ export const $$: CcreateSerializer = ($d) => {
                                                         doOptional($['configuration data'], $i, ($, $i) => {
                                                             serializeTypeReference($, $i)
                                                         })
-                                                        if ($['configuration data'] === null) {
-                                                        } else {
-                                                        }
                                                         $i.snippet(`,`)
                                                     })
                                                     $i.nestedLine(($i) => {

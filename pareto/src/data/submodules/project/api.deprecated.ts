@@ -16,15 +16,15 @@ export const $: gapi.T.API<pd.SourceLocation> = {
         "this": "./glossary"
     }),
     'algorithms': d({
-        "createSerializer": algorithm(functionReference("this", {}, "Serialize"), constructor(null, {
-            "serializeAPI": functionReference("api", {}, "Serialize"),
-            "serializeGlossary": functionReference("glossary_serialize_temp", {}, "Serialize"),
-            "serializeImplementation": functionReference("algorithm", {}, "SerializeImplementation"),
-            "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
-            "enrichedArrayForEach": functionReference("foreach", {}, "EnrichedArrayForEach"),
-        })),
-        "createSerializerWithContext": algorithm(functionReference("this", {}, "SerializeWithContext"), constructor(null, {
-            "serialize": functionReference("this", {}, "Serialize"),
-        })),
+        // "createSerializer": algorithm(functionReference("this", {}, "Serialize"), constructor(null, {
+        //     "serializeAPI": functionReference("api", {}, "Serialize"),
+        //     "serializeGlossary": functionReference("glossary_serialize_temp", {}, "Serialize"),
+        //     "serializeImplementation": functionReference("algorithm", {}, "SerializeImplementation"),
+        //     "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
+        //     "enrichedArrayForEach": functionReference("foreach", {}, "EnrichedArrayForEach"),
+        // })),
+        // "createSerializerWithContext": algorithm(functionReference("this", {}, "SerializeWithContext"), constructor(null, {
+        //     "serialize": functionReference("this", {}, "Serialize"),
+        // })),
     })
 }

@@ -28,48 +28,48 @@ export const $$: CgetTestSet = ($) => {
         })
 
     }
-    function generateModule<Annotation>(dir: string, module: gproject.T.Module<Annotation>) {
-        gpub.$a.generateProject({
-            'mainData': {
-                'arguments': pm.wrapRawArray([dir]),
-            },
-            'project': {
-                'author': "Corno",
-                'description': "TBD",
-                'license': "TBD",
-                'dependencies': d({
-                    "lib-pareto-fubar": null
-                }),
-                'type': ['library', {
+    // function generateModule<Annotation>(dir: string, module: gproject.T.Module<Annotation>) {
+    //     gpub.$a.generateProject({
+    //         'mainData': {
+    //             'arguments': pm.wrapRawArray([dir]),
+    //         },
+    //         'project': {
+    //             'author': "Corno",
+    //             'description': "TBD",
+    //             'license': "TBD",
+    //             'dependencies': d({
+    //                 "lib-pareto-fubar": null
+    //             }),
+    //             'type': ['library', {
 
-                    'main': module,
-                    'submodules': d<gproject.T.Module<Annotation>>({}),
-                    'executables': d({}),
-                    'test': {
-                        'dependencies': d({}),
-                        'glossary': {
-                            'functions': d({}),
-                            'parameters': d({}),
-                            'types': d({}),
-                            'interfaces': d({}),
-                        },
-                        'imports': d({}),
-                    },
-                }],
-                // 'type': ['resource', {
-                //     'devDependencies': d({
-                //         "a": {},
-                //         "b": {},
-                //     }),
-                //     'definition': definition,
-                //     'test': {
-                //         'dependencies': d({}),
-                //     },
-                // }],
-            },
-        })
+    //                 'main': module,
+    //                 'submodules': d<gproject.T.Module<Annotation>>({}),
+    //                 'executables': d({}),
+    //                 'test': {
+    //                     'dependencies': d({}),
+    //                     'glossary': {
+    //                         'functions': d({}),
+    //                         'parameters': d({}),
+    //                         'types': d({}),
+    //                         'interfaces': d({}),
+    //                     },
+    //                     'imports': d({}),
+    //                 },
+    //             }],
+    //             // 'type': ['resource', {
+    //             //     'devDependencies': d({
+    //             //         "a": {},
+    //             //         "b": {},
+    //             //     }),
+    //             //     'definition': definition,
+    //             //     'test': {
+    //             //         'dependencies': d({}),
+    //             //     },
+    //             // }],
+    //         },
+    //     })
 
-    }
+    // }
     genProj(`${$XXX.testDirectory}/TOKENCONSUMER`, tc)
     //genProj(`${$XXX.testDirectory}/project`, module.definition)
     // pub.$a.createTestProgram(null, {

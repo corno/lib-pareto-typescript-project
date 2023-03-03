@@ -71,13 +71,6 @@ export namespace T {
                 }]
                 | ['reference', null]
         }>
-        
-        export namespace imports {
-            
-            export type D<GPAnnotation> = string
-        }
-        
-        export type imports<GPAnnotation> = pt.Dictionary<string>
     }
     
     export type API<GPAnnotation> = {
@@ -90,7 +83,6 @@ export namespace T {
                 }]
                 | ['reference', null]
         }>
-        readonly 'imports': pt.Dictionary<string>
     }
     
     export namespace Context {

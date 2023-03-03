@@ -58,9 +58,6 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
             }),
         },
         'glossary': {
-            'imports': d({
-                "fp": "lib-fountain-pen",
-            }),
             'parameters': d({
                 "Annotation": null,
             }),
@@ -85,6 +82,9 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
                 },
             }),
         },
+        'imports': d({
+            "fp": "lib-fountain-pen",
+        }),
     },
     'implementation': ['typescript', null],
 }

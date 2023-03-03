@@ -45,7 +45,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                         "api": member(group({
                             "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
                             "imports": member(dictionary(taggedUnion({
-                                "this": string(),
+                                "this": group({}),
                                 "external": string(),
                             }))),
                         })),
@@ -71,7 +71,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                             "api": member(group({
                                 "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
                                 "imports": member(dictionary(taggedUnion({
-                                    "this": string(),
+                                    "this": group({}),
                                     "submodule": string(),
                                     "external": string(),
                                 }))),
@@ -92,7 +92,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                             "api": member(group({
                                 "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
                                 "imports": member(dictionary(taggedUnion({
-                                    "this": string(),
+                                    "this": group({}),
                                     "sibling": string(),
                                     "external": string(),
                                 }))),
@@ -109,7 +109,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "dependencies": member(dictionary(group({}))),
             "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
             "imports": member(dictionary(taggedUnion({
-                "this": string(),
+                "this": group({}),
                 "pub": string(),
                 "external": string(),
             }))),

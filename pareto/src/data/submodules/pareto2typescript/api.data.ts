@@ -7,16 +7,6 @@ import * as gapi from "lib-pareto-typescript-project/dist/submodules/api"
 const d = pd.d
 
 export const $: gapi.T.API<pd.SourceLocation> = {
-    'imports': d({
-        "collation": "res-pareto-collation",
-        "dictionary": "res-pareto-dictionary",
-        "glossary": "../../glossary",
-        "main": "res-pareto-main",
-        "project": "../../project",
-        "foreach": "res-pareto-foreach",
-        "ts": "res-typescript",
-        "this": "./glossary",
-    }),
     'algorithms': d({
         "createAPISerializer": algorithm(functionReference("this", {}, "SerializeAPI"), constructor(null, {
             "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),

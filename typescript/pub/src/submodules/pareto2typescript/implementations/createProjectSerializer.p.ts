@@ -348,11 +348,11 @@ export const $$: CcreateProjectSerializer = (
                                                                                     })
                                                                                 case 'sibling':
                                                                                     return pl.cc($[1], ($) => {
-                                                                                        return `../../${$}`
+                                                                                        return `../../../${$}`
                                                                                     })
                                                                                 case 'main':
                                                                                     return pl.cc($[1], ($) => {
-                                                                                        return `../../../main`
+                                                                                        return `../../../../main`
                                                                                     })
                                                                                 default: return pl.au($[0])
                                                                             }

@@ -1,5 +1,11 @@
 import * as pd from 'pareto-core-data'
 
+import {
+    external,
+    submodule,
+    tempSubmodule
+} from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
+
 import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as glossary } from "./glossary.data"
@@ -7,17 +13,27 @@ import { $ as api } from "./api.data"
 
 const d = pd.d
 
-export const $: gproject.T.Module<pd.SourceLocation> = {
+export const $: gproject.T.Project._ltype.library.main<pd.SourceLocation> = {
     'definition': {
-        'glossary': glossary,
-        'imports': d({
-            "pareto2typescript": "../../../submodules/pareto2typescript",
-            "common": "glo-pareto-common",
-            "fp": "lib-fountain-pen",
-            "main": "res-pareto-main",
-            "project": "../../../submodules/project",
-        }),
-        'api': api,
+        'glossary': {
+            'root': glossary,
+            'imports': d({
+                "pareto2typescript": tempSubmodule("pareto2typescript"),
+                "common": external("glo-pareto-common"),
+                "fp": external("lib-fountain-pen"),
+                "main": external("res-pareto-main"),
+                "project": tempSubmodule("project"),
+            }),
+        },
+        'api': {
+            'root': api,
+            'imports': d({
+                "common": external("glo-pareto-common"),
+                "foreach": external("res-pareto-foreach"),
+                "pareto2typescript": submodule("pareto2typescript"),
+                "this": submodule("pareto2typescript/../../main"), //FIXME!!!!
+            }),
+        },
     },
     'implementation': ['typescript', null],
 }

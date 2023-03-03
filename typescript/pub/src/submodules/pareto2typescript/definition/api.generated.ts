@@ -6,7 +6,7 @@ import * as gforeach from "res-pareto-foreach"
 import * as gglossary from "../../glossary"
 import * as gmain from "res-pareto-main"
 import * as gproject from "../../project"
-import * as gthis from "./glossary"
+import * as gthis from "../../pareto2typescript"
 import * as gts from "res-typescript"
 
 export type CcreateAPISerializer = ($d: {

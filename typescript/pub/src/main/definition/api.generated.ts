@@ -3,7 +3,7 @@ import * as pt from 'pareto-core-types'
 import * as gcommon from "glo-pareto-common"
 import * as gforeach from "res-pareto-foreach"
 import * as gpareto2typescript from "../../submodules/pareto2typescript"
-import * as gthis from "./glossary"
+import * as gthis from "../../submodules/pareto2typescript/../../main"
 
 export type CcreateParametersParser = ($d: {
     readonly 'onError': gthis.FHandleArgumentError

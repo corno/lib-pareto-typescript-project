@@ -50,19 +50,29 @@ export namespace T {
             
             export namespace glossary {
                 
-                export type glossary<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
-                
                 export namespace imports {
                     
-                    export type D<GPAnnotation> = string
+                    export namespace D {
+                        
+                        export type external<GPAnnotation> = string
+                    }
+                    
+                    export type D<GPAnnotation> = 
+                        | ['external', string]
                 }
                 
-                export type imports<GPAnnotation> = pt.Dictionary<string>
+                export type imports<GPAnnotation> = pt.Dictionary<
+                    | ['external', string]
+                >
+                
+                export type root<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }
             
             export type glossary<GPAnnotation> = {
-                readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
-                readonly 'imports': pt.Dictionary<string>
+                readonly 'imports': pt.Dictionary<
+                    | ['external', string]
+                >
+                readonly 'root': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }
             
             export namespace library {
@@ -89,16 +99,20 @@ export namespace T {
                                     export type external<GPAnnotation> = string
                                     
                                     export type submodule<GPAnnotation> = string
+                                    
+                                    export type _lthis<GPAnnotation> = string
                                 }
                                 
                                 export type D<GPAnnotation> = 
                                     | ['external', string]
                                     | ['submodule', string]
+                                    | ['this', string]
                             }
                             
                             export type imports<GPAnnotation> = pt.Dictionary<
                                 | ['external', string]
                                 | ['submodule', string]
+                                | ['this', string]
                             >
                             
                             export type root<GPAnnotation> = gapi.T.API<T.Annotation<GPAnnotation>>
@@ -108,6 +122,7 @@ export namespace T {
                             readonly 'imports': pt.Dictionary<
                                 | ['external', string]
                                 | ['submodule', string]
+                                | ['this', string]
                             >
                             readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                         }
@@ -150,6 +165,7 @@ export namespace T {
                             readonly 'imports': pt.Dictionary<
                                 | ['external', string]
                                 | ['submodule', string]
+                                | ['this', string]
                             >
                             readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                         }
@@ -171,6 +187,7 @@ export namespace T {
                             readonly 'imports': pt.Dictionary<
                                 | ['external', string]
                                 | ['submodule', string]
+                                | ['this', string]
                             >
                             readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                         }
@@ -200,16 +217,20 @@ export namespace T {
                                         export type external<GPAnnotation> = string
                                         
                                         export type sibling<GPAnnotation> = string
+                                        
+                                        export type _lthis<GPAnnotation> = string
                                     }
                                     
                                     export type D<GPAnnotation> = 
                                         | ['external', string]
                                         | ['sibling', string]
+                                        | ['this', string]
                                 }
                                 
                                 export type imports<GPAnnotation> = pt.Dictionary<
                                     | ['external', string]
                                     | ['sibling', string]
+                                    | ['this', string]
                                 >
                                 
                                 export type root<GPAnnotation> = gapi.T.API<T.Annotation<GPAnnotation>>
@@ -219,6 +240,7 @@ export namespace T {
                                 readonly 'imports': pt.Dictionary<
                                     | ['external', string]
                                     | ['sibling', string]
+                                    | ['this', string]
                                 >
                                 readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                             }
@@ -268,6 +290,7 @@ export namespace T {
                                 readonly 'imports': pt.Dictionary<
                                     | ['external', string]
                                     | ['sibling', string]
+                                    | ['this', string]
                                 >
                                 readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                             }
@@ -290,6 +313,7 @@ export namespace T {
                                 readonly 'imports': pt.Dictionary<
                                     | ['external', string]
                                     | ['sibling', string]
+                                    | ['this', string]
                                 >
                                 readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                             }
@@ -312,6 +336,7 @@ export namespace T {
                             readonly 'imports': pt.Dictionary<
                                 | ['external', string]
                                 | ['sibling', string]
+                                | ['this', string]
                             >
                             readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                         }
@@ -338,6 +363,7 @@ export namespace T {
                             readonly 'imports': pt.Dictionary<
                                 | ['external', string]
                                 | ['submodule', string]
+                                | ['this', string]
                             >
                             readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                         }
@@ -357,6 +383,7 @@ export namespace T {
                             readonly 'imports': pt.Dictionary<
                                 | ['external', string]
                                 | ['sibling', string]
+                                | ['this', string]
                             >
                             readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                         }
@@ -382,16 +409,31 @@ export namespace T {
                         
                         export namespace imports {
                             
-                            export type D<GPAnnotation> = string
+                            export namespace D {
+                                
+                                export type external<GPAnnotation> = string
+                                
+                                export type _lthis<GPAnnotation> = string
+                            }
+                            
+                            export type D<GPAnnotation> = 
+                                | ['external', string]
+                                | ['this', string]
                         }
                         
-                        export type imports<GPAnnotation> = pt.Dictionary<string>
+                        export type imports<GPAnnotation> = pt.Dictionary<
+                            | ['external', string]
+                            | ['this', string]
+                        >
                         
                         export type root<GPAnnotation> = gapi.T.API<T.Annotation<GPAnnotation>>
                     }
                     
                     export type api<GPAnnotation> = {
-                        readonly 'imports': pt.Dictionary<string>
+                        readonly 'imports': pt.Dictionary<
+                            | ['external', string]
+                            | ['this', string]
+                        >
                         readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                     }
                     
@@ -399,27 +441,42 @@ export namespace T {
                         
                         export namespace imports {
                             
-                            export type D<GPAnnotation> = string
+                            export namespace D {
+                                
+                                export type external<GPAnnotation> = string
+                            }
+                            
+                            export type D<GPAnnotation> = 
+                                | ['external', string]
                         }
                         
-                        export type imports<GPAnnotation> = pt.Dictionary<string>
+                        export type imports<GPAnnotation> = pt.Dictionary<
+                            | ['external', string]
+                        >
                         
                         export type root<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
                     }
                     
                     export type glossary<GPAnnotation> = {
-                        readonly 'imports': pt.Dictionary<string>
+                        readonly 'imports': pt.Dictionary<
+                            | ['external', string]
+                        >
                         readonly 'root': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
                     }
                 }
                 
                 export type definition<GPAnnotation> = {
                     readonly 'api': {
-                        readonly 'imports': pt.Dictionary<string>
+                        readonly 'imports': pt.Dictionary<
+                            | ['external', string]
+                            | ['this', string]
+                        >
                         readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                     }
                     readonly 'glossary': {
-                        readonly 'imports': pt.Dictionary<string>
+                        readonly 'imports': pt.Dictionary<
+                            | ['external', string]
+                        >
                         readonly 'root': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
                     }
                 }
@@ -448,11 +505,16 @@ export namespace T {
             export type resource<GPAnnotation> = {
                 readonly 'definition': {
                     readonly 'api': {
-                        readonly 'imports': pt.Dictionary<string>
+                        readonly 'imports': pt.Dictionary<
+                            | ['external', string]
+                            | ['this', string]
+                        >
                         readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                     }
                     readonly 'glossary': {
-                        readonly 'imports': pt.Dictionary<string>
+                        readonly 'imports': pt.Dictionary<
+                            | ['external', string]
+                        >
                         readonly 'root': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
                     }
                 }
@@ -464,8 +526,10 @@ export namespace T {
         
         export type _ltype<GPAnnotation> = 
             | ['glossary', {
-                readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
-                readonly 'imports': pt.Dictionary<string>
+                readonly 'imports': pt.Dictionary<
+                    | ['external', string]
+                >
+                readonly 'root': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }]
             | ['library', {
                 readonly 'executables': pt.Dictionary<null>
@@ -475,6 +539,7 @@ export namespace T {
                             readonly 'imports': pt.Dictionary<
                                 | ['external', string]
                                 | ['submodule', string]
+                                | ['this', string]
                             >
                             readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                         }
@@ -494,6 +559,7 @@ export namespace T {
                             readonly 'imports': pt.Dictionary<
                                 | ['external', string]
                                 | ['sibling', string]
+                                | ['this', string]
                             >
                             readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                         }
@@ -513,11 +579,16 @@ export namespace T {
             | ['resource', {
                 readonly 'definition': {
                     readonly 'api': {
-                        readonly 'imports': pt.Dictionary<string>
+                        readonly 'imports': pt.Dictionary<
+                            | ['external', string]
+                            | ['this', string]
+                        >
                         readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                     }
                     readonly 'glossary': {
-                        readonly 'imports': pt.Dictionary<string>
+                        readonly 'imports': pt.Dictionary<
+                            | ['external', string]
+                        >
                         readonly 'root': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
                     }
                 }
@@ -534,8 +605,10 @@ export namespace T {
         readonly 'license': string
         readonly 'type': 
             | ['glossary', {
-                readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
-                readonly 'imports': pt.Dictionary<string>
+                readonly 'imports': pt.Dictionary<
+                    | ['external', string]
+                >
+                readonly 'root': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
             }]
             | ['library', {
                 readonly 'executables': pt.Dictionary<null>
@@ -545,6 +618,7 @@ export namespace T {
                             readonly 'imports': pt.Dictionary<
                                 | ['external', string]
                                 | ['submodule', string]
+                                | ['this', string]
                             >
                             readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                         }
@@ -564,6 +638,7 @@ export namespace T {
                             readonly 'imports': pt.Dictionary<
                                 | ['external', string]
                                 | ['sibling', string]
+                                | ['this', string]
                             >
                             readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                         }
@@ -583,11 +658,16 @@ export namespace T {
             | ['resource', {
                 readonly 'definition': {
                     readonly 'api': {
-                        readonly 'imports': pt.Dictionary<string>
+                        readonly 'imports': pt.Dictionary<
+                            | ['external', string]
+                            | ['this', string]
+                        >
                         readonly 'root': gapi.T.API<T.Annotation<GPAnnotation>>
                     }
                     readonly 'glossary': {
-                        readonly 'imports': pt.Dictionary<string>
+                        readonly 'imports': pt.Dictionary<
+                            | ['external', string]
+                        >
                         readonly 'root': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
                     }
                 }
@@ -612,15 +692,35 @@ export namespace T {
         
         export namespace imports {
             
-            export type D<GPAnnotation> = string
+            export namespace D {
+                
+                export type external<GPAnnotation> = string
+                
+                export type pub<GPAnnotation> = string
+                
+                export type _lthis<GPAnnotation> = string
+            }
+            
+            export type D<GPAnnotation> = 
+                | ['external', string]
+                | ['pub', string]
+                | ['this', string]
         }
         
-        export type imports<GPAnnotation> = pt.Dictionary<string>
+        export type imports<GPAnnotation> = pt.Dictionary<
+            | ['external', string]
+            | ['pub', string]
+            | ['this', string]
+        >
     }
     
     export type Test<GPAnnotation> = {
         readonly 'dependencies': pt.Dictionary<null>
         readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
-        readonly 'imports': pt.Dictionary<string>
+        readonly 'imports': pt.Dictionary<
+            | ['external', string]
+            | ['pub', string]
+            | ['this', string]
+        >
     }
 }

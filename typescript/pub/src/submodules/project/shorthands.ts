@@ -11,6 +11,12 @@ export function tempSubmodule($: string): gapi.T.Project._ltype.library.main.def
 export function submodule($: string): gapi.T.Project._ltype.library.main.definition.api.imports.D<pd.SourceLocation> {
     return ['submodule', $]
 }
+export function this_(): ['this', null] {
+    return ['this', null]
+}
+export function pub(): ['pub', null] {
+    return ['pub', null]
+}
 export function sibling($: string): ['sibling', string] {
     return ['sibling', $]
 }

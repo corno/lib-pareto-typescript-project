@@ -13,7 +13,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
 
     'dependencies': d({}),
     'type': ['glossary', {
-        'glossary': glossary,
+        'root': glossary,
         'imports': d({})
     }],
 }

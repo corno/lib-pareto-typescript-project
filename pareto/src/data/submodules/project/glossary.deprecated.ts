@@ -38,18 +38,25 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                     "definition": member(group({
                         "glossary": member(group({
                             "root": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
-                            "imports": member(dictionary(string())),
+                            "imports": member(dictionary(taggedUnion({
+                                "external": string(),
+                            }))),
                         })),
                         "api": member(group({
                             "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
-                            "imports": member(dictionary(string())),
+                            "imports": member(dictionary(taggedUnion({
+                                "this": string(),
+                                "external": string(),
+                            }))),
                         })),
                     })),
                     "test": member(reference("Test")),
                 }),
                 "glossary": group({
-                    "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
-                    "imports": member(dictionary(string())),
+                    "root": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
+                    "imports": member(dictionary(taggedUnion({
+                        "external": string(),
+                    }))),
                 }),
                 "library": group({
                     "main": member(group({
@@ -64,6 +71,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                             "api": member(group({
                                 "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
                                 "imports": member(dictionary(taggedUnion({
+                                    "this": string(),
                                     "submodule": string(),
                                     "external": string(),
                                 }))),
@@ -84,6 +92,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                             "api": member(group({
                                 "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
                                 "imports": member(dictionary(taggedUnion({
+                                    "this": string(),
                                     "sibling": string(),
                                     "external": string(),
                                 }))),
@@ -99,7 +108,11 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "Test": type(group({
             "dependencies": member(dictionary(group({}))),
             "glossary": member(parametrizedReference("glossary", { "Type": typeReference("Annotation") }, "Glossary")),
-            "imports": member(dictionary(string())),
+            "imports": member(dictionary(taggedUnion({
+                "this": string(),
+                "pub": string(),
+                "external": string(),
+            }))),
         })),
     }),
     'interfaces': d({}),

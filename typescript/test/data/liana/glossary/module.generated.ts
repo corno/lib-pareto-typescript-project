@@ -287,7 +287,7 @@ export const $: gproject.T.Module<pd.SourceLocation> = {
         },
         'api': {
             'imports': d({
-                "foreach": "res-pareto-foreach",
+                "foreach": external("res-pareto-foreach"),
             }),
             'algorithms': d({}),
         },

@@ -174,8 +174,16 @@ export const $$: CcreateProjectSerializer = (
                                 globals($i)
                                 $d.serializeGlossary(
                                     {
-                                        'glossary': $.glossary,
-                                        'imports': $.imports,
+                                        'glossary': $.root,
+                                        'imports': $.imports.map(($) => {
+                                            switch ($[0]) {
+                                                case 'external':
+                                                    return pl.cc($[1], ($) => {
+                                                        return `${$}`
+                                                    })
+                                                default: return pl.au($[0])
+                                            }
+                                        }),
                                     },
                                     $i
                                 )
@@ -307,6 +315,10 @@ export const $$: CcreateProjectSerializer = (
                                                                         return pl.cc($[1], ($) => {
                                                                             return `../../submodules/${$}`
                                                                         })
+                                                                    case 'this':
+                                                                        return pl.cc($[1], ($) => {
+                                                                            return `./glossary`
+                                                                        })
                                                                     default: return pl.au($[0])
                                                                 }
                                                             }),
@@ -376,6 +388,10 @@ export const $$: CcreateProjectSerializer = (
                                                                                 return pl.cc($[1], ($) => {
                                                                                     return `../../${$}`
                                                                                 })
+                                                                            case 'this':
+                                                                                return pl.cc($[1], ($) => {
+                                                                                    return `./glossary`
+                                                                                })
                                                                             default: return pl.au($[0])
                                                                         }
                                                                     }),
@@ -410,7 +426,13 @@ export const $$: CcreateProjectSerializer = (
                                             {
                                                 'glossary': $.definition.glossary.root,
                                                 'imports': $.definition.glossary.imports.map(($) => {
-                                                    return $
+                                                    switch ($[0]) {
+                                                        case 'external':
+                                                            return pl.cc($[1], ($) => {
+                                                                return $
+                                                            })
+                                                        default: return pl.au($[0])
+                                                    }
                                                 }),
                                             },
                                             $i
@@ -420,7 +442,19 @@ export const $$: CcreateProjectSerializer = (
                                         $d.serializeAPI(
                                             {
                                                 'api': $.definition.api.root,
-                                                'imports': $.definition.api.imports,
+                                                'imports': $.definition.api.imports.map(($) => {
+                                                    switch ($[0]) {
+                                                        case 'external':
+                                                            return pl.cc($[1], ($) => {
+                                                                return $
+                                                            })
+                                                        case 'this':
+                                                            return pl.cc($[1], ($) => {
+                                                                return `./glossary`
+                                                            })
+                                                        default: return pl.au($[0])
+                                                    }
+                                                }),
                                             },
                                             $i,
                                         )
@@ -568,7 +602,23 @@ export const $$: CcreateProjectSerializer = (
                             $d.serializeGlossary(
                                 {
                                     'glossary': $.glossary,
-                                    'imports': $.imports,
+                                    'imports': $.imports.map(($) => {
+                                        switch ($[0]) {
+                                            case 'external':
+                                                return pl.cc($[1], ($) => {
+                                                    return $
+                                                })
+                                            case 'this':
+                                                return pl.cc($[1], ($) => {
+                                                    return `./glossary`
+                                                })
+                                            case 'pub':
+                                                return pl.cc($[1], ($) => {
+                                                    return `../../../../pub`
+                                                })
+                                            default: return pl.au($[0])
+                                        }
+                                    }),
                                 },
                                 $i
                             )

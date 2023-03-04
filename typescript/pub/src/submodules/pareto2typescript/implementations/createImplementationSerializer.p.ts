@@ -11,13 +11,12 @@ export const $$: CcreateImplementationSerializer = ($d) => {
         $d.dictionaryForEach($.implementations, ($) => {
             $i.file(`XXXXXXXXXXXXXXXX${$.key}`, ($i) => {
                 $i.line(``)
-                $i.line(``)
                 $i.line(`import * as gfp from "lib-fountain-pen"`)
                 $i.line(``)
+                $i.line(`import { ${$.key} } from "../definition/api.generated"`)
+                $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`import { C${$.key} } from "../definition/api.generated"
-
-export const $$:C${$.key} = `)
+                    $i.snippet(`export const $$: ${$.key} = `)
                     if ($.value.constructor) {
                         $i.snippet(`($d) => {`)
                         $i.indent(($i) => {

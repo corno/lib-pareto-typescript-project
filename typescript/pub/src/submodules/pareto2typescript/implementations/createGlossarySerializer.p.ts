@@ -593,7 +593,7 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                 }
                 function serializeBuilderReference($: gglossary.T.BuilderReference<string>, $i: gfp.ILine) {
                     serializeContext($.context, $i)
-                    $i.snippet($d.createIdentifier(`B.${$.builder}`))
+                    $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
                     serializeContextArgumentsOnly($.context, $i)
 
                 }
@@ -656,7 +656,7 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                 }
                 function serializeInterfaceReference($: gglossary.T.InterfaceReference<string>, $i: gfp.ILine) {
                     serializeContext($.context, $i)
-                    $i.snippet($d.createIdentifier(`I.${$.interface}`))
+                    $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
                     serializeContextArgumentsOnly($.context, $i)
 
                 }
@@ -703,19 +703,19 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                             $i.snippet(` = `)
                             serializeGlobalParametersOnly($i)
                             pl.cc($.value, ($) => {
-    
+
                                 $i.snippet(`($: `)
                                 serializeTypeReference($.data, $i)
                                 $i.snippet(`,`)
-                                    doOptional($['input builder'], $i, {
-                                        onNotset: () => { },
-                                        onSet: ($, $i) => {
-                                            $i.snippet(` $c: ($b: `)
-                                            serializeBuilderReference($, $i)
-                                            $i.snippet(`) => void,`)
-                                        },
-                                    })
-    
+                                doOptional($['input builder'], $i, {
+                                    onNotset: () => { },
+                                    onSet: ($, $i) => {
+                                        $i.snippet(` $c: ($b: `)
+                                        serializeBuilderReference($, $i)
+                                        $i.snippet(`) => void,`)
+                                    },
+                                })
+
                                 doOptional($['output builder'], $i, {
                                     onNotset: () => { },
                                     onSet: ($, $i) => {
@@ -729,7 +729,7 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                     switch ($[0]) {
                                         case 'data':
                                             pl.cc($[1], ($) => {
-    
+
                                                 if ($.asynchronous) {
                                                     $i.snippet(`pt.AsyncValue<`)
                                                     serializeTypeReference($.type, $i)

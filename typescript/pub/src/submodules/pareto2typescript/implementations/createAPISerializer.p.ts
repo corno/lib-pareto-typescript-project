@@ -27,8 +27,7 @@ export const $$: CcreateAPISerializer = ($d) => {
         function serializeFunctionReference($: gmoduleDefinition.T.FunctionReference<Annotation>, $i: gfp.ILine) {
 
             $i.snippet(`g_${$.context.glossary}.`)
-
-            $i.snippet($d.createIdentifier(`F.${$.function}`))
+            $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
         }
 
         $i.line(`import * as pt from 'pareto-core-types'`)
@@ -116,7 +115,7 @@ export const $$: CcreateAPISerializer = ($d) => {
                 $i.snippet(`export type API = {`)
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.algorithms, ($) => {
-                        $i.line(`${$.key}: ${$d.createIdentifier(`c${$.key}`)}`)
+                        $i.line(`${$.key}: ${$d.createIdentifier(`${$.key}`)}`)
                     })
                 })
                 $i.snippet(`}`)

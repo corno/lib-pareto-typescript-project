@@ -15,7 +15,8 @@ import {
     member,
     reference,
     array,
-    method,
+    interfaceMethod,
+    builderMethod,
     type,
 } from "../../../../../../pub/dist/submodules/glossary/shorthands"
 
@@ -67,11 +68,13 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         })),
 
     }),
+    'builders': d({
+    }),
     'interfaces': d({
         "TokenConsumer": ['group', {
             'members': d({
-                "onToken": method(typeReference("AnnotatedToken")),
-                "onEnd": method(typeReference("Annotation")), //should be a parameter reference
+                "onToken": interfaceMethod(typeReference("AnnotatedToken")),
+                "onEnd": interfaceMethod(typeReference("Annotation")), //should be a parameter reference
             })
         }]
     }),

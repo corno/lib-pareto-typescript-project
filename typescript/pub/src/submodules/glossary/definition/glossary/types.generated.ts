@@ -3,6 +3,69 @@ import * as pt from 'pareto-core-types'
 
 export namespace T {
     
+    export namespace Builder {
+        
+        export namespace group {
+            
+            export namespace members {
+                
+                export type D<GPAnnotation> = T.Builder<GPAnnotation>
+            }
+            
+            export type members<GPAnnotation> = pt.Dictionary<T.Builder<GPAnnotation>>
+        }
+        
+        export type group<GPAnnotation> = {
+            readonly 'members': pt.Dictionary<T.Builder<GPAnnotation>>
+        }
+        
+        export namespace method {
+            
+            export namespace builder {
+                
+                export type O<GPAnnotation> = T.Builder<GPAnnotation>
+            }
+            
+            export type builder<GPAnnotation> = [ false ] | [ true, T.Builder<GPAnnotation>]
+            
+            export namespace data {
+                
+                export type O<GPAnnotation> = T.TypeReference<GPAnnotation>
+            }
+            
+            export type data<GPAnnotation> = [ false ] | [ true, T.TypeReference<GPAnnotation>]
+        }
+        
+        export type method<GPAnnotation> = {
+            readonly 'builder': [ false ] | [ true, T.Builder<GPAnnotation>]
+            readonly 'data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
+        }
+        
+        export type reference<GPAnnotation> = T.BuilderReference<GPAnnotation>
+    }
+    
+    export type Builder<GPAnnotation> = 
+        | ['group', {
+            readonly 'members': pt.Dictionary<T.Builder<GPAnnotation>>
+        }]
+        | ['method', {
+            readonly 'builder': [ false ] | [ true, T.Builder<GPAnnotation>]
+            readonly 'data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
+        }]
+        | ['reference', T.BuilderReference<GPAnnotation>]
+    
+    export namespace BuilderReference {
+        
+        export type builder<GPAnnotation> = string
+        
+        export type context<GPAnnotation> = T.Context<GPAnnotation>
+    }
+    
+    export type BuilderReference<GPAnnotation> = {
+        readonly 'builder': string
+        readonly 'context': T.Context<GPAnnotation>
+    }
+    
     export namespace Context {
         
         export namespace _limport {
@@ -36,25 +99,32 @@ export namespace T {
     
     export namespace Glossary {
         
+        export namespace builders {
+            
+            export type D<GPAnnotation> = T.Builder<GPAnnotation>
+        }
+        
+        export type builders<GPAnnotation> = pt.Dictionary<T.Builder<GPAnnotation>>
+        
         export namespace functions {
             
             export namespace D {
                 
                 export type data<GPAnnotation> = T.TypeReference<GPAnnotation>
                 
-                export namespace managed__input__interface {
+                export namespace input__builder {
                     
-                    export type O<GPAnnotation> = T.InterfaceReference<GPAnnotation>
+                    export type O<GPAnnotation> = T.BuilderReference<GPAnnotation>
                 }
                 
-                export type managed__input__interface<GPAnnotation> = [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
+                export type input__builder<GPAnnotation> = [ false ] | [ true, T.BuilderReference<GPAnnotation>]
                 
-                export namespace output__interface {
+                export namespace output__builder {
                     
-                    export type O<GPAnnotation> = T.InterfaceReference<GPAnnotation>
+                    export type O<GPAnnotation> = T.BuilderReference<GPAnnotation>
                 }
                 
-                export type output__interface<GPAnnotation> = [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
+                export type output__builder<GPAnnotation> = [ false ] | [ true, T.BuilderReference<GPAnnotation>]
                 
                 export namespace return__type {
                     
@@ -88,8 +158,8 @@ export namespace T {
             
             export type D<GPAnnotation> = {
                 readonly 'data': T.TypeReference<GPAnnotation>
-                readonly 'managed input interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
-                readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
+                readonly 'input builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
+                readonly 'output builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
                 readonly 'return type': 
                     | ['data', {
                         readonly 'asynchronous': boolean
@@ -102,8 +172,8 @@ export namespace T {
         
         export type functions<GPAnnotation> = pt.Dictionary<{
             readonly 'data': T.TypeReference<GPAnnotation>
-            readonly 'managed input interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
-            readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
+            readonly 'input builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
+            readonly 'output builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
             readonly 'return type': 
                 | ['data', {
                     readonly 'asynchronous': boolean
@@ -158,10 +228,11 @@ export namespace T {
     }
     
     export type Glossary<GPAnnotation> = {
+        readonly 'builders': pt.Dictionary<T.Builder<GPAnnotation>>
         readonly 'functions': pt.Dictionary<{
             readonly 'data': T.TypeReference<GPAnnotation>
-            readonly 'managed input interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
-            readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GPAnnotation>]
+            readonly 'input builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
+            readonly 'output builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
             readonly 'return type': 
                 | ['data', {
                     readonly 'asynchronous': boolean
@@ -205,31 +276,15 @@ export namespace T {
             
             export namespace _linterface {
                 
-                export namespace O {
-                    
-                    export type _linterface<GPAnnotation> = T.Interface<GPAnnotation>
-                    
-                    export type managed<GPAnnotation> = boolean
-                }
-                
-                export type O<GPAnnotation> = {
-                    readonly 'interface': T.Interface<GPAnnotation>
-                    readonly 'managed': boolean
-                }
+                export type O<GPAnnotation> = T.Interface<GPAnnotation>
             }
             
-            export type _linterface<GPAnnotation> = [ false ] | [ true, {
-                readonly 'interface': T.Interface<GPAnnotation>
-                readonly 'managed': boolean
-            }]
+            export type _linterface<GPAnnotation> = [ false ] | [ true, T.Interface<GPAnnotation>]
         }
         
         export type method<GPAnnotation> = {
             readonly 'data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
-            readonly 'interface': [ false ] | [ true, {
-                readonly 'interface': T.Interface<GPAnnotation>
-                readonly 'managed': boolean
-            }]
+            readonly 'interface': [ false ] | [ true, T.Interface<GPAnnotation>]
         }
         
         export type reference<GPAnnotation> = T.InterfaceReference<GPAnnotation>
@@ -241,10 +296,7 @@ export namespace T {
         }]
         | ['method', {
             readonly 'data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
-            readonly 'interface': [ false ] | [ true, {
-                readonly 'interface': T.Interface<GPAnnotation>
-                readonly 'managed': boolean
-            }]
+            readonly 'interface': [ false ] | [ true, T.Interface<GPAnnotation>]
         }]
         | ['reference', T.InterfaceReference<GPAnnotation>]
     

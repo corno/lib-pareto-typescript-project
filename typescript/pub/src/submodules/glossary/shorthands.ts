@@ -141,6 +141,20 @@ export function typeReference(
     }
 }
 
+export function builderReference(contextOrBuilder: string, builder?: string): t.T.BuilderReference<pd.SourceLocation> {
+    if (builder === undefined) {
+        return {
+            'context': ['local', null],
+            'builder': contextOrBuilder,
+        }
+    } else {
+        return {
+            'context': context(contextOrBuilder),
+            'builder': builder,
+        }
+    }
+}
+
 export function interfaceReference(contextOrInterface: string, inf?: string): t.T.InterfaceReference<pd.SourceLocation> {
     if (inf === undefined) {
         return {
@@ -155,6 +169,12 @@ export function interfaceReference(contextOrInterface: string, inf?: string): t.
     }
 }
 
+export function parametrizedBuilderReference(contextOrBuilder: string, args: RawDictionary<t.T.TypeReference<pd.SourceLocation>>, builder: string): t.T.BuilderReference<pd.SourceLocation> {
+    return {
+        'context': context(contextOrBuilder, args),
+        'builder': builder,
+    }
+}
 export function parametrizedInterfaceReference(contextOrInterface: string, args: RawDictionary<t.T.TypeReference<pd.SourceLocation>>, inf: string): t.T.InterfaceReference<pd.SourceLocation> {
     return {
         'context': context(contextOrInterface, args),
@@ -177,22 +197,35 @@ export function inf($: t.T.InterfaceReference<pd.SourceLocation>): t.T.Glossary.
     return ['interface', $]
 }
 
-export function func(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.InterfaceReference<pd.SourceLocation> | null, oi: t.T.InterfaceReference<pd.SourceLocation> | null, returnType: null | t.T.Glossary.functions.D.return__type<pd.SourceLocation>): t.T.Glossary.functions.D<pd.SourceLocation> {
+export function func(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.BuilderReference<pd.SourceLocation> | null, oi: t.T.BuilderReference<pd.SourceLocation> | null, returnType: null | t.T.Glossary.functions.D.return__type<pd.SourceLocation>): t.T.Glossary.functions.D<pd.SourceLocation> {
     return {
         'return type': returnType === null
             ? ['nothing', null]
             : returnType,
         'data': data,
-        'managed input interface': mii === null
+        'input builder': mii === null
             ? [false]
             : [true, mii],
-        'output interface': oi === null
+        'output builder': oi === null
             ? [false]
             : [true, oi],
     }
 }
 
-export function method(data: null | t.T.TypeReference<pd.SourceLocation>, inf?: null | t.T.Interface<pd.SourceLocation>, managed?: boolean): t.T.Interface<pd.SourceLocation> {
+export function builderMethod(data: null | t.T.TypeReference<pd.SourceLocation>, inf?: null | t.T.Builder<pd.SourceLocation>): t.T.Builder<pd.SourceLocation> {
+    return ['method', {
+        'data': data === null
+            ? [false]
+            : [true, data],
+        'builder': inf === undefined
+            ? [false]
+            : inf === null
+                ? [false]
+                : [true, inf],
+    }]
+}
+
+export function interfaceMethod(data: null | t.T.TypeReference<pd.SourceLocation>, inf?: null | t.T.Interface<pd.SourceLocation>): t.T.Interface<pd.SourceLocation> {
     return ['method', {
         'data': data === null
             ? [false]
@@ -201,9 +234,6 @@ export function method(data: null | t.T.TypeReference<pd.SourceLocation>, inf?: 
             ? [false]
             : inf === null
                 ? [false]
-                : [true, {
-                    'interface': inf,
-                    'managed': managed === undefined ? false : managed
-                }],
+                : [true, inf],
     }]
 }

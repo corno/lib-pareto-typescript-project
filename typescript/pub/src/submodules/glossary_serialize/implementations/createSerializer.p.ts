@@ -63,10 +63,10 @@ export const $$: CcreateSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-    
+
         function serializeType($: gglossary.T.Type<Annotation>, $i: gfp.ILine) {
             $i.snippet(`<gglossary.T.Type<pd.SourceLocation>>`)
-    
+
             switch ($[0]) {
                 case 'computed':
                     pl.cc($[1], ($) => {
@@ -237,13 +237,28 @@ export const $$: CcreateSerializer = ($d) => {
                 })
             })
             $i.snippet(`}`)
-    
+        }
+
+        function serializeBuilderReference($: gglossary.T.BuilderReference<Annotation>, $i: gfp.ILine) {
+            $i.snippet(`{`)
+            $i.indent(($i) => {
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'context': `)
+                    serializeContext($.context, $i)
+                    $i.snippet(`,`)
+                })
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'builder': "${$.builder}",`)
+                })
+            })
+            $i.snippet(`}`)
+
         }
         function serializeInterface($: gglossary.T.Interface<Annotation>, $i: gfp.ILine) {
             switch ($[0]) {
                 case 'group':
                     pl.cc($[1], ($) => {
-    
+
                         $i.snippet(`['group', {`)
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
@@ -280,30 +295,15 @@ export const $$: CcreateSerializer = ($d) => {
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`'interface': `)
                                     doOptional($, $i, ($, $i) => {
-                                        $i.snippet(`{`)
-                                        $i.indent(($i) => {
-                                            $i.nestedLine(($i) => {
-                                                $i.snippet(`'managed': ${$.managed}`)
-                                            })
-                                            $i.nestedLine(($i) => {
-                                                $i.snippet(`'interface': `)
-                                                if ($.interface === null) {
-                                                    $i.snippet(`null`)
-                                                } else {
-                                                    serializeInterface($.interface, $i)
-                                                }
-                                            })
-    
-                                        })
-                                        $i.snippet(`}`)
-    
+                                        serializeInterface($, $i)
+
                                     })
                                     $i.snippet(`,`)
                                 })
                             })
                         })
                         $i.snippet(`}]`)
-    
+
                     })
                     break
                 case 'reference':
@@ -313,7 +313,67 @@ export const $$: CcreateSerializer = ($d) => {
                     break
                 default: pl.au($[0])
             }
-    
+
+        }
+        function serializeBuilder($: gglossary.T.Builder<Annotation>, $i: gfp.ILine) {
+            switch ($[0]) {
+                case 'group':
+                    pl.cc($[1], ($) => {
+
+                        $i.snippet(`['group', {`)
+                        $i.indent(($i) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'members': d({`)
+                                $i.indent(($i) => {
+                                    $d.dictionaryForEach($.members, ($) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`"${$.key}": `)
+                                            serializeBuilder($.value, $i)
+                                            $i.snippet(`,`)
+                                        })
+                                    })
+                                })
+                                $i.snippet(`}),`)
+                            })
+                        })
+                        $i.snippet(`}]`)
+                    })
+                    break
+                case 'method':
+                    pl.cc($[1], ($) => {
+                        $i.snippet(`['method', {`)
+                        $i.indent(($i) => {
+                            pl.cc($.data, ($) => {
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`'data': `)
+                                    doOptional($, $i, ($, $i) => {
+                                        serializeTypeReference($, $i)
+                                    })
+                                    $i.snippet(`,`)
+                                })
+                            })
+                            pl.cc($.builder, ($) => {
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`'builder': `)
+                                    doOptional($, $i, ($, $i) => {
+                                        serializeBuilder($, $i)
+                                    })
+                                    $i.snippet(`,`)
+                                })
+                            })
+                        })
+                        $i.snippet(`}]`)
+
+                    })
+                    break
+                case 'reference':
+                    pl.cc($[1], ($) => {
+                        serializeBuilderReference($, $i)
+                    })
+                    break
+                default: pl.au($[0])
+            }
+
         }
         $i.line(`import * as pd from 'pareto-core-data'`)
         $i.line(``)
@@ -396,16 +456,16 @@ export const $$: CcreateSerializer = ($d) => {
                                         $i.snippet(`,`)
                                     })
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`'managed input interface': `)
-                                        doOptional($.value['managed input interface'], $i, ($, $i) => {
-                                            serializeInterfaceReference($, $i)
+                                        $i.snippet(`'input builder': `)
+                                        doOptional($.value['input builder'], $i, ($, $i) => {
+                                            serializeBuilderReference($, $i)
                                         })
                                         $i.snippet(`,`)
                                     })
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`'output interface': `)
-                                        doOptional($.value['output interface'], $i, ($, $i) => {
-                                            serializeInterfaceReference($, $i)
+                                        $i.snippet(`'output builder': `)
+                                        doOptional($.value['output builder'], $i, ($, $i) => {
+                                            serializeBuilderReference($, $i)
                                         })
                                         $i.snippet(`,`)
                                     })

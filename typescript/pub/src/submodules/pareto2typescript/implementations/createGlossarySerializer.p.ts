@@ -58,7 +58,7 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                 switch ($[0]) {
                     case 'import':
                         pl.cc($[1], ($) => {
-                            $i.snippet(`g${$.glossary/*.name*/}.`)
+                            $i.snippet(`g_${$.glossary/*.name*/}.`)
                         })
                         break
                     case 'local':
@@ -90,7 +90,7 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                             case 'local':
                                 pl.cc($.context[1], ($) => {
                                     $d.dictionaryForEach(globalParameters, ($) => {
-                                        $i.snippet(`GP${$.key}, `)
+                                        $i.snippet(`G${$.key}, `)
                                     })
                                 })
                                 break
@@ -136,7 +136,7 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                 'onNotEmpty': ($c) => {
                                     $i.snippet(`<`)
                                     $c(($) => {
-                                        $i.snippet(`GP${$.key}${$.isLast ? `` : `, `}`)
+                                        $i.snippet(`G${$.key}${$.isLast ? `` : `, `}`)
                                     })
                                     $i.snippet(`>`)
                                 }
@@ -156,7 +156,7 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                         $i.snippet(`<`)
 
                         $c(($) => {
-                            $i.snippet(`GP${$.key}${$.isLast ? `` : `, `}`)
+                            $i.snippet(`G${$.key}${$.isLast ? `` : `, `}`)
                         })
                         $i.snippet(`>`)
 
@@ -175,7 +175,7 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                 $i.line(``)
                 $d.dictionaryForEach(imports, ($) => {
                     $i.nestedLine(($i) => {
-                        $i.snippet(`import * as g${$.key} from "${$.value}"`)
+                        $i.snippet(`import * as g_${$.key} from "${$.value}"`)
                     })
                 })
                 ns(
@@ -205,10 +205,10 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                             $i.snippet(`<`)
 
                                             $d.dictionaryForEach(globalParameters, ($) => {
-                                                $i.snippet(`GP${$.key}, `)
+                                                $i.snippet(`G${$.key}, `)
                                             })
                                             $c(($) => {
-                                                $i.snippet(`A${$.key}${$.isLast ? `` : `, `}`)
+                                                $i.snippet(`T${$.key}${$.isLast ? `` : `, `}`)
                                             })
                                             $i.snippet(`>`)
 
@@ -296,7 +296,7 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                                 createCurrentAndSerializeType(
                                                     {
                                                         'type': $,
-                                                        'nextName': "A",
+                                                        'nextName': "T",
                                                     },
                                                     $i
                                                 )
@@ -478,12 +478,12 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                                 break
                                             case 'type parameter':
                                                 pl.cc($[1], ($) => {
-                                                    $i.snippet($d.createIdentifier(`A${$}`))
+                                                    $i.snippet($d.createIdentifier(`T${$}`))
                                                 })
                                                 break
                                             case 'glossary parameter':
                                                 pl.cc($[1], ($) => {
-                                                    $i.snippet($d.createIdentifier(`GP${$}`))
+                                                    $i.snippet($d.createIdentifier(`G${$}`))
                                                 })
                                                 break
                                             case 'taggedUnion':
@@ -534,9 +534,66 @@ export const $$: CcreateGlossarySerializer = ($d) => {
             })
             $i.file(`public.generated.ts`, ($i) => {
 
-                function serializeInterfaceReference($: gglossary.T.InterfaceReference<string>, $i: gfp.ILine) {
+                function serializeBuilder($: gglossary.T.Builder<string>, $i: gfp.ILine) {
+                    switch ($[0]) {
+                        case 'group':
+                            pl.cc($[1], ($) => {
+
+                                $i.snippet(`{`)
+                                $i.indent(($i) => {
+                                    $d.dictionaryForEach($.members, ($) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`${$d.createApostrophedString($.key)}: `)
+                                            serializeBuilder($.value, $i)
+                                        })
+                                    })
+                                })
+                                $i.snippet(`}`)
+                            })
+                            break
+                        case 'method':
+                            pl.cc($[1], ($) => {
+
+                                $i.snippet(`(`)
+                                pl.cc($.data, ($) => {
+                                    if ($ === null) {
+                                        //
+                                    } else {
+                                        doOptional($, $i, {
+                                            onNotset: ($, $i) => { },
+                                            onSet: ($, $i) => {
+                                                $i.snippet(`$: `)
+                                                serializeTypeReference($, $i)
+                                                $i.snippet(`, `)
+                                            }
+                                        })
+                                    }
+                                })
+                                pl.cc($.builder, ($) => {
+                                    doOptional($, $i, {
+                                        onNotset: () => { },
+                                        onSet: ($, $i) => {
+                                            $i.snippet(`$c: ($b: `)
+                                            serializeBuilder($, $i)
+                                            $i.snippet(`) => void`)
+                                        }
+                                    })
+                                })
+                                $i.snippet(`) => void`)
+                            })
+                            break
+                        case 'reference':
+                            pl.cc($[1], ($) => {
+                                serializeBuilderReference($, $i)
+                            })
+                            break
+                        default: pl.au($[0])
+                    }
+
+                }
+                function serializeBuilderReference($: gglossary.T.BuilderReference<string>, $i: gfp.ILine) {
                     serializeContext($.context, $i)
-                    $i.snippet($d.createIdentifier(`I${$.interface}`))
+                    $i.snippet($d.createIdentifier(`B.${$.builder}`))
                     serializeContextArgumentsOnly($.context, $i)
 
                 }
@@ -575,18 +632,6 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                         })
                                     }
                                 })
-                                pl.cc($.interface, ($) => {
-                                    doOptional($, $i, {
-                                        onNotset: () => { },
-                                        onSet: ($, $i) => {
-                                            if ($.managed) {
-                                                $i.snippet(`$c: ($i: `)
-                                                serializeInterface($.interface, $i)
-                                                $i.snippet(`) => void`)
-                                            }
-                                        }
-                                    })
-                                })
                                 $i.snippet(`) => `)
                                 pl.cc($.interface, ($) => {
                                     doOptional($, $i, {
@@ -594,11 +639,7 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                             $i.snippet(`void`)
                                         },
                                         onSet: ($, $i) => {
-                                            if ($.managed) {
-                                                $i.snippet(`void`)
-                                            } else {
-                                                serializeInterface($.interface, $i)
-                                            }
+                                            serializeInterface($, $i)
                                         }
                                     })
                                 })
@@ -613,85 +654,104 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                     }
 
                 }
+                function serializeInterfaceReference($: gglossary.T.InterfaceReference<string>, $i: gfp.ILine) {
+                    serializeContext($.context, $i)
+                    $i.snippet($d.createIdentifier(`I.${$.interface}`))
+                    serializeContextArgumentsOnly($.context, $i)
+
+                }
                 $i.nestedLine(($i) => {
                     $i.snippet(`import * as pt from 'pareto-core-types'`)
                 })
                 $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`import { T   } from './types.generated'`)
+                    $i.snippet(`import { T } from './types.generated'`)
                 })
                 $i.line(``)
                 $d.dictionaryForEach(imports, ($) => {
                     $i.nestedLine(($i) => {
-                        $i.snippet(`import * as g${$.key} from "${$.value}"`)
+                        $i.snippet(`import * as g_${$.key} from "${$.value}"`)
                     })
                 })
-                $d.dictionaryForEach($.interfaces, ($) => {
-                    $i.line(``)
-                    $i.nestedLine(($i) => {
-                        $i.snippet(`export type ${$d.createIdentifier(`I${$.key}`)}`)
-                        serializeGlobalParametersOnly($i)
-                        $i.snippet(` = `)
-                        serializeInterface($.value, $i)
+                ns(`I`, $i, ($i) => {
+                    $d.dictionaryForEach($.interfaces, ($) => {
+                        $i.line(``)
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)}`)
+                            serializeGlobalParametersOnly($i)
+                            $i.snippet(` = `)
+                            serializeInterface($.value, $i)
+                        })
                     })
                 })
-                $d.dictionaryForEach($.functions, ($) => {
-                    $i.line(``)
-                    $i.nestedLine(($i) => {
-                        $i.snippet(`export type ${$d.createIdentifier(`F${$.key}`)}`)
-                        $i.snippet(` = `)
-                        serializeGlobalParametersOnly($i)
-                        pl.cc($.value, ($) => {
-
-                            $i.snippet(`($: `)
-                            serializeTypeReference($.data, $i)
-                            $i.snippet(`,`)
-                            if ($['managed input interface'] !== null) {
-                                doOptional($['managed input interface'], $i, {
+                ns(`B`, $i, ($i) => {
+                    $d.dictionaryForEach($.builders, ($) => {
+                        $i.line(``)
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)}`)
+                            serializeGlobalParametersOnly($i)
+                            $i.snippet(` = `)
+                            serializeBuilder($.value, $i)
+                        })
+                    })
+                })
+                ns(`F`, $i, ($i) => {
+                    $d.dictionaryForEach($.functions, ($) => {
+                        $i.line(``)
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)}`)
+                            $i.snippet(` = `)
+                            serializeGlobalParametersOnly($i)
+                            pl.cc($.value, ($) => {
+    
+                                $i.snippet(`($: `)
+                                serializeTypeReference($.data, $i)
+                                $i.snippet(`,`)
+                                    doOptional($['input builder'], $i, {
+                                        onNotset: () => { },
+                                        onSet: ($, $i) => {
+                                            $i.snippet(` $c: ($b: `)
+                                            serializeBuilderReference($, $i)
+                                            $i.snippet(`) => void,`)
+                                        },
+                                    })
+    
+                                doOptional($['output builder'], $i, {
                                     onNotset: () => { },
                                     onSet: ($, $i) => {
-                                        $i.snippet(` $c: ($i: `)
-                                        serializeInterfaceReference($, $i)
-                                        $i.snippet(`) => void,`)
-                                    },
+                                        $i.snippet(` $b: `)
+                                        serializeBuilderReference($, $i)
+                                        $i.snippet(`,`)
+                                    }
                                 })
-
-                            }
-                            doOptional($['output interface'], $i, {
-                                onNotset: () => { },
-                                onSet: ($, $i) => {
-                                    $i.snippet(` $i: `)
-                                    serializeInterfaceReference($, $i)
-                                    $i.snippet(`,`)
-                                }
-                            })
-                            $i.snippet(`) => `)
-                            pl.cc($['return type'], ($) => {
-                                switch ($[0]) {
-                                    case 'data':
-                                        pl.cc($[1], ($) => {
-
-                                            if ($.asynchronous) {
-                                                $i.snippet(`pt.AsyncValue<`)
-                                                serializeTypeReference($.type, $i)
-                                                $i.snippet(`>`)
-                                            } else {
-                                                serializeTypeReference($.type, $i)
-                                            }
-                                        })
-                                        break
-                                    case 'interface':
-                                        pl.cc($[1], ($) => {
-                                            serializeInterfaceReference($, $i)
-                                        })
-                                        break
-                                    case 'nothing':
-                                        pl.cc($[1], ($) => {
-                                            $i.snippet(`void`)
-                                        })
-                                        break
-                                    default: pl.au($[0])
-                                }
+                                $i.snippet(`) => `)
+                                pl.cc($['return type'], ($) => {
+                                    switch ($[0]) {
+                                        case 'data':
+                                            pl.cc($[1], ($) => {
+    
+                                                if ($.asynchronous) {
+                                                    $i.snippet(`pt.AsyncValue<`)
+                                                    serializeTypeReference($.type, $i)
+                                                    $i.snippet(`>`)
+                                                } else {
+                                                    serializeTypeReference($.type, $i)
+                                                }
+                                            })
+                                            break
+                                        case 'interface':
+                                            pl.cc($[1], ($) => {
+                                                serializeInterfaceReference($, $i)
+                                            })
+                                            break
+                                        case 'nothing':
+                                            pl.cc($[1], ($) => {
+                                                $i.snippet(`void`)
+                                            })
+                                            break
+                                        default: pl.au($[0])
+                                    }
+                                })
                             })
                         })
                     })

@@ -5,93 +5,93 @@ export namespace T {
     
     export namespace AnnotatedToken {
         
-        export type annotation<GPAnnotation> = GPAnnotation
+        export type annotation<GAnnotation> = GAnnotation
         
-        export type token<GPAnnotation> = T.Token<GPAnnotation>
+        export type token<GAnnotation> = T.Token<GAnnotation>
     }
     
-    export type AnnotatedToken<GPAnnotation> = {
-        readonly 'annotation': GPAnnotation
-        readonly 'token': T.Token<GPAnnotation>
+    export type AnnotatedToken<GAnnotation> = {
+        readonly 'annotation': GAnnotation
+        readonly 'token': T.Token<GAnnotation>
     }
     
-    export type Annotation<GPAnnotation> = GPAnnotation
+    export type Annotation<GAnnotation> = GAnnotation
     
     export namespace MultilineStringData {
         
         export namespace lines {
             
-            export type A<GPAnnotation> = string
+            export type T<GAnnotation> = string
         }
         
-        export type lines<GPAnnotation> = pt.Array<string>
+        export type lines<GAnnotation> = pt.Array<string>
     }
     
-    export type MultilineStringData<GPAnnotation> = {
+    export type MultilineStringData<GAnnotation> = {
         readonly 'lines': pt.Array<string>
     }
     
     export namespace SimpleStringData {
         
-        export type value<GPAnnotation> = string
+        export type value<GAnnotation> = string
         
-        export type wrapping<GPAnnotation> = T.Wrapping<GPAnnotation>
+        export type wrapping<GAnnotation> = T.Wrapping<GAnnotation>
     }
     
-    export type SimpleStringData<GPAnnotation> = {
+    export type SimpleStringData<GAnnotation> = {
         readonly 'value': string
-        readonly 'wrapping': T.Wrapping<GPAnnotation>
+        readonly 'wrapping': T.Wrapping<GAnnotation>
     }
     
     export namespace StructuralTokenData {
         
-        export type _ltype<GPAnnotation> = T.StructuralTokenType<GPAnnotation>
+        export type _ltype<GAnnotation> = T.StructuralTokenType<GAnnotation>
     }
     
-    export type StructuralTokenData<GPAnnotation> = {
-        readonly 'type': T.StructuralTokenType<GPAnnotation>
+    export type StructuralTokenData<GAnnotation> = {
+        readonly 'type': T.StructuralTokenType<GAnnotation>
     }
     
     export namespace StructuralTokenType {
         
         export namespace close__dictionary {}
         
-        export type close__dictionary<GPAnnotation> = null
+        export type close__dictionary<GAnnotation> = null
         
         export namespace close__list {}
         
-        export type close__list<GPAnnotation> = null
+        export type close__list<GAnnotation> = null
         
         export namespace close__shorthand__group {}
         
-        export type close__shorthand__group<GPAnnotation> = null
+        export type close__shorthand__group<GAnnotation> = null
         
         export namespace close__verbose__group {}
         
-        export type close__verbose__group<GPAnnotation> = null
+        export type close__verbose__group<GAnnotation> = null
         
         export namespace open__dictionary {}
         
-        export type open__dictionary<GPAnnotation> = null
+        export type open__dictionary<GAnnotation> = null
         
         export namespace open__list {}
         
-        export type open__list<GPAnnotation> = null
+        export type open__list<GAnnotation> = null
         
         export namespace open__shorthand__group {}
         
-        export type open__shorthand__group<GPAnnotation> = null
+        export type open__shorthand__group<GAnnotation> = null
         
         export namespace open__verbose__group {}
         
-        export type open__verbose__group<GPAnnotation> = null
+        export type open__verbose__group<GAnnotation> = null
         
         export namespace tagged__union__start {}
         
-        export type tagged__union__start<GPAnnotation> = null
+        export type tagged__union__start<GAnnotation> = null
     }
     
-    export type StructuralTokenType<GPAnnotation> = 
+    export type StructuralTokenType<GAnnotation> = 
         | ['close dictionary', null]
         | ['close list', null]
         | ['close shorthand group', null]
@@ -106,37 +106,37 @@ export namespace T {
         
         export namespace header__start {}
         
-        export type header__start<GPAnnotation> = null
+        export type header__start<GAnnotation> = null
         
-        export type multiline__string<GPAnnotation> = T.MultilineStringData<GPAnnotation>
+        export type multiline__string<GAnnotation> = T.MultilineStringData<GAnnotation>
         
-        export type simple__string<GPAnnotation> = T.SimpleStringData<GPAnnotation>
+        export type simple__string<GAnnotation> = T.SimpleStringData<GAnnotation>
         
-        export type structural<GPAnnotation> = T.StructuralTokenData<GPAnnotation>
+        export type structural<GAnnotation> = T.StructuralTokenData<GAnnotation>
     }
     
-    export type Token<GPAnnotation> = 
+    export type Token<GAnnotation> = 
         | ['header start', null]
-        | ['multiline string', T.MultilineStringData<GPAnnotation>]
-        | ['simple string', T.SimpleStringData<GPAnnotation>]
-        | ['structural', T.StructuralTokenData<GPAnnotation>]
+        | ['multiline string', T.MultilineStringData<GAnnotation>]
+        | ['simple string', T.SimpleStringData<GAnnotation>]
+        | ['structural', T.StructuralTokenData<GAnnotation>]
     
     export namespace Wrapping {
         
         export namespace apostrophe {}
         
-        export type apostrophe<GPAnnotation> = null
+        export type apostrophe<GAnnotation> = null
         
         export namespace none {}
         
-        export type none<GPAnnotation> = null
+        export type none<GAnnotation> = null
         
         export namespace quote {}
         
-        export type quote<GPAnnotation> = null
+        export type quote<GAnnotation> = null
     }
     
-    export type Wrapping<GPAnnotation> = 
+    export type Wrapping<GAnnotation> = 
         | ['apostrophe', null]
         | ['none', null]
         | ['quote', null]

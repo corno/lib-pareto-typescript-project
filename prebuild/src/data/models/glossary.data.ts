@@ -41,6 +41,7 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                     "parameters": prop(dictionary(group({}))),
                     "type": prop(component("Type", {})),
                 }))),
+                "builders": prop(dictionary(component("Builder", {}))),
                 "interfaces": prop(dictionary(component("Interface", {}))),
                 "functions": prop(dictionary(group({
                     "return type": prop(taggedUnion({
@@ -52,8 +53,8 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                         "nothing": group({})
                     })),
                     "data": prop(component("TypeReference", {})),
-                    "managed input interface": prop(optional(component("InterfaceReference", {}))),
-                    "output interface": prop(optional(component("InterfaceReference", {}))),
+                    "input builder": prop(optional(component("BuilderReference", {}))),
+                    "output builder": prop(optional(component("BuilderReference", {}))),
                 }))),
             })),
             "Interface": globalType({}, taggedUnion({
@@ -62,17 +63,29 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 }),
                 "method": group({
                     "data": prop(optional(component("TypeReference", {}))),
-                    "interface": prop(optional(group({
-                        "managed": prop(boolean()),
-                        "interface": prop(component("Interface", {})),
-                    }))),
+                    "interface": prop(optional(component("Interface", {}))),
                 }),
                 "reference": component("InterfaceReference", {}),
+            })),
+            "Builder": globalType({}, taggedUnion({
+                "group": group({
+                    "members": prop(dictionary(component("Builder", {})))
+                }),
+                "method": group({
+                    "data": prop(optional(component("TypeReference", {}))),
+                    "builder": prop(optional(component("Builder", {}))),
+                }),
+                "reference": component("BuilderReference", {}),
             })),
             "InterfaceReference": globalType({}, group({
                 "context": prop(component("Context", {})),
                 //"interface": [["context"), reference(['sibling', "context"), [))),
                 "interface": prop(string("identifier")),
+            })),
+            "BuilderReference": globalType({}, group({
+                "context": prop(component("Context", {})),
+                //"interface": [["context"), reference(['sibling', "context"), [))),
+                "builder": prop(string("identifier")),
             })),
             "Type": globalType({}, taggedUnion({
                 "array": component("Type", {}),

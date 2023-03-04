@@ -26,16 +26,16 @@ export const $$: CcreateAPISerializer = ($d) => {
 
         function serializeFunctionReference($: gmoduleDefinition.T.FunctionReference<Annotation>, $i: gfp.ILine) {
 
-            $i.snippet(`g${$.context.glossary}.`)
+            $i.snippet(`g_${$.context.glossary}.`)
 
-            $i.snippet($d.createIdentifier(`F${$.function}`))
+            $i.snippet($d.createIdentifier(`F.${$.function}`))
         }
 
         $i.line(`import * as pt from 'pareto-core-types'`)
         $i.line(``)
         $d.dictionaryForEach($.imports, ($) => {
             $i.nestedLine(($i) => {
-                $i.snippet(`import * as g${$.key} from "${$.value}"`)
+                $i.snippet(`import * as g_${$.key} from "${$.value}"`)
             })
         })
         pl.cc($.api, ($) => {
@@ -44,7 +44,7 @@ export const $$: CcreateAPISerializer = ($d) => {
                 const definition = $.value.definition
                 $i.line(``)
                 $i.nestedLine(($i) => {
-                    $i.snippet(`export type ${$d.createIdentifier(`C${$.key}`)} = `)
+                    $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)} = `)
                     switch ($.value.type[0]) {
                         case 'constructor':
                             pl.cc($.value.type[1], ($) => {
@@ -55,7 +55,7 @@ export const $$: CcreateAPISerializer = ($d) => {
     
                                         $i.snippet(`$: `)
     
-                                        $i.snippet(`g${$.context.glossary}.`)
+                                        $i.snippet(`g_${$.context.glossary}.`)
     
                                         $i.snippet(`T.${$d.createIdentifier($.type)}`)
                                         $i.snippet(`, `)
@@ -116,7 +116,7 @@ export const $$: CcreateAPISerializer = ($d) => {
                 $i.snippet(`export type API = {`)
                 $i.indent(($i) => {
                     $d.dictionaryForEach($.algorithms, ($) => {
-                        $i.line(`${$.key}: ${$d.createIdentifier(`C${$.key}`)}`)
+                        $i.line(`${$.key}: ${$d.createIdentifier(`c${$.key}`)}`)
                     })
                 })
                 $i.snippet(`}`)

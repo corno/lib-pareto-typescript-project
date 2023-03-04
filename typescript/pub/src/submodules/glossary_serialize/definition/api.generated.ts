@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-types'
 
 import * as gforeach from "res-pareto-foreach"
-import * as gthis from "../../glossary_serialize_temp"
+import * as gthis from "./glossary"
 
 export type CcreateSerializer = ($d: {
     readonly 'arrayForEach': gforeach.FArrayForEach

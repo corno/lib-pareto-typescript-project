@@ -101,14 +101,14 @@ export const $$: CgetTestSet = ($) => {
     //     pr.wrapRawArray(["foo"])
     // )
 
-    const writer = gfp.$a.createDirectory({
-        onError: ($) => {
-            pv.logDebugMessage($)
-        },
-        reportSuperfluousNode: ($) => {
-            pv.logDebugMessage(gfp.$a.createSuperfluousNodeMessage($))
-        },
-    })
+    // const writer = gfp.$a.createDirectory({
+    //     onError: ($) => {
+    //         pv.logDebugMessage(`FILESYSTEM ERROR`)
+    //     },
+    //     reportSuperfluousNode: ($) => {
+    //         pv.logDebugMessage(gfp.$a.createSuperfluousNodeMessage($))
+    //     },
+    // })
 
 
     // mserialize.$a.createModuleDefinitionSerializer({

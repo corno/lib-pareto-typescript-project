@@ -10,7 +10,7 @@ export const $: gapi.T.API<pd.SourceLocation> = {
     'algorithms': d({
         // "createSerializer": algorithm(functionReference("this", {}, "Serialize"), constructor(null, {
         //     "serializeAPI": functionReference("api", {}, "Serialize"),
-        //     "serializeGlossary": functionReference("glossary_serialize_temp", {}, "Serialize"),
+        //     "serializeGlossary": functionReference("glossary_serialize", {}, "Serialize"),
         //     "serializeImplementation": functionReference("algorithm", {}, "SerializeImplementation"),
         //     "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
         //     "enrichedArrayForEach": functionReference("foreach", {}, "EnrichedArrayForEach"),

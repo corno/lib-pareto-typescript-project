@@ -4,6 +4,7 @@ import * as gcoll from "res-pareto-collation"
 import * as gmain from "res-pareto-main"
 import * as gdictionary from "res-pareto-dictionary"
 import * as gts from "res-typescript"
+import * as gfp from "lib-fountain-pen"
 
 import { $a } from ".."
 
@@ -72,7 +73,12 @@ export const $$: CgenerateProject = ($) => {
                     'createQuotedString': gts.$a.createQuotedString,
                 }
             ),
-            'logError': gmain.$a.logError,
+            'logWriteFileError': ($) => {
+                gmain.$a.logError(`FIXME WRITEFILEERROR`)
+            },
+            'reportSuperfluousNode': ($) => {
+                gmain.$a.logError(gfp.$a.createSuperfluousNodeMessage($))
+            },
             'decorateDictionaryEntriesWithKey': gforeach.$a.decorateDictionaryEntriesWithKey,
         }
     )($)

@@ -36,12 +36,8 @@ export const $$:CcreateProjectGenerator = ($d) => {
 
                 gfp.$a.createDirectory(
                     {
-                        onError: ($) => {
-                            $d.logError($)
-                        },
-                        reportSuperfluousNode: ($) => {
-                            $d.logError(gfp.$a.createSuperfluousNodeMessage($))
-                        }
+                        onError: $d.logWriteFileError,
+                        reportSuperfluousNode: $d.reportSuperfluousNode,
                     },
                 )(
                     $.testDirectory,

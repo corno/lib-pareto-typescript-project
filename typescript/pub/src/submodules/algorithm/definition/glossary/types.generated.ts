@@ -168,12 +168,158 @@ export namespace T {
         export type innerFunctions<GAnnotation> = pt.Dictionary<{
             readonly 'type': T.ImplementationType<GAnnotation>
         }>
+        
+        export namespace statements {
+            
+            export namespace A {
+                
+                export namespace dependencyCall {
+                    
+                    export type callback<GAnnotation> = T.ProcedureBlock<GAnnotation>
+                    
+                    export type data<GAnnotation> = string
+                }
+                
+                export type dependencyCall<GAnnotation> = {
+                    readonly 'callback': T.ProcedureBlock<GAnnotation>
+                    readonly 'data': string
+                }
+                
+                export namespace innerCallbackCall {
+                    
+                    export type data<GAnnotation> = T.SynchronousExpression<GAnnotation>
+                    
+                    export type innerCallback<GAnnotation> = string
+                    
+                    export type _linterface<GAnnotation> = string
+                }
+                
+                export type innerCallbackCall<GAnnotation> = {
+                    readonly 'data': T.SynchronousExpression<GAnnotation>
+                    readonly 'innerCallback': string
+                    readonly 'interface': string
+                }
+                
+                export namespace interfaceCall {
+                    
+                    export namespace callback {
+                        
+                        export type O<GAnnotation> = T.ProcedureBlock<GAnnotation>
+                    }
+                    
+                    export type callback<GAnnotation> = [ false ] | [ true, T.ProcedureBlock<GAnnotation>]
+                    
+                    export namespace child__path {
+                        
+                        export type A<GAnnotation> = string
+                    }
+                    
+                    export type child__path<GAnnotation> = pt.Array<string>
+                    
+                    export namespace data {
+                        
+                        export type O<GAnnotation> = T.SynchronousExpression<GAnnotation>
+                    }
+                    
+                    export type data<GAnnotation> = [ false ] | [ true, T.SynchronousExpression<GAnnotation>]
+                }
+                
+                export type interfaceCall<GAnnotation> = {
+                    readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GAnnotation>]
+                    readonly 'child path': pt.Array<string>
+                    readonly 'data': [ false ] | [ true, T.SynchronousExpression<GAnnotation>]
+                }
+                
+                export namespace _lswitch {
+                    
+                    export namespace cases {
+                        
+                        export type D<GAnnotation> = T.ProcedureBlock<GAnnotation>
+                    }
+                    
+                    export type cases<GAnnotation> = pt.Dictionary<T.ProcedureBlock<GAnnotation>>
+                    
+                    export namespace path {
+                        
+                        export type A<GAnnotation> = string
+                    }
+                    
+                    export type path<GAnnotation> = pt.Array<string>
+                }
+                
+                export type _lswitch<GAnnotation> = {
+                    readonly 'cases': pt.Dictionary<T.ProcedureBlock<GAnnotation>>
+                    readonly 'path': pt.Array<string>
+                }
+            }
+            
+            export type A<GAnnotation> = 
+                | ['dependencyCall', {
+                    readonly 'callback': T.ProcedureBlock<GAnnotation>
+                    readonly 'data': string
+                }]
+                | ['innerCallbackCall', {
+                    readonly 'data': T.SynchronousExpression<GAnnotation>
+                    readonly 'innerCallback': string
+                    readonly 'interface': string
+                }]
+                | ['interfaceCall', {
+                    readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GAnnotation>]
+                    readonly 'child path': pt.Array<string>
+                    readonly 'data': [ false ] | [ true, T.SynchronousExpression<GAnnotation>]
+                }]
+                | ['switch', {
+                    readonly 'cases': pt.Dictionary<T.ProcedureBlock<GAnnotation>>
+                    readonly 'path': pt.Array<string>
+                }]
+        }
+        
+        export type statements<GAnnotation> = pt.Array<
+            | ['dependencyCall', {
+                readonly 'callback': T.ProcedureBlock<GAnnotation>
+                readonly 'data': string
+            }]
+            | ['innerCallbackCall', {
+                readonly 'data': T.SynchronousExpression<GAnnotation>
+                readonly 'innerCallback': string
+                readonly 'interface': string
+            }]
+            | ['interfaceCall', {
+                readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GAnnotation>]
+                readonly 'child path': pt.Array<string>
+                readonly 'data': [ false ] | [ true, T.SynchronousExpression<GAnnotation>]
+            }]
+            | ['switch', {
+                readonly 'cases': pt.Dictionary<T.ProcedureBlock<GAnnotation>>
+                readonly 'path': pt.Array<string>
+            }]
+        >
     }
     
     export type ProcedureBlock<GAnnotation> = {
         readonly 'innerFunctions': pt.Dictionary<{
             readonly 'type': T.ImplementationType<GAnnotation>
         }>
+        readonly 'statements': pt.Array<
+            | ['dependencyCall', {
+                readonly 'callback': T.ProcedureBlock<GAnnotation>
+                readonly 'data': string
+            }]
+            | ['innerCallbackCall', {
+                readonly 'data': T.SynchronousExpression<GAnnotation>
+                readonly 'innerCallback': string
+                readonly 'interface': string
+            }]
+            | ['interfaceCall', {
+                readonly 'callback': [ false ] | [ true, T.ProcedureBlock<GAnnotation>]
+                readonly 'child path': pt.Array<string>
+                readonly 'data': [ false ] | [ true, T.SynchronousExpression<GAnnotation>]
+            }]
+            | ['switch', {
+                readonly 'cases': pt.Dictionary<T.ProcedureBlock<GAnnotation>>
+                readonly 'path': pt.Array<string>
+            }]
+        >
     }
     
     export namespace States {

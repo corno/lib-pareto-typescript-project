@@ -33,27 +33,27 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 "innerFunctions": member(dictionary(group({
                     "type": member(reference("ImplementationType"))
                 }))),
-                // "statements": member(array(taggedUnion({
-                //     "dependencyCall": group({
-                //         "data": member(string()),
-                //         "callback": member(reference("ProcedureBlock"))
-                //     }),
-                //     "innerCallbackCall": group({
-                //         "innerCallback": member(string()),
-                //         "data": member(reference("SynchronousExpression")),
-                //         "interface": member(string()),
-                //     }),
-                //     "interfaceCall": group({
-                //         //"child path": member(array(string())),
-                //         //"property": member(array(string())),
-                //         "data": member(optional(reference("SynchronousExpression"))),
-                //         "callback": member(optional(reference("ProcedureBlock"),))
-                //     }),
-                //     "switch": group({
-                //         //"path": member(array(string())),
-                //         "cases": member(dictionary(reference("ProcedureBlock")))
-                //     })
-                // })))
+                "statements": member(array(taggedUnion({
+                    "dependencyCall": group({
+                        "data": member(string()),
+                        "callback": member(reference("ProcedureBlock"))
+                    }),
+                    "innerCallbackCall": group({
+                        "innerCallback": member(string()),
+                        "data": member(reference("SynchronousExpression")),
+                        "interface": member(string()),
+                    }),
+                    "interfaceCall": group({
+                        "child path": member(array(string())),
+                        //"property": member(array(string())),
+                        "data": member(optional(reference("SynchronousExpression"))),
+                        "callback": member(optional(reference("ProcedureBlock"),))
+                    }),
+                    "switch": group({
+                        "path": member(array(string())),
+                        "cases": member(dictionary(reference("ProcedureBlock")))
+                    })
+                })))
             })),
             "AsynchronousExpression": type(taggedUnion({
                 "call": group({

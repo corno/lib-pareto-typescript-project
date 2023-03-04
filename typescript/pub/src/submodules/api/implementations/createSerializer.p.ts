@@ -6,7 +6,7 @@ import * as gfp from "lib-fountain-pen"
 import { CcreateSerializer } from "../definition/api.generated"
 
 export const $$: CcreateSerializer = ($d) => {
-    return <Annotation>($: gapi.T.API<Annotation>, $i: gfp.ILine) => {
+    return <Annotation>($: gapi.T.API<Annotation>, $i: gfp.IBlock) => {
         function doOptional<T>(
             $: [false] | [true, T],
             $i: gfp.ILine,
@@ -76,71 +76,82 @@ export const $$: CcreateSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-        $i.snippet(`{`)
-        $i.indent(($i) => {
-            $i.nestedLine(($i) => {
-                $i.snippet(`'algorithms': d({`)
-                $i.indent(($i) => {
-                    $d.dictionaryForEach($.algorithms, ($) => {
-                        $i.nestedLine(($i) => {
-                            $i.snippet(`"${$.key}": {`)
-                            $i.indent(($i) => {
-                                $i.nestedLine(($i) => {
-                                    $i.snippet(`'definition': `)
-                                    serializeDefinitionReference($.value.definition, $i)
-                                    $i.snippet(`,`)
-                                })
-                                $i.nestedLine(($i) => {
-                                    $i.snippet(`'type': `)
-                                    switch ($.value.type[0]) {
-                                        case 'constructor':
-                                            pl.cc($.value.type[1], ($) => {
 
-                                                $i.snippet(`['constructor', {`)
-                                                $i.indent(($i) => {
+        $i.line(`import * as pd from 'pareto-core-data'`)
+        $i.line(``)
+        $i.line(`import * as gapi from "lib-pareto-typescript-project/dist/submodules/api"`)
+        $i.line(``)
+        $i.line(`const d = pd.d`)
+        $i.line(`const a = pd.a`)
+        $i.line(``)
+        $i.nestedLine(($i) => {
+            $i.snippet(`export const $: gapi.T.API<pd.SourceLocation> = `)
+            $i.snippet(`{`)
+            $i.indent(($i) => {
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'algorithms': d({`)
+                    $i.indent(($i) => {
+                        $d.dictionaryForEach($.algorithms, ($) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`"${$.key}": {`)
+                                $i.indent(($i) => {
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`'definition': `)
+                                        serializeDefinitionReference($.value.definition, $i)
+                                        $i.snippet(`,`)
+                                    })
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`'type': `)
+                                        switch ($.value.type[0]) {
+                                            case 'constructor':
+                                                pl.cc($.value.type[1], ($) => {
 
-                                                    $i.nestedLine(($i) => {
-                                                        $i.snippet(`'configuration data': `)
-                                                        doOptional($['configuration data'], $i, ($, $i) => {
-                                                            serializeTypeReference($, $i)
+                                                    $i.snippet(`['constructor', {`)
+                                                    $i.indent(($i) => {
+
+                                                        $i.nestedLine(($i) => {
+                                                            $i.snippet(`'configuration data': `)
+                                                            doOptional($['configuration data'], $i, ($, $i) => {
+                                                                serializeTypeReference($, $i)
+                                                            })
+                                                            $i.snippet(`,`)
                                                         })
-                                                        $i.snippet(`,`)
-                                                    })
-                                                    $i.nestedLine(($i) => {
-                                                        $i.snippet(`'dependencies': d({`)
-                                                        $i.indent(($i) => {
-                                                            $d.dictionaryForEach($.dependencies, ($) => {
-                                                                $i.nestedLine(($i) => {
-                                                                    $i.snippet(`"${$.key}": `)
-                                                                    serializeDefinitionReference($.value, $i)
-                                                                    $i.snippet(`,`)
+                                                        $i.nestedLine(($i) => {
+                                                            $i.snippet(`'dependencies': d({`)
+                                                            $i.indent(($i) => {
+                                                                $d.dictionaryForEach($.dependencies, ($) => {
+                                                                    $i.nestedLine(($i) => {
+                                                                        $i.snippet(`"${$.key}": `)
+                                                                        serializeDefinitionReference($.value, $i)
+                                                                        $i.snippet(`,`)
+                                                                    })
                                                                 })
                                                             })
+                                                            $i.snippet(`}),`)
                                                         })
-                                                        $i.snippet(`}),`)
                                                     })
+                                                    $i.snippet(`}]`)
                                                 })
-                                                $i.snippet(`}]`)
-                                            })
-                                            break
-                                        case 'reference':
-                                            pl.cc($.value.type[1], ($) => {
+                                                break
+                                            case 'reference':
+                                                pl.cc($.value.type[1], ($) => {
 
-                                                $i.snippet(`['foo]`)
-                                            })
-                                            break
-                                        default: pl.au($.value.type[0])
-                                    }
-                                    $i.snippet(`,`)
+                                                    $i.snippet(`['foo]`)
+                                                })
+                                                break
+                                            default: pl.au($.value.type[0])
+                                        }
+                                        $i.snippet(`,`)
+                                    })
                                 })
+                                $i.snippet(`},`)
                             })
-                            $i.snippet(`},`)
                         })
                     })
+                    $i.snippet(`}),`)
                 })
-                $i.snippet(`}),`)
             })
+            $i.snippet(`}`)
         })
-        $i.snippet(`}`)
     }
 }

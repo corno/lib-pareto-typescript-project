@@ -35,7 +35,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                     'glossary': "fp",
                     'arguments': d({}),
                 }],
-                'interface': "Line",
+                'interface': "Block",
             }],
             'return type': ['nothing', null],
         },

@@ -80,7 +80,7 @@ export const $: gproject.T.Project._ltype.library.submodules.D<pd.SourceLocation
                                 'glossary': "fp",
                                 'arguments': d({}),
                             }],
-                            'interface': "Line",
+                            'interface': "Block",
                         }],
                         'return type': ['nothing', null],
                     },

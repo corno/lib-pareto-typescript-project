@@ -24,7 +24,7 @@ export const $$: CcreateAPISerializer = ($d) => {
         }
 
 
-        function serializeDefinitionReference($: gmoduleDefinition.T.FunctionReference<Annotation>, $i: gfp.ILine) {
+        function serializeFunctionReference($: gmoduleDefinition.T.FunctionReference<Annotation>, $i: gfp.ILine) {
 
             $i.snippet(`g${$.context.glossary}.`)
 
@@ -66,7 +66,7 @@ export const $$: CcreateAPISerializer = ($d) => {
                                     $d.dictionaryForEach($.dependencies, ($) => {
                                         $i.nestedLine(($i) => {
                                             $i.snippet(`readonly '${$.key}': `)
-                                            serializeDefinitionReference($.value, $i)
+                                            serializeFunctionReference($.value, $i)
                                         })
                                     })
                                 })
@@ -108,7 +108,7 @@ export const $$: CcreateAPISerializer = ($d) => {
                             break
                         default: pl.au($.value.type[0])
                     }
-                    serializeDefinitionReference(definition, $i)
+                    serializeFunctionReference(definition, $i)
                 })
             })
             $i.line(``)

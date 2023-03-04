@@ -43,6 +43,6 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     }),
     'interfaces': d({}),
     'functions': d({
-        "Serialize": func(typeReference("API"), null, interfaceReference("fp", "Line"), null),
+        "Serialize": func(typeReference("API"), null, interfaceReference("fp", "Block"), null),
     }),
 }

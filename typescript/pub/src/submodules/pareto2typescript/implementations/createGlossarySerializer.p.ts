@@ -219,7 +219,8 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                 //create namespaces for the complex types
                                 pl.cc($.type, ($) => {
                                     function createTheCurrentNamespace(
-                                        $c: ($i: gfp.IBlock) => void
+                                        $c: ($i: gfp.IBlock) => void,
+                                        $i: gfp.IBlock,
                                     ) {
                                         ns(
                                             name,
@@ -243,7 +244,8 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                                     },
                                                     $i,
                                                 )
-                                            }
+                                            },
+                                            $i,
                                         )
                                     }
                                     switch ($[0]) {
@@ -324,7 +326,8 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                                                 $i
                                                             )
                                                         })
-                                                    }
+                                                    },
+                                                    $i,
                                                 )
                                             })
                                             break
@@ -360,7 +363,8 @@ export const $$: CcreateGlossarySerializer = ($d) => {
                                                                 $i
                                                             )
                                                         })
-                                                    }
+                                                    },
+                                                    $i,
                                                 )
                                             })
                                             break

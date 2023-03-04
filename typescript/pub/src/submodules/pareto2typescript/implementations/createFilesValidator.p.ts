@@ -4,13 +4,13 @@ import * as pd from 'pareto-core-dev'
 import * as gfp from "lib-fountain-pen"
 import * as gproject from "../../project"
 
-import { CcreateFilesValidator } from "../definition/api.generated"
+import { createFilesValidator } from "../definition/api.generated"
 
 
-export const $$: CcreateFilesValidator = (
+export const $$: createFilesValidator = (
     $d,
 ) => {
-    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.IDirectory) => {
+    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.B.Directory) => {
 
         //$i.allowed("tmp") //already defined in 'generateTemplate'
         $i.allowed(".git")

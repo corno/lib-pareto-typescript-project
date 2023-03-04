@@ -1,8 +1,8 @@
 import * as pl from 'pareto-core-lib'
 
-import { CcreateParametersParser } from "../definition/api.generated"
+import { createParametersParser } from "../definition/api.generated"
 
-export const $$:CcreateParametersParser = (
+export const $$: createParametersParser = (
     $d,
 ) => {
     return ($, $i) => {

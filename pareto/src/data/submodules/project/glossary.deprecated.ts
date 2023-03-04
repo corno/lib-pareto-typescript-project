@@ -115,6 +115,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             }))),
         })),
     }),
+    'builders': d({}),
     'interfaces': d({}),
     'functions': d({
         // "Serialize": func(typeReference("Module"), null, interfaceReference("fp", "Line"), null),

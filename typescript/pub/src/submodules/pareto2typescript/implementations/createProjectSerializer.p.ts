@@ -5,13 +5,13 @@ import * as gfp from "lib-fountain-pen"
 import * as gapi from "../../api"
 import * as gproject from "../../project"
 
-import { CcreateProjectSerializer } from "../definition/api.generated"
+import { createProjectSerializer } from "../definition/api.generated"
 
 
-export const $$: CcreateProjectSerializer = (
+export const $$: createProjectSerializer = (
     $d,
 ) => {
-    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.IDirectory) => {
+    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.B.Directory) => {
 
         $i.directory("typescript", ($i) => {
             function tsConfig(
@@ -19,7 +19,7 @@ export const $$: CcreateProjectSerializer = (
                     isResource: boolean,
                     inlineSourceMap: boolean,
                 },
-                $i: gfp.IDirectory
+                $i: gfp.B.Directory
             ) {
                 $i.file("tsconfig.json", ($i) => {
                     $i.nestedLine(($i) => {
@@ -49,7 +49,7 @@ export const $$: CcreateProjectSerializer = (
                     })
                 })
             }
-            function globals($i: gfp.IDirectory) {
+            function globals($i: gfp.B.Directory) {
                 $i.file("globals.generated.ts", ($i) => {
                     $i.line(`interface Array<T> {`)
                     $i.line(`    [n: number]: T`)
@@ -194,7 +194,7 @@ export const $$: CcreateProjectSerializer = (
                                 function doImplementation($: {
                                     'implementation': gproject.T.Implementation<Annotation>,
                                     'api': gapi.T.API<Annotation>,
-                                }, $i: gfp.IDirectory) {
+                                }, $i: gfp.B.Directory) {
                                     const api = $.api
                                     switch ($.implementation[0]) {
                                         case 'pareto':
@@ -502,7 +502,7 @@ export const $$: CcreateProjectSerializer = (
                     $i
                 )
             })
-            function doTest($: gproject.T.Test<Annotation>, $i: gfp.IDirectory) {
+            function doTest($: gproject.T.Test<Annotation>, $i: gfp.B.Directory) {
 
                 $i.directory("test", ($i) => {
                     $i.allowed("data")

@@ -3,11 +3,11 @@ import * as pl from 'pareto-core-lib'
 import * as galgorithm from "../../algorithm"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateStatesSerializer } from "../definition/api.generated"
+import { createStatesSerializer } from "../definition/api.generated"
 
-export const $$:CcreateStatesSerializer = ($d) => {
-    return <Annotation>($: galgorithm.T.States<Annotation>, $i: gfp.IBlock) => {
-        function serializeType($: galgorithm.T.Type<Annotation>, $i: gfp.ILine) {
+export const $$: createStatesSerializer = ($d) => {
+    return <Annotation>($: galgorithm.T.States<Annotation>, $i: gfp.B.Block) => {
+        function serializeType($: galgorithm.T.Type<Annotation>, $i: gfp.B.Line) {
             switch ($[0]) {
                 case 'null':
                     pl.cc($[1], ($) => {

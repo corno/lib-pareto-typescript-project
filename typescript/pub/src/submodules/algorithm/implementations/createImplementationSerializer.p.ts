@@ -3,12 +3,12 @@ import * as pl from 'pareto-core-lib'
 import * as gglossary from "../../glossary"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateImplementationSerializer } from "../definition/api.generated"
+import { createImplementationSerializer } from "../definition/api.generated"
 
-export const $$:CcreateImplementationSerializer = ($d) => {
+export const $$: createImplementationSerializer = ($d) => {
 
     return ($, $i) => {
-        // function serializeExpression($: api.TExpression, $i: gfp.ILine) {
+        // function serializeExpression($: api.TExpression, $i: gfp.B.Line) {
         //     switch ($[0]) {
         //         case 'call':
         //             pl.cc($[1], ($) => {
@@ -125,7 +125,7 @@ export const $$:CcreateImplementationSerializer = ($d) => {
         //         default: pl.au($[0])
         //     }
         // }
-        // function serializeFunctionBlock($: api.TFunctionBlock, $i: gfp.ILine) {
+        // function serializeFunctionBlock($: api.TFunctionBlock, $i: gfp.B.Line) {
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
         //         $i.nestedLine(($i) => {
@@ -163,7 +163,7 @@ export const $$:CcreateImplementationSerializer = ($d) => {
         //     })
         //     $i.snippet(`}`)
         // }
-        // function serializeCallbackBlock($: api.TCallbackBlock, $i: gfp.ILine) {
+        // function serializeCallbackBlock($: api.TCallbackBlock, $i: gfp.B.Line) {
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
         //         $i.nestedLine(($i) => {

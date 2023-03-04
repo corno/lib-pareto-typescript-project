@@ -1,9 +1,16 @@
 import * as pt from 'pareto-core-types'
 
-import { T   } from './types.generated'
+import { T } from './types.generated'
 
-import * as gcommon from "glo-pareto-common"
-import * as gfp from "lib-fountain-pen"
-import * as gglossary from "../../../glossary"
+import * as g_common from "glo-pareto-common"
+import * as g_fp from "lib-fountain-pen"
+import * as g_glossary from "../../../glossary"
 
-export type FSerialize = <GPAnnotation>($: T.API<GPAnnotation>, $i: gfp.IBlock,) => void
+export namespace I {}
+
+export namespace B {}
+
+export namespace F {
+    
+    export type Serialize = <GAnnotation>($: T.API<GAnnotation>, $b: g_fp.B.Block,) => void
+}

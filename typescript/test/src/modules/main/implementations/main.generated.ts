@@ -6,13 +6,13 @@ import * as gtest from "lib-pareto-test"
 
 import { $$ as getTestSet } from "./getTestSet.p"
 
-import { Cmain } from "../definition/api.generated"
+import {  main } from "../definition/api.generated"
 
-export const $$:Cmain = ($) => {
+export const $$: main = ($) => {
     gtest.$a.createTestProgram({
         'getTestSet': getTestSet,
-        'log': gmain.$a.log,
-        'logError': gmain.$a.logError,
-        'onTestErrors': gmain.$a.setExitCodeToFailed
+        'log': gmain.$r.log,
+        'logError': gmain.$r.logError,
+        'onTestErrors': gmain.$r.setExitCodeToFailed
     })($)
 }

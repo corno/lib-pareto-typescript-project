@@ -1,23 +1,31 @@
 import * as pt from 'pareto-core-types'
 
-import { T   } from './types.generated'
+import { T } from './types.generated'
 
-import * as gcommon from "glo-pareto-common"
-import * as gfp from "lib-fountain-pen"
-import * as gmain from "res-pareto-main"
-import * as gpareto2typescript from "../../../submodules/pareto2typescript"
-import * as gproject from "../../../submodules/project"
+import * as g_common from "glo-pareto-common"
+import * as g_fp from "lib-fountain-pen"
+import * as g_main from "res-pareto-main"
+import * as g_pareto2typescript from "../../../submodules/pareto2typescript"
+import * as g_project from "../../../submodules/project"
 
-export type IHandleParameters<GPAnnotation> = ($: T.Parameters<GPAnnotation>, ) => void
+export namespace I {}
 
-export type IParseArguments<GPAnnotation> = ($: gmain.T.Arguments, ) => void
+export namespace B {
+    
+    export type HandleParameters<GAnnotation> = ($: T.Parameters<GAnnotation>, ) => void
+    
+    export type ParseArguments<GAnnotation> = ($: g_main.T.Arguments, ) => void
+    
+    export type ProcessArgument<GAnnotation> = ($: g_common.T.String, ) => void
+}
 
-export type IProcessArgument<GPAnnotation> = ($: gcommon.T.String, ) => void
-
-export type FGenerateProject = <GPAnnotation>($: T.ProjectSettings<GPAnnotation>,) => void
-
-export type FGetSingleArgument = <GPAnnotation>($: gmain.T.Arguments,) => pt.AsyncValue<gcommon.T.String>
-
-export type FHandleArgumentError = <GPAnnotation>($: T.ArgumentError<GPAnnotation>,) => void
-
-export type FParseArguments2 = <GPAnnotation>($: gmain.T.Arguments, $i: IHandleParameters<GPAnnotation>,) => void
+export namespace F {
+    
+    export type GenerateProject = <GAnnotation>($: T.ProjectSettings<GAnnotation>,) => void
+    
+    export type GetSingleArgument = <GAnnotation>($: g_main.T.Arguments,) => pt.AsyncValue<g_common.T.String>
+    
+    export type HandleArgumentError = <GAnnotation>($: T.ArgumentError<GAnnotation>,) => void
+    
+    export type ParseArguments2 = <GAnnotation>($: g_main.T.Arguments, $b: B.HandleParameters<GAnnotation>,) => void
+}

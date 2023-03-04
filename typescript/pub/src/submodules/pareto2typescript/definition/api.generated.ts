@@ -1,80 +1,80 @@
 import * as pt from 'pareto-core-types'
 
-import * as gcollation from "res-pareto-collation"
-import * as gdictionary from "res-pareto-dictionary"
-import * as gforeach from "res-pareto-foreach"
-import * as gglossary from "../../glossary"
-import * as gmain from "res-pareto-main"
-import * as gproject from "../../project"
-import * as gthis from "../../pareto2typescript"
-import * as gts from "res-typescript"
+import * as g_collation from "res-pareto-collation"
+import * as g_dictionary from "res-pareto-dictionary"
+import * as g_foreach from "res-pareto-foreach"
+import * as g_glossary from "../../glossary"
+import * as g_main from "res-pareto-main"
+import * as g_project from "../../project"
+import * as g_this from "../../pareto2typescript"
+import * as g_ts from "res-typescript"
 
-export type CcreateAPISerializer = ($d: {
-    readonly 'createApostrophedString': gts.FCreateApostrophedString
-    readonly 'createBacktickedString': gts.FCreateBacktickedString
-    readonly 'createIdentifier': gts.FCreateIdentifier
-    readonly 'createQuotedString': gts.FCreateQuotedString
-    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
-}) => gthis.FSerializeAPI
+export type createAPISerializer = ($d: {
+    readonly 'createApostrophedString': g_ts.F.CreateApostrophedString
+    readonly 'createBacktickedString': g_ts.F.CreateBacktickedString
+    readonly 'createIdentifier': g_ts.F.CreateIdentifier
+    readonly 'createQuotedString': g_ts.F.CreateQuotedString
+    readonly 'dictionaryForEach': g_foreach.F.DictionaryForEach
+}) => g_this.F.SerializeAPI
 
-export type CcreateFilesValidator = ($d: {}) => gthis.FProjectToDirectory
+export type createFilesValidator = ($d: {}) => g_this.F.ProjectToDirectory
 
-export type CcreateGlossarySerializer = ($d: {
-    readonly 'createApostrophedString': gts.FCreateApostrophedString
-    readonly 'createBacktickedString': gts.FCreateBacktickedString
-    readonly 'createIdentifier': gts.FCreateIdentifier
-    readonly 'createQuotedString': gts.FCreateQuotedString
-    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
-    readonly 'dictionaryIsEmpty': gdictionary.FIsEmpty
-    readonly 'enrichedDictionaryForEach': gforeach.FEnrichedDictionaryForEach
-}) => gthis.FSerializeGlossary
+export type createGlossarySerializer = ($d: {
+    readonly 'createApostrophedString': g_ts.F.CreateApostrophedString
+    readonly 'createBacktickedString': g_ts.F.CreateBacktickedString
+    readonly 'createIdentifier': g_ts.F.CreateIdentifier
+    readonly 'createQuotedString': g_ts.F.CreateQuotedString
+    readonly 'dictionaryForEach': g_foreach.F.DictionaryForEach
+    readonly 'dictionaryIsEmpty': g_dictionary.F.IsEmpty
+    readonly 'enrichedDictionaryForEach': g_foreach.F.EnrichedDictionaryForEach
+}) => g_this.F.SerializeGlossary
 
-export type CcreateImplementationSerializer = ($d: {
-    readonly 'arrayForEach': gforeach.FArrayForEach
-    readonly 'createApostrophedString': gts.FCreateApostrophedString
-    readonly 'createBacktickedString': gts.FCreateBacktickedString
-    readonly 'createIdentifier': gts.FCreateIdentifier
-    readonly 'createQuotedString': gts.FCreateQuotedString
-    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
-    readonly 'enrichedArrayForEach': gforeach.FEnrichedArrayForEach
-    readonly 'enrichedDictionaryForEach': gforeach.FEnrichedDictionaryForEach
-}) => gthis.FSerializeImplementation
+export type createImplementationSerializer = ($d: {
+    readonly 'arrayForEach': g_foreach.F.ArrayForEach
+    readonly 'createApostrophedString': g_ts.F.CreateApostrophedString
+    readonly 'createBacktickedString': g_ts.F.CreateBacktickedString
+    readonly 'createIdentifier': g_ts.F.CreateIdentifier
+    readonly 'createQuotedString': g_ts.F.CreateQuotedString
+    readonly 'dictionaryForEach': g_foreach.F.DictionaryForEach
+    readonly 'enrichedArrayForEach': g_foreach.F.EnrichedArrayForEach
+    readonly 'enrichedDictionaryForEach': g_foreach.F.EnrichedDictionaryForEach
+}) => g_this.F.SerializeImplementation
 
-export type CcreateProjectSerializer = ($d: {
-    readonly 'createApostrophedString': gts.FCreateApostrophedString
-    readonly 'createBacktickedString': gts.FCreateBacktickedString
-    readonly 'createIdentifier': gts.FCreateIdentifier
-    readonly 'createQuotedString': gts.FCreateQuotedString
-    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
-    readonly 'enrichedDictionaryForEach': gforeach.FEnrichedDictionaryForEach
-    readonly 'serializeAPI': gthis.FSerializeAPI
-    readonly 'serializeGlossary': gthis.FSerializeGlossary
-    readonly 'serializeImplementation': gthis.FSerializeImplementation
-}) => gthis.FProjectToDirectory
+export type createProjectSerializer = ($d: {
+    readonly 'createApostrophedString': g_ts.F.CreateApostrophedString
+    readonly 'createBacktickedString': g_ts.F.CreateBacktickedString
+    readonly 'createIdentifier': g_ts.F.CreateIdentifier
+    readonly 'createQuotedString': g_ts.F.CreateQuotedString
+    readonly 'dictionaryForEach': g_foreach.F.DictionaryForEach
+    readonly 'enrichedDictionaryForEach': g_foreach.F.EnrichedDictionaryForEach
+    readonly 'serializeAPI': g_this.F.SerializeAPI
+    readonly 'serializeGlossary': g_this.F.SerializeGlossary
+    readonly 'serializeImplementation': g_this.F.SerializeImplementation
+}) => g_this.F.ProjectToDirectory
 
-export type CcreateStatesSerializer = ($d: {
-    readonly 'arrayForEach': gforeach.FArrayForEach
-    readonly 'createApostrophedString': gts.FCreateApostrophedString
-    readonly 'createIdentifier': gts.FCreateIdentifier
-    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
-    readonly 'enrichedArrayForEach': gforeach.FEnrichedArrayForEach
-    readonly 'enrichedDictionaryForEach': gforeach.FEnrichedDictionaryForEach
-}) => gthis.FSerializeStates
+export type createStatesSerializer = ($d: {
+    readonly 'arrayForEach': g_foreach.F.ArrayForEach
+    readonly 'createApostrophedString': g_ts.F.CreateApostrophedString
+    readonly 'createIdentifier': g_ts.F.CreateIdentifier
+    readonly 'dictionaryForEach': g_foreach.F.DictionaryForEach
+    readonly 'enrichedArrayForEach': g_foreach.F.EnrichedArrayForEach
+    readonly 'enrichedDictionaryForEach': g_foreach.F.EnrichedDictionaryForEach
+}) => g_this.F.SerializeStates
 
-export type CcreateTemplateSerializer = ($d: {
-    readonly 'createApostrophedString': gts.FCreateApostrophedString
-    readonly 'createBacktickedString': gts.FCreateBacktickedString
-    readonly 'createIdentifier': gts.FCreateIdentifier
-    readonly 'createQuotedString': gts.FCreateQuotedString
-    readonly 'dictionaryForEach': gforeach.FDictionaryForEach
-}) => gthis.FProjectToDirectory
+export type createTemplateSerializer = ($d: {
+    readonly 'createApostrophedString': g_ts.F.CreateApostrophedString
+    readonly 'createBacktickedString': g_ts.F.CreateBacktickedString
+    readonly 'createIdentifier': g_ts.F.CreateIdentifier
+    readonly 'createQuotedString': g_ts.F.CreateQuotedString
+    readonly 'dictionaryForEach': g_foreach.F.DictionaryForEach
+}) => g_this.F.ProjectToDirectory
 
 export type API = {
-    createAPISerializer: CcreateAPISerializer
-    createFilesValidator: CcreateFilesValidator
-    createGlossarySerializer: CcreateGlossarySerializer
-    createImplementationSerializer: CcreateImplementationSerializer
-    createProjectSerializer: CcreateProjectSerializer
-    createStatesSerializer: CcreateStatesSerializer
-    createTemplateSerializer: CcreateTemplateSerializer
+    createAPISerializer: createAPISerializer
+    createFilesValidator: createFilesValidator
+    createGlossarySerializer: createGlossarySerializer
+    createImplementationSerializer: createImplementationSerializer
+    createProjectSerializer: createProjectSerializer
+    createStatesSerializer: createStatesSerializer
+    createTemplateSerializer: createTemplateSerializer
 }

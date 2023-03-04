@@ -5,9 +5,9 @@ import * as gfp from "lib-fountain-pen"
 
 import { $a } from ".."
 
-import { CcreateProjectGenerator } from "../definition/api.generated"
+import { createProjectGenerator } from "../definition/api.generated"
 
-export const $$:CcreateProjectGenerator = ($d) => {
+export const $$: createProjectGenerator = ($d) => {
     return ($) => {
 
         const project = $.project

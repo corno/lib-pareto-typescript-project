@@ -4,12 +4,12 @@ import * as gproject from "../../project"
 import * as gapi from "../../api"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateTemplateSerializer } from "../definition/api.generated"
+import { createTemplateSerializer } from "../definition/api.generated"
 
-export const $$: CcreateTemplateSerializer = (
+export const $$: createTemplateSerializer = (
     $d
 ) => {
-    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.IDirectory) => {
+    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.B.Directory) => {
         $i.directory("tmp", ($i) => {
             $i.directory("templates", ($i) => {
                 switch ($.type[0]) {
@@ -23,7 +23,7 @@ export const $$: CcreateTemplateSerializer = (
                             $i.directory("pub", ($i) => {
                                 function doImplementation(
                                     $: gapi.T.API<Annotation>,
-                                    $i: gfp.IDirectory,
+                                    $i: gfp.B.Directory,
                                 ) {
                                     $i.directory("implementations", ($i) => {
                                         $d.dictionaryForEach($.algorithms, ($) => {
@@ -68,7 +68,7 @@ export const $$: CcreateTemplateSerializer = (
                             })
                             $i.directory("test", ($i) => {
                                 $i.directory("src", ($i) => {
-                                    function doAPI($: gapi.T.API<Annotation>, $i: gfp.IDirectory) {
+                                    function doAPI($: gapi.T.API<Annotation>, $i: gfp.B.Directory) {
                                         $d.dictionaryForEach($.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)

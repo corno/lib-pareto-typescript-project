@@ -21,7 +21,7 @@ export namespace T {
         
         export namespace lines {
             
-            export type T<GAnnotation> = string
+            export type A<GAnnotation> = string
         }
         
         export type lines<GAnnotation> = pt.Array<string>

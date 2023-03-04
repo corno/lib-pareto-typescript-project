@@ -9,15 +9,15 @@ export type VOptional<AType> =
     | ['not set', {}]
     | ['set', AType]
 
-import { CcreateSerializer } from "../definition/api.generated"
+import { createSerializer } from "../definition/api.generated"
 
-export const $$: CcreateSerializer = ($d) => {
-    return <Annotation>($: gglossary.T.Glossary<Annotation>, $i: gfp.IBlock) => {
+export const $$: createSerializer = ($d) => {
+    return <Annotation>($: gglossary.T.Glossary<Annotation>, $i: gfp.B.Block) => {
 
         function doOptional<T>(
             $: pt.OptionalValue<T>,
-            $i: gfp.ILine,
-            $c: ($: T, $i: gfp.ILine) => void,
+            $i: gfp.B.Line,
+            $c: ($: T, $i: gfp.B.Line) => void,
         ) {
             switch ($[0]) {
                 case false:
@@ -33,7 +33,7 @@ export const $$: CcreateSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeTypeReference($: gglossary.T.TypeReference<Annotation>, $i: gfp.ILine) {
+        function serializeTypeReference($: gglossary.T.TypeReference<Annotation>, $i: gfp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -64,7 +64,7 @@ export const $$: CcreateSerializer = ($d) => {
             $i.snippet(`}`)
         }
 
-        function serializeType($: gglossary.T.Type<Annotation>, $i: gfp.ILine) {
+        function serializeType($: gglossary.T.Type<Annotation>, $i: gfp.B.Line) {
             $i.snippet(`<gglossary.T.Type<pd.SourceLocation>>`)
 
             switch ($[0]) {
@@ -190,7 +190,7 @@ export const $$: CcreateSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeContext($: gglossary.T.Context<Annotation>, $i: gfp.ILine) {
+        function serializeContext($: gglossary.T.Context<Annotation>, $i: gfp.B.Line) {
             $i.snippet(`<gglossary.T.Context<pd.SourceLocation>>`)
             switch ($[0]) {
                 case 'import':
@@ -224,7 +224,7 @@ export const $$: CcreateSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeInterfaceReference($: gglossary.T.InterfaceReference<Annotation>, $i: gfp.ILine) {
+        function serializeInterfaceReference($: gglossary.T.InterfaceReference<Annotation>, $i: gfp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -239,7 +239,7 @@ export const $$: CcreateSerializer = ($d) => {
             $i.snippet(`}`)
         }
 
-        function serializeBuilderReference($: gglossary.T.BuilderReference<Annotation>, $i: gfp.ILine) {
+        function serializeBuilderReference($: gglossary.T.BuilderReference<Annotation>, $i: gfp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -254,7 +254,7 @@ export const $$: CcreateSerializer = ($d) => {
             $i.snippet(`}`)
 
         }
-        function serializeInterface($: gglossary.T.Interface<Annotation>, $i: gfp.ILine) {
+        function serializeInterface($: gglossary.T.Interface<Annotation>, $i: gfp.B.Line) {
             switch ($[0]) {
                 case 'group':
                     pl.cc($[1], ($) => {
@@ -315,7 +315,7 @@ export const $$: CcreateSerializer = ($d) => {
             }
 
         }
-        function serializeBuilder($: gglossary.T.Builder<Annotation>, $i: gfp.ILine) {
+        function serializeBuilder($: gglossary.T.Builder<Annotation>, $i: gfp.B.Line) {
             switch ($[0]) {
                 case 'group':
                     pl.cc($[1], ($) => {

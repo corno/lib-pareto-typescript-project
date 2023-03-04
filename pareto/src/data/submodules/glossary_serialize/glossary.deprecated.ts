@@ -16,6 +16,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'types': d({
         "Annotation": type(glossaryParameter("Annotation"))
     }),
+    'builders': d({}),
     'interfaces': d({}),
     'functions': d({
         "Serialize": {
@@ -29,13 +30,13 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 'type': "Glossary",
                 'arguments': d({}),
             },
-            'managed input interface': [false],
-            'output interface': [true, {
+            'input builder': [false],
+            'output builder': [true, {
                 'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                     'glossary': "fp",
                     'arguments': d({}),
                 }],
-                'interface': "Block",
+                'builder': "Block",
             }],
             'return type': ['nothing', null],
         },

@@ -3,14 +3,14 @@ import * as pl from 'pareto-core-lib'
 import * as gapi from "../definition/glossary"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateSerializer } from "../definition/api.generated"
+import { createSerializer } from "../definition/api.generated"
 
-export const $$: CcreateSerializer = ($d) => {
-    return <Annotation>($: gapi.T.API<Annotation>, $i: gfp.IBlock) => {
+export const $$: createSerializer = ($d) => {
+    return <Annotation>($: gapi.T.API<Annotation>, $i: gfp.B.Block) => {
         function doOptional<T>(
             $: [false] | [true, T],
-            $i: gfp.ILine,
-            $c: ($: T, $i: gfp.ILine) => void,
+            $i: gfp.B.Line,
+            $c: ($: T, $i: gfp.B.Line) => void,
         ) {
             if ($[0] === true) {
                 $i.snippet(`[true, `)
@@ -20,7 +20,7 @@ export const $$: CcreateSerializer = ($d) => {
                 $i.snippet(`[false]`)
             }
         }
-        function serializeTypeReference($: gapi.T.TypeReference<string>, $i: gfp.ILine) {
+        function serializeTypeReference($: gapi.T.TypeReference<string>, $i: gfp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -34,7 +34,7 @@ export const $$: CcreateSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-        function serializeDefinitionReference($: gapi.T.FunctionReference<Annotation>, $i: gfp.ILine) {
+        function serializeDefinitionReference($: gapi.T.FunctionReference<Annotation>, $i: gfp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 if ($.context !== undefined) {
@@ -54,7 +54,7 @@ export const $$: CcreateSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-        function serializeContext($: gapi.T.Context<Annotation>, $i: gfp.ILine) {
+        function serializeContext($: gapi.T.Context<Annotation>, $i: gfp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {

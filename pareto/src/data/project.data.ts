@@ -45,10 +45,11 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
                 "res-typescript": null,
             }),
             'glossary': {
-                'functions': d({}),
                 'parameters': d({}),
                 'types': d({}),
+                'builders': d({}),
                 'interfaces': d({}),
+                'functions': d({}),
             },
             'imports': d({}),
 

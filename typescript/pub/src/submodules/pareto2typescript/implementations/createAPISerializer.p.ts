@@ -4,16 +4,16 @@ import * as gmoduleDefinition from "../../api"
 import * as gfp from "lib-fountain-pen"
 import * as gapi from "../definition/glossary"
 
-import { CcreateAPISerializer } from "../definition/api.generated"
+import { createAPISerializer } from "../definition/api.generated"
 
-export const $$: CcreateAPISerializer = ($d) => {
-    return <Annotation>($: gapi.T.SerializeAPIData<Annotation>, $i: gfp.IBlock) => {
+export const $$: createAPISerializer = ($d) => {
+    return <Annotation>($: gapi.T.SerializeAPIData<Annotation>, $i: gfp.B.Block) => {
         function doOptional<T>(
             $: [false] | [true, T],
-            $i: gfp.ILine,
+            $i: gfp.B.Line,
             $c: {
-                onSet: ($: T, $i: gfp.ILine) => void,
-                onNotset: ($: null, $i: gfp.ILine) => void,
+                onSet: ($: T, $i: gfp.B.Line) => void,
+                onNotset: ($: null, $i: gfp.B.Line) => void,
             },
         ) {
             if ($[0] === true) {
@@ -24,7 +24,7 @@ export const $$: CcreateAPISerializer = ($d) => {
         }
 
 
-        function serializeFunctionReference($: gmoduleDefinition.T.FunctionReference<Annotation>, $i: gfp.ILine) {
+        function serializeFunctionReference($: gmoduleDefinition.T.FunctionReference<Annotation>, $i: gfp.B.Line) {
 
             $i.snippet(`g_${$.context.glossary}.`)
             $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)

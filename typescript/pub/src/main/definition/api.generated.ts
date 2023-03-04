@@ -1,29 +1,29 @@
 import * as pt from 'pareto-core-types'
 
-import * as gcommon from "glo-pareto-common"
-import * as gforeach from "res-pareto-foreach"
-import * as gfp from "lib-fountain-pen"
-import * as gfs from "res-pareto-filesystem"
-import * as gpareto2typescript from "../../submodules/pareto2typescript"
-import * as gthis from "./glossary"
+import * as g_common from "glo-pareto-common"
+import * as g_foreach from "res-pareto-foreach"
+import * as g_fp from "lib-fountain-pen"
+import * as g_fs from "res-pareto-filesystem"
+import * as g_pareto2typescript from "../../submodules/pareto2typescript"
+import * as g_this from "./glossary"
 
-export type CcreateParametersParser = ($d: {
-    readonly 'onError': gthis.FHandleArgumentError
-}) => gthis.FParseArguments2
+export type createParametersParser = ($d: {
+    readonly 'onError': g_this.F.HandleArgumentError
+}) => g_this.F.ParseArguments2
 
-export type CcreateProjectGenerator = ($d: {
-    readonly 'decorateDictionaryEntriesWithKey': gforeach.FDecorateDictionaryEntriesWithKey
-    readonly 'logWriteFileError': gfs.FHandleWriteFileError
-    readonly 'reportSuperfluousNode': gfp.FReportSuperfluousNode
-    readonly 'serializeProject': gpareto2typescript.FProjectToDirectory
-    readonly 'serializeTemplate': gpareto2typescript.FProjectToDirectory
-    readonly 'validateFiles': gpareto2typescript.FProjectToDirectory
-}) => gthis.FGenerateProject
+export type createProjectGenerator = ($d: {
+    readonly 'decorateDictionaryEntriesWithKey': g_foreach.F.DecorateDictionaryEntriesWithKey
+    readonly 'logWriteFileError': g_fs.F.HandleWriteFileError
+    readonly 'reportSuperfluousNode': g_fp.F.ReportSuperfluousNode
+    readonly 'serializeProject': g_pareto2typescript.F.ProjectToDirectory
+    readonly 'serializeTemplate': g_pareto2typescript.F.ProjectToDirectory
+    readonly 'validateFiles': g_pareto2typescript.F.ProjectToDirectory
+}) => g_this.F.GenerateProject
 
-export type CgenerateProject = gthis.FGenerateProject
+export type generateProject = g_this.F.GenerateProject
 
 export type API = {
-    createParametersParser: CcreateParametersParser
-    createProjectGenerator: CcreateProjectGenerator
-    generateProject: CgenerateProject
+    createParametersParser: createParametersParser
+    createProjectGenerator: createProjectGenerator
+    generateProject: generateProject
 }

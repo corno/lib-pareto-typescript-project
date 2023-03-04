@@ -3,11 +3,11 @@ import * as pl from 'pareto-core-lib'
 import * as galgorithm from "../../algorithm"
 import * as gfp from "lib-fountain-pen"
 
-import { CcreateImplementationSerializer } from "../definition/api.generated"
+import { createImplementationSerializer } from "../definition/api.generated"
 
-export const $$: CcreateImplementationSerializer = ($d) => {
+export const $$: createImplementationSerializer = ($d) => {
 
-    return <Annotation>($: galgorithm.T.Implementation<Annotation>, $i: gfp.IDirectory) => {
+    return <Annotation>($: galgorithm.T.Implementation<Annotation>, $i: gfp.B.Directory) => {
         $d.dictionaryForEach($.implementations, ($) => {
             $i.file(`XXXXXXXXXXXXXXXX${$.key}`, ($i) => {
                 $i.line(``)
@@ -21,7 +21,7 @@ export const $$: CcreateImplementationSerializer = ($d) => {
                         $i.snippet(`($d) => {`)
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
-                                function doSynchronousExpression($: galgorithm.T.SynchronousExpression<Annotation>, $i: gfp.ILine) {
+                                function doSynchronousExpression($: galgorithm.T.SynchronousExpression<Annotation>, $i: gfp.B.Line) {
                                     switch ($[0]) {
                                         case 'call':
                                             pl.cc($[1], ($) => {
@@ -71,7 +71,7 @@ export const $$: CcreateImplementationSerializer = ($d) => {
                                         default: pl.au($[0])
                                     }
                                 }
-                                function doImplementationType($: galgorithm.T.ImplementationType<Annotation>, $i: gfp.ILine) {
+                                function doImplementationType($: galgorithm.T.ImplementationType<Annotation>, $i: gfp.B.Line) {
 
                                     switch ($[0]) {
                                         case 'asynchronous function':
@@ -88,7 +88,7 @@ export const $$: CcreateImplementationSerializer = ($d) => {
                                             pl.cc($[1], ($) => {
                                                 function doBlock(
                                                     $: galgorithm.T.ProcedureBlock<Annotation>,
-                                                    $i: gfp.ILine,
+                                                    $i: gfp.B.Line,
                                                 ) {
 
                                                     $i.snippet(`{`)
@@ -96,66 +96,66 @@ export const $$: CcreateImplementationSerializer = ($d) => {
                                                         if ($.innerFunctions !== undefined) {
                                                             $d.dictionaryForEach($.innerFunctions, ($) => {
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`function ${$.key}($: gapi.T.${$d.createIdentifier($.key)}, $i: gfp.ILine) `)
+                                                                    $i.snippet(`function ${$.key}($: gapi.T.${$d.createIdentifier($.key)}, $i: gfp.B.Line) `)
                                                                     doImplementationType($.value.type, $i)
                                                                 })
                                                             })
                                                         }
-                                                        $d.arrayForEach($.statements, ($) => {
-                                                            switch ($[0]) {
-                                                                case 'dependencyCall':
-                                                                    pl.cc($[1], ($) => {
+                                                        // $d.arrayForEach($.statements, ($) => {
+                                                        //     switch ($[0]) {
+                                                        //         case 'dependencyCall':
+                                                        //             pl.cc($[1], ($) => {
 
-                                                                    })
-                                                                    break
-                                                                case 'interfaceCall':
-                                                                    pl.cc($[1], ($) => {
-                                                                        $i.nestedLine($i => {
-                                                                            $i.snippet(`$i`)
-                                                                            $d.arrayForEach($['child path'], ($) => {
-                                                                                $i.snippet(`.${$}`)
-                                                                            })
-                                                                            $i.snippet(`(`)
-                                                                            switch ($.data[0]) {
-                                                                                case false:
-                                                                                    break
-                                                                                case true:
-                                                                                    pl.cc($.data[1], ($) => {
-                                                                                        $i.snippet(`"`)
-                                                                                        doSynchronousExpression($, $i)
-                                                                                        $i.snippet(`", `)
-                                                                                    })
-                                                                                    break
-                                                                                default: pl.au($.data[0])
-                                                                            }
-                                                                            switch ($.callback[0]) {
-                                                                                case false:
-                                                                                    break
-                                                                                case true:
-                                                                                    pl.cc($.callback[1], ($) => {
-                                                                                        $i.snippet(`($i) => `)
-                                                                                        doBlock($, $i)
-                                                                                    })
-                                                                                    break
-                                                                                default: pl.au($.callback[0])
-                                                                            }
-                                                                            $i.snippet(`)`)
-                                                                        })
-                                                                    })
-                                                                    break
-                                                                case 'innerCallbackCall':
-                                                                    pl.cc($[1], ($) => {
+                                                        //             })
+                                                        //             break
+                                                        //         case 'interfaceCall':
+                                                        //             pl.cc($[1], ($) => {
+                                                        //                 $i.nestedLine($i => {
+                                                        //                     $i.snippet(`$i`)
+                                                        //                     $d.arrayForEach($['child path'], ($) => {
+                                                        //                         $i.snippet(`.${$}`)
+                                                        //                     })
+                                                        //                     $i.snippet(`(`)
+                                                        //                     switch ($.data[0]) {
+                                                        //                         case false:
+                                                        //                             break
+                                                        //                         case true:
+                                                        //                             pl.cc($.data[1], ($) => {
+                                                        //                                 $i.snippet(`"`)
+                                                        //                                 doSynchronousExpression($, $i)
+                                                        //                                 $i.snippet(`", `)
+                                                        //                             })
+                                                        //                             break
+                                                        //                         default: pl.au($.data[0])
+                                                        //                     }
+                                                        //                     switch ($.callback[0]) {
+                                                        //                         case false:
+                                                        //                             break
+                                                        //                         case true:
+                                                        //                             pl.cc($.callback[1], ($) => {
+                                                        //                                 $i.snippet(`($i) => `)
+                                                        //                                 doBlock($, $i)
+                                                        //                             })
+                                                        //                             break
+                                                        //                         default: pl.au($.callback[0])
+                                                        //                     }
+                                                        //                     $i.snippet(`)`)
+                                                        //                 })
+                                                        //             })
+                                                        //             break
+                                                        //         case 'innerCallbackCall':
+                                                        //             pl.cc($[1], ($) => {
 
-                                                                    })
-                                                                    break
-                                                                case 'switch':
-                                                                    pl.cc($[1], ($) => {
+                                                        //             })
+                                                        //             break
+                                                        //         case 'switch':
+                                                        //             pl.cc($[1], ($) => {
 
-                                                                    })
-                                                                    break
-                                                                default: pl.au($[0])
-                                                            }
-                                                        })
+                                                        //             })
+                                                        //             break
+                                                        //         default: pl.au($[0])
+                                                        //     }
+                                                        //})
                                                     })
                                                     $i.snippet(`}`)
                                                 }
@@ -180,7 +180,7 @@ export const $$: CcreateImplementationSerializer = ($d) => {
                 })
             })
         })
-        // function serializeExpression($: galgorithm.TExpression, $i: gfp.ILine) {
+        // function serializeExpression($: galgorithm.TExpression, $i: gfp.B.Line) {
         //     switch ($[0]) {
         //         case 'call':
         //             pl.cc($[1], ($) => {
@@ -257,7 +257,7 @@ export const $$: CcreateImplementationSerializer = ($d) => {
         //         default: pl.au($[0])
         //     }
         // }
-        // function serializeCallbackBlock($: galgorithm.TCallbackBlock, $i: gfp.ILine) {
+        // function serializeCallbackBlock($: galgorithm.TCallbackBlock, $i: gfp.B.Line) {
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
         //         if ($.innerCallbacks !== undefined) {
@@ -275,7 +275,7 @@ export const $$: CcreateImplementationSerializer = ($d) => {
         //     })
         //     $i.snippet(`}`)
         // }
-        // function serializeFunctionBlock($: galgorithm.TFunctionBlock, $i: gfp.ILine) {
+        // function serializeFunctionBlock($: galgorithm.TFunctionBlock, $i: gfp.B.Line) {
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
         //         if ($.innerFunctions !== undefined) {
@@ -296,7 +296,7 @@ export const $$: CcreateImplementationSerializer = ($d) => {
         //     $i.snippet(`}`)
         // }
         // $d.dictionaryForEach($.implementations, ($) => {
-        //     function body($i: gfp.ILine) {
+        //     function body($i: gfp.B.Line) {
         //         switch ($.value.type[0]) {
         //             case 'callback':
         //                 pl.cc($.value.type[1], ($) => {

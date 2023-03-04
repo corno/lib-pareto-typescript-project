@@ -14,9 +14,9 @@ const d = pm.wrapRawDictionary
 import { $ as module } from "../../../data/project/module/project.test"
 import { $ as tc } from "../../../data/project/project/tokenconsumer/project.data"
 
-import { CgetTestSet } from "../definition/api.generated"
+import { getTestSet } from "../definition/api.generated"
 
-export const $$: CgetTestSet = ($) => {
+export const $$: getTestSet = ($) => {
     const $XXX = $
 
     function genProj<Annotation>(dir: string, proj: gproject.T.Project<Annotation>) {

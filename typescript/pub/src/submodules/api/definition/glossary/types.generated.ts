@@ -1,8 +1,8 @@
 import * as pt from 'pareto-core-types'
 
-import * as gcommon from "glo-pareto-common"
-import * as gfp from "lib-fountain-pen"
-import * as gglossary from "../../../glossary"
+import * as g_common from "glo-pareto-common"
+import * as g_fp from "lib-fountain-pen"
+import * as g_glossary from "../../../glossary"
 
 export namespace T {
     
@@ -12,7 +12,7 @@ export namespace T {
             
             export namespace D {
                 
-                export type definition<GPAnnotation> = T.FunctionReference<GPAnnotation>
+                export type definition<GAnnotation> = T.FunctionReference<GAnnotation>
                 
                 export namespace _ltype {
                     
@@ -20,66 +20,66 @@ export namespace T {
                         
                         export namespace configuration__data {
                             
-                            export type O<GPAnnotation> = T.TypeReference<GPAnnotation>
+                            export type O<GAnnotation> = T.TypeReference<GAnnotation>
                         }
                         
-                        export type configuration__data<GPAnnotation> = [ false ] | [ true, T.TypeReference<GPAnnotation>]
+                        export type configuration__data<GAnnotation> = [ false ] | [ true, T.TypeReference<GAnnotation>]
                         
                         export namespace dependencies {
                             
-                            export type D<GPAnnotation> = T.FunctionReference<GPAnnotation>
+                            export type D<GAnnotation> = T.FunctionReference<GAnnotation>
                         }
                         
-                        export type dependencies<GPAnnotation> = pt.Dictionary<T.FunctionReference<GPAnnotation>>
+                        export type dependencies<GAnnotation> = pt.Dictionary<T.FunctionReference<GAnnotation>>
                     }
                     
-                    export type _lconstructor<GPAnnotation> = {
-                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
-                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GPAnnotation>>
+                    export type _lconstructor<GAnnotation> = {
+                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
                     }
                     
                     export namespace reference {}
                     
-                    export type reference<GPAnnotation> = null
+                    export type reference<GAnnotation> = null
                 }
                 
-                export type _ltype<GPAnnotation> = 
+                export type _ltype<GAnnotation> = 
                     | ['constructor', {
-                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
-                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GPAnnotation>>
+                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
                     }]
                     | ['reference', null]
             }
             
-            export type D<GPAnnotation> = {
-                readonly 'definition': T.FunctionReference<GPAnnotation>
+            export type D<GAnnotation> = {
+                readonly 'definition': T.FunctionReference<GAnnotation>
                 readonly 'type': 
                     | ['constructor', {
-                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
-                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GPAnnotation>>
+                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
                     }]
                     | ['reference', null]
             }
         }
         
-        export type algorithms<GPAnnotation> = pt.Dictionary<{
-            readonly 'definition': T.FunctionReference<GPAnnotation>
+        export type algorithms<GAnnotation> = pt.Dictionary<{
+            readonly 'definition': T.FunctionReference<GAnnotation>
             readonly 'type': 
                 | ['constructor', {
-                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
-                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GPAnnotation>>
+                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
                 }]
                 | ['reference', null]
         }>
     }
     
-    export type API<GPAnnotation> = {
+    export type API<GAnnotation> = {
         readonly 'algorithms': pt.Dictionary<{
-            readonly 'definition': T.FunctionReference<GPAnnotation>
+            readonly 'definition': T.FunctionReference<GAnnotation>
             readonly 'type': 
                 | ['constructor', {
-                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
-                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GPAnnotation>>
+                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
                 }]
                 | ['reference', null]
         }>
@@ -89,40 +89,40 @@ export namespace T {
         
         export namespace arguments {
             
-            export type D<GPAnnotation> = T.TypeReference<GPAnnotation>
+            export type D<GAnnotation> = T.TypeReference<GAnnotation>
         }
         
-        export type arguments<GPAnnotation> = pt.Dictionary<T.TypeReference<GPAnnotation>>
+        export type arguments<GAnnotation> = pt.Dictionary<T.TypeReference<GAnnotation>>
         
-        export type glossary<GPAnnotation> = string
+        export type glossary<GAnnotation> = string
     }
     
-    export type Context<GPAnnotation> = {
-        readonly 'arguments': pt.Dictionary<T.TypeReference<GPAnnotation>>
+    export type Context<GAnnotation> = {
+        readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
         readonly 'glossary': string
     }
     
     export namespace FunctionReference {
         
-        export type context<GPAnnotation> = T.Context<GPAnnotation>
+        export type context<GAnnotation> = T.Context<GAnnotation>
         
-        export type _lfunction<GPAnnotation> = string
+        export type _lfunction<GAnnotation> = string
     }
     
-    export type FunctionReference<GPAnnotation> = {
-        readonly 'context': T.Context<GPAnnotation>
+    export type FunctionReference<GAnnotation> = {
+        readonly 'context': T.Context<GAnnotation>
         readonly 'function': string
     }
     
     export namespace TypeReference {
         
-        export type context<GPAnnotation> = T.Context<GPAnnotation>
+        export type context<GAnnotation> = T.Context<GAnnotation>
         
-        export type _ltype<GPAnnotation> = string
+        export type _ltype<GAnnotation> = string
     }
     
-    export type TypeReference<GPAnnotation> = {
-        readonly 'context': T.Context<GPAnnotation>
+    export type TypeReference<GAnnotation> = {
+        readonly 'context': T.Context<GAnnotation>
         readonly 'type': string
     }
 }

@@ -1,9 +1,9 @@
 import * as pl from 'pareto-core-lib'
 // import * as pd from 'pareto-core-dev'
 
-// import { CcreateSerializer } from "../definition/api.generated"
+// import { createSerializer } from "../definition/api.generated"
 
-// export const $$: CcreateSerializer = ($d) => {
+// export const $$: createSerializer = ($d) => {
 //     return ($, $i) => {
 //         $i.snippet(`{`)
 //         $i.indent(($i) => {

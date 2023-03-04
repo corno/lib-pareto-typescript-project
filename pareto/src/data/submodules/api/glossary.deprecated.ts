@@ -4,7 +4,7 @@ import {
     reference,
     boolean,
     string,
-    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, glossaryParameter, optional,
+    array, dictionary, group, member, taggedUnion, types, typeReference, builderReference, func, type, glossaryParameter, optional,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -41,8 +41,9 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             }))),
         })),
     }),
+    'builders': d({}),
     'interfaces': d({}),
     'functions': d({
-        "Serialize": func(typeReference("API"), null, interfaceReference("fp", "Block"), null),
+        "Serialize": func(typeReference("API"), null, builderReference("fp", "Block"), null),
     }),
 }

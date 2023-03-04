@@ -8,16 +8,16 @@ import * as gfp from "lib-fountain-pen"
 
 import { $a } from ".."
 
-import { CgenerateProject } from "../definition/api.generated"
+import { generateProject } from "../definition/api.generated"
 
-export const $$: CgenerateProject = ($) => {
-    const a = gforeach.$a.arrayForEach
-    const d = gforeach.$a.createDictionaryForEach({
-        compare: gcoll.$a.localeIsABeforeB,
+export const $$: generateProject = ($) => {
+    const a = gforeach.$r.arrayForEach
+    const d = gforeach.$r.createDictionaryForEach({
+        compare: gcoll.$r.localeIsABeforeB,
     })
-    const ea = gforeach.$a.enrichedArrayForEach
-    const ed = gforeach.$a.createEnrichedDictionaryForEach({
-        compare: gcoll.$a.localeIsABeforeB,
+    const ea = gforeach.$r.enrichedArrayForEach
+    const ed = gforeach.$r.createEnrichedDictionaryForEach({
+        compare: gcoll.$r.localeIsABeforeB,
     })
 
     $a.createProjectGenerator(
@@ -32,18 +32,18 @@ export const $$: CgenerateProject = ($) => {
                         'enrichedDictionaryForEach': ed,
                         'dictionaryForEach': d,
                         'dictionaryIsEmpty': gdictionary.$r.isEmpty,
-                        'createIdentifier': gts.$a.createIdentifier,
-                        'createApostrophedString': gts.$a.createApostrophedString,
-                        'createBacktickedString': gts.$a.createBacktickedString,
-                        'createQuotedString': gts.$a.createQuotedString,
+                        'createIdentifier': gts.$r.createIdentifier,
+                        'createApostrophedString': gts.$r.createApostrophedString,
+                        'createBacktickedString': gts.$r.createBacktickedString,
+                        'createQuotedString': gts.$r.createQuotedString,
                     }),
                     'serializeAPI': gpareto2typescript.$a.createAPISerializer(
                         {
                             'dictionaryForEach': d,
-                            'createIdentifier': gts.$a.createIdentifier,
-                            'createApostrophedString': gts.$a.createApostrophedString,
-                            'createBacktickedString': gts.$a.createBacktickedString,
-                            'createQuotedString': gts.$a.createQuotedString,
+                            'createIdentifier': gts.$r.createIdentifier,
+                            'createApostrophedString': gts.$r.createApostrophedString,
+                            'createBacktickedString': gts.$r.createBacktickedString,
+                            'createQuotedString': gts.$r.createQuotedString,
                         }
                     ),
                     'serializeImplementation': gpareto2typescript.$a.createImplementationSerializer(
@@ -52,34 +52,34 @@ export const $$: CgenerateProject = ($) => {
                             'dictionaryForEach': d,
                             'enrichedArrayForEach': ea,
                             'enrichedDictionaryForEach': ed,
-                            'createIdentifier': gts.$a.createIdentifier,
-                            'createApostrophedString': gts.$a.createApostrophedString,
-                            'createBacktickedString': gts.$a.createBacktickedString,
-                            'createQuotedString': gts.$a.createQuotedString,
+                            'createIdentifier': gts.$r.createIdentifier,
+                            'createApostrophedString': gts.$r.createApostrophedString,
+                            'createBacktickedString': gts.$r.createBacktickedString,
+                            'createQuotedString': gts.$r.createQuotedString,
                         }
                     ),
-                    'createIdentifier': gts.$a.createIdentifier,
-                    'createApostrophedString': gts.$a.createApostrophedString,
-                    'createBacktickedString': gts.$a.createBacktickedString,
-                    'createQuotedString': gts.$a.createQuotedString,
+                    'createIdentifier': gts.$r.createIdentifier,
+                    'createApostrophedString': gts.$r.createApostrophedString,
+                    'createBacktickedString': gts.$r.createBacktickedString,
+                    'createQuotedString': gts.$r.createQuotedString,
                 }
             ),
             'serializeTemplate': gpareto2typescript.$a.createTemplateSerializer(
                 {
                     'dictionaryForEach': d,
-                    'createIdentifier': gts.$a.createIdentifier,
-                    'createApostrophedString': gts.$a.createApostrophedString,
-                    'createBacktickedString': gts.$a.createBacktickedString,
-                    'createQuotedString': gts.$a.createQuotedString,
+                    'createIdentifier': gts.$r.createIdentifier,
+                    'createApostrophedString': gts.$r.createApostrophedString,
+                    'createBacktickedString': gts.$r.createBacktickedString,
+                    'createQuotedString': gts.$r.createQuotedString,
                 }
             ),
             'logWriteFileError': ($) => {
-                gmain.$a.logError(`FIXME WRITEFILEERROR`)
+                gmain.$r.logError(`FIXME WRITEFILEERROR`)
             },
             'reportSuperfluousNode': ($) => {
-                gmain.$a.logError(gfp.$a.createSuperfluousNodeMessage($))
+                gmain.$r.logError(gfp.$a.createSuperfluousNodeMessage($))
             },
-            'decorateDictionaryEntriesWithKey': gforeach.$a.decorateDictionaryEntriesWithKey,
+            'decorateDictionaryEntriesWithKey': gforeach.$r.decorateDictionaryEntriesWithKey,
         }
     )($)
 }

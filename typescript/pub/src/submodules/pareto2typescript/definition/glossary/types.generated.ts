@@ -1,47 +1,47 @@
 import * as pt from 'pareto-core-types'
 
-import * as galgorithm from "../../../algorithm"
-import * as gapi from "../../../api"
-import * as gcommon from "glo-pareto-common"
-import * as gfp from "lib-fountain-pen"
-import * as gglossary from "../../../glossary"
-import * as gproject from "../../../project"
+import * as g_algorithm from "../../../algorithm"
+import * as g_api from "../../../api"
+import * as g_common from "glo-pareto-common"
+import * as g_fp from "lib-fountain-pen"
+import * as g_glossary from "../../../glossary"
+import * as g_project from "../../../project"
 
 export namespace T {
     
-    export type Annotation<GPAnnotation> = GPAnnotation
+    export type Annotation<GAnnotation> = GAnnotation
     
     export namespace SerializeAPIData {
         
-        export type api<GPAnnotation> = gapi.T.API<T.Annotation<GPAnnotation>>
+        export type api<GAnnotation> = g_api.T.API<T.Annotation<GAnnotation>>
         
         export namespace imports {
             
-            export type D<GPAnnotation> = string
+            export type D<GAnnotation> = string
         }
         
-        export type imports<GPAnnotation> = pt.Dictionary<string>
+        export type imports<GAnnotation> = pt.Dictionary<string>
     }
     
-    export type SerializeAPIData<GPAnnotation> = {
-        readonly 'api': gapi.T.API<T.Annotation<GPAnnotation>>
+    export type SerializeAPIData<GAnnotation> = {
+        readonly 'api': g_api.T.API<T.Annotation<GAnnotation>>
         readonly 'imports': pt.Dictionary<string>
     }
     
     export namespace SerializeGlossaryData {
         
-        export type glossary<GPAnnotation> = gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+        export type glossary<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
         
         export namespace imports {
             
-            export type D<GPAnnotation> = string
+            export type D<GAnnotation> = string
         }
         
-        export type imports<GPAnnotation> = pt.Dictionary<string>
+        export type imports<GAnnotation> = pt.Dictionary<string>
     }
     
-    export type SerializeGlossaryData<GPAnnotation> = {
-        readonly 'glossary': gglossary.T.Glossary<T.Annotation<GPAnnotation>>
+    export type SerializeGlossaryData<GAnnotation> = {
+        readonly 'glossary': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
         readonly 'imports': pt.Dictionary<string>
     }
 }

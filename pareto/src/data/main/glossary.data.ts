@@ -5,10 +5,10 @@ import {
     boolean,
     string,
     parametrizedReference,
-    method,
+    builderMethod,
     null_,
     data,
-    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, glossaryParameter, optional,
+    array, dictionary, group, member, taggedUnion, types, typeReference, builderReference, func, type, glossaryParameter, optional,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -33,15 +33,17 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "testDirectory": member(string()),
         })),
     }),
+    'builders': d({
+        "ParseArguments": builderMethod(typeReference("main", "Arguments")),
+        "ProcessArgument": builderMethod(typeReference("common", "String")),
+        "HandleParameters": builderMethod(typeReference("Parameters")),
+    }),
     'interfaces': d({
-        "ParseArguments": method(typeReference("main", "Arguments")),
-        "ProcessArgument": method(typeReference("common", "String")),
-        "HandleParameters": method(typeReference("Parameters")),
     }),
     'functions': d({
         "GenerateProject": func(typeReference("ProjectSettings"), null, null, null),
         "GetSingleArgument": func(typeReference("main", "Arguments"), null, null, data(typeReference("common", "String"), true)),
         "HandleArgumentError": func(typeReference("ArgumentError"), null, null, null),
-        "ParseArguments2": func(typeReference("main", "Arguments"), null, interfaceReference("HandleParameters"), null),
+        "ParseArguments2": func(typeReference("main", "Arguments"), null, builderReference("HandleParameters"), null),
     }),
 }

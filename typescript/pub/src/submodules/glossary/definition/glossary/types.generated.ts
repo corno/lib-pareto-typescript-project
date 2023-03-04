@@ -9,61 +9,61 @@ export namespace T {
             
             export namespace members {
                 
-                export type D<GPAnnotation> = T.Builder<GPAnnotation>
+                export type D<GAnnotation> = T.Builder<GAnnotation>
             }
             
-            export type members<GPAnnotation> = pt.Dictionary<T.Builder<GPAnnotation>>
+            export type members<GAnnotation> = pt.Dictionary<T.Builder<GAnnotation>>
         }
         
-        export type group<GPAnnotation> = {
-            readonly 'members': pt.Dictionary<T.Builder<GPAnnotation>>
+        export type group<GAnnotation> = {
+            readonly 'members': pt.Dictionary<T.Builder<GAnnotation>>
         }
         
         export namespace method {
             
             export namespace builder {
                 
-                export type O<GPAnnotation> = T.Builder<GPAnnotation>
+                export type O<GAnnotation> = T.Builder<GAnnotation>
             }
             
-            export type builder<GPAnnotation> = [ false ] | [ true, T.Builder<GPAnnotation>]
+            export type builder<GAnnotation> = [ false ] | [ true, T.Builder<GAnnotation>]
             
             export namespace data {
                 
-                export type O<GPAnnotation> = T.TypeReference<GPAnnotation>
+                export type O<GAnnotation> = T.TypeReference<GAnnotation>
             }
             
-            export type data<GPAnnotation> = [ false ] | [ true, T.TypeReference<GPAnnotation>]
+            export type data<GAnnotation> = [ false ] | [ true, T.TypeReference<GAnnotation>]
         }
         
-        export type method<GPAnnotation> = {
-            readonly 'builder': [ false ] | [ true, T.Builder<GPAnnotation>]
-            readonly 'data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
+        export type method<GAnnotation> = {
+            readonly 'builder': [ false ] | [ true, T.Builder<GAnnotation>]
+            readonly 'data': [ false ] | [ true, T.TypeReference<GAnnotation>]
         }
         
-        export type reference<GPAnnotation> = T.BuilderReference<GPAnnotation>
+        export type reference<GAnnotation> = T.BuilderReference<GAnnotation>
     }
     
-    export type Builder<GPAnnotation> = 
+    export type Builder<GAnnotation> = 
         | ['group', {
-            readonly 'members': pt.Dictionary<T.Builder<GPAnnotation>>
+            readonly 'members': pt.Dictionary<T.Builder<GAnnotation>>
         }]
         | ['method', {
-            readonly 'builder': [ false ] | [ true, T.Builder<GPAnnotation>]
-            readonly 'data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
+            readonly 'builder': [ false ] | [ true, T.Builder<GAnnotation>]
+            readonly 'data': [ false ] | [ true, T.TypeReference<GAnnotation>]
         }]
-        | ['reference', T.BuilderReference<GPAnnotation>]
+        | ['reference', T.BuilderReference<GAnnotation>]
     
     export namespace BuilderReference {
         
-        export type builder<GPAnnotation> = string
+        export type builder<GAnnotation> = string
         
-        export type context<GPAnnotation> = T.Context<GPAnnotation>
+        export type context<GAnnotation> = T.Context<GAnnotation>
     }
     
-    export type BuilderReference<GPAnnotation> = {
+    export type BuilderReference<GAnnotation> = {
         readonly 'builder': string
-        readonly 'context': T.Context<GPAnnotation>
+        readonly 'context': T.Context<GAnnotation>
     }
     
     export namespace Context {
@@ -72,27 +72,27 @@ export namespace T {
             
             export namespace arguments {
                 
-                export type D<GPAnnotation> = T.TypeReference<GPAnnotation>
+                export type D<GAnnotation> = T.TypeReference<GAnnotation>
             }
             
-            export type arguments<GPAnnotation> = pt.Dictionary<T.TypeReference<GPAnnotation>>
+            export type arguments<GAnnotation> = pt.Dictionary<T.TypeReference<GAnnotation>>
             
-            export type glossary<GPAnnotation> = string
+            export type glossary<GAnnotation> = string
         }
         
-        export type _limport<GPAnnotation> = {
-            readonly 'arguments': pt.Dictionary<T.TypeReference<GPAnnotation>>
+        export type _limport<GAnnotation> = {
+            readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
             readonly 'glossary': string
         }
         
         export namespace local {}
         
-        export type local<GPAnnotation> = null
+        export type local<GAnnotation> = null
     }
     
-    export type Context<GPAnnotation> = 
+    export type Context<GAnnotation> = 
         | ['import', {
-            readonly 'arguments': pt.Dictionary<T.TypeReference<GPAnnotation>>
+            readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
             readonly 'glossary': string
         }]
         | ['local', null]
@@ -101,103 +101,103 @@ export namespace T {
         
         export namespace builders {
             
-            export type D<GPAnnotation> = T.Builder<GPAnnotation>
+            export type D<GAnnotation> = T.Builder<GAnnotation>
         }
         
-        export type builders<GPAnnotation> = pt.Dictionary<T.Builder<GPAnnotation>>
+        export type builders<GAnnotation> = pt.Dictionary<T.Builder<GAnnotation>>
         
         export namespace functions {
             
             export namespace D {
                 
-                export type data<GPAnnotation> = T.TypeReference<GPAnnotation>
+                export type data<GAnnotation> = T.TypeReference<GAnnotation>
                 
                 export namespace input__builder {
                     
-                    export type O<GPAnnotation> = T.BuilderReference<GPAnnotation>
+                    export type O<GAnnotation> = T.BuilderReference<GAnnotation>
                 }
                 
-                export type input__builder<GPAnnotation> = [ false ] | [ true, T.BuilderReference<GPAnnotation>]
+                export type input__builder<GAnnotation> = [ false ] | [ true, T.BuilderReference<GAnnotation>]
                 
                 export namespace output__builder {
                     
-                    export type O<GPAnnotation> = T.BuilderReference<GPAnnotation>
+                    export type O<GAnnotation> = T.BuilderReference<GAnnotation>
                 }
                 
-                export type output__builder<GPAnnotation> = [ false ] | [ true, T.BuilderReference<GPAnnotation>]
+                export type output__builder<GAnnotation> = [ false ] | [ true, T.BuilderReference<GAnnotation>]
                 
                 export namespace return__type {
                     
                     export namespace data {
                         
-                        export type asynchronous<GPAnnotation> = boolean
+                        export type asynchronous<GAnnotation> = boolean
                         
-                        export type _ltype<GPAnnotation> = T.TypeReference<GPAnnotation>
+                        export type _ltype<GAnnotation> = T.TypeReference<GAnnotation>
                     }
                     
-                    export type data<GPAnnotation> = {
+                    export type data<GAnnotation> = {
                         readonly 'asynchronous': boolean
-                        readonly 'type': T.TypeReference<GPAnnotation>
+                        readonly 'type': T.TypeReference<GAnnotation>
                     }
                     
-                    export type _linterface<GPAnnotation> = T.InterfaceReference<GPAnnotation>
+                    export type _linterface<GAnnotation> = T.InterfaceReference<GAnnotation>
                     
                     export namespace nothing {}
                     
-                    export type nothing<GPAnnotation> = null
+                    export type nothing<GAnnotation> = null
                 }
                 
-                export type return__type<GPAnnotation> = 
+                export type return__type<GAnnotation> = 
                     | ['data', {
                         readonly 'asynchronous': boolean
-                        readonly 'type': T.TypeReference<GPAnnotation>
+                        readonly 'type': T.TypeReference<GAnnotation>
                     }]
-                    | ['interface', T.InterfaceReference<GPAnnotation>]
+                    | ['interface', T.InterfaceReference<GAnnotation>]
                     | ['nothing', null]
             }
             
-            export type D<GPAnnotation> = {
-                readonly 'data': T.TypeReference<GPAnnotation>
-                readonly 'input builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
-                readonly 'output builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
+            export type D<GAnnotation> = {
+                readonly 'data': T.TypeReference<GAnnotation>
+                readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
                 readonly 'return type': 
                     | ['data', {
                         readonly 'asynchronous': boolean
-                        readonly 'type': T.TypeReference<GPAnnotation>
+                        readonly 'type': T.TypeReference<GAnnotation>
                     }]
-                    | ['interface', T.InterfaceReference<GPAnnotation>]
+                    | ['interface', T.InterfaceReference<GAnnotation>]
                     | ['nothing', null]
             }
         }
         
-        export type functions<GPAnnotation> = pt.Dictionary<{
-            readonly 'data': T.TypeReference<GPAnnotation>
-            readonly 'input builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
-            readonly 'output builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
+        export type functions<GAnnotation> = pt.Dictionary<{
+            readonly 'data': T.TypeReference<GAnnotation>
+            readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+            readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
             readonly 'return type': 
                 | ['data', {
                     readonly 'asynchronous': boolean
-                    readonly 'type': T.TypeReference<GPAnnotation>
+                    readonly 'type': T.TypeReference<GAnnotation>
                 }]
-                | ['interface', T.InterfaceReference<GPAnnotation>]
+                | ['interface', T.InterfaceReference<GAnnotation>]
                 | ['nothing', null]
         }>
         
         export namespace interfaces {
             
-            export type D<GPAnnotation> = T.Interface<GPAnnotation>
+            export type D<GAnnotation> = T.Interface<GAnnotation>
         }
         
-        export type interfaces<GPAnnotation> = pt.Dictionary<T.Interface<GPAnnotation>>
+        export type interfaces<GAnnotation> = pt.Dictionary<T.Interface<GAnnotation>>
         
         export namespace parameters {
             
             export namespace D {}
             
-            export type D<GPAnnotation> = null
+            export type D<GAnnotation> = null
         }
         
-        export type parameters<GPAnnotation> = pt.Dictionary<null>
+        export type parameters<GAnnotation> = pt.Dictionary<null>
         
         export namespace types {
             
@@ -207,45 +207,45 @@ export namespace T {
                     
                     export namespace D {}
                     
-                    export type D<GPAnnotation> = null
+                    export type D<GAnnotation> = null
                 }
                 
-                export type parameters<GPAnnotation> = pt.Dictionary<null>
+                export type parameters<GAnnotation> = pt.Dictionary<null>
                 
-                export type _ltype<GPAnnotation> = T.Type<GPAnnotation>
+                export type _ltype<GAnnotation> = T.Type<GAnnotation>
             }
             
-            export type D<GPAnnotation> = {
+            export type D<GAnnotation> = {
                 readonly 'parameters': pt.Dictionary<null>
-                readonly 'type': T.Type<GPAnnotation>
+                readonly 'type': T.Type<GAnnotation>
             }
         }
         
-        export type types<GPAnnotation> = pt.Dictionary<{
+        export type types<GAnnotation> = pt.Dictionary<{
             readonly 'parameters': pt.Dictionary<null>
-            readonly 'type': T.Type<GPAnnotation>
+            readonly 'type': T.Type<GAnnotation>
         }>
     }
     
-    export type Glossary<GPAnnotation> = {
-        readonly 'builders': pt.Dictionary<T.Builder<GPAnnotation>>
+    export type Glossary<GAnnotation> = {
+        readonly 'builders': pt.Dictionary<T.Builder<GAnnotation>>
         readonly 'functions': pt.Dictionary<{
-            readonly 'data': T.TypeReference<GPAnnotation>
-            readonly 'input builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
-            readonly 'output builder': [ false ] | [ true, T.BuilderReference<GPAnnotation>]
+            readonly 'data': T.TypeReference<GAnnotation>
+            readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+            readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
             readonly 'return type': 
                 | ['data', {
                     readonly 'asynchronous': boolean
-                    readonly 'type': T.TypeReference<GPAnnotation>
+                    readonly 'type': T.TypeReference<GAnnotation>
                 }]
-                | ['interface', T.InterfaceReference<GPAnnotation>]
+                | ['interface', T.InterfaceReference<GAnnotation>]
                 | ['nothing', null]
         }>
-        readonly 'interfaces': pt.Dictionary<T.Interface<GPAnnotation>>
+        readonly 'interfaces': pt.Dictionary<T.Interface<GAnnotation>>
         readonly 'parameters': pt.Dictionary<null>
         readonly 'types': pt.Dictionary<{
             readonly 'parameters': pt.Dictionary<null>
-            readonly 'type': T.Type<GPAnnotation>
+            readonly 'type': T.Type<GAnnotation>
         }>
     }
     
@@ -255,156 +255,156 @@ export namespace T {
             
             export namespace members {
                 
-                export type D<GPAnnotation> = T.Interface<GPAnnotation>
+                export type D<GAnnotation> = T.Interface<GAnnotation>
             }
             
-            export type members<GPAnnotation> = pt.Dictionary<T.Interface<GPAnnotation>>
+            export type members<GAnnotation> = pt.Dictionary<T.Interface<GAnnotation>>
         }
         
-        export type group<GPAnnotation> = {
-            readonly 'members': pt.Dictionary<T.Interface<GPAnnotation>>
+        export type group<GAnnotation> = {
+            readonly 'members': pt.Dictionary<T.Interface<GAnnotation>>
         }
         
         export namespace method {
             
             export namespace data {
                 
-                export type O<GPAnnotation> = T.TypeReference<GPAnnotation>
+                export type O<GAnnotation> = T.TypeReference<GAnnotation>
             }
             
-            export type data<GPAnnotation> = [ false ] | [ true, T.TypeReference<GPAnnotation>]
+            export type data<GAnnotation> = [ false ] | [ true, T.TypeReference<GAnnotation>]
             
             export namespace _linterface {
                 
-                export type O<GPAnnotation> = T.Interface<GPAnnotation>
+                export type O<GAnnotation> = T.Interface<GAnnotation>
             }
             
-            export type _linterface<GPAnnotation> = [ false ] | [ true, T.Interface<GPAnnotation>]
+            export type _linterface<GAnnotation> = [ false ] | [ true, T.Interface<GAnnotation>]
         }
         
-        export type method<GPAnnotation> = {
-            readonly 'data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
-            readonly 'interface': [ false ] | [ true, T.Interface<GPAnnotation>]
+        export type method<GAnnotation> = {
+            readonly 'data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+            readonly 'interface': [ false ] | [ true, T.Interface<GAnnotation>]
         }
         
-        export type reference<GPAnnotation> = T.InterfaceReference<GPAnnotation>
+        export type reference<GAnnotation> = T.InterfaceReference<GAnnotation>
     }
     
-    export type Interface<GPAnnotation> = 
+    export type Interface<GAnnotation> = 
         | ['group', {
-            readonly 'members': pt.Dictionary<T.Interface<GPAnnotation>>
+            readonly 'members': pt.Dictionary<T.Interface<GAnnotation>>
         }]
         | ['method', {
-            readonly 'data': [ false ] | [ true, T.TypeReference<GPAnnotation>]
-            readonly 'interface': [ false ] | [ true, T.Interface<GPAnnotation>]
+            readonly 'data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+            readonly 'interface': [ false ] | [ true, T.Interface<GAnnotation>]
         }]
-        | ['reference', T.InterfaceReference<GPAnnotation>]
+        | ['reference', T.InterfaceReference<GAnnotation>]
     
     export namespace InterfaceReference {
         
-        export type context<GPAnnotation> = T.Context<GPAnnotation>
+        export type context<GAnnotation> = T.Context<GAnnotation>
         
-        export type _linterface<GPAnnotation> = string
+        export type _linterface<GAnnotation> = string
     }
     
-    export type InterfaceReference<GPAnnotation> = {
-        readonly 'context': T.Context<GPAnnotation>
+    export type InterfaceReference<GAnnotation> = {
+        readonly 'context': T.Context<GAnnotation>
         readonly 'interface': string
     }
     
     export namespace Type {
         
-        export type array<GPAnnotation> = T.Type<GPAnnotation>
+        export type array<GAnnotation> = T.Type<GAnnotation>
         
         export namespace _lboolean {}
         
-        export type _lboolean<GPAnnotation> = null
+        export type _lboolean<GAnnotation> = null
         
-        export type computed<GPAnnotation> = T.Type<GPAnnotation>
+        export type computed<GAnnotation> = T.Type<GAnnotation>
         
-        export type dictionary<GPAnnotation> = T.Type<GPAnnotation>
+        export type dictionary<GAnnotation> = T.Type<GAnnotation>
         
-        export type glossary__parameter<GPAnnotation> = string
+        export type glossary__parameter<GAnnotation> = string
         
         export namespace group {
             
             export namespace D {
                 
-                export type _ltype<GPAnnotation> = T.Type<GPAnnotation>
+                export type _ltype<GAnnotation> = T.Type<GAnnotation>
             }
             
-            export type D<GPAnnotation> = {
-                readonly 'type': T.Type<GPAnnotation>
+            export type D<GAnnotation> = {
+                readonly 'type': T.Type<GAnnotation>
             }
         }
         
-        export type group<GPAnnotation> = pt.Dictionary<{
-            readonly 'type': T.Type<GPAnnotation>
+        export type group<GAnnotation> = pt.Dictionary<{
+            readonly 'type': T.Type<GAnnotation>
         }>
         
-        export type nested<GPAnnotation> = T.Type<GPAnnotation>
+        export type nested<GAnnotation> = T.Type<GAnnotation>
         
         export namespace _lnull {}
         
-        export type _lnull<GPAnnotation> = null
+        export type _lnull<GAnnotation> = null
         
         export namespace _lnumber {}
         
-        export type _lnumber<GPAnnotation> = null
+        export type _lnumber<GAnnotation> = null
         
-        export type optional<GPAnnotation> = T.Type<GPAnnotation>
+        export type optional<GAnnotation> = T.Type<GAnnotation>
         
-        export type reference<GPAnnotation> = T.TypeReference<GPAnnotation>
+        export type reference<GAnnotation> = T.TypeReference<GAnnotation>
         
         export namespace _lstring {}
         
-        export type _lstring<GPAnnotation> = null
+        export type _lstring<GAnnotation> = null
         
         export namespace taggedUnion {
             
-            export type D<GPAnnotation> = T.Type<GPAnnotation>
+            export type D<GAnnotation> = T.Type<GAnnotation>
         }
         
-        export type taggedUnion<GPAnnotation> = pt.Dictionary<T.Type<GPAnnotation>>
+        export type taggedUnion<GAnnotation> = pt.Dictionary<T.Type<GAnnotation>>
         
-        export type type__parameter<GPAnnotation> = string
+        export type type__parameter<GAnnotation> = string
     }
     
-    export type Type<GPAnnotation> = 
-        | ['array', T.Type<GPAnnotation>]
+    export type Type<GAnnotation> = 
+        | ['array', T.Type<GAnnotation>]
         | ['boolean', null]
-        | ['computed', T.Type<GPAnnotation>]
-        | ['dictionary', T.Type<GPAnnotation>]
+        | ['computed', T.Type<GAnnotation>]
+        | ['dictionary', T.Type<GAnnotation>]
         | ['glossary parameter', string]
         | ['group', pt.Dictionary<{
-            readonly 'type': T.Type<GPAnnotation>
+            readonly 'type': T.Type<GAnnotation>
         }>]
-        | ['nested', T.Type<GPAnnotation>]
+        | ['nested', T.Type<GAnnotation>]
         | ['null', null]
         | ['number', null]
-        | ['optional', T.Type<GPAnnotation>]
-        | ['reference', T.TypeReference<GPAnnotation>]
+        | ['optional', T.Type<GAnnotation>]
+        | ['reference', T.TypeReference<GAnnotation>]
         | ['string', null]
-        | ['taggedUnion', pt.Dictionary<T.Type<GPAnnotation>>]
+        | ['taggedUnion', pt.Dictionary<T.Type<GAnnotation>>]
         | ['type parameter', string]
     
     export namespace TypeReference {
         
         export namespace arguments {
             
-            export type D<GPAnnotation> = T.TypeReference<GPAnnotation>
+            export type D<GAnnotation> = T.TypeReference<GAnnotation>
         }
         
-        export type arguments<GPAnnotation> = pt.Dictionary<T.TypeReference<GPAnnotation>>
+        export type arguments<GAnnotation> = pt.Dictionary<T.TypeReference<GAnnotation>>
         
-        export type context<GPAnnotation> = T.Context<GPAnnotation>
+        export type context<GAnnotation> = T.Context<GAnnotation>
         
-        export type _ltype<GPAnnotation> = string
+        export type _ltype<GAnnotation> = string
     }
     
-    export type TypeReference<GPAnnotation> = {
-        readonly 'arguments': pt.Dictionary<T.TypeReference<GPAnnotation>>
-        readonly 'context': T.Context<GPAnnotation>
+    export type TypeReference<GAnnotation> = {
+        readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
+        readonly 'context': T.Context<GAnnotation>
         readonly 'type': string
     }
 }

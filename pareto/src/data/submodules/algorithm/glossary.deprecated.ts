@@ -4,7 +4,7 @@ import {
     reference,
     boolean,
     string,
-    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, func, type, glossaryParameter, optional,
+    array, dictionary, group, member, taggedUnion, types, typeReference, builderReference, func, type, glossaryParameter, optional,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -33,27 +33,27 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 "innerFunctions": member(dictionary(group({
                     "type": member(reference("ImplementationType"))
                 }))),
-                "statements": member(array(taggedUnion({
-                    "dependencyCall": group({
-                        "data": member(string()),
-                        "callback": member(reference("ProcedureBlock"))
-                    }),
-                    "innerCallbackCall": group({
-                        "innerCallback": member(string()),
-                        "data": member(reference("SynchronousExpression")),
-                        "interface": member(string()),
-                    }),
-                    "interfaceCall": group({
-                        "child path": member(array(string())),
-                        //"property": member(array(string())),
-                        "data": member(optional(reference("SynchronousExpression"))),
-                        "callback": member(optional(reference("ProcedureBlock"),))
-                    }),
-                    "switch": group({
-                        "path": member(array(string())),
-                        "cases": member(dictionary(reference("ProcedureBlock")))
-                    })
-                })))
+                // "statements": member(array(taggedUnion({
+                //     "dependencyCall": group({
+                //         "data": member(string()),
+                //         "callback": member(reference("ProcedureBlock"))
+                //     }),
+                //     "innerCallbackCall": group({
+                //         "innerCallback": member(string()),
+                //         "data": member(reference("SynchronousExpression")),
+                //         "interface": member(string()),
+                //     }),
+                //     "interfaceCall": group({
+                //         //"child path": member(array(string())),
+                //         //"property": member(array(string())),
+                //         "data": member(optional(reference("SynchronousExpression"))),
+                //         "callback": member(optional(reference("ProcedureBlock"),))
+                //     }),
+                //     "switch": group({
+                //         //"path": member(array(string())),
+                //         "cases": member(dictionary(reference("ProcedureBlock")))
+                //     })
+                // })))
             })),
             "AsynchronousExpression": type(taggedUnion({
                 "call": group({
@@ -128,8 +128,9 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 "taggedUnion": dictionary(reference("Type")),
             })),
         }),
+        'builders': d({}),
         'interfaces': d({}),
         'functions': d({
-            "SerializeImplementation": func(typeReference("Implementation"), null, interfaceReference("fp", "Line"), null),
+            "SerializeImplementation": func(typeReference("Implementation"), null, builderReference("fp", "Line"), null),
         }),
 }

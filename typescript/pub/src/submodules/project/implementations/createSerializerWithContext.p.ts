@@ -1,8 +1,8 @@
 import * as pl from 'pareto-core-lib'
 
-// import { CcreateSerializerWithContext } from "../definition/api.generated"
+// import { createSerializerWithContext } from "../definition/api.generated"
 
-// export const $$:CcreateSerializerWithContext = ($d) => {
+// export const $$: createSerializerWithContext = ($d) => {
 
 //     return ($, $i) => {
 //         $i.file("module.generated.ts", ($i) => {

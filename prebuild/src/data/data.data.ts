@@ -1,12 +1,9 @@
 import * as pd from 'pareto-core-data'
 import * as pt from 'pareto-core-types'
-import * as pv from 'pareto-core-dev'
 
 import * as gliana2glossary from "lib-liana/dist/submodules/liana2glossary"
 
 import { $ as glossary } from "./models/glossary.data"
-
-pv.logDebugMessage(`REENABLE GLOSSARY GENERATION`)
 
 export const $: pt.Array<gliana2glossary.T.GenerateData<pd.SourceLocation>> = pd.a([
     {

@@ -430,6 +430,19 @@ export const $$: createSerializer = ($d) => {
                     $i.snippet(`}),`)
                 })
                 $i.nestedLine(($i) => {
+                    $i.snippet(`'builders': d({`)
+                    $i.indent(($i) => {
+                        $d.dictionaryForEach($.builders, ($) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`"${$.key}": `)
+                                serializeBuilder($.value, $i)
+                                $i.snippet(`,`)
+                            })
+                        })
+                    })
+                    $i.snippet(`}),`)
+                })
+                $i.nestedLine(($i) => {
                     $i.snippet(`'interfaces': d({`)
                     $i.indent(($i) => {
                         $d.dictionaryForEach($.interfaces, ($) => {

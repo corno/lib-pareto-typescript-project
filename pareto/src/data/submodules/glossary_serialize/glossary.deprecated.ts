@@ -14,7 +14,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "Annotation": null,
     }),
     'types': d({
-        "Annotation": type(glossaryParameter("Annotation"))
+        "Annotation": type(glossaryParameter("Annotation")),
     }),
     'builders': d({}),
     'interfaces': d({}),
@@ -24,7 +24,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 'context': <gglossary.T.Context<pd.SourceLocation>>['import', {
                     'glossary': "model",
                     'arguments': d({
-                        "Annotation": typeReference("Annotation")
+                        "Annotation": typeReference("Annotation"),
                     }),
                 }],
                 'type': "Glossary",

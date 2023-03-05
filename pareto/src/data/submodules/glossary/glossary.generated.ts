@@ -164,8 +164,8 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "Interface": {
             'parameters': d({}),
             'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                "group": <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                    "members": {
+                "choice": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                    "options": {
                         'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
                             'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
                             'type': "Interface",
@@ -194,6 +194,22 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                     'type': "InterfaceReference",
                     'arguments': d({}),
                 }],
+                "stream": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                    "data": {
+                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                            'type': "Interface",
+                            'arguments': d({}),
+                        }],
+                    },
+                    "end": {
+                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                            'type': "Interface",
+                            'arguments': d({}),
+                        }],
+                    },
+                })],
             })]
         },
         "InterfaceReference": {

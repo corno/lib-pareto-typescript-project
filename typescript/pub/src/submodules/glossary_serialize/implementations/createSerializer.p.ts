@@ -256,15 +256,15 @@ export const $$: createSerializer = ($d) => {
         }
         function serializeInterface($: gglossary.T.Interface<Annotation>, $i: gfp.B.Line) {
             switch ($[0]) {
-                case 'group':
+                case 'choice':
                     pl.cc($[1], ($) => {
 
-                        $i.snippet(`['group', {`)
+                        $i.snippet(`['choice', {`)
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
-                                $i.snippet(`'members': d({`)
+                                $i.snippet(`'options': d({`)
                                 $i.indent(($i) => {
-                                    $d.dictionaryForEach($.members, ($) => {
+                                    $d.dictionaryForEach($.options, ($) => {
                                         $i.nestedLine(($i) => {
                                             $i.snippet(`"${$.key}": `)
                                             serializeInterface($.value, $i)
@@ -273,6 +273,26 @@ export const $$: createSerializer = ($d) => {
                                     })
                                 })
                                 $i.snippet(`}),`)
+                            })
+                        })
+                        $i.snippet(`}]`)
+                    })
+                    break
+
+                case 'stream':
+                    pl.cc($[1], ($) => {
+
+                        $i.snippet(`['stream', {`)
+                        $i.indent(($i) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'data': `)
+                                serializeInterface($.data, $i)
+                                $i.snippet(`,`)
+                            })
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'end': `)
+                                serializeInterface($.end, $i)
+                                $i.snippet(`,`)
                             })
                         })
                         $i.snippet(`}]`)

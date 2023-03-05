@@ -18,7 +18,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'types': d({
         "Context": type(group({
             "glossary": member(string()),
-            "arguments": member(dictionary(reference("TypeReference")))
+            "arguments": member(dictionary(reference("TypeReference"))),
         })),
         "FunctionReference": type(group({
             "context": member(reference("Context")),
@@ -37,7 +37,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                         "configuration data": member(optional(reference("TypeReference"))),
                         "dependencies": member(dictionary(reference("FunctionReference"))),
                     }),
-                }))
+                })),
             }))),
         })),
     }),

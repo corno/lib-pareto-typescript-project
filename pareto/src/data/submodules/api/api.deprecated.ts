@@ -12,5 +12,5 @@ export const $: gapi.T.API<pd.SourceLocation> = {
             "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
             "enrichedArrayForEach": functionReference("foreach", {}, "EnrichedArrayForEach"),
         })),
-    })
+    }),
 }

@@ -18,5 +18,5 @@ export const $: gapi.T.API<pd.SourceLocation> = {
         // "createSerializerWithContext": algorithm(functionReference("this", {}, "SerializeWithContext"), constructor(null, {
         //     "serialize": functionReference("this", {}, "Serialize"),
         // })),
-    })
+    }),
 }

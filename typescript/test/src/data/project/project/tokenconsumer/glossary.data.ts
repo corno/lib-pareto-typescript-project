@@ -71,11 +71,9 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'builders': d({
     }),
     'interfaces': d({
-        "TokenConsumer": ['group', {
-            'members': d({
-                "onToken": interfaceMethod(typeReference("AnnotatedToken")),
-                "onEnd": interfaceMethod(typeReference("Annotation")), //should be a parameter reference
-            })
+        "TokenConsumer": ['stream', {
+            'data': interfaceMethod(typeReference("AnnotatedToken")),
+            'end': interfaceMethod(typeReference("Annotation")), //should be a parameter reference
         }]
     }),
     'functions': d({

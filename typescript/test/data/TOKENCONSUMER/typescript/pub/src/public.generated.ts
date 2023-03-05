@@ -6,8 +6,8 @@ import { T } from './types.generated'
 export namespace I {
     
     export type TokenConsumer<GAnnotation> = {
-        'onEnd': ($: T.Annotation<GAnnotation>, ) => void
-        'onToken': ($: T.AnnotatedToken<GAnnotation>, ) => void
+        'data': ($: T.AnnotatedToken<GAnnotation>, ) => void
+        'end': ($: T.Annotation<GAnnotation>, ) => void
     }
 }
 

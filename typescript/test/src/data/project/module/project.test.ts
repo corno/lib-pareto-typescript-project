@@ -292,8 +292,8 @@ export const $: gproject.T.Project._ltype.library.main<pd.SourceLocation> = {
                     })]),
                 }),
                 'interfaces': d({
-                    "FOO": ['group', {
-                        'members': d({
+                    "FOO": ['choice', {
+                        'options': d({
                             "BAR": interfaceMethod(null, null)
                         })
                     }]

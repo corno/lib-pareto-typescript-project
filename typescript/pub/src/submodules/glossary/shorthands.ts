@@ -237,3 +237,16 @@ export function interfaceMethod(data: null | t.T.TypeReference<pd.SourceLocation
                 : [true, inf],
     }]
 }
+
+export function choice(options: RawDictionary<t.T.Interface<pd.SourceLocation>>): t.T.Interface<pd.SourceLocation> {
+    return ['choice', {
+        'options': pd.d(options),
+    }]
+}
+
+export function stream(data: t.T.Interface<pd.SourceLocation>, end: t.T.Interface<pd.SourceLocation>): t.T.Interface<pd.SourceLocation> {
+    return ['stream', {
+        'data': data,
+        'end': end
+    }]
+}

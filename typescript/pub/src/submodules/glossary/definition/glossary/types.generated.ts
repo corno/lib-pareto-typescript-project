@@ -251,18 +251,18 @@ export namespace T {
     
     export namespace Interface {
         
-        export namespace group {
+        export namespace choice {
             
-            export namespace members {
+            export namespace options {
                 
                 export type D<GAnnotation> = T.Interface<GAnnotation>
             }
             
-            export type members<GAnnotation> = pt.Dictionary<T.Interface<GAnnotation>>
+            export type options<GAnnotation> = pt.Dictionary<T.Interface<GAnnotation>>
         }
         
-        export type group<GAnnotation> = {
-            readonly 'members': pt.Dictionary<T.Interface<GAnnotation>>
+        export type choice<GAnnotation> = {
+            readonly 'options': pt.Dictionary<T.Interface<GAnnotation>>
         }
         
         export namespace method {
@@ -288,17 +288,33 @@ export namespace T {
         }
         
         export type reference<GAnnotation> = T.InterfaceReference<GAnnotation>
+        
+        export namespace stream {
+            
+            export type data<GAnnotation> = T.Interface<GAnnotation>
+            
+            export type end<GAnnotation> = T.Interface<GAnnotation>
+        }
+        
+        export type stream<GAnnotation> = {
+            readonly 'data': T.Interface<GAnnotation>
+            readonly 'end': T.Interface<GAnnotation>
+        }
     }
     
     export type Interface<GAnnotation> = 
-        | ['group', {
-            readonly 'members': pt.Dictionary<T.Interface<GAnnotation>>
+        | ['choice', {
+            readonly 'options': pt.Dictionary<T.Interface<GAnnotation>>
         }]
         | ['method', {
             readonly 'data': [ false ] | [ true, T.TypeReference<GAnnotation>]
             readonly 'interface': [ false ] | [ true, T.Interface<GAnnotation>]
         }]
         | ['reference', T.InterfaceReference<GAnnotation>]
+        | ['stream', {
+            readonly 'data': T.Interface<GAnnotation>
+            readonly 'end': T.Interface<GAnnotation>
+        }]
     
     export namespace InterfaceReference {
         

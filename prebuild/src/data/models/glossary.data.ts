@@ -47,10 +47,10 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                     "return type": prop(taggedUnion({
                         "data": group({
                             "asynchronous": prop(boolean()),
-                            "type": prop(component("TypeReference", {}))
+                            "type": prop(component("TypeReference", {})),
                         }),
                         "interface": component("InterfaceReference", {}),
-                        "nothing": group({})
+                        "nothing": group({}),
                     })),
                     "data": prop(component("TypeReference", {})),
                     "input builder": prop(optional(component("BuilderReference", {}))),
@@ -58,8 +58,12 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 }))),
             })),
             "Interface": globalType({}, taggedUnion({
-                "group": group({
-                    "members": prop(dictionary(component("Interface", {})))
+                "choice": group({
+                    "options": prop(dictionary(component("Interface", {}))),
+                }),
+                "stream": group({
+                    "data": prop(component("Interface", {})),
+                    "end": prop(component("Interface", {})),
                 }),
                 "method": group({
                     "data": prop(optional(component("TypeReference", {}))),
@@ -69,7 +73,7 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
             })),
             "Builder": globalType({}, taggedUnion({
                 "group": group({
-                    "members": prop(dictionary(component("Builder", {})))
+                    "members": prop(dictionary(component("Builder", {}))),
                 }),
                 "method": group({
                     "data": prop(optional(component("TypeReference", {}))),
@@ -110,7 +114,7 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 //"type": [["namespace"), reference(['sibling', "namespaces"), [))),
                 "type": prop(string("identifier")),
                 "arguments": prop(dictionary(component("TypeReference", {}))),
-            }))
+            })),
         }),
     },
     'root': r("Glossary"),

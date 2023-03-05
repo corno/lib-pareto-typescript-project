@@ -22,7 +22,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         //"Implementation": type(dictionary(reference("AlgorithmImplementation"))),
         "Implementation": type(taggedUnion({
             "typescript": group({
-                //  parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "AlgorithmImplementation")
+                //  parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "AlgorithmImplementation"),
             }),
             "pareto": group({}),
         })),

@@ -599,16 +599,32 @@ export const $$: createGlossarySerializer = ($d) => {
                 }
                 function serializeInterface($: gglossary.T.Interface<string>, $i: gfp.B.Line) {
                     switch ($[0]) {
-                        case 'group':
+                        case 'choice':
                             pl.cc($[1], ($) => {
-
                                 $i.snippet(`{`)
                                 $i.indent(($i) => {
-                                    $d.dictionaryForEach($.members, ($) => {
+                                    $d.dictionaryForEach($.options, ($) => {
                                         $i.nestedLine(($i) => {
                                             $i.snippet(`${$d.createApostrophedString($.key)}: `)
                                             serializeInterface($.value, $i)
                                         })
+                                    })
+                                })
+                                $i.snippet(`}`)
+                            })
+                            break
+                        case 'stream':
+                            pl.cc($[1], ($) => {
+
+                                $i.snippet(`{`)
+                                $i.indent(($i) => {
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`'data': `)
+                                        serializeInterface($.data, $i)
+                                    })
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`'end': `)
+                                        serializeInterface($.end, $i)
                                     })
                                 })
                                 $i.snippet(`}`)

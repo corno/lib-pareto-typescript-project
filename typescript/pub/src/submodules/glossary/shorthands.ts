@@ -238,6 +238,10 @@ export function interfaceMethod(data: null | t.T.TypeReference<pd.SourceLocation
     }]
 }
 
+export function infref($: t.T.InterfaceReference<pd.SourceLocation>): t.T.Interface<pd.SourceLocation> {
+    return ['reference', $]
+}
+
 export function choice(options: RawDictionary<t.T.Interface<pd.SourceLocation>>): t.T.Interface<pd.SourceLocation> {
     return ['choice', {
         'options': pd.d(options),

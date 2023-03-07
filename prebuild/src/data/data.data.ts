@@ -20,11 +20,12 @@ export const $: pt.Array<gliana2glossary.T.GenerateData<pd.SourceLocation>> = pd
                     'serialize': [false],
                 },
             },
-            'mappedModel': {
+            'mapped model': {
                 'model': glossary,
 
-                'stringmapping': pd.d({
-                    "identifier": ['string', null]
+                'terminal mapping': pd.d({
+                    "identifier": ['string', null],
+                    "boolean": ['boolean', null],
                 }),
             },
         }

@@ -6,8 +6,6 @@
 /pareto/node_modules/
 /typescript/pub/dist/
 /typescript/pub/node_modules/
-/typescript/pub/package.json
 /typescript/test/dist/
 /typescript/test/node_modules/
-/typescript/test/package.json
 /tmp

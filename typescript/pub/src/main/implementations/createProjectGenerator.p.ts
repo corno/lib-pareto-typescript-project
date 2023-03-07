@@ -8,7 +8,7 @@ import { $a } from ".."
 import { createProjectGenerator } from "../definition/api.generated"
 
 export const $$: createProjectGenerator = ($d) => {
-    return ($) => {
+    return ($, $i) => {
 
         const project = $.project
 
@@ -37,7 +37,7 @@ export const $$: createProjectGenerator = ($d) => {
                 gfp.$a.createDirectory(
                     {
                         onError: $d.logWriteFileError,
-                        reportSuperfluousNode: $d.reportSuperfluousNode,
+                        //reportSuperfluousNode: $d.reportSuperfluousNode,
                     },
                 )(
                     $.testDirectory,
@@ -55,7 +55,8 @@ export const $$: createProjectGenerator = ($d) => {
                             $i,
                         )
 
-                    }
+                    },
+                    $i.nodes,
                 )
 
             }

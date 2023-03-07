@@ -76,10 +76,22 @@ export const $$: generateProject = ($) => {
             'logWriteFileError': ($) => {
                 gmain.$r.logError(`FIXME WRITEFILEERROR`)
             },
-            'reportSuperfluousNode': ($) => {
-                gmain.$r.logError(gfp.$a.createSuperfluousNodeMessage($))
-            },
+            // 'reportSuperfluousNode': ($) => {
+            // },
             'decorateDictionaryEntriesWithKey': gforeach.$r.decorateDictionaryEntriesWithKey,
+        },
+    )(
+        $,
+        {
+            'nodes': {
+                'manualNode': ($) => {
+                    gmain.$r.log(gfp.$a.createAllowedNodeMessage($))
+                },
+                'superfluousNode': ($) => {
+                    gmain.$r.logError(gfp.$a.createSuperfluousNodeMessage($))
+
+                }
+            }
         }
-    )($)
+    )
 }

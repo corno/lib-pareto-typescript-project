@@ -14,7 +14,6 @@ export type createParametersParser = ($d: {
 export type createProjectGenerator = ($d: {
     readonly 'decorateDictionaryEntriesWithKey': g_foreach.F.DecorateDictionaryEntriesWithKey
     readonly 'logWriteFileError': g_fs.F.HandleWriteFileError
-    readonly 'reportSuperfluousNode': g_fp.F.ReportSuperfluousNode
     readonly 'serializeProject': g_pareto2typescript.F.ProjectToDirectory
     readonly 'serializeTemplate': g_pareto2typescript.F.ProjectToDirectory
     readonly 'validateFiles': g_pareto2typescript.F.ProjectToDirectory

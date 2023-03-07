@@ -67,9 +67,9 @@ export const $$: createProjectSerializer = (
                 })
             }
             $i.directory("pub", ($i) => {
-                $i.allowed("dist")
-                $i.allowed("node_modules")
-                $i.allowed("package-lock.json")
+                $i.allowedGenerated("dist")
+                $i.allowedGenerated("node_modules")
+                $i.allowedGenerated("package-lock.json")
                 $i.file("package.json", ($i) => {
                     $i.line(`{`)
                     $i.line(`  "author": "${$.author}",`)
@@ -207,7 +207,7 @@ export const $$: createProjectSerializer = (
                                             pl.cc($.implementation[1], ($) => {
                                                 $i.directory("implementations", ($i) => {
                                                     $d.dictionaryForEach(api.algorithms, ($) => {
-                                                        $i.allowed(`${$.key}.p.ts`)
+                                                        $i.allowedManual(`${$.key}.p.ts`)
                                                     })
                                                 })
                                             })
@@ -273,7 +273,7 @@ export const $$: createProjectSerializer = (
                                 $i.directory("main", ($i) => {
                                     pl.cc($.main, ($) => {
 
-                                        $i.allowed("shorthands.ts")
+                                        $i.allowedManual("shorthands.ts")
                                         $i.directory("definition", ($i) => {
                                             pl.cc($.definition, ($) => {
 
@@ -342,7 +342,7 @@ export const $$: createProjectSerializer = (
                                         $i.directory(`${$.key}`, ($i) => {
                                             pl.cc($.value, ($) => {
 
-                                                $i.allowed("shorthands.ts")
+                                                $i.allowedManual("shorthands.ts")
                                                 $i.directory("definition", ($i) => {
                                                     pl.cc($.definition, ($) => {
 
@@ -463,7 +463,7 @@ export const $$: createProjectSerializer = (
 
                                 $i.directory("implementations", ($i) => {
                                     $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
-                                        $i.allowed(`${$.key}.native.ts`)
+                                        $i.allowedManual(`${$.key}.native.ts`)
                                     })
                                 })
                                 $i.file("implementation.generated.ts", ($i) => {
@@ -483,7 +483,7 @@ export const $$: createProjectSerializer = (
                                         $i.snippet(`}`)
                                     })
                                 })
-                                $i.allowed("native")
+                                $i.allowedManual("native")
                                 $i.file("index.ts", ($i) => {
                                     $i.line(`export * from "./definition/api.generated"`)
                                     $i.line(`export * from "./definition/glossary"`)
@@ -505,10 +505,10 @@ export const $$: createProjectSerializer = (
             function doTest($: gproject.T.Test<Annotation>, $i: gfp.B.Directory) {
 
                 $i.directory("test", ($i) => {
-                    $i.allowed("data")
-                    $i.allowed("dist")
-                    $i.allowed("node_modules")
-                    $i.allowed("package-lock.json")
+                    $i.allowedManual("data")
+                    $i.allowedGenerated("dist")
+                    $i.allowedGenerated("node_modules")
+                    $i.allowedGenerated("package-lock.json")
                     $i.file("package.json", ($i) => {
                         $i.line(`{`)
                         $i.line(`  "dependencies": {`)
@@ -539,7 +539,7 @@ export const $$: createProjectSerializer = (
                                 $i.line(`pe.runProgram(gmain.$a.main)`)
                             })
                         })
-                        $i.allowed("data")
+                        $i.allowedManual("data")
                         $i.directory("modules", ($i) => {
                             $i.directory("main", ($i) => {
                                 $i.directory("definition", ($i) => {
@@ -559,7 +559,7 @@ export const $$: createProjectSerializer = (
                                     })
                                 })
                                 $i.directory("implementations", ($i) => {
-                                    $i.allowed("getTestSet.p.ts")
+                                    $i.allowedManual("getTestSet.p.ts")
                                     $i.file("main.generated.ts", ($i) => {
                                         $i.line(`import * as pl from 'pareto-core-lib'`)
                                         $i.line(``)

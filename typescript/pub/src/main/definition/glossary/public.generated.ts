@@ -17,11 +17,15 @@ export namespace B {
     export type ParseArguments<GAnnotation> = ($: g_main.T.Arguments, ) => void
     
     export type ProcessArgument<GAnnotation> = ($: g_common.T.String, ) => void
+    
+    export type Report<GAnnotation> = {
+        'nodes': g_fp.B.Report
+    }
 }
 
 export namespace F {
     
-    export type GenerateProject = <GAnnotation>($: T.ProjectSettings<GAnnotation>,) => void
+    export type GenerateProject = <GAnnotation>($: T.ProjectSettings<GAnnotation>, $b: B.Report<GAnnotation>,) => void
     
     export type GetSingleArgument = <GAnnotation>($: g_main.T.Arguments,) => pt.AsyncValue<g_common.T.String>
     

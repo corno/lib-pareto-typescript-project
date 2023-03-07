@@ -20,12 +20,25 @@ export const $$: getTestSet = ($) => {
     const $XXX = $
 
     function genProj<Annotation>(dir: string, proj: gproject.T.Project<Annotation>) {
-        gpub.$a.generateProject({
-            'mainData': {
-                'arguments': pm.wrapRawArray([dir]),
+        gpub.$a.generateProject(
+            {
+                'mainData': {
+                    'arguments': pm.wrapRawArray([dir]),
+                },
+                'project': proj,
             },
-            'project': proj,
-        })
+            {
+                'nodes': {
+                    'manualNode': ($) => {
+                        pv.logDebugMessage(gfp.$a.createAllowedNodeMessage($))
+                    },
+                    'superfluousNode': ($) => {
+                        pv.logDebugMessage(gfp.$a.createSuperfluousNodeMessage($))
+
+                    },
+                }
+            }
+        )
 
     }
     // function generateModule<Annotation>(dir: string, module: gproject.T.Module<Annotation>) {

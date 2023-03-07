@@ -14,6 +14,7 @@ import {
     taggedUnion,
     prop,
     optional,
+    option,
 } from "lib-liana/dist/submodules/liana/shorthands"
 
 const d = pd.d
@@ -27,12 +28,12 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
         }),
         'global types': d({
             "Context": globalType({}, taggedUnion({
-                "local": group({}),
+                "local": option(group({})),
                 //"import": reference(['parent', null), [)),
-                "import": group({
+                "import": option(group({
                     "glossary": prop(terminal("identifier")),
                     "arguments": prop(dictionary(component("TypeReference", {}))),
-                }),
+                })),
             })),
             "Glossary": globalType({}, group({
                 //"imports": prop(dictionary(group({}))),
@@ -45,12 +46,12 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 "interfaces": prop(dictionary(component("Interface", {}))),
                 "functions": prop(dictionary(group({
                     "return type": prop(taggedUnion({
-                        "data": group({
+                        "data": option(group({
                             "asynchronous": prop(terminal("boolean")),
                             "type": prop(component("TypeReference", {})),
-                        }),
-                        "interface": component("InterfaceReference", {}),
-                        "nothing": group({}),
+                        })),
+                        "interface": option(component("InterfaceReference", {})),
+                        "nothing": option(group({})),
                     })),
                     "data": prop(component("TypeReference", {})),
                     "input builder": prop(optional(component("BuilderReference", {}))),
@@ -58,28 +59,28 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 }))),
             })),
             "Interface": globalType({}, taggedUnion({
-                "choice": group({
+                "choice": option(group({
                     "options": prop(dictionary(component("Interface", {}))),
-                }),
-                "stream": group({
+                })),
+                "stream": option(group({
                     "data": prop(component("Interface", {})),
                     "end": prop(component("Interface", {})),
-                }),
-                "method": group({
+                })),
+                "method": option(group({
                     "data": prop(optional(component("TypeReference", {}))),
                     "interface": prop(optional(component("Interface", {}))),
-                }),
-                "reference": component("InterfaceReference", {}),
+                })),
+                "reference": option(component("InterfaceReference", {})),
             })),
             "Builder": globalType({}, taggedUnion({
-                "group": group({
+                "group": option(group({
                     "members": prop(dictionary(component("Builder", {}))),
-                }),
-                "method": group({
+                })),
+                "method": option(group({
                     "data": prop(optional(component("TypeReference", {}))),
                     "builder": prop(optional(component("Builder", {}))),
-                }),
-                "reference": component("BuilderReference", {}),
+                })),
+                "reference": option(component("BuilderReference", {})),
             })),
             "InterfaceReference": globalType({}, group({
                 "context": prop(component("Context", {})),
@@ -92,22 +93,22 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 "builder": prop(terminal("identifier")),
             })),
             "Type": globalType({}, taggedUnion({
-                "array": component("Type", {}),
-                "nested": component("Type", {}),
-                "dictionary": component("Type", {}),
-                "computed": component("Type", {}),
-                "optional": component("Type", {}),
-                "null": group({}),
-                "boolean": group({}),
-                "string": group({}),
-                "number": group({}),
-                "reference": component("TypeReference", {}),
-                "group": dictionary(group({
+                "array": option(component("Type", {})),
+                "nested": option(component("Type", {})),
+                "dictionary": option(component("Type", {})),
+                "computed": option(component("Type", {})),
+                "optional": option(component("Type", {})),
+                "null": option(group({})),
+                "boolean": option(group({})),
+                "string": option(group({})),
+                "number": option(group({})),
+                "reference": option(component("TypeReference", {})),
+                "group": option(dictionary(group({
                     "type": prop(component("Type", {})),
-                })),
-                "type parameter": terminal("identifier"),
-                "glossary parameter": terminal("identifier"),
-                "taggedUnion": dictionary(component("Type", {})),
+                }))),
+                "type parameter":option( terminal("identifier")),
+                "glossary parameter": option(terminal("identifier")),
+                "taggedUnion": option(dictionary(component("Type", {}))),
             })),
             "TypeReference": globalType({}, group({
                 "context": prop(component("Context", {})),

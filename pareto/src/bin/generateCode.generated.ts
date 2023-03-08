@@ -8,14 +8,5 @@ pe.runProgram(($) => {
     gpareto.$a.generateProject({
         project: project,
         mainData: $,
-    }, {
-        'nodes': {
-            'manualNode': () => {
-                
-            },
-            'superfluousNode': () => {
-                
-            },
-        }
     })
 })

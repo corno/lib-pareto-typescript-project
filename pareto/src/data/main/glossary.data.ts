@@ -47,7 +47,8 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'interfaces': d({
     }),
     'functions': d({
-        "GenerateProject": func(typeReference("ProjectSettings"), null, builderReference("Report"), null),
+        "GenerateProject": func(typeReference("ProjectSettings"), null, null, null),
+        "GenerateProjectAndReport": func(typeReference("ProjectSettings"), null, builderReference("Report"), null),
         "GetSingleArgument": func(typeReference("main", "Arguments"), null, null, data(typeReference("common", "String"), true)),
         "HandleArgumentError": func(typeReference("ArgumentError"), null, null, null),
         "ParseArguments2": func(typeReference("main", "Arguments"), null, builderReference("HandleParameters"), null),

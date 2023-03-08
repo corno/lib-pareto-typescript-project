@@ -25,7 +25,9 @@ export namespace B {
 
 export namespace F {
     
-    export type GenerateProject = <GAnnotation>($: T.ProjectSettings<GAnnotation>, $b: B.Report<GAnnotation>,) => void
+    export type GenerateProject = <GAnnotation>($: T.ProjectSettings<GAnnotation>,) => void
+    
+    export type GenerateProjectAndReport = <GAnnotation>($: T.ProjectSettings<GAnnotation>, $b: B.Report<GAnnotation>,) => void
     
     export type GetSingleArgument = <GAnnotation>($: g_main.T.Arguments,) => pt.AsyncValue<g_common.T.String>
     

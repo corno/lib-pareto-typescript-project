@@ -26,17 +26,6 @@ export const $$: getTestSet = ($) => {
                     'arguments': pm.wrapRawArray([dir]),
                 },
                 'project': proj,
-            },
-            {
-                'nodes': {
-                    'manualNode': ($) => {
-                        pv.logDebugMessage(gfp.$a.createAllowedNodeMessage($))
-                    },
-                    'superfluousNode': ($) => {
-                        pv.logDebugMessage(gfp.$a.createSuperfluousNodeMessage($))
-
-                    },
-                }
             }
         )
 

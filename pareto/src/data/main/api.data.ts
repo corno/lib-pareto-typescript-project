@@ -12,7 +12,7 @@ export const $: gapi.T.API<pd.SourceLocation> = {
             "onError": functionReference("this", {}, "HandleArgumentError"),
         })),
         "generateProject": algorithm(functionReference("this", {}, "GenerateProject")),
-        "createProjectGenerator": algorithm(functionReference("this", {}, "GenerateProject"), constructor(null, {
+        "createProjectGenerator": algorithm(functionReference("this", {}, "GenerateProjectAndReport"), constructor(null, {
             "decorateDictionaryEntriesWithKey": functionReference("foreach", {}, "DecorateDictionaryEntriesWithKey"),
             "logWriteFileError": functionReference("fs", {}, "HandleWriteFileError"),
             //"reportSuperfluousNode": functionReference("fp", {}, "ReportSuperfluousNode"),

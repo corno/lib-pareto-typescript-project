@@ -17,7 +17,7 @@ export type createProjectGenerator = ($d: {
     readonly 'serializeProject': g_pareto2typescript.F.ProjectToDirectory
     readonly 'serializeTemplate': g_pareto2typescript.F.ProjectToDirectory
     readonly 'validateFiles': g_pareto2typescript.F.ProjectToDirectory
-}) => g_this.F.GenerateProject
+}) => g_this.F.GenerateProjectAndReport
 
 export type generateProject = g_this.F.GenerateProject
 

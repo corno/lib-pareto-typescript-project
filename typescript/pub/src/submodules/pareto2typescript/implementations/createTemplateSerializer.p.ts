@@ -53,14 +53,22 @@ export const $$: createTemplateSerializer = (
                                     })
                                 }
                                 $i.directory("src", ($i) => {
+                                    function doModule($: gproject.T.Module<Annotation>, $i: gfp.B.Directory) {
+                                        $i.directory(`bindings`, ($i) => {
+
+                                            doImplementation($.bindings.api.root, $i)
+                                        })
+                                        $i.directory(`pure`, ($i) => {
+                                            doImplementation($['pure algorithms'].api.root, $i)
+                                        })
+                                    }
                                     $i.directory("main", ($i) => {
-                                        doImplementation($.main.definition.api.root, $i)
+                                        doModule($.main, $i)
                                     })
                                     $i.directory("modules", ($i) => {
                                         $d.dictionaryForEach($.submodules, ($) => {
-                                            const moduleName = $.key
-                                            $i.directory(moduleName, ($i) => {
-                                                doImplementation($.value.definition.api.root, $i)
+                                            $i.directory($.key, ($i) => {
+                                                doModule($.value, $i)
                                             })
                                         })
                                     })
@@ -82,19 +90,20 @@ export const $$: createTemplateSerializer = (
                                             })
                                         })
                                     }
-                                    $i.directory("main", ($i) => {
-                                        doAPI($.main.definition.api.root, $i)
+                                    // $i.directory("main", ($i) => {
+                                    //     doAPI($.main.bindings.api.root, $i)
+                                    //     doAPI($.main.bindings.api.root, $i)
 
-                                    })
-                                    $i.directory("submodules", ($i) => {
+                                    // })
+                                    // $i.directory("submodules", ($i) => {
 
-                                        $d.dictionaryForEach($.submodules, ($) => {
-                                            const moduleName = $.key
+                                    //     $d.dictionaryForEach($.submodules, ($) => {
+                                    //         const moduleName = $.key
 
-                                            $i.directory($.key, ($i) => {
-                                            })
-                                        })
-                                    })
+                                    //         $i.directory($.key, ($i) => {
+                                    //         })
+                                    //     })
+                                    // })
                                 })
                             })
 
@@ -106,7 +115,7 @@ export const $$: createTemplateSerializer = (
                                 $i.directory("src", ($i) => {
 
                                     $i.directory("implementations", ($i) => {
-                                        $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
+                                        $d.dictionaryForEach($.api.root.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)
@@ -137,7 +146,7 @@ export const $$: createTemplateSerializer = (
                                 $i.directory("src", ($i) => {
                                     $i.directory("modules", ($i) => {
 
-                                        $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
+                                        $d.dictionaryForEach($.api.root.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)

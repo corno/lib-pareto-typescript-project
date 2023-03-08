@@ -5,10 +5,10 @@ import * as gapi from "./definition/glossary"
 
 type RawDictionary<T> = { [key: string]: T }
 
-export function tempSubmodule($: string): gapi.T.Project._ltype.library.main.definition.glossary.imports.D<pd.SourceLocation> {
+export function tempSubmodule($: string): gapi.T.Module.glossary.imports.D<pd.SourceLocation> {
     return ['temp submodule', $]
 }
-export function submodule($: string): gapi.T.Project._ltype.library.main.definition.api.imports.D<pd.SourceLocation> {
+export function submodule($: string): ['submodule', string] {
     return ['submodule', $]
 }
 export function this_(): ['this', null] {
@@ -23,6 +23,6 @@ export function sibling($: string): ['sibling', string] {
 export function external($: string): ['external', string] {
     return ['external', $]
 }
-export function main(): gapi.T.Project._ltype.library.submodules.D.definition.glossary.imports.D<pd.SourceLocation> {
+export function main(): gapi.T.Module.glossary.imports.D<pd.SourceLocation> {
     return ['main', null]
 }

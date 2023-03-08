@@ -58,6 +58,213 @@ export namespace T {
         | ['pareto', null]
         | ['typescript', null]
     
+    export namespace Module {
+        
+        export namespace bindings {
+            
+            export namespace api {
+                
+                export namespace imports {
+                    
+                    export namespace D {
+                        
+                        export type external<GAnnotation> = string
+                        
+                        export type sibling<GAnnotation> = string
+                        
+                        export type submodule<GAnnotation> = string
+                        
+                        export namespace _lthis {}
+                        
+                        export type _lthis<GAnnotation> = null
+                    }
+                    
+                    export type D<GAnnotation> = 
+                        | ['external', string]
+                        | ['sibling', string]
+                        | ['submodule', string]
+                        | ['this', null]
+                }
+                
+                export type imports<GAnnotation> = pt.Dictionary<
+                    | ['external', string]
+                    | ['sibling', string]
+                    | ['submodule', string]
+                    | ['this', null]
+                >
+                
+                export type root<GAnnotation> = g_api.T.API<T.Annotation<GAnnotation>>
+            }
+            
+            export type api<GAnnotation> = {
+                readonly 'imports': pt.Dictionary<
+                    | ['external', string]
+                    | ['sibling', string]
+                    | ['submodule', string]
+                    | ['this', null]
+                >
+                readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+            }
+            
+            export type implementation<GAnnotation> = T.Implementation<GAnnotation>
+        }
+        
+        export type bindings<GAnnotation> = {
+            readonly 'api': {
+                readonly 'imports': pt.Dictionary<
+                    | ['external', string]
+                    | ['sibling', string]
+                    | ['submodule', string]
+                    | ['this', null]
+                >
+                readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+            }
+            readonly 'implementation': T.Implementation<GAnnotation>
+        }
+        
+        export namespace glossary {
+            
+            export namespace imports {
+                
+                export namespace D {
+                    
+                    export type external<GAnnotation> = string
+                    
+                    export namespace main {}
+                    
+                    export type main<GAnnotation> = null
+                    
+                    export type sibling<GAnnotation> = string
+                    
+                    export type temp__submodule<GAnnotation> = string
+                }
+                
+                export type D<GAnnotation> = 
+                    | ['external', string]
+                    | ['main', null]
+                    | ['sibling', string]
+                    | ['temp submodule', string]
+            }
+            
+            export type imports<GAnnotation> = pt.Dictionary<
+                | ['external', string]
+                | ['main', null]
+                | ['sibling', string]
+                | ['temp submodule', string]
+            >
+            
+            export type root<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+        }
+        
+        export type glossary<GAnnotation> = {
+            readonly 'imports': pt.Dictionary<
+                | ['external', string]
+                | ['main', null]
+                | ['sibling', string]
+                | ['temp submodule', string]
+            >
+            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+        }
+        
+        export namespace pure__algorithms {
+            
+            export namespace api {
+                
+                export namespace imports {
+                    
+                    export namespace D {
+                        
+                        export type external<GAnnotation> = string
+                        
+                        export type sibling<GAnnotation> = string
+                        
+                        export type submodule<GAnnotation> = string
+                        
+                        export namespace _lthis {}
+                        
+                        export type _lthis<GAnnotation> = null
+                    }
+                    
+                    export type D<GAnnotation> = 
+                        | ['external', string]
+                        | ['sibling', string]
+                        | ['submodule', string]
+                        | ['this', null]
+                }
+                
+                export type imports<GAnnotation> = pt.Dictionary<
+                    | ['external', string]
+                    | ['sibling', string]
+                    | ['submodule', string]
+                    | ['this', null]
+                >
+                
+                export type root<GAnnotation> = g_api.T.API<T.Annotation<GAnnotation>>
+            }
+            
+            export type api<GAnnotation> = {
+                readonly 'imports': pt.Dictionary<
+                    | ['external', string]
+                    | ['sibling', string]
+                    | ['submodule', string]
+                    | ['this', null]
+                >
+                readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+            }
+            
+            export type implementation<GAnnotation> = T.Implementation<GAnnotation>
+        }
+        
+        export type pure__algorithms<GAnnotation> = {
+            readonly 'api': {
+                readonly 'imports': pt.Dictionary<
+                    | ['external', string]
+                    | ['sibling', string]
+                    | ['submodule', string]
+                    | ['this', null]
+                >
+                readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+            }
+            readonly 'implementation': T.Implementation<GAnnotation>
+        }
+    }
+    
+    export type Module<GAnnotation> = {
+        readonly 'bindings': {
+            readonly 'api': {
+                readonly 'imports': pt.Dictionary<
+                    | ['external', string]
+                    | ['sibling', string]
+                    | ['submodule', string]
+                    | ['this', null]
+                >
+                readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+            }
+            readonly 'implementation': T.Implementation<GAnnotation>
+        }
+        readonly 'glossary': {
+            readonly 'imports': pt.Dictionary<
+                | ['external', string]
+                | ['main', null]
+                | ['sibling', string]
+                | ['temp submodule', string]
+            >
+            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+        }
+        readonly 'pure algorithms': {
+            readonly 'api': {
+                readonly 'imports': pt.Dictionary<
+                    | ['external', string]
+                    | ['sibling', string]
+                    | ['submodule', string]
+                    | ['this', null]
+                >
+                readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+            }
+            readonly 'implementation': T.Implementation<GAnnotation>
+        }
+    }
+    
     export namespace Project {
         
         export type author<GAnnotation> = string
@@ -115,435 +322,145 @@ export namespace T {
                 
                 export type executables<GAnnotation> = pt.Dictionary<null>
                 
-                export namespace main {
-                    
-                    export namespace definition {
-                        
-                        export namespace api {
-                            
-                            export namespace imports {
-                                
-                                export namespace D {
-                                    
-                                    export type external<GAnnotation> = string
-                                    
-                                    export type submodule<GAnnotation> = string
-                                    
-                                    export namespace _lthis {}
-                                    
-                                    export type _lthis<GAnnotation> = null
-                                }
-                                
-                                export type D<GAnnotation> = 
-                                    | ['external', string]
-                                    | ['submodule', string]
-                                    | ['this', null]
-                            }
-                            
-                            export type imports<GAnnotation> = pt.Dictionary<
-                                | ['external', string]
-                                | ['submodule', string]
-                                | ['this', null]
-                            >
-                            
-                            export type root<GAnnotation> = g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        
-                        export type api<GAnnotation> = {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['submodule', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        
-                        export namespace glossary {
-                            
-                            export namespace imports {
-                                
-                                export namespace D {
-                                    
-                                    export type external<GAnnotation> = string
-                                    
-                                    export type temp__submodule<GAnnotation> = string
-                                }
-                                
-                                export type D<GAnnotation> = 
-                                    | ['external', string]
-                                    | ['temp submodule', string]
-                            }
-                            
-                            export type imports<GAnnotation> = pt.Dictionary<
-                                | ['external', string]
-                                | ['temp submodule', string]
-                            >
-                            
-                            export type root<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                        
-                        export type glossary<GAnnotation> = {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['temp submodule', string]
-                            >
-                            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                    }
-                    
-                    export type definition<GAnnotation> = {
-                        readonly 'api': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['submodule', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        readonly 'glossary': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['temp submodule', string]
-                            >
-                            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                    }
-                    
-                    export type implementation<GAnnotation> = T.Implementation<GAnnotation>
-                }
-                
-                export type main<GAnnotation> = {
-                    readonly 'definition': {
-                        readonly 'api': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['submodule', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        readonly 'glossary': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['temp submodule', string]
-                            >
-                            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
-                }
+                export type main<GAnnotation> = T.Module<GAnnotation>
                 
                 export namespace submodules {
                     
-                    export namespace D {
-                        
-                        export namespace definition {
-                            
-                            export namespace api {
-                                
-                                export namespace imports {
-                                    
-                                    export namespace D {
-                                        
-                                        export type external<GAnnotation> = string
-                                        
-                                        export type sibling<GAnnotation> = string
-                                        
-                                        export namespace _lthis {}
-                                        
-                                        export type _lthis<GAnnotation> = null
-                                    }
-                                    
-                                    export type D<GAnnotation> = 
-                                        | ['external', string]
-                                        | ['sibling', string]
-                                        | ['this', null]
-                                }
-                                
-                                export type imports<GAnnotation> = pt.Dictionary<
-                                    | ['external', string]
-                                    | ['sibling', string]
-                                    | ['this', null]
-                                >
-                                
-                                export type root<GAnnotation> = g_api.T.API<T.Annotation<GAnnotation>>
-                            }
-                            
-                            export type api<GAnnotation> = {
-                                readonly 'imports': pt.Dictionary<
-                                    | ['external', string]
-                                    | ['sibling', string]
-                                    | ['this', null]
-                                >
-                                readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                            }
-                            
-                            export namespace glossary {
-                                
-                                export namespace imports {
-                                    
-                                    export namespace D {
-                                        
-                                        export type external<GAnnotation> = string
-                                        
-                                        export namespace main {}
-                                        
-                                        export type main<GAnnotation> = null
-                                        
-                                        export type sibling<GAnnotation> = string
-                                    }
-                                    
-                                    export type D<GAnnotation> = 
-                                        | ['external', string]
-                                        | ['main', null]
-                                        | ['sibling', string]
-                                }
-                                
-                                export type imports<GAnnotation> = pt.Dictionary<
-                                    | ['external', string]
-                                    | ['main', null]
-                                    | ['sibling', string]
-                                >
-                                
-                                export type root<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                            }
-                            
-                            export type glossary<GAnnotation> = {
-                                readonly 'imports': pt.Dictionary<
-                                    | ['external', string]
-                                    | ['main', null]
-                                    | ['sibling', string]
-                                >
-                                readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                            }
-                        }
-                        
-                        export type definition<GAnnotation> = {
-                            readonly 'api': {
-                                readonly 'imports': pt.Dictionary<
-                                    | ['external', string]
-                                    | ['sibling', string]
-                                    | ['this', null]
-                                >
-                                readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                            }
-                            readonly 'glossary': {
-                                readonly 'imports': pt.Dictionary<
-                                    | ['external', string]
-                                    | ['main', null]
-                                    | ['sibling', string]
-                                >
-                                readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                            }
-                        }
-                        
-                        export type implementation<GAnnotation> = T.Implementation<GAnnotation>
-                    }
-                    
-                    export type D<GAnnotation> = {
-                        readonly 'definition': {
-                            readonly 'api': {
-                                readonly 'imports': pt.Dictionary<
-                                    | ['external', string]
-                                    | ['sibling', string]
-                                    | ['this', null]
-                                >
-                                readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                            }
-                            readonly 'glossary': {
-                                readonly 'imports': pt.Dictionary<
-                                    | ['external', string]
-                                    | ['main', null]
-                                    | ['sibling', string]
-                                >
-                                readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                            }
-                        }
-                        readonly 'implementation': T.Implementation<GAnnotation>
-                    }
+                    export type D<GAnnotation> = T.Module<GAnnotation>
                 }
                 
-                export type submodules<GAnnotation> = pt.Dictionary<{
-                    readonly 'definition': {
-                        readonly 'api': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['sibling', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        readonly 'glossary': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['main', null]
-                                | ['sibling', string]
-                            >
-                            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
-                }>
+                export type submodules<GAnnotation> = pt.Dictionary<T.Module<GAnnotation>>
                 
                 export type test<GAnnotation> = T.Test<GAnnotation>
             }
             
             export type library<GAnnotation> = {
                 readonly 'executables': pt.Dictionary<null>
-                readonly 'main': {
-                    readonly 'definition': {
-                        readonly 'api': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['submodule', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        readonly 'glossary': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['temp submodule', string]
-                            >
-                            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
-                }
-                readonly 'submodules': pt.Dictionary<{
-                    readonly 'definition': {
-                        readonly 'api': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['sibling', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        readonly 'glossary': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['main', null]
-                                | ['sibling', string]
-                            >
-                            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
-                }>
+                readonly 'main': T.Module<GAnnotation>
+                readonly 'submodules': pt.Dictionary<T.Module<GAnnotation>>
                 readonly 'test': T.Test<GAnnotation>
             }
             
             export namespace resource {
                 
-                export namespace definition {
+                export namespace api {
                     
-                    export namespace api {
+                    export namespace imports {
                         
-                        export namespace imports {
+                        export namespace D {
+                            
+                            export type external<GAnnotation> = string
+                            
+                            export namespace _lthis {}
+                            
+                            export type _lthis<GAnnotation> = null
+                        }
+                        
+                        export type D<GAnnotation> = 
+                            | ['external', string]
+                            | ['this', null]
+                    }
+                    
+                    export type imports<GAnnotation> = pt.Dictionary<
+                        | ['external', string]
+                        | ['this', null]
+                    >
+                    
+                    export namespace root {
+                        
+                        export namespace algorithms {
                             
                             export namespace D {
                                 
-                                export type external<GAnnotation> = string
+                                export type definition<GAnnotation> = T.FunctionReference<GAnnotation>
                                 
-                                export namespace _lthis {}
-                                
-                                export type _lthis<GAnnotation> = null
-                            }
-                            
-                            export type D<GAnnotation> = 
-                                | ['external', string]
-                                | ['this', null]
-                        }
-                        
-                        export type imports<GAnnotation> = pt.Dictionary<
-                            | ['external', string]
-                            | ['this', null]
-                        >
-                        
-                        export namespace root {
-                            
-                            export namespace algorithms {
-                                
-                                export namespace D {
+                                export namespace _ltype {
                                     
-                                    export type definition<GAnnotation> = T.FunctionReference<GAnnotation>
+                                    export namespace _lconstructor {
+                                        
+                                        export namespace configuration__data {
+                                            
+                                            export type O<GAnnotation> = T.TypeReference<GAnnotation>
+                                        }
+                                        
+                                        export type configuration__data<GAnnotation> = [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                        
+                                        export namespace dependencies {
+                                            
+                                            export type D<GAnnotation> = T.FunctionReference<GAnnotation>
+                                        }
+                                        
+                                        export type dependencies<GAnnotation> = pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                    }
+                                    
+                                    export type _lconstructor<GAnnotation> = {
+                                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                    }
+                                    
+                                    export namespace reference {}
+                                    
+                                    export type reference<GAnnotation> = null
                                 }
                                 
-                                export type D<GAnnotation> = {
-                                    readonly 'definition': T.FunctionReference<GAnnotation>
-                                }
+                                export type _ltype<GAnnotation> = 
+                                    | ['constructor', {
+                                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                    }]
+                                    | ['reference', null]
                             }
                             
-                            export type algorithms<GAnnotation> = pt.Dictionary<{
+                            export type D<GAnnotation> = {
                                 readonly 'definition': T.FunctionReference<GAnnotation>
-                            }>
-                        }
-                        
-                        export type root<GAnnotation> = {
-                            readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.FunctionReference<GAnnotation>
-                            }>
-                        }
-                    }
-                    
-                    export type api<GAnnotation> = {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                            | ['this', null]
-                        >
-                        readonly 'root': {
-                            readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.FunctionReference<GAnnotation>
-                            }>
-                        }
-                    }
-                    
-                    export namespace glossary {
-                        
-                        export namespace imports {
-                            
-                            export namespace D {
-                                
-                                export type external<GAnnotation> = string
+                                readonly 'type': 
+                                    | ['constructor', {
+                                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                    }]
+                                    | ['reference', null]
                             }
-                            
-                            export type D<GAnnotation> = 
-                                | ['external', string]
                         }
                         
-                        export type imports<GAnnotation> = pt.Dictionary<
-                            | ['external', string]
-                        >
-                        
-                        export type root<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                        export type algorithms<GAnnotation> = pt.Dictionary<{
+                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'type': 
+                                | ['constructor', {
+                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                }]
+                                | ['reference', null]
+                        }>
                     }
                     
-                    export type glossary<GAnnotation> = {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                        >
-                        readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                    export type root<GAnnotation> = {
+                        readonly 'algorithms': pt.Dictionary<{
+                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'type': 
+                                | ['constructor', {
+                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                }]
+                                | ['reference', null]
+                        }>
                     }
                 }
                 
-                export type definition<GAnnotation> = {
-                    readonly 'api': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                            | ['this', null]
-                        >
-                        readonly 'root': {
-                            readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.FunctionReference<GAnnotation>
-                            }>
-                        }
-                    }
-                    readonly 'glossary': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                        >
-                        readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                export type api<GAnnotation> = {
+                    readonly 'imports': pt.Dictionary<
+                        | ['external', string]
+                        | ['this', null]
+                    >
+                    readonly 'root': {
+                        readonly 'algorithms': pt.Dictionary<{
+                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'type': 
+                                | ['constructor', {
+                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                }]
+                                | ['reference', null]
+                        }>
                     }
                 }
                 
@@ -555,6 +472,33 @@ export namespace T {
                 }
                 
                 export type devDependencies<GAnnotation> = pt.Dictionary<null>
+                
+                export namespace glossary {
+                    
+                    export namespace imports {
+                        
+                        export namespace D {
+                            
+                            export type external<GAnnotation> = string
+                        }
+                        
+                        export type D<GAnnotation> = 
+                            | ['external', string]
+                    }
+                    
+                    export type imports<GAnnotation> = pt.Dictionary<
+                        | ['external', string]
+                    >
+                    
+                    export type root<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                }
+                
+                export type glossary<GAnnotation> = {
+                    readonly 'imports': pt.Dictionary<
+                        | ['external', string]
+                    >
+                    readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                }
                 
                 export namespace nativeDependencies {
                     
@@ -569,26 +513,30 @@ export namespace T {
             }
             
             export type resource<GAnnotation> = {
-                readonly 'definition': {
-                    readonly 'api': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                            | ['this', null]
-                        >
-                        readonly 'root': {
-                            readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.FunctionReference<GAnnotation>
-                            }>
-                        }
-                    }
-                    readonly 'glossary': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                        >
-                        readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                readonly 'api': {
+                    readonly 'imports': pt.Dictionary<
+                        | ['external', string]
+                        | ['this', null]
+                    >
+                    readonly 'root': {
+                        readonly 'algorithms': pt.Dictionary<{
+                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'type': 
+                                | ['constructor', {
+                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                }]
+                                | ['reference', null]
+                        }>
                     }
                 }
                 readonly 'devDependencies': pt.Dictionary<null>
+                readonly 'glossary': {
+                    readonly 'imports': pt.Dictionary<
+                        | ['external', string]
+                    >
+                    readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                }
                 readonly 'nativeDependencies': pt.Dictionary<null>
                 readonly 'test': T.Test<GAnnotation>
             }
@@ -603,70 +551,35 @@ export namespace T {
             }]
             | ['library', {
                 readonly 'executables': pt.Dictionary<null>
-                readonly 'main': {
-                    readonly 'definition': {
-                        readonly 'api': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['submodule', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        readonly 'glossary': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['temp submodule', string]
-                            >
-                            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
-                }
-                readonly 'submodules': pt.Dictionary<{
-                    readonly 'definition': {
-                        readonly 'api': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['sibling', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        readonly 'glossary': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['main', null]
-                                | ['sibling', string]
-                            >
-                            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
-                }>
+                readonly 'main': T.Module<GAnnotation>
+                readonly 'submodules': pt.Dictionary<T.Module<GAnnotation>>
                 readonly 'test': T.Test<GAnnotation>
             }]
             | ['resource', {
-                readonly 'definition': {
-                    readonly 'api': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                            | ['this', null]
-                        >
-                        readonly 'root': {
-                            readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.FunctionReference<GAnnotation>
-                            }>
-                        }
-                    }
-                    readonly 'glossary': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                        >
-                        readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                readonly 'api': {
+                    readonly 'imports': pt.Dictionary<
+                        | ['external', string]
+                        | ['this', null]
+                    >
+                    readonly 'root': {
+                        readonly 'algorithms': pt.Dictionary<{
+                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'type': 
+                                | ['constructor', {
+                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                }]
+                                | ['reference', null]
+                        }>
                     }
                 }
                 readonly 'devDependencies': pt.Dictionary<null>
+                readonly 'glossary': {
+                    readonly 'imports': pt.Dictionary<
+                        | ['external', string]
+                    >
+                    readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                }
                 readonly 'nativeDependencies': pt.Dictionary<null>
                 readonly 'test': T.Test<GAnnotation>
             }]
@@ -686,70 +599,35 @@ export namespace T {
             }]
             | ['library', {
                 readonly 'executables': pt.Dictionary<null>
-                readonly 'main': {
-                    readonly 'definition': {
-                        readonly 'api': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['submodule', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        readonly 'glossary': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['temp submodule', string]
-                            >
-                            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
-                }
-                readonly 'submodules': pt.Dictionary<{
-                    readonly 'definition': {
-                        readonly 'api': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['sibling', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
-                        }
-                        readonly 'glossary': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['main', null]
-                                | ['sibling', string]
-                            >
-                            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
-                }>
+                readonly 'main': T.Module<GAnnotation>
+                readonly 'submodules': pt.Dictionary<T.Module<GAnnotation>>
                 readonly 'test': T.Test<GAnnotation>
             }]
             | ['resource', {
-                readonly 'definition': {
-                    readonly 'api': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                            | ['this', null]
-                        >
-                        readonly 'root': {
-                            readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.FunctionReference<GAnnotation>
-                            }>
-                        }
-                    }
-                    readonly 'glossary': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                        >
-                        readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                readonly 'api': {
+                    readonly 'imports': pt.Dictionary<
+                        | ['external', string]
+                        | ['this', null]
+                    >
+                    readonly 'root': {
+                        readonly 'algorithms': pt.Dictionary<{
+                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'type': 
+                                | ['constructor', {
+                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                }]
+                                | ['reference', null]
+                        }>
                     }
                 }
                 readonly 'devDependencies': pt.Dictionary<null>
+                readonly 'glossary': {
+                    readonly 'imports': pt.Dictionary<
+                        | ['external', string]
+                    >
+                    readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                }
                 readonly 'nativeDependencies': pt.Dictionary<null>
                 readonly 'test': T.Test<GAnnotation>
             }]

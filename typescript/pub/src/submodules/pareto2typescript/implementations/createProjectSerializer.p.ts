@@ -12,7 +12,26 @@ export const $$: createProjectSerializer = (
     $d,
 ) => {
     return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.B.Directory) => {
+        function doOptional<T>(
+            $: [false] | [true, T],
+            $i: gfp.B.Line,
+            $c: {
+                onSet: ($: T, $i: gfp.B.Line) => void,
+                onNotset: ($: null, $i: gfp.B.Line) => void,
+            },
+        ) {
+            if ($[0] === true) {
+                $c.onSet($[1], $i)
+            } else {
+                $c.onNotset(null, $i)
+            }
+        }
 
+        function serializeFunctionReference($: gproject.T.FunctionReference<Annotation>, $i: gfp.B.Line) {
+
+            $i.snippet(`g_${$.context.glossary}.`)
+            $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
+        }
         $i.directory("typescript", ($i) => {
             function tsConfig(
                 $: {
@@ -191,62 +210,184 @@ export const $$: createProjectSerializer = (
                             break
                         case 'library':
                             pl.cc($.type[1], ($) => {
-                                function doImplementation($: {
-                                    'implementation': gproject.T.Implementation<Annotation>,
-                                    'api': gapi.T.API<Annotation>,
-                                }, $i: gfp.B.Directory) {
-                                    const api = $.api
-                                    switch ($.implementation[0]) {
-                                        case 'pareto':
-                                            pl.cc($.implementation[1], ($) => {
-                                                pd.implementMe("IMPLEMENTATIONS")
-                                                //$d.serializeImplementation($, $i)
-                                            })
-                                            break
-                                        case 'typescript':
-                                            pl.cc($.implementation[1], ($) => {
-                                                $i.directory("implementations", ($i) => {
-                                                    $d.dictionaryForEach(api.algorithms, ($) => {
-                                                        $i.allowedManual(`${$.key}.p.ts`)
+                                function doModule(
+                                    $: gproject.T.Module<Annotation>,
+                                    $i: gfp.B.Directory,
+                                ) {
+                                    function doImplementation($: {
+                                        'implementation': gproject.T.Implementation<Annotation>,
+                                        'api': gapi.T.API<Annotation>,
+                                    }, $i: gfp.B.Directory) {
+                                        const api = $.api
+                                        switch ($.implementation[0]) {
+                                            case 'pareto':
+                                                pl.cc($.implementation[1], ($) => {
+                                                    pd.implementMe("IMPLEMENTATIONS")
+                                                    //$d.serializeImplementation($, $i)
+                                                })
+                                                break
+                                            case 'typescript':
+                                                pl.cc($.implementation[1], ($) => {
+                                                    $i.directory("implementations", ($i) => {
+                                                        $d.dictionaryForEach(api.algorithms, ($) => {
+                                                            $i.allowedManual(`${$.key}.p.ts`)
+                                                        })
                                                     })
                                                 })
+                                                break
+                                            default: pl.au($.implementation[0])
+                                        }
+                                        $i.file("implementation.generated.ts", ($i) => {
+                                            const suffix = pl.cc($, ($) => {
+                                                switch ($.implementation[0]) {
+                                                    case 'typescript':
+                                                        return pl.cc($.implementation[1], ($) => {
+                                                            return `p`
+                                                        })
+                                                    case 'pareto':
+                                                        return pl.cc($.implementation[1], ($) => {
+                                                            return `generated`
+                                                        })
+                                                    default: return pl.au($.implementation[0])
+                                                }
                                             })
-                                            break
-                                        default: pl.au($.implementation[0])
+                                            $i.line(`import { API } from "./definition/api.generated"`)
+                                            $d.dictionaryForEach($.api.algorithms, ($) => {
+                                                $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
+                                            })
+                                            $i.line(``)
+                                            $i.nestedLine(($i) => {
+                                                $i.snippet(`export const $a: API = {`)
+                                                $i.indent(($i) => {
+                                                    $d.dictionaryForEach($.api.algorithms, ($) => {
+                                                        $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
+                                                    })
+                                                })
+                                                $i.snippet(`}`)
+                                            })
+                                        })
+                                        $i.file("index.ts", ($i) => {
+                                            $i.line(`export * from "./glossary"`)
+                                            $i.line(`export * from "./bindings/api.generated"`)
+                                            $i.line(`export * from "./bindings/implementation.generated"`)
+                                            $i.line(`export * from "./pure/api.generated"`)
+                                            $i.line(`export * from "./pure/implementation.generated"`)
+                                        })
                                     }
-                                    $i.file("implementation.generated.ts", ($i) => {
-                                        const suffix = pl.cc($, ($) => {
-                                            switch ($.implementation[0]) {
-                                                case 'typescript':
-                                                    return pl.cc($.implementation[1], ($) => {
-                                                        return `p`
-                                                    })
-                                                case 'pareto':
-                                                    return pl.cc($.implementation[1], ($) => {
-                                                        return `generated`
-                                                    })
-                                                default: return pl.au($.implementation[0])
-                                            }
-                                        })
-                                        $i.line(`import { API } from "./definition/api.generated"`)
-                                        $d.dictionaryForEach($.api.algorithms, ($) => {
-                                            $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
-                                        })
-                                        $i.line(``)
-                                        $i.nestedLine(($i) => {
-                                            $i.snippet(`export const $a: API = {`)
-                                            $i.indent(($i) => {
-                                                $d.dictionaryForEach($.api.algorithms, ($) => {
-                                                    $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
-                                                })
-                                            })
-                                            $i.snippet(`}`)
+                                    $i.allowedManual(`shorthands.ts`)
+                                    $i.directory(`glossary`, ($i) => {
+                                        pl.cc($.glossary, ($) => {
+
+                                            $d.serializeGlossary(
+                                                {
+                                                    'glossary': $.root,
+                                                    'imports': $.imports.map(($) => {
+                                                        switch ($[0]) {
+                                                            case 'external':
+                                                                return pl.cc($[1], ($) => {
+                                                                    return $
+                                                                })
+                                                            case 'main':
+                                                                return pl.cc($[1], ($) => {
+                                                                    return `../../../../main`
+                                                                })
+                                                            case 'sibling':
+                                                                return pl.cc($[1], ($) => {
+                                                                    return `../../../${$}`
+                                                                })
+                                                            case 'temp submodule':
+                                                                return pl.cc($[1], ($) => {
+                                                                    return `../../../submodules/${$}`
+                                                                })
+                                                            default: return pl.au($[0])
+                                                        }
+                                                    }),
+                                                },
+                                                $i
+                                            )
                                         })
                                     })
-                                    $i.file("index.ts", ($i) => {
-                                        $i.line(`export * from "./definition/glossary"`)
-                                        $i.line(`export * from "./definition/api.generated"`)
-                                        $i.line(`export * from "./implementation.generated"`)
+                                    pl.cc($.bindings, ($) => {
+                                        $i.directory("bindings", ($i) => {
+
+                                            $i.file("api.generated.ts", ($i) => {
+                                                pl.cc($.api, ($) => {
+                                                    $d.serializeAPI({
+                                                        'api': $.root,
+                                                        'imports': $.imports.map(($) => {
+                                                            switch ($[0]) {
+                                                                case 'external':
+                                                                    return pl.cc($[1], ($) => {
+                                                                        return $
+                                                                    })
+                                                                case 'sibling':
+                                                                    return pl.cc($[1], ($) => {
+                                                                        return `../../${$}`
+                                                                    })
+                                                                case 'submodule':
+                                                                    return pl.cc($[1], ($) => {
+                                                                        return `../../submodules/${$}`
+                                                                    })
+                                                                case 'this':
+                                                                    return pl.cc($[1], ($) => {
+                                                                        return `./glossary`
+                                                                    })
+                                                                default: return pl.au($[0])
+                                                            }
+                                                        }),
+                                                    }, $i)
+                                                })
+
+                                            })
+                                            doImplementation(
+                                                {
+                                                    'api': $.api.root,
+                                                    'implementation': $.implementation,
+                                                },
+                                                $i
+                                            )
+                                        })
+                                    })
+                                    pl.cc($['pure algorithms'], ($) => {
+                                        $i.directory("pure", ($i) => {
+
+                                            $i.file("api.generated.ts", ($i) => {
+                                                pl.cc($.api, ($) => {
+                                                    $d.serializeAPI({
+                                                        'api': $.root,
+                                                        'imports': $.imports.map(($) => {
+                                                            switch ($[0]) {
+                                                                case 'external':
+                                                                    return pl.cc($[1], ($) => {
+                                                                        return $
+                                                                    })
+                                                                case 'sibling':
+                                                                    return pl.cc($[1], ($) => {
+                                                                        return `../../${$}`
+                                                                    })
+                                                                case 'submodule':
+                                                                    return pl.cc($[1], ($) => {
+                                                                        return `../../submodules/${$}`
+                                                                    })
+                                                                case 'this':
+                                                                    return pl.cc($[1], ($) => {
+                                                                        return `./glossary`
+                                                                    })
+                                                                default: return pl.au($[0])
+                                                            }
+                                                        }),
+                                                    }, $i)
+                                                })
+
+                                            })
+                                            doImplementation(
+                                                {
+                                                    'api': $.api.root,
+                                                    'implementation': $.implementation,
+                                                },
+                                                $i
+                                            )
+                                        })
                                     })
                                 }
                                 globals($i)
@@ -272,142 +413,14 @@ export const $$: createProjectSerializer = (
                                 })
                                 $i.directory("main", ($i) => {
                                     pl.cc($.main, ($) => {
-
-                                        $i.allowedManual("shorthands.ts")
-                                        $i.directory("definition", ($i) => {
-                                            pl.cc($.definition, ($) => {
-
-                                                $i.directory(`glossary`, ($i) => {
-                                                    pl.cc($.glossary, ($) => {
-
-                                                        $d.serializeGlossary(
-                                                            {
-                                                                'glossary': $.root,
-                                                                'imports': $.imports.map(($) => {
-                                                                    switch ($[0]) {
-                                                                        case 'external':
-                                                                            return pl.cc($[1], ($) => {
-                                                                                return $
-                                                                            })
-                                                                        case 'temp submodule':
-                                                                            return pl.cc($[1], ($) => {
-                                                                                return `../../../submodules/${$}`
-                                                                            })
-                                                                        default: return pl.au($[0])
-                                                                    }
-                                                                }),
-                                                            },
-                                                            $i
-                                                        )
-                                                    })
-                                                })
-                                                $i.file("api.generated.ts", ($i) => {
-                                                    pl.cc($.api, ($) => {
-                                                        $d.serializeAPI({
-                                                            'api': $.root,
-                                                            'imports': $.imports.map(($) => {
-                                                                switch ($[0]) {
-                                                                    case 'external':
-                                                                        return pl.cc($[1], ($) => {
-                                                                            return $
-                                                                        })
-                                                                    case 'submodule':
-                                                                        return pl.cc($[1], ($) => {
-                                                                            return `../../submodules/${$}`
-                                                                        })
-                                                                    case 'this':
-                                                                        return pl.cc($[1], ($) => {
-                                                                            return `./glossary`
-                                                                        })
-                                                                    default: return pl.au($[0])
-                                                                }
-                                                            }),
-                                                        }, $i)
-                                                    })
-
-                                                })
-                                            })
-                                        })
-                                        doImplementation(
-                                            {
-                                                'api': $.definition.api.root,
-                                                'implementation': $.implementation,
-                                            },
-                                            $i
-                                        )
+                                        doModule($, $i)
                                     })
                                 })
                                 $i.directory("submodules", ($i) => {
                                     $d.dictionaryForEach($.submodules, ($) => {
                                         $i.directory(`${$.key}`, ($i) => {
                                             pl.cc($.value, ($) => {
-
-                                                $i.allowedManual("shorthands.ts")
-                                                $i.directory("definition", ($i) => {
-                                                    pl.cc($.definition, ($) => {
-
-                                                        $i.directory(`glossary`, ($i) => {
-                                                            pl.cc($.glossary, ($) => {
-
-                                                                $d.serializeGlossary(
-                                                                    {
-                                                                        'glossary': $.root,
-                                                                        'imports': $.imports.map(($) => {
-                                                                            switch ($[0]) {
-                                                                                case 'external':
-                                                                                    return pl.cc($[1], ($) => {
-                                                                                        return $
-                                                                                    })
-                                                                                case 'sibling':
-                                                                                    return pl.cc($[1], ($) => {
-                                                                                        return `../../../${$}`
-                                                                                    })
-                                                                                case 'main':
-                                                                                    return pl.cc($[1], ($) => {
-                                                                                        return `../../../../main`
-                                                                                    })
-                                                                                default: return pl.au($[0])
-                                                                            }
-                                                                        }),
-                                                                    },
-                                                                    $i
-                                                                )
-                                                            })
-                                                        })
-                                                        $i.file("api.generated.ts", ($i) => {
-                                                            pl.cc($.api, ($) => {
-                                                                $d.serializeAPI({
-                                                                    'api': $.root,
-                                                                    'imports': $.imports.map(($) => {
-                                                                        switch ($[0]) {
-                                                                            case 'external':
-                                                                                return pl.cc($[1], ($) => {
-                                                                                    return $
-                                                                                })
-                                                                            case 'sibling':
-                                                                                return pl.cc($[1], ($) => {
-                                                                                    return `../../${$}`
-                                                                                })
-                                                                            case 'this':
-                                                                                return pl.cc($[1], ($) => {
-                                                                                    return `./glossary`
-                                                                                })
-                                                                            default: return pl.au($[0])
-                                                                        }
-                                                                    }),
-                                                                }, $i)
-                                                            })
-
-                                                        })
-                                                    })
-                                                })
-                                                doImplementation(
-                                                    {
-                                                        'api': $.definition.api.root,
-                                                        'implementation': $.implementation,
-                                                    },
-                                                    $i
-                                                )
+                                                doModule($, $i)
                                             })
                                         })
                                     })
@@ -424,8 +437,8 @@ export const $$: createProjectSerializer = (
                                     $i.directory(`glossary`, ($i) => {
                                         $d.serializeGlossary(
                                             {
-                                                'glossary': $.definition.glossary.root,
-                                                'imports': $.definition.glossary.imports.map(($) => {
+                                                'glossary': $.glossary.root,
+                                                'imports': $.glossary.imports.map(($) => {
                                                     switch ($[0]) {
                                                         case 'external':
                                                             return pl.cc($[1], ($) => {
@@ -439,97 +452,129 @@ export const $$: createProjectSerializer = (
                                         )
                                     })
                                     $i.file("api.generated.ts", ($i) => {
-                                        function serializeAPI() {
-                                            const imports = $.definition.api.imports.map(($) => {
-                                                switch ($[0]) {
-                                                    case 'external':
-                                                        return pl.cc($[1], ($) => {
-                                                            return $
-                                                        })
-                                                    case 'this':
-                                                        return pl.cc($[1], ($) => {
-                                                            return `./glossary`
-                                                        })
-                                                    default: return pl.au($[0])
-                                                }
-                                            })
-                                            function doOptional<T>(
-                                                $: [false] | [true, T],
-                                                $i: gfp.B.Line,
-                                                $c: {
-                                                    onSet: ($: T, $i: gfp.B.Line) => void,
-                                                    onNotset: ($: null, $i: gfp.B.Line) => void,
-                                                },
-                                            ) {
-                                                if ($[0] === true) {
-                                                    $c.onSet($[1], $i)
-                                                } else {
-                                                    $c.onNotset(null, $i)
-                                                }
-                                            }
-
-
-                                            function serializeFunctionReference($: gproject.T.FunctionReference<Annotation>, $i: gfp.B.Line) {
-
-                                                $i.snippet(`g_${$.context.glossary}.`)
-                                                $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
-                                            }
-
-                                            $i.line(`import * as pt from 'pareto-core-types'`)
-                                            $i.line(``)
-                                            $d.dictionaryForEach(imports, ($) => {
-                                                $i.nestedLine(($i) => {
-                                                    $i.snippet(`import * as g_${$.key} from "${$.value}"`)
-                                                })
-                                            })
-                                            pl.cc($.definition.api.root, ($) => {
-
-                                                $d.dictionaryForEach($.algorithms, ($) => {
-                                                    const definition = $.value.definition
-                                                    $i.line(``)
-                                                    $i.nestedLine(($i) => {
-                                                        $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)} = `)
-                                                        serializeFunctionReference(definition, $i)
+                                        const imports = $.api.imports.map(($) => {
+                                            switch ($[0]) {
+                                                case 'external':
+                                                    return pl.cc($[1], ($) => {
+                                                        return $
                                                     })
-                                                })
+                                                case 'this':
+                                                    return pl.cc($[1], ($) => {
+                                                        return `./glossary`
+                                                    })
+                                                default: return pl.au($[0])
+                                            }
+                                        })
+                                        $i.line(`import * as pt from 'pareto-core-types'`)
+                                        $i.line(``)
+                                        $d.dictionaryForEach(imports, ($) => {
+                                            $i.nestedLine(($i) => {
+                                                $i.snippet(`import * as g_${$.key} from "${$.value}"`)
+                                            })
+                                        })
+                                        pl.cc($.api.root, ($) => {
+
+                                            $d.dictionaryForEach($.algorithms, ($) => {
+                                                const definition = $.value.definition
                                                 $i.line(``)
                                                 $i.nestedLine(($i) => {
-                                                    $i.snippet(`export type API = {`)
-                                                    $i.indent(($i) => {
-                                                        $d.dictionaryForEach($.algorithms, ($) => {
-                                                            $i.line(`${$.key}: ${$d.createIdentifier(`${$.key}`)}`)
-                                                        })
-                                                    })
-                                                    $i.snippet(`}`)
+                                                    $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)} = `)
+                                                    switch ($.value.type[0]) {
+                                                        case 'constructor':
+                                                            pl.cc($.value.type[1], ($) => {
+                                                                $i.snippet(`(`)
+                                                                doOptional($['configuration data'], $i, {
+                                                                    onNotset: () => { },
+                                                                    onSet: ($, $i) => {
+
+                                                                        $i.snippet(`$: `)
+
+                                                                        $i.snippet(`g_${$.context.glossary}.`)
+
+                                                                        $i.snippet(`T.${$d.createIdentifier($.type)}`)
+                                                                        $i.snippet(`, `)
+                                                                    }
+                                                                })
+                                                                $i.snippet(`$d: {`)
+                                                                $i.indent(($i) => {
+                                                                    $d.dictionaryForEach($.dependencies, ($) => {
+                                                                        $i.nestedLine(($i) => {
+                                                                            $i.snippet(`readonly '${$.key}': `)
+                                                                            serializeFunctionReference($.value, $i)
+                                                                        })
+                                                                    })
+                                                                })
+                                                                $i.snippet(`}`)
+                                                                // pl.cc($.dependencies, ($) => {
+                                                                //     $i.snippet(`$d: {`)
+                                                                //     $i.indent(($i) => {
+                                                                //         // if ($.callbacks !== undefined) {
+                                                                //         //     $d.dictionaryForEach($.callbacks, ($, key) => {
+                                                                //         //         $i.nestedLine(($i) => {
+                                                                //         //             $i.snippet(`readonly "cb${key}": `)
+                                                                //         //             serializeCallbackReference($, $i)
+                                                                //         //         })
+                                                                //         //     })
+                                                                //         // }
+                                                                //         $d.dictionaryForEach($.functions, ($, key) => {
+                                                                //             $i.nestedLine(($i) => {
+                                                                //                 $i.snippet(`readonly "f${key}": `)
+                                                                //                 serializeFunctionReference($, $i)
+                                                                //             })
+                                                                //         })
+                                                                //         if ($["side effects"] !== undefined) {
+                                                                //             $["side effects"].forEach(compare, ($, key) => {
+                                                                //                 $i.nestedLine(($i) => {
+                                                                //                     $i.snippet(`readonly "se${key}": `)
+                                                                //                     serializeProcedure($, $i)
+                                                                //                 })
+                                                                //             })
+                                                                //         }
+                                                                //     })
+                                                                //     $i.snippet(`}`)
+                                                                // })
+                                                                $i.snippet(`) => `)
+                                                            })
+                                                            break
+                                                        case 'reference':
+                                                            pl.cc($.value.type[1], ($) => {
+                                                            })
+                                                            break
+                                                        default: pl.au($.value.type[0])
+                                                    }
+                                                    serializeFunctionReference(definition, $i)
                                                 })
                                             })
-                                        }
-                                        serializeAPI(
-                                            // {
-                                            //     'api': $.definition.api.root,
-
-                                            // },
-                                            // $i,
-                                        )
+                                            $i.line(``)
+                                            $i.nestedLine(($i) => {
+                                                $i.snippet(`export type API = {`)
+                                                $i.indent(($i) => {
+                                                    $d.dictionaryForEach($.algorithms, ($) => {
+                                                        $i.line(`${$.key}: ${$d.createIdentifier(`${$.key}`)}`)
+                                                    })
+                                                })
+                                                $i.snippet(`}`)
+                                            })
+                                        })
                                     })
                                 })
 
                                 $i.directory("implementations", ($i) => {
-                                    $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
+                                    $d.dictionaryForEach($.api.root.algorithms, ($) => {
                                         $i.allowedManual(`${$.key}.native.ts`)
                                     })
                                 })
                                 $i.file("implementation.generated.ts", ($i) => {
 
                                     $i.line(`import { API } from "./definition/api.generated"`)
-                                    $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
+                                    $d.dictionaryForEach($.api.root.algorithms, ($) => {
                                         $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.native"`)
                                     })
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
                                         $i.snippet(`export const $r: API = {`)
                                         $i.indent(($i) => {
-                                            $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
+                                            $d.dictionaryForEach($.api.root.algorithms, ($) => {
                                                 $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
                                             })
                                         })

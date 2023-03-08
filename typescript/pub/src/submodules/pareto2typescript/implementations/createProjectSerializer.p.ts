@@ -439,24 +439,77 @@ export const $$: createProjectSerializer = (
                                         )
                                     })
                                     $i.file("api.generated.ts", ($i) => {
-                                        $d.serializeAPI(
-                                            {
-                                                'api': $.definition.api.root,
-                                                'imports': $.definition.api.imports.map(($) => {
-                                                    switch ($[0]) {
-                                                        case 'external':
-                                                            return pl.cc($[1], ($) => {
-                                                                return $
-                                                            })
-                                                        case 'this':
-                                                            return pl.cc($[1], ($) => {
-                                                                return `./glossary`
-                                                            })
-                                                        default: return pl.au($[0])
-                                                    }
-                                                }),
-                                            },
-                                            $i,
+                                        function serializeAPI() {
+                                            const imports = $.definition.api.imports.map(($) => {
+                                                switch ($[0]) {
+                                                    case 'external':
+                                                        return pl.cc($[1], ($) => {
+                                                            return $
+                                                        })
+                                                    case 'this':
+                                                        return pl.cc($[1], ($) => {
+                                                            return `./glossary`
+                                                        })
+                                                    default: return pl.au($[0])
+                                                }
+                                            })
+                                            function doOptional<T>(
+                                                $: [false] | [true, T],
+                                                $i: gfp.B.Line,
+                                                $c: {
+                                                    onSet: ($: T, $i: gfp.B.Line) => void,
+                                                    onNotset: ($: null, $i: gfp.B.Line) => void,
+                                                },
+                                            ) {
+                                                if ($[0] === true) {
+                                                    $c.onSet($[1], $i)
+                                                } else {
+                                                    $c.onNotset(null, $i)
+                                                }
+                                            }
+
+
+                                            function serializeFunctionReference($: gproject.T.FunctionReference<Annotation>, $i: gfp.B.Line) {
+
+                                                $i.snippet(`g_${$.context.glossary}.`)
+                                                $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
+                                            }
+
+                                            $i.line(`import * as pt from 'pareto-core-types'`)
+                                            $i.line(``)
+                                            $d.dictionaryForEach(imports, ($) => {
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`import * as g_${$.key} from "${$.value}"`)
+                                                })
+                                            })
+                                            pl.cc($.definition.api.root, ($) => {
+
+                                                $d.dictionaryForEach($.algorithms, ($) => {
+                                                    const definition = $.value.definition
+                                                    $i.line(``)
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)} = `)
+                                                        serializeFunctionReference(definition, $i)
+                                                    })
+                                                })
+                                                $i.line(``)
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`export type API = {`)
+                                                    $i.indent(($i) => {
+                                                        $d.dictionaryForEach($.algorithms, ($) => {
+                                                            $i.line(`${$.key}: ${$d.createIdentifier(`${$.key}`)}`)
+                                                        })
+                                                    })
+                                                    $i.snippet(`}`)
+                                                })
+                                            })
+                                        }
+                                        serializeAPI(
+                                            // {
+                                            //     'api': $.definition.api.root,
+
+                                            // },
+                                            // $i,
                                         )
                                     })
                                 })

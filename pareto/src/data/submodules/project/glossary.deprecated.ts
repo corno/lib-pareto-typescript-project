@@ -19,7 +19,21 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
         "AlgorithmImplementation": type(group({})),
-        //"Implementation": type(dictionary(reference("AlgorithmImplementation"))),
+
+
+        "Context": type(group({
+            "glossary": member(string()),
+            "arguments": member(dictionary(reference("TypeReference"))),
+        })),
+        "FunctionReference": type(group({
+            "context": member(reference("Context")),
+            "function": member(string()),
+        })),
+        "TypeReference": type(group({
+            "context": member(reference("Context")),
+            "type": member(string()),
+        })),
+
         "Implementation": type(taggedUnion({
             "typescript": group({
                 //  parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "AlgorithmImplementation"),
@@ -43,7 +57,11 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                             }))),
                         })),
                         "api": member(group({
-                            "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
+                            "root": member(group({
+                                "algorithms": member(dictionary(group({
+                                    "definition": member(reference("FunctionReference")),
+                                }))),
+                            })),
                             "imports": member(dictionary(taggedUnion({
                                 "this": group({}),
                                 "external": string(),

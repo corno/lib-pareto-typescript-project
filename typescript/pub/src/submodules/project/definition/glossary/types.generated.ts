@@ -14,6 +14,35 @@ export namespace T {
     
     export type Annotation<GAnnotation> = GAnnotation
     
+    export namespace Context {
+        
+        export namespace arguments {
+            
+            export type D<GAnnotation> = T.TypeReference<GAnnotation>
+        }
+        
+        export type arguments<GAnnotation> = pt.Dictionary<T.TypeReference<GAnnotation>>
+        
+        export type glossary<GAnnotation> = string
+    }
+    
+    export type Context<GAnnotation> = {
+        readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
+        readonly 'glossary': string
+    }
+    
+    export namespace FunctionReference {
+        
+        export type context<GAnnotation> = T.Context<GAnnotation>
+        
+        export type _lfunction<GAnnotation> = string
+    }
+    
+    export type FunctionReference<GAnnotation> = {
+        readonly 'context': T.Context<GAnnotation>
+        readonly 'function': string
+    }
+    
     export namespace Implementation {
         
         export namespace pareto {}
@@ -432,7 +461,30 @@ export namespace T {
                             | ['this', null]
                         >
                         
-                        export type root<GAnnotation> = g_api.T.API<T.Annotation<GAnnotation>>
+                        export namespace root {
+                            
+                            export namespace algorithms {
+                                
+                                export namespace D {
+                                    
+                                    export type definition<GAnnotation> = T.FunctionReference<GAnnotation>
+                                }
+                                
+                                export type D<GAnnotation> = {
+                                    readonly 'definition': T.FunctionReference<GAnnotation>
+                                }
+                            }
+                            
+                            export type algorithms<GAnnotation> = pt.Dictionary<{
+                                readonly 'definition': T.FunctionReference<GAnnotation>
+                            }>
+                        }
+                        
+                        export type root<GAnnotation> = {
+                            readonly 'algorithms': pt.Dictionary<{
+                                readonly 'definition': T.FunctionReference<GAnnotation>
+                            }>
+                        }
                     }
                     
                     export type api<GAnnotation> = {
@@ -440,7 +492,11 @@ export namespace T {
                             | ['external', string]
                             | ['this', null]
                         >
-                        readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+                        readonly 'root': {
+                            readonly 'algorithms': pt.Dictionary<{
+                                readonly 'definition': T.FunctionReference<GAnnotation>
+                            }>
+                        }
                     }
                     
                     export namespace glossary {
@@ -477,7 +533,11 @@ export namespace T {
                             | ['external', string]
                             | ['this', null]
                         >
-                        readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+                        readonly 'root': {
+                            readonly 'algorithms': pt.Dictionary<{
+                                readonly 'definition': T.FunctionReference<GAnnotation>
+                            }>
+                        }
                     }
                     readonly 'glossary': {
                         readonly 'imports': pt.Dictionary<
@@ -515,7 +575,11 @@ export namespace T {
                             | ['external', string]
                             | ['this', null]
                         >
-                        readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+                        readonly 'root': {
+                            readonly 'algorithms': pt.Dictionary<{
+                                readonly 'definition': T.FunctionReference<GAnnotation>
+                            }>
+                        }
                     }
                     readonly 'glossary': {
                         readonly 'imports': pt.Dictionary<
@@ -589,7 +653,11 @@ export namespace T {
                             | ['external', string]
                             | ['this', null]
                         >
-                        readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+                        readonly 'root': {
+                            readonly 'algorithms': pt.Dictionary<{
+                                readonly 'definition': T.FunctionReference<GAnnotation>
+                            }>
+                        }
                     }
                     readonly 'glossary': {
                         readonly 'imports': pt.Dictionary<
@@ -668,7 +736,11 @@ export namespace T {
                             | ['external', string]
                             | ['this', null]
                         >
-                        readonly 'root': g_api.T.API<T.Annotation<GAnnotation>>
+                        readonly 'root': {
+                            readonly 'algorithms': pt.Dictionary<{
+                                readonly 'definition': T.FunctionReference<GAnnotation>
+                            }>
+                        }
                     }
                     readonly 'glossary': {
                         readonly 'imports': pt.Dictionary<
@@ -730,5 +802,17 @@ export namespace T {
             | ['pub', string]
             | ['this', null]
         >
+    }
+    
+    export namespace TypeReference {
+        
+        export type context<GAnnotation> = T.Context<GAnnotation>
+        
+        export type _ltype<GAnnotation> = string
+    }
+    
+    export type TypeReference<GAnnotation> = {
+        readonly 'context': T.Context<GAnnotation>
+        readonly 'type': string
     }
 }

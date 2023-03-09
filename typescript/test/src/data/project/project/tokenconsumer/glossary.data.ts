@@ -76,6 +76,5 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         }),
         'functions': d({
         }),
-
     }],
 }

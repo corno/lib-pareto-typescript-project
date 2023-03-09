@@ -1,12 +1,12 @@
 import * as pd from 'pareto-core-data'
 import {
     dictionary, group as grp, member, taggedUnion, types, group, type, builderMethod, interfaceMethod,
-} from "../../../pub/dist/submodules/glossary/shorthands"
-import { external } from "../../../pub/dist/submodules/project/shorthands"
+} from "../../../../../pub/dist/submodules/glossary/shorthands"
+import { external } from "../../../../../pub/dist/submodules/project/shorthands"
 
-import * as gproject from "../../../pub/dist/submodules/project"
+import * as gproject from "../../../../../pub/dist/submodules/project"
 
-import * as gglossary from "../../../pub/dist/submodules/glossary"
+import * as gglossary from "../../../../../pub/dist/submodules/glossary"
 
 const d = pd.d
 

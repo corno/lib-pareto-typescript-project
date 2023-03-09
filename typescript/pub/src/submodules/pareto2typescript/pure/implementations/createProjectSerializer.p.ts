@@ -739,7 +739,6 @@ export const $$: createProjectSerializer = (
                         $i.allowedManual("data")
                         $i.directory("modules", ($i) => {
                             $i.directory("main", ($i) => {
-                                $i.directory("definition", ($i) => {
                                     $i.file("api.generated.ts", ($i) => {
                                         $i.line(`import * as pt from 'pareto-core-types'`)
                                         $i.line(``)
@@ -754,7 +753,6 @@ export const $$: createProjectSerializer = (
                                         $i.line(`    'main': main`)
                                         $i.line(`}`)
                                     })
-                                })
                                 $i.directory("implementations", ($i) => {
                                     $i.allowedManual("getTestSet.p.ts")
                                     $i.file("main.generated.ts", ($i) => {

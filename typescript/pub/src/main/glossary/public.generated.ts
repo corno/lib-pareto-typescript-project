@@ -5,7 +5,6 @@ import { T } from './types.generated'
 import * as g_common from "glo-pareto-common"
 import * as g_fp from "lib-fountain-pen"
 import * as g_main from "res-pareto-main"
-import * as g_pareto2typescript from "../../submodules/pareto2typescript"
 import * as g_project from "../../submodules/project"
 
 export namespace I {}

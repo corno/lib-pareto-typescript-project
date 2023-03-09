@@ -1,6 +1,6 @@
 import * as pd from 'pareto-core-data'
 
-import * as gproject from "../../../../../../pub/dist/submodules/project"
+import * as gproject from "../../pub/dist/submodules/project"
 
 const d = pd.d
 

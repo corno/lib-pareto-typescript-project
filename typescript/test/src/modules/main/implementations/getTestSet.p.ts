@@ -5,9 +5,9 @@ import * as pv from 'pareto-core-dev'
 import * as pa from 'pareto-core-async'
 
 import * as gtest from "lib-pareto-test"
-import * as gproject from "../../../../../pub/dist/submodules/project"
+import * as gproject from "../../../pub/dist/submodules/project"
 import * as gfp from "lib-fountain-pen"
-import * as gpub from "../../../../../pub"
+import * as gpub from "../../../pub"
 
 const d = pm.wrapRawDictionary
 

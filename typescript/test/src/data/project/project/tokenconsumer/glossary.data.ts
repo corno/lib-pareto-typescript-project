@@ -18,9 +18,9 @@ import {
     interfaceMethod,
     builderMethod,
     type,
-} from "../../../../../../pub/dist/submodules/glossary/shorthands"
+} from "../../pub/dist/submodules/glossary/shorthands"
 
-import * as gglossary from "../../../../../../pub/dist/submodules/glossary"
+import * as gglossary from "../../pub/dist/submodules/glossary"
 
 const d = pd.d
 

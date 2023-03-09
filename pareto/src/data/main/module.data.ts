@@ -20,7 +20,6 @@ export const $: gproject.T.Project._ltype.library.main<pd.SourceLocation> = {
     'glossary': {
         'root': glossary,
         'imports': d({
-            "pareto2typescript": tempSubmodule("pareto2typescript"),
             "common": external("glo-pareto-common"),
             "fp": external("lib-fountain-pen"),
             "main": external("res-pareto-main"),

@@ -1,4 +1,4 @@
-import { API } from "./definition/api.generated"
+import { API } from "./api.generated"
 
 import { $$ as imain } from "./implementations/main.generated"
 import { $$ as igetTestSet } from "./implementations/getTestSet.p"

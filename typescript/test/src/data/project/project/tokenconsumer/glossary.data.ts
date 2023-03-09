@@ -11,7 +11,6 @@ import {
     taggedUnion,
     glossaryParameter,
     group,
-    func,
     member,
     reference,
     array,
@@ -68,14 +67,15 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         })),
 
     }),
-    'builders': d({
-    }),
-    'interfaces': d({
-        "TokenConsumer": ['stream', {
-            'data': interfaceMethod(typeReference("AnnotatedToken")),
-            'end': interfaceMethod(typeReference("Annotation")), //should be a parameter reference
-        }]
-    }),
-    'functions': d({
-    }),
+    'type': ['asynchronous', {
+        'interfaces': d({
+            "TokenConsumer": ['stream', {
+                'data': interfaceMethod(typeReference("AnnotatedToken")),
+                'end': interfaceMethod(typeReference("Annotation")), //should be a parameter reference
+            }]
+        }),
+        'functions': d({
+        }),
+
+    }],
 }

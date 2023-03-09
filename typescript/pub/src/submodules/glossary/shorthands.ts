@@ -182,22 +182,27 @@ export function parametrizedInterfaceReference(contextOrInterface: string, args:
     }
 }
 
-export function nothing(): t.T.Glossary.functions.D.return__type<pd.SourceLocation> {
+export function nothing(): ['nothing', null] {
     return ['nothing', null]
 }
 
-export function data($: t.T.TypeReference<pd.SourceLocation>, async: boolean): t.T.Glossary.functions.D.return__type<pd.SourceLocation> {
+export function sdata($: t.T.TypeReference<pd.SourceLocation>, async: boolean): t.T.Glossary._ltype.synchronous.functions.D.return__type<pd.SourceLocation> {
     return ['data', {
         'type': $,
-        'asynchronous': async,
     }]
 }
 
-export function inf($: t.T.InterfaceReference<pd.SourceLocation>): t.T.Glossary.functions.D.return__type<pd.SourceLocation> {
+export function adata($: t.T.TypeReference<pd.SourceLocation>, async: boolean): t.T.Glossary._ltype.asynchronous.functions.D.return__type<pd.SourceLocation> {
+    return ['data', {
+        'type': $,
+    }]
+}
+
+export function inf($: t.T.InterfaceReference<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.functions.D.return__type<pd.SourceLocation> {
     return ['interface', $]
 }
 
-export function func(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.BuilderReference<pd.SourceLocation> | null, oi: t.T.BuilderReference<pd.SourceLocation> | null, returnType: null | t.T.Glossary.functions.D.return__type<pd.SourceLocation>): t.T.Glossary.functions.D<pd.SourceLocation> {
+export function sfunc(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.BuilderReference<pd.SourceLocation> | null, oi: t.T.BuilderReference<pd.SourceLocation> | null, returnType: null | t.T.Glossary._ltype.synchronous.functions.D.return__type<pd.SourceLocation>): t.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation> {
     return {
         'return type': returnType === null
             ? ['nothing', null]
@@ -209,6 +214,15 @@ export function func(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.Builde
         'output builder': oi === null
             ? [false]
             : [true, oi],
+    }
+}
+
+export function afunc(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.BuilderReference<pd.SourceLocation> | null, oi: t.T.BuilderReference<pd.SourceLocation> | null, returnType: null | t.T.Glossary._ltype.asynchronous.functions.D.return__type<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation> {
+    return {
+        'return type': returnType === null
+            ? ['nothing', null]
+            : returnType,
+        'data': data,
     }
 }
 

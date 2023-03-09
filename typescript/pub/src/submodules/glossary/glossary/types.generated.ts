@@ -99,97 +99,6 @@ export namespace T {
     
     export namespace Glossary {
         
-        export namespace builders {
-            
-            export type D<GAnnotation> = T.Builder<GAnnotation>
-        }
-        
-        export type builders<GAnnotation> = pt.Dictionary<T.Builder<GAnnotation>>
-        
-        export namespace functions {
-            
-            export namespace D {
-                
-                export type data<GAnnotation> = T.TypeReference<GAnnotation>
-                
-                export namespace input__builder {
-                    
-                    export type O<GAnnotation> = T.BuilderReference<GAnnotation>
-                }
-                
-                export type input__builder<GAnnotation> = [ false ] | [ true, T.BuilderReference<GAnnotation>]
-                
-                export namespace output__builder {
-                    
-                    export type O<GAnnotation> = T.BuilderReference<GAnnotation>
-                }
-                
-                export type output__builder<GAnnotation> = [ false ] | [ true, T.BuilderReference<GAnnotation>]
-                
-                export namespace return__type {
-                    
-                    export namespace data {
-                        
-                        export type asynchronous<GAnnotation> = boolean
-                        
-                        export type _ltype<GAnnotation> = T.TypeReference<GAnnotation>
-                    }
-                    
-                    export type data<GAnnotation> = {
-                        readonly 'asynchronous': boolean
-                        readonly 'type': T.TypeReference<GAnnotation>
-                    }
-                    
-                    export type _linterface<GAnnotation> = T.InterfaceReference<GAnnotation>
-                    
-                    export namespace nothing {}
-                    
-                    export type nothing<GAnnotation> = null
-                }
-                
-                export type return__type<GAnnotation> = 
-                    | ['data', {
-                        readonly 'asynchronous': boolean
-                        readonly 'type': T.TypeReference<GAnnotation>
-                    }]
-                    | ['interface', T.InterfaceReference<GAnnotation>]
-                    | ['nothing', null]
-            }
-            
-            export type D<GAnnotation> = {
-                readonly 'data': T.TypeReference<GAnnotation>
-                readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
-                readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
-                readonly 'return type': 
-                    | ['data', {
-                        readonly 'asynchronous': boolean
-                        readonly 'type': T.TypeReference<GAnnotation>
-                    }]
-                    | ['interface', T.InterfaceReference<GAnnotation>]
-                    | ['nothing', null]
-            }
-        }
-        
-        export type functions<GAnnotation> = pt.Dictionary<{
-            readonly 'data': T.TypeReference<GAnnotation>
-            readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
-            readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
-            readonly 'return type': 
-                | ['data', {
-                    readonly 'asynchronous': boolean
-                    readonly 'type': T.TypeReference<GAnnotation>
-                }]
-                | ['interface', T.InterfaceReference<GAnnotation>]
-                | ['nothing', null]
-        }>
-        
-        export namespace interfaces {
-            
-            export type D<GAnnotation> = T.Interface<GAnnotation>
-        }
-        
-        export type interfaces<GAnnotation> = pt.Dictionary<T.Interface<GAnnotation>>
-        
         export namespace parameters {
             
             export namespace D {}
@@ -198,6 +107,202 @@ export namespace T {
         }
         
         export type parameters<GAnnotation> = pt.Dictionary<null>
+        
+        export namespace _ltype {
+            
+            export namespace asynchronous {
+                
+                export namespace functions {
+                    
+                    export namespace D {
+                        
+                        export type data<GAnnotation> = T.TypeReference<GAnnotation>
+                        
+                        export namespace return__type {
+                            
+                            export namespace data {
+                                
+                                export type _ltype<GAnnotation> = T.TypeReference<GAnnotation>
+                            }
+                            
+                            export type data<GAnnotation> = {
+                                readonly 'type': T.TypeReference<GAnnotation>
+                            }
+                            
+                            export type _linterface<GAnnotation> = T.InterfaceReference<GAnnotation>
+                            
+                            export namespace nothing {}
+                            
+                            export type nothing<GAnnotation> = null
+                        }
+                        
+                        export type return__type<GAnnotation> = 
+                            | ['data', {
+                                readonly 'type': T.TypeReference<GAnnotation>
+                            }]
+                            | ['interface', T.InterfaceReference<GAnnotation>]
+                            | ['nothing', null]
+                    }
+                    
+                    export type D<GAnnotation> = {
+                        readonly 'data': T.TypeReference<GAnnotation>
+                        readonly 'return type': 
+                            | ['data', {
+                                readonly 'type': T.TypeReference<GAnnotation>
+                            }]
+                            | ['interface', T.InterfaceReference<GAnnotation>]
+                            | ['nothing', null]
+                    }
+                }
+                
+                export type functions<GAnnotation> = pt.Dictionary<{
+                    readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'return type': 
+                        | ['data', {
+                            readonly 'type': T.TypeReference<GAnnotation>
+                        }]
+                        | ['interface', T.InterfaceReference<GAnnotation>]
+                        | ['nothing', null]
+                }>
+                
+                export namespace interfaces {
+                    
+                    export type D<GAnnotation> = T.Interface<GAnnotation>
+                }
+                
+                export type interfaces<GAnnotation> = pt.Dictionary<T.Interface<GAnnotation>>
+            }
+            
+            export type asynchronous<GAnnotation> = {
+                readonly 'functions': pt.Dictionary<{
+                    readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'return type': 
+                        | ['data', {
+                            readonly 'type': T.TypeReference<GAnnotation>
+                        }]
+                        | ['interface', T.InterfaceReference<GAnnotation>]
+                        | ['nothing', null]
+                }>
+                readonly 'interfaces': pt.Dictionary<T.Interface<GAnnotation>>
+            }
+            
+            export namespace synchronous {
+                
+                export namespace builders {
+                    
+                    export type D<GAnnotation> = T.Builder<GAnnotation>
+                }
+                
+                export type builders<GAnnotation> = pt.Dictionary<T.Builder<GAnnotation>>
+                
+                export namespace functions {
+                    
+                    export namespace D {
+                        
+                        export type data<GAnnotation> = T.TypeReference<GAnnotation>
+                        
+                        export namespace input__builder {
+                            
+                            export type O<GAnnotation> = T.BuilderReference<GAnnotation>
+                        }
+                        
+                        export type input__builder<GAnnotation> = [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                        
+                        export namespace output__builder {
+                            
+                            export type O<GAnnotation> = T.BuilderReference<GAnnotation>
+                        }
+                        
+                        export type output__builder<GAnnotation> = [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                        
+                        export namespace return__type {
+                            
+                            export namespace data {
+                                
+                                export type _ltype<GAnnotation> = T.TypeReference<GAnnotation>
+                            }
+                            
+                            export type data<GAnnotation> = {
+                                readonly 'type': T.TypeReference<GAnnotation>
+                            }
+                            
+                            export namespace nothing {}
+                            
+                            export type nothing<GAnnotation> = null
+                        }
+                        
+                        export type return__type<GAnnotation> = 
+                            | ['data', {
+                                readonly 'type': T.TypeReference<GAnnotation>
+                            }]
+                            | ['nothing', null]
+                    }
+                    
+                    export type D<GAnnotation> = {
+                        readonly 'data': T.TypeReference<GAnnotation>
+                        readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                        readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                        readonly 'return type': 
+                            | ['data', {
+                                readonly 'type': T.TypeReference<GAnnotation>
+                            }]
+                            | ['nothing', null]
+                    }
+                }
+                
+                export type functions<GAnnotation> = pt.Dictionary<{
+                    readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                    readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                    readonly 'return type': 
+                        | ['data', {
+                            readonly 'type': T.TypeReference<GAnnotation>
+                        }]
+                        | ['nothing', null]
+                }>
+            }
+            
+            export type synchronous<GAnnotation> = {
+                readonly 'builders': pt.Dictionary<T.Builder<GAnnotation>>
+                readonly 'functions': pt.Dictionary<{
+                    readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                    readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                    readonly 'return type': 
+                        | ['data', {
+                            readonly 'type': T.TypeReference<GAnnotation>
+                        }]
+                        | ['nothing', null]
+                }>
+            }
+        }
+        
+        export type _ltype<GAnnotation> = 
+            | ['asynchronous', {
+                readonly 'functions': pt.Dictionary<{
+                    readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'return type': 
+                        | ['data', {
+                            readonly 'type': T.TypeReference<GAnnotation>
+                        }]
+                        | ['interface', T.InterfaceReference<GAnnotation>]
+                        | ['nothing', null]
+                }>
+                readonly 'interfaces': pt.Dictionary<T.Interface<GAnnotation>>
+            }]
+            | ['synchronous', {
+                readonly 'builders': pt.Dictionary<T.Builder<GAnnotation>>
+                readonly 'functions': pt.Dictionary<{
+                    readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                    readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                    readonly 'return type': 
+                        | ['data', {
+                            readonly 'type': T.TypeReference<GAnnotation>
+                        }]
+                        | ['nothing', null]
+                }>
+            }]
         
         export namespace types {
             
@@ -228,21 +333,33 @@ export namespace T {
     }
     
     export type Glossary<GAnnotation> = {
-        readonly 'builders': pt.Dictionary<T.Builder<GAnnotation>>
-        readonly 'functions': pt.Dictionary<{
-            readonly 'data': T.TypeReference<GAnnotation>
-            readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
-            readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
-            readonly 'return type': 
-                | ['data', {
-                    readonly 'asynchronous': boolean
-                    readonly 'type': T.TypeReference<GAnnotation>
-                }]
-                | ['interface', T.InterfaceReference<GAnnotation>]
-                | ['nothing', null]
-        }>
-        readonly 'interfaces': pt.Dictionary<T.Interface<GAnnotation>>
         readonly 'parameters': pt.Dictionary<null>
+        readonly 'type': 
+            | ['asynchronous', {
+                readonly 'functions': pt.Dictionary<{
+                    readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'return type': 
+                        | ['data', {
+                            readonly 'type': T.TypeReference<GAnnotation>
+                        }]
+                        | ['interface', T.InterfaceReference<GAnnotation>]
+                        | ['nothing', null]
+                }>
+                readonly 'interfaces': pt.Dictionary<T.Interface<GAnnotation>>
+            }]
+            | ['synchronous', {
+                readonly 'builders': pt.Dictionary<T.Builder<GAnnotation>>
+                readonly 'functions': pt.Dictionary<{
+                    readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'input builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                    readonly 'output builder': [ false ] | [ true, T.BuilderReference<GAnnotation>]
+                    readonly 'return type': 
+                        | ['data', {
+                            readonly 'type': T.TypeReference<GAnnotation>
+                        }]
+                        | ['nothing', null]
+                }>
+            }]
         readonly 'types': pt.Dictionary<{
             readonly 'parameters': pt.Dictionary<null>
             readonly 'type': T.Type<GAnnotation>

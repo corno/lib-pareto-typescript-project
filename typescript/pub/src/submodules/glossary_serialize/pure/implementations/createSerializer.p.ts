@@ -450,103 +450,169 @@ export const $$: createSerializer = ($d) => {
                     $i.snippet(`}),`)
                 })
                 $i.nestedLine(($i) => {
-                    $i.snippet(`'builders': d({`)
-                    $i.indent(($i) => {
-                        $d.dictionaryForEach($.builders, ($) => {
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`"${$.key}": `)
-                                serializeBuilder($.value, $i)
-                                $i.snippet(`,`)
-                            })
-                        })
-                    })
-                    $i.snippet(`}),`)
-                })
-                $i.nestedLine(($i) => {
-                    $i.snippet(`'interfaces': d({`)
-                    $i.indent(($i) => {
-                        $d.dictionaryForEach($.interfaces, ($) => {
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`"${$.key}": `)
-                                serializeInterface($.value, $i)
-                                $i.snippet(`,`)
-                            })
-                        })
-                    })
-                    $i.snippet(`}),`)
-                })
-                $i.nestedLine(($i) => {
-                    $i.snippet(`'functions': d({`)
-                    $i.indent(($i) => {
-                        $d.dictionaryForEach($.functions, ($) => {
-                            $i.nestedLine(($i) => {
-
-                                $i.snippet(`"${$.key}": {`)
+                    $i.snippet(`'type': `)
+                    switch ($.type[0]) {
+                        case 'asynchronous': 
+                            pl.cc($.type[1], ($) => {
+                                $i.snippet(`['asynchronous', {`)
                                 $i.indent(($i) => {
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`'data': `)
-                                        serializeTypeReference($.value.data, $i)
-                                        $i.snippet(`,`)
-                                    })
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'input builder': `)
-                                        doOptional($.value['input builder'], $i, ($, $i) => {
-                                            serializeBuilderReference($, $i)
+                                        $i.snippet(`'interfaces': d({`)
+                                        $i.indent(($i) => {
+                                            $d.dictionaryForEach($.interfaces, ($) => {
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`"${$.key}": `)
+                                                    serializeInterface($.value, $i)
+                                                    $i.snippet(`,`)
+                                                })
+                                            })
                                         })
-                                        $i.snippet(`,`)
+                                        $i.snippet(`}),`)
                                     })
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`'output builder': `)
-                                        doOptional($.value['output builder'], $i, ($, $i) => {
-                                            serializeBuilderReference($, $i)
-                                        })
-                                        $i.snippet(`,`)
-                                    })
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'return type': `)
-                                        switch ($.value['return type'][0]) {
-                                            case 'data':
-                                                pl.cc($.value['return type'][1], ($) => {
-                                                    $i.snippet(`['data', {`)
+                                        $i.snippet(`'functions': d({`)
+                                        $i.indent(($i) => {
+                                            $d.dictionaryForEach($.functions, ($) => {
+                                                $i.nestedLine(($i) => {
+                    
+                                                    $i.snippet(`"${$.key}": {`)
                                                     $i.indent(($i) => {
-
                                                         $i.nestedLine(($i) => {
-                                                            $i.snippet(`'type': `)
-                                                            serializeTypeReference($.type, $i)
+                                                            $i.snippet(`'data': `)
+                                                            serializeTypeReference($.value.data, $i)
                                                             $i.snippet(`,`)
                                                         })
                                                         $i.nestedLine(($i) => {
-                                                            $i.snippet(`'asynchronous': ${$.asynchronous}`)
+                                                            $i.snippet(`'return type': `)
+                                                            switch ($.value['return type'][0]) {
+                                                                case 'data':
+                                                                    pl.cc($.value['return type'][1], ($) => {
+                                                                        $i.snippet(`['data', {`)
+                                                                        $i.indent(($i) => {
+                    
+                                                                            $i.nestedLine(($i) => {
+                                                                                $i.snippet(`'type': `)
+                                                                                serializeTypeReference($.type, $i)
+                                                                                $i.snippet(`,`)
+                                                                            })
+                                                                        })
+                                                                        $i.snippet(`}]`)
+                                                                    })
+                                                                    break
+                                                                case 'interface':
+                                                                    pl.cc($.value['return type'][1], ($) => {
+                                                                        $i.snippet(`['interface', `)
+                                                                        serializeInterfaceReference($, $i)
+                                                                        $i.snippet(`]`)
+                    
+                                                                    })
+                                                                    break
+                                                                case 'nothing':
+                                                                    pl.cc($.value['return type'][1], ($) => {
+                                                                        $i.snippet(`['nothing', null]`)
+                    
+                                                                    })
+                                                                    break
+                                                                default: pl.au($.value['return type'][0])
+                                                            }
                                                             $i.snippet(`,`)
                                                         })
                                                     })
-                                                    $i.snippet(`}]`)
+                                                    $i.snippet(`},`)
                                                 })
-                                                break
-                                            case 'interface':
-                                                pl.cc($.value['return type'][1], ($) => {
-                                                    $i.snippet(`['interface', `)
-                                                    serializeInterfaceReference($, $i)
-                                                    $i.snippet(`]`)
-
-                                                })
-                                                break
-                                            case 'nothing':
-                                                pl.cc($.value['return type'][1], ($) => {
-                                                    $i.snippet(`['nothing', null]`)
-
-                                                })
-                                                break
-                                            default: pl.au($.value['return type'][0])
-                                        }
-                                        $i.snippet(`,`)
+                                            })
+                                        })
+                                        $i.snippet(`}),`)
                                     })
                                 })
-                                $i.snippet(`},`)
+                                $i.snippet(`}]`)
                             })
-                        })
-                    })
-                    $i.snippet(`}),`)
+                            break
+                            case 'synchronous': 
+                                pl.cc($.type[1], ($) => {
+                                    $i.snippet(`['synchronous', {`)
+                                    $i.indent(($i) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'builders': d({`)
+                                            $i.indent(($i) => {
+                                                $d.dictionaryForEach($.builders, ($) => {
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`"${$.key}": `)
+                                                        serializeBuilder($.value, $i)
+                                                        $i.snippet(`,`)
+                                                    })
+                                                })
+                                            })
+                                            $i.snippet(`}),`)
+                                        })
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'functions': d({`)
+                                            $i.indent(($i) => {
+                                                $d.dictionaryForEach($.functions, ($) => {
+                                                    $i.nestedLine(($i) => {
+                        
+                                                        $i.snippet(`"${$.key}": {`)
+                                                        $i.indent(($i) => {
+                                                            $i.nestedLine(($i) => {
+                                                                $i.snippet(`'data': `)
+                                                                serializeTypeReference($.value.data, $i)
+                                                                $i.snippet(`,`)
+                                                            })
+                                                            $i.nestedLine(($i) => {
+                                                                $i.snippet(`'input builder': `)
+                                                                doOptional($.value['input builder'], $i, ($, $i) => {
+                                                                    serializeBuilderReference($, $i)
+                                                                })
+                                                                $i.snippet(`,`)
+                                                            })
+                                                            $i.nestedLine(($i) => {
+                                                                $i.snippet(`'output builder': `)
+                                                                doOptional($.value['output builder'], $i, ($, $i) => {
+                                                                    serializeBuilderReference($, $i)
+                                                                })
+                                                                $i.snippet(`,`)
+                                                            })
+                                                            $i.nestedLine(($i) => {
+                                                                $i.snippet(`'return type': `)
+                                                                switch ($.value['return type'][0]) {
+                                                                    case 'data':
+                                                                        pl.cc($.value['return type'][1], ($) => {
+                                                                            $i.snippet(`['data', {`)
+                                                                            $i.indent(($i) => {
+                        
+                                                                                $i.nestedLine(($i) => {
+                                                                                    $i.snippet(`'type': `)
+                                                                                    serializeTypeReference($.type, $i)
+                                                                                    $i.snippet(`,`)
+                                                                                })
+                                                                            })
+                                                                            $i.snippet(`}]`)
+                                                                        })
+                                                                        break
+                                                                    case 'nothing':
+                                                                        pl.cc($.value['return type'][1], ($) => {
+                                                                            $i.snippet(`['nothing', null]`)
+                        
+                                                                        })
+                                                                        break
+                                                                    default: pl.au($.value['return type'][0])
+                                                                }
+                                                                $i.snippet(`,`)
+                                                            })
+                                                        })
+                                                        $i.snippet(`},`)
+                                                    })
+                                                })
+                                            })
+                                            $i.snippet(`}),`)
+                                        })
+                                    })
+                                    $i.snippet(`}]`)
+                                })
+                                break
+                        default: pl.au($.type[0])
+                    }
+                    $i.snippet(`,`)
                 })
             })
             $i.snippet(`}`)

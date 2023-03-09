@@ -290,17 +290,16 @@ export const $: gproject.T.Project._ltype.library.main<pd.SourceLocation> = {
                     // },
                 })]),
             }),
-            'interfaces': d({
-                "FOO": ['choice', {
-                    'options': d({
-                        "BAR": interfaceMethod(null, null)
-                    })
-                }]
-            }),
-            'builders': d({
-
-            }),
-            'functions': d({}),
+            'type': ['asynchronous', {
+                'interfaces': d({
+                    "FOO": ['choice', {
+                        'options': d({
+                            "BAR": interfaceMethod(null, null)
+                        })
+                    }]
+                }),
+                'functions': d({}),
+            }]
         },
         'imports': d({}),
     },

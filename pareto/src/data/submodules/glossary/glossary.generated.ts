@@ -81,69 +81,99 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "Glossary": {
             'parameters': d({}),
             'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                "builders": {
-                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                        'type': "Builder",
-                        'arguments': d({}),
-                    }]],
+                "parameters": {
+                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                 },
-                "functions": {
-                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                        "data": {
-                            'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "TypeReference",
-                                'arguments': d({}),
-                            }],
-                        },
-                        "input builder": {
-                            'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "BuilderReference",
-                                'arguments': d({}),
-                            }]],
-                        },
-                        "output builder": {
-                            'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "BuilderReference",
-                                'arguments': d({}),
-                            }]],
-                        },
-                        "return type": {
-                            'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                "data": <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                                    "asynchronous": {
-                                        'type': <gglossary.T.Type<pd.SourceLocation>>['boolean', null],
-                                    },
-                                    "type": {
+                "type": {
+                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                        "asynchronous": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                            "functions": {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                    "data": {
                                         'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
                                             'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
                                             'type': "TypeReference",
                                             'arguments': d({}),
                                         }],
                                     },
-                                })],
-                                "interface": <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    "return type": {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                            "data": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                                "type": {
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                                        'type': "TypeReference",
+                                                        'arguments': d({}),
+                                                    }],
+                                                },
+                                            })],
+                                            "interface": <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                                'type': "InterfaceReference",
+                                                'arguments': d({}),
+                                            }],
+                                            "nothing": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        })],
+                                    },
+                                })]],
+                            },
+                            "interfaces": {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
                                     'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                    'type': "InterfaceReference",
+                                    'type': "Interface",
                                     'arguments': d({}),
-                                }],
-                                "nothing": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
-                            })],
-                        },
-                    })]],
-                },
-                "interfaces": {
-                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                        'type': "Interface",
-                        'arguments': d({}),
-                    }]],
-                },
-                "parameters": {
-                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
+                                }]],
+                            },
+                        })],
+                        "synchronous": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                            "builders": {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                    'type': "Builder",
+                                    'arguments': d({}),
+                                }]],
+                            },
+                            "functions": {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                    "data": {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                            'type': "TypeReference",
+                                            'arguments': d({}),
+                                        }],
+                                    },
+                                    "input builder": {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                            'type': "BuilderReference",
+                                            'arguments': d({}),
+                                        }]],
+                                    },
+                                    "output builder": {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                            'type': "BuilderReference",
+                                            'arguments': d({}),
+                                        }]],
+                                    },
+                                    "return type": {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                            "data": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                                "type": {
+                                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                                        'type': "TypeReference",
+                                                        'arguments': d({}),
+                                                    }],
+                                                },
+                                            })],
+                                            "nothing": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        })],
+                                    },
+                                })]],
+                            },
+                        })],
+                    })],
                 },
                 "types": {
                     'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({

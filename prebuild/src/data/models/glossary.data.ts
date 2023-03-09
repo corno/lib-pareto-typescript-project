@@ -42,21 +42,37 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                     "parameters": prop(dictionary(group({}))),
                     "type": prop(component("Type", {})),
                 }))),
-                "builders": prop(dictionary(component("Builder", {}))),
-                "interfaces": prop(dictionary(component("Interface", {}))),
-                "functions": prop(dictionary(group({
-                    "return type": prop(taggedUnion({
-                        "data": option(group({
-                            "asynchronous": prop(terminal("boolean")),
-                            "type": prop(component("TypeReference", {})),
-                        })),
-                        "interface": option(component("InterfaceReference", {})),
-                        "nothing": option(group({})),
+                "type": prop(taggedUnion({
+                    "synchronous": option(group({
+                        "builders": prop(dictionary(component("Builder", {}))),
+
+                        "functions": prop(dictionary(group({
+                            "return type": prop(taggedUnion({
+                                "data": option(group({
+                                    "type": prop(component("TypeReference", {})),
+                                })),
+                                "nothing": option(group({})),
+                            })),
+                            "data": prop(component("TypeReference", {})),
+                            "input builder": prop(optional(component("BuilderReference", {}))),
+                            "output builder": prop(optional(component("BuilderReference", {}))),
+                        }))),
                     })),
-                    "data": prop(component("TypeReference", {})),
-                    "input builder": prop(optional(component("BuilderReference", {}))),
-                    "output builder": prop(optional(component("BuilderReference", {}))),
-                }))),
+                    "asynchronous": option(group({
+                        "interfaces": prop(dictionary(component("Interface", {}))),
+
+                        "functions": prop(dictionary(group({
+                            "return type": prop(taggedUnion({
+                                "data": option(group({
+                                    "type": prop(component("TypeReference", {})),
+                                })),
+                                "interface": option(component("InterfaceReference", {})),
+                                "nothing": option(group({})),
+                            })),
+                            "data": prop(component("TypeReference", {})),
+                        }))),
+                    })),
+                })),
             })),
             "Interface": globalType({}, taggedUnion({
                 "choice": option(group({
@@ -106,7 +122,7 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                 "group": option(dictionary(group({
                     "type": prop(component("Type", {})),
                 }))),
-                "type parameter":option( terminal("identifier")),
+                "type parameter": option(terminal("identifier")),
                 "glossary parameter": option(terminal("identifier")),
                 "taggedUnion": option(dictionary(component("Type", {}))),
             })),

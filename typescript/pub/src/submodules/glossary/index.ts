@@ -1,3 +1,3 @@
-export * from "./definition/glossary"
-export * from "./definition/api.generated"
-export * from "./implementation.generated"
+export * from "./glossary"
+export { $api as $b } from "./bindings/implementation.generated"
+export { $api as $a } from "./pure/implementation.generated"

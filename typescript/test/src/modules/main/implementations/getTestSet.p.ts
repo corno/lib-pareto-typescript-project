@@ -20,7 +20,7 @@ export const $$: getTestSet = ($) => {
     const $XXX = $
 
     function genProj<Annotation>(dir: string, proj: gproject.T.Project<Annotation>) {
-        gpub.$a.generateProject(
+        gpub.$b.generateProject(
             {
                 'mainData': {
                     'arguments': pm.wrapRawArray([dir]),

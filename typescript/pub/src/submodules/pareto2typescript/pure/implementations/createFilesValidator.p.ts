@@ -21,7 +21,25 @@ export const $$: createFilesValidator = (
             $i.allowedGenerated("package.json")
             $i.allowedGenerated("package-lock.json")
         })
-        $i.allowedGenerated("prebuild")
+        $i.directory("prebuild", ($i) => {
+
+            $i.allowedGenerated("dist")
+            $i.allowedGenerated("node_modules")
+            $i.allowedGenerated("tsconfig.json")
+            $i.allowedGenerated("package.json")
+            $i.allowedGenerated("package-lock.json")
+            $i.directory("src", ($i) => {
+                $i.allowedGenerated("modules")
+                $i.allowedGenerated("globals.generated.ts")
+                $i.directory("bin", ($i) => {
+                    $i.allowedGenerated("generateCode.generated.ts")
+                })
+                $i.directory("data", ($i) => {
+                    $i.allowedManual("models")
+                    $i.allowedManual("data.data.ts")
+                })
+            })
+        })
         $i.directory("pareto", ($i) => {
             $i.allowedGenerated("dist")
             $i.allowedGenerated("node_modules")
@@ -33,7 +51,11 @@ export const $$: createFilesValidator = (
                 $i.directory("bin", ($i) => {
                     $i.allowedGenerated("generateCode.generated.ts")
                 })
-                $i.allowedManual("data")
+                $i.directory("data", ($i) => {
+                    $i.allowedManual("main")
+                    $i.allowedManual("submodules")
+                    $i.allowedManual("project.data.ts")
+                })
             })
         })
         //$i.allowed("typescript")

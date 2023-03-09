@@ -385,15 +385,15 @@ export const $$: createProjectSerializer = (
                                                                 })
                                                             case 'main':
                                                                 return pl.cc($[1], ($) => {
-                                                                    return `../../../../../main`
+                                                                    return `../../../main`
                                                                 })
                                                             case 'sibling':
                                                                 return pl.cc($[1], ($) => {
-                                                                    return `../../../../${$}`
+                                                                    return `../../${$}`
                                                                 })
                                                             case 'temp submodule':
                                                                 return pl.cc($[1], ($) => {
-                                                                    return `../../../submodules/${$}`
+                                                                    return `../../submodules/${$}`
                                                                 })
                                                             default: return pl.au($[0])
                                                         }

@@ -1,7 +1,6 @@
 import * as pl from 'pareto-core-lib'
 import * as ps from 'pareto-core-state'
 import * as pm from 'pareto-core-map'
-import * as pv from 'pareto-core-dev'
 import * as pa from 'pareto-core-async'
 
 import * as gtest from "lib-pareto-test"
@@ -11,10 +10,9 @@ import * as gpub from "../../../../../pub"
 
 const d = pm.wrapRawDictionary
 
-import { $ as module } from "../../../data/project/module/project.test"
 import { $ as tc } from "../../../data/project/project/tokenconsumer/project.data"
 
-import { getTestSet } from "../definition/api.generated"
+import { getTestSet } from "../api.generated"
 
 export const $$: getTestSet = ($) => {
     const $XXX = $

@@ -34,15 +34,7 @@ export const $$: createProjectGenerator = ($d) => {
             $.mainData.arguments,
             ($) => {
 
-                gfp.$a.createDirectory(
-                    {
-                        onError: () => {
-                            pd.implementMe(`FIXME`)
-                            //$i.logWriteFileError
-                        },
-                        //reportSuperfluousNode: $d.reportSuperfluousNode,
-                    },
-                )(
+                gfp.$b.createDirectory(
                     $.testDirectory,
                     ($i) => {
                         $d.serializeProject(
@@ -59,7 +51,7 @@ export const $$: createProjectGenerator = ($d) => {
                         )
 
                     },
-                    $i.nodes,
+                    $i,
                 )
 
             }

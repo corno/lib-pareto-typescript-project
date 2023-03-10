@@ -38,16 +38,10 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "ParseArguments": builderMethod(typeReference("main", "Arguments")),
             "ProcessArgument": builderMethod(typeReference("common", "String")),
             "HandleParameters": builderMethod(typeReference("Parameters")),
-            "Report": ['group', {
-                'members': d({
-                    "nodes": ['reference', builderReference("fp", "Report")],
-                    //add error here
-                }),
-            }],
         }),
         'functions': d({
             "GenerateProject": sfunc(typeReference("ProjectSettings"), null, null, null),
-            "GenerateProjectAndReport": sfunc(typeReference("ProjectSettings"), null, builderReference("Report"), null),
+            "GenerateProjectAndReport": sfunc(typeReference("ProjectSettings"), null, builderReference("fp", "Report"), null),
             //"GetSingleArgument": sfunc(typeReference("main", "Arguments"), null, null, sdata(typeReference("common", "String"), true)),
             "HandleArgumentError": sfunc(typeReference("ArgumentError"), null, null, null),
             "ParseArguments2": sfunc(typeReference("main", "Arguments"), null, builderReference("HandleParameters"), null),

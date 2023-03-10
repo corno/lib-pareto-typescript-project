@@ -5,6 +5,7 @@ import * as gmain from "res-pareto-main"
 import * as gdictionary from "res-pareto-dictionary"
 import * as gts from "res-typescript"
 import * as gfp from "lib-fountain-pen"
+import * as g_fse from "lib-pareto-filesystem/dist/submodules/errorhandlers"
 
 import { $api as $pure } from "../../pure/implementation.generated"
 
@@ -91,7 +92,11 @@ export const $$: generateProject = ($) => {
                     gmain.$r.logError(gfp.$a.createSuperfluousNodeMessage($))
 
                 }
-            }
+
+            },
+            'readDirError': ($) => g_fse.$a.readDir($, gmain.$r.logError),
+            'writeFileError': ($) => g_fse.$a.writeFile($, gmain.$r.logError),
+            
         }
     )
 }

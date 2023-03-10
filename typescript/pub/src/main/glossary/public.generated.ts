@@ -7,8 +7,6 @@ import * as g_fp from "lib-fountain-pen"
 import * as g_main from "res-pareto-main"
 import * as g_project from "../../submodules/project"
 
-export namespace I {}
-
 export namespace B {
     
     export type HandleParameters<GAnnotation> = ($: T.Parameters<GAnnotation>, ) => void
@@ -28,7 +26,7 @@ export namespace F {
     
     export type GenerateProjectAndReport = <GAnnotation>($: T.ProjectSettings<GAnnotation>, $b: B.Report<GAnnotation>,) => void
     
-    export type GetSingleArgument = <GAnnotation>($: g_main.T.Arguments,) => pt.AsyncValue<g_common.T.String>
+    export type GetSingleArgument = <GAnnotation>($: g_main.T.Arguments,) => g_common.T.String
     
     export type HandleArgumentError = <GAnnotation>($: T.ArgumentError<GAnnotation>,) => void
     

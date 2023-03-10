@@ -335,7 +335,12 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             })]
         },
     }),
-    'builders': d({}),
-    'interfaces': d({}),
-    'functions': d({}),
+    'type': ['synchronous', {
+        'builders': d({}),
+        'functions': d<gglossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({}),
+    }],
+
+
+
+
 }

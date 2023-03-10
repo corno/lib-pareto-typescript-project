@@ -9,8 +9,6 @@ import * as g_fp from "lib-fountain-pen"
 import * as g_glossary from "../../glossary"
 import * as g_project from "../../project"
 
-export namespace I {}
-
 export namespace B {}
 
 export namespace F {

@@ -1,5 +1,6 @@
 import * as pd from 'pareto-core-data'
 
+import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as main } from "./main/module.data"
@@ -47,9 +48,13 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
             'glossary': {
                 'parameters': d({}),
                 'types': d({}),
-                'builders': d({}),
-                'interfaces': d({}),
-                'functions': d({}),
+                'type': ['synchronous', {
+                    'builders': d({}),
+                    'functions': d<gglossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({}),
+                }],
+
+
+
             },
             'imports': d({}),
 

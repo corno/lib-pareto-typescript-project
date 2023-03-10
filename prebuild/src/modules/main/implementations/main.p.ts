@@ -8,7 +8,8 @@ import { $ as data } from "../../../data/data.data"
 import { main } from "../api"
 
 export const $$: main = ($) => {
-    gmain.$a.compile(data, ($) => {
-        pv.logDebugMessage(gerror($))
-    })
+    pv.logDebugMessage("REENABLE")
+    // gmain.$a.compile(data, ($) => {
+    //     pv.logDebugMessage(gerror($))
+    // })
 }

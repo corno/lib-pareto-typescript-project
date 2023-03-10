@@ -470,7 +470,7 @@ export const $$: createSerializer = ($d) => {
                                         $i.snippet(`}),`)
                                     })
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`'functions': d({`)
+                                        $i.snippet(`'functions': d<gglossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({`)
                                         $i.indent(($i) => {
                                             $d.dictionaryForEach($.functions, ($) => {
                                                 $i.nestedLine(($i) => {
@@ -546,7 +546,7 @@ export const $$: createSerializer = ($d) => {
                                             $i.snippet(`}),`)
                                         })
                                         $i.nestedLine(($i) => {
-                                            $i.snippet(`'functions': d({`)
+                                            $i.snippet(`'functions': d<gglossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({`)
                                             $i.indent(($i) => {
                                                 $d.dictionaryForEach($.functions, ($) => {
                                                     $i.nestedLine(($i) => {
@@ -616,7 +616,6 @@ export const $$: createSerializer = ($d) => {
                 })
             })
             $i.snippet(`}`)
-
         })
     }
 }

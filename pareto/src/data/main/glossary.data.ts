@@ -7,8 +7,8 @@ import {
     parametrizedReference,
     builderMethod,
     null_,
-    data,
-    array, dictionary, group, member, taggedUnion, types, typeReference, builderReference, func, type, glossaryParameter, optional,
+    sdata,
+    array, dictionary, group, member, taggedUnion, types, typeReference, builderReference, sfunc, type, glossaryParameter, optional,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -33,24 +33,25 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "testDirectory": member(string()),
         })),
     }),
-    'builders': d({
-        "ParseArguments": builderMethod(typeReference("main", "Arguments")),
-        "ProcessArgument": builderMethod(typeReference("common", "String")),
-        "HandleParameters": builderMethod(typeReference("Parameters")),
-        "Report": ['group', {
-            'members': d({
-                "nodes": ['reference', builderReference("fp", "Report")],
-                //add error here
-            }),
-        }],
-    }),
-    'interfaces': d({
-    }),
-    'functions': d({
-        "GenerateProject": func(typeReference("ProjectSettings"), null, null, null),
-        "GenerateProjectAndReport": func(typeReference("ProjectSettings"), null, builderReference("Report"), null),
-        "GetSingleArgument": func(typeReference("main", "Arguments"), null, null, data(typeReference("common", "String"), true)),
-        "HandleArgumentError": func(typeReference("ArgumentError"), null, null, null),
-        "ParseArguments2": func(typeReference("main", "Arguments"), null, builderReference("HandleParameters"), null),
-    }),
+    'type': ['synchronous', {
+        'builders': d({
+            "ParseArguments": builderMethod(typeReference("main", "Arguments")),
+            "ProcessArgument": builderMethod(typeReference("common", "String")),
+            "HandleParameters": builderMethod(typeReference("Parameters")),
+            "Report": ['group', {
+                'members': d({
+                    "nodes": ['reference', builderReference("fp", "Report")],
+                    //add error here
+                }),
+            }],
+        }),
+        'functions': d({
+            "GenerateProject": sfunc(typeReference("ProjectSettings"), null, null, null),
+            "GenerateProjectAndReport": sfunc(typeReference("ProjectSettings"), null, builderReference("Report"), null),
+            "GetSingleArgument": sfunc(typeReference("main", "Arguments"), null, null, sdata(typeReference("common", "String"), true)),
+            "HandleArgumentError": sfunc(typeReference("ArgumentError"), null, null, null),
+            "ParseArguments2": sfunc(typeReference("main", "Arguments"), null, builderReference("HandleParameters"), null),
+        }),
+
+    }],
 }

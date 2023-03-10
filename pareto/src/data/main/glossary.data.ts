@@ -48,7 +48,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         'functions': d({
             "GenerateProject": sfunc(typeReference("ProjectSettings"), null, null, null),
             "GenerateProjectAndReport": sfunc(typeReference("ProjectSettings"), null, builderReference("Report"), null),
-            "GetSingleArgument": sfunc(typeReference("main", "Arguments"), null, null, sdata(typeReference("common", "String"), true)),
+            //"GetSingleArgument": sfunc(typeReference("main", "Arguments"), null, null, sdata(typeReference("common", "String"), true)),
             "HandleArgumentError": sfunc(typeReference("ArgumentError"), null, null, null),
             "ParseArguments2": sfunc(typeReference("main", "Arguments"), null, builderReference("HandleParameters"), null),
         }),

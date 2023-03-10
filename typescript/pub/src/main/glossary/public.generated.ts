@@ -26,8 +26,6 @@ export namespace F {
     
     export type GenerateProjectAndReport = <GAnnotation>($: T.ProjectSettings<GAnnotation>, $b: B.Report<GAnnotation>,) => void
     
-    export type GetSingleArgument = <GAnnotation>($: g_main.T.Arguments,) => g_common.T.String
-    
     export type HandleArgumentError = <GAnnotation>($: T.ArgumentError<GAnnotation>,) => void
     
     export type ParseArguments2 = <GAnnotation>($: g_main.T.Arguments, $b: B.HandleParameters<GAnnotation>,) => void

@@ -483,6 +483,13 @@ export const $$: createSerializer = ($d) => {
                                                             $i.snippet(`,`)
                                                         })
                                                         $i.nestedLine(($i) => {
+                                                            $i.snippet(`'output interface': `)
+                                                            doOptional($.value['output interface'], $i, ($, $i) => {
+                                                                serializeInterfaceReference($, $i)
+                                                            })
+                                                            $i.snippet(`,`)
+                                                        })
+                                                        $i.nestedLine(($i) => {
                                                             $i.snippet(`'return type': `)
                                                             switch ($.value['return type'][0]) {
                                                                 case 'data':

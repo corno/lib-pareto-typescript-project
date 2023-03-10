@@ -118,6 +118,13 @@ export namespace T {
                         
                         export type data<GAnnotation> = T.TypeReference<GAnnotation>
                         
+                        export namespace output__interface {
+                            
+                            export type O<GAnnotation> = T.InterfaceReference<GAnnotation>
+                        }
+                        
+                        export type output__interface<GAnnotation> = [ false ] | [ true, T.InterfaceReference<GAnnotation>]
+                        
                         export namespace return__type {
                             
                             export namespace data {
@@ -146,6 +153,7 @@ export namespace T {
                     
                     export type D<GAnnotation> = {
                         readonly 'data': T.TypeReference<GAnnotation>
+                        readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GAnnotation>]
                         readonly 'return type': 
                             | ['data', {
                                 readonly 'type': T.TypeReference<GAnnotation>
@@ -157,6 +165,7 @@ export namespace T {
                 
                 export type functions<GAnnotation> = pt.Dictionary<{
                     readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GAnnotation>]
                     readonly 'return type': 
                         | ['data', {
                             readonly 'type': T.TypeReference<GAnnotation>
@@ -176,6 +185,7 @@ export namespace T {
             export type asynchronous<GAnnotation> = {
                 readonly 'functions': pt.Dictionary<{
                     readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GAnnotation>]
                     readonly 'return type': 
                         | ['data', {
                             readonly 'type': T.TypeReference<GAnnotation>
@@ -281,6 +291,7 @@ export namespace T {
             | ['asynchronous', {
                 readonly 'functions': pt.Dictionary<{
                     readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GAnnotation>]
                     readonly 'return type': 
                         | ['data', {
                             readonly 'type': T.TypeReference<GAnnotation>
@@ -338,6 +349,7 @@ export namespace T {
             | ['asynchronous', {
                 readonly 'functions': pt.Dictionary<{
                     readonly 'data': T.TypeReference<GAnnotation>
+                    readonly 'output interface': [ false ] | [ true, T.InterfaceReference<GAnnotation>]
                     readonly 'return type': 
                         | ['data', {
                             readonly 'type': T.TypeReference<GAnnotation>

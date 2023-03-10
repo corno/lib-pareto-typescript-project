@@ -70,6 +70,8 @@ export const $: gliana.T.Model<pd.SourceLocation> = {
                                 "nothing": option(group({})),
                             })),
                             "data": prop(component("TypeReference", {})),
+                            "output interface": prop(optional(component("InterfaceReference", {}))),
+
                         }))),
                     })),
                 })),

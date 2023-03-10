@@ -74,7 +74,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 'end': interfaceMethod(typeReference("Annotation")), //should be a parameter reference
             }]
         }),
-        'functions': d({
-        }),
+        'functions': d<gglossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({}),
+
     }],
 }

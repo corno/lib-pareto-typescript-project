@@ -715,6 +715,15 @@ export const $$: createGlossarySerializer = ($d) => {
                                             $i.snippet(`($: `)
                                             serializeTypeReference($.data, $i)
                                             $i.snippet(`,`)
+
+                                            doOptional($['output interface'], $i, {
+                                                onNotset: () => { },
+                                                onSet: ($, $i) => {
+                                                    $i.snippet(` $i: `)
+                                                    serializeInterfaceReference($, $i)
+                                                    $i.snippet(`,`)
+                                                }
+                                            })
                                             $i.snippet(`) => `)
                                             pl.cc($['return type'], ($) => {
                                                 switch ($[0]) {

@@ -96,6 +96,13 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                                             'arguments': d({}),
                                         }],
                                     },
+                                    "output interface": {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                            'type': "InterfaceReference",
+                                            'arguments': d({}),
+                                        }]],
+                                    },
                                     "return type": {
                                         'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
                                             "data": <gglossary.T.Type<pd.SourceLocation>>['group', d({
@@ -339,8 +346,4 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         'builders': d({}),
         'functions': d<gglossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({}),
     }],
-
-
-
-
 }

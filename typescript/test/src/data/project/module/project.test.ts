@@ -298,7 +298,7 @@ export const $: gproject.T.Project._ltype.library.main<pd.SourceLocation> = {
                         })
                     }]
                 }),
-                'functions': d({}),
+                'functions': d<gglossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({}),
             }]
         },
         'imports': d({}),

@@ -217,12 +217,15 @@ export function sfunc(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.Build
     }
 }
 
-export function afunc(data: t.T.TypeReference<pd.SourceLocation>, returnType: null | t.T.Glossary._ltype.asynchronous.functions.D.return__type<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation> {
+export function afunc(data: t.T.TypeReference<pd.SourceLocation>, oi: t.T.InterfaceReference<pd.SourceLocation> | null, returnType: null | t.T.Glossary._ltype.asynchronous.functions.D.return__type<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation> {
     return {
         'return type': returnType === null
             ? ['nothing', null]
             : returnType,
         'data': data,
+        'output interface': oi === null
+            ? [false]
+            : [true, oi],
     }
 }
 

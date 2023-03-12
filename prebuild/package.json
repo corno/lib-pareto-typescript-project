@@ -4,7 +4,7 @@
     "pareto-core-data": "^0.2.2",
     "pareto-core-dev": "^0.2.0",
     "pareto-core-exe": "^0.17.0",
-    "pareto-core-lib": "^0.21.0",
+    "pareto-core-lib": "^0.21.2",
     "pareto-core-state": "^0.15.0",
     "res-pareto-main": "^0.17.0"
   }

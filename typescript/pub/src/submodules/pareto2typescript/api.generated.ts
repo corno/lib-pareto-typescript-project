@@ -4,10 +4,10 @@ import * as g_collation from "res-pareto-collation"
 import * as g_common from "glo-pareto-common"
 import * as g_dictionary from "res-pareto-dictionary"
 import * as g_foreach from "res-pareto-foreach"
-import * as g_glossary from "../../glossary"
+import * as g_glossary from "../glossary"
 import * as g_main from "res-pareto-main"
-import * as g_project from "../../project"
-import * as g_this from "../glossary"
+import * as g_project from "../project"
+import * as g_this from "./glossary"
 import * as g_ts from "res-typescript"
 
 export type createGlossarySerializer = ($d: {

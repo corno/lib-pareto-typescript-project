@@ -3,8 +3,8 @@ import * as pd from 'pareto-core-dev'
 import * as pt from 'pareto-core-types'
 
 import * as gfp from "lib-fountain-pen"
-import * as gthis from "../../glossary"
-import * as gproject from "../../../project"
+import * as gthis from "../glossary"
+import * as gproject from "../../project"
 
 import { createProjectSerializer } from "../api.generated"
 

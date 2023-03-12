@@ -4,11 +4,12 @@ import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossa
 import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as main } from "./main/module.data"
-import { $ as algorithm } from "./submodules/algorithm/module.data"
+import { $ as algorithm_ } from "./submodules/algorithm/module.data"
 import { $ as pareto2typescript } from "./submodules/pareto2typescript/module.data"
 import { $ as project } from "./submodules/project/module.data"
 import { $ as glossary_serialize } from "./submodules/glossary_serialize/module.data"
 import { $ as glossary } from "./submodules/glossary/module.data"
+import { algorithm, external, functionReference, submodule, this_ } from 'lib-pareto-typescript-project/dist/submodules/project/shorthands'
 
 const d = pd.d
 
@@ -31,12 +32,31 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
     'type': ['library', {
         'main': main,
         'submodules': d({
-            "algorithm": algorithm,
+            "algorithm": algorithm_,
             "glossary": glossary,
             "glossary_serialize": glossary_serialize,
             "project": project,
             "pareto2typescript": pareto2typescript,
         }),
+        'bindings': [true, {
+            'api': {
+                'root': {
+                    'algorithms': d({
+                        "generateProject": algorithm(functionReference("this", {}, "GenerateProject")),
+                    })
+                },
+                'imports': d({
+                    "common": external("glo-pareto-common"),
+                    "foreach": external("res-pareto-foreach"),
+                    "fp": external("lib-fountain-pen"),
+                    "fs": external("res-pareto-filesystem"),
+                    "pareto2typescript": submodule("pareto2typescript"),
+                    "this": this_(),
+                }),
+            },
+            'implementation': ['typescript', null],
+    
+        }],
         'executables': d({}),
         'test': {
             'dependencies': d({

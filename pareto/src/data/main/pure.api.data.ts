@@ -1,12 +1,12 @@
 import * as pd from 'pareto-core-data'
 
-import { functionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/api/shorthands"
+import { functionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
-import * as gapi from "lib-pareto-typescript-project/dist/submodules/api"
+import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
 const d = pd.d
 
-export const $: gapi.T.API<pd.SourceLocation> = {
+export const $: g_project.T.Module.api.root<pd.SourceLocation> = {
     'algorithms': d({
         "createParametersParser": algorithm(functionReference("this", {}, "ParseArguments2"), constructor(null, {
             //"onError": functionReference("this", {}, "HandleArgumentError"),

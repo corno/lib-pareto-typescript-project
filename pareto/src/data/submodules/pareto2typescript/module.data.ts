@@ -19,8 +19,6 @@ export const $: gproject.T.Project._ltype.library.submodules.D<pd.SourceLocation
             "project": sibling("project"),
         }),
     },
-    'bindings': [false],
-    'pure algorithms': {
         'api': {
             'root': pure,
             'imports': d({
@@ -37,5 +35,4 @@ export const $: gproject.T.Project._ltype.library.submodules.D<pd.SourceLocation
         },
         'implementation': ['typescript', null],
 
-    },
 }

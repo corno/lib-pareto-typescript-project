@@ -1,11 +1,11 @@
 
 import * as pd from 'pareto-core-data'
 
-import * as gapi from "./glossary"
+import * as g_this from "./glossary"
 
 type RawDictionary<T> = { [key: string]: T }
 
-export function tempSubmodule($: string): gapi.T.Module.glossary.imports.D<pd.SourceLocation> {
+export function tempSubmodule($: string): g_this.T.Module.glossary.imports.D<pd.SourceLocation> {
     return ['temp submodule', $]
 }
 export function submodule($: string): ['submodule', string] {
@@ -23,6 +23,45 @@ export function sibling($: string): ['sibling', string] {
 export function external($: string): ['external', string] {
     return ['external', $]
 }
-export function main(): gapi.T.Module.glossary.imports.D<pd.SourceLocation> {
+export function main(): g_this.T.Module.glossary.imports.D<pd.SourceLocation> {
     return ['main', null]
+}
+
+
+export function typeReference(context: string, args: RawDictionary<g_this.T.TypeReference<pd.SourceLocation>>, definition: string): g_this.T.TypeReference<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': definition
+    }
+}
+
+export function functionReference(context: string, args: RawDictionary<g_this.T.TypeReference<pd.SourceLocation>>, definition: string): g_this.T.FunctionReference<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'function': definition
+    }
+}
+
+export function constructor(data: null | g_this.T.TypeReference<pd.SourceLocation>, deps: RawDictionary<g_this.T.FunctionReference<pd.SourceLocation>>): g_this.T.Project._ltype.resource.api.root.algorithms.D._ltype<pd.SourceLocation> {
+    return ['constructor', {
+        'configuration data': data === null
+            ? [false]
+            : [true, data],
+        'dependencies': pd.d(deps),
+    }]
+}
+
+export function algorithm(def: g_this.T.FunctionReference<pd.SourceLocation>, type?: g_this.T.Project._ltype.resource.api.root.algorithms.D._ltype<pd.SourceLocation>): g_this.T.Project._ltype.resource.api.root.algorithms.D<pd.SourceLocation> {
+    return {
+        'definition': def,
+        'type': type === undefined
+            ? ['reference', null]
+            : type,
+    }
 }

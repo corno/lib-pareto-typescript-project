@@ -1,13 +1,12 @@
-import * as gpareto2typescript from "../../../submodules/pareto2typescript"
+import * as gpareto2typescript from "../../submodules/pareto2typescript"
 import * as gforeach from "res-pareto-foreach"
 import * as gcoll from "res-pareto-collation"
 import * as gmain from "res-pareto-main"
 import * as gdictionary from "res-pareto-dictionary"
 import * as gts from "res-typescript"
 import * as gfp from "lib-fountain-pen"
+import * as g_this from "../../main"
 import * as g_fse from "lib-pareto-filesystem/dist/submodules/errorhandlers"
-
-import { $api as $pure } from "../../pure/implementation.generated"
 
 import { generateProject } from "../api.generated"
 
@@ -21,7 +20,7 @@ export const $$: generateProject = ($) => {
         compare: gcoll.$r.localeIsABeforeB,
     })
 
-    $pure.createProjectGenerator(
+    g_this.$a.createProjectGenerator(
         {
 
             'validateFiles': gpareto2typescript.$a.validateFiles,

@@ -1,6 +1,6 @@
 import * as pl from 'pareto-core-lib'
 
-import * as gproject from "../../../project"
+import * as gproject from "../../project"
 import * as gfp from "lib-fountain-pen"
 
 import { createTemplateSerializer } from "../api.generated"

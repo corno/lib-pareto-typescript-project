@@ -1,6 +1,6 @@
 import * as pl from 'pareto-core-lib'
 
-import * as galgorithm from "../../../algorithm"
+import * as galgorithm from "../../algorithm"
 import * as gfp from "lib-fountain-pen"
 
 import { createImplementationSerializer } from "../api.generated"

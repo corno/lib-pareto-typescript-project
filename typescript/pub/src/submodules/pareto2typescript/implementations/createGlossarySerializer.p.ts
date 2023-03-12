@@ -1,7 +1,7 @@
 import * as pl from 'pareto-core-lib'
 import * as pt from 'pareto-core-types'
 
-import * as gglossary from "../../../glossary"
+import * as gglossary from "../../glossary"
 import * as gfp from "lib-fountain-pen"
 
 export namespace VOptional { }

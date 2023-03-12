@@ -1,8 +1,8 @@
 import * as pl from 'pareto-core-lib'
 import * as pt from 'pareto-core-types'
 
-import * as gglossary from "../../../glossary"
-import * as gfp from "lib-fountain-pen"
+import * as g_glossary from "../../glossary"
+import * as g_fp from "lib-fountain-pen"
 
 export namespace VOptional { }
 export type VOptional<AType> =
@@ -12,12 +12,12 @@ export type VOptional<AType> =
 import { createSerializer } from "../api.generated"
 
 export const $$: createSerializer = ($d) => {
-    return <Annotation>($: gglossary.T.Glossary<Annotation>, $i: gfp.B.Block) => {
+    return <Annotation>($: g_glossary.T.Glossary<Annotation>, $i: g_fp.B.Block) => {
 
         function doOptional<T>(
             $: pt.OptionalValue<T>,
-            $i: gfp.B.Line,
-            $c: ($: T, $i: gfp.B.Line) => void,
+            $i: g_fp.B.Line,
+            $c: ($: T, $i: g_fp.B.Line) => void,
         ) {
             switch ($[0]) {
                 case false:
@@ -33,7 +33,7 @@ export const $$: createSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeTypeReference($: gglossary.T.TypeReference<Annotation>, $i: gfp.B.Line) {
+        function serializeTypeReference($: g_glossary.T.TypeReference<Annotation>, $i: g_fp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -64,7 +64,7 @@ export const $$: createSerializer = ($d) => {
             $i.snippet(`}`)
         }
 
-        function serializeType($: gglossary.T.Type<Annotation>, $i: gfp.B.Line) {
+        function serializeType($: g_glossary.T.Type<Annotation>, $i: g_fp.B.Line) {
             $i.snippet(`<gglossary.T.Type<pd.SourceLocation>>`)
 
             switch ($[0]) {
@@ -190,7 +190,7 @@ export const $$: createSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeContext($: gglossary.T.Context<Annotation>, $i: gfp.B.Line) {
+        function serializeContext($: g_glossary.T.Context<Annotation>, $i: g_fp.B.Line) {
             $i.snippet(`<gglossary.T.Context<pd.SourceLocation>>`)
             switch ($[0]) {
                 case 'import':
@@ -224,7 +224,7 @@ export const $$: createSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeInterfaceReference($: gglossary.T.InterfaceReference<Annotation>, $i: gfp.B.Line) {
+        function serializeInterfaceReference($: g_glossary.T.InterfaceReference<Annotation>, $i: g_fp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -239,7 +239,7 @@ export const $$: createSerializer = ($d) => {
             $i.snippet(`}`)
         }
 
-        function serializeBuilderReference($: gglossary.T.BuilderReference<Annotation>, $i: gfp.B.Line) {
+        function serializeBuilderReference($: g_glossary.T.BuilderReference<Annotation>, $i: g_fp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -254,7 +254,7 @@ export const $$: createSerializer = ($d) => {
             $i.snippet(`}`)
 
         }
-        function serializeInterface($: gglossary.T.Interface<Annotation>, $i: gfp.B.Line) {
+        function serializeInterface($: g_glossary.T.Interface<Annotation>, $i: g_fp.B.Line) {
             switch ($[0]) {
                 case 'choice':
                     pl.cc($[1], ($) => {
@@ -335,7 +335,7 @@ export const $$: createSerializer = ($d) => {
             }
 
         }
-        function serializeBuilder($: gglossary.T.Builder<Annotation>, $i: gfp.B.Line) {
+        function serializeBuilder($: g_glossary.T.Builder<Annotation>, $i: g_fp.B.Line) {
             switch ($[0]) {
                 case 'group':
                     pl.cc($[1], ($) => {

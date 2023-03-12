@@ -1,14 +1,14 @@
 import * as pl from 'pareto-core-lib'
 
-import * as gproject from "../../project"
-import * as gfp from "lib-fountain-pen"
+import * as g_project from "../../project"
+import * as g_fp from "lib-fountain-pen"
 
 import { createTemplateSerializer } from "../api.generated"
 
 export const $$: createTemplateSerializer = (
     $d
 ) => {
-    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.B.Directory) => {
+    return <Annotation>($: g_project.T.Project<Annotation>, $i: g_fp.B.Directory) => {
         $i.directory("tmp", ($i) => {
             $i.directory("templates", ($i) => {
                 switch ($.type[0]) {
@@ -22,8 +22,8 @@ export const $$: createTemplateSerializer = (
                             $i.directory("pub", ($i) => {
                                 function doImplementation(
                                     
-                                    $: gproject.T.Module.api.root<Annotation>,
-                                    $i: gfp.B.Directory,
+                                    $: g_project.T.Module.api.root<Annotation>,
+                                    $i: g_fp.B.Directory,
                                 ) {
                                     $i.directory("implementations", ($i) => {
                                         $d.dictionaryForEach($.algorithms, ($) => {
@@ -33,7 +33,7 @@ export const $$: createTemplateSerializer = (
                                                 $i.line(``)
                                                 $i.line(``)
                                                 $i.nestedLine(($i) => {
-                                                    $i.snippet(`export const $$: gapi.${$d.createIdentifier(`C${$.key}`)}`)
+                                                    $i.snippet(`export const $$: g_this.${$d.createIdentifier(`C${$.key}`)}`)
                                                     $i.snippet(` = ($c, $d) => {`)
                                                     $i.indent(($i) => {
                                                         $i.nestedLine(($i) => {
@@ -53,7 +53,7 @@ export const $$: createTemplateSerializer = (
                                     })
                                 }
                                 $i.directory("src", ($i) => {
-                                    function doModule($: gproject.T.Module<Annotation>, $i: gfp.B.Directory) {
+                                    function doModule($: g_project.T.Module<Annotation>, $i: g_fp.B.Directory) {
                                         // pl.optional(
                                         //     $.bindings,
                                         //     ($) => {
@@ -85,8 +85,8 @@ export const $$: createTemplateSerializer = (
                             $i.directory("test", ($i) => {
                                 $i.directory("src", ($i) => {
                                     function doAPI(
-                                        $: gproject.T.Module.api.root<Annotation>,
-                                        $i: gfp.B.Directory,
+                                        $: g_project.T.Module.api.root<Annotation>,
+                                        $i: g_fp.B.Directory,
                                         ) {
                                         $d.dictionaryForEach($.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
@@ -133,7 +133,7 @@ export const $$: createTemplateSerializer = (
                                                 $i.line(``)
                                                 $i.line(``)
                                                 $i.nestedLine(($i) => {
-                                                    $i.snippet(`export const $$: gapi.${$d.createIdentifier(`C${$.key}`)}`)
+                                                    $i.snippet(`export const $$: g_this.${$d.createIdentifier(`C${$.key}`)}`)
                                                     $i.snippet(` = ($c, $d) => {`)
                                                     $i.indent(($i) => {
                                                         $i.nestedLine(($i) => {

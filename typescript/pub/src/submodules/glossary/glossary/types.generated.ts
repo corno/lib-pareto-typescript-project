@@ -137,10 +137,6 @@ export namespace T {
                             }
                             
                             export type _linterface<GAnnotation> = T.InterfaceReference<GAnnotation>
-                            
-                            export namespace nothing {}
-                            
-                            export type nothing<GAnnotation> = null
                         }
                         
                         export type return__type<GAnnotation> = 
@@ -148,7 +144,6 @@ export namespace T {
                                 readonly 'type': T.TypeReference<GAnnotation>
                             }]
                             | ['interface', T.InterfaceReference<GAnnotation>]
-                            | ['nothing', null]
                     }
                     
                     export type D<GAnnotation> = {
@@ -159,7 +154,6 @@ export namespace T {
                                 readonly 'type': T.TypeReference<GAnnotation>
                             }]
                             | ['interface', T.InterfaceReference<GAnnotation>]
-                            | ['nothing', null]
                     }
                 }
                 
@@ -171,7 +165,6 @@ export namespace T {
                             readonly 'type': T.TypeReference<GAnnotation>
                         }]
                         | ['interface', T.InterfaceReference<GAnnotation>]
-                        | ['nothing', null]
                 }>
                 
                 export namespace interfaces {
@@ -191,7 +184,6 @@ export namespace T {
                             readonly 'type': T.TypeReference<GAnnotation>
                         }]
                         | ['interface', T.InterfaceReference<GAnnotation>]
-                        | ['nothing', null]
                 }>
                 readonly 'interfaces': pt.Dictionary<T.Interface<GAnnotation>>
             }
@@ -297,7 +289,6 @@ export namespace T {
                             readonly 'type': T.TypeReference<GAnnotation>
                         }]
                         | ['interface', T.InterfaceReference<GAnnotation>]
-                        | ['nothing', null]
                 }>
                 readonly 'interfaces': pt.Dictionary<T.Interface<GAnnotation>>
             }]
@@ -355,7 +346,6 @@ export namespace T {
                             readonly 'type': T.TypeReference<GAnnotation>
                         }]
                         | ['interface', T.InterfaceReference<GAnnotation>]
-                        | ['nothing', null]
                 }>
                 readonly 'interfaces': pt.Dictionary<T.Interface<GAnnotation>>
             }]

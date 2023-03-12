@@ -1,7 +1,7 @@
 import * as pl from 'pareto-core-lib'
 import * as pd from 'pareto-core-dev'
 
-import * as gfp from "lib-fountain-pen"
+import * as g_fp from "lib-fountain-pen"
 
 import { validateFiles } from "../api.generated"
 

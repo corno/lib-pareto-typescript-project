@@ -9,8 +9,8 @@ import * as pl from 'pareto-core-lib'
 //             $i.line(`import * as pd from 'pareto-core-data'`)
 //             $i.line(``)
 //             //$i.line(`import * as gmoduleDefinition from "./import_moduleDefinition"`)
-//             $i.line(`import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"`)
-//             $i.line(`import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"`)
+//             $i.line(`import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"`)
+//             $i.line(`import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"`)
             
 
 //             $i.line(``)
@@ -19,7 +19,7 @@ import * as pl from 'pareto-core-lib'
 //             $i.nestedLine(($i) => {
 //             })
 //             $i.nestedLine(($i) => {
-//                 $i.snippet(`export const $: gproject.T.Module<pd.SourceLocation> = `)
+//                 $i.snippet(`export const $: g_project.T.Module<pd.SourceLocation> = `)
 //                 $d.serialize($, $i)
 //             })
 //         })

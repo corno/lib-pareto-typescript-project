@@ -2,9 +2,9 @@ import * as pl from 'pareto-core-lib'
 import * as pd from 'pareto-core-dev'
 import * as pt from 'pareto-core-types'
 
-import * as gfp from "lib-fountain-pen"
-import * as gthis from "../glossary"
-import * as gproject from "../../project"
+import * as g_fp from "lib-fountain-pen"
+import * as g_this from "../glossary"
+import * as g_project from "../../project"
 
 import { createProjectSerializer } from "../api.generated"
 
@@ -12,13 +12,13 @@ import { createProjectSerializer } from "../api.generated"
 export const $$: createProjectSerializer = (
     $d,
 ) => {
-    return <Annotation>($: gproject.T.Project<Annotation>, $i: gfp.B.Directory) => {
+    return <Annotation>($: g_project.T.Project<Annotation>, $i: g_fp.B.Directory) => {
         function doOptional<T>(
             $: [false] | [true, T],
-            $i: gfp.B.Line,
+            $i: g_fp.B.Line,
             $c: {
-                onSet: ($: T, $i: gfp.B.Line) => void,
-                onNotset: ($: null, $i: gfp.B.Line) => void,
+                onSet: ($: T, $i: g_fp.B.Line) => void,
+                onNotset: ($: null, $i: g_fp.B.Line) => void,
             },
         ) {
             if ($[0] === true) {
@@ -28,7 +28,7 @@ export const $$: createProjectSerializer = (
             }
         }
 
-        function serializeFunctionReference($: gproject.T.FunctionReference<Annotation>, $i: gfp.B.Line) {
+        function serializeFunctionReference($: g_project.T.FunctionReference<Annotation>, $i: g_fp.B.Line) {
 
             $i.snippet(`g_${$.context.glossary}.`)
             $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
@@ -39,7 +39,7 @@ export const $$: createProjectSerializer = (
                     isResource: boolean,
                     inlineSourceMap: boolean,
                 },
-                $i: gfp.B.Directory
+                $i: g_fp.B.Directory
             ) {
                 $i.file("tsconfig.json", ($i) => {
                     $i.nestedLine(($i) => {
@@ -69,7 +69,7 @@ export const $$: createProjectSerializer = (
                     })
                 })
             }
-            function globals($i: gfp.B.Directory) {
+            function globals($i: g_fp.B.Directory) {
                 $i.file("globals.generated.ts", ($i) => {
                     $i.line(`interface Array<T> {`)
                     $i.line(`    [n: number]: T`)
@@ -212,8 +212,8 @@ export const $$: createProjectSerializer = (
                         case 'library':
                             pl.cc($.type[1], ($) => {
                                 function doModule(
-                                    $: gproject.T.Module<Annotation>,
-                                    $i: gfp.B.Directory,
+                                    $: g_project.T.Module<Annotation>,
+                                    $i: g_fp.B.Directory,
                                 ) {
                                     $i.allowedManual(`shorthands.ts`)
                                     $i.directory(`glossary`, ($i) => {
@@ -254,10 +254,10 @@ export const $$: createProjectSerializer = (
                                             function serializeAPI(
                                                 $: {
 
-                                                    readonly 'api': gproject.T.Module.api.root<gthis.T.Annotation<Annotation>>
+                                                    readonly 'api': g_project.T.Module.api.root<g_this.T.Annotation<Annotation>>
                                                     readonly 'imports': pt.Dictionary<string>
                                                 },
-                                                $i: gfp.B.Block) {
+                                                $i: g_fp.B.Block) {
 
 
                                                 $i.line(`import * as pt from 'pareto-core-types'`)
@@ -380,9 +380,9 @@ export const $$: createProjectSerializer = (
 
                                     })
                                     function doImplementation($: {
-                                        readonly 'implementation': gproject.T.Implementation<Annotation>,
-                                        readonly 'api': gproject.T.Module.api.root<gthis.T.Annotation<Annotation>>
-                                    }, $i: gfp.B.Directory) {
+                                        readonly 'implementation': g_project.T.Implementation<Annotation>,
+                                        readonly 'api': g_project.T.Module.api.root<g_this.T.Annotation<Annotation>>
+                                    }, $i: g_fp.B.Directory) {
                                         const api = $.api
                                         switch ($.implementation[0]) {
                                             case 'pareto':
@@ -457,9 +457,9 @@ export const $$: createProjectSerializer = (
                                                     $i.line(``)
                                                     $i.line(`import * as pe from 'pareto-core-exe'`)
                                                     $i.line(``)
-                                                    $i.line(`import * as gmain from "../main"`)
+                                                    $i.line(`import * as g_main from "../main"`)
                                                     $i.line(``)
-                                                    $i.line(`pe.runProgram(gmain.$r.${$d.createIdentifier($.key)})`)
+                                                    $i.line(`pe.runProgram(g_main.$r.${$d.createIdentifier($.key)})`)
                                                 })
                                             })
                                         })
@@ -490,10 +490,10 @@ export const $$: createProjectSerializer = (
                                                     function serializeAPI(
                                                         $: {
 
-                                                            readonly 'api': gproject.T.Project._ltype.library.bindings.O.api.root<gthis.T.Annotation<Annotation>>
+                                                            readonly 'api': g_project.T.Project._ltype.library.bindings.O.api.root<g_this.T.Annotation<Annotation>>
                                                             readonly 'imports': pt.Dictionary<string>
                                                         },
-                                                        $i: gfp.B.Block
+                                                        $i: g_fp.B.Block
                                                     ) {
 
 
@@ -551,9 +551,9 @@ export const $$: createProjectSerializer = (
 
                                             })
                                             function doImplementation($: {
-                                                'implementation': gproject.T.Implementation<Annotation>,
-                                                readonly 'api': gproject.T.Project._ltype.library.bindings.O.api.root<gthis.T.Annotation<Annotation>>
-                                            }, $i: gfp.B.Directory) {
+                                                'implementation': g_project.T.Implementation<Annotation>,
+                                                readonly 'api': g_project.T.Project._ltype.library.bindings.O.api.root<g_this.T.Annotation<Annotation>>
+                                            }, $i: g_fp.B.Directory) {
                                                 const api = $.api
                                                 switch ($.implementation[0]) {
                                                     case 'pareto':
@@ -798,7 +798,7 @@ export const $$: createProjectSerializer = (
                     $i
                 )
             })
-            function doTest($: gproject.T.Test<Annotation>, $i: gfp.B.Directory) {
+            function doTest($: g_project.T.Test<Annotation>, $i: g_fp.B.Directory) {
 
                 $i.directory("test", ($i) => {
                     $i.allowedManual("data")
@@ -830,9 +830,9 @@ export const $$: createProjectSerializer = (
                             $i.file("test.generated.ts", ($i) => {
                                 $i.line(`import * as pe from 'pareto-core-exe'`)
                                 $i.line(``)
-                                $i.line(`import * as gmain from "../modules/main"`)
+                                $i.line(`import * as g_main from "../modules/main"`)
                                 $i.line(``)
-                                $i.line(`pe.runProgram(gmain.$a.main)`)
+                                $i.line(`pe.runProgram(g_main.$a.main)`)
                             })
                         })
                         $i.allowedManual("data")
@@ -841,11 +841,11 @@ export const $$: createProjectSerializer = (
                                 $i.file("api.generated.ts", ($i) => {
                                     $i.line(`import * as pt from 'pareto-core-types'`)
                                     $i.line(``)
-                                    $i.line(`import * as gmain from "res-pareto-main"`)
-                                    $i.line(`import * as gtest from "lib-pareto-test"`)
+                                    $i.line(`import * as g_main from "res-pareto-main"`)
+                                    $i.line(`import * as g_test from "lib-pareto-test"`)
                                     $i.line(``)
-                                    $i.line(`export type getTestSet = gtest.F.GetTestSet`)
-                                    $i.line(`export type main = ($: gmain.T.MainData) => void`)
+                                    $i.line(`export type getTestSet = g_test.F.GetTestSet`)
+                                    $i.line(`export type main = ($: g_main.T.MainData) => void`)
                                     $i.line(``)
                                     $i.line(`export type API = {`)
                                     $i.line(`    'getTestSet': getTestSet`)
@@ -858,19 +858,19 @@ export const $$: createProjectSerializer = (
                                         $i.line(`import * as pl from 'pareto-core-lib'`)
                                         $i.line(``)
                                         $i.line(``)
-                                        $i.line(`import * as gmain from "res-pareto-main"`)
-                                        $i.line(`import * as gtest from "lib-pareto-test"`)
+                                        $i.line(`import * as g_main from "res-pareto-main"`)
+                                        $i.line(`import * as g_test from "lib-pareto-test"`)
                                         $i.line(``)
                                         $i.line(`import { $$ as getTestSet } from "./getTestSet.p"`)
                                         $i.line(``)
                                         $i.line(`import {  main } from "../api.generated"`)
                                         $i.line(``)
                                         $i.line(`export const $$: main = ($) => {`)
-                                        $i.line(`    gtest.$a.createTestProgram({`)
+                                        $i.line(`    g_test.$a.createTestProgram({`)
                                         $i.line(`        'getTestSet': getTestSet,`)
-                                        $i.line(`        'log': gmain.$r.log,`)
-                                        $i.line(`        'logError': gmain.$r.logError,`)
-                                        $i.line(`        'onTestErrors': gmain.$r.setExitCodeToFailed`)
+                                        $i.line(`        'log': g_main.$r.log,`)
+                                        $i.line(`        'logError': g_main.$r.logError,`)
+                                        $i.line(`        'onTestErrors': g_main.$r.setExitCodeToFailed`)
                                         $i.line(`    })($)`)
                                         $i.line(`}`)
                                     })

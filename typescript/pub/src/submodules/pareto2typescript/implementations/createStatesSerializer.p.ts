@@ -1,13 +1,13 @@
 import * as pl from 'pareto-core-lib'
 
-import * as galgorithm from "../../algorithm"
-import * as gfp from "lib-fountain-pen"
+import * as g_algorithm from "../../algorithm"
+import * as g_fp from "lib-fountain-pen"
 
 import { createStatesSerializer } from "../api.generated"
 
 export const $$: createStatesSerializer = ($d) => {
-    return <Annotation>($: galgorithm.T.States<Annotation>, $i: gfp.B.Block) => {
-        function serializeType($: galgorithm.T.Type<Annotation>, $i: gfp.B.Line) {
+    return <Annotation>($: g_algorithm.T.States<Annotation>, $i: g_fp.B.Block) => {
+        function serializeType($: g_algorithm.T.Type<Annotation>, $i: g_fp.B.Line) {
             switch ($[0]) {
                 case 'null':
                     pl.cc($[1], ($) => {

@@ -1,7 +1,7 @@
 import * as pd from 'pareto-core-data'
 
-import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
-import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
+import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
+import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as main } from "./main/module.data"
 import { $ as algorithm_ } from "./submodules/algorithm/module.data"
@@ -13,7 +13,7 @@ import { algorithm, external, functionReference, submodule, this_ } from 'lib-pa
 
 const d = pd.d
 
-export const $: gproject.T.Project<pd.SourceLocation> = {
+export const $: g_project.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "A library to generate a typescript project environment for Pareto",
     'license': "TBD",
@@ -68,7 +68,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
                 'types': d({}),
                 'type': ['synchronous', {
                     'builders': d({}),
-                    'functions': d<gglossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({}),
+                    'functions': d<g_glossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({}),
                 }],
 
 

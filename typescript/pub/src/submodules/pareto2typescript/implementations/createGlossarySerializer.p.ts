@@ -1,8 +1,8 @@
 import * as pl from 'pareto-core-lib'
 import * as pt from 'pareto-core-types'
 
-import * as gglossary from "../../glossary"
-import * as gfp from "lib-fountain-pen"
+import * as g_glossary from "../../glossary"
+import * as g_fp from "lib-fountain-pen"
 
 export namespace VOptional { }
 export type VOptional<AType> =
@@ -22,8 +22,8 @@ export const $$: createGlossarySerializer = ($d) => {
 
             function ns(
                 $: string,
-                $i: gfp.B.Block,
-                $c: ($i: gfp.B.Block) => void
+                $i: g_fp.B.Block,
+                $c: ($i: g_fp.B.Block) => void
             ) {
                 $i.line(``)
                 $i.nestedLine(($i) => {
@@ -36,10 +36,10 @@ export const $$: createGlossarySerializer = ($d) => {
             }
             function doOptional<T>(
                 $: pt.OptionalValue<T>,
-                $i: gfp.B.Line,
+                $i: g_fp.B.Line,
                 $c: {
-                    onSet: ($: T, $i: gfp.B.Line) => void,
-                    onNotset: ($: {}, $i: gfp.B.Line) => void,
+                    onSet: ($: T, $i: g_fp.B.Line) => void,
+                    onNotset: ($: {}, $i: g_fp.B.Line) => void,
                 },
             ) {
                 switch ($[0]) {
@@ -54,7 +54,7 @@ export const $$: createGlossarySerializer = ($d) => {
                     default: pl.au($[0])
                 }
             }
-            function serializeContext($: gglossary.T.Context<string>, $i: gfp.B.Line) {
+            function serializeContext($: g_glossary.T.Context<string>, $i: g_fp.B.Line) {
                 switch ($[0]) {
                     case 'import':
                         pl.cc($[1], ($) => {
@@ -69,7 +69,7 @@ export const $$: createGlossarySerializer = ($d) => {
                     default: pl.au($[0])
                 }
             }
-            function serializeTypeReference($: gglossary.T.TypeReference<string>, $i: gfp.B.Line) {
+            function serializeTypeReference($: g_glossary.T.TypeReference<string>, $i: g_fp.B.Line) {
                 serializeContext($.context, $i)
                 $i.snippet(`T.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
                 $d.enrichedDictionaryForEach($.arguments, {
@@ -105,8 +105,8 @@ export const $$: createGlossarySerializer = ($d) => {
                 })
             }
             function serializeContextArgumentsOnly(
-                $: gglossary.T.Context<string>,
-                $i: gfp.B.Line,
+                $: g_glossary.T.Context<string>,
+                $i: g_fp.B.Line,
             ) {
                 switch ($[0]) {
                     case 'import':
@@ -147,7 +147,7 @@ export const $$: createGlossarySerializer = ($d) => {
                 }
             }
             function serializeGlobalParametersOnly(
-                $i: gfp.B.Line
+                $i: g_fp.B.Line
             ) {
                 $d.enrichedDictionaryForEach(globalParameters, {
                     onEmpty: () => {
@@ -186,15 +186,15 @@ export const $$: createGlossarySerializer = ($d) => {
                             const typeParameters = $.value.parameters
                             function serializeTypeAliasAndPossibleNamespace(
                                 $: {
-                                    type: gglossary.T.Type<string>,
+                                    type: g_glossary.T.Type<string>,
                                     name: string,
                                 },
-                                $i: gfp.B.Block,
+                                $i: g_fp.B.Block,
                             ) {
                                 const name = $.name
                                 function serializeGlobalAndTypeParameters(
                                     $: null,
-                                    $i: gfp.B.Line,
+                                    $i: g_fp.B.Line,
                                 ) {
 
                                     $d.enrichedDictionaryForEach(typeParameters, {
@@ -219,8 +219,8 @@ export const $$: createGlossarySerializer = ($d) => {
                                 //create namespaces for the complex types
                                 pl.cc($.type, ($) => {
                                     function createTheCurrentNamespace(
-                                        $c: ($i: gfp.B.Block) => void,
-                                        $i: gfp.B.Block,
+                                        $c: ($i: g_fp.B.Block) => void,
+                                        $i: g_fp.B.Block,
                                     ) {
                                         ns(
                                             name,
@@ -230,10 +230,10 @@ export const $$: createGlossarySerializer = ($d) => {
                                     }
                                     function createCurrentAndSerializeType(
                                         $: {
-                                            type: gglossary.T.Type<string>,
+                                            type: g_glossary.T.Type<string>,
                                             nextName: string,
                                         },
-                                        $i: gfp.B.Block,
+                                        $i: g_fp.B.Block,
                                     ) {
                                         createTheCurrentNamespace(
                                             ($i) => {
@@ -375,8 +375,8 @@ export const $$: createGlossarySerializer = ($d) => {
                                 $i.line(``)
                                 $i.nestedLine(($i) => {
                                     function serializeType(
-                                        $: gglossary.T.Type<string>,
-                                        $i: gfp.B.Line,
+                                        $: g_glossary.T.Type<string>,
+                                        $i: g_fp.B.Line,
                                     ): void {
                                         switch ($[0]) {
                                             case 'null':
@@ -534,7 +534,7 @@ export const $$: createGlossarySerializer = ($d) => {
             })
             $i.file(`public.generated.ts`, ($i) => {
 
-                function serializeBuilder($: gglossary.T.Builder<string>, $i: gfp.B.Line) {
+                function serializeBuilder($: g_glossary.T.Builder<string>, $i: g_fp.B.Line) {
                     switch ($[0]) {
                         case 'group':
                             pl.cc($[1], ($) => {
@@ -591,13 +591,13 @@ export const $$: createGlossarySerializer = ($d) => {
                     }
 
                 }
-                function serializeBuilderReference($: gglossary.T.BuilderReference<string>, $i: gfp.B.Line) {
+                function serializeBuilderReference($: g_glossary.T.BuilderReference<string>, $i: g_fp.B.Line) {
                     serializeContext($.context, $i)
                     $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
                     serializeContextArgumentsOnly($.context, $i)
 
                 }
-                function serializeInterface($: gglossary.T.Interface<string>, $i: gfp.B.Line) {
+                function serializeInterface($: g_glossary.T.Interface<string>, $i: g_fp.B.Line) {
                     switch ($[0]) {
                         case 'choice':
                             pl.cc($[1], ($) => {
@@ -670,7 +670,7 @@ export const $$: createGlossarySerializer = ($d) => {
                     }
 
                 }
-                function serializeInterfaceReference($: gglossary.T.InterfaceReference<string>, $i: gfp.B.Line) {
+                function serializeInterfaceReference($: g_glossary.T.InterfaceReference<string>, $i: g_fp.B.Line) {
                     serializeContext($.context, $i)
                     $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
                     serializeContextArgumentsOnly($.context, $i)
@@ -738,11 +738,6 @@ export const $$: createGlossarySerializer = ($d) => {
                                                     case 'interface':
                                                         pl.cc($[1], ($) => {
                                                             serializeInterfaceReference($, $i)
-                                                        })
-                                                        break
-                                                    case 'nothing':
-                                                        pl.cc($[1], ($) => {
-                                                            $i.snippet(`void`)
                                                         })
                                                         break
                                                     default: pl.au($[0])

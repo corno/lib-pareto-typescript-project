@@ -1,91 +1,91 @@
-import * as gpareto2typescript from "../../submodules/pareto2typescript"
-import * as gforeach from "res-pareto-foreach"
-import * as gcoll from "res-pareto-collation"
-import * as gmain from "res-pareto-main"
-import * as gdictionary from "res-pareto-dictionary"
-import * as gts from "res-typescript"
-import * as gfp from "lib-fountain-pen"
+import * as g_pareto2typescript from "../../submodules/pareto2typescript"
+import * as g_foreach from "res-pareto-foreach"
+import * as g_coll from "res-pareto-collation"
+import * as g_main from "res-pareto-main"
+import * as g_dictionary from "res-pareto-dictionary"
+import * as g_ts from "res-typescript"
+import * as g_fp from "lib-fountain-pen"
 import * as g_this from "../../main"
 import * as g_fse from "lib-pareto-filesystem/dist/submodules/errorhandlers"
 
 import { generateProject } from "../api.generated"
 
 export const $$: generateProject = ($) => {
-    const a = gforeach.$r.arrayForEach
-    const d = gforeach.$r.createDictionaryForEach({
-        compare: gcoll.$r.localeIsABeforeB,
+    const a = g_foreach.$r.arrayForEach
+    const d = g_foreach.$r.createDictionaryForEach({
+        compare: g_coll.$r.localeIsABeforeB,
     })
-    const ea = gforeach.$r.enrichedArrayForEach
-    const ed = gforeach.$r.createEnrichedDictionaryForEach({
-        compare: gcoll.$r.localeIsABeforeB,
+    const ea = g_foreach.$r.enrichedArrayForEach
+    const ed = g_foreach.$r.createEnrichedDictionaryForEach({
+        compare: g_coll.$r.localeIsABeforeB,
     })
 
     g_this.$a.createProjectGenerator(
         {
 
-            'validateFiles': gpareto2typescript.$a.validateFiles,
-            'serializeProject': gpareto2typescript.$a.createProjectSerializer(
+            'validateFiles': g_pareto2typescript.$a.validateFiles,
+            'serializeProject': g_pareto2typescript.$a.createProjectSerializer(
                 {
                     'dictionaryForEach': d,
                     'enrichedDictionaryForEach': ed,
-                    'serializeGlossary': gpareto2typescript.$a.createGlossarySerializer({
+                    'serializeGlossary': g_pareto2typescript.$a.createGlossarySerializer({
                         'enrichedDictionaryForEach': ed,
                         'dictionaryForEach': d,
-                        'dictionaryIsEmpty': gdictionary.$r.isEmpty,
-                        'createIdentifier': gts.$r.createIdentifier,
-                        'createApostrophedString': gts.$r.createApostrophedString,
-                        'createBacktickedString': gts.$r.createBacktickedString,
-                        'createQuotedString': gts.$r.createQuotedString,
+                        'dictionaryIsEmpty': g_dictionary.$r.isEmpty,
+                        'createIdentifier': g_ts.$r.createIdentifier,
+                        'createApostrophedString': g_ts.$r.createApostrophedString,
+                        'createBacktickedString': g_ts.$r.createBacktickedString,
+                        'createQuotedString': g_ts.$r.createQuotedString,
                     }),
-                    'serializeImplementation': gpareto2typescript.$a.createImplementationSerializer(
+                    'serializeImplementation': g_pareto2typescript.$a.createImplementationSerializer(
                         {
                             'arrayForEach': a,
                             'dictionaryForEach': d,
                             'enrichedArrayForEach': ea,
                             'enrichedDictionaryForEach': ed,
-                            'createIdentifier': gts.$r.createIdentifier,
-                            'createApostrophedString': gts.$r.createApostrophedString,
-                            'createBacktickedString': gts.$r.createBacktickedString,
-                            'createQuotedString': gts.$r.createQuotedString,
+                            'createIdentifier': g_ts.$r.createIdentifier,
+                            'createApostrophedString': g_ts.$r.createApostrophedString,
+                            'createBacktickedString': g_ts.$r.createBacktickedString,
+                            'createQuotedString': g_ts.$r.createQuotedString,
                         }
                     ),
-                    'createIdentifier': gts.$r.createIdentifier,
-                    'createApostrophedString': gts.$r.createApostrophedString,
-                    'createBacktickedString': gts.$r.createBacktickedString,
-                    'createQuotedString': gts.$r.createQuotedString,
+                    'createIdentifier': g_ts.$r.createIdentifier,
+                    'createApostrophedString': g_ts.$r.createApostrophedString,
+                    'createBacktickedString': g_ts.$r.createBacktickedString,
+                    'createQuotedString': g_ts.$r.createQuotedString,
                 }
             ),
-            'serializeTemplate': gpareto2typescript.$a.createTemplateSerializer(
+            'serializeTemplate': g_pareto2typescript.$a.createTemplateSerializer(
                 {
                     'dictionaryForEach': d,
-                    'createIdentifier': gts.$r.createIdentifier,
-                    'createApostrophedString': gts.$r.createApostrophedString,
-                    'createBacktickedString': gts.$r.createBacktickedString,
-                    'createQuotedString': gts.$r.createQuotedString,
+                    'createIdentifier': g_ts.$r.createIdentifier,
+                    'createApostrophedString': g_ts.$r.createApostrophedString,
+                    'createBacktickedString': g_ts.$r.createBacktickedString,
+                    'createQuotedString': g_ts.$r.createQuotedString,
                 }
             ),
             // 'logWriteFileError': ($) => {
-            //     gmain.$r.logError(`FIXME WRITEFILEERROR`)
+            //     g_main.$r.logError(`FIXME WRITEFILEERROR`)
             // },
             // 'reportSuperfluousNode': ($) => {
             // },
-            'decorateDictionaryEntriesWithKey': gforeach.$r.decorateDictionaryEntriesWithKey,
+            'decorateDictionaryEntriesWithKey': g_foreach.$r.decorateDictionaryEntriesWithKey,
         },
     )(
         $,
         {
             'nodes': {
                 'manualNode': ($) => {
-                    gmain.$r.log(gfp.$a.createAllowedNodeMessage($))
+                    g_main.$r.log(g_fp.$a.createAllowedNodeMessage($))
                 },
                 'superfluousNode': ($) => {
-                    gmain.$r.logError(gfp.$a.createSuperfluousNodeMessage($))
+                    g_main.$r.logError(g_fp.$a.createSuperfluousNodeMessage($))
 
                 }
 
             },
-            'readDirError': ($) => g_fse.$a.readDir($, gmain.$r.logError),
-            'writeFileError': ($) => g_fse.$a.writeFile($, gmain.$r.logError),
+            'readDirError': ($) => g_fse.$a.readDir($, g_main.$r.logError),
+            'writeFileError': ($) => g_fse.$a.writeFile($, g_main.$r.logError),
             
         }
     )

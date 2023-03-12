@@ -19,11 +19,11 @@ import {
     type,
 } from "../../../../../../pub/dist/submodules/glossary/shorthands"
 
-import * as gglossary from "../../../../../../pub/dist/submodules/glossary"
+import * as g_glossary from "../../../../../../pub/dist/submodules/glossary"
 
 const d = pd.d
 
-export const $: gglossary.T.Glossary<pd.SourceLocation> = {
+export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({
         "Annotation": null,
     }),
@@ -74,7 +74,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 'end': interfaceMethod(typeReference("Annotation")), //should be a parameter reference
             }]
         }),
-        'functions': d<gglossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({}),
+        'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({}),
 
     }],
 }

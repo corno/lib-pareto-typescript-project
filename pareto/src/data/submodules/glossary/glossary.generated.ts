@@ -119,7 +119,6 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                                                 'type': "InterfaceReference",
                                                 'arguments': d({}),
                                             }],
-                                            "nothing": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
                                         })],
                                     },
                                 })]],

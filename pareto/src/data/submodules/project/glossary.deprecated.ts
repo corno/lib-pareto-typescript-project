@@ -8,11 +8,11 @@ import {
     array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, type, glossaryParameter, optional,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
+import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
 const d = pd.d
 
-export const $: gglossary.T.Glossary<pd.SourceLocation> = {
+export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({
         "Annotation": null,
     }),
@@ -149,7 +149,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'type': ['synchronous', {
 
         'builders': d({}),
-        'functions': d<gglossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({
+        'functions': d<g_glossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({
             // "Serialize": func(typeReference("Module"), null, interfaceReference("fp", "Line"), null),
             // "SerializeWithContext": func(typeReference("Module"), null, interfaceReference("fp", "Directory"), null),
         }),

@@ -3,10 +3,10 @@ import * as ps from 'pareto-core-state'
 import * as pm from 'pareto-core-map'
 import * as pa from 'pareto-core-async'
 
-import * as gtest from "lib-pareto-test"
-import * as gproject from "../../../../../pub/dist/submodules/project"
-import * as gfp from "lib-fountain-pen"
-import * as gpub from "../../../../../pub"
+import * as g_test from "lib-pareto-test"
+import * as g_project from "../../../../../pub/dist/submodules/project"
+import * as g_fp from "lib-fountain-pen"
+import * as g_pub from "../../../../../pub"
 
 const d = pm.wrapRawDictionary
 
@@ -17,8 +17,8 @@ import { getTestSet } from "../api.generated"
 export const $$: getTestSet = ($) => {
     const $XXX = $
 
-    function genProj<Annotation>(dir: string, proj: gproject.T.Project<Annotation>) {
-        gpub.$b.generateProject(
+    function genProj<Annotation>(dir: string, proj: g_project.T.Project<Annotation>) {
+        g_pub.$b.generateProject(
             {
                 'mainData': {
                     'arguments': pm.wrapRawArray([dir]),
@@ -28,8 +28,8 @@ export const $$: getTestSet = ($) => {
         )
 
     }
-    // function generateModule<Annotation>(dir: string, module: gproject.T.Module<Annotation>) {
-    //     gpub.$a.generateProject({
+    // function generateModule<Annotation>(dir: string, module: g_project.T.Module<Annotation>) {
+    //     g_pub.$a.generateProject({
     //         'mainData': {
     //             'arguments': pm.wrapRawArray([dir]),
     //         },
@@ -43,7 +43,7 @@ export const $$: getTestSet = ($) => {
     //             'type': ['library', {
 
     //                 'main': module,
-    //                 'submodules': d<gproject.T.Module<Annotation>>({}),
+    //                 'submodules': d<g_project.T.Module<Annotation>>({}),
     //                 'executables': d({}),
     //                 'test': {
     //                     'dependencies': d({}),
@@ -101,12 +101,12 @@ export const $$: getTestSet = ($) => {
     //     pr.wrapRawArray(["foo"])
     // )
 
-    // const writer = gfp.$a.createDirectory({
+    // const writer = g_fp.$a.createDirectory({
     //     onError: ($) => {
     //         pv.logDebugMessage(`FILESYSTEM ERROR`)
     //     },
     //     reportSuperfluousNode: ($) => {
-    //         pv.logDebugMessage(gfp.$a.createSuperfluousNodeMessage($))
+    //         pv.logDebugMessage(g_fp.$a.createSuperfluousNodeMessage($))
     //     },
     // })
 
@@ -116,7 +116,7 @@ export const $$: getTestSet = ($) => {
     // })(mliana2pareto.$a.createLiana2paretoMapper({})(model), )
     // mliana2pareto.$a.createLiana2paretoMapper({})(model)
 
-    const builder = ps.createUnsafeDictionaryBuilder<gtest.T.TestElement>()
+    const builder = ps.createUnsafeDictionaryBuilder<g_test.T.TestElement>()
     function createTest(name: string, actual: string, expected: string) {
         builder.add(name, {
             type: ['test', {

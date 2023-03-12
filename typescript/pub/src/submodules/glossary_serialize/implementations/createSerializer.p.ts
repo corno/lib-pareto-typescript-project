@@ -65,7 +65,7 @@ export const $$: createSerializer = ($d) => {
         }
 
         function serializeType($: g_glossary.T.Type<Annotation>, $i: g_fp.B.Line) {
-            $i.snippet(`<gglossary.T.Type<pd.SourceLocation>>`)
+            $i.snippet(`<g_glossary.T.Type<pd.SourceLocation>>`)
 
             switch ($[0]) {
                 case 'computed':
@@ -191,7 +191,7 @@ export const $$: createSerializer = ($d) => {
             }
         }
         function serializeContext($: g_glossary.T.Context<Annotation>, $i: g_fp.B.Line) {
-            $i.snippet(`<gglossary.T.Context<pd.SourceLocation>>`)
+            $i.snippet(`<g_glossary.T.Context<pd.SourceLocation>>`)
             switch ($[0]) {
                 case 'import':
                     pl.cc($[1], ($) => {
@@ -397,13 +397,13 @@ export const $$: createSerializer = ($d) => {
         }
         $i.line(`import * as pd from 'pareto-core-data'`)
         $i.line(``)
-        $i.line(`import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"`)
+        $i.line(`import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"`)
         $i.line(``)
         $i.line(`const d = pd.d`)
         $i.line(`const a = pd.a`)
         $i.line(``)
         $i.nestedLine(($i) => {
-            $i.snippet(`export const $: gglossary.T.Glossary<pd.SourceLocation> = `)
+            $i.snippet(`export const $: g_glossary.T.Glossary<pd.SourceLocation> = `)
 
             $i.snippet(`{`)
             $i.indent(($i) => {
@@ -470,7 +470,7 @@ export const $$: createSerializer = ($d) => {
                                         $i.snippet(`}),`)
                                     })
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`'functions': d<gglossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({`)
+                                        $i.snippet(`'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({`)
                                         $i.indent(($i) => {
                                             $d.dictionaryForEach($.functions, ($) => {
                                                 $i.nestedLine(($i) => {
@@ -514,12 +514,6 @@ export const $$: createSerializer = ($d) => {
                     
                                                                     })
                                                                     break
-                                                                case 'nothing':
-                                                                    pl.cc($.value['return type'][1], ($) => {
-                                                                        $i.snippet(`['nothing', null]`)
-                    
-                                                                    })
-                                                                    break
                                                                 default: pl.au($.value['return type'][0])
                                                             }
                                                             $i.snippet(`,`)
@@ -553,7 +547,7 @@ export const $$: createSerializer = ($d) => {
                                             $i.snippet(`}),`)
                                         })
                                         $i.nestedLine(($i) => {
-                                            $i.snippet(`'functions': d<gglossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({`)
+                                            $i.snippet(`'functions': d<g_glossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({`)
                                             $i.indent(($i) => {
                                                 $d.dictionaryForEach($.functions, ($) => {
                                                     $i.nestedLine(($i) => {

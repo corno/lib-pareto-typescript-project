@@ -1,17 +1,17 @@
 import * as pl from 'pareto-core-lib'
 
-import * as galgorithm from "../../algorithm"
-import * as gfp from "lib-fountain-pen"
+import * as g_algorithm from "../../algorithm"
+import * as g_fp from "lib-fountain-pen"
 
 import { createImplementationSerializer } from "../api.generated"
 
 export const $$: createImplementationSerializer = ($d) => {
 
-    return <Annotation>($: galgorithm.T.Implementation<Annotation>, $i: gfp.B.Directory) => {
+    return <Annotation>($: g_algorithm.T.Implementation<Annotation>, $i: g_fp.B.Directory) => {
         $d.dictionaryForEach($.implementations, ($) => {
             $i.file(`XXXXXXXXXXXXXXXX${$.key}`, ($i) => {
                 $i.line(``)
-                $i.line(`import * as gfp from "lib-fountain-pen"`)
+                $i.line(`import * as g_fp from "lib-fountain-pen"`)
                 $i.line(``)
                 $i.line(`import { ${$.key} } from "../api.generated"`)
                 $i.line(``)
@@ -21,7 +21,7 @@ export const $$: createImplementationSerializer = ($d) => {
                         $i.snippet(`($d) => {`)
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
-                                function doSynchronousExpression($: galgorithm.T.SynchronousExpression<Annotation>, $i: gfp.B.Line) {
+                                function doSynchronousExpression($: g_algorithm.T.SynchronousExpression<Annotation>, $i: g_fp.B.Line) {
                                     switch ($[0]) {
                                         case 'call':
                                             pl.cc($[1], ($) => {
@@ -71,7 +71,7 @@ export const $$: createImplementationSerializer = ($d) => {
                                         default: pl.au($[0])
                                     }
                                 }
-                                function doImplementationType($: galgorithm.T.ImplementationType<Annotation>, $i: gfp.B.Line) {
+                                function doImplementationType($: g_algorithm.T.ImplementationType<Annotation>, $i: g_fp.B.Line) {
 
                                     switch ($[0]) {
                                         case 'asynchronous function':
@@ -87,8 +87,8 @@ export const $$: createImplementationSerializer = ($d) => {
                                         case 'procedure':
                                             pl.cc($[1], ($) => {
                                                 function doBlock(
-                                                    $: galgorithm.T.ProcedureBlock<Annotation>,
-                                                    $i: gfp.B.Line,
+                                                    $: g_algorithm.T.ProcedureBlock<Annotation>,
+                                                    $i: g_fp.B.Line,
                                                 ) {
 
                                                     $i.snippet(`{`)
@@ -96,7 +96,7 @@ export const $$: createImplementationSerializer = ($d) => {
                                                         if ($.innerFunctions !== undefined) {
                                                             $d.dictionaryForEach($.innerFunctions, ($) => {
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`function ${$.key}($: gapi.T.${$d.createIdentifier($.key)}, $i: gfp.B.Line) `)
+                                                                    $i.snippet(`function ${$.key}($: g_this.T.${$d.createIdentifier($.key)}, $i: g_fp.B.Line) `)
                                                                     doImplementationType($.value.type, $i)
                                                                 })
                                                             })
@@ -180,7 +180,7 @@ export const $$: createImplementationSerializer = ($d) => {
                 })
             })
         })
-        // function serializeExpression($: galgorithm.TExpression, $i: gfp.B.Line) {
+        // function serializeExpression($: g_algorithm.TExpression, $i: g_fp.B.Line) {
         //     switch ($[0]) {
         //         case 'call':
         //             pl.cc($[1], ($) => {
@@ -257,7 +257,7 @@ export const $$: createImplementationSerializer = ($d) => {
         //         default: pl.au($[0])
         //     }
         // }
-        // function serializeCallbackBlock($: galgorithm.TCallbackBlock, $i: gfp.B.Line) {
+        // function serializeCallbackBlock($: g_algorithm.TCallbackBlock, $i: g_fp.B.Line) {
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
         //         if ($.innerCallbacks !== undefined) {
@@ -275,7 +275,7 @@ export const $$: createImplementationSerializer = ($d) => {
         //     })
         //     $i.snippet(`}`)
         // }
-        // function serializeFunctionBlock($: galgorithm.TFunctionBlock, $i: gfp.B.Line) {
+        // function serializeFunctionBlock($: g_algorithm.TFunctionBlock, $i: g_fp.B.Line) {
         //     $i.snippet(`{`)
         //     $i.indent(($i) => {
         //         if ($.innerFunctions !== undefined) {
@@ -296,7 +296,7 @@ export const $$: createImplementationSerializer = ($d) => {
         //     $i.snippet(`}`)
         // }
         // $d.dictionaryForEach($.implementations, ($) => {
-        //     function body($i: gfp.B.Line) {
+        //     function body($i: g_fp.B.Line) {
         //         switch ($.value.type[0]) {
         //             case 'callback':
         //                 pl.cc($.value.type[1], ($) => {
@@ -317,10 +317,10 @@ export const $$: createImplementationSerializer = ($d) => {
         //         $i.line(`import * as pl from 'pareto-core-lib'`)
         //         $i.line(``)
 
-        //         $i.line(`import * as gapi from "../gapi"`)
+        //         $i.line(`import * as g_this from "../g_this"`)
 
         //         $i.nestedLine(($i) => {
-        //             $i.snippet(`export const $$: gapi.${$d.createIdentifier(`C${$.key}`)} = `)
+        //             $i.snippet(`export const $$: g_this.${$d.createIdentifier(`C${$.key}`)} = `)
         //             if ($.value.constructor) {
         //                 $i.snippet(`($d) => {`)
         //                 $i.indent(($i) => {

@@ -1,6 +1,6 @@
 import * as pd from 'pareto-core-data'
 
-import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
+import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as glossary } from "./glossary.deprecated"
 import { $ as pure } from "./pure.api.deprecated"
@@ -9,7 +9,7 @@ import { external, sibling } from "lib-pareto-typescript-project/dist/submodules
 
 const d = pd.d
 
-export const $: gproject.T.Project._ltype.library.submodules.D<pd.SourceLocation> = {
+export const $: g_project.T.Project._ltype.library.submodules.D<pd.SourceLocation> = {
     'glossary': {
         'root': glossary,
         'imports': d({

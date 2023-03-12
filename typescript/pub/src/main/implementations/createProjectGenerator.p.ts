@@ -1,7 +1,7 @@
 import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
 
-import * as gfp from "lib-fountain-pen"
+import * as g_fp from "lib-fountain-pen"
 
 import { $api } from "../implementation.generated"
 
@@ -34,7 +34,7 @@ export const $$: createProjectGenerator = ($d) => {
             $.mainData.arguments,
             ($) => {
 
-                gfp.$b.createDirectory(
+                g_fp.$b.createDirectory(
                     $.testDirectory,
                     ($i) => {
                         $d.serializeProject(

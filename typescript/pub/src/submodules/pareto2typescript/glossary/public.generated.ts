@@ -26,4 +26,6 @@ export namespace F {
     export type SerializeParetoEnvironment = <GAnnotation>($: g_common.T.Null, $b: g_fp.B.Directory,) => void
     
     export type SerializeStates = <GAnnotation>($: g_algorithm.T.States<T.Annotation<GAnnotation>>, $b: g_fp.B.Block,) => void
+    
+    export type ValidateFiles = <GAnnotation>($: g_common.T.Null, $b: g_fp.B.Directory,) => void
 }

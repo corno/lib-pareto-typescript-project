@@ -1,6 +1,7 @@
 import * as pt from 'pareto-core-types'
 
 import * as g_collation from "res-pareto-collation"
+import * as g_common from "glo-pareto-common"
 import * as g_dictionary from "res-pareto-dictionary"
 import * as g_foreach from "res-pareto-foreach"
 import * as g_glossary from "../../glossary"
@@ -16,8 +17,6 @@ export type createAPISerializer = ($d: {
     readonly 'createQuotedString': g_ts.F.CreateQuotedString
     readonly 'dictionaryForEach': g_foreach.F.DictionaryForEach
 }) => g_this.F.SerializeAPI
-
-export type createFilesValidator = ($d: {}) => g_this.F.ProjectToDirectory
 
 export type createGlossarySerializer = ($d: {
     readonly 'createApostrophedString': g_ts.F.CreateApostrophedString
@@ -69,12 +68,14 @@ export type createTemplateSerializer = ($d: {
     readonly 'dictionaryForEach': g_foreach.F.DictionaryForEach
 }) => g_this.F.ProjectToDirectory
 
+export type validateFiles = g_this.F.ValidateFiles
+
 export type API = {
     createAPISerializer: createAPISerializer
-    createFilesValidator: createFilesValidator
     createGlossarySerializer: createGlossarySerializer
     createImplementationSerializer: createImplementationSerializer
     createProjectSerializer: createProjectSerializer
     createStatesSerializer: createStatesSerializer
     createTemplateSerializer: createTemplateSerializer
+    validateFiles: validateFiles
 }

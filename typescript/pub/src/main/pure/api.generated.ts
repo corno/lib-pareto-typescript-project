@@ -13,7 +13,7 @@ export type createProjectGenerator = ($d: {
     readonly 'decorateDictionaryEntriesWithKey': g_foreach.F.DecorateDictionaryEntriesWithKey
     readonly 'serializeProject': g_pareto2typescript.F.ProjectToDirectory
     readonly 'serializeTemplate': g_pareto2typescript.F.ProjectToDirectory
-    readonly 'validateFiles': g_pareto2typescript.F.ProjectToDirectory
+    readonly 'validateFiles': g_pareto2typescript.F.ValidateFiles
 }) => g_this.F.GenerateProjectAndReport
 
 export type API = {

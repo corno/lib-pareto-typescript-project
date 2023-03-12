@@ -54,10 +54,17 @@ export const $$: createTemplateSerializer = (
                                 }
                                 $i.directory("src", ($i) => {
                                     function doModule($: gproject.T.Module<Annotation>, $i: gfp.B.Directory) {
-                                        $i.directory(`bindings`, ($i) => {
-
-                                            doImplementation($.bindings.api.root, $i)
-                                        })
+                                        pl.optional(
+                                            $.bindings,
+                                            ($) => {
+                                                $i.directory(`bindings`, ($i) => {
+        
+                                                    doImplementation($.api.root, $i)
+                                                })
+                                            },
+                                            () => {
+                                            }
+                                        )
                                         $i.directory(`pure`, ($i) => {
                                             doImplementation($['pure algorithms'].api.root, $i)
                                         })

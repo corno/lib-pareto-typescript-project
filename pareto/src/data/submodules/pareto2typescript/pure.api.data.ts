@@ -34,8 +34,7 @@ export const $: gapi.T.API<pd.SourceLocation> = {
             "createQuotedString": functionReference("ts", {}, "CreateQuotedString"),
             "createBacktickedString": functionReference("ts", {}, "CreateBacktickedString"),
         })),
-        "createFilesValidator": algorithm(functionReference("this", {}, "ProjectToDirectory"), constructor(null, {
-        })),
+        "validateFiles": algorithm(functionReference("this", {}, "ValidateFiles")),
         "createProjectSerializer": algorithm(functionReference("this", {}, "ProjectToDirectory"), constructor(null, {
             "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
             "enrichedDictionaryForEach": functionReference("foreach", {}, "EnrichedDictionaryForEach"),

@@ -403,47 +403,52 @@ export const $$: createProjectSerializer = (
                                             )
                                         })
                                     })
-                                    pl.cc($.bindings, ($) => {
-                                        $i.directory("bindings", ($i) => {
+                                    pl.optional(
+                                        $.bindings,
+                                        ($) => {
+                                            $i.directory("bindings", ($i) => {
+                                                $i.file("api.generated.ts", ($i) => {
+                                                    pl.cc($.api, ($) => {
+                                                        serializeAPI({
+                                                            'api': $.root,
+                                                            'imports': $.imports.map(($) => {
+                                                                switch ($[0]) {
+                                                                    case 'external':
+                                                                        return pl.cc($[1], ($) => {
+                                                                            return $
+                                                                        })
+                                                                    case 'sibling':
+                                                                        return pl.cc($[1], ($) => {
+                                                                            return `../../${$}`
+                                                                        })
+                                                                    case 'submodule':
+                                                                        return pl.cc($[1], ($) => {
+                                                                            return `../../submodules/${$}`
+                                                                        })
+                                                                    case 'this':
+                                                                        return pl.cc($[1], ($) => {
+                                                                            return `../glossary`
+                                                                        })
+                                                                    default: return pl.au($[0])
+                                                                }
+                                                            }),
+                                                        }, $i)
+                                                    })
 
-                                            $i.file("api.generated.ts", ($i) => {
-                                                pl.cc($.api, ($) => {
-                                                    serializeAPI({
-                                                        'api': $.root,
-                                                        'imports': $.imports.map(($) => {
-                                                            switch ($[0]) {
-                                                                case 'external':
-                                                                    return pl.cc($[1], ($) => {
-                                                                        return $
-                                                                    })
-                                                                case 'sibling':
-                                                                    return pl.cc($[1], ($) => {
-                                                                        return `../../${$}`
-                                                                    })
-                                                                case 'submodule':
-                                                                    return pl.cc($[1], ($) => {
-                                                                        return `../../submodules/${$}`
-                                                                    })
-                                                                case 'this':
-                                                                    return pl.cc($[1], ($) => {
-                                                                        return `../glossary`
-                                                                    })
-                                                                default: return pl.au($[0])
-                                                            }
-                                                        }),
-                                                    }, $i)
                                                 })
-
+                                                doImplementation(
+                                                    {
+                                                        'api': $.api.root,
+                                                        'implementation': $.implementation,
+                                                    },
+                                                    $i
+                                                )
                                             })
-                                            doImplementation(
-                                                {
-                                                    'api': $.api.root,
-                                                    'implementation': $.implementation,
-                                                },
-                                                $i
-                                            )
-                                        })
-                                    })
+                                        },
+                                        () => {
+
+                                        }
+                                    )
                                     pl.cc($['pure algorithms'], ($) => {
                                         $i.directory("pure", ($i) => {
 
@@ -739,20 +744,20 @@ export const $$: createProjectSerializer = (
                         $i.allowedManual("data")
                         $i.directory("modules", ($i) => {
                             $i.directory("main", ($i) => {
-                                    $i.file("api.generated.ts", ($i) => {
-                                        $i.line(`import * as pt from 'pareto-core-types'`)
-                                        $i.line(``)
-                                        $i.line(`import * as gmain from "res-pareto-main"`)
-                                        $i.line(`import * as gtest from "lib-pareto-test"`)
-                                        $i.line(``)
-                                        $i.line(`export type getTestSet = gtest.F.GetTestSet`)
-                                        $i.line(`export type main = ($: gmain.T.MainData) => void`)
-                                        $i.line(``)
-                                        $i.line(`export type API = {`)
-                                        $i.line(`    'getTestSet': getTestSet`)
-                                        $i.line(`    'main': main`)
-                                        $i.line(`}`)
-                                    })
+                                $i.file("api.generated.ts", ($i) => {
+                                    $i.line(`import * as pt from 'pareto-core-types'`)
+                                    $i.line(``)
+                                    $i.line(`import * as gmain from "res-pareto-main"`)
+                                    $i.line(`import * as gtest from "lib-pareto-test"`)
+                                    $i.line(``)
+                                    $i.line(`export type getTestSet = gtest.F.GetTestSet`)
+                                    $i.line(`export type main = ($: gmain.T.MainData) => void`)
+                                    $i.line(``)
+                                    $i.line(`export type API = {`)
+                                    $i.line(`    'getTestSet': getTestSet`)
+                                    $i.line(`    'main': main`)
+                                    $i.line(`}`)
+                                })
                                 $i.directory("implementations", ($i) => {
                                     $i.allowedManual("getTestSet.p.ts")
                                     $i.file("main.generated.ts", ($i) => {

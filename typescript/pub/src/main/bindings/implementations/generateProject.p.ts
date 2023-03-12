@@ -24,7 +24,7 @@ export const $$: generateProject = ($) => {
     $pure.createProjectGenerator(
         {
 
-            'validateFiles': gpareto2typescript.$a.createFilesValidator({}),
+            'validateFiles': gpareto2typescript.$a.validateFiles,
             'serializeProject': gpareto2typescript.$a.createProjectSerializer(
                 {
                     'dictionaryForEach': d,

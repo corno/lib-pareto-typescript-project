@@ -50,7 +50,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                     "main": group({}),//only possible for submodule
                 }))),
             })),
-            "bindings": member(group({
+            "bindings": member(optional(group({
                 "api": member(group({
                     "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
                     "imports": member(dictionary(taggedUnion({
@@ -61,7 +61,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                     }))),
                 })),
                 "implementation": member(reference("Implementation")),
-            })),
+            }))),
             "pure algorithms": member(group({
                 "api": member(group({
                     "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),

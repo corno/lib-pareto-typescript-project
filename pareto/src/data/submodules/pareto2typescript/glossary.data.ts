@@ -28,6 +28,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         'builders': d({
         }),
         'functions': d({
+            "ValidateFiles": sfunc(typeReference("common", "Null"), null, builderReference("fp", "Directory"), null),
             "SerializeGlossary": sfunc(typeReference("SerializeGlossaryData"), null, builderReference("fp", "Directory"), null),
             "SerializeImplementation": sfunc(parametrizedTypeReference("algorithm", { "Annotation": typeReference("Annotation") }, "Implementation"), null, builderReference("fp", "Directory"), null),
             "SerializeAPI": sfunc(typeReference("SerializeAPIData"), null, builderReference("fp", "Block"), null),

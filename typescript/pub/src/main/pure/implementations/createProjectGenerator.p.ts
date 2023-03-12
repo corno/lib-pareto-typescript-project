@@ -46,10 +46,9 @@ export const $$: createProjectGenerator = ($d) => {
                             $i,
                         )
                         $d.validateFiles(
-                            project,
+                            null,
                             $i,
                         )
-
                     },
                     $i,
                 )

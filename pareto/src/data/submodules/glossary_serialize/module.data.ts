@@ -2,7 +2,6 @@ import * as pd from 'pareto-core-data'
 
 import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
 
-import { $ as bindings } from "./bindings.api.deprecated"
 import { $ as pure } from "./pure.api.deprecated"
 import { $ as glossary } from "./glossary.deprecated"
 import { external, sibling, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
@@ -19,20 +18,7 @@ export const $: gproject.T.Project._ltype.library.submodules.D<pd.SourceLocation
         }),
 
     },
-    'bindings': {
-        'api': {
-            'root': bindings,
-            'imports': d({
-                "foreach": external("res-pareto-foreach"),
-                "this": this_(),
-            }),
-        },
-        'implementation': ['typescript', null],
-        // 'implementation': {
-        //     'implementations': d({}),
-        // },
-
-    },
+    'bindings': [false],
     'pure algorithms': {
         'api': {
             'root': pure,

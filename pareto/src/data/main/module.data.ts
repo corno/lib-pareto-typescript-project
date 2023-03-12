@@ -26,7 +26,7 @@ export const $: gproject.T.Project._ltype.library.main<pd.SourceLocation> = {
             "project": tempSubmodule("project"),
         }),
     },
-    'bindings': {
+    'bindings': [true, {
         'api': {
             'root': binding,
             'imports': d({
@@ -40,7 +40,7 @@ export const $: gproject.T.Project._ltype.library.main<pd.SourceLocation> = {
         },
         'implementation': ['typescript', null],
 
-    },
+    }],
     'pure algorithms': {
         'api': {
             'root': pure,

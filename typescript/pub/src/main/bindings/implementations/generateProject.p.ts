@@ -38,15 +38,6 @@ export const $$: generateProject = ($) => {
                         'createBacktickedString': gts.$r.createBacktickedString,
                         'createQuotedString': gts.$r.createQuotedString,
                     }),
-                    'serializeAPI': gpareto2typescript.$a.createAPISerializer(
-                        {
-                            'dictionaryForEach': d,
-                            'createIdentifier': gts.$r.createIdentifier,
-                            'createApostrophedString': gts.$r.createApostrophedString,
-                            'createBacktickedString': gts.$r.createBacktickedString,
-                            'createQuotedString': gts.$r.createQuotedString,
-                        }
-                    ),
                     'serializeImplementation': gpareto2typescript.$a.createImplementationSerializer(
                         {
                             'arrayForEach': a,

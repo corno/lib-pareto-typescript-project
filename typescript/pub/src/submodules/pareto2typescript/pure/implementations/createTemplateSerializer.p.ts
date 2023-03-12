@@ -1,7 +1,6 @@
 import * as pl from 'pareto-core-lib'
 
 import * as gproject from "../../../project"
-import * as gapi from "../../../api"
 import * as gfp from "lib-fountain-pen"
 
 import { createTemplateSerializer } from "../api.generated"
@@ -22,7 +21,8 @@ export const $$: createTemplateSerializer = (
                         pl.cc($.type[1], ($) => {
                             $i.directory("pub", ($i) => {
                                 function doImplementation(
-                                    $: gapi.T.API<Annotation>,
+                                    
+                                    $: gproject.T.Module.api.root<Annotation>,
                                     $i: gfp.B.Directory,
                                 ) {
                                     $i.directory("implementations", ($i) => {
@@ -54,23 +54,24 @@ export const $$: createTemplateSerializer = (
                                 }
                                 $i.directory("src", ($i) => {
                                     function doModule($: gproject.T.Module<Annotation>, $i: gfp.B.Directory) {
-                                        pl.optional(
-                                            $.bindings,
-                                            ($) => {
-                                                $i.directory(`bindings`, ($i) => {
-        
-                                                    doImplementation($.api.root, $i)
-                                                })
-                                            },
-                                            () => {
-                                            }
-                                        )
-                                        $i.directory(`pure`, ($i) => {
-                                            doImplementation($['pure algorithms'].api.root, $i)
-                                        })
+                                        // pl.optional(
+                                        //     $.bindings,
+                                        //     ($) => {
+                                        //         $i.directory(`bindings`, ($i) => {
+
+                                        //             doImplementation($.api.root, $i)
+                                        //         })
+                                        //     },
+                                        //     () => {
+                                        //     }
+                                        // )
+                                        doImplementation($.api.root, $i)
                                     }
                                     $i.directory("main", ($i) => {
                                         doModule($.main, $i)
+                                    })
+                                    $i.directory("bindings", ($i) => {
+
                                     })
                                     $i.directory("modules", ($i) => {
                                         $d.dictionaryForEach($.submodules, ($) => {
@@ -83,7 +84,10 @@ export const $$: createTemplateSerializer = (
                             })
                             $i.directory("test", ($i) => {
                                 $i.directory("src", ($i) => {
-                                    function doAPI($: gapi.T.API<Annotation>, $i: gfp.B.Directory) {
+                                    function doAPI(
+                                        $: gproject.T.Module.api.root<Annotation>,
+                                        $i: gfp.B.Directory,
+                                        ) {
                                         $d.dictionaryForEach($.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)

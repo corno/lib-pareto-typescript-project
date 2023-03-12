@@ -303,8 +303,6 @@ export const $: gproject.T.Project._ltype.library.main<pd.SourceLocation> = {
         },
         'imports': d({}),
     },
-    'bindings': [false],
-    'pure algorithms': {
         'api': {
             'root': {
                 'algorithms': d({}),
@@ -313,6 +311,4 @@ export const $: gproject.T.Project._ltype.library.main<pd.SourceLocation> = {
             }),
         },
         'implementation': ['pareto', null],
-
-    },
 }

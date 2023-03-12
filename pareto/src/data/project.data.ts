@@ -5,7 +5,6 @@ import * as gproject from "lib-pareto-typescript-project/dist/submodules/project
 
 import { $ as main } from "./main/module.data"
 import { $ as algorithm } from "./submodules/algorithm/module.data"
-import { $ as api } from "./submodules/api/module.data"
 import { $ as pareto2typescript } from "./submodules/pareto2typescript/module.data"
 import { $ as project } from "./submodules/project/module.data"
 import { $ as glossary_serialize } from "./submodules/glossary_serialize/module.data"
@@ -35,7 +34,6 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
             "algorithm": algorithm,
             "glossary": glossary,
             "glossary_serialize": glossary_serialize,
-            "api": api,
             "project": project,
             "pareto2typescript": pareto2typescript,
         }),

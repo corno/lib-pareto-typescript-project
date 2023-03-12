@@ -50,30 +50,27 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                     "main": group({}),//only possible for submodule
                 }))),
             })),
-            "bindings": member(optional(group({
-                "api": member(group({
-                    "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
-                    "imports": member(dictionary(taggedUnion({
-                        "this": group({}),
-                        "submodule": string(),//only possible for main
-                        "sibling": string(),//only possible for submodule
-                        "external": string(),
+            "api": member(group({
+                "root": member(group({
+                    "algorithms": member(dictionary(group({
+                        "definition": member(reference("FunctionReference")),
+                        "type": member(taggedUnion({
+                            "reference": group({}),
+                            "constructor": group({
+                                "configuration data": member(optional(reference("TypeReference"))),
+                                "dependencies": member(dictionary(reference("FunctionReference"))),
+                            }),
+                        })),
                     }))),
                 })),
-                "implementation": member(reference("Implementation")),
-            }))),
-            "pure algorithms": member(group({
-                "api": member(group({
-                    "root": member(parametrizedReference("api", { "Type": typeReference("Annotation") }, "API")),
-                    "imports": member(dictionary(taggedUnion({
-                        "this": group({}),
-                        "submodule": string(),//only possible for main
-                        "sibling": string(),//only possible for submodule
-                        "external": string(),
-                    }))),
-                })),
-                "implementation": member(reference("Implementation")),
+                "imports": member(dictionary(taggedUnion({
+                    "this": group({}),
+                    "submodule": string(),//only possible for main
+                    "sibling": string(),//only possible for submodule
+                    "external": string(),
+                }))),
             })),
+            "implementation": member(reference("Implementation")),
         })),
         "Project": type(group({
             "author": member(string()),
@@ -119,6 +116,21 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 "library": group({
                     "main": member(reference("Module")),
                     "submodules": member(dictionary(reference("Module"))),
+                    "bindings": member(optional(group({
+                        "api": member(group({
+                            "root": member(group({
+                                "algorithms": member(dictionary(group({
+                                    "definition": member(reference("FunctionReference")),
+                                }))),
+                            })),
+                            "imports": member(dictionary(taggedUnion({
+                                "this": group({}),
+                                "submodule": string(),//only possible for main
+                                "external": string(),
+                            }))),
+                        })),
+                        "implementation": member(reference("Implementation")),
+                    }))),
                     "executables": member(dictionary(group({}))),
                     "test": member(reference("Test")),
                 }),

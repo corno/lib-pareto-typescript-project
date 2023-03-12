@@ -8,13 +8,6 @@ const d = pd.d
 
 export const $: gapi.T.API<pd.SourceLocation> = {
     'algorithms': d({
-        "createAPISerializer": algorithm(functionReference("this", {}, "SerializeAPI"), constructor(null, {
-            "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
-            "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),
-            "createApostrophedString": functionReference("ts", {}, "CreateApostrophedString"),
-            "createQuotedString": functionReference("ts", {}, "CreateQuotedString"),
-            "createBacktickedString": functionReference("ts", {}, "CreateBacktickedString"),
-        })),
         "createGlossarySerializer": algorithm(functionReference("this", {}, "SerializeGlossary"), constructor(null, {
             "dictionaryIsEmpty": functionReference("dictionary", {}, "IsEmpty"),
             "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
@@ -39,7 +32,6 @@ export const $: gapi.T.API<pd.SourceLocation> = {
             "dictionaryForEach": functionReference("foreach", {}, "DictionaryForEach"),
             "enrichedDictionaryForEach": functionReference("foreach", {}, "EnrichedDictionaryForEach"),
             "serializeGlossary": functionReference("this", {}, "SerializeGlossary"),
-            "serializeAPI": functionReference("this", {}, "SerializeAPI"),
             "serializeImplementation": functionReference("this", {}, "SerializeImplementation"),
             "createIdentifier": functionReference("ts", {}, "CreateIdentifier"),
             "createApostrophedString": functionReference("ts", {}, "CreateApostrophedString"),

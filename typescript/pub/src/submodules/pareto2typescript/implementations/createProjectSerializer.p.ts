@@ -362,15 +362,15 @@ export const $$: createProjectSerializer = (
                                                             })
                                                         case 'sibling':
                                                             return pl.cc($[1], ($) => {
-                                                                return `../../${$}`
+                                                                return `../${$}`
                                                             })
                                                         case 'submodule':
                                                             return pl.cc($[1], ($) => {
-                                                                return `../../submodules/${$}`
+                                                                return `../submodules/${$}`
                                                             })
                                                         case 'this':
                                                             return pl.cc($[1], ($) => {
-                                                                return `../glossary`
+                                                                return `./glossary`
                                                             })
                                                         default: return pl.au($[0])
                                                     }
@@ -537,11 +537,11 @@ export const $$: createProjectSerializer = (
                                                                     })
                                                                 case 'submodule':
                                                                     return pl.cc($[1], ($) => {
-                                                                        return `../../submodules/${$}`
+                                                                        return `../submodules/${$}`
                                                                     })
                                                                 case 'this':
                                                                     return pl.cc($[1], ($) => {
-                                                                        return `../glossary`
+                                                                        return `../main/glossary`
                                                                     })
                                                                 default: return pl.au($[0])
                                                             }

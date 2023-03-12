@@ -5,7 +5,7 @@ import * as gpareto from "lib-pareto-typescript-project"
 import { $ as project } from "../data/project.data"
 
 pe.runProgram(($) => {
-    gpareto.$b.generateProject({
+    gpareto.$api.generateProject({
         project: project,
         mainData: $,
     })

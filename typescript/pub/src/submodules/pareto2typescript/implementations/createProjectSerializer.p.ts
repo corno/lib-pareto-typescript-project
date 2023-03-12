@@ -622,7 +622,7 @@ export const $$: createProjectSerializer = (
                                     pl.optional(
                                         $.bindings,
                                         () => {
-                                            $i.line(`export * from "./bindings/implementation.generated"`)
+                                            $i.line(`export { $api as $b } from "./bindings/implementation.generated"`)
                                         },
                                         () => {
 

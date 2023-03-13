@@ -27,7 +27,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "Serialize": {
                 'data': {
                     'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
-                        'glossary': "model",
+                        'glossary': {
+                            'key': "model",
+                            'annotation': pd.getLocationInfo(0),
+                        },
                     }],
                     'type': "Glossary",
                     'arguments': d({}),
@@ -35,7 +38,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 'input builder': [false],
                 'output builder': [true, {
                     'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
-                        'glossary': "fp",
+                        'glossary': {
+                            'key': "fp",
+                            'annotation': pd.getLocationInfo(0),
+                        },
                     }],
                     'builder': "Block",
                 }],

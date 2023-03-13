@@ -61,7 +61,7 @@ export const $$: createGlossarySerializer = ($d) => {
                 switch ($[0]) {
                     case 'import':
                         pl.cc($[1], ($) => {
-                            $i.snippet(`g_${$.glossary/*.name*/}.`)
+                            $i.snippet(`g_${$.glossary.key}.`)
                         })
                         break
                     case 'local':

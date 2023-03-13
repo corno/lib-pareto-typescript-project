@@ -76,17 +76,26 @@ export const $$: generateProject = ($) => {
         {
             'nodes': {
                 'manualNode': ($) => {
-                    g_main.$r.log(g_fp.$a.createAllowedNodeMessage($))
+                    g_main.$r.log(null, ($i) => {
+                        g_fp.$a.createAllowedNodeMessage($)
+                    })
                 },
                 'superfluousNode': ($) => {
-                    g_main.$r.logError(g_fp.$a.createSuperfluousNodeMessage($))
-
+                    g_main.$r.logError(null, ($i) => {
+                        g_fp.$a.createSuperfluousNodeMessage($)
+                    })
                 }
-
             },
-            'readDirError': ($) => g_fse.$a.readDir($, g_main.$r.logError),
-            'writeFileError': ($) => g_fse.$a.writeFile($, g_main.$r.logError),
-            
+            'readDirError': ($) => {
+                g_main.$r.logError(null, ($i) => {
+                    g_fse.$a.readDir($, $i)
+                })
+            },
+            'writeFileError': ($) => {
+                g_main.$r.logError(null, ($i) => {
+                    g_fse.$a.writeFile($, $i)
+                })
+            },
         }
     )
 }

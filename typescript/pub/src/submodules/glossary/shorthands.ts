@@ -205,10 +205,10 @@ export function inf($: t.T.InterfaceReference<pd.SourceLocation>): t.T.Glossary.
 
 export function sfunc(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.BuilderReference<pd.SourceLocation> | null, oi: t.T.BuilderReference<pd.SourceLocation> | null, returnType: null | t.T.Glossary._ltype.synchronous.functions.D.return__type<pd.SourceLocation>): t.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation> {
     if (oi !== null && returnType !== null) {
-        pv.logDebugMessage(`${pd.getLocationInfo(1)}: BOTH DATA AND INTERFACE`)
+        pv.logDebugMessage(`${pd.getLocationInfo(1)}: BOTH DATA AND OUTPUT INTERFACE`)
     }
     if (oi === null && returnType === null) {
-        pv.logDebugMessage(`${pd.getLocationInfo(1)}: NO DATA AND NO INTERFACE`)
+        pv.logDebugMessage(`${pd.getLocationInfo(1)}: NO DATA AND NO OUTPUT INTERFACE${mii === null ? ``: ` (BUT INPUT INTERFACE)`}`)
     }
     return {
         'return type': returnType === null

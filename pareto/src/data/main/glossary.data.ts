@@ -18,9 +18,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "Annotation": null,
     }),
     'imports': d({
+        "common": imp({}),
+        "fp": imp({}),
+        "main": imp({}),
         "project": imp({
             "Annotation": typeReference("Annotation")
-        })
+        }),
     }),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),

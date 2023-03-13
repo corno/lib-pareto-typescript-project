@@ -14,6 +14,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'imports': d({
         "algorithm": imp({ "Annotation": typeReference("Annotation") }),
+        "common": imp({}),
+        "fp": imp({}),
         "glossary": imp({ "Annotation": typeReference("Annotation") }),
         "project": imp({ "Annotation": typeReference("Annotation") }),
     }),

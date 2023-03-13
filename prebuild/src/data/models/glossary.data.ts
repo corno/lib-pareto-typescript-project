@@ -15,6 +15,9 @@ import {
     prop,
     optional,
     option,
+    typePath,
+    grp,
+    tbd,
 } from "lib-liana/dist/submodules/liana/shorthands"
 
 const d = pd.d
@@ -31,7 +34,7 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                 "local": option(group({})),
                 //"import": reference(['parent', null), [)),
                 "import": option(group({
-                    "glossary": prop(terminal("identifier")),
+                    "glossary": prop(reference(typePath("Glossary", [grp("imports")]), tbd())),
                 })),
             })),
             "Glossary": globalType({}, group({

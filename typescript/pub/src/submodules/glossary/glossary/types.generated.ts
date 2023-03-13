@@ -70,11 +70,24 @@ export namespace T {
         
         export namespace _limport {
             
-            export type glossary<GAnnotation> = string
+            export namespace glossary {
+                
+                export type annotation<GAnnotation> = GAnnotation
+                
+                export type key<GAnnotation> = string
+            }
+            
+            export type glossary<GAnnotation> = {
+                readonly 'annotation': GAnnotation
+                readonly 'key': string
+            }
         }
         
         export type _limport<GAnnotation> = {
-            readonly 'glossary': string
+            readonly 'glossary': {
+                readonly 'annotation': GAnnotation
+                readonly 'key': string
+            }
         }
         
         export namespace local {}
@@ -84,7 +97,10 @@ export namespace T {
     
     export type Context<GAnnotation> = 
         | ['import', {
-            readonly 'glossary': string
+            readonly 'glossary': {
+                readonly 'annotation': GAnnotation
+                readonly 'key': string
+            }
         }]
         | ['local', null]
     

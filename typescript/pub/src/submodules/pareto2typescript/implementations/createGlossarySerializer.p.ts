@@ -2,6 +2,7 @@ import * as pl from 'pareto-core-lib'
 import * as pt from 'pareto-core-types'
 import * as pd from 'pareto-core-dev'
 
+import * as g_this from "../glossary"
 import * as g_glossary from "../../glossary"
 import * as g_fp from "lib-fountain-pen"
 
@@ -16,7 +17,7 @@ import { createGlossarySerializer } from "../api.generated"
 
 export const $$: createGlossarySerializer = ($d) => {
 
-    return ($, $i) => {
+    return <Annotation>($: g_this.T.SerializeGlossaryData<Annotation>, $i: g_fp.B.Directory) => {
         const imports = $.imports
         return pl.cc($.glossary, ($) => {
             const globalParameters = $.parameters
@@ -56,7 +57,7 @@ export const $$: createGlossarySerializer = ($d) => {
                     default: pl.au($[0])
                 }
             }
-            function serializeContext($: g_glossary.T.Context<string>, $i: g_fp.B.Line) {
+            function serializeContext($: g_glossary.T.Context<Annotation>, $i: g_fp.B.Line) {
                 switch ($[0]) {
                     case 'import':
                         pl.cc($[1], ($) => {
@@ -71,7 +72,7 @@ export const $$: createGlossarySerializer = ($d) => {
                     default: pl.au($[0])
                 }
             }
-            function serializeTypeReference($: g_glossary.T.TypeReference<string>, $i: g_fp.B.Line) {
+            function serializeTypeReference($: g_glossary.T.TypeReference<Annotation>, $i: g_fp.B.Line) {
                 serializeContext($.context, $i)
                 $i.snippet(`T.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
                 $d.enrichedDictionaryForEach($.arguments, {
@@ -84,7 +85,7 @@ export const $$: createGlossarySerializer = ($d) => {
                             case 'import':
                                 pl.cc($.context[1], ($) => {
                                     importDefinitions.__getEntry(
-                                        $.glossary,
+                                        $.glossary.key,
                                         ($) => {
                                             $d.dictionaryForEach($.arguments, ($) => {
                                                 serializeTypeReference($.value, $i)
@@ -92,7 +93,7 @@ export const $$: createGlossarySerializer = ($d) => {
                                             })
                                         },
                                         () => {
-                                                pd.logDebugMessage(`missing import: ${$.glossary}`)
+                                                pd.logDebugMessage(`missing import: ${$.glossary.key}`)
                                         }
                                     )
                                 })
@@ -115,14 +116,14 @@ export const $$: createGlossarySerializer = ($d) => {
                 })
             }
             function serializeContextArgumentsOnly(
-                $: g_glossary.T.Context<string>,
+                $: g_glossary.T.Context<Annotation>,
                 $i: g_fp.B.Line,
             ) {
                 switch ($[0]) {
                     case 'import':
                         pl.cc($[1], ($) => {
                             importDefinitions.__getEntry(
-                                $.glossary,
+                                $.glossary.key,
                                 ($) => {
                                     $d.enrichedDictionaryForEach($.arguments, {
                                         'onEmpty': () => {
@@ -204,7 +205,7 @@ export const $$: createGlossarySerializer = ($d) => {
                             const typeParameters = $.value.parameters
                             function serializeTypeAliasAndPossibleNamespace(
                                 $: {
-                                    type: g_glossary.T.Type<string>,
+                                    type: g_glossary.T.Type<Annotation>,
                                     name: string,
                                 },
                                 $i: g_fp.B.Block,
@@ -248,7 +249,7 @@ export const $$: createGlossarySerializer = ($d) => {
                                     }
                                     function createCurrentAndSerializeType(
                                         $: {
-                                            type: g_glossary.T.Type<string>,
+                                            type: g_glossary.T.Type<Annotation>,
                                             nextName: string,
                                         },
                                         $i: g_fp.B.Block,
@@ -393,7 +394,7 @@ export const $$: createGlossarySerializer = ($d) => {
                                 $i.line(``)
                                 $i.nestedLine(($i) => {
                                     function serializeType(
-                                        $: g_glossary.T.Type<string>,
+                                        $: g_glossary.T.Type<Annotation>,
                                         $i: g_fp.B.Line,
                                     ): void {
                                         switch ($[0]) {
@@ -552,7 +553,7 @@ export const $$: createGlossarySerializer = ($d) => {
             })
             $i.file(`public.generated.ts`, ($i) => {
 
-                function serializeBuilder($: g_glossary.T.Builder<string>, $i: g_fp.B.Line) {
+                function serializeBuilder($: g_glossary.T.Builder<Annotation>, $i: g_fp.B.Line) {
                     switch ($[0]) {
                         case 'group':
                             pl.cc($[1], ($) => {
@@ -609,13 +610,13 @@ export const $$: createGlossarySerializer = ($d) => {
                     }
 
                 }
-                function serializeBuilderReference($: g_glossary.T.BuilderReference<string>, $i: g_fp.B.Line) {
+                function serializeBuilderReference($: g_glossary.T.BuilderReference<Annotation>, $i: g_fp.B.Line) {
                     serializeContext($.context, $i)
                     $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
                     serializeContextArgumentsOnly($.context, $i)
 
                 }
-                function serializeInterface($: g_glossary.T.Interface<string>, $i: g_fp.B.Line) {
+                function serializeInterface($: g_glossary.T.Interface<Annotation>, $i: g_fp.B.Line) {
                     switch ($[0]) {
                         case 'choice':
                             pl.cc($[1], ($) => {
@@ -688,7 +689,7 @@ export const $$: createGlossarySerializer = ($d) => {
                     }
 
                 }
-                function serializeInterfaceReference($: g_glossary.T.InterfaceReference<string>, $i: g_fp.B.Line) {
+                function serializeInterfaceReference($: g_glossary.T.InterfaceReference<Annotation>, $i: g_fp.B.Line) {
                     serializeContext($.context, $i)
                     $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
                     serializeContextArgumentsOnly($.context, $i)

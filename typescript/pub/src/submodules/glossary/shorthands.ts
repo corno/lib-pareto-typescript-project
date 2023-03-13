@@ -85,13 +85,15 @@ export function ref(typeReference: t.T.TypeReference<pd.SourceLocation>): t.T.Ty
     return ['reference',typeReference]
 }
 
-export function context(glossary?: string): t.T.Context<pd.SourceLocation> {
+export function context(glossary: string, annotation: pd.SourceLocation): t.T.Context<pd.SourceLocation> {
     if (glossary === undefined) {
         return ['local', null]
     } else {
         return ['import', {
-            'glossary': glossary,
-            //'arguments': pd.d(args === undefined ? {} : args)
+            'glossary': {
+                'annotation': annotation,
+                'key': glossary,
+            },
         }]
     }
 }
@@ -108,7 +110,7 @@ export function externalTypeReference(
     typeArgs?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>
 ): t.T.TypeReference<pd.SourceLocation> {
     return {
-        'context': context(contextX),
+        'context': context(contextX, pd.getLocationInfo(1)),
         'type': type,
         'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
     }
@@ -119,7 +121,7 @@ export function typeReference(
     typeArgs?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>
 ): t.T.TypeReference<pd.SourceLocation> {
         return {
-            'context': context(),
+            'context': ['local', null],
             'type': type,
             'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
         }
@@ -133,7 +135,7 @@ export function builderReference(contextOrBuilder: string, builder?: string): t.
         }
     } else {
         return {
-            'context': context(contextOrBuilder),
+            'context': context(contextOrBuilder, pd.getLocationInfo(1)),
             'builder': builder,
         }
     }
@@ -147,7 +149,7 @@ export function interfaceReference(contextOrInterface: string, inf?: string): t.
         }
     } else {
         return {
-            'context': context(contextOrInterface),
+            'context': context(contextOrInterface, pd.getLocationInfo(1)),
             'interface': inf,
         }
     }

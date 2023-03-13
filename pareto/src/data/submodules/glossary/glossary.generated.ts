@@ -66,7 +66,14 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
                 "import": <gglossary.T.Type<pd.SourceLocation>>['group', d({
                     "glossary": {
-                        'type': <gglossary.T.Type<pd.SourceLocation>>['string', null],
+                        'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                            "annotation": {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['glossary parameter', "Annotation"],
+                            },
+                            "key": {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['string', null],
+                            },
+                        })],
                     },
                 })],
                 "local": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],

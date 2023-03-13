@@ -856,7 +856,7 @@ export const $$: createProjectSerializer = (
                                     $i.allowedManual("getTestSet.p.ts")
                                     $i.file("main.generated.ts", ($i) => {
                                         $i.line(`import * as pl from 'pareto-core-lib'`)
-                                        $i.line(``)
+                                        $i.line(`import * as pv from 'pareto-core-dev'`)
                                         $i.line(``)
                                         $i.line(`import * as g_main from "res-pareto-main"`)
                                         $i.line(`import * as g_test from "lib-pareto-test"`)

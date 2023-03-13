@@ -3,7 +3,7 @@ import * as pd from 'pareto-core-data'
 import {
     array, boolean, builderReference, dictionary,
     sfunc, glossaryParameter, group, member,
-    optional, reference, string, taggedUnion, type, typeReference, types
+    optional, string, taggedUnion, type, typeReference, ref
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -14,43 +14,44 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({
         "Annotation": null,
     }),
+    'imports': d({}),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
         "SynchronousFunctionBlock": type(group({
             "innerFunctions": member(dictionary(group({
-                "block": member(reference("SynchronousFunctionBlock")),
+                "block": member(ref(typeReference("SynchronousFunctionBlock"))),
             }))),
-            "returnExpression": member(reference("SynchronousExpression")),
+            "returnExpression": member(ref(typeReference("SynchronousExpression"))),
         })),
         "AsynchronousFunctionBlock": type(group({
             "innerFunctions": member(dictionary(group({
-                "block": member(reference("AsynchronousFunctionBlock")),
+                "block": member(ref(typeReference("AsynchronousFunctionBlock"))),
             }))),
-            "returnExpression": member(reference("AsynchronousExpression")),
+            "returnExpression": member(ref(typeReference("AsynchronousExpression"))),
         })),
         "ProcedureBlock": type(group({
             "innerFunctions": member(dictionary(group({
-                "type": member(reference("ImplementationType")),
+                "type": member(ref(typeReference("ImplementationType"))),
             }))),
             "statements": member(array(taggedUnion({
                 "dependencyCall": group({
                     "data": member(string()),
-                    "callback": member(reference("ProcedureBlock")),
+                    "callback": member(ref(typeReference("ProcedureBlock"))),
                 }),
                 "innerCallbackCall": group({
                     "innerCallback": member(string()),
-                    "data": member(reference("SynchronousExpression")),
+                    "data": member(ref(typeReference("SynchronousExpression"))),
                     "interface": member(string()),
                 }),
                 "interfaceCall": group({
                     "child path": member(array(string())),
                     //"property": member(array(string())),
-                    "data": member(optional(reference("SynchronousExpression"))),
-                    "callback": member(optional(reference("ProcedureBlock"),)),
+                    "data": member(optional(ref(typeReference("SynchronousExpression")))),
+                    "callback": member(optional(ref(typeReference("ProcedureBlock")))),
                 }),
                 "switch": group({
                     "path": member(array(string())),
-                    "cases": member(dictionary(reference("ProcedureBlock"))),
+                    "cases": member(dictionary(ref(typeReference("ProcedureBlock")))),
                 }),
             }))),
         })),
@@ -70,61 +71,61 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             }),
             "implementMe": string(),
             "groupInitializer": group({
-                "properties": member(dictionary(reference("SynchronousExpression"))),
+                "properties": member(dictionary(ref(typeReference("SynchronousExpression")))),
             }),
             "switch": group({
-                "cases": member(dictionary(reference("SynchronousFunctionBlock"))),
+                "cases": member(dictionary(ref(typeReference("SynchronousFunctionBlock")))),
             }),
             "propertySelection": group({
                 "name": member(string()),
             }),
             "contextChange": group({
                 "property": member(string()),
-                "block": member(reference("SynchronousFunctionBlock")),
+                "block": member(ref(typeReference("SynchronousFunctionBlock"))),
             }),
             "string literal": string(),
             "mapDictionary": group({
-                "block": member(reference("SynchronousFunctionBlock")),
+                "block": member(ref(typeReference("SynchronousFunctionBlock"))),
             }),
             "mapArray": group({
-                "block": member(reference("SynchronousFunctionBlock")),
+                "block": member(ref(typeReference("SynchronousFunctionBlock"))),
             }),
         })),
         "Implementation": type(group({
             "implementations": member(dictionary(group({
                 "constructor": member(boolean()),
-                "type": member(reference("ImplementationType")),
+                "type": member(ref(typeReference("ImplementationType"))),
             }))),
         })),
         "ImplementationType": type(taggedUnion({
             "synchronous function": group({
-                "block": member(reference("SynchronousFunctionBlock")),
+                "block": member(ref(typeReference("SynchronousFunctionBlock"))),
             }),
             "asynchronous function": group({
-                "block": member(reference("AsynchronousFunctionBlock")),
+                "block": member(ref(typeReference("AsynchronousFunctionBlock"))),
             }),
             "procedure": group({
-                "block": member(reference("ProcedureBlock")),
+                "block": member(ref(typeReference("ProcedureBlock"))),
             }),
             "interface initializer": group({
-                "block": member(reference("InterfaceInitializerBlock")),
+                "block": member(ref(typeReference("InterfaceInitializerBlock"))),
             }),
         })),
-        "States": type(dictionary(reference("Type"))),
+        "States": type(dictionary(ref(typeReference("Type")))),
         "Type": type(taggedUnion({
-            "array": reference("Type"),
-            "optional": reference("Type"),
-            "dictionary": reference("Type"),
+            "array": ref(typeReference("Type")),
+            "optional": ref(typeReference("Type")),
+            "dictionary": ref(typeReference("Type")),
             "null": group({}),
             "boolean": group({}),
             "string": group({}),
             "number": group({}),
             "reference": string(),
             "group": dictionary(group({
-                "type": member(reference("Type")),
+                "type": member(ref(typeReference("Type"))),
             })),
             "parameter": string(),
-            "taggedUnion": dictionary(reference("Type")),
+            "taggedUnion": dictionary(ref(typeReference("Type"))),
         })),
     }),
     'type': ['synchronous', {

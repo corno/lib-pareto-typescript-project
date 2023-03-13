@@ -65,6 +65,7 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
             }),
             'glossary': {
                 'parameters': d({}),
+                'imports': d({}),
                 'types': d({}),
                 'type': ['synchronous', {
                     'builders': d({}),

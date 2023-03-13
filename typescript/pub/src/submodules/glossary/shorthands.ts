@@ -103,12 +103,12 @@ export function imp(args: RawDictionary<t.T.TypeReference<pd.SourceLocation>>): 
 }
 
 export function externalTypeReference(
-    context: string,
+    contextX: string,
     type: string,
     typeArgs?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>
 ): t.T.TypeReference<pd.SourceLocation> {
     return {
-        'context': context(context),
+        'context': context(contextX),
         'type': type,
         'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
     }

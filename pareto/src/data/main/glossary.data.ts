@@ -1,14 +1,12 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    reference,
     boolean,
     string,
-    parametrizedReference,
     builderMethod,
     null_,
     sdata,
-    array, dictionary, group, member, taggedUnion, types, typeReference, builderReference, sfunc, type, glossaryParameter, optional,
+    array, dictionary, group, member, taggedUnion, types, typeReference, builderReference, sfunc, type, glossaryParameter, optional, imp, externalTypeReference, ref,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -19,6 +17,11 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({
         "Annotation": null,
     }),
+    'imports': d({
+        "project": imp({
+            "Annotation": typeReference("Annotation")
+        })
+    }),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
         "ArgumentError": type(taggedUnion({
@@ -26,8 +29,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "too many": null_(),
         })),
         "ProjectSettings": type(group({
-            "project": member(parametrizedReference("project", { "Annotation": typeReference("Annotation") }, "Project")),
-            "mainData": member(reference("main", "MainData")),
+            "project": member(ref(externalTypeReference("project", "Project"))),
+            "mainData": member(ref(externalTypeReference("main", "MainData"))),
         })),
         "Parameters": type(group({
             "testDirectory": member(string()),
@@ -35,8 +38,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'type': ['synchronous', {
         'builders': d({
-            "ParseArguments": builderMethod(typeReference("main", "Arguments")),
-            "ProcessArgument": builderMethod(typeReference("common", "String")),
+            "ParseArguments": builderMethod(externalTypeReference("main", "Arguments")),
+            "ProcessArgument": builderMethod(externalTypeReference("common", "String")),
             "HandleParameters": builderMethod(typeReference("Parameters")),
         }),
         'functions': d({
@@ -44,7 +47,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "GenerateProjectAndReport": sfunc(typeReference("ProjectSettings"), null, builderReference("fp", "Report"), null),
             //"GetSingleArgument": sfunc(typeReference("main", "Arguments"), null, null, sdata(typeReference("common", "String"), true)),
             "HandleArgumentError": sfunc(typeReference("ArgumentError"), null, null, null),
-            "ParseArguments2": sfunc(typeReference("main", "Arguments"), null, builderReference("HandleParameters"), null),
+            "ParseArguments2": sfunc(externalTypeReference("main", "Arguments"), null, builderReference("HandleParameters"), null),
         }),
 
     }],

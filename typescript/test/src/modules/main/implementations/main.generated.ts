@@ -1,4 +1,5 @@
 import * as pl from 'pareto-core-lib'
+import * as pv from 'pareto-core-dev'
 
 
 import * as g_main from "res-pareto-main"
@@ -11,8 +12,8 @@ import {  main } from "../api.generated"
 export const $$: main = ($) => {
     g_test.$a.createTestProgram({
         'getTestSet': getTestSet,
-        'log': g_main.$r.log,
-        'logError': g_main.$r.logError,
-        'onTestErrors': g_main.$r.setExitCodeToFailed
+        'log': pv.logDebugMessage,
+        'logError': pv.logDebugMessage,
+        'onTestErrors': () => { pv.logDebugMessage("ERROR XX") }
     })($)
 }

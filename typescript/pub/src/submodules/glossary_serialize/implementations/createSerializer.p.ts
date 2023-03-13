@@ -200,18 +200,6 @@ export const $$: createSerializer = ($d) => {
                             $i.nestedLine(($i) => {
                                 $i.snippet(`'glossary': "${$.glossary}",`)
                             })
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`'arguments': d({`)
-                                $i.indent(($i) => {
-                                    $d.dictionaryForEach($.arguments, ($) => {
-                                        $i.nestedLine(($i) => {
-                                            $i.snippet(`"${$.key}": `)
-                                            serializeTypeReference($.value, $i)
-                                        })
-                                    })
-                                })
-                                $i.snippet(`}),`)
-                            })
                         })
                         $i.snippet(`}]`)
                     })
@@ -418,6 +406,42 @@ export const $$: createSerializer = ($d) => {
                     })
                     $i.snippet(`}),`)
                 })
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'imports': d({`)
+                    $i.indent(($i) => {
+                        $d.dictionaryForEach($.imports, ($) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`"${$.key}": {`)
+                                $i.indent(($i) => {
+                                    pl.cc($.value, ($) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'arguments': d({`)
+                                            $i.indent(($i) => {
+                                                $d.dictionaryForEach($.arguments, ($) => {
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`"${$.key}": `)
+                                                        serializeTypeReference($.value, $i)
+                                                    })
+                                                })
+                                            })
+                                            $i.snippet(`}),`)
+                                        })
+
+                                    })
+                    
+                                })
+                                $i.snippet(`},`)
+                            })
+                        })
+                    })
+                    $i.snippet(`}),`)
+                })
+
+
+
+
+
+
                 $i.nestedLine(($i) => {
                     $i.snippet(`'types': d({`)
                     $i.indent(($i) => {

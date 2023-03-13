@@ -1,5 +1,6 @@
 import * as pl from 'pareto-core-lib'
 import * as pt from 'pareto-core-types'
+import * as pd from 'pareto-core-dev'
 
 import * as g_glossary from "../../glossary"
 import * as g_fp from "lib-fountain-pen"
@@ -19,6 +20,7 @@ export const $$: createGlossarySerializer = ($d) => {
         const imports = $.imports
         return pl.cc($.glossary, ($) => {
             const globalParameters = $.parameters
+            const importDefinitions = $.imports
 
             function ns(
                 $: string,
@@ -81,10 +83,18 @@ export const $$: createGlossarySerializer = ($d) => {
                         switch ($.context[0]) {
                             case 'import':
                                 pl.cc($.context[1], ($) => {
-                                    $d.dictionaryForEach($.arguments, ($) => {
-                                        serializeTypeReference($.value, $i)
-                                        $i.snippet(`, `)
-                                    })
+                                    importDefinitions.__getEntry(
+                                        $.glossary,
+                                        ($) => {
+                                            $d.dictionaryForEach($.arguments, ($) => {
+                                                serializeTypeReference($.value, $i)
+                                                $i.snippet(`, `)
+                                            })
+                                        },
+                                        () => {
+                                                pd.logDebugMessage(`missing import: ${$.glossary}`)
+                                        }
+                                    )
                                 })
                                 break
                             case 'local':
@@ -111,20 +121,28 @@ export const $$: createGlossarySerializer = ($d) => {
                 switch ($[0]) {
                     case 'import':
                         pl.cc($[1], ($) => {
-                            $d.enrichedDictionaryForEach($.arguments, {
-                                'onEmpty': () => {
-
-                                },
-                                'onNotEmpty': ($c) => {
-                                    $i.snippet(`<`)
-                                    $c(($) => {
-                                        serializeTypeReference($.value, $i)
-
-                                        $i.snippet(`${$.isLast ? `` : `, `}`)
+                            importDefinitions.__getEntry(
+                                $.glossary,
+                                ($) => {
+                                    $d.enrichedDictionaryForEach($.arguments, {
+                                        'onEmpty': () => {
+        
+                                        },
+                                        'onNotEmpty': ($c) => {
+                                            $i.snippet(`<`)
+                                            $c(($) => {
+                                                serializeTypeReference($.value, $i)
+        
+                                                $i.snippet(`${$.isLast ? `` : `, `}`)
+                                            })
+                                            $i.snippet(`>`)
+                                        }
                                     })
-                                    $i.snippet(`>`)
+                                },
+                                () => {
+                                        pd.logDebugMessage(`missing import: ${$.glossary}`)
                                 }
-                            })
+                            )
                         })
                         break
                     case 'local':

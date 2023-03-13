@@ -12,11 +12,12 @@ import {
     glossaryParameter,
     group,
     member,
-    reference,
+    // reference,
     array,
     interfaceMethod,
     builderMethod,
     type,
+    ref,
 } from "../../../../../../pub/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "../../../../../../pub/dist/submodules/glossary"
@@ -27,21 +28,22 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({
         "Annotation": null,
     }),
+    'imports': d({}),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
         "AnnotatedToken": type(group({
-            "token": member(reference("Token")),
+            "token": member(ref(typeReference("Token"))),
             "annotation": member(glossaryParameter("Annotation"))
         })),
         "MultilineStringData": type(group({
             "lines": member(array(string()))
         })),
         "SimpleStringData": type(group({
-            "wrapping": member(reference("Wrapping")),
+            "wrapping": member(ref(typeReference("Wrapping"))),
             "value": member(string()),
         })),
         "StructuralTokenData": type(group({
-            "type": member(reference("StructuralTokenType"))
+            "type": member(ref(typeReference("StructuralTokenType")))
         })),
         "StructuralTokenType": type(taggedUnion({
             "tagged union start": group({}),
@@ -56,9 +58,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         })),
         "Token": type(taggedUnion({
             "header start": group({}),
-            "structural": reference("StructuralTokenData"),
-            "simple string": reference("SimpleStringData"),
-            "multiline string": reference("MultilineStringData"),
+            "structural": ref(typeReference("StructuralTokenData")),
+            "simple string": ref(typeReference("SimpleStringData")),
+            "multiline string": ref(typeReference("MultilineStringData")),
         })),
         "Wrapping": type(taggedUnion({
             "quote": group({}),

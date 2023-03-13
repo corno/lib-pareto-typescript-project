@@ -81,65 +81,48 @@ export function member($: t.T.Type<pd.SourceLocation>): t.T.Type.group.D<pd.Sour
     }
 }
 
-export function reference(contextOrType: string, type?: string): t.T.Type<pd.SourceLocation> {
-    return ['reference', typeReference(contextOrType, type)]
+export function ref(typeReference: t.T.TypeReference<pd.SourceLocation>): t.T.Type<pd.SourceLocation> {
+    return ['reference',typeReference]
 }
 
-export function context(glossary?: string, args?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>): t.T.Context<pd.SourceLocation> {
+export function context(glossary?: string): t.T.Context<pd.SourceLocation> {
     if (glossary === undefined) {
         return ['local', null]
     } else {
         return ['import', {
             'glossary': glossary,
-            'arguments': pd.d(args === undefined ? {} : args)
+            //'arguments': pd.d(args === undefined ? {} : args)
         }]
     }
 }
 
-export function parametrizedReference(
-    contextOrType: string,
-    glossaryArgsOrTypeArgs: RawDictionary<t.T.TypeReference<pd.SourceLocation>>,
-    type?: string,
-    typeArgs?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>
-): t.T.Type<pd.SourceLocation> {
-    return ['reference', parametrizedTypeReference(
-        contextOrType,
-        glossaryArgsOrTypeArgs,
-        type,
-        typeArgs
-    )]
+export function imp(args: RawDictionary<t.T.TypeReference<pd.SourceLocation>>): t.T.Glossary.imports.D<pd.SourceLocation> {
+    return {
+        'arguments': pd.d(args)
+    }
 }
 
-export function parametrizedTypeReference(
-    contextOrType: string,
-    glossaryArgsOrTypeArgs: RawDictionary<t.T.TypeReference<pd.SourceLocation>>,
-    type?: string,
+export function externalTypeReference(
+    context: string,
+    type: string,
     typeArgs?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>
 ): t.T.TypeReference<pd.SourceLocation> {
-    if (type === undefined) {
-        return {
-            'context': context(),
-            'type': contextOrType,
-            'arguments': pd.d(glossaryArgsOrTypeArgs),
-        }
-    } else {
-        return {
-            'context': context(contextOrType, glossaryArgsOrTypeArgs),
-            'type': type,
-            'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
-        }
+    return {
+        'context': context(context),
+        'type': type,
+        'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
     }
 }
 
 export function typeReference(
-    contextOrType: string,
-    type?: string,
+    type: string,
+    typeArgs?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>
 ): t.T.TypeReference<pd.SourceLocation> {
-    if (type === undefined) {
-        return parametrizedTypeReference(contextOrType, {})
-    } else {
-        return parametrizedTypeReference(contextOrType, {}, type, {})
-    }
+        return {
+            'context': context(),
+            'type': type,
+            'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
+        }
 }
 
 export function builderReference(contextOrBuilder: string, builder?: string): t.T.BuilderReference<pd.SourceLocation> {
@@ -170,19 +153,6 @@ export function interfaceReference(contextOrInterface: string, inf?: string): t.
     }
 }
 
-export function parametrizedBuilderReference(contextOrBuilder: string, args: RawDictionary<t.T.TypeReference<pd.SourceLocation>>, builder: string): t.T.BuilderReference<pd.SourceLocation> {
-    return {
-        'context': context(contextOrBuilder, args),
-        'builder': builder,
-    }
-}
-export function parametrizedInterfaceReference(contextOrInterface: string, args: RawDictionary<t.T.TypeReference<pd.SourceLocation>>, inf: string): t.T.InterfaceReference<pd.SourceLocation> {
-    return {
-        'context': context(contextOrInterface, args),
-        'interface': inf,
-    }
-}
-
 export function nothing(): ['nothing', null] {
     return ['nothing', null]
 }
@@ -210,7 +180,7 @@ export function sfunc(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.Build
         pv.logDebugMessage(`${locAsString}: BOTH DATA AND OUTPUT INTERFACE`)
     }
     if (oi === null && returnType === null) {
-        pv.logDebugMessage(`${locAsString}: NO DATA AND NO OUTPUT INTERFACE${mii === null ? ``: ` (BUT INPUT INTERFACE)`}`)
+        pv.logDebugMessage(`${locAsString}: NO DATA AND NO OUTPUT INTERFACE${mii === null ? `` : ` (BUT INPUT INTERFACE)`}`)
     }
     return {
         'return type': returnType === null

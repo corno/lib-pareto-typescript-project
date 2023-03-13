@@ -70,18 +70,10 @@ export namespace T {
         
         export namespace _limport {
             
-            export namespace arguments {
-                
-                export type D<GAnnotation> = T.TypeReference<GAnnotation>
-            }
-            
-            export type arguments<GAnnotation> = pt.Dictionary<T.TypeReference<GAnnotation>>
-            
             export type glossary<GAnnotation> = string
         }
         
         export type _limport<GAnnotation> = {
-            readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
             readonly 'glossary': string
         }
         
@@ -92,12 +84,32 @@ export namespace T {
     
     export type Context<GAnnotation> = 
         | ['import', {
-            readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
             readonly 'glossary': string
         }]
         | ['local', null]
     
     export namespace Glossary {
+        
+        export namespace imports {
+            
+            export namespace D {
+                
+                export namespace arguments {
+                    
+                    export type D<GAnnotation> = T.TypeReference<GAnnotation>
+                }
+                
+                export type arguments<GAnnotation> = pt.Dictionary<T.TypeReference<GAnnotation>>
+            }
+            
+            export type D<GAnnotation> = {
+                readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
+            }
+        }
+        
+        export type imports<GAnnotation> = pt.Dictionary<{
+            readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
+        }>
         
         export namespace parameters {
             
@@ -335,6 +347,9 @@ export namespace T {
     }
     
     export type Glossary<GAnnotation> = {
+        readonly 'imports': pt.Dictionary<{
+            readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
+        }>
         readonly 'parameters': pt.Dictionary<null>
         readonly 'type': 
             | ['asynchronous', {

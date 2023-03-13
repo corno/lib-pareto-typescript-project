@@ -16,6 +16,7 @@ export const $: g_project.T.Project._ltype.library.main<pd.SourceLocation> = {
             'parameters': d({
                 "Annotation": null,
             }),
+            'imports': d({}),
             // 'templates': d({
             //     "Reference": {
             //         'parameters': d({

@@ -32,11 +32,12 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                 //"import": reference(['parent', null), [)),
                 "import": option(group({
                     "glossary": prop(terminal("identifier")),
-                    "arguments": prop(dictionary(component("TypeReference", {}))),
                 })),
             })),
             "Glossary": globalType({}, group({
-                //"imports": prop(dictionary(group({}))),
+                "imports": prop(dictionary(group({
+                    "arguments": prop(dictionary(component("TypeReference", {}))),
+                }))),
                 "parameters": prop(dictionary(group({}))),
                 "types": prop(dictionary(group({
                     "parameters": prop(dictionary(group({}))),

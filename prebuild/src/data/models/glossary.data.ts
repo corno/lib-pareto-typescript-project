@@ -61,16 +61,19 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                     })),
                     "asynchronous": option(group({
                         "interfaces": prop(dictionary(component("Interface", {}))),
-
+                        "resources": prop(dictionary(group({
+                            "data": prop(component("TypeReference", {})),
+                            "interface": prop(component("InterfaceReference", {})),
+                        }))),
                         "functions": prop(dictionary(group({
-                            "return type": prop(taggedUnion({
-                                "data": option(group({
-                                    "type": prop(component("TypeReference", {})),
-                                })),
+                            "out": prop(taggedUnion({
+                                "data": option(component("TypeReference", {})),
                                 "interface": option(component("InterfaceReference", {})),
                             })),
-                            "data": prop(component("TypeReference", {})),
-                            "output interface": prop(optional(component("InterfaceReference", {}))),
+                            "in": prop(taggedUnion({
+                                "data": option(component("TypeReference", {})),
+                                "resource": option(component("ResourceReference", {})),
+                            })),
 
                         }))),
                     })),
@@ -104,6 +107,11 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                 "context": prop(component("Context", {})),
                 //"interface": [["context"), reference(['sibling', "context"), [))),
                 "interface": prop(terminal("identifier")),
+            })),
+            "ResourceReference": globalType({}, group({
+                "context": prop(component("Context", {})),
+                //"interface": [["context"), reference(['sibling', "context"), [))),
+                "resource": prop(terminal("identifier")),
             })),
             "BuilderReference": globalType({}, group({
                 "context": prop(component("Context", {})),

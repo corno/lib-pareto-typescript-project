@@ -11,4 +11,6 @@ export namespace I {
     }
 }
 
+export namespace R {}
+
 export namespace F {}

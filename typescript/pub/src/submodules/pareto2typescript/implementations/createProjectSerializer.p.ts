@@ -48,7 +48,7 @@ export const $$: createProjectSerializer = (
                         'onNotEmpty': ($c) => {
                             $i.snippet(`<`)
                             $c(($) => {
-                                $i.snippet(`${$d.createIdentifier($.value)}${$.isLast ? ``: `, `}`)
+                                $i.snippet(`${$d.createIdentifier($.value)}${$.isLast ? `` : `, `}`)
                             })
                             $i.snippet(`>`)
                         }
@@ -81,6 +81,13 @@ export const $$: createProjectSerializer = (
                         pl.cc($.type[1], ($) => {
                             $i.snippet(`g_${context.glossary}.`)
                             $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
+                            seralizeArguments($i)
+                        })
+                        break
+                    case 'resource':
+                        pl.cc($.type[1], ($) => {
+                            $i.snippet(`g_${context.glossary}.`)
+                            $i.snippet(`R.${$d.createIdentifier(`${$.resource}`)}`)
                             seralizeArguments($i)
                         })
                         break
@@ -589,7 +596,7 @@ export const $$: createProjectSerializer = (
                                                                         'onNotEmpty': ($c) => {
                                                                             $i.snippet(`<`)
                                                                             $c(($) => {
-                                                                                $i.snippet(`${$d.createIdentifier($.key)}${$.isLast ? ``: `, `}`)
+                                                                                $i.snippet(`${$d.createIdentifier($.key)}${$.isLast ? `` : `, `}`)
                                                                             })
                                                                             $i.snippet(`>`)
                                                                         }

@@ -155,11 +155,25 @@ export function interfaceReference(contextOrInterface: string, inf?: string): t.
     }
 }
 
+export function resourceReference(contextOrResource: string, resource?: string): t.T.ResourceReference<pd.SourceLocation> {
+    if (resource === undefined) {
+        return {
+            'context': ['local', null],
+            'resource': contextOrResource,
+        }
+    } else {
+        return {
+            'context': context(contextOrResource, pd.getLocationInfo(1)),
+            'resource': resource,
+        }
+    }
+}
+
 export function nothing(): ['nothing', null] {
     return ['nothing', null]
 }
 
-export function sdata($: t.T.TypeReference<pd.SourceLocation>): t.T.DataOrBuilder<pd.SourceLocation> {
+export function data($: t.T.TypeReference<pd.SourceLocation>): ['data', t.T.TypeReference<pd.SourceLocation>] {
     return ['data', $]
 }
 
@@ -167,13 +181,7 @@ export function bldr($: t.T.BuilderReference<pd.SourceLocation>): t.T.DataOrBuil
     return ['builder', $]
 }
 
-export function adata($: t.T.TypeReference<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.functions.D.return__type<pd.SourceLocation> {
-    return ['data', {
-        'type': $,
-    }]
-}
-
-export function inf($: t.T.InterfaceReference<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.functions.D.return__type<pd.SourceLocation> {
+export function inf($: t.T.InterfaceReference<pd.SourceLocation>): ['interface', t.T.InterfaceReference<pd.SourceLocation>] {
     return ['interface', $]
 }
 
@@ -184,14 +192,15 @@ export function sfunc(in_: t.T.DataOrBuilder<pd.SourceLocation>, out: t.T.DataOr
     }
 }
 
-export function afunc(data: t.T.TypeReference<pd.SourceLocation>, oi: t.T.InterfaceReference<pd.SourceLocation> | null, returnType: t.T.Glossary._ltype.asynchronous.functions.D.return__type<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation> {
+export function afunc(in_: t.T.Glossary._ltype.asynchronous.functions.D._lin<pd.SourceLocation>, out: t.T.Glossary._ltype.asynchronous.functions.D.out<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation> {
     return {
-        'return type': returnType,
-        'data': data,
-        'output interface': oi === null
-            ? [false]
-            : [true, oi],
+        'in': in_,
+        'out': out,
     }
+}
+
+export function rsrc($: t.T.ResourceReference<pd.SourceLocation>): ['resource', t.T.ResourceReference<pd.SourceLocation>] {
+    return ['resource', $]
 }
 
 export function builderMethod(data: null | t.T.TypeReference<pd.SourceLocation>, inf?: null | t.T.Builder<pd.SourceLocation>): t.T.Builder<pd.SourceLocation> {

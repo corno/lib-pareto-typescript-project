@@ -299,6 +299,7 @@ export const $: g_project.T.Project._ltype.library.main<pd.SourceLocation> = {
                         })
                     }]
                 }),
+                'resources': d({}),
                 'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({}),
             }]
         },

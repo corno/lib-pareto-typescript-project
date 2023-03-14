@@ -62,6 +62,15 @@ export namespace T {
             export type _linterface<GAnnotation> = {
                 readonly 'interface': string
             }
+            
+            export namespace resource {
+                
+                export type resource<GAnnotation> = string
+            }
+            
+            export type resource<GAnnotation> = {
+                readonly 'resource': string
+            }
         }
         
         export type _ltype<GAnnotation> = 
@@ -73,6 +82,9 @@ export namespace T {
             }]
             | ['interface', {
                 readonly 'interface': string
+            }]
+            | ['resource', {
+                readonly 'resource': string
             }]
     }
     
@@ -87,6 +99,9 @@ export namespace T {
             }]
             | ['interface', {
                 readonly 'interface': string
+            }]
+            | ['resource', {
+                readonly 'resource': string
             }]
     }
     

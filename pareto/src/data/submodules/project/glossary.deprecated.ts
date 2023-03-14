@@ -36,6 +36,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 "builder": group({
                     "builder": member(string()),
                 }),
+                "resource": group({
+                    "resource": member(string()),
+                }),
 
             })),
         })),

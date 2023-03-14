@@ -695,6 +695,12 @@ export const $$: createGlossarySerializer = ($d) => {
                     serializeContextGlossaryArgumentsOnly($.context, $i)
 
                 }
+                function serializeResourceReference($: g_glossary.T.ResourceReference<Annotation>, $i: g_fp.B.Line) {
+                    serializeContext($.context, $i)
+                    $i.snippet(`R.${$d.createIdentifier(`${$.resource}`)}`)
+                    serializeContextGlossaryArgumentsOnly($.context, $i)
+
+                }
                 $i.nestedLine(($i) => {
                     $i.snippet(`import * as pt from 'pareto-core-types'`)
                 })
@@ -722,6 +728,25 @@ export const $$: createGlossarySerializer = ($d) => {
                                     })
                                 })
                             })
+                            ns(`R`, $i, ($i) => {
+                                $d.dictionaryForEach($.resources, ($) => {
+                                    $i.line(``)
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`export type ${$d.createIdentifier($.key)}`)
+                                        serializeGlobalParametersOnly($i)
+                                        pl.cc($.value, ($) => {
+
+                                            $i.snippet(` = (`)
+                                            $i.snippet(`$: `)
+                                            serializeTypeReference($.data, $i)
+                                            $i.snippet(`, $i: `)
+                                            serializeInterfaceReference($.interface, $i)
+                                            $i.snippet(`) => void`)
+                                        })
+
+                                    })
+                                })
+                            })
                             ns(`F`, $i, ($i) => {
                                 $d.dictionaryForEach($.functions, ($) => {
                                     $i.line(``)
@@ -731,32 +756,64 @@ export const $$: createGlossarySerializer = ($d) => {
                                         serializeGlobalParametersOnly($i)
                                         pl.cc($.value, ($) => {
 
-                                            $i.snippet(`($: `)
-                                            serializeTypeReference($.data, $i)
-                                            $i.snippet(`,`)
+                                            $i.snippet(`(`)
+                                            pl.cc($.in, ($) => {
+                                                switch ($[0]) {
+                                                    case 'resource':
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(`$r: `)
+                                                            serializeResourceReference($, $i)
+                                                        })
+                                                        break
+                                                    case 'data':
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(`$: `)
+                                                            serializeTypeReference($, $i)
+                                                        })
+                                                        break
+                                                    default: pl.au($[0])
+                                                }
+                                            })
+                                            // $i.snippet(`($: `)
+                                            // serializeTypeReference($.data, $i)
+                                            // $i.snippet(`,`)
 
-                                            doOptional($['output interface'], $i, {
-                                                onNotset: () => { },
-                                                onSet: ($, $i) => {
-                                                    $i.snippet(` $i: `)
-                                                    serializeInterfaceReference($, $i)
-                                                    $i.snippet(`,`)
+                                            // doOptional($['output interface'], $i, {
+                                            //     onNotset: () => { },
+                                            //     onSet: ($, $i) => {
+                                            //         $i.snippet(` $i: `)
+                                            //         serializeInterfaceReference($, $i)
+                                            //         $i.snippet(`,`)
+                                            //     }
+                                            // })
+                                            pl.cc($.out, ($) => {
+                                                switch ($[0]) {
+                                                    case 'interface':
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(`, $i: `)
+                                                            serializeInterfaceReference($, $i)
+                                                        })
+                                                        break
+                                                    case 'data':
+                                                        pl.cc($[1], ($) => {
+                                                        })
+                                                        break
+                                                    default: pl.au($[0])
                                                 }
                                             })
                                             $i.snippet(`) => `)
-                                            pl.cc($['return type'], ($) => {
+                                            pl.cc($.out, ($) => {
                                                 switch ($[0]) {
-                                                    case 'data':
-                                                        pl.cc($[1], ($) => {
-
-                                                            $i.snippet(`pt.AsyncValue<`)
-                                                            serializeTypeReference($.type, $i)
-                                                            $i.snippet(`>`)
-                                                        })
-                                                        break
                                                     case 'interface':
                                                         pl.cc($[1], ($) => {
-                                                            serializeInterfaceReference($, $i)
+                                                            $i.snippet(`void`)
+                                                        })
+                                                        break
+                                                    case 'data':
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(`pt.AsyncValue<`)
+                                                            serializeTypeReference($, $i)
+                                                            $i.snippet(`>`)
                                                         })
                                                         break
                                                     default: pl.au($[0])

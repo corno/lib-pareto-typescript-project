@@ -24,13 +24,13 @@ export namespace C {
     
     export type GenerateProject<GAnnotation> = ($b: B.GenerateProject<GAnnotation>) => void
     
-    export type HandleArgumentError = <GAnnotation>($b: B.HandleArgumentError<GAnnotation>) => void
+    export type HandleArgumentError<GAnnotation> = ($b: B.HandleArgumentError<GAnnotation>) => void
     
-    export type HandleParameters = <GAnnotation>($b: B.HandleParameters<GAnnotation>) => void
+    export type HandleParameters<GAnnotation> = ($b: B.HandleParameters<GAnnotation>) => void
     
-    export type ParseArguments = <GAnnotation>($b: B.ParseArguments<GAnnotation>) => void
+    export type ParseArguments<GAnnotation> = ($b: B.ParseArguments<GAnnotation>) => void
     
-    export type ProcessArgument = <GAnnotation>($b: B.ProcessArgument<GAnnotation>) => void
+    export type ProcessArgument<GAnnotation> = ($b: B.ProcessArgument<GAnnotation>) => void
 }
 
 export namespace F {

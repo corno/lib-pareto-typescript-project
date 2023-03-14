@@ -28,7 +28,7 @@ export function main(): g_this.T.Module.glossary.imports.D<pd.SourceLocation> {
 }
 
 
-export function typeReference(context: string, args: RawDictionary<g_this.T.TypeReference<pd.SourceLocation>>, definition: string): g_this.T.TypeReference<pd.SourceLocation> {
+export function typeReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.TypeReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
@@ -38,7 +38,7 @@ export function typeReference(context: string, args: RawDictionary<g_this.T.Type
     }
 }
 
-export function functionReference(context: string, args: RawDictionary<g_this.T.TypeReference<pd.SourceLocation>>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
+export function functionReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
@@ -50,7 +50,7 @@ export function functionReference(context: string, args: RawDictionary<g_this.T.
     }
 }
 
-export function infRef(context: string, args: RawDictionary<g_this.T.TypeReference<pd.SourceLocation>>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
+export function infRef(context: string, args: RawDictionary<string>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
@@ -62,7 +62,7 @@ export function infRef(context: string, args: RawDictionary<g_this.T.TypeReferen
     }
 }
 
-export function bldrRef(context: string, args: RawDictionary<g_this.T.TypeReference<pd.SourceLocation>>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
+export function bldrRef(context: string, args: RawDictionary<string>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,

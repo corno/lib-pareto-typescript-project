@@ -22,7 +22,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "AlgorithmImplementation": type(group({})),
         "Context": type(group({
             "glossary": member(string()),
-            "arguments": member(dictionary(ref(typeReference("TypeReference")))),
+            "arguments": member(dictionary(string())),
         })),
         "DefinitionReference": type(group({
             "context": member(ref(typeReference("Context"))),
@@ -130,6 +130,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "api": member(group({
                             "root": member(group({
                                 "algorithms": member(dictionary(group({
+                                    "parameters": member(dictionary(group({}))),
                                     "definition": member(ref(typeReference("DefinitionReference"))),
                                 }))),
                             })),

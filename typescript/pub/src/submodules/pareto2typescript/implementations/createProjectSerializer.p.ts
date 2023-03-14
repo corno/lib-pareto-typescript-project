@@ -37,31 +37,51 @@ export const $$: createProjectSerializer = (
         ) {
             const wrapped = $.wrapBuilder
             pl.cc($.def, ($) => {
-                const glossary = $.context.glossary
+                const context = $.context
+                function seralizeArguments(
+                    $i: g_fp.B.Line,
+                ) {
+                    $d.enrichedDictionaryForEach(context.arguments, {
+                        'onEmpty': () => {
+
+                        },
+                        'onNotEmpty': ($c) => {
+                            $i.snippet(`<`)
+                            $c(($) => {
+                                $i.snippet(`${$d.createIdentifier($.value)}${$.isLast ? ``: `, `}`)
+                            })
+                            $i.snippet(`>`)
+                        }
+                    })
+                }
                 switch ($.type[0]) {
                     case 'builder':
                         pl.cc($.type[1], ($) => {
                             if (wrapped) {
-                                $i.snippet(`($c: g_${glossary}.C.${$d.createIdentifier(`${$.builder}`)}`)
+                                $i.snippet(`($c: g_${context.glossary}.C.${$d.createIdentifier(`${$.builder}`)}`)
+                                seralizeArguments($i)
                                 $i.snippet(`) => void`)
 
                             } else {
-                                $i.snippet(`g_${glossary}.`)
+                                $i.snippet(`g_${context.glossary}.`)
                                 $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
+                                seralizeArguments($i)
                             }
 
                         })
                         break
                     case 'function':
                         pl.cc($.type[1], ($) => {
-                            $i.snippet(`g_${glossary}.`)
+                            $i.snippet(`g_${context.glossary}.`)
                             $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
+                            seralizeArguments($i)
                         })
                         break
                     case 'interface':
                         pl.cc($.type[1], ($) => {
-                            $i.snippet(`g_${glossary}.`)
+                            $i.snippet(`g_${context.glossary}.`)
                             $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
+                            seralizeArguments($i)
                         })
                         break
                     default: pl.au($.type[0])
@@ -543,14 +563,11 @@ export const $$: createProjectSerializer = (
                                                 pl.cc($.api, ($) => {
                                                     function serializeAPI(
                                                         $: {
-
                                                             readonly 'api': g_project.T.Project._ltype.library.bindings.O.api.root<g_this.T.Annotation<Annotation>>
                                                             readonly 'imports': pt.Dictionary<string>
                                                         },
                                                         $i: g_fp.B.Block
                                                     ) {
-
-
                                                         $i.line(`import * as pt from 'pareto-core-types'`)
                                                         $i.line(``)
                                                         $d.dictionaryForEach($.imports, ($) => {
@@ -559,13 +576,24 @@ export const $$: createProjectSerializer = (
                                                             })
                                                         })
                                                         pl.cc($.api, ($) => {
-
                                                             $d.dictionaryForEach($.algorithms, ($) => {
                                                                 const definition = $.value.definition
                                                                 $i.line(``)
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
+                                                                    $i.snippet(`export type ${$d.createIdentifier($.key)}`)
+                                                                    $i.snippet(` = `)
+                                                                    $d.enrichedDictionaryForEach($.value.parameters, {
+                                                                        'onEmpty': () => {
 
+                                                                        },
+                                                                        'onNotEmpty': ($c) => {
+                                                                            $i.snippet(`<`)
+                                                                            $c(($) => {
+                                                                                $i.snippet(`${$d.createIdentifier($.key)}${$.isLast ? ``: `, `}`)
+                                                                            })
+                                                                            $i.snippet(`>`)
+                                                                        }
+                                                                    })
                                                                     serializeWrappedDefinitionReference(definition, $i)
                                                                 })
                                                             })

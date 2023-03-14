@@ -17,16 +17,16 @@ export namespace T {
         
         export namespace arguments {
             
-            export type D<GAnnotation> = T.TypeReference<GAnnotation>
+            export type D<GAnnotation> = string
         }
         
-        export type arguments<GAnnotation> = pt.Dictionary<T.TypeReference<GAnnotation>>
+        export type arguments<GAnnotation> = pt.Dictionary<string>
         
         export type glossary<GAnnotation> = string
     }
     
     export type Context<GAnnotation> = {
-        readonly 'arguments': pt.Dictionary<T.TypeReference<GAnnotation>>
+        readonly 'arguments': pt.Dictionary<string>
         readonly 'glossary': string
     }
     
@@ -403,21 +403,33 @@ export namespace T {
                                     export namespace D {
                                         
                                         export type definition<GAnnotation> = T.DefinitionReference<GAnnotation>
+                                        
+                                        export namespace parameters {
+                                            
+                                            export namespace D {}
+                                            
+                                            export type D<GAnnotation> = null
+                                        }
+                                        
+                                        export type parameters<GAnnotation> = pt.Dictionary<null>
                                     }
                                     
                                     export type D<GAnnotation> = {
                                         readonly 'definition': T.DefinitionReference<GAnnotation>
+                                        readonly 'parameters': pt.Dictionary<null>
                                     }
                                 }
                                 
                                 export type algorithms<GAnnotation> = pt.Dictionary<{
                                     readonly 'definition': T.DefinitionReference<GAnnotation>
+                                    readonly 'parameters': pt.Dictionary<null>
                                 }>
                             }
                             
                             export type root<GAnnotation> = {
                                 readonly 'algorithms': pt.Dictionary<{
                                     readonly 'definition': T.DefinitionReference<GAnnotation>
+                                    readonly 'parameters': pt.Dictionary<null>
                                 }>
                             }
                         }
@@ -431,6 +443,7 @@ export namespace T {
                             readonly 'root': {
                                 readonly 'algorithms': pt.Dictionary<{
                                     readonly 'definition': T.DefinitionReference<GAnnotation>
+                                    readonly 'parameters': pt.Dictionary<null>
                                 }>
                             }
                         }
@@ -448,6 +461,7 @@ export namespace T {
                             readonly 'root': {
                                 readonly 'algorithms': pt.Dictionary<{
                                     readonly 'definition': T.DefinitionReference<GAnnotation>
+                                    readonly 'parameters': pt.Dictionary<null>
                                 }>
                             }
                         }
@@ -465,6 +479,7 @@ export namespace T {
                         readonly 'root': {
                             readonly 'algorithms': pt.Dictionary<{
                                 readonly 'definition': T.DefinitionReference<GAnnotation>
+                                readonly 'parameters': pt.Dictionary<null>
                             }>
                         }
                     }
@@ -503,6 +518,7 @@ export namespace T {
                         readonly 'root': {
                             readonly 'algorithms': pt.Dictionary<{
                                 readonly 'definition': T.DefinitionReference<GAnnotation>
+                                readonly 'parameters': pt.Dictionary<null>
                             }>
                         }
                     }
@@ -733,6 +749,7 @@ export namespace T {
                         readonly 'root': {
                             readonly 'algorithms': pt.Dictionary<{
                                 readonly 'definition': T.DefinitionReference<GAnnotation>
+                                readonly 'parameters': pt.Dictionary<null>
                             }>
                         }
                     }
@@ -796,6 +813,7 @@ export namespace T {
                         readonly 'root': {
                             readonly 'algorithms': pt.Dictionary<{
                                 readonly 'definition': T.DefinitionReference<GAnnotation>
+                                readonly 'parameters': pt.Dictionary<null>
                             }>
                         }
                     }

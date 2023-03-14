@@ -99,31 +99,6 @@ export const $$: createStatesSerializer = ($d) => {
                         })
                     })
                     break
-                // case 'template':
-                //     pl.cc($[1], ($) => {
-                //         if ($.context !== undefined) {
-                //             serializeContext($.context, $i)
-                //         }
-                //         $i.snippet($d.createIdentifier(`M${$.template}`))
-                //         $d.enrichedDictionaryForEach($.arguments, {
-                //             onNotEmpty: ($c) => {
-                //                 $i.snippet(`<`)
-                //                 $c(($) => {
-                //                     $i.snippet($.isFirst ? `` : `, `)
-                //                     pl.cc($.value, ($) => {
-                //                         serializeType($, $i)
-
-                //                     })
-                //                 })
-
-                //                 $i.snippet(`>`)
-                //             },
-                //             onEmpty: () => {
-                //                 //nothing to do
-                //             }
-                //         })
-                //     })
-                    break
                 default: pl.au($[0])
             }
         }

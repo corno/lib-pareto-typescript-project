@@ -93,7 +93,7 @@ export const $$: createGlossarySerializer = ($d) => {
                                             })
                                         },
                                         () => {
-                                                pd.logDebugMessage(`missing import: ${$.glossary.key}`)
+                                            pd.logDebugMessage(`missing import: ${$.glossary.key}`)
                                         }
                                     )
                                 })
@@ -127,13 +127,13 @@ export const $$: createGlossarySerializer = ($d) => {
                                 ($) => {
                                     $d.enrichedDictionaryForEach($.arguments, {
                                         'onEmpty': () => {
-        
+
                                         },
                                         'onNotEmpty': ($c) => {
                                             $i.snippet(`<`)
                                             $c(($) => {
                                                 serializeTypeReference($.value, $i)
-        
+
                                                 $i.snippet(`${$.isLast ? `` : `, `}`)
                                             })
                                             $i.snippet(`>`)
@@ -141,7 +141,7 @@ export const $$: createGlossarySerializer = ($d) => {
                                     })
                                 },
                                 () => {
-                                        pd.logDebugMessage(`missing import: ${$.glossary.key}`)
+                                    pd.logDebugMessage(`missing import: ${$.glossary.key}`)
                                 }
                             )
                         })
@@ -792,37 +792,51 @@ export const $$: createGlossarySerializer = ($d) => {
                                         serializeGlobalParametersOnly($i)
                                         pl.cc($.value, ($) => {
 
-                                            $i.snippet(`($: `)
-                                            serializeTypeReference($.data, $i)
-                                            $i.snippet(`,`)
-                                            doOptional($['input builder'], $i, {
-                                                onNotset: () => { },
-                                                onSet: ($, $i) => {
-                                                    $i.snippet(` $c: ($b: `)
-                                                    serializeBuilderReference($, $i)
-                                                    $i.snippet(`) => void,`)
-                                                },
+                                            $i.snippet(`(`)
+                                            pl.cc($.in, ($) => {
+                                                switch ($[0]) {
+                                                    case 'builder':
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(` $c: ($b: `)
+                                                            serializeBuilderReference($, $i)
+                                                            $i.snippet(`) => void,`)
+                                                        })
+                                                        break
+                                                    case 'data':
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(`$: `)
+                                                            serializeTypeReference($, $i)
+                                                        })
+                                                        break
+                                                    default: pl.au($[0])
+                                                }
                                             })
-
-                                            doOptional($['output builder'], $i, {
-                                                onNotset: () => { },
-                                                onSet: ($, $i) => {
-                                                    $i.snippet(` $b: `)
-                                                    serializeBuilderReference($, $i)
-                                                    $i.snippet(`,`)
+                                            pl.cc($.out, ($) => {
+                                                switch ($[0]) {
+                                                    case 'builder':
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(`, $b: `)
+                                                            serializeBuilderReference($, $i)
+                                                        })
+                                                        break
+                                                    case 'data':
+                                                        pl.cc($[1], ($) => {
+                                                        })
+                                                        break
+                                                    default: pl.au($[0])
                                                 }
                                             })
                                             $i.snippet(`) => `)
-                                            pl.cc($['return type'], ($) => {
+                                            pl.cc($.out, ($) => {
                                                 switch ($[0]) {
-                                                    case 'data':
-                                                        pl.cc($[1], ($) => {
-                                                            serializeTypeReference($.type, $i)
-                                                        })
-                                                        break
-                                                    case 'nothing':
+                                                    case 'builder':
                                                         pl.cc($[1], ($) => {
                                                             $i.snippet(`void`)
+                                                        })
+                                                        break
+                                                    case 'data':
+                                                        pl.cc($[1], ($) => {
+                                                            serializeTypeReference($, $i)
                                                         })
                                                         break
                                                     default: pl.au($[0])

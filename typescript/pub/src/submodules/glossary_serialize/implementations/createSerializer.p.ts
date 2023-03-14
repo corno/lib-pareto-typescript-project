@@ -33,6 +33,25 @@ export const $$: createSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
+        function serializeDataOrBuilder($: g_glossary.T.DataOrBuilder<Annotation>, $i: g_fp.B.Line) {
+            switch ($[0]) {
+                case 'builder': 
+                    pl.cc($[1], ($) => {
+                        $i.snippet(`['builder', `)
+                        serializeBuilderReference($, $i)
+                        $i.snippet(`]`)
+                    })
+                    break
+                    case 'data': 
+                        pl.cc($[1], ($) => {
+                            $i.snippet(`['data', `)
+                            serializeTypeReference($, $i)
+                            $i.snippet(`]`)
+                        })
+                        break
+                default: pl.au($[0])
+            }
+        }
         function serializeTypeReference($: g_glossary.T.TypeReference<Annotation>, $i: g_fp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
@@ -579,49 +598,13 @@ export const $$: createSerializer = ($d) => {
                                                         $i.snippet(`"${$.key}": {`)
                                                         $i.indent(($i) => {
                                                             $i.nestedLine(($i) => {
-                                                                $i.snippet(`'data': `)
-                                                                serializeTypeReference($.value.data, $i)
+                                                                $i.snippet(`'in': `)
+                                                                serializeDataOrBuilder($.value.in, $i)
                                                                 $i.snippet(`,`)
                                                             })
                                                             $i.nestedLine(($i) => {
-                                                                $i.snippet(`'input builder': `)
-                                                                doOptional($.value['input builder'], $i, ($, $i) => {
-                                                                    serializeBuilderReference($, $i)
-                                                                })
-                                                                $i.snippet(`,`)
-                                                            })
-                                                            $i.nestedLine(($i) => {
-                                                                $i.snippet(`'output builder': `)
-                                                                doOptional($.value['output builder'], $i, ($, $i) => {
-                                                                    serializeBuilderReference($, $i)
-                                                                })
-                                                                $i.snippet(`,`)
-                                                            })
-                                                            $i.nestedLine(($i) => {
-                                                                $i.snippet(`'return type': `)
-                                                                switch ($.value['return type'][0]) {
-                                                                    case 'data':
-                                                                        pl.cc($.value['return type'][1], ($) => {
-                                                                            $i.snippet(`['data', {`)
-                                                                            $i.indent(($i) => {
-                        
-                                                                                $i.nestedLine(($i) => {
-                                                                                    $i.snippet(`'type': `)
-                                                                                    serializeTypeReference($.type, $i)
-                                                                                    $i.snippet(`,`)
-                                                                                })
-                                                                            })
-                                                                            $i.snippet(`}]`)
-                                                                        })
-                                                                        break
-                                                                    case 'nothing':
-                                                                        pl.cc($.value['return type'][1], ($) => {
-                                                                            $i.snippet(`['nothing', null]`)
-                        
-                                                                        })
-                                                                        break
-                                                                    default: pl.au($.value['return type'][0])
-                                                                }
+                                                                $i.snippet(`'out': `)
+                                                                serializeDataOrBuilder($.value.out, $i)
                                                                 $i.snippet(`,`)
                                                             })
                                                         })

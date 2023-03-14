@@ -28,10 +28,59 @@ export const $$: createProjectSerializer = (
             }
         }
 
-        function serializeFunctionReference($: g_project.T.FunctionReference<Annotation>, $i: g_fp.B.Line) {
+        function serializeDefinitionReference2(
+            $: {
+                'def': g_project.T.DefinitionReference<Annotation>,
+                'wrapBuilder': boolean
+            },
+            $i: g_fp.B.Line
+        ) {
+            const wrapped = $.wrapBuilder
+            pl.cc($.def, ($) => {
+                $i.snippet(`g_${$.context.glossary}.`)
+                switch ($.type[0]) {
+                    case 'builder':
+                        pl.cc($.type[1], ($) => {
+                            if (wrapped) {
+                                $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
+                            } else {
+                                $i.snippet(`($c: ($b: B.${$d.createIdentifier(`${$.builder}`)}) => void) => void`)
+                            }
+                            
+                        })
+                        break
+                    case 'function':
+                        pl.cc($.type[1], ($) => {
+                            $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
+                        })
+                        break
+                    case 'interface':
+                        pl.cc($.type[1], ($) => {
+                            $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
+                        })
+                        break
+                    default: pl.au($.type[0])
+                }
 
-            $i.snippet(`g_${$.context.glossary}.`)
-            $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
+            })
+        }
+        function serializeNonWrappedDefinitionReference($: g_project.T.DefinitionReference<Annotation>, $i: g_fp.B.Line) {
+            serializeDefinitionReference2(
+                {
+                    'def': $,
+                    'wrapBuilder': false,
+                },
+                $i,
+            )
+        }
+        function serializeWrappedDefinitionReference($: g_project.T.DefinitionReference<Annotation>, $i: g_fp.B.Line) {
+            serializeDefinitionReference2(
+                {
+                    'def': $,
+                    'wrapBuilder': true,
+                },
+                $i,
+            )
         }
         $i.directory("typescript", ($i) => {
             function tsConfig(
@@ -295,7 +344,7 @@ export const $$: createProjectSerializer = (
                                                                             $d.dictionaryForEach($.dependencies, ($) => {
                                                                                 $i.nestedLine(($i) => {
                                                                                     $i.snippet(`readonly '${$.key}': `)
-                                                                                    serializeFunctionReference($.value, $i)
+                                                                                    serializeNonWrappedDefinitionReference($.value, $i)
                                                                                 })
                                                                             })
                                                                         })
@@ -337,7 +386,7 @@ export const $$: createProjectSerializer = (
                                                                     break
                                                                 default: pl.au($.value.type[0])
                                                             }
-                                                            serializeFunctionReference(definition, $i)
+                                                            serializeWrappedDefinitionReference(definition, $i)
                                                         })
                                                     })
                                                     $i.line(``)
@@ -512,7 +561,7 @@ export const $$: createProjectSerializer = (
                                                                 $i.nestedLine(($i) => {
                                                                     $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)} = `)
 
-                                                                    serializeFunctionReference(definition, $i)
+                                                                    serializeWrappedDefinitionReference(definition, $i)
                                                                 })
                                                             })
                                                             $i.line(``)
@@ -699,7 +748,7 @@ export const $$: createProjectSerializer = (
                                                                 $d.dictionaryForEach($.dependencies, ($) => {
                                                                     $i.nestedLine(($i) => {
                                                                         $i.snippet(`readonly '${$.key}': `)
-                                                                        serializeFunctionReference($.value, $i)
+                                                                        serializeNonWrappedDefinitionReference($.value, $i)
                                                                     })
                                                                 })
                                                             })
@@ -741,7 +790,7 @@ export const $$: createProjectSerializer = (
                                                         break
                                                     default: pl.au($.value.type[0])
                                                 }
-                                                serializeFunctionReference(definition, $i)
+                                                serializeWrappedDefinitionReference(definition, $i)
                                             })
                                         })
                                         $i.line(``)

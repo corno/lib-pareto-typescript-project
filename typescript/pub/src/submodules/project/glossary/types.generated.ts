@@ -30,16 +30,64 @@ export namespace T {
         readonly 'glossary': string
     }
     
-    export namespace FunctionReference {
+    export namespace DefinitionReference {
         
         export type context<GAnnotation> = T.Context<GAnnotation>
         
-        export type _lfunction<GAnnotation> = string
+        export namespace _ltype {
+            
+            export namespace builder {
+                
+                export type builder<GAnnotation> = string
+            }
+            
+            export type builder<GAnnotation> = {
+                readonly 'builder': string
+            }
+            
+            export namespace _lfunction {
+                
+                export type _lfunction<GAnnotation> = string
+            }
+            
+            export type _lfunction<GAnnotation> = {
+                readonly 'function': string
+            }
+            
+            export namespace _linterface {
+                
+                export type _linterface<GAnnotation> = string
+            }
+            
+            export type _linterface<GAnnotation> = {
+                readonly 'interface': string
+            }
+        }
+        
+        export type _ltype<GAnnotation> = 
+            | ['builder', {
+                readonly 'builder': string
+            }]
+            | ['function', {
+                readonly 'function': string
+            }]
+            | ['interface', {
+                readonly 'interface': string
+            }]
     }
     
-    export type FunctionReference<GAnnotation> = {
+    export type DefinitionReference<GAnnotation> = {
         readonly 'context': T.Context<GAnnotation>
-        readonly 'function': string
+        readonly 'type': 
+            | ['builder', {
+                readonly 'builder': string
+            }]
+            | ['function', {
+                readonly 'function': string
+            }]
+            | ['interface', {
+                readonly 'interface': string
+            }]
     }
     
     export namespace Implementation {
@@ -96,7 +144,7 @@ export namespace T {
                     
                     export namespace D {
                         
-                        export type definition<GAnnotation> = T.FunctionReference<GAnnotation>
+                        export type definition<GAnnotation> = T.DefinitionReference<GAnnotation>
                         
                         export namespace _ltype {
                             
@@ -111,15 +159,15 @@ export namespace T {
                                 
                                 export namespace dependencies {
                                     
-                                    export type D<GAnnotation> = T.FunctionReference<GAnnotation>
+                                    export type D<GAnnotation> = T.DefinitionReference<GAnnotation>
                                 }
                                 
-                                export type dependencies<GAnnotation> = pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                export type dependencies<GAnnotation> = pt.Dictionary<T.DefinitionReference<GAnnotation>>
                             }
                             
                             export type _lconstructor<GAnnotation> = {
                                 readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                             }
                             
                             export namespace reference {}
@@ -130,28 +178,28 @@ export namespace T {
                         export type _ltype<GAnnotation> = 
                             | ['constructor', {
                                 readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                             }]
                             | ['reference', null]
                     }
                     
                     export type D<GAnnotation> = {
-                        readonly 'definition': T.FunctionReference<GAnnotation>
+                        readonly 'definition': T.DefinitionReference<GAnnotation>
                         readonly 'type': 
                             | ['constructor', {
                                 readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                             }]
                             | ['reference', null]
                     }
                 }
                 
                 export type algorithms<GAnnotation> = pt.Dictionary<{
-                    readonly 'definition': T.FunctionReference<GAnnotation>
+                    readonly 'definition': T.DefinitionReference<GAnnotation>
                     readonly 'type': 
                         | ['constructor', {
                             readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                            readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                         }]
                         | ['reference', null]
                 }>
@@ -159,11 +207,11 @@ export namespace T {
             
             export type root<GAnnotation> = {
                 readonly 'algorithms': pt.Dictionary<{
-                    readonly 'definition': T.FunctionReference<GAnnotation>
+                    readonly 'definition': T.DefinitionReference<GAnnotation>
                     readonly 'type': 
                         | ['constructor', {
                             readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                            readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                         }]
                         | ['reference', null]
                 }>
@@ -179,11 +227,11 @@ export namespace T {
             >
             readonly 'root': {
                 readonly 'algorithms': pt.Dictionary<{
-                    readonly 'definition': T.FunctionReference<GAnnotation>
+                    readonly 'definition': T.DefinitionReference<GAnnotation>
                     readonly 'type': 
                         | ['constructor', {
                             readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                            readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                         }]
                         | ['reference', null]
                 }>
@@ -247,11 +295,11 @@ export namespace T {
             >
             readonly 'root': {
                 readonly 'algorithms': pt.Dictionary<{
-                    readonly 'definition': T.FunctionReference<GAnnotation>
+                    readonly 'definition': T.DefinitionReference<GAnnotation>
                     readonly 'type': 
                         | ['constructor', {
                             readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                            readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                         }]
                         | ['reference', null]
                 }>
@@ -354,22 +402,22 @@ export namespace T {
                                     
                                     export namespace D {
                                         
-                                        export type definition<GAnnotation> = T.FunctionReference<GAnnotation>
+                                        export type definition<GAnnotation> = T.DefinitionReference<GAnnotation>
                                     }
                                     
                                     export type D<GAnnotation> = {
-                                        readonly 'definition': T.FunctionReference<GAnnotation>
+                                        readonly 'definition': T.DefinitionReference<GAnnotation>
                                     }
                                 }
                                 
                                 export type algorithms<GAnnotation> = pt.Dictionary<{
-                                    readonly 'definition': T.FunctionReference<GAnnotation>
+                                    readonly 'definition': T.DefinitionReference<GAnnotation>
                                 }>
                             }
                             
                             export type root<GAnnotation> = {
                                 readonly 'algorithms': pt.Dictionary<{
-                                    readonly 'definition': T.FunctionReference<GAnnotation>
+                                    readonly 'definition': T.DefinitionReference<GAnnotation>
                                 }>
                             }
                         }
@@ -382,7 +430,7 @@ export namespace T {
                             >
                             readonly 'root': {
                                 readonly 'algorithms': pt.Dictionary<{
-                                    readonly 'definition': T.FunctionReference<GAnnotation>
+                                    readonly 'definition': T.DefinitionReference<GAnnotation>
                                 }>
                             }
                         }
@@ -399,7 +447,7 @@ export namespace T {
                             >
                             readonly 'root': {
                                 readonly 'algorithms': pt.Dictionary<{
-                                    readonly 'definition': T.FunctionReference<GAnnotation>
+                                    readonly 'definition': T.DefinitionReference<GAnnotation>
                                 }>
                             }
                         }
@@ -416,7 +464,7 @@ export namespace T {
                         >
                         readonly 'root': {
                             readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.FunctionReference<GAnnotation>
+                                readonly 'definition': T.DefinitionReference<GAnnotation>
                             }>
                         }
                     }
@@ -454,7 +502,7 @@ export namespace T {
                         >
                         readonly 'root': {
                             readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.FunctionReference<GAnnotation>
+                                readonly 'definition': T.DefinitionReference<GAnnotation>
                             }>
                         }
                     }
@@ -497,7 +545,7 @@ export namespace T {
                             
                             export namespace D {
                                 
-                                export type definition<GAnnotation> = T.FunctionReference<GAnnotation>
+                                export type definition<GAnnotation> = T.DefinitionReference<GAnnotation>
                                 
                                 export namespace _ltype {
                                     
@@ -512,15 +560,15 @@ export namespace T {
                                         
                                         export namespace dependencies {
                                             
-                                            export type D<GAnnotation> = T.FunctionReference<GAnnotation>
+                                            export type D<GAnnotation> = T.DefinitionReference<GAnnotation>
                                         }
                                         
-                                        export type dependencies<GAnnotation> = pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                        export type dependencies<GAnnotation> = pt.Dictionary<T.DefinitionReference<GAnnotation>>
                                     }
                                     
                                     export type _lconstructor<GAnnotation> = {
                                         readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                                     }
                                     
                                     export namespace reference {}
@@ -531,28 +579,28 @@ export namespace T {
                                 export type _ltype<GAnnotation> = 
                                     | ['constructor', {
                                         readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                                     }]
                                     | ['reference', null]
                             }
                             
                             export type D<GAnnotation> = {
-                                readonly 'definition': T.FunctionReference<GAnnotation>
+                                readonly 'definition': T.DefinitionReference<GAnnotation>
                                 readonly 'type': 
                                     | ['constructor', {
                                         readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                        readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                                     }]
                                     | ['reference', null]
                             }
                         }
                         
                         export type algorithms<GAnnotation> = pt.Dictionary<{
-                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'definition': T.DefinitionReference<GAnnotation>
                             readonly 'type': 
                                 | ['constructor', {
                                     readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                                 }]
                                 | ['reference', null]
                         }>
@@ -560,11 +608,11 @@ export namespace T {
                     
                     export type root<GAnnotation> = {
                         readonly 'algorithms': pt.Dictionary<{
-                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'definition': T.DefinitionReference<GAnnotation>
                             readonly 'type': 
                                 | ['constructor', {
                                     readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                                 }]
                                 | ['reference', null]
                         }>
@@ -578,11 +626,11 @@ export namespace T {
                     >
                     readonly 'root': {
                         readonly 'algorithms': pt.Dictionary<{
-                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'definition': T.DefinitionReference<GAnnotation>
                             readonly 'type': 
                                 | ['constructor', {
                                     readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                                 }]
                                 | ['reference', null]
                         }>
@@ -645,11 +693,11 @@ export namespace T {
                     >
                     readonly 'root': {
                         readonly 'algorithms': pt.Dictionary<{
-                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'definition': T.DefinitionReference<GAnnotation>
                             readonly 'type': 
                                 | ['constructor', {
                                     readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                                 }]
                                 | ['reference', null]
                         }>
@@ -684,7 +732,7 @@ export namespace T {
                         >
                         readonly 'root': {
                             readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.FunctionReference<GAnnotation>
+                                readonly 'definition': T.DefinitionReference<GAnnotation>
                             }>
                         }
                     }
@@ -703,11 +751,11 @@ export namespace T {
                     >
                     readonly 'root': {
                         readonly 'algorithms': pt.Dictionary<{
-                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'definition': T.DefinitionReference<GAnnotation>
                             readonly 'type': 
                                 | ['constructor', {
                                     readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                                 }]
                                 | ['reference', null]
                         }>
@@ -747,7 +795,7 @@ export namespace T {
                         >
                         readonly 'root': {
                             readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.FunctionReference<GAnnotation>
+                                readonly 'definition': T.DefinitionReference<GAnnotation>
                             }>
                         }
                     }
@@ -766,11 +814,11 @@ export namespace T {
                     >
                     readonly 'root': {
                         readonly 'algorithms': pt.Dictionary<{
-                            readonly 'definition': T.FunctionReference<GAnnotation>
+                            readonly 'definition': T.DefinitionReference<GAnnotation>
                             readonly 'type': 
                                 | ['constructor', {
                                     readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.FunctionReference<GAnnotation>>
+                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
                                 }]
                                 | ['reference', null]
                         }>

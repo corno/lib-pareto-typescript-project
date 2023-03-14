@@ -37,6 +37,10 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                     "glossary": prop(reference(typePath("Glossary", [grp("imports")]), tbd())),
                 })),
             })),
+            "DataOrBuilder": globalType({}, taggedUnion({
+                "data": option(component("TypeReference", {})),
+                "builder": option(component("BuilderReference", {})),
+            })),
             "Glossary": globalType({}, group({
                 "imports": prop(dictionary(group({
                     "arguments": prop(dictionary(component("TypeReference", {}))),
@@ -51,15 +55,8 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                         "builders": prop(dictionary(component("Builder", {}))),
 
                         "functions": prop(dictionary(group({
-                            "return type": prop(taggedUnion({
-                                "data": option(group({
-                                    "type": prop(component("TypeReference", {})),
-                                })),
-                                "nothing": option(group({})),
-                            })),
-                            "data": prop(component("TypeReference", {})),
-                            "input builder": prop(optional(component("BuilderReference", {}))),
-                            "output builder": prop(optional(component("BuilderReference", {}))),
+                            "in": prop(component("DataOrBuilder", {})),
+                            "out": prop(component("DataOrBuilder", {})),
                         }))),
                     })),
                     "asynchronous": option(group({

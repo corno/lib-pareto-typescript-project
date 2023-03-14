@@ -2,7 +2,7 @@ import * as pd from 'pareto-core-data'
 
 import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
-import { $ as pure } from "./pure.api.deprecated"
+import { $ as pure } from "./api.deprecated"
 import { $ as glossary } from "./glossary.deprecated"
 import { external, sibling, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 

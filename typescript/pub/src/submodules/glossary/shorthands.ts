@@ -159,10 +159,12 @@ export function nothing(): ['nothing', null] {
     return ['nothing', null]
 }
 
-export function sdata($: t.T.TypeReference<pd.SourceLocation>): t.T.Glossary._ltype.synchronous.functions.D.return__type<pd.SourceLocation> {
-    return ['data', {
-        'type': $,
-    }]
+export function sdata($: t.T.TypeReference<pd.SourceLocation>): t.T.DataOrBuilder<pd.SourceLocation> {
+    return ['data', $]
+}
+
+export function bldr($: t.T.BuilderReference<pd.SourceLocation>): t.T.DataOrBuilder<pd.SourceLocation> {
+    return ['builder', $]
 }
 
 export function adata($: t.T.TypeReference<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.functions.D.return__type<pd.SourceLocation> {
@@ -175,26 +177,10 @@ export function inf($: t.T.InterfaceReference<pd.SourceLocation>): t.T.Glossary.
     return ['interface', $]
 }
 
-export function sfunc(data: t.T.TypeReference<pd.SourceLocation>, mii: t.T.BuilderReference<pd.SourceLocation> | null, oi: t.T.BuilderReference<pd.SourceLocation> | null, returnType: null | t.T.Glossary._ltype.synchronous.functions.D.return__type<pd.SourceLocation>): t.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation> {
-    const loc = pd.getLocationInfo(1)
-    const locAsString = `${loc.file}:${loc.line}:${loc.column}`
-    if (oi !== null && returnType !== null) {
-        pv.logDebugMessage(`${locAsString}: BOTH DATA AND OUTPUT INTERFACE`)
-    }
-    if (oi === null && returnType === null) {
-        pv.logDebugMessage(`${locAsString}: NO DATA AND NO OUTPUT INTERFACE${mii === null ? `` : ` (BUT INPUT INTERFACE)`}`)
-    }
+export function sfunc(in_: t.T.DataOrBuilder<pd.SourceLocation>, out: t.T.DataOrBuilder<pd.SourceLocation>): t.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation> {
     return {
-        'return type': returnType === null
-            ? ['nothing', null]
-            : returnType,
-        'data': data,
-        'input builder': mii === null
-            ? [false]
-            : [true, mii],
-        'output builder': oi === null
-            ? [false]
-            : [true, oi],
+        'in': in_,
+        'out': out,
     }
 }
 

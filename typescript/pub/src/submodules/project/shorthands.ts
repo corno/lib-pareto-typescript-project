@@ -38,17 +38,43 @@ export function typeReference(context: string, args: RawDictionary<g_this.T.Type
     }
 }
 
-export function functionReference(context: string, args: RawDictionary<g_this.T.TypeReference<pd.SourceLocation>>, definition: string): g_this.T.FunctionReference<pd.SourceLocation> {
+export function functionReference(context: string, args: RawDictionary<g_this.T.TypeReference<pd.SourceLocation>>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
             'arguments': pd.d(args === undefined ? {} : args)
         },
-        'function': definition
+        'type': ['function', {
+            'function': definition,
+        }]
     }
 }
 
-export function constructor(data: null | g_this.T.TypeReference<pd.SourceLocation>, deps: RawDictionary<g_this.T.FunctionReference<pd.SourceLocation>>): g_this.T.Project._ltype.resource.api.root.algorithms.D._ltype<pd.SourceLocation> {
+export function infRef(context: string, args: RawDictionary<g_this.T.TypeReference<pd.SourceLocation>>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['interface', {
+            'interface': definition,
+        }]
+    }
+}
+
+export function bldrRef(context: string, args: RawDictionary<g_this.T.TypeReference<pd.SourceLocation>>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['builder', {
+            'builder': definition,
+        }]
+    }
+}
+
+export function constructor(data: null | g_this.T.TypeReference<pd.SourceLocation>, deps: RawDictionary<g_this.T.DefinitionReference<pd.SourceLocation>>): g_this.T.Project._ltype.resource.api.root.algorithms.D._ltype<pd.SourceLocation> {
     return ['constructor', {
         'configuration data': data === null
             ? [false]
@@ -57,7 +83,7 @@ export function constructor(data: null | g_this.T.TypeReference<pd.SourceLocatio
     }]
 }
 
-export function algorithm(def: g_this.T.FunctionReference<pd.SourceLocation>, type?: g_this.T.Project._ltype.resource.api.root.algorithms.D._ltype<pd.SourceLocation>): g_this.T.Project._ltype.resource.api.root.algorithms.D<pd.SourceLocation> {
+export function algorithm(def: g_this.T.DefinitionReference<pd.SourceLocation>, type?: g_this.T.Project._ltype.resource.api.root.algorithms.D._ltype<pd.SourceLocation>): g_this.T.Project._ltype.resource.api.root.algorithms.D<pd.SourceLocation> {
     return {
         'definition': def,
         'type': type === undefined

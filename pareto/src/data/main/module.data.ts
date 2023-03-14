@@ -11,7 +11,7 @@ import {
 import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as glossary } from "./glossary.data"
-import { $ as pure } from "./pure.api.data"
+import { $ as pure } from "./api.data"
 
 const d = pd.d
 

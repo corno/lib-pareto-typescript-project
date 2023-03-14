@@ -24,9 +24,20 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "glossary": member(string()),
             "arguments": member(dictionary(ref(typeReference("TypeReference")))),
         })),
-        "FunctionReference": type(group({
+        "DefinitionReference": type(group({
             "context": member(ref(typeReference("Context"))),
-            "function": member(string()),
+            "type": member(taggedUnion({
+                "function": group({
+                    "function": member(string()),
+                }),
+                "interface": group({
+                    "interface": member(string()),
+                }),
+                "builder": group({
+                    "builder": member(string()),
+                }),
+
+            })),
         })),
         "TypeReference": type(group({
             "context": member(ref(typeReference("Context"))),
@@ -52,12 +63,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "api": member(group({
                 "root": member(group({
                     "algorithms": member(dictionary(group({
-                        "definition": member(ref(typeReference("FunctionReference"))),
+                        "definition": member(ref(typeReference("DefinitionReference"))),
                         "type": member(taggedUnion({
                             "reference": group({}),
                             "constructor": group({
                                 "configuration data": member(optional(ref(typeReference("TypeReference")))),
-                                "dependencies": member(dictionary(ref(typeReference("FunctionReference")))),
+                                "dependencies": member(dictionary(ref(typeReference("DefinitionReference")))),
                             }),
                         })),
                     }))),
@@ -89,12 +100,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "api": member(group({
                         "root": member(group({
                             "algorithms": member(dictionary(group({
-                                "definition": member(ref(typeReference("FunctionReference"))),
+                                "definition": member(ref(typeReference("DefinitionReference"))),
                                 "type": member(taggedUnion({
                                     "reference": group({}),
                                     "constructor": group({
                                         "configuration data": member(optional(ref(typeReference("TypeReference")))),
-                                        "dependencies": member(dictionary(ref(typeReference("FunctionReference")))),
+                                        "dependencies": member(dictionary(ref(typeReference("DefinitionReference")))),
                                     }),
                                 })),
                             }))),
@@ -119,7 +130,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "api": member(group({
                             "root": member(group({
                                 "algorithms": member(dictionary(group({
-                                    "definition": member(ref(typeReference("FunctionReference"))),
+                                    "definition": member(ref(typeReference("DefinitionReference"))),
                                 }))),
                             })),
                             "imports": member(dictionary(taggedUnion({

@@ -62,6 +62,18 @@ export function infRef(context: string, args: RawDictionary<string>, definition:
     }
 }
 
+export function rsrcRef(context: string, args: RawDictionary<string>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['resource', {
+            'resource': definition,
+        }]
+    }
+}
+
 export function bldrRef(context: string, args: RawDictionary<string>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
     return {
         'context': {

@@ -82,7 +82,7 @@ export function member($: t.T.Type<pd.SourceLocation>): t.T.Type.group.D<pd.Sour
 }
 
 export function ref(typeReference: t.T.TypeReference<pd.SourceLocation>): t.T.Type<pd.SourceLocation> {
-    return ['reference',typeReference]
+    return ['reference', typeReference]
 }
 
 export function context(glossary: string, annotation: pd.SourceLocation): t.T.Context<pd.SourceLocation> {
@@ -120,11 +120,11 @@ export function typeReference(
     type: string,
     typeArgs?: RawDictionary<t.T.TypeReference<pd.SourceLocation>>
 ): t.T.TypeReference<pd.SourceLocation> {
-        return {
-            'context': ['local', null],
-            'type': type,
-            'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
-        }
+    return {
+        'context': ['local', null],
+        'type': type,
+        'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
+    }
 }
 
 export function builderReference(contextOrBuilder: string, builder?: string): t.T.BuilderReference<pd.SourceLocation> {
@@ -183,6 +183,13 @@ export function bldr($: t.T.BuilderReference<pd.SourceLocation>): t.T.DataOrBuil
 
 export function inf($: t.T.InterfaceReference<pd.SourceLocation>): ['interface', t.T.InterfaceReference<pd.SourceLocation>] {
     return ['interface', $]
+}
+
+export function resource(data: t.T.TypeReference<pd.SourceLocation>, inf: t.T.InterfaceReference<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.resources.D<pd.SourceLocation> {
+    return {
+        'data': data,
+        'interface': inf,
+    }
 }
 
 export function sfunc(in_: t.T.DataOrBuilder<pd.SourceLocation>, out: t.T.DataOrBuilder<pd.SourceLocation>): t.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation> {

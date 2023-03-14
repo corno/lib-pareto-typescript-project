@@ -3,7 +3,7 @@ import * as pd from 'pareto-core-data'
 import {
     array, boolean, builderReference, dictionary,
     sfunc, glossaryParameter, group, member,
-    optional, string, taggedUnion, type, typeReference, ref, imp, bldr, sdata
+    optional, string, taggedUnion, type, typeReference, ref, imp, bldr, data
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -133,7 +133,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'type': ['synchronous', {
         'builders': d({}),
         'functions': d({
-            "SerializeImplementation": sfunc(sdata(typeReference("Implementation")), bldr(builderReference("fp", "Line"))),
+            "SerializeImplementation": sfunc(data(typeReference("Implementation")), bldr(builderReference("fp", "Line"))),
         }),
 
     }],

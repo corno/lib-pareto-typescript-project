@@ -5,7 +5,7 @@ import {
     string,
     builderMethod,
     null_,
-    sdata,
+    data,
     array, dictionary, group, member, taggedUnion, types, typeReference, builderReference, sfunc, type, glossaryParameter, optional, imp, externalTypeReference, ref, bldr,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
@@ -48,9 +48,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "GenerateProject": builderMethod(typeReference("ProjectSettings")),
         }),
         'functions': d({
-            "GenerateProjectAndReport": sfunc(sdata(typeReference("ProjectSettings")), bldr( builderReference("fp", "Report"))),
-            //"GetSingleArgument": sfunc(typeReference("main", "Arguments"), null, null, sdata(typeReference("common", "String"), true)),
-            "ParseArguments2": sfunc(sdata(externalTypeReference("main", "Arguments")),bldr( builderReference("HandleParameters"))),
+            "GenerateProjectAndReport": sfunc(data(typeReference("ProjectSettings")), bldr( builderReference("fp", "Report"))),
+            //"GetSingleArgument": sfunc(typeReference("main", "Arguments"), null, null, data(typeReference("common", "String"), true)),
+            "ParseArguments2": sfunc(data(externalTypeReference("main", "Arguments")),bldr( builderReference("HandleParameters"))),
         }),
 
     }],

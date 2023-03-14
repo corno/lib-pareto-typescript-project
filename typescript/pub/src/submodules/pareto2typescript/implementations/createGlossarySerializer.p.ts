@@ -77,7 +77,7 @@ export const $$: createGlossarySerializer = ($d) => {
                 $i.snippet(`T.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
                 $d.enrichedDictionaryForEach($.arguments, {
                     'onEmpty': () => {
-                        serializeContextArgumentsOnly($.context, $i)
+                        serializeGlossaryArgumentsOnly($.context, $i)
                     },
                     'onNotEmpty': ($c) => {
                         $i.snippet(`<`)
@@ -115,7 +115,7 @@ export const $$: createGlossarySerializer = ($d) => {
                     }
                 })
             }
-            function serializeContextArgumentsOnly(
+            function serializeGlossaryArgumentsOnly(
                 $: g_glossary.T.Context<Annotation>,
                 $i: g_fp.B.Line,
             ) {
@@ -613,7 +613,7 @@ export const $$: createGlossarySerializer = ($d) => {
                 function serializeBuilderReference($: g_glossary.T.BuilderReference<Annotation>, $i: g_fp.B.Line) {
                     serializeContext($.context, $i)
                     $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
-                    serializeContextArgumentsOnly($.context, $i)
+                    //serializeGlossaryArgumentsOnly($.context, $i)
 
                 }
                 function serializeInterface($: g_glossary.T.Interface<Annotation>, $i: g_fp.B.Line) {
@@ -692,7 +692,7 @@ export const $$: createGlossarySerializer = ($d) => {
                 function serializeInterfaceReference($: g_glossary.T.InterfaceReference<Annotation>, $i: g_fp.B.Line) {
                     serializeContext($.context, $i)
                     $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
-                    serializeContextArgumentsOnly($.context, $i)
+                    serializeGlossaryArgumentsOnly($.context, $i)
 
                 }
                 $i.nestedLine(($i) => {

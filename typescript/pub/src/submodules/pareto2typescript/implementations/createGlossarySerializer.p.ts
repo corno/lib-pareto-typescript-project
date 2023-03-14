@@ -788,8 +788,8 @@ export const $$: createGlossarySerializer = ($d) => {
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
                                         $i.snippet(`export type ${$d.createIdentifier($.key)}`)
-                                        serializeGlobalParametersOnly($i)
                                         $i.snippet(` = `)
+                                        serializeGlobalParametersOnly($i)
                                         $i.snippet(`($b: B.${$d.createIdentifier($.key)}`)
                                         serializeGlobalParametersOnly($i)
                                         $i.snippet(`) => void`)

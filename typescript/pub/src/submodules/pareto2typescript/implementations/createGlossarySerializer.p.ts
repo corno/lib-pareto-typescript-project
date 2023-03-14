@@ -141,7 +141,7 @@ export const $$: createGlossarySerializer = ($d) => {
                                     })
                                 },
                                 () => {
-                                        pd.logDebugMessage(`missing import: ${$.glossary}`)
+                                        pd.logDebugMessage(`missing import: ${$.glossary.key}`)
                                 }
                             )
                         })

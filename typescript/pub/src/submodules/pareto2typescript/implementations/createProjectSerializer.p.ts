@@ -42,10 +42,8 @@ export const $$: createProjectSerializer = (
                     case 'builder':
                         pl.cc($.type[1], ($) => {
                             if (wrapped) {
-                                $i.snippet(`($c: ($b: `)
-                                $i.snippet(`g_${glossary}.`)
-                                $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
-                                $i.snippet(`) => void) => void`)
+                                $i.snippet(`($c: g_${glossary}.C.${$d.createIdentifier(`${$.builder}`)}`)
+                                $i.snippet(`) => void`)
 
                             } else {
                                 $i.snippet(`g_${glossary}.`)
@@ -329,7 +327,7 @@ export const $$: createProjectSerializer = (
                                                         const definition = $.value.definition
                                                         $i.line(``)
                                                         $i.nestedLine(($i) => {
-                                                            $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)} = `)
+                                                            $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
                                                             switch ($.value.type[0]) {
                                                                 case 'constructor':
                                                                     pl.cc($.value.type[1], ($) => {
@@ -401,7 +399,7 @@ export const $$: createProjectSerializer = (
                                                         $i.snippet(`export type API = {`)
                                                         $i.indent(($i) => {
                                                             $d.dictionaryForEach($.algorithms, ($) => {
-                                                                $i.line(`${$.key}: ${$d.createIdentifier(`${$.key}`)}`)
+                                                                $i.line(`${$.key}: ${$d.createIdentifier($.key)}`)
                                                             })
                                                         })
                                                         $i.snippet(`}`)
@@ -566,7 +564,7 @@ export const $$: createProjectSerializer = (
                                                                 const definition = $.value.definition
                                                                 $i.line(``)
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)} = `)
+                                                                    $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
 
                                                                     serializeWrappedDefinitionReference(definition, $i)
                                                                 })
@@ -576,7 +574,7 @@ export const $$: createProjectSerializer = (
                                                                 $i.snippet(`export type API = {`)
                                                                 $i.indent(($i) => {
                                                                     $d.dictionaryForEach($.algorithms, ($) => {
-                                                                        $i.line(`${$.key}: ${$d.createIdentifier(`${$.key}`)}`)
+                                                                        $i.line(`${$.key}: ${$d.createIdentifier($.key)}`)
                                                                     })
                                                                 })
                                                                 $i.snippet(`}`)
@@ -733,7 +731,7 @@ export const $$: createProjectSerializer = (
                                             const definition = $.value.definition
                                             $i.line(``)
                                             $i.nestedLine(($i) => {
-                                                $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)} = `)
+                                                $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
                                                 switch ($.value.type[0]) {
                                                     case 'constructor':
                                                         pl.cc($.value.type[1], ($) => {
@@ -805,7 +803,7 @@ export const $$: createProjectSerializer = (
                                             $i.snippet(`export type API = {`)
                                             $i.indent(($i) => {
                                                 $d.dictionaryForEach($.algorithms, ($) => {
-                                                    $i.line(`${$.key}: ${$d.createIdentifier(`${$.key}`)}`)
+                                                    $i.line(`${$.key}: ${$d.createIdentifier($.key)}`)
                                                 })
                                             })
                                             $i.snippet(`}`)

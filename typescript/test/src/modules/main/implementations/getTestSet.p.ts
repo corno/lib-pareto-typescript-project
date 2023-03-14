@@ -18,7 +18,7 @@ export const $$: getTestSet = ($) => {
     const $XXX = $
 
     function genProj<Annotation>(dir: string, proj: g_project.T.Project<Annotation>) {
-        g_pub.$b.generateProject(
+        g_pub.$b.generateProject<Annotation>(
             ($b) => {
                 $b({
                     'mainData': {

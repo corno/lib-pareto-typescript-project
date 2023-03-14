@@ -715,7 +715,7 @@ export const $$: createGlossarySerializer = ($d) => {
                                 $d.dictionaryForEach($.interfaces, ($) => {
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)}`)
+                                        $i.snippet(`export type ${$d.createIdentifier($.key)}`)
                                         serializeGlobalParametersOnly($i)
                                         $i.snippet(` = `)
                                         serializeInterface($.value, $i)
@@ -726,7 +726,7 @@ export const $$: createGlossarySerializer = ($d) => {
                                 $d.dictionaryForEach($.functions, ($) => {
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)}`)
+                                        $i.snippet(`export type ${$d.createIdentifier($.key)}`)
                                         $i.snippet(` = `)
                                         serializeGlobalParametersOnly($i)
                                         pl.cc($.value, ($) => {
@@ -776,10 +776,23 @@ export const $$: createGlossarySerializer = ($d) => {
                                 $d.dictionaryForEach($.builders, ($) => {
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)}`)
+                                        $i.snippet(`export type ${$d.createIdentifier($.key)}`)
                                         serializeGlobalParametersOnly($i)
                                         $i.snippet(` = `)
                                         serializeBuilder($.value, $i)
+                                    })
+                                })
+                            })
+                            ns(`C`, $i, ($i) => {
+                                $d.dictionaryForEach($.builders, ($) => {
+                                    $i.line(``)
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`export type ${$d.createIdentifier($.key)}`)
+                                        $i.snippet(` = `)
+                                        serializeGlobalParametersOnly($i)
+                                        $i.snippet(`($b: B.${$d.createIdentifier($.key)}`)
+                                        serializeGlobalParametersOnly($i)
+                                        $i.snippet(`) => void`)
                                     })
                                 })
                             })
@@ -787,7 +800,7 @@ export const $$: createGlossarySerializer = ($d) => {
                                 $d.dictionaryForEach($.functions, ($) => {
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
-                                        $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)}`)
+                                        $i.snippet(`export type ${$d.createIdentifier($.key)}`)
                                         $i.snippet(` = `)
                                         serializeGlobalParametersOnly($i)
                                         pl.cc($.value, ($) => {

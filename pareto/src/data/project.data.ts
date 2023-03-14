@@ -46,11 +46,6 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
                     })
                 },
                 'imports': d({
-                    "common": external("glo-pareto-common"),
-                    "foreach": external("res-pareto-foreach"),
-                    "fp": external("lib-fountain-pen"),
-                    "fs": external("res-pareto-filesystem"),
-                    "pareto2typescript": submodule("pareto2typescript"),
                     "this": this_(),
                 }),
             },

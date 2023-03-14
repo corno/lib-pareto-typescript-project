@@ -5,4 +5,6 @@ import { T } from './types.generated'
 
 export namespace B {}
 
+export namespace C {}
+
 export namespace F {}

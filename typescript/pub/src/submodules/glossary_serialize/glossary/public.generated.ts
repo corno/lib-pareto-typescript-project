@@ -7,6 +7,8 @@ import * as g_model from "../../glossary"
 
 export namespace B {}
 
+export namespace C {}
+
 export namespace F {
     
     export type Serialize = <GAnnotation>($: g_model.T.Glossary<T.Annotation<GAnnotation>>, $b: g_fp.B.Block) => void

@@ -9,4 +9,6 @@ import * as g_glossary from "../../glossary"
 
 export namespace B {}
 
+export namespace C {}
+
 export namespace F {}

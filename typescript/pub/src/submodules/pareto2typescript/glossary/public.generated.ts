@@ -10,6 +10,8 @@ import * as g_project from "../../project"
 
 export namespace B {}
 
+export namespace C {}
+
 export namespace F {
     
     export type ProjectToDirectory = <GAnnotation>($: g_project.T.Project<T.Annotation<GAnnotation>>, $b: g_fp.B.Directory) => void

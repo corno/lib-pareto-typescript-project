@@ -7,7 +7,7 @@ import * as g_fs from "res-pareto-filesystem"
 import * as g_pareto2typescript from "../submodules/pareto2typescript"
 import * as g_this from "../main/glossary"
 
-export type generateProject = g_this.F.GenerateProject
+export type generateProject = <A>($c: ($b: g_this.B.GenerateProject<A>) => void) => void
 
 export type API = {
     generateProject: generateProject

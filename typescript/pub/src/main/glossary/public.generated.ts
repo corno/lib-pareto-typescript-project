@@ -9,6 +9,10 @@ import * as g_project from "../../submodules/project"
 
 export namespace B {
     
+    export type GenerateProject<GAnnotation> = ($: T.ProjectSettings<GAnnotation>, ) => void
+    
+    export type HandleArgumentError<GAnnotation> = ($: T.ArgumentError<GAnnotation>, ) => void
+    
     export type HandleParameters<GAnnotation> = ($: T.Parameters<GAnnotation>, ) => void
     
     export type ParseArguments<GAnnotation> = ($: g_main.T.Arguments, ) => void
@@ -18,11 +22,7 @@ export namespace B {
 
 export namespace F {
     
-    export type GenerateProject = <GAnnotation>($: T.ProjectSettings<GAnnotation>,) => void
+    export type GenerateProjectAndReport = <GAnnotation>($: T.ProjectSettings<GAnnotation>, $b: g_fp.B.Report) => void
     
-    export type GenerateProjectAndReport = <GAnnotation>($: T.ProjectSettings<GAnnotation>, $b: g_fp.B.Report,) => void
-    
-    export type HandleArgumentError = <GAnnotation>($: T.ArgumentError<GAnnotation>,) => void
-    
-    export type ParseArguments2 = <GAnnotation>($: g_main.T.Arguments, $b: B.HandleParameters<GAnnotation>,) => void
+    export type ParseArguments2 = <GAnnotation>($: g_main.T.Arguments, $b: B.HandleParameters<GAnnotation>) => void
 }

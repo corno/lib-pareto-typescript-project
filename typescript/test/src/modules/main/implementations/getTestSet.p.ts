@@ -19,11 +19,13 @@ export const $$: getTestSet = ($) => {
 
     function genProj<Annotation>(dir: string, proj: g_project.T.Project<Annotation>) {
         g_pub.$b.generateProject(
-            {
-                'mainData': {
-                    'arguments': pm.wrapRawArray([dir]),
-                },
-                'project': proj,
+            ($b) => {
+                $b({
+                    'mainData': {
+                        'arguments': pm.wrapRawArray([dir]),
+                    },
+                    'project': proj,
+                })
             }
         )
 

@@ -8,5 +8,5 @@ export namespace B {}
 
 export namespace F {
     
-    export type SerializeImplementation = <GAnnotation>($: T.Implementation<GAnnotation>, $b: g_fp.B.Line,) => void
+    export type SerializeImplementation = <GAnnotation>($: T.Implementation<GAnnotation>, $b: g_fp.B.Line) => void
 }

@@ -9,5 +9,5 @@ export namespace B {}
 
 export namespace F {
     
-    export type Serialize = <GAnnotation>($: g_model.T.Glossary<T.Annotation<GAnnotation>>, $b: g_fp.B.Block,) => void
+    export type Serialize = <GAnnotation>($: g_model.T.Glossary<T.Annotation<GAnnotation>>, $b: g_fp.B.Block) => void
 }

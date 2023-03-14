@@ -572,7 +572,7 @@ export const $$: createGlossarySerializer = ($d) => {
                             break
                         case 'method':
                             pl.cc($[1], ($) => {
-
+                                serializeGlobalParametersOnly($i)
                                 $i.snippet(`(`)
                                 pl.cc($.data, ($) => {
                                     if ($ === null) {
@@ -777,7 +777,6 @@ export const $$: createGlossarySerializer = ($d) => {
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
                                         $i.snippet(`export type ${$d.createIdentifier(`${$.key}`)}`)
-                                        serializeGlobalParametersOnly($i)
                                         $i.snippet(` = `)
                                         serializeBuilder($.value, $i)
                                     })
@@ -797,9 +796,9 @@ export const $$: createGlossarySerializer = ($d) => {
                                                 switch ($[0]) {
                                                     case 'builder':
                                                         pl.cc($[1], ($) => {
-                                                            $i.snippet(` $c: ($b: `)
+                                                            $i.snippet(`$c: ($b: `)
                                                             serializeBuilderReference($, $i)
-                                                            $i.snippet(`) => void,`)
+                                                            $i.snippet(`) => void`)
                                                         })
                                                         break
                                                     case 'data':

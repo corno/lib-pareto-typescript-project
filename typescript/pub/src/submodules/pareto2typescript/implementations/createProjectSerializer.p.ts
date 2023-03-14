@@ -37,25 +37,32 @@ export const $$: createProjectSerializer = (
         ) {
             const wrapped = $.wrapBuilder
             pl.cc($.def, ($) => {
-                $i.snippet(`g_${$.context.glossary}.`)
+                const glossary = $.context.glossary
                 switch ($.type[0]) {
                     case 'builder':
                         pl.cc($.type[1], ($) => {
                             if (wrapped) {
+                                $i.snippet(`($c: ($b: `)
+                                $i.snippet(`g_${glossary}.`)
                                 $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
+                                $i.snippet(`) => void) => void`)
+
                             } else {
-                                $i.snippet(`($c: ($b: B.${$d.createIdentifier(`${$.builder}`)}) => void) => void`)
+                                $i.snippet(`g_${glossary}.`)
+                                $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
                             }
-                            
+
                         })
                         break
                     case 'function':
                         pl.cc($.type[1], ($) => {
+                            $i.snippet(`g_${glossary}.`)
                             $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
                         })
                         break
                     case 'interface':
                         pl.cc($.type[1], ($) => {
+                            $i.snippet(`g_${glossary}.`)
                             $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
                         })
                         break

@@ -14,7 +14,7 @@ export const $: g_project.T.Module.api.root<pd.SourceLocation> = {
                     'glossary': "this",
                     'arguments': d({}),
                 },
-                'function': "Serialize",
+                'type': ['function', { 'function': "Serialize" } ],
             },
             'type': ['constructor', {
                 'configuration data': [false],
@@ -24,28 +24,28 @@ export const $: g_project.T.Module.api.root<pd.SourceLocation> = {
                             'glossary': "foreach",
                             'arguments': d({}),
                         },
-                        'function': "ArrayForEach",
+                        'type': ['function', { 'function': "ArrayForEach" } ],
                     },
                     "dictionaryForEach": {
                         'context': {
                             'glossary': "foreach",
                             'arguments': d({}),
                         },
-                        'function': "DictionaryForEach",
+                        'type': ['function', { 'function': "DictionaryForEach" } ],
                     },
                     "enrichedArrayForEach": {
                         'context': {
                             'glossary': "foreach",
                             'arguments': d({}),
                         },
-                        'function': "EnrichedArrayForEach",
+                        'type': ['function', { 'function': "EnrichedArrayForEach" } ],
                     },
                     "enrichedDictionaryForEach": {
                         'context': {
                             'glossary': "foreach",
                             'arguments': d({}),
                         },
-                        'function': "EnrichedDictionaryForEach",
+                        'type': ['function', { 'function': "EnrichedDictionaryForEach" } ],
                     },
                 }),
             }],

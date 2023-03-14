@@ -9,7 +9,7 @@ import { $ as pareto2typescript } from "./submodules/pareto2typescript/module.da
 import { $ as project } from "./submodules/project/module.data"
 import { $ as glossary_serialize } from "./submodules/glossary_serialize/module.data"
 import { $ as glossary } from "./submodules/glossary/module.data"
-import { algorithm, external, functionReference, submodule, this_ } from 'lib-pareto-typescript-project/dist/submodules/project/shorthands'
+import { algorithm, bldrRef, external, functionReference, submodule, this_ } from 'lib-pareto-typescript-project/dist/submodules/project/shorthands'
 
 const d = pd.d
 
@@ -42,7 +42,7 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
             'api': {
                 'root': {
                     'algorithms': d({
-                        "generateProject": algorithm(functionReference("this", {}, "GenerateProject")),
+                        "generateProject": algorithm(bldrRef("this", {}, "GenerateProject")),
                     })
                 },
                 'imports': d({

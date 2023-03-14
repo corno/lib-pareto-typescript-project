@@ -25,7 +25,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         'builders': d({}),
         'functions': d<g_glossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({
             "Serialize": {
-                'data': {
+                'in': ['data', {
                     'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
                         'glossary': {
                             'key': "model",
@@ -34,9 +34,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     }],
                     'type': "Glossary",
                     'arguments': d({}),
-                },
-                'input builder': [false],
-                'output builder': [true, {
+                }],
+                'out': ['builder', {
                     'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
                         'glossary': {
                             'key': "fp",
@@ -45,7 +44,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     }],
                     'builder': "Block",
                 }],
-                'return type': ['nothing', null],
             },
         }),
     }],

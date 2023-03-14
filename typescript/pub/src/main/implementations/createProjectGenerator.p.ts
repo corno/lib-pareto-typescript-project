@@ -34,24 +34,29 @@ export const $$: createProjectGenerator = ($d) => {
             $.mainData.arguments,
             ($) => {
 
-                g_fp.$b.createDirectory(
-                    $.testDirectory,
-                    ($i) => {
-                        $d.serializeProject(
-                            project,
-                            $i,
-                        )
-                        $d.serializeTemplate(
-                            project,
-                            $i,
-                        )
-                        $d.validateFiles(
-                            null,
-                            $i,
-                        )
-                    },
-                    $i,
-                )
+                g_fp.$a.createDirectoryCreator(
+                    {
+                        'report': $i,
+                    }
+                )(($b) => {
+                    $b(
+                        $.testDirectory,
+                        ($i) => {
+                            $d.serializeProject(
+                                project,
+                                $i,
+                            )
+                            $d.serializeTemplate(
+                                project,
+                                $i,
+                            )
+                            $d.validateFiles(
+                                null,
+                                $i,
+                            )
+                        },
+                    )
+                })
 
             }
         )

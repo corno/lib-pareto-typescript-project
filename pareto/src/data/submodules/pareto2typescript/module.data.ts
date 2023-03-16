@@ -3,7 +3,7 @@ import * as pd from 'pareto-core-data'
 import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as glossary } from "./glossary.data"
-import { $ as pure } from "./api.data"
+import { $ as api } from "./api.data"
 import { external, sibling, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
 const d = pd.d
@@ -20,7 +20,7 @@ export const $: g_project.T.Project._ltype.library.submodules.D<pd.SourceLocatio
         }),
     },
         'api': {
-            'root': pure,
+            'root': api,
             'imports': d({
                 "collation": external("res-pareto-collation"),
                 "common": external("glo-pareto-common"),

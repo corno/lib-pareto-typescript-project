@@ -2,7 +2,7 @@ import * as pd from 'pareto-core-data'
 
 import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
-import { $ as pure } from "./api.deprecated"
+import { $ as api } from "./api.deprecated"
 import { $ as glossary } from "./glossary.deprecated"
 import { external, sibling, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
@@ -19,7 +19,7 @@ export const $: g_project.T.Project._ltype.library.submodules.D<pd.SourceLocatio
 
     },
         'api': {
-            'root': pure,
+            'root': api,
             'imports': d({
                 "foreach": external("res-pareto-foreach"),
                 "this": this_(),

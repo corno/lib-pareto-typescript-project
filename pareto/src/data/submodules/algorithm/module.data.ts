@@ -3,7 +3,7 @@ import * as pd from 'pareto-core-data'
 import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
 import { $ as glossary } from "./glossary.deprecated"
-import { $ as pure } from "./api.deprecated"
+import { $ as api } from "./api.deprecated"
 
 import { external, sibling } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
@@ -18,7 +18,7 @@ export const $: g_project.T.Project._ltype.library.submodules.D<pd.SourceLocatio
 
     },
         'api': {
-            'root': pure,
+            'root': api,
             'imports': d({
                 "collation": external("res-pareto-collation"),
                 "foreach": external("res-pareto-foreach"),

@@ -11,6 +11,6 @@ export const $$: main = ($) => {
     pv.logDebugMessage("REENABLE")
 
     // g_main.$a.compile(data, ($) => {
-    //     pv.logDebugMessage(g_error($))
+    //     pv.logDebugMessage(g_error.$a.createErrorMessageCreator({})($))
     // })
 }

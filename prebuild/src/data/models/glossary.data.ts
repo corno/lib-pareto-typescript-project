@@ -61,9 +61,9 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                     })),
                     "asynchronous": option(group({
                         "interfaces": prop(dictionary(component("Interface", {}))),
-                        "resources": prop(dictionary(group({
-                            "data": prop(component("TypeReference", {})),
+                        "classes": prop(dictionary(group({
                             "interface": prop(component("InterfaceReference", {})),
+                            "downstreams": prop(dictionary(component("InterfaceReference", {}))),
                         }))),
                         "functions": prop(dictionary(group({
                             "out": prop(taggedUnion({
@@ -72,7 +72,6 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                             })),
                             "in": prop(taggedUnion({
                                 "data": option(component("TypeReference", {})),
-                                "resource": option(component("ResourceReference", {})),
                             })),
 
                         }))),
@@ -107,11 +106,6 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                 "context": prop(component("Context", {})),
                 //"interface": [["context"), reference(['sibling', "context"), [))),
                 "interface": prop(terminal("identifier")),
-            })),
-            "ResourceReference": globalType({}, group({
-                "context": prop(component("Context", {})),
-                //"interface": [["context"), reference(['sibling', "context"), [))),
-                "resource": prop(terminal("identifier")),
             })),
             "BuilderReference": globalType({}, group({
                 "context": prop(component("Context", {})),

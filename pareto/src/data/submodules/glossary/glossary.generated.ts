@@ -114,6 +114,24 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 "type": {
                     'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
                         "asynchronous": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                            "classes": {
+                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                    "downstreams": {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                            'type': "InterfaceReference",
+                                            'arguments': d({}),
+                                        }]],
+                                    },
+                                    "interface": {
+                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                            'type': "InterfaceReference",
+                                            'arguments': d({}),
+                                        }],
+                                    },
+                                })]],
+                            },
                             "functions": {
                                 'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                                     "in": {
@@ -121,11 +139,6 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                                             "data": <gglossary.T.Type<pd.SourceLocation>>['reference', {
                                                 'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
                                                 'type': "TypeReference",
-                                                'arguments': d({}),
-                                            }],
-                                            "resource": <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                                'type': "ResourceReference",
                                                 'arguments': d({}),
                                             }],
                                         })],
@@ -152,24 +165,6 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                                     'type': "Interface",
                                     'arguments': d({}),
                                 }]],
-                            },
-                            "resources": {
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                                    "data": {
-                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                            'type': "TypeReference",
-                                            'arguments': d({}),
-                                        }],
-                                    },
-                                    "interface": {
-                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                            'type': "InterfaceReference",
-                                            'arguments': d({}),
-                                        }],
-                                    },
-                                })]],
                             },
                         })],
                         "synchronous": <gglossary.T.Type<pd.SourceLocation>>['group', d({
@@ -279,21 +274,6 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                     }],
                 },
                 "interface": {
-                    'type': <gglossary.T.Type<pd.SourceLocation>>['string', null],
-                },
-            })]
-        },
-        "ResourceReference": {
-            'parameters': d({}),
-            'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                "context": {
-                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                        'type': "Context",
-                        'arguments': d({}),
-                    }],
-                },
-                "resource": {
                     'type': <gglossary.T.Type<pd.SourceLocation>>['string', null],
                 },
             })]

@@ -245,20 +245,20 @@ export const $$: createSerializer = ($d) => {
             })
             $i.snippet(`}`)
         }
-        function serializeResourceReference($: g_glossary.T.ResourceReference<Annotation>, $i: g_fp.B.Line) {
-            $i.snippet(`{`)
-            $i.indent(($i) => {
-                $i.nestedLine(($i) => {
-                    $i.snippet(`'context': `)
-                    serializeContext($.context, $i)
-                    $i.snippet(`,`)
-                })
-                $i.nestedLine(($i) => {
-                    $i.snippet(`'resource': "${$.resource}",`)
-                })
-            })
-            $i.snippet(`}`)
-        }
+        // function serializeResourceReference($: g_glossary.T.ResourceReference<Annotation>, $i: g_fp.B.Line) {
+        //     $i.snippet(`{`)
+        //     $i.indent(($i) => {
+        //         $i.nestedLine(($i) => {
+        //             $i.snippet(`'context': `)
+        //             serializeContext($.context, $i)
+        //             $i.snippet(`,`)
+        //         })
+        //         $i.nestedLine(($i) => {
+        //             $i.snippet(`'resource': "${$.resource}",`)
+        //         })
+        //     })
+        //     $i.snippet(`}`)
+        // }
 
         function serializeBuilderReference($: g_glossary.T.BuilderReference<Annotation>, $i: g_fp.B.Line) {
             $i.snippet(`{`)
@@ -527,6 +527,32 @@ export const $$: createSerializer = ($d) => {
                                         $i.snippet(`}),`)
                                     })
                                     $i.nestedLine(($i) => {
+                                        $i.snippet(`'classes': d({`)
+                                        $i.indent(($i) => {
+                                            $d.dictionaryForEach($.classes, ($) => {
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`'interface': `)
+                                                    serializeInterfaceReference($.value.interface, $i)
+                                                    $i.snippet(`,`)
+                                                })
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`'downstreams': d({`)
+                                                    $i.indent(($i) => {
+                                                        $d.dictionaryForEach($.value.downstreams, ($) => {
+                                                            $i.nestedLine(($i) => {
+                                                                $i.snippet(`"${$.key}": `)
+                                                                serializeInterfaceReference($.value, $i)
+                                                                $i.snippet(`,`)
+                                                            })
+                                                        })
+                                                    })
+                                                    $i.snippet(`}),`)
+                                                })
+                                            })
+                                        })
+                                        $i.snippet(`}),`)
+                                    })
+                                    $i.nestedLine(($i) => {
                                         $i.snippet(`'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({`)
                                         $i.indent(($i) => {
                                             $d.dictionaryForEach($.functions, ($) => {
@@ -546,13 +572,13 @@ export const $$: createSerializer = ($d) => {
                                                                             $i.snippet(`]`)
                                                                         })
                                                                         break
-                                                                    case 'resource':
-                                                                        pl.cc($.in[1], ($) => {
-                                                                            $i.snippet(`['resource', `)
-                                                                            serializeResourceReference($, $i)
-                                                                            $i.snippet(`]`)
-                                                                        })
-                                                                        break
+                                                                    // case 'resource':
+                                                                    //     pl.cc($.in[1], ($) => {
+                                                                    //         $i.snippet(`['resource', `)
+                                                                    //         serializeResourceReference($, $i)
+                                                                    //         $i.snippet(`]`)
+                                                                    //     })
+                                                                    //     break
                                                                     default: pl.au($.in[0])
                                                                 }
                                                                 $i.snippet(`,`)

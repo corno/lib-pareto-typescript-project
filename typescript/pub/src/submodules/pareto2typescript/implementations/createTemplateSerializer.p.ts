@@ -22,7 +22,7 @@ export const $$: createTemplateSerializer = (
                             $i.directory("pub", ($i) => {
                                 function doImplementation(
                                     
-                                    $: g_project.T.Module.api.root<Annotation>,
+                                    $: g_project.T.ModuleDefinition.api.root<Annotation>,
                                     $i: g_fp.B.Directory,
                                 ) {
                                     $i.directory("implementations", ($i) => {
@@ -65,7 +65,7 @@ export const $$: createTemplateSerializer = (
                                         //     () => {
                                         //     }
                                         // )
-                                        doImplementation($.api.root, $i)
+                                        doImplementation($.definition.api.root, $i)
                                     }
                                     $i.directory("main", ($i) => {
                                         doModule($.main, $i)
@@ -85,7 +85,7 @@ export const $$: createTemplateSerializer = (
                             $i.directory("test", ($i) => {
                                 $i.directory("src", ($i) => {
                                     function doAPI(
-                                        $: g_project.T.Module.api.root<Annotation>,
+                                        $: g_project.T.ModuleDefinition.api.root<Annotation>,
                                         $i: g_fp.B.Directory,
                                         ) {
                                         $d.dictionaryForEach($.algorithms, ($) => {
@@ -126,14 +126,14 @@ export const $$: createTemplateSerializer = (
                                 $i.directory("src", ($i) => {
 
                                     $i.directory("implementations", ($i) => {
-                                        $d.dictionaryForEach($.api.root.algorithms, ($) => {
+                                        $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)
                                                 $i.line(``)
                                                 $i.line(``)
                                                 $i.nestedLine(($i) => {
-                                                    $i.snippet(`export const $$: g_this.${$d.createIdentifier(`C${$.key}`)}`)
+                                                    $i.snippet(`export const $$: g_this.${$d.createIdentifier(`${$.key}`)}`)
                                                     $i.snippet(` = ($c, $d) => {`)
                                                     $i.indent(($i) => {
                                                         $i.nestedLine(($i) => {
@@ -157,7 +157,7 @@ export const $$: createTemplateSerializer = (
                                 $i.directory("src", ($i) => {
                                     $i.directory("modules", ($i) => {
 
-                                        $d.dictionaryForEach($.api.root.algorithms, ($) => {
+                                        $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)

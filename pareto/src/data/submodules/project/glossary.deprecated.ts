@@ -19,41 +19,11 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
-        "AlgorithmImplementation": type(group({})),
         "Context": type(group({
             "glossary": member(string()),
             "arguments": member(dictionary(string())),
         })),
-        "DefinitionReference": type(group({
-            "context": member(ref(typeReference("Context"))),
-            "type": member(taggedUnion({
-                "function": group({
-                    "function": member(string()),
-                }),
-                "interface": group({
-                    "interface": member(string()),
-                }),
-                "builder": group({
-                    "builder": member(string()),
-                }),
-                "resource": group({
-                    "resource": member(string()),
-                }),
-
-            })),
-        })),
-        "TypeReference": type(group({
-            "context": member(ref(typeReference("Context"))),
-            "type": member(string()),
-        })),
-
-        "Implementation": type(taggedUnion({
-            "typescript": group({
-                //  parametrizedReference("algorithm", { "Annotation": typeReference("Annotation") }, "AlgorithmImplementation"),
-            }),
-            "pareto": group({}),
-        })),
-        "Module": type(group({
+        "ModuleDefinition": type(group({
             "glossary": member(group({
                 "root": member(ref(externalTypeReference("glossary", "Glossary"))),
                 "imports": member(dictionary(taggedUnion({
@@ -66,12 +36,55 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "api": member(group({
                 "root": member(group({
                     "algorithms": member(dictionary(group({
-                        "definition": member(ref(typeReference("DefinitionReference"))),
+                        "definition": member(group({
+                            "context": member(ref(typeReference("Context"))),
+                            "type": member(taggedUnion({
+                                "async": taggedUnion({
+                                    "class": group({
+                                        "class": member(string()),
+                                    }),
+                                    "function": group({
+                                        "function": member(string()),
+                                    }),
+                                }),
+                                "sync": taggedUnion({
+                                    "builder": group({
+                                        "builder": member(string()),
+                                    }),
+                                    "function": group({
+                                        "function": member(string()),
+                                    }),
+                                })
+                            })),
+                        })),
                         "type": member(taggedUnion({
-                            "reference": group({}),
-                            "constructor": group({
-                                "configuration data": member(optional(ref(typeReference("TypeReference")))),
-                                "dependencies": member(dictionary(ref(typeReference("DefinitionReference")))),
+                            "independent": group({}),
+                            "dependent": group({
+                                "configuration data": member(optional(group({
+                                    "context": member(ref(typeReference("Context"))),
+                                    "type": member(string()),
+                                }))),
+                                "dependencies": member(dictionary(group({
+                                    "context": member(ref(typeReference("Context"))),
+                                    "type": member(taggedUnion({
+                                        "async": taggedUnion({
+                                            "function": group({
+                                                "function": member(string()),
+                                            }),
+                                            "interface": group({
+                                                "interface": member(string()),
+                                            }),
+                                        }),
+                                        "sync": taggedUnion({
+                                            "function": group({
+                                                "function": member(string()),
+                                            }),
+                                            "interface": group({
+                                                "interface": member(string()),
+                                            }),
+                                        })
+                                    })),
+                                }))),
                             }),
                         })),
                     }))),
@@ -83,7 +96,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "external": string(),
                 }))),
             })),
-            "implementation": member(ref(typeReference("Implementation"))),
+        })),
+        "Module": type(group({
+            "definition": member(ref(typeReference("ModuleDefinition"))),
+            "implementation": member(taggedUnion({
+                "typescript": group({
+                }),
+                "pareto": group({}),
+            })),
         })),
         "Project": type(group({
             "author": member(string()),
@@ -94,30 +114,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 "resource": group({
                     "nativeDependencies": member(dictionary(group({}))),
                     "devDependencies": member(dictionary(group({}))),
-                    "glossary": member(group({
-                        "root": member(ref(externalTypeReference("glossary", "Glossary"))),
-                        "imports": member(dictionary(taggedUnion({
-                            "external": string(),
-                        }))),
-                    })),
-                    "api": member(group({
-                        "root": member(group({
-                            "algorithms": member(dictionary(group({
-                                "definition": member(ref(typeReference("DefinitionReference"))),
-                                "type": member(taggedUnion({
-                                    "reference": group({}),
-                                    "constructor": group({
-                                        "configuration data": member(optional(ref(typeReference("TypeReference")))),
-                                        "dependencies": member(dictionary(ref(typeReference("DefinitionReference")))),
-                                    }),
-                                })),
-                            }))),
-                        })),
-                        "imports": member(dictionary(taggedUnion({
-                            "this": group({}),
-                            "external": string(),
-                        }))),
-                    })),
+                    "definition": member(ref(typeReference("ModuleDefinition"))),
                     "test": member(ref(typeReference("Test"))),
                 }),
                 "glossary": group({
@@ -130,20 +127,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "main": member(ref(typeReference("Module"))),
                     "submodules": member(dictionary(ref(typeReference("Module")))),
                     "bindings": member(optional(group({
-                        "api": member(group({
-                            "root": member(group({
-                                "algorithms": member(dictionary(group({
-                                    "parameters": member(dictionary(group({}))),
-                                    "definition": member(ref(typeReference("DefinitionReference"))),
-                                }))),
-                            })),
-                            "imports": member(dictionary(taggedUnion({
-                                "this": group({}),
-                                "submodule": string(),//only possible for main
-                                "external": string(),
-                            }))),
+                        "definition": member(ref(typeReference("ModuleDefinition"))),
+                        "implementation": member(taggedUnion({
+                            "typescript": group({
+                            }),
+                            "pareto": group({}),
                         })),
-                        "implementation": member(ref(typeReference("Implementation"))),
                     }))),
                     "executables": member(dictionary(group({}))),
                     "test": member(ref(typeReference("Test"))),
@@ -152,7 +141,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         })),
         "Test": type(group({
             "dependencies": member(dictionary(group({}))),
-            "glossary": member(ref(externalTypeReference("glossary", "Glossary"))),
+            "definition": member(ref(typeReference("ModuleDefinition"))),
             "imports": member(dictionary(taggedUnion({
                 "this": group({}),
                 "pub": string(),

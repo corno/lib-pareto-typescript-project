@@ -7,10 +7,6 @@ import * as g_glossary from "../../glossary"
 
 export namespace T {
     
-    export namespace AlgorithmImplementation {}
-    
-    export type AlgorithmImplementation<GAnnotation> = null
-    
     export type Annotation<GAnnotation> = GAnnotation
     
     export namespace Context {
@@ -30,97 +26,34 @@ export namespace T {
         readonly 'glossary': string
     }
     
-    export namespace DefinitionReference {
+    export namespace Module {
         
-        export type context<GAnnotation> = T.Context<GAnnotation>
+        export type definition<GAnnotation> = T.ModuleDefinition<GAnnotation>
         
-        export namespace _ltype {
+        export namespace implementation {
             
-            export namespace builder {
-                
-                export type builder<GAnnotation> = string
-            }
+            export namespace pareto {}
             
-            export type builder<GAnnotation> = {
-                readonly 'builder': string
-            }
+            export type pareto<GAnnotation> = null
             
-            export namespace _lfunction {
-                
-                export type _lfunction<GAnnotation> = string
-            }
+            export namespace typescript {}
             
-            export type _lfunction<GAnnotation> = {
-                readonly 'function': string
-            }
-            
-            export namespace _linterface {
-                
-                export type _linterface<GAnnotation> = string
-            }
-            
-            export type _linterface<GAnnotation> = {
-                readonly 'interface': string
-            }
-            
-            export namespace resource {
-                
-                export type resource<GAnnotation> = string
-            }
-            
-            export type resource<GAnnotation> = {
-                readonly 'resource': string
-            }
+            export type typescript<GAnnotation> = null
         }
         
-        export type _ltype<GAnnotation> = 
-            | ['builder', {
-                readonly 'builder': string
-            }]
-            | ['function', {
-                readonly 'function': string
-            }]
-            | ['interface', {
-                readonly 'interface': string
-            }]
-            | ['resource', {
-                readonly 'resource': string
-            }]
+        export type implementation<GAnnotation> = 
+            | ['pareto', null]
+            | ['typescript', null]
     }
     
-    export type DefinitionReference<GAnnotation> = {
-        readonly 'context': T.Context<GAnnotation>
-        readonly 'type': 
-            | ['builder', {
-                readonly 'builder': string
-            }]
-            | ['function', {
-                readonly 'function': string
-            }]
-            | ['interface', {
-                readonly 'interface': string
-            }]
-            | ['resource', {
-                readonly 'resource': string
-            }]
+    export type Module<GAnnotation> = {
+        readonly 'definition': T.ModuleDefinition<GAnnotation>
+        readonly 'implementation': 
+            | ['pareto', null]
+            | ['typescript', null]
     }
     
-    export namespace Implementation {
-        
-        export namespace pareto {}
-        
-        export type pareto<GAnnotation> = null
-        
-        export namespace typescript {}
-        
-        export type typescript<GAnnotation> = null
-    }
-    
-    export type Implementation<GAnnotation> = 
-        | ['pareto', null]
-        | ['typescript', null]
-    
-    export namespace Module {
+    export namespace ModuleDefinition {
         
         export namespace api {
             
@@ -159,76 +92,481 @@ export namespace T {
                     
                     export namespace D {
                         
-                        export type definition<GAnnotation> = T.DefinitionReference<GAnnotation>
+                        export namespace definition {
+                            
+                            export type context<GAnnotation> = T.Context<GAnnotation>
+                            
+                            export namespace _ltype {
+                                
+                                export namespace async {
+                                    
+                                    export namespace _lclass {
+                                        
+                                        export type _lclass<GAnnotation> = string
+                                    }
+                                    
+                                    export type _lclass<GAnnotation> = {
+                                        readonly 'class': string
+                                    }
+                                    
+                                    export namespace _lfunction {
+                                        
+                                        export type _lfunction<GAnnotation> = string
+                                    }
+                                    
+                                    export type _lfunction<GAnnotation> = {
+                                        readonly 'function': string
+                                    }
+                                }
+                                
+                                export type async<GAnnotation> = 
+                                    | ['class', {
+                                        readonly 'class': string
+                                    }]
+                                    | ['function', {
+                                        readonly 'function': string
+                                    }]
+                                
+                                export namespace sync {
+                                    
+                                    export namespace builder {
+                                        
+                                        export type builder<GAnnotation> = string
+                                    }
+                                    
+                                    export type builder<GAnnotation> = {
+                                        readonly 'builder': string
+                                    }
+                                    
+                                    export namespace _lfunction {
+                                        
+                                        export type _lfunction<GAnnotation> = string
+                                    }
+                                    
+                                    export type _lfunction<GAnnotation> = {
+                                        readonly 'function': string
+                                    }
+                                }
+                                
+                                export type sync<GAnnotation> = 
+                                    | ['builder', {
+                                        readonly 'builder': string
+                                    }]
+                                    | ['function', {
+                                        readonly 'function': string
+                                    }]
+                            }
+                            
+                            export type _ltype<GAnnotation> = 
+                                | ['async', 
+                                    | ['class', {
+                                        readonly 'class': string
+                                    }]
+                                    | ['function', {
+                                        readonly 'function': string
+                                    }]
+                                ]
+                                | ['sync', 
+                                    | ['builder', {
+                                        readonly 'builder': string
+                                    }]
+                                    | ['function', {
+                                        readonly 'function': string
+                                    }]
+                                ]
+                        }
+                        
+                        export type definition<GAnnotation> = {
+                            readonly 'context': T.Context<GAnnotation>
+                            readonly 'type': 
+                                | ['async', 
+                                    | ['class', {
+                                        readonly 'class': string
+                                    }]
+                                    | ['function', {
+                                        readonly 'function': string
+                                    }]
+                                ]
+                                | ['sync', 
+                                    | ['builder', {
+                                        readonly 'builder': string
+                                    }]
+                                    | ['function', {
+                                        readonly 'function': string
+                                    }]
+                                ]
+                        }
                         
                         export namespace _ltype {
                             
-                            export namespace _lconstructor {
+                            export namespace dependent {
                                 
                                 export namespace configuration__data {
                                     
-                                    export type O<GAnnotation> = T.TypeReference<GAnnotation>
+                                    export namespace O {
+                                        
+                                        export type context<GAnnotation> = T.Context<GAnnotation>
+                                        
+                                        export type _ltype<GAnnotation> = string
+                                    }
+                                    
+                                    export type O<GAnnotation> = {
+                                        readonly 'context': T.Context<GAnnotation>
+                                        readonly 'type': string
+                                    }
                                 }
                                 
-                                export type configuration__data<GAnnotation> = [ false ] | [ true, T.TypeReference<GAnnotation>]
+                                export type configuration__data<GAnnotation> = [ false ] | [ true, {
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': string
+                                }]
                                 
                                 export namespace dependencies {
                                     
-                                    export type D<GAnnotation> = T.DefinitionReference<GAnnotation>
+                                    export namespace D {
+                                        
+                                        export type context<GAnnotation> = T.Context<GAnnotation>
+                                        
+                                        export namespace _ltype {
+                                            
+                                            export namespace async {
+                                                
+                                                export namespace _lfunction {
+                                                    
+                                                    export type _lfunction<GAnnotation> = string
+                                                }
+                                                
+                                                export type _lfunction<GAnnotation> = {
+                                                    readonly 'function': string
+                                                }
+                                                
+                                                export namespace _linterface {
+                                                    
+                                                    export type _linterface<GAnnotation> = string
+                                                }
+                                                
+                                                export type _linterface<GAnnotation> = {
+                                                    readonly 'interface': string
+                                                }
+                                            }
+                                            
+                                            export type async<GAnnotation> = 
+                                                | ['function', {
+                                                    readonly 'function': string
+                                                }]
+                                                | ['interface', {
+                                                    readonly 'interface': string
+                                                }]
+                                            
+                                            export namespace sync {
+                                                
+                                                export namespace _lfunction {
+                                                    
+                                                    export type _lfunction<GAnnotation> = string
+                                                }
+                                                
+                                                export type _lfunction<GAnnotation> = {
+                                                    readonly 'function': string
+                                                }
+                                                
+                                                export namespace _linterface {
+                                                    
+                                                    export type _linterface<GAnnotation> = string
+                                                }
+                                                
+                                                export type _linterface<GAnnotation> = {
+                                                    readonly 'interface': string
+                                                }
+                                            }
+                                            
+                                            export type sync<GAnnotation> = 
+                                                | ['function', {
+                                                    readonly 'function': string
+                                                }]
+                                                | ['interface', {
+                                                    readonly 'interface': string
+                                                }]
+                                        }
+                                        
+                                        export type _ltype<GAnnotation> = 
+                                            | ['async', 
+                                                | ['function', {
+                                                    readonly 'function': string
+                                                }]
+                                                | ['interface', {
+                                                    readonly 'interface': string
+                                                }]
+                                            ]
+                                            | ['sync', 
+                                                | ['function', {
+                                                    readonly 'function': string
+                                                }]
+                                                | ['interface', {
+                                                    readonly 'interface': string
+                                                }]
+                                            ]
+                                    }
+                                    
+                                    export type D<GAnnotation> = {
+                                        readonly 'context': T.Context<GAnnotation>
+                                        readonly 'type': 
+                                            | ['async', 
+                                                | ['function', {
+                                                    readonly 'function': string
+                                                }]
+                                                | ['interface', {
+                                                    readonly 'interface': string
+                                                }]
+                                            ]
+                                            | ['sync', 
+                                                | ['function', {
+                                                    readonly 'function': string
+                                                }]
+                                                | ['interface', {
+                                                    readonly 'interface': string
+                                                }]
+                                            ]
+                                    }
                                 }
                                 
-                                export type dependencies<GAnnotation> = pt.Dictionary<T.DefinitionReference<GAnnotation>>
+                                export type dependencies<GAnnotation> = pt.Dictionary<{
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': 
+                                        | ['async', 
+                                            | ['function', {
+                                                readonly 'function': string
+                                            }]
+                                            | ['interface', {
+                                                readonly 'interface': string
+                                            }]
+                                        ]
+                                        | ['sync', 
+                                            | ['function', {
+                                                readonly 'function': string
+                                            }]
+                                            | ['interface', {
+                                                readonly 'interface': string
+                                            }]
+                                        ]
+                                }>
                             }
                             
-                            export type _lconstructor<GAnnotation> = {
-                                readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
+                            export type dependent<GAnnotation> = {
+                                readonly 'configuration data': [ false ] | [ true, {
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': string
+                                }]
+                                readonly 'dependencies': pt.Dictionary<{
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': 
+                                        | ['async', 
+                                            | ['function', {
+                                                readonly 'function': string
+                                            }]
+                                            | ['interface', {
+                                                readonly 'interface': string
+                                            }]
+                                        ]
+                                        | ['sync', 
+                                            | ['function', {
+                                                readonly 'function': string
+                                            }]
+                                            | ['interface', {
+                                                readonly 'interface': string
+                                            }]
+                                        ]
+                                }>
                             }
                             
-                            export namespace reference {}
+                            export namespace independent {}
                             
-                            export type reference<GAnnotation> = null
+                            export type independent<GAnnotation> = null
                         }
                         
                         export type _ltype<GAnnotation> = 
-                            | ['constructor', {
-                                readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
+                            | ['dependent', {
+                                readonly 'configuration data': [ false ] | [ true, {
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': string
+                                }]
+                                readonly 'dependencies': pt.Dictionary<{
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': 
+                                        | ['async', 
+                                            | ['function', {
+                                                readonly 'function': string
+                                            }]
+                                            | ['interface', {
+                                                readonly 'interface': string
+                                            }]
+                                        ]
+                                        | ['sync', 
+                                            | ['function', {
+                                                readonly 'function': string
+                                            }]
+                                            | ['interface', {
+                                                readonly 'interface': string
+                                            }]
+                                        ]
+                                }>
                             }]
-                            | ['reference', null]
+                            | ['independent', null]
                     }
                     
                     export type D<GAnnotation> = {
-                        readonly 'definition': T.DefinitionReference<GAnnotation>
+                        readonly 'definition': {
+                            readonly 'context': T.Context<GAnnotation>
+                            readonly 'type': 
+                                | ['async', 
+                                    | ['class', {
+                                        readonly 'class': string
+                                    }]
+                                    | ['function', {
+                                        readonly 'function': string
+                                    }]
+                                ]
+                                | ['sync', 
+                                    | ['builder', {
+                                        readonly 'builder': string
+                                    }]
+                                    | ['function', {
+                                        readonly 'function': string
+                                    }]
+                                ]
+                        }
                         readonly 'type': 
-                            | ['constructor', {
-                                readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
+                            | ['dependent', {
+                                readonly 'configuration data': [ false ] | [ true, {
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': string
+                                }]
+                                readonly 'dependencies': pt.Dictionary<{
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': 
+                                        | ['async', 
+                                            | ['function', {
+                                                readonly 'function': string
+                                            }]
+                                            | ['interface', {
+                                                readonly 'interface': string
+                                            }]
+                                        ]
+                                        | ['sync', 
+                                            | ['function', {
+                                                readonly 'function': string
+                                            }]
+                                            | ['interface', {
+                                                readonly 'interface': string
+                                            }]
+                                        ]
+                                }>
                             }]
-                            | ['reference', null]
+                            | ['independent', null]
                     }
                 }
                 
                 export type algorithms<GAnnotation> = pt.Dictionary<{
-                    readonly 'definition': T.DefinitionReference<GAnnotation>
+                    readonly 'definition': {
+                        readonly 'context': T.Context<GAnnotation>
+                        readonly 'type': 
+                            | ['async', 
+                                | ['class', {
+                                    readonly 'class': string
+                                }]
+                                | ['function', {
+                                    readonly 'function': string
+                                }]
+                            ]
+                            | ['sync', 
+                                | ['builder', {
+                                    readonly 'builder': string
+                                }]
+                                | ['function', {
+                                    readonly 'function': string
+                                }]
+                            ]
+                    }
                     readonly 'type': 
-                        | ['constructor', {
-                            readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
+                        | ['dependent', {
+                            readonly 'configuration data': [ false ] | [ true, {
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': string
+                            }]
+                            readonly 'dependencies': pt.Dictionary<{
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': 
+                                    | ['async', 
+                                        | ['function', {
+                                            readonly 'function': string
+                                        }]
+                                        | ['interface', {
+                                            readonly 'interface': string
+                                        }]
+                                    ]
+                                    | ['sync', 
+                                        | ['function', {
+                                            readonly 'function': string
+                                        }]
+                                        | ['interface', {
+                                            readonly 'interface': string
+                                        }]
+                                    ]
+                            }>
                         }]
-                        | ['reference', null]
+                        | ['independent', null]
                 }>
             }
             
             export type root<GAnnotation> = {
                 readonly 'algorithms': pt.Dictionary<{
-                    readonly 'definition': T.DefinitionReference<GAnnotation>
+                    readonly 'definition': {
+                        readonly 'context': T.Context<GAnnotation>
+                        readonly 'type': 
+                            | ['async', 
+                                | ['class', {
+                                    readonly 'class': string
+                                }]
+                                | ['function', {
+                                    readonly 'function': string
+                                }]
+                            ]
+                            | ['sync', 
+                                | ['builder', {
+                                    readonly 'builder': string
+                                }]
+                                | ['function', {
+                                    readonly 'function': string
+                                }]
+                            ]
+                    }
                     readonly 'type': 
-                        | ['constructor', {
-                            readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
+                        | ['dependent', {
+                            readonly 'configuration data': [ false ] | [ true, {
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': string
+                            }]
+                            readonly 'dependencies': pt.Dictionary<{
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': 
+                                    | ['async', 
+                                        | ['function', {
+                                            readonly 'function': string
+                                        }]
+                                        | ['interface', {
+                                            readonly 'interface': string
+                                        }]
+                                    ]
+                                    | ['sync', 
+                                        | ['function', {
+                                            readonly 'function': string
+                                        }]
+                                        | ['interface', {
+                                            readonly 'interface': string
+                                        }]
+                                    ]
+                            }>
                         }]
-                        | ['reference', null]
+                        | ['independent', null]
                 }>
             }
         }
@@ -242,13 +580,54 @@ export namespace T {
             >
             readonly 'root': {
                 readonly 'algorithms': pt.Dictionary<{
-                    readonly 'definition': T.DefinitionReference<GAnnotation>
+                    readonly 'definition': {
+                        readonly 'context': T.Context<GAnnotation>
+                        readonly 'type': 
+                            | ['async', 
+                                | ['class', {
+                                    readonly 'class': string
+                                }]
+                                | ['function', {
+                                    readonly 'function': string
+                                }]
+                            ]
+                            | ['sync', 
+                                | ['builder', {
+                                    readonly 'builder': string
+                                }]
+                                | ['function', {
+                                    readonly 'function': string
+                                }]
+                            ]
+                    }
                     readonly 'type': 
-                        | ['constructor', {
-                            readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
+                        | ['dependent', {
+                            readonly 'configuration data': [ false ] | [ true, {
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': string
+                            }]
+                            readonly 'dependencies': pt.Dictionary<{
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': 
+                                    | ['async', 
+                                        | ['function', {
+                                            readonly 'function': string
+                                        }]
+                                        | ['interface', {
+                                            readonly 'interface': string
+                                        }]
+                                    ]
+                                    | ['sync', 
+                                        | ['function', {
+                                            readonly 'function': string
+                                        }]
+                                        | ['interface', {
+                                            readonly 'interface': string
+                                        }]
+                                    ]
+                            }>
                         }]
-                        | ['reference', null]
+                        | ['independent', null]
                 }>
             }
         }
@@ -296,11 +675,9 @@ export namespace T {
             >
             readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
         }
-        
-        export type implementation<GAnnotation> = T.Implementation<GAnnotation>
     }
     
-    export type Module<GAnnotation> = {
+    export type ModuleDefinition<GAnnotation> = {
         readonly 'api': {
             readonly 'imports': pt.Dictionary<
                 | ['external', string]
@@ -310,13 +687,54 @@ export namespace T {
             >
             readonly 'root': {
                 readonly 'algorithms': pt.Dictionary<{
-                    readonly 'definition': T.DefinitionReference<GAnnotation>
+                    readonly 'definition': {
+                        readonly 'context': T.Context<GAnnotation>
+                        readonly 'type': 
+                            | ['async', 
+                                | ['class', {
+                                    readonly 'class': string
+                                }]
+                                | ['function', {
+                                    readonly 'function': string
+                                }]
+                            ]
+                            | ['sync', 
+                                | ['builder', {
+                                    readonly 'builder': string
+                                }]
+                                | ['function', {
+                                    readonly 'function': string
+                                }]
+                            ]
+                    }
                     readonly 'type': 
-                        | ['constructor', {
-                            readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                            readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
+                        | ['dependent', {
+                            readonly 'configuration data': [ false ] | [ true, {
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': string
+                            }]
+                            readonly 'dependencies': pt.Dictionary<{
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': 
+                                    | ['async', 
+                                        | ['function', {
+                                            readonly 'function': string
+                                        }]
+                                        | ['interface', {
+                                            readonly 'interface': string
+                                        }]
+                                    ]
+                                    | ['sync', 
+                                        | ['function', {
+                                            readonly 'function': string
+                                        }]
+                                        | ['interface', {
+                                            readonly 'interface': string
+                                        }]
+                                    ]
+                            }>
                         }]
-                        | ['reference', null]
+                        | ['independent', null]
                 }>
             }
         }
@@ -329,7 +747,6 @@ export namespace T {
             >
             readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
         }
-        readonly 'implementation': T.Implementation<GAnnotation>
     }
     
     export namespace Project {
@@ -384,121 +801,37 @@ export namespace T {
                     
                     export namespace O {
                         
-                        export namespace api {
+                        export type definition<GAnnotation> = T.ModuleDefinition<GAnnotation>
+                        
+                        export namespace implementation {
                             
-                            export namespace imports {
-                                
-                                export namespace D {
-                                    
-                                    export type external<GAnnotation> = string
-                                    
-                                    export type submodule<GAnnotation> = string
-                                    
-                                    export namespace _lthis {}
-                                    
-                                    export type _lthis<GAnnotation> = null
-                                }
-                                
-                                export type D<GAnnotation> = 
-                                    | ['external', string]
-                                    | ['submodule', string]
-                                    | ['this', null]
-                            }
+                            export namespace pareto {}
                             
-                            export type imports<GAnnotation> = pt.Dictionary<
-                                | ['external', string]
-                                | ['submodule', string]
-                                | ['this', null]
-                            >
+                            export type pareto<GAnnotation> = null
                             
-                            export namespace root {
-                                
-                                export namespace algorithms {
-                                    
-                                    export namespace D {
-                                        
-                                        export type definition<GAnnotation> = T.DefinitionReference<GAnnotation>
-                                        
-                                        export namespace parameters {
-                                            
-                                            export namespace D {}
-                                            
-                                            export type D<GAnnotation> = null
-                                        }
-                                        
-                                        export type parameters<GAnnotation> = pt.Dictionary<null>
-                                    }
-                                    
-                                    export type D<GAnnotation> = {
-                                        readonly 'definition': T.DefinitionReference<GAnnotation>
-                                        readonly 'parameters': pt.Dictionary<null>
-                                    }
-                                }
-                                
-                                export type algorithms<GAnnotation> = pt.Dictionary<{
-                                    readonly 'definition': T.DefinitionReference<GAnnotation>
-                                    readonly 'parameters': pt.Dictionary<null>
-                                }>
-                            }
+                            export namespace typescript {}
                             
-                            export type root<GAnnotation> = {
-                                readonly 'algorithms': pt.Dictionary<{
-                                    readonly 'definition': T.DefinitionReference<GAnnotation>
-                                    readonly 'parameters': pt.Dictionary<null>
-                                }>
-                            }
+                            export type typescript<GAnnotation> = null
                         }
                         
-                        export type api<GAnnotation> = {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['submodule', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': {
-                                readonly 'algorithms': pt.Dictionary<{
-                                    readonly 'definition': T.DefinitionReference<GAnnotation>
-                                    readonly 'parameters': pt.Dictionary<null>
-                                }>
-                            }
-                        }
-                        
-                        export type implementation<GAnnotation> = T.Implementation<GAnnotation>
+                        export type implementation<GAnnotation> = 
+                            | ['pareto', null]
+                            | ['typescript', null]
                     }
                     
                     export type O<GAnnotation> = {
-                        readonly 'api': {
-                            readonly 'imports': pt.Dictionary<
-                                | ['external', string]
-                                | ['submodule', string]
-                                | ['this', null]
-                            >
-                            readonly 'root': {
-                                readonly 'algorithms': pt.Dictionary<{
-                                    readonly 'definition': T.DefinitionReference<GAnnotation>
-                                    readonly 'parameters': pt.Dictionary<null>
-                                }>
-                            }
-                        }
-                        readonly 'implementation': T.Implementation<GAnnotation>
+                        readonly 'definition': T.ModuleDefinition<GAnnotation>
+                        readonly 'implementation': 
+                            | ['pareto', null]
+                            | ['typescript', null]
                     }
                 }
                 
                 export type bindings<GAnnotation> = [ false ] | [ true, {
-                    readonly 'api': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                            | ['submodule', string]
-                            | ['this', null]
-                        >
-                        readonly 'root': {
-                            readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.DefinitionReference<GAnnotation>
-                                readonly 'parameters': pt.Dictionary<null>
-                            }>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
+                    readonly 'definition': T.ModuleDefinition<GAnnotation>
+                    readonly 'implementation': 
+                        | ['pareto', null]
+                        | ['typescript', null]
                 }]
                 
                 export namespace executables {
@@ -524,20 +857,10 @@ export namespace T {
             
             export type library<GAnnotation> = {
                 readonly 'bindings': [ false ] | [ true, {
-                    readonly 'api': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                            | ['submodule', string]
-                            | ['this', null]
-                        >
-                        readonly 'root': {
-                            readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.DefinitionReference<GAnnotation>
-                                readonly 'parameters': pt.Dictionary<null>
-                            }>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
+                    readonly 'definition': T.ModuleDefinition<GAnnotation>
+                    readonly 'implementation': 
+                        | ['pareto', null]
+                        | ['typescript', null]
                 }]
                 readonly 'executables': pt.Dictionary<null>
                 readonly 'main': T.Module<GAnnotation>
@@ -547,126 +870,7 @@ export namespace T {
             
             export namespace resource {
                 
-                export namespace api {
-                    
-                    export namespace imports {
-                        
-                        export namespace D {
-                            
-                            export type external<GAnnotation> = string
-                            
-                            export namespace _lthis {}
-                            
-                            export type _lthis<GAnnotation> = null
-                        }
-                        
-                        export type D<GAnnotation> = 
-                            | ['external', string]
-                            | ['this', null]
-                    }
-                    
-                    export type imports<GAnnotation> = pt.Dictionary<
-                        | ['external', string]
-                        | ['this', null]
-                    >
-                    
-                    export namespace root {
-                        
-                        export namespace algorithms {
-                            
-                            export namespace D {
-                                
-                                export type definition<GAnnotation> = T.DefinitionReference<GAnnotation>
-                                
-                                export namespace _ltype {
-                                    
-                                    export namespace _lconstructor {
-                                        
-                                        export namespace configuration__data {
-                                            
-                                            export type O<GAnnotation> = T.TypeReference<GAnnotation>
-                                        }
-                                        
-                                        export type configuration__data<GAnnotation> = [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                        
-                                        export namespace dependencies {
-                                            
-                                            export type D<GAnnotation> = T.DefinitionReference<GAnnotation>
-                                        }
-                                        
-                                        export type dependencies<GAnnotation> = pt.Dictionary<T.DefinitionReference<GAnnotation>>
-                                    }
-                                    
-                                    export type _lconstructor<GAnnotation> = {
-                                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
-                                    }
-                                    
-                                    export namespace reference {}
-                                    
-                                    export type reference<GAnnotation> = null
-                                }
-                                
-                                export type _ltype<GAnnotation> = 
-                                    | ['constructor', {
-                                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
-                                    }]
-                                    | ['reference', null]
-                            }
-                            
-                            export type D<GAnnotation> = {
-                                readonly 'definition': T.DefinitionReference<GAnnotation>
-                                readonly 'type': 
-                                    | ['constructor', {
-                                        readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                        readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
-                                    }]
-                                    | ['reference', null]
-                            }
-                        }
-                        
-                        export type algorithms<GAnnotation> = pt.Dictionary<{
-                            readonly 'definition': T.DefinitionReference<GAnnotation>
-                            readonly 'type': 
-                                | ['constructor', {
-                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
-                                }]
-                                | ['reference', null]
-                        }>
-                    }
-                    
-                    export type root<GAnnotation> = {
-                        readonly 'algorithms': pt.Dictionary<{
-                            readonly 'definition': T.DefinitionReference<GAnnotation>
-                            readonly 'type': 
-                                | ['constructor', {
-                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
-                                }]
-                                | ['reference', null]
-                        }>
-                    }
-                }
-                
-                export type api<GAnnotation> = {
-                    readonly 'imports': pt.Dictionary<
-                        | ['external', string]
-                        | ['this', null]
-                    >
-                    readonly 'root': {
-                        readonly 'algorithms': pt.Dictionary<{
-                            readonly 'definition': T.DefinitionReference<GAnnotation>
-                            readonly 'type': 
-                                | ['constructor', {
-                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
-                                }]
-                                | ['reference', null]
-                        }>
-                    }
-                }
+                export type definition<GAnnotation> = T.ModuleDefinition<GAnnotation>
                 
                 export namespace devDependencies {
                     
@@ -676,33 +880,6 @@ export namespace T {
                 }
                 
                 export type devDependencies<GAnnotation> = pt.Dictionary<null>
-                
-                export namespace glossary {
-                    
-                    export namespace imports {
-                        
-                        export namespace D {
-                            
-                            export type external<GAnnotation> = string
-                        }
-                        
-                        export type D<GAnnotation> = 
-                            | ['external', string]
-                    }
-                    
-                    export type imports<GAnnotation> = pt.Dictionary<
-                        | ['external', string]
-                    >
-                    
-                    export type root<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                }
-                
-                export type glossary<GAnnotation> = {
-                    readonly 'imports': pt.Dictionary<
-                        | ['external', string]
-                    >
-                    readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                }
                 
                 export namespace nativeDependencies {
                     
@@ -717,30 +894,8 @@ export namespace T {
             }
             
             export type resource<GAnnotation> = {
-                readonly 'api': {
-                    readonly 'imports': pt.Dictionary<
-                        | ['external', string]
-                        | ['this', null]
-                    >
-                    readonly 'root': {
-                        readonly 'algorithms': pt.Dictionary<{
-                            readonly 'definition': T.DefinitionReference<GAnnotation>
-                            readonly 'type': 
-                                | ['constructor', {
-                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
-                                }]
-                                | ['reference', null]
-                        }>
-                    }
-                }
+                readonly 'definition': T.ModuleDefinition<GAnnotation>
                 readonly 'devDependencies': pt.Dictionary<null>
-                readonly 'glossary': {
-                    readonly 'imports': pt.Dictionary<
-                        | ['external', string]
-                    >
-                    readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                }
                 readonly 'nativeDependencies': pt.Dictionary<null>
                 readonly 'test': T.Test<GAnnotation>
             }
@@ -755,20 +910,10 @@ export namespace T {
             }]
             | ['library', {
                 readonly 'bindings': [ false ] | [ true, {
-                    readonly 'api': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                            | ['submodule', string]
-                            | ['this', null]
-                        >
-                        readonly 'root': {
-                            readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.DefinitionReference<GAnnotation>
-                                readonly 'parameters': pt.Dictionary<null>
-                            }>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
+                    readonly 'definition': T.ModuleDefinition<GAnnotation>
+                    readonly 'implementation': 
+                        | ['pareto', null]
+                        | ['typescript', null]
                 }]
                 readonly 'executables': pt.Dictionary<null>
                 readonly 'main': T.Module<GAnnotation>
@@ -776,30 +921,8 @@ export namespace T {
                 readonly 'test': T.Test<GAnnotation>
             }]
             | ['resource', {
-                readonly 'api': {
-                    readonly 'imports': pt.Dictionary<
-                        | ['external', string]
-                        | ['this', null]
-                    >
-                    readonly 'root': {
-                        readonly 'algorithms': pt.Dictionary<{
-                            readonly 'definition': T.DefinitionReference<GAnnotation>
-                            readonly 'type': 
-                                | ['constructor', {
-                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
-                                }]
-                                | ['reference', null]
-                        }>
-                    }
-                }
+                readonly 'definition': T.ModuleDefinition<GAnnotation>
                 readonly 'devDependencies': pt.Dictionary<null>
-                readonly 'glossary': {
-                    readonly 'imports': pt.Dictionary<
-                        | ['external', string]
-                    >
-                    readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                }
                 readonly 'nativeDependencies': pt.Dictionary<null>
                 readonly 'test': T.Test<GAnnotation>
             }]
@@ -819,20 +942,10 @@ export namespace T {
             }]
             | ['library', {
                 readonly 'bindings': [ false ] | [ true, {
-                    readonly 'api': {
-                        readonly 'imports': pt.Dictionary<
-                            | ['external', string]
-                            | ['submodule', string]
-                            | ['this', null]
-                        >
-                        readonly 'root': {
-                            readonly 'algorithms': pt.Dictionary<{
-                                readonly 'definition': T.DefinitionReference<GAnnotation>
-                                readonly 'parameters': pt.Dictionary<null>
-                            }>
-                        }
-                    }
-                    readonly 'implementation': T.Implementation<GAnnotation>
+                    readonly 'definition': T.ModuleDefinition<GAnnotation>
+                    readonly 'implementation': 
+                        | ['pareto', null]
+                        | ['typescript', null]
                 }]
                 readonly 'executables': pt.Dictionary<null>
                 readonly 'main': T.Module<GAnnotation>
@@ -840,36 +953,16 @@ export namespace T {
                 readonly 'test': T.Test<GAnnotation>
             }]
             | ['resource', {
-                readonly 'api': {
-                    readonly 'imports': pt.Dictionary<
-                        | ['external', string]
-                        | ['this', null]
-                    >
-                    readonly 'root': {
-                        readonly 'algorithms': pt.Dictionary<{
-                            readonly 'definition': T.DefinitionReference<GAnnotation>
-                            readonly 'type': 
-                                | ['constructor', {
-                                    readonly 'configuration data': [ false ] | [ true, T.TypeReference<GAnnotation>]
-                                    readonly 'dependencies': pt.Dictionary<T.DefinitionReference<GAnnotation>>
-                                }]
-                                | ['reference', null]
-                        }>
-                    }
-                }
+                readonly 'definition': T.ModuleDefinition<GAnnotation>
                 readonly 'devDependencies': pt.Dictionary<null>
-                readonly 'glossary': {
-                    readonly 'imports': pt.Dictionary<
-                        | ['external', string]
-                    >
-                    readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
-                }
                 readonly 'nativeDependencies': pt.Dictionary<null>
                 readonly 'test': T.Test<GAnnotation>
             }]
     }
     
     export namespace Test {
+        
+        export type definition<GAnnotation> = T.ModuleDefinition<GAnnotation>
         
         export namespace dependencies {
             
@@ -879,8 +972,6 @@ export namespace T {
         }
         
         export type dependencies<GAnnotation> = pt.Dictionary<null>
-        
-        export type glossary<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
         
         export namespace imports {
             
@@ -909,24 +1000,12 @@ export namespace T {
     }
     
     export type Test<GAnnotation> = {
+        readonly 'definition': T.ModuleDefinition<GAnnotation>
         readonly 'dependencies': pt.Dictionary<null>
-        readonly 'glossary': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
         readonly 'imports': pt.Dictionary<
             | ['external', string]
             | ['pub', string]
             | ['this', null]
         >
-    }
-    
-    export namespace TypeReference {
-        
-        export type context<GAnnotation> = T.Context<GAnnotation>
-        
-        export type _ltype<GAnnotation> = string
-    }
-    
-    export type TypeReference<GAnnotation> = {
-        readonly 'context': T.Context<GAnnotation>
-        readonly 'type': string
     }
 }

@@ -695,12 +695,12 @@ export const $$: createGlossarySerializer = ($d) => {
                     serializeContextGlossaryArgumentsOnly($.context, $i)
 
                 }
-                function serializeResourceReference($: g_glossary.T.ResourceReference<Annotation>, $i: g_fp.B.Line) {
-                    serializeContext($.context, $i)
-                    $i.snippet(`R.${$d.createIdentifier(`${$.resource}`)}`)
-                    serializeContextGlossaryArgumentsOnly($.context, $i)
+                // function serializeResourceReference($: g_glossary.T.ResourceReference<Annotation>, $i: g_fp.B.Line) {
+                //     serializeContext($.context, $i)
+                //     $i.snippet(`R.${$d.createIdentifier(`${$.resource}`)}`)
+                //     serializeContextGlossaryArgumentsOnly($.context, $i)
 
-                }
+                // }
                 $i.nestedLine(($i) => {
                     $i.snippet(`import * as pt from 'pareto-core-types'`)
                 })
@@ -728,8 +728,8 @@ export const $$: createGlossarySerializer = ($d) => {
                                     })
                                 })
                             })
-                            ns(`R`, $i, ($i) => {
-                                $d.dictionaryForEach($.resources, ($) => {
+                            ns(`C`, $i, ($i) => {
+                                $d.dictionaryForEach($.classes, ($) => {
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
                                         $i.snippet(`export type ${$d.createIdentifier($.key)}`)
@@ -737,11 +737,18 @@ export const $$: createGlossarySerializer = ($d) => {
                                         pl.cc($.value, ($) => {
 
                                             $i.snippet(` = (`)
-                                            $i.snippet(`$: `)
-                                            serializeTypeReference($.data, $i)
-                                            $i.snippet(`, $i: `)
+                                            $i.snippet(`$is: {`)
+                                            $i.indent(($i) => {
+                                                    $d.dictionaryForEach($.downstreams, ($) => {
+                                                        $i.nestedLine(($i) => {
+                                                            $i.snippet(`'${$d.createIdentifier($.key)}': `)
+                                                            $i.snippet(` = `)
+                                                            serializeInterfaceReference($.value, $i)
+                                                        })
+                                                    })
+                                            })
+                                            $i.snippet(`}) => `)
                                             serializeInterfaceReference($.interface, $i)
-                                            $i.snippet(`) => void`)
                                         })
 
                                     })
@@ -759,12 +766,6 @@ export const $$: createGlossarySerializer = ($d) => {
                                             $i.snippet(`(`)
                                             pl.cc($.in, ($) => {
                                                 switch ($[0]) {
-                                                    case 'resource':
-                                                        pl.cc($[1], ($) => {
-                                                            $i.snippet(`$r: `)
-                                                            serializeResourceReference($, $i)
-                                                        })
-                                                        break
                                                     case 'data':
                                                         pl.cc($[1], ($) => {
                                                             $i.snippet(`$: `)

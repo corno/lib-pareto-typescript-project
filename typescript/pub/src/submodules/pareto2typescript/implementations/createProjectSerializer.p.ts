@@ -28,93 +28,348 @@ export const $$: createProjectSerializer = (
             }
         }
 
-        function serializeDefinitionReference2(
-            $: {
-                'def': g_project.T.DefinitionReference<Annotation>,
-                'wrapBuilder': boolean
-            },
-            $i: g_fp.B.Line
-        ) {
-            const wrapped = $.wrapBuilder
-            pl.cc($.def, ($) => {
-                const context = $.context
-                function seralizeArguments(
-                    $i: g_fp.B.Line,
-                ) {
-                    $d.enrichedDictionaryForEach(context.arguments, {
-                        'onEmpty': () => {
+        // function serializeDefinitionReference2(
+        //     $: {
+        //         'def': g_project.T.DefinitionReference<Annotation>,
+        //         'wrapBuilder': boolean
+        //     },
+        //     $i: g_fp.B.Line
+        // ) {
+        //     const wrapped = $.wrapBuilder
+        //     pl.cc($.def, ($) => {
+        //         const context = $.context
+        //         function seralizeArguments(
+        //             $i: g_fp.B.Line,
+        //         ) {
 
-                        },
-                        'onNotEmpty': ($c) => {
-                            $i.snippet(`<`)
-                            $c(($) => {
-                                $i.snippet(`${$d.createIdentifier($.value)}${$.isLast ? `` : `, `}`)
-                            })
-                            $i.snippet(`>`)
-                        }
-                    })
-                }
-                switch ($.type[0]) {
-                    case 'builder':
-                        pl.cc($.type[1], ($) => {
-                            if (wrapped) {
-                                $i.snippet(`($c: g_${context.glossary}.C.${$d.createIdentifier(`${$.builder}`)}`)
-                                seralizeArguments($i)
-                                $i.snippet(`) => void`)
+        //         }
+        //         switch ($.type[0]) {
+        //             case 'builder':
+        //                 pl.cc($.type[1], ($) => {
+        //                     if (wrapped) {
+        //                         $i.snippet(`($c: g_${context.glossary}.C.${$d.createIdentifier(`${$.builder}`)}`)
+        //                         seralizeArguments($i)
+        //                         $i.snippet(`) => void`)
 
-                            } else {
-                                $i.snippet(`g_${context.glossary}.`)
-                                $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
-                                seralizeArguments($i)
-                            }
+        //                     } else {
+        //                         $i.snippet(`g_${context.glossary}.`)
+        //                         $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
+        //                         seralizeArguments($i)
+        //                     }
 
-                        })
-                        break
-                    case 'function':
-                        pl.cc($.type[1], ($) => {
-                            $i.snippet(`g_${context.glossary}.`)
-                            $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
-                            seralizeArguments($i)
-                        })
-                        break
-                    case 'interface':
-                        pl.cc($.type[1], ($) => {
-                            $i.snippet(`g_${context.glossary}.`)
-                            $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
-                            seralizeArguments($i)
-                        })
-                        break
-                    case 'resource':
-                        pl.cc($.type[1], ($) => {
-                            $i.snippet(`g_${context.glossary}.`)
-                            $i.snippet(`R.${$d.createIdentifier(`${$.resource}`)}`)
-                            seralizeArguments($i)
-                        })
-                        break
-                    default: pl.au($.type[0])
-                }
+        //                 })
+        //                 break
+        //             case 'function':
+        //                 pl.cc($.type[1], ($) => {
+        //                     $i.snippet(`g_${context.glossary}.`)
+        //                     $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
+        //                     seralizeArguments($i)
+        //                 })
+        //                 break
+        //             case 'interface':
+        //                 pl.cc($.type[1], ($) => {
+        //                     $i.snippet(`g_${context.glossary}.`)
+        //                     $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
+        //                     seralizeArguments($i)
+        //                 })
+        //                 break
+        //             case 'resource':
+        //                 pl.cc($.type[1], ($) => {
+        //                     $i.snippet(`g_${context.glossary}.`)
+        //                     $i.snippet(`R.${$d.createIdentifier(`${$.resource}`)}`)
+        //                     seralizeArguments($i)
+        //                 })
+        //                 break
+        //             default: pl.au($.type[0])
+        //         }
 
-            })
-        }
-        function serializeNonWrappedDefinitionReference($: g_project.T.DefinitionReference<Annotation>, $i: g_fp.B.Line) {
-            serializeDefinitionReference2(
-                {
-                    'def': $,
-                    'wrapBuilder': false,
-                },
-                $i,
-            )
-        }
-        function serializeWrappedDefinitionReference($: g_project.T.DefinitionReference<Annotation>, $i: g_fp.B.Line) {
-            serializeDefinitionReference2(
-                {
-                    'def': $,
-                    'wrapBuilder': true,
-                },
-                $i,
-            )
-        }
+        //     })
+        // }
+        // function serializeNonWrappedDefinitionReference($: g_project.T.DefinitionReference<Annotation>, $i: g_fp.B.Line) {
+        //     serializeDefinitionReference2(
+        //         {
+        //             'def': $,
+        //             'wrapBuilder': false,
+        //         },
+        //         $i,
+        //     )
+        // }
+        // function serializeWrappedDefinitionReference($: g_project.T.DefinitionReference<Annotation>, $i: g_fp.B.Line) {
+        //     serializeDefinitionReference2(
+        //         {
+        //             'def': $,
+        //             'wrapBuilder': true,
+        //         },
+        //         $i,
+        //     )
+        // }
         $i.directory("typescript", ($i) => {
+            function doModuleDefinition(
+                $: g_project.T.ModuleDefinition<Annotation>,
+                $i: g_fp.B.Directory,
+            ) {
+                $i.allowedManual(`shorthands.ts`)
+                $i.directory(`glossary`, ($i) => {
+                    pl.cc($.glossary, ($) => {
+
+                        $d.serializeGlossary(
+                            {
+                                'glossary': $.root,
+                                'imports': $.imports.map(($) => {
+                                    switch ($[0]) {
+                                        case 'external':
+                                            return pl.cc($[1], ($) => {
+                                                return $
+                                            })
+                                        case 'main':
+                                            return pl.cc($[1], ($) => {
+                                                return `../../../main`
+                                            })
+                                        case 'sibling':
+                                            return pl.cc($[1], ($) => {
+                                                return `../../${$}`
+                                            })
+                                        case 'temp submodule':
+                                            return pl.cc($[1], ($) => {
+                                                return `../../submodules/${$}`
+                                            })
+                                        default: return pl.au($[0])
+                                    }
+                                }),
+                            },
+                            $i
+                        )
+                    })
+                })
+
+                $i.file("api.generated.ts", ($i) => {
+                    pl.cc($.api, ($) => {
+                        function serializeAPI(
+                            $: {
+
+                                readonly 'api': g_project.T.ModuleDefinition.api.root<g_this.T.Annotation<Annotation>>
+                                readonly 'imports': pt.Dictionary<string>
+                            },
+                            $i: g_fp.B.Block
+                        ) {
+
+
+                            $i.line(`import * as pt from 'pareto-core-types'`)
+                            $i.line(``)
+                            $d.dictionaryForEach($.imports, ($) => {
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`import * as g_${$.key} from "${$.value}"`)
+                                })
+                            })
+                            pl.cc($.api, ($) => {
+
+                                $d.dictionaryForEach($.algorithms, ($) => {
+
+                                    $i.line(``)
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
+                                        pl.cc($.value, ($) => {
+                                            const definition = $.definition
+
+                                            switch ($.type[0]) {
+                                                case 'dependent':
+                                                    pl.cc($.type[1], ($) => {
+                                                        $i.snippet(`(`)
+                                                        doOptional($['configuration data'], $i, {
+                                                            onNotset: () => { },
+                                                            onSet: ($, $i) => {
+
+                                                                $i.snippet(`$: `)
+
+                                                                $i.snippet(`g_${$.context.glossary}.`)
+
+                                                                $i.snippet(`T.${$d.createIdentifier($.type)}`)
+                                                                $i.snippet(`, `)
+                                                            }
+                                                        })
+                                                        $i.snippet(`$d: {`)
+                                                        $i.indent(($i) => {
+                                                            $d.dictionaryForEach($.dependencies, ($) => {
+                                                                $i.nestedLine(($i) => {
+                                                                    $i.snippet(`readonly '${$.key}': `)
+                                                                    pl.cc($.value, ($) => {
+                                                                        $i.snippet(`g_${$.context.glossary}.`)
+                                                                        switch ($.type[0]) {
+                                                                            case 'async':
+                                                                                pl.cc($.type[1], ($) => {
+                                                                                    switch ($[0]) {
+                                                                                        case 'function':
+                                                                                            pl.cc($[1], ($) => {
+                                                                                                $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
+                                                                                            })
+                                                                                            break
+                                                                                        case 'interface':
+                                                                                            pl.cc($[1], ($) => {
+                                                                                                $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
+                                                                                            })
+                                                                                            break
+                                                                                        default: pl.au($[0])
+                                                                                    }
+                                                                                })
+                                                                                break
+                                                                            case 'sync':
+                                                                                pl.cc($.type[1], ($) => {
+                                                                                    switch ($[0]) {
+                                                                                        case 'function':
+                                                                                            pl.cc($[1], ($) => {
+                                                                                                $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
+                                                                                            })
+                                                                                            break
+                                                                                        case 'interface':
+                                                                                            pl.cc($[1], ($) => {
+                                                                                                $i.snippet(`xI.${$d.createIdentifier(`${$.interface}`)}`)
+                                                                                            })
+                                                                                            break
+                                                                                        default: pl.au($[0])
+                                                                                    }
+                                                                                })
+                                                                                break
+                                                                            default: pl.au($.type[0])
+                                                                        }
+
+                                                                        $d.enrichedDictionaryForEach($.context.arguments, {
+                                                                            'onEmpty': () => {
+
+                                                                            },
+                                                                            'onNotEmpty': ($c) => {
+                                                                                $i.snippet(`<`)
+                                                                                $c(($) => {
+                                                                                    $i.snippet(`${$d.createIdentifier($.value)}${$.isLast ? `` : `, `}`)
+                                                                                })
+                                                                                $i.snippet(`>`)
+                                                                            }
+                                                                        })
+                                                                    })
+                                                                })
+                                                            })
+                                                        })
+                                                        $i.snippet(`}`)
+                                                        // pl.cc($.dependencies, ($) => {
+                                                        //     $i.snippet(`$d: {`)
+                                                        //     $i.indent(($i) => {
+                                                        //         // if ($.callbacks !== undefined) {
+                                                        //         //     $d.dictionaryForEach($.callbacks, ($, key) => {
+                                                        //         //         $i.nestedLine(($i) => {
+                                                        //         //             $i.snippet(`readonly "cb${key}": `)
+                                                        //         //             serializeCallbackReference($, $i)
+                                                        //         //         })
+                                                        //         //     })
+                                                        //         // }
+                                                        //         $d.dictionaryForEach($.functions, ($, key) => {
+                                                        //             $i.nestedLine(($i) => {
+                                                        //                 $i.snippet(`readonly "f${key}": `)
+                                                        //                 serializeFunctionReference($, $i)
+                                                        //             })
+                                                        //         })
+                                                        //         if ($["side effects"] !== undefined) {
+                                                        //             $["side effects"].forEach(compare, ($, key) => {
+                                                        //                 $i.nestedLine(($i) => {
+                                                        //                     $i.snippet(`readonly "se${key}": `)
+                                                        //                     serializeProcedure($, $i)
+                                                        //                 })
+                                                        //             })
+                                                        //         }
+                                                        //     })
+                                                        //     $i.snippet(`}`)
+                                                        // })
+                                                        $i.snippet(`) => `)
+                                                    })
+                                                    break
+                                                case 'independent':
+                                                    pl.cc($.type[1], ($) => {
+                                                    })
+                                                    break
+                                                default: pl.au($.type[0])
+                                            }
+                                            //         switch ($.type[0]) {
+                                            //             case 'builder':
+                                            //                 pl.cc($.type[1], ($) => {
+                                            //                     if (wrapped) {
+                                            //                         $i.snippet(`($c: g_${context.glossary}.C.${$d.createIdentifier(`${$.builder}`)}`)
+                                            //                         seralizeArguments($i)
+                                            //                         $i.snippet(`) => void`)
+
+                                            //                     } else {
+                                            //                         $i.snippet(`g_${context.glossary}.`)
+                                            //                         $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
+                                            //                         seralizeArguments($i)
+                                            //                     }
+
+                                            //                 })
+                                            //                 break
+                                            //             case 'function':
+                                            //                 pl.cc($.type[1], ($) => {
+                                            //                     $i.snippet(`g_${context.glossary}.`)
+                                            //                     $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
+                                            //                     seralizeArguments($i)
+                                            //                 })
+                                            //                 break
+                                            //             case 'interface':
+                                            //                 pl.cc($.type[1], ($) => {
+                                            //                     $i.snippet(`g_${context.glossary}.`)
+                                            //                     $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
+                                            //                     seralizeArguments($i)
+                                            //                 })
+                                            //                 break
+                                            //             case 'resource':
+                                            //                 pl.cc($.type[1], ($) => {
+                                            //                     $i.snippet(`g_${context.glossary}.`)
+                                            //                     $i.snippet(`R.${$d.createIdentifier(`${$.resource}`)}`)
+                                            //                     seralizeArguments($i)
+                                            //                 })
+                                            //                 break
+                                            //             default: pl.au($.type[0])
+                                            //         }
+
+                                            //     })
+                                        })
+                                    })
+                                })
+                                $i.line(``)
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`export type API = {`)
+                                    $i.indent(($i) => {
+                                        $d.dictionaryForEach($.algorithms, ($) => {
+                                            $i.line(`${$.key}: ${$d.createIdentifier($.key)}`)
+                                        })
+                                    })
+                                    $i.snippet(`}`)
+                                })
+                            })
+                        }
+                        serializeAPI({
+                            'api': $.root,
+                            'imports': $.imports.map(($) => {
+                                switch ($[0]) {
+                                    case 'external':
+                                        return pl.cc($[1], ($) => {
+                                            return $
+                                        })
+                                    case 'sibling':
+                                        return pl.cc($[1], ($) => {
+                                            return `../${$}`
+                                        })
+                                    case 'submodule':
+                                        return pl.cc($[1], ($) => {
+                                            return `../submodules/${$}`
+                                        })
+                                    case 'this':
+                                        return pl.cc($[1], ($) => {
+                                            return `./glossary`
+                                        })
+                                    default: return pl.au($[0])
+                                }
+                            }),
+                        }, $i)
+                    })
+
+                })
+            }
             function tsConfig(
                 $: {
                     isResource: boolean,
@@ -296,230 +551,55 @@ export const $$: createProjectSerializer = (
                                     $: g_project.T.Module<Annotation>,
                                     $i: g_fp.B.Directory,
                                 ) {
-                                    $i.allowedManual(`shorthands.ts`)
-                                    $i.directory(`glossary`, ($i) => {
-                                        pl.cc($.glossary, ($) => {
-
-                                            $d.serializeGlossary(
-                                                {
-                                                    'glossary': $.root,
-                                                    'imports': $.imports.map(($) => {
-                                                        switch ($[0]) {
-                                                            case 'external':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return $
-                                                                })
-                                                            case 'main':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return `../../../main`
-                                                                })
-                                                            case 'sibling':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return `../../${$}`
-                                                                })
-                                                            case 'temp submodule':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return `../../submodules/${$}`
-                                                                })
-                                                            default: return pl.au($[0])
-                                                        }
-                                                    }),
-                                                },
-                                                $i
-                                            )
-                                        })
-                                    })
-
-                                    $i.file("api.generated.ts", ($i) => {
-                                        pl.cc($.api, ($) => {
-                                            function serializeAPI(
-                                                $: {
-
-                                                    readonly 'api': g_project.T.Module.api.root<g_this.T.Annotation<Annotation>>
-                                                    readonly 'imports': pt.Dictionary<string>
-                                                },
-                                                $i: g_fp.B.Block) {
-
-
-                                                $i.line(`import * as pt from 'pareto-core-types'`)
-                                                $i.line(``)
-                                                $d.dictionaryForEach($.imports, ($) => {
-                                                    $i.nestedLine(($i) => {
-                                                        $i.snippet(`import * as g_${$.key} from "${$.value}"`)
-                                                    })
-                                                })
-                                                pl.cc($.api, ($) => {
-
-                                                    $d.dictionaryForEach($.algorithms, ($) => {
-                                                        const definition = $.value.definition
-                                                        $i.line(``)
-                                                        $i.nestedLine(($i) => {
-                                                            $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
-                                                            switch ($.value.type[0]) {
-                                                                case 'constructor':
-                                                                    pl.cc($.value.type[1], ($) => {
-                                                                        $i.snippet(`(`)
-                                                                        doOptional($['configuration data'], $i, {
-                                                                            onNotset: () => { },
-                                                                            onSet: ($, $i) => {
-
-                                                                                $i.snippet(`$: `)
-
-                                                                                $i.snippet(`g_${$.context.glossary}.`)
-
-                                                                                $i.snippet(`T.${$d.createIdentifier($.type)}`)
-                                                                                $i.snippet(`, `)
-                                                                            }
-                                                                        })
-                                                                        $i.snippet(`$d: {`)
-                                                                        $i.indent(($i) => {
-                                                                            $d.dictionaryForEach($.dependencies, ($) => {
-                                                                                $i.nestedLine(($i) => {
-                                                                                    $i.snippet(`readonly '${$.key}': `)
-                                                                                    serializeNonWrappedDefinitionReference($.value, $i)
-                                                                                })
-                                                                            })
-                                                                        })
-                                                                        $i.snippet(`}`)
-                                                                        // pl.cc($.dependencies, ($) => {
-                                                                        //     $i.snippet(`$d: {`)
-                                                                        //     $i.indent(($i) => {
-                                                                        //         // if ($.callbacks !== undefined) {
-                                                                        //         //     $d.dictionaryForEach($.callbacks, ($, key) => {
-                                                                        //         //         $i.nestedLine(($i) => {
-                                                                        //         //             $i.snippet(`readonly "cb${key}": `)
-                                                                        //         //             serializeCallbackReference($, $i)
-                                                                        //         //         })
-                                                                        //         //     })
-                                                                        //         // }
-                                                                        //         $d.dictionaryForEach($.functions, ($, key) => {
-                                                                        //             $i.nestedLine(($i) => {
-                                                                        //                 $i.snippet(`readonly "f${key}": `)
-                                                                        //                 serializeFunctionReference($, $i)
-                                                                        //             })
-                                                                        //         })
-                                                                        //         if ($["side effects"] !== undefined) {
-                                                                        //             $["side effects"].forEach(compare, ($, key) => {
-                                                                        //                 $i.nestedLine(($i) => {
-                                                                        //                     $i.snippet(`readonly "se${key}": `)
-                                                                        //                     serializeProcedure($, $i)
-                                                                        //                 })
-                                                                        //             })
-                                                                        //         }
-                                                                        //     })
-                                                                        //     $i.snippet(`}`)
-                                                                        // })
-                                                                        $i.snippet(`) => `)
-                                                                    })
-                                                                    break
-                                                                case 'reference':
-                                                                    pl.cc($.value.type[1], ($) => {
-                                                                    })
-                                                                    break
-                                                                default: pl.au($.value.type[0])
-                                                            }
-                                                            serializeWrappedDefinitionReference(definition, $i)
-                                                        })
-                                                    })
-                                                    $i.line(``)
-                                                    $i.nestedLine(($i) => {
-                                                        $i.snippet(`export type API = {`)
-                                                        $i.indent(($i) => {
-                                                            $d.dictionaryForEach($.algorithms, ($) => {
-                                                                $i.line(`${$.key}: ${$d.createIdentifier($.key)}`)
-                                                            })
-                                                        })
-                                                        $i.snippet(`}`)
-                                                    })
-                                                })
-                                            }
-                                            serializeAPI({
-                                                'api': $.root,
-                                                'imports': $.imports.map(($) => {
-                                                    switch ($[0]) {
-                                                        case 'external':
-                                                            return pl.cc($[1], ($) => {
-                                                                return $
-                                                            })
-                                                        case 'sibling':
-                                                            return pl.cc($[1], ($) => {
-                                                                return `../${$}`
-                                                            })
-                                                        case 'submodule':
-                                                            return pl.cc($[1], ($) => {
-                                                                return `../submodules/${$}`
-                                                            })
-                                                        case 'this':
-                                                            return pl.cc($[1], ($) => {
-                                                                return `./glossary`
-                                                            })
-                                                        default: return pl.au($[0])
-                                                    }
-                                                }),
-                                            }, $i)
-                                        })
-
-                                    })
-                                    function doImplementation($: {
-                                        readonly 'implementation': g_project.T.Implementation<Annotation>,
-                                        readonly 'api': g_project.T.Module.api.root<g_this.T.Annotation<Annotation>>
-                                    }, $i: g_fp.B.Directory) {
-                                        const api = $.api
-                                        switch ($.implementation[0]) {
-                                            case 'pareto':
-                                                pl.cc($.implementation[1], ($) => {
-                                                    pd.implementMe("IMPLEMENTATIONS")
-                                                    //$d.serializeImplementation($, $i)
-                                                })
-                                                break
-                                            case 'typescript':
-                                                pl.cc($.implementation[1], ($) => {
-                                                    $i.directory("implementations", ($i) => {
-                                                        $d.dictionaryForEach(api.algorithms, ($) => {
-                                                            $i.allowedManual(`${$.key}.p.ts`)
-                                                        })
-                                                    })
-                                                })
-                                                break
-                                            default: pl.au($.implementation[0])
-                                        }
-                                        $i.file("implementation.generated.ts", ($i) => {
-                                            const suffix = pl.cc($, ($) => {
-                                                switch ($.implementation[0]) {
-                                                    case 'typescript':
-                                                        return pl.cc($.implementation[1], ($) => {
-                                                            return `p`
-                                                        })
-                                                    case 'pareto':
-                                                        return pl.cc($.implementation[1], ($) => {
-                                                            return `generated`
-                                                        })
-                                                    default: return pl.au($.implementation[0])
-                                                }
+                                    doModuleDefinition($.definition, $i)
+                                    const api = $.definition.api.root
+                                    switch ($.implementation[0]) {
+                                        case 'pareto':
+                                            pl.cc($.implementation[1], ($) => {
+                                                pd.implementMe("IMPLEMENTATIONS")
+                                                //$d.serializeImplementation($, $i)
                                             })
-                                            $i.line(`import { API } from "./api.generated"`)
-                                            $d.dictionaryForEach($.api.algorithms, ($) => {
-                                                $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
-                                            })
-                                            $i.line(``)
-                                            $i.nestedLine(($i) => {
-                                                $i.snippet(`export const $api: API = {`)
-                                                $i.indent(($i) => {
-                                                    $d.dictionaryForEach($.api.algorithms, ($) => {
-                                                        $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
+                                            break
+                                        case 'typescript':
+                                            pl.cc($.implementation[1], ($) => {
+                                                $i.directory("implementations", ($i) => {
+                                                    $d.dictionaryForEach(api.algorithms, ($) => {
+                                                        $i.allowedManual(`${$.key}.p.ts`)
                                                     })
                                                 })
-                                                $i.snippet(`}`)
                                             })
-                                        })
+                                            break
+                                        default: pl.au($.implementation[0])
                                     }
-                                    doImplementation(
-                                        {
-                                            'api': $.api.root,
-                                            'implementation': $.implementation,
-                                        },
-                                        $i
-                                    )
+                                    $i.file("implementation.generated.ts", ($i) => {
+                                        const suffix = pl.cc($, ($) => {
+                                            switch ($.implementation[0]) {
+                                                case 'typescript':
+                                                    return pl.cc($.implementation[1], ($) => {
+                                                        return `p`
+                                                    })
+                                                case 'pareto':
+                                                    return pl.cc($.implementation[1], ($) => {
+                                                        return `generated`
+                                                    })
+                                                default: return pl.au($.implementation[0])
+                                            }
+                                        })
+                                        $i.line(`import { API } from "./api.generated"`)
+                                        $d.dictionaryForEach(api.algorithms, ($) => {
+                                            $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
+                                        })
+                                        $i.line(``)
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`export const $api: API = {`)
+                                            $i.indent(($i) => {
+                                                $d.dictionaryForEach(api.algorithms, ($) => {
+                                                    $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
+                                                })
+                                            })
+                                            $i.snippet(`}`)
+                                        })
+                                    })
                                     $i.file("index.ts", ($i) => {
                                         $i.line(`export * from "./glossary"`)
                                         $i.line(`export { $api as $a } from "./implementation.generated"`)
@@ -565,140 +645,55 @@ export const $$: createProjectSerializer = (
                                     $.bindings,
                                     ($) => {
                                         $i.directory("bindings", ($i) => {
-
-                                            $i.file("api.generated.ts", ($i) => {
-                                                pl.cc($.api, ($) => {
-                                                    function serializeAPI(
-                                                        $: {
-                                                            readonly 'api': g_project.T.Project._ltype.library.bindings.O.api.root<g_this.T.Annotation<Annotation>>
-                                                            readonly 'imports': pt.Dictionary<string>
-                                                        },
-                                                        $i: g_fp.B.Block
-                                                    ) {
-                                                        $i.line(`import * as pt from 'pareto-core-types'`)
-                                                        $i.line(``)
-                                                        $d.dictionaryForEach($.imports, ($) => {
-                                                            $i.nestedLine(($i) => {
-                                                                $i.snippet(`import * as g_${$.key} from "${$.value}"`)
-                                                            })
-                                                        })
-                                                        pl.cc($.api, ($) => {
-                                                            $d.dictionaryForEach($.algorithms, ($) => {
-                                                                const definition = $.value.definition
-                                                                $i.line(``)
-                                                                $i.nestedLine(($i) => {
-                                                                    $i.snippet(`export type ${$d.createIdentifier($.key)}`)
-                                                                    $i.snippet(` = `)
-                                                                    $d.enrichedDictionaryForEach($.value.parameters, {
-                                                                        'onEmpty': () => {
-
-                                                                        },
-                                                                        'onNotEmpty': ($c) => {
-                                                                            $i.snippet(`<`)
-                                                                            $c(($) => {
-                                                                                $i.snippet(`${$d.createIdentifier($.key)}${$.isLast ? `` : `, `}`)
-                                                                            })
-                                                                            $i.snippet(`>`)
-                                                                        }
-                                                                    })
-                                                                    serializeWrappedDefinitionReference(definition, $i)
-                                                                })
-                                                            })
-                                                            $i.line(``)
-                                                            $i.nestedLine(($i) => {
-                                                                $i.snippet(`export type API = {`)
-                                                                $i.indent(($i) => {
-                                                                    $d.dictionaryForEach($.algorithms, ($) => {
-                                                                        $i.line(`${$.key}: ${$d.createIdentifier($.key)}`)
-                                                                    })
-                                                                })
-                                                                $i.snippet(`}`)
-                                                            })
-                                                        })
-                                                    }
-                                                    serializeAPI({
-                                                        'api': $.root,
-                                                        'imports': $.imports.map(($) => {
-                                                            switch ($[0]) {
-                                                                case 'external':
-                                                                    return pl.cc($[1], ($) => {
-                                                                        return $
-                                                                    })
-                                                                case 'submodule':
-                                                                    return pl.cc($[1], ($) => {
-                                                                        return `../submodules/${$}`
-                                                                    })
-                                                                case 'this':
-                                                                    return pl.cc($[1], ($) => {
-                                                                        return `../main/glossary`
-                                                                    })
-                                                                default: return pl.au($[0])
-                                                            }
-                                                        }),
-                                                    }, $i)
-                                                })
-
-                                            })
-                                            function doImplementation($: {
-                                                'implementation': g_project.T.Implementation<Annotation>,
-                                                readonly 'api': g_project.T.Project._ltype.library.bindings.O.api.root<g_this.T.Annotation<Annotation>>
-                                            }, $i: g_fp.B.Directory) {
-                                                const api = $.api
-                                                switch ($.implementation[0]) {
-                                                    case 'pareto':
-                                                        pl.cc($.implementation[1], ($) => {
-                                                            pd.implementMe("IMPLEMENTATIONS")
-                                                            //$d.serializeImplementation($, $i)
-                                                        })
-                                                        break
-                                                    case 'typescript':
-                                                        pl.cc($.implementation[1], ($) => {
-                                                            $i.directory("implementations", ($i) => {
-                                                                $d.dictionaryForEach(api.algorithms, ($) => {
-                                                                    $i.allowedManual(`${$.key}.p.ts`)
-                                                                })
-                                                            })
-                                                        })
-                                                        break
-                                                    default: pl.au($.implementation[0])
-                                                }
-                                                $i.file("implementation.generated.ts", ($i) => {
-                                                    const suffix = pl.cc($, ($) => {
-                                                        switch ($.implementation[0]) {
-                                                            case 'typescript':
-                                                                return pl.cc($.implementation[1], ($) => {
-                                                                    return `p`
-                                                                })
-                                                            case 'pareto':
-                                                                return pl.cc($.implementation[1], ($) => {
-                                                                    return `generated`
-                                                                })
-                                                            default: return pl.au($.implementation[0])
-                                                        }
+                                            doModuleDefinition($.definition, $i)
+                                            const api = $.definition.api
+                                            switch ($.implementation[0]) {
+                                                case 'pareto':
+                                                    pl.cc($.implementation[1], ($) => {
+                                                        pd.implementMe("IMPLEMENTATIONS")
+                                                        //$d.serializeImplementation($, $i)
                                                     })
-                                                    $i.line(`import { API } from "./api.generated"`)
-                                                    $d.dictionaryForEach($.api.algorithms, ($) => {
-                                                        $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
-                                                    })
-                                                    $i.line(``)
-                                                    $i.nestedLine(($i) => {
-                                                        $i.snippet(`export const $api: API = {`)
-                                                        $i.indent(($i) => {
-                                                            $d.dictionaryForEach($.api.algorithms, ($) => {
-                                                                $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
+                                                    break
+                                                case 'typescript':
+                                                    pl.cc($.implementation[1], ($) => {
+                                                        $i.directory("implementations", ($i) => {
+                                                            $d.dictionaryForEach(api.root.algorithms, ($) => {
+                                                                $i.allowedManual(`${$.key}.p.ts`)
                                                             })
                                                         })
-                                                        $i.snippet(`}`)
                                                     })
-                                                })
+                                                    break
+                                                default: pl.au($.implementation[0])
                                             }
-                                            doImplementation(
-                                                {
-                                                    'api': $.api.root,
-                                                    'implementation': $.implementation,
-                                                },
-                                                $i
-                                            )
+                                            $i.file("implementation.generated.ts", ($i) => {
+                                                const suffix = pl.cc($, ($) => {
+                                                    switch ($.implementation[0]) {
+                                                        case 'typescript':
+                                                            return pl.cc($.implementation[1], ($) => {
+                                                                return `p`
+                                                            })
+                                                        case 'pareto':
+                                                            return pl.cc($.implementation[1], ($) => {
+                                                                return `generated`
+                                                            })
+                                                        default: return pl.au($.implementation[0])
+                                                    }
+                                                })
+                                                $i.line(`import { API } from "./api.generated"`)
+                                                $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
+                                                    $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
+                                                })
+                                                $i.line(``)
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`export const $api: API = {`)
+                                                    $i.indent(($i) => {
+                                                        $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
+                                                            $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
+                                                        })
+                                                    })
+                                                    $i.snippet(`}`)
+                                                })
+                                            })
                                         })
                                     },
                                     () => {
@@ -722,146 +717,23 @@ export const $$: createProjectSerializer = (
                             break
                         case 'resource':
                             pl.cc($.type[1], ($) => {
-                                $i.directory(`glossary`, ($i) => {
-                                    $d.serializeGlossary(
-                                        {
-                                            'glossary': $.glossary.root,
-                                            'imports': $.glossary.imports.map(($) => {
-                                                switch ($[0]) {
-                                                    case 'external':
-                                                        return pl.cc($[1], ($) => {
-                                                            return $
-                                                        })
-                                                    default: return pl.au($[0])
-                                                }
-                                            }),
-                                        },
-                                        $i
-                                    )
-                                })
-                                $i.file("api.generated.ts", ($i) => {
-                                    const imports = $.api.imports.map(($) => {
-                                        switch ($[0]) {
-                                            case 'external':
-                                                return pl.cc($[1], ($) => {
-                                                    return $
-                                                })
-                                            case 'this':
-                                                return pl.cc($[1], ($) => {
-                                                    return `./glossary`
-                                                })
-                                            default: return pl.au($[0])
-                                        }
-                                    })
-                                    $i.line(`import * as pt from 'pareto-core-types'`)
-                                    $i.line(``)
-                                    $d.dictionaryForEach(imports, ($) => {
-                                        $i.nestedLine(($i) => {
-                                            $i.snippet(`import * as g_${$.key} from "${$.value}"`)
-                                        })
-                                    })
-                                    pl.cc($.api.root, ($) => {
-
-                                        $d.dictionaryForEach($.algorithms, ($) => {
-                                            const definition = $.value.definition
-                                            $i.line(``)
-                                            $i.nestedLine(($i) => {
-                                                $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
-                                                switch ($.value.type[0]) {
-                                                    case 'constructor':
-                                                        pl.cc($.value.type[1], ($) => {
-                                                            $i.snippet(`(`)
-                                                            doOptional($['configuration data'], $i, {
-                                                                onNotset: () => { },
-                                                                onSet: ($, $i) => {
-
-                                                                    $i.snippet(`$: `)
-
-                                                                    $i.snippet(`g_${$.context.glossary}.`)
-
-                                                                    $i.snippet(`T.${$d.createIdentifier($.type)}`)
-                                                                    $i.snippet(`, `)
-                                                                }
-                                                            })
-                                                            $i.snippet(`$d: {`)
-                                                            $i.indent(($i) => {
-                                                                $d.dictionaryForEach($.dependencies, ($) => {
-                                                                    $i.nestedLine(($i) => {
-                                                                        $i.snippet(`readonly '${$.key}': `)
-                                                                        serializeNonWrappedDefinitionReference($.value, $i)
-                                                                    })
-                                                                })
-                                                            })
-                                                            $i.snippet(`}`)
-                                                            // pl.cc($.dependencies, ($) => {
-                                                            //     $i.snippet(`$d: {`)
-                                                            //     $i.indent(($i) => {
-                                                            //         // if ($.callbacks !== undefined) {
-                                                            //         //     $d.dictionaryForEach($.callbacks, ($, key) => {
-                                                            //         //         $i.nestedLine(($i) => {
-                                                            //         //             $i.snippet(`readonly "cb${key}": `)
-                                                            //         //             serializeCallbackReference($, $i)
-                                                            //         //         })
-                                                            //         //     })
-                                                            //         // }
-                                                            //         $d.dictionaryForEach($.functions, ($, key) => {
-                                                            //             $i.nestedLine(($i) => {
-                                                            //                 $i.snippet(`readonly "f${key}": `)
-                                                            //                 serializeFunctionReference($, $i)
-                                                            //             })
-                                                            //         })
-                                                            //         if ($["side effects"] !== undefined) {
-                                                            //             $["side effects"].forEach(compare, ($, key) => {
-                                                            //                 $i.nestedLine(($i) => {
-                                                            //                     $i.snippet(`readonly "se${key}": `)
-                                                            //                     serializeProcedure($, $i)
-                                                            //                 })
-                                                            //             })
-                                                            //         }
-                                                            //     })
-                                                            //     $i.snippet(`}`)
-                                                            // })
-                                                            $i.snippet(`) => `)
-                                                        })
-                                                        break
-                                                    case 'reference':
-                                                        pl.cc($.value.type[1], ($) => {
-                                                        })
-                                                        break
-                                                    default: pl.au($.value.type[0])
-                                                }
-                                                serializeWrappedDefinitionReference(definition, $i)
-                                            })
-                                        })
-                                        $i.line(``)
-                                        $i.nestedLine(($i) => {
-                                            $i.snippet(`export type API = {`)
-                                            $i.indent(($i) => {
-                                                $d.dictionaryForEach($.algorithms, ($) => {
-                                                    $i.line(`${$.key}: ${$d.createIdentifier($.key)}`)
-                                                })
-                                            })
-                                            $i.snippet(`}`)
-                                        })
-                                    })
-                                })
-
+                                doModuleDefinition($.definition, $i)
                                 $i.directory("implementations", ($i) => {
-                                    $d.dictionaryForEach($.api.root.algorithms, ($) => {
+                                    $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                         $i.allowedManual(`${$.key}.native.ts`)
                                     })
                                 })
                                 $i.file("implementation.generated.ts", ($i) => {
 
                                     $i.line(`import { API } from "./api.generated"`)
-                                    $d.dictionaryForEach($.api.root.algorithms, ($) => {
+                                    $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                         $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.native"`)
                                     })
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
                                         $i.snippet(`export const $r: API = {`)
                                         $i.indent(($i) => {
-                                            $d.dictionaryForEach($.api.root.algorithms, ($) => {
+                                            $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                                 $i.line(`${$d.createApostrophedString(`${$.key}`)}: ${$d.createIdentifier(`i${$.key}`)},`)
                                             })
                                         })
@@ -981,31 +853,7 @@ export const $$: createProjectSerializer = (
                                 })
                             })
                         })
-                        $i.directory("glossary", ($i) => {
-                            $d.serializeGlossary(
-                                {
-                                    'glossary': $.glossary,
-                                    'imports': $.imports.map(($) => {
-                                        switch ($[0]) {
-                                            case 'external':
-                                                return pl.cc($[1], ($) => {
-                                                    return $
-                                                })
-                                            case 'this':
-                                                return pl.cc($[1], ($) => {
-                                                    return `../glossary`
-                                                })
-                                            case 'pub':
-                                                return pl.cc($[1], ($) => {
-                                                    return `../../../../../pub`
-                                                })
-                                            default: return pl.au($[0])
-                                        }
-                                    }),
-                                },
-                                $i
-                            )
-                        })
+                        doModuleDefinition($.definition, $i)
 
                         // $i.file("testXXXXX.generated.ts", ($i) => {
                         //     $i.line(`import * as pt from 'pareto-core-types'`)

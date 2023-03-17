@@ -155,19 +155,19 @@ export function interfaceReference(contextOrInterface: string, inf?: string): t.
     }
 }
 
-export function resourceReference(contextOrResource: string, resource?: string): t.T.ResourceReference<pd.SourceLocation> {
-    if (resource === undefined) {
-        return {
-            'context': ['local', null],
-            'resource': contextOrResource,
-        }
-    } else {
-        return {
-            'context': context(contextOrResource, pd.getLocationInfo(1)),
-            'resource': resource,
-        }
-    }
-}
+// export function resourceReference(contextOrResource: string, resource?: string): t.T.ResourceReference<pd.SourceLocation> {
+//     if (resource === undefined) {
+//         return {
+//             'context': ['local', null],
+//             'resource': contextOrResource,
+//         }
+//     } else {
+//         return {
+//             'context': context(contextOrResource, pd.getLocationInfo(1)),
+//             'resource': resource,
+//         }
+//     }
+// }
 
 export function nothing(): ['nothing', null] {
     return ['nothing', null]
@@ -185,10 +185,10 @@ export function inf($: t.T.InterfaceReference<pd.SourceLocation>): ['interface',
     return ['interface', $]
 }
 
-export function resource(data: t.T.TypeReference<pd.SourceLocation>, inf: t.T.InterfaceReference<pd.SourceLocation>): t.T.Glossary._ltype.asynchronous.resources.D<pd.SourceLocation> {
+export function clss(inf: t.T.InterfaceReference<pd.SourceLocation>, downstreams: RawDictionary<t.T.InterfaceReference<pd.SourceLocation>>): t.T.Glossary._ltype.asynchronous.classes.D<pd.SourceLocation> {
     return {
-        'data': data,
         'interface': inf,
+        'downstreams': pd.d(downstreams),
     }
 }
 
@@ -206,9 +206,9 @@ export function afunc(in_: t.T.Glossary._ltype.asynchronous.functions.D._lin<pd.
     }
 }
 
-export function rsrc($: t.T.ResourceReference<pd.SourceLocation>): ['resource', t.T.ResourceReference<pd.SourceLocation>] {
-    return ['resource', $]
-}
+// export function rsrc($: t.T.ResourceReference<pd.SourceLocation>): ['resource', t.T.ResourceReference<pd.SourceLocation>] {
+//     return ['resource', $]
+// }
 
 export function builderMethod(data: null | t.T.TypeReference<pd.SourceLocation>, inf?: null | t.T.Builder<pd.SourceLocation>): t.T.Builder<pd.SourceLocation> {
     return ['method', {

@@ -1,23 +1,16 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    nested,
-    null_,
     typeReference,
-    boolean,
     string,
-    number,
-    types,
     taggedUnion,
     glossaryParameter,
     group,
     member,
-    // reference,
     array,
-    interfaceMethod,
-    builderMethod,
     type,
     ref,
+    aInterfaceMethod,
 } from "../../../../../../pub/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "../../../../../../pub/dist/submodules/glossary"
@@ -69,15 +62,21 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         })),
 
     }),
-    'type': ['asynchronous', {
+    'asynchronous': {
         'interfaces': d({
             "TokenConsumer": ['stream', {
-                'data': interfaceMethod(typeReference("AnnotatedToken")),
-                'end': interfaceMethod(typeReference("Annotation")), //should be a parameter reference
+                'data': aInterfaceMethod(typeReference("AnnotatedToken")),
+                'end': aInterfaceMethod(typeReference("Annotation")), //should be a parameter reference
             }]
         }),
-        'classes': d({}),
-        'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({}),
+        'constructors': d({}),
+        'functions': d({}),
 
-    }],
+    },
+    'synchronous': {
+        'interfaces': d({  }),
+        'constructors': d({}),
+        'functions': d({}),
+
+    },
 }

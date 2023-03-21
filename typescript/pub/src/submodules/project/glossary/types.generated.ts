@@ -63,6 +63,10 @@ export namespace T {
                     
                     export type external<GAnnotation> = string
                     
+                    export namespace main {}
+                    
+                    export type main<GAnnotation> = null
+                    
                     export type sibling<GAnnotation> = string
                     
                     export type submodule<GAnnotation> = string
@@ -74,6 +78,7 @@ export namespace T {
                 
                 export type D<GAnnotation> = 
                     | ['external', string]
+                    | ['main', null]
                     | ['sibling', string]
                     | ['submodule', string]
                     | ['this', null]
@@ -81,6 +86,7 @@ export namespace T {
             
             export type imports<GAnnotation> = pt.Dictionary<
                 | ['external', string]
+                | ['main', null]
                 | ['sibling', string]
                 | ['submodule', string]
                 | ['this', null]
@@ -100,13 +106,13 @@ export namespace T {
                                 
                                 export namespace async {
                                     
-                                    export namespace _lclass {
+                                    export namespace _lconstructor {
                                         
-                                        export type _lclass<GAnnotation> = string
+                                        export type _lconstructor<GAnnotation> = string
                                     }
                                     
-                                    export type _lclass<GAnnotation> = {
-                                        readonly 'class': string
+                                    export type _lconstructor<GAnnotation> = {
+                                        readonly 'constructor': string
                                     }
                                     
                                     export namespace _lfunction {
@@ -116,26 +122,38 @@ export namespace T {
                                     
                                     export type _lfunction<GAnnotation> = {
                                         readonly 'function': string
+                                    }
+                                    
+                                    export namespace _linterface {
+                                        
+                                        export type _linterface<GAnnotation> = string
+                                    }
+                                    
+                                    export type _linterface<GAnnotation> = {
+                                        readonly 'interface': string
                                     }
                                 }
                                 
                                 export type async<GAnnotation> = 
-                                    | ['class', {
-                                        readonly 'class': string
+                                    | ['constructor', {
+                                        readonly 'constructor': string
                                     }]
                                     | ['function', {
                                         readonly 'function': string
                                     }]
+                                    | ['interface', {
+                                        readonly 'interface': string
+                                    }]
                                 
                                 export namespace sync {
                                     
-                                    export namespace builder {
+                                    export namespace _lconstructor {
                                         
-                                        export type builder<GAnnotation> = string
+                                        export type _lconstructor<GAnnotation> = string
                                     }
                                     
-                                    export type builder<GAnnotation> = {
-                                        readonly 'builder': string
+                                    export type _lconstructor<GAnnotation> = {
+                                        readonly 'constructor': string
                                     }
                                     
                                     export namespace _lfunction {
@@ -146,32 +164,50 @@ export namespace T {
                                     export type _lfunction<GAnnotation> = {
                                         readonly 'function': string
                                     }
+                                    
+                                    export namespace _linterface {
+                                        
+                                        export type _linterface<GAnnotation> = string
+                                    }
+                                    
+                                    export type _linterface<GAnnotation> = {
+                                        readonly 'interface': string
+                                    }
                                 }
                                 
                                 export type sync<GAnnotation> = 
-                                    | ['builder', {
-                                        readonly 'builder': string
+                                    | ['constructor', {
+                                        readonly 'constructor': string
                                     }]
                                     | ['function', {
                                         readonly 'function': string
+                                    }]
+                                    | ['interface', {
+                                        readonly 'interface': string
                                     }]
                             }
                             
                             export type _ltype<GAnnotation> = 
                                 | ['async', 
-                                    | ['class', {
-                                        readonly 'class': string
+                                    | ['constructor', {
+                                        readonly 'constructor': string
                                     }]
                                     | ['function', {
                                         readonly 'function': string
+                                    }]
+                                    | ['interface', {
+                                        readonly 'interface': string
                                     }]
                                 ]
                                 | ['sync', 
-                                    | ['builder', {
-                                        readonly 'builder': string
+                                    | ['constructor', {
+                                        readonly 'constructor': string
                                     }]
                                     | ['function', {
                                         readonly 'function': string
+                                    }]
+                                    | ['interface', {
+                                        readonly 'interface': string
                                     }]
                                 ]
                         }
@@ -180,19 +216,25 @@ export namespace T {
                             readonly 'context': T.Context<GAnnotation>
                             readonly 'type': 
                                 | ['async', 
-                                    | ['class', {
-                                        readonly 'class': string
+                                    | ['constructor', {
+                                        readonly 'constructor': string
                                     }]
                                     | ['function', {
                                         readonly 'function': string
+                                    }]
+                                    | ['interface', {
+                                        readonly 'interface': string
                                     }]
                                 ]
                                 | ['sync', 
-                                    | ['builder', {
-                                        readonly 'builder': string
+                                    | ['constructor', {
+                                        readonly 'constructor': string
                                     }]
                                     | ['function', {
                                         readonly 'function': string
+                                    }]
+                                    | ['interface', {
+                                        readonly 'interface': string
                                     }]
                                 ]
                         }
@@ -231,6 +273,15 @@ export namespace T {
                                             
                                             export namespace async {
                                                 
+                                                export namespace _lconstructor {
+                                                    
+                                                    export type _lconstructor<GAnnotation> = string
+                                                }
+                                                
+                                                export type _lconstructor<GAnnotation> = {
+                                                    readonly 'constructor': string
+                                                }
+                                                
                                                 export namespace _lfunction {
                                                     
                                                     export type _lfunction<GAnnotation> = string
@@ -238,27 +289,27 @@ export namespace T {
                                                 
                                                 export type _lfunction<GAnnotation> = {
                                                     readonly 'function': string
-                                                }
-                                                
-                                                export namespace _linterface {
-                                                    
-                                                    export type _linterface<GAnnotation> = string
-                                                }
-                                                
-                                                export type _linterface<GAnnotation> = {
-                                                    readonly 'interface': string
                                                 }
                                             }
                                             
                                             export type async<GAnnotation> = 
+                                                | ['constructor', {
+                                                    readonly 'constructor': string
+                                                }]
                                                 | ['function', {
                                                     readonly 'function': string
                                                 }]
-                                                | ['interface', {
-                                                    readonly 'interface': string
-                                                }]
                                             
                                             export namespace sync {
+                                                
+                                                export namespace _lconstructor {
+                                                    
+                                                    export type _lconstructor<GAnnotation> = string
+                                                }
+                                                
+                                                export type _lconstructor<GAnnotation> = {
+                                                    readonly 'constructor': string
+                                                }
                                                 
                                                 export namespace _lfunction {
                                                     
@@ -268,41 +319,32 @@ export namespace T {
                                                 export type _lfunction<GAnnotation> = {
                                                     readonly 'function': string
                                                 }
-                                                
-                                                export namespace _linterface {
-                                                    
-                                                    export type _linterface<GAnnotation> = string
-                                                }
-                                                
-                                                export type _linterface<GAnnotation> = {
-                                                    readonly 'interface': string
-                                                }
                                             }
                                             
                                             export type sync<GAnnotation> = 
+                                                | ['constructor', {
+                                                    readonly 'constructor': string
+                                                }]
                                                 | ['function', {
                                                     readonly 'function': string
-                                                }]
-                                                | ['interface', {
-                                                    readonly 'interface': string
                                                 }]
                                         }
                                         
                                         export type _ltype<GAnnotation> = 
                                             | ['async', 
+                                                | ['constructor', {
+                                                    readonly 'constructor': string
+                                                }]
                                                 | ['function', {
                                                     readonly 'function': string
-                                                }]
-                                                | ['interface', {
-                                                    readonly 'interface': string
                                                 }]
                                             ]
                                             | ['sync', 
+                                                | ['constructor', {
+                                                    readonly 'constructor': string
+                                                }]
                                                 | ['function', {
                                                     readonly 'function': string
-                                                }]
-                                                | ['interface', {
-                                                    readonly 'interface': string
                                                 }]
                                             ]
                                     }
@@ -311,19 +353,19 @@ export namespace T {
                                         readonly 'context': T.Context<GAnnotation>
                                         readonly 'type': 
                                             | ['async', 
+                                                | ['constructor', {
+                                                    readonly 'constructor': string
+                                                }]
                                                 | ['function', {
                                                     readonly 'function': string
-                                                }]
-                                                | ['interface', {
-                                                    readonly 'interface': string
                                                 }]
                                             ]
                                             | ['sync', 
+                                                | ['constructor', {
+                                                    readonly 'constructor': string
+                                                }]
                                                 | ['function', {
                                                     readonly 'function': string
-                                                }]
-                                                | ['interface', {
-                                                    readonly 'interface': string
                                                 }]
                                             ]
                                     }
@@ -333,21 +375,80 @@ export namespace T {
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': 
                                         | ['async', 
+                                            | ['constructor', {
+                                                readonly 'constructor': string
+                                            }]
                                             | ['function', {
                                                 readonly 'function': string
-                                            }]
-                                            | ['interface', {
-                                                readonly 'interface': string
                                             }]
                                         ]
                                         | ['sync', 
+                                            | ['constructor', {
+                                                readonly 'constructor': string
+                                            }]
                                             | ['function', {
                                                 readonly 'function': string
                                             }]
-                                            | ['interface', {
+                                        ]
+                                }>
+                                
+                                export namespace side__effects {
+                                    
+                                    export namespace D {
+                                        
+                                        export type context<GAnnotation> = T.Context<GAnnotation>
+                                        
+                                        export namespace _ltype {
+                                            
+                                            export namespace async {
+                                                
+                                                export type _linterface<GAnnotation> = string
+                                            }
+                                            
+                                            export type async<GAnnotation> = {
+                                                readonly 'interface': string
+                                            }
+                                            
+                                            export namespace sync {
+                                                
+                                                export type _linterface<GAnnotation> = string
+                                            }
+                                            
+                                            export type sync<GAnnotation> = {
+                                                readonly 'interface': string
+                                            }
+                                        }
+                                        
+                                        export type _ltype<GAnnotation> = 
+                                            | ['async', {
                                                 readonly 'interface': string
                                             }]
-                                        ]
+                                            | ['sync', {
+                                                readonly 'interface': string
+                                            }]
+                                    }
+                                    
+                                    export type D<GAnnotation> = {
+                                        readonly 'context': T.Context<GAnnotation>
+                                        readonly 'type': 
+                                            | ['async', {
+                                                readonly 'interface': string
+                                            }]
+                                            | ['sync', {
+                                                readonly 'interface': string
+                                            }]
+                                    }
+                                }
+                                
+                                export type side__effects<GAnnotation> = pt.Dictionary<{
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': 
+                                        | ['async', {
+                                            readonly 'interface': string
+                                        }]
+                                        | ['sync', {
+                                            readonly 'interface': string
+                                        }]
                                 }>
                             }
                             
@@ -360,21 +461,31 @@ export namespace T {
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': 
                                         | ['async', 
+                                            | ['constructor', {
+                                                readonly 'constructor': string
+                                            }]
                                             | ['function', {
                                                 readonly 'function': string
-                                            }]
-                                            | ['interface', {
-                                                readonly 'interface': string
                                             }]
                                         ]
                                         | ['sync', 
+                                            | ['constructor', {
+                                                readonly 'constructor': string
+                                            }]
                                             | ['function', {
                                                 readonly 'function': string
                                             }]
-                                            | ['interface', {
-                                                readonly 'interface': string
-                                            }]
                                         ]
+                                }>
+                                readonly 'side effects': pt.Dictionary<{
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': 
+                                        | ['async', {
+                                            readonly 'interface': string
+                                        }]
+                                        | ['sync', {
+                                            readonly 'interface': string
+                                        }]
                                 }>
                             }
                             
@@ -393,21 +504,31 @@ export namespace T {
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': 
                                         | ['async', 
+                                            | ['constructor', {
+                                                readonly 'constructor': string
+                                            }]
                                             | ['function', {
                                                 readonly 'function': string
-                                            }]
-                                            | ['interface', {
-                                                readonly 'interface': string
                                             }]
                                         ]
                                         | ['sync', 
+                                            | ['constructor', {
+                                                readonly 'constructor': string
+                                            }]
                                             | ['function', {
                                                 readonly 'function': string
                                             }]
-                                            | ['interface', {
-                                                readonly 'interface': string
-                                            }]
                                         ]
+                                }>
+                                readonly 'side effects': pt.Dictionary<{
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': 
+                                        | ['async', {
+                                            readonly 'interface': string
+                                        }]
+                                        | ['sync', {
+                                            readonly 'interface': string
+                                        }]
                                 }>
                             }]
                             | ['independent', null]
@@ -418,19 +539,25 @@ export namespace T {
                             readonly 'context': T.Context<GAnnotation>
                             readonly 'type': 
                                 | ['async', 
-                                    | ['class', {
-                                        readonly 'class': string
+                                    | ['constructor', {
+                                        readonly 'constructor': string
                                     }]
                                     | ['function', {
                                         readonly 'function': string
+                                    }]
+                                    | ['interface', {
+                                        readonly 'interface': string
                                     }]
                                 ]
                                 | ['sync', 
-                                    | ['builder', {
-                                        readonly 'builder': string
+                                    | ['constructor', {
+                                        readonly 'constructor': string
                                     }]
                                     | ['function', {
                                         readonly 'function': string
+                                    }]
+                                    | ['interface', {
+                                        readonly 'interface': string
                                     }]
                                 ]
                         }
@@ -444,21 +571,31 @@ export namespace T {
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': 
                                         | ['async', 
+                                            | ['constructor', {
+                                                readonly 'constructor': string
+                                            }]
                                             | ['function', {
                                                 readonly 'function': string
-                                            }]
-                                            | ['interface', {
-                                                readonly 'interface': string
                                             }]
                                         ]
                                         | ['sync', 
+                                            | ['constructor', {
+                                                readonly 'constructor': string
+                                            }]
                                             | ['function', {
                                                 readonly 'function': string
                                             }]
-                                            | ['interface', {
-                                                readonly 'interface': string
-                                            }]
                                         ]
+                                }>
+                                readonly 'side effects': pt.Dictionary<{
+                                    readonly 'context': T.Context<GAnnotation>
+                                    readonly 'type': 
+                                        | ['async', {
+                                            readonly 'interface': string
+                                        }]
+                                        | ['sync', {
+                                            readonly 'interface': string
+                                        }]
                                 }>
                             }]
                             | ['independent', null]
@@ -470,19 +607,25 @@ export namespace T {
                         readonly 'context': T.Context<GAnnotation>
                         readonly 'type': 
                             | ['async', 
-                                | ['class', {
-                                    readonly 'class': string
+                                | ['constructor', {
+                                    readonly 'constructor': string
                                 }]
                                 | ['function', {
                                     readonly 'function': string
+                                }]
+                                | ['interface', {
+                                    readonly 'interface': string
                                 }]
                             ]
                             | ['sync', 
-                                | ['builder', {
-                                    readonly 'builder': string
+                                | ['constructor', {
+                                    readonly 'constructor': string
                                 }]
                                 | ['function', {
                                     readonly 'function': string
+                                }]
+                                | ['interface', {
+                                    readonly 'interface': string
                                 }]
                             ]
                     }
@@ -496,21 +639,31 @@ export namespace T {
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': 
                                     | ['async', 
+                                        | ['constructor', {
+                                            readonly 'constructor': string
+                                        }]
                                         | ['function', {
                                             readonly 'function': string
-                                        }]
-                                        | ['interface', {
-                                            readonly 'interface': string
                                         }]
                                     ]
                                     | ['sync', 
+                                        | ['constructor', {
+                                            readonly 'constructor': string
+                                        }]
                                         | ['function', {
                                             readonly 'function': string
                                         }]
-                                        | ['interface', {
-                                            readonly 'interface': string
-                                        }]
                                     ]
+                            }>
+                            readonly 'side effects': pt.Dictionary<{
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': 
+                                    | ['async', {
+                                        readonly 'interface': string
+                                    }]
+                                    | ['sync', {
+                                        readonly 'interface': string
+                                    }]
                             }>
                         }]
                         | ['independent', null]
@@ -523,19 +676,25 @@ export namespace T {
                         readonly 'context': T.Context<GAnnotation>
                         readonly 'type': 
                             | ['async', 
-                                | ['class', {
-                                    readonly 'class': string
+                                | ['constructor', {
+                                    readonly 'constructor': string
                                 }]
                                 | ['function', {
                                     readonly 'function': string
+                                }]
+                                | ['interface', {
+                                    readonly 'interface': string
                                 }]
                             ]
                             | ['sync', 
-                                | ['builder', {
-                                    readonly 'builder': string
+                                | ['constructor', {
+                                    readonly 'constructor': string
                                 }]
                                 | ['function', {
                                     readonly 'function': string
+                                }]
+                                | ['interface', {
+                                    readonly 'interface': string
                                 }]
                             ]
                     }
@@ -549,21 +708,31 @@ export namespace T {
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': 
                                     | ['async', 
+                                        | ['constructor', {
+                                            readonly 'constructor': string
+                                        }]
                                         | ['function', {
                                             readonly 'function': string
-                                        }]
-                                        | ['interface', {
-                                            readonly 'interface': string
                                         }]
                                     ]
                                     | ['sync', 
+                                        | ['constructor', {
+                                            readonly 'constructor': string
+                                        }]
                                         | ['function', {
                                             readonly 'function': string
                                         }]
-                                        | ['interface', {
-                                            readonly 'interface': string
-                                        }]
                                     ]
+                            }>
+                            readonly 'side effects': pt.Dictionary<{
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': 
+                                    | ['async', {
+                                        readonly 'interface': string
+                                    }]
+                                    | ['sync', {
+                                        readonly 'interface': string
+                                    }]
                             }>
                         }]
                         | ['independent', null]
@@ -574,6 +743,7 @@ export namespace T {
         export type api<GAnnotation> = {
             readonly 'imports': pt.Dictionary<
                 | ['external', string]
+                | ['main', null]
                 | ['sibling', string]
                 | ['submodule', string]
                 | ['this', null]
@@ -584,19 +754,25 @@ export namespace T {
                         readonly 'context': T.Context<GAnnotation>
                         readonly 'type': 
                             | ['async', 
-                                | ['class', {
-                                    readonly 'class': string
+                                | ['constructor', {
+                                    readonly 'constructor': string
                                 }]
                                 | ['function', {
                                     readonly 'function': string
+                                }]
+                                | ['interface', {
+                                    readonly 'interface': string
                                 }]
                             ]
                             | ['sync', 
-                                | ['builder', {
-                                    readonly 'builder': string
+                                | ['constructor', {
+                                    readonly 'constructor': string
                                 }]
                                 | ['function', {
                                     readonly 'function': string
+                                }]
+                                | ['interface', {
+                                    readonly 'interface': string
                                 }]
                             ]
                     }
@@ -610,21 +786,31 @@ export namespace T {
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': 
                                     | ['async', 
+                                        | ['constructor', {
+                                            readonly 'constructor': string
+                                        }]
                                         | ['function', {
                                             readonly 'function': string
-                                        }]
-                                        | ['interface', {
-                                            readonly 'interface': string
                                         }]
                                     ]
                                     | ['sync', 
+                                        | ['constructor', {
+                                            readonly 'constructor': string
+                                        }]
                                         | ['function', {
                                             readonly 'function': string
                                         }]
-                                        | ['interface', {
-                                            readonly 'interface': string
-                                        }]
                                     ]
+                            }>
+                            readonly 'side effects': pt.Dictionary<{
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': 
+                                    | ['async', {
+                                        readonly 'interface': string
+                                    }]
+                                    | ['sync', {
+                                        readonly 'interface': string
+                                    }]
                             }>
                         }]
                         | ['independent', null]
@@ -681,6 +867,7 @@ export namespace T {
         readonly 'api': {
             readonly 'imports': pt.Dictionary<
                 | ['external', string]
+                | ['main', null]
                 | ['sibling', string]
                 | ['submodule', string]
                 | ['this', null]
@@ -691,19 +878,25 @@ export namespace T {
                         readonly 'context': T.Context<GAnnotation>
                         readonly 'type': 
                             | ['async', 
-                                | ['class', {
-                                    readonly 'class': string
+                                | ['constructor', {
+                                    readonly 'constructor': string
                                 }]
                                 | ['function', {
                                     readonly 'function': string
+                                }]
+                                | ['interface', {
+                                    readonly 'interface': string
                                 }]
                             ]
                             | ['sync', 
-                                | ['builder', {
-                                    readonly 'builder': string
+                                | ['constructor', {
+                                    readonly 'constructor': string
                                 }]
                                 | ['function', {
                                     readonly 'function': string
+                                }]
+                                | ['interface', {
+                                    readonly 'interface': string
                                 }]
                             ]
                     }
@@ -717,21 +910,31 @@ export namespace T {
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': 
                                     | ['async', 
+                                        | ['constructor', {
+                                            readonly 'constructor': string
+                                        }]
                                         | ['function', {
                                             readonly 'function': string
-                                        }]
-                                        | ['interface', {
-                                            readonly 'interface': string
                                         }]
                                     ]
                                     | ['sync', 
+                                        | ['constructor', {
+                                            readonly 'constructor': string
+                                        }]
                                         | ['function', {
                                             readonly 'function': string
                                         }]
-                                        | ['interface', {
-                                            readonly 'interface': string
-                                        }]
                                     ]
+                            }>
+                            readonly 'side effects': pt.Dictionary<{
+                                readonly 'context': T.Context<GAnnotation>
+                                readonly 'type': 
+                                    | ['async', {
+                                        readonly 'interface': string
+                                    }]
+                                    | ['sync', {
+                                        readonly 'interface': string
+                                    }]
                             }>
                         }]
                         | ['independent', null]
@@ -872,31 +1075,41 @@ export namespace T {
                 
                 export type definition<GAnnotation> = T.ModuleDefinition<GAnnotation>
                 
-                export namespace devDependencies {
+                export namespace temp {
                     
-                    export namespace D {}
+                    export namespace devDependencies {
+                        
+                        export namespace D {}
+                        
+                        export type D<GAnnotation> = null
+                    }
                     
-                    export type D<GAnnotation> = null
+                    export type devDependencies<GAnnotation> = pt.Dictionary<null>
+                    
+                    export namespace nativeDependencies {
+                        
+                        export namespace D {}
+                        
+                        export type D<GAnnotation> = null
+                    }
+                    
+                    export type nativeDependencies<GAnnotation> = pt.Dictionary<null>
                 }
                 
-                export type devDependencies<GAnnotation> = pt.Dictionary<null>
-                
-                export namespace nativeDependencies {
-                    
-                    export namespace D {}
-                    
-                    export type D<GAnnotation> = null
+                export type temp<GAnnotation> = {
+                    readonly 'devDependencies': pt.Dictionary<null>
+                    readonly 'nativeDependencies': pt.Dictionary<null>
                 }
-                
-                export type nativeDependencies<GAnnotation> = pt.Dictionary<null>
                 
                 export type test<GAnnotation> = T.Test<GAnnotation>
             }
             
             export type resource<GAnnotation> = {
                 readonly 'definition': T.ModuleDefinition<GAnnotation>
-                readonly 'devDependencies': pt.Dictionary<null>
-                readonly 'nativeDependencies': pt.Dictionary<null>
+                readonly 'temp': {
+                    readonly 'devDependencies': pt.Dictionary<null>
+                    readonly 'nativeDependencies': pt.Dictionary<null>
+                }
                 readonly 'test': T.Test<GAnnotation>
             }
         }
@@ -922,8 +1135,10 @@ export namespace T {
             }]
             | ['resource', {
                 readonly 'definition': T.ModuleDefinition<GAnnotation>
-                readonly 'devDependencies': pt.Dictionary<null>
-                readonly 'nativeDependencies': pt.Dictionary<null>
+                readonly 'temp': {
+                    readonly 'devDependencies': pt.Dictionary<null>
+                    readonly 'nativeDependencies': pt.Dictionary<null>
+                }
                 readonly 'test': T.Test<GAnnotation>
             }]
     }
@@ -954,8 +1169,10 @@ export namespace T {
             }]
             | ['resource', {
                 readonly 'definition': T.ModuleDefinition<GAnnotation>
-                readonly 'devDependencies': pt.Dictionary<null>
-                readonly 'nativeDependencies': pt.Dictionary<null>
+                readonly 'temp': {
+                    readonly 'devDependencies': pt.Dictionary<null>
+                    readonly 'nativeDependencies': pt.Dictionary<null>
+                }
                 readonly 'test': T.Test<GAnnotation>
             }]
     }

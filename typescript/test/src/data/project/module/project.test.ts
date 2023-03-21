@@ -1,6 +1,6 @@
 import * as pd from 'pareto-core-data'
 import {
-    dictionary, group as grp, member, taggedUnion, types, group, type, builderMethod, interfaceMethod,
+    type, aInterfaceMethod,
 } from "../../../../../pub/dist/submodules/glossary/shorthands"
 import { external } from "../../../../../pub/dist/submodules/project/shorthands"
 
@@ -292,17 +292,23 @@ export const $: g_project.T.Project._ltype.library.main<pd.SourceLocation> = {
                         // },
                     })]),
                 }),
-                'type': ['asynchronous', {
+                'asynchronous': {
                     'interfaces': d({
                         "FOO": ['choice', {
                             'options': d({
-                                "BAR": interfaceMethod(null, null)
+                                "BAR": aInterfaceMethod(null, null)
                             })
                         }]
                     }),
-                    'classes': d({}),
-                    'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({}),
-                }]
+                    'constructors': d({}),
+                    'functions': d({}),
+                },
+                'synchronous': {
+                    'interfaces': d({ }),
+                    'constructors': d({}),
+                    'functions': d({}),
+                },
+
             },
             'imports': d({}),
         },

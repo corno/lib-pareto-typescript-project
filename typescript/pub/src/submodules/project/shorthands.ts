@@ -38,7 +38,7 @@ export function typeReference(context: string, args: RawDictionary<string>, defi
     }
 }
 
-export function asyncFunctionReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
+export function aFunctionReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
@@ -50,7 +50,31 @@ export function asyncFunctionReference(context: string, args: RawDictionary<stri
     }
 }
 
-export function syncFunctionReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
+export function aSideEffect(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.side__effects.D<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['async', {
+            'interface': definition,
+        }]
+    }
+}
+
+export function aConstructorReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['async', ['constructor', {
+            'constructor': definition,
+        }]]
+    }
+}
+
+export function sFunctionReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
@@ -62,107 +86,113 @@ export function syncFunctionReference(context: string, args: RawDictionary<strin
     }
 }
 
-export function interfaceReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
+export function sSideEffect(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.side__effects.D<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['sync', {
+            'interface': definition,
+        }]
+    }
+}
+
+export function sConstructorReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['sync', ['constructor', {
+            'constructor': definition,
+        }]]
+    }
+}
+
+export function sconstructor(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['sync', ['constructor', {
+            'constructor': definition
+        }]]
+    }
+}
+
+export function sfunction(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['sync', ['function', {
+            'function': definition
+        }]]
+    }
+}
+
+export function sinterface(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['sync', ['interface', {
+            'interface': definition
+        }]]
+    }
+}
+
+export function afunction(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['async', ['function', {
+            'function': definition
+        }]]
+    }
+}
+
+export function aconstructor(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['async', ['constructor', {
+            'constructor': definition
+        }]]
+    }
+}
+
+export function ainterface(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
             'arguments': pd.d(args === undefined ? {} : args)
         },
         'type': ['async', ['interface', {
-            'interface': definition,
+            'interface': definition
         }]]
     }
 }
 
-// export function infRef(context: string, args: RawDictionary<string>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
-//     return {
-//         'context': {
-//             'glossary': context,
-//             'arguments': pd.d(args === undefined ? {} : args)
-//         },
-//         'type': ['interface', {
-//             'interface': definition,
-//         }]
-//     }
-// }
-
-// export function rsrcRef(context: string, args: RawDictionary<string>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
-//     return {
-//         'context': {
-//             'glossary': context,
-//             'arguments': pd.d(args === undefined ? {} : args)
-//         },
-//         'type': ['resource', {
-//             'resource': definition,
-//         }]
-//     }
-// }
-
-// export function bldrRef(context: string, args: RawDictionary<string>, definition: string): g_this.T.DefinitionReference<pd.SourceLocation> {
-//     return {
-//         'context': {
-//             'glossary': context,
-//             'arguments': pd.d(args === undefined ? {} : args)
-//         },
-//         'type': ['builder', {
-//             'builder': definition,
-//         }]
-//     }
-// }
-
-export function builder(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['sync', ['builder', {
-            'builder': definition
-        }]]
-    }
-}
-
-export function asyncFunc(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['async', ['function', {
-            'function': definition
-        }]]
-    }
-}
-
-export function syncFunc(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['sync', ['function', {
-            'function': definition
-        }]]
-    }
-}
-
-export function clss(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['async', ['class', {
-            'class': definition
-        }]]
-    }
-}
-export function dependent(data: null | g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.configuration__data.O<pd.SourceLocation>, deps: RawDictionary<g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation>>): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype<pd.SourceLocation> {
+export function dependent(
+    data: null | g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.configuration__data.O<pd.SourceLocation>,
+    deps: RawDictionary<g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation>>,
+    se: RawDictionary<g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.side__effects.D<pd.SourceLocation>>,
+): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype<pd.SourceLocation> {
     return ['dependent', {
         'configuration data': data === null
             ? [false]
             : [true, data],
         'dependencies': pd.d(deps),
+        'side effects': pd.d(se),
     }]
 }
 

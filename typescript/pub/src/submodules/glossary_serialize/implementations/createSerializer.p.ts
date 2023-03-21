@@ -33,12 +33,12 @@ export const $$: createSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeDataOrBuilder($: g_glossary.T.DataOrBuilder<Annotation>, $i: g_fp.B.Line) {
+        function serializeDataOrSynchronousInterface($: g_glossary.T.DataOrSynchronousInterface<Annotation>, $i: g_fp.B.Line) {
             switch ($[0]) {
-                case 'builder':
+                case 'interface':
                     pl.cc($[1], ($) => {
-                        $i.snippet(`['builder', `)
-                        serializeBuilderReference($, $i)
+                        $i.snippet(`['interface', `)
+                        serializeSynchronousInterfaceReference($, $i)
                         $i.snippet(`]`)
                     })
                     break
@@ -231,7 +231,7 @@ export const $$: createSerializer = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeInterfaceReference($: g_glossary.T.InterfaceReference<Annotation>, $i: g_fp.B.Line) {
+        function serializeAsynchronousInterfaceReference($: g_glossary.T.AsynchronousInterfaceReference<Annotation>, $i: g_fp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -260,7 +260,7 @@ export const $$: createSerializer = ($d) => {
         //     $i.snippet(`}`)
         // }
 
-        function serializeBuilderReference($: g_glossary.T.BuilderReference<Annotation>, $i: g_fp.B.Line) {
+        function serializeSynchronousInterfaceReference($: g_glossary.T.SynchronousInterfaceReference<Annotation>, $i: g_fp.B.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -269,13 +269,13 @@ export const $$: createSerializer = ($d) => {
                     $i.snippet(`,`)
                 })
                 $i.nestedLine(($i) => {
-                    $i.snippet(`'builder': "${$.builder}",`)
+                    $i.snippet(`'interface': "${$.interface}",`)
                 })
             })
             $i.snippet(`}`)
 
         }
-        function serializeInterface($: g_glossary.T.Interface<Annotation>, $i: g_fp.B.Line) {
+        function serializeAsynchronousInterface($: g_glossary.T.AsynchronousInterface<Annotation>, $i: g_fp.B.Line) {
             switch ($[0]) {
                 case 'choice':
                     pl.cc($[1], ($) => {
@@ -288,7 +288,7 @@ export const $$: createSerializer = ($d) => {
                                     $d.dictionaryForEach($.options, ($) => {
                                         $i.nestedLine(($i) => {
                                             $i.snippet(`"${$.key}": `)
-                                            serializeInterface($.value, $i)
+                                            serializeAsynchronousInterface($.value, $i)
                                             $i.snippet(`,`)
                                         })
                                     })
@@ -307,12 +307,12 @@ export const $$: createSerializer = ($d) => {
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
                                 $i.snippet(`'data': `)
-                                serializeInterface($.data, $i)
+                                serializeAsynchronousInterface($.data, $i)
                                 $i.snippet(`,`)
                             })
                             $i.nestedLine(($i) => {
                                 $i.snippet(`'end': `)
-                                serializeInterface($.end, $i)
+                                serializeAsynchronousInterface($.end, $i)
                                 $i.snippet(`,`)
                             })
                         })
@@ -336,7 +336,7 @@ export const $$: createSerializer = ($d) => {
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`'interface': `)
                                     doOptional($, $i, ($, $i) => {
-                                        serializeInterface($, $i)
+                                        serializeAsynchronousInterface($, $i)
 
                                     })
                                     $i.snippet(`,`)
@@ -349,14 +349,14 @@ export const $$: createSerializer = ($d) => {
                     break
                 case 'reference':
                     pl.cc($[1], ($) => {
-                        serializeInterfaceReference($, $i)
+                        serializeAsynchronousInterfaceReference($, $i)
                     })
                     break
                 default: pl.au($[0])
             }
 
         }
-        function serializeBuilder($: g_glossary.T.Builder<Annotation>, $i: g_fp.B.Line) {
+        function serializeSynchronousInterface($: g_glossary.T.SynchronousInterface<Annotation>, $i: g_fp.B.Line) {
             switch ($[0]) {
                 case 'group':
                     pl.cc($[1], ($) => {
@@ -369,7 +369,7 @@ export const $$: createSerializer = ($d) => {
                                     $d.dictionaryForEach($.members, ($) => {
                                         $i.nestedLine(($i) => {
                                             $i.snippet(`"${$.key}": `)
-                                            serializeBuilder($.value, $i)
+                                            serializeSynchronousInterface($.value, $i)
                                             $i.snippet(`,`)
                                         })
                                     })
@@ -393,11 +393,11 @@ export const $$: createSerializer = ($d) => {
                                     $i.snippet(`,`)
                                 })
                             })
-                            pl.cc($.builder, ($) => {
+                            pl.cc($.interface, ($) => {
                                 $i.nestedLine(($i) => {
-                                    $i.snippet(`'builder': `)
+                                    $i.snippet(`'interface': `)
                                     doOptional($, $i, ($, $i) => {
-                                        serializeBuilder($, $i)
+                                        serializeSynchronousInterface($, $i)
                                     })
                                     $i.snippet(`,`)
                                 })
@@ -409,7 +409,7 @@ export const $$: createSerializer = ($d) => {
                     break
                 case 'reference':
                     pl.cc($[1], ($) => {
-                        serializeBuilderReference($, $i)
+                        serializeSynchronousInterfaceReference($, $i)
                     })
                     break
                 default: pl.au($[0])
@@ -506,33 +506,34 @@ export const $$: createSerializer = ($d) => {
                     })
                     $i.snippet(`}),`)
                 })
-                $i.nestedLine(($i) => {
-                    $i.snippet(`'type': `)
-                    switch ($.type[0]) {
-                        case 'asynchronous':
-                            pl.cc($.type[1], ($) => {
-                                $i.snippet(`['asynchronous', {`)
+                pl.cc($.asynchronous, ($) => {
+                    $i.nestedLine(($i) => {
+                        $i.snippet(`'asynchronous': {`)
+                        $i.indent(($i) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'interfaces': d({`)
                                 $i.indent(($i) => {
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'interfaces': d({`)
-                                        $i.indent(($i) => {
-                                            $d.dictionaryForEach($.interfaces, ($) => {
-                                                $i.nestedLine(($i) => {
-                                                    $i.snippet(`"${$.key}": `)
-                                                    serializeInterface($.value, $i)
-                                                    $i.snippet(`,`)
-                                                })
-                                            })
+                                    $d.dictionaryForEach($.interfaces, ($) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`"${$.key}": `)
+                                            serializeAsynchronousInterface($.value, $i)
+                                            $i.snippet(`,`)
                                         })
-                                        $i.snippet(`}),`)
                                     })
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'classes': d({`)
-                                        $i.indent(($i) => {
-                                            $d.dictionaryForEach($.classes, ($) => {
+                                })
+                                $i.snippet(`}),`)
+                            })
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'constructors': d({`)
+                                $i.indent(($i) => {
+                                    $d.dictionaryForEach($.constructors, ($) => {
+                                        $i.nestedLine(($i) => {
+
+                                            $i.snippet(`"${$.key}": {`)
+                                            $i.indent(($i) => {
                                                 $i.nestedLine(($i) => {
                                                     $i.snippet(`'interface': `)
-                                                    serializeInterfaceReference($.value.interface, $i)
+                                                    serializeAsynchronousInterfaceReference($.value.interface, $i)
                                                     $i.snippet(`,`)
                                                 })
                                                 $i.nestedLine(($i) => {
@@ -541,7 +542,7 @@ export const $$: createSerializer = ($d) => {
                                                         $d.dictionaryForEach($.value.downstreams, ($) => {
                                                             $i.nestedLine(($i) => {
                                                                 $i.snippet(`"${$.key}": `)
-                                                                serializeInterfaceReference($.value, $i)
+                                                                serializeAsynchronousInterfaceReference($.value, $i)
                                                                 $i.snippet(`,`)
                                                             })
                                                         })
@@ -549,122 +550,138 @@ export const $$: createSerializer = ($d) => {
                                                     $i.snippet(`}),`)
                                                 })
                                             })
+                                            $i.snippet(`},`)
                                         })
-                                        $i.snippet(`}),`)
                                     })
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({`)
-                                        $i.indent(($i) => {
-                                            $d.dictionaryForEach($.functions, ($) => {
+                                })
+                                $i.snippet(`}),`)
+                            })
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'functions': d({`)
+                                $i.indent(($i) => {
+                                    $d.dictionaryForEach($.functions, ($) => {
+                                        $i.nestedLine(($i) => {
+
+                                            $i.snippet(`"${$.key}": {`)
+                                            $i.indent(($i) => {
+                                                pl.cc($.value, ($) => {
+
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`'in': `)
+                                                        switch ($.in[0]) {
+                                                            case 'data':
+                                                                pl.cc($.in[1], ($) => {
+                                                                    $i.snippet(`['data', `)
+                                                                    serializeTypeReference($, $i)
+                                                                    $i.snippet(`]`)
+                                                                })
+                                                                break
+                                                            // case 'resource':
+                                                            //     pl.cc($.in[1], ($) => {
+                                                            //         $i.snippet(`['resource', `)
+                                                            //         serializeResourceReference($, $i)
+                                                            //         $i.snippet(`]`)
+                                                            //     })
+                                                            //     break
+                                                            default: pl.au($.in[0])
+                                                        }
+                                                        $i.snippet(`,`)
+                                                    })
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`'out': `)
+                                                        serializeTypeReference($.out, $i)
+                                                        $i.snippet(`,`)
+                                                    })
+                                                })
+                                            })
+                                            $i.snippet(`},`)
+                                        })
+                                    })
+                                })
+                                $i.snippet(`}),`)
+                            })
+                        })
+                        $i.snippet(`},`)
+                    })
+                })
+                pl.cc($.synchronous, ($) => {
+                    $i.nestedLine(($i) => {
+                        $i.snippet(`'synchronous': {`)
+                        $i.indent(($i) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'interfaces': d({`)
+                                $i.indent(($i) => {
+                                    $d.dictionaryForEach($.interfaces, ($) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`"${$.key}": `)
+                                            serializeSynchronousInterface($.value, $i)
+                                            $i.snippet(`,`)
+                                        })
+                                    })
+                                })
+                                $i.snippet(`}),`)
+                            })
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'constructors': d({`)
+                                $i.indent(($i) => {
+                                    $d.dictionaryForEach($.constructors, ($) => {
+                                        $i.nestedLine(($i) => {
+
+                                            $i.snippet(`"${$.key}": {`)
+                                            $i.indent(($i) => {
                                                 $i.nestedLine(($i) => {
-
-                                                    $i.snippet(`"${$.key}": {`)
+                                                    $i.snippet(`'interface': `)
+                                                    serializeSynchronousInterfaceReference($.value.interface, $i)
+                                                    $i.snippet(`,`)
+                                                })
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`'downstreams': d({`)
                                                     $i.indent(($i) => {
-                                                        pl.cc($.value, ($) => {
-
+                                                        $d.dictionaryForEach($.value.downstreams, ($) => {
                                                             $i.nestedLine(($i) => {
-                                                                $i.snippet(`'in': `)
-                                                                switch ($.in[0]) {
-                                                                    case 'data':
-                                                                        pl.cc($.in[1], ($) => {
-                                                                            $i.snippet(`['data', `)
-                                                                            serializeTypeReference($, $i)
-                                                                            $i.snippet(`]`)
-                                                                        })
-                                                                        break
-                                                                    // case 'resource':
-                                                                    //     pl.cc($.in[1], ($) => {
-                                                                    //         $i.snippet(`['resource', `)
-                                                                    //         serializeResourceReference($, $i)
-                                                                    //         $i.snippet(`]`)
-                                                                    //     })
-                                                                    //     break
-                                                                    default: pl.au($.in[0])
-                                                                }
-                                                                $i.snippet(`,`)
-                                                            })
-                                                            $i.nestedLine(($i) => {
-                                                                $i.snippet(`'out': `)
-                                                                switch ($.out[0]) {
-                                                                    case 'data':
-                                                                        pl.cc($.out[1], ($) => {
-                                                                            $i.snippet(`['data', `)
-                                                                            serializeTypeReference($, $i)
-                                                                            $i.snippet(`]`)
-                                                                        })
-                                                                        break
-                                                                    case 'interface':
-                                                                        pl.cc($.out[1], ($) => {
-                                                                            $i.snippet(`['interface', `)
-                                                                            serializeInterfaceReference($, $i)
-                                                                            $i.snippet(`]`)
-                                                                        })
-                                                                        break
-                                                                    default: pl.au($.out[0])
-                                                                }
+                                                                $i.snippet(`"${$.key}": `)
+                                                                serializeSynchronousInterfaceReference($.value, $i)
                                                                 $i.snippet(`,`)
                                                             })
                                                         })
                                                     })
-                                                    $i.snippet(`},`)
+                                                    $i.snippet(`}),`)
                                                 })
                                             })
+                                            $i.snippet(`},`)
                                         })
-                                        $i.snippet(`}),`)
                                     })
                                 })
-                                $i.snippet(`}]`)
+                                $i.snippet(`}),`)
                             })
-                            break
-                        case 'synchronous':
-                            pl.cc($.type[1], ($) => {
-                                $i.snippet(`['synchronous', {`)
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'functions': d({`)
                                 $i.indent(($i) => {
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'builders': d({`)
-                                        $i.indent(($i) => {
-                                            $d.dictionaryForEach($.builders, ($) => {
+                                    $d.dictionaryForEach($.functions, ($) => {
+                                        $i.nestedLine(($i) => {
+
+                                            $i.snippet(`"${$.key}": {`)
+                                            $i.indent(($i) => {
                                                 $i.nestedLine(($i) => {
-                                                    $i.snippet(`"${$.key}": `)
-                                                    serializeBuilder($.value, $i)
+                                                    $i.snippet(`'in': `)
+                                                    serializeDataOrSynchronousInterface($.value.in, $i)
+                                                    $i.snippet(`,`)
+                                                })
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`'out': `)
+                                                    serializeTypeReference($.value.out, $i)
                                                     $i.snippet(`,`)
                                                 })
                                             })
+                                            $i.snippet(`},`)
                                         })
-                                        $i.snippet(`}),`)
-                                    })
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'functions': d<g_glossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({`)
-                                        $i.indent(($i) => {
-                                            $d.dictionaryForEach($.functions, ($) => {
-                                                $i.nestedLine(($i) => {
-
-                                                    $i.snippet(`"${$.key}": {`)
-                                                    $i.indent(($i) => {
-                                                        $i.nestedLine(($i) => {
-                                                            $i.snippet(`'in': `)
-                                                            serializeDataOrBuilder($.value.in, $i)
-                                                            $i.snippet(`,`)
-                                                        })
-                                                        $i.nestedLine(($i) => {
-                                                            $i.snippet(`'out': `)
-                                                            serializeDataOrBuilder($.value.out, $i)
-                                                            $i.snippet(`,`)
-                                                        })
-                                                    })
-                                                    $i.snippet(`},`)
-                                                })
-                                            })
-                                        })
-                                        $i.snippet(`}),`)
                                     })
                                 })
-                                $i.snippet(`}]`)
+                                $i.snippet(`}),`)
                             })
-                            break
-                        default: pl.au($.type[0])
-                    }
-                    $i.snippet(`,`)
+                        })
+                        $i.snippet(`},`)
+                    })
                 })
             })
             $i.snippet(`}`)

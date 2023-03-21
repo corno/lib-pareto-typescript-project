@@ -16,7 +16,7 @@ export type createGlossarySerializer = ($d: {
     readonly 'createIdentifier': g_ts.F.CreateIdentifier
     readonly 'createQuotedString': g_ts.F.CreateQuotedString
     readonly 'dictionaryForEach': g_foreach.F.DictionaryForEach
-    readonly 'dictionaryIsEmpty': g_dictionary.F.IsEmpty
+    readonly 'dictionaryIsEmpty': g_dictionary.SYNC.F.IsEmpty
     readonly 'enrichedDictionaryForEach': g_foreach.F.EnrichedDictionaryForEach
 }) => g_this.F.SerializeGlossary
 

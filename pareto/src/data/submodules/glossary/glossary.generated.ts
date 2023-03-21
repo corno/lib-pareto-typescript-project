@@ -11,26 +11,19 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     }),
     'imports': d({}),
     'types': d({
-        "Builder": {
+        "AsynchronousInterface": {
             'parameters': d({}),
             'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                "group": <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                    "members": {
+                "choice": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                    "options": {
                         'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
                             'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "Builder",
+                            'type': "AsynchronousInterface",
                             'arguments': d({}),
                         }]],
                     },
                 })],
                 "method": <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                    "builder": {
-                        'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "Builder",
-                            'arguments': d({}),
-                        }]],
-                    },
                     "data": {
                         'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
                             'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
@@ -38,26 +31,49 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                             'arguments': d({}),
                         }]],
                     },
+                    "interface": {
+                        'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                            'type': "AsynchronousInterface",
+                            'arguments': d({}),
+                        }]],
+                    },
                 })],
                 "reference": <gglossary.T.Type<pd.SourceLocation>>['reference', {
                     'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                    'type': "BuilderReference",
+                    'type': "AsynchronousInterfaceReference",
                     'arguments': d({}),
                 }],
+                "stream": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                    "data": {
+                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                            'type': "AsynchronousInterface",
+                            'arguments': d({}),
+                        }],
+                    },
+                    "end": {
+                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                            'type': "AsynchronousInterface",
+                            'arguments': d({}),
+                        }],
+                    },
+                })],
             })]
         },
-        "BuilderReference": {
+        "AsynchronousInterfaceReference": {
             'parameters': d({}),
             'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                "builder": {
-                    'type': <gglossary.T.Type<pd.SourceLocation>>['string', null],
-                },
                 "context": {
                     'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
                         'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
                         'type': "Context",
                         'arguments': d({}),
                     }],
+                },
+                "interface": {
+                    'type': <gglossary.T.Type<pd.SourceLocation>>['string', null],
                 },
             })]
         },
@@ -79,17 +95,17 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 "local": <gglossary.T.Type<pd.SourceLocation>>['group', d({})],
             })]
         },
-        "DataOrBuilder": {
+        "DataOrSynchronousInterface": {
             'parameters': d({}),
             'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                "builder": <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                    'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                    'type': "BuilderReference",
-                    'arguments': d({}),
-                }],
                 "data": <gglossary.T.Type<pd.SourceLocation>>['reference', {
                     'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
                     'type': "TypeReference",
+                    'arguments': d({}),
+                }],
+                "interface": <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                    'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                    'type': "SynchronousInterfaceReference",
                     'arguments': d({}),
                 }],
             })]
@@ -97,6 +113,55 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "Glossary": {
             'parameters': d({}),
             'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                "asynchronous": {
+                    'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                        "constructors": {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                "downstreams": {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                        'type': "AsynchronousInterfaceReference",
+                                        'arguments': d({}),
+                                    }]],
+                                },
+                                "interface": {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                        'type': "AsynchronousInterfaceReference",
+                                        'arguments': d({}),
+                                    }],
+                                },
+                            })]],
+                        },
+                        "functions": {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                "in": {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "data": <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                            'type': "TypeReference",
+                                            'arguments': d({}),
+                                        }],
+                                    })],
+                                },
+                                "out": {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                        'type': "TypeReference",
+                                        'arguments': d({}),
+                                    }],
+                                },
+                            })]],
+                        },
+                        "interfaces": {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "AsynchronousInterface",
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                },
                 "imports": {
                     'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
                         "arguments": {
@@ -111,89 +176,51 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 "parameters": {
                     'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({})]],
                 },
-                "type": {
-                    'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                        "asynchronous": <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                            "classes": {
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                                    "downstreams": {
-                                        'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                            'type': "InterfaceReference",
-                                            'arguments': d({}),
-                                        }]],
-                                    },
-                                    "interface": {
-                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                            'type': "InterfaceReference",
-                                            'arguments': d({}),
-                                        }],
-                                    },
-                                })]],
-                            },
-                            "functions": {
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                                    "in": {
-                                        'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                            "data": <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                                'type': "TypeReference",
-                                                'arguments': d({}),
-                                            }],
-                                        })],
-                                    },
-                                    "out": {
-                                        'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                            "data": <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                                'type': "TypeReference",
-                                                'arguments': d({}),
-                                            }],
-                                            "interface": <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                                'type': "InterfaceReference",
-                                                'arguments': d({}),
-                                            }],
-                                        })],
-                                    },
-                                })]],
-                            },
-                            "interfaces": {
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                    'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                    'type': "Interface",
-                                    'arguments': d({}),
-                                }]],
-                            },
-                        })],
-                        "synchronous": <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                            "builders": {
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                    'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                    'type': "Builder",
-                                    'arguments': d({}),
-                                }]],
-                            },
-                            "functions": {
-                                'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                                    "in": {
-                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                            'type': "DataOrBuilder",
-                                            'arguments': d({}),
-                                        }],
-                                    },
-                                    "out": {
-                                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                                            'type': "DataOrBuilder",
-                                            'arguments': d({}),
-                                        }],
-                                    },
-                                })]],
-                            },
-                        })],
+                "synchronous": {
+                    'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                        "constructors": {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                "downstreams": {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                        'type': "SynchronousInterfaceReference",
+                                        'arguments': d({}),
+                                    }]],
+                                },
+                                "interface": {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                        'type': "SynchronousInterfaceReference",
+                                        'arguments': d({}),
+                                    }],
+                                },
+                            })]],
+                        },
+                        "functions": {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                                "in": {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                        'type': "DataOrSynchronousInterface",
+                                        'arguments': d({}),
+                                    }],
+                                },
+                                "out": {
+                                    'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                        'type': "TypeReference",
+                                        'arguments': d({}),
+                                    }],
+                                },
+                            })]],
+                        },
+                        "interfaces": {
+                            'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "SynchronousInterface",
+                                'arguments': d({}),
+                            }]],
+                        },
                     })],
                 },
                 "types": {
@@ -212,14 +239,14 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 },
             })]
         },
-        "Interface": {
+        "SynchronousInterface": {
             'parameters': d({}),
             'type': <gglossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                "choice": <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                    "options": {
+                "group": <gglossary.T.Type<pd.SourceLocation>>['group', d({
+                    "members": {
                         'type': <gglossary.T.Type<pd.SourceLocation>>['dictionary', <gglossary.T.Type<pd.SourceLocation>>['reference', {
                             'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "Interface",
+                            'type': "SynchronousInterface",
                             'arguments': d({}),
                         }]],
                     },
@@ -235,35 +262,19 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                     "interface": {
                         'type': <gglossary.T.Type<pd.SourceLocation>>['optional', <gglossary.T.Type<pd.SourceLocation>>['reference', {
                             'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "Interface",
+                            'type': "SynchronousInterface",
                             'arguments': d({}),
                         }]],
                     },
                 })],
                 "reference": <gglossary.T.Type<pd.SourceLocation>>['reference', {
                     'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                    'type': "InterfaceReference",
+                    'type': "SynchronousInterfaceReference",
                     'arguments': d({}),
                 }],
-                "stream": <gglossary.T.Type<pd.SourceLocation>>['group', d({
-                    "data": {
-                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "Interface",
-                            'arguments': d({}),
-                        }],
-                    },
-                    "end": {
-                        'type': <gglossary.T.Type<pd.SourceLocation>>['reference', {
-                            'context': <gglossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "Interface",
-                            'arguments': d({}),
-                        }],
-                    },
-                })],
             })]
         },
-        "InterfaceReference": {
+        "SynchronousInterfaceReference": {
             'parameters': d({}),
             'type': <gglossary.T.Type<pd.SourceLocation>>['group', d({
                 "context": {

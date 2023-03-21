@@ -103,7 +103,7 @@ export const $$: createStatesSerializer = ($d) => {
             }
         }
         $i.nestedLine(($i) => {
-            $i.snippet(`import * as pl from './templib'`)
+            $i.snippet(`import * as pl from "./templib"`)
         })
         $d.dictionaryForEach($, ($) => {
 

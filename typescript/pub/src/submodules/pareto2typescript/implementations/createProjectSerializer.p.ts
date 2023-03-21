@@ -162,180 +162,213 @@ export const $$: createProjectSerializer = (
                                 })
                             })
                             pl.cc($.api, ($) => {
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`export namespace A {`)
+                                    $i.indent(($i) => {
+                                        $d.dictionaryForEach($.algorithms, ($) => {
 
-                                $d.dictionaryForEach($.algorithms, ($) => {
+                                            $i.line(``)
+                                            $i.nestedLine(($i) => {
+                                                $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
+                                                pl.cc($.value, ($) => {
 
-                                    $i.line(``)
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
-                                        pl.cc($.value, ($) => {
-                                            const definition = $.definition
+                                                    switch ($.type[0]) {
+                                                        case 'dependent':
+                                                            pl.cc($.type[1], ($) => {
+                                                                $i.snippet(`(`)
+                                                                doOptional($['configuration data'], $i, {
+                                                                    onNotset: () => { },
+                                                                    onSet: ($, $i) => {
 
-                                            switch ($.type[0]) {
-                                                case 'dependent':
-                                                    pl.cc($.type[1], ($) => {
-                                                        $i.snippet(`(`)
-                                                        doOptional($['configuration data'], $i, {
-                                                            onNotset: () => { },
-                                                            onSet: ($, $i) => {
+                                                                        $i.snippet(`$: `)
 
-                                                                $i.snippet(`$: `)
-
-                                                                $i.snippet(`g_${$.context.glossary}.`)
-
-                                                                $i.snippet(`T.${$d.createIdentifier($.type)}`)
-                                                                $i.snippet(`, `)
-                                                            }
-                                                        })
-                                                        $i.snippet(`$d: {`)
-                                                        $i.indent(($i) => {
-                                                            $d.dictionaryForEach($.dependencies, ($) => {
-                                                                $i.nestedLine(($i) => {
-                                                                    $i.snippet(`readonly '${$.key}': `)
-                                                                    pl.cc($.value, ($) => {
                                                                         $i.snippet(`g_${$.context.glossary}.`)
-                                                                        switch ($.type[0]) {
-                                                                            case 'async':
-                                                                                pl.cc($.type[1], ($) => {
-                                                                                    switch ($[0]) {
-                                                                                        case 'function':
-                                                                                            pl.cc($[1], ($) => {
-                                                                                                $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
-                                                                                            })
-                                                                                            break
-                                                                                        case 'interface':
-                                                                                            pl.cc($[1], ($) => {
-                                                                                                $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
-                                                                                            })
-                                                                                            break
-                                                                                        default: pl.au($[0])
+
+                                                                        $i.snippet(`T.${$d.createIdentifier($.type)}`)
+                                                                        $i.snippet(`, `)
+                                                                    }
+                                                                })
+                                                                $i.snippet(`$d: {`)
+                                                                $i.indent(($i) => {
+                                                                    $d.dictionaryForEach($.dependencies, ($) => {
+                                                                        $i.nestedLine(($i) => {
+                                                                            $i.snippet(`readonly '${$.key}': `)
+                                                                            pl.cc($.value, ($) => {
+                                                                                $i.snippet(`g_${$.context.glossary}.`)
+                                                                                switch ($.type[0]) {
+                                                                                    case 'async':
+                                                                                        pl.cc($.type[1], ($) => {
+                                                                                            switch ($[0]) {
+                                                                                                case 'constructor':
+                                                                                                    pl.cc($[1], ($) => {
+                                                                                                        $i.snippet(`ASYNC.C.${$d.createIdentifier(`${$.constructor}`)}`)
+                                                                                                    })
+                                                                                                    break
+                                                                                                case 'function':
+                                                                                                    pl.cc($[1], ($) => {
+                                                                                                        $i.snippet(`ASYNC.F.${$d.createIdentifier(`${$.function}`)}`)
+                                                                                                    })
+                                                                                                    break
+                                                                                                default: pl.au($[0])
+                                                                                            }
+                                                                                        })
+                                                                                        break
+                                                                                    case 'sync':
+                                                                                        pl.cc($.type[1], ($) => {
+                                                                                            switch ($[0]) {
+                                                                                                case 'constructor':
+                                                                                                    pl.cc($[1], ($) => {
+                                                                                                        $i.snippet(`SYNC.C.${$d.createIdentifier(`${$.constructor}`)}`)
+                                                                                                    })
+                                                                                                    break
+                                                                                                case 'function':
+                                                                                                    pl.cc($[1], ($) => {
+                                                                                                        $i.snippet(`SYNC.F.${$d.createIdentifier(`${$.function}`)}`)
+                                                                                                    })
+                                                                                                    break
+                                                                                                default: pl.au($[0])
+                                                                                            }
+                                                                                        })
+                                                                                        break
+                                                                                    default: pl.au($.type[0])
+                                                                                }
+
+                                                                                $d.enrichedDictionaryForEach($.context.arguments, {
+                                                                                    'onEmpty': () => {
+
+                                                                                    },
+                                                                                    'onNotEmpty': ($c) => {
+                                                                                        $i.snippet(`<`)
+                                                                                        $c(($) => {
+                                                                                            $i.snippet(`${$d.createIdentifier($.value)}${$.isLast ? `` : `, `}`)
+                                                                                        })
+                                                                                        $i.snippet(`>`)
                                                                                     }
                                                                                 })
-                                                                                break
-                                                                            case 'sync':
-                                                                                pl.cc($.type[1], ($) => {
-                                                                                    switch ($[0]) {
-                                                                                        case 'function':
-                                                                                            pl.cc($[1], ($) => {
-                                                                                                $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
-                                                                                            })
-                                                                                            break
-                                                                                        case 'interface':
-                                                                                            pl.cc($[1], ($) => {
-                                                                                                $i.snippet(`xI.${$d.createIdentifier(`${$.interface}`)}`)
-                                                                                            })
-                                                                                            break
-                                                                                        default: pl.au($[0])
-                                                                                    }
-                                                                                })
-                                                                                break
-                                                                            default: pl.au($.type[0])
-                                                                        }
-
-                                                                        $d.enrichedDictionaryForEach($.context.arguments, {
-                                                                            'onEmpty': () => {
-
-                                                                            },
-                                                                            'onNotEmpty': ($c) => {
-                                                                                $i.snippet(`<`)
-                                                                                $c(($) => {
-                                                                                    $i.snippet(`${$d.createIdentifier($.value)}${$.isLast ? `` : `, `}`)
-                                                                                })
-                                                                                $i.snippet(`>`)
-                                                                            }
+                                                                            })
                                                                         })
                                                                     })
                                                                 })
+                                                                $i.snippet(`}, $se: {`)
+                                                                $i.indent(($i) => {
+                                                                    $d.dictionaryForEach($['side effects'], ($) => {
+                                                                        $i.nestedLine(($i) => {
+                                                                            $i.snippet(`readonly '${$.key}': `)
+                                                                            pl.cc($.value, ($) => {
+                                                                                $i.snippet(`g_${$.context.glossary}.`)
+                                                                                switch ($.type[0]) {
+                                                                                    case 'async':
+                                                                                        pl.cc($.type[1], ($) => {
+                                                                                            $i.snippet(`ASYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
+                                                                                        })
+                                                                                        break
+                                                                                    case 'sync':
+                                                                                        pl.cc($.type[1], ($) => {
+                                                                                            $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
+                                                                                        })
+                                                                                        break
+                                                                                    default: pl.au($.type[0])
+                                                                                }
+
+                                                                                $d.enrichedDictionaryForEach($.context.arguments, {
+                                                                                    'onEmpty': () => {
+
+                                                                                    },
+                                                                                    'onNotEmpty': ($c) => {
+                                                                                        $i.snippet(`<`)
+                                                                                        $c(($) => {
+                                                                                            $i.snippet(`${$d.createIdentifier($.value)}${$.isLast ? `` : `, `}`)
+                                                                                        })
+                                                                                        $i.snippet(`>`)
+                                                                                    }
+                                                                                })
+                                                                            })
+                                                                        })
+                                                                    })
+                                                                })
+                                                                $i.snippet(`}`)
+                                                                $i.snippet(`) => `)
                                                             })
+                                                            break
+                                                        case 'independent':
+                                                            pl.cc($.type[1], ($) => {
+                                                            })
+                                                            break
+                                                        default: pl.au($.type[0])
+                                                    }
+                                                    pl.cc($.definition, ($) => {
+                                                        $i.snippet(`g_${$.context.glossary}.`)
+                                                        switch ($.type[0]) {
+                                                            case 'async':
+                                                                pl.cc($.type[1], ($) => {
+                                                                    switch ($[0]) {
+                                                                        case 'constructor':
+                                                                            pl.cc($[1], ($) => {
+                                                                                $i.snippet(`ASYNC.C.${$d.createIdentifier(`${$.constructor}`)}`)
+                                                                            })
+                                                                            break
+                                                                        case 'function':
+                                                                            pl.cc($[1], ($) => {
+                                                                                $i.snippet(`ASYNC.F.${$d.createIdentifier(`${$.function}`)}`)
+                                                                            })
+                                                                            break
+                                                                        case 'interface':
+                                                                            pl.cc($[1], ($) => {
+                                                                                $i.snippet(`ASYNC.I3.${$d.createIdentifier(`${$.interface}`)}`)
+                                                                            })
+                                                                            break
+                                                                        default: pl.au($[0])
+                                                                    }
+                                                                })
+                                                                break
+                                                            case 'sync':
+                                                                pl.cc($.type[1], ($) => {
+                                                                    switch ($[0]) {
+                                                                        case 'constructor':
+                                                                            pl.cc($[1], ($) => {
+                                                                                $i.snippet(`SYNC.C.${$d.createIdentifier(`${$.constructor}`)}`)
+                                                                            })
+                                                                            break
+                                                                        case 'function':
+                                                                            pl.cc($[1], ($) => {
+                                                                                $i.snippet(`SYNC.F.${$d.createIdentifier(`${$.function}`)}`)
+                                                                            })
+                                                                            break
+                                                                        case 'interface':
+                                                                            pl.cc($[1], ($) => {
+                                                                                $i.snippet(`SYNC.I3.${$d.createIdentifier(`${$.interface}`)}`)
+                                                                            })
+                                                                            break
+                                                                        default: pl.au($[0])
+                                                                    }
+                                                                })
+                                                                break
+                                                            default: pl.au($.type[0])
+                                                        }
+                                                        $d.enrichedDictionaryForEach($.context.arguments, {
+                                                            'onEmpty': () => {
+                                                            },
+                                                            'onNotEmpty': ($c) => {
+                                                                $i.snippet(`<`)
+                                                                $c(($) => {
+                                                                    $i.snippet(`${$d.createIdentifier($.value)}${$.isLast ? `` : `, `}`)
+                                                                })
+                                                                $i.snippet(`>`)
+                                                            }
                                                         })
-                                                        $i.snippet(`}`)
-                                                        // pl.cc($.dependencies, ($) => {
-                                                        //     $i.snippet(`$d: {`)
-                                                        //     $i.indent(($i) => {
-                                                        //         // if ($.callbacks !== undefined) {
-                                                        //         //     $d.dictionaryForEach($.callbacks, ($, key) => {
-                                                        //         //         $i.nestedLine(($i) => {
-                                                        //         //             $i.snippet(`readonly "cb${key}": `)
-                                                        //         //             serializeCallbackReference($, $i)
-                                                        //         //         })
-                                                        //         //     })
-                                                        //         // }
-                                                        //         $d.dictionaryForEach($.functions, ($, key) => {
-                                                        //             $i.nestedLine(($i) => {
-                                                        //                 $i.snippet(`readonly "f${key}": `)
-                                                        //                 serializeFunctionReference($, $i)
-                                                        //             })
-                                                        //         })
-                                                        //         if ($["side effects"] !== undefined) {
-                                                        //             $["side effects"].forEach(compare, ($, key) => {
-                                                        //                 $i.nestedLine(($i) => {
-                                                        //                     $i.snippet(`readonly "se${key}": `)
-                                                        //                     serializeProcedure($, $i)
-                                                        //                 })
-                                                        //             })
-                                                        //         }
-                                                        //     })
-                                                        //     $i.snippet(`}`)
-                                                        // })
-                                                        $i.snippet(`) => `)
                                                     })
-                                                    break
-                                                case 'independent':
-                                                    pl.cc($.type[1], ($) => {
-                                                    })
-                                                    break
-                                                default: pl.au($.type[0])
-                                            }
-                                            //         switch ($.type[0]) {
-                                            //             case 'builder':
-                                            //                 pl.cc($.type[1], ($) => {
-                                            //                     if (wrapped) {
-                                            //                         $i.snippet(`($c: g_${context.glossary}.C.${$d.createIdentifier(`${$.builder}`)}`)
-                                            //                         seralizeArguments($i)
-                                            //                         $i.snippet(`) => void`)
-
-                                            //                     } else {
-                                            //                         $i.snippet(`g_${context.glossary}.`)
-                                            //                         $i.snippet(`B.${$d.createIdentifier(`${$.builder}`)}`)
-                                            //                         seralizeArguments($i)
-                                            //                     }
-
-                                            //                 })
-                                            //                 break
-                                            //             case 'function':
-                                            //                 pl.cc($.type[1], ($) => {
-                                            //                     $i.snippet(`g_${context.glossary}.`)
-                                            //                     $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
-                                            //                     seralizeArguments($i)
-                                            //                 })
-                                            //                 break
-                                            //             case 'interface':
-                                            //                 pl.cc($.type[1], ($) => {
-                                            //                     $i.snippet(`g_${context.glossary}.`)
-                                            //                     $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
-                                            //                     seralizeArguments($i)
-                                            //                 })
-                                            //                 break
-                                            //             case 'resource':
-                                            //                 pl.cc($.type[1], ($) => {
-                                            //                     $i.snippet(`g_${context.glossary}.`)
-                                            //                     $i.snippet(`R.${$d.createIdentifier(`${$.resource}`)}`)
-                                            //                     seralizeArguments($i)
-                                            //                 })
-                                            //                 break
-                                            //             default: pl.au($.type[0])
-                                            //         }
-
-                                            //     })
+                                                })
+                                            })
                                         })
                                     })
+                                    $i.snippet(`}`)
                                 })
                                 $i.line(``)
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`export type API = {`)
                                     $i.indent(($i) => {
                                         $d.dictionaryForEach($.algorithms, ($) => {
-                                            $i.line(`${$.key}: ${$d.createIdentifier($.key)}`)
+                                            $i.line(`${$.key}: A.${$d.createIdentifier($.key)}`)
                                         })
                                     })
                                     $i.snippet(`}`)
@@ -349,6 +382,10 @@ export const $$: createProjectSerializer = (
                                     case 'external':
                                         return pl.cc($[1], ($) => {
                                             return $
+                                        })
+                                    case 'main':
+                                        return pl.cc($[1], ($) => {
+                                            return `../main`
                                         })
                                     case 'sibling':
                                         return pl.cc($[1], ($) => {
@@ -461,7 +498,7 @@ export const $$: createProjectSerializer = (
                             break
                         case 'resource':
                             pl.cc($.type[1], ($) => {
-                                $d.dictionaryForEach($.nativeDependencies, ($) => {
+                                $d.dictionaryForEach($.temp.nativeDependencies, ($) => {
                                     $i.line(`    "${$.key}": "^0.0.0",`)
                                 })
                                 $i.line(`    "pareto-core-internals": "^0.0.0"`)
@@ -495,7 +532,7 @@ export const $$: createProjectSerializer = (
                             break
                         case 'resource':
                             pl.cc($.type[1], ($) => {
-                                $d.enrichedDictionaryForEach($.devDependencies, {
+                                $d.enrichedDictionaryForEach($.temp.devDependencies, {
                                     onEmpty: () => {
 
                                     },

@@ -23,7 +23,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'type': ['synchronous', {
         'builders': d({}),
-        'functions': d<g_glossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({
+        'functions': d({
             "Serialize": {
                 'in': ['data', {
                     'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {

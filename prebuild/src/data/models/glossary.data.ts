@@ -37,9 +37,9 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                     "glossary": prop(reference(typePath("Glossary", [grp("imports")]), tbd())),
                 })),
             })),
-            "DataOrBuilder": globalType({}, taggedUnion({
+            "DataOrSynchronousInterface": globalType({}, taggedUnion({
                 "data": option(component("TypeReference", {})),
-                "builder": option(component("BuilderReference", {})),
+                "interface": option(component("SynchronousInterfaceReference", {})),
             })),
             "Glossary": globalType({}, group({
                 "imports": prop(dictionary(group({
@@ -50,67 +50,66 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                     "parameters": prop(dictionary(group({}))),
                     "type": prop(component("Type", {})),
                 }))),
-                "type": prop(taggedUnion({
-                    "synchronous": option(group({
-                        "builders": prop(dictionary(component("Builder", {}))),
-
-                        "functions": prop(dictionary(group({
-                            "in": prop(component("DataOrBuilder", {})),
-                            "out": prop(component("DataOrBuilder", {})),
-                        }))),
-                    })),
-                    "asynchronous": option(group({
-                        "interfaces": prop(dictionary(component("Interface", {}))),
-                        "classes": prop(dictionary(group({
-                            "interface": prop(component("InterfaceReference", {})),
-                            "downstreams": prop(dictionary(component("InterfaceReference", {}))),
-                        }))),
-                        "functions": prop(dictionary(group({
-                            "out": prop(taggedUnion({
-                                "data": option(component("TypeReference", {})),
-                                "interface": option(component("InterfaceReference", {})),
-                            })),
-                            "in": prop(taggedUnion({
-                                "data": option(component("TypeReference", {})),
-                            })),
-
-                        }))),
-                    })),
+                "synchronous": prop(group({
+                    "interfaces": prop(dictionary(component("SynchronousInterface", {}))),
+                    "constructors": prop(dictionary(group({
+                        "interface": prop(component("SynchronousInterfaceReference", {})),
+                        //???  maybe this one                      "in": prop(component("DataOrSynchronousInterface", {})),
+                        "downstreams": prop(dictionary(component("SynchronousInterfaceReference", {}))),
+                    }))),
+                    "functions": prop(dictionary(group({
+                        "in": prop(component("DataOrSynchronousInterface", {})),
+                        "out": prop(component("TypeReference", {})),
+                    }))),
+                })),
+                "asynchronous": prop(group({
+                    "interfaces": prop(dictionary(component("AsynchronousInterface", {}))),
+                    "constructors": prop(dictionary(group({
+                        "interface": prop(component("AsynchronousInterfaceReference", {})),
+                        //???  maybe this one                      "in": prop(component("DataOrSynchronousInterface", {})),
+                        "downstreams": prop(dictionary(component("AsynchronousInterfaceReference", {}))),
+                    }))),
+                    "functions": prop(dictionary(group({
+                        "out": prop(component("TypeReference", {})),
+                        "in": prop(taggedUnion({
+                            "data": option(component("TypeReference", {})),
+                        })),
+                    }))),
                 })),
             })),
-            "Interface": globalType({}, taggedUnion({
+            "AsynchronousInterface": globalType({}, taggedUnion({
                 "choice": option(group({
-                    "options": prop(dictionary(component("Interface", {}))),
+                    "options": prop(dictionary(component("AsynchronousInterface", {}))),
                 })),
                 "stream": option(group({
-                    "data": prop(component("Interface", {})),
-                    "end": prop(component("Interface", {})),
+                    "data": prop(component("AsynchronousInterface", {})),
+                    "end": prop(component("AsynchronousInterface", {})),
                 })),
                 "method": option(group({
                     "data": prop(optional(component("TypeReference", {}))),
-                    "interface": prop(optional(component("Interface", {}))),
+                    "interface": prop(optional(component("AsynchronousInterface", {}))),
                 })),
-                "reference": option(component("InterfaceReference", {})),
+                "reference": option(component("AsynchronousInterfaceReference", {})),
             })),
-            "Builder": globalType({}, taggedUnion({
+            "SynchronousInterface": globalType({}, taggedUnion({
                 "group": option(group({
-                    "members": prop(dictionary(component("Builder", {}))),
+                    "members": prop(dictionary(component("SynchronousInterface", {}))),
                 })),
                 "method": option(group({
                     "data": prop(optional(component("TypeReference", {}))),
-                    "builder": prop(optional(component("Builder", {}))),
+                    "interface": prop(optional(component("SynchronousInterface", {}))),
                 })),
-                "reference": option(component("BuilderReference", {})),
+                "reference": option(component("SynchronousInterfaceReference", {})),
             })),
-            "InterfaceReference": globalType({}, group({
+            "AsynchronousInterfaceReference": globalType({}, group({
                 "context": prop(component("Context", {})),
                 //"interface": [["context"), reference(['sibling', "context"), [))),
                 "interface": prop(terminal("identifier")),
             })),
-            "BuilderReference": globalType({}, group({
+            "SynchronousInterfaceReference": globalType({}, group({
                 "context": prop(component("Context", {})),
                 //"interface": [["context"), reference(['sibling', "context"), [))),
-                "builder": prop(terminal("identifier")),
+                "interface": prop(terminal("identifier")),
             })),
             "Type": globalType({}, taggedUnion({
                 "array": option(component("Type", {})),

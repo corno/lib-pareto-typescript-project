@@ -1,9 +1,7 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    boolean,
-    string,
-    array, dictionary, group, member, taggedUnion, types, typeReference, interfaceReference, type, glossaryParameter, optional, ref, imp, externalTypeReference,
+    dictionary, externalTypeReference, glossaryParameter, group, imp, member, optional, ref, string, taggedUnion, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -40,19 +38,25 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             "context": member(ref(typeReference("Context"))),
                             "type": member(taggedUnion({
                                 "async": taggedUnion({
-                                    "class": group({
-                                        "class": member(string()),
+                                    "constructor": group({
+                                        "constructor": member(string()),
                                     }),
                                     "function": group({
                                         "function": member(string()),
+                                    }),
+                                    "interface": group({
+                                        "interface": member(string()),
                                     }),
                                 }),
                                 "sync": taggedUnion({
-                                    "builder": group({
-                                        "builder": member(string()),
+                                    "constructor": group({
+                                        "constructor": member(string()),
                                     }),
                                     "function": group({
                                         "function": member(string()),
+                                    }),
+                                    "interface": group({
+                                        "interface": member(string()),
                                     }),
                                 })
                             })),
@@ -68,21 +72,32 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     "context": member(ref(typeReference("Context"))),
                                     "type": member(taggedUnion({
                                         "async": taggedUnion({
+                                            "constructor": group({
+                                                "constructor": member(string()),
+                                            }),
                                             "function": group({
                                                 "function": member(string()),
-                                            }),
-                                            "interface": group({
-                                                "interface": member(string()),
                                             }),
                                         }),
                                         "sync": taggedUnion({
+                                            "constructor": group({
+                                                "constructor": member(string()),
+                                            }),
                                             "function": group({
                                                 "function": member(string()),
                                             }),
-                                            "interface": group({
-                                                "interface": member(string()),
-                                            }),
                                         })
+                                    })),
+                                }))),
+                                "side effects": member(dictionary(group({
+                                    "context": member(ref(typeReference("Context"))),
+                                    "type": member(taggedUnion({
+                                        "async": group({
+                                            "interface": member(string()),
+                                        }),
+                                        "sync": group({
+                                            "interface": member(string()),
+                                        }),
                                     })),
                                 }))),
                             }),
@@ -91,6 +106,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 })),
                 "imports": member(dictionary(taggedUnion({
                     "this": group({}),
+                    "main": group({}),
                     "submodule": string(),//only possible for main
                     "sibling": string(),//only possible for submodule
                     "external": string(),
@@ -112,8 +128,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "dependencies": member(dictionary(group({}))),
             "type": member(taggedUnion({
                 "resource": group({
-                    "nativeDependencies": member(dictionary(group({}))),
-                    "devDependencies": member(dictionary(group({}))),
+                    "temp": member(group({
+                        "nativeDependencies": member(dictionary(group({}))),
+                        "devDependencies": member(dictionary(group({}))),
+                    })),
                     "definition": member(ref(typeReference("ModuleDefinition"))),
                     "test": member(ref(typeReference("Test"))),
                 }),

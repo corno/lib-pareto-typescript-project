@@ -54,6 +54,34 @@ export const $$: createProjectSerializer = (
         ) {
             doDictionaryTypeWithKey($, $i, ($, $i) => callback($.value, $i))
         }
+        function doDictionaryInitializer<T>(
+            $: pt.Dictionary<T>,
+            $i: g_fp.B.Line,
+            callback: ($: {
+                'key': string,
+                'value': T,
+            }, $i: g_fp.B.Line) => void,
+        ) {
+            $d.enrichedDictionaryForEach($, {
+                'onEmpty': () => {
+                    $i.snippet(`null`)
+                },
+                'onNotEmpty': ($c) => {
+                    $i.snippet(`{`)
+                    $i.indent(($i) => {
+                        $c(($) => {
+
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'${$.key}': `)
+                                callback($, $i)
+                                $i.snippet(`,`)
+                            })
+                        })
+                    })
+                    $i.snippet(`}`)
+                }
+            })
+        }
         function doOptional<T>(
             $: pt.OptionalValue<T>,
             $i: g_fp.B.Line,
@@ -125,7 +153,8 @@ export const $$: createProjectSerializer = (
                 'onNotEmpty': ($c) => {
                     $i.snippet(`<`)
                     $c(($) => {
-                        $i.snippet(`${$d.createIdentifier($.value)}${$.isLast ? `` : `, `}`)
+                        //FIXME This is a raw value
+                        $i.snippet(`${$.value}${$.isLast ? `` : `, `}`)
                     })
                     $i.snippet(`>`)
                 }
@@ -209,12 +238,16 @@ export const $$: createProjectSerializer = (
         // }
         $i.directory("typescript", ($i) => {
             function doModuleDefinition(
-                $: g_project.T.ModuleDefinition<Annotation>,
+                $: {
+                    definition: g_project.T.ModuleDefinition<Annotation>,
+                    pathPrefix: string
+                },
                 $i: g_fp.B.Directory,
             ) {
+                const pathPrefix = $.pathPrefix
                 $i.allowedManual(`shorthands.ts`)
                 $i.directory(`glossary`, ($i) => {
-                    pl.cc($.glossary, ($) => {
+                    pl.cc($.definition.glossary, ($) => {
 
                         $d.serializeGlossary(
                             {
@@ -227,7 +260,7 @@ export const $$: createProjectSerializer = (
                                             })
                                         case 'main':
                                             return pl.cc($[1], ($) => {
-                                                return `../../../main`
+                                                return `${pathPrefix}../../main`
                                             })
                                         case 'sibling':
                                             return pl.cc($[1], ($) => {
@@ -247,7 +280,7 @@ export const $$: createProjectSerializer = (
                 })
 
                 $i.file("api.generated.ts", ($i) => {
-                    pl.cc($.api, ($) => {
+                    pl.cc($.definition.api, ($) => {
                         function serializeAPI(
                             $: {
 
@@ -302,39 +335,65 @@ export const $$: createProjectSerializer = (
                                                                         $i.snippet(`, `)
                                                                     }
                                                                 })
-                                                                $i.snippet(`$d: `)
-                                                                doDictionaryType($.dependencies, $i, ($, $i) => {
-                                                                    serializeAlgorithmTypeReference($, $i)
-                                                                })
-                                                                $i.snippet(`, $se: `)
-                                                                doDictionaryType($['side effects'], $i, ($, $i) => {
-                                                                    $i.snippet(`g_${$.context.glossary}.`)
-                                                                    switch ($.type[0]) {
-                                                                        case 'asynchronous':
-                                                                            pl.cc($.type[1], ($) => {
-                                                                                $i.snippet(`ASYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
-                                                                            })
-                                                                            break
-                                                                        case 'synchronous':
-                                                                            pl.cc($.type[1], ($) => {
-                                                                                $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
-                                                                            })
-                                                                            break
-                                                                        default: pl.au($.type[0])
-                                                                    }
+                                                                $d.enrichedDictionaryForEach($.dependencies, {
+                                                                    'onEmpty': () => { },
+                                                                    'onNotEmpty': ($c) => {
+                                                                        $i.snippet(`$d: {`)
+                                                                        $i.indent(($i) => {
 
-                                                                    $d.enrichedDictionaryForEach($.context.arguments, {
-                                                                        'onEmpty': () => {
-
-                                                                        },
-                                                                        'onNotEmpty': ($c) => {
-                                                                            $i.snippet(`<`)
                                                                             $c(($) => {
-                                                                                $i.snippet(`G${$d.createIdentifier($.value)}${$.isLast ? `` : `, `}`)
+
+                                                                                $i.nestedLine(($i) => {
+                                                                                    $i.snippet(`readonly '${$.key}': `)
+                                                                                    serializeAlgorithmTypeReference($.value, $i)
+                                                                                })
                                                                             })
-                                                                            $i.snippet(`>`)
-                                                                        }
-                                                                    })
+                                                                        })
+                                                                        $i.snippet(`}, `)
+                                                                    }
+                                                                })
+                                                                $d.enrichedDictionaryForEach($['side effects'], {
+                                                                    'onEmpty': () => { },
+                                                                    'onNotEmpty': ($c) => {
+                                                                        $i.snippet(`$se: {`)
+                                                                        $i.indent(($i) => {
+                                                                            $c(($) => {
+                                                                                $i.nestedLine(($i) => {
+                                                                                    $i.snippet(`readonly '${$.key}': `)
+                                                                                    pl.cc($.value, ($) => {
+                                                                                        $i.snippet(`g_${$.context.glossary}.`)
+                                                                                        switch ($.type[0]) {
+                                                                                            case 'asynchronous':
+                                                                                                pl.cc($.type[1], ($) => {
+                                                                                                    $i.snippet(`ASYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
+                                                                                                })
+                                                                                                break
+                                                                                            case 'synchronous':
+                                                                                                pl.cc($.type[1], ($) => {
+                                                                                                    $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
+                                                                                                })
+                                                                                                break
+                                                                                            default: pl.au($.type[0])
+                                                                                        }
+
+                                                                                        $d.enrichedDictionaryForEach($.context.arguments, {
+                                                                                            'onEmpty': () => {
+
+                                                                                            },
+                                                                                            'onNotEmpty': ($c) => {
+                                                                                                $i.snippet(`<`)
+                                                                                                $c(($) => {
+                                                                                                    $i.snippet(`G${$d.createIdentifier($.value)}${$.isLast ? `` : `, `}`)
+                                                                                                })
+                                                                                                $i.snippet(`>`)
+                                                                                            }
+                                                                                        })
+                                                                                    })
+                                                                                })
+                                                                            })
+                                                                        })
+                                                                        $i.snippet(`}, `)
+                                                                    }
                                                                 })
                                                             })
                                                             break
@@ -385,7 +444,7 @@ export const $$: createProjectSerializer = (
                                         })
                                     case 'main':
                                         return pl.cc($[1], ($) => {
-                                            return `../main`
+                                            return `${pathPrefix}../main`
                                         })
                                     case 'sibling':
                                         return pl.cc($[1], ($) => {
@@ -585,11 +644,20 @@ export const $$: createProjectSerializer = (
                         case 'library':
                             pl.cc($.type[1], ($) => {
                                 function doModule(
-                                    $: g_project.T.Module<Annotation>,
+                                    $: {
+                                        'module': g_project.T.Module<Annotation>,
+                                        'pathPrefix': string,
+                                    },
                                     $i: g_fp.B.Directory,
                                 ) {
-                                    doModuleDefinition($.definition, $i)
-                                    const api = $.definition.api.root
+                                    doModuleDefinition(
+                                        {
+                                            'definition': $.module.definition,
+                                            'pathPrefix': $.pathPrefix,
+                                        },
+                                        $i
+                                    )
+                                    const api = $.module.definition.api.root
                                     function getExtension($: g_project.T.AlgorithmTypeReference<Annotation>) {
 
                                         return pl.cc($, ($): string => {
@@ -635,26 +703,28 @@ export const $$: createProjectSerializer = (
                                             }
                                         })
                                     }
-                                    switch ($.implementation[0]) {
-                                        case 'pareto':
-                                            pl.cc($.implementation[1], ($) => {
-                                                pd.implementMe("IMPLEMENTATIONS")
-                                                //$d.serializeImplementation($, $i)
-                                            })
-                                            break
-                                        case 'typescript':
-                                            pl.cc($.implementation[1], ($) => {
-                                                $i.directory("implementations", ($i) => {
-                                                    $d.dictionaryForEach(api.algorithms, ($) => {
-                                                        $i.allowedManual(`${$.key}.${getExtension($.value.definition)}.ts`)
+                                    pl.cc($.module.implementation, ($) => {
+                                        switch ($[0]) {
+                                            case 'pareto':
+                                                pl.cc($[1], ($) => {
+                                                    pd.implementMe("IMPLEMENTATIONS")
+                                                    //$d.serializeImplementation($, $i)
+                                                })
+                                                break
+                                            case 'typescript':
+                                                pl.cc($[1], ($) => {
+                                                    $i.directory("implementations", ($i) => {
+                                                        $d.dictionaryForEach(api.algorithms, ($) => {
+                                                            $i.allowedManual(`${$.key}.${getExtension($.value.definition)}.ts`)
+                                                        })
                                                     })
                                                 })
-                                            })
-                                            break
-                                        default: pl.au($.implementation[0])
-                                    }
+                                                break
+                                            default: pl.au($[0])
+                                        }
+                                    })
                                     $i.file("implementation.generated.ts", ($i) => {
-                                        const imp = $.implementation
+                                        const imp = $.module.implementation
                                         $i.line(`import { API } from "./api.generated"`)
                                         $d.dictionaryForEach(api.algorithms, ($) => {
                                             const suffix = pl.cc($, ($) => {
@@ -676,18 +746,14 @@ export const $$: createProjectSerializer = (
                                         })
                                         $i.line(``)
                                         $i.nestedLine(($i) => {
-                                            $i.snippet(`export const $api: API = {`)
-                                            $i.indent(($i) => {
-                                                $d.dictionaryForEach(api.algorithms, ($) => {
-
-                                                    $i.nestedLine(($i) => {
-                                                        $i.snippet(`'${$.key}': `)
-                                                        $i.snippet(`${$d.createIdentifier(`i${$.key}`)}`)
-                                                        $i.snippet(`,`)
-                                                    })
-                                                })
-                                            })
-                                            $i.snippet(`}`)
+                                            $i.snippet(`export const $api: API = `)
+                                            doDictionaryInitializer(
+                                                api.algorithms,
+                                                $i,
+                                                ($, $i) => {
+                                                    $i.snippet(`${$d.createIdentifier(`i${$.key}`)}`)
+                                                }
+                                            )
                                         })
                                     })
                                     $i.file("index.ts", ($i) => {
@@ -718,14 +784,26 @@ export const $$: createProjectSerializer = (
                                 })
                                 $i.directory("main", ($i) => {
                                     pl.cc($.main, ($) => {
-                                        doModule($, $i)
+                                        doModule(
+                                            {
+                                                'module': $,
+                                                'pathPrefix': "",
+                                            },
+                                            $i,
+                                        )
                                     })
                                 })
                                 $i.directory("submodules", ($i) => {
                                     $d.dictionaryForEach($.submodules, ($) => {
                                         $i.directory(`${$.key}`, ($i) => {
                                             pl.cc($.value, ($) => {
-                                                doModule($, $i)
+                                                doModule(
+                                                    {
+                                                        'module': $,
+                                                        'pathPrefix': "../",
+                                                    },
+                                                    $i,
+                                                )
                                             })
                                         })
                                     })
@@ -735,7 +813,13 @@ export const $$: createProjectSerializer = (
                                     $.bindings,
                                     ($) => {
                                         $i.directory("bindings", ($i) => {
-                                            doModuleDefinition($.definition, $i)
+                                            doModuleDefinition(
+                                                {
+                                                    'definition': $.definition,
+                                                    'pathPrefix': "",
+                                                },
+                                                $i
+                                            )
                                             const api = $.definition.api
                                             switch ($.implementation[0]) {
                                                 case 'pareto':
@@ -775,17 +859,14 @@ export const $$: createProjectSerializer = (
                                                 })
                                                 $i.line(``)
                                                 $i.nestedLine(($i) => {
-                                                    $i.snippet(`export const $api: API = {`)
-                                                    $i.indent(($i) => {
-                                                        $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
-                                                            $i.nestedLine(($i) => {
-                                                                $i.snippet(`'${$.key}': `)
-                                                                $i.snippet(`${$d.createIdentifier(`i${$.key}`)}`)
-                                                                $i.snippet(`,`)
-                                                            })
-                                                        })
-                                                    })
-                                                    $i.snippet(`}`)
+                                                    $i.snippet(`export const $api: API = `)
+                                                    doDictionaryInitializer(
+                                                        $.definition.api.root.algorithms,
+                                                        $i,
+                                                        ($, $i) => {
+                                                            $i.snippet(`${$d.createIdentifier(`i${$.key}`)}`)
+                                                        }
+                                                    )
                                                 })
                                             })
                                         })
@@ -811,7 +892,13 @@ export const $$: createProjectSerializer = (
                             break
                         case 'resource':
                             pl.cc($.type[1], ($) => {
-                                doModuleDefinition($.definition, $i)
+                                doModuleDefinition(
+                                    {
+                                        'definition': $.definition,
+                                        'pathPrefix': "",
+                                    },
+                                    $i
+                                )
                                 $i.directory("implementations", ($i) => {
                                     $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                         $i.allowedManual(`${$.key}.native.ts`)
@@ -903,12 +990,16 @@ export const $$: createProjectSerializer = (
                                     $i.line(`import * as g_main from "res-pareto-main"`)
                                     $i.line(`import * as g_test from "lib-pareto-test"`)
                                     $i.line(``)
-                                    $i.line(`export type getTestSet = g_test.F.GetTestSet`)
-                                    $i.line(`export type main = ($: g_main.T.MainData) => void`)
+                                    $i.line(`export namespace A {`)
+                                    $i.line(``)
+                                    $i.line(`    export type getTestSet = g_test.ASYNC.A.F.GetTestSet`)
+                                    $i.line(`    export type main = ($: g_main.T.MainData) => void`)
+                                    $i.line(``)
+                                    $i.line(`}`)
                                     $i.line(``)
                                     $i.line(`export type API = {`)
-                                    $i.line(`    'getTestSet': getTestSet`)
-                                    $i.line(`    'main': main`)
+                                    $i.line(`    'getTestSet': g_test.ASYNC.A.F.GetTestSet`)
+                                    $i.line(`    'main': A.main`)
                                     $i.line(`}`)
                                 })
                                 $i.directory("implementations", ($i) => {
@@ -922,15 +1013,12 @@ export const $$: createProjectSerializer = (
                                         $i.line(``)
                                         $i.line(`import { $$ as getTestSet } from "./getTestSet.a.f"`)
                                         $i.line(``)
-                                        $i.line(`import {  main } from "../api.generated"`)
+                                        $i.line(`import { A } from "../api.generated"`)
                                         $i.line(``)
-                                        $i.line(`export const $$: main = ($) => {`)
-                                        $i.line(`    g_test.$a.createTestProgram({`)
+                                        $i.line(`export const $$: A.main = ($) => {`)
+                                        $i.line(`    g_test.$b.createTestProgram({`)
                                         $i.line(`        'getTestSet': getTestSet,`)
-                                        $i.line(`        'log': pv.logDebugMessage,`)
-                                        $i.line(`        'logError': pv.logDebugMessage,`)
-                                        $i.line(`        'onTestErrors': () => { pv.logDebugMessage("ERROR XX") }`)
-                                        $i.line(`    })($)`)
+                                        $i.line(`    })(null)($)`)
                                         $i.line(`}`)
                                     })
                                 })
@@ -951,7 +1039,13 @@ export const $$: createProjectSerializer = (
                                 })
                             })
                         })
-                        doModuleDefinition($.definition, $i)
+                        doModuleDefinition(
+                            {
+                                'definition': $.definition,
+                                'pathPrefix': "../../../pub", //????
+                            },
+                            $i
+                        )
 
                         // $i.file("testXXXXX.generated.ts", ($i) => {
                         //     $i.line(`import * as pt from 'pareto-core-types'`)

@@ -792,18 +792,18 @@ export const $$: createGlossarySerializer = ($d) => {
 
                                                         })
                                                         break
-                                                        case 'constructor':
-                                                            pl.cc($[1], ($) => {
-                                                                $i.snippet(`(`)
-                                                                $i.snippet(`$is: `)
-                                                                doDictionaryType($.downstreams, $i, ($, $i) => {
-                                                                    serializeAsynchronousInterfaceReference($, $i)
-                                                                })
-                                                                $i.snippet(`) => `)
-                                                                serializeAsynchronousInterfaceReference($.interface, $i)
-    
+                                                    case 'constructor':
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(`(`)
+                                                            $i.snippet(`$is: `)
+                                                            doDictionaryType($.downstreams, $i, ($, $i) => {
+                                                                serializeAsynchronousInterfaceReference($, $i)
                                                             })
-                                                            break
+                                                            $i.snippet(`) => `)
+                                                            serializeAsynchronousInterfaceReference($.interface, $i)
+
+                                                        })
+                                                        break
                                                     case 'function':
                                                         pl.cc($[1], ($) => {
                                                             $i.snippet(`(`)
@@ -841,132 +841,129 @@ export const $$: createGlossarySerializer = ($d) => {
 
                     pl.cc($.synchronous, ($) => {
 
-                        ns(`I`, $i, ($i) => {
-                            $d.dictionaryForEach($.interfaces, ($) => {
-                                $i.line(``)
-                                $i.nestedLine(($i) => {
-                                    $i.snippet(`export type ${$d.createIdentifier($.key)}`)
-                                    serializeGlobalParametersOnly($i)
-                                    $i.snippet(` = `)
-                                    serializeSynchronousInterface($.value, $i)
-                                })
-                            })
-                        })
-                        ns(`IW`, $i, ($i) => {
-                            $d.dictionaryForEach($.interfaces, ($) => {
-                                $i.line(``)
-                                $i.nestedLine(($i) => {
-                                    $i.snippet(`export type ${$d.createIdentifier($.key)}`)
-                                    serializeGlobalParametersOnly($i)
-                                    $i.snippet(` = `)
-                                    $i.snippet(`($c: ($b: I.${$d.createIdentifier($.key)}`)
-                                    serializeGlobalParametersOnly($i)
-                                    $i.snippet(`) => void) => void`)
-                                })
-                            })
-                        })
-                        ns(`A`, $i, ($i) => {
-                            $d.dictionaryForEach($.algorithms, ($) => {
-                                $i.line(``)
-                                ns(
-                                    pl.cc($.value, ($) => {
-                                        switch ($[0]) {
-                                            case 'builder':
-                                                return pl.cc($[1], ($) => {
-                                                    return `B`
-                                                })
-                                            case 'constructor':
-                                                return pl.cc($[1], ($) => {
-                                                    return `C`
-                                                })
-                                            case 'function':
-                                                return pl.cc($[1], ($) => {
-                                                    return `F`
-                                                })
-                                            default: return pl.au($[0])
-                                        }
-                                    }),
-                                    $i,
-                                    ($i) => {
+                        $d.enrichedDictionaryForEach($.interfaces, {
+                            'onEmpty': () => { },
+                            'onNotEmpty': ($c) => {
+                                ns(`I`, $i, ($i) => {
+                                    $c(($) => {
+                                        $i.line(``)
                                         $i.nestedLine(($i) => {
                                             $i.snippet(`export type ${$d.createIdentifier($.key)}`)
                                             serializeGlobalParametersOnly($i)
                                             $i.snippet(` = `)
+                                            serializeSynchronousInterface($.value, $i)
+                                        })
+                                    })
+                                })
+                            }
+                        })
+                        $d.enrichedDictionaryForEach($.algorithms, {
+                            'onEmpty': () => { },
+                            'onNotEmpty': ($c) => {
+                                ns(`A`, $i, ($i) => {
+                                    $c(($) => {
+                                        $i.line(``)
+                                        ns(
                                             pl.cc($.value, ($) => {
                                                 switch ($[0]) {
                                                     case 'builder':
-                                                        pl.cc($[1], ($) => {
-                                                            $i.snippet(`(`)
-                                                            pl.cc($.in, ($) => {
-                                                                switch ($[0]) {
-                                                                    case 'interface':
-                                                                        pl.cc($[1], ($) => {
-                                                                            $i.snippet(`$c: ($b: `)
-                                                                            serializeSynchronousInterfaceReference($, $i)
-                                                                            $i.snippet(`) => void`)
-                                                                        })
-                                                                        break
-                                                                    case 'data':
-                                                                        pl.cc($[1], ($) => {
-                                                                            $i.snippet(`$: `)
-                                                                            serializeTypeReference($, $i)
-                                                                        })
-                                                                        break
-                                                                    default: pl.au($[0])
-                                                                }
-                                                            })
-                                                            $i.snippet(`, $i: `)
-                                                            serializeSynchronousInterfaceReference($.out, $i)
-                                                            $i.snippet(`) => void`)
+                                                        return pl.cc($[1], ($) => {
+                                                            return `B`
                                                         })
-                                                        break
                                                     case 'constructor':
-                                                        pl.cc($[1], ($) => {
-                                                            $i.snippet(`(`)
-                                                            $i.snippet(`$i: `)
-                                                            serializeSynchronousInterfaceReference($.downstream, $i)
-                                                            $i.snippet(`, `)
-                                                            pl.cc($.interface, ($) => {
-                                                                $i.snippet(`$c: ($b: `)
-                                                                serializeSynchronousInterfaceReference($, $i)
-                                                                $i.snippet(`) => void`)
-                                                            })
-                                                            $i.snippet(`) => void`)
-
+                                                        return pl.cc($[1], ($) => {
+                                                            return `C`
                                                         })
-                                                        break
                                                     case 'function':
-                                                        pl.cc($[1], ($) => {
-                                                            $i.snippet(`(`)
-                                                            pl.cc($.in, ($) => {
-                                                                switch ($[0]) {
-                                                                    case 'interface':
-                                                                        pl.cc($[1], ($) => {
-                                                                            $i.snippet(`$c: ($b: `)
-                                                                            serializeSynchronousInterfaceReference($, $i)
-                                                                            $i.snippet(`) => void`)
-                                                                        })
-                                                                        break
-                                                                    case 'data':
-                                                                        pl.cc($[1], ($) => {
-                                                                            $i.snippet(`$: `)
-                                                                            serializeTypeReference($, $i)
-                                                                        })
-                                                                        break
-                                                                    default: pl.au($[0])
-                                                                }
-                                                            })
-                                                            $i.snippet(`) => `)
-                                                            serializeTypeReference($.out, $i)
+                                                        return pl.cc($[1], ($) => {
+                                                            return `F`
                                                         })
-                                                        break
-                                                    default: pl.au($[0])
+                                                    default: return pl.au($[0])
                                                 }
-                                            })
-                                        })
-                                    }
-                                )
-                            })
+                                            }),
+                                            $i,
+                                            ($i) => {
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`export type ${$d.createIdentifier($.key)}`)
+                                                    serializeGlobalParametersOnly($i)
+                                                    $i.snippet(` = `)
+                                                    pl.cc($.value, ($) => {
+                                                        switch ($[0]) {
+                                                            case 'builder':
+                                                                pl.cc($[1], ($) => {
+                                                                    $i.snippet(`(`)
+                                                                    pl.cc($.in, ($) => {
+                                                                        switch ($[0]) {
+                                                                            case 'interface':
+                                                                                pl.cc($[1], ($) => {
+                                                                                    $i.snippet(`$c: ($b: `)
+                                                                                    serializeSynchronousInterfaceReference($, $i)
+                                                                                    $i.snippet(`) => void`)
+                                                                                })
+                                                                                break
+                                                                            case 'data':
+                                                                                pl.cc($[1], ($) => {
+                                                                                    $i.snippet(`$: `)
+                                                                                    serializeTypeReference($, $i)
+                                                                                })
+                                                                                break
+                                                                            default: pl.au($[0])
+                                                                        }
+                                                                    })
+                                                                    $i.snippet(`, $i: `)
+                                                                    serializeSynchronousInterfaceReference($.out, $i)
+                                                                    $i.snippet(`) => void`)
+                                                                })
+                                                                break
+                                                            case 'constructor':
+                                                                pl.cc($[1], ($) => {
+                                                                    $i.snippet(`(`)
+                                                                    $i.snippet(`$i: `)
+                                                                    serializeSynchronousInterfaceReference($.downstream, $i)
+                                                                    $i.snippet(`, `)
+                                                                    pl.cc($.interface, ($) => {
+                                                                        $i.snippet(`$c: ($b: `)
+                                                                        serializeSynchronousInterfaceReference($, $i)
+                                                                        $i.snippet(`) => void`)
+                                                                    })
+                                                                    $i.snippet(`) => void`)
+
+                                                                })
+                                                                break
+                                                            case 'function':
+                                                                pl.cc($[1], ($) => {
+                                                                    $i.snippet(`(`)
+                                                                    pl.cc($.in, ($) => {
+                                                                        switch ($[0]) {
+                                                                            case 'interface':
+                                                                                pl.cc($[1], ($) => {
+                                                                                    $i.snippet(`$c: ($b: `)
+                                                                                    serializeSynchronousInterfaceReference($, $i)
+                                                                                    $i.snippet(`) => void`)
+                                                                                })
+                                                                                break
+                                                                            case 'data':
+                                                                                pl.cc($[1], ($) => {
+                                                                                    $i.snippet(`$: `)
+                                                                                    serializeTypeReference($, $i)
+                                                                                })
+                                                                                break
+                                                                            default: pl.au($[0])
+                                                                        }
+                                                                    })
+                                                                    $i.snippet(`) => `)
+                                                                    serializeTypeReference($.out, $i)
+                                                                })
+                                                                break
+                                                            default: pl.au($[0])
+                                                        }
+                                                    })
+                                                })
+                                            }
+                                        )
+                                    })
+                                })
+                            }
                         })
 
 

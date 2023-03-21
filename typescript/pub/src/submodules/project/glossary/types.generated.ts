@@ -7,6 +7,147 @@ import * as g_glossary from "../../glossary"
 
 export namespace T {
     
+    export namespace AlgorithmTypeReference {
+        
+        export type context<GAnnotation> = T.Context<GAnnotation>
+        
+        export namespace _ltype {
+            
+            export namespace asynchronous {
+                
+                export namespace builder {
+                    
+                    export type builder<GAnnotation> = string
+                }
+                
+                export type builder<GAnnotation> = {
+                    readonly 'builder': string
+                }
+                
+                export namespace _lconstructor {
+                    
+                    export type _lconstructor<GAnnotation> = string
+                }
+                
+                export type _lconstructor<GAnnotation> = {
+                    readonly 'constructor': string
+                }
+                
+                export namespace _lfunction {
+                    
+                    export type _lfunction<GAnnotation> = string
+                }
+                
+                export type _lfunction<GAnnotation> = {
+                    readonly 'function': string
+                }
+            }
+            
+            export type asynchronous<GAnnotation> = 
+                | ['builder', {
+                    readonly 'builder': string
+                }]
+                | ['constructor', {
+                    readonly 'constructor': string
+                }]
+                | ['function', {
+                    readonly 'function': string
+                }]
+            
+            export namespace synchronous {
+                
+                export namespace builder {
+                    
+                    export type builder<GAnnotation> = string
+                }
+                
+                export type builder<GAnnotation> = {
+                    readonly 'builder': string
+                }
+                
+                export namespace _lconstructor {
+                    
+                    export type _lconstructor<GAnnotation> = string
+                }
+                
+                export type _lconstructor<GAnnotation> = {
+                    readonly 'constructor': string
+                }
+                
+                export namespace _lfunction {
+                    
+                    export type _lfunction<GAnnotation> = string
+                }
+                
+                export type _lfunction<GAnnotation> = {
+                    readonly 'function': string
+                }
+            }
+            
+            export type synchronous<GAnnotation> = 
+                | ['builder', {
+                    readonly 'builder': string
+                }]
+                | ['constructor', {
+                    readonly 'constructor': string
+                }]
+                | ['function', {
+                    readonly 'function': string
+                }]
+        }
+        
+        export type _ltype<GAnnotation> = 
+            | ['asynchronous', 
+                | ['builder', {
+                    readonly 'builder': string
+                }]
+                | ['constructor', {
+                    readonly 'constructor': string
+                }]
+                | ['function', {
+                    readonly 'function': string
+                }]
+            ]
+            | ['synchronous', 
+                | ['builder', {
+                    readonly 'builder': string
+                }]
+                | ['constructor', {
+                    readonly 'constructor': string
+                }]
+                | ['function', {
+                    readonly 'function': string
+                }]
+            ]
+    }
+    
+    export type AlgorithmTypeReference<GAnnotation> = {
+        readonly 'context': T.Context<GAnnotation>
+        readonly 'type': 
+            | ['asynchronous', 
+                | ['builder', {
+                    readonly 'builder': string
+                }]
+                | ['constructor', {
+                    readonly 'constructor': string
+                }]
+                | ['function', {
+                    readonly 'function': string
+                }]
+            ]
+            | ['synchronous', 
+                | ['builder', {
+                    readonly 'builder': string
+                }]
+                | ['constructor', {
+                    readonly 'constructor': string
+                }]
+                | ['function', {
+                    readonly 'function': string
+                }]
+            ]
+    }
+    
     export type Annotation<GAnnotation> = GAnnotation
     
     export namespace Context {
@@ -98,146 +239,14 @@ export namespace T {
                     
                     export namespace D {
                         
-                        export namespace definition {
+                        export type definition<GAnnotation> = T.AlgorithmTypeReference<GAnnotation>
+                        
+                        export namespace parameters {
                             
-                            export type context<GAnnotation> = T.Context<GAnnotation>
-                            
-                            export namespace _ltype {
-                                
-                                export namespace async {
-                                    
-                                    export namespace _lconstructor {
-                                        
-                                        export type _lconstructor<GAnnotation> = string
-                                    }
-                                    
-                                    export type _lconstructor<GAnnotation> = {
-                                        readonly 'constructor': string
-                                    }
-                                    
-                                    export namespace _lfunction {
-                                        
-                                        export type _lfunction<GAnnotation> = string
-                                    }
-                                    
-                                    export type _lfunction<GAnnotation> = {
-                                        readonly 'function': string
-                                    }
-                                    
-                                    export namespace _linterface {
-                                        
-                                        export type _linterface<GAnnotation> = string
-                                    }
-                                    
-                                    export type _linterface<GAnnotation> = {
-                                        readonly 'interface': string
-                                    }
-                                }
-                                
-                                export type async<GAnnotation> = 
-                                    | ['constructor', {
-                                        readonly 'constructor': string
-                                    }]
-                                    | ['function', {
-                                        readonly 'function': string
-                                    }]
-                                    | ['interface', {
-                                        readonly 'interface': string
-                                    }]
-                                
-                                export namespace sync {
-                                    
-                                    export namespace _lconstructor {
-                                        
-                                        export type _lconstructor<GAnnotation> = string
-                                    }
-                                    
-                                    export type _lconstructor<GAnnotation> = {
-                                        readonly 'constructor': string
-                                    }
-                                    
-                                    export namespace _lfunction {
-                                        
-                                        export type _lfunction<GAnnotation> = string
-                                    }
-                                    
-                                    export type _lfunction<GAnnotation> = {
-                                        readonly 'function': string
-                                    }
-                                    
-                                    export namespace _linterface {
-                                        
-                                        export type _linterface<GAnnotation> = string
-                                    }
-                                    
-                                    export type _linterface<GAnnotation> = {
-                                        readonly 'interface': string
-                                    }
-                                }
-                                
-                                export type sync<GAnnotation> = 
-                                    | ['constructor', {
-                                        readonly 'constructor': string
-                                    }]
-                                    | ['function', {
-                                        readonly 'function': string
-                                    }]
-                                    | ['interface', {
-                                        readonly 'interface': string
-                                    }]
-                            }
-                            
-                            export type _ltype<GAnnotation> = 
-                                | ['async', 
-                                    | ['constructor', {
-                                        readonly 'constructor': string
-                                    }]
-                                    | ['function', {
-                                        readonly 'function': string
-                                    }]
-                                    | ['interface', {
-                                        readonly 'interface': string
-                                    }]
-                                ]
-                                | ['sync', 
-                                    | ['constructor', {
-                                        readonly 'constructor': string
-                                    }]
-                                    | ['function', {
-                                        readonly 'function': string
-                                    }]
-                                    | ['interface', {
-                                        readonly 'interface': string
-                                    }]
-                                ]
+                            export type D<GAnnotation> = string
                         }
                         
-                        export type definition<GAnnotation> = {
-                            readonly 'context': T.Context<GAnnotation>
-                            readonly 'type': 
-                                | ['async', 
-                                    | ['constructor', {
-                                        readonly 'constructor': string
-                                    }]
-                                    | ['function', {
-                                        readonly 'function': string
-                                    }]
-                                    | ['interface', {
-                                        readonly 'interface': string
-                                    }]
-                                ]
-                                | ['sync', 
-                                    | ['constructor', {
-                                        readonly 'constructor': string
-                                    }]
-                                    | ['function', {
-                                        readonly 'function': string
-                                    }]
-                                    | ['interface', {
-                                        readonly 'interface': string
-                                    }]
-                                ]
-                        }
+                        export type parameters<GAnnotation> = pt.Dictionary<string>
                         
                         export namespace _ltype {
                             
@@ -265,132 +274,10 @@ export namespace T {
                                 
                                 export namespace dependencies {
                                     
-                                    export namespace D {
-                                        
-                                        export type context<GAnnotation> = T.Context<GAnnotation>
-                                        
-                                        export namespace _ltype {
-                                            
-                                            export namespace async {
-                                                
-                                                export namespace _lconstructor {
-                                                    
-                                                    export type _lconstructor<GAnnotation> = string
-                                                }
-                                                
-                                                export type _lconstructor<GAnnotation> = {
-                                                    readonly 'constructor': string
-                                                }
-                                                
-                                                export namespace _lfunction {
-                                                    
-                                                    export type _lfunction<GAnnotation> = string
-                                                }
-                                                
-                                                export type _lfunction<GAnnotation> = {
-                                                    readonly 'function': string
-                                                }
-                                            }
-                                            
-                                            export type async<GAnnotation> = 
-                                                | ['constructor', {
-                                                    readonly 'constructor': string
-                                                }]
-                                                | ['function', {
-                                                    readonly 'function': string
-                                                }]
-                                            
-                                            export namespace sync {
-                                                
-                                                export namespace _lconstructor {
-                                                    
-                                                    export type _lconstructor<GAnnotation> = string
-                                                }
-                                                
-                                                export type _lconstructor<GAnnotation> = {
-                                                    readonly 'constructor': string
-                                                }
-                                                
-                                                export namespace _lfunction {
-                                                    
-                                                    export type _lfunction<GAnnotation> = string
-                                                }
-                                                
-                                                export type _lfunction<GAnnotation> = {
-                                                    readonly 'function': string
-                                                }
-                                            }
-                                            
-                                            export type sync<GAnnotation> = 
-                                                | ['constructor', {
-                                                    readonly 'constructor': string
-                                                }]
-                                                | ['function', {
-                                                    readonly 'function': string
-                                                }]
-                                        }
-                                        
-                                        export type _ltype<GAnnotation> = 
-                                            | ['async', 
-                                                | ['constructor', {
-                                                    readonly 'constructor': string
-                                                }]
-                                                | ['function', {
-                                                    readonly 'function': string
-                                                }]
-                                            ]
-                                            | ['sync', 
-                                                | ['constructor', {
-                                                    readonly 'constructor': string
-                                                }]
-                                                | ['function', {
-                                                    readonly 'function': string
-                                                }]
-                                            ]
-                                    }
-                                    
-                                    export type D<GAnnotation> = {
-                                        readonly 'context': T.Context<GAnnotation>
-                                        readonly 'type': 
-                                            | ['async', 
-                                                | ['constructor', {
-                                                    readonly 'constructor': string
-                                                }]
-                                                | ['function', {
-                                                    readonly 'function': string
-                                                }]
-                                            ]
-                                            | ['sync', 
-                                                | ['constructor', {
-                                                    readonly 'constructor': string
-                                                }]
-                                                | ['function', {
-                                                    readonly 'function': string
-                                                }]
-                                            ]
-                                    }
+                                    export type D<GAnnotation> = T.AlgorithmTypeReference<GAnnotation>
                                 }
                                 
-                                export type dependencies<GAnnotation> = pt.Dictionary<{
-                                    readonly 'context': T.Context<GAnnotation>
-                                    readonly 'type': 
-                                        | ['async', 
-                                            | ['constructor', {
-                                                readonly 'constructor': string
-                                            }]
-                                            | ['function', {
-                                                readonly 'function': string
-                                            }]
-                                        ]
-                                        | ['sync', 
-                                            | ['constructor', {
-                                                readonly 'constructor': string
-                                            }]
-                                            | ['function', {
-                                                readonly 'function': string
-                                            }]
-                                        ]
-                                }>
+                                export type dependencies<GAnnotation> = pt.Dictionary<T.AlgorithmTypeReference<GAnnotation>>
                                 
                                 export namespace side__effects {
                                     
@@ -400,30 +287,30 @@ export namespace T {
                                         
                                         export namespace _ltype {
                                             
-                                            export namespace async {
+                                            export namespace asynchronous {
                                                 
                                                 export type _linterface<GAnnotation> = string
                                             }
                                             
-                                            export type async<GAnnotation> = {
+                                            export type asynchronous<GAnnotation> = {
                                                 readonly 'interface': string
                                             }
                                             
-                                            export namespace sync {
+                                            export namespace synchronous {
                                                 
                                                 export type _linterface<GAnnotation> = string
                                             }
                                             
-                                            export type sync<GAnnotation> = {
+                                            export type synchronous<GAnnotation> = {
                                                 readonly 'interface': string
                                             }
                                         }
                                         
                                         export type _ltype<GAnnotation> = 
-                                            | ['async', {
+                                            | ['asynchronous', {
                                                 readonly 'interface': string
                                             }]
-                                            | ['sync', {
+                                            | ['synchronous', {
                                                 readonly 'interface': string
                                             }]
                                     }
@@ -431,10 +318,10 @@ export namespace T {
                                     export type D<GAnnotation> = {
                                         readonly 'context': T.Context<GAnnotation>
                                         readonly 'type': 
-                                            | ['async', {
+                                            | ['asynchronous', {
                                                 readonly 'interface': string
                                             }]
-                                            | ['sync', {
+                                            | ['synchronous', {
                                                 readonly 'interface': string
                                             }]
                                     }
@@ -443,10 +330,10 @@ export namespace T {
                                 export type side__effects<GAnnotation> = pt.Dictionary<{
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': 
-                                        | ['async', {
+                                        | ['asynchronous', {
                                             readonly 'interface': string
                                         }]
-                                        | ['sync', {
+                                        | ['synchronous', {
                                             readonly 'interface': string
                                         }]
                                 }>
@@ -457,33 +344,14 @@ export namespace T {
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': string
                                 }]
-                                readonly 'dependencies': pt.Dictionary<{
-                                    readonly 'context': T.Context<GAnnotation>
-                                    readonly 'type': 
-                                        | ['async', 
-                                            | ['constructor', {
-                                                readonly 'constructor': string
-                                            }]
-                                            | ['function', {
-                                                readonly 'function': string
-                                            }]
-                                        ]
-                                        | ['sync', 
-                                            | ['constructor', {
-                                                readonly 'constructor': string
-                                            }]
-                                            | ['function', {
-                                                readonly 'function': string
-                                            }]
-                                        ]
-                                }>
+                                readonly 'dependencies': pt.Dictionary<T.AlgorithmTypeReference<GAnnotation>>
                                 readonly 'side effects': pt.Dictionary<{
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': 
-                                        | ['async', {
+                                        | ['asynchronous', {
                                             readonly 'interface': string
                                         }]
-                                        | ['sync', {
+                                        | ['synchronous', {
                                             readonly 'interface': string
                                         }]
                                 }>
@@ -500,33 +368,14 @@ export namespace T {
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': string
                                 }]
-                                readonly 'dependencies': pt.Dictionary<{
-                                    readonly 'context': T.Context<GAnnotation>
-                                    readonly 'type': 
-                                        | ['async', 
-                                            | ['constructor', {
-                                                readonly 'constructor': string
-                                            }]
-                                            | ['function', {
-                                                readonly 'function': string
-                                            }]
-                                        ]
-                                        | ['sync', 
-                                            | ['constructor', {
-                                                readonly 'constructor': string
-                                            }]
-                                            | ['function', {
-                                                readonly 'function': string
-                                            }]
-                                        ]
-                                }>
+                                readonly 'dependencies': pt.Dictionary<T.AlgorithmTypeReference<GAnnotation>>
                                 readonly 'side effects': pt.Dictionary<{
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': 
-                                        | ['async', {
+                                        | ['asynchronous', {
                                             readonly 'interface': string
                                         }]
-                                        | ['sync', {
+                                        | ['synchronous', {
                                             readonly 'interface': string
                                         }]
                                 }>
@@ -535,65 +384,22 @@ export namespace T {
                     }
                     
                     export type D<GAnnotation> = {
-                        readonly 'definition': {
-                            readonly 'context': T.Context<GAnnotation>
-                            readonly 'type': 
-                                | ['async', 
-                                    | ['constructor', {
-                                        readonly 'constructor': string
-                                    }]
-                                    | ['function', {
-                                        readonly 'function': string
-                                    }]
-                                    | ['interface', {
-                                        readonly 'interface': string
-                                    }]
-                                ]
-                                | ['sync', 
-                                    | ['constructor', {
-                                        readonly 'constructor': string
-                                    }]
-                                    | ['function', {
-                                        readonly 'function': string
-                                    }]
-                                    | ['interface', {
-                                        readonly 'interface': string
-                                    }]
-                                ]
-                        }
+                        readonly 'definition': T.AlgorithmTypeReference<GAnnotation>
+                        readonly 'parameters': pt.Dictionary<string>
                         readonly 'type': 
                             | ['dependent', {
                                 readonly 'configuration data': [ false ] | [ true, {
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': string
                                 }]
-                                readonly 'dependencies': pt.Dictionary<{
-                                    readonly 'context': T.Context<GAnnotation>
-                                    readonly 'type': 
-                                        | ['async', 
-                                            | ['constructor', {
-                                                readonly 'constructor': string
-                                            }]
-                                            | ['function', {
-                                                readonly 'function': string
-                                            }]
-                                        ]
-                                        | ['sync', 
-                                            | ['constructor', {
-                                                readonly 'constructor': string
-                                            }]
-                                            | ['function', {
-                                                readonly 'function': string
-                                            }]
-                                        ]
-                                }>
+                                readonly 'dependencies': pt.Dictionary<T.AlgorithmTypeReference<GAnnotation>>
                                 readonly 'side effects': pt.Dictionary<{
                                     readonly 'context': T.Context<GAnnotation>
                                     readonly 'type': 
-                                        | ['async', {
+                                        | ['asynchronous', {
                                             readonly 'interface': string
                                         }]
-                                        | ['sync', {
+                                        | ['synchronous', {
                                             readonly 'interface': string
                                         }]
                                 }>
@@ -603,65 +409,22 @@ export namespace T {
                 }
                 
                 export type algorithms<GAnnotation> = pt.Dictionary<{
-                    readonly 'definition': {
-                        readonly 'context': T.Context<GAnnotation>
-                        readonly 'type': 
-                            | ['async', 
-                                | ['constructor', {
-                                    readonly 'constructor': string
-                                }]
-                                | ['function', {
-                                    readonly 'function': string
-                                }]
-                                | ['interface', {
-                                    readonly 'interface': string
-                                }]
-                            ]
-                            | ['sync', 
-                                | ['constructor', {
-                                    readonly 'constructor': string
-                                }]
-                                | ['function', {
-                                    readonly 'function': string
-                                }]
-                                | ['interface', {
-                                    readonly 'interface': string
-                                }]
-                            ]
-                    }
+                    readonly 'definition': T.AlgorithmTypeReference<GAnnotation>
+                    readonly 'parameters': pt.Dictionary<string>
                     readonly 'type': 
                         | ['dependent', {
                             readonly 'configuration data': [ false ] | [ true, {
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': string
                             }]
-                            readonly 'dependencies': pt.Dictionary<{
-                                readonly 'context': T.Context<GAnnotation>
-                                readonly 'type': 
-                                    | ['async', 
-                                        | ['constructor', {
-                                            readonly 'constructor': string
-                                        }]
-                                        | ['function', {
-                                            readonly 'function': string
-                                        }]
-                                    ]
-                                    | ['sync', 
-                                        | ['constructor', {
-                                            readonly 'constructor': string
-                                        }]
-                                        | ['function', {
-                                            readonly 'function': string
-                                        }]
-                                    ]
-                            }>
+                            readonly 'dependencies': pt.Dictionary<T.AlgorithmTypeReference<GAnnotation>>
                             readonly 'side effects': pt.Dictionary<{
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': 
-                                    | ['async', {
+                                    | ['asynchronous', {
                                         readonly 'interface': string
                                     }]
-                                    | ['sync', {
+                                    | ['synchronous', {
                                         readonly 'interface': string
                                     }]
                             }>
@@ -672,65 +435,22 @@ export namespace T {
             
             export type root<GAnnotation> = {
                 readonly 'algorithms': pt.Dictionary<{
-                    readonly 'definition': {
-                        readonly 'context': T.Context<GAnnotation>
-                        readonly 'type': 
-                            | ['async', 
-                                | ['constructor', {
-                                    readonly 'constructor': string
-                                }]
-                                | ['function', {
-                                    readonly 'function': string
-                                }]
-                                | ['interface', {
-                                    readonly 'interface': string
-                                }]
-                            ]
-                            | ['sync', 
-                                | ['constructor', {
-                                    readonly 'constructor': string
-                                }]
-                                | ['function', {
-                                    readonly 'function': string
-                                }]
-                                | ['interface', {
-                                    readonly 'interface': string
-                                }]
-                            ]
-                    }
+                    readonly 'definition': T.AlgorithmTypeReference<GAnnotation>
+                    readonly 'parameters': pt.Dictionary<string>
                     readonly 'type': 
                         | ['dependent', {
                             readonly 'configuration data': [ false ] | [ true, {
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': string
                             }]
-                            readonly 'dependencies': pt.Dictionary<{
-                                readonly 'context': T.Context<GAnnotation>
-                                readonly 'type': 
-                                    | ['async', 
-                                        | ['constructor', {
-                                            readonly 'constructor': string
-                                        }]
-                                        | ['function', {
-                                            readonly 'function': string
-                                        }]
-                                    ]
-                                    | ['sync', 
-                                        | ['constructor', {
-                                            readonly 'constructor': string
-                                        }]
-                                        | ['function', {
-                                            readonly 'function': string
-                                        }]
-                                    ]
-                            }>
+                            readonly 'dependencies': pt.Dictionary<T.AlgorithmTypeReference<GAnnotation>>
                             readonly 'side effects': pt.Dictionary<{
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': 
-                                    | ['async', {
+                                    | ['asynchronous', {
                                         readonly 'interface': string
                                     }]
-                                    | ['sync', {
+                                    | ['synchronous', {
                                         readonly 'interface': string
                                     }]
                             }>
@@ -750,65 +470,22 @@ export namespace T {
             >
             readonly 'root': {
                 readonly 'algorithms': pt.Dictionary<{
-                    readonly 'definition': {
-                        readonly 'context': T.Context<GAnnotation>
-                        readonly 'type': 
-                            | ['async', 
-                                | ['constructor', {
-                                    readonly 'constructor': string
-                                }]
-                                | ['function', {
-                                    readonly 'function': string
-                                }]
-                                | ['interface', {
-                                    readonly 'interface': string
-                                }]
-                            ]
-                            | ['sync', 
-                                | ['constructor', {
-                                    readonly 'constructor': string
-                                }]
-                                | ['function', {
-                                    readonly 'function': string
-                                }]
-                                | ['interface', {
-                                    readonly 'interface': string
-                                }]
-                            ]
-                    }
+                    readonly 'definition': T.AlgorithmTypeReference<GAnnotation>
+                    readonly 'parameters': pt.Dictionary<string>
                     readonly 'type': 
                         | ['dependent', {
                             readonly 'configuration data': [ false ] | [ true, {
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': string
                             }]
-                            readonly 'dependencies': pt.Dictionary<{
-                                readonly 'context': T.Context<GAnnotation>
-                                readonly 'type': 
-                                    | ['async', 
-                                        | ['constructor', {
-                                            readonly 'constructor': string
-                                        }]
-                                        | ['function', {
-                                            readonly 'function': string
-                                        }]
-                                    ]
-                                    | ['sync', 
-                                        | ['constructor', {
-                                            readonly 'constructor': string
-                                        }]
-                                        | ['function', {
-                                            readonly 'function': string
-                                        }]
-                                    ]
-                            }>
+                            readonly 'dependencies': pt.Dictionary<T.AlgorithmTypeReference<GAnnotation>>
                             readonly 'side effects': pt.Dictionary<{
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': 
-                                    | ['async', {
+                                    | ['asynchronous', {
                                         readonly 'interface': string
                                     }]
-                                    | ['sync', {
+                                    | ['synchronous', {
                                         readonly 'interface': string
                                     }]
                             }>
@@ -874,65 +551,22 @@ export namespace T {
             >
             readonly 'root': {
                 readonly 'algorithms': pt.Dictionary<{
-                    readonly 'definition': {
-                        readonly 'context': T.Context<GAnnotation>
-                        readonly 'type': 
-                            | ['async', 
-                                | ['constructor', {
-                                    readonly 'constructor': string
-                                }]
-                                | ['function', {
-                                    readonly 'function': string
-                                }]
-                                | ['interface', {
-                                    readonly 'interface': string
-                                }]
-                            ]
-                            | ['sync', 
-                                | ['constructor', {
-                                    readonly 'constructor': string
-                                }]
-                                | ['function', {
-                                    readonly 'function': string
-                                }]
-                                | ['interface', {
-                                    readonly 'interface': string
-                                }]
-                            ]
-                    }
+                    readonly 'definition': T.AlgorithmTypeReference<GAnnotation>
+                    readonly 'parameters': pt.Dictionary<string>
                     readonly 'type': 
                         | ['dependent', {
                             readonly 'configuration data': [ false ] | [ true, {
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': string
                             }]
-                            readonly 'dependencies': pt.Dictionary<{
-                                readonly 'context': T.Context<GAnnotation>
-                                readonly 'type': 
-                                    | ['async', 
-                                        | ['constructor', {
-                                            readonly 'constructor': string
-                                        }]
-                                        | ['function', {
-                                            readonly 'function': string
-                                        }]
-                                    ]
-                                    | ['sync', 
-                                        | ['constructor', {
-                                            readonly 'constructor': string
-                                        }]
-                                        | ['function', {
-                                            readonly 'function': string
-                                        }]
-                                    ]
-                            }>
+                            readonly 'dependencies': pt.Dictionary<T.AlgorithmTypeReference<GAnnotation>>
                             readonly 'side effects': pt.Dictionary<{
                                 readonly 'context': T.Context<GAnnotation>
                                 readonly 'type': 
-                                    | ['async', {
+                                    | ['asynchronous', {
                                         readonly 'interface': string
                                     }]
-                                    | ['sync', {
+                                    | ['synchronous', {
                                         readonly 'interface': string
                                     }]
                             }>

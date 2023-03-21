@@ -300,13 +300,11 @@ export const $: g_project.T.Project._ltype.library.main<pd.SourceLocation> = {
                             })
                         }]
                     }),
-                    'constructors': d({}),
-                    'functions': d({}),
+                    'algorithms': d({}),
                 },
                 'synchronous': {
                     'interfaces': d({ }),
-                    'constructors': d({}),
-                    'functions': d({}),
+                    'algorithms': d({}),
                 },
 
             },

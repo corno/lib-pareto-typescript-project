@@ -64,19 +64,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'asynchronous': {
         'interfaces': d({
-            "TokenConsumer": ['stream', {
+            "TokenConsumer": ['streamconsumer', {
                 'data': aInterfaceMethod(typeReference("AnnotatedToken")),
                 'end': aInterfaceMethod(typeReference("Annotation")), //should be a parameter reference
             }]
         }),
-        'constructors': d({}),
-        'functions': d({}),
+        'algorithms': d({}),
 
     },
     'synchronous': {
         'interfaces': d({  }),
-        'constructors': d({}),
-        'functions': d({}),
-
+        'algorithms': d({}),
     },
 }

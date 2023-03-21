@@ -17,6 +17,33 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
+        "AlgorithmTypeReference": type(group({
+            "context": member(ref(typeReference("Context"))),
+            "type": member(taggedUnion({
+                "asynchronous": taggedUnion({
+                    "builder": group({
+                        "builder": member(string()),
+                    }),
+                    "constructor": group({
+                        "constructor": member(string()),
+                    }),
+                    "function": group({
+                        "function": member(string()),
+                    }),
+                }),
+                "synchronous": taggedUnion({
+                    "builder": group({
+                        "builder": member(string()),
+                    }),
+                    "constructor": group({
+                        "constructor": member(string()),
+                    }),
+                    "function": group({
+                        "function": member(string()),
+                    }),
+                })
+            })),
+        })),
         "Context": type(group({
             "glossary": member(string()),
             "arguments": member(dictionary(string())),
@@ -34,33 +61,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "api": member(group({
                 "root": member(group({
                     "algorithms": member(dictionary(group({
-                        "definition": member(group({
-                            "context": member(ref(typeReference("Context"))),
-                            "type": member(taggedUnion({
-                                "async": taggedUnion({
-                                    "constructor": group({
-                                        "constructor": member(string()),
-                                    }),
-                                    "function": group({
-                                        "function": member(string()),
-                                    }),
-                                    "interface": group({
-                                        "interface": member(string()),
-                                    }),
-                                }),
-                                "sync": taggedUnion({
-                                    "constructor": group({
-                                        "constructor": member(string()),
-                                    }),
-                                    "function": group({
-                                        "function": member(string()),
-                                    }),
-                                    "interface": group({
-                                        "interface": member(string()),
-                                    }),
-                                })
-                            })),
-                        })),
+                        "parameters": member(dictionary(string())),
+                        "definition": member(ref(typeReference("AlgorithmTypeReference"))),
                         "type": member(taggedUnion({
                             "independent": group({}),
                             "dependent": group({
@@ -68,34 +70,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     "context": member(ref(typeReference("Context"))),
                                     "type": member(string()),
                                 }))),
-                                "dependencies": member(dictionary(group({
-                                    "context": member(ref(typeReference("Context"))),
-                                    "type": member(taggedUnion({
-                                        "async": taggedUnion({
-                                            "constructor": group({
-                                                "constructor": member(string()),
-                                            }),
-                                            "function": group({
-                                                "function": member(string()),
-                                            }),
-                                        }),
-                                        "sync": taggedUnion({
-                                            "constructor": group({
-                                                "constructor": member(string()),
-                                            }),
-                                            "function": group({
-                                                "function": member(string()),
-                                            }),
-                                        })
-                                    })),
-                                }))),
+                                "dependencies": member(dictionary(ref(typeReference("AlgorithmTypeReference")))),
                                 "side effects": member(dictionary(group({
                                     "context": member(ref(typeReference("Context"))),
                                     "type": member(taggedUnion({
-                                        "async": group({
+                                        "asynchronous": group({
                                             "interface": member(string()),
                                         }),
-                                        "sync": group({
+                                        "synchronous": group({
                                             "interface": member(string()),
                                         }),
                                     })),

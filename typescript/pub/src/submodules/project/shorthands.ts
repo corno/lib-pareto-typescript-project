@@ -23,12 +23,12 @@ export function sibling($: string): ['sibling', string] {
 export function external($: string): ['external', string] {
     return ['external', $]
 }
-export function main(): g_this.T.ModuleDefinition.glossary.imports.D<pd.SourceLocation> {
+export function main(): ['main', null] {
     return ['main', null]
 }
 
 
-export function typeReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.configuration__data.O<pd.SourceLocation> {
+export function data(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.configuration__data.O<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
@@ -38,51 +38,15 @@ export function typeReference(context: string, args: RawDictionary<string>, defi
     }
 }
 
-export function aFunctionReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['async', ['function', {
-            'function': definition,
-        }]]
-    }
-}
-
 export function aSideEffect(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.side__effects.D<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
             'arguments': pd.d(args === undefined ? {} : args)
         },
-        'type': ['async', {
+        'type': ['asynchronous', {
             'interface': definition,
         }]
-    }
-}
-
-export function aConstructorReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['async', ['constructor', {
-            'constructor': definition,
-        }]]
-    }
-}
-
-export function sFunctionReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['sync', ['function', {
-            'function': definition,
-        }]]
     }
 }
 
@@ -92,92 +56,80 @@ export function sSideEffect(context: string, args: RawDictionary<string>, defini
             'glossary': context,
             'arguments': pd.d(args === undefined ? {} : args)
         },
-        'type': ['sync', {
+        'type': ['synchronous', {
             'interface': definition,
         }]
     }
 }
 
-export function sConstructorReference(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation> {
+export function sconstructor(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
             'arguments': pd.d(args === undefined ? {} : args)
         },
-        'type': ['sync', ['constructor', {
-            'constructor': definition,
-        }]]
-    }
-}
-
-export function sconstructor(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['sync', ['constructor', {
+        'type': ['synchronous', ['constructor', {
             'constructor': definition
         }]]
     }
 }
 
-export function sfunction(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
+export function sbuilder(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
             'arguments': pd.d(args === undefined ? {} : args)
         },
-        'type': ['sync', ['function', {
+        'type': ['synchronous', ['builder', {
+            'builder': definition
+        }]]
+    }
+}
+
+export function sfunction(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['synchronous', ['function', {
             'function': definition
         }]]
     }
 }
 
-export function sinterface(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
+export function abuilder(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
             'arguments': pd.d(args === undefined ? {} : args)
         },
-        'type': ['sync', ['interface', {
-            'interface': definition
+        'type': ['asynchronous', ['builder', {
+            'builder': definition
         }]]
     }
 }
 
-export function afunction(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
+export function afunction(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
             'arguments': pd.d(args === undefined ? {} : args)
         },
-        'type': ['async', ['function', {
+        'type': ['asynchronous', ['function', {
             'function': definition
         }]]
     }
 }
 
-export function aconstructor(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
+export function aconstructor(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
             'arguments': pd.d(args === undefined ? {} : args)
         },
-        'type': ['async', ['constructor', {
+        'type': ['asynchronous', ['constructor', {
             'constructor': definition
-        }]]
-    }
-}
-
-export function ainterface(context: string, args: RawDictionary<string>, definition: string): g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['async', ['interface', {
-            'interface': definition
         }]]
     }
 }
@@ -196,9 +148,10 @@ export function dependent(
     }]
 }
 
-export function algorithm(def: g_this.T.ModuleDefinition.api.root.algorithms.D.definition<pd.SourceLocation>, type?: g_this.T.ModuleDefinition.api.root.algorithms.D._ltype<pd.SourceLocation>): g_this.T.ModuleDefinition.api.root.algorithms.D<pd.SourceLocation> {
+export function algorithm(def: g_this.T.AlgorithmTypeReference<pd.SourceLocation>, params?: RawDictionary<string>, type?: g_this.T.ModuleDefinition.api.root.algorithms.D._ltype<pd.SourceLocation>): g_this.T.ModuleDefinition.api.root.algorithms.D<pd.SourceLocation> {
     return {
         'definition': def,
+        'parameters': pd.d(params === undefined ? {} : params),
         'type': type === undefined
             ? ['independent', null]
             : type,

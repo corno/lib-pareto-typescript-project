@@ -2,7 +2,6 @@ import * as pd from 'pareto-core-data'
 
 import * as g_liana from "lib-liana/dist/submodules/liana"
 import {
-    array,
     component,
     dictionary,
     terminal,
@@ -10,7 +9,6 @@ import {
     group,
     r,
     reference,
-    //string,
     taggedUnion,
     prop,
     optional,
@@ -52,27 +50,39 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                 }))),
                 "synchronous": prop(group({
                     "interfaces": prop(dictionary(component("SynchronousInterface", {}))),
-                    "constructors": prop(dictionary(group({
-                        "interface": prop(component("SynchronousInterfaceReference", {})),
-                        //???  maybe this one                      "in": prop(component("DataOrSynchronousInterface", {})),
-                        "downstreams": prop(dictionary(component("SynchronousInterfaceReference", {}))),
-                    }))),
-                    "functions": prop(dictionary(group({
-                        "in": prop(component("DataOrSynchronousInterface", {})),
-                        "out": prop(component("TypeReference", {})),
+                    "algorithms": prop(dictionary(taggedUnion({
+                        "constructor": option(group({
+                            "interface": prop(component("SynchronousInterfaceReference", {})),
+                            //???  maybe this one                      "in": prop(component("DataOrSynchronousInterface", {})),
+                            "downstream": prop(component("SynchronousInterfaceReference", {})),
+                        })),
+                        "function": option(group({
+                            "in": prop(component("DataOrSynchronousInterface", {})),
+                            "out": prop(component("TypeReference", {})),
+                        })),
+                        "builder": option(group({
+                            "in": prop(component("DataOrSynchronousInterface", {})),
+                            "out": prop(component("SynchronousInterfaceReference", {})),
+                        })),
                     }))),
                 })),
                 "asynchronous": prop(group({
                     "interfaces": prop(dictionary(component("AsynchronousInterface", {}))),
-                    "constructors": prop(dictionary(group({
-                        "interface": prop(component("AsynchronousInterfaceReference", {})),
-                        //???  maybe this one                      "in": prop(component("DataOrSynchronousInterface", {})),
-                        "downstreams": prop(dictionary(component("AsynchronousInterfaceReference", {}))),
-                    }))),
-                    "functions": prop(dictionary(group({
-                        "out": prop(component("TypeReference", {})),
-                        "in": prop(taggedUnion({
-                            "data": option(component("TypeReference", {})),
+                    "algorithms": prop(dictionary(taggedUnion({
+                        "constructor": option(group({
+                            "interface": prop(component("AsynchronousInterfaceReference", {})),
+                            //???  maybe this one                      "in": prop(component("DataOrSynchronousInterface", {})),
+                            "downstreams": prop(dictionary(component("AsynchronousInterfaceReference", {}))),
+                        })),
+                        "function": option(group({
+                            "out": prop(component("TypeReference", {})),
+                            "in": prop(taggedUnion({
+                                "data": option(component("TypeReference", {})),
+                            })),
+                        })),
+                        "builder": option(group({
+                            "in": option(component("TypeReference", {})),
+                            "out": prop(dictionary(component("AsynchronousInterfaceReference", {}))),
                         })),
                     }))),
                 })),
@@ -81,7 +91,7 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                 "choice": option(group({
                     "options": prop(dictionary(component("AsynchronousInterface", {}))),
                 })),
-                "stream": option(group({
+                "streamconsumer": option(group({
                     "data": prop(component("AsynchronousInterface", {})),
                     "end": prop(component("AsynchronousInterface", {})),
                 })),

@@ -8,7 +8,7 @@ import { external, sibling, this_ } from "lib-pareto-typescript-project/dist/sub
 
 const d = pd.d
 
-export const $: g_project.T.Project._ltype.library.submodules.D<pd.SourceLocation> = {
+export const $: g_project.T.Module<pd.SourceLocation> = {
     'glossary': {
         'root': glossary,
         'imports': d({
@@ -22,13 +22,8 @@ export const $: g_project.T.Project._ltype.library.submodules.D<pd.SourceLocatio
         'api': {
             'root': api,
             'imports': d({
-                "collation": external("res-pareto-collation"),
-                "common": external("glo-pareto-common"),
                 "dictionary": external("res-pareto-dictionary"),
                 "foreach": external("res-pareto-foreach"),
-                "glossary": sibling("glossary"),
-                "main": external("res-pareto-main"),
-                "project": sibling("project"),
                 "this": this_(),
                 "ts": external("res-typescript"),
             }),

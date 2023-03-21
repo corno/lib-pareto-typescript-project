@@ -9,7 +9,7 @@ import { external, sibling } from "lib-pareto-typescript-project/dist/submodules
 
 const d = pd.d
 
-export const $: g_project.T.Project._ltype.library.submodules.D<pd.SourceLocation> = {
+export const $: g_project.T.Module<pd.SourceLocation> = {
     'glossary': {
         'root': glossary,
         'imports': d({

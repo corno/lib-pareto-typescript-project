@@ -151,20 +151,6 @@ export function aInterfaceReference(contextOrAsynchronousInterface: string, inf?
     }
 }
 
-// export function resourceReference(contextOrResource: string, resource?: string): t.T.ResourceReference<pd.SourceLocation> {
-//     if (resource === undefined) {
-//         return {
-//             'context': ['local', null],
-//             'resource': contextOrResource,
-//         }
-//     } else {
-//         return {
-//             'context': context(contextOrResource, pd.getLocationInfo(1)),
-//             'resource': resource,
-//         }
-//     }
-// }
-
 export function nothing(): ['nothing', null] {
     return ['nothing', null]
 }
@@ -177,38 +163,47 @@ export function inf($: t.T.AsynchronousInterfaceReference<pd.SourceLocation>): [
     return ['interface', $]
 }
 
-export function aconstructor(inf: t.T.AsynchronousInterfaceReference<pd.SourceLocation>, downstreams: RawDictionary<t.T.AsynchronousInterfaceReference<pd.SourceLocation>>): t.T.Glossary.asynchronous.constructors.D<pd.SourceLocation> {
-    return {
+export function abuilder(in_: t.T.Glossary.asynchronous.algorithms.D.builder._lin<pd.SourceLocation>, out: RawDictionary<t.T.AsynchronousInterfaceReference<pd.SourceLocation>>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
+    return ['builder', {
+        'in': in_,
+        'out': pd.d(out),
+    }]
+}
+
+export function aconstructor(inf: t.T.AsynchronousInterfaceReference<pd.SourceLocation>, downstreams: RawDictionary<t.T.AsynchronousInterfaceReference<pd.SourceLocation>>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
+    return ['constructor', {
         'interface': inf,
         'downstreams': pd.d(downstreams),
-    }
+    }]
 }
 
-export function sfunction(in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, out: t.T.TypeReference<pd.SourceLocation>): t.T.Glossary.synchronous.functions.D<pd.SourceLocation> {
-    return {
+export function afunction(out: t.T.Glossary.asynchronous.algorithms.D._lfunction.out<pd.SourceLocation>, in_: t.T.Glossary.asynchronous.algorithms.D._lfunction._lin<pd.SourceLocation>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
+    return ['function', {
         'in': in_,
         'out': out,
-    }
+    }]
 }
 
-export function sconstructor(out: t.T.SynchronousInterfaceReference<pd.SourceLocation>, downstreams: RawDictionary<t.T.SynchronousInterfaceReference<pd.SourceLocation>>): t.T.Glossary.synchronous.constructors.D<pd.SourceLocation> {
-    return {
+export function sbuilder(in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, out: t.T.SynchronousInterfaceReference<pd.SourceLocation>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
+    return ['builder', {
+        'in': in_,
+        'out': out,
+    }]
+}
+
+export function sconstructor(out: t.T.SynchronousInterfaceReference<pd.SourceLocation>, downstream: t.T.SynchronousInterfaceReference<pd.SourceLocation>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
+    return ['constructor', {
         'interface': out,
-        'downstreams': pd.d(downstreams),
-
-    }
+        'downstream': downstream,
+    }]
 }
 
-export function afunction(in_: t.T.Glossary.asynchronous.functions.D._lin<pd.SourceLocation>, out: t.T.Glossary.asynchronous.functions.D.out<pd.SourceLocation>): t.T.Glossary.asynchronous.functions.D<pd.SourceLocation> {
-    return {
+export function sfunction(out: t.T.TypeReference<pd.SourceLocation>, in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
+    return ['function', {
         'in': in_,
         'out': out,
-    }
+    }]
 }
-
-// export function rsrc($: t.T.ResourceReference<pd.SourceLocation>): ['resource', t.T.ResourceReference<pd.SourceLocation>] {
-//     return ['resource', $]
-// }
 
 export function sInterfaceMethod(data: null | t.T.TypeReference<pd.SourceLocation>, inf?: null | t.T.SynchronousInterface<pd.SourceLocation>): t.T.SynchronousInterface<pd.SourceLocation> {
     return ['method', {
@@ -246,8 +241,8 @@ export function choice(options: RawDictionary<t.T.AsynchronousInterface<pd.Sourc
     }]
 }
 
-export function stream(data: t.T.AsynchronousInterface<pd.SourceLocation>, end: t.T.AsynchronousInterface<pd.SourceLocation>): t.T.AsynchronousInterface<pd.SourceLocation> {
-    return ['stream', {
+export function streamconsumer(data: t.T.AsynchronousInterface<pd.SourceLocation>, end: t.T.AsynchronousInterface<pd.SourceLocation>): t.T.AsynchronousInterface<pd.SourceLocation> {
+    return ['streamconsumer', {
         'data': data,
         'end': end
     }]

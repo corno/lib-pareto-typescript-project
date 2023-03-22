@@ -62,26 +62,14 @@ export function sSideEffect(context: string, args: RawDictionary<string>, defini
     }
 }
 
-export function sconstructor(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
+export function procedure(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,
             'arguments': pd.d(args === undefined ? {} : args)
         },
-        'type': ['synchronous', ['constructor', {
-            'constructor': definition
-        }]]
-    }
-}
-
-export function sbuilder(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['synchronous', ['builder', {
-            'builder': definition
+        'type': ['synchronous', ['procedure', {
+            'procedure': definition
         }]]
     }
 }
@@ -98,18 +86,6 @@ export function sfunction(context: string, args: RawDictionary<string>, definiti
     }
 }
 
-export function abuilder(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
-    return {
-        'context': {
-            'glossary': context,
-            'arguments': pd.d(args === undefined ? {} : args)
-        },
-        'type': ['asynchronous', ['builder', {
-            'builder': definition
-        }]]
-    }
-}
-
 export function afunction(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
     return {
         'context': {
@@ -122,7 +98,7 @@ export function afunction(context: string, args: RawDictionary<string>, definiti
     }
 }
 
-export function aconstructor(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
+export function constructor(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
     return {
         'context': {
             'glossary': context,

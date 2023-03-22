@@ -17,46 +17,46 @@ import { createGlossarySerializer } from "../api.generated"
 
 export const $$: createGlossarySerializer = ($d) => {
 
-    function doDictionaryTypeWithKey<T>(
-        $: pt.Dictionary<T>,
-        $i: g_fp.B.Line,
-        callback: ($: {
-            'key': string,
-            'value': T,
-        }, $i: g_fp.B.Line) => void,
-    ) {
-        $d.enrichedDictionaryForEach($, {
-            'onEmpty': () => {
-                //typescript treats an empty object very lax therefor I make it a null
-
-                $i.snippet(`null`)
-            },
-            'onNotEmpty': ($c) => {
-                $i.snippet(`{`)
-                $i.indent(($i) => {
-                    $c(($) => {
-
-                        $i.nestedLine(($i) => {
-                            $i.snippet(`readonly '${$.key}': `)
-                            callback($, $i)
-                        })
-                    })
-                })
-                $i.snippet(`}`)
-            }
-        })
-
-
-
-        //     ($) => {
-
-        // })
-    }
     function doDictionaryType<T>(
         $: pt.Dictionary<T>,
         $i: g_fp.B.Line,
         callback: ($: T, $i: g_fp.B.Line) => void,
     ) {
+        function doDictionaryTypeWithKey<T>(
+            $: pt.Dictionary<T>,
+            $i: g_fp.B.Line,
+            callback: ($: {
+                'key': string,
+                'value': T,
+            }, $i: g_fp.B.Line) => void,
+        ) {
+            $d.enrichedDictionaryForEach($, {
+                'onEmpty': () => {
+                    //typescript treats an empty object very lax therefor I make it a null
+
+                    $i.snippet(`null`)
+                },
+                'onNotEmpty': ($c) => {
+                    $i.snippet(`{`)
+                    $i.indent(($i) => {
+                        $c(($) => {
+
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`readonly '${$.key}': `)
+                                callback($, $i)
+                            })
+                        })
+                    })
+                    $i.snippet(`}`)
+                }
+            })
+
+
+
+            //     ($) => {
+
+            // })
+        }
         doDictionaryTypeWithKey($, $i, ($, $i) => callback($.value, $i))
     }
     function doOptional<T>(
@@ -757,10 +757,6 @@ export const $$: createGlossarySerializer = ($d) => {
                                 ns(
                                     pl.cc($.value, ($) => {
                                         switch ($[0]) {
-                                            case 'builder':
-                                                return pl.cc($[1], ($) => {
-                                                    return `B`
-                                                })
                                             case 'constructor':
                                                 return pl.cc($[1], ($) => {
                                                     return `C`
@@ -780,24 +776,25 @@ export const $$: createGlossarySerializer = ($d) => {
                                             $i.snippet(` = `)
                                             pl.cc($.value, ($) => {
                                                 switch ($[0]) {
-                                                    case 'builder':
-                                                        pl.cc($[1], ($) => {
-                                                            $i.snippet(`($: `)
-                                                            serializeTypeReference($.in, $i)
-                                                            $i.snippet(`, $is: `)
-                                                            doDictionaryType($.out, $i, ($, $i) => {
-                                                                serializeAsynchronousInterfaceReference($, $i)
-                                                            })
-                                                            $i.snippet(`) => void`)
-
-                                                        })
-                                                        break
                                                     case 'constructor':
                                                         pl.cc($[1], ($) => {
                                                             $i.snippet(`(`)
-                                                            $i.snippet(`$is: `)
-                                                            doDictionaryType($.downstreams, $i, ($, $i) => {
-                                                                serializeAsynchronousInterfaceReference($, $i)
+                                                            $d.enrichedDictionaryForEach($.downstreams, {
+                                                                'onEmpty': () => {
+                                                                },
+                                                                'onNotEmpty': ($c) => {
+                                                                    $i.snippet(`$is: `)
+                                                                    $i.snippet(`{`)
+                                                                    $i.indent(($i) => {
+                                                                        $c(($) => {
+                                                                            $i.nestedLine(($i) => {
+                                                                                $i.snippet(`readonly '${$.key}': `)
+                                                                                serializeAsynchronousInterfaceReference($.value, $i)
+                                                                            })
+                                                                        })
+                                                                    })
+                                                                    $i.snippet(`}`)
+                                                                }
                                                             })
                                                             $i.snippet(`) => `)
                                                             serializeAsynchronousInterfaceReference($.interface, $i)
@@ -808,15 +805,8 @@ export const $$: createGlossarySerializer = ($d) => {
                                                         pl.cc($[1], ($) => {
                                                             $i.snippet(`(`)
                                                             pl.cc($.in, ($) => {
-                                                                switch ($[0]) {
-                                                                    case 'data':
-                                                                        pl.cc($[1], ($) => {
-                                                                            $i.snippet(`$: `)
-                                                                            serializeTypeReference($, $i)
-                                                                        })
-                                                                        break
-                                                                    default: pl.au($[0])
-                                                                }
+                                                                $i.snippet(`$: `)
+                                                                serializeTypeReference($, $i)
                                                             })
                                                             $i.snippet(`) => `)
                                                             $i.snippet(`pt.AsyncValue<`)
@@ -866,13 +856,9 @@ export const $$: createGlossarySerializer = ($d) => {
                                         ns(
                                             pl.cc($.value, ($) => {
                                                 switch ($[0]) {
-                                                    case 'builder':
+                                                    case 'procedure':
                                                         return pl.cc($[1], ($) => {
-                                                            return `B`
-                                                        })
-                                                    case 'constructor':
-                                                        return pl.cc($[1], ($) => {
-                                                            return `C`
+                                                            return `P`
                                                         })
                                                     case 'function':
                                                         return pl.cc($[1], ($) => {
@@ -889,14 +875,14 @@ export const $$: createGlossarySerializer = ($d) => {
                                                     $i.snippet(` = `)
                                                     pl.cc($.value, ($) => {
                                                         switch ($[0]) {
-                                                            case 'builder':
+                                                            case 'procedure':
                                                                 pl.cc($[1], ($) => {
                                                                     $i.snippet(`(`)
                                                                     pl.cc($.in, ($) => {
                                                                         switch ($[0]) {
                                                                             case 'interface':
                                                                                 pl.cc($[1], ($) => {
-                                                                                    $i.snippet(`$c: ($b: `)
+                                                                                    $i.snippet(`$c: ($i: `)
                                                                                     serializeSynchronousInterfaceReference($, $i)
                                                                                     $i.snippet(`) => void`)
                                                                                 })
@@ -915,21 +901,6 @@ export const $$: createGlossarySerializer = ($d) => {
                                                                     $i.snippet(`) => void`)
                                                                 })
                                                                 break
-                                                            case 'constructor':
-                                                                pl.cc($[1], ($) => {
-                                                                    $i.snippet(`(`)
-                                                                    $i.snippet(`$i: `)
-                                                                    serializeSynchronousInterfaceReference($.downstream, $i)
-                                                                    $i.snippet(`, `)
-                                                                    pl.cc($.interface, ($) => {
-                                                                        $i.snippet(`$c: ($b: `)
-                                                                        serializeSynchronousInterfaceReference($, $i)
-                                                                        $i.snippet(`) => void`)
-                                                                    })
-                                                                    $i.snippet(`) => void`)
-
-                                                                })
-                                                                break
                                                             case 'function':
                                                                 pl.cc($[1], ($) => {
                                                                     $i.snippet(`(`)
@@ -937,7 +908,7 @@ export const $$: createGlossarySerializer = ($d) => {
                                                                         switch ($[0]) {
                                                                             case 'interface':
                                                                                 pl.cc($[1], ($) => {
-                                                                                    $i.snippet(`$c: ($b: `)
+                                                                                    $i.snippet(`$c: ($i: `)
                                                                                     serializeSynchronousInterfaceReference($, $i)
                                                                                     $i.snippet(`) => void`)
                                                                                 })

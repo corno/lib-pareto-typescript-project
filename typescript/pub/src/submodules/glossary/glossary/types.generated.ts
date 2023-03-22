@@ -139,23 +139,6 @@ export namespace T {
                 
                 export namespace D {
                     
-                    export namespace builder {
-                        
-                        export type _lin<GAnnotation> = T.TypeReference<GAnnotation>
-                        
-                        export namespace out {
-                            
-                            export type D<GAnnotation> = T.AsynchronousInterfaceReference<GAnnotation>
-                        }
-                        
-                        export type out<GAnnotation> = pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
-                    }
-                    
-                    export type builder<GAnnotation> = {
-                        readonly 'in': T.TypeReference<GAnnotation>
-                        readonly 'out': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
-                    }
-                    
                     export namespace _lconstructor {
                         
                         export namespace downstreams {
@@ -175,52 +158,35 @@ export namespace T {
                     
                     export namespace _lfunction {
                         
-                        export namespace _lin {
-                            
-                            export type data<GAnnotation> = T.TypeReference<GAnnotation>
-                        }
-                        
-                        export type _lin<GAnnotation> = 
-                            | ['data', T.TypeReference<GAnnotation>]
+                        export type _lin<GAnnotation> = T.TypeReference<GAnnotation>
                         
                         export type out<GAnnotation> = T.TypeReference<GAnnotation>
                     }
                     
                     export type _lfunction<GAnnotation> = {
-                        readonly 'in': 
-                            | ['data', T.TypeReference<GAnnotation>]
+                        readonly 'in': T.TypeReference<GAnnotation>
                         readonly 'out': T.TypeReference<GAnnotation>
                     }
                 }
                 
                 export type D<GAnnotation> = 
-                    | ['builder', {
-                        readonly 'in': T.TypeReference<GAnnotation>
-                        readonly 'out': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
-                    }]
                     | ['constructor', {
                         readonly 'downstreams': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
                         readonly 'interface': T.AsynchronousInterfaceReference<GAnnotation>
                     }]
                     | ['function', {
-                        readonly 'in': 
-                            | ['data', T.TypeReference<GAnnotation>]
+                        readonly 'in': T.TypeReference<GAnnotation>
                         readonly 'out': T.TypeReference<GAnnotation>
                     }]
             }
             
             export type algorithms<GAnnotation> = pt.Dictionary<
-                | ['builder', {
-                    readonly 'in': T.TypeReference<GAnnotation>
-                    readonly 'out': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
-                }]
                 | ['constructor', {
                     readonly 'downstreams': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
                     readonly 'interface': T.AsynchronousInterfaceReference<GAnnotation>
                 }]
                 | ['function', {
-                    readonly 'in': 
-                        | ['data', T.TypeReference<GAnnotation>]
+                    readonly 'in': T.TypeReference<GAnnotation>
                     readonly 'out': T.TypeReference<GAnnotation>
                 }]
             >
@@ -235,17 +201,12 @@ export namespace T {
         
         export type asynchronous<GAnnotation> = {
             readonly 'algorithms': pt.Dictionary<
-                | ['builder', {
-                    readonly 'in': T.TypeReference<GAnnotation>
-                    readonly 'out': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
-                }]
                 | ['constructor', {
                     readonly 'downstreams': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
                     readonly 'interface': T.AsynchronousInterfaceReference<GAnnotation>
                 }]
                 | ['function', {
-                    readonly 'in': 
-                        | ['data', T.TypeReference<GAnnotation>]
+                    readonly 'in': T.TypeReference<GAnnotation>
                     readonly 'out': T.TypeReference<GAnnotation>
                 }]
             >
@@ -288,30 +249,6 @@ export namespace T {
                 
                 export namespace D {
                     
-                    export namespace builder {
-                        
-                        export type _lin<GAnnotation> = T.DataOrSynchronousInterface<GAnnotation>
-                        
-                        export type out<GAnnotation> = T.SynchronousInterfaceReference<GAnnotation>
-                    }
-                    
-                    export type builder<GAnnotation> = {
-                        readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
-                        readonly 'out': T.SynchronousInterfaceReference<GAnnotation>
-                    }
-                    
-                    export namespace _lconstructor {
-                        
-                        export type downstream<GAnnotation> = T.SynchronousInterfaceReference<GAnnotation>
-                        
-                        export type _linterface<GAnnotation> = T.SynchronousInterfaceReference<GAnnotation>
-                    }
-                    
-                    export type _lconstructor<GAnnotation> = {
-                        readonly 'downstream': T.SynchronousInterfaceReference<GAnnotation>
-                        readonly 'interface': T.SynchronousInterfaceReference<GAnnotation>
-                    }
-                    
                     export namespace _lfunction {
                         
                         export type _lin<GAnnotation> = T.DataOrSynchronousInterface<GAnnotation>
@@ -323,35 +260,39 @@ export namespace T {
                         readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                         readonly 'out': T.TypeReference<GAnnotation>
                     }
+                    
+                    export namespace procedure {
+                        
+                        export type _lin<GAnnotation> = T.DataOrSynchronousInterface<GAnnotation>
+                        
+                        export type out<GAnnotation> = T.SynchronousInterfaceReference<GAnnotation>
+                    }
+                    
+                    export type procedure<GAnnotation> = {
+                        readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
+                        readonly 'out': T.SynchronousInterfaceReference<GAnnotation>
+                    }
                 }
                 
                 export type D<GAnnotation> = 
-                    | ['builder', {
-                        readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
-                        readonly 'out': T.SynchronousInterfaceReference<GAnnotation>
-                    }]
-                    | ['constructor', {
-                        readonly 'downstream': T.SynchronousInterfaceReference<GAnnotation>
-                        readonly 'interface': T.SynchronousInterfaceReference<GAnnotation>
-                    }]
                     | ['function', {
                         readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                         readonly 'out': T.TypeReference<GAnnotation>
                     }]
+                    | ['procedure', {
+                        readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
+                        readonly 'out': T.SynchronousInterfaceReference<GAnnotation>
+                    }]
             }
             
             export type algorithms<GAnnotation> = pt.Dictionary<
-                | ['builder', {
-                    readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
-                    readonly 'out': T.SynchronousInterfaceReference<GAnnotation>
-                }]
-                | ['constructor', {
-                    readonly 'downstream': T.SynchronousInterfaceReference<GAnnotation>
-                    readonly 'interface': T.SynchronousInterfaceReference<GAnnotation>
-                }]
                 | ['function', {
                     readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                     readonly 'out': T.TypeReference<GAnnotation>
+                }]
+                | ['procedure', {
+                    readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
+                    readonly 'out': T.SynchronousInterfaceReference<GAnnotation>
                 }]
             >
             
@@ -365,17 +306,13 @@ export namespace T {
         
         export type synchronous<GAnnotation> = {
             readonly 'algorithms': pt.Dictionary<
-                | ['builder', {
-                    readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
-                    readonly 'out': T.SynchronousInterfaceReference<GAnnotation>
-                }]
-                | ['constructor', {
-                    readonly 'downstream': T.SynchronousInterfaceReference<GAnnotation>
-                    readonly 'interface': T.SynchronousInterfaceReference<GAnnotation>
-                }]
                 | ['function', {
                     readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                     readonly 'out': T.TypeReference<GAnnotation>
+                }]
+                | ['procedure', {
+                    readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
+                    readonly 'out': T.SynchronousInterfaceReference<GAnnotation>
                 }]
             >
             readonly 'interfaces': pt.Dictionary<T.SynchronousInterface<GAnnotation>>
@@ -412,17 +349,12 @@ export namespace T {
     export type Glossary<GAnnotation> = {
         readonly 'asynchronous': {
             readonly 'algorithms': pt.Dictionary<
-                | ['builder', {
-                    readonly 'in': T.TypeReference<GAnnotation>
-                    readonly 'out': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
-                }]
                 | ['constructor', {
                     readonly 'downstreams': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
                     readonly 'interface': T.AsynchronousInterfaceReference<GAnnotation>
                 }]
                 | ['function', {
-                    readonly 'in': 
-                        | ['data', T.TypeReference<GAnnotation>]
+                    readonly 'in': T.TypeReference<GAnnotation>
                     readonly 'out': T.TypeReference<GAnnotation>
                 }]
             >
@@ -434,17 +366,13 @@ export namespace T {
         readonly 'parameters': pt.Dictionary<null>
         readonly 'synchronous': {
             readonly 'algorithms': pt.Dictionary<
-                | ['builder', {
-                    readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
-                    readonly 'out': T.SynchronousInterfaceReference<GAnnotation>
-                }]
-                | ['constructor', {
-                    readonly 'downstream': T.SynchronousInterfaceReference<GAnnotation>
-                    readonly 'interface': T.SynchronousInterfaceReference<GAnnotation>
-                }]
                 | ['function', {
                     readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                     readonly 'out': T.TypeReference<GAnnotation>
+                }]
+                | ['procedure', {
+                    readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
+                    readonly 'out': T.SynchronousInterfaceReference<GAnnotation>
                 }]
             >
             readonly 'interfaces': pt.Dictionary<T.SynchronousInterface<GAnnotation>>

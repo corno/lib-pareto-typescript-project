@@ -15,15 +15,6 @@ export namespace T {
             
             export namespace asynchronous {
                 
-                export namespace builder {
-                    
-                    export type builder<GAnnotation> = string
-                }
-                
-                export type builder<GAnnotation> = {
-                    readonly 'builder': string
-                }
-                
                 export namespace _lconstructor {
                     
                     export type _lconstructor<GAnnotation> = string
@@ -44,9 +35,6 @@ export namespace T {
             }
             
             export type asynchronous<GAnnotation> = 
-                | ['builder', {
-                    readonly 'builder': string
-                }]
                 | ['constructor', {
                     readonly 'constructor': string
                 }]
@@ -56,24 +44,6 @@ export namespace T {
             
             export namespace synchronous {
                 
-                export namespace builder {
-                    
-                    export type builder<GAnnotation> = string
-                }
-                
-                export type builder<GAnnotation> = {
-                    readonly 'builder': string
-                }
-                
-                export namespace _lconstructor {
-                    
-                    export type _lconstructor<GAnnotation> = string
-                }
-                
-                export type _lconstructor<GAnnotation> = {
-                    readonly 'constructor': string
-                }
-                
                 export namespace _lfunction {
                     
                     export type _lfunction<GAnnotation> = string
@@ -82,25 +52,28 @@ export namespace T {
                 export type _lfunction<GAnnotation> = {
                     readonly 'function': string
                 }
+                
+                export namespace procedure {
+                    
+                    export type procedure<GAnnotation> = string
+                }
+                
+                export type procedure<GAnnotation> = {
+                    readonly 'procedure': string
+                }
             }
             
             export type synchronous<GAnnotation> = 
-                | ['builder', {
-                    readonly 'builder': string
-                }]
-                | ['constructor', {
-                    readonly 'constructor': string
-                }]
                 | ['function', {
                     readonly 'function': string
+                }]
+                | ['procedure', {
+                    readonly 'procedure': string
                 }]
         }
         
         export type _ltype<GAnnotation> = 
             | ['asynchronous', 
-                | ['builder', {
-                    readonly 'builder': string
-                }]
                 | ['constructor', {
                     readonly 'constructor': string
                 }]
@@ -109,14 +82,11 @@ export namespace T {
                 }]
             ]
             | ['synchronous', 
-                | ['builder', {
-                    readonly 'builder': string
-                }]
-                | ['constructor', {
-                    readonly 'constructor': string
-                }]
                 | ['function', {
                     readonly 'function': string
+                }]
+                | ['procedure', {
+                    readonly 'procedure': string
                 }]
             ]
     }
@@ -125,9 +95,6 @@ export namespace T {
         readonly 'context': T.Context<GAnnotation>
         readonly 'type': 
             | ['asynchronous', 
-                | ['builder', {
-                    readonly 'builder': string
-                }]
                 | ['constructor', {
                     readonly 'constructor': string
                 }]
@@ -136,14 +103,11 @@ export namespace T {
                 }]
             ]
             | ['synchronous', 
-                | ['builder', {
-                    readonly 'builder': string
-                }]
-                | ['constructor', {
-                    readonly 'constructor': string
-                }]
                 | ['function', {
                     readonly 'function': string
+                }]
+                | ['procedure', {
+                    readonly 'procedure': string
                 }]
             ]
     }

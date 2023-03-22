@@ -163,14 +163,7 @@ export function inf($: t.T.AsynchronousInterfaceReference<pd.SourceLocation>): [
     return ['interface', $]
 }
 
-export function abuilder(in_: t.T.Glossary.asynchronous.algorithms.D.builder._lin<pd.SourceLocation>, out: RawDictionary<t.T.AsynchronousInterfaceReference<pd.SourceLocation>>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
-    return ['builder', {
-        'in': in_,
-        'out': pd.d(out),
-    }]
-}
-
-export function aconstructor(inf: t.T.AsynchronousInterfaceReference<pd.SourceLocation>, downstreams: RawDictionary<t.T.AsynchronousInterfaceReference<pd.SourceLocation>>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
+export function constructor(inf: t.T.AsynchronousInterfaceReference<pd.SourceLocation>, downstreams: RawDictionary<t.T.AsynchronousInterfaceReference<pd.SourceLocation>>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
     return ['constructor', {
         'interface': inf,
         'downstreams': pd.d(downstreams),
@@ -184,17 +177,10 @@ export function afunction(out: t.T.Glossary.asynchronous.algorithms.D._lfunction
     }]
 }
 
-export function sbuilder(in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, out: t.T.SynchronousInterfaceReference<pd.SourceLocation>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
-    return ['builder', {
+export function procedure(in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, out: t.T.SynchronousInterfaceReference<pd.SourceLocation>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
+    return ['procedure', {
         'in': in_,
         'out': out,
-    }]
-}
-
-export function sconstructor(out: t.T.SynchronousInterfaceReference<pd.SourceLocation>, downstream: t.T.SynchronousInterfaceReference<pd.SourceLocation>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
-    return ['constructor', {
-        'interface': out,
-        'downstream': downstream,
     }]
 }
 

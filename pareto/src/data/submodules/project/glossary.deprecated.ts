@@ -21,9 +21,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "context": member(ref(typeReference("Context"))),
             "type": member(taggedUnion({
                 "asynchronous": taggedUnion({
-                    "builder": group({
-                        "builder": member(string()),
-                    }),
                     "constructor": group({
                         "constructor": member(string()),
                     }),
@@ -32,11 +29,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     }),
                 }),
                 "synchronous": taggedUnion({
-                    "builder": group({
-                        "builder": member(string()),
-                    }),
-                    "constructor": group({
-                        "constructor": member(string()),
+                    "procedure": group({
+                        "procedure": member(string()),
                     }),
                     "function": group({
                         "function": member(string()),

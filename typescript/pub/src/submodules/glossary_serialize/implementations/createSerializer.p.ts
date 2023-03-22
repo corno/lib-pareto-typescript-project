@@ -532,19 +532,19 @@ export const $$: createSerializer = ($d) => {
                                             $i.snippet(`"${$.key}": `)
                                             pl.cc($.value, ($) => {
                                                 switch ($[0]) {
-                                                    case 'builder':
+                                                    case 'constructor':
                                                         pl.cc($[1], ($) => {
-                                                            $i.snippet(`['builder', {`)
+                                                            $i.snippet(`['constructor', {`)
                                                             $i.indent(($i) => {
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`'in': `)
-                                                                    serializeTypeReference($.in, $i)
+                                                                    $i.snippet(`'interface': `)
+                                                                    serializeAsynchronousInterfaceReference($.interface, $i)
                                                                     $i.snippet(`,`)
                                                                 })
                                                                 $i.nestedLine(($i) => {
-                                                                    $i.snippet(`'out': d({`)
+                                                                    $i.snippet(`'downstreams': d({`)
                                                                     $i.indent(($i) => {
-                                                                        $d.dictionaryForEach($.out, ($) => {
+                                                                        $d.dictionaryForEach($.downstreams, ($) => {
                                                                             $i.nestedLine(($i) => {
                                                                                 $i.snippet(`"${$.key}": `)
                                                                                 serializeAsynchronousInterfaceReference($.value, $i)
@@ -558,32 +558,6 @@ export const $$: createSerializer = ($d) => {
                                                             $i.snippet(`}]`)
                                                         })
                                                         break
-                                                        case 'constructor':
-                                                            pl.cc($[1], ($) => {
-                                                                $i.snippet(`['constructor', {`)
-                                                                $i.indent(($i) => {
-                                                                    $i.nestedLine(($i) => {
-                                                                        $i.snippet(`'interface': `)
-                                                                        serializeAsynchronousInterfaceReference($.interface, $i)
-                                                                        $i.snippet(`,`)
-                                                                    })
-                                                                    $i.nestedLine(($i) => {
-                                                                        $i.snippet(`'downstreams': d({`)
-                                                                        $i.indent(($i) => {
-                                                                            $d.dictionaryForEach($.downstreams, ($) => {
-                                                                                $i.nestedLine(($i) => {
-                                                                                    $i.snippet(`"${$.key}": `)
-                                                                                    serializeAsynchronousInterfaceReference($.value, $i)
-                                                                                    $i.snippet(`,`)
-                                                                                })
-                                                                            })
-                                                                        })
-                                                                        $i.snippet(`}),`)
-                                                                    })
-                                                                })
-                                                                $i.snippet(`}]`)
-                                                            })
-                                                            break
                                                     case 'function':
                                                         pl.cc($[1], ($) => {
                                                             $i.snippet(`['function', {`)
@@ -592,23 +566,7 @@ export const $$: createSerializer = ($d) => {
 
                                                                     $i.nestedLine(($i) => {
                                                                         $i.snippet(`'in': `)
-                                                                        switch ($.in[0]) {
-                                                                            case 'data':
-                                                                                pl.cc($.in[1], ($) => {
-                                                                                    $i.snippet(`['data', `)
-                                                                                    serializeTypeReference($, $i)
-                                                                                    $i.snippet(`]`)
-                                                                                })
-                                                                                break
-                                                                            // case 'resource':
-                                                                            //     pl.cc($.in[1], ($) => {
-                                                                            //         $i.snippet(`['resource', `)
-                                                                            //         serializeResourceReference($, $i)
-                                                                            //         $i.snippet(`]`)
-                                                                            //     })
-                                                                            //     break
-                                                                            default: pl.au($.in[0])
-                                                                        }
+                                                                        serializeTypeReference($.in, $i)
                                                                         $i.snippet(`,`)
                                                                     })
                                                                     $i.nestedLine(($i) => {
@@ -661,28 +619,10 @@ export const $$: createSerializer = ($d) => {
                                             $i.snippet(`"${$.key}": `)
                                             pl.cc($.value, ($) => {
                                                 switch ($[0]) {
-                                                    case 'builder':
+                                                    case 'procedure':
                                                         pl.cc($[1], ($) => {
-                                                            $i.snippet(`['builder', {`)
+                                                            $i.snippet(`['procedure', {`)
                                                             $i.indent(($i) => {
-                                                            })
-                                                            $i.snippet(`}]`)
-                                                        })
-                                                        break
-                                                    case 'constructor':
-                                                        pl.cc($[1], ($) => {
-                                                            $i.snippet(`['constructor', {`)
-                                                            $i.indent(($i) => {
-                                                                $i.nestedLine(($i) => {
-                                                                    $i.snippet(`'interface': `)
-                                                                    serializeSynchronousInterfaceReference($.interface, $i)
-                                                                    $i.snippet(`,`)
-                                                                })
-                                                                $i.nestedLine(($i) => {
-                                                                    $i.snippet(`'downstream': `)
-                                                                    serializeSynchronousInterfaceReference($.downstream, $i)
-                                                                    $i.snippet(`,`)
-                                                                })
                                                             })
                                                             $i.snippet(`}]`)
                                                         })

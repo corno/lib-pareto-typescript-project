@@ -104,11 +104,6 @@ export const $$: createProjectSerializer = (
                 case 'asynchronous':
                     pl.cc($.type[1], ($) => {
                         switch ($[0]) {
-                            case 'builder':
-                                pl.cc($[1], ($) => {
-                                    $i.snippet(`ASYNC.A.B.${$d.createIdentifier(`${$.builder}`)}`)
-                                })
-                                break
                             case 'constructor':
                                 pl.cc($[1], ($) => {
                                     $i.snippet(`ASYNC.A.C.${$d.createIdentifier(`${$.constructor}`)}`)
@@ -126,14 +121,9 @@ export const $$: createProjectSerializer = (
                 case 'synchronous':
                     pl.cc($.type[1], ($) => {
                         switch ($[0]) {
-                            case 'builder':
+                            case 'procedure':
                                 pl.cc($[1], ($) => {
-                                    $i.snippet(`SYNC.A.B.${$d.createIdentifier(`${$.builder}`)}`)
-                                })
-                                break
-                            case 'constructor':
-                                pl.cc($[1], ($) => {
-                                    $i.snippet(`SYNC.A.C.${$d.createIdentifier(`${$.constructor}`)}`)
+                                    $i.snippet(`SYNC.A.P.${$d.createIdentifier(`${$.procedure}`)}`)
                                 })
                                 break
                             case 'function':
@@ -666,10 +656,6 @@ export const $$: createProjectSerializer = (
                                                 case 'asynchronous':
                                                     return pl.cc($.type[1], ($) => {
                                                         switch ($[0]) {
-                                                            case 'builder':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return "a.b"
-                                                                })
                                                             case 'constructor':
                                                                 return pl.cc($[1], ($) => {
                                                                     return "a.c"
@@ -684,13 +670,9 @@ export const $$: createProjectSerializer = (
                                                 case 'synchronous':
                                                     return pl.cc($.type[1], ($) => {
                                                         switch ($[0]) {
-                                                            case 'builder':
+                                                            case 'procedure':
                                                                 return pl.cc($[1], ($) => {
-                                                                    return "s.b"
-                                                                })
-                                                            case 'constructor':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return "s.c"
+                                                                    return "s.p"
                                                                 })
                                                             case 'function':
                                                                 return pl.cc($[1], ($) => {
@@ -1018,7 +1000,7 @@ export const $$: createProjectSerializer = (
                                         $i.line(`export const $$: A.main = ($) => {`)
                                         $i.line(`    g_test.$b.createTestProgram({`)
                                         $i.line(`        'getTestSet': getTestSet,`)
-                                        $i.line(`    })(null)($)`)
+                                        $i.line(`    })()($)`)
                                         $i.line(`}`)
                                     })
                                 })

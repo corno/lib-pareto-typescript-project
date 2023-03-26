@@ -3,10 +3,11 @@ import * as pd from 'pareto-core-dev'
 import * as pt from 'pareto-core-types'
 
 import * as g_fp from "lib-fountain-pen"
-import * as g_this from "../glossary"
-import * as g_project from "../../project"
 import * as g_foreach from "res-pareto-foreach"
 import * as g_ts from "res-typescript"
+import * as g_this from "../glossary"
+import * as g_project from "../../project"
+
 
 import { A } from "../api.generated"
 
@@ -16,18 +17,8 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
     readonly 'createIdentifier': g_ts.SYNC.A.F.CreateIdentifier
     readonly 'serializeGlossary': g_this.SYNC.A.P.SerializeGlossary<GAnnotation>
     readonly 'serializeImplementation': g_this.SYNC.A.P.SerializeImplementation<GAnnotation>
-    readonly 'enrichedForEachContextArgument': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_project.T.Context.arguments.D<GAnnotation>>
-    readonly 'enrichedForEachAlgorithm': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_project.T.ModuleDefinition.api.root.algorithms.D<GAnnotation>>
-    readonly 'forEachAlgorithm': g_foreach.SYNC.A.P.DictionaryForEach<g_project.T.ModuleDefinition.api.root.algorithms.D<GAnnotation>>
-    readonly 'enrichedForEachAlgorithmParameter': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_project.T.ModuleDefinition.api.root.algorithms.D.parameters.D<GAnnotation>>
-    readonly 'enrichedForEachAlgorithmDependency': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_project.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<GAnnotation>>
-    readonly 'forEachDependency': g_foreach.SYNC.A.P.DictionaryForEach<g_project.T.Project.dependencies.D<GAnnotation>>
-    readonly 'forEachNativeDependency': g_foreach.SYNC.A.P.DictionaryForEach<g_project.T.Project._ltype.resource.temp.nativeDependencies.D<GAnnotation>>
-    readonly 'enrichedForEachDevDependency': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_project.T.Project._ltype.resource.temp.devDependencies.D<GAnnotation>>
-    readonly 'enrichedForEachExecutable': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_project.T.Project._ltype.library.executables.D<GAnnotation>>
-    readonly 'enrichedForEachSideEffect': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_project.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.side__effects.D<GAnnotation>>
-    readonly 'forEachSubModule': g_foreach.SYNC.A.P.DictionaryForEach<g_project.T.Project._ltype.library.submodules.D<GAnnotation>>
-    readonly 'forEachImport2': g_foreach.SYNC.A.P.DictionaryForEach<string>
+    readonly 'enrichedDictionaryForEach': g_foreach.SYNC.A.P.EnrichedDictionaryForEach
+    readonly 'dictionaryForEach': g_foreach.SYNC.A.P.DictionaryForEach
 }) => {
     return ($: g_project.T.Project<GAnnotation>, $i: g_fp.SYNC.I.Directory) => {
         function doOptional<T>(
@@ -85,7 +76,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                     break
                 default: pl.au($.type[0])
             }
-            $d.enrichedForEachContextArgument($.context.arguments, {
+            $d.enrichedDictionaryForEach($.context.arguments, {
                 'onEmpty': () => {
                 },
                 'onNotEmpty': ($c) => {
@@ -222,14 +213,14 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                         function serializeAPI(
                             $: {
 
-                                readonly 'api': g_project.T.ModuleDefinition.api.root<g_this.T.Annotation<GAnnotation>>
+                                readonly 'api': g_project.T.ModuleDefinition.api.root<GAnnotation>
                                 readonly 'imports': pt.Dictionary<string>
                             },
                             $i: g_fp.SYNC.I.Block
                         ) {
                             $i.line(`import * as pt from 'pareto-core-types'`)
                             $i.line(``)
-                            $d.forEachImport2($.imports, ($) => {
+                            $d.dictionaryForEach($.imports, ($) => {
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`import * as g_${$.key} from "${$.value}"`)
                                 })
@@ -239,13 +230,13 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`export namespace A {`)
                                     $i.indent(($i) => {
-                                        $d.forEachAlgorithm($.algorithms, ($) => {
+                                        $d.dictionaryForEach($.algorithms, ($) => {
 
                                             $i.line(``)
                                             $i.nestedLine(($i) => {
                                                 $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
                                                 pl.cc($.value, ($) => {
-                                                    $d.enrichedForEachAlgorithmParameter($.parameters, {
+                                                    $d.enrichedDictionaryForEach($.parameters, {
                                                         'onEmpty': () => {
 
                                                         },
@@ -273,7 +264,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                                         $i.snippet(`, `)
                                                                     }
                                                                 })
-                                                                $d.enrichedForEachAlgorithmDependency($.dependencies, {
+                                                                $d.enrichedDictionaryForEach($.dependencies, {
                                                                     'onEmpty': () => { },
                                                                     'onNotEmpty': ($c) => {
                                                                         $i.snippet(`$d: {`)
@@ -290,7 +281,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                                         $i.snippet(`}, `)
                                                                     }
                                                                 })
-                                                                $d.enrichedForEachSideEffect($['side effects'], {
+                                                                $d.enrichedDictionaryForEach($['side effects'], {
                                                                     'onEmpty': () => { },
                                                                     'onNotEmpty': ($c) => {
                                                                         $i.snippet(`$se: {`)
@@ -314,7 +305,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                                                             default: pl.au($.type[0])
                                                                                         }
 
-                                                                                        $d.enrichedForEachContextArgument($.context.arguments, {
+                                                                                        $d.enrichedDictionaryForEach($.context.arguments, {
                                                                                             'onEmpty': () => {
 
                                                                                             },
@@ -345,7 +336,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                     pl.cc($.definition, ($) => {
                                                         serializeAlgorithmTypeReference($, $i)
                                                     })
-                                                    $d.enrichedForEachAlgorithmParameter($.parameters, {
+                                                    $d.enrichedDictionaryForEach($.parameters, {
                                                         'onEmpty': () => {
 
                                                         },
@@ -366,7 +357,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                 $i.line(``)
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`export type API = `)
-                                    $d.enrichedForEachAlgorithm($.algorithms, {
+                                    $d.enrichedDictionaryForEach($.algorithms, {
                                         'onEmpty': () => {
                                             //typescript treats an empty object very lax therefor I make it a null
                                             $i.snippet(`null`)
@@ -483,7 +474,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                     $i.line(`  "description": "${$.description}",`)
                     $i.line(``)
                     $i.line(`  "dependencies": {`)
-                    $d.forEachDependency($.dependencies, ($) => {
+                    $d.dictionaryForEach($.dependencies, ($) => {
                         $i.line(`    "${$.key}": "^0.0.0",`)
                     })
                     switch ($.type[0]) {
@@ -494,7 +485,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                             break
                         case 'library':
                             pl.cc($.type[1], ($) => {
-                                $d.enrichedForEachExecutable($.executables, {
+                                $d.enrichedDictionaryForEach($.executables, {
                                     onEmpty: () => {
                                     },
                                     onNotEmpty: ($c) => {
@@ -511,7 +502,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                             break
                         case 'resource':
                             pl.cc($.type[1], ($) => {
-                                $d.forEachNativeDependency($.temp.nativeDependencies, ($) => {
+                                $d.dictionaryForEach($.temp.nativeDependencies, ($) => {
                                     $i.line(`    "${$.key}": "^0.0.0",`)
                                 })
                                 $i.line(`    "pareto-core-internals": "^0.0.0"`)
@@ -528,7 +519,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                             break
                         case 'library':
                             pl.cc($.type[1], ($) => {
-                                $d.enrichedForEachExecutable($.executables, {
+                                $d.enrichedDictionaryForEach($.executables, {
                                     onEmpty: () => {
 
                                     },
@@ -545,7 +536,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                             break
                         case 'resource':
                             pl.cc($.type[1], ($) => {
-                                $d.enrichedForEachDevDependency($.temp.devDependencies, {
+                                $d.enrichedDictionaryForEach($.temp.devDependencies, {
                                     onEmpty: () => {
 
                                     },
@@ -660,7 +651,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                             case 'typescript':
                                                 pl.cc($[1], ($) => {
                                                     $i.directory("implementations", ($i) => {
-                                                        $d.forEachAlgorithm(api.algorithms, ($) => {
+                                                        $d.dictionaryForEach(api.algorithms, ($) => {
                                                             $i.allowedManual(`${$.key}.${getExtension($.value.definition)}.ts`)
                                                         })
                                                     })
@@ -672,7 +663,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                     $i.file("implementation.generated.ts", ($i) => {
                                         const imp = $.module.implementation
                                         $i.line(`import { API } from "./api.generated"`)
-                                        $d.forEachAlgorithm(api.algorithms, ($) => {
+                                        $d.dictionaryForEach(api.algorithms, ($) => {
                                             const suffix = pl.cc($, ($) => {
 
                                                 const ext = getExtension($.value.definition)
@@ -693,7 +684,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                         $i.line(``)
                                         $i.nestedLine(($i) => {
                                             $i.snippet(`export const $api: API = `)
-                                            $d.enrichedForEachAlgorithm(api.algorithms, {
+                                            $d.enrichedDictionaryForEach(api.algorithms, {
                                                 'onEmpty': () => {
                                                     $i.snippet(`null`)
                                                 },
@@ -720,7 +711,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                     })
                                 }
                                 globals($i)
-                                $d.enrichedForEachExecutable($.executables, {
+                                $d.enrichedDictionaryForEach($.executables, {
                                     'onEmpty': () => {
 
                                     },
@@ -752,7 +743,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                     })
                                 })
                                 $i.directory("submodules", ($i) => {
-                                    $d.forEachSubModule($.submodules, ($) => {
+                                    $d.dictionaryForEach($.submodules, ($) => {
                                         $i.directory(`${$.key}`, ($i) => {
                                             pl.cc($.value, ($) => {
                                                 doModule(
@@ -789,7 +780,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                 case 'typescript':
                                                     pl.cc($.implementation[1], ($) => {
                                                         $i.directory("implementations", ($i) => {
-                                                            $d.forEachAlgorithm(api.root.algorithms, ($) => {
+                                                            $d.dictionaryForEach(api.root.algorithms, ($) => {
                                                                 $i.allowedManual(`${$.key}.b.ts`)
                                                             })
                                                         })
@@ -812,13 +803,13 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                     }
                                                 })
                                                 $i.line(`import { API } from "./api.generated"`)
-                                                $d.forEachAlgorithm($.definition.api.root.algorithms, ($) => {
+                                                $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                                     $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
                                                 })
                                                 $i.line(``)
                                                 $i.nestedLine(($i) => {
                                                     $i.snippet(`export const $api: API = `)
-                                                    $d.enrichedForEachAlgorithm($.definition.api.root.algorithms, {
+                                                    $d.enrichedDictionaryForEach($.definition.api.root.algorithms, {
                                                         'onEmpty': () => {
                                                             $i.snippet(`null`)
                                                         },
@@ -870,21 +861,21 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                     $i
                                 )
                                 $i.directory("implementations", ($i) => {
-                                    $d.forEachAlgorithm($.definition.api.root.algorithms, ($) => {
+                                    $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                         $i.allowedManual(`${$.key}.native.ts`)
                                     })
                                 })
                                 $i.file("implementation.generated.ts", ($i) => {
 
                                     $i.line(`import { API } from "./api.generated"`)
-                                    $d.forEachAlgorithm($.definition.api.root.algorithms, ($) => {
+                                    $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                         $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.native"`)
                                     })
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
                                         $i.snippet(`export const $r: API = {`)
                                         $i.indent(($i) => {
-                                            $d.forEachAlgorithm($.definition.api.root.algorithms, ($) => {
+                                            $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                                 $i.nestedLine(($i) => {
                                                     $i.snippet(`'${$.key}': `)
                                                     $i.snippet(`${$d.createIdentifier(`i${$.key}`)}`)
@@ -924,7 +915,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                     $i.file("package.json", ($i) => {
                         $i.line(`{`)
                         $i.line(`  "dependencies": {`)
-                        $d.forEachDependency($.dependencies, ($) => {
+                        $d.dictionaryForEach($.dependencies, ($) => {
                             $i.line(`    "${$.key}": "^0.0.0",`)
                         })
                         $i.line(`    "lib-pareto-test": "^0.0.0",`)

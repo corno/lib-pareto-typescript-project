@@ -2,7 +2,7 @@ import * as pd from 'pareto-core-data'
 
 import {
     data, dictionary, externalTypeReference, glossaryParameter, group, imp,
-    member, procedure, ref, sInterfaceReference, string, type, typeReference
+    member, procedure, ref, sExternalInterfaceReference, string, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -14,14 +14,13 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "Annotation": null,
     }),
     'imports': d({
-        "algorithm": imp({ "Annotation": typeReference("Annotation") }),
+        "algorithm": imp({ "Annotation": glossaryParameter("Annotation") }),
         "common": imp({}),
         "fp": imp({}),
-        "glossary": imp({ "Annotation": typeReference("Annotation") }),
-        "project": imp({ "Annotation": typeReference("Annotation") }),
+        "glossary": imp({ "Annotation": glossaryParameter("Annotation") }),
+        "project": imp({ "Annotation": glossaryParameter("Annotation") }),
     }),
     'types': d({
-        "Annotation": type(glossaryParameter("Annotation")),
         "SerializeGlossaryData": type(group({
             "glossary": member(ref(externalTypeReference("glossary", "Glossary"))),
             "imports": member(dictionary(string())),
@@ -34,13 +33,13 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'synchronous': {
         'interfaces': d({}),
         'algorithms': d({
-            "ValidateFiles": procedure(data(externalTypeReference("common", "Null")), sInterfaceReference("fp", "Directory")),
-            "SerializeGlossary": procedure(data(typeReference("SerializeGlossaryData")), sInterfaceReference("fp", "Directory")),
-            "SerializeImplementation": procedure(data(externalTypeReference("algorithm", "Implementation")), sInterfaceReference("fp", "Directory")),
-            "SerializeParetoEnvironment": procedure(data(externalTypeReference("common", "Null")), sInterfaceReference("fp", "Directory")),
-            "SerializeBuildEnvironment": procedure(data(externalTypeReference("common", "Null")), sInterfaceReference("fp", "Directory")),
-            "ProjectToDirectory": procedure(data(externalTypeReference("project", "Project")), sInterfaceReference("fp", "Directory")),
-            "SerializeStates": procedure(data(externalTypeReference("algorithm", "States")), sInterfaceReference("fp", "Block")),
+            "ValidateFiles": procedure(data(externalTypeReference("common", "Null")), sExternalInterfaceReference("fp", "Directory")),
+            "SerializeGlossary": procedure(data(typeReference("SerializeGlossaryData")), sExternalInterfaceReference("fp", "Directory")),
+            "SerializeImplementation": procedure(data(externalTypeReference("algorithm", "Implementation")), sExternalInterfaceReference("fp", "Directory")),
+            "SerializeParetoEnvironment": procedure(data(externalTypeReference("common", "Null")), sExternalInterfaceReference("fp", "Directory")),
+            "SerializeBuildEnvironment": procedure(data(externalTypeReference("common", "Null")), sExternalInterfaceReference("fp", "Directory")),
+            "ProjectToDirectory": procedure(data(externalTypeReference("project", "Project")), sExternalInterfaceReference("fp", "Directory")),
+            "SerializeStates": procedure(data(externalTypeReference("algorithm", "States")), sExternalInterfaceReference("fp", "Block")),
         }),
     },
 }

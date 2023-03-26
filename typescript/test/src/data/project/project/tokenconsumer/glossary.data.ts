@@ -11,6 +11,8 @@ import {
     type,
     ref,
     aInterfaceMethod,
+    streamconsumer,
+    aInterface,
 } from "../../../../../../pub/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "../../../../../../pub/dist/submodules/glossary"
@@ -23,10 +25,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'imports': d({}),
     'types': d({
-        "Annotation": type(glossaryParameter("Annotation")),
         "AnnotatedToken": type(group({
             "token": member(ref(typeReference("Token"))),
-            "annotation": member(glossaryParameter("Annotation"))
+            "annotation": member(ref(glossaryParameter("Annotation")))
         })),
         "MultilineStringData": type(group({
             "lines": member(array(string()))
@@ -64,16 +65,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'asynchronous': {
         'interfaces': d({
-            "TokenConsumer": ['streamconsumer', {
-                'data': aInterfaceMethod(typeReference("AnnotatedToken")),
-                'end': aInterfaceMethod(typeReference("Annotation")), //should be a parameter reference
-            }]
+            "TokenConsumer": aInterface(streamconsumer(
+                aInterfaceMethod(typeReference("AnnotatedToken")),
+                aInterfaceMethod(typeReference("Annotation")), //should be a parameter reference
+            ))
         }),
         'algorithms': d({}),
 
     },
     'synchronous': {
-        'interfaces': d({  }),
+        'interfaces': d({}),
         'algorithms': d({}),
     },
 }

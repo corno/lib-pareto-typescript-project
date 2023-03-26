@@ -21,14 +21,12 @@ export const $: g_project.T.ModuleDefinition<pd.SourceLocation> = {
     'glossary': {
         'root': glossary,
         'imports': d({
-            "main": main(),
-            "common": external("glo-pareto-common"),
         }),
     },
     'api': {
         'root': api,
         'imports': d({
-            "this": this_(),
+            "main": main(),
         }),
     },
 

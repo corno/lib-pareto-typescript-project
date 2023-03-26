@@ -13,10 +13,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "Annotation": null,
     }),
     'imports': d({
-        "glossary": imp({ "Annotation": typeReference("Annotation") }),
+        "glossary": imp({ "Annotation": glossaryParameter("Annotation") }),
     }),
     'types': d({
-        "Annotation": type(glossaryParameter("Annotation")),
         "AlgorithmTypeReference": type(group({
             "context": member(ref(typeReference("Context"))),
             "type": member(taggedUnion({

@@ -4,8 +4,6 @@ import * as g_fp from "lib-fountain-pen"
 
 export namespace T {
     
-    export type Annotation<GAnnotation> = GAnnotation
-    
     export namespace AsynchronousExpression {
         
         export namespace call {

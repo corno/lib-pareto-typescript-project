@@ -1,11 +1,12 @@
 import * as pd from 'pareto-core-data'
 
 import {
+    aExternalInterfaceReference,
+    aInterface,
     aInterfaceMethod,
     aInterfaceReference,
     constructor,
-    data, externalTypeReference, glossaryParameter, group, imp, member,
-    null_, procedure, ref, sInterfaceMethod, sInterfaceReference, streamconsumer, string, taggedUnion, type, typeReference
+    data, externalTypeReference, glossaryParameter, group, imp, member, procedure, ref, sExternalInterfaceReference, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -21,11 +22,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "fp": imp({}),
         "main": imp({}),
         "project": imp({
-            "Annotation": typeReference("Annotation")
+            "Annotation": glossaryParameter("Annotation")
         }),
     }),
     'types': d({
-        "Annotation": type(glossaryParameter("Annotation")),
         "ProjectSettings": type(group({
             "project": member(ref(externalTypeReference("project", "Project"))),
             "mainData": member(ref(externalTypeReference("main", "MainData"))),
@@ -33,15 +33,22 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'asynchronous': {
         'interfaces': d({
+            "GenerateProject": aInterface(aInterfaceMethod(typeReference("ProjectSettings"))),
+            "Log": aInterface(['reference', aExternalInterfaceReference("common", "String")]),
+            "LogError": aInterface(['reference', aExternalInterfaceReference("common", "String")]),
         }),
         'algorithms': d({
+            "CreateProjectGeneratorAndReporter": constructor(aInterfaceReference("GenerateProject"), {}),
+            "CreateProjectGenerator": constructor(aInterfaceReference("GenerateProject"), {
+                "log": aInterfaceReference("Log"),
+                "logError": aInterfaceReference("LogError"),
+            }),
         }),
     },
     'synchronous': {
         'interfaces': d({
         }),
         'algorithms': d({
-            "GenerateProjectAndReport": procedure(data(typeReference("ProjectSettings")), sInterfaceReference("fp", "Report")),
         }),
     },
 }

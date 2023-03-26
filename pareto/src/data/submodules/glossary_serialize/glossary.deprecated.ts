@@ -1,6 +1,6 @@
 import * as pd from 'pareto-core-data'
 
-import { glossaryParameter, imp, type, typeReference } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
+import { data, externalTypeReference, glossaryParameter, imp, procedure, sExternalInterfaceReference, type, typeReference } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
@@ -13,11 +13,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({
         "fp": imp({}),
         "model": imp({
-            "Annotation": typeReference("Annotation"),
+            "Annotation": glossaryParameter("Annotation"),
         }),
     }),
     'types': d({
-        "Annotation": type(glossaryParameter("Annotation")),
     }),
     'asynchronous': {
         'interfaces': d({}),
@@ -26,27 +25,32 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'synchronous': {
         'interfaces': d({}),
         'algorithms': d({
-            "Serialize": ['procedure', {
-                'in': ['data', {
-                    'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
-                        'glossary': {
-                            'key': "model",
-                            'annotation': pd.getLocationInfo(0),
-                        },
-                    }],
-                    'type': "Glossary",
-                    'arguments': d({}),
-                }],
-                'out': {
-                    'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
-                        'glossary': {
-                            'key': "fp",
-                            'annotation': pd.getLocationInfo(0),
-                        },
-                    }],
-                    'interface': "Block",
-                },
-            }],
+            "Serialize": procedure(data(externalTypeReference("model", "Glossary")), sExternalInterfaceReference("fp", "Block")),
+            // "Serialize": {
+            //     'parameters': d({}),
+            //     'type': ['procedure', {
+            //         'in': ['data', {
+            //             'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
+            //                 'glossary': {
+            //                     'key': "model",
+            //                     'annotation': pd.getLocationInfo(0),
+            //                 },
+            //             }],
+            //             'type': "Glossary",
+            //             'arguments': d({}),
+            //         }],
+            //         'out': {
+            //             'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
+            //                 'glossary': {
+            //                     'key': "fp",
+            //                     'annotation': pd.getLocationInfo(0),
+            //                 },
+            //             }],
+            //             'interface': "Block",
+            //             'arguments': d({}),
+            //         },
+            //     }],
+            // }
 
         }),
     },

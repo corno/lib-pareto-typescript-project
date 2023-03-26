@@ -7,13 +7,8 @@ import * as g_ts from "res-typescript"
 
 import { A } from "../api.generated"
 
-export const $$: A.serializeTemplate = <GAnnotation>($d: {
-    readonly 'createIdentifier': g_ts.SYNC.A.F.CreateIdentifier
-    readonly 'forEachAlgorithm': g_foreach.SYNC.A.P.DictionaryForEach<g_project.T.ModuleDefinition.api.root.algorithms.D<GAnnotation>>
-    readonly 'forEachSubModule': g_foreach.SYNC.A.P.DictionaryForEach<g_project.T.Project._ltype.library.submodules.D<GAnnotation>>
-
-}) => {
-    return ($: g_project.T.Project<GAnnotation>, $i: g_fp.SYNC.I.Directory) => {
+export const $$: A.serializeTemplate = ($d) => {
+    return <GAnnotation>($: g_project.T.Project<GAnnotation>, $i: g_fp.SYNC.I.Directory) => {
         $i.directory("tmp", ($i) => {
             $i.directory("templates", ($i) => {
                 switch ($.type[0]) {
@@ -31,7 +26,7 @@ export const $$: A.serializeTemplate = <GAnnotation>($d: {
                                     $i: g_fp.SYNC.I.Directory,
                                 ) {
                                     $i.directory("implementations", ($i) => {
-                                        $d.forEachAlgorithm($.algorithms, ($) => {
+                                        $d.dictionaryForEach($.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)
@@ -79,7 +74,7 @@ export const $$: A.serializeTemplate = <GAnnotation>($d: {
 
                                     })
                                     $i.directory("modules", ($i) => {
-                                        $d.forEachSubModule($.submodules, ($) => {
+                                        $d.dictionaryForEach($.submodules, ($) => {
                                             $i.directory($.key, ($i) => {
                                                 doModule($.value, $i)
                                             })
@@ -93,7 +88,7 @@ export const $$: A.serializeTemplate = <GAnnotation>($d: {
                                         $: g_project.T.ModuleDefinition.api.root<GAnnotation>,
                                         $i: g_fp.SYNC.I.Directory,
                                     ) {
-                                        $d.forEachAlgorithm($.algorithms, ($) => {
+                                        $d.dictionaryForEach($.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)
@@ -131,7 +126,7 @@ export const $$: A.serializeTemplate = <GAnnotation>($d: {
                                 $i.directory("src", ($i) => {
 
                                     $i.directory("implementations", ($i) => {
-                                        $d.forEachAlgorithm($.definition.api.root.algorithms, ($) => {
+                                        $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)
@@ -162,7 +157,7 @@ export const $$: A.serializeTemplate = <GAnnotation>($d: {
                                 $i.directory("src", ($i) => {
                                     $i.directory("modules", ($i) => {
 
-                                        $d.forEachAlgorithm($.definition.api.root.algorithms, ($) => {
+                                        $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                             $i.file(`${$.key}.p.ts`, ($i) => {
                                                 $i.line(`import * as pl from 'pareto-core-lib'`)
                                                 $i.line(``)

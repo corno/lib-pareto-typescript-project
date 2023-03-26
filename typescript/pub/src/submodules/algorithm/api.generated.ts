@@ -6,7 +6,7 @@ import * as g_this from "../algorithm"
 export namespace A {
     
     export type serializeImplementation = <GAnnotation>($d: {
-        readonly 'forEachImplementation': g_foreach.SYNC.A.P.DictionaryForEach<g_this.T.Implementation.implementations.D<GAnnotation>>
+        readonly 'dictionaryForEach': g_foreach.SYNC.A.P.DictionaryForEach
     }, ) => g_this.SYNC.A.P.SerializeImplementation<GAnnotation>
 }
 

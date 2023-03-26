@@ -112,8 +112,6 @@ export namespace T {
             ]
     }
     
-    export type Annotation<GAnnotation> = GAnnotation
-    
     export namespace Context {
         
         export namespace arguments {
@@ -490,7 +488,7 @@ export namespace T {
                 | ['temp submodule', string]
             >
             
-            export type root<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+            export type root<GAnnotation> = g_glossary.T.Glossary<GAnnotation>
         }
         
         export type glossary<GAnnotation> = {
@@ -500,7 +498,7 @@ export namespace T {
                 | ['sibling', string]
                 | ['temp submodule', string]
             >
-            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+            readonly 'root': g_glossary.T.Glossary<GAnnotation>
         }
     }
     
@@ -546,7 +544,7 @@ export namespace T {
                 | ['sibling', string]
                 | ['temp submodule', string]
             >
-            readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+            readonly 'root': g_glossary.T.Glossary<GAnnotation>
         }
     }
     
@@ -586,14 +584,14 @@ export namespace T {
                     | ['external', string]
                 >
                 
-                export type root<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                export type root<GAnnotation> = g_glossary.T.Glossary<GAnnotation>
             }
             
             export type glossary<GAnnotation> = {
                 readonly 'imports': pt.Dictionary<
                     | ['external', string]
                 >
-                readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                readonly 'root': g_glossary.T.Glossary<GAnnotation>
             }
             
             export namespace library {
@@ -717,7 +715,7 @@ export namespace T {
                 readonly 'imports': pt.Dictionary<
                     | ['external', string]
                 >
-                readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                readonly 'root': g_glossary.T.Glossary<GAnnotation>
             }]
             | ['library', {
                 readonly 'bindings': [ false ] | [ true, {
@@ -751,7 +749,7 @@ export namespace T {
                 readonly 'imports': pt.Dictionary<
                     | ['external', string]
                 >
-                readonly 'root': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+                readonly 'root': g_glossary.T.Glossary<GAnnotation>
             }]
             | ['library', {
                 readonly 'bindings': [ false ] | [ true, {

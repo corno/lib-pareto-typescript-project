@@ -2,20 +2,13 @@ import * as pl from 'pareto-core-lib'
 
 import * as g_algorithm from "../../algorithm"
 import * as g_fp from "lib-fountain-pen"
-import * as g_foreach from "res-pareto-foreach"
-import * as g_ts from "res-typescript"
 
 import { A } from "../api.generated"
 
-export const $$: A.serializeImplementation = <GAnnotation>($d: {
-    readonly 'createIdentifier': g_ts.SYNC.A.F.CreateIdentifier
-    readonly 'forEachImplementation': g_foreach.SYNC.A.P.DictionaryForEach<g_algorithm.T.Implementation.implementations.D<GAnnotation>>
-    readonly 'forEachInnerFunction': g_foreach.SYNC.A.P.DictionaryForEach<g_algorithm.T.ProcedureBlock.innerFunctions.D<GAnnotation>>
+export const $$: A.serializeImplementation = ($d) => {
 
-}) => {
-
-    return ($: g_algorithm.T.Implementation<GAnnotation>, $i: g_fp.SYNC.I.Directory) => {
-        $d.forEachImplementation($.implementations, ($) => {
+    return <GAnnotation>($: g_algorithm.T.Implementation<GAnnotation>, $i: g_fp.SYNC.I.Directory) => {
+        $d.dictionaryForEach($.implementations, ($) => {
             $i.file(`XXXXXXXXXXXXXXXX${$.key}`, ($i) => {
                 $i.line(``)
                 $i.line(`import * as g_fp from "lib-fountain-pen"`)
@@ -101,7 +94,7 @@ export const $$: A.serializeImplementation = <GAnnotation>($d: {
                                                     $i.snippet(`{`)
                                                     $i.indent(($i) => {
                                                         if ($.innerFunctions !== undefined) {
-                                                            $d.forEachInnerFunction($.innerFunctions, ($) => {
+                                                            $d.dictionaryForEach($.innerFunctions, ($) => {
                                                                 $i.nestedLine(($i) => {
                                                                     $i.snippet(`function ${$.key}($: g_this.T.${$d.createIdentifier($.key)}, $i: g_fp.I.Line) `)
                                                                     doImplementationType($.value.type, $i)

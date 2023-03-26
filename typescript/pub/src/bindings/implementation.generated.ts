@@ -1,6 +1,6 @@
 import { API } from "./api.generated"
-import { $$ as igenerateProject } from "./implementations/generateProject.p"
+import { $$ as icreateProjectGeneratorAndReporter } from "./implementations/createProjectGeneratorAndReporter.p"
 
 export const $api: API = {
-    'generateProject': igenerateProject,
+    'createProjectGeneratorAndReporter': icreateProjectGeneratorAndReporter,
 }

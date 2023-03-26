@@ -8,11 +8,9 @@ import * as g_project from "../../project"
 
 export namespace T {
     
-    export type Annotation<GAnnotation> = GAnnotation
-    
     export namespace SerializeGlossaryData {
         
-        export type glossary<GAnnotation> = g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+        export type glossary<GAnnotation> = g_glossary.T.Glossary<GAnnotation>
         
         export namespace imports {
             
@@ -23,7 +21,7 @@ export namespace T {
     }
     
     export type SerializeGlossaryData<GAnnotation> = {
-        readonly 'glossary': g_glossary.T.Glossary<T.Annotation<GAnnotation>>
+        readonly 'glossary': g_glossary.T.Glossary<GAnnotation>
         readonly 'imports': pt.Dictionary<string>
     }
 }

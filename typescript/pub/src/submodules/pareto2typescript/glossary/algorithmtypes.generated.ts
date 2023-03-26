@@ -21,7 +21,7 @@ export namespace SYNC {
         
         
         export namespace P {
-            export type ProjectToDirectory<GAnnotation> = ($: g_project.T.Project<T.Annotation<GAnnotation>>, $i: g_fp.SYNC.I.Directory) => void
+            export type ProjectToDirectory<GAnnotation> = ($: g_project.T.Project<GAnnotation>, $i: g_fp.SYNC.I.Directory) => void
         }
         
         
@@ -36,7 +36,7 @@ export namespace SYNC {
         
         
         export namespace P {
-            export type SerializeImplementation<GAnnotation> = ($: g_algorithm.T.Implementation<T.Annotation<GAnnotation>>, $i: g_fp.SYNC.I.Directory) => void
+            export type SerializeImplementation<GAnnotation> = ($: g_algorithm.T.Implementation<GAnnotation>, $i: g_fp.SYNC.I.Directory) => void
         }
         
         
@@ -46,7 +46,7 @@ export namespace SYNC {
         
         
         export namespace P {
-            export type SerializeStates<GAnnotation> = ($: g_algorithm.T.States<T.Annotation<GAnnotation>>, $i: g_fp.SYNC.I.Block) => void
+            export type SerializeStates<GAnnotation> = ($: g_algorithm.T.States<GAnnotation>, $i: g_fp.SYNC.I.Block) => void
         }
         
         

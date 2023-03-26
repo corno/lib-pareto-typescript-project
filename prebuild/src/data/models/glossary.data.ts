@@ -24,8 +24,7 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
     'type library': {
         'imports': d({}),
         'terminal types': d({
-            "text": null,
-            "boolean": null,
+            "identifier": null,
         }),
         'global types': d({
             "Context": globalType({}, taggedUnion({
@@ -36,44 +35,67 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                 })),
             })),
             "DataOrSynchronousInterface": globalType({}, taggedUnion({
-                "data": option(component("TypeReference", {})),
+                "data": option(component("DataSpecifier", {})),
                 "interface": option(component("SynchronousInterfaceReference", {})),
             })),
+            "TypeParameters": globalType({}, dictionary(group({}))),
             "Glossary": globalType({}, group({
                 "imports": prop(dictionary(group({
-                    "arguments": prop(dictionary(component("TypeReference", {}))),
+                    "arguments": prop(dictionary(component("DataSpecifier", {}))),
                 }))),
                 "parameters": prop(dictionary(group({}))),
                 "types": prop(dictionary(group({
-                    "parameters": prop(dictionary(group({}))),
+                    "parameters": prop(component("TypeParameters", {})),
                     "type": prop(component("Type", {})),
                 }))),
                 "synchronous": prop(group({
-                    "interfaces": prop(dictionary(component("SynchronousInterface", {}))),
-                    "algorithms": prop(dictionary(taggedUnion({
-                        "function": option(group({
-                            "in": prop(component("DataOrSynchronousInterface", {})),
-                            "out": prop(component("TypeReference", {})),
-                        })),
-                        "procedure": option(group({
-                            "in": prop(component("DataOrSynchronousInterface", {})),
-                            "out": prop(component("SynchronousInterfaceReference", {})),
-                        })),
+                    "interfaces": prop(dictionary(group({
+                        "parameters": prop(component("TypeParameters", {})),
+                        "interface": prop(component("SynchronousInterface", {}))
+                    }))),
+                    "algorithms": prop(dictionary(group({
+                        "parameters": prop(component("TypeParameters", {})),
+                        "type": prop(taggedUnion({
+                            "function": option(group({
+                                "in": prop(component("DataOrSynchronousInterface", {})),
+                                "out": prop(component("DataSpecifier", {})),
+                            })),
+                            "procedure": option(group({
+                                "in": prop(component("DataOrSynchronousInterface", {})),
+                                "out": prop(component("SynchronousInterfaceReference", {})),
+                            })),
+                        }))
                     }))),
                 })),
                 "asynchronous": prop(group({
-                    "interfaces": prop(dictionary(component("AsynchronousInterface", {}))),
-                    "algorithms": prop(dictionary(taggedUnion({
-                        "constructor": option(group({
-                            "interface": prop(component("AsynchronousInterfaceReference", {})),
-                            "downstreams": prop(dictionary(component("AsynchronousInterfaceReference", {}))),
-                        })),
-                        "function": option(group({
-                            "out": prop(component("TypeReference", {})),
-                            "in": prop(component("TypeReference", {})),
+                    "interfaces": prop(dictionary(group({
+                        "parameters": prop(component("TypeParameters", {})),
+                        "interface": prop(component("AsynchronousInterface", {}))
+                    }))),
+                    "algorithms": prop(dictionary(group({
+                        "parameters": prop(component("TypeParameters", {})),
+                        "type": prop(taggedUnion({
+                            "constructor": option(group({
+                                "interface": prop(component("AsynchronousInterfaceReference", {})),
+                                "downstreams": prop(dictionary(component("AsynchronousInterfaceReference", {}))),
+                            })),
+                            "function": option(group({
+                                "out": prop(component("DataSpecifier", {})),
+                                "in": prop(component("DataSpecifier", {})),
+                            })),
                         })),
                     }))),
                 })),
+            })),
+            "DataSpecifier": globalType({}, taggedUnion({
+                "type": option(group({
+                    "context": prop(component("Context", {})),
+                    //"type": [["namespace"), reference(['sibling', "namespaces"), [))),
+                    "type": prop(terminal("identifier")),
+                    "arguments": prop(dictionary(component("DataSpecifier", {}))),
+                })),
+                "type parameter": option(terminal("identifier")),
+                "glossary parameter": option(terminal("identifier")),
             })),
             "AsynchronousInterface": globalType({}, taggedUnion({
                 "choice": option(group({
@@ -84,7 +106,7 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                     "end": prop(component("AsynchronousInterface", {})),
                 })),
                 "method": option(group({
-                    "data": prop(optional(component("TypeReference", {}))),
+                    "data": prop(optional(component("DataSpecifier", {}))),
                     "interface": prop(optional(component("AsynchronousInterface", {}))),
                 })),
                 "reference": option(component("AsynchronousInterfaceReference", {})),
@@ -94,7 +116,7 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                     "members": prop(dictionary(component("SynchronousInterface", {}))),
                 })),
                 "method": option(group({
-                    "data": prop(optional(component("TypeReference", {}))),
+                    "data": prop(optional(component("DataSpecifier", {}))),
                     "interface": prop(optional(component("SynchronousInterface", {}))),
                 })),
                 "reference": option(component("SynchronousInterfaceReference", {})),
@@ -103,11 +125,13 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                 "context": prop(component("Context", {})),
                 //"interface": [["context"), reference(['sibling', "context"), [))),
                 "interface": prop(terminal("identifier")),
+                "arguments": prop(dictionary(component("DataSpecifier", {}))),
             })),
             "SynchronousInterfaceReference": globalType({}, group({
                 "context": prop(component("Context", {})),
                 //"interface": [["context"), reference(['sibling', "context"), [))),
                 "interface": prop(terminal("identifier")),
+                "arguments": prop(dictionary(component("DataSpecifier", {}))),
             })),
             "Type": globalType({}, taggedUnion({
                 "array": option(component("Type", {})),
@@ -119,19 +143,11 @@ export const $: g_liana.T.Model<pd.SourceLocation> = {
                 "boolean": option(group({})),
                 "string": option(group({})),
                 "number": option(group({})),
-                "reference": option(component("TypeReference", {})),
+                "reference": option(component("DataSpecifier", {})),
                 "group": option(dictionary(group({
                     "type": prop(component("Type", {})),
                 }))),
-                "type parameter": option(terminal("identifier")),
-                "glossary parameter": option(terminal("identifier")),
                 "taggedUnion": option(dictionary(component("Type", {}))),
-            })),
-            "TypeReference": globalType({}, group({
-                "context": prop(component("Context", {})),
-                //"type": [["namespace"), reference(['sibling', "namespaces"), [))),
-                "type": prop(terminal("identifier")),
-                "arguments": prop(dictionary(component("TypeReference", {}))),
             })),
         }),
     },

@@ -1,12 +1,12 @@
 import * as pt from 'pareto-core-types'
 
-import * as g_this from "./glossary"
+import * as g_main from "../main"
 
 export namespace A {
     
-    export type generateProject = <GAnnotation>() => g_this.SYNC.A.P.GenerateProject<GAnnotation>
+    export type createProjectGeneratorAndReporter = <GAnnotation>() => g_main.ASYNC.A.C.CreateProjectGeneratorAndReporter<GAnnotation>
 }
 
 export type API = {
-    readonly 'generateProject': A.generateProject
+    readonly 'createProjectGeneratorAndReporter': A.createProjectGeneratorAndReporter
 }

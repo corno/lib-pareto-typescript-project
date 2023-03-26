@@ -29,6 +29,9 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
         'api': {
             'root': api,
             'imports': d({
+
+                "fp": external("lib-fountain-pen"),
+                "fs": external("lib-pareto-filesystem"),
                 "parametersparser": submodule("parametersparser"),
                 "foreach": external("res-pareto-foreach"),
                 "pareto2typescript": submodule("pareto2typescript"),

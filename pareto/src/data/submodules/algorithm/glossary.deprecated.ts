@@ -3,7 +3,7 @@ import * as pd from 'pareto-core-data'
 import {
     array, boolean, data, dictionary,
     glossaryParameter, group, imp, member,
-    optional, procedure, ref, sInterfaceReference, string, taggedUnion, type, typeReference
+    optional, procedure, ref, sExternalInterfaceReference, sInterfaceReference, string, taggedUnion, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -18,7 +18,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "fp": imp({}),
     }),
     'types': d({
-        "Annotation": type(glossaryParameter("Annotation")),
         "SynchronousFunctionBlock": type(group({
             "innerFunctions": member(dictionary(group({
                 "block": member(ref(typeReference("SynchronousFunctionBlock"))),
@@ -137,7 +136,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'synchronous': {
         'interfaces': d({}),
         'algorithms': d({
-            "SerializeImplementation": procedure(data(typeReference("Implementation")), sInterfaceReference("fp", "Line")),
+            "SerializeImplementation": procedure(data(typeReference("Implementation")), sExternalInterfaceReference("fp", "Line")),
         }),
     },
 }

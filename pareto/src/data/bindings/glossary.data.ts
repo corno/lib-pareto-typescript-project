@@ -1,15 +1,12 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    data,
-    externalTypeReference,
+    aExternalInterfaceReference,
+    aInterface,
+    aInterfaceMethod,
+    constructor, externalTypeReference,
     glossaryParameter,
-    imp,
-    procedure,
-    sInterfaceMethod,
-    sInterfaceReference,
-    type,
-    typeReference
+    imp
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -21,23 +18,20 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "Annotation": null,
     }),
     'imports': d({
-        "main": imp({ "Annotation": typeReference("Annotation") }),
+        "main": imp({ "Annotation": glossaryParameter("Annotation") }),
         "common": imp({}),
     }),
     'types': d({
-        "Annotation": type(glossaryParameter("Annotation")),
     }),
     'asynchronous': {
-        'interfaces': d({}),
-        'algorithms': d({}),
-    },
-    'synchronous': {
         'interfaces': d({
-            "Nothing": sInterfaceMethod(externalTypeReference("common", "Null"))
         }),
         'algorithms': d({
-            "GenerateProject": procedure(data(externalTypeReference("main", "ProjectSettings")), sInterfaceReference("Nothing")),
         }),
+    },
+    'synchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
 
     },
 

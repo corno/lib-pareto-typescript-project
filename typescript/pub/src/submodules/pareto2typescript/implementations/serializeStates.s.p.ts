@@ -2,20 +2,11 @@ import * as pl from 'pareto-core-lib'
 
 import * as g_algorithm from "../../algorithm"
 import * as g_fp from "lib-fountain-pen"
-import * as g_foreach from "res-pareto-foreach"
-import * as g_ts from "res-typescript"
 
 import { A } from "../api.generated"
 
-export const $$: A.serializeStates = <GAnnotation>($d: {
-    readonly 'createIdentifier': g_ts.SYNC.A.F.CreateIdentifier
-    readonly 'createApostrophedString': g_ts.SYNC.A.F.CreateApostrophedString
-    readonly 'enrichedForEachMember': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_algorithm.T.Type.group.D<GAnnotation>>
-    readonly 'forEachOption': g_foreach.SYNC.A.P.DictionaryForEach<g_algorithm.T.Type.taggedUnion.D<GAnnotation>>
-    readonly 'forEachState': g_foreach.SYNC.A.P.DictionaryForEach<g_algorithm.T.States.D<GAnnotation>>
-
-}) => {
-    return ($: g_algorithm.T.States<GAnnotation>, $i: g_fp.SYNC.I.Block) => {
+export const $$: A.serializeStates = ($d) => {
+    return <GAnnotation>($: g_algorithm.T.States<GAnnotation>, $i: g_fp.SYNC.I.Block) => {
         function serializeType($: g_algorithm.T.Type<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'null':
@@ -65,7 +56,7 @@ export const $$: A.serializeStates = <GAnnotation>($d: {
                     break
                 case 'group':
                     pl.cc($[1], ($) => {
-                        $d.enrichedForEachMember($, {
+                        $d.enrichedDictionaryForEach($, {
                             'onEmpty': () => {
                                 $i.snippet(`null`)
                             },
@@ -106,7 +97,7 @@ export const $$: A.serializeStates = <GAnnotation>($d: {
                 case 'taggedUnion':
                     pl.cc($[1], ($) => {
                         $i.indent(($i) => {
-                            $d.forEachOption($, ($) => {
+                            $d.dictionaryForEach($, ($) => {
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`| [${$d.createApostrophedString($.key)}, `)
                                     serializeType($.value, $i)
@@ -122,7 +113,7 @@ export const $$: A.serializeStates = <GAnnotation>($d: {
         $i.nestedLine(($i) => {
             $i.snippet(`import * as pl from "./templib"`)
         })
-        $d.forEachState($, ($) => {
+        $d.dictionaryForEach($, ($) => {
             $i.nestedLine(($i) => {
                 $i.snippet(`export type ${$d.createIdentifier(`S${$.key}`)} = `)
                 serializeType($.value, $i)

@@ -6,28 +6,35 @@ import * as pa from 'pareto-core-async'
 import * as g_test from "lib-pareto-test"
 import * as g_project from "../../../../../pub/dist/submodules/project"
 import * as g_fp from "lib-fountain-pen"
-import * as g_pub from "../../../../../pub"
+import * as g_pub from "../../../../../pub/dist"
 
 const d = pm.wrapRawDictionary
 
 import { $ as tc } from "../../../data/project/project/tokenconsumer/project.data"
 
-import { getTestSet } from "../api.generated"
+import { A } from "../api.generated"
 
-export const $$: getTestSet = ($) => {
+export const $$: A.getTestSet = ($) => {
     const $XXX = $
 
     function genProj<Annotation>(dir: string, proj: g_project.T.Project<Annotation>) {
-        g_pub.$b.generateProject(
-            ($b) => {
-                $b({
-                    'mainData': {
-                        'arguments': pm.wrapRawArray([dir]),
-                    },
-                    'project': proj,
-                })
+        g_pub.$b.createProjectGeneratorAndReporter()()(
+            {
+                'mainData': {
+                    'arguments': pm.wrapRawArray([dir]),
+                },
+                'project': proj,
             }
         )
+        //     ($b) => {
+        //         $b({
+        //             'mainData': {
+        //                 'arguments': pm.wrapRawArray([dir]),
+        //             },
+        //             'project': proj,
+        //         })
+        //     }
+        // )
 
     }
     // function generateModule<Annotation>(dir: string, module: g_project.T.Module<Annotation>) {
@@ -103,12 +110,12 @@ export const $$: getTestSet = ($) => {
     //     pr.wrapRawArray(["foo"])
     // )
 
-    // const writer = g_fp.$a.createDirectory({
+    // const writer = g_fp.$b.createDirectory({
     //     onError: ($) => {
     //         pv.logDebugMessage(`FILESYSTEM ERROR`)
     //     },
     //     reportSuperfluousNode: ($) => {
-    //         pv.logDebugMessage(g_fp.$a.createSuperfluousNodeMessage($))
+    //         pv.logDebugMessage(g_fp.$b.createSuperfluousNodeMessage($))
     //     },
     // })
 

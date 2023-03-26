@@ -6,9 +6,7 @@ import * as g_foreach from "res-pareto-foreach"
 
 import { A } from "../api.generated"
 
-export const $$: A.serializeImplementation = <GAnnotation>($d: {
-    readonly 'forEachImplementation': g_foreach.SYNC.A.P.DictionaryForEach<g_this.T.Implementation.implementations.D<GAnnotation>>
-}) => {
+export const $$: A.serializeImplementation = ($d) => {
 
     return ($, $i) => {
         // function serializeExpression($: api.TExpression, $i: g_fp.B.Line) {
@@ -238,7 +236,7 @@ export const $$: A.serializeImplementation = <GAnnotation>($d: {
             $i.nestedLine(($i) => {
                 $i.snippet(`'implementations': d({`)
                 $i.indent(($i) => {
-                    $d.forEachImplementation($.implementations, ($) => {
+                    $d.dictionaryForEach($.implementations, ($) => {
                         $i.nestedLine(($i) => {
                             $i.snippet(`"${$.key}": {`)
                             $i.indent(($i) => {

@@ -9,7 +9,8 @@ import {
     type,
     taggedUnion,
     null_,
-    typeReference
+    typeReference,
+    aInterface
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -29,15 +30,15 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'asynchronous': {
         'interfaces': d({
-            "ParametersHandler": aInterfaceMethod(externalTypeReference("parameters", "Parameters")),
-            "ErrorsHandler": streamconsumer(
+            "ParametersHandler": aInterface(aInterfaceMethod(externalTypeReference("parameters", "Parameters"))),
+            "ErrorsHandler": aInterface(streamconsumer(
                 aInterfaceMethod(typeReference("ArgumentsError")),
                 aInterfaceMethod(null),
-            ),
-            "HandleArguments": streamconsumer(
+            )),
+            "HandleArguments": aInterface(streamconsumer(
                 aInterfaceMethod(externalTypeReference("main", "Arguments")),
                 aInterfaceMethod(null)
-            )
+            )),
         }),
         'algorithms': d({
             "CreateParametersParser": constructor(aInterfaceReference("HandleArguments"), {

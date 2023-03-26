@@ -5,8 +5,6 @@ import * as pd from 'pareto-core-dev'
 import * as g_this from "../glossary"
 import * as g_glossary from "../../glossary"
 import * as g_fp from "lib-fountain-pen"
-import * as g_foreach from "res-pareto-foreach"
-import * as g_ts from "res-typescript"
 
 export namespace VOptional { }
 export type VOptional<AType> =
@@ -17,30 +15,50 @@ export type MOptional<AType> = VOptional<AType>
 
 import { A } from "../api.generated"
 
-export const $$: A.serializeGlossary = <GAnnotation>($d: {
-    readonly 'createApostrophedString': g_ts.SYNC.A.F.CreateApostrophedString
-    readonly 'createBacktickedString': g_ts.SYNC.A.F.CreateBacktickedString
-    readonly 'createIdentifier': g_ts.SYNC.A.F.CreateIdentifier
-    readonly 'createQuotedString': g_ts.SYNC.A.F.CreateQuotedString
-    readonly 'enrichedForEachContextArgument': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.TypeReference.arguments.D<GAnnotation>>
-    readonly 'enrichedForEachAsychronousInterface': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.Glossary.asynchronous.interfaces.D<GAnnotation>>
-    readonly 'enrichedForEachAsychronousAlgorithm': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.Glossary.asynchronous.algorithms.D<GAnnotation>>
-    readonly 'enrichedForEachAsychronousDownstream': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.Glossary.asynchronous.algorithms.D._lconstructor.downstreams.D<GAnnotation>>
-    readonly 'enrichedForEachSychronousInterface': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.Glossary.synchronous.interfaces.D<GAnnotation>>
-    readonly 'enrichedForEachSychronousAlgorithm': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.Glossary.synchronous.algorithms.D<GAnnotation>>
-    readonly 'forEachType': g_foreach.SYNC.A.P.DictionaryForEach<g_glossary.T.Glossary.types.D<GAnnotation>>
-    readonly 'enrichedForEachTypeParameter': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.Glossary.types.D.parameters.D<GAnnotation>>
-    readonly 'enrichedForEachMember': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.Type.group.D<GAnnotation>>
-    readonly 'forEachMember': g_foreach.SYNC.A.P.DictionaryForEach<g_glossary.T.Type.group.D<GAnnotation>>
-    readonly 'forEachOption': g_foreach.SYNC.A.P.DictionaryForEach<g_glossary.T.Type.taggedUnion.D<GAnnotation>>
-    readonly 'enrichedForEachAsyncInterfaceOption': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.AsynchronousInterface.choice.options.D<GAnnotation>>
-    readonly 'enrichedForEachSyncInterfaceMember': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.SynchronousInterface.group.members.D<GAnnotation>>
-    readonly 'enrichedForEachParameter': g_foreach.SYNC.A.P.EnrichedDictionaryForEach<g_glossary.T.Glossary.parameters.D<GAnnotation>>
-    readonly 'forEachParameter': g_foreach.SYNC.A.P.DictionaryForEach<g_glossary.T.Glossary.parameters.D<GAnnotation>>
-    readonly 'forEachImport2': g_foreach.SYNC.A.P.DictionaryForEach<string>
-    readonly 'forEachImportArgument': g_foreach.SYNC.A.P.DictionaryForEach<g_glossary.T.Glossary.imports.D.arguments.D<GAnnotation>>
-}) => {
+export const $$: A.serializeGlossary = ($d) => {
 
+    function doDictionaryType<T>(
+        $: pt.Dictionary<T>,
+        $i: g_fp.SYNC.I.Line,
+        callback: ($: T, $i: g_fp.SYNC.I.Line) => void,
+    ) {
+        function doDictionaryTypeWithKey<T>(
+            $: pt.Dictionary<T>,
+            $i: g_fp.SYNC.I.Line,
+            callback: ($: {
+                'key': string,
+                'value': T,
+            }, $i: g_fp.SYNC.I.Line) => void,
+        ) {
+            $d.enrichedDictionaryForEach($, {
+                'onEmpty': () => {
+                    //typescript treats an empty object very lax therefor I make it a null
+
+                    $i.snippet(`null`)
+                },
+                'onNotEmpty': ($c) => {
+                    $i.snippet(`{`)
+                    $i.indent(($i) => {
+                        $c(($) => {
+
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`readonly '${$.key}': `)
+                                callback($, $i)
+                            })
+                        })
+                    })
+                    $i.snippet(`}`)
+                }
+            })
+
+
+
+            //     ($) => {
+
+            // })
+        }
+        doDictionaryTypeWithKey($, $i, ($, $i) => callback($.value, $i))
+    }
     function doOptional<T>(
         $: pt.OptionalValue<T>,
         $i: g_fp.SYNC.I.Line,
@@ -55,11 +73,52 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
             $c.onNotset(null, $i)
         }
     }
-    return ($: g_this.T.SerializeGlossaryData<GAnnotation>, $i: g_fp.SYNC.I.Directory) => {
+    return <Annotation>($: g_this.T.SerializeGlossaryData<Annotation>, $i: g_fp.SYNC.I.Directory) => {
         const imports = $.imports
         return pl.cc($.glossary, ($) => {
             const globalParameters = $.parameters
             const importDefinitions = $.imports
+            function serializeGlobalParametersOnly(
+                $i: g_fp.SYNC.I.Line
+            ) {
+                $d.enrichedDictionaryForEach(globalParameters, {
+                    onEmpty: () => {
+                    },
+                    onNotEmpty: ($c) => {
+                        $i.snippet(`<`)
+
+                        $c(($) => {
+                            $i.snippet(`G${$.key}${$.isLast ? `` : `, `}`)
+                        })
+                        $i.snippet(`>`)
+
+                    }
+                })
+
+            }
+            function serializeGlobalAndTypeParameters2(
+                $: g_glossary.T.TypeParameters<Annotation>,
+                $i: g_fp.SYNC.I.Line,
+            ) {
+
+                $d.enrichedDictionaryForEach($, {
+                    onEmpty: () => {
+                        serializeGlobalParametersOnly($i)
+                    },
+                    onNotEmpty: ($c) => {
+                        $i.snippet(`<`)
+
+                        $d.dictionaryForEach(globalParameters, ($) => {
+                            $i.snippet(`G${$.key}, `)
+                        })
+                        $c(($) => {
+                            $i.snippet(`T${$.key}${$.isLast ? `` : `, `}`)
+                        })
+                        $i.snippet(`>`)
+
+                    }
+                })
+            }
 
             function ns(
                 $: string,
@@ -95,7 +154,7 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                     default: pl.au($[0])
                 }
             }
-            function serializeContext($: g_glossary.T.Context<GAnnotation>, $i: g_fp.SYNC.I.Line) {
+            function serializeContext($: g_glossary.T.Context<Annotation>, $i: g_fp.SYNC.I.Line) {
                 switch ($[0]) {
                     case 'import':
                         pl.cc($[1], ($) => {
@@ -110,51 +169,83 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                     default: pl.au($[0])
                 }
             }
-            function serializeTypeReference($: g_glossary.T.TypeReference<GAnnotation>, $i: g_fp.SYNC.I.Line) {
-                serializeContext($.context, $i)
-                $i.snippet(`T.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
-                $d.enrichedForEachContextArgument($.arguments, {
-                    'onEmpty': () => {
-                        serializeContextGlossaryArgumentsOnly($.context, $i)
+            function serializeTypeParameters($: g_glossary.T.TypeParameters<Annotation>, $i: g_fp.SYNC.I.Line) {
+
+                $d.enrichedDictionaryForEach($, {
+                    onEmpty: () => {
                     },
-                    'onNotEmpty': ($c) => {
+                    onNotEmpty: ($c) => {
                         $i.snippet(`<`)
-                        switch ($.context[0]) {
-                            case 'import':
-                                pl.cc($.context[1], ($) => {
-                                    importDefinitions.__getEntry(
-                                        $.glossary.key,
-                                        ($) => {
-                                            $d.forEachImportArgument($.arguments, ($) => {
-                                                serializeTypeReference($.value, $i)
-                                                $i.snippet(`, `)
-                                            })
-                                        },
-                                        () => {
-                                            pd.logDebugMessage(`missing import: ${$.glossary.key}`)
-                                        }
-                                    )
-                                })
-                                break
-                            case 'local':
-                                pl.cc($.context[1], ($) => {
-                                    $d.forEachParameter(globalParameters, ($) => {
-                                        $i.snippet(`G${$.key}, `)
-                                    })
-                                })
-                                break
-                            default: pl.au($.context[0])
-                        }
                         $c(($) => {
-                            serializeTypeReference($.value, $i)
-                            $i.snippet(`${$.isLast ? `` : `, `}`)
+                            $i.snippet(`T${$.key}${$.isLast ? `` : `, `}`)
                         })
                         $i.snippet(`>`)
+
                     }
                 })
             }
+            function serializeDataSpecifier($: g_glossary.T.DataSpecifier<Annotation>, $i: g_fp.SYNC.I.Line) {
+                switch ($[0]) {
+                    case 'glossary parameter':
+                        pl.cc($[1], ($) => {
+                            $i.snippet(`G${$}`)
+                        })
+                        break
+                    case 'type parameter':
+                        pl.cc($[1], ($) => {
+                            $i.snippet(`T${$}`)
+                        })
+                        break
+                    case 'type':
+                        pl.cc($[1], ($) => {
+                            serializeContext($.context, $i)
+                            $i.snippet(`T.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
+                            $d.enrichedDictionaryForEach($.arguments, {
+                                'onEmpty': () => {
+                                    serializeContextGlossaryArgumentsOnly($.context, $i)
+                                },
+                                'onNotEmpty': ($c) => {
+                                    $i.snippet(`<`)
+                                    switch ($.context[0]) {
+                                        case 'import':
+                                            pl.cc($.context[1], ($) => {
+                                                importDefinitions.__getEntry(
+                                                    $.glossary.key,
+                                                    ($) => {
+                                                        $d.dictionaryForEach($.arguments, ($) => {
+                                                            serializeDataSpecifier($.value, $i)
+                                                            $i.snippet(`, `)
+                                                        })
+                                                    },
+                                                    () => {
+                                                        pd.logDebugMessage(`missing import: ${$.glossary.key}`)
+                                                    }
+                                                )
+                                            })
+                                            break
+                                        case 'local':
+                                            pl.cc($.context[1], ($) => {
+                                                $d.dictionaryForEach(globalParameters, ($) => {
+                                                    $i.snippet(`G${$.key}, `)
+                                                })
+                                            })
+                                            break
+                                        default: pl.au($.context[0])
+                                    }
+                                    $c(($) => {
+                                        serializeDataSpecifier($.value, $i)
+                                        $i.snippet(`${$.isLast ? `` : `, `}`)
+                                    })
+                                    $i.snippet(`>`)
+                                }
+                            })
+                        })
+                        break
+                    default: pl.au($[0])
+                }
+            }
             function serializeContextGlossaryArgumentsOnly(
-                $: g_glossary.T.Context<GAnnotation>,
+                $: g_glossary.T.Context<Annotation>,
                 $i: g_fp.SYNC.I.Line,
             ) {
                 switch ($[0]) {
@@ -163,14 +254,14 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                             importDefinitions.__getEntry(
                                 $.glossary.key,
                                 ($) => {
-                                    $d.enrichedForEachContextArgument($.arguments, {
+                                    $d.enrichedDictionaryForEach($.arguments, {
                                         'onEmpty': () => {
 
                                         },
                                         'onNotEmpty': ($c) => {
                                             $i.snippet(`<`)
                                             $c(($) => {
-                                                serializeTypeReference($.value, $i)
+                                                serializeDataSpecifier($.value, $i)
 
                                                 $i.snippet(`${$.isLast ? `` : `, `}`)
                                             })
@@ -186,7 +277,7 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                         break
                     case 'local':
                         pl.cc($[1], ($) => {
-                            $d.enrichedForEachParameter(globalParameters, {
+                            $d.enrichedDictionaryForEach(globalParameters, {
                                 'onEmpty': () => {
 
                                 },
@@ -203,24 +294,6 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                     default: pl.au($[0])
                 }
             }
-            function serializeGlobalParametersOnly(
-                $i: g_fp.SYNC.I.Line
-            ) {
-                $d.enrichedForEachParameter(globalParameters, {
-                    onEmpty: () => {
-                    },
-                    onNotEmpty: ($c) => {
-                        $i.snippet(`<`)
-
-                        $c(($) => {
-                            $i.snippet(`G${$.key}${$.isLast ? `` : `, `}`)
-                        })
-                        $i.snippet(`>`)
-
-                    }
-                })
-
-            }
             $i.file(`index.ts`, ($i) => {
                 $i.line(`export * from "./datatypes.generated"`)
                 $i.line(`export * from "./algorithmtypes.generated"`)
@@ -230,7 +303,7 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                     $i.snippet(`import * as pt from 'pareto-core-types'`)
                 })
                 $i.line(``)
-                $d.forEachImport2(imports, ($) => {
+                $d.dictionaryForEach(imports, ($) => {
                     $i.nestedLine(($i) => {
                         $i.snippet(`import * as g_${$.key} from "${$.value}"`)
                     })
@@ -239,39 +312,22 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                     `T`,
                     $i,
                     ($i) => {
-                        $d.forEachType($.types, ($) => {
+                        $d.dictionaryForEach($.types, ($) => {
                             const typeParameters = $.value.parameters
+                            function serializeGlobalAndTypeParameters(
+                                $: null,
+                                $i: g_fp.SYNC.I.Line,
+                            ) {
+                                serializeGlobalAndTypeParameters2(typeParameters, $i)
+                            }
                             function serializeTypeAliasAndPossibleNamespace(
                                 $: {
-                                    type: g_glossary.T.Type<GAnnotation>,
+                                    type: g_glossary.T.Type<Annotation>,
                                     name: string,
                                 },
                                 $i: g_fp.SYNC.I.Block,
                             ) {
                                 const name = $.name
-                                function serializeGlobalAndTypeParameters(
-                                    $: null,
-                                    $i: g_fp.SYNC.I.Line,
-                                ) {
-
-                                    $d.enrichedForEachTypeParameter(typeParameters, {
-                                        onEmpty: () => {
-                                            serializeGlobalParametersOnly($i)
-                                        },
-                                        onNotEmpty: ($c) => {
-                                            $i.snippet(`<`)
-
-                                            $d.forEachParameter(globalParameters, ($) => {
-                                                $i.snippet(`G${$.key}, `)
-                                            })
-                                            $c(($) => {
-                                                $i.snippet(`T${$.key}${$.isLast ? `` : `, `}`)
-                                            })
-                                            $i.snippet(`>`)
-
-                                        }
-                                    })
-                                }
 
                                 //create namespaces for the complex types
                                 pl.cc($.type, ($) => {
@@ -287,7 +343,7 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                     }
                                     function createCurrentAndSerializeType(
                                         $: {
-                                            type: g_glossary.T.Type<GAnnotation>,
+                                            type: g_glossary.T.Type<Annotation>,
                                             nextName: string,
                                         },
                                         $i: g_fp.SYNC.I.Block,
@@ -374,7 +430,7 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                             pl.cc($[1], ($) => {
                                                 createTheCurrentNamespace(
                                                     ($i) => {
-                                                        $d.forEachMember($, ($) => {
+                                                        $d.dictionaryForEach($, ($) => {
                                                             serializeTypeAliasAndPossibleNamespace(
                                                                 {
                                                                     'type': $.value.type,
@@ -399,19 +455,11 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                                 )
                                             })
                                             break
-                                        case 'type parameter':
-                                            pl.cc($[1], ($) => {
-                                            })
-                                            break
-                                        case 'glossary parameter':
-                                            pl.cc($[1], ($) => {
-                                            })
-                                            break
                                         case 'taggedUnion':
                                             pl.cc($[1], ($) => {
                                                 createTheCurrentNamespace(
                                                     ($i) => {
-                                                        $d.forEachOption($, ($) => {
+                                                        $d.dictionaryForEach($, ($) => {
                                                             serializeTypeAliasAndPossibleNamespace(
                                                                 {
                                                                     'type': $.value,
@@ -432,7 +480,7 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                 $i.line(``)
                                 $i.nestedLine(($i) => {
                                     function serializeType(
-                                        $: g_glossary.T.Type<GAnnotation>,
+                                        $: g_glossary.T.Type<Annotation>,
                                         $i: g_fp.SYNC.I.Line,
                                     ): void {
                                         switch ($[0]) {
@@ -448,7 +496,7 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                                 break
                                             case 'reference':
                                                 pl.cc($[1], ($) => {
-                                                    serializeTypeReference($, $i)
+                                                    serializeDataSpecifier($, $i)
                                                 })
                                                 break
                                             case 'number':
@@ -502,28 +550,12 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                                 break
                                             case 'group':
                                                 pl.cc($[1], ($) => {
-                                                    $d.enrichedForEachMember($, {
-                                                        'onEmpty': () => {
-                                                            //typescript treats an empty object very lax therefor I make it a null
+                                                    doDictionaryType($, $i, ($, $i) => {
+                                                        serializeType(
+                                                            $.type,
+                                                            $i,
+                                                        )
 
-                                                            $i.snippet(`null`)
-                                                        },
-                                                        'onNotEmpty': ($c) => {
-                                                            $i.snippet(`{`)
-                                                            $i.indent(($i) => {
-                                                                $c(($) => {
-
-                                                                    $i.nestedLine(($i) => {
-                                                                        $i.snippet(`readonly '${$.key}': `)
-                                                                        serializeType(
-                                                                            $.value.type,
-                                                                            $i,
-                                                                        )
-                                                                    })
-                                                                })
-                                                            })
-                                                            $i.snippet(`}`)
-                                                        }
                                                     })
                                                 })
                                                 break
@@ -537,21 +569,11 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                                     $i.snippet(`>`)
                                                 })
                                                 break
-                                            case 'type parameter':
-                                                pl.cc($[1], ($) => {
-                                                    $i.snippet($d.createIdentifier(`T${$}`))
-                                                })
-                                                break
-                                            case 'glossary parameter':
-                                                pl.cc($[1], ($) => {
-                                                    $i.snippet($d.createIdentifier(`G${$}`))
-                                                })
-                                                break
                                             case 'taggedUnion':
                                                 pl.cc($[1], ($) => {
 
                                                     $i.indent(($i) => {
-                                                        $d.forEachOption($, ($) => {
+                                                        $d.dictionaryForEach($, ($) => {
                                                             $i.nestedLine(($i) => {
                                                                 $i.snippet(`| [${$d.createApostrophedString($.key)}, `)
                                                                 serializeType(
@@ -595,165 +617,251 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
             })
             $i.file(`algorithmtypes.generated.ts`, ($i) => {
 
-                function serializeSynchronousInterface($: g_glossary.T.SynchronousInterface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
-                    switch ($[0]) {
-                        case 'group':
-                            pl.cc($[1], ($) => {
-                                $d.enrichedForEachSyncInterfaceMember($.members, {
-                                    'onEmpty': () => {
-                                        //typescript treats an empty object very lax therefor I make it a null
+                function serializeSynchronousInterface(
+                    $: {
+                        'inf': g_glossary.T.SynchronousInterface<Annotation>,
+                    },
+                    $i: g_fp.SYNC.I.Line
+                ) {
+                    pl.cc($.inf, ($) => {
 
-                                        $i.snippet(`null`)
-                                    },
-                                    'onNotEmpty': ($c) => {
-                                        $i.snippet(`{`)
-                                        $i.indent(($i) => {
-                                            $c(($) => {
-
-                                                $i.nestedLine(($i) => {
-                                                    $i.snippet(`readonly '${$.key}': `)
-                                                    serializeSynchronousInterface($.value, $i)
-                                                })
-                                            })
-                                        })
-                                        $i.snippet(`}`)
-                                    }
-                                })
-                            })
-                            break
-                        case 'method':
-                            pl.cc($[1], ($) => {
-
-                                $i.snippet(`(`)
-                                pl.cc($.data, ($) => {
-                                    if ($ === null) {
-                                        //
-                                    } else {
-                                        doOptional($, $i, {
-                                            onNotset: ($, $i) => { },
-                                            onSet: ($, $i) => {
-                                                $i.snippet(`$: `)
-                                                serializeTypeReference($, $i)
-                                                $i.snippet(`, `)
-                                            }
-                                        })
-                                    }
-                                })
-                                pl.cc($.interface, ($) => {
-                                    doOptional($, $i, {
-                                        onNotset: () => { },
-                                        onSet: ($, $i) => {
-                                            $i.snippet(`$c: ($b: `)
-                                            serializeSynchronousInterface($, $i)
-                                            $i.snippet(`) => void`)
-                                        }
+                        switch ($[0]) {
+                            case 'group':
+                                pl.cc($[1], ($) => {
+                                    doDictionaryType($.members, $i, ($, $i) => {
+                                        serializeSynchronousInterface(
+                                            {
+                                                'inf': $,
+                                            },
+                                            $i,
+                                        )
                                     })
                                 })
-                                $i.snippet(`) => void`)
-                            })
-                            break
-                        case 'reference':
-                            pl.cc($[1], ($) => {
-                                serializeSynchronousInterfaceReference($, $i)
-                            })
-                            break
-                        default: pl.au($[0])
-                    }
+                                break
+                            case 'method':
+                                pl.cc($[1], ($) => {
+                                    $i.snippet(`(`)
+                                    pl.cc($.data, ($) => {
+                                        if ($ === null) {
+                                            //
+                                        } else {
+                                            doOptional($, $i, {
+                                                onNotset: ($, $i) => { },
+                                                onSet: ($, $i) => {
+                                                    $i.snippet(`$: `)
+                                                    serializeDataSpecifier($, $i)
+                                                    $i.snippet(`, `)
+                                                }
+                                            })
+                                        }
+                                    })
+                                    pl.cc($.interface, ($) => {
+                                        doOptional($, $i, {
+                                            onNotset: () => { },
+                                            onSet: ($, $i) => {
+                                                $i.snippet(`$c: ($b: `)
+                                                serializeSynchronousInterface(
+                                                    {
+                                                        'inf': $,
+                                                    },
+                                                    $i,
+                                                )
+                                                $i.snippet(`) => void`)
+                                            }
+                                        })
+                                    })
+                                    $i.snippet(`) => void`)
+                                })
+                                break
+                            case 'reference':
+                                pl.cc($[1], ($) => {
+                                    serializeSynchronousInterfaceReference($, $i)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
 
                 }
-                function serializeSynchronousInterfaceReference($: g_glossary.T.SynchronousInterfaceReference<GAnnotation>, $i: g_fp.SYNC.I.Line) {
+                function serializeSynchronousInterfaceReference($: g_glossary.T.SynchronousInterfaceReference<Annotation>, $i: g_fp.SYNC.I.Line) {
                     serializeContext($.context, $i)
                     $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
-                    serializeContextGlossaryArgumentsOnly($.context, $i)
+                    $d.enrichedDictionaryForEach($.arguments, {
+                        'onEmpty': () => {
+                            serializeContextGlossaryArgumentsOnly($.context, $i)
+                        },
+                        'onNotEmpty': ($c) => {
+                            $i.snippet(`<`)
+                            switch ($.context[0]) {
+                                case 'import':
+                                    pl.cc($.context[1], ($) => {
+                                        importDefinitions.__getEntry(
+                                            $.glossary.key,
+                                            ($) => {
+                                                $d.dictionaryForEach($.arguments, ($) => {
+                                                    serializeDataSpecifier($.value, $i)
+                                                    $i.snippet(`, `)
+                                                })
+                                            },
+                                            () => {
+                                                pd.logDebugMessage(`missing import: ${$.glossary.key}`)
+                                            }
+                                        )
+                                    })
+                                    break
+                                case 'local':
+                                    pl.cc($.context[1], ($) => {
+                                        $d.dictionaryForEach(globalParameters, ($) => {
+                                            $i.snippet(`G${$.key}, `)
+                                        })
+                                    })
+                                    break
+                                default: pl.au($.context[0])
+                            }
+                            $c(($) => {
+                                serializeDataSpecifier($.value, $i)
+                                $i.snippet(`${$.isLast ? `` : `, `}`)
+                            })
+                            $i.snippet(`>`)
+                        }
+                    })
 
                 }
-                function serializeAsynchronousInterface($: g_glossary.T.AsynchronousInterface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
-                    switch ($[0]) {
-                        case 'choice':
-                            pl.cc($[1], ($) => {
-                                $d.enrichedForEachAsyncInterfaceOption($.options, {
-                                    'onEmpty': () => {
-                                        //typescript treats an empty object very lax therefor I make it a null
+                function serializeAsynchronousInterface(
+                    $: {
+                        'inf': g_glossary.T.AsynchronousInterface<Annotation>,
+                    },
+                    $i: g_fp.SYNC.I.Line
+                ) {
+                    pl.cc($.inf, ($) => {
 
-                                        $i.snippet(`null`)
-                                    },
-                                    'onNotEmpty': ($c) => {
-                                        $i.snippet(`{`)
-                                        $i.indent(($i) => {
-                                            $c(($) => {
+                        switch ($[0]) {
+                            case 'choice':
+                                pl.cc($[1], ($) => {
+                                    doDictionaryType($.options, $i, ($, $i) => {
+                                        serializeAsynchronousInterface(
+                                            {
+                                                'inf': $,
+                                            },
+                                            $i
+                                        )
+                                    })
+                                })
+                                break
+                            case 'streamconsumer':
+                                pl.cc($[1], ($) => {
 
-                                                $i.nestedLine(($i) => {
-                                                    $i.snippet(`readonly '${$.key}': `)
-                                                    serializeAsynchronousInterface($.value, $i)
-                                                })
+                                    $i.snippet(`{`)
+                                    $i.indent(($i) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'data': `)
+                                            serializeAsynchronousInterface(
+                                                {
+                                                    'inf': $.data,
+                                                },
+                                                $i
+                                            )
+                                        })
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'end': `)
+                                            serializeAsynchronousInterface(
+                                                {
+                                                    'inf': $.end,
+                                                },
+                                                $i
+                                            )
+                                        })
+                                    })
+                                    $i.snippet(`}`)
+                                })
+                                break
+                            case 'method':
+                                pl.cc($[1], ($) => {
+                                    $i.snippet(`(`)
+                                    pl.cc($.data, ($) => {
+                                        if ($ === null) {
+                                            //
+                                        } else {
+                                            doOptional($, $i, {
+                                                onNotset: ($, $i) => { },
+                                                onSet: ($, $i) => {
+                                                    $i.snippet(`$: `)
+                                                    serializeDataSpecifier($, $i)
+                                                    $i.snippet(`, `)
+                                                }
                                             })
-                                        })
-                                        $i.snippet(`}`)
-                                    }
-                                })
-                            })
-                            break
-                        case 'streamconsumer':
-                            pl.cc($[1], ($) => {
-
-                                $i.snippet(`{`)
-                                $i.indent(($i) => {
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'data': `)
-                                        serializeAsynchronousInterface($.data, $i)
-                                    })
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'end': `)
-                                        serializeAsynchronousInterface($.end, $i)
-                                    })
-                                })
-                                $i.snippet(`}`)
-                            })
-                            break
-                        case 'method':
-                            pl.cc($[1], ($) => {
-
-                                $i.snippet(`(`)
-                                pl.cc($.data, ($) => {
-                                    if ($ === null) {
-                                        //
-                                    } else {
-                                        doOptional($, $i, {
-                                            onNotset: ($, $i) => { },
-                                            onSet: ($, $i) => {
-                                                $i.snippet(`$: `)
-                                                serializeTypeReference($, $i)
-                                                $i.snippet(`, `)
-                                            }
-                                        })
-                                    }
-                                })
-                                $i.snippet(`) => `)
-                                pl.cc($.interface, ($) => {
-                                    doOptional($, $i, {
-                                        onNotset: () => {
-                                            $i.snippet(`void`)
-                                        },
-                                        onSet: ($, $i) => {
-                                            serializeAsynchronousInterface($, $i)
                                         }
                                     })
+                                    $i.snippet(`) => `)
+                                    pl.cc($.interface, ($) => {
+                                        doOptional($, $i, {
+                                            onNotset: () => {
+                                                $i.snippet(`void`)
+                                            },
+                                            onSet: ($, $i) => {
+                                                serializeAsynchronousInterface(
+                                                    {
+                                                        'inf': $,
+                                                    },
+                                                    $i
+                                                )
+                                            }
+                                        })
+                                    })
                                 })
-                            })
-                            break
-                        case 'reference':
-                            pl.cc($[1], ($) => {
-                                serializeAsynchronousInterfaceReference($, $i)
-                            })
-                            break
-                        default: pl.au($[0])
-                    }
+                                break
+                            case 'reference':
+                                pl.cc($[1], ($) => {
+                                    serializeAsynchronousInterfaceReference($, $i)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
 
                 }
-                function serializeAsynchronousInterfaceReference($: g_glossary.T.AsynchronousInterfaceReference<GAnnotation>, $i: g_fp.SYNC.I.Line) {
+                function serializeAsynchronousInterfaceReference($: g_glossary.T.AsynchronousInterfaceReference<Annotation>, $i: g_fp.SYNC.I.Line) {
                     serializeContext($.context, $i)
                     $i.snippet(`ASYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
-                    serializeContextGlossaryArgumentsOnly($.context, $i)
+                    $d.enrichedDictionaryForEach($.arguments, {
+                        'onEmpty': () => {
+                            serializeContextGlossaryArgumentsOnly($.context, $i)
+                        },
+                        'onNotEmpty': ($c) => {
+                            $i.snippet(`<`)
+                            switch ($.context[0]) {
+                                case 'import':
+                                    pl.cc($.context[1], ($) => {
+                                        importDefinitions.__getEntry(
+                                            $.glossary.key,
+                                            ($) => {
+                                                $d.dictionaryForEach($.arguments, ($) => {
+                                                    serializeDataSpecifier($.value, $i)
+                                                    $i.snippet(`, `)
+                                                })
+                                            },
+                                            () => {
+                                                pd.logDebugMessage(`missing import: ${$.glossary.key}`)
+                                            }
+                                        )
+                                    })
+                                    break
+                                case 'local':
+                                    pl.cc($.context[1], ($) => {
+                                        $d.dictionaryForEach(globalParameters, ($) => {
+                                            $i.snippet(`G${$.key}, `)
+                                        })
+                                    })
+                                    break
+                                default: pl.au($.context[0])
+                            }
+                            $c(($) => {
+                                serializeDataSpecifier($.value, $i)
+                                $i.snippet(`${$.isLast ? `` : `, `}`)
+                            })
+                            $i.snippet(`>`)
+                        }
+                    })
 
                 }
                 $i.nestedLine(($i) => {
@@ -764,7 +872,7 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                     $i.snippet(`import { T } from "./datatypes.generated"`)
                 })
                 $i.line(``)
-                $d.forEachImport2(imports, ($) => {
+                $d.dictionaryForEach(imports, ($) => {
                     $i.nestedLine(($i) => {
                         $i.snippet(`import * as g_${$.key} from "${$.value}"`)
                     })
@@ -772,99 +880,95 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
 
                 pl.cc($.asynchronous, ($) => {
                     ns(`ASYNC`, $i, ($i) => {
-                        $d.enrichedForEachAsychronousInterface($.interfaces, {
-                            'onEmpty': () => { },
-                            'onNotEmpty': ($c) => {
-                                ns(`I`, $i, ($i) => {
-                                    $c(($) => {
-                                        $i.line(``)
+                        ns(`I`, $i, ($i) => {
+                            $d.dictionaryForEach($.interfaces, ($) => {
+                                $i.line(``)
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`export type ${$d.createIdentifier($.key)}`)
+                                    serializeGlobalAndTypeParameters2($.value.parameters, $i)
+                                    $i.snippet(` = `)
+                                    serializeAsynchronousInterface(
+                                        {
+                                            'inf': $.value.interface,
+                                        },
+                                        $i,
+                                    )
+                                })
+                            })
+                        })
+                        ns(`A`, $i, ($i) => {
+                            $d.dictionaryForEach($.algorithms, ($) => {
+                                $i.line(``)
+                                ns(
+                                    pl.cc($.value.type, ($) => {
+                                        switch ($[0]) {
+                                            case 'constructor':
+                                                return pl.cc($[1], ($) => {
+                                                    return `C`
+                                                })
+                                            case 'function':
+                                                return pl.cc($[1], ($) => {
+                                                    return `F`
+                                                })
+                                            default: return pl.au($[0])
+                                        }
+                                    }),
+                                    $i,
+                                    ($i) => {
                                         $i.nestedLine(($i) => {
                                             $i.snippet(`export type ${$d.createIdentifier($.key)}`)
                                             serializeGlobalParametersOnly($i)
                                             $i.snippet(` = `)
-                                            serializeAsynchronousInterface($.value, $i)
-                                        })
-                                    })
-                                })
-                            }
-                        })
-                        $d.enrichedForEachAsychronousAlgorithm($.algorithms, {
-                            'onEmpty': () => { },
-                            'onNotEmpty': ($c) => {
-                                ns(`A`, $i, ($i) => {
-                                    $c(($) => {
-                                        $i.line(``)
-                                        ns(
-                                            pl.cc($.value, ($) => {
+                                            serializeTypeParameters($.value.parameters, $i)
+                                            pl.cc($.value.type, ($) => {
                                                 switch ($[0]) {
                                                     case 'constructor':
-                                                        return pl.cc($[1], ($) => {
-                                                            return `C`
-                                                        })
-                                                    case 'function':
-                                                        return pl.cc($[1], ($) => {
-                                                            return `F`
-                                                        })
-                                                    default: return pl.au($[0])
-                                                }
-                                            }),
-                                            $i,
-                                            ($i) => {
-                                                $i.nestedLine(($i) => {
-                                                    $i.snippet(`export type ${$d.createIdentifier($.key)}`)
-                                                    serializeGlobalParametersOnly($i)
-                                                    $i.snippet(` = `)
-                                                    pl.cc($.value, ($) => {
-                                                        switch ($[0]) {
-                                                            case 'constructor':
-                                                                pl.cc($[1], ($) => {
-                                                                    $i.snippet(`(`)
-                                                                    $d.enrichedForEachAsychronousDownstream($.downstreams, {
-                                                                        'onEmpty': () => {
-                                                                        },
-                                                                        'onNotEmpty': ($c) => {
-                                                                            $i.snippet(`$is: `)
-                                                                            $i.snippet(`{`)
-                                                                            $i.indent(($i) => {
-                                                                                $c(($) => {
-                                                                                    $i.nestedLine(($i) => {
-                                                                                        $i.snippet(`readonly '${$.key}': `)
-                                                                                        serializeAsynchronousInterfaceReference($.value, $i)
-                                                                                    })
-                                                                                })
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(`(`)
+                                                            $d.enrichedDictionaryForEach($.downstreams, {
+                                                                'onEmpty': () => {
+                                                                },
+                                                                'onNotEmpty': ($c) => {
+                                                                    $i.snippet(`$is: `)
+                                                                    $i.snippet(`{`)
+                                                                    $i.indent(($i) => {
+                                                                        $c(($) => {
+                                                                            $i.nestedLine(($i) => {
+                                                                                $i.snippet(`readonly '${$.key}': `)
+                                                                                serializeAsynchronousInterfaceReference($.value, $i)
                                                                             })
-                                                                            $i.snippet(`}`)
-                                                                        }
+                                                                        })
                                                                     })
-                                                                    $i.snippet(`) => `)
-                                                                    serializeAsynchronousInterfaceReference($.interface, $i)
+                                                                    $i.snippet(`}`)
+                                                                }
+                                                            })
+                                                            $i.snippet(`) => `)
+                                                            serializeAsynchronousInterfaceReference($.interface, $i)
 
-                                                                })
-                                                                break
-                                                            case 'function':
-                                                                pl.cc($[1], ($) => {
-                                                                    $i.snippet(`(`)
-                                                                    pl.cc($.in, ($) => {
-                                                                        $i.snippet(`$: `)
-                                                                        serializeTypeReference($, $i)
-                                                                    })
-                                                                    $i.snippet(`) => `)
-                                                                    $i.snippet(`pt.AsyncValue<`)
-                                                                    serializeTypeReference($.out, $i)
-                                                                    $i.snippet(`>`)
+                                                        })
+                                                        break
+                                                    case 'function':
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(`(`)
+                                                            pl.cc($.in, ($) => {
+                                                                $i.snippet(`$: `)
+                                                                serializeDataSpecifier($, $i)
+                                                            })
+                                                            $i.snippet(`) => `)
+                                                            $i.snippet(`pt.AsyncValue<`)
+                                                            serializeDataSpecifier($.out, $i)
+                                                            $i.snippet(`>`)
 
-                                                                })
-                                                                break
-                                                            default: pl.au($[0])
-                                                        }
-                                                    })
-                                                })
+                                                        })
+                                                        break
+                                                    default: pl.au($[0])
+                                                }
+                                            })
+                                        })
 
-                                            }
-                                        )
-                                    })
-                                })
-                            }
+                                    }
+                                )
+                            })
                         })
                     })
 
@@ -873,7 +977,7 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
 
                     pl.cc($.synchronous, ($) => {
 
-                        $d.enrichedForEachSychronousInterface($.interfaces, {
+                        $d.enrichedDictionaryForEach($.interfaces, {
                             'onEmpty': () => { },
                             'onNotEmpty': ($c) => {
                                 ns(`I`, $i, ($i) => {
@@ -881,22 +985,27 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                         $i.line(``)
                                         $i.nestedLine(($i) => {
                                             $i.snippet(`export type ${$d.createIdentifier($.key)}`)
-                                            serializeGlobalParametersOnly($i)
+                                            serializeGlobalAndTypeParameters2($.value.parameters, $i)
                                             $i.snippet(` = `)
-                                            serializeSynchronousInterface($.value, $i)
+                                            serializeSynchronousInterface(
+                                                {
+                                                    'inf': $.value.interface,
+                                                },
+                                                $i,
+                                            )
                                         })
                                     })
                                 })
                             }
                         })
-                        $d.enrichedForEachSychronousAlgorithm($.algorithms, {
+                        $d.enrichedDictionaryForEach($.algorithms, {
                             'onEmpty': () => { },
                             'onNotEmpty': ($c) => {
                                 ns(`A`, $i, ($i) => {
                                     $c(($) => {
                                         $i.line(``)
                                         ns(
-                                            pl.cc($.value, ($) => {
+                                            pl.cc($.value.type, ($) => {
                                                 switch ($[0]) {
                                                     case 'procedure':
                                                         return pl.cc($[1], ($) => {
@@ -915,7 +1024,8 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                                     $i.snippet(`export type ${$d.createIdentifier($.key)}`)
                                                     serializeGlobalParametersOnly($i)
                                                     $i.snippet(` = `)
-                                                    pl.cc($.value, ($) => {
+                                                    serializeTypeParameters($.value.parameters, $i)
+                                                    pl.cc($.value.type, ($) => {
                                                         switch ($[0]) {
                                                             case 'procedure':
                                                                 pl.cc($[1], ($) => {
@@ -932,7 +1042,7 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                                                             case 'data':
                                                                                 pl.cc($[1], ($) => {
                                                                                     $i.snippet(`$: `)
-                                                                                    serializeTypeReference($, $i)
+                                                                                    serializeDataSpecifier($, $i)
                                                                                 })
                                                                                 break
                                                                             default: pl.au($[0])
@@ -958,14 +1068,14 @@ export const $$: A.serializeGlossary = <GAnnotation>($d: {
                                                                             case 'data':
                                                                                 pl.cc($[1], ($) => {
                                                                                     $i.snippet(`$: `)
-                                                                                    serializeTypeReference($, $i)
+                                                                                    serializeDataSpecifier($, $i)
                                                                                 })
                                                                                 break
                                                                             default: pl.au($[0])
                                                                         }
                                                                     })
                                                                     $i.snippet(`) => `)
-                                                                    serializeTypeReference($.out, $i)
+                                                                    serializeDataSpecifier($.out, $i)
                                                                 })
                                                                 break
                                                             default: pl.au($[0])

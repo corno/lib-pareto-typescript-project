@@ -9,18 +9,30 @@ import * as g_project from "../../submodules/project"
 
 export namespace ASYNC {
     
-    export namespace I {}
-    
-    export namespace A {}
-}
-
-export namespace SYNC {
+    export namespace I {
+        
+        export type GenerateProject<GAnnotation> = ($: T.ProjectSettings<GAnnotation>, ) => void
+        
+        export type Log<GAnnotation> = g_common.ASYNC.I.String
+        
+        export type LogError<GAnnotation> = g_common.ASYNC.I.String
+    }
     
     export namespace A {
         
         
-        export namespace P {
-            export type GenerateProjectAndReport<GAnnotation> = ($: T.ProjectSettings<GAnnotation>, $i: g_fp.SYNC.I.Report) => void
+        export namespace C {
+            export type CreateProjectGenerator<GAnnotation> = ($is: {
+                readonly 'log': ASYNC.I.Log<GAnnotation>
+                readonly 'logError': ASYNC.I.LogError<GAnnotation>
+            }) => ASYNC.I.GenerateProject<GAnnotation>
+        }
+        
+        
+        export namespace C {
+            export type CreateProjectGeneratorAndReporter<GAnnotation> = () => ASYNC.I.GenerateProject<GAnnotation>
         }
     }
 }
+
+export namespace SYNC {}

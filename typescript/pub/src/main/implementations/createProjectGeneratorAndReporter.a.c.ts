@@ -6,7 +6,7 @@ import * as pl from 'pareto-core-lib'
 import { A } from "../api.generated"
 
 export const $$: A.createProjectGeneratorAndReporter = ($d) => {
-    return () => {
+    return ($is) => {
         return ($) => {
             const project = $.project
 
@@ -56,13 +56,8 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
                             )
                         },
                         {
-                            'log': ($) => {
-                                pd.logDebugMessage(`XXXX: ${$}`)
-                            },
-                            'logError': ($) => {
-                                pd.logDebugMessage(`YYYYY: ${$}`)
-
-                            }
+                            'log': $is.log,
+                            'logError': $is.logError,
                         }
                     )
                 },

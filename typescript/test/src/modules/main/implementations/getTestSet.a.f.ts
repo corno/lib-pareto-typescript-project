@@ -80,7 +80,7 @@ export const $$: A.getTestSet = ($) => {
 
     // }
     genProj(`${$XXX.testDirectory}/TOKENCONSUMER`, tc)
-    //genProj(`${$XXX.testDirectory}/project`, module.definition)
+    //genProj(`${$XXX.directory}/project`, module.definition)
     // pub.$a.createTestProgram(null, {
     //     getTestSet: () => {
     //         pl.panic("@@@")

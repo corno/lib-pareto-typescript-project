@@ -20,7 +20,7 @@ export const $$: A.createParametersParser = () => {
                         $is.errorHandler.data(['missing', null])
                     } else {
                         $is.handler({
-                            testDirectory: state
+                            directory: state
                         })
                     }
                 })

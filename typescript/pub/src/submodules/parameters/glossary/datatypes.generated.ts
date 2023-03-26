@@ -5,10 +5,10 @@ export namespace T {
     
     export namespace Parameters {
         
-        export type testDirectory = string
+        export type directory = string
     }
     
     export type Parameters = {
-        readonly 'testDirectory': string
+        readonly 'directory': string
     }
 }

@@ -24,7 +24,7 @@ export const $$: A.createProjectGeneratorAndReporter = () => {
                 }),
                 'createDirectory': a_fp.$b.createDirectory(),
                 'createParametersParser': a_parametersparser.$a.createParametersParser(),
-                'validateFiles': a_pareto2typescript.$a.validateFiles,
+                'validateFiles': a_pareto2typescript.$a.validateFiles(),
                 'serializeProject': a_pareto2typescript.$a.serializeProject(
                     {
                         'dictionaryForEach': a_foreach.$r.createDictionaryForEach({

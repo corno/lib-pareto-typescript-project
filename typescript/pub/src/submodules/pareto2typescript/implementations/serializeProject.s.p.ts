@@ -793,7 +793,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                     switch ($.implementation[0]) {
                                                         case 'typescript':
                                                             return pl.cc($.implementation[1], ($) => {
-                                                                return `p`
+                                                                return `b`
                                                             })
                                                         case 'pareto':
                                                             return pl.cc($.implementation[1], ($) => {

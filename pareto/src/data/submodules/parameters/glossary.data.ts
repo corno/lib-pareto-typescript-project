@@ -11,7 +11,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({}),
     'types': d({
         "Parameters": type(group({
-            "testDirectory": member(string()),
+            "directory": member(string()),
         })),
     }),
     'imports': d({

@@ -38,7 +38,7 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
                     $d.createDirectory(
                         ($i) => {
                             $i(
-                                $.testDirectory,
+                                $.directory,
                                 ($i) => {
                                     $d.serializeProject(
                                         project,

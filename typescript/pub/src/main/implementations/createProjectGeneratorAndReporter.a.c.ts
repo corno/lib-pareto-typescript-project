@@ -57,9 +57,10 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
                         },
                         {
                             'log': ($) => {
-
+                                pd.logDebugMessage(`XXXX: ${$}`)
                             },
                             'logError': ($) => {
+                                pd.logDebugMessage(`YYYYY: ${$}`)
 
                             }
                         }

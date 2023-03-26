@@ -1,0 +1,17 @@
+{
+  "author": "Corno",
+  "license": "TBD",
+  "description": "common types and functions for Pareto",
+
+  "dependencies": {
+    "pareto-core-types": "^0.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
+}

@@ -1,16 +1,16 @@
 import { API } from "./api.generated"
-import { $$ as icreateGlossarySerializer } from "./implementations/createGlossarySerializer.p"
-import { $$ as icreateImplementationSerializer } from "./implementations/createImplementationSerializer.p"
-import { $$ as icreateProjectSerializer } from "./implementations/createProjectSerializer.p"
-import { $$ as icreateStatesSerializer } from "./implementations/createStatesSerializer.p"
-import { $$ as icreateTemplateSerializer } from "./implementations/createTemplateSerializer.p"
-import { $$ as ivalidateFiles } from "./implementations/validateFiles.p"
+import { $$ as iserializeGlossary } from "./implementations/serializeGlossary.s.p"
+import { $$ as iserializeImplementation } from "./implementations/serializeImplementation.s.p"
+import { $$ as iserializeProject } from "./implementations/serializeProject.s.p"
+import { $$ as iserializeStates } from "./implementations/serializeStates.s.p"
+import { $$ as iserializeTemplate } from "./implementations/serializeTemplate.s.p"
+import { $$ as ivalidateFiles } from "./implementations/validateFiles.s.p"
 
 export const $api: API = {
-    'createGlossarySerializer': icreateGlossarySerializer,
-    'createImplementationSerializer': icreateImplementationSerializer,
-    'createProjectSerializer': icreateProjectSerializer,
-    'createStatesSerializer': icreateStatesSerializer,
-    'createTemplateSerializer': icreateTemplateSerializer,
+    'serializeGlossary': iserializeGlossary,
+    'serializeImplementation': iserializeImplementation,
+    'serializeProject': iserializeProject,
+    'serializeStates': iserializeStates,
+    'serializeTemplate': iserializeTemplate,
     'validateFiles': ivalidateFiles,
 }

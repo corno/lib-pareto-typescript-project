@@ -143,12 +143,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             }))),
         })),
     }),
-    'type': ['synchronous', {
-
-        'builders': d({}),
-        'functions': d<g_glossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({
-            // "Serialize": func(typeReference("Module"), null, interfaceReference("fp", "Line"), null),
-            // "SerializeWithContext": func(typeReference("Module"), null, interfaceReference("fp", "Directory"), null),
-        }),
-    }],
+    'asynchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
+    },
+    'synchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
+    },
 }

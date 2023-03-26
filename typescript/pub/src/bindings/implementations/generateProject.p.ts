@@ -1,106 +1,126 @@
-import * as g_pareto2typescript from "../../submodules/pareto2typescript"
-import * as g_foreach from "res-pareto-foreach"
-import * as g_coll from "res-pareto-collation"
-import * as g_main from "res-pareto-main"
-import * as g_dictionary from "res-pareto-dictionary"
-import * as g_ts from "res-typescript"
-import * as g_fp from "lib-fountain-pen"
-import * as g_this from "../../main"
-import * as g_fse from "lib-pareto-filesystem/dist/submodules/errorhandlers"
+import * as a_pareto2typescript from "../../submodules/pareto2typescript"
+import * as a_parametersparser from "../../submodules/parametersparser"
+import * as a_foreach from "res-pareto-foreach"
+import * as a_coll from "res-pareto-collation"
+import * as a_mainlib from "res-pareto-main"
+import * as a_ts from "res-typescript"
+import * as a_fp from "lib-fountain-pen"
+import * as a_main from "../../main"
+import * as a_fse from "lib-pareto-filesystem/dist/submodules/errorhandlers"
 
-import { generateProject } from "../api.generated"
+import { A } from "../api.generated"
 
-export const $$: generateProject = ($c) => {
-    const a = g_foreach.$r.arrayForEach
-    const d = g_foreach.$r.createDictionaryForEach({
-        compare: g_coll.$r.localeIsABeforeB,
-    })
-    const ea = g_foreach.$r.enrichedArrayForEach
-    const ed = g_foreach.$r.createEnrichedDictionaryForEach({
-        compare: g_coll.$r.localeIsABeforeB,
-    })
+export const $$: A.generateProject = () => {
 
-    $c(($) => {
+    return ($) => {
+        const el = a_mainlib.$r.createErrorLogger()()
+        const log = a_mainlib.$r.createLogger()()
 
-        g_this.$a.createProjectGenerator(
-            {
+        $c(() => {
 
-                'validateFiles': g_pareto2typescript.$a.validateFiles,
-                'serializeProject': g_pareto2typescript.$a.createProjectSerializer(
-                    {
-                        'dictionaryForEach': d,
-                        'enrichedDictionaryForEach': ed,
-                        'serializeGlossary': g_pareto2typescript.$a.createGlossarySerializer({
-                            'enrichedDictionaryForEach': ed,
-                            'dictionaryForEach': d,
-                            'dictionaryIsEmpty': g_dictionary.$r.isEmpty,
-                            'createIdentifier': g_ts.$r.createIdentifier,
-                            'createApostrophedString': g_ts.$r.createApostrophedString,
-                            'createBacktickedString': g_ts.$r.createBacktickedString,
-                            'createQuotedString': g_ts.$r.createQuotedString,
-                        }),
-                        'serializeImplementation': g_pareto2typescript.$a.createImplementationSerializer(
-                            {
-                                'arrayForEach': a,
-                                'dictionaryForEach': d,
-                                'enrichedArrayForEach': ea,
-                                'enrichedDictionaryForEach': ed,
-                                'createIdentifier': g_ts.$r.createIdentifier,
-                                'createApostrophedString': g_ts.$r.createApostrophedString,
-                                'createBacktickedString': g_ts.$r.createBacktickedString,
-                                'createQuotedString': g_ts.$r.createQuotedString,
+            a_main.$a.generateProjectAndReport(
+                {
+                    'createParametersParser': a_parametersparser.$a.createParametersParser(),
+                    'validateFiles': a_pareto2typescript.$a.validateFiles,
+                    'serializeProject': a_pareto2typescript.$a.serializeProject(
+                        {
+                            'dictionaryForEach': a_foreach.$r.createDictionaryForEach({
+                                'compare': a_coll.$r.localeIsABeforeB(),
+                            }),
+                            'enrichedDictionaryForEach': a_foreach.$r.createEnrichedDictionaryForEach({
+                                'compare': a_coll.$r.localeIsABeforeB(),
+                            }),
+                            'serializeGlossary': a_pareto2typescript.$a.serializeGlossary({
+                                'enrichedDictionaryForEach': a_foreach.$r.createEnrichedDictionaryForEach({
+                                    'compare': a_coll.$r.localeIsABeforeB(),
+                                }),
+                                'dictionaryForEach': a_foreach.$r.createDictionaryForEach({
+                                    'compare': a_coll.$r.localeIsABeforeB(),
+                                }),
+                                'createIdentifier': a_ts.$r.createIdentifier(),
+                                'createApostrophedString': a_ts.$r.createApostrophedString(),
+                                'createBacktickedString': a_ts.$r.createBacktickedString(),
+                                'createQuotedString': a_ts.$r.createQuotedString(),
+                            }),
+                            'serializeImplementation': a_pareto2typescript.$a.serializeImplementation(
+                                {
+                                    'arrayForEach': a_foreach.$r.arrayForEach(),
+                                    'dictionaryForEach': a_foreach.$r.createDictionaryForEach({
+                                        'compare': a_coll.$r.localeIsABeforeB(),
+                                    }),
+                                    'dictionaryForEach_Implementations': a_foreach.$r.createDictionaryForEach({
+                                        'compare': a_coll.$r.localeIsABeforeB(),
+                                    }),
+                                    'dictionaryForEach_InnerFunctions': a_foreach.$r.createDictionaryForEach({
+                                        'compare': a_coll.$r.localeIsABeforeB(),
+                                    }),
+                                    'enrichedArrayForEach': a_foreach.$r.enrichedArrayForEach(),
+                                    'enrichedDictionaryForEach': a_foreach.$r.createEnrichedDictionaryForEach({
+                                        'compare': a_coll.$r.localeIsABeforeB(),
+                                    }),
+                                    'createIdentifier': a_ts.$r.createIdentifier(),
+                                    'createApostrophedString': a_ts.$r.createApostrophedString(),
+                                    'createBacktickedString': a_ts.$r.createBacktickedString(),
+                                    'createQuotedString': a_ts.$r.createQuotedString(),
+                                }
+                            ),
+                            'createIdentifier': a_ts.$r.createIdentifier(),
+                            'createApostrophedString': a_ts.$r.createApostrophedString(),
+                            'createBacktickedString': a_ts.$r.createBacktickedString(),
+                            'createQuotedString': a_ts.$r.createQuotedString(),
+                        }
+                    ),
+                    'serializeTemplate': a_pareto2typescript.$a.serializeTemplate(
+                        {
+                            'dictionaryForEach': a_foreach.$r.createDictionaryForEach({
+                                'compare': a_coll.$r.localeIsABeforeB(),
+                            }),
+                            'createIdentifier': a_ts.$r.createIdentifier(),
+                            'createApostrophedString': a_ts.$r.createApostrophedString(),
+                            'createBacktickedString': a_ts.$r.createBacktickedString(),
+                            'createQuotedString': a_ts.$r.createQuotedString(),
+                        }
+                    ),
+                    // 'logWriteFileError': ($) => {
+                    //     a_main.$r.logError(`FIXME WRITEFILEERROR`)
+                    // },
+                    // 'reportSuperfluousNode': ($) => {
+                    // },
+                    'decorateDictionaryEntriesWithKey': a_foreach.$r.decorateDictionaryEntriesWithKey(),
+                },
+            )(
+                $,
+                {
+                    'nodes': {
+
+                        'manualNode': ($) => {
+                            // a_mainlib.$r.(($i) => {
+                            //     a_fp.$a.createAllowedNodeMessage($)
+                            // })
+                        },
+                        'superfluousNode': ($) => {
+                            a_mainlib.$r.logError(($i) => {
+                                a_fp.$a.createSuperfluousNodeMessage($)
+                            })
+                        },
+                    },
+                    'onWriteFileError': ($) => {
+                        el.data(($i) => {
+                            a_fse.$a.writeFile($, $i)
+                        })
+                    },
+                    'onReadDirError': ($) => {
+                        a_fse.$a.readDir()({
+                            'handler': ($) => {
+
                             }
-                        ),
-                        'createIdentifier': g_ts.$r.createIdentifier,
-                        'createApostrophedString': g_ts.$r.createApostrophedString,
-                        'createBacktickedString': g_ts.$r.createBacktickedString,
-                        'createQuotedString': g_ts.$r.createQuotedString,
-                    }
-                ),
-                'serializeTemplate': g_pareto2typescript.$a.createTemplateSerializer(
-                    {
-                        'dictionaryForEach': d,
-                        'createIdentifier': g_ts.$r.createIdentifier,
-                        'createApostrophedString': g_ts.$r.createApostrophedString,
-                        'createBacktickedString': g_ts.$r.createBacktickedString,
-                        'createQuotedString': g_ts.$r.createQuotedString,
-                    }
-                ),
-                // 'logWriteFileError': ($) => {
-                //     g_main.$r.logError(`FIXME WRITEFILEERROR`)
-                // },
-                // 'reportSuperfluousNode': ($) => {
-                // },
-                'decorateDictionaryEntriesWithKey': g_foreach.$r.decorateDictionaryEntriesWithKey,
-            },
-        )(
-            $,
-            {
-                'nodes': {
-
-                    'manualNode': ($) => {
-                        g_main.$r.log(($i) => {
-                            g_fp.$a.createAllowedNodeMessage($)
+                        })
+                       el.data(($i) => {
                         })
                     },
-                    'superfluousNode': ($) => {
-                        g_main.$r.logError(($i) => {
-                            g_fp.$a.createSuperfluousNodeMessage($)
-                        })
-                    },
-                },
-                'onWriteFileError': ($) => {
-                    g_main.$r.logError(($i) => {
-                        g_fse.$a.writeFile($, $i)
-                    })
-                },
-                'onReadDirError': ($) => {
-                    g_main.$r.logError(($i) => {
-                        g_fse.$a.readDir($, $i)
-                    })
-                },
-            }
-        )
+                }
+            )
 
-    })
+        })
+    }
 }

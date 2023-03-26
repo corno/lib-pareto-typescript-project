@@ -10,7 +10,7 @@ import * as g_glossary from "../../../../../pub/dist/submodules/glossary"
 
 const d = pd.d
 
-export const $: g_project.T.Project._ltype.library.main<pd.SourceLocation> = {
+export const $: g_project.T.Module<pd.SourceLocation> = {
     'definition': {
         'glossary': {
             'root': {
@@ -23,109 +23,109 @@ export const $: g_project.T.Project._ltype.library.main<pd.SourceLocation> = {
                 //         'parameters': d({
                 //             "ReferencedType": {},
                 //         }),
-                //         'type': <g_glossary.T.Type<string>>['group', d({
+                //         'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                 //             "annotation": {
-                //                 'type': <g_glossary.T.Type<string>>['string', {}],
+                //                 'type': <g_glossary.T.Type<pd.SourceLocation>>['string', {}],
                 //             },
                 //             "name": {
-                //                 'type': <g_glossary.T.Type<string>>['string', {}],
+                //                 'type': <g_glossary.T.Type<pd.SourceLocation>>['string', {}],
                 //             },
                 //         })],
                 //     },
                 // }),
                 'types': d({
                     // "Context": type(['taggedUnion', d({
-                    //     "import": <g_glossary.T.Type<string>>['template', {
-                    //         'context': <g_glossary.T.Context<string>>['local', null],
+                    //     "import": <g_glossary.T.Type<pd.SourceLocation>>['template', {
+                    //         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                     //         'arguments': d({
                     //             //"RererencedType": <g_glossary.TTypeReference>['null', {}],
                     //         }),
                     //         'template': "Reference",
                     //     }],
-                    //     "local": <g_glossary.T.Type<string>>['group', d({})],
+                    //     "local": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
                     // })]),
-                    "Glossary": type(<g_glossary.T.Type<string>>['group', d({
+                    "Glossary": type(<g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "functions": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['dictionary', <g_glossary.T.Type<string>>['group', d({
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                                 "data": {
                                     'optional': false,
-                                    'type': <g_glossary.T.Type<string>>['reference', {
-                                        'context': <g_glossary.T.Context<string>>['local', null],
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                         'type': "TypeReference",
                                     }],
                                 },
                                 "managed input interface": {
                                     'optional': false,
-                                    'type': <g_glossary.T.Type<string>>['taggedUnion', d({
-                                        "not set": <g_glossary.T.Type<string>>['group', d({})],
-                                        "set": <g_glossary.T.Type<string>>['reference', {
-                                            'context': <g_glossary.T.Context<string>>['local', null],
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "not set": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "set": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                             'type': "InterfaceReference",
                                         }],
                                     })],
                                 },
                                 "output interface": {
                                     'optional': false,
-                                    'type': <g_glossary.T.Type<string>>['taggedUnion', d({
-                                        "not set": <g_glossary.T.Type<string>>['group', d({})],
-                                        "set": <g_glossary.T.Type<string>>['reference', {
-                                            'context': <g_glossary.T.Context<string>>['local', null],
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "not set": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "set": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                             'type': "InterfaceReference",
                                         }],
                                     })],
                                 },
                                 "return type": {
                                     'optional': false,
-                                    'type': <g_glossary.T.Type<string>>['taggedUnion', d({
-                                        "data": <g_glossary.T.Type<string>>['group', d({
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "data": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                                             "asynchronous": {
                                                 'optional': false,
-                                                'type': <g_glossary.T.Type<string>>['boolean', null],
+                                                'type': <g_glossary.T.Type<pd.SourceLocation>>['boolean', null],
                                             },
                                             "type": {
                                                 'optional': false,
-                                                'type': <g_glossary.T.Type<string>>['reference', {
-                                                    'context': <g_glossary.T.Context<string>>['local', null],
+                                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                                    'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                                     'type': "TypeReference",
                                                 }],
                                             },
                                         })],
-                                        "interface": <g_glossary.T.Type<string>>['reference', {
-                                            'context': <g_glossary.T.Context<string>>['local', null],
+                                        "interface": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                             'type': "InterfaceReference",
                                         }],
-                                        "nothing": <g_glossary.T.Type<string>>['group', d({})],
+                                        "nothing": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
                                     })],
                                 },
                             })]],
                         },
                         "imports": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['dictionary', <g_glossary.T.Type<string>>['group', d({})]],
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]],
                         },
                         "interfaces": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['dictionary', <g_glossary.T.Type<string>>['reference', {
-                                'context': <g_glossary.T.Context<string>>['local', null],
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                 'type': "Interface",
                             }]],
                         },
                         "parameters": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['dictionary', <g_glossary.T.Type<string>>['group', d({})]],
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]],
                         },
                         "templates": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['dictionary', <g_glossary.T.Type<string>>['group', d({
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                                 "parameters": {
                                     'optional': false,
-                                    'type': <g_glossary.T.Type<string>>['dictionary', <g_glossary.T.Type<string>>['group', d({})]],
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]],
                                 },
                                 "type": {
                                     'optional': false,
-                                    'type': <g_glossary.T.Type<string>>['reference', {
-                                        'context': <g_glossary.T.Context<string>>['local', null],
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                         'type': "Type",
                                     }],
                                 },
@@ -133,20 +133,20 @@ export const $: g_project.T.Project._ltype.library.main<pd.SourceLocation> = {
                         },
                         "types": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['dictionary', <g_glossary.T.Type<string>>['reference', {
-                                'context': <g_glossary.T.Context<string>>['local', null],
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                 'type': "Type",
                             }]],
                         },
                     })]),
-                    "Interface": type(<g_glossary.T.Type<string>>['group', d({
+                    "Interface": type(<g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "group": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['group', d({
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                                 "members": {
                                     'optional': false,
-                                    'type': <g_glossary.T.Type<string>>['dictionary', <g_glossary.T.Type<string>>['reference', {
-                                        'context': <g_glossary.T.Context<string>>['local', null],
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                         'type': "Interface",
                                     }]],
                                 },
@@ -154,23 +154,23 @@ export const $: g_project.T.Project._ltype.library.main<pd.SourceLocation> = {
                         },
                         "method": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['group', d({
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                                 "data": {
                                     'optional': false,
-                                    'type': <g_glossary.T.Type<string>>['taggedUnion', d({
-                                        "not set": <g_glossary.T.Type<string>>['group', d({})],
-                                        "set": <g_glossary.T.Type<string>>['reference', {
-                                            'context': <g_glossary.T.Context<string>>['local', null],
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "not set": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "set": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                             'type': "TypeReference",
                                         }],
                                     })],
                                 },
                                 "interface": {
                                     'optional': false,
-                                    'type': <g_glossary.T.Type<string>>['taggedUnion', d({
-                                        "not set": <g_glossary.T.Type<string>>['group', d({})],
-                                        "set": <g_glossary.T.Type<string>>['reference', {
-                                            'context': <g_glossary.T.Context<string>>['local', null],
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                        "not set": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                        "set": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                             'type': "InterfaceReference",
                                         }],
                                     })],
@@ -179,113 +179,113 @@ export const $: g_project.T.Project._ltype.library.main<pd.SourceLocation> = {
                         },
                         "reference": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['reference', {
-                                'context': <g_glossary.T.Context<string>>['local', null],
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                 'type': "InterfaceReference",
                             }],
                         },
                     })]),
-                    "InterfaceReference": type(<g_glossary.T.Type<string>>['group', d({
+                    "InterfaceReference": type(<g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "context": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['reference', {
-                                'context': <g_glossary.T.Context<string>>['local', null],
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                 'type': "Context",
                             }],
                         },
                         // "interface": {
                         //     'optional': false,
-                        //     'type': <g_glossary.T.Type<string>>['template', {
-                        //         'context': <g_glossary.T.Context<string>>['local', null],
+                        //     'type': <g_glossary.T.Type<pd.SourceLocation>>['template', {
+                        //         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                         //         'arguments': d({
-                        //             "RererencedType": <g_glossary.T.Type<string>>['null', {}],
+                        //             "RererencedType": <g_glossary.T.Type<pd.SourceLocation>>['null', {}],
                         //         }),
                         //         'template': "Reference",
                         //     }],
                         // },
                     })]),
-                    "Type": type(<g_glossary.T.Type<string>>['taggedUnion', d({
-                        "array": <g_glossary.T.Type<string>>['reference', {
-                            'context': <g_glossary.T.Context<string>>['local', null],
+                    "Type": type(<g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                        "array": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                             'type': "Type",
                         }],
-                        "boolean": <g_glossary.T.Type<string>>['group', d({})],
-                        "computed": <g_glossary.T.Type<string>>['reference', {
-                            'context': <g_glossary.T.Context<string>>['local', null],
+                        "boolean": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                        "computed": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                             'type': "Type",
                         }],
-                        "dictionary": <g_glossary.T.Type<string>>['reference', {
-                            'context': <g_glossary.T.Context<string>>['local', null],
+                        "dictionary": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                             'type': "Type",
                         }],
-                        "group": <g_glossary.T.Type<string>>['dictionary', <g_glossary.T.Type<string>>['group', d({
+                        "group": <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                             "optional": {
                                 'optional': false,
-                                'type': <g_glossary.T.Type<string>>['boolean', null],
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['boolean', null],
                             },
                             "type": {
                                 'optional': false,
-                                'type': <g_glossary.T.Type<string>>['reference', {
-                                    'context': <g_glossary.T.Context<string>>['local', null],
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                     'type': "Type",
                                 }],
                             },
                         })]],
-                        "nested": <g_glossary.T.Type<string>>['reference', {
-                            'context': <g_glossary.T.Context<string>>['local', null],
+                        "nested": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                             'type': "Type",
                         }],
-                        "null": <g_glossary.T.Type<string>>['group', d({})],
-                        "number": <g_glossary.T.Type<string>>['group', d({})],
-                        "optional": <g_glossary.T.Type<string>>['reference', {
-                            'context': <g_glossary.T.Context<string>>['local', null],
+                        "null": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                        "number": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                        "optional": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                             'type': "Type",
                         }],
-                        "parameter": <g_glossary.T.Type<string>>['string', null],
-                        "reference": <g_glossary.T.Type<string>>['reference', {
-                            'context': <g_glossary.T.Context<string>>['local', null],
+                        "parameter": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                        "reference": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                             'type': "TypeReference",
                         }],
-                        "string": <g_glossary.T.Type<string>>['group', d({})],
-                        "taggedUnion": <g_glossary.T.Type<string>>['reference', {
-                            'context': <g_glossary.T.Context<string>>['local', null],
+                        "string": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                        "taggedUnion": <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                             'type': "Type",
                         }],
-                        "template": <g_glossary.T.Type<string>>['group', d({
+                        "template": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                             "arguments": {
                                 'optional': false,
-                                'type': <g_glossary.T.Type<string>>['dictionary', <g_glossary.T.Type<string>>['reference', {
-                                    'context': <g_glossary.T.Context<string>>['local', null],
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                     'type': "Type",
                                 }]],
                             },
                             "context": {
                                 'optional': false,
-                                'type': <g_glossary.T.Type<string>>['reference', {
-                                    'context': <g_glossary.T.Context<string>>['local', null],
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                    'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                     'type': "Context",
                                 }],
                             },
                             "template": {
                                 'optional': false,
-                                'type': <g_glossary.T.Type<string>>['string', null],
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
                             },
                         })],
                     })]),
-                    "TypeReference": type(<g_glossary.T.Type<string>>['group', d({
+                    "TypeReference": type(<g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "context": {
                             'optional': false,
-                            'type': <g_glossary.T.Type<string>>['reference', {
-                                'context': <g_glossary.T.Context<string>>['local', null],
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                 'type': "Context",
                             }],
                         },
                         // "type": {
                         //     'optional': false,
-                        //     'type': <g_glossary.T.Type<string>>['template', {
-                        //         'context': <g_glossary.T.Context<string>>['local', null],
+                        //     'type': <g_glossary.T.Type<pd.SourceLocation>>['template', {
+                        //         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                         //         'arguments': d({
-                        //             "RererencedType": <g_glossary.T.Type<string>>['null', {}],
+                        //             "RererencedType": <g_glossary.T.Type<pd.SourceLocation>>['null', {}],
                         //         }),
                         //         'template': "Reference",
                         //     }],

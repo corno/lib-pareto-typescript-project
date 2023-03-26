@@ -1,6 +1,6 @@
 import { API } from "./api.generated"
-import { $$ as icreateSerializer } from "./implementations/createSerializer.p"
+import { $$ as iserialize } from "./implementations/serialize.s.p"
 
 export const $api: API = {
-    'createSerializer': icreateSerializer,
+    'serialize': iserialize,
 }

@@ -1,9 +1,12 @@
 import * as pt from 'pareto-core-types'
 
-import * as g_this from "../main/glossary"
+import * as g_this from "./glossary"
 
-export type generateProject = <Annotation>($c: g_this.C.GenerateProject<Annotation>) => void
+export namespace A {
+    
+    export type generateProject = <GAnnotation>() => g_this.SYNC.A.P.GenerateProject<GAnnotation>
+}
 
 export type API = {
-    generateProject: generateProject
+    readonly 'generateProject': A.generateProject
 }

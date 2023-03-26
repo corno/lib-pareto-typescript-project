@@ -1,7 +1,8 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    typeReference, builderReference, type, glossaryParameter, member, group, dictionary, string, sfunc, externalTypeReference, imp, ref, data, bldr,
+    data, dictionary, externalTypeReference, glossaryParameter, group, imp,
+    member, procedure, ref, sInterfaceReference, string, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -26,18 +27,20 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "imports": member(dictionary(string())),
         })),
     }),
-    'type': ['synchronous', {
-        'builders': d({
+    'asynchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
+    },
+    'synchronous': {
+        'interfaces': d({}),
+        'algorithms': d({
+            "ValidateFiles": procedure(data(externalTypeReference("common", "Null")), sInterfaceReference("fp", "Directory")),
+            "SerializeGlossary": procedure(data(typeReference("SerializeGlossaryData")), sInterfaceReference("fp", "Directory")),
+            "SerializeImplementation": procedure(data(externalTypeReference("algorithm", "Implementation")), sInterfaceReference("fp", "Directory")),
+            "SerializeParetoEnvironment": procedure(data(externalTypeReference("common", "Null")), sInterfaceReference("fp", "Directory")),
+            "SerializeBuildEnvironment": procedure(data(externalTypeReference("common", "Null")), sInterfaceReference("fp", "Directory")),
+            "ProjectToDirectory": procedure(data(externalTypeReference("project", "Project")), sInterfaceReference("fp", "Directory")),
+            "SerializeStates": procedure(data(externalTypeReference("algorithm", "States")), sInterfaceReference("fp", "Block")),
         }),
-        'functions': d({
-            "ValidateFiles": sfunc(data(externalTypeReference("common", "Null")), bldr(builderReference("fp", "Directory"))),
-            "SerializeGlossary": sfunc(data(typeReference("SerializeGlossaryData")), bldr(builderReference("fp", "Directory"))),
-            "SerializeImplementation": sfunc(data(externalTypeReference("algorithm", "Implementation")), bldr(builderReference("fp", "Directory"))),
-            "SerializeParetoEnvironment": sfunc(data(externalTypeReference("common", "Null")), bldr(builderReference("fp", "Directory"))),
-            "SerializeBuildEnvironment": sfunc(data(externalTypeReference("common", "Null")), bldr(builderReference("fp", "Directory"))),
-            "ProjectToDirectory": sfunc(data(externalTypeReference("project", "Project")), bldr(builderReference("fp", "Directory"))),
-            "SerializeStates": sfunc(data(externalTypeReference("algorithm", "States")), bldr(builderReference("fp", "Block"))),
-        }),
-
-    }],
+    },
 }

@@ -1,2 +1,2 @@
-export * from "./types.generated"
-export * from "./public.generated"
+export * from "./datatypes.generated"
+export * from "./algorithmtypes.generated"

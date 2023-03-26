@@ -10,21 +10,21 @@ import { external, sibling } from "lib-pareto-typescript-project/dist/submodules
 const d = pd.d
 
 export const $: g_project.T.Module<pd.SourceLocation> = {
-    'glossary': {
-        'root': glossary,
-        'imports': d({
-            "fp": external("lib-fountain-pen"),
-        }),
+    'definition': {
+        'glossary': {
+            'root': glossary,
+            'imports': d({
+                "fp": external("lib-fountain-pen"),
+            }),
 
-    },
+        },
         'api': {
             'root': api,
             'imports': d({
-                "collation": external("res-pareto-collation"),
                 "foreach": external("res-pareto-foreach"),
                 "this": sibling("algorithm"),//FIXME!!! references itself
             }),
         },
-        'implementation': ['typescript', null],
-
+    },
+    'implementation': ['typescript', null],
 }

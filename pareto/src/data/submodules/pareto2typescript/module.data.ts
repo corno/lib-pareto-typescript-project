@@ -9,25 +9,29 @@ import { external, sibling, this_ } from "lib-pareto-typescript-project/dist/sub
 const d = pd.d
 
 export const $: g_project.T.Module<pd.SourceLocation> = {
-    'glossary': {
-        'root': glossary,
-        'imports': d({
-            "algorithm": sibling("algorithm"),
-            "common": external("glo-pareto-common"),
-            "fp": external("lib-fountain-pen"),
-            "glossary": sibling("glossary"),
-            "project": sibling("project"),
-        }),
-    },
+    'definition': {
+        'glossary': {
+            'root': glossary,
+            'imports': d({
+                "algorithm": sibling("algorithm"),
+                "common": external("glo-pareto-common"),
+                "fp": external("lib-fountain-pen"),
+                "glossary": sibling("glossary"),
+                "project": sibling("project"),
+            }),
+        },
         'api': {
             'root': api,
             'imports': d({
-                "dictionary": external("res-pareto-dictionary"),
+                "algorithm": sibling("algorithm"),
                 "foreach": external("res-pareto-foreach"),
+                "glossary": sibling("glossary"),
                 "this": this_(),
                 "ts": external("res-typescript"),
+                "project": sibling("project"),
             }),
         },
-        'implementation': ['typescript', null],
+    },
+    'implementation': ['typescript', null],
 
 }

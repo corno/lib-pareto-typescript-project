@@ -1,3 +1,3 @@
 import { API } from "./api.generated"
 
-export const $api: API = {}
+export const $api: API = null

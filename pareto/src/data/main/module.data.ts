@@ -15,27 +15,26 @@ import { $ as api } from "./api.data"
 
 const d = pd.d
 
-export const $: g_project.T.Project._ltype.library.main<pd.SourceLocation> = {
-    'glossary': {
-        'root': glossary,
-        'imports': d({
-            "common": external("glo-pareto-common"),
-            "fp": external("lib-fountain-pen"),
-            "main": external("res-pareto-main"),
-            "project": tempSubmodule("project"),
-        }),
-    },
-    'api': {
-        'root': api,
-        'imports': d({
-            "common": external("glo-pareto-common"),
-            "foreach": external("res-pareto-foreach"),
-            "fp": external("lib-fountain-pen"),
-            "fs": external("res-pareto-filesystem"),
-            "pareto2typescript": submodule("pareto2typescript"),
-            "this": this_(),
-        }),
+export const $: g_project.T.Module<pd.SourceLocation> = {
+    'definition': {
+        'glossary': {
+            'root': glossary,
+            'imports': d({
+                "common": external("glo-pareto-common"),
+                "fp": external("lib-fountain-pen"),
+                "main": external("res-pareto-main"),
+                "project": tempSubmodule("project"),
+            }),
+        },
+        'api': {
+            'root': api,
+            'imports': d({
+                "parametersparser": submodule("parametersparser"),
+                "foreach": external("res-pareto-foreach"),
+                "pareto2typescript": submodule("pareto2typescript"),
+                "this": this_(),
+            }),
+        },
     },
     'implementation': ['typescript', null],
-
 }

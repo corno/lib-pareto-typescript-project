@@ -1,12 +1,11 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    boolean,
-    string,
-    builderMethod,
-    null_,
-    data,
-    array, dictionary, group, member, taggedUnion, types, typeReference, builderReference, sfunc, type, glossaryParameter, optional, imp, externalTypeReference, ref, bldr,
+    aInterfaceMethod,
+    aInterfaceReference,
+    constructor,
+    data, externalTypeReference, glossaryParameter, group, imp, member,
+    null_, procedure, ref, sInterfaceMethod, sInterfaceReference, streamconsumer, string, taggedUnion, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -27,31 +26,22 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
-        "ArgumentError": type(taggedUnion({
-            "missing": null_(),
-            "too many": null_(),
-        })),
         "ProjectSettings": type(group({
             "project": member(ref(externalTypeReference("project", "Project"))),
             "mainData": member(ref(externalTypeReference("main", "MainData"))),
         })),
-        "Parameters": type(group({
-            "testDirectory": member(string()),
-        })),
     }),
-    'type': ['synchronous', {
-        'builders': d({
-            "ParseArguments": builderMethod(externalTypeReference("main", "Arguments")),
-            "ProcessArgument": builderMethod(externalTypeReference("common", "String")),
-            "HandleParameters": builderMethod(typeReference("Parameters")),
-            "HandleArgumentError": builderMethod(typeReference("ArgumentError")),
-            "GenerateProject": builderMethod(typeReference("ProjectSettings")),
+    'asynchronous': {
+        'interfaces': d({
         }),
-        'functions': d({
-            "GenerateProjectAndReport": sfunc(data(typeReference("ProjectSettings")), bldr( builderReference("fp", "Report"))),
-            //"GetSingleArgument": sfunc(typeReference("main", "Arguments"), null, null, data(typeReference("common", "String"), true)),
-            "ParseArguments2": sfunc(data(externalTypeReference("main", "Arguments")),bldr( builderReference("HandleParameters"))),
+        'algorithms': d({
         }),
-
-    }],
+    },
+    'synchronous': {
+        'interfaces': d({
+        }),
+        'algorithms': d({
+            "GenerateProjectAndReport": procedure(data(typeReference("ProjectSettings")), sInterfaceReference("fp", "Report")),
+        }),
+    },
 }

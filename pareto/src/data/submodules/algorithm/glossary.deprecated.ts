@@ -1,9 +1,9 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    array, boolean, builderReference, dictionary,
-    sfunc, glossaryParameter, group, member,
-    optional, string, taggedUnion, type, typeReference, ref, imp, bldr, data
+    array, boolean, data, dictionary,
+    glossaryParameter, group, imp, member,
+    optional, procedure, ref, sInterfaceReference, string, taggedUnion, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -130,11 +130,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "taggedUnion": dictionary(ref(typeReference("Type"))),
         })),
     }),
-    'type': ['synchronous', {
-        'builders': d({}),
-        'functions': d({
-            "SerializeImplementation": sfunc(data(typeReference("Implementation")), bldr(builderReference("fp", "Line"))),
+    'asynchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
+    },
+    'synchronous': {
+        'interfaces': d({}),
+        'algorithms': d({
+            "SerializeImplementation": procedure(data(typeReference("Implementation")), sInterfaceReference("fp", "Line")),
         }),
-
-    }],
+    },
 }

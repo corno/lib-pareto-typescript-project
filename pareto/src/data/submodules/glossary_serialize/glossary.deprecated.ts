@@ -1,8 +1,6 @@
 import * as pd from 'pareto-core-data'
 
-import {
-    typeReference, interfaceReference, type, glossaryParameter, member, group, dictionary, string, imp,
-} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
+import { glossaryParameter, imp, type, typeReference } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
@@ -21,10 +19,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
     }),
-    'type': ['synchronous', {
-        'builders': d({}),
-        'functions': d({
-            "Serialize": {
+    'asynchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
+    },
+    'synchronous': {
+        'interfaces': d({}),
+        'algorithms': d({
+            "Serialize": ['procedure', {
                 'in': ['data', {
                     'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
                         'glossary': {
@@ -35,16 +37,17 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     'type': "Glossary",
                     'arguments': d({}),
                 }],
-                'out': ['builder', {
+                'out': {
                     'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
                         'glossary': {
                             'key': "fp",
                             'annotation': pd.getLocationInfo(0),
                         },
                     }],
-                    'builder': "Block",
-                }],
-            },
+                    'interface': "Block",
+                },
+            }],
+
         }),
-    }],
+    },
 }

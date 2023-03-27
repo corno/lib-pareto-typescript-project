@@ -4,8 +4,6 @@ import * as pt from 'pareto-core-types'
 import * as g_glossary from "../../glossary"
 import * as g_fp from "lib-fountain-pen"
 import * as g_common from "glo-pareto-common"
-import * as g_this from "../glossary"
-import * as g_foreach from "res-pareto-foreach"
 
 export namespace VOptional { }
 export type VOptional<AType> =

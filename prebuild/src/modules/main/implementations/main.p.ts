@@ -10,7 +10,7 @@ import { $ as data } from "../../../data/data.data"
 import { main } from "../api"
 
 export const $$: main = ($) => {
-    //pv.logDebugMessage("REENABLE")
+    pv.logDebugMessage("REENABLE")
     const el = a_main.$r.createErrorLogger()()
 
     // a_liana.$b.compile<pd.SourceLocation>({

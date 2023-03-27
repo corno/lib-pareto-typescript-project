@@ -99,8 +99,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     'glossary': {
                                         'annotation': {
                                             'file': "INTERNAL",
-                                            'line': "",
-                                            'column': "COLUMN",
+                                            'line': 3,
+                                            'column': 3,
                                         },
                                         'key': "undefined",
                                     },
@@ -142,8 +142,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         'glossary': {
                                             'annotation': {
                                                 'file': "INTERNAL,",
-                                                'line': "LINE",
-                                                'column': "COLUMN",
+                                                'line': 4,
+                                                'column': 2,
                                             },
                                             'key': "undefined",
                                         },

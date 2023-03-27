@@ -228,10 +228,67 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                             $i.line(``)
                             pl.cc($.api, ($) => {
                                 $i.nestedLine(($i) => {
+                                    $i.snippet(`export namespace D {`)
+                                    $i.indent(($i) => {
+                                        $d.dictionaryForEach($.algorithms, ($) => {
+                                            const key = $.key
+                                            const parameters = $.value.parameters
+                                            $i.line(``)
+                                            pl.cc($.value, ($) => {
+                                                switch ($.type[0]) {
+                                                    case 'dependent':
+                                                        pl.cc($.type[1], ($) => {
+                                                            $d.enrichedDictionaryForEach($.dependencies, {
+                                                                'onEmpty': () => { },
+                                                                'onNotEmpty': ($c) => {
+                                                                    $i.nestedLine(($i) => {
+                                                                    $i.snippet(`export type ${$d.createIdentifier(key)} = `)
+                                                                        $d.enrichedDictionaryForEach(parameters, {
+                                                                            'onEmpty': () => {
+                    
+                                                                            },
+                                                                            'onNotEmpty': ($c) => {
+                                                                                $i.snippet(`<`)
+                                                                                $c(($) => {
+                                                                                    $i.snippet(`G${$d.createIdentifier($.key)}${$.isLast ? `` : `, `}`)
+                                                                                })
+                                                                                $i.snippet(`>`)
+                                                                            }
+                                                                        })
+                                                                        $i.snippet(`{`)
+                                                                        $i.indent(($i) => {
+    
+                                                                            $c(($) => {
+    
+                                                                                $i.nestedLine(($i) => {
+                                                                                    $i.snippet(`readonly '${$.key}': `)
+                                                                                    serializeAlgorithmTypeReference($.value, $i)
+                                                                                })
+                                                                            })
+                                                                        })
+                                                                        $i.snippet(`}`)
+                                                                    })
+                                                                }
+                                                            })
+                                                        })
+                                                        break
+                                                    case 'independent':
+                                                        pl.cc($.type[1], ($) => {
+                                                        })
+                                                        break
+                                                    default: pl.au($.type[0])
+                                                }
+                                            })
+                                        })
+                                    })
+                                    $i.snippet(`}`)
+                                })
+                                $i.line(``)
+                                $i.nestedLine(($i) => {
                                     $i.snippet(`export namespace A {`)
                                     $i.indent(($i) => {
                                         $d.dictionaryForEach($.algorithms, ($) => {
-
+                                            const key = $.key
                                             $i.line(``)
                                             $i.nestedLine(($i) => {
                                                 $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
@@ -267,18 +324,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                                 $d.enrichedDictionaryForEach($.dependencies, {
                                                                     'onEmpty': () => { },
                                                                     'onNotEmpty': ($c) => {
-                                                                        $i.snippet(`$d: {`)
-                                                                        $i.indent(($i) => {
-
-                                                                            $c(($) => {
-
-                                                                                $i.nestedLine(($i) => {
-                                                                                    $i.snippet(`readonly '${$.key}': `)
-                                                                                    serializeAlgorithmTypeReference($.value, $i)
-                                                                                })
-                                                                            })
-                                                                        })
-                                                                        $i.snippet(`}, `)
+                                                                        $i.snippet(`$d: D.${$d.createIdentifier(key)}, `)
                                                                     }
                                                                 })
                                                                 $d.enrichedDictionaryForEach($['side effects'], {

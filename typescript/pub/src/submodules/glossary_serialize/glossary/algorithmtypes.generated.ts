@@ -20,5 +20,10 @@ export namespace SYNC {
         export namespace P {
             export type Serialize<GAnnotation> = ($: g_model.T.Glossary<GAnnotation>, $i: g_fp.SYNC.I.Block) => void
         }
+        
+        
+        export namespace P {
+            export type SerializeAnnotation<GAnnotation> = ($: GAnnotation, $i: g_fp.SYNC.I.Line) => void
+        }
     }
 }

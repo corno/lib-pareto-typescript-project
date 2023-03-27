@@ -3,6 +3,9 @@ import * as pt from 'pareto-core-types'
 
 import * as g_glossary from "../../glossary"
 import * as g_fp from "lib-fountain-pen"
+import * as g_common from "glo-pareto-common"
+import * as g_this from "../glossary"
+import * as g_foreach from "res-pareto-foreach"
 
 export namespace VOptional { }
 export type VOptional<AType> =
@@ -11,9 +14,31 @@ export type VOptional<AType> =
 
 import { A } from "../api.generated"
 
-export const $$: A.serialize = ($d) => {
-    return <Annotation>($: g_glossary.T.Glossary<Annotation>, $i: g_fp.SYNC.I.Block) => {
+export const $$: A.serialize = <GAnnotation>($d: {
+    readonly dictionaryForEach: g_foreach.SYNC.A.P.DictionaryForEach;
+    readonly serializeAnnotation: g_this.SYNC.A.P.SerializeAnnotation<GAnnotation>;
+}) => {
+    return ($: g_glossary.T.Glossary<GAnnotation>, $i: g_fp.SYNC.I.Block) => {
 
+        function serializeRef(
+            $: g_common.T.AnnotatedKey<GAnnotation>,
+            // $: pt.OptionalValue<T>,
+            $i: g_fp.SYNC.I.Line,
+            // $c: ($: T, $i: g_fp.SYNC.I.Line) => void,
+        ) {
+            $i.snippet(`{`)
+            $i.indent(($i) => {
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'annotation': `)
+                    $d.serializeAnnotation($.annotation, $i)
+                    $i.snippet(`',`)
+                })
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'key': "${$.key}",`)
+                })
+            })
+            $i.snippet(`}`)
+        }
         function doOptional<T>(
             $: pt.OptionalValue<T>,
             $i: g_fp.SYNC.I.Line,
@@ -33,7 +58,7 @@ export const $$: A.serialize = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeDataOrSynchronousInterface($: g_glossary.T.DataOrSynchronousInterface<Annotation>, $i: g_fp.SYNC.I.Line) {
+        function serializeDataOrSynchronousInterface($: g_glossary.T.DataOrSynchronousInterface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'interface':
                     pl.cc($[1], ($) => {
@@ -52,7 +77,7 @@ export const $$: A.serialize = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeDataSpecifier($: g_glossary.T.DataSpecifier<Annotation>, $i: g_fp.SYNC.I.Line) {
+        function serializeDataSpecifier($: g_glossary.T.DataSpecifier<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'type parameter':
                     pl.cc($[1], ($) => {
@@ -105,7 +130,7 @@ export const $$: A.serialize = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeTypeParameters($: g_glossary.T.TypeParameters<Annotation>, $i: g_fp.SYNC.I.Line) {
+        function serializeTypeParameters($: g_glossary.T.TypeParameters<GAnnotation>, $i: g_fp.SYNC.I.Line) {
 
             $i.snippet(`'d({`)
             $i.indent(($i) => {
@@ -119,7 +144,7 @@ export const $$: A.serialize = ($d) => {
             $i.snippet(`})`)
         }
 
-        function serializeType($: g_glossary.T.Type<Annotation>, $i: g_fp.SYNC.I.Line) {
+        function serializeType($: g_glossary.T.Type<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             $i.snippet(`<g_glossary.T.Type<pd.SourceLocation>>`)
 
             switch ($[0]) {
@@ -231,7 +256,7 @@ export const $$: A.serialize = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeContext($: g_glossary.T.Context<Annotation>, $i: g_fp.SYNC.I.Line) {
+        function serializeContext($: g_glossary.T.Context<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             $i.snippet(`<g_glossary.T.Context<pd.SourceLocation>>`)
             switch ($[0]) {
                 case 'import':
@@ -239,7 +264,9 @@ export const $$: A.serialize = ($d) => {
                         $i.snippet(`['import', {`)
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
-                                $i.snippet(`'glossary': "${$.glossary}",`)
+                                $i.snippet(`'glossary': `)
+                                serializeRef($.glossary, $i)
+                                $i.snippet(`,`)
                             })
                         })
                         $i.snippet(`}]`)
@@ -253,7 +280,7 @@ export const $$: A.serialize = ($d) => {
                 default: pl.au($[0])
             }
         }
-        function serializeAsynchronousInterfaceReference($: g_glossary.T.AsynchronousInterfaceReference<Annotation>, $i: g_fp.SYNC.I.Line) {
+        function serializeAsynchronousInterfaceReference($: g_glossary.T.AsynchronousInterfaceReference<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -295,7 +322,7 @@ export const $$: A.serialize = ($d) => {
         //     $i.snippet(`}`)
         // }
 
-        function serializeSynchronousInterfaceReference($: g_glossary.T.SynchronousInterfaceReference<Annotation>, $i: g_fp.SYNC.I.Line) {
+        function serializeSynchronousInterfaceReference($: g_glossary.T.SynchronousInterfaceReference<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
@@ -323,7 +350,7 @@ export const $$: A.serialize = ($d) => {
             $i.snippet(`}`)
 
         }
-        function serializeAsynchronousInterface($: g_glossary.T.AsynchronousInterface<Annotation>, $i: g_fp.SYNC.I.Line) {
+        function serializeAsynchronousInterface($: g_glossary.T.AsynchronousInterface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'choice':
                     pl.cc($[1], ($) => {
@@ -404,7 +431,7 @@ export const $$: A.serialize = ($d) => {
             }
 
         }
-        function serializeSynchronousInterface($: g_glossary.T.SynchronousInterface<Annotation>, $i: g_fp.SYNC.I.Line) {
+        function serializeSynchronousInterface($: g_glossary.T.SynchronousInterface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'group':
                     pl.cc($[1], ($) => {

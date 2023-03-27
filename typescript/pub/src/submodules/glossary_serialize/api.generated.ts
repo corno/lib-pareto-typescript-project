@@ -8,6 +8,7 @@ export namespace A {
     
     export type serialize = <GAnnotation>($d: {
         readonly 'dictionaryForEach': g_foreach.SYNC.A.P.DictionaryForEach
+        readonly 'serializeAnnotation': g_this.SYNC.A.P.SerializeAnnotation<GAnnotation>
     }, ) => g_this.SYNC.A.P.Serialize<GAnnotation>
 }
 

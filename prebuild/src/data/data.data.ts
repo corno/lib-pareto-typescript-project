@@ -3,6 +3,7 @@ import * as pd from 'pareto-core-data'
 import * as g_liana from "lib-liana/dist/main"
 
 import { $ as glossary } from "./models/glossary.data"
+import { $ as project } from "./models/project.data"
 
 export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
     'outputs': pd.a([
@@ -20,8 +21,32 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                         'serialize': [false],
                     },
                 },
-                'mapped model': {
-                    'model': glossary,
+                'mapped library': {
+                    'library': glossary,
+
+                    'terminal mapping': pd.d({
+                        "identifier": ['string', null],
+                        "boolean": ['boolean', null],
+                    }),
+                },
+            }
+        },
+        {
+            'path': `../../pareto/src/data/submodules/temp_project/glossary.generated.ts`,
+            'data': {
+                'settings': {
+                    'datamodel': [true, {
+                        'annotations': true,
+                        'properties optional': false,
+                        'reference mapping': ['string', null],
+                    }],
+                    'visitor interface': [false],
+                    'algorithms': {
+                        'serialize': [false],
+                    },
+                },
+                'mapped library': {
+                    'library': project,
 
                     'terminal mapping': pd.d({
                         "identifier": ['string', null],

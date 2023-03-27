@@ -8,7 +8,9 @@ import {
 const d = pd.d
 
 export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
-    'imports': d({}),
+    'imports': d({
+        "glossary": null,
+    }),
     'terminal types': d({
         "identifier": null,
     }),

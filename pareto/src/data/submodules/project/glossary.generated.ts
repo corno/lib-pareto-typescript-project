@@ -9,7 +9,13 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({
         "Annotation": null,
     }),
-    'imports': d({}),
+    'imports': d({
+        "glossary": {
+            'arguments': d({
+                "Annotation": ['glossary parameter', "Annotation"]
+            }),
+        },
+    }),
     'types': d({
         "AlgorithmTypeReference": {
             'parameters': d({}),
@@ -182,7 +188,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
                                     'glossary': {
                                         'annotation': {
-                                            'file': "INTERNAL,",
+                                            'file': "INTERNAL",
                                             'line': 0,
                                             'column': 0,
                                         },
@@ -190,7 +196,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     },
                                 }],
                                 'type': "Glossary",
-                                'arguments': d({}),//ANNOTATION@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!
+                                'arguments': d({}),
                             }]],
                         },
                     })],
@@ -225,11 +231,11 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
                                         'glossary': {
                                             'annotation': {
-                                                'file': "INTERNAL,",
+                                                'file': "INTERNAL",
                                                 'line': 0,
                                                 'column': 0,
                                             },
-                                            'key': "undefined",
+                                            'key': "glossary",
                                         },
                                     }],
                                     'type': "Glossary",

@@ -83,6 +83,90 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "ModuleDefinition": {
             'parameters': d({}),
             'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                "api": {
+                    'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "imports": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                "external": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                "main": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                "sibling": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                "submodule": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                "this": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                            })]],
+                        },
+                        "root": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                "algorithms": {
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                        "definition": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                'type': "AlgorithmTypeReference",
+                                                'arguments': d({}),
+                                            }]],
+                                        },
+                                        "parameters": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['string', null]],
+                                        },
+                                        "type": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                "dependent": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                                    "configuration data": {
+                                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                                            "context": {
+                                                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                                    'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                                    'type': "Context",
+                                                                    'arguments': d({}),
+                                                                }]],
+                                                            },
+                                                            "type": {
+                                                                'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                                            },
+                                                        })]],
+                                                    },
+                                                    "dependencies": {
+                                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                            'type': "AlgorithmTypeReference",
+                                                            'arguments': d({}),
+                                                        }]]],
+                                                    },
+                                                    "side effects": {
+                                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                                            "context": {
+                                                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                                    'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                                    'type': "Context",
+                                                                    'arguments': d({}),
+                                                                }]],
+                                                            },
+                                                            "type": {
+                                                                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                                                    "asynchronous": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                                                        "interface": {
+                                                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                                                        },
+                                                                    })],
+                                                                    "synchronous": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                                                        "interface": {
+                                                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                                                        },
+                                                                    })],
+                                                                })],
+                                                            },
+                                                        })]],
+                                                    },
+                                                })],
+                                                "independent": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                            })],
+                                        },
+                                    })]],
+                                },
+                            })],
+                        },
+                    })],
+                },
                 "glossary": {
                     'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "imports": {
@@ -98,15 +182,15 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
                                     'glossary': {
                                         'annotation': {
-                                            'file': "INTERNAL",
-                                            'line': 3,
-                                            'column': 3,
+                                            'file': "INTERNAL,",
+                                            'line': 0,
+                                            'column': 0,
                                         },
-                                        'key': "undefined",
+                                        'key': "glossary",
                                     },
                                 }],
                                 'type': "Glossary",
-                                'arguments': d({}),
+                                'arguments': d({}),//ANNOTATION@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!
                             }]],
                         },
                     })],
@@ -142,8 +226,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         'glossary': {
                                             'annotation': {
                                                 'file': "INTERNAL,",
-                                                'line': 4,
-                                                'column': 2,
+                                                'line': 0,
+                                                'column': 0,
                                             },
                                             'key': "undefined",
                                         },

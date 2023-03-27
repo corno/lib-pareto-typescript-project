@@ -32,11 +32,11 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
             }
         },
         {
-            'path': `../../pareto/src/data/submodules/temp_project/glossary.generated.ts`,
+            'path': `../../pareto/src/data/submodules/project/glossary.generated.ts`,
             'data': {
                 'settings': {
                     'datamodel': [true, {
-                        'annotations': true,
+                        'annotations': false,
                         'properties optional': false,
                         'reference mapping': ['string', null],
                     }],

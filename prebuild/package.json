@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "lib-liana": "^0.26.0",
+    "lib-liana": "^0.27.0",
     "pareto-core-data": "^0.2.4",
     "pareto-core-dev": "^0.2.4",
     "pareto-core-exe": "^0.17.1",
     "pareto-core-lib": "^0.21.3",
     "pareto-core-state": "^0.15.4",
-    "res-pareto-main": "^0.30.0"
+    "res-pareto-main": "^0.31.1"
   }
 }

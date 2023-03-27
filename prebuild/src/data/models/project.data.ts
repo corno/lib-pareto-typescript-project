@@ -50,42 +50,42 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     "main": option(group({})),//only possible for submodule
                 }))),
             })),
-            // "api": prop(group({
-            //     "root": prop(group({
-            //         "algorithms": prop(dictionary(group({
-            //             "parameters": prop(dictionary(terminal("identifier"))),
-            //             "definition": prop(component("AlgorithmTypeReference", {})),
-            //             "type": prop(taggedUnion({
-            //                 "independent": group({}),
-            //                 "dependent": group({
-            //                     "configuration data": prop(optional(group({
-            //                         "context": prop(component("Context", {})),
-            //                         "type": prop(terminal("identifier")),
-            //                     }))),
-            //                     "dependencies": prop(dictionary(component("AlgorithmTypeReference", {}))),
-            //                     "side effects": prop(dictionary(group({
-            //                         "context": prop(component("Context", {})),
-            //                         "type": prop(taggedUnion({
-            //                             "asynchronous": group({
-            //                                 "interface": prop(terminal("identifier")),
-            //                             }),
-            //                             "synchronous": group({
-            //                                 "interface": prop(terminal("identifier")),
-            //                             }),
-            //                         })),
-            //                     }))),
-            //                 }),
-            //             })),
-            //         }))),
-            //     })),
-            //     "imports": prop(dictionary(taggedUnion({
-            //         "this": group({}),
-            //         "main": group({}),
-            //         "submodule": terminal("identifier"),//only possible for main
-            //         "sibling": terminal("identifier"),//only possible for submodule
-            //         "external": terminal("identifier"),
-            //     }))),
-            // })),
+            "api": prop(group({
+                "root": prop(group({
+                    "algorithms": prop(dictionary(group({
+                        "parameters": prop(dictionary(terminal("identifier"))),
+                        "definition": prop(component("AlgorithmTypeReference", {})),
+                        "type": prop(taggedUnion({
+                            "independent": option(group({})),
+                            "dependent": option(group({
+                                "configuration data": prop(optional(group({
+                                    "context": prop(component("Context", {})),
+                                    "type": prop(terminal("identifier")),
+                                }))),
+                                "dependencies": prop(dictionary(component("AlgorithmTypeReference", {}))),
+                                "side effects": prop(dictionary(group({
+                                    "context": prop(component("Context", {})),
+                                    "type": prop(taggedUnion({
+                                        "asynchronous": option(group({
+                                            "interface": prop(terminal("identifier")),
+                                        })),
+                                        "synchronous": option(group({
+                                            "interface": prop(terminal("identifier")),
+                                        })),
+                                    })),
+                                }))),
+                            })),
+                        })),
+                    }))),
+                })),
+                "imports": prop(dictionary(taggedUnion({
+                    "this": option(group({})),
+                    "main": option(group({})),
+                    "submodule": option(terminal("identifier")),//only possible for main
+                    "sibling": option(terminal("identifier")),//only possible for submodule
+                    "external": option(terminal("identifier")),
+                }))),
+            })),
         })),
         "Module": globalType({}, group({
             "definition": prop(component("ModuleDefinition", {})),

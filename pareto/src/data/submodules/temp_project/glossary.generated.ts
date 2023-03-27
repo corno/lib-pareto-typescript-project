@@ -93,6 +93,22 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "temp submodule": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
                             })]],
                         },
+                        "root": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
+                                    'glossary': {
+                                        'annotation': {
+                                            'file': "INTERNAL",
+                                            'line': "",
+                                            'column': "COLUMN",
+                                        },
+                                        'key': "undefined",
+                                    },
+                                }],
+                                'type': "Glossary",
+                                'arguments': d({}),
+                            }]],
+                        },
                     })],
                 },
             })]
@@ -119,6 +135,22 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
                                     "external": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
                                 })]],
+                            },
+                            "root": {
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                    'context': <g_glossary.T.Context<pd.SourceLocation>>['import', {
+                                        'glossary': {
+                                            'annotation': {
+                                                'file': "INTERNAL,",
+                                                'line': "LINE",
+                                                'column': "COLUMN",
+                                            },
+                                            'key': "undefined",
+                                        },
+                                    }],
+                                    'type': "Glossary",
+                                    'arguments': d({}),
+                                }]],
                             },
                         })],
                         "library": <g_glossary.T.Type<pd.SourceLocation>>['group', d({

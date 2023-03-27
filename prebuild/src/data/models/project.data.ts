@@ -42,7 +42,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
         })),
         "ModuleDefinition": globalType({}, group({
             "glossary": prop(group({
-                //*****"root": prop(importedComponent("glossary", "Glossary", {})),
+                "root": prop(importedComponent("glossary", "Glossary", {})),
                 "imports": prop(dictionary(taggedUnion({
                     "temp submodule": option(terminal("identifier")),//only possible for main
                     "external": option(terminal("identifier")),
@@ -110,7 +110,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     "test": prop(component("Test", {})),
                 })),
                 "glossary": option(group({
-                    //*****"root": prop(importedComponent("glossary", "Glossary", {})),
+                    "root": prop(importedComponent("glossary", "Glossary", {})),
                     "imports": prop(dictionary(taggedUnion({
                         "external": option(terminal("identifier")),
                     }))),

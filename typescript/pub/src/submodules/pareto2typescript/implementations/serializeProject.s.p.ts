@@ -3,9 +3,6 @@ import * as pd from 'pareto-core-dev'
 import * as pt from 'pareto-core-types'
 
 import * as g_fp from "lib-fountain-pen"
-import * as g_foreach from "res-pareto-foreach"
-import * as g_ts from "res-typescript"
-import * as g_this from "../glossary"
 import * as g_project from "../../project"
 
 

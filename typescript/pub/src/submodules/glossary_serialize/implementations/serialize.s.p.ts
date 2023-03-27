@@ -24,9 +24,20 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
-                    $i.snippet(`'annotation': `)
-                    $d.serializeAnnotation($.annotation, $i)
-                    $i.snippet(`',`)
+                    $i.snippet(`'annotation': {`)
+                    const loc = $d.getSourceLocation($.annotation)
+                    $i.indent(($i) => {
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`'file': "${loc.file},"`)
+                        })
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`'line': ${loc.line},`)
+                        })
+                        $i.nestedLine(($i) => {
+                            $i.snippet(`'column': ${loc.column},`)
+                        })
+                    })
+                    $i.snippet(`},`)
                 })
                 $i.nestedLine(($i) => {
                     $i.snippet(`'key': "${$.key}",`)

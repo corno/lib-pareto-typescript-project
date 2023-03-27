@@ -7,16 +7,16 @@ export namespace T {
     
     export namespace SourceLocation {
         
-        export type column<GAnnotation> = string
+        export type column<GAnnotation> = number
         
         export type file<GAnnotation> = string
         
-        export type line<GAnnotation> = string
+        export type line<GAnnotation> = number
     }
     
     export type SourceLocation<GAnnotation> = {
-        readonly 'column': string
+        readonly 'column': number
         readonly 'file': string
-        readonly 'line': string
+        readonly 'line': number
     }
 }

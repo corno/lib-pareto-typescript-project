@@ -7,16 +7,21 @@ import * as g_parametersparser from "../submodules/parametersparser"
 import * as g_pareto2typescript from "../submodules/pareto2typescript"
 import * as g_this from "./glossary"
 
-export namespace A {
+export namespace D {
     
-    export type createProjectGeneratorAndReporter = <GAnnotation>($d: {
+    export type createProjectGeneratorAndReporter<GAnnotation> = {
         readonly 'createDirectory': g_fp.SYNC.A.P.CreateDirectory
         readonly 'createParametersParser': g_parametersparser.ASYNC.A.C.CreateParametersParser
         readonly 'readDirectoryOrAbort': g_fs.ASYNC.A.F.ReadDirectoryOrAbort
         readonly 'serializeProject': g_pareto2typescript.SYNC.A.P.ProjectToDirectory<GAnnotation>
         readonly 'serializeTemplate': g_pareto2typescript.SYNC.A.P.ProjectToDirectory<GAnnotation>
         readonly 'validateFiles': g_pareto2typescript.SYNC.A.P.ValidateFiles<GAnnotation>
-    }, ) => g_this.ASYNC.A.C.CreateProjectGenerator<GAnnotation>
+    }
+}
+
+export namespace A {
+    
+    export type createProjectGeneratorAndReporter = <GAnnotation>($d: D.createProjectGeneratorAndReporter<GAnnotation>, ) => g_this.ASYNC.A.C.CreateProjectGenerator<GAnnotation>
 }
 
 export type API = {

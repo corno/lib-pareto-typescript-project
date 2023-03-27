@@ -9,17 +9,10 @@ import * as g_this from "../glossary"
 import * as g_project from "../../project"
 
 
-import { A } from "../api.generated"
+import { A, D } from "../api.generated"
 
 
-export const $$: A.serializeProject = <GAnnotation>($d: {
-
-    readonly 'createIdentifier': g_ts.SYNC.A.F.CreateIdentifier
-    readonly 'serializeGlossary': g_this.SYNC.A.P.SerializeGlossary<GAnnotation>
-    readonly 'serializeImplementation': g_this.SYNC.A.P.SerializeImplementation<GAnnotation>
-    readonly 'enrichedDictionaryForEach': g_foreach.SYNC.A.P.EnrichedDictionaryForEach
-    readonly 'dictionaryForEach': g_foreach.SYNC.A.P.DictionaryForEach
-}) => {
+export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnnotation>) => {
     return ($: g_project.T.Project<GAnnotation>, $i: g_fp.SYNC.I.Directory) => {
         function doOptional<T>(
             $: pt.OptionalValue<T>,
@@ -242,10 +235,10 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                                 'onEmpty': () => { },
                                                                 'onNotEmpty': ($c) => {
                                                                     $i.nestedLine(($i) => {
-                                                                    $i.snippet(`export type ${$d.createIdentifier(key)} = `)
+                                                                        $i.snippet(`export type ${$d.createIdentifier(key)}`)
                                                                         $d.enrichedDictionaryForEach(parameters, {
                                                                             'onEmpty': () => {
-                    
+
                                                                             },
                                                                             'onNotEmpty': ($c) => {
                                                                                 $i.snippet(`<`)
@@ -255,11 +248,12 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                                                 $i.snippet(`>`)
                                                                             }
                                                                         })
+                                                                        $i.snippet(` = `)
                                                                         $i.snippet(`{`)
                                                                         $i.indent(($i) => {
-    
+
                                                                             $c(($) => {
-    
+
                                                                                 $i.nestedLine(($i) => {
                                                                                     $i.snippet(`readonly '${$.key}': `)
                                                                                     serializeAlgorithmTypeReference($.value, $i)
@@ -293,18 +287,21 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                             $i.nestedLine(($i) => {
                                                 $i.snippet(`export type ${$d.createIdentifier($.key)} = `)
                                                 pl.cc($.value, ($) => {
-                                                    $d.enrichedDictionaryForEach($.parameters, {
-                                                        'onEmpty': () => {
+                                                    function doParameters($i: g_fp.SYNC.I.Line) {
+                                                        $d.enrichedDictionaryForEach($.parameters, {
+                                                            'onEmpty': () => {
 
-                                                        },
-                                                        'onNotEmpty': ($c) => {
-                                                            $i.snippet(`<`)
-                                                            $c(($) => {
-                                                                $i.snippet(`G${$d.createIdentifier($.key)}${$.isLast ? `` : `, `}`)
-                                                            })
-                                                            $i.snippet(`>`)
-                                                        }
-                                                    })
+                                                            },
+                                                            'onNotEmpty': ($c) => {
+                                                                $i.snippet(`<`)
+                                                                $c(($) => {
+                                                                    $i.snippet(`G${$d.createIdentifier($.key)}${$.isLast ? `` : `, `}`)
+                                                                })
+                                                                $i.snippet(`>`)
+                                                            }
+                                                        })
+                                                    }
+                                                    doParameters($i)
                                                     $i.snippet(`(`)
                                                     switch ($.type[0]) {
                                                         case 'dependent':
@@ -324,7 +321,9 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                                 $d.enrichedDictionaryForEach($.dependencies, {
                                                                     'onEmpty': () => { },
                                                                     'onNotEmpty': ($c) => {
-                                                                        $i.snippet(`$d: D.${$d.createIdentifier(key)}, `)
+                                                                        $i.snippet(`$d: D.${$d.createIdentifier(key)}`)
+                                                                        doParameters($i)
+                                                                        $i.snippet(`, `)
                                                                     }
                                                                 })
                                                                 $d.enrichedDictionaryForEach($['side effects'], {
@@ -367,7 +366,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: {
                                                                                 })
                                                                             })
                                                                         })
-                                                                        $i.snippet(`}, `)
+                                                                        $i.snippet(`}`)
                                                                     }
                                                                 })
                                                             })

@@ -12,12 +12,9 @@ export type VOptional<AType> =
     | ['not set', {}]
     | ['set', AType]
 
-import { A } from "../api.generated"
+import { A, D } from "../api.generated"
 
-export const $$: A.serialize = <GAnnotation>($d: {
-    readonly dictionaryForEach: g_foreach.SYNC.A.P.DictionaryForEach;
-    readonly serializeAnnotation: g_this.SYNC.A.P.SerializeAnnotation<GAnnotation>;
-}) => {
+export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
     return ($: g_glossary.T.Glossary<GAnnotation>, $i: g_fp.SYNC.I.Block) => {
 
         function serializeRef(

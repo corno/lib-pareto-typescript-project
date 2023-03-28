@@ -16,13 +16,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "Annotation": glossaryParameter("Annotation"),
         }),
     }),
-    'types': d({
-        "SourceLocation": type(group({
-            "file": member(string()),
-            "line": member(number()),
-            "column": member(number()),
-        }))
-    }),
+    'root': {
+        'namespaces': d({}),
+        'types': d({
+            "SourceLocation": type(group({
+                "file": member(string()),
+                "line": member(number()),
+                "column": member(number()),
+            }))
+        }),
+    },
     'asynchronous': {
         'interfaces': d({}),
         'algorithms': d({}),

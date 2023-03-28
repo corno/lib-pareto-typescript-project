@@ -64,6 +64,57 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                 default: pl.au($[0])
             }
         }
+        function serializeNamespace($: g_glossary.T.Namespace<GAnnotation>, $i: g_fp.SYNC.I.Line) {
+            $i.snippet(`{`)
+            $i.indent(($i) => {
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'types': d({`)
+                    $i.indent(($i) => {
+                        $d.dictionaryForEach($.types, ($) => {
+    
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`"${$.key}": {`)
+                                $i.indent(($i) => {
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`'parameters': d({`)
+                                        $i.indent(($i) => {
+                                            $d.dictionaryForEach($.value.parameters, ($) => {
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`"${$.key}": null,`)
+                                                })
+                                            })
+                                        })
+                                        $i.snippet(`}),`)
+                                    })
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`'type': `)
+                                        serializeType($.value.type, $i)
+    
+                                    })
+                                })
+                                $i.snippet(`},`)
+                            })
+                        })
+                    })
+                    $i.snippet(`}),`)
+                })
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'namespaces': d({`)
+                    $i.indent(($i) => {
+                        $d.dictionaryForEach($.namespaces, ($) => {
+    
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`"${$.key}": `)
+                                serializeNamespace($.value, $i)
+                                $i.snippet(`,`)
+                            })
+                        })
+                    })
+                    $i.snippet(`}),`)
+                })
+            })
+            $i.snippet(`}`)
+        }
         function serializeDataOrSynchronousInterface($: g_glossary.T.DataOrSynchronousInterface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'interface':
@@ -553,40 +604,14 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
 
 
 
-
-
-
                 $i.nestedLine(($i) => {
-                    $i.snippet(`'types': d({`)
-                    $i.indent(($i) => {
-                        $d.dictionaryForEach($.types, ($) => {
-
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`"${$.key}": {`)
-                                $i.indent(($i) => {
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'parameters': d({`)
-                                        $i.indent(($i) => {
-                                            $d.dictionaryForEach($.value.parameters, ($) => {
-                                                $i.nestedLine(($i) => {
-                                                    $i.snippet(`"${$.key}": null,`)
-                                                })
-                                            })
-                                        })
-                                        $i.snippet(`}),`)
-                                    })
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`'type': `)
-                                        serializeType($.value.type, $i)
-
-                                    })
-                                })
-                                $i.snippet(`},`)
-                            })
-                        })
-                    })
-                    $i.snippet(`}),`)
+                    $i.snippet(`'root': `)
+                    serializeNamespace($.root, $i)
+                    $i.snippet(`,`)
                 })
+
+            
+
                 pl.cc($.asynchronous, ($) => {
                     $i.nestedLine(($i) => {
                         $i.snippet(`'asynchronous': {`)

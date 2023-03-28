@@ -18,12 +18,15 @@ const d = pd.d
 
 export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({}),
-    'types': d({
-        "ArgumentsError": type(taggedUnion({
-            "missing": null_(),
-            "too many": null_(),
-        })),
-    }),
+    'root': {
+        'namespaces': d({}),
+        'types': d({
+            "ArgumentsError": type(taggedUnion({
+                "missing": null_(),
+                "too many": null_(),
+            })),
+        }),
+    },
     'imports': d({
         "main": imp({}),
         "parameters": imp({}),

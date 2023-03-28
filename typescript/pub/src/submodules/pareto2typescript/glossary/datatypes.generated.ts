@@ -6,6 +6,8 @@ import * as g_fp from "lib-fountain-pen"
 import * as g_glossary from "../../glossary"
 import * as g_project from "../../project"
 
+export namespace N {}
+
 export namespace T {
     
     export namespace SerializeGlossaryData {

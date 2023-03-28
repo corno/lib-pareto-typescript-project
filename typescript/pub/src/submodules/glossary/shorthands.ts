@@ -29,14 +29,20 @@ export function dictionary($: t.T.Type<pd.SourceLocation>): t.T.Type<pd.SourceLo
     return ['dictionary', $]
 }
 
-export function parametrizedType(parameters: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>, type: t.T.Type<pd.SourceLocation>): t.T.Glossary.types.D<pd.SourceLocation> {
+export function parametrizedType(parameters: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>, type: t.T.Type<pd.SourceLocation>): t.T.Namespace.types.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(parameters),
         'type': type,
     }
 }
 
-export function type(type: t.T.Type<pd.SourceLocation>): t.T.Glossary.types.D<pd.SourceLocation> {
+export function ns(types: RawDictionary<t.T.Namespace.types.D<pd.SourceLocation>>, ns: RawDictionary< t.T.Namespace.namespaces.D<pd.SourceLocation>>): t.T.Namespace<pd.SourceLocation> {
+    return {
+        'namespaces': pd.d(ns),
+        'types': pd.d(types),
+    }
+}
+export function type(type: t.T.Type<pd.SourceLocation>): t.T.Namespace.types.D<pd.SourceLocation> {
     return {
         'parameters': pd.d({}),
         'type': type,

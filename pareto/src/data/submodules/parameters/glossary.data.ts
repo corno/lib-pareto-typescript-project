@@ -9,11 +9,14 @@ const d = pd.d
 
 export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({}),
-    'types': d({
-        "Parameters": type(group({
-            "directory": member(string()),
-        })),
-    }),
+    'root': {
+        'namespaces': d({}),
+        'types': d({
+            "Parameters": type(group({
+                "directory": member(string()),
+            })),
+        }),
+    },
     'imports': d({
     }),
     'asynchronous': {

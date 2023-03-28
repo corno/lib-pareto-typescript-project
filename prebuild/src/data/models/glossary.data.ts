@@ -38,15 +38,20 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
             "interface": option(component("SynchronousInterfaceReference", {})),
         })),
         "TypeParameters": globalType({}, dictionary(group({}))),
+        "Namespace": globalType({}, group({
+
+            "namespaces": prop(dictionary(component("Namespace", {}))),
+            "types": prop(dictionary(group({
+                "parameters": prop(component("TypeParameters", {})),
+                "type": prop(component("Type", {})),
+            }))),
+        })),
         "Glossary": globalType({}, group({
             "imports": prop(dictionary(group({
                 "arguments": prop(dictionary(component("DataSpecifier", {}))),
             }))),
             "parameters": prop(dictionary(group({}))),
-            "types": prop(dictionary(group({
-                "parameters": prop(component("TypeParameters", {})),
-                "type": prop(component("Type", {})),
-            }))),
+            "root": prop(component("Namespace", {})),
             "synchronous": prop(group({
                 "interfaces": prop(dictionary(group({
                     "parameters": prop(component("TypeParameters", {})),

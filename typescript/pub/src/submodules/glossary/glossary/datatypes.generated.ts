@@ -1,6 +1,8 @@
 import * as pt from 'pareto-core-types'
 
 
+export namespace N {}
+
 export namespace T {
     
     export namespace AsynchronousInterface {
@@ -325,6 +327,8 @@ export namespace T {
         
         export type parameters<GAnnotation> = pt.Dictionary<null>
         
+        export type root<GAnnotation> = T.Namespace<GAnnotation>
+        
         export namespace synchronous {
             
             export namespace algorithms {
@@ -437,26 +441,6 @@ export namespace T {
                 readonly 'parameters': T.TypeParameters<GAnnotation>
             }>
         }
-        
-        export namespace types {
-            
-            export namespace D {
-                
-                export type parameters<GAnnotation> = T.TypeParameters<GAnnotation>
-                
-                export type _ltype<GAnnotation> = T.Type<GAnnotation>
-            }
-            
-            export type D<GAnnotation> = {
-                readonly 'parameters': T.TypeParameters<GAnnotation>
-                readonly 'type': T.Type<GAnnotation>
-            }
-        }
-        
-        export type types<GAnnotation> = pt.Dictionary<{
-            readonly 'parameters': T.TypeParameters<GAnnotation>
-            readonly 'type': T.Type<GAnnotation>
-        }>
     }
     
     export type Glossary<GAnnotation> = {
@@ -482,6 +466,7 @@ export namespace T {
             readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
         }>
         readonly 'parameters': pt.Dictionary<null>
+        readonly 'root': T.Namespace<GAnnotation>
         readonly 'synchronous': {
             readonly 'algorithms': pt.Dictionary<{
                 readonly 'parameters': T.TypeParameters<GAnnotation>
@@ -500,6 +485,40 @@ export namespace T {
                 readonly 'parameters': T.TypeParameters<GAnnotation>
             }>
         }
+    }
+    
+    export namespace Namespace {
+        
+        export namespace namespaces {
+            
+            export type D<GAnnotation> = T.Namespace<GAnnotation>
+        }
+        
+        export type namespaces<GAnnotation> = pt.Dictionary<T.Namespace<GAnnotation>>
+        
+        export namespace types {
+            
+            export namespace D {
+                
+                export type parameters<GAnnotation> = T.TypeParameters<GAnnotation>
+                
+                export type _ltype<GAnnotation> = T.Type<GAnnotation>
+            }
+            
+            export type D<GAnnotation> = {
+                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'type': T.Type<GAnnotation>
+            }
+        }
+        
+        export type types<GAnnotation> = pt.Dictionary<{
+            readonly 'parameters': T.TypeParameters<GAnnotation>
+            readonly 'type': T.Type<GAnnotation>
+        }>
+    }
+    
+    export type Namespace<GAnnotation> = {
+        readonly 'namespaces': pt.Dictionary<T.Namespace<GAnnotation>>
         readonly 'types': pt.Dictionary<{
             readonly 'parameters': T.TypeParameters<GAnnotation>
             readonly 'type': T.Type<GAnnotation>

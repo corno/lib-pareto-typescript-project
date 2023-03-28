@@ -25,12 +25,15 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "Annotation": glossaryParameter("Annotation")
         }),
     }),
-    'types': d({
-        "ProjectSettings": type(group({
-            "project": member(ref(externalTypeReference("project", "Project"))),
-            "mainData": member(ref(externalTypeReference("main", "MainData"))),
-        })),
-    }),
+    'root': {
+        'namespaces': d({}),
+        'types': d({
+            "ProjectSettings": type(group({
+                "project": member(ref(externalTypeReference("project", "Project"))),
+                "mainData": member(ref(externalTypeReference("main", "MainData"))),
+            })),
+        }),
+    },
     'asynchronous': {
         'interfaces': d({
             "GenerateProject": aInterface(aInterfaceMethod(typeReference("ProjectSettings"))),

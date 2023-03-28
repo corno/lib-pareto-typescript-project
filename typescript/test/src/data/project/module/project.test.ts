@@ -33,15 +33,18 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
                 //         })],
                 //     },
                 // }),
-                'types': d({
-                }),
+                'root': {
+                    'types': d({
+                    }),
+                    'namespaces': d({}),
+                },
                 'asynchronous': {
                     'interfaces': d({
                     }),
                     'algorithms': d({}),
                 },
                 'synchronous': {
-                    'interfaces': d({ }),
+                    'interfaces': d({}),
                     'algorithms': d({}),
                 },
 

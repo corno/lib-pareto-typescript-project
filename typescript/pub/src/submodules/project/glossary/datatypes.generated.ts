@@ -5,6 +5,8 @@ import * as g_common from "glo-pareto-common"
 import * as g_fp from "lib-fountain-pen"
 import * as g_glossary from "../../glossary"
 
+export namespace N {}
+
 export namespace T {
     
     export namespace AlgorithmTypeReference {

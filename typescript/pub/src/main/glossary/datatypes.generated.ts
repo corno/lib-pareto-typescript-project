@@ -5,6 +5,8 @@ import * as g_fp from "lib-fountain-pen"
 import * as g_main from "res-pareto-main"
 import * as g_project from "../../submodules/project"
 
+export namespace N {}
+
 export namespace T {
     
     export namespace ProjectSettings {

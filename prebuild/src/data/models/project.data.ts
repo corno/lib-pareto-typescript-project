@@ -128,7 +128,9 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                             "pareto": option(group({})),
                         })),
                     }))),
-                    "executables": prop(dictionary(group({}))),
+                    "executables": prop(dictionary(group({
+                        "constructor": prop(terminal("identifier"))
+                    }))),
                     "test": prop(component("Test", {})),
                 })),
             })),

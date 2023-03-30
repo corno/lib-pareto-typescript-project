@@ -22,15 +22,19 @@ export namespace ASYNC {
         
         
         export namespace C {
-            export type CreateProjectGenerator<GAnnotation> = ($is: {
-                readonly 'log': ASYNC.I.Log<GAnnotation>
-                readonly 'logError': ASYNC.I.LogError<GAnnotation>
-            }) => ASYNC.I.GenerateProject<GAnnotation>
+            export type CreateProjectGenerator<GAnnotation> = {
+                'construct': ($is: {
+                    readonly 'log': ASYNC.I.Log<GAnnotation>
+                    readonly 'logError': ASYNC.I.LogError<GAnnotation>
+                }) => ASYNC.I.GenerateProject<GAnnotation>
+            }
         }
         
         
         export namespace C {
-            export type CreateProjectGeneratorAndReporter<GAnnotation> = () => ASYNC.I.GenerateProject<GAnnotation>
+            export type CreateProjectGeneratorAndReporter<GAnnotation> = {
+                'construct': () => ASYNC.I.GenerateProject<GAnnotation>
+            }
         }
     }
 }

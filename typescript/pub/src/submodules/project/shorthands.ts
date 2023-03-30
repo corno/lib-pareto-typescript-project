@@ -110,6 +110,18 @@ export function constructor(context: string, args: RawDictionary<string>, defini
     }
 }
 
+export function resource(context: string, args: RawDictionary<string>, definition: string): g_this.T.AlgorithmTypeReference<pd.SourceLocation> {
+    return {
+        'context': {
+            'glossary': context,
+            'arguments': pd.d(args === undefined ? {} : args)
+        },
+        'type': ['asynchronous', ['resource', {
+            'resource': definition
+        }]]
+    }
+}
+
 export function dependent(
     data: null | g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.configuration__data.O<pd.SourceLocation>,
     deps: RawDictionary<g_this.T.ModuleDefinition.api.root.algorithms.D._ltype.dependent.dependencies.D<pd.SourceLocation>>,

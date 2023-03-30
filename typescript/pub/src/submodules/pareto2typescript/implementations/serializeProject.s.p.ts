@@ -43,6 +43,11 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                     $i.snippet(`ASYNC.A.F.${$d.createIdentifier(`${$.function}`)}`)
                                 })
                                 break
+                            case 'resource':
+                                pl.cc($[1], ($) => {
+                                    $i.snippet(`ASYNC.A.R.${$d.createIdentifier(`${$.resource}`)}`)
+                                })
+                                break
                             default: pl.au($[0])
                         }
                     })
@@ -660,6 +665,10 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                             case 'function':
                                                                 return pl.cc($[1], ($) => {
                                                                     return "a.f"
+                                                                })
+                                                            case 'resource':
+                                                                return pl.cc($[1], ($) => {
+                                                                    return "a.r"
                                                                 })
                                                             default: return pl.au($[0])
                                                         }

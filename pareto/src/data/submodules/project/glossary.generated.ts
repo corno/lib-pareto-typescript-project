@@ -41,6 +41,11 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
                                     },
                                 })],
+                                "resource": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                    "resource": {
+                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                    },
+                                })],
                             })],
                             "synchronous": <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
                                 "function": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
@@ -190,7 +195,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         'glossary': {
                                             'annotation': {
                                                 'file': "../../prebuild/src/data/models/project.data.ts",
-                                                'line': 47,
+                                                'line': 50,
                                                 'column': 47,
                                             },
                                             'key': "glossary",
@@ -233,7 +238,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                             'glossary': {
                                                 'annotation': {
                                                     'file': "../../prebuild/src/data/models/project.data.ts",
-                                                    'line': 115,
+                                                    'line': 118,
                                                     'column': 51,
                                                 },
                                                 'key': "glossary",
@@ -388,6 +393,20 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                         'types': d({}),
                                                                         'namespaces': d({
                                                                             "function": {
+                                                                                'types': d({}),
+                                                                                'namespaces': d({}),
+                                                                            },
+                                                                        }),
+                                                                    },
+                                                                }),
+                                                            },
+                                                            "resource": {
+                                                                'types': d({}),
+                                                                'namespaces': d({
+                                                                    "G": {
+                                                                        'types': d({}),
+                                                                        'namespaces': d({
+                                                                            "resource": {
                                                                                 'types': d({}),
                                                                                 'namespaces': d({}),
                                                                             },

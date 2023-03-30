@@ -934,10 +934,10 @@ export const $$: A.serializeGlossary = ($d) => {
                                     $i,
                                     ($i) => {
                                         $i.nestedLine(($i) => {
+                                            const params = $.value.parameters
                                             $i.snippet(`export type ${$d.createIdentifier($.key)}`)
                                             serializeGlobalParametersOnly($i)
                                             $i.snippet(` = `)
-                                            serializeTypeParameters($.value.parameters, $i)
                                             pl.cc($.value.type, ($) => {
                                                 switch ($[0]) {
                                                     case 'constructor':
@@ -946,6 +946,8 @@ export const $$: A.serializeGlossary = ($d) => {
                                                             $i.indent(($i) => {
                                                                 $i.nestedLine(($i) => {
                                                                     $i.snippet(`'construct': `)
+                                                                    serializeTypeParameters(params, $i)
+
                                                                     $i.snippet(`(`)
                                                                     $d.enrichedDictionaryForEach($.downstreams, {
                                                                         'onEmpty': () => {
@@ -974,6 +976,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                         break
                                                     case 'function':
                                                         pl.cc($[1], ($) => {
+                                                            serializeTypeParameters(params, $i)
                                                             $i.snippet(`(`)
                                                             pl.cc($.in, ($) => {
                                                                 $i.snippet(`$: `)
@@ -992,6 +995,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                             $i.indent(($i) => {
                                                                 $i.nestedLine(($i) => {
                                                                     $i.snippet(`'consume': `)
+                                                                    serializeTypeParameters(params, $i)
                                                                     $i.snippet(`(`)
                                                                     $i.indent(($i) => {
                                                                         $i.nestedLine(($i) => {

@@ -26,10 +26,12 @@ export namespace ASYNC {
         
         
         export namespace C {
-            export type CreateParametersParser = ($is: {
-                readonly 'errorHandler': ASYNC.I.ErrorsHandler
-                readonly 'handler': ASYNC.I.ParametersHandler
-            }) => ASYNC.I.HandleArguments
+            export type CreateParametersParser = {
+                'construct': ($is: {
+                    readonly 'errorHandler': ASYNC.I.ErrorsHandler
+                    readonly 'handler': ASYNC.I.ParametersHandler
+                }) => ASYNC.I.HandleArguments
+            }
         }
     }
 }

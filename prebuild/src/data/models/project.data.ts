@@ -27,6 +27,9 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     "function": option(group({
                         "function": prop(terminal("identifier")),
                     })),
+                    "resource": option(group({
+                        "resource": prop(terminal("identifier")),
+                    })),
                 })),
                 "synchronous": option(taggedUnion({
                     "procedure": option(group({

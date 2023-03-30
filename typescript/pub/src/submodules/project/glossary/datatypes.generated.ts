@@ -83,6 +83,29 @@ export namespace N {
                                                         
                                                         export namespace T {}
                                                     }
+                                                    
+                                                    export namespace resource {
+                                                        
+                                                        export namespace N {
+                                                            
+                                                            export namespace G {
+                                                                
+                                                                export namespace N {
+                                                                    
+                                                                    export namespace resource {
+                                                                        
+                                                                        export namespace N {}
+                                                                        
+                                                                        export namespace T {}
+                                                                    }
+                                                                }
+                                                                
+                                                                export namespace T {}
+                                                            }
+                                                        }
+                                                        
+                                                        export namespace T {}
+                                                    }
                                                 }
                                                 
                                                 export namespace T {}
@@ -1224,6 +1247,15 @@ export namespace T {
                 export type _lfunction<GAnnotation> = {
                     readonly 'function': string
                 }
+                
+                export namespace resource {
+                    
+                    export type resource<GAnnotation> = string
+                }
+                
+                export type resource<GAnnotation> = {
+                    readonly 'resource': string
+                }
             }
             
             export type asynchronous<GAnnotation> = 
@@ -1232,6 +1264,9 @@ export namespace T {
                 }]
                 | ['function', {
                     readonly 'function': string
+                }]
+                | ['resource', {
+                    readonly 'resource': string
                 }]
             
             export namespace synchronous {
@@ -1272,6 +1307,9 @@ export namespace T {
                 | ['function', {
                     readonly 'function': string
                 }]
+                | ['resource', {
+                    readonly 'resource': string
+                }]
             ]
             | ['synchronous', 
                 | ['function', {
@@ -1292,6 +1330,9 @@ export namespace T {
                 }]
                 | ['function', {
                     readonly 'function': string
+                }]
+                | ['resource', {
+                    readonly 'resource': string
                 }]
             ]
             | ['synchronous', 

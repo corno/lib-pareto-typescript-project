@@ -199,6 +199,16 @@ export function constructor(inf: t.T.AsynchronousInterfaceReference<pd.SourceLoc
     }
 }
 
+export function resource(request: t.T.DataSpecifier<pd.SourceLocation>, consumer: t.T.AsynchronousInterfaceReference<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
+    return {
+        'parameters': pd.d(params === undefined ? {} : params),
+        'type': ['resource', {
+            'request': request,
+            'consumer': consumer,
+        }]
+    }
+}
+
 export function afunction(out: t.T.Glossary.asynchronous.algorithms.D._ltype._lfunction.out<pd.SourceLocation>, in_: t.T.Glossary.asynchronous.algorithms.D._ltype._lfunction._lin<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),

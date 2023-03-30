@@ -924,6 +924,10 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 return pl.cc($[1], ($) => {
                                                     return `F`
                                                 })
+                                            case 'resource':
+                                                return pl.cc($[1], ($) => {
+                                                    return `R`
+                                                })
                                             default: return pl.au($[0])
                                         }
                                     }),
@@ -938,26 +942,33 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 switch ($[0]) {
                                                     case 'constructor':
                                                         pl.cc($[1], ($) => {
-                                                            $i.snippet(`(`)
-                                                            $d.enrichedDictionaryForEach($.downstreams, {
-                                                                'onEmpty': () => {
-                                                                },
-                                                                'onNotEmpty': ($c) => {
-                                                                    $i.snippet(`$is: `)
-                                                                    $i.snippet(`{`)
-                                                                    $i.indent(($i) => {
-                                                                        $c(($) => {
-                                                                            $i.nestedLine(($i) => {
-                                                                                $i.snippet(`readonly '${$.key}': `)
-                                                                                serializeAsynchronousInterfaceReference($.value, $i)
+                                                            $i.snippet(`{`)
+                                                            $i.indent(($i) => {
+                                                                $i.nestedLine(($i) => {
+                                                                    $i.snippet(`'construct': `)
+                                                                    $i.snippet(`(`)
+                                                                    $d.enrichedDictionaryForEach($.downstreams, {
+                                                                        'onEmpty': () => {
+                                                                        },
+                                                                        'onNotEmpty': ($c) => {
+                                                                            $i.snippet(`$is: `)
+                                                                            $i.snippet(`{`)
+                                                                            $i.indent(($i) => {
+                                                                                $c(($) => {
+                                                                                    $i.nestedLine(($i) => {
+                                                                                        $i.snippet(`readonly '${$.key}': `)
+                                                                                        serializeAsynchronousInterfaceReference($.value, $i)
+                                                                                    })
+                                                                                })
                                                                             })
-                                                                        })
+                                                                            $i.snippet(`}`)
+                                                                        }
                                                                     })
-                                                                    $i.snippet(`}`)
-                                                                }
+                                                                    $i.snippet(`) => `)
+                                                                    serializeAsynchronousInterfaceReference($.interface, $i)
+                                                                })
                                                             })
-                                                            $i.snippet(`) => `)
-                                                            serializeAsynchronousInterfaceReference($.interface, $i)
+                                                            $i.snippet(`}`)
 
                                                         })
                                                         break
@@ -972,6 +983,35 @@ export const $$: A.serializeGlossary = ($d) => {
                                                             $i.snippet(`pt.AsyncValue<`)
                                                             serializeDataSpecifier($.out, $i)
                                                             $i.snippet(`>`)
+
+                                                        })
+                                                        break
+                                                    case 'resource':
+                                                        pl.cc($[1], ($) => {
+                                                            $i.snippet(`{`)
+                                                            $i.indent(($i) => {
+                                                                $i.nestedLine(($i) => {
+                                                                    $i.snippet(`'consume': `)
+                                                                    $i.snippet(`(`)
+                                                                    $i.indent(($i) => {
+                                                                        $i.nestedLine(($i) => {
+                                                                            $i.snippet(`$: `)
+                                                                            serializeDataSpecifier($.request, $i)
+                                                                            $i.snippet(`,`)
+                                                                        })
+                                                                    })
+                                                                    $i.indent(($i) => {
+                                                                        $i.nestedLine(($i) => {
+                                                                            $i.snippet(`$i: `)
+
+                                                                            serializeAsynchronousInterfaceReference($.consumer, $i)
+                                                                        })
+                                                                    })
+
+                                                                    $i.snippet(`) => void`)
+                                                                })
+                                                            })
+                                                            $i.snippet(`}`)
 
                                                         })
                                                         break

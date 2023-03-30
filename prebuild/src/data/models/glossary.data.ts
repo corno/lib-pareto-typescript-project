@@ -83,6 +83,10 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                             "interface": prop(component("AsynchronousInterfaceReference", {})),
                             "downstreams": prop(dictionary(component("AsynchronousInterfaceReference", {}))),
                         })),
+                        "resource": option(group({
+                            "consumer": prop(component("AsynchronousInterfaceReference", {})),
+                            "request": prop(component("DataSpecifier", {})),
+                        })),
                         "function": option(group({
                             "out": prop(component("DataSpecifier", {})),
                             "in": prop(component("DataSpecifier", {})),

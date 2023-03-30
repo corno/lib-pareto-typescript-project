@@ -711,6 +711,24 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
 
                                                                     })
                                                                     break
+                                                                    case 'resource':
+                                                                        pl.cc($[1], ($) => {
+                                                                            $i.snippet(`['resource', {`)
+                                                                            $i.indent(($i) => {
+                                                                                $i.nestedLine(($i) => {
+                                                                                    $i.snippet(`'request': `)
+                                                                                    serializeDataSpecifier($.request, $i)
+                                                                                    $i.snippet(`,`)
+                                                                                })
+                                                                                $i.nestedLine(($i) => {
+                                                                                    $i.snippet(`'consumer': `)
+                                                                                    serializeAsynchronousInterfaceReference($.consumer, $i)
+                                                                                    $i.snippet(`,`)
+                                                                                })
+                                                                            })
+                                                                            $i.snippet(`}]`)
+                                                                        })
+                                                                        break
                                                                 default: pl.au($[0])
                                                             }
                                                             $i.snippet(`,`)

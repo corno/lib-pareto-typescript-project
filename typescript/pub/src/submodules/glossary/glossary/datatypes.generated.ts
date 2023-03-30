@@ -447,6 +447,36 @@ export namespace N {
                                                                                 
                                                                                 export namespace T {}
                                                                             }
+                                                                            
+                                                                            export namespace resource {
+                                                                                
+                                                                                export namespace N {
+                                                                                    
+                                                                                    export namespace G {
+                                                                                        
+                                                                                        export namespace N {
+                                                                                            
+                                                                                            export namespace consumer {
+                                                                                                
+                                                                                                export namespace N {}
+                                                                                                
+                                                                                                export namespace T {}
+                                                                                            }
+                                                                                            
+                                                                                            export namespace request {
+                                                                                                
+                                                                                                export namespace N {}
+                                                                                                
+                                                                                                export namespace T {}
+                                                                                            }
+                                                                                        }
+                                                                                        
+                                                                                        export namespace T {}
+                                                                                    }
+                                                                                }
+                                                                                
+                                                                                export namespace T {}
+                                                                            }
                                                                         }
                                                                         
                                                                         export namespace T {}
@@ -1368,6 +1398,18 @@ export namespace T {
                             readonly 'in': T.DataSpecifier<GAnnotation>
                             readonly 'out': T.DataSpecifier<GAnnotation>
                         }
+                        
+                        export namespace resource {
+                            
+                            export type consumer<GAnnotation> = T.AsynchronousInterfaceReference<GAnnotation>
+                            
+                            export type request<GAnnotation> = T.DataSpecifier<GAnnotation>
+                        }
+                        
+                        export type resource<GAnnotation> = {
+                            readonly 'consumer': T.AsynchronousInterfaceReference<GAnnotation>
+                            readonly 'request': T.DataSpecifier<GAnnotation>
+                        }
                     }
                     
                     export type _ltype<GAnnotation> = 
@@ -1378,6 +1420,10 @@ export namespace T {
                         | ['function', {
                             readonly 'in': T.DataSpecifier<GAnnotation>
                             readonly 'out': T.DataSpecifier<GAnnotation>
+                        }]
+                        | ['resource', {
+                            readonly 'consumer': T.AsynchronousInterfaceReference<GAnnotation>
+                            readonly 'request': T.DataSpecifier<GAnnotation>
                         }]
                 }
                 
@@ -1392,6 +1438,10 @@ export namespace T {
                             readonly 'in': T.DataSpecifier<GAnnotation>
                             readonly 'out': T.DataSpecifier<GAnnotation>
                         }]
+                        | ['resource', {
+                            readonly 'consumer': T.AsynchronousInterfaceReference<GAnnotation>
+                            readonly 'request': T.DataSpecifier<GAnnotation>
+                        }]
                 }
             }
             
@@ -1405,6 +1455,10 @@ export namespace T {
                     | ['function', {
                         readonly 'in': T.DataSpecifier<GAnnotation>
                         readonly 'out': T.DataSpecifier<GAnnotation>
+                    }]
+                    | ['resource', {
+                        readonly 'consumer': T.AsynchronousInterfaceReference<GAnnotation>
+                        readonly 'request': T.DataSpecifier<GAnnotation>
                     }]
             }>
             
@@ -1440,6 +1494,10 @@ export namespace T {
                     | ['function', {
                         readonly 'in': T.DataSpecifier<GAnnotation>
                         readonly 'out': T.DataSpecifier<GAnnotation>
+                    }]
+                    | ['resource', {
+                        readonly 'consumer': T.AsynchronousInterfaceReference<GAnnotation>
+                        readonly 'request': T.DataSpecifier<GAnnotation>
                     }]
             }>
             readonly 'interfaces': pt.Dictionary<{
@@ -1606,6 +1664,10 @@ export namespace T {
                     | ['function', {
                         readonly 'in': T.DataSpecifier<GAnnotation>
                         readonly 'out': T.DataSpecifier<GAnnotation>
+                    }]
+                    | ['resource', {
+                        readonly 'consumer': T.AsynchronousInterfaceReference<GAnnotation>
+                        readonly 'request': T.DataSpecifier<GAnnotation>
                     }]
             }>
             readonly 'interfaces': pt.Dictionary<{

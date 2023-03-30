@@ -192,6 +192,22 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     }]],
                                                 },
                                             })],
+                                            "resource": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                                "consumer": {
+                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                        'type': "AsynchronousInterfaceReference",
+                                                        'arguments': d({}),
+                                                    }]],
+                                                },
+                                                "request": {
+                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                        'type': "DataSpecifier",
+                                                        'arguments': d({}),
+                                                    }]],
+                                                },
+                                            })],
                                         })],
                                     },
                                 })]],
@@ -721,6 +737,24 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                                         'namespaces': d({}),
                                                                                                     },
                                                                                                     "out": {
+                                                                                                        'types': d({}),
+                                                                                                        'namespaces': d({}),
+                                                                                                    },
+                                                                                                }),
+                                                                                            },
+                                                                                        }),
+                                                                                    },
+                                                                                    "resource": {
+                                                                                        'types': d({}),
+                                                                                        'namespaces': d({
+                                                                                            "G": {
+                                                                                                'types': d({}),
+                                                                                                'namespaces': d({
+                                                                                                    "consumer": {
+                                                                                                        'types': d({}),
+                                                                                                        'namespaces': d({}),
+                                                                                                    },
+                                                                                                    "request": {
                                                                                                         'types': d({}),
                                                                                                         'namespaces': d({}),
                                                                                                     },

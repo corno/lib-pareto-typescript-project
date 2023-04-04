@@ -7,7 +7,6 @@ import {
     terminal,
     globalType,
     group,
-    r,
     reference,
     taggedUnion,
     prop,

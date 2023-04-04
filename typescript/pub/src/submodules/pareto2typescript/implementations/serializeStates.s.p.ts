@@ -10,52 +10,52 @@ export const $$: A.serializeStates = ($d) => {
         function serializeType($: g_algorithm.T.Type<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'null':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`null`)
                     })
                     break
                 case 'boolean':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`boolean`)
                     })
                     break
                 case 'reference':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet($d.createIdentifier(`S${$}`))
                     })
                     break
                 case 'number':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`number`)
                     })
                     break
                 case 'string':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`string`)
                     })
                     break
                 // case 'computed':
-                //     pl.cc($[1], ($) => {
+                //     pl.ss($, ($) => {
                 //         $i.snippet(`() => `)
                 //         serializeType($, $i)
                 //     })
                 //     break
                 case 'array':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`pl.StateArray<`)
                         serializeType($, $i)
                         $i.snippet(`>`)
                     })
                     break
                 case 'dictionary':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`pl.StateDictionary<`)
                         serializeType($, $i)
                         $i.snippet(`>`)
                     })
                     break
                 case 'group':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $d.enrichedDictionaryForEach($, {
                             'onEmpty': () => {
                                 $i.snippet(`null`)
@@ -77,25 +77,25 @@ export const $$: A.serializeStates = ($d) => {
                     })
                     break
                 // case 'nested':
-                //     pl.cc($[1], ($) => {
+                //     pl.ss($, ($) => {
                 //         $i.snippet(`pt.Nested<`)
                 //         serializeType($, $i)
                 //         $i.snippet(`>`)
                 //     })
                 //     break
                 case 'optional':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`null | `)
                         serializeType($, $i)
                     })
                     break
                 case 'parameter':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet($d.createIdentifier(`A${$}`))
                     })
                     break
                 case 'taggedUnion':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.indent(($i) => {
                             $d.dictionaryForEach($, ($) => {
                                 $i.nestedLine(($i) => {

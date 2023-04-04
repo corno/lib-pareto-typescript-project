@@ -55,7 +55,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     $i.snippet(`[false]`)
                     break
                 case true:
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`[true, `)
                         $c($, $i)
                         $i.snippet(`]`)
@@ -118,14 +118,14 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
         function serializeDataOrSynchronousInterface($: g_glossary.T.DataOrSynchronousInterface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'interface':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['interface', `)
                         serializeSynchronousInterfaceReference($, $i)
                         $i.snippet(`]`)
                     })
                     break
                 case 'data':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['data', `)
                         serializeDataSpecifier($, $i)
                         $i.snippet(`]`)
@@ -137,21 +137,21 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
         function serializeDataSpecifier($: g_glossary.T.DataSpecifier<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'type parameter':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['type parameter', `)
                         $i.snippet(`"${$}"`)
                         $i.snippet(`]`)
                     })
                     break
                 case 'glossary parameter':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['glossary parameter', `)
                         $i.snippet(`"${$}"`)
                         $i.snippet(`]`)
                     })
                     break
                 case 'type':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['type', `)
                         $i.snippet(`{`)
                         $i.indent(($i) => {
@@ -206,62 +206,62 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
 
             switch ($[0]) {
                 case 'computed':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['computed', `)
                         serializeType($, $i)
                         $i.snippet(`]`)
                     })
                     break
                 case 'optional':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['optional', `)
                         serializeType($, $i)
                         $i.snippet(`]`)
                     })
                     break
                 case 'null':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['null', null]`)
                     })
                     break
                 case 'boolean':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['boolean', null]`)
                     })
                     break
                 case 'reference':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['reference', `)
                         serializeDataSpecifier($, $i)
                         $i.snippet(`]`)
                     })
                     break
                 case 'number':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['number', null]`)
                     })
                     break
                 case 'string':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['string', null]`)
                     })
                     break
                 case 'array':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['array', `)
                         serializeType($, $i)
                         $i.snippet(`]`)
                     })
                     break
                 case 'dictionary':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['dictionary', `)
                         serializeType($, $i)
                         $i.snippet(`]`)
                     })
                     break
                 case 'group':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['group', d({`)
                         $i.indent(($i) => {
                             $d.dictionaryForEach($, ($) => {
@@ -282,21 +282,21 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     })
                     break
                 case 'nested':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['nested', `)
                         serializeType($, $i)
                         $i.snippet(`]`)
                     })
                     break
                 case 'nested':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['nested', `)
                         serializeType($, $i)
                         $i.snippet(`]`)
                     })
                     break
                 case 'taggedUnion':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['taggedUnion', d({`)
                         $i.indent(($i) => {
                             $d.dictionaryForEach($, ($) => {
@@ -317,7 +317,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
             $i.snippet(`<g_glossary.T.Context<pd.SourceLocation>>`)
             switch ($[0]) {
                 case 'import':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['import', {`)
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
@@ -330,7 +330,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     })
                     break
                 case 'local':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['local', null]`)
                     })
                     break
@@ -410,7 +410,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
         function serializeAsynchronousInterface($: g_glossary.T.AsynchronousInterface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'choice':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
 
                         $i.snippet(`['choice', {`)
                         $i.indent(($i) => {
@@ -433,7 +433,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     break
 
                 case 'streamconsumer':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
 
                         $i.snippet(`['streamconsumer', {`)
                         $i.indent(($i) => {
@@ -452,7 +452,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     })
                     break
                 case 'method':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['method', {`)
                         $i.indent(($i) => {
                             pl.cc($.data, ($) => {
@@ -480,7 +480,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     })
                     break
                 case 'reference':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         serializeAsynchronousInterfaceReference($, $i)
                     })
                     break
@@ -491,7 +491,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
         function serializeSynchronousInterface($: g_glossary.T.SynchronousInterface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'group':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
 
                         $i.snippet(`['group', {`)
                         $i.indent(($i) => {
@@ -513,7 +513,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     })
                     break
                 case 'method':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         $i.snippet(`['method', {`)
                         $i.indent(($i) => {
                             pl.cc($.data, ($) => {
@@ -540,7 +540,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     })
                     break
                 case 'reference':
-                    pl.cc($[1], ($) => {
+                    pl.ss($, ($) => {
                         serializeSynchronousInterfaceReference($, $i)
                     })
                     break
@@ -664,7 +664,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                                             $i.snippet(`'type': `)
                                                             switch ($[0]) {
                                                                 case 'constructor':
-                                                                    pl.cc($[1], ($) => {
+                                                                    pl.ss($, ($) => {
                                                                         $i.snippet(`['constructor', {`)
                                                                         $i.indent(($i) => {
                                                                             $i.nestedLine(($i) => {
@@ -690,7 +690,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                                                     })
                                                                     break
                                                                 case 'function':
-                                                                    pl.cc($[1], ($) => {
+                                                                    pl.ss($, ($) => {
                                                                         $i.snippet(`['function', {`)
                                                                         $i.indent(($i) => {
                                                                             pl.cc($, ($) => {
@@ -712,7 +712,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                                                     })
                                                                     break
                                                                     case 'resource':
-                                                                        pl.cc($[1], ($) => {
+                                                                        pl.ss($, ($) => {
                                                                             $i.snippet(`['resource', {`)
                                                                             $i.indent(($i) => {
                                                                                 $i.nestedLine(($i) => {
@@ -799,7 +799,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                                             $i.snippet(`'type': `)
                                                             switch ($[0]) {
                                                                 case 'procedure':
-                                                                    pl.cc($[1], ($) => {
+                                                                    pl.ss($, ($) => {
                                                                         $i.snippet(`['procedure', {`)
                                                                         $i.indent(($i) => {
                                                                         })
@@ -807,7 +807,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                                                     })
                                                                     break
                                                                 case 'function':
-                                                                    pl.cc($[1], ($) => {
+                                                                    pl.ss($, ($) => {
                                                                         $i.snippet(`['function', {`)
                                                                         $i.indent(($i) => {
                                                                             $i.nestedLine(($i) => {

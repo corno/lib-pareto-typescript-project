@@ -28,13 +28,13 @@ import * as pl from 'pareto-core-lib'
 //                 $i.snippet(`'implementation': `)
 //                 switch ($.implementation[0]) {
 //                     case 'pareto':
-//                         pl.cc($.implementation[1], ($) => {
+//                         pl.ss($.implementation, ($) => {
 //                             pd.implementMe("HIEROS")
 //                             //$d.serializeImplementation($, $i)
 //                         })
 //                         break
 //                     case 'typescript':
-//                         pl.cc($.implementation[1], ($) => {
+//                         pl.ss($.implementation, ($) => {
 //                             $i.snippet(`['typescript', null]`)
 //                         })
 //                         break

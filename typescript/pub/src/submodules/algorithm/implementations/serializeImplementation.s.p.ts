@@ -12,7 +12,7 @@ export const $$: A.serializeImplementation = ($d) => {
         // function serializeExpression($: api.TExpression, $i: g_fp.B.Line) {
         //     switch ($[0]) {
         //         case 'call':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`['call', {`)
         //                 $i.indent(($i) => {
         //                     $i.nestedLine(($i) => {
@@ -24,7 +24,7 @@ export const $$: A.serializeImplementation = ($d) => {
         //             })
         //             break
         //         case 'contextChange':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`['contextChange', {`)
         //                 $i.indent(($i) => {
         //                     $i.nestedLine(($i) => {
@@ -37,7 +37,7 @@ export const $$: A.serializeImplementation = ($d) => {
         //             })
         //             break
         //         case 'groupInitializer':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`['groupInitializer', {`)
         //                 $i.indent(($i) => {
         //                     $i.nestedLine(($i) => {
@@ -59,12 +59,12 @@ export const $$: A.serializeImplementation = ($d) => {
         //             })
         //             break
         //         case 'implementMe':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`['implementMe', "${$}"]`)
         //             })
         //             break
         //         case 'mapArray':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`['mapArray', {`)
         //                 $i.indent(($i) => {
         //                     $i.nestedLine(($i) => {
@@ -77,7 +77,7 @@ export const $$: A.serializeImplementation = ($d) => {
         //             })
         //             break
         //         case 'mapDictionary':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`['mapDictionary', {`)
         //                 $i.indent(($i) => {
         //                     $i.nestedLine(($i) => {
@@ -91,7 +91,7 @@ export const $$: A.serializeImplementation = ($d) => {
         //             })
         //             break
         //         case 'propertySelection':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`['propertySelection', {`)
         //                 $i.indent(($i) => {
         //                     $i.nestedLine(($i) => {
@@ -102,7 +102,7 @@ export const $$: A.serializeImplementation = ($d) => {
         //             })
         //             break
         //         case 'switch':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`['switch', {`)
         //                 $i.indent(($i) => {
         //                     $i.nestedLine(($i) => {
@@ -200,25 +200,25 @@ export const $$: A.serializeImplementation = ($d) => {
         //                 $.statements.forEach(($) => {
         //                     switch ($[0]) {
         //                         case 'dependencyCall':
-        //                             pl.cc($[1], ($) => {
+        //                             pl.ss($, ($) => {
         //                                 $.callback
         //                                 $.data
         //                             })
         //                             break
         //                         case 'interfaceCall':
-        //                             pl.cc($[1], ($) => {
+        //                             pl.ss($, ($) => {
         //                                 $.callback
         //                                 $.data
         //                                 $.property
         //                             })
         //                             break
         //                         case 'innerCallbackCall':
-        //                             pl.cc($[1], ($) => {
+        //                             pl.ss($, ($) => {
         //                                 $.data
         //                             })
         //                             break
         //                         case 'switch':
-        //                             pl.cc($[1], ($) => {
+        //                             pl.ss($, ($) => {
         //                             })
         //                             break
         //                         default: pl.au($[0])
@@ -249,7 +249,7 @@ export const $$: A.serializeImplementation = ($d) => {
                                     $i.snippet(`'type': `)
                                     switch ($.value.type[0]) {
                                         case 'asynchronous function':
-                                            pl.cc($.value.type[1], ($) => {
+                                            pl.ss($.value.type, ($) => {
                                                 $i.snippet(`['function', {`)
                                                 $i.indent(($i) => {
                                                     $i.nestedLine(($i) => {
@@ -262,7 +262,7 @@ export const $$: A.serializeImplementation = ($d) => {
                                             })
                                             break
                                         case 'synchronous function':
-                                            pl.cc($.value.type[1], ($) => {
+                                            pl.ss($.value.type, ($) => {
                                                 $i.snippet(`['function', {`)
                                                 $i.indent(($i) => {
                                                     $i.nestedLine(($i) => {
@@ -275,7 +275,7 @@ export const $$: A.serializeImplementation = ($d) => {
                                             })
                                             break
                                         case 'procedure':
-                                            pl.cc($.value.type[1], ($) => {
+                                            pl.ss($.value.type, ($) => {
                                                 $i.snippet(`['function', {`)
                                                 $i.indent(($i) => {
                                                     $i.nestedLine(($i) => {
@@ -288,7 +288,7 @@ export const $$: A.serializeImplementation = ($d) => {
                                             })
                                             break
                                         case 'interface initializer':
-                                            pl.cc($.value.type[1], ($) => {
+                                            pl.ss($.value.type, ($) => {
                                                 $i.snippet(`['function', {`)
                                                 $i.indent(($i) => {
                                                     $i.nestedLine(($i) => {

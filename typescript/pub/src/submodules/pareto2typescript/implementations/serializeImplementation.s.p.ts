@@ -24,47 +24,47 @@ export const $$: A.serializeImplementation = ($d) => {
                                 function doSynchronousExpression($: g_algorithm.T.SynchronousExpression<GAnnotation>, $i: g_fp.SYNC.I.Line) {
                                     switch ($[0]) {
                                         case 'call':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
                                         case 'contextChange':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
                                         case 'groupInitializer':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
                                         case 'implementMe':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
                                         case 'mapArray':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
                                         case 'mapDictionary':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
                                         case 'propertySelection':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
                                         case 'string literal':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                                 $i.snippet($)
                                             })
                                             break
                                         case 'switch':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
@@ -75,17 +75,17 @@ export const $$: A.serializeImplementation = ($d) => {
 
                                     switch ($[0]) {
                                         case 'asynchronous function':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
                                         case 'interface initializer':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
                                         case 'procedure':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                                 function doBlock(
                                                     $: g_algorithm.T.ProcedureBlock<GAnnotation>,
                                                     $i: g_fp.SYNC.I.Line,
@@ -104,12 +104,12 @@ export const $$: A.serializeImplementation = ($d) => {
                                                         // $d.arrayForEach($.statements, ($) => {
                                                         //     switch ($[0]) {
                                                         //         case 'dependencyCall':
-                                                        //             pl.cc($[1], ($) => {
+                                                        //             pl.ss($, ($) => {
 
                                                         //             })
                                                         //             break
                                                         //         case 'interfaceCall':
-                                                        //             pl.cc($[1], ($) => {
+                                                        //             pl.ss($, ($) => {
                                                         //                 $i.nestedLine($i => {
                                                         //                     $i.snippet(`$i`)
                                                         //                     $d.arrayForEach($['child path'], ($) => {
@@ -120,7 +120,7 @@ export const $$: A.serializeImplementation = ($d) => {
                                                         //                         case false:
                                                         //                             break
                                                         //                         case true:
-                                                        //                             pl.cc($.data[1], ($) => {
+                                                        //                             pl.ss($.data, ($) => {
                                                         //                                 $i.snippet(`"`)
                                                         //                                 doSynchronousExpression($, $i)
                                                         //                                 $i.snippet(`", `)
@@ -132,7 +132,7 @@ export const $$: A.serializeImplementation = ($d) => {
                                                         //                         case false:
                                                         //                             break
                                                         //                         case true:
-                                                        //                             pl.cc($.callback[1], ($) => {
+                                                        //                             pl.ss($.callback, ($) => {
                                                         //                                 $i.snippet(`($i) => `)
                                                         //                                 doBlock($, $i)
                                                         //                             })
@@ -144,12 +144,12 @@ export const $$: A.serializeImplementation = ($d) => {
                                                         //             })
                                                         //             break
                                                         //         case 'innerCallbackCall':
-                                                        //             pl.cc($[1], ($) => {
+                                                        //             pl.ss($, ($) => {
 
                                                         //             })
                                                         //             break
                                                         //         case 'switch':
-                                                        //             pl.cc($[1], ($) => {
+                                                        //             pl.ss($, ($) => {
 
                                                         //             })
                                                         //             break
@@ -163,7 +163,7 @@ export const $$: A.serializeImplementation = ($d) => {
                                             })
                                             break
                                         case 'synchronous function':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
 
                                             })
                                             break
@@ -183,20 +183,20 @@ export const $$: A.serializeImplementation = ($d) => {
         // function serializeExpression($: g_algorithm.TExpression, $i: g_fp.SYNC.I.Line) {
         //     switch ($[0]) {
         //         case 'call':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`${$.function}(`)
         //                 $i.snippet(`)`)
         //             })
         //             break
         //         case 'contextChange':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`pl.cc($.${$.property}, ($) => `)
         //                 serializeFunctionBlock($.block, $i)
         //                 $i.snippet(`)`)
         //             })
         //             break
         //         case 'groupInitializer':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`{`)
         //                 $i.indent(($i) => {
         //                     $d.dictionaryForEach($.properties, ($) => {
@@ -211,31 +211,31 @@ export const $$: A.serializeImplementation = ($d) => {
         //             })
         //             break
         //         case 'implementMe':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`pd.implementMe(\`${$}\`)`)
         //             })
         //             break
         //         case 'mapArray':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`$.map(($) => `)
         //                 serializeFunctionBlock($.block, $i)
         //                 $i.snippet(`)`)
         //             })
         //             break
         //         case 'mapDictionary':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`$.map(($) => `)
         //                 serializeFunctionBlock($.block, $i)
         //                 $i.snippet(`)`)
         //             })
         //             break
         //         case 'propertySelection':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`$.${$.name}`)
         //             })
         //             break
         //         case 'switch':
-        //             pl.cc($[1], ($) => {
+        //             pl.ss($, ($) => {
         //                 $i.snippet(`pl.cc($, ($) => {`)
         //                 $i.indent(($i) => {
         //                     $i.nestedLine(($i) => {
@@ -299,13 +299,13 @@ export const $$: A.serializeImplementation = ($d) => {
         //     function body($i: g_fp.SYNC.I.Line) {
         //         switch ($.value.type[0]) {
         //             case 'callback':
-        //                 pl.cc($.value.type[1], ($) => {
+        //                 pl.ss($.value.type, ($) => {
         //                     $i.snippet(`($) => `)
         //                     serializeCallbackBlock($.block, $i)
         //                 })
         //                 break
         //             case 'function':
-        //                 pl.cc($.value.type[1], ($) => {
+        //                 pl.ss($.value.type, ($) => {
         //                     $i.snippet(`($) => `)
         //                     serializeFunctionBlock($.block, $i)
         //                 })

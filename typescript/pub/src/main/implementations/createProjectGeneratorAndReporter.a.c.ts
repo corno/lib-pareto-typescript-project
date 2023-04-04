@@ -16,13 +16,13 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
                         'data': ($) => {
                             switch ($[0]) {
                                 case 'missing':
-                                    pl.cc($[1], ($) => {
+                                    pl.ss($, ($) => {
                                         pd.implementMe(`@@@@NA`)
     
                                     })
                                     break
                                 case 'too many':
-                                    pl.cc($[1], ($) => {
+                                    pl.ss($, ($) => {
                                         pd.implementMe(`@@@@2M`)
     
                                     })

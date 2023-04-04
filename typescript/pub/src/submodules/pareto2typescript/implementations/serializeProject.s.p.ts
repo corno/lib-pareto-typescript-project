@@ -31,20 +31,20 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
             $i.snippet(`g_${$.context.glossary}.`)
             switch ($.type[0]) {
                 case 'asynchronous':
-                    pl.cc($.type[1], ($) => {
+                    pl.ss($.type, ($) => {
                         switch ($[0]) {
                             case 'constructor':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     $i.snippet(`ASYNC.A.C.${$d.createIdentifier(`${$.constructor}`)}`)
                                 })
                                 break
                             case 'function':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     $i.snippet(`ASYNC.A.F.${$d.createIdentifier(`${$.function}`)}`)
                                 })
                                 break
                             case 'resource':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     $i.snippet(`ASYNC.A.R.${$d.createIdentifier(`${$.resource}`)}`)
                                 })
                                 break
@@ -53,15 +53,15 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                     })
                     break
                 case 'synchronous':
-                    pl.cc($.type[1], ($) => {
+                    pl.ss($.type, ($) => {
                         switch ($[0]) {
                             case 'procedure':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     $i.snippet(`SYNC.A.P.${$d.createIdentifier(`${$.procedure}`)}`)
                                 })
                                 break
                             case 'function':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     $i.snippet(`SYNC.A.F.${$d.createIdentifier(`${$.function}`)}`)
                                 })
                                 break
@@ -102,7 +102,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
         //         }
         //         switch ($.type[0]) {
         //             case 'builder':
-        //                 pl.cc($.type[1], ($) => {
+        //                 pl.ss($.type, ($) => {
         //                     if (wrapped) {
         //                         $i.snippet(`($c: g_${context.glossary}.C.${$d.createIdentifier(`${$.builder}`)}`)
         //                         seralizeArguments($i)
@@ -117,21 +117,21 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
         //                 })
         //                 break
         //             case 'function':
-        //                 pl.cc($.type[1], ($) => {
+        //                 pl.ss($.type, ($) => {
         //                     $i.snippet(`g_${context.glossary}.`)
         //                     $i.snippet(`F.${$d.createIdentifier(`${$.function}`)}`)
         //                     seralizeArguments($i)
         //                 })
         //                 break
         //             case 'interface':
-        //                 pl.cc($.type[1], ($) => {
+        //                 pl.ss($.type, ($) => {
         //                     $i.snippet(`g_${context.glossary}.`)
         //                     $i.snippet(`I.${$d.createIdentifier(`${$.interface}`)}`)
         //                     seralizeArguments($i)
         //                 })
         //                 break
         //             case 'resource':
-        //                 pl.cc($.type[1], ($) => {
+        //                 pl.ss($.type, ($) => {
         //                     $i.snippet(`g_${context.glossary}.`)
         //                     $i.snippet(`R.${$d.createIdentifier(`${$.resource}`)}`)
         //                     seralizeArguments($i)
@@ -178,22 +178,10 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                 'glossary': $.root,
                                 'imports': $.imports.map(($) => {
                                     switch ($[0]) {
-                                        case 'external':
-                                            return pl.cc($[1], ($) => {
-                                                return $
-                                            })
-                                        case 'main':
-                                            return pl.cc($[1], ($) => {
-                                                return `${pathPrefix}../../main`
-                                            })
-                                        case 'sibling':
-                                            return pl.cc($[1], ($) => {
-                                                return `../../${$}`
-                                            })
-                                        case 'temp submodule':
-                                            return pl.cc($[1], ($) => {
-                                                return `../../submodules/${$}`
-                                            })
+                                        case 'external': return pl.ss($, ($) => $)
+                                        case 'main': return pl.ss($, ($) => `${pathPrefix}../../main`)
+                                        case 'sibling': return pl.ss($, ($) => `../../${$}`)
+                                        case 'temp submodule': return pl.ss($, ($) => `../../submodules/${$}`)
                                         default: return pl.au($[0])
                                     }
                                 }),
@@ -232,7 +220,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                             pl.cc($.value, ($) => {
                                                 switch ($.type[0]) {
                                                     case 'dependent':
-                                                        pl.cc($.type[1], ($) => {
+                                                        pl.ss($.type, ($) => {
                                                             $d.enrichedDictionaryForEach($.dependencies, {
                                                                 'onEmpty': () => { },
                                                                 'onNotEmpty': ($c) => {
@@ -269,7 +257,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                         })
                                                         break
                                                     case 'independent':
-                                                        pl.cc($.type[1], ($) => {
+                                                        pl.ss($.type, ($) => {
                                                         })
                                                         break
                                                     default: pl.au($.type[0])
@@ -307,7 +295,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                     $i.snippet(`(`)
                                                     switch ($.type[0]) {
                                                         case 'dependent':
-                                                            pl.cc($.type[1], ($) => {
+                                                            pl.ss($.type, ($) => {
                                                                 doOptional($['configuration data'], $i, {
                                                                     onNotset: () => { },
                                                                     onSet: ($, $i) => {
@@ -340,12 +328,12 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                                                         $i.snippet(`g_${$.context.glossary}.`)
                                                                                         switch ($.type[0]) {
                                                                                             case 'asynchronous':
-                                                                                                pl.cc($.type[1], ($) => {
+                                                                                                pl.ss($.type, ($) => {
                                                                                                     $i.snippet(`ASYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
                                                                                                 })
                                                                                                 break
                                                                                             case 'synchronous':
-                                                                                                pl.cc($.type[1], ($) => {
+                                                                                                pl.ss($.type, ($) => {
                                                                                                     $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
                                                                                                 })
                                                                                                 break
@@ -374,7 +362,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                             })
                                                             break
                                                         case 'independent':
-                                                            pl.cc($.type[1], ($) => {
+                                                            pl.ss($.type, ($) => {
                                                             })
                                                             break
                                                         default: pl.au($.type[0])
@@ -430,26 +418,11 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                             'api': $.root,
                             'imports': $.imports.map(($) => {
                                 switch ($[0]) {
-                                    case 'external':
-                                        return pl.cc($[1], ($) => {
-                                            return $
-                                        })
-                                    case 'main':
-                                        return pl.cc($[1], ($) => {
-                                            return `${pathPrefix}../main`
-                                        })
-                                    case 'sibling':
-                                        return pl.cc($[1], ($) => {
-                                            return `../${$}`
-                                        })
-                                    case 'submodule':
-                                        return pl.cc($[1], ($) => {
-                                            return `../submodules/${$}`
-                                        })
-                                    case 'this':
-                                        return pl.cc($[1], ($) => {
-                                            return `./glossary`
-                                        })
+                                    case 'external': return pl.ss($, ($) => $)
+                                    case 'main': return pl.ss($, ($) => `${pathPrefix}../main`)
+                                    case 'sibling': return pl.ss($, ($) => `../${$}`)
+                                    case 'submodule': return pl.ss($, ($) => `../submodules/${$}`)
+                                    case 'this': return pl.ss($, ($) => `./glossary`)
                                     default: return pl.au($[0])
                                 }
                             }),
@@ -526,12 +499,12 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                     })
                     switch ($.type[0]) {
                         case 'glossary':
-                            pl.cc($.type[1], ($) => {
+                            pl.ss($.type, ($) => {
                                 $i.line(`    "pareto-core-types": "^0.0.0"`)
                             })
                             break
                         case 'library':
-                            pl.cc($.type[1], ($) => {
+                            pl.ss($.type, ($) => {
                                 $d.enrichedDictionaryForEach($.executables, {
                                     onEmpty: () => {
                                     },
@@ -548,7 +521,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                             })
                             break
                         case 'resource':
-                            pl.cc($.type[1], ($) => {
+                            pl.ss($.type, ($) => {
                                 $d.dictionaryForEach($.temp.nativeDependencies, ($) => {
                                     $i.line(`    "${$.key}": "^0.0.0",`)
                                 })
@@ -560,12 +533,12 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                     $i.line(`  },`)
                     switch ($.type[0]) {
                         case 'glossary':
-                            pl.cc($.type[1], ($) => {
+                            pl.ss($.type, ($) => {
 
                             })
                             break
                         case 'library':
-                            pl.cc($.type[1], ($) => {
+                            pl.ss($.type, ($) => {
                                 $d.enrichedDictionaryForEach($.executables, {
                                     onEmpty: () => {
 
@@ -582,7 +555,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                             })
                             break
                         case 'resource':
-                            pl.cc($.type[1], ($) => {
+                            pl.ss($.type, ($) => {
                                 $d.enrichedDictionaryForEach($.temp.devDependencies, {
                                     onEmpty: () => {
 
@@ -614,17 +587,14 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                 $i.directory("src", ($i) => {
                     switch ($.type[0]) {
                         case 'glossary':
-                            pl.cc($.type[1], ($) => {
+                            pl.ss($.type, ($) => {
                                 globals($i)
                                 $d.serializeGlossary(
                                     {
                                         'glossary': $.root,
                                         'imports': $.imports.map(($) => {
                                             switch ($[0]) {
-                                                case 'external':
-                                                    return pl.cc($[1], ($) => {
-                                                        return `${$}`
-                                                    })
+                                                case 'external': return pl.ss($, ($) => `${$}`)
                                                 default: return pl.au($[0])
                                             }
                                         }),
@@ -634,7 +604,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                             })
                             break
                         case 'library':
-                            pl.cc($.type[1], ($) => {
+                            pl.ss($.type, ($) => {
                                 function doModule(
                                     $: {
                                         'module': g_project.T.Module<GAnnotation>,
@@ -651,42 +621,23 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                     )
                                     const api = $.module.definition.api.root
                                     function getExtension($: g_project.T.AlgorithmTypeReference<GAnnotation>) {
-
                                         return pl.cc($, ($): string => {
-
                                             switch ($.type[0]) {
-                                                case 'asynchronous':
-                                                    return pl.cc($.type[1], ($) => {
-                                                        switch ($[0]) {
-                                                            case 'constructor':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return "a.c"
-                                                                })
-                                                            case 'function':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return "a.f"
-                                                                })
-                                                            case 'resource':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return "a.r"
-                                                                })
-                                                            default: return pl.au($[0])
-                                                        }
-                                                    })
-                                                case 'synchronous':
-                                                    return pl.cc($.type[1], ($) => {
-                                                        switch ($[0]) {
-                                                            case 'procedure':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return "s.p"
-                                                                })
-                                                            case 'function':
-                                                                return pl.cc($[1], ($) => {
-                                                                    return "s.f"
-                                                                })
-                                                            default: return pl.au($[0])
-                                                        }
-                                                    })
+                                                case 'asynchronous': return pl.ss($.type, ($) => {
+                                                    switch ($[0]) {
+                                                        case 'constructor': return pl.ss($, ($) => "a.c")
+                                                        case 'function': return pl.ss($, ($) => "a.f")
+                                                        case 'resource': return pl.ss($, ($) => "a.r")
+                                                        default: return pl.au($[0])
+                                                    }
+                                                })
+                                                case 'synchronous': return pl.ss($.type, ($) => {
+                                                    switch ($[0]) {
+                                                        case 'procedure': return pl.ss($, ($) => "s.p")
+                                                        case 'function': return pl.ss($, ($) => "s.f")
+                                                        default: return pl.au($[0])
+                                                    }
+                                                })
                                                 default: return pl.au($.type[0])
                                             }
                                         })
@@ -694,13 +645,13 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                     pl.cc($.module.implementation, ($) => {
                                         switch ($[0]) {
                                             case 'pareto':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     pd.implementMe("IMPLEMENTATIONS")
                                                     //$d.serializeImplementation($, $i)
                                                 })
                                                 break
                                             case 'typescript':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     $i.directory("implementations", ($i) => {
                                                         $d.dictionaryForEach(api.algorithms, ($) => {
                                                             $i.allowedManual(`${$.key}.${getExtension($.value.definition)}.ts`)
@@ -719,14 +670,8 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
 
                                                 const ext = getExtension($.value.definition)
                                                 switch (imp[0]) {
-                                                    case 'typescript':
-                                                        return pl.cc(imp[1], ($) => {
-                                                            return ext
-                                                        })
-                                                    case 'pareto':
-                                                        return pl.cc(imp[1], ($) => {
-                                                            return `generated`
-                                                        })
+                                                    case 'typescript': return pl.ss(imp, ($) => ext)
+                                                    case 'pareto': return pl.ss(imp, ($) => `generated`)
                                                     default: return pl.au(imp[0])
                                                 }
                                             })
@@ -823,13 +768,13 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                             const api = $.definition.api
                                             switch ($.implementation[0]) {
                                                 case 'pareto':
-                                                    pl.cc($.implementation[1], ($) => {
+                                                    pl.ss($.implementation, ($) => {
                                                         pd.implementMe("IMPLEMENTATIONS")
                                                         //$d.serializeImplementation($, $i)
                                                     })
                                                     break
                                                 case 'typescript':
-                                                    pl.cc($.implementation[1], ($) => {
+                                                    pl.ss($.implementation, ($) => {
                                                         $i.directory("implementations", ($i) => {
                                                             $d.dictionaryForEach(api.root.algorithms, ($) => {
                                                                 $i.allowedManual(`${$.key}.b.ts`)
@@ -842,14 +787,8 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                             $i.file("implementation.generated.ts", ($i) => {
                                                 const suffix = pl.cc($, ($) => {
                                                     switch ($.implementation[0]) {
-                                                        case 'typescript':
-                                                            return pl.cc($.implementation[1], ($) => {
-                                                                return `b`
-                                                            })
-                                                        case 'pareto':
-                                                            return pl.cc($.implementation[1], ($) => {
-                                                                return `generated`
-                                                            })
+                                                        case 'typescript': return pl.ss($.implementation, ($) => `b`)
+                                                        case 'pareto': return pl.ss($.implementation, ($) => `generated`)
                                                         default: return pl.au($.implementation[0])
                                                     }
                                                 })
@@ -903,7 +842,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                             })
                             break
                         case 'resource':
-                            pl.cc($.type[1], ($) => {
+                            pl.ss($.type, ($) => {
                                 doModuleDefinition(
                                     {
                                         'definition': $.definition,
@@ -1015,7 +954,22 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                     $i.line(`}`)
                                 })
                                 $i.directory("implementations", ($i) => {
-                                    $i.allowedManual("getTestSet.a.f.ts")
+                                    $i.template("getTestSet.a.f.ts", ($i) => {
+                                        $i.line(`import * as pm from 'pareto-core-map'`)
+                                        $i.line(`import * as pa from 'pareto-core-async'`)
+                                        $i.line(`import * as pd from 'pareto-core-dev'`)
+                                        $i.line(``)
+                                        $i.line(`import * as g_pub from "../../../../../pub"`)
+                                        $i.line(``)
+                                        $i.line(`import { A } from "../api.generated"`)
+                                        $i.line(``)
+                                        $i.line(`export const $$: A.getTestSet = ($) => {`)
+                                        $i.line(`    pd.implementMe("IMPLEMENT A TESTSET")`)
+                                        $i.line(`    return pa.asyncValue({`)
+                                        $i.line(`        elements: pm.wrapRawDictionary({})`)
+                                        $i.line(`    })`)
+                                        $i.line(`}`)
+                                    })
                                     $i.file("main.generated.ts", ($i) => {
                                         $i.line(`import * as pl from 'pareto-core-lib'`)
                                         $i.line(`import * as pv from 'pareto-core-dev'`)
@@ -1116,25 +1070,25 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                         //                 //         $i.indent(($i) => {
                         //                 //             switch ($[0]) {
                         //                 //                 case 'algorithm':
-                        //                 //                     pl.cc($[1], ($) => {
+                        //                 //                     pl.ss($, ($) => {
                         //                 //                     })
                         //                 //                     break
                         //                 //                 case 'constructor':
-                        //                 //                     pl.cc($[1], ($) => {
+                        //                 //                     pl.ss($, ($) => {
                         //                 //                         $d.dictionaryForEach($.dependencies, ($, key) => {
                         //                 //                             $i.nestedLine(($i) => {
                         //                 //                                 $i.snippet(`| [ '${key}', `)
                         //                 //                                 switch ($.type[0]) {
                         //                 //                                     case 'function':
-                        //                 //                                         pl.cc($.type[1], ($) => {
+                        //                 //                                         pl.ss($.type, ($) => {
                         //                 //                                             if ($.context !== undefined) {
                         //                 //                                                 switch ($.context[0]) {
                         //                 //                                                     case 'import':
-                        //                 //                                                         pl.cc($.context[1], ($) => {
+                        //                 //                                                         pl.ss($.context, ($) => {
                         //                 //                                                         })
                         //                 //                                                         break
                         //                 //                                                     case 'local':
-                        //                 //                                                         pl.cc($.context[1], ($) => {
+                        //                 //                                                         pl.ss($.context, ($) => {
                         //                 //                                                         })
                         //                 //                                                         break
                         //                 //                                                     default: pl.au($.context[0])
@@ -1145,7 +1099,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                         //                 //                                         })
                         //                 //                                         break
                         //                 //                                     case 'procedure':
-                        //                 //                                         pl.cc($.type[1], ($) => {
+                        //                 //                                         pl.ss($.type, ($) => {
                         //                 //                                             $d.serializeLeafType($, $i)
                         //                 //                                         })
                         //                 //                                         break
@@ -1190,17 +1144,17 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
             }
             switch ($.type[0]) {
                 case 'glossary':
-                    pl.cc($.type[1], ($) => {
+                    pl.ss($.type, ($) => {
 
                     })
                     break
                 case 'library':
-                    pl.cc($.type[1], ($) => {
+                    pl.ss($.type, ($) => {
                         doTest($.test, $i)
                     })
                     break
                 case 'resource':
-                    pl.cc($.type[1], ($) => {
+                    pl.ss($.type, ($) => {
                         doTest($.test, $i)
 
                     })

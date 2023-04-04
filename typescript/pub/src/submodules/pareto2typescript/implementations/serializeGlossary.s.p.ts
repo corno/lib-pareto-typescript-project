@@ -147,7 +147,7 @@ export const $$: A.serializeGlossary = ($d) => {
                         $c.onNotset($, $i)
                         break
                     case true:
-                        pl.cc($[1], ($) => {
+                        pl.ss($, ($) => {
                             $c.onSet($, $i)
                         })
                         break
@@ -221,27 +221,27 @@ export const $$: A.serializeGlossary = ($d) => {
                                     }
                                     switch ($[0]) {
                                         case 'null':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                             })
                                             break
                                         case 'boolean':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                             })
                                             break
                                         case 'reference':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                             })
                                             break
                                         case 'number':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                             })
                                             break
                                         case 'string':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                             })
                                             break
                                         case 'computed':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                                 createCurrentAndSerializeType(
                                                     {
                                                         'type': $,
@@ -252,7 +252,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                             })
                                             break
                                         case 'optional':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                                 createCurrentAndSerializeType(
                                                     {
                                                         'type': $,
@@ -263,7 +263,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                             })
                                             break
                                         case 'array':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                                 createCurrentAndSerializeType(
                                                     {
                                                         'type': $,
@@ -274,7 +274,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                             })
                                             break
                                         case 'dictionary':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                                 createCurrentAndSerializeType(
                                                     {
                                                         'type': $,
@@ -285,7 +285,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                             })
                                             break
                                         case 'group':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                                 createTheCurrentNamespace(
                                                     ($i) => {
                                                         $d.dictionaryForEach($, ($) => {
@@ -303,7 +303,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                             })
                                             break
                                         case 'nested':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                                 createCurrentAndSerializeType(
                                                     {
                                                         'type': $,
@@ -314,7 +314,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                             })
                                             break
                                         case 'taggedUnion':
-                                            pl.cc($[1], ($) => {
+                                            pl.ss($, ($) => {
                                                 createTheCurrentNamespace(
                                                     ($i) => {
                                                         $d.dictionaryForEach($, ($) => {
@@ -343,32 +343,32 @@ export const $$: A.serializeGlossary = ($d) => {
                                     ): void {
                                         switch ($[0]) {
                                             case 'null':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     $i.snippet(`null`)
                                                 })
                                                 break
                                             case 'boolean':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     $i.snippet(`boolean`)
                                                 })
                                                 break
                                             case 'reference':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     serializeDataSpecifier($, $i)
                                                 })
                                                 break
                                             case 'number':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     $i.snippet(`number`)
                                                 })
                                                 break
                                             case 'string':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     $i.snippet(`string`)
                                                 })
                                                 break
                                             case 'computed':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     $i.snippet(`() => `)
                                                     serializeType(
                                                         $,
@@ -377,7 +377,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 })
                                                 break
                                             case 'optional':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     $i.snippet(`[ false ] | [ true, `)
                                                     serializeType(
                                                         $,
@@ -387,7 +387,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 })
                                                 break
                                             case 'array':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     $i.snippet(`pt.Array<`)
                                                     serializeType(
                                                         $,
@@ -397,7 +397,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 })
                                                 break
                                             case 'dictionary':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     $i.snippet(`pt.Dictionary<`)
                                                     serializeType(
                                                         $,
@@ -407,7 +407,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 })
                                                 break
                                             case 'group':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     doDictionaryType($, $i, ($, $i) => {
                                                         serializeType(
                                                             $.type,
@@ -418,7 +418,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 })
                                                 break
                                             case 'nested':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
                                                     $i.snippet(`pt.Nested<`)
                                                     serializeType(
                                                         $,
@@ -428,7 +428,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 })
                                                 break
                                             case 'taggedUnion':
-                                                pl.cc($[1], ($) => {
+                                                pl.ss($, ($) => {
 
                                                     $i.indent(($i) => {
                                                         $d.dictionaryForEach($, ($) => {
@@ -475,12 +475,12 @@ export const $$: A.serializeGlossary = ($d) => {
             function serializeContext($: g_glossary.T.Context<Annotation>, $i: g_fp.SYNC.I.Line) {
                 switch ($[0]) {
                     case 'import':
-                        pl.cc($[1], ($) => {
+                        pl.ss($, ($) => {
                             $i.snippet(`g_${$.glossary.key}.`)
                         })
                         break
                     case 'local':
-                        pl.cc($[1], ($) => {
+                        pl.ss($, ($) => {
 
                         })
                         break
@@ -505,17 +505,17 @@ export const $$: A.serializeGlossary = ($d) => {
             function serializeDataSpecifier($: g_glossary.T.DataSpecifier<Annotation>, $i: g_fp.SYNC.I.Line) {
                 switch ($[0]) {
                     case 'glossary parameter':
-                        pl.cc($[1], ($) => {
+                        pl.ss($, ($) => {
                             $i.snippet(`G${$}`)
                         })
                         break
                     case 'type parameter':
-                        pl.cc($[1], ($) => {
+                        pl.ss($, ($) => {
                             $i.snippet(`T${$}`)
                         })
                         break
                     case 'type':
-                        pl.cc($[1], ($) => {
+                        pl.ss($, ($) => {
                             serializeContext($.context, $i)
                             $i.snippet(`T.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
                             $d.enrichedDictionaryForEach($.arguments, {
@@ -526,7 +526,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                     $i.snippet(`<`)
                                     switch ($.context[0]) {
                                         case 'import':
-                                            pl.cc($.context[1], ($) => {
+                                            pl.ss($.context, ($) => {
                                                 importDefinitions.__getEntry(
                                                     $.glossary.key,
                                                     ($) => {
@@ -542,7 +542,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                             })
                                             break
                                         case 'local':
-                                            pl.cc($.context[1], ($) => {
+                                            pl.ss($.context, ($) => {
                                                 $d.dictionaryForEach(globalParameters, ($) => {
                                                     $i.snippet(`G${$.key}, `)
                                                 })
@@ -568,7 +568,7 @@ export const $$: A.serializeGlossary = ($d) => {
             ) {
                 switch ($[0]) {
                     case 'import':
-                        pl.cc($[1], ($) => {
+                        pl.ss($, ($) => {
                             importDefinitions.__getEntry(
                                 $.glossary.key,
                                 ($) => {
@@ -594,7 +594,7 @@ export const $$: A.serializeGlossary = ($d) => {
                         })
                         break
                     case 'local':
-                        pl.cc($[1], ($) => {
+                        pl.ss($, ($) => {
                             $d.enrichedDictionaryForEach(globalParameters, {
                                 'onEmpty': () => {
 
@@ -641,7 +641,7 @@ export const $$: A.serializeGlossary = ($d) => {
 
                         switch ($[0]) {
                             case 'group':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     doDictionaryType($.members, $i, ($, $i) => {
                                         serializeSynchronousInterface(
                                             {
@@ -653,7 +653,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                 })
                                 break
                             case 'method':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     $i.snippet(`(`)
                                     pl.cc($.data, ($) => {
                                         if ($ === null) {
@@ -688,7 +688,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                 })
                                 break
                             case 'reference':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     serializeSynchronousInterfaceReference($, $i)
                                 })
                                 break
@@ -708,7 +708,7 @@ export const $$: A.serializeGlossary = ($d) => {
                             $i.snippet(`<`)
                             switch ($.context[0]) {
                                 case 'import':
-                                    pl.cc($.context[1], ($) => {
+                                    pl.ss($.context, ($) => {
                                         importDefinitions.__getEntry(
                                             $.glossary.key,
                                             ($) => {
@@ -724,7 +724,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                     })
                                     break
                                 case 'local':
-                                    pl.cc($.context[1], ($) => {
+                                    pl.ss($.context, ($) => {
                                         $d.dictionaryForEach(globalParameters, ($) => {
                                             $i.snippet(`G${$.key}, `)
                                         })
@@ -751,7 +751,7 @@ export const $$: A.serializeGlossary = ($d) => {
 
                         switch ($[0]) {
                             case 'choice':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     doDictionaryType($.options, $i, ($, $i) => {
                                         serializeAsynchronousInterface(
                                             {
@@ -763,7 +763,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                 })
                                 break
                             case 'streamconsumer':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
 
                                     $i.snippet(`{`)
                                     $i.indent(($i) => {
@@ -790,7 +790,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                 })
                                 break
                             case 'method':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     $i.snippet(`(`)
                                     pl.cc($.data, ($) => {
                                         if ($ === null) {
@@ -825,7 +825,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                 })
                                 break
                             case 'reference':
-                                pl.cc($[1], ($) => {
+                                pl.ss($, ($) => {
                                     serializeAsynchronousInterfaceReference($, $i)
                                 })
                                 break
@@ -845,7 +845,7 @@ export const $$: A.serializeGlossary = ($d) => {
                             $i.snippet(`<`)
                             switch ($.context[0]) {
                                 case 'import':
-                                    pl.cc($.context[1], ($) => {
+                                    pl.ss($.context, ($) => {
                                         importDefinitions.__getEntry(
                                             $.glossary.key,
                                             ($) => {
@@ -861,7 +861,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                     })
                                     break
                                 case 'local':
-                                    pl.cc($.context[1], ($) => {
+                                    pl.ss($.context, ($) => {
                                         $d.dictionaryForEach(globalParameters, ($) => {
                                             $i.snippet(`G${$.key}, `)
                                         })
@@ -916,18 +916,9 @@ export const $$: A.serializeGlossary = ($d) => {
                                 ns(
                                     pl.cc($.value.type, ($) => {
                                         switch ($[0]) {
-                                            case 'constructor':
-                                                return pl.cc($[1], ($) => {
-                                                    return `C`
-                                                })
-                                            case 'function':
-                                                return pl.cc($[1], ($) => {
-                                                    return `F`
-                                                })
-                                            case 'resource':
-                                                return pl.cc($[1], ($) => {
-                                                    return `R`
-                                                })
+                                            case 'constructor': return pl.ss($, ($) =>  `C`)
+                                            case 'function': return pl.ss($, ($) => `F`)
+                                            case 'resource': return pl.ss($, ($) =>`R`)
                                             default: return pl.au($[0])
                                         }
                                     }),
@@ -941,7 +932,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                             pl.cc($.value.type, ($) => {
                                                 switch ($[0]) {
                                                     case 'constructor':
-                                                        pl.cc($[1], ($) => {
+                                                        pl.ss($, ($) => {
                                                             $i.snippet(`{`)
                                                             $i.indent(($i) => {
                                                                 $i.nestedLine(($i) => {
@@ -975,7 +966,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                         })
                                                         break
                                                     case 'function':
-                                                        pl.cc($[1], ($) => {
+                                                        pl.ss($, ($) => {
                                                             serializeTypeParameters(params, $i)
                                                             $i.snippet(`(`)
                                                             pl.cc($.in, ($) => {
@@ -990,7 +981,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                         })
                                                         break
                                                     case 'resource':
-                                                        pl.cc($[1], ($) => {
+                                                        pl.ss($, ($) => {
                                                             $i.snippet(`{`)
                                                             $i.indent(($i) => {
                                                                 $i.nestedLine(($i) => {
@@ -1065,14 +1056,8 @@ export const $$: A.serializeGlossary = ($d) => {
                                         ns(
                                             pl.cc($.value.type, ($) => {
                                                 switch ($[0]) {
-                                                    case 'procedure':
-                                                        return pl.cc($[1], ($) => {
-                                                            return `P`
-                                                        })
-                                                    case 'function':
-                                                        return pl.cc($[1], ($) => {
-                                                            return `F`
-                                                        })
+                                                    case 'procedure': return pl.ss($, ($) =>  `P`)
+                                                    case 'function': return pl.ss($, ($) =>  `F`)
                                                     default: return pl.au($[0])
                                                 }
                                             }),
@@ -1086,19 +1071,19 @@ export const $$: A.serializeGlossary = ($d) => {
                                                     pl.cc($.value.type, ($) => {
                                                         switch ($[0]) {
                                                             case 'procedure':
-                                                                pl.cc($[1], ($) => {
+                                                                pl.ss($, ($) => {
                                                                     $i.snippet(`(`)
                                                                     pl.cc($.in, ($) => {
                                                                         switch ($[0]) {
                                                                             case 'interface':
-                                                                                pl.cc($[1], ($) => {
+                                                                                pl.ss($, ($) => {
                                                                                     $i.snippet(`$c: ($i: `)
                                                                                     serializeSynchronousInterfaceReference($, $i)
                                                                                     $i.snippet(`) => void`)
                                                                                 })
                                                                                 break
                                                                             case 'data':
-                                                                                pl.cc($[1], ($) => {
+                                                                                pl.ss($, ($) => {
                                                                                     $i.snippet(`$: `)
                                                                                     serializeDataSpecifier($, $i)
                                                                                 })
@@ -1112,19 +1097,19 @@ export const $$: A.serializeGlossary = ($d) => {
                                                                 })
                                                                 break
                                                             case 'function':
-                                                                pl.cc($[1], ($) => {
+                                                                pl.ss($, ($) => {
                                                                     $i.snippet(`(`)
                                                                     pl.cc($.in, ($) => {
                                                                         switch ($[0]) {
                                                                             case 'interface':
-                                                                                pl.cc($[1], ($) => {
+                                                                                pl.ss($, ($) => {
                                                                                     $i.snippet(`$c: ($i: `)
                                                                                     serializeSynchronousInterfaceReference($, $i)
                                                                                     $i.snippet(`) => void`)
                                                                                 })
                                                                                 break
                                                                             case 'data':
-                                                                                pl.cc($[1], ($) => {
+                                                                                pl.ss($, ($) => {
                                                                                     $i.snippet(`$: `)
                                                                                     serializeDataSpecifier($, $i)
                                                                                 })

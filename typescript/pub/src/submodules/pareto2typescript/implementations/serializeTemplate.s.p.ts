@@ -13,12 +13,12 @@ export const $$: A.serializeTemplate = ($d) => {
             $i.directory("templates", ($i) => {
                 switch ($.type[0]) {
                     case 'glossary':
-                        pl.cc($.type[1], ($) => {
+                        pl.ss($.type, ($) => {
 
                         })
                         break
                     case 'library':
-                        pl.cc($.type[1], ($) => {
+                        pl.ss($.type, ($) => {
                             $i.directory("pub", ($i) => {
                                 function doImplementation(
 
@@ -121,7 +121,7 @@ export const $$: A.serializeTemplate = ($d) => {
                         })
                         break
                     case 'resource':
-                        pl.cc($.type[1], ($) => {
+                        pl.ss($.type, ($) => {
                             $i.directory("pub", ($i) => {
                                 $i.directory("src", ($i) => {
 

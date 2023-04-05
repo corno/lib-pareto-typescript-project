@@ -37,10 +37,5 @@ export const $: g_project.T.ModuleDefinition.api.root<pd.SourceLocation> = {
             "dictionaryForEach": procedure("foreach", {}, "DictionaryForEach"),
             "enrichedDictionaryForEach": procedure("foreach", {}, "EnrichedDictionaryForEach"),
         }, {})),
-        "serializeTemplate": algorithm(procedure("this", {}, "ProjectToDirectory"), { "Annotation": "Annotation" }, dependent(null, {
-            "createIdentifier": sfunction("ts", {}, "CreateIdentifier"),
-            "dictionaryForEach": procedure("foreach", {}, "DictionaryForEach"),
-            "enrichedDictionaryForEach": procedure("foreach", {}, "EnrichedDictionaryForEach"),
-        }, {})),
     })
 }

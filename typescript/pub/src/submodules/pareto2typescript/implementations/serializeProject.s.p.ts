@@ -5,9 +5,7 @@ import * as pt from 'pareto-core-types'
 import * as g_fp from "lib-fountain-pen"
 import * as g_project from "../../project"
 
-
 import { A, D } from "../api.generated"
-
 
 export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnnotation>) => {
     return ($: g_project.T.Project<GAnnotation>, $i: g_fp.SYNC.I.Directory) => {
@@ -26,6 +24,194 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
             }
         }
 
+        function generateAPI(
+            $p: g_project.T.ModuleDefinition.api.root<GAnnotation>,
+            $i: g_fp.SYNC.I.Directory,
+            $c: {
+                'extension': ($: g_project.T.ModuleDefinition.api.root.algorithms.D<GAnnotation>) => string
+            }
+        ) {
+
+            $i.file("implementation.generated.ts", ($i) => {
+                $i.line(`import { API } from "./api.generated"`)
+                $d.dictionaryForEach($p.algorithms, ($) => {
+                    $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${$c.extension($.value)}"`)
+                })
+                $i.line(``)
+                $i.nestedLine(($i) => {
+                    $i.snippet(`export const $api: API = `)
+                    $d.enrichedDictionaryForEach($p.algorithms, {
+                        'onEmpty': () => {
+                            $i.snippet(`null`)
+                        },
+                        'onNotEmpty': ($c) => {
+                            $i.snippet(`{`)
+                            $i.indent(($i) => {
+                                $c(($) => {
+
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`'${$.key}': `)
+                                        $i.snippet(`${$d.createIdentifier(`i${$.key}`)}`)
+                                        $i.snippet(`,`)
+                                    })
+                                })
+                            })
+                            $i.snippet(`}`)
+                        }
+                    })
+                })
+            })
+        }
+
+        function generateTemplates(
+            $p: g_project.T.ModuleDefinition.api.root<GAnnotation>,
+            $i: g_fp.SYNC.I.Directory,
+            $c: {
+                'extension': ($: g_project.T.ModuleDefinition.api.root.algorithms.D<GAnnotation>) => string
+            }
+        ) {
+            $i.directory("implementations", ($i) => {
+                $d.dictionaryForEach($p.algorithms, ($) => {
+                    $i.template(`${$.key}.${$c.extension($.value)}.ts`, ($i) => {
+                        $i.line(`import * as pl from 'pareto-core-lib'`)
+                        $i.line(`import * as pd from 'pareto-core-dev'`)
+                        $i.line(``)
+                        $i.line(`import { A } from "../api.generated"`)
+                        $i.line(``)
+                        $i.nestedLine(($i) => {
+                            const key = $
+                            $i.snippet(`export const $$: A.${$d.createIdentifier($.key)} = (`)
+                            pl.cc($.value.type, ($) => {
+                                switch ($[0]) {
+                                    case 'dependent':
+                                        pl.ss($, ($) => {
+                                            if ($['configuration data'][0] === true) {
+                                                $i.snippet(`$c, `)
+                                            }
+                                            $d.enrichedDictionaryForEach($.dependencies, {
+                                                'onEmpty': () => {
+
+                                                },
+                                                'onNotEmpty': () => {
+                                                    $i.snippet(`$d, `)
+                                                }
+                                            })
+                                            $d.enrichedDictionaryForEach($['side effects'], {
+                                                'onEmpty': () => {
+
+                                                },
+                                                'onNotEmpty': () => {
+                                                    $i.snippet(`$se, `)
+                                                }
+                                            })
+                                        })
+                                        break
+                                    case 'independent':
+                                        pl.ss($, ($) => {
+
+                                        })
+                                        break
+                                    default: pl.au($[0])
+                                }
+                            })
+                            $i.snippet(`) => {`)
+                            $i.indent(($i) => {
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`return `)
+                                    pl.cc($.value.definition.type, ($) => {
+                                        switch ($[0]) {
+                                            case 'asynchronous':
+                                                pl.ss($, ($) => {
+                                                    switch ($[0]) {
+                                                        case 'constructor':
+                                                            pl.ss($, ($) => {
+                                                                $i.snippet(`{`)
+                                                                $i.indent(($i) => {
+                                                                    $i.nestedLine(($i) => {
+                                                                        $i.snippet(`'constructor': ($is) => {`)
+                                                                        $i.indent(($i) => {
+                                                                            $i.nestedLine(($i) => {
+                                                                                $i.snippet(`pd.implementMe(\`IMPLEMENT ${key}\`)`)
+                                                                            })
+                                                                        })
+                                                                        $i.snippet(`}`)
+                                                                    })
+                                                                })
+                                                                $i.snippet(`}`)
+                                                            })
+                                                            break
+                                                        case 'function':
+                                                            pl.ss($, ($) => {
+                                                                $i.snippet(`($) => {`)
+                                                                $i.indent(($i) => {
+                                                                    $i.nestedLine(($i) => {
+                                                                        $i.snippet(`return pd.implementMe(\`IMPLEMENT ${key}\`)`)
+                                                                    })
+                                                                })
+                                                                $i.snippet(`}`)
+
+                                                            })
+                                                            break
+                                                        case 'resource':
+                                                            pl.ss($, ($) => {
+                                                                $i.snippet(`() => {`)
+                                                                $i.indent(($i) => {
+                                                                    $i.nestedLine(($i) => {
+                                                                        $i.snippet(`return pd.implementMe(\`IMPLEMENT ${key}\`)`)
+                                                                    })
+                                                                })
+                                                                $i.snippet(`}`)
+
+                                                            })
+                                                            break
+                                                        default: pl.au($[0])
+                                                    }
+                                                })
+                                                break
+                                            case 'synchronous':
+                                                pl.ss($, ($) => {
+                                                    switch ($[0]) {
+                                                        case 'function':
+                                                            pl.ss($, ($) => {
+                                                                $i.snippet(`($) => {`)
+                                                                $i.indent(($i) => {
+                                                                    $i.nestedLine(($i) => {
+                                                                        $i.snippet(`return pd.implementMe(\`IMPLEMENT ${key}\`)`)
+                                                                    })
+                                                                })
+                                                                $i.snippet(`}`)
+
+                                                            })
+                                                            break
+                                                        case 'procedure':
+                                                            pl.ss($, ($) => {
+                                                                $i.snippet(`($) => {`)
+                                                                $i.indent(($i) => {
+                                                                    $i.nestedLine(($i) => {
+                                                                        $i.snippet(`pd.implementMe(\`IMPLEMENT ${key}\`)`)
+                                                                    })
+                                                                })
+                                                                $i.snippet(`}`)
+
+                                                            })
+                                                            break
+                                                        default: pl.au($[0])
+                                                    }
+                                                })
+                                                break
+                                            default: pl.au($[0])
+                                        }
+                                    })
+                                    $i.snippet(`pd.implementMe("IMPLEMENT ME")`)
+                                })
+                            })
+                            $i.snippet(`}`)
+                        })
+                    })
+                })
+            })
+
+        }
         function serializeAlgorithmTypeReference($: g_project.T.AlgorithmTypeReference<GAnnotation>, $i: g_fp.SYNC.I.Line) {
 
             $i.snippet(`g_${$.context.glossary}.`)
@@ -160,6 +346,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
         //         $i,
         //     )
         // }
+        $i.allowedManual(`tmp`)
         $i.directory("typescript", ($i) => {
             function doModuleDefinition(
                 $: {
@@ -642,6 +829,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                             }
                                         })
                                     }
+                                    const imp = $.module.implementation
                                     pl.cc($.module.implementation, ($) => {
                                         switch ($[0]) {
                                             case 'pareto':
@@ -652,55 +840,32 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                 break
                                             case 'typescript':
                                                 pl.ss($, ($) => {
-                                                    $i.directory("implementations", ($i) => {
-                                                        $d.dictionaryForEach(api.algorithms, ($) => {
-                                                            $i.allowedManual(`${$.key}.${getExtension($.value.definition)}.ts`)
-                                                        })
-                                                    })
+                                                    generateTemplates(
+                                                        api,
+                                                        $i,
+                                                        {
+                                                            'extension': ($) => getExtension($.definition)
+                                                        }
+                                                    )
                                                 })
                                                 break
                                             default: pl.au($[0])
                                         }
                                     })
-                                    $i.file("implementation.generated.ts", ($i) => {
-                                        const imp = $.module.implementation
-                                        $i.line(`import { API } from "./api.generated"`)
-                                        $d.dictionaryForEach(api.algorithms, ($) => {
-                                            const suffix = pl.cc($, ($) => {
-
-                                                const ext = getExtension($.value.definition)
+                                    generateAPI(
+                                        api,
+                                        $i,
+                                        {
+                                            'extension': ($) => pl.cc($, ($) => {
+                                                const ext = getExtension($.definition)
                                                 switch (imp[0]) {
                                                     case 'typescript': return pl.ss(imp, ($) => ext)
                                                     case 'pareto': return pl.ss(imp, ($) => `generated`)
                                                     default: return pl.au(imp[0])
                                                 }
                                             })
-                                            $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
-                                        })
-                                        $i.line(``)
-                                        $i.nestedLine(($i) => {
-                                            $i.snippet(`export const $api: API = `)
-                                            $d.enrichedDictionaryForEach(api.algorithms, {
-                                                'onEmpty': () => {
-                                                    $i.snippet(`null`)
-                                                },
-                                                'onNotEmpty': ($c) => {
-                                                    $i.snippet(`{`)
-                                                    $i.indent(($i) => {
-                                                        $c(($) => {
-
-                                                            $i.nestedLine(($i) => {
-                                                                $i.snippet(`'${$.key}': `)
-                                                                $i.snippet(`${$d.createIdentifier(`i${$.key}`)}`)
-                                                                $i.snippet(`,`)
-                                                            })
-                                                        })
-                                                    })
-                                                    $i.snippet(`}`)
-                                                }
-                                            })
-                                        })
-                                    })
+                                        }
+                                    )
                                     $i.file("index.ts", ($i) => {
                                         $i.line(`export * from "./glossary"`)
                                         $i.line(`export { $api as $a } from "./implementation.generated"`)
@@ -766,6 +931,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                 $i
                                             )
                                             const api = $.definition.api
+                                            const imp = $.implementation
                                             switch ($.implementation[0]) {
                                                 case 'pareto':
                                                     pl.ss($.implementation, ($) => {
@@ -775,23 +941,32 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                     break
                                                 case 'typescript':
                                                     pl.ss($.implementation, ($) => {
-                                                        $i.directory("implementations", ($i) => {
-                                                            $d.dictionaryForEach(api.root.algorithms, ($) => {
-                                                                $i.allowedManual(`${$.key}.b.ts`)
-                                                            })
-                                                        })
+                                                        generateTemplates(
+                                                            api.root,
+                                                            $i,
+                                                            {
+                                                                'extension': ($) => `b`
+                                                            }
+                                                        )
                                                     })
                                                     break
                                                 default: pl.au($.implementation[0])
                                             }
+                                            generateAPI(
+                                                api.root,
+                                                $i,
+                                                {
+                                                    'extension': ($) => pl.cc($, ($) => {
+                                                        switch (imp[0]) {
+                                                            case 'typescript': return `b`
+                                                            case 'pareto': return `generated`
+                                                            default: return pl.au(imp[0])
+                                                        }
+                                                    })
+                                                }
+                                            )
                                             $i.file("implementation.generated.ts", ($i) => {
-                                                const suffix = pl.cc($, ($) => {
-                                                    switch ($.implementation[0]) {
-                                                        case 'typescript': return pl.ss($.implementation, ($) => `b`)
-                                                        case 'pareto': return pl.ss($.implementation, ($) => `generated`)
-                                                        default: return pl.au($.implementation[0])
-                                                    }
-                                                })
+                                                const suffix = 
                                                 $i.line(`import { API } from "./api.generated"`)
                                                 $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
                                                     $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
@@ -850,32 +1025,20 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                     },
                                     $i
                                 )
-                                $i.directory("implementations", ($i) => {
-                                    $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
-                                        $i.allowedManual(`${$.key}.native.ts`)
-                                    })
-                                })
-                                $i.file("implementation.generated.ts", ($i) => {
-
-                                    $i.line(`import { API } from "./api.generated"`)
-                                    $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
-                                        $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.native"`)
-                                    })
-                                    $i.line(``)
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`export const $r: API = {`)
-                                        $i.indent(($i) => {
-                                            $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
-                                                $i.nestedLine(($i) => {
-                                                    $i.snippet(`'${$.key}': `)
-                                                    $i.snippet(`${$d.createIdentifier(`i${$.key}`)}`)
-                                                    $i.snippet(`,`)
-                                                })
-                                            })
-                                        })
-                                        $i.snippet(`}`)
-                                    })
-                                })
+                                generateTemplates(
+                                    $.definition.api.root,
+                                    $i,
+                                    {
+                                        'extension': ($) => `native`
+                                    }
+                                )
+                                generateAPI(
+                                    $.definition.api.root,
+                                    $i,
+                                    {
+                                        'extension': ($) => `native`
+                                    }
+                                )
                                 $i.allowedManual("native")
                                 $i.file("index.ts", ($i) => {
                                     $i.line(`export * from "./api.generated"`)

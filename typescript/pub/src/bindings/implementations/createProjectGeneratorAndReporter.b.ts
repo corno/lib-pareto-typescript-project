@@ -66,17 +66,6 @@ export const $$: A.createProjectGeneratorAndReporter = () => {
                             'createIdentifier': a_ts.$r.createIdentifier(),
                         }
                     ),
-                    'serializeTemplate': a_pareto2typescript.$a.serializeTemplate(
-                        {
-                            'dictionaryForEach': a_foreach.$r.createDictionaryForEach({
-                                'compare': a_coll.$r.localeIsABeforeB(),
-                            }),
-                            'enrichedDictionaryForEach': a_foreach.$r.createEnrichedDictionaryForEach({
-                                'compare': a_coll.$r.localeIsABeforeB(),
-                            }),
-                            'createIdentifier': a_ts.$r.createIdentifier(),
-                        }
-                    ),
                 },
             ).construct({
                 'log': ($) => {

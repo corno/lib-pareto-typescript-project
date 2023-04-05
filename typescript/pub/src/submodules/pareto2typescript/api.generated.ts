@@ -39,12 +39,6 @@ export namespace D {
         readonly 'enrichedDictionaryForEach': g_foreach.SYNC.A.P.EnrichedDictionaryForEach
     }
     
-    export type serializeTemplate<GAnnotation> = {
-        readonly 'createIdentifier': g_ts.SYNC.A.F.CreateIdentifier
-        readonly 'dictionaryForEach': g_foreach.SYNC.A.P.DictionaryForEach
-        readonly 'enrichedDictionaryForEach': g_foreach.SYNC.A.P.EnrichedDictionaryForEach
-    }
-    
 }
 
 export namespace A {
@@ -57,8 +51,6 @@ export namespace A {
     
     export type serializeStates = <GAnnotation>($d: D.serializeStates<GAnnotation>, ) => g_this.SYNC.A.P.SerializeStates<GAnnotation>
     
-    export type serializeTemplate = <GAnnotation>($d: D.serializeTemplate<GAnnotation>, ) => g_this.SYNC.A.P.ProjectToDirectory<GAnnotation>
-    
     export type validateFiles = <GAnnotation>() => g_this.SYNC.A.P.ValidateFiles<GAnnotation>
 }
 
@@ -67,6 +59,5 @@ export type API = {
     readonly 'serializeImplementation': A.serializeImplementation
     readonly 'serializeProject': A.serializeProject
     readonly 'serializeStates': A.serializeStates
-    readonly 'serializeTemplate': A.serializeTemplate
     readonly 'validateFiles': A.validateFiles
 }

@@ -45,10 +45,6 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
                                             project,
                                             $i,
                                         )
-                                        $d.serializeTemplate(
-                                            project,
-                                            $i,
-                                        )
                                         $d.validateFiles(
                                             null,
                                             $i,

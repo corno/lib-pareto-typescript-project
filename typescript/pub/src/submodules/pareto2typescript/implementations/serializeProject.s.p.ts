@@ -79,7 +79,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                         $i.line(`import { A } from "../api.generated"`)
                         $i.line(``)
                         $i.nestedLine(($i) => {
-                            const key = $
+                            const key = $.key
                             $i.snippet(`export const $$: A.${$d.createIdentifier($.key)} = (`)
                             pl.cc($.value.type, ($) => {
                                 switch ($[0]) {
@@ -202,7 +202,6 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                             default: pl.au($[0])
                                         }
                                     })
-                                    $i.snippet(`pd.implementMe("IMPLEMENT ME")`)
                                 })
                             })
                             $i.snippet(`}`)
@@ -965,36 +964,6 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                     })
                                                 }
                                             )
-                                            $i.file("implementation.generated.ts", ($i) => {
-                                                const suffix = 
-                                                $i.line(`import { API } from "./api.generated"`)
-                                                $d.dictionaryForEach($.definition.api.root.algorithms, ($) => {
-                                                    $i.line(`import { $$ as ${$d.createIdentifier(`i${$.key}`)} } from "./implementations/${$.key}.${suffix}"`)
-                                                })
-                                                $i.line(``)
-                                                $i.nestedLine(($i) => {
-                                                    $i.snippet(`export const $api: API = `)
-                                                    $d.enrichedDictionaryForEach($.definition.api.root.algorithms, {
-                                                        'onEmpty': () => {
-                                                            $i.snippet(`null`)
-                                                        },
-                                                        'onNotEmpty': ($c) => {
-                                                            $i.snippet(`{`)
-                                                            $i.indent(($i) => {
-                                                                $c(($) => {
-
-                                                                    $i.nestedLine(($i) => {
-                                                                        $i.snippet(`'${$.key}': `)
-                                                                        $i.snippet(`${$d.createIdentifier(`i${$.key}`)}`)
-                                                                        $i.snippet(`,`)
-                                                                    })
-                                                                })
-                                                            })
-                                                            $i.snippet(`}`)
-                                                        }
-                                                    })
-                                                })
-                                            })
                                         })
                                     },
                                     () => {

@@ -128,7 +128,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                                 $i.snippet(`{`)
                                                                 $i.indent(($i) => {
                                                                     $i.nestedLine(($i) => {
-                                                                        $i.snippet(`'constructor': ($is) => {`)
+                                                                        $i.snippet(`'construct': ($is) => {`)
                                                                         $i.indent(($i) => {
                                                                             $i.nestedLine(($i) => {
                                                                                 $i.snippet(`pd.implementMe(\`IMPLEMENT ${key}\`)`)

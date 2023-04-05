@@ -1012,7 +1012,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                 $i.file("index.ts", ($i) => {
                                     $i.line(`export * from "./api.generated"`)
                                     $i.line(`export * from "./glossary"`)
-                                    $i.line(`export { $r } from "./implementation.generated"`)
+                                    $i.line(`export { $api as $r } from "./implementation.generated"`)
                                 })
                             })
                             break

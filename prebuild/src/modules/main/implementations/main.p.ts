@@ -11,7 +11,7 @@ import { main } from "../api"
 
 export const $$: main = ($) => {
     //pv.logDebugMessage("REENABLE")
-    const el = a_main.$r.createErrorLogger()()
+    const el = a_main.$r.createErrorLogger().construct()
 
     a_liana.$b.compile<pd.SourceLocation>({
         'getSourceLocation': ($) => $

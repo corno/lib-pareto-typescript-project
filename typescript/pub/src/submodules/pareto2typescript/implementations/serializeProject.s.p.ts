@@ -1114,7 +1114,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                         $i.line(`export const $$: A.main = ($) => {`)
                                         $i.line(`    g_test.$b.createTestProgram({`)
                                         $i.line(`        'getTestSet': getTestSet,`)
-                                        $i.line(`    })()($)`)
+                                        $i.line(`    }).construct()($)`)
                                         $i.line(`}`)
                                     })
                                 })

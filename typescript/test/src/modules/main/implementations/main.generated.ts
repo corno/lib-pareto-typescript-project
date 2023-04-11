@@ -11,5 +11,5 @@ import { A } from "../api.generated"
 export const $$: A.main = ($) => {
     g_test.$b.createTestProgram({
         'getTestSet': getTestSet,
-    })()($)
+    }).construct()($)
 }

@@ -11,8 +11,8 @@ import * as a_mainLib from "res-pareto-main"
 import { A } from "../api.generated"
 
 export const $$: A.createProjectGeneratorAndReporter = () => {
-    const el =  a_mainLib.$r.createErrorLogger()()
-    const log =  a_mainLib.$r.createLogger()()
+    const el =  a_mainLib.$r.createErrorLogger().construct()
+    const log =  a_mainLib.$r.createLogger().construct()
 
     return {
         'construct': () => {

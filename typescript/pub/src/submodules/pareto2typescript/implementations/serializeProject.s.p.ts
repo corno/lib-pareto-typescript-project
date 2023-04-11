@@ -806,27 +806,25 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                         $i
                                     )
                                     const api = $.module.definition.api.root
-                                    function getExtension($: g_project.T.AlgorithmTypeReference<GAnnotation>) {
-                                        return pl.cc($, ($): string => {
-                                            switch ($.type[0]) {
-                                                case 'asynchronous': return pl.ss($.type, ($) => {
-                                                    switch ($[0]) {
-                                                        case 'constructor': return pl.ss($, ($) => "a.c")
-                                                        case 'function': return pl.ss($, ($) => "a.f")
-                                                        case 'resource': return pl.ss($, ($) => "a.r")
-                                                        default: return pl.au($[0])
-                                                    }
-                                                })
-                                                case 'synchronous': return pl.ss($.type, ($) => {
-                                                    switch ($[0]) {
-                                                        case 'procedure': return pl.ss($, ($) => "s.p")
-                                                        case 'function': return pl.ss($, ($) => "s.f")
-                                                        default: return pl.au($[0])
-                                                    }
-                                                })
-                                                default: return pl.au($.type[0])
-                                            }
-                                        })
+                                    function getExtension($: g_project.T.AlgorithmTypeReference<GAnnotation>): string {
+                                        switch ($.type[0]) {
+                                            case 'asynchronous': return pl.ss($.type, ($) => {
+                                                switch ($[0]) {
+                                                    case 'constructor': return pl.ss($, ($) => "a.c")
+                                                    case 'function': return pl.ss($, ($) => "a.f")
+                                                    case 'resource': return pl.ss($, ($) => "a.r")
+                                                    default: return pl.au($[0])
+                                                }
+                                            })
+                                            case 'synchronous': return pl.ss($.type, ($) => {
+                                                switch ($[0]) {
+                                                    case 'procedure': return pl.ss($, ($) => "s.p")
+                                                    case 'function': return pl.ss($, ($) => "s.f")
+                                                    default: return pl.au($[0])
+                                                }
+                                            })
+                                            default: return pl.au($.type[0])
+                                        }
                                     }
                                     const imp = $.module.implementation
                                     pl.cc($.module.implementation, ($) => {

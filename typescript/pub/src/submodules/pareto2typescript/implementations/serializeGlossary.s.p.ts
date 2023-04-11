@@ -17,67 +17,73 @@ import { A } from "../api.generated"
 
 export const $$: A.serializeGlossary = ($d) => {
 
-    function doDictionaryType<T>(
-        $: pt.Dictionary<T>,
-        $i: g_fp.SYNC.I.Line,
-        callback: ($: T, $i: g_fp.SYNC.I.Line) => void,
-    ) {
-        function doDictionaryTypeWithKey<T>(
-            $: pt.Dictionary<T>,
-            $i: g_fp.SYNC.I.Line,
-            callback: ($: {
-                'key': string,
-                'value': T,
-            }, $i: g_fp.SYNC.I.Line) => void,
-        ) {
-            $d.enrichedDictionaryForEach($, {
-                'onEmpty': () => {
-                    //typescript treats an empty object very lax therefor I make it a null
-
-                    $i.snippet(`null`)
-                },
-                'onNotEmpty': ($c) => {
-                    $i.snippet(`{`)
-                    $i.indent(($i) => {
-                        $c(($) => {
-
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`readonly '${$.key}': `)
-                                callback($, $i)
-                            })
-                        })
-                    })
-                    $i.snippet(`}`)
-                }
-            })
-
-
-
-            //     ($) => {
-
-            // })
-        }
-        doDictionaryTypeWithKey($, $i, ($, $i) => callback($.value, $i))
-    }
-    function doOptional<T>(
-        $: pt.OptionalValue<T>,
-        $i: g_fp.SYNC.I.Line,
-        $c: {
-            onSet: ($: T, $i: g_fp.SYNC.I.Line) => void,
-            onNotset: ($: null, $i: g_fp.SYNC.I.Line) => void,
-        },
-    ) {
-        if ($[0] === true) {
-            $c.onSet($[1], $i)
-        } else {
-            $c.onNotset(null, $i)
-        }
-    }
     return <Annotation>($: g_this.T.SerializeGlossaryData<Annotation>, $i: g_fp.SYNC.I.Directory) => {
         const imports = $.imports
         return pl.cc($.glossary, ($) => {
             const globalParameters = $.parameters
             const importDefinitions = $.imports
+            function doDictionaryType<T>(
+                $: pt.Dictionary<T>,
+                $i: g_fp.SYNC.I.Line,
+                callback: ($: T, $i: g_fp.SYNC.I.Line) => void,
+            ) {
+                function doDictionaryTypeWithKey<T>(
+                    $: pt.Dictionary<T>,
+                    $i: g_fp.SYNC.I.Line,
+                    callback: ($: {
+                        'key': string,
+                        'value': T,
+                    }, $i: g_fp.SYNC.I.Line) => void,
+                ) {
+                    $d.enrichedDictionaryForEach($, {
+                        'onEmpty': () => {
+                            //typescript treats an empty object very lax therefor I make it a null
+        
+                            $i.snippet(`null`)
+                        },
+                        'onNotEmpty': ($c) => {
+                            $i.snippet(`{`)
+                            $i.indent(($i) => {
+                                $c(($) => {
+        
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`readonly '${$.key}': `)
+                                        callback($, $i)
+                                    })
+                                })
+                            })
+                            $i.snippet(`}`)
+                        }
+                    })
+        
+        
+        
+                    //     ($) => {
+        
+                    // })
+                }
+                doDictionaryTypeWithKey($, $i, ($, $i) => callback($.value, $i))
+            }
+            function doOptional<T>(
+                $: pt.OptionalValue<T>,
+                $i: g_fp.SYNC.I.Line,
+                $c: {
+                    onSet: ($: T, $i: g_fp.SYNC.I.Line) => void,
+                    onNotset: ($: {}, $i: g_fp.SYNC.I.Line) => void,
+                },
+            ) {
+                switch ($[0]) {
+                    case false:
+                        $c.onNotset($, $i)
+                        break
+                    case true:
+                        pl.ss($, ($) => {
+                            $c.onSet($, $i)
+                        })
+                        break
+                    default: pl.au($[0])
+                }
+            }
             function serializeGlobalParametersOnly(
                 $i: g_fp.SYNC.I.Line
             ) {
@@ -133,26 +139,6 @@ export const $$: A.serializeGlossary = ($d) => {
                     })
                     $i.snippet(`}`)
                 })
-            }
-            function doOptional<T>(
-                $: pt.OptionalValue<T>,
-                $i: g_fp.SYNC.I.Line,
-                $c: {
-                    onSet: ($: T, $i: g_fp.SYNC.I.Line) => void,
-                    onNotset: ($: {}, $i: g_fp.SYNC.I.Line) => void,
-                },
-            ) {
-                switch ($[0]) {
-                    case false:
-                        $c.onNotset($, $i)
-                        break
-                    case true:
-                        pl.ss($, ($) => {
-                            $c.onSet($, $i)
-                        })
-                        break
-                    default: pl.au($[0])
-                }
             }
             function serializeNamespace($: g_glossary.T.Namespace<Annotation>, $i: g_fp.SYNC.I.Block) {
                 ns(

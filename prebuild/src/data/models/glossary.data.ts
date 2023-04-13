@@ -142,7 +142,6 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
         })),
         "Type": globalType({}, taggedUnion({
             "array": option(component("Type", {})),
-            "nested": option(component("Type", {})),
             "dictionary": option(component("Type", {})),
             "computed": option(component("Type", {})),
             "optional": option(component("Type", {})),

@@ -12,7 +12,7 @@ export const $: g_project.T.ModuleDefinition.api.root<pd.SourceLocation> = {
             //"decorateDictionaryEntriesWithKey": sfunction("foreach", { }, "DecorateDictionaryEntriesWithKey"),
             "createParametersParser": constructor("parametersparser", {}, "CreateParametersParser"),
             //"reportSuperfluousNode": functionReference("fp", {}, "ReportSuperfluousNode"),
-            "validateFiles": procedure("pareto2typescript", { "X": "GAnnotation" }, "ValidateFiles"),
+            "validateFiles": sfunction("pareto2typescript", { "X": "GAnnotation" }, "ValidateFiles"),
             "serializeProject": procedure("pareto2typescript", { "X": "GAnnotation" }, "ProjectToDirectory"),
             "readDirectoryOrAbort": afunction("fs", {}, "ReadDirectoryOrAbort"),
             "createDirectory": procedure("fp", {}, "CreateDirectory")

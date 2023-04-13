@@ -3,7 +3,7 @@ import { $$ as iserializeGlossary } from "./implementations/serializeGlossary.s.
 import { $$ as iserializeImplementation } from "./implementations/serializeImplementation.s.p"
 import { $$ as iserializeProject } from "./implementations/serializeProject.s.p"
 import { $$ as iserializeStates } from "./implementations/serializeStates.s.p"
-import { $$ as ivalidateFiles } from "./implementations/validateFiles.s.p"
+import { $$ as ivalidateFiles } from "./implementations/validateFiles.s.f"
 
 export const $api: API = {
     'serializeGlossary': iserializeGlossary,

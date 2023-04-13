@@ -5,6 +5,7 @@ import { T } from "./datatypes.generated"
 import * as g_algorithm from "../../algorithm"
 import * as g_common from "glo-pareto-common"
 import * as g_fp from "lib-fountain-pen"
+import * as g_fp2 from "lib-fountain-pen/dist/submodules/fountainpen"
 import * as g_glossary from "../../glossary"
 import * as g_project from "../../project"
 
@@ -50,8 +51,8 @@ export namespace SYNC {
         }
         
         
-        export namespace P {
-            export type ValidateFiles<GAnnotation> = ($: g_common.T.Null, $i: g_fp.SYNC.I.Directory) => void
+        export namespace F {
+            export type ValidateFiles<GAnnotation> = ($: g_common.T.Null) => g_fp2.T.Directory<GAnnotation>
         }
     }
 }

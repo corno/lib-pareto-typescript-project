@@ -1071,13 +1071,6 @@ export namespace N {
                         export namespace T {}
                     }
                     
-                    export namespace nested {
-                        
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                    
                     export namespace _$lnull {
                         
                         export namespace N {
@@ -1837,8 +1830,6 @@ export namespace T {
             readonly 'type': T.Type<GAnnotation>
         }>
         
-        export type nested<GAnnotation> = T.Type<GAnnotation>
-        
         export namespace _lnull {}
         
         export type _lnull<GAnnotation> = null
@@ -1871,7 +1862,6 @@ export namespace T {
         | ['group', pt.Dictionary<{
             readonly 'type': T.Type<GAnnotation>
         }>]
-        | ['nested', T.Type<GAnnotation>]
         | ['null', null]
         | ['number', null]
         | ['optional', T.Type<GAnnotation>]

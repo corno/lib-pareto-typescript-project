@@ -55,12 +55,6 @@ export const $$: A.serializeGlossary = ($d) => {
                             $i.snippet(`}`)
                         }
                     })
-        
-        
-        
-                    //     ($) => {
-        
-                    // })
                 }
                 doDictionaryTypeWithKey($, $i, ($, $i) => callback($.value, $i))
             }
@@ -288,17 +282,6 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 )
                                             })
                                             break
-                                        case 'nested':
-                                            pl.ss($, ($) => {
-                                                createCurrentAndSerializeType(
-                                                    {
-                                                        'type': $,
-                                                        'nextName': "N",
-                                                    },
-                                                    $i
-                                                )
-                                            })
-                                            break
                                         case 'taggedUnion':
                                             pl.ss($, ($) => {
                                                 createTheCurrentNamespace(
@@ -401,16 +384,6 @@ export const $$: A.serializeGlossary = ($d) => {
                                                         )
 
                                                     })
-                                                })
-                                                break
-                                            case 'nested':
-                                                pl.ss($, ($) => {
-                                                    $i.snippet(`pt.Nested<`)
-                                                    serializeType(
-                                                        $,
-                                                        $i,
-                                                    )
-                                                    $i.snippet(`>`)
                                                 })
                                                 break
                                             case 'taggedUnion':

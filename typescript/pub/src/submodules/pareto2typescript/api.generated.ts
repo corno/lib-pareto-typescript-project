@@ -51,7 +51,7 @@ export namespace A {
     
     export type serializeStates = <GAnnotation>($d: D.serializeStates<GAnnotation>, ) => g_this.SYNC.A.P.SerializeStates<GAnnotation>
     
-    export type validateFiles = <GAnnotation>() => g_this.SYNC.A.P.ValidateFiles<GAnnotation>
+    export type validateFiles = <GAnnotation>() => g_this.SYNC.A.F.ValidateFiles<GAnnotation>
 }
 
 export type API = {

@@ -281,20 +281,6 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                         $i.snippet(`})]`)
                     })
                     break
-                case 'nested':
-                    pl.ss($, ($) => {
-                        $i.snippet(`['nested', `)
-                        serializeType($, $i)
-                        $i.snippet(`]`)
-                    })
-                    break
-                case 'nested':
-                    pl.ss($, ($) => {
-                        $i.snippet(`['nested', `)
-                        serializeType($, $i)
-                        $i.snippet(`]`)
-                    })
-                    break
                 case 'taggedUnion':
                     pl.ss($, ($) => {
                         $i.snippet(`['taggedUnion', d({`)

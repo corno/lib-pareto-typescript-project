@@ -1,7 +1,7 @@
 import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
 
-
+import * as a_f2 from "lib-fountain-pen/dist/submodules/serialize"
 
 import { A } from "../api.generated"
 
@@ -10,7 +10,7 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
         'construct': ($is) => {
             return ($) => {
                 const project = $.project
-    
+
                 const $ixx = $d.createParametersParser.construct({
                     'errorHandler': {
                         'data': ($) => {
@@ -18,13 +18,13 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
                                 case 'missing':
                                     pl.ss($, ($) => {
                                         pd.implementMe(`@@@@NA`)
-    
+
                                     })
                                     break
                                 case 'too many':
                                     pl.ss($, ($) => {
                                         pd.implementMe(`@@@@2M`)
-    
+
                                     })
                                     break
                                 default: pl.au($[0])
@@ -35,7 +35,6 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
                         },
                     },
                     'handler': ($) => {
-    
                         $d.createDirectory(
                             ($i) => {
                                 $i(
@@ -45,8 +44,10 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
                                             project,
                                             $i,
                                         )
-                                        $d.validateFiles(
-                                            null,
+                                        a_f2.$a.serializeDirectory()(
+                                            $d.validateFiles(
+                                                null,
+                                            ),
                                             $i,
                                         )
                                     }

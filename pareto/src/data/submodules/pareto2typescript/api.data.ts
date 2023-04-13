@@ -21,7 +21,7 @@ export const $: g_project.T.ModuleDefinition.api.root<pd.SourceLocation> = {
             "enrichedDictionaryForEach": procedure("foreach", {}, "EnrichedDictionaryForEach"),
             "createIdentifier": sfunction("ts", {}, "CreateIdentifier"),
         }, {})),
-        "validateFiles": algorithm(procedure("this", {}, "ValidateFiles"), { "Annotation": "Annotation" }),
+        "validateFiles": algorithm(sfunction("this", {}, "ValidateFiles"), { "Annotation": "Annotation" }),
         "serializeProject": algorithm(procedure("this", {}, "ProjectToDirectory"), { "Annotation": "Annotation" }, dependent(null, {
             "createIdentifier": sfunction("ts", {}, "CreateIdentifier"),
 

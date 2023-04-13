@@ -14,7 +14,7 @@ export namespace D {
         readonly 'createParametersParser': g_parametersparser.ASYNC.A.C.CreateParametersParser
         readonly 'readDirectoryOrAbort': g_fs.ASYNC.A.F.ReadDirectoryOrAbort
         readonly 'serializeProject': g_pareto2typescript.SYNC.A.P.ProjectToDirectory<GAnnotation>
-        readonly 'validateFiles': g_pareto2typescript.SYNC.A.P.ValidateFiles<GAnnotation>
+        readonly 'validateFiles': g_pareto2typescript.SYNC.A.F.ValidateFiles<GAnnotation>
     }
 }
 

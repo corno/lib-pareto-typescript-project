@@ -70,10 +70,6 @@ export function computed($: t.T.Type<pd.SourceLocation>): t.T.Type<pd.SourceLoca
     return ['computed', $]
 }
 
-export function nested($: t.T.Type<pd.SourceLocation>): t.T.Type<pd.SourceLocation> {
-    return ['nested', $]
-}
-
 export function group($: RawDictionary<t.T.Type.group.D<pd.SourceLocation>>): t.T.Type<pd.SourceLocation> {
     return ['group', pd.d($)]
 }

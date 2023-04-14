@@ -126,6 +126,22 @@ export function typeReference(
     }]
 }
 
+export function sExternalFunctionReference(cntxt: string, inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.SynchronousFunctionReference<pd.SourceLocation> {
+
+    return {
+        'context': context(cntxt, pd.getLocationInfo(1)),
+        'function': inf,
+        'arguments': pd.d(args === undefined ? {} : args),
+    }
+}
+
+export function sFunctionReference(inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.SynchronousFunctionReference<pd.SourceLocation> {
+    return {
+        'context': ['local', null],
+        'function': inf,
+        'arguments': pd.d(args === undefined ? {} : args),
+    }
+}
 export function sExternalInterfaceReference(cntxt: string, inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.SynchronousInterfaceReference<pd.SourceLocation> {
 
     return {

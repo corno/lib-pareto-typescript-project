@@ -227,12 +227,23 @@ export function procedure(in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>
 
 
 
+export function scallbackfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, callbacks: RawDictionary<t.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D<pd.SourceLocation>>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
+    return {
+        'parameters': pd.d(params === undefined ? {} : params),
+        'type': ['function', {
+            'in': in_,
+            'out': out,
+            'callbacks': pd.d(callbacks)
+        }]
+    }
+}
 export function sfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),
         'type': ['function', {
             'in': in_,
             'out': out,
+            'callbacks': pd.d({}),
         }]
     }
 }

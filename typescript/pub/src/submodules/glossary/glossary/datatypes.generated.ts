@@ -656,6 +656,21 @@ export namespace N {
                                                                                         
                                                                                         export namespace N {
                                                                                             
+                                                                                            export namespace callbacks {
+                                                                                                
+                                                                                                export namespace N {
+                                                                                                    
+                                                                                                    export namespace D {
+                                                                                                        
+                                                                                                        export namespace N {}
+                                                                                                        
+                                                                                                        export namespace T {}
+                                                                                                    }
+                                                                                                }
+                                                                                                
+                                                                                                export namespace T {}
+                                                                                            }
+                                                                                            
                                                                                             export namespace _$lin {
                                                                                                 
                                                                                                 export namespace N {}
@@ -839,6 +854,51 @@ export namespace N {
                                 export namespace T {}
                             }
                         }
+                        
+                        export namespace T {}
+                    }
+                }
+                
+                export namespace T {}
+            }
+        }
+        
+        export namespace T {}
+    }
+    
+    export namespace SynchronousFunctionReference {
+        
+        export namespace N {
+            
+            export namespace G {
+                
+                export namespace N {
+                    
+                    export namespace arguments {
+                        
+                        export namespace N {
+                            
+                            export namespace D {
+                                
+                                export namespace N {}
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace context {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace _$lfunction {
+                        
+                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -1543,12 +1603,20 @@ export namespace T {
                         
                         export namespace _lfunction {
                             
+                            export namespace callbacks {
+                                
+                                export type D<GAnnotation> = T.SynchronousFunctionReference<GAnnotation>
+                            }
+                            
+                            export type callbacks<GAnnotation> = pt.Dictionary<T.SynchronousFunctionReference<GAnnotation>>
+                            
                             export type _lin<GAnnotation> = T.DataOrSynchronousInterface<GAnnotation>
                             
                             export type out<GAnnotation> = T.DataSpecifier<GAnnotation>
                         }
                         
                         export type _lfunction<GAnnotation> = {
+                            readonly 'callbacks': pt.Dictionary<T.SynchronousFunctionReference<GAnnotation>>
                             readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                             readonly 'out': T.DataSpecifier<GAnnotation>
                         }
@@ -1568,6 +1636,7 @@ export namespace T {
                     
                     export type _ltype<GAnnotation> = 
                         | ['function', {
+                            readonly 'callbacks': pt.Dictionary<T.SynchronousFunctionReference<GAnnotation>>
                             readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                             readonly 'out': T.DataSpecifier<GAnnotation>
                         }]
@@ -1581,6 +1650,7 @@ export namespace T {
                     readonly 'parameters': T.TypeParameters<GAnnotation>
                     readonly 'type': 
                         | ['function', {
+                            readonly 'callbacks': pt.Dictionary<T.SynchronousFunctionReference<GAnnotation>>
                             readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                             readonly 'out': T.DataSpecifier<GAnnotation>
                         }]
@@ -1595,6 +1665,7 @@ export namespace T {
                 readonly 'parameters': T.TypeParameters<GAnnotation>
                 readonly 'type': 
                     | ['function', {
+                        readonly 'callbacks': pt.Dictionary<T.SynchronousFunctionReference<GAnnotation>>
                         readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                         readonly 'out': T.DataSpecifier<GAnnotation>
                     }]
@@ -1630,6 +1701,7 @@ export namespace T {
                 readonly 'parameters': T.TypeParameters<GAnnotation>
                 readonly 'type': 
                     | ['function', {
+                        readonly 'callbacks': pt.Dictionary<T.SynchronousFunctionReference<GAnnotation>>
                         readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                         readonly 'out': T.DataSpecifier<GAnnotation>
                     }]
@@ -1678,6 +1750,7 @@ export namespace T {
                 readonly 'parameters': T.TypeParameters<GAnnotation>
                 readonly 'type': 
                     | ['function', {
+                        readonly 'callbacks': pt.Dictionary<T.SynchronousFunctionReference<GAnnotation>>
                         readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
                         readonly 'out': T.DataSpecifier<GAnnotation>
                     }]
@@ -1729,6 +1802,26 @@ export namespace T {
             readonly 'parameters': T.TypeParameters<GAnnotation>
             readonly 'type': T.Type<GAnnotation>
         }>
+    }
+    
+    export namespace SynchronousFunctionReference {
+        
+        export namespace arguments {
+            
+            export type D<GAnnotation> = T.DataSpecifier<GAnnotation>
+        }
+        
+        export type arguments<GAnnotation> = pt.Dictionary<T.DataSpecifier<GAnnotation>>
+        
+        export type context<GAnnotation> = T.Context<GAnnotation>
+        
+        export type _lfunction<GAnnotation> = string
+    }
+    
+    export type SynchronousFunctionReference<GAnnotation> = {
+        readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
+        readonly 'context': T.Context<GAnnotation>
+        readonly 'function': string
     }
     
     export namespace SynchronousInterface {

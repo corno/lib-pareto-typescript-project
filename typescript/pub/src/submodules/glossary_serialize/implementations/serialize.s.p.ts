@@ -365,6 +365,34 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
         //     $i.snippet(`}`)
         // }
 
+        function serializeSynchronousFunctionReference($: g_glossary.T.SynchronousFunctionReference<GAnnotation>, $i: g_fp.SYNC.I.Line) {
+            $i.snippet(`{`)
+            $i.indent(($i) => {
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'context': `)
+                    serializeContext($.context, $i)
+                    $i.snippet(`,`)
+                })
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'interface': "${$.function}",`)
+                })
+                $i.nestedLine(($i) => {
+                    $i.snippet(`'arguments': d({`)
+                    $i.indent(($i) => {
+                        $d.dictionaryForEach($.arguments, ($) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`"${$.key}": `)
+                                serializeDataSpecifier($.value, $i)
+                                $i.snippet(`,`)
+                            })
+                        })
+                    })
+                    $i.snippet(`}),`)
+                })
+            })
+            $i.snippet(`}`)
+
+        }
         function serializeSynchronousInterfaceReference($: g_glossary.T.SynchronousInterfaceReference<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
@@ -805,6 +833,20 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                                                                 $i.snippet(`'out': `)
                                                                                 serializeDataSpecifier($.out, $i)
                                                                                 $i.snippet(`,`)
+                                                                            })
+                                                                            $i.nestedLine(($i) => {
+                                                                                $i.snippet(`'callbacks': d({`)
+                                                                                $i.indent(($i) => {
+                                                                                    $d.dictionaryForEach($.callbacks, ($) => {
+                                                                                        $i.nestedLine(($i) => {
+                                                                                            $i.snippet(`"${$.key}": `)
+                                                                                            serializeSynchronousFunctionReference($.value, $i)
+                                                                                            $i.snippet(`,`)
+                                                                                        })
+                                                                                        
+                                                                                    })
+                                                                                })
+                                                                                $i.snippet(`)},`)
                                                                             })
                                                                         })
                                                                         $i.snippet(`}]`)

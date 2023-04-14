@@ -656,6 +656,50 @@ export const $$: A.serializeGlossary = ($d) => {
                     })
 
                 }
+                function serializeSynchronousFunctionReference($: g_glossary.T.SynchronousFunctionReference<Annotation>, $i: g_fp.SYNC.I.Line) {
+                    serializeContext($.context, $i)
+                    $i.snippet(`SYNC.F.${$d.createIdentifier(`${$.function}`)}`)
+                    $d.enrichedDictionaryForEach($.arguments, {
+                        'onEmpty': () => {
+                            serializeContextGlossaryArgumentsOnly($.context, $i)
+                        },
+                        'onNotEmpty': ($c) => {
+                            $i.snippet(`<`)
+                            switch ($.context[0]) {
+                                case 'import':
+                                    pl.ss($.context, ($) => {
+                                        importDefinitions.__getEntry(
+                                            $.glossary.key,
+                                            ($) => {
+                                                $d.dictionaryForEach($.arguments, ($) => {
+                                                    serializeDataSpecifier($.value, $i)
+                                                    $i.snippet(`, `)
+                                                })
+                                            },
+                                            () => {
+                                                pd.logDebugMessage(`missing import: ${$.glossary.key}`)
+                                            }
+                                        )
+                                    })
+                                    break
+                                case 'local':
+                                    pl.ss($.context, ($) => {
+                                        $d.dictionaryForEach(globalParameters, ($) => {
+                                            $i.snippet(`G${$.key}, `)
+                                        })
+                                    })
+                                    break
+                                default: pl.au($.context[0])
+                            }
+                            $c(($) => {
+                                serializeDataSpecifier($.value, $i)
+                                $i.snippet(`${$.isLast ? `` : `, `}`)
+                            })
+                            $i.snippet(`>`)
+                        }
+                    })
+
+                }
                 function serializeSynchronousInterfaceReference($: g_glossary.T.SynchronousInterfaceReference<Annotation>, $i: g_fp.SYNC.I.Line) {
                     serializeContext($.context, $i)
                     $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
@@ -1074,6 +1118,23 @@ export const $$: A.serializeGlossary = ($d) => {
                                                                                 })
                                                                                 break
                                                                             default: pl.au($[0])
+                                                                        }
+                                                                    })
+                                                                    $d.enrichedDictionaryForEach($.callbacks, {
+                                                                        'onEmpty': () => {},
+                                                                        'onNotEmpty': () => {
+                                                                            $i.snippet(`$c: {`)
+                                                                            $i.indent(($i) => {
+                                                                                $d.dictionaryForEach($.callbacks, ($) => {
+
+                                                                                    $i.nestedLine(($i) => {
+                                                                                        $i.snippet(`'${$.key}': `)
+                                                                                        serializeSynchronousFunctionReference($.value, $i)
+                                                                                        $i.snippet(`,`)
+                                                                                    })
+                                                                                })
+                                                                            })
+                                                                            $i.snippet(`}`)
                                                                         }
                                                                     })
                                                                     $i.snippet(`) => `)

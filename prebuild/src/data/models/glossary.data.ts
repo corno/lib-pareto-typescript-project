@@ -62,6 +62,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                         "function": option(group({
                             "in": prop(component("DataOrSynchronousInterface", {})),
                             "out": prop(component("DataSpecifier", {})),
+                            "callbacks": prop(dictionary(component("SynchronousFunctionReference", {})))
                         })),
                         "procedure": option(group({
                             "in": prop(component("DataOrSynchronousInterface", {})),
@@ -138,6 +139,12 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
             "context": prop(component("Context", {})),
             //"interface": [["context"), reference(['sibling', "context"), [))),
             "interface": prop(terminal("identifier")),
+            "arguments": prop(dictionary(component("DataSpecifier", {}))),
+        })),
+        "SynchronousFunctionReference": globalType({}, group({
+            "context": prop(component("Context", {})),
+            //"interface": [["context"), reference(['sibling', "context"), [))),
+            "function": prop(terminal("identifier")),
             "arguments": prop(dictionary(component("DataSpecifier", {}))),
         })),
         "Type": globalType({}, taggedUnion({

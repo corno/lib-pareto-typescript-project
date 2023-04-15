@@ -268,11 +268,22 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
                                             "function": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                                                 "callbacks": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                                        'type': "SynchronousFunctionReference",
-                                                        'arguments': d({}),
-                                                    }]]],
+                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                                        "in": {
+                                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                                'type': "DataSpecifier",
+                                                                'arguments': d({}),
+                                                            }]],
+                                                        },
+                                                        "out": {
+                                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                                'type': "DataSpecifier",
+                                                                'arguments': d({}),
+                                                            }]],
+                                                        },
+                                                    })]],
                                                 },
                                                 "in": {
                                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
@@ -358,28 +369,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 }]],
                             },
                         })]],
-                    },
-                })]
-            },
-            "SynchronousFunctionReference": {
-                'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                    "arguments": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "DataSpecifier",
-                            'arguments': d({}),
-                        }]]],
-                    },
-                    "context": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "Context",
-                            'arguments': d({}),
-                        }]],
-                    },
-                    "function": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
                     },
                 })]
             },
@@ -901,7 +890,21 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                                         'namespaces': d({
                                                                                                             "D": {
                                                                                                                 'types': d({}),
-                                                                                                                'namespaces': d({}),
+                                                                                                                'namespaces': d({
+                                                                                                                    "G": {
+                                                                                                                        'types': d({}),
+                                                                                                                        'namespaces': d({
+                                                                                                                            "in": {
+                                                                                                                                'types': d({}),
+                                                                                                                                'namespaces': d({}),
+                                                                                                                            },
+                                                                                                                            "out": {
+                                                                                                                                'types': d({}),
+                                                                                                                                'namespaces': d({}),
+                                                                                                                            },
+                                                                                                                        }),
+                                                                                                                    },
+                                                                                                                }),
                                                                                                             },
                                                                                                         }),
                                                                                                     },
@@ -1013,33 +1016,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         }),
                                     },
                                 }),
-                            },
-                        }),
-                    },
-                }),
-            },
-            "SynchronousFunctionReference": {
-                'types': d({}),
-                'namespaces': d({
-                    "G": {
-                        'types': d({}),
-                        'namespaces': d({
-                            "arguments": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "D": {
-                                        'types': d({}),
-                                        'namespaces': d({}),
-                                    },
-                                }),
-                            },
-                            "context": {
-                                'types': d({}),
-                                'namespaces': d({}),
-                            },
-                            "function": {
-                                'types': d({}),
-                                'namespaces': d({}),
                             },
                         }),
                     },

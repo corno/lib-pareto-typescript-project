@@ -2,15 +2,16 @@ import * as pd from 'pareto-core-data'
 
 import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
-import { $ as bindings_definition } from "./bindings/moduledefintion.data"
-import { $ as main } from "./main/module.data"
-import { $ as algorithm_ } from "./submodules/algorithm/module.data"
-import { $ as pareto2typescript } from "./submodules/pareto2typescript/module.data"
-import { $ as project } from "./submodules/project/module.data"
-import { $ as glossary_serialize } from "./submodules/glossary_serialize/module.data"
-import { $ as glossary } from "./submodules/glossary/module.data"
-import { $ as parameters } from "./submodules/parameters/module.data"
-import { $ as parametersparser } from "./submodules/parametersparser/module.data"
+import { $ as d_bindings } from "./bindings/moduledefintion.data"
+import { $ as d_main } from "./main/module.data"
+import { $ as d_algorithm } from "./submodules/algorithm/module.data"
+import { $ as d_pareto2typescript } from "./submodules/pareto2typescript/module.data"
+import { $ as d_project } from "./submodules/project/module.data"
+import { $ as d_glossary_serialize } from "./submodules/glossary_serialize/module.data"
+import { $ as d_glossary } from "./submodules/glossary/module.data"
+import { $ as d_parameters } from "./submodules/parameters/module.data"
+import { $ as d_parametersparser } from "./submodules/parametersparser/module.data"
+import { $ as d_lowlevel } from "./submodules/lowlevel/module.data"
 
 const d = pd.d
 
@@ -30,18 +31,19 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
         "res-pareto-foreach": null,
     }),
     'type': ['library', {
-        'main': main,
+        'main': d_main,
         'submodules': d({
-            "algorithm": algorithm_,
-            "glossary": glossary,
-            "parameters": parameters,
-            "parametersparser": parametersparser,
-            "glossary_serialize": glossary_serialize,
-            "project": project,
-            "pareto2typescript": pareto2typescript,
+            "algorithm": d_algorithm,
+            "glossary_serialize": d_glossary_serialize,
+            "glossary": d_glossary,
+            "lowlevel": d_lowlevel,
+            "parameters": d_parameters,
+            "parametersparser": d_parametersparser,
+            "pareto2typescript": d_pareto2typescript,
+            "project": d_project,
         }),
         'bindings': [true, {
-            'definition': bindings_definition,
+            'definition': d_bindings,
             'implementation': ['typescript', null],
 
         }],

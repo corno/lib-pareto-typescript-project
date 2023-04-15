@@ -76,6 +76,8 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                         $i.line(`import * as pl from 'pareto-core-lib'`)
                         $i.line(`import * as pd from 'pareto-core-dev'`)
                         $i.line(``)
+                        $i.line(`import * as g_this from "../glossary"`)
+                        $i.line(``)
                         $i.line(`import { A } from "../api.generated"`)
                         $i.line(``)
                         $i.nestedLine(($i) => {

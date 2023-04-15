@@ -36,7 +36,7 @@ export function parametrizedType(parameters: RawDictionary<t.T.TypeParameters.D<
     }
 }
 
-export function ns(types: RawDictionary<t.T.Namespace.types.D<pd.SourceLocation>>, ns: RawDictionary< t.T.Namespace.namespaces.D<pd.SourceLocation>>): t.T.Namespace<pd.SourceLocation> {
+export function ns(types: RawDictionary<t.T.Namespace.types.D<pd.SourceLocation>>, ns: RawDictionary<t.T.Namespace.namespaces.D<pd.SourceLocation>>): t.T.Namespace<pd.SourceLocation> {
     return {
         'namespaces': pd.d(ns),
         'types': pd.d(types),
@@ -126,22 +126,6 @@ export function typeReference(
     }]
 }
 
-export function sExternalFunctionReference(cntxt: string, inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.SynchronousFunctionReference<pd.SourceLocation> {
-
-    return {
-        'context': context(cntxt, pd.getLocationInfo(1)),
-        'function': inf,
-        'arguments': pd.d(args === undefined ? {} : args),
-    }
-}
-
-export function sFunctionReference(inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.SynchronousFunctionReference<pd.SourceLocation> {
-    return {
-        'context': ['local', null],
-        'function': inf,
-        'arguments': pd.d(args === undefined ? {} : args),
-    }
-}
 export function sExternalInterfaceReference(cntxt: string, inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.SynchronousInterfaceReference<pd.SourceLocation> {
 
     return {
@@ -253,6 +237,14 @@ export function scallbackfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_
         }]
     }
 }
+
+export function scallback(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataSpecifier<pd.SourceLocation>): t.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D<pd.SourceLocation> {
+    return {
+        'in': in_,
+        'out': out,
+    }
+}
+
 export function sfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),

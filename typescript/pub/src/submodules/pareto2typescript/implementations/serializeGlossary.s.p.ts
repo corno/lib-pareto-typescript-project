@@ -134,303 +134,6 @@ export const $$: A.serializeGlossary = ($d) => {
                     $i.snippet(`}`)
                 })
             }
-            function serializeNamespace($: g_glossary.T.Namespace<Annotation>, $i: g_fp.SYNC.I.Block) {
-                ns(
-                    `N`,
-                    $i,
-                    ($i) => {
-                        $d.dictionaryForEach($.namespaces, ($) => {
-                            ns($d.createIdentifier($.key), $i, ($i) => {
-                                serializeNamespace($.value, $i)
-                            })
-                        })
-                    }
-                )
-                ns(
-                    `T`,
-                    $i,
-                    ($i) => {
-                        $d.dictionaryForEach($.types, ($) => {
-                            const typeParameters = $.value.parameters
-                            function serializeGlobalAndTypeParameters(
-                                $: null,
-                                $i: g_fp.SYNC.I.Line,
-                            ) {
-                                serializeGlobalAndTypeParameters2(typeParameters, $i)
-                            }
-                            function serializeTypeAliasAndPossibleNamespace(
-                                $: {
-                                    type: g_glossary.T.Type<Annotation>,
-                                    name: string,
-                                },
-                                $i: g_fp.SYNC.I.Block,
-                            ) {
-                                const name = $.name
-
-                                //create namespaces for the complex types
-                                pl.cc($.type, ($) => {
-                                    function createTheCurrentNamespace(
-                                        $c: ($i: g_fp.SYNC.I.Block) => void,
-                                        $i: g_fp.SYNC.I.Block,
-                                    ) {
-                                        ns(
-                                            name,
-                                            $i,
-                                            $c
-                                        )
-                                    }
-                                    function createCurrentAndSerializeType(
-                                        $: {
-                                            type: g_glossary.T.Type<Annotation>,
-                                            nextName: string,
-                                        },
-                                        $i: g_fp.SYNC.I.Block,
-                                    ) {
-                                        createTheCurrentNamespace(
-                                            ($i) => {
-                                                serializeTypeAliasAndPossibleNamespace(
-                                                    {
-                                                        type: $.type,
-                                                        name: $.nextName,
-                                                    },
-                                                    $i,
-                                                )
-                                            },
-                                            $i,
-                                        )
-                                    }
-                                    switch ($[0]) {
-                                        case 'null':
-                                            pl.ss($, ($) => {
-                                            })
-                                            break
-                                        case 'boolean':
-                                            pl.ss($, ($) => {
-                                            })
-                                            break
-                                        case 'reference':
-                                            pl.ss($, ($) => {
-                                            })
-                                            break
-                                        case 'number':
-                                            pl.ss($, ($) => {
-                                            })
-                                            break
-                                        case 'string':
-                                            pl.ss($, ($) => {
-                                            })
-                                            break
-                                        case 'computed':
-                                            pl.ss($, ($) => {
-                                                createCurrentAndSerializeType(
-                                                    {
-                                                        'type': $,
-                                                        'nextName': "C",
-                                                    },
-                                                    $i
-                                                )
-                                            })
-                                            break
-                                        case 'optional':
-                                            pl.ss($, ($) => {
-                                                createCurrentAndSerializeType(
-                                                    {
-                                                        'type': $,
-                                                        'nextName': "O",
-                                                    },
-                                                    $i
-                                                )
-                                            })
-                                            break
-                                        case 'array':
-                                            pl.ss($, ($) => {
-                                                createCurrentAndSerializeType(
-                                                    {
-                                                        'type': $,
-                                                        'nextName': "A",
-                                                    },
-                                                    $i
-                                                )
-                                            })
-                                            break
-                                        case 'dictionary':
-                                            pl.ss($, ($) => {
-                                                createCurrentAndSerializeType(
-                                                    {
-                                                        'type': $,
-                                                        'nextName': "D",
-                                                    },
-                                                    $i
-                                                )
-                                            })
-                                            break
-                                        case 'group':
-                                            pl.ss($, ($) => {
-                                                createTheCurrentNamespace(
-                                                    ($i) => {
-                                                        $d.dictionaryForEach($, ($) => {
-                                                            serializeTypeAliasAndPossibleNamespace(
-                                                                {
-                                                                    'type': $.value.type,
-                                                                    'name': $.key,
-                                                                },
-                                                                $i
-                                                            )
-                                                        })
-                                                    },
-                                                    $i,
-                                                )
-                                            })
-                                            break
-                                        case 'taggedUnion':
-                                            pl.ss($, ($) => {
-                                                createTheCurrentNamespace(
-                                                    ($i) => {
-                                                        $d.dictionaryForEach($, ($) => {
-                                                            serializeTypeAliasAndPossibleNamespace(
-                                                                {
-                                                                    'type': $.value,
-                                                                    'name': $.key,
-                                                                },
-                                                                $i
-                                                            )
-                                                        })
-                                                    },
-                                                    $i,
-                                                )
-                                            })
-                                            break
-                                        default: pl.au($[0])
-                                    }
-
-                                })
-                                $i.line(``)
-                                $i.nestedLine(($i) => {
-                                    function serializeType(
-                                        $: g_glossary.T.Type<Annotation>,
-                                        $i: g_fp.SYNC.I.Line,
-                                    ): void {
-                                        switch ($[0]) {
-                                            case 'null':
-                                                pl.ss($, ($) => {
-                                                    $i.snippet(`null`)
-                                                })
-                                                break
-                                            case 'boolean':
-                                                pl.ss($, ($) => {
-                                                    $i.snippet(`boolean`)
-                                                })
-                                                break
-                                            case 'reference':
-                                                pl.ss($, ($) => {
-                                                    serializeDataSpecifier($, $i)
-                                                })
-                                                break
-                                            case 'number':
-                                                pl.ss($, ($) => {
-                                                    $i.snippet(`number`)
-                                                })
-                                                break
-                                            case 'string':
-                                                pl.ss($, ($) => {
-                                                    $i.snippet(`string`)
-                                                })
-                                                break
-                                            case 'computed':
-                                                pl.ss($, ($) => {
-                                                    $i.snippet(`() => `)
-                                                    serializeType(
-                                                        $,
-                                                        $i,
-                                                    )
-                                                })
-                                                break
-                                            case 'optional':
-                                                pl.ss($, ($) => {
-                                                    $i.snippet(`[ false ] | [ true, `)
-                                                    serializeType(
-                                                        $,
-                                                        $i,
-                                                    )
-                                                    $i.snippet(`]`)
-                                                })
-                                                break
-                                            case 'array':
-                                                pl.ss($, ($) => {
-                                                    $i.snippet(`pt.Array<`)
-                                                    serializeType(
-                                                        $,
-                                                        $i,
-                                                    )
-                                                    $i.snippet(`>`)
-                                                })
-                                                break
-                                            case 'dictionary':
-                                                pl.ss($, ($) => {
-                                                    $i.snippet(`pt.Dictionary<`)
-                                                    serializeType(
-                                                        $,
-                                                        $i,
-                                                    )
-                                                    $i.snippet(`>`)
-                                                })
-                                                break
-                                            case 'group':
-                                                pl.ss($, ($) => {
-                                                    doDictionaryType($, $i, ($, $i) => {
-                                                        serializeType(
-                                                            $.type,
-                                                            $i,
-                                                        )
-
-                                                    })
-                                                })
-                                                break
-                                            case 'taggedUnion':
-                                                pl.ss($, ($) => {
-
-                                                    $i.indent(($i) => {
-                                                        $d.dictionaryForEach($, ($) => {
-                                                            $i.nestedLine(($i) => {
-                                                                $i.snippet(`| [${$d.createApostrophedString($.key)}, `)
-                                                                serializeType(
-                                                                    $.value,
-                                                                    $i,
-                                                                )
-                                                                $i.snippet(`]`)
-                                                            })
-                                                        })
-                                                    })
-                                                })
-                                                break
-                                            default: pl.au($[0])
-                                        }
-
-                                    }
-                                    $i.snippet(`export type ${$d.createIdentifier($.name)}`)
-                                    serializeGlobalAndTypeParameters(
-                                        null,
-                                        $i,
-                                    )
-                                    $i.snippet(` = `)
-                                    serializeType(
-                                        $.type,
-                                        $i
-                                    )
-                                })
-                            }
-                            serializeTypeAliasAndPossibleNamespace(
-                                {
-                                    type: $.value.type,
-                                    name: $.key
-                                },
-                                $i,
-                            )
-                        })
-
-                    }
-                )
-            }
             function serializeContext($: g_glossary.T.Context<Annotation>, $i: g_fp.SYNC.I.Line) {
                 switch ($[0]) {
                     case 'import':
@@ -576,6 +279,303 @@ export const $$: A.serializeGlossary = ($d) => {
                 $i.line(`export * from "./algorithmtypes.generated"`)
             })
             $i.file(`datatypes.generated.ts`, ($i) => {
+                function serializeNamespace($: g_glossary.T.Namespace<Annotation>, $i: g_fp.SYNC.I.Block) {
+                    ns(
+                        `N`,
+                        $i,
+                        ($i) => {
+                            $d.dictionaryForEach($.namespaces, ($) => {
+                                ns($d.createIdentifier($.key), $i, ($i) => {
+                                    serializeNamespace($.value, $i)
+                                })
+                            })
+                        }
+                    )
+                    ns(
+                        `T`,
+                        $i,
+                        ($i) => {
+                            $d.dictionaryForEach($.types, ($) => {
+                                const typeParameters = $.value.parameters
+                                function serializeGlobalAndTypeParameters(
+                                    $: null,
+                                    $i: g_fp.SYNC.I.Line,
+                                ) {
+                                    serializeGlobalAndTypeParameters2(typeParameters, $i)
+                                }
+                                function serializeTypeAliasAndPossibleNamespace(
+                                    $: {
+                                        type: g_glossary.T.Type<Annotation>,
+                                        name: string,
+                                    },
+                                    $i: g_fp.SYNC.I.Block,
+                                ) {
+                                    const name = $.name
+    
+                                    //create namespaces for the complex types
+                                    pl.cc($.type, ($) => {
+                                        function createTheCurrentNamespace(
+                                            $c: ($i: g_fp.SYNC.I.Block) => void,
+                                            $i: g_fp.SYNC.I.Block,
+                                        ) {
+                                            ns(
+                                                name,
+                                                $i,
+                                                $c
+                                            )
+                                        }
+                                        function createCurrentAndSerializeType(
+                                            $: {
+                                                type: g_glossary.T.Type<Annotation>,
+                                                nextName: string,
+                                            },
+                                            $i: g_fp.SYNC.I.Block,
+                                        ) {
+                                            createTheCurrentNamespace(
+                                                ($i) => {
+                                                    serializeTypeAliasAndPossibleNamespace(
+                                                        {
+                                                            type: $.type,
+                                                            name: $.nextName,
+                                                        },
+                                                        $i,
+                                                    )
+                                                },
+                                                $i,
+                                            )
+                                        }
+                                        switch ($[0]) {
+                                            case 'null':
+                                                pl.ss($, ($) => {
+                                                })
+                                                break
+                                            case 'boolean':
+                                                pl.ss($, ($) => {
+                                                })
+                                                break
+                                            case 'reference':
+                                                pl.ss($, ($) => {
+                                                })
+                                                break
+                                            case 'number':
+                                                pl.ss($, ($) => {
+                                                })
+                                                break
+                                            case 'string':
+                                                pl.ss($, ($) => {
+                                                })
+                                                break
+                                            case 'computed':
+                                                pl.ss($, ($) => {
+                                                    createCurrentAndSerializeType(
+                                                        {
+                                                            'type': $,
+                                                            'nextName': "C",
+                                                        },
+                                                        $i
+                                                    )
+                                                })
+                                                break
+                                            case 'optional':
+                                                pl.ss($, ($) => {
+                                                    createCurrentAndSerializeType(
+                                                        {
+                                                            'type': $,
+                                                            'nextName': "O",
+                                                        },
+                                                        $i
+                                                    )
+                                                })
+                                                break
+                                            case 'array':
+                                                pl.ss($, ($) => {
+                                                    createCurrentAndSerializeType(
+                                                        {
+                                                            'type': $,
+                                                            'nextName': "A",
+                                                        },
+                                                        $i
+                                                    )
+                                                })
+                                                break
+                                            case 'dictionary':
+                                                pl.ss($, ($) => {
+                                                    createCurrentAndSerializeType(
+                                                        {
+                                                            'type': $,
+                                                            'nextName': "D",
+                                                        },
+                                                        $i
+                                                    )
+                                                })
+                                                break
+                                            case 'group':
+                                                pl.ss($, ($) => {
+                                                    createTheCurrentNamespace(
+                                                        ($i) => {
+                                                            $d.dictionaryForEach($, ($) => {
+                                                                serializeTypeAliasAndPossibleNamespace(
+                                                                    {
+                                                                        'type': $.value.type,
+                                                                        'name': $.key,
+                                                                    },
+                                                                    $i
+                                                                )
+                                                            })
+                                                        },
+                                                        $i,
+                                                    )
+                                                })
+                                                break
+                                            case 'taggedUnion':
+                                                pl.ss($, ($) => {
+                                                    createTheCurrentNamespace(
+                                                        ($i) => {
+                                                            $d.dictionaryForEach($, ($) => {
+                                                                serializeTypeAliasAndPossibleNamespace(
+                                                                    {
+                                                                        'type': $.value,
+                                                                        'name': $.key,
+                                                                    },
+                                                                    $i
+                                                                )
+                                                            })
+                                                        },
+                                                        $i,
+                                                    )
+                                                })
+                                                break
+                                            default: pl.au($[0])
+                                        }
+    
+                                    })
+                                    $i.line(``)
+                                    $i.nestedLine(($i) => {
+                                        function serializeType(
+                                            $: g_glossary.T.Type<Annotation>,
+                                            $i: g_fp.SYNC.I.Line,
+                                        ): void {
+                                            switch ($[0]) {
+                                                case 'null':
+                                                    pl.ss($, ($) => {
+                                                        $i.snippet(`null`)
+                                                    })
+                                                    break
+                                                case 'boolean':
+                                                    pl.ss($, ($) => {
+                                                        $i.snippet(`boolean`)
+                                                    })
+                                                    break
+                                                case 'reference':
+                                                    pl.ss($, ($) => {
+                                                        serializeDataSpecifier($, $i)
+                                                    })
+                                                    break
+                                                case 'number':
+                                                    pl.ss($, ($) => {
+                                                        $i.snippet(`number`)
+                                                    })
+                                                    break
+                                                case 'string':
+                                                    pl.ss($, ($) => {
+                                                        $i.snippet(`string`)
+                                                    })
+                                                    break
+                                                case 'computed':
+                                                    pl.ss($, ($) => {
+                                                        $i.snippet(`() => `)
+                                                        serializeType(
+                                                            $,
+                                                            $i,
+                                                        )
+                                                    })
+                                                    break
+                                                case 'optional':
+                                                    pl.ss($, ($) => {
+                                                        $i.snippet(`[ false ] | [ true, `)
+                                                        serializeType(
+                                                            $,
+                                                            $i,
+                                                        )
+                                                        $i.snippet(`]`)
+                                                    })
+                                                    break
+                                                case 'array':
+                                                    pl.ss($, ($) => {
+                                                        $i.snippet(`pt.Array<`)
+                                                        serializeType(
+                                                            $,
+                                                            $i,
+                                                        )
+                                                        $i.snippet(`>`)
+                                                    })
+                                                    break
+                                                case 'dictionary':
+                                                    pl.ss($, ($) => {
+                                                        $i.snippet(`pt.Dictionary<`)
+                                                        serializeType(
+                                                            $,
+                                                            $i,
+                                                        )
+                                                        $i.snippet(`>`)
+                                                    })
+                                                    break
+                                                case 'group':
+                                                    pl.ss($, ($) => {
+                                                        doDictionaryType($, $i, ($, $i) => {
+                                                            serializeType(
+                                                                $.type,
+                                                                $i,
+                                                            )
+    
+                                                        })
+                                                    })
+                                                    break
+                                                case 'taggedUnion':
+                                                    pl.ss($, ($) => {
+    
+                                                        $i.indent(($i) => {
+                                                            $d.dictionaryForEach($, ($) => {
+                                                                $i.nestedLine(($i) => {
+                                                                    $i.snippet(`| [${$d.createApostrophedString($.key)}, `)
+                                                                    serializeType(
+                                                                        $.value,
+                                                                        $i,
+                                                                    )
+                                                                    $i.snippet(`]`)
+                                                                })
+                                                            })
+                                                        })
+                                                    })
+                                                    break
+                                                default: pl.au($[0])
+                                            }
+    
+                                        }
+                                        $i.snippet(`export type ${$d.createIdentifier($.name)}`)
+                                        serializeGlobalAndTypeParameters(
+                                            null,
+                                            $i,
+                                        )
+                                        $i.snippet(` = `)
+                                        serializeType(
+                                            $.type,
+                                            $i
+                                        )
+                                    })
+                                }
+                                serializeTypeAliasAndPossibleNamespace(
+                                    {
+                                        type: $.value.type,
+                                        name: $.key
+                                    },
+                                    $i,
+                                )
+                            })
+    
+                        }
+                    )
+                }
                 $i.nestedLine(($i) => {
                     $i.snippet(`import * as pt from 'pareto-core-types'`)
                 })
@@ -652,50 +652,6 @@ export const $$: A.serializeGlossary = ($d) => {
                                 })
                                 break
                             default: pl.au($[0])
-                        }
-                    })
-
-                }
-                function serializeSynchronousFunctionReference($: g_glossary.T.SynchronousFunctionReference<Annotation>, $i: g_fp.SYNC.I.Line) {
-                    serializeContext($.context, $i)
-                    $i.snippet(`SYNC.F.${$d.createIdentifier(`${$.function}`)}`)
-                    $d.enrichedDictionaryForEach($.arguments, {
-                        'onEmpty': () => {
-                            serializeContextGlossaryArgumentsOnly($.context, $i)
-                        },
-                        'onNotEmpty': ($c) => {
-                            $i.snippet(`<`)
-                            switch ($.context[0]) {
-                                case 'import':
-                                    pl.ss($.context, ($) => {
-                                        importDefinitions.__getEntry(
-                                            $.glossary.key,
-                                            ($) => {
-                                                $d.dictionaryForEach($.arguments, ($) => {
-                                                    serializeDataSpecifier($.value, $i)
-                                                    $i.snippet(`, `)
-                                                })
-                                            },
-                                            () => {
-                                                pd.logDebugMessage(`missing import: ${$.glossary.key}`)
-                                            }
-                                        )
-                                    })
-                                    break
-                                case 'local':
-                                    pl.ss($.context, ($) => {
-                                        $d.dictionaryForEach(globalParameters, ($) => {
-                                            $i.snippet(`G${$.key}, `)
-                                        })
-                                    })
-                                    break
-                                default: pl.au($.context[0])
-                            }
-                            $c(($) => {
-                                serializeDataSpecifier($.value, $i)
-                                $i.snippet(`${$.isLast ? `` : `, `}`)
-                            })
-                            $i.snippet(`>`)
                         }
                     })
 
@@ -1123,14 +1079,16 @@ export const $$: A.serializeGlossary = ($d) => {
                                                                     $d.enrichedDictionaryForEach($.callbacks, {
                                                                         'onEmpty': () => {},
                                                                         'onNotEmpty': () => {
-                                                                            $i.snippet(`$c: {`)
+                                                                            $i.snippet(`, $c: {`)
                                                                             $i.indent(($i) => {
                                                                                 $d.dictionaryForEach($.callbacks, ($) => {
 
                                                                                     $i.nestedLine(($i) => {
-                                                                                        $i.snippet(`'${$.key}': `)
-                                                                                        serializeSynchronousFunctionReference($.value, $i)
-                                                                                        $i.snippet(`,`)
+                                                                                        $i.snippet(`"${$.key}": ($: `)
+                                                                                        serializeDataSpecifier($.value.in, $i)
+                                                                                        $i.snippet(`) => `)
+                                                                                        serializeDataSpecifier($.value.out, $i)
+                                                                                        $i.snippet(`,`)                                                                                        
                                                                                     })
                                                                                 })
                                                                             })

@@ -2,8 +2,9 @@ import * as pd from 'pareto-core-data'
 
 import * as g_liana from "lib-liana/dist/main"
 
-import { $ as glossary } from "./models/glossary.data"
-import { $ as project } from "./models/project.data"
+import { $ as d_glossary } from "./models/glossary.data"
+import { $ as d_project } from "./models/project.data"
+import { $ as d_lowlevel } from "./models/lowlevel.data"
 
 export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
     'outputs': pd.a([
@@ -21,7 +22,7 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                     },
                 },
                 'mapped library': {
-                    'library': glossary,
+                    'library': d_glossary,
 
                     'terminal mapping': pd.d({
                         "identifier": ['string', null],
@@ -44,11 +45,36 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                     },
                 },
                 'mapped library': {
-                    'library': project,
+                    'library': d_project,
 
                     'terminal mapping': pd.d({
                         "identifier": ['string', null],
                         "boolean": ['boolean', null],
+                    }),
+                },
+            }
+        },
+        {
+            'path': `../../pareto/src/data/submodules/lowlevel/glossary.generated.ts`,
+            'data': {
+                'settings': {
+                    'annotations': true,
+                    'datamodel': [true, {
+                        'reference mapping': ['string', null],
+                    }],
+                    'visitor interface': [false],
+                    'algorithms': {
+                        'serialize': [false],
+                    },
+                },
+                'mapped library': {
+                    'library': d_lowlevel,
+
+                    'terminal mapping': pd.d({
+                        "identifier": ['string', null],
+                        "numeric literal": ['string', null],
+                        "string literal": ['string', null],
+                        "path": ['string', null],
                     }),
                 },
             }

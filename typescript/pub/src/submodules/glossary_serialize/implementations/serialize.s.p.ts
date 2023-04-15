@@ -161,21 +161,21 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                 $i.snippet(`,`)
                             })
                             $i.nestedLine(($i) => {
-                                $i.snippet(`'namespaces': a([`)
+                                $i.snippet(`'type': `)
+                                $i.snippet(`"` + $.type + `"`)
+                                //doReference($.type, $i)
+                                $i.snippet(`,`)
+                            })
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'tail': a([`)
                                 $i.indent(($i) => {
-                                    $.namespaces.__forEach(($) => {
+                                    $.tail.__forEach(($) => {
                                         $i.nestedLine(($i) => {
                                             $i.snippet(`${$},`)
                                         })
                                     })
                                 })
                                 $i.snippet(`]),`)
-                            })
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`'type': `)
-                                $i.snippet(`"` + $.type + `"`)
-                                //doReference($.type, $i)
-                                $i.snippet(`,`)
                             })
                             $i.nestedLine(($i) => {
                                 $i.snippet(`'arguments': d({`)

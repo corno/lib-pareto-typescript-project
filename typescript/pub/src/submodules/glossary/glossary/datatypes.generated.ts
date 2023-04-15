@@ -307,7 +307,7 @@ export namespace N {
                                         export namespace T {}
                                     }
                                     
-                                    export namespace namespaces {
+                                    export namespace tail {
                                         
                                         export namespace N {
                                             
@@ -1383,12 +1383,12 @@ export namespace T {
             
             export type context<GAnnotation> = T.Context<GAnnotation>
             
-            export namespace namespaces {
+            export namespace tail {
                 
                 export type A<GAnnotation> = string
             }
             
-            export type namespaces<GAnnotation> = pt.Array<string>
+            export type tail<GAnnotation> = pt.Array<string>
             
             export type _ltype<GAnnotation> = string
         }
@@ -1396,7 +1396,7 @@ export namespace T {
         export type _ltype<GAnnotation> = {
             readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
             readonly 'context': T.Context<GAnnotation>
-            readonly 'namespaces': pt.Array<string>
+            readonly 'tail': pt.Array<string>
             readonly 'type': string
         }
         
@@ -1408,7 +1408,7 @@ export namespace T {
         | ['type', {
             readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
             readonly 'context': T.Context<GAnnotation>
-            readonly 'namespaces': pt.Array<string>
+            readonly 'tail': pt.Array<string>
             readonly 'type': string
         }]
         | ['type parameter', string]

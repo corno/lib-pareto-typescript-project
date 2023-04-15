@@ -180,10 +180,10 @@ export const $$: A.serializeGlossary = ($d) => {
                         pl.ss($, ($) => {
                             serializeContext($.context, $i)
                             $i.snippet(`T`)
-                            $.namespaces.__forEach(($) => {
+                            $i.snippet(`.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
+                            $.tail.__forEach(($) => {
                                 $i.snippet(`.${$d.createIdentifier(`${$}`)}`)
                             })
-                            $i.snippet(`.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
                             $d.enrichedDictionaryForEach($.arguments, {
                                 'onEmpty': () => {
                                     serializeContextGlossaryArgumentsOnly($.context, $i)

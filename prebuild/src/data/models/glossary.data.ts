@@ -102,8 +102,8 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
         "DataSpecifier": globalType({}, taggedUnion({
             "type": option(group({
                 "context": prop(component("Context", {})),
-                "namespaces": prop(array(terminal("identifier"))),
                 "type": prop(terminal("identifier")),
+                "tail": prop(array(terminal("identifier"))),
                 "arguments": prop(dictionary(component("DataSpecifier", {}))),
             })),
             "type parameter": option(terminal("identifier")),

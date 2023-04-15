@@ -36,6 +36,7 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
                         },
                     },
                     'handler': ($) => {
+                        pd.logDebugMessage(`@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ${$.directory}`)
                         $d.createDirectory(
                             ($i) => {
                                 $i(

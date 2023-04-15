@@ -171,7 +171,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                 $i.indent(($i) => {
                                     $.tail.__forEach(($) => {
                                         $i.nestedLine(($i) => {
-                                            $i.snippet(`${$},`)
+                                            $i.snippet(`"${$}",`)
                                         })
                                     })
                                 })

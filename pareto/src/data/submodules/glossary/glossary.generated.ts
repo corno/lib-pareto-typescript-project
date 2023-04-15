@@ -137,6 +137,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 'arguments': d({}),
                             }]],
                         },
+                        "namespaces": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['array', <g_glossary.T.Type<pd.SourceLocation>>['string', null]],
+                        },
                         "type": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
                         },
@@ -668,6 +671,15 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                             "context": {
                                                 'types': d({}),
                                                 'namespaces': d({}),
+                                            },
+                                            "namespaces": {
+                                                'types': d({}),
+                                                'namespaces': d({
+                                                    "A": {
+                                                        'types': d({}),
+                                                        'namespaces': d({}),
+                                                    },
+                                                }),
                                             },
                                             "type": {
                                                 'types': d({}),

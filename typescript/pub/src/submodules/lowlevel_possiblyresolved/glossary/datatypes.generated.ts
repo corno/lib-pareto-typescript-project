@@ -1731,6 +1731,13 @@ export namespace T {
                             
                             export type annotation<GAnnotation> = GAnnotation
                             
+                            export namespace constraint {
+                                
+                                export type O<GAnnotation> = T.Type<GAnnotation>
+                            }
+                            
+                            export type constraint<GAnnotation> = [ false ] | [ true, T.Type<GAnnotation>]
+                            
                             export namespace _ltype {
                                 
                                 export type block<GAnnotation> = T.Block<GAnnotation>
@@ -1743,6 +1750,7 @@ export namespace T {
                         
                         export type D<GAnnotation> = {
                             readonly 'annotation': GAnnotation
+                            readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                             readonly 'type': {
                                 readonly 'block': T.Block<GAnnotation>
                             }
@@ -1751,6 +1759,7 @@ export namespace T {
                     
                     export type cases<GAnnotation> = pt.Dictionary<{
                         readonly 'annotation': GAnnotation
+                        readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                         readonly 'type': {
                             readonly 'block': T.Block<GAnnotation>
                         }
@@ -1769,6 +1778,7 @@ export namespace T {
                 export type _lswitch<GAnnotation> = {
                     readonly 'cases': pt.Dictionary<{
                         readonly 'annotation': GAnnotation
+                        readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                         readonly 'type': {
                             readonly 'block': T.Block<GAnnotation>
                         }
@@ -1822,6 +1832,7 @@ export namespace T {
                 | ['switch', {
                     readonly 'cases': pt.Dictionary<{
                         readonly 'annotation': GAnnotation
+                        readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                         readonly 'type': {
                             readonly 'block': T.Block<GAnnotation>
                         }
@@ -1867,6 +1878,7 @@ export namespace T {
             | ['switch', {
                 readonly 'cases': pt.Dictionary<{
                     readonly 'annotation': GAnnotation
+                    readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                     readonly 'type': {
                         readonly 'block': T.Block<GAnnotation>
                     }
@@ -1916,6 +1928,7 @@ export namespace T {
             | ['switch', {
                 readonly 'cases': pt.Dictionary<{
                     readonly 'annotation': GAnnotation
+                    readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                     readonly 'type': {
                         readonly 'block': T.Block<GAnnotation>
                     }
@@ -1956,11 +1969,19 @@ export namespace T {
                     
                     export type annotation<GAnnotation> = GAnnotation
                     
+                    export namespace constraint {
+                        
+                        export type O<GAnnotation> = T.Type<GAnnotation>
+                    }
+                    
+                    export type constraint<GAnnotation> = [ false ] | [ true, T.Type<GAnnotation>]
+                    
                     export type key<GAnnotation> = string
                 }
                 
                 export type property<GAnnotation> = {
                     readonly 'annotation': GAnnotation
+                    readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                     readonly 'key': string
                 }
             }
@@ -1973,6 +1994,7 @@ export namespace T {
                 }]
                 | ['property', {
                     readonly 'annotation': GAnnotation
+                    readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                     readonly 'key': string
                 }]
         }
@@ -1985,6 +2007,7 @@ export namespace T {
             }]
             | ['property', {
                 readonly 'annotation': GAnnotation
+                readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                 readonly 'key': string
             }]
         >
@@ -1993,11 +2016,19 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
+            export namespace constraint {
+                
+                export type O<GAnnotation> = T.Variable<GAnnotation>
+            }
+            
+            export type constraint<GAnnotation> = [ false ] | [ true, T.Variable<GAnnotation>]
+            
             export type key<GAnnotation> = string
         }
         
         export type variable<GAnnotation> = {
             readonly 'annotation': GAnnotation
+            readonly 'constraint': [ false ] | [ true, T.Variable<GAnnotation>]
             readonly 'key': string
         }
     }
@@ -2011,11 +2042,13 @@ export namespace T {
             }]
             | ['property', {
                 readonly 'annotation': GAnnotation
+                readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                 readonly 'key': string
             }]
         >
         readonly 'variable': {
             readonly 'annotation': GAnnotation
+            readonly 'constraint': [ false ] | [ true, T.Variable<GAnnotation>]
             readonly 'key': string
         }
     }
@@ -2155,17 +2188,26 @@ export namespace T {
                     
                     export type annotation<GAnnotation> = GAnnotation
                     
+                    export namespace constraint {
+                        
+                        export type O<GAnnotation> = T.Type<GAnnotation>
+                    }
+                    
+                    export type constraint<GAnnotation> = [ false ] | [ true, T.Type<GAnnotation>]
+                    
                     export type _ltype<GAnnotation> = T.Expression<GAnnotation>
                 }
                 
                 export type D<GAnnotation> = {
                     readonly 'annotation': GAnnotation
+                    readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                     readonly 'type': T.Expression<GAnnotation>
                 }
             }
             
             export type properties<GAnnotation> = pt.Dictionary<{
                 readonly 'annotation': GAnnotation
+                readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                 readonly 'type': T.Expression<GAnnotation>
             }>
         }
@@ -2173,6 +2215,7 @@ export namespace T {
         export type object__literal<GAnnotation> = {
             readonly 'properties': pt.Dictionary<{
                 readonly 'annotation': GAnnotation
+                readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                 readonly 'type': T.Expression<GAnnotation>
             }>
         }
@@ -2284,6 +2327,7 @@ export namespace T {
         | ['object literal', {
             readonly 'properties': pt.Dictionary<{
                 readonly 'annotation': GAnnotation
+                readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                 readonly 'type': T.Expression<GAnnotation>
             }>
         }]
@@ -2531,17 +2575,26 @@ export namespace T {
                     
                     export type annotation<GAnnotation> = GAnnotation
                     
+                    export namespace constraint {
+                        
+                        export type O<GAnnotation> = T.Type<GAnnotation>
+                    }
+                    
+                    export type constraint<GAnnotation> = [ false ] | [ true, T.Type<GAnnotation>]
+                    
                     export type key<GAnnotation> = string
                 }
                 
                 export type A<GAnnotation> = {
                     readonly 'annotation': GAnnotation
+                    readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                     readonly 'key': string
                 }
             }
             
             export type path<GAnnotation> = pt.Array<{
                 readonly 'annotation': GAnnotation
+                readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                 readonly 'key': string
             }>
         }
@@ -2549,6 +2602,7 @@ export namespace T {
         export type reference<GAnnotation> = {
             readonly 'path': pt.Array<{
                 readonly 'annotation': GAnnotation
+                readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                 readonly 'key': string
             }>
         }
@@ -2580,6 +2634,7 @@ export namespace T {
         | ['reference', {
             readonly 'path': pt.Array<{
                 readonly 'annotation': GAnnotation
+                readonly 'constraint': [ false ] | [ true, T.Type<GAnnotation>]
                 readonly 'key': string
             }>
         }]
@@ -2601,17 +2656,26 @@ export namespace T {
                 
                 export type annotation<GAnnotation> = GAnnotation
                 
+                export namespace constraint {
+                    
+                    export type O<GAnnotation> = T.GlobalTypes<GAnnotation>
+                }
+                
+                export type constraint<GAnnotation> = [ false ] | [ true, T.GlobalTypes<GAnnotation>]
+                
                 export type key<GAnnotation> = string
             }
             
             export type A<GAnnotation> = {
                 readonly 'annotation': GAnnotation
+                readonly 'constraint': [ false ] | [ true, T.GlobalTypes<GAnnotation>]
                 readonly 'key': string
             }
         }
         
         export type namespaces<GAnnotation> = pt.Array<{
             readonly 'annotation': GAnnotation
+            readonly 'constraint': [ false ] | [ true, T.GlobalTypes<GAnnotation>]
             readonly 'key': string
         }>
         
@@ -2626,11 +2690,19 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
+            export namespace constraint {
+                
+                export type O<GAnnotation> = T.GlobalTypes<GAnnotation>
+            }
+            
+            export type constraint<GAnnotation> = [ false ] | [ true, T.GlobalTypes<GAnnotation>]
+            
             export type key<GAnnotation> = string
         }
         
         export type _ltype<GAnnotation> = {
             readonly 'annotation': GAnnotation
+            readonly 'constraint': [ false ] | [ true, T.GlobalTypes<GAnnotation>]
             readonly 'key': string
         }
     }
@@ -2638,11 +2710,13 @@ export namespace T {
     export type Type__Path<GAnnotation> = {
         readonly 'namespaces': pt.Array<{
             readonly 'annotation': GAnnotation
+            readonly 'constraint': [ false ] | [ true, T.GlobalTypes<GAnnotation>]
             readonly 'key': string
         }>
         readonly 'parameters': pt.Dictionary<T.Type<GAnnotation>>
         readonly 'type': {
             readonly 'annotation': GAnnotation
+            readonly 'constraint': [ false ] | [ true, T.GlobalTypes<GAnnotation>]
             readonly 'key': string
         }
     }

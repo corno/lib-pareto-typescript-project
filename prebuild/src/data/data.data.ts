@@ -9,12 +9,15 @@ import { $ as d_lowlevel } from "./models/lowlevel.data"
 export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
     'outputs': pd.a([
         {
-            'path': `../../pareto/src/data/submodules/glossary/glossary.generated.ts`,
+            'path': pd.a([`../../pareto/src/data/submodules/glossary/glossary.generated.ts`]),
             'data': {
                 'settings': {
                     'annotations': true,
                     'datamodel': [true, {
-                        'reference mapping': ['string', null],
+                        'constraints mapping': {
+                            'terminal values': true,
+                            'constraints': [false]
+                        },
                     }],
                     'visitor interface': [false],
                     'algorithms': {
@@ -32,12 +35,15 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
             }
         },
         {
-            'path': `../../pareto/src/data/submodules/project/glossary.generated.ts`,
+            'path': pd.a([`../../pareto/src/data/submodules/project/glossary.generated.ts`]),
             'data': {
                 'settings': {
                     'annotations': true,
                     'datamodel': [true, {
-                        'reference mapping': ['string', null],
+                        'constraints mapping': {
+                            'terminal values': true,
+                            'constraints': [false]
+                        },
                     }],
                     'visitor interface': [false],
                     'algorithms': {
@@ -55,12 +61,43 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
             }
         },
         {
-            'path': `../../pareto/src/data/submodules/lowlevel/glossary.generated.ts`,
+            'path': pd.a([`../../pareto/src/data/submodules/lowlevel/glossary.generated.ts`]),
             'data': {
                 'settings': {
                     'annotations': true,
                     'datamodel': [true, {
-                        'reference mapping': ['string', null],
+                        'constraints mapping': {
+                            'terminal values': true,
+                            'constraints': [false]
+                        },
+                    }],
+                    'visitor interface': [false],
+                    'algorithms': {
+                        'serialize': [false],
+                    },
+                },
+                'mapped library': {
+                    'library': d_lowlevel,
+
+                    'terminal mapping': pd.d({
+                        "identifier": ['string', null],
+                        "numeric literal": ['string', null],
+                        "string literal": ['string', null],
+                        "path": ['string', null],
+                    }),
+                },
+            }
+        },
+        {
+            'path': pd.a([`../../pareto/src/data/submodules/lowlevel_possiblyresolved/glossary.generated.ts`]),
+            'data': {
+                'settings': {
+                    'annotations': true,
+                    'datamodel': [true, {
+                        'constraints mapping': {
+                            'terminal values': true,
+                            'constraints': [true, ['optional', null]]
+                        },
                     }],
                     'visitor interface': [false],
                     'algorithms': {

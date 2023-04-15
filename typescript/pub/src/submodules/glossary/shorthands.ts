@@ -110,6 +110,7 @@ export function externalTypeReference(
 ): t.T.DataSpecifier<pd.SourceLocation> {
     return ['type', {
         'context': context(contextX, pd.getLocationInfo(1)),
+        'namespaces': pd.a([]),
         'type': type,
         'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
     }]
@@ -121,6 +122,7 @@ export function typeReference(
 ): t.T.DataSpecifier<pd.SourceLocation> {
     return ['type', {
         'context': ['local', null],
+        'namespaces': pd.a([]),
         'type': type,
         'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
     }]

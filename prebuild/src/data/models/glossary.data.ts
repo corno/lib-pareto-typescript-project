@@ -15,6 +15,7 @@ import {
     typePath,
     grp,
     tbd,
+    array,
 } from "lib-liana/dist/submodules/liana/shorthands"
 
 const d = pd.d
@@ -101,7 +102,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
         "DataSpecifier": globalType({}, taggedUnion({
             "type": option(group({
                 "context": prop(component("Context", {})),
-                //"type": [["namespace"), reference(['sibling', "namespaces"), [))),
+                "namespaces": prop(array(terminal("identifier"))),
                 "type": prop(terminal("identifier")),
                 "arguments": prop(dictionary(component("DataSpecifier", {}))),
             })),

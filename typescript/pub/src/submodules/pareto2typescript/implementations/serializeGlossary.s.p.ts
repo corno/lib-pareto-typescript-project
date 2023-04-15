@@ -38,14 +38,14 @@ export const $$: A.serializeGlossary = ($d) => {
                     $d.enrichedDictionaryForEach($, {
                         'onEmpty': () => {
                             //typescript treats an empty object very lax therefor I make it a null
-        
+
                             $i.snippet(`null`)
                         },
                         'onNotEmpty': ($c) => {
                             $i.snippet(`{`)
                             $i.indent(($i) => {
                                 $c(($) => {
-        
+
                                     $i.nestedLine(($i) => {
                                         $i.snippet(`readonly '${$.key}': `)
                                         callback($, $i)
@@ -179,7 +179,11 @@ export const $$: A.serializeGlossary = ($d) => {
                     case 'type':
                         pl.ss($, ($) => {
                             serializeContext($.context, $i)
-                            $i.snippet(`T.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
+                            $i.snippet(`T`)
+                            $.namespaces.__forEach(($) => {
+                                $i.snippet(`.${$d.createIdentifier(`${$}`)}`)
+                            })
+                            $i.snippet(`.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
                             $d.enrichedDictionaryForEach($.arguments, {
                                 'onEmpty': () => {
                                     serializeContextGlossaryArgumentsOnly($.context, $i)
@@ -311,7 +315,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                     $i: g_fp.SYNC.I.Block,
                                 ) {
                                     const name = $.name
-    
+
                                     //create namespaces for the complex types
                                     pl.cc($.type, ($) => {
                                         function createTheCurrentNamespace(
@@ -447,7 +451,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 break
                                             default: pl.au($[0])
                                         }
-    
+
                                     })
                                     $i.line(``)
                                     $i.nestedLine(($i) => {
@@ -527,13 +531,13 @@ export const $$: A.serializeGlossary = ($d) => {
                                                                 $.type,
                                                                 $i,
                                                             )
-    
+
                                                         })
                                                     })
                                                     break
                                                 case 'taggedUnion':
                                                     pl.ss($, ($) => {
-    
+
                                                         $i.indent(($i) => {
                                                             $d.dictionaryForEach($, ($) => {
                                                                 $i.nestedLine(($i) => {
@@ -550,7 +554,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                     break
                                                 default: pl.au($[0])
                                             }
-    
+
                                         }
                                         $i.snippet(`export type ${$d.createIdentifier($.name)}`)
                                         serializeGlobalAndTypeParameters(
@@ -572,7 +576,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                     $i,
                                 )
                             })
-    
+
                         }
                     )
                 }
@@ -875,9 +879,9 @@ export const $$: A.serializeGlossary = ($d) => {
                                 ns(
                                     pl.cc($.value.type, ($) => {
                                         switch ($[0]) {
-                                            case 'constructor': return pl.ss($, ($) =>  `C`)
+                                            case 'constructor': return pl.ss($, ($) => `C`)
                                             case 'function': return pl.ss($, ($) => `F`)
-                                            case 'resource': return pl.ss($, ($) =>`R`)
+                                            case 'resource': return pl.ss($, ($) => `R`)
                                             default: return pl.au($[0])
                                         }
                                     }),
@@ -1015,8 +1019,8 @@ export const $$: A.serializeGlossary = ($d) => {
                                         ns(
                                             pl.cc($.value.type, ($) => {
                                                 switch ($[0]) {
-                                                    case 'procedure': return pl.ss($, ($) =>  `P`)
-                                                    case 'function': return pl.ss($, ($) =>  `F`)
+                                                    case 'procedure': return pl.ss($, ($) => `P`)
+                                                    case 'function': return pl.ss($, ($) => `F`)
                                                     default: return pl.au($[0])
                                                 }
                                             }),
@@ -1077,7 +1081,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                                         }
                                                                     })
                                                                     $d.enrichedDictionaryForEach($.callbacks, {
-                                                                        'onEmpty': () => {},
+                                                                        'onEmpty': () => { },
                                                                         'onNotEmpty': () => {
                                                                             $i.snippet(`, $c: {`)
                                                                             $i.indent(($i) => {
@@ -1088,7 +1092,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                                                         serializeDataSpecifier($.value.in, $i)
                                                                                         $i.snippet(`) => `)
                                                                                         serializeDataSpecifier($.value.out, $i)
-                                                                                        $i.snippet(`,`)                                                                                        
+                                                                                        $i.snippet(`,`)
                                                                                     })
                                                                                 })
                                                                             })

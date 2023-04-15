@@ -71,7 +71,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     $i.snippet(`'types': d({`)
                     $i.indent(($i) => {
                         $d.dictionaryForEach($.types, ($) => {
-    
+
                             $i.nestedLine(($i) => {
                                 $i.snippet(`"${$.key}": {`)
                                 $i.indent(($i) => {
@@ -89,7 +89,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                     $i.nestedLine(($i) => {
                                         $i.snippet(`'type': `)
                                         serializeType($.value.type, $i)
-    
+
                                     })
                                 })
                                 $i.snippet(`},`)
@@ -102,7 +102,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     $i.snippet(`'namespaces': d({`)
                     $i.indent(($i) => {
                         $d.dictionaryForEach($.namespaces, ($) => {
-    
+
                             $i.nestedLine(($i) => {
                                 $i.snippet(`"${$.key}": `)
                                 serializeNamespace($.value, $i)
@@ -159,6 +159,17 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                 $i.snippet(`'context': `)
                                 serializeContext($.context, $i)
                                 $i.snippet(`,`)
+                            })
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`'namespaces': a([`)
+                                $i.indent(($i) => {
+                                    $.namespaces.__forEach(($) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`${$},`)
+                                        })
+                                    })
+                                })
+                                $i.snippet(`]),`)
                             })
                             $i.nestedLine(($i) => {
                                 $i.snippet(`'type': `)
@@ -596,7 +607,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     $i.snippet(`,`)
                 })
 
-            
+
 
                 pl.cc($.asynchronous, ($) => {
                     $i.nestedLine(($i) => {
@@ -697,24 +708,24 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
 
                                                                     })
                                                                     break
-                                                                    case 'resource':
-                                                                        pl.ss($, ($) => {
-                                                                            $i.snippet(`['resource', {`)
-                                                                            $i.indent(($i) => {
-                                                                                $i.nestedLine(($i) => {
-                                                                                    $i.snippet(`'request': `)
-                                                                                    serializeDataSpecifier($.request, $i)
-                                                                                    $i.snippet(`,`)
-                                                                                })
-                                                                                $i.nestedLine(($i) => {
-                                                                                    $i.snippet(`'consumer': `)
-                                                                                    serializeAsynchronousInterfaceReference($.consumer, $i)
-                                                                                    $i.snippet(`,`)
-                                                                                })
+                                                                case 'resource':
+                                                                    pl.ss($, ($) => {
+                                                                        $i.snippet(`['resource', {`)
+                                                                        $i.indent(($i) => {
+                                                                            $i.nestedLine(($i) => {
+                                                                                $i.snippet(`'request': `)
+                                                                                serializeDataSpecifier($.request, $i)
+                                                                                $i.snippet(`,`)
                                                                             })
-                                                                            $i.snippet(`}]`)
+                                                                            $i.nestedLine(($i) => {
+                                                                                $i.snippet(`'consumer': `)
+                                                                                serializeAsynchronousInterfaceReference($.consumer, $i)
+                                                                                $i.snippet(`,`)
+                                                                            })
                                                                         })
-                                                                        break
+                                                                        $i.snippet(`}]`)
+                                                                    })
+                                                                    break
                                                                 default: pl.au($[0])
                                                             }
                                                             $i.snippet(`,`)
@@ -827,7 +838,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                                                                             $i.snippet(`},`)
 
                                                                                         })
-                                                                                        
+
                                                                                     })
                                                                                 })
                                                                                 $i.snippet(`)},`)

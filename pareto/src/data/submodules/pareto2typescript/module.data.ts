@@ -16,7 +16,7 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
                 "algorithm": sibling("algorithm"),
                 "common": external("glo-pareto-common"),
                 "fp": external("lib-fountain-pen"),
-                "fp2": external("lib-fountain-pen/dist/submodules/fountainpen"),
+                "fp2": external("lib-fountain-pen/dist/submodules/typelibrary"),
                 "glossary": sibling("glossary"),
                 "project": sibling("project"),
             }),

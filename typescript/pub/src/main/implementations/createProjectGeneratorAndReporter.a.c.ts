@@ -1,5 +1,6 @@
 import * as pd from 'pareto-core-dev'
 import * as pl from 'pareto-core-lib'
+import * as pm from 'pareto-core-map'
 
 import * as a_f2 from "lib-fountain-pen/dist/submodules/serialize"
 
@@ -38,7 +39,7 @@ export const $$: A.createProjectGeneratorAndReporter = ($d) => {
                         $d.createDirectory(
                             ($i) => {
                                 $i(
-                                    $.directory,
+                                    pm.wrapRawArray([$.directory]),
                                     ($i) => {
                                         $d.serializeProject(
                                             project,

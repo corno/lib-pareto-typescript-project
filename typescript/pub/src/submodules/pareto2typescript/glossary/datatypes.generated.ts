@@ -3,7 +3,7 @@ import * as pt from 'pareto-core-types'
 import * as g_algorithm from "../../algorithm"
 import * as g_common from "glo-pareto-common"
 import * as g_fp from "lib-fountain-pen"
-import * as g_fp2 from "lib-fountain-pen/dist/submodules/fountainpen"
+import * as g_fp2 from "lib-fountain-pen/dist/submodules/typelibrary"
 import * as g_glossary from "../../glossary"
 import * as g_project from "../../project"
 

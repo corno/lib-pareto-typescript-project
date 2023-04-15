@@ -10,13 +10,13 @@ import { $ as data } from "../../../data/data.data"
 import { main } from "../api"
 
 export const $$: main = ($) => {
-    pv.logDebugMessage("REENABLE")
-    // const el = a_main.$r.createErrorLogger().construct()
+    //pv.logDebugMessage("REENABLE")
+    const el = a_main.$r.createErrorLogger().construct()
 
-    // a_liana.$b.compile<pd.SourceLocation>({
-    //     'getSourceLocation': ($) => $
-    // })(data, ($) => {
-    //     pv.logDebugMessage(a_liana_error.$a.createErrorMessage()($))
-    // })
-    // el.end()
+    a_liana.$b.compile<pd.SourceLocation>({
+        'getSourceLocation': ($) => $
+    })(data, ($) => {
+        pv.logDebugMessage(a_liana_error.$a.createErrorMessage()($))
+    })
+    el.end()
 }

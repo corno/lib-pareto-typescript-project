@@ -19,28 +19,32 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['array', <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
                             "block": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Block",
+                                'type': "Block",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                             "call": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                                 "arguments": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "function": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "type arguments": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Type",
+                                        'type': "Type",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -49,28 +53,32 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "block": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Block",
+                                        'type': "Block",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "condition": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "incrementer": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "initializer": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Variables",
+                                        'type': "Variables",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -79,21 +87,24 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "condition": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "else": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Block",
+                                        'type': "Block",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]]],
                                 },
                                 "then": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Block",
+                                        'type': "Block",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -102,14 +113,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "right hand side": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "variable": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Data Path",
+                                        'type': "Data Path",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -118,14 +131,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "right hand side": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "variable": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Data Path",
+                                        'type': "Data Path",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -134,7 +149,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "expression": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]]],
                                 },
@@ -148,7 +164,11 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         "constraint": {
                                             'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                                'tail': a([]), 'type': "Type",
+                                                'type': "Type",
+                                                'tail': a([
+                                                    "tagged union",
+                                                    "D",
+                                                ]),
                                                 'arguments': d({}),
                                             }]]],
                                         },
@@ -157,7 +177,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 "block": {
                                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                                        'tail': a([]), 'type': "Block",
+                                                        'type': "Block",
+                                                        'tail': a([]),
                                                         'arguments': d({}),
                                                     }]],
                                                 },
@@ -168,14 +189,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "condition": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "default": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Block",
+                                        'type': "Block",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]]],
                                 },
@@ -184,14 +207,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "block": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Block",
+                                        'type': "Block",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "condition": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -201,7 +226,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "variables": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                             'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'tail': a([]), 'type': "Variables",
+                            'type': "Variables",
+                            'tail': a([]),
                             'arguments': d({}),
                         }]],
                     },
@@ -216,21 +242,24 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "arguments": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "function": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Data Path",
+                                        'type': "Data Path",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "type arguments": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Type",
+                                        'type': "Type",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -242,7 +271,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "constraint": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Type",
+                                        'type': "Type",
+                                        'tail': a([
+                                            "group",
+                                            "properties",
+                                            "D",
+                                        ]),
                                         'arguments': d({}),
                                     }]]],
                                 },
@@ -260,7 +294,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             "constraint": {
                                 'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                     'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                    'tail': a([]), 'type': "Variable",
+                                    'type': "Variable Aggregates",
+                                    'tail': a([
+                                        "D",
+                                    ]),
                                     'arguments': d({}),
                                 }]]],
                             },
@@ -278,42 +315,48 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "left hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "right hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                     })],
                     "array literal": <g_glossary.T.Type<pd.SourceLocation>>['array', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "Expression",
+                        'type': "Expression",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]]],
                     "conditional": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "false": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "test": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "true": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
@@ -326,7 +369,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "block": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Block",
+                                'type': "Block",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
@@ -335,14 +379,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "left hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "right hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
@@ -351,14 +397,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "left hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "right hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
@@ -367,21 +415,24 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "left hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "right hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                     })],
                     "not": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "Expression",
+                        'type': "Expression",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]],
                     "null": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
@@ -389,14 +440,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "left hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "right hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
@@ -405,14 +458,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "left hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "right hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
@@ -427,14 +482,20 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "constraint": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Type",
+                                        'type': "Type",
+                                        'tail': a([
+                                            "group",
+                                            "properties",
+                                            "D",
+                                        ]),
                                         'arguments': d({}),
                                     }]]],
                                 },
                                 "type": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Expression",
+                                        'type': "Expression",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -445,14 +506,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "left hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "right hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
@@ -461,50 +524,58 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "left hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "right hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                     })],
                     "postdecrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "Expression",
+                        'type': "Expression",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]],
                     "postincrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "Expression",
+                        'type': "Expression",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]],
                     "predecrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "Expression",
+                        'type': "Expression",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]],
                     "preincrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "Expression",
+                        'type': "Expression",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]],
                     "string equals": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "left hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "right hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
@@ -514,21 +585,24 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "left hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                         "right hand side": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Expression",
+                                'type': "Expression",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                     })],
                     "symbol": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "Data Path",
+                        'type': "Data Path",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]],
                     "true": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
@@ -542,7 +616,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             "type": {
                                 'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                     'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                    'tail': a([]), 'type': "Type",
+                                    'type': "Type",
+                                    'tail': a([]),
                                     'arguments': d({}),
                                 }]],
                             },
@@ -551,14 +626,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "return type": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                             'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'tail': a([]), 'type': "Type",
+                            'type': "Type",
+                            'tail': a([]),
                             'arguments': d({}),
                         }]]],
                     },
                     "type parameters": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                             'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'tail': a([]), 'type': "Type Parameters",
+                            'type': "Type Parameters",
+                            'tail': a([]),
                             'arguments': d({}),
                         }]],
                     },
@@ -573,7 +650,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "types": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "GlobalTypes",
+                                        'type': "GlobalTypes",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -582,14 +660,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "parameters": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Type Parameters",
+                                        'type': "Type Parameters",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
                                 "type": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Type",
+                                        'type': "Type",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -604,14 +684,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "symbols": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                             'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'tail': a([]), 'type': "Symbols",
+                            'type': "Symbols",
+                            'tail': a([]),
                             'arguments': d({}),
                         }]],
                     },
                     "types": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                             'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'tail': a([]), 'type': "GlobalTypes",
+                            'type': "GlobalTypes",
+                            'tail': a([]),
                             'arguments': d({}),
                         }]],
                     },
@@ -624,7 +706,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "block": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Block",
+                                'type': "Block",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
@@ -633,7 +716,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "type path": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Type Path",
+                                        'type': "Type Path",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
@@ -644,7 +728,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "symbols": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'tail': a([]), 'type': "Symbols",
+                                'type': "Symbols",
+                                'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
@@ -657,33 +742,37 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
                     "array": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "Type",
+                        'type': "Type",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]],
                     "boolean": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
                     "function": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "FunctionSignature",
+                        'type': "FunctionSignature",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]],
                     "group": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "properties": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                                 "type": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Type",
+                                        'type': "Type",
+                                        'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
-                            })],
+                            })]],
                         },
                     })],
                     "null": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
                     "number": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
                     "optional": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "Type",
+                        'type': "Type",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]],
                     "reference": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
@@ -695,7 +784,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "constraint": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'tail': a([]), 'type': "Type",
+                                        'type': "Type",
+                                        'tail': a([
+                                            "group",
+                                            "properties",
+                                            "D",
+                                        ]),
                                         'arguments': d({}),
                                     }]]],
                                 },
@@ -708,7 +802,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "string": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
                     "tagged union": <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'tail': a([]), 'type': "Type",
+                        'type': "Type",
+                        'tail': a([]),
                         'arguments': d({}),
                     }]]],
                 })]
@@ -717,7 +812,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 'parameters': d({}),
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                     'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                    'tail': a([]), 'type': "Type",
+                    'type': "Type",
+                    'tail': a([]),
                     'arguments': d({}),
                 }]]]
             },
@@ -732,7 +828,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             "constraint": {
                                 'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                     'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                    'tail': a([]), 'type': "GlobalTypes",
+                                    'type': "GlobalTypes",
+                                    'tail': a([
+                                        "D",
+                                    ]),
                                     'arguments': d({}),
                                 }]]],
                             },
@@ -744,7 +843,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "parameters": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                             'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'tail': a([]), 'type': "Type",
+                            'type': "Type",
+                            'tail': a([]),
                             'arguments': d({}),
                         }]]],
                     },
@@ -756,7 +856,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             "constraint": {
                                 'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                     'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                    'tail': a([]), 'type': "GlobalTypes",
+                                    'type': "GlobalTypes",
+                                    'tail': a([
+                                        "D",
+                                    ]),
                                     'arguments': d({}),
                                 }]]],
                             },
@@ -773,11 +876,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "type": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                             'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'tail': a([]), 'type': "Type",
+                            'type': "Type",
+                            'tail': a([]),
                             'arguments': d({}),
                         }]],
                     },
                 })]
+            },
+            "Variable Aggregates": {
+                'parameters': d({}),
+                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]]
             },
             "Variables": {
                 'parameters': d({}),
@@ -785,14 +893,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "handle": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                             'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'tail': a([]), 'type': "Variable",
+                            'type': "Variable",
+                            'tail': a([]),
                             'arguments': d({}),
                         }]],
                     },
                     "initializer": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                             'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'tail': a([]), 'type': "Expression",
+                            'type': "Expression",
+                            'tail': a([]),
                             'arguments': d({}),
                         }]],
                     },
@@ -1620,12 +1730,17 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                             "properties": {
                                                 'types': d({}),
                                                 'namespaces': d({
-                                                    "G": {
+                                                    "D": {
                                                         'types': d({}),
                                                         'namespaces': d({
-                                                            "type": {
+                                                            "G": {
                                                                 'types': d({}),
-                                                                'namespaces': d({}),
+                                                                'namespaces': d({
+                                                                    "type": {
+                                                                        'types': d({}),
+                                                                        'namespaces': d({}),
+                                                                    },
+                                                                }),
                                                             },
                                                         }),
                                                     },
@@ -1746,6 +1861,20 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         'types': d({}),
                         'namespaces': d({
                             "type": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                        }),
+                    },
+                }),
+            },
+            "Variable Aggregates": {
+                'types': d({}),
+                'namespaces': d({
+                    "D": {
+                        'types': d({}),
+                        'namespaces': d({
+                            "G": {
                                 'types': d({}),
                                 'namespaces': d({}),
                             },

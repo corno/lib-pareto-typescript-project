@@ -1359,13 +1359,21 @@ export namespace N {
                                         
                                         export namespace N {
                                             
-                                            export namespace G {
+                                            export namespace D {
                                                 
                                                 export namespace N {
                                                     
-                                                    export namespace _$ltype {
+                                                    export namespace G {
                                                         
-                                                        export namespace N {}
+                                                        export namespace N {
+                                                            
+                                                            export namespace _$ltype {
+                                                                
+                                                                export namespace N {}
+                                                                
+                                                                export namespace T {}
+                                                            }
+                                                        }
                                                         
                                                         export namespace T {}
                                                     }
@@ -1569,6 +1577,29 @@ export namespace N {
                 export namespace N {
                     
                     export namespace _$ltype {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                }
+                
+                export namespace T {}
+            }
+        }
+        
+        export namespace T {}
+    }
+    
+    export namespace Variable_$_$Aggregates {
+        
+        export namespace N {
+            
+            export namespace D {
+                
+                export namespace N {
+                    
+                    export namespace G {
                         
                         export namespace N {}
                         
@@ -2499,18 +2530,25 @@ export namespace T {
             
             export namespace properties {
                 
-                export type _ltype<GAnnotation> = T.Type<GAnnotation>
+                export namespace D {
+                    
+                    export type _ltype<GAnnotation> = T.Type<GAnnotation>
+                }
+                
+                export type D<GAnnotation> = {
+                    readonly 'type': T.Type<GAnnotation>
+                }
             }
             
-            export type properties<GAnnotation> = {
+            export type properties<GAnnotation> = pt.Dictionary<{
                 readonly 'type': T.Type<GAnnotation>
-            }
+            }>
         }
         
         export type group<GAnnotation> = {
-            readonly 'properties': {
+            readonly 'properties': pt.Dictionary<{
                 readonly 'type': T.Type<GAnnotation>
-            }
+            }>
         }
         
         export namespace _lnull {}
@@ -2570,9 +2608,9 @@ export namespace T {
         | ['boolean', null]
         | ['function', T.FunctionSignature<GAnnotation>]
         | ['group', {
-            readonly 'properties': {
+            readonly 'properties': pt.Dictionary<{
                 readonly 'type': T.Type<GAnnotation>
-            }
+            }>
         }]
         | ['null', null]
         | ['number', null]
@@ -2655,6 +2693,15 @@ export namespace T {
     export type Variable<GAnnotation> = {
         readonly 'type': T.Type<GAnnotation>
     }
+    
+    export namespace Variable__Aggregates {
+        
+        export namespace D {}
+        
+        export type D<GAnnotation> = null
+    }
+    
+    export type Variable__Aggregates<GAnnotation> = pt.Dictionary<null>
     
     export namespace Variables {
         

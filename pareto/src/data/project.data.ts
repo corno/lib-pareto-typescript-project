@@ -11,6 +11,7 @@ import { $ as d_glossary_serialize } from "./submodules/glossary_serialize/modul
 import { $ as d_glossary } from "./submodules/glossary/module.data"
 import { $ as d_parameters } from "./submodules/parameters/module.data"
 import { $ as d_parametersparser } from "./submodules/parametersparser/module.data"
+import { $ as d_lowlevel_resolve } from "./submodules/lowlevel_resolve/module.data"
 import { $ as d_lowlevel } from "./submodules/lowlevel/module.data"
 import { $ as d_lowlevel_possiblyresolved } from "./submodules/lowlevel_possiblyresolved/module.data"
 
@@ -40,6 +41,7 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
             "glossary_serialize": d_glossary_serialize,
             "glossary": d_glossary,
             "lowlevel": d_lowlevel,
+            "lowlevel_resolve": d_lowlevel_resolve,
             "lowlevel_possiblyresolved": d_lowlevel_possiblyresolved,
             "parameters": d_parameters,
             "parametersparser": d_parametersparser,

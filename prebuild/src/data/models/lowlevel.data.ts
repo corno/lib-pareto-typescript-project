@@ -56,7 +56,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
 
                 "switch": option(group({
                     "condition": prop(component("Expression", {})),
-                    "cases": prop(constrainedDictionary(typePath("Type", []), tbd(), group({
+                    "cases": prop(constrainedDictionary(typePath("Type", [tu("tagged union")]), tbd(), group({
                         "block": prop(component("Block", {}))
                     }))),
                     "default": prop(optional(component("Block", {}))),
@@ -77,7 +77,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
             })))
         })),
         "Data Path": globalType({}, group({
-            "variable": prop(reference(typePath("Variable", []), tbd())),
+            "variable": prop(reference(typePath("Variable Aggregates", []), tbd())),
             "tail": prop(array(taggedUnion({
                 "call": option(group({
                     "function": prop(component("Data Path", {})),
@@ -267,9 +267,9 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
 
             "function": option(component("FunctionSignature", {})),
             "group": option(group({
-                "properties": prop(group({
+                "properties": prop(dictionary(group({
                     "type": prop(component("Type", {}))
-                }))
+                })))
             })),
 
             // "never": empty("NeverKeyword"),
@@ -315,6 +315,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
         "Variable": globalType({}, group({
             "type": prop(component("Type", {})),
         })),
+        "Variable Aggregates": globalType({}, dictionary(group({}))),
         "Variables": globalType({}, dictionary(group({
             "handle": prop(component("Variable", {})),
             "initializer": prop(component("Expression", {})),

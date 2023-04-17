@@ -11,9 +11,14 @@ import { $ as d_glossary_serialize } from "./submodules/glossary_serialize/modul
 import { $ as d_glossary } from "./submodules/glossary/module.data"
 import { $ as d_parameters } from "./submodules/parameters/module.data"
 import { $ as d_parametersparser } from "./submodules/parametersparser/module.data"
-import { $ as d_lowlevel_resolve } from "./submodules/lowlevel_resolve/module.data"
-import { $ as d_lowlevel } from "./submodules/lowlevel/module.data"
-import { $ as d_lowlevel_possiblyresolved } from "./submodules/lowlevel_possiblyresolved/module.data"
+
+import { $ as d_lowlevel_typesystem } from "./submodules/lowlevel_typesystem/module.data"
+import { $ as d_lowlevel_typesystem_possiblyresolved } from "./submodules/lowlevel_typesystem_possiblyresolved/module.data"
+import { $ as d_lowlevel_typesystem_resolve } from "./submodules/lowlevel_implementation_resolve/module.data"
+
+import { $ as d_lowlevel_implementation } from "./submodules/lowlevel_implementation/module.data"
+import { $ as d_lowlevel_implementation_possiblyresolved } from "./submodules/lowlevel_implementation_possiblyresolved/module.data"
+import { $ as d_lowlevel_implementation_resolve } from "./submodules/lowlevel_implementation_resolve/module.data"
 
 
 
@@ -41,9 +46,12 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
             "algorithm": d_algorithm,
             "glossary_serialize": d_glossary_serialize,
             "glossary": d_glossary,
-            "lowlevel": d_lowlevel,
-            "lowlevel_resolve": d_lowlevel_resolve,
-            "lowlevel_possiblyresolved": d_lowlevel_possiblyresolved,
+            "lowlevel_typesystem": d_lowlevel_typesystem,
+            "lowlevel_typesystem_resolve": d_lowlevel_typesystem_resolve,
+            "lowlevel_typesystem_possiblyresolved": d_lowlevel_typesystem_possiblyresolved,
+            "lowlevel_implementation": d_lowlevel_implementation,
+            "lowlevel_implementation_resolve": d_lowlevel_implementation_resolve,
+            "lowlevel_implementation_possiblyresolved": d_lowlevel_implementation_possiblyresolved,
             "parameters": d_parameters,
             "parametersparser": d_parametersparser,
             "pareto2typescript": d_pareto2typescript,

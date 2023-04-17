@@ -240,10 +240,11 @@ export function scallbackfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_
     }
 }
 
-export function scallback(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataSpecifier<pd.SourceLocation>): t.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D<pd.SourceLocation> {
+export function scallback(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataSpecifier<pd.SourceLocation>, lookups?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D<pd.SourceLocation> {
     return {
         'in': in_,
         'out': out,
+        'lookups': pd.d(lookups === undefined ? {} : lookups)
     }
 }
 

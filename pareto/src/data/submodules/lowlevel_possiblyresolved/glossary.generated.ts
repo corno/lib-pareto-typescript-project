@@ -35,7 +35,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "function": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'type': "Expression",
+                                        'type': "Data Path",
                                         'tail': a([]),
                                         'arguments': d({}),
                                     }]],
@@ -233,6 +233,195 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     },
                 })]
             },
+            "Boolean Expression": {
+                'parameters': d({}),
+                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                    "and": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "left hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Boolean Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                        "right hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Boolean Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                    "false": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                    "greater than": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "left hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                        "right hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                    "less than": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "left hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                        "right hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                    "not": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                        'type': "Boolean Expression Or Selection",
+                        'tail': a([]),
+                        'arguments': d({}),
+                    }]],
+                    "number equals": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "left hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                        "right hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                    "number not equals": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "left hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                        "right hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                    "or": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "left hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Boolean Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                        "right hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Boolean Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                    "string equals": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "left hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "String Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                        "right hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "String Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                    "string not equals": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "left hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "String Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                        "right hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "String Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                    "true": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                })]
+            },
+            "Boolean Expression Or Selection": {
+                'parameters': d({}),
+                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                    "expression": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                        'type': "Boolean Expression",
+                        'tail': a([]),
+                        'arguments': d({}),
+                    }]],
+                    "selection": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "annotation": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
+                        },
+                        "constraint": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Type",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]]],
+                        },
+                        "type": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Data Path",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                })]
+            },
             "Data Path": {
                 'parameters': d({}),
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
@@ -308,33 +497,104 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     },
                 })]
             },
+            "Delayed Type Path": {
+                'parameters': d({}),
+                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                    "namespaces": {
+                        'type': <g_glossary.T.Type<pd.SourceLocation>>['array', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                            "annotation": {
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
+                            },
+                            "constraint": {
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                    'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                    'type': "Global Types",
+                                    'tail': a([
+                                        "D",
+                                    ]),
+                                    'arguments': d({}),
+                                }]]],
+                            },
+                            "key": {
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                            },
+                        })]],
+                    },
+                    "parameters": {
+                        'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                            'type': "Type",
+                            'tail': a([]),
+                            'arguments': d({}),
+                        }]]],
+                    },
+                    "type": {
+                        'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                            "annotation": {
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
+                            },
+                            "constraint": {
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                    'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                    'type': "Global Types",
+                                    'tail': a([
+                                        "D",
+                                    ]),
+                                    'arguments': d({}),
+                                }]]],
+                            },
+                            "key": {
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                            },
+                        })],
+                    },
+                })]
+            },
             "Expression": {
                 'parameters': d({}),
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                    "and": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "left hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "array literal": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "annotation": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
+                        },
+                        "constraint": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Type",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]]],
+                        },
+                        "type": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['array', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
                                 'type': "Expression",
                                 'tail': a([]),
                                 'arguments': d({}),
-                            }]],
+                            }]]],
                         },
-                        "right hand side": {
+                    })],
+                    "boolean": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "annotation": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
+                        },
+                        "constraint": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Type",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]]],
+                        },
+                        "type": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
+                                'type': "Boolean Expression",
                                 'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                     })],
-                    "array literal": <g_glossary.T.Type<pd.SourceLocation>>['array', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'type': "Expression",
-                        'tail': a([]),
-                        'arguments': d({}),
-                    }]]],
                     "conditional": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "false": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
@@ -347,7 +607,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "test": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
+                                'type': "Boolean Expression Or Selection",
                                 'tail': a([]),
                                 'arguments': d({}),
                             }]],
@@ -361,239 +621,131 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]],
                         },
                     })],
-                    "false": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
                     "function": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "arguments": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]],
+                        "annotation": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
                         },
-                        "block": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        "constraint": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Block",
+                                'type': "Type",
                                 'tail': a([]),
                                 'arguments': d({}),
-                            }]],
+                            }]]],
                         },
-                    })],
-                    "greater than": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "left hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                        "right hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                    })],
-                    "less than": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "left hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                        "right hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                    })],
-                    "minus": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "left hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                        "right hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                    })],
-                    "not": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'type': "Expression",
-                        'tail': a([]),
-                        'arguments': d({}),
-                    }]],
-                    "null": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
-                    "number equals": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "left hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                        "right hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                    })],
-                    "number not equals": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "left hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                        "right hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                    })],
-                    "numeric literal": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
-                    "object literal": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "properties": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                "annotation": {
-                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
+                        "type": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                "arguments": {
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]],
                                 },
-                                "constraint": {
-                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'type': "Type",
-                                        'tail': a([
-                                            "group",
-                                            "properties",
-                                            "D",
-                                        ]),
-                                        'arguments': d({}),
-                                    }]]],
-                                },
-                                "type": {
+                                "block": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'type': "Expression",
+                                        'type': "Block",
                                         'tail': a([]),
                                         'arguments': d({}),
                                     }]],
                                 },
-                            })]],
+                            })],
                         },
                     })],
-                    "or": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "left hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
+                    "null": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "annotation": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
                         },
-                        "right hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        "constraint": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
+                                'type': "Type",
                                 'tail': a([]),
                                 'arguments': d({}),
-                            }]],
+                            }]]],
+                        },
+                        "type": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
                         },
                     })],
-                    "plus": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "left hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "numerical": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "annotation": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
+                        },
+                        "constraint": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
+                                'type': "Type",
                                 'tail': a([]),
                                 'arguments': d({}),
-                            }]],
+                            }]]],
                         },
-                        "right hand side": {
+                        "type": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                    })],
-                    "postdecrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'type': "Expression",
-                        'tail': a([]),
-                        'arguments': d({}),
-                    }]],
-                    "postincrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'type': "Expression",
-                        'tail': a([]),
-                        'arguments': d({}),
-                    }]],
-                    "predecrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'type': "Expression",
-                        'tail': a([]),
-                        'arguments': d({}),
-                    }]],
-                    "preincrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'type': "Expression",
-                        'tail': a([]),
-                        'arguments': d({}),
-                    }]],
-                    "string equals": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "left hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                        "right hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
+                                'type': "Numerical Expression",
                                 'tail': a([]),
                                 'arguments': d({}),
                             }]],
                         },
                     })],
-                    "string literal": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
-                    "string not equals": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "left hand side": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "object literal": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "annotation": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
+                        },
+                        "constraint": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
+                                'type': "Type",
                                 'tail': a([]),
                                 'arguments': d({}),
-                            }]],
+                            }]]],
                         },
-                        "right hand side": {
+                        "type": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                "properties": {
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                        "annotation": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
+                                        },
+                                        "constraint": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                'type': "Type",
+                                                'tail': a([
+                                                    "group",
+                                                    "properties",
+                                                    "D",
+                                                ]),
+                                                'arguments': d({}),
+                                            }]]],
+                                        },
+                                        "type": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                'type': "Expression",
+                                                'tail': a([]),
+                                                'arguments': d({}),
+                                            }]],
+                                        },
+                                    })]],
+                                },
+                            })],
+                        },
+                    })],
+                    "string": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "annotation": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameter', "Annotation"]],
+                        },
+                        "constraint": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Type",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]]],
+                        },
+                        "type": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Expression",
+                                'type': "String Expression",
                                 'tail': a([]),
                                 'arguments': d({}),
                             }]],
@@ -605,43 +757,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         'tail': a([]),
                         'arguments': d({}),
                     }]],
-                    "true": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
                 })]
             },
-            "FunctionSignature": {
-                'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                    "paramerters": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                            "type": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                    'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                    'type': "Type",
-                                    'tail': a([]),
-                                    'arguments': d({}),
-                                }]],
-                            },
-                        })]],
-                    },
-                    "return type": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "Type",
-                            'tail': a([]),
-                            'arguments': d({}),
-                        }]]],
-                    },
-                    "type parameters": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                            'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "Type Parameters",
-                            'tail': a([]),
-                            'arguments': d({}),
-                        }]],
-                    },
-                })]
-            },
-            "GlobalTypes": {
+            "Global Types": {
                 'parameters': d({}),
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                     "type": {
@@ -650,7 +768,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 "types": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                         'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'type': "GlobalTypes",
+                                        'type': "Global Types",
                                         'tail': a([]),
                                         'arguments': d({}),
                                     }]],
@@ -678,6 +796,89 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     },
                 })]]
             },
+            "Numerical Expression": {
+                'parameters': d({}),
+                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                    "minus": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "left hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                        "right hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                    "numeric literal": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                    "plus": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "left hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                        "right hand side": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Numerical Expression Or Selection",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
+                    "postdecrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                        'type': "Numerical Expression Or Selection",
+                        'tail': a([]),
+                        'arguments': d({}),
+                    }]],
+                    "postincrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                        'type': "Numerical Expression Or Selection",
+                        'tail': a([]),
+                        'arguments': d({}),
+                    }]],
+                    "predecrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                        'type': "Numerical Expression Or Selection",
+                        'tail': a([]),
+                        'arguments': d({}),
+                    }]],
+                    "preincrement": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                        'type': "Numerical Expression Or Selection",
+                        'tail': a([]),
+                        'arguments': d({}),
+                    }]],
+                })]
+            },
+            "Numerical Expression Or Selection": {
+                'parameters': d({}),
+                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                    "expression": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                        'type': "Numerical Expression",
+                        'tail': a([]),
+                        'arguments': d({}),
+                    }]],
+                    "selection": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                        'type': "Data Path",
+                        'tail': a([]),
+                        'arguments': d({}),
+                    }]],
+                })]
+            },
             "SourceFile": {
                 'parameters': d({}),
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
@@ -692,38 +893,39 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     "types": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                             'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                            'type': "GlobalTypes",
+                            'type': "Global Types",
                             'tail': a([]),
                             'arguments': d({}),
                         }]],
                     },
                 })]
             },
+            "String Expression": {
+                'parameters': d({}),
+                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                    "string literal": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                })]
+            },
+            "String Expression Or Selection": {
+                'parameters': d({}),
+                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                    "expression": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                        'type': "String Expression",
+                        'tail': a([]),
+                        'arguments': d({}),
+                    }]],
+                    "selection": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                        'type': "Data Path",
+                        'tail': a([]),
+                        'arguments': d({}),
+                    }]],
+                })]
+            },
             "Symbols": {
                 'parameters': d({}),
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                    "function": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                        "block": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                'type': "Block",
-                                'tail': a([]),
-                                'arguments': d({}),
-                            }]],
-                        },
-                        "signature": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                "type path": {
-                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                        'type': "Type Path",
-                                        'tail': a([]),
-                                        'arguments': d({}),
-                                    }]],
-                                },
-                            })],
-                        },
-                    })],
                     "namespace": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "symbols": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
@@ -734,7 +936,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]],
                         },
                     })],
-                    "variable": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                    "symbol": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "type path": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Type Path",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
                 })]]
             },
             "Type": {
@@ -747,12 +958,36 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         'arguments': d({}),
                     }]],
                     "boolean": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
-                    "function": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                        'type': "FunctionSignature",
-                        'tail': a([]),
-                        'arguments': d({}),
-                    }]],
+                    "function": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        "paramerters": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                "type": {
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                        'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                        'type': "Type",
+                                        'tail': a([]),
+                                        'arguments': d({}),
+                                    }]],
+                                },
+                            })]],
+                        },
+                        "return type": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Type",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]]],
+                        },
+                        "type parameters": {
+                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                'type': "Type Parameters",
+                                'tail': a([]),
+                                'arguments': d({}),
+                            }]],
+                        },
+                    })],
                     "group": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "properties": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
@@ -828,7 +1063,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             "constraint": {
                                 'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                     'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                    'type': "GlobalTypes",
+                                    'type': "Global Types",
                                     'tail': a([
                                         "D",
                                     ]),
@@ -856,7 +1091,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             "constraint": {
                                 'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                     'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
-                                    'type': "GlobalTypes",
+                                    'type': "Global Types",
                                     'tail': a([
                                         "D",
                                     ]),
@@ -885,7 +1120,15 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             },
             "Variable Aggregates": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]]
+                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                    "source": {
+                        'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                            "aggregate": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                            "parameter": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                            "variable": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                        })],
+                    },
+                })]]
             },
             "Variables": {
                 'parameters': d({}),
@@ -1133,6 +1376,200 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     },
                 }),
             },
+            "Boolean Expression": {
+                'types': d({}),
+                'namespaces': d({
+                    "TU": {
+                        'types': d({}),
+                        'namespaces': d({
+                            "and": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "left hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "right hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "false": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({}),
+                                    },
+                                }),
+                            },
+                            "greater than": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "left hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "right hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "less than": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "left hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "right hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "not": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                            "number equals": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "left hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "right hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "number not equals": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "left hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "right hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "or": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "left hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "right hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "string equals": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "left hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "right hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "string not equals": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "left hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "right hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "true": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({}),
+                                    },
+                                }),
+                            },
+                        }),
+                    },
+                }),
+            },
+            "Boolean Expression Or Selection": {
+                'types': d({}),
+                'namespaces': d({
+                    "TU": {
+                        'types': d({}),
+                        'namespaces': d({
+                            "expression": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                            "selection": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                        }),
+                    },
+                }),
+            },
             "Data Path": {
                 'types': d({}),
                 'namespaces': d({
@@ -1188,30 +1625,44 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     },
                 }),
             },
+            "Delayed Type Path": {
+                'types': d({}),
+                'namespaces': d({
+                    "G": {
+                        'types': d({}),
+                        'namespaces': d({
+                            "namespaces": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "A": {
+                                        'types': d({}),
+                                        'namespaces': d({}),
+                                    },
+                                }),
+                            },
+                            "parameters": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "D": {
+                                        'types': d({}),
+                                        'namespaces': d({}),
+                                    },
+                                }),
+                            },
+                            "type": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                        }),
+                    },
+                }),
+            },
             "Expression": {
                 'types': d({}),
                 'namespaces': d({
                     "TU": {
                         'types': d({}),
                         'namespaces': d({
-                            "and": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "left hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                            "right hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                        }),
-                                    },
-                                }),
-                            },
                             "array literal": {
                                 'types': d({}),
                                 'namespaces': d({
@@ -1220,6 +1671,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         'namespaces': d({}),
                                     },
                                 }),
+                            },
+                            "boolean": {
+                                'types': d({}),
+                                'namespaces': d({}),
                             },
                             "conditional": {
                                 'types': d({}),
@@ -1240,15 +1695,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 'namespaces': d({}),
                                             },
                                         }),
-                                    },
-                                }),
-                            },
-                            "false": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({}),
                                     },
                                 }),
                             },
@@ -1280,64 +1726,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     },
                                 }),
                             },
-                            "greater than": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "left hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                            "right hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                        }),
-                                    },
-                                }),
-                            },
-                            "less than": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "left hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                            "right hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                        }),
-                                    },
-                                }),
-                            },
-                            "minus": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "left hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                            "right hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                        }),
-                                    },
-                                }),
-                            },
-                            "not": {
-                                'types': d({}),
-                                'namespaces': d({}),
-                            },
                             "null": {
                                 'types': d({}),
                                 'namespaces': d({
@@ -1347,43 +1735,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     },
                                 }),
                             },
-                            "number equals": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "left hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                            "right hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                        }),
-                                    },
-                                }),
-                            },
-                            "number not equals": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "left hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                            "right hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                        }),
-                                    },
-                                }),
-                            },
-                            "numeric literal": {
+                            "numerical": {
                                 'types': d({}),
                                 'namespaces': d({}),
                             },
@@ -1406,158 +1758,19 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     },
                                 }),
                             },
-                            "or": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "left hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                            "right hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                        }),
-                                    },
-                                }),
-                            },
-                            "plus": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "left hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                            "right hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                        }),
-                                    },
-                                }),
-                            },
-                            "postdecrement": {
+                            "string": {
                                 'types': d({}),
                                 'namespaces': d({}),
-                            },
-                            "postincrement": {
-                                'types': d({}),
-                                'namespaces': d({}),
-                            },
-                            "predecrement": {
-                                'types': d({}),
-                                'namespaces': d({}),
-                            },
-                            "preincrement": {
-                                'types': d({}),
-                                'namespaces': d({}),
-                            },
-                            "string equals": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "left hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                            "right hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                        }),
-                                    },
-                                }),
-                            },
-                            "string literal": {
-                                'types': d({}),
-                                'namespaces': d({}),
-                            },
-                            "string not equals": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "left hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                            "right hand side": {
-                                                'types': d({}),
-                                                'namespaces': d({}),
-                                            },
-                                        }),
-                                    },
-                                }),
                             },
                             "symbol": {
                                 'types': d({}),
                                 'namespaces': d({}),
                             },
-                            "true": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "G": {
-                                        'types': d({}),
-                                        'namespaces': d({}),
-                                    },
-                                }),
-                            },
                         }),
                     },
                 }),
             },
-            "FunctionSignature": {
-                'types': d({}),
-                'namespaces': d({
-                    "G": {
-                        'types': d({}),
-                        'namespaces': d({
-                            "paramerters": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "D": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "G": {
-                                                'types': d({}),
-                                                'namespaces': d({
-                                                    "type": {
-                                                        'types': d({}),
-                                                        'namespaces': d({}),
-                                                    },
-                                                }),
-                                            },
-                                        }),
-                                    },
-                                }),
-                            },
-                            "return type": {
-                                'types': d({}),
-                                'namespaces': d({
-                                    "O": {
-                                        'types': d({}),
-                                        'namespaces': d({}),
-                                    },
-                                }),
-                            },
-                            "type parameters": {
-                                'types': d({}),
-                                'namespaces': d({}),
-                            },
-                        }),
-                    },
-                }),
-            },
-            "GlobalTypes": {
+            "Global Types": {
                 'types': d({}),
                 'namespaces': d({
                     "D": {
@@ -1614,6 +1827,90 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     },
                 }),
             },
+            "Numerical Expression": {
+                'types': d({}),
+                'namespaces': d({
+                    "TU": {
+                        'types': d({}),
+                        'namespaces': d({
+                            "minus": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "left hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "right hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "numeric literal": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                            "plus": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "left hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "right hand side": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "postdecrement": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                            "postincrement": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                            "predecrement": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                            "preincrement": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                        }),
+                    },
+                }),
+            },
+            "Numerical Expression Or Selection": {
+                'types': d({}),
+                'namespaces': d({
+                    "TU": {
+                        'types': d({}),
+                        'namespaces': d({
+                            "expression": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                            "selection": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                        }),
+                    },
+                }),
+            },
             "SourceFile": {
                 'types': d({}),
                 'namespaces': d({
@@ -1632,6 +1929,38 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     },
                 }),
             },
+            "String Expression": {
+                'types': d({}),
+                'namespaces': d({
+                    "TU": {
+                        'types': d({}),
+                        'namespaces': d({
+                            "string literal": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                        }),
+                    },
+                }),
+            },
+            "String Expression Or Selection": {
+                'types': d({}),
+                'namespaces': d({
+                    "TU": {
+                        'types': d({}),
+                        'namespaces': d({
+                            "expression": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                            "selection": {
+                                'types': d({}),
+                                'namespaces': d({}),
+                            },
+                        }),
+                    },
+                }),
+            },
             "Symbols": {
                 'types': d({}),
                 'namespaces': d({
@@ -1641,34 +1970,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             "TU": {
                                 'types': d({}),
                                 'namespaces': d({
-                                    "function": {
-                                        'types': d({}),
-                                        'namespaces': d({
-                                            "G": {
-                                                'types': d({}),
-                                                'namespaces': d({
-                                                    "block": {
-                                                        'types': d({}),
-                                                        'namespaces': d({}),
-                                                    },
-                                                    "signature": {
-                                                        'types': d({}),
-                                                        'namespaces': d({
-                                                            "G": {
-                                                                'types': d({}),
-                                                                'namespaces': d({
-                                                                    "type path": {
-                                                                        'types': d({}),
-                                                                        'namespaces': d({}),
-                                                                    },
-                                                                }),
-                                                            },
-                                                        }),
-                                                    },
-                                                }),
-                                            },
-                                        }),
-                                    },
                                     "namespace": {
                                         'types': d({}),
                                         'namespaces': d({
@@ -1683,12 +1984,17 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                             },
                                         }),
                                     },
-                                    "variable": {
+                                    "symbol": {
                                         'types': d({}),
                                         'namespaces': d({
                                             "G": {
                                                 'types': d({}),
-                                                'namespaces': d({}),
+                                                'namespaces': d({
+                                                    "type path": {
+                                                        'types': d({}),
+                                                        'namespaces': d({}),
+                                                    },
+                                                }),
                                             },
                                         }),
                                     },
@@ -1719,7 +2025,45 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             },
                             "function": {
                                 'types': d({}),
-                                'namespaces': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "paramerters": {
+                                                'types': d({}),
+                                                'namespaces': d({
+                                                    "D": {
+                                                        'types': d({}),
+                                                        'namespaces': d({
+                                                            "G": {
+                                                                'types': d({}),
+                                                                'namespaces': d({
+                                                                    "type": {
+                                                                        'types': d({}),
+                                                                        'namespaces': d({}),
+                                                                    },
+                                                                }),
+                                                            },
+                                                        }),
+                                                    },
+                                                }),
+                                            },
+                                            "return type": {
+                                                'types': d({}),
+                                                'namespaces': d({
+                                                    "O": {
+                                                        'types': d({}),
+                                                        'namespaces': d({}),
+                                                    },
+                                                }),
+                                            },
+                                            "type parameters": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
                             },
                             "group": {
                                 'types': d({}),
@@ -1876,7 +2220,45 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         'namespaces': d({
                             "G": {
                                 'types': d({}),
-                                'namespaces': d({}),
+                                'namespaces': d({
+                                    "source": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "TU": {
+                                                'types': d({}),
+                                                'namespaces': d({
+                                                    "aggregate": {
+                                                        'types': d({}),
+                                                        'namespaces': d({
+                                                            "G": {
+                                                                'types': d({}),
+                                                                'namespaces': d({}),
+                                                            },
+                                                        }),
+                                                    },
+                                                    "parameter": {
+                                                        'types': d({}),
+                                                        'namespaces': d({
+                                                            "G": {
+                                                                'types': d({}),
+                                                                'namespaces': d({}),
+                                                            },
+                                                        }),
+                                                    },
+                                                    "variable": {
+                                                        'types': d({}),
+                                                        'namespaces': d({
+                                                            "G": {
+                                                                'types': d({}),
+                                                                'namespaces': d({}),
+                                                            },
+                                                        }),
+                                                    },
+                                                }),
+                                            },
+                                        }),
+                                    },
+                                }),
                             },
                         }),
                     },

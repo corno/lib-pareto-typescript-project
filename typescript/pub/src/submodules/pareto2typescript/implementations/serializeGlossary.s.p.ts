@@ -1082,14 +1082,30 @@ export const $$: A.serializeGlossary = ($d) => {
                                                                     })
                                                                     $d.enrichedDictionaryForEach($.callbacks, {
                                                                         'onEmpty': () => { },
-                                                                        'onNotEmpty': () => {
+                                                                        'onNotEmpty': ($c) => {
                                                                             $i.snippet(`, $c: {`)
                                                                             $i.indent(($i) => {
-                                                                                $d.dictionaryForEach($.callbacks, ($) => {
+                                                                                $c(($) => {
 
                                                                                     $i.nestedLine(($i) => {
-                                                                                        $i.snippet(`"${$.key}": ($: `)
+                                                                                        $i.snippet(`'${$.key}': ($: `)
                                                                                         serializeDataSpecifier($.value.in, $i)
+                                                                                        $d.enrichedDictionaryForEach($.value.lookups, {
+                                                                                            'onEmpty': () => { },
+                                                                                            'onNotEmpty': ($c) => {
+                                                                                                $i.snippet(`, $l: {`)
+                                                                                                $i.indent(($i) => {
+                                                                                                    $c(($) => {
+                                                                                                        $i.nestedLine(($i) => {
+                                                                                                            $i.snippet(`'${$.key}': pt.Lookup<`)
+                                                                                                            serializeDataSpecifier($.value, $i)
+                                                                                                            $i.snippet(`>`)
+                                                                                                        })
+                                                                                                    })
+                                                                                                })
+                                                                                                $i.snippet(`}`)
+                                                                                            }
+                                                                                        })
                                                                                         $i.snippet(`) => `)
                                                                                         serializeDataSpecifier($.value.out, $i)
                                                                                         $i.snippet(`,`)

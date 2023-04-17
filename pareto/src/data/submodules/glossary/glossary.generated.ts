@@ -304,6 +304,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                 'arguments': d({}),
                                                             }]],
                                                         },
+                                                        "lookups": {
+                                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                                'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
+                                                                'type': "DataSpecifier",
+                                                                'tail': a([]),
+                                                                'arguments': d({}),
+                                                            }]]],
+                                                        },
                                                         "out": {
                                                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                                                 'context': <g_glossary.T.Context<pd.SourceLocation>>['local', null],
@@ -957,6 +965,15 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                                                             "in": {
                                                                                                                                 'types': d({}),
                                                                                                                                 'namespaces': d({}),
+                                                                                                                            },
+                                                                                                                            "lookups": {
+                                                                                                                                'types': d({}),
+                                                                                                                                'namespaces': d({
+                                                                                                                                    "D": {
+                                                                                                                                        'types': d({}),
+                                                                                                                                        'namespaces': d({}),
+                                                                                                                                    },
+                                                                                                                                }),
                                                                                                                             },
                                                                                                                             "out": {
                                                                                                                                 'types': d({}),

@@ -690,6 +690,21 @@ export namespace N {
                                                                                                                         export namespace T {}
                                                                                                                     }
                                                                                                                     
+                                                                                                                    export namespace lookups {
+                                                                                                                        
+                                                                                                                        export namespace N {
+                                                                                                                            
+                                                                                                                            export namespace D {
+                                                                                                                                
+                                                                                                                                export namespace N {}
+                                                                                                                                
+                                                                                                                                export namespace T {}
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                        
+                                                                                                                        export namespace T {}
+                                                                                                                    }
+                                                                                                                    
                                                                                                                     export namespace out {
                                                                                                                         
                                                                                                                         export namespace N {}
@@ -1611,17 +1626,26 @@ export namespace T {
                                     
                                     export type _lin<GAnnotation> = T.DataSpecifier<GAnnotation>
                                     
+                                    export namespace lookups {
+                                        
+                                        export type D<GAnnotation> = T.DataSpecifier<GAnnotation>
+                                    }
+                                    
+                                    export type lookups<GAnnotation> = pt.Dictionary<T.DataSpecifier<GAnnotation>>
+                                    
                                     export type out<GAnnotation> = T.DataSpecifier<GAnnotation>
                                 }
                                 
                                 export type D<GAnnotation> = {
                                     readonly 'in': T.DataSpecifier<GAnnotation>
+                                    readonly 'lookups': pt.Dictionary<T.DataSpecifier<GAnnotation>>
                                     readonly 'out': T.DataSpecifier<GAnnotation>
                                 }
                             }
                             
                             export type callbacks<GAnnotation> = pt.Dictionary<{
                                 readonly 'in': T.DataSpecifier<GAnnotation>
+                                readonly 'lookups': pt.Dictionary<T.DataSpecifier<GAnnotation>>
                                 readonly 'out': T.DataSpecifier<GAnnotation>
                             }>
                             
@@ -1633,6 +1657,7 @@ export namespace T {
                         export type _lfunction<GAnnotation> = {
                             readonly 'callbacks': pt.Dictionary<{
                                 readonly 'in': T.DataSpecifier<GAnnotation>
+                                readonly 'lookups': pt.Dictionary<T.DataSpecifier<GAnnotation>>
                                 readonly 'out': T.DataSpecifier<GAnnotation>
                             }>
                             readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
@@ -1656,6 +1681,7 @@ export namespace T {
                         | ['function', {
                             readonly 'callbacks': pt.Dictionary<{
                                 readonly 'in': T.DataSpecifier<GAnnotation>
+                                readonly 'lookups': pt.Dictionary<T.DataSpecifier<GAnnotation>>
                                 readonly 'out': T.DataSpecifier<GAnnotation>
                             }>
                             readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
@@ -1673,6 +1699,7 @@ export namespace T {
                         | ['function', {
                             readonly 'callbacks': pt.Dictionary<{
                                 readonly 'in': T.DataSpecifier<GAnnotation>
+                                readonly 'lookups': pt.Dictionary<T.DataSpecifier<GAnnotation>>
                                 readonly 'out': T.DataSpecifier<GAnnotation>
                             }>
                             readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
@@ -1691,6 +1718,7 @@ export namespace T {
                     | ['function', {
                         readonly 'callbacks': pt.Dictionary<{
                             readonly 'in': T.DataSpecifier<GAnnotation>
+                            readonly 'lookups': pt.Dictionary<T.DataSpecifier<GAnnotation>>
                             readonly 'out': T.DataSpecifier<GAnnotation>
                         }>
                         readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
@@ -1730,6 +1758,7 @@ export namespace T {
                     | ['function', {
                         readonly 'callbacks': pt.Dictionary<{
                             readonly 'in': T.DataSpecifier<GAnnotation>
+                            readonly 'lookups': pt.Dictionary<T.DataSpecifier<GAnnotation>>
                             readonly 'out': T.DataSpecifier<GAnnotation>
                         }>
                         readonly 'in': T.DataOrSynchronousInterface<GAnnotation>
@@ -1782,6 +1811,7 @@ export namespace T {
                     | ['function', {
                         readonly 'callbacks': pt.Dictionary<{
                             readonly 'in': T.DataSpecifier<GAnnotation>
+                            readonly 'lookups': pt.Dictionary<T.DataSpecifier<GAnnotation>>
                             readonly 'out': T.DataSpecifier<GAnnotation>
                         }>
                         readonly 'in': T.DataOrSynchronousInterface<GAnnotation>

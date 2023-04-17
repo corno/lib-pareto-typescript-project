@@ -65,6 +65,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                             "out": prop(component("DataSpecifier", {})),
                             "callbacks": prop(dictionary(group({
                                 "in": prop(component("DataSpecifier", {})),
+                                "lookups": prop(dictionary(component("DataSpecifier", {}))),
                                 "out": prop(component("DataSpecifier", {})),
                             })))
                         })),

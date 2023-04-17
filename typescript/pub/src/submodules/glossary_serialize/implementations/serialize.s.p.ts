@@ -834,6 +834,21 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                                                                                     serializeDataSpecifier($.value.out, $i)
                                                                                                     $i.snippet(`,`)
                                                                                                 })
+                                                                                                $i.nestedLine(($i) => {
+                                                                                                    $i.snippet(`'callbacks': d({`)
+                                                                                                    $i.indent(($i) => {
+                                                                                                        $d.dictionaryForEach($.value.lookups, ($) => {
+                                                                                                            $i.nestedLine(($i) => {
+                                                                                                                $i.snippet(`"${$.key}": `)
+                                                                                                                serializeDataSpecifier($.value, $i)
+                                                                                                                $i.snippet(`,`)
+
+                                                                                                            })
+
+                                                                                                        })
+                                                                                                    })
+                                                                                                    $i.snippet(`)},`)
+                                                                                                })
                                                                                             })
                                                                                             $i.snippet(`},`)
 

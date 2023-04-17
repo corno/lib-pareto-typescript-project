@@ -21,7 +21,8 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
         'api': {
             'root': api,
             'imports': d({
-                "this": this_()
+                "this": this_(),
+                "array": external("res-pareto-array")
             }),
         },
     },

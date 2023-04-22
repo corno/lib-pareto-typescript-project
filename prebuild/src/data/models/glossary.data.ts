@@ -7,15 +7,15 @@ import {
     terminal,
     globalType,
     group,
-    reference,
     taggedUnion,
     prop,
     optional,
     option,
-    typePath,
+    typeSelection,
     grp,
-    tbd,
     array,
+    resolvedValueReference,
+    valSel,
 } from "lib-liana/dist/submodules/liana/shorthands"
 
 const d = pd.d
@@ -30,7 +30,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
             "local": option(group({})),
             //"import": reference(['parent', null), [)),
             "import": option(group({
-                "glossary": prop(reference(typePath("Glossary", [grp("imports")]), tbd())),
+                "glossary": prop(resolvedValueReference(valSel("glossary"), typeSelection("Glossary", [grp("imports")]))),
             })),
         })),
         "DataOrSynchronousInterface": globalType({}, taggedUnion({

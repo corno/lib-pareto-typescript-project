@@ -2,12 +2,11 @@ import * as pd from 'pareto-core-data'
 
 import * as g_liana from "lib-liana/dist/submodules/liana"
 import {
-    allSiblings,
-    argAllSiblingsPlaceholder,
+    pAllSiblings,
     array,
     component, dictionary, globalType, group, grp,
-    option, optional, prop, reference, taggedUnion, tbd,
-    tu, typePath
+    option, optional, prop, taggedUnion,
+    tu, typeSelection, parameter, thisCyclic, aContainingDictionary, resolvedValueReference, valSel
 } from "lib-liana/dist/submodules/liana/shorthands"
 
 const d = pd.d
@@ -26,8 +25,8 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     "types": prop(component("Global Types", {})),
                 })),
                 "type definition": option(group({
-                    "parameters": prop(component("Type Parameters", { "global types": argAllSiblingsPlaceholder(), })),
-                    "type": prop(component("Type", { "global types": argAllSiblingsPlaceholder() })),
+                    "parameters": prop(component("Type Parameters", { "global types": aContainingDictionary(thisCyclic()), })),
+                    "type": prop(component("Type", { "global types": aContainingDictionary(thisCyclic()) })),
                 })),
 
                 // "interface": composite("InterfaceDeclaration", group({
@@ -63,32 +62,38 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
             // })),
             "types": prop(component("Global Types", {})),
         })),
+        "Function": globalType({
+            "global types": pAllSiblings(typeSelection("Global Types", [])),
+
+        }, group({
+            "type parameters": prop(component("Type Parameters", {
+                "global types": aContainingDictionary(parameter("global types"))
+            })),
+            "parameters": prop(dictionary(group({
+                "type": prop(component("Type", {
+                    "global types": aContainingDictionary(parameter("global types"))
+                })),
+            }))),
+            "return type": prop(optional(component("Type", {
+                "global types": aContainingDictionary(parameter("global types"))
+            }))),
+        })),
         "Type": globalType({
-            "global types": allSiblings(typePath("Global Types", [])),
+            "global types": pAllSiblings(typeSelection("Global Types", [])),
         }, taggedUnion({
             // "any": empty("AnyKeyword"),
             "array": option(component("Type", {
-                "global types": argAllSiblingsPlaceholder()
+                "global types": aContainingDictionary(parameter("global types"))
             })),
             "boolean": option(group({})),
 
-            "function": option(group({
-                "type parameters": prop(component("Type Parameters", {
-                    "global types": argAllSiblingsPlaceholder()
-                })),
-                "parameters": prop(dictionary(group({
-                    "type": prop(component("Type", {
-                        "global types": argAllSiblingsPlaceholder()
-                    })),
-                }))),
-                "return type": prop(optional(component("Type", {
-                    "global types": argAllSiblingsPlaceholder()
-                }))),
+            "function": option(component("Function", {
+                "global types": aContainingDictionary(parameter("global types"))
             })),
             "group": option(group({
                 "properties": prop(dictionary(group({
                     "type": prop(component("Type", {
-                        "global types": argAllSiblingsPlaceholder()
+                        "global types": aContainingDictionary(parameter("global types"))
                     }))
                 })))
             })),
@@ -97,7 +102,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
             "null": option(group({})),
             "number": option(group({})),
             "optional": option(component("Type", {
-                "global types": argAllSiblingsPlaceholder()
+                "global types": aContainingDictionary(parameter("global types"))
             })),
             // "optional": composite("OptionalType", component("type")),
             // "parenthesized": composite("ParenthesizedType", component("type")),
@@ -114,7 +119,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
             //     "parameters": member(array(component("type"))),
             // })),
             "reference": option(group({
-                "path": prop(array(reference(typePath("Type", [tu("group"), grp("properties")]), tbd()))),
+                "path": prop(array(resolvedValueReference(valSel("TBD"), typeSelection("Type", [tu("group"), grp("properties")])))),
             })),
             "string": option(group({})),
             //"string literal": option(terminal("string literal")),
@@ -123,23 +128,23 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
             // "typeLiteral": composite("TypeLiteral", component("typeSignatures")),
             // "undefined": empty("UndefinedKeyword"),
             "tagged union": option(dictionary(component("Type", {
-                "global types": argAllSiblingsPlaceholder()
+                "global types": aContainingDictionary(parameter("global types"))
             }))),
             // "void": empty("VoidKeyword"),
         })),
         "Type Path": globalType({
-            "global types": allSiblings(typePath("Global Types", [])),
+            "global types": pAllSiblings(typeSelection("Global Types", [])),
         }, group({
-            "namespaces": prop(array(reference(typePath("Global Types" /*constrain type to namespace*/, []), tbd()))),
-            "type": prop(reference(typePath("Global Types", []), /*constrain to type defintion*/ tbd())),
+            "namespaces": prop(array(resolvedValueReference(valSel("TBD"), typeSelection("Global Types" /*constrain type to namespace*/, [])))),
+            "type": prop(resolvedValueReference(valSel("TBD"), typeSelection("Global Types", []) /*constrain to type defintion*/ )),
             "parameters": prop(dictionary(component("Type", {
-                "global types": argAllSiblingsPlaceholder()
+                "global types": aContainingDictionary(parameter("global types"))
             }))),
         })),
         "Type Parameters": globalType({
-            "global types": allSiblings(typePath("Global Types", [])),
+            "global types": pAllSiblings(typeSelection("Global Types", [])),
         }, dictionary(component("Type", {
-            "global types": argAllSiblingsPlaceholder()
+            "global types": aContainingDictionary(parameter("global types"))
         }))),
         // "variable": composite("VariableStatement", group({
         //     "modifiers": member(component("modifiers")),

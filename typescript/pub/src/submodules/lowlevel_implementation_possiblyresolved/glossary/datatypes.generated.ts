@@ -397,9 +397,39 @@ export namespace N {
                     
                     export namespace tail {
                         
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace variable {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                }
+                
+                export namespace T {}
+            }
+        }
+        
+        export namespace T {}
+    }
+    
+    export namespace Data_$_$Path_$_$Tail {
+        
+        export namespace N {
+            
+            export namespace O {
+                
+                export namespace N {
+                    
+                    export namespace G {
+                        
                         export namespace N {
                             
-                            export namespace A {
+                            export namespace step {
                                 
                                 export namespace N {
                                     
@@ -458,14 +488,14 @@ export namespace N {
                                 
                                 export namespace T {}
                             }
+                            
+                            export namespace tail {
+                                
+                                export namespace N {}
+                                
+                                export namespace T {}
+                            }
                         }
-                        
-                        export namespace T {}
-                    }
-                    
-                    export namespace variable {
-                        
-                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -873,7 +903,15 @@ export namespace N {
                                             
                                             export namespace arguments {
                                                 
-                                                export namespace N {}
+                                                export namespace N {
+                                                    
+                                                    export namespace D {
+                                                        
+                                                        export namespace N {}
+                                                        
+                                                        export namespace T {}
+                                                    }
+                                                }
                                                 
                                                 export namespace T {}
                                             }
@@ -997,7 +1035,7 @@ export namespace N {
                                                 export namespace T {}
                                             }
                                             
-                                            export namespace variable {
+                                            export namespace target {
                                                 
                                                 export namespace N {}
                                                 
@@ -1027,7 +1065,7 @@ export namespace N {
                                                 export namespace T {}
                                             }
                                             
-                                            export namespace variable {
+                                            export namespace target {
                                                 
                                                 export namespace N {}
                                                 
@@ -1660,102 +1698,16 @@ export namespace T {
         
         export type expression<GAnnotation> = T.Boolean__Expression<GAnnotation>
         
-        export namespace selection {
-            
-            export type annotation<GAnnotation> = GAnnotation
-            
-            export namespace constraint {
-                
-                export type O<GAnnotation> = g_typesystem.T.Type._lboolean<GAnnotation>
-            }
-            
-            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lboolean<GAnnotation>]
-            
-            export type _ltype<GAnnotation> = T.Data__Path<GAnnotation>
-        }
-        
-        export type selection<GAnnotation> = {
-            readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lboolean<GAnnotation>]
-            readonly 'type': T.Data__Path<GAnnotation>
-        }
+        export type selection<GAnnotation> = T.Data__Path<GAnnotation>
     }
     
     export type Boolean__Expression__Or__Selection<GAnnotation> = 
         | ['expression', T.Boolean__Expression<GAnnotation>]
-        | ['selection', {
-            readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lboolean<GAnnotation>]
-            readonly 'type': T.Data__Path<GAnnotation>
-        }]
+        | ['selection', T.Data__Path<GAnnotation>]
     
     export namespace Data__Path {
         
-        export namespace tail {
-            
-            export namespace A {
-                
-                export namespace call {
-                    
-                    export type arguments<GAnnotation> = T.Data__Path<GAnnotation>
-                    
-                    export type _lfunction<GAnnotation> = T.Data__Path<GAnnotation>
-                    
-                    export type type__arguments<GAnnotation> = T.Type__Arguments<GAnnotation>
-                }
-                
-                export type call<GAnnotation> = {
-                    readonly 'arguments': T.Data__Path<GAnnotation>
-                    readonly 'function': T.Data__Path<GAnnotation>
-                    readonly 'type arguments': T.Type__Arguments<GAnnotation>
-                }
-                
-                export namespace property {
-                    
-                    export type annotation<GAnnotation> = GAnnotation
-                    
-                    export namespace constraint {
-                        
-                        export type O<GAnnotation> = g_typesystem.T.Type.group.properties.D<GAnnotation>
-                    }
-                    
-                    export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
-                    
-                    export type key<GAnnotation> = string
-                }
-                
-                export type property<GAnnotation> = {
-                    readonly 'annotation': GAnnotation
-                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
-                    readonly 'key': string
-                }
-            }
-            
-            export type A<GAnnotation> = 
-                | ['call', {
-                    readonly 'arguments': T.Data__Path<GAnnotation>
-                    readonly 'function': T.Data__Path<GAnnotation>
-                    readonly 'type arguments': T.Type__Arguments<GAnnotation>
-                }]
-                | ['property', {
-                    readonly 'annotation': GAnnotation
-                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
-                    readonly 'key': string
-                }]
-        }
-        
-        export type tail<GAnnotation> = pt.Array<
-            | ['call', {
-                readonly 'arguments': T.Data__Path<GAnnotation>
-                readonly 'function': T.Data__Path<GAnnotation>
-                readonly 'type arguments': T.Type__Arguments<GAnnotation>
-            }]
-            | ['property', {
-                readonly 'annotation': GAnnotation
-                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
-                readonly 'key': string
-            }]
-        >
+        export type tail<GAnnotation> = T.Data__Path__Tail<GAnnotation>
         
         export namespace variable {
             
@@ -1779,23 +1731,154 @@ export namespace T {
     }
     
     export type Data__Path<GAnnotation> = {
-        readonly 'tail': pt.Array<
-            | ['call', {
-                readonly 'arguments': T.Data__Path<GAnnotation>
-                readonly 'function': T.Data__Path<GAnnotation>
-                readonly 'type arguments': T.Type__Arguments<GAnnotation>
-            }]
-            | ['property', {
-                readonly 'annotation': GAnnotation
-                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
-                readonly 'key': string
-            }]
-        >
+        readonly 'tail': T.Data__Path__Tail<GAnnotation>
         readonly 'variable': {
             readonly 'annotation': GAnnotation
             readonly 'constraint': [ false ] | [ true, T.Variables.D<GAnnotation>]
             readonly 'key': string
         }
+    }
+    
+    export namespace Data__Path__Tail {
+        
+        export namespace content {
+            
+            export namespace content {
+                
+                export namespace O {
+                    
+                    export namespace step {
+                        
+                        export namespace call {
+                            
+                            export type arguments<GAnnotation> = T.Data__Path<GAnnotation>
+                            
+                            export type _lfunction<GAnnotation> = T.Data__Path<GAnnotation>
+                            
+                            export type type__arguments<GAnnotation> = T.Type__Arguments<GAnnotation>
+                        }
+                        
+                        export type call<GAnnotation> = {
+                            readonly 'arguments': T.Data__Path<GAnnotation>
+                            readonly 'function': T.Data__Path<GAnnotation>
+                            readonly 'type arguments': T.Type__Arguments<GAnnotation>
+                        }
+                        
+                        export namespace property {
+                            
+                            export type annotation<GAnnotation> = GAnnotation
+                            
+                            export namespace constraint {
+                                
+                                export type O<GAnnotation> = g_typesystem.T.Type.group.properties.D<GAnnotation>
+                            }
+                            
+                            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                            
+                            export type key<GAnnotation> = string
+                        }
+                        
+                        export type property<GAnnotation> = {
+                            readonly 'annotation': GAnnotation
+                            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                            readonly 'key': string
+                        }
+                    }
+                    
+                    export type step<GAnnotation> = 
+                        | ['call', {
+                            readonly 'arguments': T.Data__Path<GAnnotation>
+                            readonly 'function': T.Data__Path<GAnnotation>
+                            readonly 'type arguments': T.Type__Arguments<GAnnotation>
+                        }]
+                        | ['property', {
+                            readonly 'annotation': GAnnotation
+                            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                            readonly 'key': string
+                        }]
+                    
+                    export type tail<GAnnotation> = T.Data__Path__Tail<GAnnotation>
+                }
+                
+                export type O<GAnnotation> = {
+                    readonly 'step': 
+                        | ['call', {
+                            readonly 'arguments': T.Data__Path<GAnnotation>
+                            readonly 'function': T.Data__Path<GAnnotation>
+                            readonly 'type arguments': T.Type__Arguments<GAnnotation>
+                        }]
+                        | ['property', {
+                            readonly 'annotation': GAnnotation
+                            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                            readonly 'key': string
+                        }]
+                    readonly 'tail': T.Data__Path__Tail<GAnnotation>
+                }
+            }
+            
+            export type content<GAnnotation> = [ false ] | [ true, {
+                readonly 'step': 
+                    | ['call', {
+                        readonly 'arguments': T.Data__Path<GAnnotation>
+                        readonly 'function': T.Data__Path<GAnnotation>
+                        readonly 'type arguments': T.Type__Arguments<GAnnotation>
+                    }]
+                    | ['property', {
+                        readonly 'annotation': GAnnotation
+                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                        readonly 'key': string
+                    }]
+                readonly 'tail': T.Data__Path__Tail<GAnnotation>
+            }]
+            
+            export namespace result {
+                
+                export type O<GAnnotation> = g_typesystem.T.Type<GAnnotation>
+            }
+            
+            export type result<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
+        }
+        
+        export type content<GAnnotation> = {
+            readonly 'content': [ false ] | [ true, {
+                readonly 'step': 
+                    | ['call', {
+                        readonly 'arguments': T.Data__Path<GAnnotation>
+                        readonly 'function': T.Data__Path<GAnnotation>
+                        readonly 'type arguments': T.Type__Arguments<GAnnotation>
+                    }]
+                    | ['property', {
+                        readonly 'annotation': GAnnotation
+                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                        readonly 'key': string
+                    }]
+                readonly 'tail': T.Data__Path__Tail<GAnnotation>
+            }]
+            readonly 'result': [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
+        }
+        
+        export type result<GAnnotation> = boolean
+    }
+    
+    export type Data__Path__Tail<GAnnotation> = {
+        readonly 'content': {
+            readonly 'content': [ false ] | [ true, {
+                readonly 'step': 
+                    | ['call', {
+                        readonly 'arguments': T.Data__Path<GAnnotation>
+                        readonly 'function': T.Data__Path<GAnnotation>
+                        readonly 'type arguments': T.Type__Arguments<GAnnotation>
+                    }]
+                    | ['property', {
+                        readonly 'annotation': GAnnotation
+                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                        readonly 'key': string
+                    }]
+                readonly 'tail': T.Data__Path__Tail<GAnnotation>
+            }]
+            readonly 'result': [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
+        }
+        readonly 'result': boolean
     }
     
     export namespace Expression {
@@ -1804,45 +1887,63 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace constraint {
+            export namespace constraints {
                 
-                export type O<GAnnotation> = g_typesystem.T.Type.array<GAnnotation>
+                export namespace out {
+                    
+                    export type O<GAnnotation> = g_typesystem.T.Type.array<GAnnotation>
+                }
+                
+                export type out<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.array<GAnnotation>]
             }
             
-            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.array<GAnnotation>]
+            export type constraints<GAnnotation> = {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type.array<GAnnotation>]
+            }
             
-            export namespace _ltype {
+            export namespace content {
                 
                 export type A<GAnnotation> = T.Expression<GAnnotation>
             }
             
-            export type _ltype<GAnnotation> = pt.Array<T.Expression<GAnnotation>>
+            export type content<GAnnotation> = pt.Array<T.Expression<GAnnotation>>
         }
         
         export type array__literal<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.array<GAnnotation>]
-            readonly 'type': pt.Array<T.Expression<GAnnotation>>
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type.array<GAnnotation>]
+            }
+            readonly 'content': pt.Array<T.Expression<GAnnotation>>
         }
         
         export namespace _lboolean {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace constraint {
+            export namespace constraints {
                 
-                export type O<GAnnotation> = g_typesystem.T.Type._lboolean<GAnnotation>
+                export namespace out {
+                    
+                    export type O<GAnnotation> = g_typesystem.T.Type._lboolean<GAnnotation>
+                }
+                
+                export type out<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lboolean<GAnnotation>]
             }
             
-            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lboolean<GAnnotation>]
+            export type constraints<GAnnotation> = {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lboolean<GAnnotation>]
+            }
             
-            export type _ltype<GAnnotation> = T.Boolean__Expression<GAnnotation>
+            export type content<GAnnotation> = T.Boolean__Expression<GAnnotation>
         }
         
         export type _lboolean<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lboolean<GAnnotation>]
-            readonly 'type': T.Boolean__Expression<GAnnotation>
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lboolean<GAnnotation>]
+            }
+            readonly 'content': T.Boolean__Expression<GAnnotation>
         }
         
         export namespace conditional {
@@ -1864,14 +1965,21 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace constraint {
+            export namespace constraints {
                 
-                export type O<GAnnotation> = g_typesystem.T.Type._lfunction<GAnnotation>
+                export namespace out {
+                    
+                    export type O<GAnnotation> = g_typesystem.T.Type._lfunction<GAnnotation>
+                }
+                
+                export type out<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lfunction<GAnnotation>]
             }
             
-            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lfunction<GAnnotation>]
+            export type constraints<GAnnotation> = {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lfunction<GAnnotation>]
+            }
             
-            export namespace _ltype {
+            export namespace content {
                 
                 export namespace parameters {
                     
@@ -1887,7 +1995,7 @@ export namespace T {
                 export type variables<GAnnotation> = T.Variables<GAnnotation>
             }
             
-            export type _ltype<GAnnotation> = {
+            export type content<GAnnotation> = {
                 readonly 'parameters': pt.Dictionary<null>
                 readonly 'statements': T.Statements<GAnnotation>
                 readonly 'variables': T.Variables<GAnnotation>
@@ -1896,8 +2004,10 @@ export namespace T {
         
         export type _lfunction<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lfunction<GAnnotation>]
-            readonly 'type': {
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lfunction<GAnnotation>]
+            }
+            readonly 'content': {
                 readonly 'parameters': pt.Dictionary<null>
                 readonly 'statements': T.Statements<GAnnotation>
                 readonly 'variables': T.Variables<GAnnotation>
@@ -1908,56 +2018,81 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace constraint {
+            export namespace constraints {
                 
-                export type O<GAnnotation> = g_typesystem.T.Type._lnull<GAnnotation>
+                export namespace out {
+                    
+                    export type O<GAnnotation> = g_typesystem.T.Type._lnull<GAnnotation>
+                }
+                
+                export type out<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lnull<GAnnotation>]
             }
             
-            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lnull<GAnnotation>]
+            export type constraints<GAnnotation> = {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lnull<GAnnotation>]
+            }
             
-            export namespace _ltype {}
+            export namespace content {}
             
-            export type _ltype<GAnnotation> = null
+            export type content<GAnnotation> = null
         }
         
         export type _lnull<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lnull<GAnnotation>]
-            readonly 'type': null
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lnull<GAnnotation>]
+            }
+            readonly 'content': null
         }
         
         export namespace numerical {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace constraint {
+            export namespace constraints {
                 
-                export type O<GAnnotation> = g_typesystem.T.Type._lnumber<GAnnotation>
+                export namespace out {
+                    
+                    export type O<GAnnotation> = g_typesystem.T.Type._lnumber<GAnnotation>
+                }
+                
+                export type out<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lnumber<GAnnotation>]
             }
             
-            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lnumber<GAnnotation>]
+            export type constraints<GAnnotation> = {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lnumber<GAnnotation>]
+            }
             
-            export type _ltype<GAnnotation> = T.Numerical__Expression<GAnnotation>
+            export type content<GAnnotation> = T.Numerical__Expression<GAnnotation>
         }
         
         export type numerical<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lnumber<GAnnotation>]
-            readonly 'type': T.Numerical__Expression<GAnnotation>
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lnumber<GAnnotation>]
+            }
+            readonly 'content': T.Numerical__Expression<GAnnotation>
         }
         
         export namespace object__literal {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace constraint {
+            export namespace constraints {
                 
-                export type O<GAnnotation> = g_typesystem.T.Type.group<GAnnotation>
+                export namespace out {
+                    
+                    export type O<GAnnotation> = g_typesystem.T.Type.group<GAnnotation>
+                }
+                
+                export type out<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.group<GAnnotation>]
             }
             
-            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.group<GAnnotation>]
+            export type constraints<GAnnotation> = {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type.group<GAnnotation>]
+            }
             
-            export namespace _ltype {
+            export namespace content {
                 
                 export namespace properties {
                     
@@ -1965,47 +2100,64 @@ export namespace T {
                         
                         export type annotation<GAnnotation> = GAnnotation
                         
-                        export namespace constraint {
+                        export namespace constraints {
                             
-                            export type O<GAnnotation> = g_typesystem.T.Type.group.properties.D<GAnnotation>
+                            export namespace X {
+                                
+                                export type O<GAnnotation> = g_typesystem.T.Type.group.properties.D<GAnnotation>
+                            }
+                            
+                            export type X<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
                         }
                         
-                        export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                        export type constraints<GAnnotation> = {
+                            readonly 'X': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                        }
                         
-                        export type _ltype<GAnnotation> = T.Expression<GAnnotation>
+                        export type content<GAnnotation> = T.Expression<GAnnotation>
                     }
                     
                     export type D<GAnnotation> = {
                         readonly 'annotation': GAnnotation
-                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
-                        readonly 'type': T.Expression<GAnnotation>
+                        readonly 'constraints': {
+                            readonly 'X': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                        }
+                        readonly 'content': T.Expression<GAnnotation>
                     }
                 }
                 
                 export type properties<GAnnotation> = pt.Dictionary<{
                     readonly 'annotation': GAnnotation
-                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
-                    readonly 'type': T.Expression<GAnnotation>
+                    readonly 'constraints': {
+                        readonly 'X': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                    }
+                    readonly 'content': T.Expression<GAnnotation>
                 }>
             }
             
-            export type _ltype<GAnnotation> = {
+            export type content<GAnnotation> = {
                 readonly 'properties': pt.Dictionary<{
                     readonly 'annotation': GAnnotation
-                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
-                    readonly 'type': T.Expression<GAnnotation>
+                    readonly 'constraints': {
+                        readonly 'X': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                    }
+                    readonly 'content': T.Expression<GAnnotation>
                 }>
             }
         }
         
         export type object__literal<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group<GAnnotation>]
-            readonly 'type': {
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type.group<GAnnotation>]
+            }
+            readonly 'content': {
                 readonly 'properties': pt.Dictionary<{
                     readonly 'annotation': GAnnotation
-                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
-                    readonly 'type': T.Expression<GAnnotation>
+                    readonly 'constraints': {
+                        readonly 'X': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                    }
+                    readonly 'content': T.Expression<GAnnotation>
                 }>
             }
         }
@@ -2014,20 +2166,29 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace constraint {
+            export namespace constraints {
                 
-                export type O<GAnnotation> = g_typesystem.T.Type._lstring<GAnnotation>
+                export namespace out {
+                    
+                    export type O<GAnnotation> = g_typesystem.T.Type._lstring<GAnnotation>
+                }
+                
+                export type out<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lstring<GAnnotation>]
             }
             
-            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type._lstring<GAnnotation>]
+            export type constraints<GAnnotation> = {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lstring<GAnnotation>]
+            }
             
-            export type _ltype<GAnnotation> = T.String__Expression<GAnnotation>
+            export type content<GAnnotation> = T.String__Expression<GAnnotation>
         }
         
         export type _lstring<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lstring<GAnnotation>]
-            readonly 'type': T.String__Expression<GAnnotation>
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lstring<GAnnotation>]
+            }
+            readonly 'content': T.String__Expression<GAnnotation>
         }
         
         export type _lsymbol<GAnnotation> = T.Data__Path<GAnnotation>
@@ -2036,13 +2197,17 @@ export namespace T {
     export type Expression<GAnnotation> = 
         | ['array literal', {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.array<GAnnotation>]
-            readonly 'type': pt.Array<T.Expression<GAnnotation>>
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type.array<GAnnotation>]
+            }
+            readonly 'content': pt.Array<T.Expression<GAnnotation>>
         }]
         | ['boolean', {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lboolean<GAnnotation>]
-            readonly 'type': T.Boolean__Expression<GAnnotation>
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lboolean<GAnnotation>]
+            }
+            readonly 'content': T.Boolean__Expression<GAnnotation>
         }]
         | ['conditional', {
             readonly 'false': T.Expression<GAnnotation>
@@ -2051,8 +2216,10 @@ export namespace T {
         }]
         | ['function', {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lfunction<GAnnotation>]
-            readonly 'type': {
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lfunction<GAnnotation>]
+            }
+            readonly 'content': {
                 readonly 'parameters': pt.Dictionary<null>
                 readonly 'statements': T.Statements<GAnnotation>
                 readonly 'variables': T.Variables<GAnnotation>
@@ -2060,29 +2227,39 @@ export namespace T {
         }]
         | ['null', {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lnull<GAnnotation>]
-            readonly 'type': null
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lnull<GAnnotation>]
+            }
+            readonly 'content': null
         }]
         | ['numerical', {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lnumber<GAnnotation>]
-            readonly 'type': T.Numerical__Expression<GAnnotation>
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lnumber<GAnnotation>]
+            }
+            readonly 'content': T.Numerical__Expression<GAnnotation>
         }]
         | ['object literal', {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group<GAnnotation>]
-            readonly 'type': {
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type.group<GAnnotation>]
+            }
+            readonly 'content': {
                 readonly 'properties': pt.Dictionary<{
                     readonly 'annotation': GAnnotation
-                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
-                    readonly 'type': T.Expression<GAnnotation>
+                    readonly 'constraints': {
+                        readonly 'X': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                    }
+                    readonly 'content': T.Expression<GAnnotation>
                 }>
             }
         }]
         | ['string', {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type._lstring<GAnnotation>]
-            readonly 'type': T.String__Expression<GAnnotation>
+            readonly 'constraints': {
+                readonly 'out': [ false ] | [ true, g_typesystem.T.Type._lstring<GAnnotation>]
+            }
+            readonly 'content': T.String__Expression<GAnnotation>
         }]
         | ['symbol', T.Data__Path<GAnnotation>]
     
@@ -2168,7 +2345,45 @@ export namespace T {
             
             export namespace call {
                 
-                export type arguments<GAnnotation> = T.Expression<GAnnotation>
+                export namespace arguments {
+                    
+                    export namespace D {
+                        
+                        export type annotation<GAnnotation> = GAnnotation
+                        
+                        export namespace constraints {
+                            
+                            export namespace parameter {
+                                
+                                export type O<GAnnotation> = g_typesystem.T.Function.parameters.D<GAnnotation>
+                            }
+                            
+                            export type parameter<GAnnotation> = [ false ] | [ true, g_typesystem.T.Function.parameters.D<GAnnotation>]
+                        }
+                        
+                        export type constraints<GAnnotation> = {
+                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function.parameters.D<GAnnotation>]
+                        }
+                        
+                        export type content<GAnnotation> = T.Expression<GAnnotation>
+                    }
+                    
+                    export type D<GAnnotation> = {
+                        readonly 'annotation': GAnnotation
+                        readonly 'constraints': {
+                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function.parameters.D<GAnnotation>]
+                        }
+                        readonly 'content': T.Expression<GAnnotation>
+                    }
+                }
+                
+                export type arguments<GAnnotation> = pt.Dictionary<{
+                    readonly 'annotation': GAnnotation
+                    readonly 'constraints': {
+                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function.parameters.D<GAnnotation>]
+                    }
+                    readonly 'content': T.Expression<GAnnotation>
+                }>
                 
                 export type _lfunction<GAnnotation> = T.Data__Path<GAnnotation>
                 
@@ -2176,7 +2391,13 @@ export namespace T {
             }
             
             export type call<GAnnotation> = {
-                readonly 'arguments': T.Expression<GAnnotation>
+                readonly 'arguments': pt.Dictionary<{
+                    readonly 'annotation': GAnnotation
+                    readonly 'constraints': {
+                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function.parameters.D<GAnnotation>]
+                    }
+                    readonly 'content': T.Expression<GAnnotation>
+                }>
                 readonly 'function': T.Data__Path<GAnnotation>
                 readonly 'type arguments': T.Type__Arguments<GAnnotation>
             }
@@ -2220,24 +2441,24 @@ export namespace T {
                 
                 export type right__hand__side<GAnnotation> = T.Expression<GAnnotation>
                 
-                export type variable<GAnnotation> = T.Data__Path<GAnnotation>
+                export type target<GAnnotation> = T.Data__Path<GAnnotation>
             }
             
             export type minus__assign<GAnnotation> = {
                 readonly 'right hand side': T.Expression<GAnnotation>
-                readonly 'variable': T.Data__Path<GAnnotation>
+                readonly 'target': T.Data__Path<GAnnotation>
             }
             
             export namespace plus__assign {
                 
                 export type right__hand__side<GAnnotation> = T.Expression<GAnnotation>
                 
-                export type variable<GAnnotation> = T.Data__Path<GAnnotation>
+                export type target<GAnnotation> = T.Data__Path<GAnnotation>
             }
             
             export type plus__assign<GAnnotation> = {
                 readonly 'right hand side': T.Expression<GAnnotation>
-                readonly 'variable': T.Data__Path<GAnnotation>
+                readonly 'target': T.Data__Path<GAnnotation>
             }
             
             export namespace _lreturn {
@@ -2262,27 +2483,36 @@ export namespace T {
                         
                         export type annotation<GAnnotation> = GAnnotation
                         
-                        export namespace constraint {
+                        export namespace constraints {
                             
-                            export type O<GAnnotation> = g_typesystem.T.Type.tagged__union.D<GAnnotation>
+                            export namespace option {
+                                
+                                export type O<GAnnotation> = g_typesystem.T.Type.tagged__union.D<GAnnotation>
+                            }
+                            
+                            export type option<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
                         }
                         
-                        export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
+                        export type constraints<GAnnotation> = {
+                            readonly 'option': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
+                        }
                         
-                        export namespace _ltype {
+                        export namespace content {
                             
                             export type block<GAnnotation> = T.Block<GAnnotation>
                         }
                         
-                        export type _ltype<GAnnotation> = {
+                        export type content<GAnnotation> = {
                             readonly 'block': T.Block<GAnnotation>
                         }
                     }
                     
                     export type D<GAnnotation> = {
                         readonly 'annotation': GAnnotation
-                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
-                        readonly 'type': {
+                        readonly 'constraints': {
+                            readonly 'option': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
+                        }
+                        readonly 'content': {
                             readonly 'block': T.Block<GAnnotation>
                         }
                     }
@@ -2290,8 +2520,10 @@ export namespace T {
                 
                 export type cases<GAnnotation> = pt.Dictionary<{
                     readonly 'annotation': GAnnotation
-                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
-                    readonly 'type': {
+                    readonly 'constraints': {
+                        readonly 'option': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
+                    }
+                    readonly 'content': {
                         readonly 'block': T.Block<GAnnotation>
                     }
                 }>
@@ -2309,8 +2541,10 @@ export namespace T {
             export type _lswitch<GAnnotation> = {
                 readonly 'cases': pt.Dictionary<{
                     readonly 'annotation': GAnnotation
-                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
-                    readonly 'type': {
+                    readonly 'constraints': {
+                        readonly 'option': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
+                    }
+                    readonly 'content': {
                         readonly 'block': T.Block<GAnnotation>
                     }
                 }>
@@ -2335,7 +2569,13 @@ export namespace T {
             | ['assign', T.Assign<GAnnotation>]
             | ['block', T.Block<GAnnotation>]
             | ['call', {
-                readonly 'arguments': T.Expression<GAnnotation>
+                readonly 'arguments': pt.Dictionary<{
+                    readonly 'annotation': GAnnotation
+                    readonly 'constraints': {
+                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function.parameters.D<GAnnotation>]
+                    }
+                    readonly 'content': T.Expression<GAnnotation>
+                }>
                 readonly 'function': T.Data__Path<GAnnotation>
                 readonly 'type arguments': T.Type__Arguments<GAnnotation>
             }]
@@ -2351,11 +2591,11 @@ export namespace T {
             }]
             | ['minus assign', {
                 readonly 'right hand side': T.Expression<GAnnotation>
-                readonly 'variable': T.Data__Path<GAnnotation>
+                readonly 'target': T.Data__Path<GAnnotation>
             }]
             | ['plus assign', {
                 readonly 'right hand side': T.Expression<GAnnotation>
-                readonly 'variable': T.Data__Path<GAnnotation>
+                readonly 'target': T.Data__Path<GAnnotation>
             }]
             | ['return', {
                 readonly 'expression': [ false ] | [ true, T.Expression<GAnnotation>]
@@ -2363,8 +2603,10 @@ export namespace T {
             | ['switch', {
                 readonly 'cases': pt.Dictionary<{
                     readonly 'annotation': GAnnotation
-                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
-                    readonly 'type': {
+                    readonly 'constraints': {
+                        readonly 'option': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
+                    }
+                    readonly 'content': {
                         readonly 'block': T.Block<GAnnotation>
                     }
                 }>
@@ -2381,7 +2623,13 @@ export namespace T {
         | ['assign', T.Assign<GAnnotation>]
         | ['block', T.Block<GAnnotation>]
         | ['call', {
-            readonly 'arguments': T.Expression<GAnnotation>
+            readonly 'arguments': pt.Dictionary<{
+                readonly 'annotation': GAnnotation
+                readonly 'constraints': {
+                    readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function.parameters.D<GAnnotation>]
+                }
+                readonly 'content': T.Expression<GAnnotation>
+            }>
             readonly 'function': T.Data__Path<GAnnotation>
             readonly 'type arguments': T.Type__Arguments<GAnnotation>
         }]
@@ -2397,11 +2645,11 @@ export namespace T {
         }]
         | ['minus assign', {
             readonly 'right hand side': T.Expression<GAnnotation>
-            readonly 'variable': T.Data__Path<GAnnotation>
+            readonly 'target': T.Data__Path<GAnnotation>
         }]
         | ['plus assign', {
             readonly 'right hand side': T.Expression<GAnnotation>
-            readonly 'variable': T.Data__Path<GAnnotation>
+            readonly 'target': T.Data__Path<GAnnotation>
         }]
         | ['return', {
             readonly 'expression': [ false ] | [ true, T.Expression<GAnnotation>]
@@ -2409,8 +2657,10 @@ export namespace T {
         | ['switch', {
             readonly 'cases': pt.Dictionary<{
                 readonly 'annotation': GAnnotation
-                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
-                readonly 'type': {
+                readonly 'constraints': {
+                    readonly 'option': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D<GAnnotation>]
+                }
+                readonly 'content': {
                     readonly 'block': T.Block<GAnnotation>
                 }
             }>
@@ -2489,27 +2739,36 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace constraint {
+            export namespace constraints {
                 
-                export type O<GAnnotation> = g_typesystem.T.Type__Parameters.D<GAnnotation>
+                export namespace x {
+                    
+                    export type O<GAnnotation> = g_typesystem.T.Type__Parameters.D<GAnnotation>
+                }
+                
+                export type x<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type__Parameters.D<GAnnotation>]
             }
             
-            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type__Parameters.D<GAnnotation>]
+            export type constraints<GAnnotation> = {
+                readonly 'x': [ false ] | [ true, g_typesystem.T.Type__Parameters.D<GAnnotation>]
+            }
             
-            export namespace _ltype {
+            export namespace content {
                 
                 export type _ltype<GAnnotation> = T.Type__Path<GAnnotation>
             }
             
-            export type _ltype<GAnnotation> = {
+            export type content<GAnnotation> = {
                 readonly 'type': T.Type__Path<GAnnotation>
             }
         }
         
         export type D<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type__Parameters.D<GAnnotation>]
-            readonly 'type': {
+            readonly 'constraints': {
+                readonly 'x': [ false ] | [ true, g_typesystem.T.Type__Parameters.D<GAnnotation>]
+            }
+            readonly 'content': {
                 readonly 'type': T.Type__Path<GAnnotation>
             }
         }
@@ -2517,8 +2776,10 @@ export namespace T {
     
     export type Type__Arguments<GAnnotation> = pt.Dictionary<{
         readonly 'annotation': GAnnotation
-        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type__Parameters.D<GAnnotation>]
-        readonly 'type': {
+        readonly 'constraints': {
+            readonly 'x': [ false ] | [ true, g_typesystem.T.Type__Parameters.D<GAnnotation>]
+        }
+        readonly 'content': {
             readonly 'type': T.Type__Path<GAnnotation>
         }
     }>

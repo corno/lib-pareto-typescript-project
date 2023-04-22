@@ -9,8 +9,7 @@ import * as g_out_typesystem from "../../lowlevel_typesystem_possiblyresolved"
 
 import { A } from "../api.generated"
 
-export const $$: A.resolve = ($d,) => {
-
+export const $$: A.resolve = ($d, $se) => {
 
     return ($) => {
         return pd.implementMe(`IMPLEMENT resolve`)

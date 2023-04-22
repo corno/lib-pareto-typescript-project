@@ -397,9 +397,39 @@ export namespace N {
                     
                     export namespace tail {
                         
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace variable {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                }
+                
+                export namespace T {}
+            }
+        }
+        
+        export namespace T {}
+    }
+    
+    export namespace Data_$_$Path_$_$Tail {
+        
+        export namespace N {
+            
+            export namespace O {
+                
+                export namespace N {
+                    
+                    export namespace G {
+                        
                         export namespace N {
                             
-                            export namespace A {
+                            export namespace step {
                                 
                                 export namespace N {
                                     
@@ -458,14 +488,14 @@ export namespace N {
                                 
                                 export namespace T {}
                             }
+                            
+                            export namespace tail {
+                                
+                                export namespace N {}
+                                
+                                export namespace T {}
+                            }
                         }
-                        
-                        export namespace T {}
-                    }
-                    
-                    export namespace variable {
-                        
-                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -873,7 +903,15 @@ export namespace N {
                                             
                                             export namespace arguments {
                                                 
-                                                export namespace N {}
+                                                export namespace N {
+                                                    
+                                                    export namespace D {
+                                                        
+                                                        export namespace N {}
+                                                        
+                                                        export namespace T {}
+                                                    }
+                                                }
                                                 
                                                 export namespace T {}
                                             }
@@ -997,7 +1035,7 @@ export namespace N {
                                                 export namespace T {}
                                             }
                                             
-                                            export namespace variable {
+                                            export namespace target {
                                                 
                                                 export namespace N {}
                                                 
@@ -1027,7 +1065,7 @@ export namespace N {
                                                 export namespace T {}
                                             }
                                             
-                                            export namespace variable {
+                                            export namespace target {
                                                 
                                                 export namespace N {}
                                                 
@@ -1660,31 +1698,43 @@ export namespace T {
         
         export type expression<GAnnotation> = T.Boolean__Expression<GAnnotation>
         
-        export namespace selection {
-            
-            export type annotation<GAnnotation> = GAnnotation
-            
-            export type _ltype<GAnnotation> = T.Data__Path<GAnnotation>
-        }
-        
-        export type selection<GAnnotation> = {
-            readonly 'annotation': GAnnotation
-            readonly 'type': T.Data__Path<GAnnotation>
-        }
+        export type selection<GAnnotation> = T.Data__Path<GAnnotation>
     }
     
     export type Boolean__Expression__Or__Selection<GAnnotation> = 
         | ['expression', T.Boolean__Expression<GAnnotation>]
-        | ['selection', {
-            readonly 'annotation': GAnnotation
-            readonly 'type': T.Data__Path<GAnnotation>
-        }]
+        | ['selection', T.Data__Path<GAnnotation>]
     
     export namespace Data__Path {
         
-        export namespace tail {
+        export type tail<GAnnotation> = T.Data__Path__Tail<GAnnotation>
+        
+        export namespace variable {
             
-            export namespace A {
+            export type annotation<GAnnotation> = GAnnotation
+            
+            export type key<GAnnotation> = string
+        }
+        
+        export type variable<GAnnotation> = {
+            readonly 'annotation': GAnnotation
+            readonly 'key': string
+        }
+    }
+    
+    export type Data__Path<GAnnotation> = {
+        readonly 'tail': T.Data__Path__Tail<GAnnotation>
+        readonly 'variable': {
+            readonly 'annotation': GAnnotation
+            readonly 'key': string
+        }
+    }
+    
+    export namespace Data__Path__Tail {
+        
+        export namespace O {
+            
+            export namespace step {
                 
                 export namespace call {
                     
@@ -1714,7 +1764,7 @@ export namespace T {
                 }
             }
             
-            export type A<GAnnotation> = 
+            export type step<GAnnotation> = 
                 | ['call', {
                     readonly 'arguments': T.Data__Path<GAnnotation>
                     readonly 'function': T.Data__Path<GAnnotation>
@@ -1724,35 +1774,27 @@ export namespace T {
                     readonly 'annotation': GAnnotation
                     readonly 'key': string
                 }]
+            
+            export type tail<GAnnotation> = T.Data__Path__Tail<GAnnotation>
         }
         
-        export type tail<GAnnotation> = pt.Array<
-            | ['call', {
-                readonly 'arguments': T.Data__Path<GAnnotation>
-                readonly 'function': T.Data__Path<GAnnotation>
-                readonly 'type arguments': T.Type__Arguments<GAnnotation>
-            }]
-            | ['property', {
-                readonly 'annotation': GAnnotation
-                readonly 'key': string
-            }]
-        >
-        
-        export namespace variable {
-            
-            export type annotation<GAnnotation> = GAnnotation
-            
-            export type key<GAnnotation> = string
-        }
-        
-        export type variable<GAnnotation> = {
-            readonly 'annotation': GAnnotation
-            readonly 'key': string
+        export type O<GAnnotation> = {
+            readonly 'step': 
+                | ['call', {
+                    readonly 'arguments': T.Data__Path<GAnnotation>
+                    readonly 'function': T.Data__Path<GAnnotation>
+                    readonly 'type arguments': T.Type__Arguments<GAnnotation>
+                }]
+                | ['property', {
+                    readonly 'annotation': GAnnotation
+                    readonly 'key': string
+                }]
+            readonly 'tail': T.Data__Path__Tail<GAnnotation>
         }
     }
     
-    export type Data__Path<GAnnotation> = {
-        readonly 'tail': pt.Array<
+    export type Data__Path__Tail<GAnnotation> = [ false ] | [ true, {
+        readonly 'step': 
             | ['call', {
                 readonly 'arguments': T.Data__Path<GAnnotation>
                 readonly 'function': T.Data__Path<GAnnotation>
@@ -1762,12 +1804,8 @@ export namespace T {
                 readonly 'annotation': GAnnotation
                 readonly 'key': string
             }]
-        >
-        readonly 'variable': {
-            readonly 'annotation': GAnnotation
-            readonly 'key': string
-        }
-    }
+        readonly 'tail': T.Data__Path__Tail<GAnnotation>
+    }]
     
     export namespace Expression {
         
@@ -1775,29 +1813,29 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace _ltype {
+            export namespace content {
                 
                 export type A<GAnnotation> = T.Expression<GAnnotation>
             }
             
-            export type _ltype<GAnnotation> = pt.Array<T.Expression<GAnnotation>>
+            export type content<GAnnotation> = pt.Array<T.Expression<GAnnotation>>
         }
         
         export type array__literal<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'type': pt.Array<T.Expression<GAnnotation>>
+            readonly 'content': pt.Array<T.Expression<GAnnotation>>
         }
         
         export namespace _lboolean {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export type _ltype<GAnnotation> = T.Boolean__Expression<GAnnotation>
+            export type content<GAnnotation> = T.Boolean__Expression<GAnnotation>
         }
         
         export type _lboolean<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'type': T.Boolean__Expression<GAnnotation>
+            readonly 'content': T.Boolean__Expression<GAnnotation>
         }
         
         export namespace conditional {
@@ -1819,7 +1857,7 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace _ltype {
+            export namespace content {
                 
                 export namespace parameters {
                     
@@ -1835,7 +1873,7 @@ export namespace T {
                 export type variables<GAnnotation> = T.Variables<GAnnotation>
             }
             
-            export type _ltype<GAnnotation> = {
+            export type content<GAnnotation> = {
                 readonly 'parameters': pt.Dictionary<null>
                 readonly 'statements': T.Statements<GAnnotation>
                 readonly 'variables': T.Variables<GAnnotation>
@@ -1844,7 +1882,7 @@ export namespace T {
         
         export type _lfunction<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'type': {
+            readonly 'content': {
                 readonly 'parameters': pt.Dictionary<null>
                 readonly 'statements': T.Statements<GAnnotation>
                 readonly 'variables': T.Variables<GAnnotation>
@@ -1855,70 +1893,51 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace _ltype {}
+            export namespace content {}
             
-            export type _ltype<GAnnotation> = null
+            export type content<GAnnotation> = null
         }
         
         export type _lnull<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'type': null
+            readonly 'content': null
         }
         
         export namespace numerical {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export type _ltype<GAnnotation> = T.Numerical__Expression<GAnnotation>
+            export type content<GAnnotation> = T.Numerical__Expression<GAnnotation>
         }
         
         export type numerical<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'type': T.Numerical__Expression<GAnnotation>
+            readonly 'content': T.Numerical__Expression<GAnnotation>
         }
         
         export namespace object__literal {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export namespace _ltype {
+            export namespace content {
                 
                 export namespace properties {
                     
-                    export namespace D {
-                        
-                        export type annotation<GAnnotation> = GAnnotation
-                        
-                        export type _ltype<GAnnotation> = T.Expression<GAnnotation>
-                    }
-                    
-                    export type D<GAnnotation> = {
-                        readonly 'annotation': GAnnotation
-                        readonly 'type': T.Expression<GAnnotation>
-                    }
+                    export type D<GAnnotation> = T.Expression<GAnnotation>
                 }
                 
-                export type properties<GAnnotation> = pt.Dictionary<{
-                    readonly 'annotation': GAnnotation
-                    readonly 'type': T.Expression<GAnnotation>
-                }>
+                export type properties<GAnnotation> = pt.Dictionary<T.Expression<GAnnotation>>
             }
             
-            export type _ltype<GAnnotation> = {
-                readonly 'properties': pt.Dictionary<{
-                    readonly 'annotation': GAnnotation
-                    readonly 'type': T.Expression<GAnnotation>
-                }>
+            export type content<GAnnotation> = {
+                readonly 'properties': pt.Dictionary<T.Expression<GAnnotation>>
             }
         }
         
         export type object__literal<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'type': {
-                readonly 'properties': pt.Dictionary<{
-                    readonly 'annotation': GAnnotation
-                    readonly 'type': T.Expression<GAnnotation>
-                }>
+            readonly 'content': {
+                readonly 'properties': pt.Dictionary<T.Expression<GAnnotation>>
             }
         }
         
@@ -1926,12 +1945,12 @@ export namespace T {
             
             export type annotation<GAnnotation> = GAnnotation
             
-            export type _ltype<GAnnotation> = T.String__Expression<GAnnotation>
+            export type content<GAnnotation> = T.String__Expression<GAnnotation>
         }
         
         export type _lstring<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'type': T.String__Expression<GAnnotation>
+            readonly 'content': T.String__Expression<GAnnotation>
         }
         
         export type _lsymbol<GAnnotation> = T.Data__Path<GAnnotation>
@@ -1940,11 +1959,11 @@ export namespace T {
     export type Expression<GAnnotation> = 
         | ['array literal', {
             readonly 'annotation': GAnnotation
-            readonly 'type': pt.Array<T.Expression<GAnnotation>>
+            readonly 'content': pt.Array<T.Expression<GAnnotation>>
         }]
         | ['boolean', {
             readonly 'annotation': GAnnotation
-            readonly 'type': T.Boolean__Expression<GAnnotation>
+            readonly 'content': T.Boolean__Expression<GAnnotation>
         }]
         | ['conditional', {
             readonly 'false': T.Expression<GAnnotation>
@@ -1953,7 +1972,7 @@ export namespace T {
         }]
         | ['function', {
             readonly 'annotation': GAnnotation
-            readonly 'type': {
+            readonly 'content': {
                 readonly 'parameters': pt.Dictionary<null>
                 readonly 'statements': T.Statements<GAnnotation>
                 readonly 'variables': T.Variables<GAnnotation>
@@ -1961,24 +1980,21 @@ export namespace T {
         }]
         | ['null', {
             readonly 'annotation': GAnnotation
-            readonly 'type': null
+            readonly 'content': null
         }]
         | ['numerical', {
             readonly 'annotation': GAnnotation
-            readonly 'type': T.Numerical__Expression<GAnnotation>
+            readonly 'content': T.Numerical__Expression<GAnnotation>
         }]
         | ['object literal', {
             readonly 'annotation': GAnnotation
-            readonly 'type': {
-                readonly 'properties': pt.Dictionary<{
-                    readonly 'annotation': GAnnotation
-                    readonly 'type': T.Expression<GAnnotation>
-                }>
+            readonly 'content': {
+                readonly 'properties': pt.Dictionary<T.Expression<GAnnotation>>
             }
         }]
         | ['string', {
             readonly 'annotation': GAnnotation
-            readonly 'type': T.String__Expression<GAnnotation>
+            readonly 'content': T.String__Expression<GAnnotation>
         }]
         | ['symbol', T.Data__Path<GAnnotation>]
     
@@ -2064,7 +2080,12 @@ export namespace T {
             
             export namespace call {
                 
-                export type arguments<GAnnotation> = T.Expression<GAnnotation>
+                export namespace arguments {
+                    
+                    export type D<GAnnotation> = T.Expression<GAnnotation>
+                }
+                
+                export type arguments<GAnnotation> = pt.Dictionary<T.Expression<GAnnotation>>
                 
                 export type _lfunction<GAnnotation> = T.Data__Path<GAnnotation>
                 
@@ -2072,7 +2093,7 @@ export namespace T {
             }
             
             export type call<GAnnotation> = {
-                readonly 'arguments': T.Expression<GAnnotation>
+                readonly 'arguments': pt.Dictionary<T.Expression<GAnnotation>>
                 readonly 'function': T.Data__Path<GAnnotation>
                 readonly 'type arguments': T.Type__Arguments<GAnnotation>
             }
@@ -2116,24 +2137,24 @@ export namespace T {
                 
                 export type right__hand__side<GAnnotation> = T.Expression<GAnnotation>
                 
-                export type variable<GAnnotation> = T.Data__Path<GAnnotation>
+                export type target<GAnnotation> = T.Data__Path<GAnnotation>
             }
             
             export type minus__assign<GAnnotation> = {
                 readonly 'right hand side': T.Expression<GAnnotation>
-                readonly 'variable': T.Data__Path<GAnnotation>
+                readonly 'target': T.Data__Path<GAnnotation>
             }
             
             export namespace plus__assign {
                 
                 export type right__hand__side<GAnnotation> = T.Expression<GAnnotation>
                 
-                export type variable<GAnnotation> = T.Data__Path<GAnnotation>
+                export type target<GAnnotation> = T.Data__Path<GAnnotation>
             }
             
             export type plus__assign<GAnnotation> = {
                 readonly 'right hand side': T.Expression<GAnnotation>
-                readonly 'variable': T.Data__Path<GAnnotation>
+                readonly 'target': T.Data__Path<GAnnotation>
             }
             
             export namespace _lreturn {
@@ -2156,31 +2177,16 @@ export namespace T {
                     
                     export namespace D {
                         
-                        export type annotation<GAnnotation> = GAnnotation
-                        
-                        export namespace _ltype {
-                            
-                            export type block<GAnnotation> = T.Block<GAnnotation>
-                        }
-                        
-                        export type _ltype<GAnnotation> = {
-                            readonly 'block': T.Block<GAnnotation>
-                        }
+                        export type block<GAnnotation> = T.Block<GAnnotation>
                     }
                     
                     export type D<GAnnotation> = {
-                        readonly 'annotation': GAnnotation
-                        readonly 'type': {
-                            readonly 'block': T.Block<GAnnotation>
-                        }
+                        readonly 'block': T.Block<GAnnotation>
                     }
                 }
                 
                 export type cases<GAnnotation> = pt.Dictionary<{
-                    readonly 'annotation': GAnnotation
-                    readonly 'type': {
-                        readonly 'block': T.Block<GAnnotation>
-                    }
+                    readonly 'block': T.Block<GAnnotation>
                 }>
                 
                 export type condition<GAnnotation> = T.Data__Path<GAnnotation>
@@ -2195,10 +2201,7 @@ export namespace T {
             
             export type _lswitch<GAnnotation> = {
                 readonly 'cases': pt.Dictionary<{
-                    readonly 'annotation': GAnnotation
-                    readonly 'type': {
-                        readonly 'block': T.Block<GAnnotation>
-                    }
+                    readonly 'block': T.Block<GAnnotation>
                 }>
                 readonly 'condition': T.Data__Path<GAnnotation>
                 readonly 'default': [ false ] | [ true, T.Block<GAnnotation>]
@@ -2221,7 +2224,7 @@ export namespace T {
             | ['assign', T.Assign<GAnnotation>]
             | ['block', T.Block<GAnnotation>]
             | ['call', {
-                readonly 'arguments': T.Expression<GAnnotation>
+                readonly 'arguments': pt.Dictionary<T.Expression<GAnnotation>>
                 readonly 'function': T.Data__Path<GAnnotation>
                 readonly 'type arguments': T.Type__Arguments<GAnnotation>
             }]
@@ -2237,21 +2240,18 @@ export namespace T {
             }]
             | ['minus assign', {
                 readonly 'right hand side': T.Expression<GAnnotation>
-                readonly 'variable': T.Data__Path<GAnnotation>
+                readonly 'target': T.Data__Path<GAnnotation>
             }]
             | ['plus assign', {
                 readonly 'right hand side': T.Expression<GAnnotation>
-                readonly 'variable': T.Data__Path<GAnnotation>
+                readonly 'target': T.Data__Path<GAnnotation>
             }]
             | ['return', {
                 readonly 'expression': [ false ] | [ true, T.Expression<GAnnotation>]
             }]
             | ['switch', {
                 readonly 'cases': pt.Dictionary<{
-                    readonly 'annotation': GAnnotation
-                    readonly 'type': {
-                        readonly 'block': T.Block<GAnnotation>
-                    }
+                    readonly 'block': T.Block<GAnnotation>
                 }>
                 readonly 'condition': T.Data__Path<GAnnotation>
                 readonly 'default': [ false ] | [ true, T.Block<GAnnotation>]
@@ -2266,7 +2266,7 @@ export namespace T {
         | ['assign', T.Assign<GAnnotation>]
         | ['block', T.Block<GAnnotation>]
         | ['call', {
-            readonly 'arguments': T.Expression<GAnnotation>
+            readonly 'arguments': pt.Dictionary<T.Expression<GAnnotation>>
             readonly 'function': T.Data__Path<GAnnotation>
             readonly 'type arguments': T.Type__Arguments<GAnnotation>
         }]
@@ -2282,21 +2282,18 @@ export namespace T {
         }]
         | ['minus assign', {
             readonly 'right hand side': T.Expression<GAnnotation>
-            readonly 'variable': T.Data__Path<GAnnotation>
+            readonly 'target': T.Data__Path<GAnnotation>
         }]
         | ['plus assign', {
             readonly 'right hand side': T.Expression<GAnnotation>
-            readonly 'variable': T.Data__Path<GAnnotation>
+            readonly 'target': T.Data__Path<GAnnotation>
         }]
         | ['return', {
             readonly 'expression': [ false ] | [ true, T.Expression<GAnnotation>]
         }]
         | ['switch', {
             readonly 'cases': pt.Dictionary<{
-                readonly 'annotation': GAnnotation
-                readonly 'type': {
-                    readonly 'block': T.Block<GAnnotation>
-                }
+                readonly 'block': T.Block<GAnnotation>
             }>
             readonly 'condition': T.Data__Path<GAnnotation>
             readonly 'default': [ false ] | [ true, T.Block<GAnnotation>]
@@ -2371,31 +2368,16 @@ export namespace T {
         
         export namespace D {
             
-            export type annotation<GAnnotation> = GAnnotation
-            
-            export namespace _ltype {
-                
-                export type _ltype<GAnnotation> = T.Type__Path<GAnnotation>
-            }
-            
-            export type _ltype<GAnnotation> = {
-                readonly 'type': T.Type__Path<GAnnotation>
-            }
+            export type _ltype<GAnnotation> = T.Type__Path<GAnnotation>
         }
         
         export type D<GAnnotation> = {
-            readonly 'annotation': GAnnotation
-            readonly 'type': {
-                readonly 'type': T.Type__Path<GAnnotation>
-            }
+            readonly 'type': T.Type__Path<GAnnotation>
         }
     }
     
     export type Type__Arguments<GAnnotation> = pt.Dictionary<{
-        readonly 'annotation': GAnnotation
-        readonly 'type': {
-            readonly 'type': T.Type__Path<GAnnotation>
-        }
+        readonly 'type': T.Type__Path<GAnnotation>
     }>
     
     export namespace Type__Path {

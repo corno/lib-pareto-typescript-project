@@ -5,4 +5,7 @@ import * as g_unresolved from "../../lowlevel_implementation"
 
 export namespace N {}
 
-export namespace T {}
+export namespace T {
+    
+    export type Error<GAnnotation> = string
+}

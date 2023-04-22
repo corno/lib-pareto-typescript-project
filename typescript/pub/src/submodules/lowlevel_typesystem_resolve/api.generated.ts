@@ -12,7 +12,9 @@ export namespace D {
 
 export namespace A {
     
-    export type resolve = <GAnnotation>($d: D.resolve<GAnnotation>, ) => g_this.SYNC.A.F.Resolve<GAnnotation>
+    export type resolve = <GAnnotation>($d: D.resolve<GAnnotation>, $se: {
+        readonly 'error': g_this.SYNC.I.Error<GAnnotation>
+    }) => g_this.SYNC.A.F.Resolve<GAnnotation>
 }
 
 export type API = {

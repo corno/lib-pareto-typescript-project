@@ -14,6 +14,11 @@ export namespace ASYNC {
 
 export namespace SYNC {
     
+    export namespace I {
+        
+        export type Error<GAnnotation> = ($: T.Error<GAnnotation>, ) => void
+    }
+    
     export namespace A {
         
         

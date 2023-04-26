@@ -9,7 +9,18 @@ import * as g_out_typesystem from "../../lowlevel_typesystem_possiblyresolved"
 
 import { A } from "../api.generated"
 
+
+function tempoptional<T, RT>(
+    $: pt.OptionalValue<T>,
+   a: ($: T) => pt.OptionalValue<RT>,
+   b: () => pt.OptionalValue<RT>,
+): pt.OptionalValue<RT> {
+    return tempoptional($, a, b)
+}
+
 export const $$: A.resolve = ($d, $se) => {
+
+    
 
     return ($) => {
         return pd.implementMe(`IMPLEMENT resolve`)

@@ -11,12 +11,12 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
     'imports': d({
         "glossary": null,
     }),
-    'terminal types': d({
-        "identifier": null,
-    }),
+    'labels': {
+        'atom types': d({
+            "identifier": null,
+        }),
+    },
     'global types': d({
-
-
         "AlgorithmTypeReference": globalType({}, group({
             "context": prop(component("Context", {})),
             "type": prop(taggedUnion({

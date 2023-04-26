@@ -11,8 +11,8 @@ import {
     prop,
     optional,
     option,
-    typeSelection,
-    grp,
+    tempTypeSelection,
+    t_grp,
     array,
     resolvedValueReference,
     valSel,
@@ -22,15 +22,18 @@ const d = pd.d
 
 export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
     'imports': d({}),
-    'terminal types': d({
-        "identifier": null,
-    }),
+    'labels': {
+        'atom types': d({
+            "identifier": null,
+        }),
+
+    },
     'global types': d({
         "Context": globalType({}, taggedUnion({
             "local": option(group({})),
             //"import": reference(['parent', null), [)),
             "import": option(group({
-                "glossary": prop(resolvedValueReference(valSel("glossary"), typeSelection("Glossary", [grp("imports")]))),
+                "glossary": prop(resolvedValueReference(valSel("glossary"), tempTypeSelection("Glossary", [t_grp("imports")]))),
             })),
         })),
         "DataOrSynchronousInterface": globalType({}, taggedUnion({

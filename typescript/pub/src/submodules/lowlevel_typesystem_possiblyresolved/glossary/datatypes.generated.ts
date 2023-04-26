@@ -3,76 +3,7 @@ import * as pt from 'pareto-core-types'
 
 export namespace N {
     
-    export namespace Function {
-        
-        export namespace N {
-            
-            export namespace G {
-                
-                export namespace N {
-                    
-                    export namespace parameters {
-                        
-                        export namespace N {
-                            
-                            export namespace D {
-                                
-                                export namespace N {
-                                    
-                                    export namespace G {
-                                        
-                                        export namespace N {
-                                            
-                                            export namespace _$ltype {
-                                                
-                                                export namespace N {}
-                                                
-                                                export namespace T {}
-                                            }
-                                        }
-                                        
-                                        export namespace T {}
-                                    }
-                                }
-                                
-                                export namespace T {}
-                            }
-                        }
-                        
-                        export namespace T {}
-                    }
-                    
-                    export namespace return_$_$type {
-                        
-                        export namespace N {
-                            
-                            export namespace O {
-                                
-                                export namespace N {}
-                                
-                                export namespace T {}
-                            }
-                        }
-                        
-                        export namespace T {}
-                    }
-                    
-                    export namespace type_$_$parameters {
-                        
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                }
-                
-                export namespace T {}
-            }
-        }
-        
-        export namespace T {}
-    }
-    
-    export namespace Global_$_$Types {
+    export namespace Namespace {
         
         export namespace N {
             
@@ -94,23 +25,7 @@ export namespace N {
                                             
                                             export namespace namespace {
                                                 
-                                                export namespace N {
-                                                    
-                                                    export namespace G {
-                                                        
-                                                        export namespace N {
-                                                            
-                                                            export namespace types {
-                                                                
-                                                                export namespace N {}
-                                                                
-                                                                export namespace T {}
-                                                            }
-                                                        }
-                                                        
-                                                        export namespace T {}
-                                                    }
-                                                }
+                                                export namespace N {}
                                                 
                                                 export namespace T {}
                                             }
@@ -165,6 +80,37 @@ export namespace N {
         export namespace T {}
     }
     
+    export namespace Parameters {
+        
+        export namespace N {
+            
+            export namespace D {
+                
+                export namespace N {
+                    
+                    export namespace G {
+                        
+                        export namespace N {
+                            
+                            export namespace _$ltype {
+                                
+                                export namespace N {}
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                }
+                
+                export namespace T {}
+            }
+        }
+        
+        export namespace T {}
+    }
+    
     export namespace SourceFile {
         
         export namespace N {
@@ -173,7 +119,7 @@ export namespace N {
                 
                 export namespace N {
                     
-                    export namespace types {
+                    export namespace root {
                         
                         export namespace N {}
                         
@@ -196,6 +142,43 @@ export namespace N {
                 
                 export namespace N {
                     
+                    export namespace address_$_$function {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace parameters {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace return_$_$type {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace type_$_$parameters {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
                     export namespace array {
                         
                         export namespace N {}
@@ -214,13 +197,6 @@ export namespace N {
                                 export namespace T {}
                             }
                         }
-                        
-                        export namespace T {}
-                    }
-                    
-                    export namespace _$lfunction {
-                        
-                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -309,6 +285,36 @@ export namespace N {
                         export namespace T {}
                     }
                     
+                    export namespace procedure {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace parameters {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace type_$_$parameters {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
                     export namespace reference {
                         
                         export namespace N {
@@ -362,6 +368,43 @@ export namespace N {
                             export namespace D {
                                 
                                 export namespace N {}
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace value_$_$function {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace parameters {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace return_$_$type {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace type_$_$parameters {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
                                 
                                 export namespace T {}
                             }
@@ -449,56 +492,13 @@ export namespace N {
 
 export namespace T {
     
-    export namespace Function {
-        
-        export namespace parameters {
-            
-            export namespace D {
-                
-                export type _ltype<GAnnotation> = T.Type<GAnnotation>
-            }
-            
-            export type D<GAnnotation> = {
-                readonly 'type': T.Type<GAnnotation>
-            }
-        }
-        
-        export type parameters<GAnnotation> = pt.Dictionary<{
-            readonly 'type': T.Type<GAnnotation>
-        }>
-        
-        export namespace return__type {
-            
-            export type O<GAnnotation> = T.Type<GAnnotation>
-        }
-        
-        export type return__type<GAnnotation> = [ false ] | [ true, T.Type<GAnnotation>]
-        
-        export type type__parameters<GAnnotation> = T.Type__Parameters<GAnnotation>
-    }
-    
-    export type Function<GAnnotation> = {
-        readonly 'parameters': pt.Dictionary<{
-            readonly 'type': T.Type<GAnnotation>
-        }>
-        readonly 'return type': [ false ] | [ true, T.Type<GAnnotation>]
-        readonly 'type parameters': T.Type__Parameters<GAnnotation>
-    }
-    
-    export namespace Global__Types {
+    export namespace Namespace {
         
         export namespace D {
             
             export namespace _ltype {
                 
-                export namespace namespace {
-                    
-                    export type types<GAnnotation> = T.Global__Types<GAnnotation>
-                }
-                
-                export type namespace<GAnnotation> = {
-                    readonly 'types': T.Global__Types<GAnnotation>
-                }
+                export type namespace<GAnnotation> = T.Namespace<GAnnotation>
                 
                 export namespace type__definition {
                     
@@ -514,9 +514,7 @@ export namespace T {
             }
             
             export type _ltype<GAnnotation> = 
-                | ['namespace', {
-                    readonly 'types': T.Global__Types<GAnnotation>
-                }]
+                | ['namespace', T.Namespace<GAnnotation>]
                 | ['type definition', {
                     readonly 'parameters': T.Type__Parameters<GAnnotation>
                     readonly 'type': T.Type<GAnnotation>
@@ -525,9 +523,7 @@ export namespace T {
         
         export type D<GAnnotation> = {
             readonly 'type': 
-                | ['namespace', {
-                    readonly 'types': T.Global__Types<GAnnotation>
-                }]
+                | ['namespace', T.Namespace<GAnnotation>]
                 | ['type definition', {
                     readonly 'parameters': T.Type__Parameters<GAnnotation>
                     readonly 'type': T.Type<GAnnotation>
@@ -535,35 +531,62 @@ export namespace T {
         }
     }
     
-    export type Global__Types<GAnnotation> = pt.Dictionary<{
+    export type Namespace<GAnnotation> = pt.Dictionary<{
         readonly 'type': 
-            | ['namespace', {
-                readonly 'types': T.Global__Types<GAnnotation>
-            }]
+            | ['namespace', T.Namespace<GAnnotation>]
             | ['type definition', {
                 readonly 'parameters': T.Type__Parameters<GAnnotation>
                 readonly 'type': T.Type<GAnnotation>
             }]
     }>
     
+    export namespace Parameters {
+        
+        export namespace D {
+            
+            export type _ltype<GAnnotation> = T.Type<GAnnotation>
+        }
+        
+        export type D<GAnnotation> = {
+            readonly 'type': T.Type<GAnnotation>
+        }
+    }
+    
+    export type Parameters<GAnnotation> = pt.Dictionary<{
+        readonly 'type': T.Type<GAnnotation>
+    }>
+    
     export namespace SourceFile {
         
-        export type types<GAnnotation> = T.Global__Types<GAnnotation>
+        export type root<GAnnotation> = T.Namespace<GAnnotation>
     }
     
     export type SourceFile<GAnnotation> = {
-        readonly 'types': T.Global__Types<GAnnotation>
+        readonly 'root': T.Namespace<GAnnotation>
     }
     
     export namespace Type {
+        
+        export namespace address__function {
+            
+            export type parameters<GAnnotation> = T.Parameters<GAnnotation>
+            
+            export type return__type<GAnnotation> = T.Type<GAnnotation>
+            
+            export type type__parameters<GAnnotation> = T.Type__Parameters<GAnnotation>
+        }
+        
+        export type address__function<GAnnotation> = {
+            readonly 'parameters': T.Parameters<GAnnotation>
+            readonly 'return type': T.Type<GAnnotation>
+            readonly 'type parameters': T.Type__Parameters<GAnnotation>
+        }
         
         export type array<GAnnotation> = T.Type<GAnnotation>
         
         export namespace _lboolean {}
         
         export type _lboolean<GAnnotation> = null
-        
-        export type _lfunction<GAnnotation> = T.Function<GAnnotation>
         
         export namespace group {
             
@@ -599,6 +622,18 @@ export namespace T {
         export type _lnumber<GAnnotation> = null
         
         export type optional<GAnnotation> = T.Type<GAnnotation>
+        
+        export namespace procedure {
+            
+            export type parameters<GAnnotation> = T.Parameters<GAnnotation>
+            
+            export type type__parameters<GAnnotation> = T.Type__Parameters<GAnnotation>
+        }
+        
+        export type procedure<GAnnotation> = {
+            readonly 'parameters': T.Parameters<GAnnotation>
+            readonly 'type parameters': T.Type__Parameters<GAnnotation>
+        }
         
         export namespace reference {
             
@@ -650,12 +685,31 @@ export namespace T {
         }
         
         export type tagged__union<GAnnotation> = pt.Dictionary<T.Type<GAnnotation>>
+        
+        export namespace value__function {
+            
+            export type parameters<GAnnotation> = T.Parameters<GAnnotation>
+            
+            export type return__type<GAnnotation> = T.Type<GAnnotation>
+            
+            export type type__parameters<GAnnotation> = T.Type__Parameters<GAnnotation>
+        }
+        
+        export type value__function<GAnnotation> = {
+            readonly 'parameters': T.Parameters<GAnnotation>
+            readonly 'return type': T.Type<GAnnotation>
+            readonly 'type parameters': T.Type__Parameters<GAnnotation>
+        }
     }
     
     export type Type<GAnnotation> = 
+        | ['address function', {
+            readonly 'parameters': T.Parameters<GAnnotation>
+            readonly 'return type': T.Type<GAnnotation>
+            readonly 'type parameters': T.Type__Parameters<GAnnotation>
+        }]
         | ['array', T.Type<GAnnotation>]
         | ['boolean', null]
-        | ['function', T.Function<GAnnotation>]
         | ['group', {
             readonly 'properties': pt.Dictionary<{
                 readonly 'type': T.Type<GAnnotation>
@@ -664,6 +718,10 @@ export namespace T {
         | ['null', null]
         | ['number', null]
         | ['optional', T.Type<GAnnotation>]
+        | ['procedure', {
+            readonly 'parameters': T.Parameters<GAnnotation>
+            readonly 'type parameters': T.Type__Parameters<GAnnotation>
+        }]
         | ['reference', {
             readonly 'path': pt.Array<{
                 readonly 'annotation': GAnnotation
@@ -673,6 +731,11 @@ export namespace T {
         }]
         | ['string', null]
         | ['tagged union', pt.Dictionary<T.Type<GAnnotation>>]
+        | ['value function', {
+            readonly 'parameters': T.Parameters<GAnnotation>
+            readonly 'return type': T.Type<GAnnotation>
+            readonly 'type parameters': T.Type__Parameters<GAnnotation>
+        }]
     
     export namespace Type__Parameters {
         
@@ -691,24 +754,24 @@ export namespace T {
                 
                 export namespace constraint {
                     
-                    export type O<GAnnotation> = T.Global__Types.D<GAnnotation>
+                    export type O<GAnnotation> = T.Namespace.D<GAnnotation>
                 }
                 
-                export type constraint<GAnnotation> = [ false ] | [ true, T.Global__Types.D<GAnnotation>]
+                export type constraint<GAnnotation> = [ false ] | [ true, T.Namespace.D<GAnnotation>]
                 
                 export type key<GAnnotation> = string
             }
             
             export type A<GAnnotation> = {
                 readonly 'annotation': GAnnotation
-                readonly 'constraint': [ false ] | [ true, T.Global__Types.D<GAnnotation>]
+                readonly 'constraint': [ false ] | [ true, T.Namespace.D<GAnnotation>]
                 readonly 'key': string
             }
         }
         
         export type namespaces<GAnnotation> = pt.Array<{
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, T.Global__Types.D<GAnnotation>]
+            readonly 'constraint': [ false ] | [ true, T.Namespace.D<GAnnotation>]
             readonly 'key': string
         }>
         
@@ -725,17 +788,17 @@ export namespace T {
             
             export namespace constraint {
                 
-                export type O<GAnnotation> = T.Global__Types.D<GAnnotation>
+                export type O<GAnnotation> = T.Namespace.D<GAnnotation>
             }
             
-            export type constraint<GAnnotation> = [ false ] | [ true, T.Global__Types.D<GAnnotation>]
+            export type constraint<GAnnotation> = [ false ] | [ true, T.Namespace.D<GAnnotation>]
             
             export type key<GAnnotation> = string
         }
         
         export type _ltype<GAnnotation> = {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, T.Global__Types.D<GAnnotation>]
+            readonly 'constraint': [ false ] | [ true, T.Namespace.D<GAnnotation>]
             readonly 'key': string
         }
     }
@@ -743,13 +806,13 @@ export namespace T {
     export type Type__Path<GAnnotation> = {
         readonly 'namespaces': pt.Array<{
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, T.Global__Types.D<GAnnotation>]
+            readonly 'constraint': [ false ] | [ true, T.Namespace.D<GAnnotation>]
             readonly 'key': string
         }>
         readonly 'parameters': pt.Dictionary<T.Type<GAnnotation>>
         readonly 'type': {
             readonly 'annotation': GAnnotation
-            readonly 'constraint': [ false ] | [ true, T.Global__Types.D<GAnnotation>]
+            readonly 'constraint': [ false ] | [ true, T.Namespace.D<GAnnotation>]
             readonly 'key': string
         }
     }

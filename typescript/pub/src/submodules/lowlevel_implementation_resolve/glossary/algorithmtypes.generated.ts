@@ -23,7 +23,7 @@ export namespace SYNC {
         
         
         export namespace F {
-            export type Resolve<GAnnotation> = ($: g_unresolved.T.SourceFile<GAnnotation>) => g_resolved.T.SourceFile<GAnnotation>
+            export type Resolve<GAnnotation> = ($: g_unresolved.T.Address__Selection<GAnnotation>) => g_resolved.T.Address__Selection<GAnnotation>
         }
     }
 }

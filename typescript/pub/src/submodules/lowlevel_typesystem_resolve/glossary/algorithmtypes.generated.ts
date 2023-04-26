@@ -2,8 +2,8 @@ import * as pt from 'pareto-core-types'
 
 import { T } from "./datatypes.generated"
 
-import * as g_resolved from "../../lowlevel_implementation_possiblyresolved"
-import * as g_unresolved from "../../lowlevel_implementation"
+import * as g_resolved from "../../lowlevel_typesystem_possiblyresolved"
+import * as g_unresolved from "../../lowlevel_typesystem"
 
 export namespace ASYNC {
     
@@ -13,11 +13,6 @@ export namespace ASYNC {
 }
 
 export namespace SYNC {
-    
-    export namespace I {
-        
-        export type Error<GAnnotation> = ($: T.Error<GAnnotation>, ) => void
-    }
     
     export namespace A {
         

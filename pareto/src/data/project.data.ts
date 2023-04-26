@@ -14,7 +14,7 @@ import { $ as d_parametersparser } from "./submodules/parametersparser/module.da
 
 import { $ as d_lowlevel_typesystem } from "./submodules/lowlevel_typesystem/module.data"
 import { $ as d_lowlevel_typesystem_possiblyresolved } from "./submodules/lowlevel_typesystem_possiblyresolved/module.data"
-import { $ as d_lowlevel_typesystem_resolve } from "./submodules/lowlevel_implementation_resolve/module.data"
+import { $ as d_lowlevel_typesystem_resolve } from "./submodules/lowlevel_typesystem_resolve/module.data"
 
 import { $ as d_lowlevel_implementation } from "./submodules/lowlevel_implementation/module.data"
 import { $ as d_lowlevel_implementation_possiblyresolved } from "./submodules/lowlevel_implementation_possiblyresolved/module.data"

@@ -7,27 +7,31 @@ import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/gloss
 const d = pd.d
 
 export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
-    'parameters': d({
-        "Annotation": null,
-    }),
     'imports': d({
-        "unresolved": imp({"Annotation": glossaryParameter("Annotation"),}),
-        "resolved": imp({"Annotation": glossaryParameter("Annotation"),}),
-        "model": imp({    }),
+        "unresolved": imp({ "Annotation": glossaryParameter("Annotation"), }),
+        "resolved": imp({ "Annotation": glossaryParameter("Annotation"), }),
+        "model": imp({}),
     }),
-    'root': {
-        'namespaces': d({}),
-        'types': d({
+    'core': {
+
+        'parameters': d({
+            "Annotation": null,
         }),
-    },
-    'asynchronous': {
-        'interfaces': d({}),
-        'algorithms': d({}),
-    },
-    'synchronous': {
-        'interfaces': d({}),
-        'algorithms': d({
-            "Resolve": sfunction(externalTypeReference("resolved", "SourceFile"), data(externalTypeReference("unresolved", "SourceFile"))),
-        }),
+
+        'root': {
+            'namespaces': d({}),
+            'types': d({
+            }),
+        },
+        'asynchronous': {
+            'interfaces': d({}),
+            'algorithms': d({}),
+        },
+        'synchronous': {
+            'interfaces': d({}),
+            'algorithms': d({
+                "Resolve": sfunction(externalTypeReference("resolved", "SourceFile"), data(externalTypeReference("unresolved", "SourceFile"))),
+            }),
+        },
     },
 }

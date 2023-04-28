@@ -138,14 +138,14 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
             switch ($[0]) {
                 case 'type parameterXX':
                     pl.ss($, ($) => {
-                        $i.snippet(`['type parameter', `)
+                        $i.snippet(`['type parameterXX', `)
                         $i.snippet(`"${$}"`)
                         $i.snippet(`]`)
                     })
                     break
                 case 'glossary parameterXX':
                     pl.ss($, ($) => {
-                        $i.snippet(`['glossary parameter', `)
+                        $i.snippet(`['glossary parameterXX', `)
                         $i.snippet(`"${$}"`)
                         $i.snippet(`]`)
                     })
@@ -161,13 +161,13 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                 $i.snippet(`,`)
                             })
                             $i.nestedLine(($i) => {
-                                $i.snippet(`'type': `)
+                                $i.snippet(`'typeXX': `)
                                 $i.snippet(`"` + $.typeXX + `"`)
                                 //doReference($.type, $i)
                                 $i.snippet(`,`)
                             })
                             $i.nestedLine(($i) => {
-                                $i.snippet(`'tail': a([`)
+                                $i.snippet(`'tailXX': a([`)
                                 $i.indent(($i) => {
                                     $.tailXX.__forEach(($) => {
                                         $i.nestedLine(($i) => {
@@ -318,7 +318,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                         $i.snippet(`['import', {`)
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
-                                $i.snippet(`'glossary': `)
+                                $i.snippet(`'glossaryXX': "${$.glossaryXX}"`)
                                 //serializeRef($.glossary, $i)
                                 $i.snippet(`,`)
                             })
@@ -343,7 +343,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     $i.snippet(`,`)
                 })
                 $i.nestedLine(($i) => {
-                    $i.snippet(`'interface': "${$.interfaceXX}",`)
+                    $i.snippet(`'interfaceXX': "${$.interfaceXX}",`)
                 })
                 $i.nestedLine(($i) => {
                     $i.snippet(`'arguments': d({`)
@@ -385,7 +385,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     $i.snippet(`,`)
                 })
                 $i.nestedLine(($i) => {
-                    $i.snippet(`'interface': "${$.interfaceXX}",`)
+                    $i.snippet(`'interfaceXX': "${$.interfaceXX}",`)
                 })
                 $i.nestedLine(($i) => {
                     $i.snippet(`'arguments': d({`)

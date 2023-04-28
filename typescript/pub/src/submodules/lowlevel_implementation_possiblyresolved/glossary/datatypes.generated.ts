@@ -524,6 +524,21 @@ export namespace N {
         export namespace T {}
     }
     
+    export namespace Source_$_$File {
+        
+        export namespace N {
+            
+            export namespace G {
+                
+                export namespace N {}
+                
+                export namespace T {}
+            }
+        }
+        
+        export namespace T {}
+    }
+    
     export namespace String_$_$Expression {
         
         export namespace N {
@@ -1620,6 +1635,10 @@ export namespace T {
             }
             readonly 'content': T.String__Expression<GAnnotation>
         }]
+    
+    export namespace Source__File {}
+    
+    export type Source__File<GAnnotation> = null
     
     export namespace String__Expression {
         

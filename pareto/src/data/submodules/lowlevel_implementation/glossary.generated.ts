@@ -255,6 +255,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     })],
                 })]
             },
+            "Source File": {
+                'parameters': d({}),
+                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]
+            },
             "String Expression": {
                 'parameters': d({}),
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
@@ -690,6 +694,15 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 'namespaces': d({}),
                             },
                         }),
+                    },
+                }),
+            },
+            "Source File": {
+                'types': d({}),
+                'namespaces': d({
+                    "G": {
+                        'types': d({}),
+                        'namespaces': d({}),
                     },
                 }),
             },

@@ -1,14 +1,12 @@
 import * as pl from 'pareto-core-lib'
-import * as pd from 'pareto-core-dev'
+import * as pm from 'pareto-core-map'
 import * as pt from 'pareto-core-types'
 
-import * as g_this from "../glossary"
 import * as g_in from "../../lowlevel_implementation"
 import * as g_out from "../../lowlevel_implementation_possiblyresolved"
 import * as g_out_typesystem from "../../lowlevel_typesystem_possiblyresolved"
 
 import { A } from "../api.generated"
-
 
 function tempoptional<T, RT>(
     $: pt.OptionalValue<T>,
@@ -17,12 +15,8 @@ function tempoptional<T, RT>(
 ): pt.OptionalValue<RT> {
     return tempoptional($, a, b)
 }
-
 export const $$: A.resolve = ($d, $se) => {
-
-
-
-
+    
     function map_A__dictionary__with__constraint<Annotation>(
         $: g_in.T.A__dictionary__with__constraint<Annotation>,
     ): g_out.T.A__dictionary__with__constraint<Annotation> {
@@ -609,6 +603,14 @@ export const $$: A.resolve = ($d, $se) => {
         })
     }
     
+    function map_Source__File<Annotation>(
+        $: g_in.T.Source__File<Annotation>,
+    ): g_out.T.Source__File<Annotation> {
+        return pl.cc($, ($) => {
+            return null
+        })
+    }
+    
     function map_String__Expression<Annotation>(
         $: g_in.T.String__Expression<Annotation>,
         $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
@@ -935,7 +937,5 @@ export const $$: A.resolve = ($d, $se) => {
             }
         }))
     }
-    return ($) => {
-        return pd.implementMe(`IMPLEMENT resolve`)
-    }
+    return map_Source__File
 }

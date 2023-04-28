@@ -128,7 +128,7 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                     },
                 },
                 'mapped library': {
-                    'library': d_lowlevel_implemenatation,
+                    'library': d_lowlevel_implemenatation.model['type library'],
 
                     'terminal mapping': pd.d({
                         "identifier": ['string', null],
@@ -155,7 +155,7 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                     },
                 },
                 'mapped library': {
-                    'library': d_lowlevel_implemenatation,
+                    'library': d_lowlevel_implemenatation.model['type library'],
 
                     'terminal mapping': pd.d({
                         "identifier": ['string', null],

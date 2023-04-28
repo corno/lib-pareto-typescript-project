@@ -30,7 +30,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "Error": sInterface(sInterfaceMethod(typeReference("Error")))
         }),
         'algorithms': d({
-            "Resolve": sfunction(externalTypeReference("resolved", "Address Selection"), data(externalTypeReference("unresolved", "Address Selection"))),
+            "Resolve": sfunction(externalTypeReference("resolved", "Source File"), data(externalTypeReference("unresolved", "Source File"))),
         }),
     },
 }

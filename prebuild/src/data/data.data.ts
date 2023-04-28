@@ -10,6 +10,32 @@ import { $ as d_lowlevel_typesystem } from "./models/lowlevel_typesystem.data"
 export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
     'outputs': pd.a([
         {
+            'path': pd.a([`../../pareto/src/data/submodules/glossary_possiblyresolved/glossary.generated.ts`]),
+            'data': {
+                'settings': {
+                    'annotations': true,
+                    'datamodel': [true, {
+                        'constraints mapping': {
+                            'terminal values': true,
+                            'constraints': [true, ['optional', null]]
+                        },
+                    }],
+                    'visitor interface': [false],
+                    'algorithms': {
+                        'serialize': [false],
+                    },
+                },
+                'mapped library': {
+                    'library': d_glossary.model['type library'],
+
+                    'terminal mapping': pd.d({
+                        "identifier": ['string', null],
+                        "boolean": ['boolean', null],
+                    }),
+                },
+            }
+        },
+        {
             'path': pd.a([`../../pareto/src/data/submodules/glossary/glossary.generated.ts`]),
             'data': {
                 'settings': {
@@ -26,7 +52,7 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                     },
                 },
                 'mapped library': {
-                    'library': d_glossary,
+                    'library': d_glossary.model['type library'],
 
                     'terminal mapping': pd.d({
                         "identifier": ['string', null],

@@ -7,8 +7,12 @@ import { $ as d_main } from "./main/module.data"
 import { $ as d_algorithm } from "./submodules/algorithm/module.data"
 import { $ as d_pareto2typescript } from "./submodules/pareto2typescript/module.data"
 import { $ as d_project } from "./submodules/project/module.data"
+
 import { $ as d_glossary_serialize } from "./submodules/glossary_serialize/module.data"
 import { $ as d_glossary } from "./submodules/glossary/module.data"
+import { $ as d_glossary_resolve } from "./submodules/glossary_resolve/module.data"
+import { $ as d_glossary_possiblyresolved } from "./submodules/glossary_possiblyresolved/module.data"
+
 import { $ as d_parameters } from "./submodules/parameters/module.data"
 import { $ as d_parametersparser } from "./submodules/parametersparser/module.data"
 
@@ -46,6 +50,9 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
             "algorithm": d_algorithm,
             "glossary_serialize": d_glossary_serialize,
             "glossary": d_glossary,
+            "glossary_possiblyresolved": d_glossary_possiblyresolved,
+            "glossary_resolve": d_glossary_resolve,
+
             "lowlevel_typesystem": d_lowlevel_typesystem,
             "lowlevel_typesystem_resolve": d_lowlevel_typesystem_resolve,
             "lowlevel_typesystem_possiblyresolved": d_lowlevel_typesystem_possiblyresolved,

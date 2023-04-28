@@ -20,7 +20,7 @@ export const $$: A.serializeGlossary = ($d) => {
     return <Annotation>($: g_this.T.SerializeGlossaryData<Annotation>, $i: g_fp.SYNC.I.Directory) => {
         const imports = $.imports
         return pl.cc($.glossary, ($) => {
-            const globalParameters = $.parameters
+            const globalParameters = $.core.parameters
             const importDefinitions = $.imports
             function doDictionaryType<T>(
                 $: pt.Dictionary<T>,
@@ -138,7 +138,7 @@ export const $$: A.serializeGlossary = ($d) => {
                 switch ($[0]) {
                     case 'import':
                         pl.ss($, ($) => {
-                            $i.snippet(`g_${$.glossary.key}.`)
+                            $i.snippet(`g_${$.glossaryXX}.`)
                         })
                         break
                     case 'local':
@@ -166,12 +166,12 @@ export const $$: A.serializeGlossary = ($d) => {
             }
             function serializeDataSpecifier($: g_glossary.T.DataSpecifier<Annotation>, $i: g_fp.SYNC.I.Line) {
                 switch ($[0]) {
-                    case 'glossary parameter':
+                    case 'glossary parameterXX':
                         pl.ss($, ($) => {
                             $i.snippet(`G${$}`)
                         })
                         break
-                    case 'type parameter':
+                    case 'type parameterXX':
                         pl.ss($, ($) => {
                             $i.snippet(`T${$}`)
                         })
@@ -180,8 +180,8 @@ export const $$: A.serializeGlossary = ($d) => {
                         pl.ss($, ($) => {
                             serializeContext($.context, $i)
                             $i.snippet(`T`)
-                            $i.snippet(`.${$d.createIdentifier(`${$.type/*.name*/}`)}`)
-                            $.tail.__forEach(($) => {
+                            $i.snippet(`.${$d.createIdentifier(`${$.typeXX/*.name*/}`)}`)
+                            $.tailXX.__forEach(($) => {
                                 $i.snippet(`.${$d.createIdentifier(`${$}`)}`)
                             })
                             $d.enrichedDictionaryForEach($.arguments, {
@@ -194,7 +194,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                         case 'import':
                                             pl.ss($.context, ($) => {
                                                 importDefinitions.__getEntry(
-                                                    $.glossary.key,
+                                                    $.glossaryXX,
                                                     ($) => {
                                                         $d.dictionaryForEach($.arguments, ($) => {
                                                             serializeDataSpecifier($.value, $i)
@@ -202,7 +202,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                         })
                                                     },
                                                     () => {
-                                                        pd.logDebugMessage(`missing import: ${$.glossary.key}`)
+                                                        pd.logDebugMessage(`missing import: ${$.glossaryXX}`)
                                                     }
                                                 )
                                             })
@@ -236,7 +236,7 @@ export const $$: A.serializeGlossary = ($d) => {
                     case 'import':
                         pl.ss($, ($) => {
                             importDefinitions.__getEntry(
-                                $.glossary.key,
+                                $.glossaryXX,
                                 ($) => {
                                     $d.enrichedDictionaryForEach($.arguments, {
                                         'onEmpty': () => {
@@ -254,7 +254,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                     })
                                 },
                                 () => {
-                                    pd.logDebugMessage(`missing import: ${$.glossary.key}`)
+                                    pd.logDebugMessage(`missing import: ${$.glossaryXX}`)
                                 }
                             )
                         })
@@ -589,7 +589,7 @@ export const $$: A.serializeGlossary = ($d) => {
                         $i.snippet(`import * as g_${$.key} from "${$.value}"`)
                     })
                 })
-                serializeNamespace($.root, $i)
+                serializeNamespace($.core.root, $i)
 
             })
             $i.file(`algorithmtypes.generated.ts`, ($i) => {
@@ -662,7 +662,7 @@ export const $$: A.serializeGlossary = ($d) => {
                 }
                 function serializeSynchronousInterfaceReference($: g_glossary.T.SynchronousInterfaceReference<Annotation>, $i: g_fp.SYNC.I.Line) {
                     serializeContext($.context, $i)
-                    $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
+                    $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interfaceXX}`)}`)
                     $d.enrichedDictionaryForEach($.arguments, {
                         'onEmpty': () => {
                             serializeContextGlossaryArgumentsOnly($.context, $i)
@@ -673,7 +673,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                 case 'import':
                                     pl.ss($.context, ($) => {
                                         importDefinitions.__getEntry(
-                                            $.glossary.key,
+                                            $.glossaryXX,
                                             ($) => {
                                                 $d.dictionaryForEach($.arguments, ($) => {
                                                     serializeDataSpecifier($.value, $i)
@@ -681,7 +681,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 })
                                             },
                                             () => {
-                                                pd.logDebugMessage(`missing import: ${$.glossary.key}`)
+                                                pd.logDebugMessage(`missing import: ${$.glossaryXX}`)
                                             }
                                         )
                                     })
@@ -799,7 +799,7 @@ export const $$: A.serializeGlossary = ($d) => {
                 }
                 function serializeAsynchronousInterfaceReference($: g_glossary.T.AsynchronousInterfaceReference<Annotation>, $i: g_fp.SYNC.I.Line) {
                     serializeContext($.context, $i)
-                    $i.snippet(`ASYNC.I.${$d.createIdentifier(`${$.interface}`)}`)
+                    $i.snippet(`ASYNC.I.${$d.createIdentifier(`${$.interfaceXX}`)}`)
                     $d.enrichedDictionaryForEach($.arguments, {
                         'onEmpty': () => {
                             serializeContextGlossaryArgumentsOnly($.context, $i)
@@ -810,7 +810,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                 case 'import':
                                     pl.ss($.context, ($) => {
                                         importDefinitions.__getEntry(
-                                            $.glossary.key,
+                                            $.glossaryXX,
                                             ($) => {
                                                 $d.dictionaryForEach($.arguments, ($) => {
                                                     serializeDataSpecifier($.value, $i)
@@ -818,7 +818,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                 })
                                             },
                                             () => {
-                                                pd.logDebugMessage(`missing import: ${$.glossary.key}`)
+                                                pd.logDebugMessage(`missing import: ${$.glossaryXX}`)
                                             }
                                         )
                                     })
@@ -855,7 +855,7 @@ export const $$: A.serializeGlossary = ($d) => {
                     })
                 })
 
-                pl.cc($.asynchronous, ($) => {
+                pl.cc($.core.asynchronous, ($) => {
                     ns(`ASYNC`, $i, ($i) => {
                         ns(`I`, $i, ($i) => {
                             $d.dictionaryForEach($.interfaces, ($) => {
@@ -987,7 +987,7 @@ export const $$: A.serializeGlossary = ($d) => {
                 })
                 ns(`SYNC`, $i, ($i) => {
 
-                    pl.cc($.synchronous, ($) => {
+                    pl.cc($.core.synchronous, ($) => {
 
                         $d.enrichedDictionaryForEach($.interfaces, {
                             'onEmpty': () => { },

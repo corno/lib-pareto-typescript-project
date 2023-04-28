@@ -2,7 +2,6 @@ import * as pd from 'pareto-core-data'
 
 import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
-import { external } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 import { $ as api } from "./api.data"
 import { $ as glossary } from "./glossary.generated"
 

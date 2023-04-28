@@ -14,9 +14,6 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
     'definition': {
         'glossary': {
             'root': {
-                'parameters': d({
-                    "Annotation": null,
-                }),
                 'imports': d({}),
                 // 'templates': d({
                 //     "Reference": {
@@ -33,21 +30,25 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
                 //         })],
                 //     },
                 // }),
-                'root': {
-                    'types': d({
+                'core': {
+                    'parameters': d({
+                        "Annotation": null,
                     }),
-                    'namespaces': d({}),
+                    'root': {
+                        'types': d({
+                        }),
+                        'namespaces': d({}),
+                    },
+                    'asynchronous': {
+                        'interfaces': d({
+                        }),
+                        'algorithms': d({}),
+                    },
+                    'synchronous': {
+                        'interfaces': d({}),
+                        'algorithms': d({}),
+                    },
                 },
-                'asynchronous': {
-                    'interfaces': d({
-                    }),
-                    'algorithms': d({}),
-                },
-                'synchronous': {
-                    'interfaces': d({}),
-                    'algorithms': d({}),
-                },
-
             },
             'imports': d({}),
         },

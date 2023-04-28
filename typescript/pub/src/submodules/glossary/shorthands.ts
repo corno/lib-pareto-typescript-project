@@ -51,11 +51,11 @@ export function type(type: t.T.Type<pd.SourceLocation>): t.T.Namespace.types.D<p
 
 
 export function typeParameter($: string): t.T.DataSpecifier<pd.SourceLocation> {
-    return ['type parameter', $]
+    return ['type parameterXX', $]
 }
 
 export function glossaryParameter($: string): t.T.DataSpecifier<pd.SourceLocation> {
-    return ['glossary parameter', $]
+    return ['glossary parameterXX', $]
 }
 
 export function array($: t.T.Type<pd.SourceLocation>): t.T.Type<pd.SourceLocation> {
@@ -89,10 +89,11 @@ export function context(glossary: string, annotation: pd.SourceLocation): t.T.Co
         return ['local', null]
     } else {
         return ['import', {
-            'glossary': {
-                'annotation': annotation,
-                'key': glossary,
-            },
+            // 'glossary': {
+            //     'annotation': annotation,
+            //     'key': glossary,
+            // },
+            'glossaryXX': glossary,
         }]
     }
 }
@@ -110,8 +111,8 @@ export function externalTypeReference(
 ): t.T.DataSpecifier<pd.SourceLocation> {
     return ['type', {
         'context': context(contextX, pd.getLocationInfo(1)),
-        'type': type,
-        'tail': pd.a([]),
+        'typeXX': type,
+        'tailXX': pd.a([]),
         'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
     }]
 }
@@ -122,8 +123,8 @@ export function typeReference(
 ): t.T.DataSpecifier<pd.SourceLocation> {
     return ['type', {
         'context': ['local', null],
-        'type': type,
-        'tail': pd.a([]),
+        'typeXX': type,
+        'tailXX': pd.a([]),
         'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
     }]
 }
@@ -132,7 +133,7 @@ export function sExternalInterfaceReference(cntxt: string, inf: string, args?: R
 
     return {
         'context': context(cntxt, pd.getLocationInfo(1)),
-        'interface': inf,
+        'interfaceXX': inf,
         'arguments': pd.d(args === undefined ? {} : args),
     }
 }
@@ -140,7 +141,7 @@ export function sExternalInterfaceReference(cntxt: string, inf: string, args?: R
 export function sInterfaceReference(inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.SynchronousInterfaceReference<pd.SourceLocation> {
     return {
         'context': ['local', null],
-        'interface': inf,
+        'interfaceXX': inf,
         'arguments': pd.d(args === undefined ? {} : args),
     }
 }
@@ -148,7 +149,7 @@ export function sInterfaceReference(inf: string, args?: RawDictionary<t.T.DataSp
 export function aExternalInterfaceReference(cntxt: string, inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.AsynchronousInterfaceReference<pd.SourceLocation> {
     return {
         'context': context(cntxt, pd.getLocationInfo(1)),
-        'interface': inf,
+        'interfaceXX': inf,
         'arguments': pd.d(args === undefined ? {} : args),
     }
 }
@@ -156,7 +157,7 @@ export function aExternalInterfaceReference(cntxt: string, inf: string, args?: R
 export function aInterfaceReference(inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.AsynchronousInterfaceReference<pd.SourceLocation> {
     return {
         'context': ['local', null],
-        'interface': inf,
+        'interfaceXX': inf,
         'arguments': pd.d(args === undefined ? {} : args),
     }
 }
@@ -173,21 +174,21 @@ export function inf($: t.T.AsynchronousInterfaceReference<pd.SourceLocation>): [
     return ['interface', $]
 }
 
-export function aInterface(inf: t.T.AsynchronousInterface<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.asynchronous.interfaces.D<pd.SourceLocation> {
+export function aInterface(inf: t.T.AsynchronousInterface<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary__Core.asynchronous.interfaces.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),
         'interface': inf,
     }
 }
 
-export function sInterface(inf: t.T.SynchronousInterface<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.synchronous.interfaces.D<pd.SourceLocation> {
+export function sInterface(inf: t.T.SynchronousInterface<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary__Core.synchronous.interfaces.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),
         'interface': inf,
     }
 }
 
-export function constructor(inf: t.T.AsynchronousInterfaceReference<pd.SourceLocation>, downstreams: RawDictionary<t.T.AsynchronousInterfaceReference<pd.SourceLocation>>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
+export function constructor(inf: t.T.AsynchronousInterfaceReference<pd.SourceLocation>, downstreams: RawDictionary<t.T.AsynchronousInterfaceReference<pd.SourceLocation>>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary__Core.asynchronous.algorithms.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),
         'type': ['constructor', {
@@ -197,7 +198,7 @@ export function constructor(inf: t.T.AsynchronousInterfaceReference<pd.SourceLoc
     }
 }
 
-export function resource(request: t.T.DataSpecifier<pd.SourceLocation>, consumer: t.T.AsynchronousInterfaceReference<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
+export function resource(request: t.T.DataSpecifier<pd.SourceLocation>, consumer: t.T.AsynchronousInterfaceReference<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary__Core.asynchronous.algorithms.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),
         'type': ['resource', {
@@ -207,7 +208,7 @@ export function resource(request: t.T.DataSpecifier<pd.SourceLocation>, consumer
     }
 }
 
-export function afunction(out: t.T.Glossary.asynchronous.algorithms.D._ltype._lfunction.out<pd.SourceLocation>, in_: t.T.Glossary.asynchronous.algorithms.D._ltype._lfunction._lin<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.asynchronous.algorithms.D<pd.SourceLocation> {
+export function afunction(out: t.T.Glossary__Core.asynchronous.algorithms.D._ltype._lfunction.out<pd.SourceLocation>, in_: t.T.Glossary__Core.asynchronous.algorithms.D._ltype._lfunction._lin<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary__Core.asynchronous.algorithms.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),
         'type': ['function', {
@@ -217,7 +218,7 @@ export function afunction(out: t.T.Glossary.asynchronous.algorithms.D._ltype._lf
     }
 }
 
-export function procedure(in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, out: t.T.SynchronousInterfaceReference<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
+export function procedure(in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, out: t.T.SynchronousInterfaceReference<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary__Core.synchronous.algorithms.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),
         'type': ['procedure', {
@@ -229,7 +230,7 @@ export function procedure(in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>
 
 
 
-export function scallbackfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, callbacks: RawDictionary<t.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D<pd.SourceLocation>>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
+export function scallbackfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, callbacks: RawDictionary<t.T.Glossary__Core.synchronous.algorithms.D._ltype._lfunction.callbacks.D<pd.SourceLocation>>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary__Core.synchronous.algorithms.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),
         'type': ['function', {
@@ -240,7 +241,7 @@ export function scallbackfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_
     }
 }
 
-export function scallback(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataSpecifier<pd.SourceLocation>, lookups?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D<pd.SourceLocation> {
+export function scallback(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataSpecifier<pd.SourceLocation>, lookups?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.Glossary__Core.synchronous.algorithms.D._ltype._lfunction.callbacks.D<pd.SourceLocation> {
     return {
         'in': in_,
         'out': out,
@@ -248,7 +249,7 @@ export function scallback(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.Da
     }
 }
 
-export function sfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary.synchronous.algorithms.D<pd.SourceLocation> {
+export function sfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.DataOrSynchronousInterface<pd.SourceLocation>, params?: RawDictionary<t.T.TypeParameters.D<pd.SourceLocation>>): t.T.Glossary__Core.synchronous.algorithms.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),
         'type': ['function', {

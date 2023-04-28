@@ -553,6 +553,499 @@ export const $$: A.resolve = ($d, $se) => {
         }
     }
     
+    function map_Assign<Annotation>(
+        $: g_in.T.Assign<Annotation>,
+        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+    ): g_out.T.Assign<Annotation> {
+        return pl.cc($, ($) => {
+            const $p_target: g_out.T.Assign.target<Annotation> = pl.cc($['target'], ($) => map_Address__Selection<Annotation>(
+                $,
+                tempoptional/*3*/(
+                    $v_namespace,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_namespace
+                tempoptional/*3*/(
+                    $v_variable__stack,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_variable__stack
+            ))
+            const $v_target: pt.OptionalValue<g_out.T.Assign.target<Annotation>> = [true, $p_target]
+            const $p_right__hand__side: g_out.T.Assign.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Expression<Annotation>(
+                $,
+                tempoptional/*3*/(
+                    $v_target,
+                    ($) => tempoptional(
+                        $.result,
+                        ($) => [true, $],
+                        () => [false],
+                    ),
+                    () => [false],
+                ),//$v_expected__type
+                tempoptional/*3*/(
+                    $v_namespace,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_namespace
+                tempoptional/*3*/(
+                    $v_variable__stack,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_variable__stack
+            ))
+            const $v_right__hand__side: pt.OptionalValue<g_out.T.Assign.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+            return {
+                'right hand side': $p_right__hand__side,
+                'target': $p_target,
+            }
+        })
+    }
+    
+    function map_Block<Annotation>(
+        $: g_in.T.Block<Annotation>,
+        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_parameters: pt.OptionalValue<g_out_typesystem.T.Parameters<Annotation>>,
+        $v_type__parameters: pt.OptionalValue<g_out_typesystem.T.Type__Parameters<Annotation>>,
+        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+    ): g_out.T.Block<Annotation> {
+        return pl.cc($, ($) => {
+            const $p_variables: g_out.T.Block.variables<Annotation> = pl.cc($['variables'], ($) => map_Variables<Annotation>(
+                $,
+                tempoptional/*3*/(
+                    $v_namespace,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_namespace
+                tempoptional/*3*/(
+                    $v_parameters,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_parameters
+                tempoptional/*3*/(
+                    $v_variable__stack,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_variable__stack
+            ))
+            const $v_variables: pt.OptionalValue<g_out.T.Block.variables<Annotation>> = [true, $p_variables]
+            const $p_statements: g_out.T.Block.statements<Annotation> = pl.cc($['statements'], ($) => map_Statements<Annotation>(
+                $,
+                tempoptional/*3*/(
+                    $v_namespace,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_namespace
+                tempoptional/*3*/(
+                    $v_parameters,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_parameters
+                tempoptional/*3*/(
+                    $v_type__parameters,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_type__parameters
+                tempoptional/*3*/(
+                    $v_variables,
+                    ($) => [true, $],
+                    () => [false],
+                ),//$v_variable__stack
+            ))
+            const $v_statements: pt.OptionalValue<g_out.T.Block.statements<Annotation>> = [true, $p_statements]
+            return {
+                'statements': $p_statements,
+                'variables': $p_variables,
+            }
+        })
+    }
+    
+    function map_Boolean__Expression<Annotation>(
+        $: g_in.T.Boolean__Expression<Annotation>,
+        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+    ): g_out.T.Boolean__Expression<Annotation> {
+        return pl.cc($, ($): g_out.T.Boolean__Expression<Annotation> => {
+            switch ($[0]) {
+                case 'and': return pl.ss($, ($) => ['and', pl.cc($, ($) => {
+                    const $p_left__hand__side: g_out.T.Boolean__Expression.and.left__hand__side<Annotation> = pl.cc($['left hand side'], ($) => map_Boolean__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.and.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $p_right__hand__side: g_out.T.Boolean__Expression.and.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Boolean__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.and.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    return {
+                        'left hand side': $p_left__hand__side,
+                        'right hand side': $p_right__hand__side,
+                    }
+                })])
+                case 'false': return pl.ss($, ($) => ['false', pl.cc($, ($) => {
+                    return null
+                })])
+                case 'greater than': return pl.ss($, ($) => ['greater than', pl.cc($, ($) => {
+                    const $p_left__hand__side: g_out.T.Boolean__Expression.greater__than.left__hand__side<Annotation> = pl.cc($['left hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.greater__than.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $p_right__hand__side: g_out.T.Boolean__Expression.greater__than.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.greater__than.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    return {
+                        'left hand side': $p_left__hand__side,
+                        'right hand side': $p_right__hand__side,
+                    }
+                })])
+                case 'less than': return pl.ss($, ($) => ['less than', pl.cc($, ($) => {
+                    const $p_left__hand__side: g_out.T.Boolean__Expression.less__than.left__hand__side<Annotation> = pl.cc($['left hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.less__than.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $p_right__hand__side: g_out.T.Boolean__Expression.less__than.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.less__than.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    return {
+                        'left hand side': $p_left__hand__side,
+                        'right hand side': $p_right__hand__side,
+                    }
+                })])
+                case 'not': return pl.ss($, ($) => ['not', map_Boolean__Expression__Or__Selection<Annotation>(
+                    $,
+                    tempoptional/*3*/(
+                        $v_namespace,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_namespace
+                    tempoptional/*3*/(
+                        $v_variable__stack,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_variable__stack
+                )])
+                case 'number equals': return pl.ss($, ($) => ['number equals', pl.cc($, ($) => {
+                    const $p_left__hand__side: g_out.T.Boolean__Expression.number__equals.left__hand__side<Annotation> = pl.cc($['left hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.number__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $p_right__hand__side: g_out.T.Boolean__Expression.number__equals.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.number__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    return {
+                        'left hand side': $p_left__hand__side,
+                        'right hand side': $p_right__hand__side,
+                    }
+                })])
+                case 'number not equals': return pl.ss($, ($) => ['number not equals', pl.cc($, ($) => {
+                    const $p_left__hand__side: g_out.T.Boolean__Expression.number__not__equals.left__hand__side<Annotation> = pl.cc($['left hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.number__not__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $p_right__hand__side: g_out.T.Boolean__Expression.number__not__equals.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.number__not__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    return {
+                        'left hand side': $p_left__hand__side,
+                        'right hand side': $p_right__hand__side,
+                    }
+                })])
+                case 'or': return pl.ss($, ($) => ['or', pl.cc($, ($) => {
+                    const $p_left__hand__side: g_out.T.Boolean__Expression.or.left__hand__side<Annotation> = pl.cc($['left hand side'], ($) => map_Boolean__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.or.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $p_right__hand__side: g_out.T.Boolean__Expression.or.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Boolean__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.or.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    return {
+                        'left hand side': $p_left__hand__side,
+                        'right hand side': $p_right__hand__side,
+                    }
+                })])
+                case 'string equals': return pl.ss($, ($) => ['string equals', pl.cc($, ($) => {
+                    const $p_left__hand__side: g_out.T.Boolean__Expression.string__equals.left__hand__side<Annotation> = pl.cc($['left hand side'], ($) => map_String__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.string__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $p_right__hand__side: g_out.T.Boolean__Expression.string__equals.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_String__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.string__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    return {
+                        'left hand side': $p_left__hand__side,
+                        'right hand side': $p_right__hand__side,
+                    }
+                })])
+                case 'string not equals': return pl.ss($, ($) => ['string not equals', pl.cc($, ($) => {
+                    const $p_left__hand__side: g_out.T.Boolean__Expression.string__not__equals.left__hand__side<Annotation> = pl.cc($['left hand side'], ($) => map_String__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.string__not__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $p_right__hand__side: g_out.T.Boolean__Expression.string__not__equals.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_String__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.string__not__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    return {
+                        'left hand side': $p_left__hand__side,
+                        'right hand side': $p_right__hand__side,
+                    }
+                })])
+                case 'true': return pl.ss($, ($) => ['true', pl.cc($, ($) => {
+                    return null
+                })])
+                default: return pl.au($[0])
+            }
+        })
+    }
+    
+    function map_Boolean__Expression__Or__Selection<Annotation>(
+        $: g_in.T.Boolean__Expression__Or__Selection<Annotation>,
+        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+    ): g_out.T.Boolean__Expression__Or__Selection<Annotation> {
+        return pl.cc($, ($): g_out.T.Boolean__Expression__Or__Selection<Annotation> => {
+            switch ($[0]) {
+                case 'expression': return pl.ss($, ($) => ['expression', map_Boolean__Expression<Annotation>(
+                    $,
+                    tempoptional/*3*/(
+                        $v_namespace,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_namespace
+                    tempoptional/*3*/(
+                        $v_variable__stack,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_variable__stack
+                )])
+                case 'selection': return pl.ss($, ($) => ['selection', pl.cc($, ($) => {
+                    const $p_selection: g_out.T.Boolean__Expression__Or__Selection.selection.selection<Annotation> = pl.cc($['selection'], ($) => map_Address__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_selection: pt.OptionalValue<g_out.T.Boolean__Expression__Or__Selection.selection.selection<Annotation>> = [true, $p_selection]
+                    const $p_cast__to__boolean: g_out.T.Boolean__Expression__Or__Selection.selection.cast__to__boolean<Annotation> = pl.cc($['cast to boolean'], ($) => pl.cc($, ($): g_out.T.Boolean__Expression__Or__Selection.selection.cast__to__boolean<Annotation> => {
+                        switch ($[0]) {
+                            case 'boolean': return pl.ss($, ($) => {
+                                const /*option constraint*/$v__lboolean: pt.OptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = tempoptional/*3*/(
+                                        $v_selection,
+                                        ($) => tempoptional(
+                                            $.result,
+                                            ($) => ($[0] === 'boolean')
+                                                ? [true, $[1]]
+                                                : pl.cc($, ($) => {
+                                                    $se.error("option constraint")
+                                                    return [false]
+                                                })
+                                            ,
+                                            () => [false],
+                                        ),
+                                        () => [false],
+                                    )
+                                    return optConstraint
+                                })
+                                return ['boolean', pl.cc($, ($) => {
+                                    return {
+                                        'annotation': $.annotation,
+                                        'constraints': {
+                                            'boolean': $v__lboolean,
+                                        },
+                                        'content': pl.cc($.content, ($) => pl.cc($, ($) => {
+                                            return null
+                                        })),
+                                    }
+                                })]
+                            })
+                            default: return pl.au($[0])
+                        }
+                    }))
+                    const $v_cast__to__boolean: pt.OptionalValue<g_out.T.Boolean__Expression__Or__Selection.selection.cast__to__boolean<Annotation>> = [true, $p_cast__to__boolean]
+                    return {
+                        'cast to boolean': $p_cast__to__boolean,
+                        'selection': $p_selection,
+                    }
+                })])
+                default: return pl.au($[0])
+            }
+        })
+    }
+    
     function map_Expression<Annotation>(
         $: g_in.T.Expression<Annotation>,
         $v_expected__type: pt.OptionalValue<g_out_typesystem.T.Type<Annotation>>,
@@ -561,6 +1054,217 @@ export const $$: A.resolve = ($d, $se) => {
     ): g_out.T.Expression<Annotation> {
         return pl.cc($, ($): g_out.T.Expression<Annotation> => {
             switch ($[0]) {
+                case 'array literal': return pl.ss($, ($) => {
+                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type.array<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type.array<Annotation>> = tempoptional/*3*/(
+                            $v_expected__type,
+                            ($) => ($[0] === 'array')
+                                ? [true, $[1]]
+                                : pl.cc($, ($) => {
+                                    $se.error("option constraint")
+                                    return [false]
+                                })
+                            ,
+                            () => [false],
+                        )
+                        return optConstraint
+                    })
+                    return ['array literal', pl.cc($, ($) => {
+                        return {
+                            'annotation': $.annotation,
+                            'constraints': {
+                                'out': $v_out,
+                            },
+                            'content': pl.cc($.content, ($) => $.map(($) => map_Expression<Annotation>(
+                                $,
+                                tempoptional/*3*/(
+                                    $v_out,
+                                    ($) => [true, $],
+                                    () => [false],
+                                ),//$v_expected__type
+                                tempoptional/*3*/(
+                                    $v_namespace,
+                                    ($) => [true, $],
+                                    () => [false],
+                                ),//$v_namespace
+                                tempoptional/*3*/(
+                                    $v_variable__stack,
+                                    ($) => [true, $],
+                                    () => [false],
+                                ),//$v_variable__stack
+                            ))),
+                        }
+                    })]
+                })
+                case 'boolean': return pl.ss($, ($) => {
+                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = tempoptional/*3*/(
+                            $v_expected__type,
+                            ($) => ($[0] === 'boolean')
+                                ? [true, $[1]]
+                                : pl.cc($, ($) => {
+                                    $se.error("option constraint")
+                                    return [false]
+                                })
+                            ,
+                            () => [false],
+                        )
+                        return optConstraint
+                    })
+                    return ['boolean', pl.cc($, ($) => {
+                        return {
+                            'annotation': $.annotation,
+                            'constraints': {
+                                'out': $v_out,
+                            },
+                            'content': pl.cc($.content, ($) => map_Boolean__Expression<Annotation>(
+                                $,
+                                tempoptional/*3*/(
+                                    $v_namespace,
+                                    ($) => [true, $],
+                                    () => [false],
+                                ),//$v_namespace
+                                tempoptional/*3*/(
+                                    $v_variable__stack,
+                                    ($) => [true, $],
+                                    () => [false],
+                                ),//$v_variable__stack
+                            )),
+                        }
+                    })]
+                })
+                case 'null': return pl.ss($, ($) => {
+                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type._lnull<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lnull<Annotation>> = tempoptional/*3*/(
+                            $v_expected__type,
+                            ($) => ($[0] === 'null')
+                                ? [true, $[1]]
+                                : pl.cc($, ($) => {
+                                    $se.error("option constraint")
+                                    return [false]
+                                })
+                            ,
+                            () => [false],
+                        )
+                        return optConstraint
+                    })
+                    return ['null', pl.cc($, ($) => {
+                        return {
+                            'annotation': $.annotation,
+                            'constraints': {
+                                'out': $v_out,
+                            },
+                            'content': pl.cc($.content, ($) => pl.cc($, ($) => {
+                                return null
+                            })),
+                        }
+                    })]
+                })
+                case 'numerical': return pl.ss($, ($) => {
+                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
+                            $v_expected__type,
+                            ($) => ($[0] === 'number')
+                                ? [true, $[1]]
+                                : pl.cc($, ($) => {
+                                    $se.error("option constraint")
+                                    return [false]
+                                })
+                            ,
+                            () => [false],
+                        )
+                        return optConstraint
+                    })
+                    return ['numerical', pl.cc($, ($) => {
+                        return {
+                            'annotation': $.annotation,
+                            'constraints': {
+                                'out': $v_out,
+                            },
+                            'content': pl.cc($.content, ($) => map_Numerical__Expression<Annotation>(
+                                $,
+                                tempoptional/*3*/(
+                                    $v_namespace,
+                                    ($) => [true, $],
+                                    () => [false],
+                                ),//$v_namespace
+                                tempoptional/*3*/(
+                                    $v_variable__stack,
+                                    ($) => [true, $],
+                                    () => [false],
+                                ),//$v_variable__stack
+                            )),
+                        }
+                    })]
+                })
+                case 'object literal': return pl.ss($, ($) => {
+                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type.group<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type.group<Annotation>> = tempoptional/*3*/(
+                            $v_expected__type,
+                            ($) => ($[0] === 'group')
+                                ? [true, $[1]]
+                                : pl.cc($, ($) => {
+                                    $se.error("option constraint")
+                                    return [false]
+                                })
+                            ,
+                            () => [false],
+                        )
+                        return optConstraint
+                    })
+                    return ['object literal', pl.cc($, ($) => {
+                        return {
+                            'annotation': $.annotation,
+                            'constraints': {
+                                'out': $v_out,
+                            },
+                            'content': pl.cc($.content, ($) => pl.cc($, ($) => {
+                                const $p_properties: g_out.T.Expression.object__literal.content.properties<Annotation> = pl.cc($['properties'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
+                                    const /*dict constraint*/$v_prop: pt.OptionalValue<g_out_typesystem.T.Type.group.properties.D<Annotation>> = tempoptional/*3*/(
+                                        $v_out,
+                                        ($) => pl.cc($['properties'], ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Type.group.properties.D<Annotation>>>(
+                                            key,
+                                            ($) => [true, $],
+                                            () => {
+                                                $se.error("no such entry")
+                                                return [false]
+                                            },
+                                        )),
+                                        () => [false],
+                                    )
+                                    return {
+                                        'annotation': $.annotation,
+                                        'constraints': {
+                                            'prop': $v_prop,
+                                        },
+                                        'content': pl.cc($.content, ($) => map_Expression<Annotation>(
+                                            $,
+                                            tempoptional/*3*/(
+                                                $v_prop,
+                                                ($) => pl.cc($['type'], ($) => [true, $]),
+                                                () => [false],
+                                            ),//$v_expected__type
+                                            tempoptional/*3*/(
+                                                $v_namespace,
+                                                ($) => [true, $],
+                                                () => [false],
+                                            ),//$v_namespace
+                                            tempoptional/*3*/(
+                                                $v_variable__stack,
+                                                ($) => [true, $],
+                                                () => [false],
+                                            ),//$v_variable__stack
+                                        )),
+                                    }
+                                })))
+                                const $v_properties: pt.OptionalValue<g_out.T.Expression.object__literal.content.properties<Annotation>> = [true, $p_properties]
+                                return {
+                                    'properties': $p_properties,
+                                }
+                            })),
+                        }
+                    })]
+                })
                 case 'string': return pl.ss($, ($) => {
                     const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = pl.cc($, ($) => {
                         const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = tempoptional/*3*/(
@@ -603,12 +1307,514 @@ export const $$: A.resolve = ($d, $se) => {
         })
     }
     
+    function map_Numerical__Expression<Annotation>(
+        $: g_in.T.Numerical__Expression<Annotation>,
+        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+    ): g_out.T.Numerical__Expression<Annotation> {
+        return pl.cc($, ($): g_out.T.Numerical__Expression<Annotation> => {
+            switch ($[0]) {
+                case 'minus': return pl.ss($, ($) => ['minus', pl.cc($, ($) => {
+                    const $p_left__hand__side: g_out.T.Numerical__Expression.minus.left__hand__side<Annotation> = pl.cc($['left hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Numerical__Expression.minus.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $p_right__hand__side: g_out.T.Numerical__Expression.minus.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Numerical__Expression.minus.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    return {
+                        'left hand side': $p_left__hand__side,
+                        'right hand side': $p_right__hand__side,
+                    }
+                })])
+                case 'numeric literal': return pl.ss($, ($) => ['numeric literal', $])
+                case 'plus': return pl.ss($, ($) => ['plus', pl.cc($, ($) => {
+                    const $p_left__hand__side: g_out.T.Numerical__Expression.plus.left__hand__side<Annotation> = pl.cc($['left hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Numerical__Expression.plus.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $p_right__hand__side: g_out.T.Numerical__Expression.plus.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Numerical__Expression.plus.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    return {
+                        'left hand side': $p_left__hand__side,
+                        'right hand side': $p_right__hand__side,
+                    }
+                })])
+                case 'postdecrement': return pl.ss($, ($) => ['postdecrement', map_Numerical__Expression__Or__Selection<Annotation>(
+                    $,
+                    tempoptional/*3*/(
+                        $v_namespace,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_namespace
+                    tempoptional/*3*/(
+                        $v_variable__stack,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_variable__stack
+                )])
+                case 'postincrement': return pl.ss($, ($) => ['postincrement', map_Numerical__Expression__Or__Selection<Annotation>(
+                    $,
+                    tempoptional/*3*/(
+                        $v_namespace,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_namespace
+                    tempoptional/*3*/(
+                        $v_variable__stack,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_variable__stack
+                )])
+                case 'predecrement': return pl.ss($, ($) => ['predecrement', map_Numerical__Expression__Or__Selection<Annotation>(
+                    $,
+                    tempoptional/*3*/(
+                        $v_namespace,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_namespace
+                    tempoptional/*3*/(
+                        $v_variable__stack,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_variable__stack
+                )])
+                case 'preincrement': return pl.ss($, ($) => ['preincrement', map_Numerical__Expression__Or__Selection<Annotation>(
+                    $,
+                    tempoptional/*3*/(
+                        $v_namespace,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_namespace
+                    tempoptional/*3*/(
+                        $v_variable__stack,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_variable__stack
+                )])
+                default: return pl.au($[0])
+            }
+        })
+    }
+    
+    function map_Numerical__Expression__Or__Selection<Annotation>(
+        $: g_in.T.Numerical__Expression__Or__Selection<Annotation>,
+        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+    ): g_out.T.Numerical__Expression__Or__Selection<Annotation> {
+        return pl.cc($, ($): g_out.T.Numerical__Expression__Or__Selection<Annotation> => {
+            switch ($[0]) {
+                case 'expression': return pl.ss($, ($) => ['expression', map_Numerical__Expression<Annotation>(
+                    $,
+                    tempoptional/*3*/(
+                        $v_namespace,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_namespace
+                    tempoptional/*3*/(
+                        $v_variable__stack,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_variable__stack
+                )])
+                case 'selection': return pl.ss($, ($) => ['selection', pl.cc($, ($) => {
+                    const $p_selection: g_out.T.Numerical__Expression__Or__Selection.selection.selection<Annotation> = pl.cc($['selection'], ($) => map_Address__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_selection: pt.OptionalValue<g_out.T.Numerical__Expression__Or__Selection.selection.selection<Annotation>> = [true, $p_selection]
+                    const $p_cast__to__number: g_out.T.Numerical__Expression__Or__Selection.selection.cast__to__number<Annotation> = pl.cc($['cast to number'], ($) => pl.cc($, ($): g_out.T.Numerical__Expression__Or__Selection.selection.cast__to__number<Annotation> => {
+                        switch ($[0]) {
+                            case 'number': return pl.ss($, ($) => {
+                                const /*option constraint*/$v__lnumber: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
+                                        $v_selection,
+                                        ($) => tempoptional(
+                                            $.result,
+                                            ($) => ($[0] === 'number')
+                                                ? [true, $[1]]
+                                                : pl.cc($, ($) => {
+                                                    $se.error("option constraint")
+                                                    return [false]
+                                                })
+                                            ,
+                                            () => [false],
+                                        ),
+                                        () => [false],
+                                    )
+                                    return optConstraint
+                                })
+                                return ['number', pl.cc($, ($) => {
+                                    return {
+                                        'annotation': $.annotation,
+                                        'constraints': {
+                                            'number': $v__lnumber,
+                                        },
+                                        'content': pl.cc($.content, ($) => pl.cc($, ($) => {
+                                            return null
+                                        })),
+                                    }
+                                })]
+                            })
+                            default: return pl.au($[0])
+                        }
+                    }))
+                    const $v_cast__to__number: pt.OptionalValue<g_out.T.Numerical__Expression__Or__Selection.selection.cast__to__number<Annotation>> = [true, $p_cast__to__number]
+                    return {
+                        'cast to number': $p_cast__to__number,
+                        'selection': $p_selection,
+                    }
+                })])
+                default: return pl.au($[0])
+            }
+        })
+    }
+    
     function map_Source__File<Annotation>(
         $: g_in.T.Source__File<Annotation>,
     ): g_out.T.Source__File<Annotation> {
         return pl.cc($, ($) => {
             return null
         })
+    }
+    
+    function map_Statements<Annotation>(
+        $: g_in.T.Statements<Annotation>,
+        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_parameters: pt.OptionalValue<g_out_typesystem.T.Parameters<Annotation>>,
+        $v_type__parameters: pt.OptionalValue<g_out_typesystem.T.Type__Parameters<Annotation>>,
+        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+    ): g_out.T.Statements<Annotation> {
+        return $.map(($) => pl.cc($, ($): g_out.T.Statements.A<Annotation> => {
+            switch ($[0]) {
+                case 'block': return pl.ss($, ($) => ['block', map_Block<Annotation>(
+                    $,
+                    tempoptional/*3*/(
+                        $v_namespace,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_namespace
+                    tempoptional/*3*/(
+                        $v_parameters,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_parameters
+                    tempoptional/*3*/(
+                        $v_type__parameters,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_type__parameters
+                    tempoptional/*3*/(
+                        $v_variable__stack,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_variable__stack
+                )])
+                case 'if': return pl.ss($, ($) => ['if', pl.cc($, ($) => {
+                    const $p_condition: g_out.T.Statements.A._lif.condition<Annotation> = pl.cc($['condition'], ($) => map_Boolean__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_condition: pt.OptionalValue<g_out.T.Statements.A._lif.condition<Annotation>> = [true, $p_condition]
+                    const $p_then: g_out.T.Statements.A._lif.then<Annotation> = pl.cc($['then'], ($) => map_Block<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_parameters,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_parameters
+                        tempoptional/*3*/(
+                            $v_type__parameters,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_type__parameters
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_then: pt.OptionalValue<g_out.T.Statements.A._lif.then<Annotation>> = [true, $p_then]
+                    const $p__lelse: g_out.T.Statements.A._lif._lelse<Annotation> = pl.cc($['else'], ($) => tempoptional/*4*/(
+                        $,
+                        ($): g_out.T.Statements.A._lif._lelse<Annotation> => [true, map_Block<Annotation>(
+                            $,
+                            tempoptional/*3*/(
+                                $v_namespace,
+                                ($) => [true, $],
+                                () => [false],
+                            ),//$v_namespace
+                            tempoptional/*3*/(
+                                $v_parameters,
+                                ($) => [true, $],
+                                () => [false],
+                            ),//$v_parameters
+                            tempoptional/*3*/(
+                                $v_type__parameters,
+                                ($) => [true, $],
+                                () => [false],
+                            ),//$v_type__parameters
+                            tempoptional/*3*/(
+                                $v_variable__stack,
+                                ($) => [true, $],
+                                () => [false],
+                            ),//$v_variable__stack
+                        )],
+                        () => [false],
+                    ))
+                    const $v__lelse: pt.OptionalValue<g_out.T.Statements.A._lif._lelse<Annotation>> = [true, $p__lelse]
+                    return {
+                        'condition': $p_condition,
+                        'else': $p__lelse,
+                        'then': $p_then,
+                    }
+                })])
+                case 'while': return pl.ss($, ($) => ['while', pl.cc($, ($) => {
+                    const $p_condition: g_out.T.Statements.A._lwhile.condition<Annotation> = pl.cc($['condition'], ($) => map_Boolean__Expression__Or__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_condition: pt.OptionalValue<g_out.T.Statements.A._lwhile.condition<Annotation>> = [true, $p_condition]
+                    const $p_block: g_out.T.Statements.A._lwhile.block<Annotation> = pl.cc($['block'], ($) => map_Block<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_parameters,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_parameters
+                        tempoptional/*3*/(
+                            $v_type__parameters,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_type__parameters
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_block: pt.OptionalValue<g_out.T.Statements.A._lwhile.block<Annotation>> = [true, $p_block]
+                    return {
+                        'block': $p_block,
+                        'condition': $p_condition,
+                    }
+                })])
+                case 'with': return pl.ss($, ($) => ['with', pl.cc($, ($) => {
+                    const $p_address: g_out.T.Statements.A._lwith.address<Annotation> = pl.cc($['address'], ($) => map_Address__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_address: pt.OptionalValue<g_out.T.Statements.A._lwith.address<Annotation>> = [true, $p_address]
+                    const $p_action: g_out.T.Statements.A._lwith.action<Annotation> = pl.cc($['action'], ($) => pl.cc($, ($): g_out.T.Statements.A._lwith.action<Annotation> => {
+                        switch ($[0]) {
+                            case 'assign': return pl.ss($, ($) => ['assign', map_Assign<Annotation>(
+                                $,
+                                tempoptional/*3*/(
+                                    $v_namespace,
+                                    ($) => [true, $],
+                                    () => [false],
+                                ),//$v_namespace
+                                tempoptional/*3*/(
+                                    $v_variable__stack,
+                                    ($) => [true, $],
+                                    () => [false],
+                                ),//$v_variable__stack
+                            )])
+                            case 'minus assign': return pl.ss($, ($) => {
+                                const /*option constraint*/$v_number__address: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
+                                        $v_address,
+                                        ($) => tempoptional(
+                                            $.result,
+                                            ($) => ($[0] === 'number')
+                                                ? [true, $[1]]
+                                                : pl.cc($, ($) => {
+                                                    $se.error("option constraint")
+                                                    return [false]
+                                                })
+                                            ,
+                                            () => [false],
+                                        ),
+                                        () => [false],
+                                    )
+                                    return optConstraint
+                                })
+                                return ['minus assign', pl.cc($, ($) => {
+                                    return {
+                                        'annotation': $.annotation,
+                                        'constraints': {
+                                            'number address': $v_number__address,
+                                        },
+                                        'content': pl.cc($.content, ($) => pl.cc($, ($) => {
+                                            const $p_right__hand__side: g_out.T.Statements.A._lwith.action.minus__assign.content.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                                                $,
+                                                tempoptional/*3*/(
+                                                    $v_namespace,
+                                                    ($) => [true, $],
+                                                    () => [false],
+                                                ),//$v_namespace
+                                                tempoptional/*3*/(
+                                                    $v_variable__stack,
+                                                    ($) => [true, $],
+                                                    () => [false],
+                                                ),//$v_variable__stack
+                                            ))
+                                            const $v_right__hand__side: pt.OptionalValue<g_out.T.Statements.A._lwith.action.minus__assign.content.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                                            return {
+                                                'right hand side': $p_right__hand__side,
+                                            }
+                                        })),
+                                    }
+                                })]
+                            })
+                            case 'plus assign': return pl.ss($, ($) => {
+                                const /*option constraint*/$v_number__address: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
+                                        $v_address,
+                                        ($) => tempoptional(
+                                            $.result,
+                                            ($) => ($[0] === 'number')
+                                                ? [true, $[1]]
+                                                : pl.cc($, ($) => {
+                                                    $se.error("option constraint")
+                                                    return [false]
+                                                })
+                                            ,
+                                            () => [false],
+                                        ),
+                                        () => [false],
+                                    )
+                                    return optConstraint
+                                })
+                                return ['plus assign', pl.cc($, ($) => {
+                                    return {
+                                        'annotation': $.annotation,
+                                        'constraints': {
+                                            'number address': $v_number__address,
+                                        },
+                                        'content': pl.cc($.content, ($) => pl.cc($, ($) => {
+                                            const $p_right__hand__side: g_out.T.Statements.A._lwith.action.plus__assign.content.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
+                                                $,
+                                                tempoptional/*3*/(
+                                                    $v_namespace,
+                                                    ($) => [true, $],
+                                                    () => [false],
+                                                ),//$v_namespace
+                                                tempoptional/*3*/(
+                                                    $v_variable__stack,
+                                                    ($) => [true, $],
+                                                    () => [false],
+                                                ),//$v_variable__stack
+                                            ))
+                                            const $v_right__hand__side: pt.OptionalValue<g_out.T.Statements.A._lwith.action.plus__assign.content.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                                            return {
+                                                'right hand side': $p_right__hand__side,
+                                            }
+                                        })),
+                                    }
+                                })]
+                            })
+                            default: return pl.au($[0])
+                        }
+                    }))
+                    const $v_action: pt.OptionalValue<g_out.T.Statements.A._lwith.action<Annotation>> = [true, $p_action]
+                    return {
+                        'action': $p_action,
+                        'address': $p_address,
+                    }
+                })])
+                default: return pl.au($[0])
+            }
+        }))
     }
     
     function map_String__Expression<Annotation>(
@@ -619,6 +1825,88 @@ export const $$: A.resolve = ($d, $se) => {
         return pl.cc($, ($): g_out.T.String__Expression<Annotation> => {
             switch ($[0]) {
                 case 'string literal': return pl.ss($, ($) => ['string literal', $])
+                default: return pl.au($[0])
+            }
+        })
+    }
+    
+    function map_String__Expression__Or__Selection<Annotation>(
+        $: g_in.T.String__Expression__Or__Selection<Annotation>,
+        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+    ): g_out.T.String__Expression__Or__Selection<Annotation> {
+        return pl.cc($, ($): g_out.T.String__Expression__Or__Selection<Annotation> => {
+            switch ($[0]) {
+                case 'expression': return pl.ss($, ($) => ['expression', map_String__Expression<Annotation>(
+                    $,
+                    tempoptional/*3*/(
+                        $v_namespace,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_namespace
+                    tempoptional/*3*/(
+                        $v_variable__stack,
+                        ($) => [true, $],
+                        () => [false],
+                    ),//$v_variable__stack
+                )])
+                case 'selection': return pl.ss($, ($) => ['selection', pl.cc($, ($) => {
+                    const $p_selection: g_out.T.String__Expression__Or__Selection.selection.selection<Annotation> = pl.cc($['selection'], ($) => map_Address__Selection<Annotation>(
+                        $,
+                        tempoptional/*3*/(
+                            $v_namespace,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_namespace
+                        tempoptional/*3*/(
+                            $v_variable__stack,
+                            ($) => [true, $],
+                            () => [false],
+                        ),//$v_variable__stack
+                    ))
+                    const $v_selection: pt.OptionalValue<g_out.T.String__Expression__Or__Selection.selection.selection<Annotation>> = [true, $p_selection]
+                    const $p_cast__to__string: g_out.T.String__Expression__Or__Selection.selection.cast__to__string<Annotation> = pl.cc($['cast to string'], ($) => pl.cc($, ($): g_out.T.String__Expression__Or__Selection.selection.cast__to__string<Annotation> => {
+                        switch ($[0]) {
+                            case 'string': return pl.ss($, ($) => {
+                                const /*option constraint*/$v__lstring: pt.OptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = tempoptional/*3*/(
+                                        $v_selection,
+                                        ($) => tempoptional(
+                                            $.result,
+                                            ($) => ($[0] === 'string')
+                                                ? [true, $[1]]
+                                                : pl.cc($, ($) => {
+                                                    $se.error("option constraint")
+                                                    return [false]
+                                                })
+                                            ,
+                                            () => [false],
+                                        ),
+                                        () => [false],
+                                    )
+                                    return optConstraint
+                                })
+                                return ['string', pl.cc($, ($) => {
+                                    return {
+                                        'annotation': $.annotation,
+                                        'constraints': {
+                                            'string': $v__lstring,
+                                        },
+                                        'content': pl.cc($.content, ($) => pl.cc($, ($) => {
+                                            return null
+                                        })),
+                                    }
+                                })]
+                            })
+                            default: return pl.au($[0])
+                        }
+                    }))
+                    const $v_cast__to__string: pt.OptionalValue<g_out.T.String__Expression__Or__Selection.selection.cast__to__string<Annotation>> = [true, $p_cast__to__string]
+                    return {
+                        'cast to string': $p_cast__to__string,
+                        'selection': $p_selection,
+                    }
+                })])
                 default: return pl.au($[0])
             }
         })

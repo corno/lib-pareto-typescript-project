@@ -49,7 +49,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     "local": option(group({})),
                     //"import": reference(['parent', null), [)),
                     "import": option(group({
-                        "glossary": prop(resolvedValueReference(valSel("glossary"), tempTypeSelection("Glossary", [t_grp("imports")]))),
+                        "glossary": prop(resolvedValueReference(valSel("glossary"), tempTypeSelection("Glossary", t_grp("imports")))),
                     })),
                 })
             ),

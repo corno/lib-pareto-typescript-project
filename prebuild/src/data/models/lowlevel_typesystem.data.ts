@@ -151,7 +151,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     //     "parameters": member(array(component("type"))),
                     // })),
                     "reference": option(group({
-                        "path": prop(array(resolvedValueReference(valSel("TBD"), tempTypeSelection("Type", [t_tu("group"), t_grp("properties")])))),
+                        "path": prop(array(resolvedValueReference(valSel("TBD"), tempTypeSelection("Type", t_tu("group", t_grp("properties")))))),
                     })),
                     "string": option(group({})),
                     //"string literal": option(terminal("string literal")),
@@ -167,8 +167,8 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
             ),
             "Type Path": globalTypeDefinition(
                 group({
-                    "namespaces": prop(array(resolvedValueReference(valSel("TBD"), tempTypeSelection("Namespace" /*constrain type to namespace*/, [])))),
-                    "type": prop(resolvedValueReference(valSel("TBD"), tempTypeSelection("Namespace", []) /*constrain to type defintion*/)),
+                    "namespaces": prop(array(resolvedValueReference(valSel("TBD"), tempTypeSelection("Namespace" /*constrain type to namespace*/)))),
+                    "type": prop(resolvedValueReference(valSel("TBD"), tempTypeSelection("Namespace") /*constrain to type defintion*/)),
                     "parameters": prop(dictionary(component("Type", {
                         "global types": aContainingDictionary(parameter("global types"))
                     }))),

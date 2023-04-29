@@ -16,6 +16,14 @@ function tempoptional<T, RT>(
 }
 export const $$: A.resolve = ($d, $se) => {
     
+    function map_Arguments<Annotation>(
+        $: g_in.T.Arguments<Annotation>,
+    ): g_out.T.Arguments<Annotation> {
+        return $.__mapWithKey(($, key) => map_DataSpecifier<Annotation>(
+            $,
+        ))
+    }
+    
     function map_AsynchronousInterface<Annotation>(
         $: g_in.T.AsynchronousInterface<Annotation>,
     ): g_out.T.AsynchronousInterface<Annotation> {
@@ -84,9 +92,9 @@ export const $$: A.resolve = ($d, $se) => {
             const $v_context: pt.OptionalValue<g_out.T.AsynchronousInterfaceReference.context<Annotation>> = [true, $p_context]
             const $p_interfaceXX: g_out.T.AsynchronousInterfaceReference.interfaceXX<Annotation> = pl.cc($['interfaceXX'], ($) => $)
             const $v_interfaceXX: pt.OptionalValue<g_out.T.AsynchronousInterfaceReference.interfaceXX<Annotation>> = [true, $p_interfaceXX]
-            const $p_arguments: g_out.T.AsynchronousInterfaceReference.arguments<Annotation> = pl.cc($['arguments'], ($) => $.__mapWithKey(($, key) => map_DataSpecifier<Annotation>(
+            const $p_arguments: g_out.T.AsynchronousInterfaceReference.arguments<Annotation> = pl.cc($['arguments'], ($) => map_Arguments<Annotation>(
                 $,
-            )))
+            ))
             const $v_arguments: pt.OptionalValue<g_out.T.AsynchronousInterfaceReference.arguments<Annotation>> = [true, $p_arguments]
             return {
                 'arguments': $p_arguments,
@@ -147,9 +155,9 @@ export const $$: A.resolve = ($d, $se) => {
                     const $v_typeXX: pt.OptionalValue<g_out.T.DataSpecifier._ltype.typeXX<Annotation>> = [true, $p_typeXX]
                     const $p_tailXX: g_out.T.DataSpecifier._ltype.tailXX<Annotation> = pl.cc($['tailXX'], ($) => $.map(($) => $))
                     const $v_tailXX: pt.OptionalValue<g_out.T.DataSpecifier._ltype.tailXX<Annotation>> = [true, $p_tailXX]
-                    const $p_arguments: g_out.T.DataSpecifier._ltype.arguments<Annotation> = pl.cc($['arguments'], ($) => $.__mapWithKey(($, key) => map_DataSpecifier<Annotation>(
+                    const $p_arguments: g_out.T.DataSpecifier._ltype.arguments<Annotation> = pl.cc($['arguments'], ($) => map_Arguments<Annotation>(
                         $,
-                    )))
+                    ))
                     const $v_arguments: pt.OptionalValue<g_out.T.DataSpecifier._ltype.arguments<Annotation>> = [true, $p_arguments]
                     return {
                         'arguments': $p_arguments,
@@ -170,9 +178,9 @@ export const $$: A.resolve = ($d, $se) => {
     ): g_out.T.Glossary<Annotation> {
         return pl.cc($, ($) => {
             const $p_imports: g_out.T.Glossary.imports<Annotation> = pl.cc($['imports'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
-                const $p_arguments: g_out.T.Glossary.imports.D.arguments<Annotation> = pl.cc($['arguments'], ($) => $.__mapWithKey(($, key) => map_DataSpecifier<Annotation>(
+                const $p_arguments: g_out.T.Glossary.imports.D.arguments<Annotation> = pl.cc($['arguments'], ($) => map_Arguments<Annotation>(
                     $,
-                )))
+                ))
                 const $v_arguments: pt.OptionalValue<g_out.T.Glossary.imports.D.arguments<Annotation>> = [true, $p_arguments]
                 return {
                     'arguments': $p_arguments,
@@ -496,9 +504,9 @@ export const $$: A.resolve = ($d, $se) => {
             const $v_context: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context<Annotation>> = [true, $p_context]
             const $p_interfaceXX: g_out.T.SynchronousInterfaceReference.interfaceXX<Annotation> = pl.cc($['interfaceXX'], ($) => $)
             const $v_interfaceXX: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.interfaceXX<Annotation>> = [true, $p_interfaceXX]
-            const $p_arguments: g_out.T.SynchronousInterfaceReference.arguments<Annotation> = pl.cc($['arguments'], ($) => $.__mapWithKey(($, key) => map_DataSpecifier<Annotation>(
+            const $p_arguments: g_out.T.SynchronousInterfaceReference.arguments<Annotation> = pl.cc($['arguments'], ($) => map_Arguments<Annotation>(
                 $,
-            )))
+            ))
             const $v_arguments: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.arguments<Annotation>> = [true, $p_arguments]
             return {
                 'arguments': $p_arguments,

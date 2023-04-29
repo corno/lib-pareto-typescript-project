@@ -134,21 +134,6 @@ export const $$: A.serializeGlossary = ($d) => {
                     $i.snippet(`}`)
                 })
             }
-            function serializeContext($: g_glossary.T.Context<Annotation>, $i: g_fp.SYNC.I.Line) {
-                switch ($[0]) {
-                    case 'import':
-                        pl.ss($, ($) => {
-                            $i.snippet(`g_${$.glossaryXX}.`)
-                        })
-                        break
-                    case 'local':
-                        pl.ss($, ($) => {
-
-                        })
-                        break
-                    default: pl.au($[0])
-                }
-            }
             function serializeTypeParameters($: g_glossary.T.TypeParameters<Annotation>, $i: g_fp.SYNC.I.Line) {
 
                 $d.enrichedDictionaryForEach($, {
@@ -178,49 +163,41 @@ export const $$: A.serializeGlossary = ($d) => {
                         break
                     case 'type':
                         pl.ss($, ($) => {
-                            serializeContext($.context, $i)
+                            pl.cc($.context, ($) => {
+                                switch ($[0]) {
+                                    case 'import':
+                                        pl.ss($, ($) => {
+                                            $i.snippet(`g_${$.glossaryXX}.`)
+                                        })
+                                        break
+                                    case 'local':
+                                        pl.ss($, ($) => {
+
+                                        })
+                                        break
+                                    default: pl.au($[0])
+                                }
+                            })
                             $i.snippet(`T`)
                             $i.snippet(`.${$d.createIdentifier(`${$.typeXX/*.name*/}`)}`)
                             $.tailXX.__forEach(($) => {
                                 $i.snippet(`.${$d.createIdentifier(`${$}`)}`)
                             })
-                            $d.enrichedDictionaryForEach($.arguments, {
-                                'onEmpty': () => {
-                                    serializeContextGlossaryArgumentsOnly($.context, $i)
-                                },
-                                'onNotEmpty': ($c) => {
-                                    $i.snippet(`<`)
-                                    switch ($.context[0]) {
-                                        case 'import':
-                                            pl.ss($.context, ($) => {
-                                                importDefinitions.__getEntry(
-                                                    $.glossaryXX,
-                                                    ($) => {
-                                                        $d.dictionaryForEach($.arguments, ($) => {
-                                                            serializeDataSpecifier($.value, $i)
-                                                            $i.snippet(`, `)
-                                                        })
-                                                    },
-                                                    () => {
-                                                        pd.logDebugMessage(`missing import: ${$.glossaryXX}`)
-                                                    }
-                                                )
-                                            })
-                                            break
-                                        case 'local':
-                                            pl.ss($.context, ($) => {
-                                                $d.dictionaryForEach(globalParameters, ($) => {
-                                                    $i.snippet(`G${$.key}, `)
-                                                })
-                                            })
-                                            break
-                                        default: pl.au($.context[0])
-                                    }
-                                    $c(($) => {
-                                        serializeDataSpecifier($.value, $i)
-                                        $i.snippet(`${$.isLast ? `` : `, `}`)
-                                    })
-                                    $i.snippet(`>`)
+                            const args = $.arguments
+                            pl.cc($.context, ($) => {
+
+                                switch ($[0]) {
+                                    case 'import':
+                                        pl.ss($, ($) => {
+                                            serializeArgumentsForImport($.glossaryXX, args, $i)
+                                        })
+                                        break
+                                    case 'local':
+                                        pl.ss($, ($) => {
+                                            serializeArgumentsForLocal(args, $i)
+                                        })
+                                        break
+                                    default: pl.au($[0])
                                 }
                             })
                         })
@@ -228,55 +205,84 @@ export const $$: A.serializeGlossary = ($d) => {
                     default: pl.au($[0])
                 }
             }
-            function serializeContextGlossaryArgumentsOnly(
-                $: g_glossary.T.Context<Annotation>,
+            function serializeArgumentsForImport(
+                $: string,
+                args: pt.Dictionary<g_glossary.T.DataSpecifier<Annotation>>,
                 $i: g_fp.SYNC.I.Line,
             ) {
-                switch ($[0]) {
-                    case 'import':
-                        pl.ss($, ($) => {
-                            importDefinitions.__getEntry(
-                                $.glossaryXX,
-                                ($) => {
-                                    $d.enrichedDictionaryForEach($.arguments, {
-                                        'onEmpty': () => {
-
-                                        },
-                                        'onNotEmpty': ($c) => {
-                                            $i.snippet(`<`)
-                                            $c(($) => {
-                                                serializeDataSpecifier($.value, $i)
-
-                                                $i.snippet(`${$.isLast ? `` : `, `}`)
-                                            })
-                                            $i.snippet(`>`)
-                                        }
-                                    })
-                                },
-                                () => {
-                                    pd.logDebugMessage(`missing import: ${$.glossaryXX}`)
-                                }
-                            )
+                
+                importDefinitions.__getEntry(
+                    $,
+                    ($) => {
+                        $d.enrichedDictionaryForEach(args, {
+                            'onEmpty': () => {
+                                $d.enrichedDictionaryForEach($.arguments, {
+                                    'onEmpty': () => {
+        
+                                    },
+                                    'onNotEmpty': ($c) => {
+                                        $i.snippet(`<`)
+                                        $c(($) => {
+                                            serializeDataSpecifier($.value, $i)
+        
+                                            $i.snippet(`${$.isLast ? `` : `, `}`)
+                                        })
+                                        $i.snippet(`>`)
+                                    }
+                                })
+                            },
+                            'onNotEmpty': ($c) => {
+        
+                                $i.snippet(`<`)
+        
+                                $d.dictionaryForEach($.arguments, ($) => {
+                                    serializeDataSpecifier($.value, $i)
+                                    $i.snippet(`, `)
+                                })
+                                $c(($) => {
+                                    serializeDataSpecifier($.value, $i)
+                                    $i.snippet(`${$.isLast ? `` : `, `}`)
+                                })
+                                $i.snippet(`>`)
+                            }
                         })
-                        break
-                    case 'local':
-                        pl.ss($, ($) => {
-                            $d.enrichedDictionaryForEach(globalParameters, {
-                                'onEmpty': () => {
+                    },
+                    () => {
+                        pd.logDebugMessage(`missing import: ${$}`)
+                    }
+                )
+            }
+            function serializeArgumentsForLocal(
+                args: pt.Dictionary<g_glossary.T.DataSpecifier<Annotation>>,
+                $i: g_fp.SYNC.I.Line,
+            ) {
+                $d.enrichedDictionaryForEach(args, {
+                    'onEmpty': () => {
+                        $d.enrichedDictionaryForEach(globalParameters, {
+                            'onEmpty': () => {
 
-                                },
-                                'onNotEmpty': ($c) => {
-                                    $i.snippet(`<`)
-                                    $c(($) => {
-                                        $i.snippet(`G${$.key}${$.isLast ? `` : `, `}`)
-                                    })
-                                    $i.snippet(`>`)
-                                }
-                            })
+                            },
+                            'onNotEmpty': ($c) => {
+                                $i.snippet(`<`)
+                                $c(($) => {
+                                    $i.snippet(`G${$.key}${$.isLast ? `` : `, `}`)
+                                })
+                                $i.snippet(`>`)
+                            }
                         })
-                        break
-                    default: pl.au($[0])
-                }
+                    },
+                    'onNotEmpty': ($c) => {
+                        $i.snippet(`<`)
+                        $d.dictionaryForEach(globalParameters, ($) => {
+                            $i.snippet(`G${$.key}, `)
+                        })
+                        $c(($) => {
+                            serializeDataSpecifier($.value, $i)
+                            $i.snippet(`${$.isLast ? `` : `, `}`)
+                        })
+                        $i.snippet(`>`)
+                    }
+                })
             }
             $i.file(`index.ts`, ($i) => {
                 $i.line(`export * from "./datatypes.generated"`)
@@ -661,45 +667,37 @@ export const $$: A.serializeGlossary = ($d) => {
 
                 }
                 function serializeSynchronousInterfaceReference($: g_glossary.T.SynchronousInterfaceReference<Annotation>, $i: g_fp.SYNC.I.Line) {
-                    serializeContext($.context, $i)
+                    pl.cc($.context, ($) => {
+                        switch ($[0]) {
+                            case 'import':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`g_${$.glossaryXX}.`)
+                                })
+                                break
+                            case 'local':
+                                pl.ss($, ($) => {
+
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
                     $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interfaceXX}`)}`)
-                    $d.enrichedDictionaryForEach($.arguments, {
-                        'onEmpty': () => {
-                            serializeContextGlossaryArgumentsOnly($.context, $i)
-                        },
-                        'onNotEmpty': ($c) => {
-                            $i.snippet(`<`)
-                            switch ($.context[0]) {
-                                case 'import':
-                                    pl.ss($.context, ($) => {
-                                        importDefinitions.__getEntry(
-                                            $.glossaryXX,
-                                            ($) => {
-                                                $d.dictionaryForEach($.arguments, ($) => {
-                                                    serializeDataSpecifier($.value, $i)
-                                                    $i.snippet(`, `)
-                                                })
-                                            },
-                                            () => {
-                                                pd.logDebugMessage(`missing import: ${$.glossaryXX}`)
-                                            }
-                                        )
-                                    })
-                                    break
-                                case 'local':
-                                    pl.ss($.context, ($) => {
-                                        $d.dictionaryForEach(globalParameters, ($) => {
-                                            $i.snippet(`G${$.key}, `)
-                                        })
-                                    })
-                                    break
-                                default: pl.au($.context[0])
-                            }
-                            $c(($) => {
-                                serializeDataSpecifier($.value, $i)
-                                $i.snippet(`${$.isLast ? `` : `, `}`)
-                            })
-                            $i.snippet(`>`)
+                    const args = $.arguments
+                    pl.cc($.context, ($) => {
+
+                        switch ($[0]) {
+                            case 'import':
+                                pl.ss($, ($) => {
+                                    serializeArgumentsForImport($.glossaryXX, args, $i)
+                                })
+                                break
+                            case 'local':
+                                pl.ss($, ($) => {
+                                    serializeArgumentsForLocal(args, $i)
+                                })
+                                break
+                            default: pl.au($[0])
                         }
                     })
 
@@ -798,45 +796,37 @@ export const $$: A.serializeGlossary = ($d) => {
 
                 }
                 function serializeAsynchronousInterfaceReference($: g_glossary.T.AsynchronousInterfaceReference<Annotation>, $i: g_fp.SYNC.I.Line) {
-                    serializeContext($.context, $i)
+                    pl.cc($.context, ($) => {
+                        switch ($[0]) {
+                            case 'import':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`g_${$.glossaryXX}.`)
+                                })
+                                break
+                            case 'local':
+                                pl.ss($, ($) => {
+
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
                     $i.snippet(`ASYNC.I.${$d.createIdentifier(`${$.interfaceXX}`)}`)
-                    $d.enrichedDictionaryForEach($.arguments, {
-                        'onEmpty': () => {
-                            serializeContextGlossaryArgumentsOnly($.context, $i)
-                        },
-                        'onNotEmpty': ($c) => {
-                            $i.snippet(`<`)
-                            switch ($.context[0]) {
-                                case 'import':
-                                    pl.ss($.context, ($) => {
-                                        importDefinitions.__getEntry(
-                                            $.glossaryXX,
-                                            ($) => {
-                                                $d.dictionaryForEach($.arguments, ($) => {
-                                                    serializeDataSpecifier($.value, $i)
-                                                    $i.snippet(`, `)
-                                                })
-                                            },
-                                            () => {
-                                                pd.logDebugMessage(`missing import: ${$.glossaryXX}`)
-                                            }
-                                        )
-                                    })
-                                    break
-                                case 'local':
-                                    pl.ss($.context, ($) => {
-                                        $d.dictionaryForEach(globalParameters, ($) => {
-                                            $i.snippet(`G${$.key}, `)
-                                        })
-                                    })
-                                    break
-                                default: pl.au($.context[0])
-                            }
-                            $c(($) => {
-                                serializeDataSpecifier($.value, $i)
-                                $i.snippet(`${$.isLast ? `` : `, `}`)
-                            })
-                            $i.snippet(`>`)
+                    const args = $.arguments
+                    pl.cc($.context, ($) => {
+
+                        switch ($[0]) {
+                            case 'import':
+                                pl.ss($, ($) => {
+                                    serializeArgumentsForImport($.glossaryXX, args, $i)
+                                })
+                                break
+                            case 'local':
+                                pl.ss($, ($) => {
+                                    serializeArgumentsForLocal(args, $i)
+                                })
+                                break
+                            default: pl.au($[0])
                         }
                     })
 

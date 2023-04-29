@@ -3,6 +3,21 @@ import * as pt from 'pareto-core-types'
 
 export namespace N {
     
+    export namespace Arguments {
+        
+        export namespace N {
+            
+            export namespace D {
+                
+                export namespace N {}
+                
+                export namespace T {}
+            }
+        }
+        
+        export namespace T {}
+    }
+    
     export namespace AsynchronousInterface {
         
         export namespace N {
@@ -143,15 +158,7 @@ export namespace N {
                     
                     export namespace arguments {
                         
-                        export namespace N {
-                            
-                            export namespace D {
-                                
-                                export namespace N {}
-                                
-                                export namespace T {}
-                            }
-                        }
+                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -287,15 +294,7 @@ export namespace N {
                                     
                                     export namespace arguments {
                                         
-                                        export namespace N {
-                                            
-                                            export namespace D {
-                                                
-                                                export namespace N {}
-                                                
-                                                export namespace T {}
-                                            }
-                                        }
+                                        export namespace N {}
                                         
                                         export namespace T {}
                                     }
@@ -381,15 +380,7 @@ export namespace N {
                                             
                                             export namespace arguments {
                                                 
-                                                export namespace N {
-                                                    
-                                                    export namespace D {
-                                                        
-                                                        export namespace N {}
-                                                        
-                                                        export namespace T {}
-                                                    }
-                                                }
+                                                export namespace N {}
                                                 
                                                 export namespace T {}
                                             }
@@ -1097,15 +1088,7 @@ export namespace N {
                     
                     export namespace arguments {
                         
-                        export namespace N {
-                            
-                            export namespace D {
-                                
-                                export namespace N {}
-                                
-                                export namespace T {}
-                            }
-                        }
+                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -1315,6 +1298,13 @@ export namespace N {
 
 export namespace T {
     
+    export namespace Arguments {
+        
+        export type D<GAnnotation> = T.DataSpecifier<GAnnotation>
+    }
+    
+    export type Arguments<GAnnotation> = pt.Dictionary<T.DataSpecifier<GAnnotation>>
+    
     export namespace AsynchronousInterface {
         
         export namespace choice {
@@ -1384,12 +1374,7 @@ export namespace T {
     
     export namespace AsynchronousInterfaceReference {
         
-        export namespace arguments {
-            
-            export type D<GAnnotation> = T.DataSpecifier<GAnnotation>
-        }
-        
-        export type arguments<GAnnotation> = pt.Dictionary<T.DataSpecifier<GAnnotation>>
+        export type arguments<GAnnotation> = T.Arguments<GAnnotation>
         
         export type context<GAnnotation> = T.Context<GAnnotation>
         
@@ -1397,7 +1382,7 @@ export namespace T {
     }
     
     export type AsynchronousInterfaceReference<GAnnotation> = {
-        readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
+        readonly 'arguments': T.Arguments<GAnnotation>
         readonly 'context': T.Context<GAnnotation>
         readonly 'interfaceXX': string
     }
@@ -1441,12 +1426,7 @@ export namespace T {
         
         export namespace _ltype {
             
-            export namespace arguments {
-                
-                export type D<GAnnotation> = T.DataSpecifier<GAnnotation>
-            }
-            
-            export type arguments<GAnnotation> = pt.Dictionary<T.DataSpecifier<GAnnotation>>
+            export type arguments<GAnnotation> = T.Arguments<GAnnotation>
             
             export type context<GAnnotation> = T.Context<GAnnotation>
             
@@ -1461,7 +1441,7 @@ export namespace T {
         }
         
         export type _ltype<GAnnotation> = {
-            readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
+            readonly 'arguments': T.Arguments<GAnnotation>
             readonly 'context': T.Context<GAnnotation>
             readonly 'tailXX': pt.Array<string>
             readonly 'typeXX': string
@@ -1473,7 +1453,7 @@ export namespace T {
     export type DataSpecifier<GAnnotation> = 
         | ['glossary parameterXX', string]
         | ['type', {
-            readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
+            readonly 'arguments': T.Arguments<GAnnotation>
             readonly 'context': T.Context<GAnnotation>
             readonly 'tailXX': pt.Array<string>
             readonly 'typeXX': string
@@ -1488,28 +1468,23 @@ export namespace T {
             
             export namespace D {
                 
-                export namespace arguments {
-                    
-                    export type D<GAnnotation> = T.DataSpecifier<GAnnotation>
-                }
-                
-                export type arguments<GAnnotation> = pt.Dictionary<T.DataSpecifier<GAnnotation>>
+                export type arguments<GAnnotation> = T.Arguments<GAnnotation>
             }
             
             export type D<GAnnotation> = {
-                readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
+                readonly 'arguments': T.Arguments<GAnnotation>
             }
         }
         
         export type imports<GAnnotation> = pt.Dictionary<{
-            readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
+            readonly 'arguments': T.Arguments<GAnnotation>
         }>
     }
     
     export type Glossary<GAnnotation> = {
         readonly 'core': T.Glossary__Core<GAnnotation>
         readonly 'imports': pt.Dictionary<{
-            readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
+            readonly 'arguments': T.Arguments<GAnnotation>
         }>
     }
     
@@ -2000,12 +1975,7 @@ export namespace T {
     
     export namespace SynchronousInterfaceReference {
         
-        export namespace arguments {
-            
-            export type D<GAnnotation> = T.DataSpecifier<GAnnotation>
-        }
-        
-        export type arguments<GAnnotation> = pt.Dictionary<T.DataSpecifier<GAnnotation>>
+        export type arguments<GAnnotation> = T.Arguments<GAnnotation>
         
         export type context<GAnnotation> = T.Context<GAnnotation>
         
@@ -2013,7 +1983,7 @@ export namespace T {
     }
     
     export type SynchronousInterfaceReference<GAnnotation> = {
-        readonly 'arguments': pt.Dictionary<T.DataSpecifier<GAnnotation>>
+        readonly 'arguments': T.Arguments<GAnnotation>
         readonly 'context': T.Context<GAnnotation>
         readonly 'interfaceXX': string
     }

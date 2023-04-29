@@ -47,7 +47,6 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
             },
             'global types': {
                 'declarations': d({
-                    "Context": globalTypeDeclaration({}),
                     "DataOrSynchronousInterface": globalTypeDeclaration({}),
                     "TypeParameters": globalTypeDeclaration({}),
                     "Namespace": globalTypeDeclaration({}),
@@ -58,6 +57,7 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                         "dependencies": pResolvedValue("Glossary Library", false),
                     }),
                     "DataSpecifier": globalTypeDeclaration({}),
+                    "Arguments": globalTypeDeclaration({}),
                     "AsynchronousInterface": globalTypeDeclaration({}),
                     "SynchronousInterface": globalTypeDeclaration({}),
                     "AsynchronousInterfaceReference": globalTypeDeclaration({}),
@@ -65,16 +65,6 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                     "Type": globalTypeDeclaration({}),
                 }),
                 'definitions': d({
-                    "Context": globalTypeDefinition(
-                        taggedUnion({
-                            "local": option(group({})),
-                            //"import": reference(['parent', null), [)),
-                            "import": option(group({
-                                //"glossary": prop(resolvedValueReference(valSel("glossary2"), tempTypeSelection("Glossary", t_grp("imports")))),
-                                "glossaryXX": prop(terminal("identifier")),
-                            })),
-                        })
-                    ),
                     "DataOrSynchronousInterface": globalTypeDefinition(
                         taggedUnion({
                             "data": option(component("DataSpecifier", {})),
@@ -164,7 +154,7 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
 
                                 },
                                 group({
-                                    "arguments": prop(dictionary(component("DataSpecifier", {}))),
+                                    "arguments": prop(component("Arguments", {})),
                                 }))
                             ),
                             "core": prop(component("Glossary Core", {})),
@@ -173,10 +163,17 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                     "DataSpecifier": globalTypeDefinition(
                         taggedUnion({
                             "type": option(group({
-                                "context": prop(component("Context", {})),
+                                "context": prop(taggedUnion({
+                                    "local": option(group({})),
+                                    //"import": reference(['parent', null), [)),
+                                    "import": option(group({
+                                        //"glossary": prop(resolvedValueReference(valSel("glossary2"), tempTypeSelection("Glossary", t_grp("imports")))),
+                                        "glossaryXX": prop(terminal("identifier")),
+                                    })),
+                                })),
                                 "typeXX": prop(terminal("identifier")),
                                 "tailXX": prop(array(terminal("identifier"))),
-                                "arguments": prop(dictionary(component("DataSpecifier", {}))),
+                                "arguments": prop(component("Arguments", {})),
                             })),
                             "type parameterXX": option(terminal("identifier")),
                             "glossary parameterXX": option(terminal("identifier")),
@@ -211,18 +208,35 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                         })),
                     "AsynchronousInterfaceReference": globalTypeDefinition(
                         group({
-                            "context": prop(component("Context", {})),
+                            "context": prop(taggedUnion({
+                                "local": option(group({})),
+                                //"import": reference(['parent', null), [)),
+                                "import": option(group({
+                                    //"glossary": prop(resolvedValueReference(valSel("glossary2"), tempTypeSelection("Glossary", t_grp("imports")))),
+                                    "glossaryXX": prop(terminal("identifier")),
+                                })),
+                            })),
                             //"interface": [["context"), reference(['sibling', "context"), [))),
                             "interfaceXX": prop(terminal("identifier")),
-                            "arguments": prop(dictionary(component("DataSpecifier", {}))),
+                            "arguments": prop(component("Arguments", {})),
                         })
+                    ),
+                    "Arguments": globalTypeDefinition(
+                        dictionary(component("DataSpecifier", {}))
                     ),
                     "SynchronousInterfaceReference": globalTypeDefinition(
                         group({
-                            "context": prop(component("Context", {})),
+                            "context": prop(taggedUnion({
+                                "local": option(group({})),
+                                //"import": reference(['parent', null), [)),
+                                "import": option(group({
+                                    //"glossary": prop(resolvedValueReference(valSel("glossary2"), tempTypeSelection("Glossary", t_grp("imports")))),
+                                    "glossaryXX": prop(terminal("identifier")),
+                                })),
+                            })),
                             //"interface": [["context"), reference(['sibling', "context"), [))),
                             "interfaceXX": prop(terminal("identifier")),
-                            "arguments": prop(dictionary(component("DataSpecifier", {}))),
+                            "arguments": prop(component("Arguments", {})),
                         })
                     ),
                     "Type": globalTypeDefinition(

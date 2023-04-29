@@ -165,45 +165,46 @@ export namespace N {
                     
                     export namespace context {
                         
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                    
-                    export namespace interfaceXX {
-                        
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                }
-                
-                export namespace T {}
-            }
-        }
-        
-        export namespace T {}
-    }
-    
-    export namespace Context {
-        
-        export namespace N {
-            
-            export namespace TU {
-                
-                export namespace N {
-                    
-                    export namespace _$limport {
-                        
                         export namespace N {
                             
-                            export namespace G {
+                            export namespace TU {
                                 
                                 export namespace N {
                                     
-                                    export namespace glossaryXX {
+                                    export namespace _$limport {
                                         
-                                        export namespace N {}
+                                        export namespace N {
+                                            
+                                            export namespace G {
+                                                
+                                                export namespace N {
+                                                    
+                                                    export namespace glossaryXX {
+                                                        
+                                                        export namespace N {}
+                                                        
+                                                        export namespace T {}
+                                                    }
+                                                }
+                                                
+                                                export namespace T {}
+                                            }
+                                        }
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace local {
+                                        
+                                        export namespace N {
+                                            
+                                            export namespace G {
+                                                
+                                                export namespace N {}
+                                                
+                                                export namespace T {}
+                                            }
+                                        }
                                         
                                         export namespace T {}
                                     }
@@ -216,17 +217,9 @@ export namespace N {
                         export namespace T {}
                     }
                     
-                    export namespace local {
+                    export namespace interfaceXX {
                         
-                        export namespace N {
-                            
-                            export namespace G {
-                                
-                                export namespace N {}
-                                
-                                export namespace T {}
-                            }
-                        }
+                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -301,7 +294,54 @@ export namespace N {
                                     
                                     export namespace context {
                                         
-                                        export namespace N {}
+                                        export namespace N {
+                                            
+                                            export namespace TU {
+                                                
+                                                export namespace N {
+                                                    
+                                                    export namespace _$limport {
+                                                        
+                                                        export namespace N {
+                                                            
+                                                            export namespace G {
+                                                                
+                                                                export namespace N {
+                                                                    
+                                                                    export namespace glossaryXX {
+                                                                        
+                                                                        export namespace N {}
+                                                                        
+                                                                        export namespace T {}
+                                                                    }
+                                                                }
+                                                                
+                                                                export namespace T {}
+                                                            }
+                                                        }
+                                                        
+                                                        export namespace T {}
+                                                    }
+                                                    
+                                                    export namespace local {
+                                                        
+                                                        export namespace N {
+                                                            
+                                                            export namespace G {
+                                                                
+                                                                export namespace N {}
+                                                                
+                                                                export namespace T {}
+                                                            }
+                                                        }
+                                                        
+                                                        export namespace T {}
+                                                    }
+                                                }
+                                                
+                                                export namespace T {}
+                                            }
+                                        }
                                         
                                         export namespace T {}
                                     }
@@ -1095,7 +1135,54 @@ export namespace N {
                     
                     export namespace context {
                         
-                        export namespace N {}
+                        export namespace N {
+                            
+                            export namespace TU {
+                                
+                                export namespace N {
+                                    
+                                    export namespace _$limport {
+                                        
+                                        export namespace N {
+                                            
+                                            export namespace G {
+                                                
+                                                export namespace N {
+                                                    
+                                                    export namespace glossaryXX {
+                                                        
+                                                        export namespace N {}
+                                                        
+                                                        export namespace T {}
+                                                    }
+                                                }
+                                                
+                                                export namespace T {}
+                                            }
+                                        }
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace local {
+                                        
+                                        export namespace N {
+                                            
+                                            export namespace G {
+                                                
+                                                export namespace N {}
+                                                
+                                                export namespace T {}
+                                            }
+                                        }
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
                         
                         export namespace T {}
                     }
@@ -1376,38 +1463,40 @@ export namespace T {
         
         export type arguments<GAnnotation> = T.Arguments<GAnnotation>
         
-        export type context<GAnnotation> = T.Context<GAnnotation>
+        export namespace context {
+            
+            export namespace _limport {
+                
+                export type glossaryXX<GAnnotation> = string
+            }
+            
+            export type _limport<GAnnotation> = {
+                readonly 'glossaryXX': string
+            }
+            
+            export namespace local {}
+            
+            export type local<GAnnotation> = null
+        }
+        
+        export type context<GAnnotation> = 
+            | ['import', {
+                readonly 'glossaryXX': string
+            }]
+            | ['local', null]
         
         export type interfaceXX<GAnnotation> = string
     }
     
     export type AsynchronousInterfaceReference<GAnnotation> = {
         readonly 'arguments': T.Arguments<GAnnotation>
-        readonly 'context': T.Context<GAnnotation>
+        readonly 'context': 
+            | ['import', {
+                readonly 'glossaryXX': string
+            }]
+            | ['local', null]
         readonly 'interfaceXX': string
     }
-    
-    export namespace Context {
-        
-        export namespace _limport {
-            
-            export type glossaryXX<GAnnotation> = string
-        }
-        
-        export type _limport<GAnnotation> = {
-            readonly 'glossaryXX': string
-        }
-        
-        export namespace local {}
-        
-        export type local<GAnnotation> = null
-    }
-    
-    export type Context<GAnnotation> = 
-        | ['import', {
-            readonly 'glossaryXX': string
-        }]
-        | ['local', null]
     
     export namespace DataOrSynchronousInterface {
         
@@ -1428,7 +1517,27 @@ export namespace T {
             
             export type arguments<GAnnotation> = T.Arguments<GAnnotation>
             
-            export type context<GAnnotation> = T.Context<GAnnotation>
+            export namespace context {
+                
+                export namespace _limport {
+                    
+                    export type glossaryXX<GAnnotation> = string
+                }
+                
+                export type _limport<GAnnotation> = {
+                    readonly 'glossaryXX': string
+                }
+                
+                export namespace local {}
+                
+                export type local<GAnnotation> = null
+            }
+            
+            export type context<GAnnotation> = 
+                | ['import', {
+                    readonly 'glossaryXX': string
+                }]
+                | ['local', null]
             
             export namespace tailXX {
                 
@@ -1442,7 +1551,11 @@ export namespace T {
         
         export type _ltype<GAnnotation> = {
             readonly 'arguments': T.Arguments<GAnnotation>
-            readonly 'context': T.Context<GAnnotation>
+            readonly 'context': 
+                | ['import', {
+                    readonly 'glossaryXX': string
+                }]
+                | ['local', null]
             readonly 'tailXX': pt.Array<string>
             readonly 'typeXX': string
         }
@@ -1454,7 +1567,11 @@ export namespace T {
         | ['glossary parameterXX', string]
         | ['type', {
             readonly 'arguments': T.Arguments<GAnnotation>
-            readonly 'context': T.Context<GAnnotation>
+            readonly 'context': 
+                | ['import', {
+                    readonly 'glossaryXX': string
+                }]
+                | ['local', null]
             readonly 'tailXX': pt.Array<string>
             readonly 'typeXX': string
         }]
@@ -1977,14 +2094,38 @@ export namespace T {
         
         export type arguments<GAnnotation> = T.Arguments<GAnnotation>
         
-        export type context<GAnnotation> = T.Context<GAnnotation>
+        export namespace context {
+            
+            export namespace _limport {
+                
+                export type glossaryXX<GAnnotation> = string
+            }
+            
+            export type _limport<GAnnotation> = {
+                readonly 'glossaryXX': string
+            }
+            
+            export namespace local {}
+            
+            export type local<GAnnotation> = null
+        }
+        
+        export type context<GAnnotation> = 
+            | ['import', {
+                readonly 'glossaryXX': string
+            }]
+            | ['local', null]
         
         export type interfaceXX<GAnnotation> = string
     }
     
     export type SynchronousInterfaceReference<GAnnotation> = {
         readonly 'arguments': T.Arguments<GAnnotation>
-        readonly 'context': T.Context<GAnnotation>
+        readonly 'context': 
+            | ['import', {
+                readonly 'glossaryXX': string
+            }]
+            | ['local', null]
         readonly 'interfaceXX': string
     }
     

@@ -86,9 +86,21 @@ export const $$: A.resolve = ($d, $se) => {
         $: g_in.T.AsynchronousInterfaceReference<Annotation>,
     ): g_out.T.AsynchronousInterfaceReference<Annotation> {
         return pl.cc($, ($) => {
-            const $p_context: g_out.T.AsynchronousInterfaceReference.context<Annotation> = pl.cc($['context'], ($) => map_Context<Annotation>(
-                $,
-            ))
+            const $p_context: g_out.T.AsynchronousInterfaceReference.context<Annotation> = pl.cc($['context'], ($) => pl.cc($, ($): g_out.T.AsynchronousInterfaceReference.context<Annotation> => {
+                switch ($[0]) {
+                    case 'import': return pl.ss($, ($) => ['import', pl.cc($, ($) => {
+                        const $p_glossaryXX: g_out.T.AsynchronousInterfaceReference.context._limport.glossaryXX<Annotation> = pl.cc($['glossaryXX'], ($) => $)
+                        const $v_glossaryXX: pt.OptionalValue<g_out.T.AsynchronousInterfaceReference.context._limport.glossaryXX<Annotation>> = [true, $p_glossaryXX]
+                        return {
+                            'glossaryXX': $p_glossaryXX,
+                        }
+                    })])
+                    case 'local': return pl.ss($, ($) => ['local', pl.cc($, ($) => {
+                        return null
+                    })])
+                    default: return pl.au($[0])
+                }
+            }))
             const $v_context: pt.OptionalValue<g_out.T.AsynchronousInterfaceReference.context<Annotation>> = [true, $p_context]
             const $p_interfaceXX: g_out.T.AsynchronousInterfaceReference.interfaceXX<Annotation> = pl.cc($['interfaceXX'], ($) => $)
             const $v_interfaceXX: pt.OptionalValue<g_out.T.AsynchronousInterfaceReference.interfaceXX<Annotation>> = [true, $p_interfaceXX]
@@ -100,26 +112,6 @@ export const $$: A.resolve = ($d, $se) => {
                 'arguments': $p_arguments,
                 'context': $p_context,
                 'interfaceXX': $p_interfaceXX,
-            }
-        })
-    }
-    
-    function map_Context<Annotation>(
-        $: g_in.T.Context<Annotation>,
-    ): g_out.T.Context<Annotation> {
-        return pl.cc($, ($): g_out.T.Context<Annotation> => {
-            switch ($[0]) {
-                case 'import': return pl.ss($, ($) => ['import', pl.cc($, ($) => {
-                    const $p_glossaryXX: g_out.T.Context._limport.glossaryXX<Annotation> = pl.cc($['glossaryXX'], ($) => $)
-                    const $v_glossaryXX: pt.OptionalValue<g_out.T.Context._limport.glossaryXX<Annotation>> = [true, $p_glossaryXX]
-                    return {
-                        'glossaryXX': $p_glossaryXX,
-                    }
-                })])
-                case 'local': return pl.ss($, ($) => ['local', pl.cc($, ($) => {
-                    return null
-                })])
-                default: return pl.au($[0])
             }
         })
     }
@@ -147,9 +139,21 @@ export const $$: A.resolve = ($d, $se) => {
             switch ($[0]) {
                 case 'glossary parameterXX': return pl.ss($, ($) => ['glossary parameterXX', $])
                 case 'type': return pl.ss($, ($) => ['type', pl.cc($, ($) => {
-                    const $p_context: g_out.T.DataSpecifier._ltype.context<Annotation> = pl.cc($['context'], ($) => map_Context<Annotation>(
-                        $,
-                    ))
+                    const $p_context: g_out.T.DataSpecifier._ltype.context<Annotation> = pl.cc($['context'], ($) => pl.cc($, ($): g_out.T.DataSpecifier._ltype.context<Annotation> => {
+                        switch ($[0]) {
+                            case 'import': return pl.ss($, ($) => ['import', pl.cc($, ($) => {
+                                const $p_glossaryXX: g_out.T.DataSpecifier._ltype.context._limport.glossaryXX<Annotation> = pl.cc($['glossaryXX'], ($) => $)
+                                const $v_glossaryXX: pt.OptionalValue<g_out.T.DataSpecifier._ltype.context._limport.glossaryXX<Annotation>> = [true, $p_glossaryXX]
+                                return {
+                                    'glossaryXX': $p_glossaryXX,
+                                }
+                            })])
+                            case 'local': return pl.ss($, ($) => ['local', pl.cc($, ($) => {
+                                return null
+                            })])
+                            default: return pl.au($[0])
+                        }
+                    }))
                     const $v_context: pt.OptionalValue<g_out.T.DataSpecifier._ltype.context<Annotation>> = [true, $p_context]
                     const $p_typeXX: g_out.T.DataSpecifier._ltype.typeXX<Annotation> = pl.cc($['typeXX'], ($) => $)
                     const $v_typeXX: pt.OptionalValue<g_out.T.DataSpecifier._ltype.typeXX<Annotation>> = [true, $p_typeXX]
@@ -498,9 +502,21 @@ export const $$: A.resolve = ($d, $se) => {
         $: g_in.T.SynchronousInterfaceReference<Annotation>,
     ): g_out.T.SynchronousInterfaceReference<Annotation> {
         return pl.cc($, ($) => {
-            const $p_context: g_out.T.SynchronousInterfaceReference.context<Annotation> = pl.cc($['context'], ($) => map_Context<Annotation>(
-                $,
-            ))
+            const $p_context: g_out.T.SynchronousInterfaceReference.context<Annotation> = pl.cc($['context'], ($) => pl.cc($, ($): g_out.T.SynchronousInterfaceReference.context<Annotation> => {
+                switch ($[0]) {
+                    case 'import': return pl.ss($, ($) => ['import', pl.cc($, ($) => {
+                        const $p_glossaryXX: g_out.T.SynchronousInterfaceReference.context._limport.glossaryXX<Annotation> = pl.cc($['glossaryXX'], ($) => $)
+                        const $v_glossaryXX: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context._limport.glossaryXX<Annotation>> = [true, $p_glossaryXX]
+                        return {
+                            'glossaryXX': $p_glossaryXX,
+                        }
+                    })])
+                    case 'local': return pl.ss($, ($) => ['local', pl.cc($, ($) => {
+                        return null
+                    })])
+                    default: return pl.au($[0])
+                }
+            }))
             const $v_context: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context<Annotation>> = [true, $p_context]
             const $p_interfaceXX: g_out.T.SynchronousInterfaceReference.interfaceXX<Annotation> = pl.cc($['interfaceXX'], ($) => $)
             const $v_interfaceXX: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.interfaceXX<Annotation>> = [true, $p_interfaceXX]

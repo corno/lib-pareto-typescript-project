@@ -84,19 +84,19 @@ export function ref(typeReference: t.T.DataSpecifier<pd.SourceLocation>): t.T.Ty
     return ['reference', typeReference]
 }
 
-export function context(glossary: string, annotation: pd.SourceLocation): t.T.Context<pd.SourceLocation> {
-    if (glossary === undefined) {
-        return ['local', null]
-    } else {
-        return ['import', {
-            // 'glossary': {
-            //     'annotation': annotation,
-            //     'key': glossary,
-            // },
-            'glossaryXX': glossary,
-        }]
-    }
-}
+// export function context(glossary: string, annotation: pd.SourceLocation): t.T.Context<pd.SourceLocation> {
+//     if (glossary === undefined) {
+//         return ['local', null]
+//     } else {
+//         return ['import', {
+//             // 'glossary': {
+//             //     'annotation': annotation,
+//             //     'key': glossary,
+//             // },
+//             'glossaryXX': glossary,
+//         }]
+//     }
+// }
 
 export function imp(args: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.Glossary.imports.D<pd.SourceLocation> {
     return {
@@ -110,7 +110,13 @@ export function externalTypeReference(
     typeArgs?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>
 ): t.T.DataSpecifier<pd.SourceLocation> {
     return ['type', {
-        'context': context(contextX, pd.getLocationInfo(1)),
+        'context': ['import', {
+            // 'glossary': {
+            //     'annotation': annotation,
+            //     'key': glossary,
+            // },
+            'glossaryXX': contextX,
+        }],
         'typeXX': type,
         'tailXX': pd.a([]),
         'arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
@@ -132,7 +138,13 @@ export function typeReference(
 export function sExternalInterfaceReference(cntxt: string, inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.SynchronousInterfaceReference<pd.SourceLocation> {
 
     return {
-        'context': context(cntxt, pd.getLocationInfo(1)),
+        'context': ['import', {
+            // 'glossary': {
+            //     'annotation': annotation,
+            //     'key': glossary,
+            // },
+            'glossaryXX': cntxt,
+        }],
         'interfaceXX': inf,
         'arguments': pd.d(args === undefined ? {} : args),
     }
@@ -148,7 +160,13 @@ export function sInterfaceReference(inf: string, args?: RawDictionary<t.T.DataSp
 
 export function aExternalInterfaceReference(cntxt: string, inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.AsynchronousInterfaceReference<pd.SourceLocation> {
     return {
-        'context': context(cntxt, pd.getLocationInfo(1)),
+        'context': ['import', {
+            // 'glossary': {
+            //     'annotation': annotation,
+            //     'key': glossary,
+            // },
+            'glossaryXX': cntxt,
+        }],
         'interfaceXX': inf,
         'arguments': pd.d(args === undefined ? {} : args),
     }

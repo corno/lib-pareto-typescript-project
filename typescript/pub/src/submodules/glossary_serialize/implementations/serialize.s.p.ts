@@ -157,7 +157,29 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
                                 $i.snippet(`'context': `)
-                                serializeContext($.context, $i)
+                                pl.cc($.context, ($) => {
+                                    switch ($[0]) {
+                                        case 'import':
+                                            pl.ss($, ($) => {
+                                                $i.snippet(`['import', {`)
+                                                $i.indent(($i) => {
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`'glossaryXX': "${$.glossaryXX}"`)
+                                                        //serializeRef($.glossary, $i)
+                                                        $i.snippet(`,`)
+                                                    })
+                                                })
+                                                $i.snippet(`}]`)
+                                            })
+                                            break
+                                        case 'local':
+                                            pl.ss($, ($) => {
+                                                $i.snippet(`['local', null]`)
+                                            })
+                                            break
+                                        default: pl.au($[0])
+                                    }
+                                })
                                 $i.snippet(`,`)
                             })
                             $i.nestedLine(($i) => {
@@ -310,36 +332,34 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                 default: pl.au($[0])
             }
         }
-        function serializeContext($: g_glossary.T.Context<GAnnotation>, $i: g_fp.SYNC.I.Line) {
-            $i.snippet(`<g_glossary.T.Context<pd.SourceLocation>>`)
-            switch ($[0]) {
-                case 'import':
-                    pl.ss($, ($) => {
-                        $i.snippet(`['import', {`)
-                        $i.indent(($i) => {
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`'glossaryXX': "${$.glossaryXX}"`)
-                                //serializeRef($.glossary, $i)
-                                $i.snippet(`,`)
-                            })
-                        })
-                        $i.snippet(`}]`)
-                    })
-                    break
-                case 'local':
-                    pl.ss($, ($) => {
-                        $i.snippet(`['local', null]`)
-                    })
-                    break
-                default: pl.au($[0])
-            }
-        }
         function serializeAsynchronousInterfaceReference($: g_glossary.T.AsynchronousInterfaceReference<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
                     $i.snippet(`'context': `)
-                    serializeContext($.context, $i)
+                    pl.cc($.context, ($) => {
+                        switch ($[0]) {
+                            case 'import':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`['import', {`)
+                                    $i.indent(($i) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'glossaryXX': "${$.glossaryXX}"`)
+                                            //serializeRef($.glossary, $i)
+                                            $i.snippet(`,`)
+                                        })
+                                    })
+                                    $i.snippet(`}]`)
+                                })
+                                break
+                            case 'local':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`['local', null]`)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
                     $i.snippet(`,`)
                 })
                 $i.nestedLine(($i) => {
@@ -381,7 +401,29 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
                     $i.snippet(`'context': `)
-                    serializeContext($.context, $i)
+                    pl.cc($.context, ($) => {
+                        switch ($[0]) {
+                            case 'import':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`['import', {`)
+                                    $i.indent(($i) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'glossaryXX': "${$.glossaryXX}"`)
+                                            //serializeRef($.glossary, $i)
+                                            $i.snippet(`,`)
+                                        })
+                                    })
+                                    $i.snippet(`}]`)
+                                })
+                                break
+                            case 'local':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`['local', null]`)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
                     $i.snippet(`,`)
                 })
                 $i.nestedLine(($i) => {

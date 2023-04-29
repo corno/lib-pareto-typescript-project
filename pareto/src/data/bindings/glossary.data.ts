@@ -15,29 +15,26 @@ const d = pd.d
 
 export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({
-        "main": imp({ "Annotation": glossaryParameter("Annotation") }),
-        "common": imp({}),
+        "common": imp(),
     }),
-    'core': {
 
-        'parameters': d({
-            "Annotation": null,
+    'glossary parameters': d({
+        "Annotation": null,
+    }),
+    'root': {
+        'namespaces': d({}),
+        'types': d({
         }),
-        'root': {
-            'namespaces': d({}),
-            'types': d({
-            }),
-        },
-        'asynchronous': {
-            'interfaces': d({
-            }),
-            'algorithms': d({
-            }),
-        },
-        'synchronous': {
-            'interfaces': d({}),
-            'algorithms': d({}),
+    },
+    'asynchronous': {
+        'interfaces': d({
+        }),
+        'algorithms': d({
+        }),
+    },
+    'synchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
 
-        },
     },
 }

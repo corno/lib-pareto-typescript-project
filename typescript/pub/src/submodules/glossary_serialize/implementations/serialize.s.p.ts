@@ -237,7 +237,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
             $i.snippet(`{`)
             $i.indent(($i) => {
                 $i.nestedLine(($i) => {
-                    $i.snippet(`'glossaryXX':`)
+                    $i.snippet(`'glossary':`)
                     serializeRef($.glossary, $i)
                     $i.snippet(`,`)
                 })
@@ -627,14 +627,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                     $i.indent(($i) => {
                         $d.dictionaryForEach($.imports, ($) => {
                             $i.nestedLine(($i) => {
-                                $i.snippet(`"${$.key}": {`)
-                                $i.indent(($i) => {
-                                    pl.cc($.value, ($) => {
-
-                                    })
-
-                                })
-                                $i.snippet(`},`)
+                                $i.snippet(`"${$.key}": null,`)
                             })
                         })
                     })

@@ -79,9 +79,8 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
                 'glossary': {
                     'root': {
                         'imports': d({}),
-                        'core': {
 
-                            'parameters': d({}),
+                            'glossary parameters': d({}),
                             'root': {
                                 'namespaces': d({}),
                                 'types': d({}),
@@ -96,7 +95,6 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
                                 'algorithms': d({}),
 
                             },
-                        },
 
                     },
                     'imports': d({}),

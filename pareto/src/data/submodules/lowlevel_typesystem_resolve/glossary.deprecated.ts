@@ -8,13 +8,12 @@ const d = pd.d
 
 export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({
-        "unresolved": imp({ "Annotation": glossaryParameter("Annotation"), }),
-        "resolved": imp({ "Annotation": glossaryParameter("Annotation"), }),
-        "model": imp({}),
+        "unresolved": imp(),
+        "resolved": imp(),
+        "model": imp(),
     }),
-    'core': {
 
-        'parameters': d({
+        'glossary parameters': d({
             "Annotation": null,
         }),
 
@@ -30,8 +29,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         'synchronous': {
             'interfaces': d({}),
             'algorithms': d({
-                "Resolve": sfunction(externalTypeReference("resolved", "SourceFile"), data(externalTypeReference("unresolved", "SourceFile"))),
+                "Resolve": sfunction(externalTypeReference("resolved", "SourceFile", { "Annotation": glossaryParameter("Annotation"), }), data(externalTypeReference("unresolved", "SourceFile", { "Annotation": glossaryParameter("Annotation"), }))),
             }),
         },
-    },
 }

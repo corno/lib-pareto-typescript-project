@@ -8,32 +8,29 @@ const d = pd.d
 
 export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({
-        "unresolved": imp({ "Annotation": glossaryParameter("Annotation"), }),
-        "resolved": imp({ "Annotation": glossaryParameter("Annotation"), }),
-        "model": imp({}),
+        "unresolved": imp(),
+        "resolved": imp(),
     }),
-    'core': {
 
-        'parameters': d({
-            "Annotation": null,
+    'glossary parameters': d({
+        "Annotation": null,
+    }),
+    'root': {
+        'namespaces': d({}),
+        'types': d({
+            "Error": type(string())
         }),
-        'root': {
-            'namespaces': d({}),
-            'types': d({
-                "Error": type(string())
-            }),
-        },
-        'asynchronous': {
-            'interfaces': d({}),
-            'algorithms': d({}),
-        },
-        'synchronous': {
-            'interfaces': d({
-                "Error": sInterface(sInterfaceMethod(typeReference("Error")))
-            }),
-            'algorithms': d({
-                "Resolve": sfunction(externalTypeReference("resolved", "Dummy"), data(externalTypeReference("unresolved", "Dummy"))),
-            }),
-        },
+    },
+    'asynchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
+    },
+    'synchronous': {
+        'interfaces': d({
+            "Error": sInterface(sInterfaceMethod(typeReference("Error")))
+        }),
+        'algorithms': d({
+            "Resolve": sfunction(externalTypeReference("resolved", "Dummy", { "Annotation": glossaryParameter("Annotation"), }), data(externalTypeReference("unresolved", "Dummy", { "Annotation": glossaryParameter("Annotation"), }))),
+        }),
     },
 }

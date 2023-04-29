@@ -185,7 +185,6 @@ export const $$: A.serializeGlossary = ($d) => {
                             })
                             const args = $['type arguments']
                             pl.cc($.context, ($) => {
-
                                 switch ($[0]) {
                                     case 'import':
                                         pl.ss($, ($) => {

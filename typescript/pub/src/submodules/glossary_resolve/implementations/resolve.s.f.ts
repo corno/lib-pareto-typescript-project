@@ -206,9 +206,9 @@ export const $$: A.resolve = ($d, $se) => {
         $: g_in.T.Glossary__Core<Annotation>,
     ): g_out.T.Glossary__Core<Annotation> {
         return pl.cc($, ($) => {
-            const $p_parameters: g_out.T.Glossary__Core.parameters<Annotation> = pl.cc($['parameters'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
-                return null
-            })))
+            const $p_parameters: g_out.T.Glossary__Core.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Glossary__Parameters<Annotation>(
+                $,
+            ))
             const $v_parameters: pt.OptionalValue<g_out.T.Glossary__Core.parameters<Annotation>> = [true, $p_parameters]
             const $p_root: g_out.T.Glossary__Core.root<Annotation> = pl.cc($['root'], ($) => map_Namespace<Annotation>(
                 $,
@@ -398,6 +398,14 @@ export const $$: A.resolve = ($d, $se) => {
         return $.__mapWithKey(($, key) => map_Glossary__Core<Annotation>(
             $,
         ))
+    }
+    
+    function map_Glossary__Parameters<Annotation>(
+        $: g_in.T.Glossary__Parameters<Annotation>,
+    ): g_out.T.Glossary__Parameters<Annotation> {
+        return $.__mapWithKey(($, key) => pl.cc($, ($) => {
+            return null
+        }))
     }
     
     function map_Glossary__Wrapper<Annotation>(

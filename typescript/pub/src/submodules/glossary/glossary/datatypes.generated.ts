@@ -654,23 +654,7 @@ export namespace N {
                     
                     export namespace parameters {
                         
-                        export namespace N {
-                            
-                            export namespace D {
-                                
-                                export namespace N {
-                                    
-                                    export namespace G {
-                                        
-                                        export namespace N {}
-                                        
-                                        export namespace T {}
-                                    }
-                                }
-                                
-                                export namespace T {}
-                            }
-                        }
+                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -911,6 +895,29 @@ export namespace N {
             export namespace D {
                 
                 export namespace N {}
+                
+                export namespace T {}
+            }
+        }
+        
+        export namespace T {}
+    }
+    
+    export namespace Glossary_$_$Parameters {
+        
+        export namespace N {
+            
+            export namespace D {
+                
+                export namespace N {
+                    
+                    export namespace G {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                }
                 
                 export namespace T {}
             }
@@ -1753,14 +1760,7 @@ export namespace T {
             }>
         }
         
-        export namespace parameters {
-            
-            export namespace D {}
-            
-            export type D<GAnnotation> = null
-        }
-        
-        export type parameters<GAnnotation> = pt.Dictionary<null>
+        export type parameters<GAnnotation> = T.Glossary__Parameters<GAnnotation>
         
         export type root<GAnnotation> = T.Namespace<GAnnotation>
         
@@ -1955,7 +1955,7 @@ export namespace T {
                 readonly 'parameters': T.TypeParameters<GAnnotation>
             }>
         }
-        readonly 'parameters': pt.Dictionary<null>
+        readonly 'parameters': T.Glossary__Parameters<GAnnotation>
         readonly 'root': T.Namespace<GAnnotation>
         readonly 'synchronous': {
             readonly 'algorithms': pt.Dictionary<{
@@ -1988,6 +1988,15 @@ export namespace T {
     }
     
     export type Glossary__Library<GAnnotation> = pt.Dictionary<T.Glossary__Core<GAnnotation>>
+    
+    export namespace Glossary__Parameters {
+        
+        export namespace D {}
+        
+        export type D<GAnnotation> = null
+    }
+    
+    export type Glossary__Parameters<GAnnotation> = pt.Dictionary<null>
     
     export namespace Glossary__Wrapper {
         

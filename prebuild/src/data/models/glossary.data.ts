@@ -53,6 +53,7 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                     "Glossary Core": globalTypeDeclaration({}),
                     "Glossary Library": globalTypeDeclaration({}),
                     "Glossary Wrapper": globalTypeDeclaration({}),
+                    "Glossary Parameters": globalTypeDeclaration({}),
                     "Glossary": globalTypeDeclaration({
                         "dependencies": pResolvedValue("Glossary Library", false),
                     }),
@@ -94,9 +95,10 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                             }))
                         })
                     ),
+                    "Glossary Parameters": globalTypeDefinition(dictionary(group({}))),
                     "Glossary Core": globalTypeDefinition(
                         group({
-                            "parameters": prop(dictionary(group({}))),
+                            "parameters": prop(component("Glossary Parameters", {})),
                             "root": prop(component("Namespace", {})),
                             "synchronous": prop(group({
                                 "interfaces": prop(dictionary(group({

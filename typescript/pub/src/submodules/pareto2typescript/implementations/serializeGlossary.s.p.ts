@@ -20,7 +20,7 @@ export const $$: A.serializeGlossary = ($d) => {
     return <Annotation>($: g_this.T.SerializeGlossaryData<Annotation>, $i: g_fp.SYNC.I.Directory) => {
         const imports = $.imports
         return pl.cc($.glossary, ($) => {
-            const globalParameters = $.core.parameters
+            const globalParameters = $['glossary parameters']
             const importDefinitions = $.imports
             function doDictionaryType<T>(
                 $: pt.Dictionary<T>,
@@ -97,7 +97,7 @@ export const $$: A.serializeGlossary = ($d) => {
 
             }
             function serializeGlobalAndTypeParameters2(
-                $: g_glossary.T.TypeParameters<Annotation>,
+                $: g_glossary.T.Parameters<Annotation>,
                 $i: g_fp.SYNC.I.Line,
             ) {
 
@@ -134,7 +134,7 @@ export const $$: A.serializeGlossary = ($d) => {
                     $i.snippet(`}`)
                 })
             }
-            function serializeTypeParameters($: g_glossary.T.TypeParameters<Annotation>, $i: g_fp.SYNC.I.Line) {
+            function serializeParameters($: g_glossary.T.Parameters<Annotation>, $i: g_fp.SYNC.I.Line) {
 
                 $d.enrichedDictionaryForEach($, {
                     onEmpty: () => {
@@ -167,7 +167,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                 switch ($[0]) {
                                     case 'import':
                                         pl.ss($, ($) => {
-                                            $i.snippet(`g_${$.glossaryXX}.`)
+                                            $i.snippet(`g_${$.glossary.glossary.key}.`)
                                         })
                                         break
                                     case 'local':
@@ -183,13 +183,13 @@ export const $$: A.serializeGlossary = ($d) => {
                             $.tailXX.__forEach(($) => {
                                 $i.snippet(`.${$d.createIdentifier(`${$}`)}`)
                             })
-                            const args = $.arguments
+                            const args = $['type arguments']
                             pl.cc($.context, ($) => {
 
                                 switch ($[0]) {
                                     case 'import':
                                         pl.ss($, ($) => {
-                                            serializeArgumentsForImport($.glossaryXX, args, $i)
+                                            serializeArgumentsForImport($.glossary, args, $i)
                                         })
                                         break
                                     case 'local':
@@ -206,17 +206,17 @@ export const $$: A.serializeGlossary = ($d) => {
                 }
             }
             function serializeArgumentsForImport(
-                $: string,
-                args: pt.Dictionary<g_glossary.T.DataSpecifier<Annotation>>,
+                glosRef: g_glossary.T.Glossary__Reference<Annotation>,
+                typeArguments: g_glossary.T.Arguments<Annotation>,
                 $i: g_fp.SYNC.I.Line,
             ) {
                 
                 importDefinitions.__getEntry(
-                    $,
+                    glosRef.glossary.key,
                     ($) => {
-                        $d.enrichedDictionaryForEach(args, {
+                        $d.enrichedDictionaryForEach(typeArguments, {
                             'onEmpty': () => {
-                                $d.enrichedDictionaryForEach($.arguments, {
+                                $d.enrichedDictionaryForEach(glosRef['glossary arguments'], {
                                     'onEmpty': () => {
         
                                     },
@@ -235,7 +235,7 @@ export const $$: A.serializeGlossary = ($d) => {
         
                                 $i.snippet(`<`)
         
-                                $d.dictionaryForEach($.arguments, ($) => {
+                                $d.dictionaryForEach(glosRef['glossary arguments'], ($) => {
                                     serializeDataSpecifier($.value, $i)
                                     $i.snippet(`, `)
                                 })
@@ -595,7 +595,7 @@ export const $$: A.serializeGlossary = ($d) => {
                         $i.snippet(`import * as g_${$.key} from "${$.value}"`)
                     })
                 })
-                serializeNamespace($.core.root, $i)
+                serializeNamespace($.root, $i)
 
             })
             $i.file(`algorithmtypes.generated.ts`, ($i) => {
@@ -671,7 +671,7 @@ export const $$: A.serializeGlossary = ($d) => {
                         switch ($[0]) {
                             case 'import':
                                 pl.ss($, ($) => {
-                                    $i.snippet(`g_${$.glossaryXX}.`)
+                                    $i.snippet(`g_${$.glossary.glossary.key}.`)
                                 })
                                 break
                             case 'local':
@@ -683,13 +683,13 @@ export const $$: A.serializeGlossary = ($d) => {
                         }
                     })
                     $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interfaceXX}`)}`)
-                    const args = $.arguments
+                    const args = $['type arguments']
                     pl.cc($.context, ($) => {
 
                         switch ($[0]) {
                             case 'import':
                                 pl.ss($, ($) => {
-                                    serializeArgumentsForImport($.glossaryXX, args, $i)
+                                    serializeArgumentsForImport($.glossary, args, $i)
                                 })
                                 break
                             case 'local':
@@ -800,7 +800,7 @@ export const $$: A.serializeGlossary = ($d) => {
                         switch ($[0]) {
                             case 'import':
                                 pl.ss($, ($) => {
-                                    $i.snippet(`g_${$.glossaryXX}.`)
+                                    $i.snippet(`g_${$.glossary.glossary.key}.`)
                                 })
                                 break
                             case 'local':
@@ -812,13 +812,13 @@ export const $$: A.serializeGlossary = ($d) => {
                         }
                     })
                     $i.snippet(`ASYNC.I.${$d.createIdentifier(`${$.interfaceXX}`)}`)
-                    const args = $.arguments
+                    const args = $['type arguments']
                     pl.cc($.context, ($) => {
 
                         switch ($[0]) {
                             case 'import':
                                 pl.ss($, ($) => {
-                                    serializeArgumentsForImport($.glossaryXX, args, $i)
+                                    serializeArgumentsForImport($.glossary, args, $i)
                                 })
                                 break
                             case 'local':
@@ -845,7 +845,7 @@ export const $$: A.serializeGlossary = ($d) => {
                     })
                 })
 
-                pl.cc($.core.asynchronous, ($) => {
+                pl.cc($.asynchronous, ($) => {
                     ns(`ASYNC`, $i, ($i) => {
                         ns(`I`, $i, ($i) => {
                             $d.dictionaryForEach($.interfaces, ($) => {
@@ -890,7 +890,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                             $i.indent(($i) => {
                                                                 $i.nestedLine(($i) => {
                                                                     $i.snippet(`'construct': `)
-                                                                    serializeTypeParameters(params, $i)
+                                                                    serializeParameters(params, $i)
 
                                                                     $i.snippet(`(`)
                                                                     $d.enrichedDictionaryForEach($.downstreams, {
@@ -920,7 +920,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                         break
                                                     case 'function':
                                                         pl.ss($, ($) => {
-                                                            serializeTypeParameters(params, $i)
+                                                            serializeParameters(params, $i)
                                                             $i.snippet(`(`)
                                                             pl.cc($.in, ($) => {
                                                                 $i.snippet(`$: `)
@@ -939,7 +939,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                             $i.indent(($i) => {
                                                                 $i.nestedLine(($i) => {
                                                                     $i.snippet(`'consume': `)
-                                                                    serializeTypeParameters(params, $i)
+                                                                    serializeParameters(params, $i)
                                                                     $i.snippet(`(`)
                                                                     $i.indent(($i) => {
                                                                         $i.nestedLine(($i) => {
@@ -973,12 +973,9 @@ export const $$: A.serializeGlossary = ($d) => {
                             })
                         })
                     })
-
                 })
                 ns(`SYNC`, $i, ($i) => {
-
-                    pl.cc($.core.synchronous, ($) => {
-
+                    pl.cc($.synchronous, ($) => {
                         $d.enrichedDictionaryForEach($.interfaces, {
                             'onEmpty': () => { },
                             'onNotEmpty': ($c) => {
@@ -1020,7 +1017,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                                     $i.snippet(`export type ${$d.createIdentifier($.key)}`)
                                                     serializeGlobalParametersOnly($i)
                                                     $i.snippet(` = `)
-                                                    serializeTypeParameters($.value.parameters, $i)
+                                                    serializeParameters($.value.parameters, $i)
                                                     pl.cc($.value.type, ($) => {
                                                         switch ($[0]) {
                                                             case 'procedure':

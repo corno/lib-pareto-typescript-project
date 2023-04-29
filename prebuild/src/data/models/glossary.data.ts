@@ -47,120 +47,232 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
             },
             'global types': {
                 'declarations': d({
-                    "DataOrSynchronousInterface": globalTypeDeclaration({}),
-                    "TypeParameters": globalTypeDeclaration({}),
-                    "Namespace": globalTypeDeclaration({}),
-                    "Glossary Core": globalTypeDeclaration({}),
-                    "Glossary Library": globalTypeDeclaration({}),
-                    "Glossary Wrapper": globalTypeDeclaration({}),
-                    "Glossary Parameters": globalTypeDeclaration({}),
-                    "Glossary": globalTypeDeclaration({
-                        "dependencies": pResolvedValue("Glossary Library", false),
+                    "Dummy": globalTypeDeclaration({}),
+                    "DataOrSynchronousInterface": globalTypeDeclaration({
+                        "glossary parameters": pResolvedValue("Parameters", false),
+                        "imports": pResolvedValue("Imports", false),
+                        "type parameters": pResolvedValue("Parameters", false),
                     }),
-                    "DataSpecifier": globalTypeDeclaration({}),
-                    "Arguments": globalTypeDeclaration({}),
-                    "AsynchronousInterface": globalTypeDeclaration({}),
-                    "SynchronousInterface": globalTypeDeclaration({}),
-                    "AsynchronousInterfaceReference": globalTypeDeclaration({}),
-                    "SynchronousInterfaceReference": globalTypeDeclaration({}),
-                    "Type": globalTypeDeclaration({}),
+                    "Namespace": globalTypeDeclaration({
+                        "glossary parameters": pResolvedValue("Parameters", false),
+                        "imports": pResolvedValue("Imports", false),
+                    }),
+                    "Glossary Reference": globalTypeDeclaration({
+                        "glossary parameters": pResolvedValue("Parameters", false),
+                        "imports": pResolvedValue("Imports", false),
+                        "type parameters": pResolvedValue("Parameters", false),
+                    }),
+                    "Imports": globalTypeDeclaration({}),
+                    "Parameters": globalTypeDeclaration({}),
+                    "Glossary": globalTypeDeclaration({
+                        "glossaries": pNonCyclicSiblings(globalTypeSelection("Glossary"))
+                    }),
+                    "DataSpecifier": globalTypeDeclaration({
+                        "glossary parameters": pResolvedValue("Parameters", false),
+                        "imports": pResolvedValue("Imports", false),
+                        "type parameters": pResolvedValue("Parameters", false),
+                    }),
+                    "Arguments": globalTypeDeclaration({
+                        "parameters": pResolvedValue("Parameters", false),
+                        "glossary parameters": pResolvedValue("Parameters", false),
+                        "imports": pResolvedValue("Imports", false),
+                        "type parameters": pResolvedValue("Parameters", false),
+                    }),
+                    "AsynchronousInterface": globalTypeDeclaration({
+                        "glossary parameters": pResolvedValue("Parameters", false),
+                        "imports": pResolvedValue("Imports", false),
+                        "type parameters": pResolvedValue("Parameters", false),
+                    }),
+                    "SynchronousInterface": globalTypeDeclaration({
+                        "glossary parameters": pResolvedValue("Parameters", false),
+                        "imports": pResolvedValue("Imports", false),
+                        "type parameters": pResolvedValue("Parameters", false),
+                    }),
+                    "AsynchronousInterfaceReference": globalTypeDeclaration({
+                        "glossary parameters": pResolvedValue("Parameters", false),
+                        "imports": pResolvedValue("Imports", false),
+                        "type parameters": pResolvedValue("Parameters", false),
+                    }),
+                    "SynchronousInterfaceReference": globalTypeDeclaration({
+                        "glossary parameters": pResolvedValue("Parameters", false),
+                        "imports": pResolvedValue("Imports", false),
+                        "type parameters": pResolvedValue("Parameters", false),
+                    }),
+                    "Type": globalTypeDeclaration({
+                        "glossary parameters": pResolvedValue("Parameters", false),
+                        "imports": pResolvedValue("Imports", false),
+                        "type parameters": pResolvedValue("Parameters", false),
+                    }),
                 }),
                 'definitions': d({
+                    "Dummy": globalTypeDefinition(group({})),
                     "DataOrSynchronousInterface": globalTypeDefinition(
                         taggedUnion({
-                            "data": option(component("DataSpecifier", {})),
-                            "interface": option(component("SynchronousInterfaceReference", {})),
+                            "data": option(component("DataSpecifier", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
+                            "interface": option(component("SynchronousInterfaceReference", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
                         })
-                    ),
-                    "TypeParameters": globalTypeDefinition(
-                        dictionary(group({}))
                     ),
                     "Namespace": globalTypeDefinition(
                         group({
-                            "namespaces": prop(dictionary(component("Namespace", {}))),
+                            "namespaces": prop(dictionary(component("Namespace", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                            }))),
                             "types": prop(dictionary(group({
-                                "parameters": prop(component("TypeParameters", {})),
-                                "type": prop(component("Type", {})),
+                                "parameters": prop(component("Parameters", {})),
+                                "type": prop(component("Type", {
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("parameters")),
+                                })),
                             }))),
                         })
                     ),
-                    "Glossary Library": globalTypeDefinition(
-                        dictionary(component("Glossary Core", {}))
-                    ),
-                    "Glossary Wrapper": globalTypeDefinition(
+                    "Glossary Reference": globalTypeDefinition(
                         group({
-                            "library": prop(component("Glossary Library", {})),
-                            "glossary": prop(component("Glossary", {
-                                "dependencies": aResolvedValue(valSel("library")),
-                            }))
+                            "glossary": prop(resolvedValueReference(valSel("imports"), tempTypeSelection("Imports"))),
+                            "glossary arguments": prop(component("Arguments", {
+                                "parameters": aResolvedValue(valSel("glossary parameters")), //FIXME the parameters of the referenced glossary
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
                         })
                     ),
-                    "Glossary Parameters": globalTypeDefinition(dictionary(group({}))),
-                    "Glossary Core": globalTypeDefinition(
+                    "Parameters": globalTypeDefinition(dictionary(group({}))),
+                    "Glossary": globalTypeDefinition(
                         group({
-                            "parameters": prop(component("Glossary Parameters", {})),
-                            "root": prop(component("Namespace", {})),
+                            "imports": prop(component("Imports", {})   ),
+                            "glossary parameters": prop(component("Parameters", {})),
+                            "root": prop(component("Namespace", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                            })),
                             "synchronous": prop(group({
                                 "interfaces": prop(dictionary(group({
-                                    "parameters": prop(component("TypeParameters", {})),
-                                    "interface": prop(component("SynchronousInterface", {}))
+                                    "parameters": prop(component("Parameters", {})),
+                                    "interface": prop(component("SynchronousInterface", {
+                                        "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                        "imports": aResolvedValue(valSel("imports")),
+                                        "type parameters": aResolvedValue(valSel("parameters")),
+                                    }))
                                 }))),
                                 "algorithms": prop(dictionary(group({
-                                    "parameters": prop(component("TypeParameters", {})),
+                                    "parameters": prop(component("Parameters", {})),
                                     "type": prop(taggedUnion({
                                         "function": option(group({
-                                            "in": prop(component("DataOrSynchronousInterface", {})),
-                                            "out": prop(component("DataSpecifier", {})),
+                                            "in": prop(component("DataOrSynchronousInterface", {
+                                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                "imports": aResolvedValue(valSel("imports")),
+                                                "type parameters": aResolvedValue(valSel("parameters")),
+                                            })),
+                                            "out": prop(component("DataSpecifier", {
+                                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                "imports": aResolvedValue(valSel("imports")),
+                                                "type parameters": aResolvedValue(valSel("parameters")),
+                                            })),
                                             "callbacks": prop(dictionary(group({
-                                                "in": prop(component("DataSpecifier", {})),
-                                                "lookups": prop(dictionary(component("DataSpecifier", {}))),
-                                                "out": prop(component("DataSpecifier", {})),
+                                                "in": prop(component("DataSpecifier", {
+                                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                    "imports": aResolvedValue(valSel("imports")),
+                                                    "type parameters": aResolvedValue(valSel("parameters")),
+                                                })),
+                                                "lookups": prop(dictionary(component("DataSpecifier", {
+                                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                    "imports": aResolvedValue(valSel("imports")),
+                                                    "type parameters": aResolvedValue(valSel("parameters")),
+                                                }))),
+                                                "out": prop(component("DataSpecifier", {
+                                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                    "imports": aResolvedValue(valSel("imports")),
+                                                    "type parameters": aResolvedValue(valSel("parameters")),
+                                                })),
                                             })))
                                         })),
                                         "procedure": option(group({
-                                            "in": prop(component("DataOrSynchronousInterface", {})),
-                                            "out": prop(component("SynchronousInterfaceReference", {})),
+                                            "in": prop(component("DataOrSynchronousInterface", {
+                                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                "imports": aResolvedValue(valSel("imports")),
+                                                "type parameters": aResolvedValue(valSel("parameters")),
+                                            })),
+                                            "out": prop(component("SynchronousInterfaceReference", {
+                                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                "imports": aResolvedValue(valSel("imports")),
+                                                "type parameters": aResolvedValue(valSel("parameters")),
+                                            })),
                                         })),
                                     }))
                                 }))),
                             })),
                             "asynchronous": prop(group({
                                 "interfaces": prop(dictionary(group({
-                                    "parameters": prop(component("TypeParameters", {})),
-                                    "interface": prop(component("AsynchronousInterface", {}))
+                                    "parameters": prop(component("Parameters", {})),
+                                    "interface": prop(component("AsynchronousInterface", {
+                                        "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                        "imports": aResolvedValue(valSel("imports")),
+                                        "type parameters": aResolvedValue(valSel("parameters")),
+                                    }))
                                 }))),
                                 "algorithms": prop(dictionary(group({
-                                    "parameters": prop(component("TypeParameters", {})),
+                                    "parameters": prop(component("Parameters", {})),
                                     "type": prop(taggedUnion({
                                         "constructor": option(group({
-                                            "interface": prop(component("AsynchronousInterfaceReference", {})),
-                                            "downstreams": prop(dictionary(component("AsynchronousInterfaceReference", {}))),
+                                            "interface": prop(component("AsynchronousInterfaceReference", {
+                                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                "imports": aResolvedValue(valSel("imports")),
+                                                "type parameters": aResolvedValue(valSel("parameters")),
+                                            })),
+                                            "downstreams": prop(dictionary(component("AsynchronousInterfaceReference", {
+                                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                "imports": aResolvedValue(valSel("imports")),
+                                                "type parameters": aResolvedValue(valSel("parameters")),
+                                            }))),
                                         })),
                                         "resource": option(group({
-                                            "consumer": prop(component("AsynchronousInterfaceReference", {})),
-                                            "request": prop(component("DataSpecifier", {})),
+                                            "consumer": prop(component("AsynchronousInterfaceReference", {
+                                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                "imports": aResolvedValue(valSel("imports")),
+                                                "type parameters": aResolvedValue(valSel("parameters")),
+                                            })),
+                                            "request": prop(component("DataSpecifier", {
+                                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                "imports": aResolvedValue(valSel("imports")),
+                                                "type parameters": aResolvedValue(valSel("parameters")),
+                                            })),
                                         })),
                                         "function": option(group({
-                                            "out": prop(component("DataSpecifier", {})),
-                                            "in": prop(component("DataSpecifier", {})),
+                                            "out": prop(component("DataSpecifier", {
+                                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                "imports": aResolvedValue(valSel("imports")),
+                                                "type parameters": aResolvedValue(valSel("parameters")),
+                                            })),
+                                            "in": prop(component("DataSpecifier", {
+                                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                                "imports": aResolvedValue(valSel("imports")),
+                                                "type parameters": aResolvedValue(valSel("parameters")),
+                                            })),
                                         })),
                                     })),
                                 }))),
                             })),
                         }),
                     ),
-                    "Glossary": globalTypeDefinition(
-                        group({
-                            "imports": prop(constrainedDictionary(
-                                {
-
-                                },
-                                group({
-                                    "arguments": prop(component("Arguments", {})),
-                                }))
-                            ),
-                            "core": prop(component("Glossary Core", {})),
-                        })
+                    "Imports": globalTypeDefinition(
+                        constrainedDictionary(
+                            {
+                                //FIXME
+                            },
+                            group({
+                            })
+                        )
                     ),
                     "DataSpecifier": globalTypeDefinition(
                         taggedUnion({
@@ -169,13 +281,21 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                                     "local": option(group({})),
                                     //"import": reference(['parent', null), [)),
                                     "import": option(group({
-                                        //"glossary": prop(resolvedValueReference(valSel("glossary2"), tempTypeSelection("Glossary", t_grp("imports")))),
-                                        "glossaryXX": prop(terminal("identifier")),
+                                        "glossary": prop(component("Glossary Reference", {
+                                            "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                            "imports": aResolvedValue(valSel("imports")),
+                                            "type parameters": aResolvedValue(valSel("type parameters")),
+                                        })),
                                     })),
                                 })),
                                 "typeXX": prop(terminal("identifier")),
                                 "tailXX": prop(array(terminal("identifier"))),
-                                "arguments": prop(component("Arguments", {})),
+                                "type arguments": prop(component("Arguments", {
+                                    "parameters": aResolvedValue(valSel("glossary parameters")), //FIXME the parameters of the referenced type
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("type parameters")),
+                                })),
                             })),
                             "type parameterXX": option(terminal("identifier")),
                             "glossary parameterXX": option(terminal("identifier")),
@@ -184,29 +304,69 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                     "AsynchronousInterface": globalTypeDefinition(
                         taggedUnion({
                             "choice": option(group({
-                                "options": prop(dictionary(component("AsynchronousInterface", {}))),
+                                "options": prop(dictionary(component("AsynchronousInterface", {
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("type parameters")),
+                                }))),
                             })),
                             "streamconsumer": option(group({
-                                "data": prop(component("AsynchronousInterface", {})),
-                                "end": prop(component("AsynchronousInterface", {})),
+                                "data": prop(component("AsynchronousInterface", {
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("type parameters")),
+                                })),
+                                "end": prop(component("AsynchronousInterface", {
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("type parameters")),
+                                })),
                             })),
                             "method": option(group({
-                                "data": prop(optional(component("DataSpecifier", {}))),
-                                "interface": prop(optional(component("AsynchronousInterface", {}))),
+                                "data": prop(optional(component("DataSpecifier", {
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("type parameters")),
+                                }))),
+                                "interface": prop(optional(component("AsynchronousInterface", {
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("type parameters")),
+                                }))),
                             })),
-                            "reference": option(component("AsynchronousInterfaceReference", {})),
+                            "reference": option(component("AsynchronousInterfaceReference", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
                         })
                     ),
                     "SynchronousInterface": globalTypeDefinition(
                         taggedUnion({
                             "group": option(group({
-                                "members": prop(dictionary(component("SynchronousInterface", {}))),
+                                "members": prop(dictionary(component("SynchronousInterface", {
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("type parameters")),
+                                }))),
                             })),
                             "method": option(group({
-                                "data": prop(optional(component("DataSpecifier", {}))),
-                                "interface": prop(optional(component("SynchronousInterface", {}))),
+                                "data": prop(optional(component("DataSpecifier", {
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("type parameters")),
+                                }))),
+                                "interface": prop(optional(component("SynchronousInterface", {
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("type parameters")),
+                                }))),
                             })),
-                            "reference": option(component("SynchronousInterfaceReference", {})),
+                            "reference": option(component("SynchronousInterfaceReference", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
                         })),
                     "AsynchronousInterfaceReference": globalTypeDefinition(
                         group({
@@ -214,17 +374,33 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                                 "local": option(group({})),
                                 //"import": reference(['parent', null), [)),
                                 "import": option(group({
-                                    //"glossary": prop(resolvedValueReference(valSel("glossary2"), tempTypeSelection("Glossary", t_grp("imports")))),
-                                    "glossaryXX": prop(terminal("identifier")),
+                                    "glossary": prop(component("Glossary Reference", {
+                                        "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                        "imports": aResolvedValue(valSel("imports")),
+                                        "type parameters": aResolvedValue(valSel("type parameters")),
+                                    })),
                                 })),
                             })),
                             //"interface": [["context"), reference(['sibling', "context"), [))),
                             "interfaceXX": prop(terminal("identifier")),
-                            "arguments": prop(component("Arguments", {})),
+                            "type arguments": prop(component("Arguments", {
+                                "parameters": aResolvedValue(valSel("glossary parameters")), //FIXME the parameters of the referenced type
+
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
                         })
                     ),
                     "Arguments": globalTypeDefinition(
-                        dictionary(component("DataSpecifier", {}))
+                        constrainedDictionary(
+                            {},
+                            component("DataSpecifier", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })
+                        )
                     ),
                     "SynchronousInterfaceReference": globalTypeDefinition(
                         group({
@@ -232,30 +408,66 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                                 "local": option(group({})),
                                 //"import": reference(['parent', null), [)),
                                 "import": option(group({
-                                    //"glossary": prop(resolvedValueReference(valSel("glossary2"), tempTypeSelection("Glossary", t_grp("imports")))),
-                                    "glossaryXX": prop(terminal("identifier")),
+                                    "glossary": prop(component("Glossary Reference", {
+                                        "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                        "imports": aResolvedValue(valSel("imports")),
+                                        "type parameters": aResolvedValue(valSel("type parameters")),
+                                    })),
                                 })),
                             })),
                             //"interface": [["context"), reference(['sibling', "context"), [))),
                             "interfaceXX": prop(terminal("identifier")),
-                            "arguments": prop(component("Arguments", {})),
+                            "type arguments": prop(component("Arguments", {
+                                "parameters": aResolvedValue(valSel("glossary parameters")), //FIXME the parameters of the referenced type
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
                         })
                     ),
                     "Type": globalTypeDefinition(
                         taggedUnion({
-                            "array": option(component("Type", {})),
-                            "dictionary": option(component("Type", {})),
-                            "computed": option(component("Type", {})),
-                            "optional": option(component("Type", {})),
+                            "array": option(component("Type", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
+                            "dictionary": option(component("Type", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
+                            "computed": option(component("Type", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
+                            "optional": option(component("Type", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
                             "null": option(group({})),
                             "boolean": option(group({})),
                             "string": option(group({})),
                             "number": option(group({})),
-                            "reference": option(component("DataSpecifier", {})),
+                            "reference": option(component("DataSpecifier", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            })),
                             "group": option(dictionary(group({
-                                "type": prop(component("Type", {})),
+                                "type": prop(component("Type", {
+                                    "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                    "imports": aResolvedValue(valSel("imports")),
+                                    "type parameters": aResolvedValue(valSel("type parameters")),
+                                })),
                             }))),
-                            "taggedUnion": option(dictionary(component("Type", {}))),
+                            "taggedUnion": option(dictionary(component("Type", {
+                                "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                "imports": aResolvedValue(valSel("imports")),
+                                "type parameters": aResolvedValue(valSel("type parameters")),
+                            }))),
                         })
                     ),
                 }),
@@ -263,7 +475,7 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
         },
         'root': {
             'annotation': pd.getLocationInfo(0),
-            'key': "Glossary Wrapper"
+            'key': "Dummy"
         }
     }
 }

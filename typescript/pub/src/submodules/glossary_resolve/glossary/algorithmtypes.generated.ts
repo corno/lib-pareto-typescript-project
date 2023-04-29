@@ -23,7 +23,7 @@ export namespace SYNC {
         
         
         export namespace F {
-            export type Resolve<GAnnotation> = ($: g_unresolved.T.Glossary__Wrapper<GAnnotation>) => g_resolved.T.Glossary__Wrapper<GAnnotation>
+            export type Resolve<GAnnotation> = ($: g_unresolved.T.Dummy<GAnnotation>) => g_resolved.T.Dummy<GAnnotation>
         }
     }
 }

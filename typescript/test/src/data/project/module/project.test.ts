@@ -30,24 +30,22 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
                 //         })],
                 //     },
                 // }),
-                'core': {
-                    'parameters': d({
-                        "Annotation": null,
+                'glossary parameters': d({
+                    "Annotation": null,
+                }),
+                'root': {
+                    'types': d({
                     }),
-                    'root': {
-                        'types': d({
-                        }),
-                        'namespaces': d({}),
-                    },
-                    'asynchronous': {
-                        'interfaces': d({
-                        }),
-                        'algorithms': d({}),
-                    },
-                    'synchronous': {
-                        'interfaces': d({}),
-                        'algorithms': d({}),
-                    },
+                    'namespaces': d({}),
+                },
+                'asynchronous': {
+                    'interfaces': d({
+                    }),
+                    'algorithms': d({}),
+                },
+                'synchronous': {
+                    'interfaces': d({}),
+                    'algorithms': d({}),
                 },
             },
             'imports': d({}),

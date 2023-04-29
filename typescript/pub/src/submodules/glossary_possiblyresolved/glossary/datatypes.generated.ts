@@ -156,13 +156,6 @@ export namespace N {
                 
                 export namespace N {
                     
-                    export namespace arguments {
-                        
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                    
                     export namespace context {
                         
                         export namespace N {
@@ -179,7 +172,7 @@ export namespace N {
                                                 
                                                 export namespace N {
                                                     
-                                                    export namespace glossaryXX {
+                                                    export namespace glossary {
                                                         
                                                         export namespace N {}
                                                         
@@ -218,6 +211,13 @@ export namespace N {
                     }
                     
                     export namespace interfaceXX {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace type_$_$arguments {
                         
                         export namespace N {}
                         
@@ -285,13 +285,6 @@ export namespace N {
                                 
                                 export namespace N {
                                     
-                                    export namespace arguments {
-                                        
-                                        export namespace N {}
-                                        
-                                        export namespace T {}
-                                    }
-                                    
                                     export namespace context {
                                         
                                         export namespace N {
@@ -308,7 +301,7 @@ export namespace N {
                                                                 
                                                                 export namespace N {
                                                                     
-                                                                    export namespace glossaryXX {
+                                                                    export namespace glossary {
                                                                         
                                                                         export namespace N {}
                                                                         
@@ -361,6 +354,13 @@ export namespace N {
                                         export namespace T {}
                                     }
                                     
+                                    export namespace type_$_$arguments {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
                                     export namespace typeXX {
                                         
                                         export namespace N {}
@@ -391,52 +391,13 @@ export namespace N {
         export namespace T {}
     }
     
-    export namespace Glossary {
+    export namespace Dummy {
         
         export namespace N {
             
             export namespace G {
                 
-                export namespace N {
-                    
-                    export namespace core {
-                        
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                    
-                    export namespace imports {
-                        
-                        export namespace N {
-                            
-                            export namespace D {
-                                
-                                export namespace N {
-                                    
-                                    export namespace G {
-                                        
-                                        export namespace N {
-                                            
-                                            export namespace arguments {
-                                                
-                                                export namespace N {}
-                                                
-                                                export namespace T {}
-                                            }
-                                        }
-                                        
-                                        export namespace T {}
-                                    }
-                                }
-                                
-                                export namespace T {}
-                            }
-                        }
-                        
-                        export namespace T {}
-                    }
-                }
+                export namespace N {}
                 
                 export namespace T {}
             }
@@ -445,7 +406,7 @@ export namespace N {
         export namespace T {}
     }
     
-    export namespace Glossary_$_$Core {
+    export namespace Glossary {
         
         export namespace N {
             
@@ -652,7 +613,14 @@ export namespace N {
                         export namespace T {}
                     }
                     
-                    export namespace parameters {
+                    export namespace glossary_$_$parameters {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace imports {
                         
                         export namespace N {}
                         
@@ -888,45 +856,7 @@ export namespace N {
         export namespace T {}
     }
     
-    export namespace Glossary_$_$Library {
-        
-        export namespace N {
-            
-            export namespace D {
-                
-                export namespace N {}
-                
-                export namespace T {}
-            }
-        }
-        
-        export namespace T {}
-    }
-    
-    export namespace Glossary_$_$Parameters {
-        
-        export namespace N {
-            
-            export namespace D {
-                
-                export namespace N {
-                    
-                    export namespace G {
-                        
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                }
-                
-                export namespace T {}
-            }
-        }
-        
-        export namespace T {}
-    }
-    
-    export namespace Glossary_$_$Wrapper {
+    export namespace Glossary_$_$Reference {
         
         export namespace N {
             
@@ -941,7 +871,30 @@ export namespace N {
                         export namespace T {}
                     }
                     
-                    export namespace library {
+                    export namespace glossary_$_$arguments {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                }
+                
+                export namespace T {}
+            }
+        }
+        
+        export namespace T {}
+    }
+    
+    export namespace Imports {
+        
+        export namespace N {
+            
+            export namespace D {
+                
+                export namespace N {
+                    
+                    export namespace G {
                         
                         export namespace N {}
                         
@@ -1013,6 +966,29 @@ export namespace N {
                                 export namespace T {}
                             }
                         }
+                        
+                        export namespace T {}
+                    }
+                }
+                
+                export namespace T {}
+            }
+        }
+        
+        export namespace T {}
+    }
+    
+    export namespace Parameters {
+        
+        export namespace N {
+            
+            export namespace D {
+                
+                export namespace N {
+                    
+                    export namespace G {
+                        
+                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -1133,13 +1109,6 @@ export namespace N {
                 
                 export namespace N {
                     
-                    export namespace arguments {
-                        
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                    
                     export namespace context {
                         
                         export namespace N {
@@ -1156,7 +1125,7 @@ export namespace N {
                                                 
                                                 export namespace N {
                                                     
-                                                    export namespace glossaryXX {
+                                                    export namespace glossary {
                                                         
                                                         export namespace N {}
                                                         
@@ -1195,6 +1164,13 @@ export namespace N {
                     }
                     
                     export namespace interfaceXX {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace type_$_$arguments {
                         
                         export namespace N {}
                         
@@ -1365,29 +1341,6 @@ export namespace N {
         
         export namespace T {}
     }
-    
-    export namespace TypeParameters {
-        
-        export namespace N {
-            
-            export namespace D {
-                
-                export namespace N {
-                    
-                    export namespace G {
-                        
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                }
-                
-                export namespace T {}
-            }
-        }
-        
-        export namespace T {}
-    }
 }
 
 export namespace T {
@@ -1468,17 +1421,15 @@ export namespace T {
     
     export namespace AsynchronousInterfaceReference {
         
-        export type arguments<GAnnotation> = T.Arguments<GAnnotation>
-        
         export namespace context {
             
             export namespace _limport {
                 
-                export type glossaryXX<GAnnotation> = string
+                export type glossary<GAnnotation> = T.Glossary__Reference<GAnnotation>
             }
             
             export type _limport<GAnnotation> = {
-                readonly 'glossaryXX': string
+                readonly 'glossary': T.Glossary__Reference<GAnnotation>
             }
             
             export namespace local {}
@@ -1488,21 +1439,23 @@ export namespace T {
         
         export type context<GAnnotation> = 
             | ['import', {
-                readonly 'glossaryXX': string
+                readonly 'glossary': T.Glossary__Reference<GAnnotation>
             }]
             | ['local', null]
         
         export type interfaceXX<GAnnotation> = string
+        
+        export type type__arguments<GAnnotation> = T.Arguments<GAnnotation>
     }
     
     export type AsynchronousInterfaceReference<GAnnotation> = {
-        readonly 'arguments': T.Arguments<GAnnotation>
         readonly 'context': 
             | ['import', {
-                readonly 'glossaryXX': string
+                readonly 'glossary': T.Glossary__Reference<GAnnotation>
             }]
             | ['local', null]
         readonly 'interfaceXX': string
+        readonly 'type arguments': T.Arguments<GAnnotation>
     }
     
     export namespace DataOrSynchronousInterface {
@@ -1522,17 +1475,15 @@ export namespace T {
         
         export namespace _ltype {
             
-            export type arguments<GAnnotation> = T.Arguments<GAnnotation>
-            
             export namespace context {
                 
                 export namespace _limport {
                     
-                    export type glossaryXX<GAnnotation> = string
+                    export type glossary<GAnnotation> = T.Glossary__Reference<GAnnotation>
                 }
                 
                 export type _limport<GAnnotation> = {
-                    readonly 'glossaryXX': string
+                    readonly 'glossary': T.Glossary__Reference<GAnnotation>
                 }
                 
                 export namespace local {}
@@ -1542,7 +1493,7 @@ export namespace T {
             
             export type context<GAnnotation> = 
                 | ['import', {
-                    readonly 'glossaryXX': string
+                    readonly 'glossary': T.Glossary__Reference<GAnnotation>
                 }]
                 | ['local', null]
             
@@ -1553,17 +1504,19 @@ export namespace T {
             
             export type tailXX<GAnnotation> = pt.Array<string>
             
+            export type type__arguments<GAnnotation> = T.Arguments<GAnnotation>
+            
             export type typeXX<GAnnotation> = string
         }
         
         export type _ltype<GAnnotation> = {
-            readonly 'arguments': T.Arguments<GAnnotation>
             readonly 'context': 
                 | ['import', {
-                    readonly 'glossaryXX': string
+                    readonly 'glossary': T.Glossary__Reference<GAnnotation>
                 }]
                 | ['local', null]
             readonly 'tailXX': pt.Array<string>
+            readonly 'type arguments': T.Arguments<GAnnotation>
             readonly 'typeXX': string
         }
         
@@ -1573,46 +1526,22 @@ export namespace T {
     export type DataSpecifier<GAnnotation> = 
         | ['glossary parameterXX', string]
         | ['type', {
-            readonly 'arguments': T.Arguments<GAnnotation>
             readonly 'context': 
                 | ['import', {
-                    readonly 'glossaryXX': string
+                    readonly 'glossary': T.Glossary__Reference<GAnnotation>
                 }]
                 | ['local', null]
             readonly 'tailXX': pt.Array<string>
+            readonly 'type arguments': T.Arguments<GAnnotation>
             readonly 'typeXX': string
         }]
         | ['type parameterXX', string]
     
+    export namespace Dummy {}
+    
+    export type Dummy<GAnnotation> = null
+    
     export namespace Glossary {
-        
-        export type core<GAnnotation> = T.Glossary__Core<GAnnotation>
-        
-        export namespace imports {
-            
-            export namespace D {
-                
-                export type arguments<GAnnotation> = T.Arguments<GAnnotation>
-            }
-            
-            export type D<GAnnotation> = {
-                readonly 'arguments': T.Arguments<GAnnotation>
-            }
-        }
-        
-        export type imports<GAnnotation> = pt.Dictionary<{
-            readonly 'arguments': T.Arguments<GAnnotation>
-        }>
-    }
-    
-    export type Glossary<GAnnotation> = {
-        readonly 'core': T.Glossary__Core<GAnnotation>
-        readonly 'imports': pt.Dictionary<{
-            readonly 'arguments': T.Arguments<GAnnotation>
-        }>
-    }
-    
-    export namespace Glossary__Core {
         
         export namespace asynchronous {
             
@@ -1620,7 +1549,7 @@ export namespace T {
                 
                 export namespace D {
                     
-                    export type parameters<GAnnotation> = T.TypeParameters<GAnnotation>
+                    export type parameters<GAnnotation> = T.Parameters<GAnnotation>
                     
                     export namespace _ltype {
                         
@@ -1682,7 +1611,7 @@ export namespace T {
                 }
                 
                 export type D<GAnnotation> = {
-                    readonly 'parameters': T.TypeParameters<GAnnotation>
+                    readonly 'parameters': T.Parameters<GAnnotation>
                     readonly 'type': 
                         | ['constructor', {
                             readonly 'downstreams': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
@@ -1700,7 +1629,7 @@ export namespace T {
             }
             
             export type algorithms<GAnnotation> = pt.Dictionary<{
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
                 readonly 'type': 
                     | ['constructor', {
                         readonly 'downstreams': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
@@ -1722,24 +1651,24 @@ export namespace T {
                     
                     export type _linterface<GAnnotation> = T.AsynchronousInterface<GAnnotation>
                     
-                    export type parameters<GAnnotation> = T.TypeParameters<GAnnotation>
+                    export type parameters<GAnnotation> = T.Parameters<GAnnotation>
                 }
                 
                 export type D<GAnnotation> = {
                     readonly 'interface': T.AsynchronousInterface<GAnnotation>
-                    readonly 'parameters': T.TypeParameters<GAnnotation>
+                    readonly 'parameters': T.Parameters<GAnnotation>
                 }
             }
             
             export type interfaces<GAnnotation> = pt.Dictionary<{
                 readonly 'interface': T.AsynchronousInterface<GAnnotation>
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
             }>
         }
         
         export type asynchronous<GAnnotation> = {
             readonly 'algorithms': pt.Dictionary<{
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
                 readonly 'type': 
                     | ['constructor', {
                         readonly 'downstreams': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
@@ -1756,11 +1685,13 @@ export namespace T {
             }>
             readonly 'interfaces': pt.Dictionary<{
                 readonly 'interface': T.AsynchronousInterface<GAnnotation>
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
             }>
         }
         
-        export type parameters<GAnnotation> = T.Glossary__Parameters<GAnnotation>
+        export type glossary__parameters<GAnnotation> = T.Parameters<GAnnotation>
+        
+        export type imports<GAnnotation> = T.Imports<GAnnotation>
         
         export type root<GAnnotation> = T.Namespace<GAnnotation>
         
@@ -1770,7 +1701,7 @@ export namespace T {
                 
                 export namespace D {
                     
-                    export type parameters<GAnnotation> = T.TypeParameters<GAnnotation>
+                    export type parameters<GAnnotation> = T.Parameters<GAnnotation>
                     
                     export namespace _ltype {
                         
@@ -1850,7 +1781,7 @@ export namespace T {
                 }
                 
                 export type D<GAnnotation> = {
-                    readonly 'parameters': T.TypeParameters<GAnnotation>
+                    readonly 'parameters': T.Parameters<GAnnotation>
                     readonly 'type': 
                         | ['function', {
                             readonly 'callbacks': pt.Dictionary<{
@@ -1869,7 +1800,7 @@ export namespace T {
             }
             
             export type algorithms<GAnnotation> = pt.Dictionary<{
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
                 readonly 'type': 
                     | ['function', {
                         readonly 'callbacks': pt.Dictionary<{
@@ -1892,24 +1823,24 @@ export namespace T {
                     
                     export type _linterface<GAnnotation> = T.SynchronousInterface<GAnnotation>
                     
-                    export type parameters<GAnnotation> = T.TypeParameters<GAnnotation>
+                    export type parameters<GAnnotation> = T.Parameters<GAnnotation>
                 }
                 
                 export type D<GAnnotation> = {
                     readonly 'interface': T.SynchronousInterface<GAnnotation>
-                    readonly 'parameters': T.TypeParameters<GAnnotation>
+                    readonly 'parameters': T.Parameters<GAnnotation>
                 }
             }
             
             export type interfaces<GAnnotation> = pt.Dictionary<{
                 readonly 'interface': T.SynchronousInterface<GAnnotation>
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
             }>
         }
         
         export type synchronous<GAnnotation> = {
             readonly 'algorithms': pt.Dictionary<{
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
                 readonly 'type': 
                     | ['function', {
                         readonly 'callbacks': pt.Dictionary<{
@@ -1927,15 +1858,15 @@ export namespace T {
             }>
             readonly 'interfaces': pt.Dictionary<{
                 readonly 'interface': T.SynchronousInterface<GAnnotation>
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
             }>
         }
     }
     
-    export type Glossary__Core<GAnnotation> = {
+    export type Glossary<GAnnotation> = {
         readonly 'asynchronous': {
             readonly 'algorithms': pt.Dictionary<{
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
                 readonly 'type': 
                     | ['constructor', {
                         readonly 'downstreams': pt.Dictionary<T.AsynchronousInterfaceReference<GAnnotation>>
@@ -1952,14 +1883,15 @@ export namespace T {
             }>
             readonly 'interfaces': pt.Dictionary<{
                 readonly 'interface': T.AsynchronousInterface<GAnnotation>
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
             }>
         }
-        readonly 'parameters': T.Glossary__Parameters<GAnnotation>
+        readonly 'glossary parameters': T.Parameters<GAnnotation>
+        readonly 'imports': T.Imports<GAnnotation>
         readonly 'root': T.Namespace<GAnnotation>
         readonly 'synchronous': {
             readonly 'algorithms': pt.Dictionary<{
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
                 readonly 'type': 
                     | ['function', {
                         readonly 'callbacks': pt.Dictionary<{
@@ -1977,38 +1909,53 @@ export namespace T {
             }>
             readonly 'interfaces': pt.Dictionary<{
                 readonly 'interface': T.SynchronousInterface<GAnnotation>
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
             }>
         }
     }
     
-    export namespace Glossary__Library {
+    export namespace Glossary__Reference {
         
-        export type D<GAnnotation> = T.Glossary__Core<GAnnotation>
+        export namespace glossary {
+            
+            export type annotation<GAnnotation> = GAnnotation
+            
+            export namespace constraint {
+                
+                export type O<GAnnotation> = T.Imports.D<GAnnotation>
+            }
+            
+            export type constraint<GAnnotation> = [ false ] | [ true, T.Imports.D<GAnnotation>]
+            
+            export type key<GAnnotation> = string
+        }
+        
+        export type glossary<GAnnotation> = {
+            readonly 'annotation': GAnnotation
+            readonly 'constraint': [ false ] | [ true, T.Imports.D<GAnnotation>]
+            readonly 'key': string
+        }
+        
+        export type glossary__arguments<GAnnotation> = T.Arguments<GAnnotation>
     }
     
-    export type Glossary__Library<GAnnotation> = pt.Dictionary<T.Glossary__Core<GAnnotation>>
+    export type Glossary__Reference<GAnnotation> = {
+        readonly 'glossary': {
+            readonly 'annotation': GAnnotation
+            readonly 'constraint': [ false ] | [ true, T.Imports.D<GAnnotation>]
+            readonly 'key': string
+        }
+        readonly 'glossary arguments': T.Arguments<GAnnotation>
+    }
     
-    export namespace Glossary__Parameters {
+    export namespace Imports {
         
         export namespace D {}
         
         export type D<GAnnotation> = null
     }
     
-    export type Glossary__Parameters<GAnnotation> = pt.Dictionary<null>
-    
-    export namespace Glossary__Wrapper {
-        
-        export type glossary<GAnnotation> = T.Glossary<GAnnotation>
-        
-        export type library<GAnnotation> = T.Glossary__Library<GAnnotation>
-    }
-    
-    export type Glossary__Wrapper<GAnnotation> = {
-        readonly 'glossary': T.Glossary<GAnnotation>
-        readonly 'library': T.Glossary__Library<GAnnotation>
-    }
+    export type Imports<GAnnotation> = pt.Dictionary<null>
     
     export namespace Namespace {
         
@@ -2023,19 +1970,19 @@ export namespace T {
             
             export namespace D {
                 
-                export type parameters<GAnnotation> = T.TypeParameters<GAnnotation>
+                export type parameters<GAnnotation> = T.Parameters<GAnnotation>
                 
                 export type _ltype<GAnnotation> = T.Type<GAnnotation>
             }
             
             export type D<GAnnotation> = {
-                readonly 'parameters': T.TypeParameters<GAnnotation>
+                readonly 'parameters': T.Parameters<GAnnotation>
                 readonly 'type': T.Type<GAnnotation>
             }
         }
         
         export type types<GAnnotation> = pt.Dictionary<{
-            readonly 'parameters': T.TypeParameters<GAnnotation>
+            readonly 'parameters': T.Parameters<GAnnotation>
             readonly 'type': T.Type<GAnnotation>
         }>
     }
@@ -2043,10 +1990,19 @@ export namespace T {
     export type Namespace<GAnnotation> = {
         readonly 'namespaces': pt.Dictionary<T.Namespace<GAnnotation>>
         readonly 'types': pt.Dictionary<{
-            readonly 'parameters': T.TypeParameters<GAnnotation>
+            readonly 'parameters': T.Parameters<GAnnotation>
             readonly 'type': T.Type<GAnnotation>
         }>
     }
+    
+    export namespace Parameters {
+        
+        export namespace D {}
+        
+        export type D<GAnnotation> = null
+    }
+    
+    export type Parameters<GAnnotation> = pt.Dictionary<null>
     
     export namespace SynchronousInterface {
         
@@ -2101,17 +2057,15 @@ export namespace T {
     
     export namespace SynchronousInterfaceReference {
         
-        export type arguments<GAnnotation> = T.Arguments<GAnnotation>
-        
         export namespace context {
             
             export namespace _limport {
                 
-                export type glossaryXX<GAnnotation> = string
+                export type glossary<GAnnotation> = T.Glossary__Reference<GAnnotation>
             }
             
             export type _limport<GAnnotation> = {
-                readonly 'glossaryXX': string
+                readonly 'glossary': T.Glossary__Reference<GAnnotation>
             }
             
             export namespace local {}
@@ -2121,21 +2075,23 @@ export namespace T {
         
         export type context<GAnnotation> = 
             | ['import', {
-                readonly 'glossaryXX': string
+                readonly 'glossary': T.Glossary__Reference<GAnnotation>
             }]
             | ['local', null]
         
         export type interfaceXX<GAnnotation> = string
+        
+        export type type__arguments<GAnnotation> = T.Arguments<GAnnotation>
     }
     
     export type SynchronousInterfaceReference<GAnnotation> = {
-        readonly 'arguments': T.Arguments<GAnnotation>
         readonly 'context': 
             | ['import', {
-                readonly 'glossaryXX': string
+                readonly 'glossary': T.Glossary__Reference<GAnnotation>
             }]
             | ['local', null]
         readonly 'interfaceXX': string
+        readonly 'type arguments': T.Arguments<GAnnotation>
     }
     
     export namespace Type {
@@ -2204,13 +2160,4 @@ export namespace T {
         | ['reference', T.DataSpecifier<GAnnotation>]
         | ['string', null]
         | ['taggedUnion', pt.Dictionary<T.Type<GAnnotation>>]
-    
-    export namespace TypeParameters {
-        
-        export namespace D {}
-        
-        export type D<GAnnotation> = null
-    }
-    
-    export type TypeParameters<GAnnotation> = pt.Dictionary<null>
 }

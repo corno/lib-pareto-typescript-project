@@ -203,7 +203,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 },
                                                 'key': "glossary",
                                             },
-                                            'glossary arguments': d({}),
+                                            'glossary arguments': d({
+                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                            }),
                                         },
                                     }],
                                     'typeXX': "Glossary",
@@ -250,7 +252,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     },
                                                     'key': "glossary",
                                                 },
-                                                'glossary arguments': d({}),
+                                                'glossary arguments': d({
+                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                }),
                                             },
                                         }],
                                         'typeXX': "Glossary",

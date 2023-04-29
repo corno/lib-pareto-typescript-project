@@ -274,7 +274,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         },
                                         'key': "typesystem",
                                     },
-                                    'glossary arguments': d({}),
+                                    'glossary arguments': d({
+                                        "Annotation": ['glossary parameterXX', "Annotation"]
+                                    }),
                                 },
                             }],
                             'typeXX': "Type",
@@ -313,7 +315,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                     },
                                                                                     'key': "typesystem",
                                                                                 },
-                                                                                'glossary arguments': d({}),
+                                                                                'glossary arguments': d({
+                                                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                                                }),
                                                                             },
                                                                         }],
                                                                         'typeXX': "Type",
@@ -346,7 +350,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                                     },
                                                                                                     'key': "typesystem",
                                                                                                 },
-                                                                                                'glossary arguments': d({}),
+                                                                                                'glossary arguments': d({
+                                                                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                                                                }),
                                                                                             },
                                                                                         }],
                                                                                         'typeXX': "Parameters",
@@ -397,7 +403,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                     },
                                                                                     'key': "typesystem",
                                                                                 },
-                                                                                'glossary arguments': d({}),
+                                                                                'glossary arguments': d({
+                                                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                                                }),
                                                                             },
                                                                         }],
                                                                         'typeXX': "Type",
@@ -426,7 +434,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                     },
                                                                                     'key': "typesystem",
                                                                                 },
-                                                                                'glossary arguments': d({}),
+                                                                                'glossary arguments': d({
+                                                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                                                }),
                                                                             },
                                                                         }],
                                                                         'typeXX': "Type",
@@ -458,7 +468,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                 },
                                                                 'key': "typesystem",
                                                             },
-                                                            'glossary arguments': d({}),
+                                                            'glossary arguments': d({
+                                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                                            }),
                                                         },
                                                     }],
                                                     'typeXX': "Type",
@@ -490,7 +502,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 },
                                                 'key': "typesystem",
                                             },
-                                            'glossary arguments': d({}),
+                                            'glossary arguments': d({
+                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                            }),
                                         },
                                     }],
                                     'typeXX': "Type",
@@ -512,7 +526,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         },
                                         'key': "typesystem",
                                     },
-                                    'glossary arguments': d({}),
+                                    'glossary arguments': d({
+                                        "Annotation": ['glossary parameterXX', "Annotation"]
+                                    }),
                                 },
                             }],
                             'typeXX': "Type",
@@ -751,7 +767,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                 },
                                                                 'key': "typesystem",
                                                             },
-                                                            'glossary arguments': d({}),
+                                                            'glossary arguments': d({
+                                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                                            }),
                                                         },
                                                     }],
                                                     'typeXX': "Type",
@@ -801,7 +819,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     },
                                                     'key': "typesystem",
                                                 },
-                                                'glossary arguments': d({}),
+                                                'glossary arguments': d({
+                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                }),
                                             },
                                         }],
                                         'typeXX': "Type",
@@ -840,7 +860,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     },
                                                     'key': "typesystem",
                                                 },
-                                                'glossary arguments': d({}),
+                                                'glossary arguments': d({
+                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                }),
                                             },
                                         }],
                                         'typeXX': "Type",
@@ -879,7 +901,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     },
                                                     'key': "typesystem",
                                                 },
-                                                'glossary arguments': d({}),
+                                                'glossary arguments': d({
+                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                }),
                                             },
                                         }],
                                         'typeXX': "Type",
@@ -913,7 +937,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     },
                                                     'key': "typesystem",
                                                 },
-                                                'glossary arguments': d({}),
+                                                'glossary arguments': d({
+                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                }),
                                             },
                                         }],
                                         'typeXX': "Type",
@@ -952,7 +978,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     },
                                                     'key': "typesystem",
                                                 },
-                                                'glossary arguments': d({}),
+                                                'glossary arguments': d({
+                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                }),
                                             },
                                         }],
                                         'typeXX': "Type",
@@ -985,7 +1013,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                     },
                                                                     'key': "typesystem",
                                                                 },
-                                                                'glossary arguments': d({}),
+                                                                'glossary arguments': d({
+                                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                                }),
                                                             },
                                                         }],
                                                         'typeXX': "Type",
@@ -1030,7 +1060,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     },
                                                     'key': "typesystem",
                                                 },
-                                                'glossary arguments': d({}),
+                                                'glossary arguments': d({
+                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                }),
                                             },
                                         }],
                                         'typeXX': "Type",
@@ -1149,7 +1181,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                 },
                                                                 'key': "typesystem",
                                                             },
-                                                            'glossary arguments': d({}),
+                                                            'glossary arguments': d({
+                                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                                            }),
                                                         },
                                                     }],
                                                     'typeXX': "Type",
@@ -1262,7 +1296,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                 },
                                                                 'key': "typesystem",
                                                             },
-                                                            'glossary arguments': d({}),
+                                                            'glossary arguments': d({
+                                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                                            }),
                                                         },
                                                     }],
                                                     'typeXX': "Type",
@@ -1305,7 +1341,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                 },
                                                                 'key': "typesystem",
                                                             },
-                                                            'glossary arguments': d({}),
+                                                            'glossary arguments': d({
+                                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                                            }),
                                                         },
                                                     }],
                                                     'typeXX': "Type",
@@ -1379,7 +1417,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                 },
                                                                 'key': "typesystem",
                                                             },
-                                                            'glossary arguments': d({}),
+                                                            'glossary arguments': d({
+                                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                                            }),
                                                         },
                                                     }],
                                                     'typeXX': "Type",
@@ -1428,7 +1468,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 },
                                                 'key': "typesystem",
                                             },
-                                            'glossary arguments': d({}),
+                                            'glossary arguments': d({
+                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                            }),
                                         },
                                     }],
                                     'typeXX': "Type Parameters",
@@ -1476,7 +1518,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                         },
                                                         'key': "typesystem",
                                                     },
-                                                    'glossary arguments': d({}),
+                                                    'glossary arguments': d({
+                                                        "Annotation": ['glossary parameterXX', "Annotation"]
+                                                    }),
                                                 },
                                             }],
                                             'typeXX': "Namespace",
@@ -1513,7 +1557,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                             },
                                                                             'key': "typesystem",
                                                                         },
-                                                                        'glossary arguments': d({}),
+                                                                        'glossary arguments': d({
+                                                                            "Annotation": ['glossary parameterXX', "Annotation"]
+                                                                        }),
                                                                     },
                                                                 }],
                                                                 'typeXX': "Namespace",
@@ -1554,7 +1600,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                             },
                                                                             'key': "typesystem",
                                                                         },
-                                                                        'glossary arguments': d({}),
+                                                                        'glossary arguments': d({
+                                                                            "Annotation": ['glossary parameterXX', "Annotation"]
+                                                                        }),
                                                                     },
                                                                 }],
                                                                 'typeXX': "Namespace",
@@ -1586,7 +1634,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                         },
                                                         'key': "typesystem",
                                                     },
-                                                    'glossary arguments': d({}),
+                                                    'glossary arguments': d({
+                                                        "Annotation": ['glossary parameterXX', "Annotation"]
+                                                    }),
                                                 },
                                             }],
                                             'typeXX': "Type",
@@ -1610,7 +1660,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         },
                                         'key': "typesystem",
                                     },
-                                    'glossary arguments': d({}),
+                                    'glossary arguments': d({
+                                        "Annotation": ['glossary parameterXX', "Annotation"]
+                                    }),
                                 },
                             }],
                             'typeXX': "Type",
@@ -1663,7 +1715,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                     },
                                                                     'key': "typesystem",
                                                                 },
-                                                                'glossary arguments': d({}),
+                                                                'glossary arguments': d({
+                                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                                }),
                                                             },
                                                         }],
                                                         'typeXX': "Parameters",
@@ -1715,7 +1769,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 },
                                                 'key': "typesystem",
                                             },
-                                            'glossary arguments': d({}),
+                                            'glossary arguments': d({
+                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                            }),
                                         },
                                     }],
                                     'typeXX': "Type",

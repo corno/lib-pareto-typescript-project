@@ -435,22 +435,42 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                                             serializeGlossaryReference($.glossary, $i)
                                             $i.snippet(`,`)
                                         })
+                                        // $i.nestedLine(($i) => {
+                                        //     $i.snippet(`'interface FIXME':`)
+                                        //     serializeRef($['interface FIXME'], $i)
+                                        //     $i.snippet(`,`)
+                                        // }) 
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'interfaceXX':`)
+                                            $i.snippet(`"${$.interfaceXX}"`)
+                                            $i.snippet(`,`)
+                                        })
                                     })
                                     $i.snippet(`}]`)
                                 })
                                 break
                             case 'local':
                                 pl.ss($, ($) => {
-                                    $i.snippet(`['local', null]`)
+                                    $i.snippet(`['local', {`)
+                                    $i.indent(($i) => {
+                                        // $i.nestedLine(($i) => {
+                                        //     $i.snippet(`'interface':`)
+                                        //     serializeRef($['interface'], $i)
+                                        //     $i.snippet(`,`)
+                                        // })
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`'interfaceXX':`)
+                                            $i.snippet(`"${$.interfaceXX}"`)
+                                            $i.snippet(`,`)
+                                        })
+                                    })
+                                    $i.snippet(`}]`)
                                 })
                                 break
                             default: pl.au($[0])
                         }
                     })
                     $i.snippet(`,`)
-                })
-                $i.nestedLine(($i) => {
-                    $i.snippet(`'interfaceXX': "${$.interfaceXX}",`)
                 })
                 $i.nestedLine(($i) => {
                     $i.snippet(`'type arguments': d({`)
@@ -550,7 +570,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
             }
 
         }
-        function serializeSynchronousInterface($: g_glossary.T.SynchronousInterface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
+        function serializeSynchronousInterface($: g_glossary.T.Synchronous__Interface<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             switch ($[0]) {
                 case 'group':
                     pl.ss($, ($) => {

@@ -601,7 +601,7 @@ export const $$: A.serializeGlossary = ($d) => {
 
                 function serializeSynchronousInterface(
                     $: {
-                        'inf': g_glossary.T.SynchronousInterface<Annotation>,
+                        'inf': g_glossary.T.Synchronous__Interface<Annotation>,
                     },
                     $i: g_fp.SYNC.I.Line
                 ) {
@@ -671,17 +671,17 @@ export const $$: A.serializeGlossary = ($d) => {
                             case 'import':
                                 pl.ss($, ($) => {
                                     $i.snippet(`g_${$.glossary.glossary.key}.`)
+                                    $i.snippet(`SYNC.I.${$d.createIdentifier(`${$['interfaceXX']}`)}`)
                                 })
                                 break
                             case 'local':
                                 pl.ss($, ($) => {
-
+                                    $i.snippet(`SYNC.I.${$d.createIdentifier(`${$['interfaceXX']}`)}`)
                                 })
                                 break
                             default: pl.au($[0])
                         }
                     })
-                    $i.snippet(`SYNC.I.${$d.createIdentifier(`${$.interfaceXX}`)}`)
                     const args = $['type arguments']
                     pl.cc($.context, ($) => {
 

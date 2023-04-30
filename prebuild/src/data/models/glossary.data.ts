@@ -18,12 +18,19 @@ import {
     array,
     resolvedValueReference,
     valSel,
-    pNonCyclicSiblings,
+    pNonCyclicLookup,
     globalTypeSelection,
     pResolvedValue,
     constrainedDictionary,
     aResolvedValue,
+    aLookup,
+    lparameter,
+    dictConstraint,
+    resultTaggedUnion,
+    s_reference,
+    lookupReference,
 } from "lib-liana/dist/submodules/liana/shorthands"
+import { varSel } from 'lib-liana/dist/submodules/liana/shorthands'
 
 const d = pd.d
 
@@ -43,7 +50,6 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                 'atom types': d({
                     "identifier": null,
                 }),
-
             },
             'global types': {
                 'declarations': d({
@@ -62,10 +68,12 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                         "imports": pResolvedValue("Imports", false),
                         "type parameters": pResolvedValue("Parameters", false),
                     }),
-                    "Imports": globalTypeDeclaration({}),
+                    "Imports": globalTypeDeclaration({
+                        "glossaries": pNonCyclicLookup(globalTypeSelection("Glossary"))
+                    }),
                     "Parameters": globalTypeDeclaration({}),
                     "Glossary": globalTypeDeclaration({
-                        "glossaries": pNonCyclicSiblings(globalTypeSelection("Glossary"))
+                        "glossaries": pNonCyclicLookup(globalTypeSelection("Glossary"))
                     }),
                     "DataSpecifier": globalTypeDeclaration({
                         "glossary parameters": pResolvedValue("Parameters", false),
@@ -83,7 +91,7 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                         "imports": pResolvedValue("Imports", false),
                         "type parameters": pResolvedValue("Parameters", false),
                     }),
-                    "SynchronousInterface": globalTypeDeclaration({
+                    "Synchronous Interface": globalTypeDeclaration({
                         "glossary parameters": pResolvedValue("Parameters", false),
                         "imports": pResolvedValue("Imports", false),
                         "type parameters": pResolvedValue("Parameters", false),
@@ -97,6 +105,7 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                         "glossary parameters": pResolvedValue("Parameters", false),
                         "imports": pResolvedValue("Imports", false),
                         "type parameters": pResolvedValue("Parameters", false),
+                        //"synchronous interfaces": pNonCyclicLookup(globalTypeSelection("Synchronous Interface"))
                     }),
                     "Type": globalTypeDeclaration({
                         "glossary parameters": pResolvedValue("Parameters", false),
@@ -150,7 +159,9 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                     "Parameters": globalTypeDefinition(dictionary(group({}))),
                     "Glossary": globalTypeDefinition(
                         group({
-                            "imports": prop(component("Imports", {})   ),
+                            "imports": prop(component("Imports", {
+                                "glossaries": aLookup(lparameter("glossaries")),
+                            })),
                             "glossary parameters": prop(component("Parameters", {})),
                             "root": prop(component("Namespace", {
                                 "glossary parameters": aResolvedValue(valSel("glossary parameters")),
@@ -159,7 +170,7 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                             "synchronous": prop(group({
                                 "interfaces": prop(dictionary(group({
                                     "parameters": prop(component("Parameters", {})),
-                                    "interface": prop(component("SynchronousInterface", {
+                                    "interface": prop(component("Synchronous Interface", {
                                         "glossary parameters": aResolvedValue(valSel("glossary parameters")),
                                         "imports": aResolvedValue(valSel("imports")),
                                         "type parameters": aResolvedValue(valSel("parameters")),
@@ -268,7 +279,7 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                     "Imports": globalTypeDefinition(
                         constrainedDictionary(
                             {
-                                //FIXME
+                                //"glossary": dictConstraint(valSel("glossaries"), tempTypeSelection("Glossary"))
                             },
                             group({
                             })
@@ -279,7 +290,6 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                             "type": option(group({
                                 "context": prop(taggedUnion({
                                     "local": option(group({})),
-                                    //"import": reference(['parent', null), [)),
                                     "import": option(group({
                                         "glossary": prop(component("Glossary Reference", {
                                             "glossary parameters": aResolvedValue(valSel("glossary parameters")),
@@ -341,10 +351,10 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                             })),
                         })
                     ),
-                    "SynchronousInterface": globalTypeDefinition(
+                    "Synchronous Interface": globalTypeDefinition(
                         taggedUnion({
                             "group": option(group({
-                                "members": prop(dictionary(component("SynchronousInterface", {
+                                "members": prop(dictionary(component("Synchronous Interface", {
                                     "glossary parameters": aResolvedValue(valSel("glossary parameters")),
                                     "imports": aResolvedValue(valSel("imports")),
                                     "type parameters": aResolvedValue(valSel("type parameters")),
@@ -356,7 +366,7 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                                     "imports": aResolvedValue(valSel("imports")),
                                     "type parameters": aResolvedValue(valSel("type parameters")),
                                 }))),
-                                "interface": prop(optional(component("SynchronousInterface", {
+                                "interface": prop(optional(component("Synchronous Interface", {
                                     "glossary parameters": aResolvedValue(valSel("glossary parameters")),
                                     "imports": aResolvedValue(valSel("imports")),
                                     "type parameters": aResolvedValue(valSel("type parameters")),
@@ -372,7 +382,6 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                         group({
                             "context": prop(taggedUnion({
                                 "local": option(group({})),
-                                //"import": reference(['parent', null), [)),
                                 "import": option(group({
                                     "glossary": prop(component("Glossary Reference", {
                                         "glossary parameters": aResolvedValue(valSel("glossary parameters")),
@@ -381,7 +390,6 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                                     })),
                                 })),
                             })),
-                            //"interface": [["context"), reference(['sibling', "context"), [))),
                             "interfaceXX": prop(terminal("identifier")),
                             "type arguments": prop(component("Arguments", {
                                 "parameters": aResolvedValue(valSel("glossary parameters")), //FIXME the parameters of the referenced type
@@ -404,19 +412,24 @@ export const $: g_liana2algorithm.T.CreateResolverParameters<pd.SourceLocation> 
                     ),
                     "SynchronousInterfaceReference": globalTypeDefinition(
                         group({
-                            "context": prop(taggedUnion({
-                                "local": option(group({})),
-                                //"import": reference(['parent', null), [)),
-                                "import": option(group({
-                                    "glossary": prop(component("Glossary Reference", {
-                                        "glossary parameters": aResolvedValue(valSel("glossary parameters")),
-                                        "imports": aResolvedValue(valSel("imports")),
-                                        "type parameters": aResolvedValue(valSel("type parameters")),
+                            "context": prop(taggedUnion(
+                                {
+                                    "local": option(group({
+                                        "interfaceXX": prop(terminal("identifier"))
+                                        // "interface": prop(lookupReference(lparameter("synchronous interfaces"), tempTypeSelection("Synchronous Interface")))
                                     })),
-                                })),
-                            })),
-                            //"interface": [["context"), reference(['sibling', "context"), [))),
-                            "interfaceXX": prop(terminal("identifier")),
+                                    "import": option(group({
+                                        "glossary": prop(component("Glossary Reference", {
+                                            "glossary parameters": aResolvedValue(valSel("glossary parameters")),
+                                            "imports": aResolvedValue(valSel("imports")),
+                                            "type parameters": aResolvedValue(valSel("type parameters")),
+                                        })),
+                                        "interfaceXX": prop(terminal("identifier"))
+
+                                        //"interface FIXME": prop(lookupReference(lparameter("synchronous interfaces"), tempTypeSelection("Synchronous Interface")))
+                                    })),
+                                }
+                            )),
                             "type arguments": prop(component("Arguments", {
                                 "parameters": aResolvedValue(valSel("glossary parameters")), //FIXME the parameters of the referenced type
                                 "glossary parameters": aResolvedValue(valSel("glossary parameters")),

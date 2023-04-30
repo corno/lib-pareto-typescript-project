@@ -416,6 +416,7 @@ export const $$: A.resolve = ($d, $se) => {
         return pl.cc($, ($) => {
             const $p_imports: g_out.T.Glossary.imports<Annotation> = pl.cc($['imports'], ($) => map_Imports<Annotation>(
                 $,
+                $v_glossaries,//$v_glossaries
             ))
             const $v_imports: pt.OptionalValue<g_out.T.Glossary.imports<Annotation>> = [true, $p_imports]
             const $p_glossary__parameters: g_out.T.Glossary.glossary__parameters<Annotation> = pl.cc($['glossary parameters'], ($) => map_Parameters<Annotation>(
@@ -442,7 +443,7 @@ export const $$: A.resolve = ($d, $se) => {
                         $,
                     ))
                     const $v_parameters: pt.OptionalValue<g_out.T.Glossary.synchronous.interfaces.D.parameters<Annotation>> = [true, $p_parameters]
-                    const $p__linterface: g_out.T.Glossary.synchronous.interfaces.D._linterface<Annotation> = pl.cc($['interface'], ($) => map_SynchronousInterface<Annotation>(
+                    const $p__linterface: g_out.T.Glossary.synchronous.interfaces.D._linterface<Annotation> = pl.cc($['interface'], ($) => map_Synchronous__Interface<Annotation>(
                         $,
                         tempoptional/*3*/(
                             $v_glossary__parameters,
@@ -901,6 +902,7 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Imports<Annotation>(
         $: g_in.T.Imports<Annotation>,
+        $v_glossaries: pt.Lookup<g_out.T.Glossary<Annotation>>,
     ): g_out.T.Imports<Annotation> {
         return $.__mapWithKey(($, key) => pl.cc($, ($) => {
             return null
@@ -972,16 +974,16 @@ export const $$: A.resolve = ($d, $se) => {
         }))
     }
     
-    function map_SynchronousInterface<Annotation>(
-        $: g_in.T.SynchronousInterface<Annotation>,
+    function map_Synchronous__Interface<Annotation>(
+        $: g_in.T.Synchronous__Interface<Annotation>,
         $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
         $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
         $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-    ): g_out.T.SynchronousInterface<Annotation> {
-        return pl.cc($, ($): g_out.T.SynchronousInterface<Annotation> => {
+    ): g_out.T.Synchronous__Interface<Annotation> {
+        return pl.cc($, ($): g_out.T.Synchronous__Interface<Annotation> => {
             switch ($[0]) {
                 case 'group': return pl.ss($, ($) => ['group', pl.cc($, ($) => {
-                    const $p_members: g_out.T.SynchronousInterface.group.members<Annotation> = pl.cc($['members'], ($) => $.__mapWithKey(($, key) => map_SynchronousInterface<Annotation>(
+                    const $p_members: g_out.T.Synchronous__Interface.group.members<Annotation> = pl.cc($['members'], ($) => $.__mapWithKey(($, key) => map_Synchronous__Interface<Annotation>(
                         $,
                         tempoptional/*3*/(
                             $v_glossary__parameters,
@@ -999,15 +1001,15 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_type__parameters
                     )))
-                    const $v_members: pt.OptionalValue<g_out.T.SynchronousInterface.group.members<Annotation>> = [true, $p_members]
+                    const $v_members: pt.OptionalValue<g_out.T.Synchronous__Interface.group.members<Annotation>> = [true, $p_members]
                     return {
                         'members': $p_members,
                     }
                 })])
                 case 'method': return pl.ss($, ($) => ['method', pl.cc($, ($) => {
-                    const $p_data: g_out.T.SynchronousInterface.method.data<Annotation> = pl.cc($['data'], ($) => tempoptional/*4*/(
+                    const $p_data: g_out.T.Synchronous__Interface.method.data<Annotation> = pl.cc($['data'], ($) => tempoptional/*4*/(
                         $,
-                        ($): g_out.T.SynchronousInterface.method.data<Annotation> => [true, map_DataSpecifier<Annotation>(
+                        ($): g_out.T.Synchronous__Interface.method.data<Annotation> => [true, map_DataSpecifier<Annotation>(
                             $,
                             tempoptional/*3*/(
                                 $v_glossary__parameters,
@@ -1027,10 +1029,10 @@ export const $$: A.resolve = ($d, $se) => {
                         )],
                         () => [false],
                     ))
-                    const $v_data: pt.OptionalValue<g_out.T.SynchronousInterface.method.data<Annotation>> = [true, $p_data]
-                    const $p__linterface: g_out.T.SynchronousInterface.method._linterface<Annotation> = pl.cc($['interface'], ($) => tempoptional/*4*/(
+                    const $v_data: pt.OptionalValue<g_out.T.Synchronous__Interface.method.data<Annotation>> = [true, $p_data]
+                    const $p__linterface: g_out.T.Synchronous__Interface.method._linterface<Annotation> = pl.cc($['interface'], ($) => tempoptional/*4*/(
                         $,
-                        ($): g_out.T.SynchronousInterface.method._linterface<Annotation> => [true, map_SynchronousInterface<Annotation>(
+                        ($): g_out.T.Synchronous__Interface.method._linterface<Annotation> => [true, map_Synchronous__Interface<Annotation>(
                             $,
                             tempoptional/*3*/(
                                 $v_glossary__parameters,
@@ -1050,7 +1052,7 @@ export const $$: A.resolve = ($d, $se) => {
                         )],
                         () => [false],
                     ))
-                    const $v__linterface: pt.OptionalValue<g_out.T.SynchronousInterface.method._linterface<Annotation>> = [true, $p__linterface]
+                    const $v__linterface: pt.OptionalValue<g_out.T.Synchronous__Interface.method._linterface<Annotation>> = [true, $p__linterface]
                     return {
                         'data': $p_data,
                         'interface': $p__linterface,
@@ -1108,19 +1110,24 @@ export const $$: A.resolve = ($d, $se) => {
                             ),//$v_type__parameters
                         ))
                         const $v_glossary: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context._limport.glossary<Annotation>> = [true, $p_glossary]
+                        const $p_interfaceXX: g_out.T.SynchronousInterfaceReference.context._limport.interfaceXX<Annotation> = pl.cc($['interfaceXX'], ($) => $)
+                        const $v_interfaceXX: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context._limport.interfaceXX<Annotation>> = [true, $p_interfaceXX]
                         return {
                             'glossary': $p_glossary,
+                            'interfaceXX': $p_interfaceXX,
                         }
                     })])
                     case 'local': return pl.ss($, ($) => ['local', pl.cc($, ($) => {
-                        return null
+                        const $p_interfaceXX: g_out.T.SynchronousInterfaceReference.context.local.interfaceXX<Annotation> = pl.cc($['interfaceXX'], ($) => $)
+                        const $v_interfaceXX: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context.local.interfaceXX<Annotation>> = [true, $p_interfaceXX]
+                        return {
+                            'interfaceXX': $p_interfaceXX,
+                        }
                     })])
                     default: return pl.au($[0])
                 }
             }))
             const $v_context: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context<Annotation>> = [true, $p_context]
-            const $p_interfaceXX: g_out.T.SynchronousInterfaceReference.interfaceXX<Annotation> = pl.cc($['interfaceXX'], ($) => $)
-            const $v_interfaceXX: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.interfaceXX<Annotation>> = [true, $p_interfaceXX]
             const $p_type__arguments: g_out.T.SynchronousInterfaceReference.type__arguments<Annotation> = pl.cc($['type arguments'], ($) => map_Arguments<Annotation>(
                 $,
                 tempoptional/*3*/(
@@ -1147,7 +1154,6 @@ export const $$: A.resolve = ($d, $se) => {
             const $v_type__arguments: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.type__arguments<Annotation>> = [true, $p_type__arguments]
             return {
                 'context': $p_context,
-                'interfaceXX': $p_interfaceXX,
                 'type arguments': $p_type__arguments,
             }
         })

@@ -162,16 +162,25 @@ export function sExternalInterfaceReference(
                 },
                 'glossary arguments': pd.d(glossArgs === undefined ? {} : glossArgs),
             },
+            // 'interface FIXME': {
+            //     'annotation': pd.getLocationInfo(1),
+            //     'key': inf,
+            // },
+            'interfaceXX': inf
         }],
-        'interfaceXX': inf,
         'type arguments': pd.d(typeArgs === undefined ? {} : typeArgs),
     }
 }
 
 export function sInterfaceReference(inf: string, args?: RawDictionary<t.T.DataSpecifier<pd.SourceLocation>>): t.T.SynchronousInterfaceReference<pd.SourceLocation> {
     return {
-        'context': ['local', null],
-        'interfaceXX': inf,
+        'context': ['local', {
+            // 'interface': {
+            //     'annotation': pd.getLocationInfo(1),
+            //     'key': inf,
+            // },
+            'interfaceXX': inf
+        }],
         'type arguments': pd.d(args === undefined ? {} : args),
     }
 }
@@ -228,7 +237,7 @@ export function aInterface(inf: t.T.AsynchronousInterface<pd.SourceLocation>, pa
     }
 }
 
-export function sInterface(inf: t.T.SynchronousInterface<pd.SourceLocation>, params?: RawDictionary<t.T.Parameters.D<pd.SourceLocation>>): t.T.Glossary.synchronous.interfaces.D<pd.SourceLocation> {
+export function sInterface(inf: t.T.Synchronous__Interface<pd.SourceLocation>, params?: RawDictionary<t.T.Parameters.D<pd.SourceLocation>>): t.T.Glossary.synchronous.interfaces.D<pd.SourceLocation> {
     return {
         'parameters': pd.d(params === undefined ? {} : params),
         'interface': inf,
@@ -307,7 +316,7 @@ export function sfunction(out: t.T.DataSpecifier<pd.SourceLocation>, in_: t.T.Da
     }
 }
 
-export function sInterfaceMethod(data: null | t.T.DataSpecifier<pd.SourceLocation>, inf?: null | t.T.SynchronousInterface<pd.SourceLocation>): t.T.SynchronousInterface<pd.SourceLocation> {
+export function sInterfaceMethod(data: null | t.T.DataSpecifier<pd.SourceLocation>, inf?: null | t.T.Synchronous__Interface<pd.SourceLocation>): t.T.Synchronous__Interface<pd.SourceLocation> {
     return ['method', {
         'data': data === null
             ? [false]

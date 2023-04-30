@@ -376,7 +376,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     "interface": {
                                         'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                             'context': ['local', null],
-                                            'typeXX': "SynchronousInterface",
+                                            'typeXX': "Synchronous Interface",
                                             'tailXX': a([]),
                                             'type arguments': d({}),
                                         }]],
@@ -459,14 +459,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 'parameters': d({}),
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]]
             },
-            "SynchronousInterface": {
+            "Synchronous Interface": {
                 'parameters': d({}),
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
                     "group": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                         "members": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': ['local', null],
-                                'typeXX': "SynchronousInterface",
+                                'typeXX': "Synchronous Interface",
                                 'tailXX': a([]),
                                 'type arguments': d({}),
                             }]]],
@@ -484,7 +484,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         "interface": {
                             'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                 'context': ['local', null],
-                                'typeXX': "SynchronousInterface",
+                                'typeXX': "Synchronous Interface",
                                 'tailXX': a([]),
                                 'type arguments': d({}),
                             }]]],
@@ -512,12 +512,16 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         'type arguments': d({}),
                                     }]],
                                 },
+                                "interfaceXX": {
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                },
                             })],
-                            "local": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                            "local": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                "interfaceXX": {
+                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                },
+                            })],
                         })],
-                    },
-                    "interfaceXX": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
                     },
                     "type arguments": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
@@ -1191,7 +1195,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                     },
                 }),
             },
-            "SynchronousInterface": {
+            "Synchronous Interface": {
                 'types': d({}),
                 'namespaces': d({
                     "TU": {
@@ -1274,6 +1278,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                 'types': d({}),
                                                                 'namespaces': d({}),
                                                             },
+                                                            "interfaceXX": {
+                                                                'types': d({}),
+                                                                'namespaces': d({}),
+                                                            },
                                                         }),
                                                     },
                                                 }),
@@ -1283,17 +1291,18 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 'namespaces': d({
                                                     "G": {
                                                         'types': d({}),
-                                                        'namespaces': d({}),
+                                                        'namespaces': d({
+                                                            "interfaceXX": {
+                                                                'types': d({}),
+                                                                'namespaces': d({}),
+                                                            },
+                                                        }),
                                                     },
                                                 }),
                                             },
                                         }),
                                     },
                                 }),
-                            },
-                            "interfaceXX": {
-                                'types': d({}),
-                                'namespaces': d({}),
                             },
                             "type arguments": {
                                 'types': d({}),

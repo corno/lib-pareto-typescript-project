@@ -2,7 +2,6 @@ import * as pd from 'pareto-core-data'
 
 import * as g_liana from "lib-liana/dist/submodules/liana"
 import {
-    pAllSiblings,
     array,
     component, dictionary,
     globalTypeDeclaration,
@@ -10,7 +9,7 @@ import {
     group, t_grp,
     option, optional, prop, taggedUnion,
     t_tu, tempTypeSelection, thisCyclic, aLookup, 
-    resolvedValueReference, valSel, globalTypeSelection, pNonCyclicSiblings, lparameter
+    resolvedValueReference, valSel, globalTypeSelection, pNonCyclicLookup, lparameter
 } from "lib-liana/dist/submodules/liana/shorthands"
 
 const d = pd.d
@@ -30,13 +29,13 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
             "SourceFile": globalTypeDeclaration({}),
             "Parameters": globalTypeDeclaration({}),
             "Type": globalTypeDeclaration({
-                "namespace": pNonCyclicSiblings(globalTypeSelection("Namespace")),
+                "namespace": pNonCyclicLookup(globalTypeSelection("Namespace")),
             }),
             "Type Path": globalTypeDeclaration({
-                "namepace": pNonCyclicSiblings(globalTypeSelection("Namespace")),
+                "namepace": pNonCyclicLookup(globalTypeSelection("Namespace")),
             }),
             "Type Parameters": globalTypeDeclaration({
-                "namespace": pNonCyclicSiblings(globalTypeSelection("Namespace")),
+                "namespace": pNonCyclicLookup(globalTypeSelection("Namespace")),
             }),
         }),
         'definitions': d({

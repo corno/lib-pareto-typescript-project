@@ -1001,7 +1001,7 @@ export namespace N {
         export namespace T {}
     }
     
-    export namespace SynchronousInterface {
+    export namespace Synchronous_$_$Interface {
         
         export namespace N {
             
@@ -1131,6 +1131,13 @@ export namespace N {
                                                         
                                                         export namespace T {}
                                                     }
+                                                    
+                                                    export namespace interfaceXX {
+                                                        
+                                                        export namespace N {}
+                                                        
+                                                        export namespace T {}
+                                                    }
                                                 }
                                                 
                                                 export namespace T {}
@@ -1146,7 +1153,15 @@ export namespace N {
                                             
                                             export namespace G {
                                                 
-                                                export namespace N {}
+                                                export namespace N {
+                                                    
+                                                    export namespace interfaceXX {
+                                                        
+                                                        export namespace N {}
+                                                        
+                                                        export namespace T {}
+                                                    }
+                                                }
                                                 
                                                 export namespace T {}
                                             }
@@ -1159,13 +1174,6 @@ export namespace N {
                                 export namespace T {}
                             }
                         }
-                        
-                        export namespace T {}
-                    }
-                    
-                    export namespace interfaceXX {
-                        
-                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -1821,19 +1829,19 @@ export namespace T {
                 
                 export namespace D {
                     
-                    export type _linterface<GAnnotation> = T.SynchronousInterface<GAnnotation>
+                    export type _linterface<GAnnotation> = T.Synchronous__Interface<GAnnotation>
                     
                     export type parameters<GAnnotation> = T.Parameters<GAnnotation>
                 }
                 
                 export type D<GAnnotation> = {
-                    readonly 'interface': T.SynchronousInterface<GAnnotation>
+                    readonly 'interface': T.Synchronous__Interface<GAnnotation>
                     readonly 'parameters': T.Parameters<GAnnotation>
                 }
             }
             
             export type interfaces<GAnnotation> = pt.Dictionary<{
-                readonly 'interface': T.SynchronousInterface<GAnnotation>
+                readonly 'interface': T.Synchronous__Interface<GAnnotation>
                 readonly 'parameters': T.Parameters<GAnnotation>
             }>
         }
@@ -1857,7 +1865,7 @@ export namespace T {
                     }]
             }>
             readonly 'interfaces': pt.Dictionary<{
-                readonly 'interface': T.SynchronousInterface<GAnnotation>
+                readonly 'interface': T.Synchronous__Interface<GAnnotation>
                 readonly 'parameters': T.Parameters<GAnnotation>
             }>
         }
@@ -1908,7 +1916,7 @@ export namespace T {
                     }]
             }>
             readonly 'interfaces': pt.Dictionary<{
-                readonly 'interface': T.SynchronousInterface<GAnnotation>
+                readonly 'interface': T.Synchronous__Interface<GAnnotation>
                 readonly 'parameters': T.Parameters<GAnnotation>
             }>
         }
@@ -1995,20 +2003,20 @@ export namespace T {
     
     export type Parameters<GAnnotation> = pt.Dictionary<null>
     
-    export namespace SynchronousInterface {
+    export namespace Synchronous__Interface {
         
         export namespace group {
             
             export namespace members {
                 
-                export type D<GAnnotation> = T.SynchronousInterface<GAnnotation>
+                export type D<GAnnotation> = T.Synchronous__Interface<GAnnotation>
             }
             
-            export type members<GAnnotation> = pt.Dictionary<T.SynchronousInterface<GAnnotation>>
+            export type members<GAnnotation> = pt.Dictionary<T.Synchronous__Interface<GAnnotation>>
         }
         
         export type group<GAnnotation> = {
-            readonly 'members': pt.Dictionary<T.SynchronousInterface<GAnnotation>>
+            readonly 'members': pt.Dictionary<T.Synchronous__Interface<GAnnotation>>
         }
         
         export namespace method {
@@ -2022,27 +2030,27 @@ export namespace T {
             
             export namespace _linterface {
                 
-                export type O<GAnnotation> = T.SynchronousInterface<GAnnotation>
+                export type O<GAnnotation> = T.Synchronous__Interface<GAnnotation>
             }
             
-            export type _linterface<GAnnotation> = [ false ] | [ true, T.SynchronousInterface<GAnnotation>]
+            export type _linterface<GAnnotation> = [ false ] | [ true, T.Synchronous__Interface<GAnnotation>]
         }
         
         export type method<GAnnotation> = {
             readonly 'data': [ false ] | [ true, T.DataSpecifier<GAnnotation>]
-            readonly 'interface': [ false ] | [ true, T.SynchronousInterface<GAnnotation>]
+            readonly 'interface': [ false ] | [ true, T.Synchronous__Interface<GAnnotation>]
         }
         
         export type reference<GAnnotation> = T.SynchronousInterfaceReference<GAnnotation>
     }
     
-    export type SynchronousInterface<GAnnotation> = 
+    export type Synchronous__Interface<GAnnotation> = 
         | ['group', {
-            readonly 'members': pt.Dictionary<T.SynchronousInterface<GAnnotation>>
+            readonly 'members': pt.Dictionary<T.Synchronous__Interface<GAnnotation>>
         }]
         | ['method', {
             readonly 'data': [ false ] | [ true, T.DataSpecifier<GAnnotation>]
-            readonly 'interface': [ false ] | [ true, T.SynchronousInterface<GAnnotation>]
+            readonly 'interface': [ false ] | [ true, T.Synchronous__Interface<GAnnotation>]
         }]
         | ['reference', T.SynchronousInterfaceReference<GAnnotation>]
     
@@ -2053,24 +2061,33 @@ export namespace T {
             export namespace _limport {
                 
                 export type glossary<GAnnotation> = T.Glossary__Reference<GAnnotation>
+                
+                export type interfaceXX<GAnnotation> = string
             }
             
             export type _limport<GAnnotation> = {
                 readonly 'glossary': T.Glossary__Reference<GAnnotation>
+                readonly 'interfaceXX': string
             }
             
-            export namespace local {}
+            export namespace local {
+                
+                export type interfaceXX<GAnnotation> = string
+            }
             
-            export type local<GAnnotation> = null
+            export type local<GAnnotation> = {
+                readonly 'interfaceXX': string
+            }
         }
         
         export type context<GAnnotation> = 
             | ['import', {
                 readonly 'glossary': T.Glossary__Reference<GAnnotation>
+                readonly 'interfaceXX': string
             }]
-            | ['local', null]
-        
-        export type interfaceXX<GAnnotation> = string
+            | ['local', {
+                readonly 'interfaceXX': string
+            }]
         
         export type type__arguments<GAnnotation> = T.Arguments<GAnnotation>
     }
@@ -2079,9 +2096,11 @@ export namespace T {
         readonly 'context': 
             | ['import', {
                 readonly 'glossary': T.Glossary__Reference<GAnnotation>
+                readonly 'interfaceXX': string
             }]
-            | ['local', null]
-        readonly 'interfaceXX': string
+            | ['local', {
+                readonly 'interfaceXX': string
+            }]
         readonly 'type arguments': T.Arguments<GAnnotation>
     }
     

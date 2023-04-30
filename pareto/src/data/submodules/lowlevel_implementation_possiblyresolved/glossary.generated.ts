@@ -269,7 +269,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     'glossary':{
                                         'annotation': {
                                             'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                            'line': 85,
+                                            'line': 91,
                                             'column': 52,
                                         },
                                         'key': "typesystem",
@@ -310,7 +310,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                 'glossary':{
                                                                                     'annotation': {
                                                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                                        'line': 353,
+                                                                                        'line': 367,
                                                                                         'column': 150,
                                                                                     },
                                                                                     'key': "typesystem",
@@ -345,8 +345,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                                 'glossary':{
                                                                                                     'annotation': {
                                                                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                                                        'line': 364,
-                                                                                                        'column': 149,
+                                                                                                        'line': 378,
+                                                                                                        'column': 173,
                                                                                                     },
                                                                                                     'key': "typesystem",
                                                                                                 },
@@ -355,8 +355,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                                 }),
                                                                                             },
                                                                                         }],
-                                                                                        'typeXX': "Parameters",
+                                                                                        'typeXX': "Function Declaration",
                                                                                         'tailXX': a([
+                                                                                            "parameters",
                                                                                             "D",
                                                                                         ]),
                                                                                         'type arguments': d({}),
@@ -398,7 +399,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                 'glossary':{
                                                                                     'annotation': {
                                                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                                        'line': 373,
+                                                                                        'line': 387,
                                                                                         'column': 132,
                                                                                     },
                                                                                     'key': "typesystem",
@@ -429,7 +430,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                                 'glossary':{
                                                                                     'annotation': {
                                                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                                        'line': 375,
+                                                                                        'line': 389,
                                                                                         'column': 129,
                                                                                     },
                                                                                     'key': "typesystem",
@@ -463,7 +464,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                             'glossary':{
                                                                 'annotation': {
                                                                     'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                    'line': 351,
+                                                                    'line': 365,
                                                                     'column': 91,
                                                                 },
                                                                 'key': "typesystem",
@@ -497,7 +498,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                             'glossary':{
                                                 'annotation': {
                                                     'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                    'line': 385,
+                                                    'line': 399,
                                                     'column': 71,
                                                 },
                                                 'key': "typesystem",
@@ -521,7 +522,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     'glossary':{
                                         'annotation': {
                                             'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                            'line': 78,
+                                            'line': 84,
                                             'column': 52,
                                         },
                                         'key': "typesystem",
@@ -762,7 +763,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                             'glossary':{
                                                                 'annotation': {
                                                                     'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                    'line': 342,
+                                                                    'line': 356,
                                                                     'column': 141,
                                                                 },
                                                                 'key': "typesystem",
@@ -814,7 +815,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 'glossary':{
                                                     'annotation': {
                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                        'line': 404,
+                                                        'line': 418,
                                                         'column': 116,
                                                     },
                                                     'key': "typesystem",
@@ -855,7 +856,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 'glossary':{
                                                     'annotation': {
                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                        'line': 486,
+                                                        'line': 500,
                                                         'column': 118,
                                                     },
                                                     'key': "typesystem",
@@ -896,7 +897,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 'glossary':{
                                                     'annotation': {
                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                        'line': 529,
+                                                        'line': 543,
                                                         'column': 115,
                                                     },
                                                     'key': "typesystem",
@@ -932,7 +933,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 'glossary':{
                                                     'annotation': {
                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                        'line': 493,
+                                                        'line': 507,
                                                         'column': 117,
                                                     },
                                                     'key': "typesystem",
@@ -973,7 +974,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 'glossary':{
                                                     'annotation': {
                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                        'line': 412,
+                                                        'line': 426,
                                                         'column': 116,
                                                     },
                                                     'key': "typesystem",
@@ -1008,7 +1009,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                 'glossary':{
                                                                     'annotation': {
                                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                        'line': 416,
+                                                                        'line': 430,
                                                                         'column': 127,
                                                                     },
                                                                     'key': "typesystem",
@@ -1055,7 +1056,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 'glossary':{
                                                     'annotation': {
                                                         'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                        'line': 500,
+                                                        'line': 514,
                                                         'column': 117,
                                                     },
                                                     'key': "typesystem",
@@ -1176,7 +1177,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                             'glossary':{
                                                                 'annotation': {
                                                                     'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                    'line': 602,
+                                                                    'line': 616,
                                                                     'column': 139,
                                                                 },
                                                                 'key': "typesystem",
@@ -1291,7 +1292,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                             'glossary':{
                                                                 'annotation': {
                                                                     'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                    'line': 662,
+                                                                    'line': 676,
                                                                     'column': 145,
                                                                 },
                                                                 'key': "typesystem",
@@ -1336,7 +1337,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                             'glossary':{
                                                                 'annotation': {
                                                                     'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                    'line': 670,
+                                                                    'line': 684,
                                                                     'column': 145,
                                                                 },
                                                                 'key': "typesystem",
@@ -1412,7 +1413,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                             'glossary':{
                                                                 'annotation': {
                                                                     'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                    'line': 784,
+                                                                    'line': 798,
                                                                     'column': 139,
                                                                 },
                                                                 'key': "typesystem",
@@ -1463,7 +1464,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                             'glossary':{
                                                 'annotation': {
                                                     'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                    'line': 806,
+                                                    'line': 820,
                                                     'column': 103,
                                                 },
                                                 'key': "typesystem",
@@ -1501,150 +1502,109 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                     "content": {
                         'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                            "referenced type": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                    "annotation": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameterXX', "Annotation"]],
-                                    },
-                                    "constraint": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                            'context': ['import', {
-                                                'glossary': {
-                                                    'glossary':{
-                                                        'annotation': {
-                                                            'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                            'line': 830,
-                                                            'column': 122,
-                                                        },
-                                                        'key': "typesystem",
-                                                    },
-                                                    'glossary arguments': d({
-                                                        "Annotation": ['glossary parameterXX', "Annotation"]
-                                                    }),
+                            "content": {
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
+                                    "child namespace": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                        "namespacex": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                                "annotation": {
+                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameterXX', "Annotation"]],
                                                 },
-                                            }],
-                                            'typeXX': "Namespace",
-                                            'tailXX': a([
-                                                "D",
-                                            ]),
-                                            'type arguments': d({}),
-                                        }]]],
-                                    },
-                                    "key": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
-                                    },
+                                                "constraint": {
+                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                        'context': ['import', {
+                                                            'glossary': {
+                                                                'glossary':{
+                                                                    'annotation': {
+                                                                        'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
+                                                                        'line': 852,
+                                                                        'column': 152,
+                                                                    },
+                                                                    'key': "typesystem",
+                                                                },
+                                                                'glossary arguments': d({
+                                                                    "Annotation": ['glossary parameterXX', "Annotation"]
+                                                                }),
+                                                            },
+                                                        }],
+                                                        'typeXX': "Namespace",
+                                                        'tailXX': a([
+                                                            "namespaces",
+                                                            "D",
+                                                        ]),
+                                                        'type arguments': d({}),
+                                                    }]]],
+                                                },
+                                                "key": {
+                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                                },
+                                            })],
+                                        },
+                                        "selection": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                'context': ['local', null],
+                                                'typeXX': "Type Selection",
+                                                'tailXX': a([]),
+                                                'type arguments': d({}),
+                                            }]],
+                                        },
+                                    })],
+                                    "current namespace": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                        "annotation": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameterXX', "Annotation"]],
+                                        },
+                                        "constraint": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                'context': ['import', {
+                                                    'glossary': {
+                                                        'glossary':{
+                                                            'annotation': {
+                                                                'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
+                                                                'line': 847,
+                                                                'column': 124,
+                                                            },
+                                                            'key': "typesystem",
+                                                        },
+                                                        'glossary arguments': d({
+                                                            "Annotation": ['glossary parameterXX', "Annotation"]
+                                                        }),
+                                                    },
+                                                }],
+                                                'typeXX': "Namespace",
+                                                'tailXX': a([
+                                                    "types",
+                                                    "D",
+                                                ]),
+                                                'type arguments': d({}),
+                                            }]]],
+                                        },
+                                        "key": {
+                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                        },
+                                    })],
                                 })],
                             },
-                            "type of referenced type": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                    "content": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                            "namespace": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                                "annotation": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameterXX', "Annotation"]],
+                            "result": {
+                                'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                    'context': ['import', {
+                                        'glossary': {
+                                            'glossary':{
+                                                'annotation': {
+                                                    'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
+                                                    'line': 844,
+                                                    'column': 56,
                                                 },
-                                                "constraints": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                                        "referenced namespace": {
-                                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                                                'context': ['import', {
-                                                                    'glossary': {
-                                                                        'glossary':{
-                                                                            'annotation': {
-                                                                                'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                                'line': 835,
-                                                                                'column': 181,
-                                                                            },
-                                                                            'key': "typesystem",
-                                                                        },
-                                                                        'glossary arguments': d({
-                                                                            "Annotation": ['glossary parameterXX', "Annotation"]
-                                                                        }),
-                                                                    },
-                                                                }],
-                                                                'typeXX': "Namespace",
-                                                                'tailXX': a([
-                                                                    "D",
-                                                                    "type",
-                                                                    "namespace",
-                                                                ]),
-                                                                'type arguments': d({}),
-                                                            }]]],
-                                                        },
-                                                    })],
-                                                },
-                                                "content": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                                        'context': ['local', null],
-                                                        'typeXX': "Type Selection",
-                                                        'tailXX': a([]),
-                                                        'type arguments': d({}),
-                                                    }]],
-                                                },
-                                            })],
-                                            "type definition": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                                "annotation": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameterXX', "Annotation"]],
-                                                },
-                                                "constraints": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                                        "referenced type definition": {
-                                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                                                'context': ['import', {
-                                                                    'glossary': {
-                                                                        'glossary':{
-                                                                            'annotation': {
-                                                                                'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                                'line': 844,
-                                                                                'column': 193,
-                                                                            },
-                                                                            'key': "typesystem",
-                                                                        },
-                                                                        'glossary arguments': d({
-                                                                            "Annotation": ['glossary parameterXX', "Annotation"]
-                                                                        }),
-                                                                    },
-                                                                }],
-                                                                'typeXX': "Namespace",
-                                                                'tailXX': a([
-                                                                    "D",
-                                                                    "type",
-                                                                    "type definition",
-                                                                ]),
-                                                                'type arguments': d({}),
-                                                            }]]],
-                                                        },
-                                                    })],
-                                                },
-                                                "content": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
-                                                },
-                                            })],
-                                        })],
-                                    },
-                                    "result": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                            'context': ['import', {
-                                                'glossary': {
-                                                    'glossary':{
-                                                        'annotation': {
-                                                            'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                            'line': 831,
-                                                            'column': 106,
-                                                        },
-                                                        'key': "typesystem",
-                                                    },
-                                                    'glossary arguments': d({
-                                                        "Annotation": ['glossary parameterXX', "Annotation"]
-                                                    }),
-                                                },
-                                            }],
-                                            'typeXX': "Type",
-                                            'tailXX': a([]),
-                                            'type arguments': d({}),
-                                        }]]],
-                                    },
-                                })],
+                                                'key': "typesystem",
+                                            },
+                                            'glossary arguments': d({
+                                                "Annotation": ['glossary parameterXX', "Annotation"]
+                                            }),
+                                        },
+                                    }],
+                                    'typeXX': "Type",
+                                    'tailXX': a([]),
+                                    'type arguments': d({}),
+                                }]]],
                             },
                         })],
                     },
@@ -1655,7 +1615,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     'glossary':{
                                         'annotation': {
                                             'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                            'line': 104,
+                                            'line': 110,
                                             'column': 52,
                                         },
                                         'key': "typesystem",
@@ -1697,42 +1657,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                             }]],
                                         },
                                     })],
-                                    "parameter": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                        "parameter": {
-                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                                "annotation": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameterXX', "Annotation"]],
-                                                },
-                                                "constraint": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                                        'context': ['import', {
-                                                            'glossary': {
-                                                                'glossary':{
-                                                                    'annotation': {
-                                                                        'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                                        'line': 866,
-                                                                        'column': 125,
-                                                                    },
-                                                                    'key': "typesystem",
-                                                                },
-                                                                'glossary arguments': d({
-                                                                    "Annotation": ['glossary parameterXX', "Annotation"]
-                                                                }),
-                                                            },
-                                                        }],
-                                                        'typeXX': "Parameters",
-                                                        'tailXX': a([
-                                                            "D",
-                                                        ]),
-                                                        'type arguments': d({}),
-                                                    }]]],
-                                                },
-                                                "key": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
-                                                },
-                                            })],
-                                        },
-                                    })],
                                     "variable stack2": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
                                         "variable": {
                                             'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
@@ -1764,7 +1688,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                             'glossary':{
                                                 'annotation': {
                                                     'file': "../../prebuild/src/data/models/lowlevel_implementation.data.ts",
-                                                    'line': 864,
+                                                    'line': 865,
                                                     'column': 87,
                                                 },
                                                 'key': "typesystem",
@@ -2733,35 +2657,30 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "Type Selection": {
                 'types': d({}),
                 'namespaces': d({
-                    "G": {
+                    "TU": {
                         'types': d({}),
                         'namespaces': d({
-                            "referenced type": {
-                                'types': d({}),
-                                'namespaces': d({}),
-                            },
-                            "type of referenced type": {
+                            "child namespace": {
                                 'types': d({}),
                                 'namespaces': d({
-                                    "TU": {
+                                    "G": {
                                         'types': d({}),
                                         'namespaces': d({
-                                            "namespace": {
+                                            "namespacex": {
                                                 'types': d({}),
                                                 'namespaces': d({}),
                                             },
-                                            "type definition": {
+                                            "selection": {
                                                 'types': d({}),
-                                                'namespaces': d({
-                                                    "G": {
-                                                        'types': d({}),
-                                                        'namespaces': d({}),
-                                                    },
-                                                }),
+                                                'namespaces': d({}),
                                             },
                                         }),
                                     },
                                 }),
+                            },
+                            "current namespace": {
+                                'types': d({}),
+                                'namespaces': d({}),
                             },
                         }),
                     },
@@ -2793,20 +2712,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                                         'namespaces': d({}),
                                                                     },
                                                                     "type": {
-                                                                        'types': d({}),
-                                                                        'namespaces': d({}),
-                                                                    },
-                                                                }),
-                                                            },
-                                                        }),
-                                                    },
-                                                    "parameter": {
-                                                        'types': d({}),
-                                                        'namespaces': d({
-                                                            "G": {
-                                                                'types': d({}),
-                                                                'namespaces': d({
-                                                                    "parameter": {
                                                                         'types': d({}),
                                                                         'namespaces': d({}),
                                                                     },

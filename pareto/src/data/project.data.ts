@@ -40,6 +40,7 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
         "res-pareto-collation": null,
         "lib-pareto-filesystem": null,
         "res-pareto-array": null,
+        "res-pareto-resolve": null,
         "res-pareto-main": null,
         "res-typescript": null,
         "res-pareto-foreach": null,

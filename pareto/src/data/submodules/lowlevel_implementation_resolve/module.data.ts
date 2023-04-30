@@ -22,7 +22,7 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
             'root': api,
             'imports': d({
                 "this": this_(),
-                "array": external("res-pareto-array")
+                "resolve": external("res-pareto-resolve")
             }),
         },
     },

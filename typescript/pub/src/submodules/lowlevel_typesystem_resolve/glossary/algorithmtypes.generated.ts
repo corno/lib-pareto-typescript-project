@@ -18,7 +18,7 @@ export namespace SYNC {
         
         
         export namespace F {
-            export type Resolve<GAnnotation> = ($: g_unresolved.T.SourceFile<GAnnotation>) => g_resolved.T.SourceFile<GAnnotation>
+            export type Resolve<GAnnotation> = ($: g_unresolved.T.Namespace<GAnnotation>) => g_resolved.T.Namespace<GAnnotation>
         }
     }
 }

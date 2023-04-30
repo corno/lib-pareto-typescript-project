@@ -29,7 +29,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         'synchronous': {
             'interfaces': d({}),
             'algorithms': d({
-                "Resolve": sfunction(externalTypeReference("resolved", "SourceFile", { "Annotation": glossaryParameter("Annotation"), }), data(externalTypeReference("unresolved", "SourceFile", { "Annotation": glossaryParameter("Annotation"), }))),
+                "Resolve": sfunction(externalTypeReference("resolved", "Namespace", { "Annotation": glossaryParameter("Annotation"), }), data(externalTypeReference("unresolved", "Namespace", { "Annotation": glossaryParameter("Annotation"), }))),
             }),
         },
 }

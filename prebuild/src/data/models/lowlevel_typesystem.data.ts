@@ -8,8 +8,8 @@ import {
     globalTypeDefinition,
     group, t_grp,
     option, optional, prop, taggedUnion,
-    t_tu, tempTypeSelection, thisCyclic, aLookup, 
-    resolvedValueReference, valSel, globalTypeSelection, pNonCyclicLookup, lparameter
+    t_tu, tempTypeSelection, thisCyclic, aLookup,
+    resolvedValueReference, valSel, globalTypeSelection, pNonCyclicLookup, lparameter, terminal
 } from "lib-liana/dist/submodules/liana/shorthands"
 
 const d = pd.d
@@ -25,71 +25,47 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
     },
     'global types': {
         'declarations': d({
-            "Namespace": globalTypeDeclaration({}),
-            "SourceFile": globalTypeDeclaration({}),
-            "Parameters": globalTypeDeclaration({}),
+            "Function Declaration": globalTypeDeclaration({}),
+            "Namespace": globalTypeDeclaration({
+                "definitions": pNonCyclicLookup(globalTypeSelection("Definition")),
+            }),
+            "TypeParameters": globalTypeDeclaration({
+                "definitions": pNonCyclicLookup(globalTypeSelection("Definition")),
+            }),
             "Type": globalTypeDeclaration({
-                "namespace": pNonCyclicLookup(globalTypeSelection("Namespace")),
+                "definitions": pNonCyclicLookup(globalTypeSelection("Definition")),
             }),
-            "Type Path": globalTypeDeclaration({
-                "namepace": pNonCyclicLookup(globalTypeSelection("Namespace")),
-            }),
+            // "Type Path": globalTypeDeclaration({
+            //     "namepace": pNonCyclicLookup(globalTypeSelection("Namespace")),
+            // }),
             "Type Parameters": globalTypeDeclaration({
-                "namespace": pNonCyclicLookup(globalTypeSelection("Namespace")),
+                "definitions": pNonCyclicLookup(globalTypeSelection("Definition")),
             }),
         }),
         'definitions': d({
             "Namespace": globalTypeDefinition(
-                dictionary(group({
-                    "type": prop(taggedUnion({
-                        "namespace": option(component("Namespace", {})),
-                        "type definition": option(group({
-                            "parameters": prop(component("Type Parameters", { "global types": aLookup(thisCyclic()), })),
-                            "type": prop(component("Type", { "global types": aLookup(thisCyclic()) })),
-                        })),
-    
-                        // "interface": composite("InterfaceDeclaration", group({
-                        //     "modifiers": member(component("modifiers")),
-                        //     "name": member(component("identifier")),
-                        //     "typeParameters": member(component("typeParameters")),
-                        //     "signature": member(component("typeSignatures")),
-                        // })),
-                        //"interface": option(group({})),
-    
-    
-                        // "function": composite("FunctionDeclaration", group({
-                        //     "modifiers": member(component("modifiers")),
-                        //     "name": member(component("identifier")),
-                        //     "definition": member(component("functionDefinition")),
-                        // })),
-    
-                    }))
-                }))),
-            "SourceFile": globalTypeDefinition(
                 group({
-                    // "export": composite("ExportDeclaration", component("stringLiteral")),
-    
-    
-                    // "import": composite("ImportDeclaration", group({
-                    //     "clause": member(composite("ImportClause", choice({
-                    //         "named": composite("NamedImports", array(composite("ImportSpecifier", group({
-                    //             "name": member(component("identifier")),
-                    //             "as": member(optional(component("identifier"))),
-                    //         })))),
-                    //         "namespace": composite("NamespaceImport", component("identifier")),
-                    //     }))),
-                    //     "file": member(component("stringLiteral")),
-                    // })),
-                    "root": prop(component("Namespace", {})),
-                })
+                    "namespaces": prop(dictionary(component("Namespace", {}))),
+                    "parameters": prop(component("TypeParameters", {})),
+                    "types": prop(dictionary(component("Type", {}))),
+                }),
             ),
-            "Parameters": globalTypeDefinition(
+            "TypeParameters": globalTypeDefinition(
                 dictionary(group({
                     "type": prop(component("Type", {
                         "global types": aLookup(lparameter("global types"))
                     })),
                 }))
             ),
+            "Function Declaration": globalTypeDefinition(group({
+                "type parameters": prop(component("Type Parameters", {
+                    "global types": aLookup(lparameter("global types"))
+                })),
+                "context": prop(component("Type", {
+                    "global types": aLookup(lparameter("global types"))
+                })),
+                "parameters": prop(dictionary(component("Type", {}))),
+            })),
             "Type": globalTypeDefinition(
                 taggedUnion({
                     // "any": empty("AnyKeyword"),
@@ -98,28 +74,19 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     })),
                     "boolean": option(group({})),
                     "address function": option(group({
-                        "type parameters": prop(component("Type Parameters", {
-                            "global types": aLookup(lparameter("global types"))
-                        })),
-                        "parameters": prop(component("Parameters", {})),
+                        "declaration": prop(component("Function Declaration", {})),
                         "return type": prop(component("Type", {
                             "global types": aLookup(lparameter("global types"))
                         })),
                     })),
                     "value function": option(group({
-                        "type parameters": prop(component("Type Parameters", {
-                            "global types": aLookup(lparameter("global types"))
-                        })),
-                        "parameters": prop(component("Parameters", {})),
+                        "declaration": prop(component("Function Declaration", {})),
                         "return type": prop(component("Type", {
                             "global types": aLookup(lparameter("global types"))
                         })),
                     })),
                     "procedure": option(group({
-                        "type parameters": prop(component("Type Parameters", {
-                            "global types": aLookup(lparameter("global types"))
-                        })),
-                        "parameters": prop(component("Parameters", {})),
+                        "declaration": prop(component("Function Declaration", {})),
                     })),
                     "group": option(group({
                         "properties": prop(dictionary(group({
@@ -128,7 +95,7 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                             }))
                         })))
                     })),
-    
+
                     // "never": empty("NeverKeyword"),
                     "null": option(group({})),
                     "number": option(group({})),
@@ -137,8 +104,8 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     })),
                     // "optional": composite("OptionalType", component("type")),
                     // "parenthesized": composite("ParenthesizedType", component("type")),
-    
-    
+
+
                     // "typeReference": composite("TypeReference", group({
                     //     "id": member(choice({
                     //         "identifier": component("identifier"),
@@ -149,8 +116,14 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     //     })),
                     //     "parameters": member(array(component("type"))),
                     // })),
-                    "reference": option(group({
-                        "path": prop(array(resolvedValueReference(valSel("TBD"), tempTypeSelection("Type", t_tu("group", t_grp("properties")))))),
+                    "type reference": option(group({
+                        "type": prop(taggedUnion({
+                            "external": option(group({})),
+                            "sibling": option(group({})),
+                            "cyclic sibling": option(group({}))
+                        })),
+                        // "context": prop(terminal("identifier")),
+                        // "path": prop(array(resolvedValueReference(valSel("TBD"), tempTypeSelection("Type", t_tu("group", t_grp("properties")))))),
                     })),
                     "string": option(group({})),
                     //"string literal": option(terminal("string literal")),
@@ -164,15 +137,15 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     // "void": empty("VoidKeyword"),
                 })
             ),
-            "Type Path": globalTypeDefinition(
-                group({
-                    "namespaces": prop(array(resolvedValueReference(valSel("TBD"), tempTypeSelection("Namespace" /*constrain type to namespace*/)))),
-                    "type": prop(resolvedValueReference(valSel("TBD"), tempTypeSelection("Namespace") /*constrain to type defintion*/)),
-                    "parameters": prop(dictionary(component("Type", {
-                        "global types": aLookup(lparameter("global types"))
-                    }))),
-                })
-            ),
+            // "Type Path": globalTypeDefinition(
+            //     group({
+            //         "namespaces": prop(array(resolvedValueReference(valSel("TBD"), tempTypeSelection("Namespace" /*constrain type to namespace*/)))),
+            //         "type": prop(resolvedValueReference(valSel("TBD"), tempTypeSelection("Namespace") /*constrain to type defintion*/)),
+            //         "parameters": prop(dictionary(component("Type", {
+            //             "global types": aLookup(lparameter("global types"))
+            //         }))),
+            //     })
+            // ),
             "Type Parameters": globalTypeDefinition(
                 dictionary(component("Type", {
                     "namespace": aLookup(lparameter("namespace"))

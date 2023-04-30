@@ -1,12 +1,12 @@
 import * as pt from 'pareto-core-types'
 
-import * as g_array from "res-pareto-array"
+import * as g_resolve from "res-pareto-resolve"
 import * as g_this from "./glossary"
 
 export namespace D {
     
     export type resolve<GAnnotation> = {
-        readonly 'getLastElement': g_array.SYNC.A.F.GetLastElement
+        readonly 'resolveDictionary': g_resolve.SYNC.A.F.SafeResolveDictionary
     }
 }
 

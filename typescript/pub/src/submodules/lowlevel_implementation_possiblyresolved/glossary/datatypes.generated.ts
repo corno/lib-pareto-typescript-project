@@ -1565,43 +1565,28 @@ export namespace N {
         
         export namespace N {
             
-            export namespace G {
+            export namespace TU {
                 
                 export namespace N {
                     
-                    export namespace referenced_$_$type {
-                        
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                    
-                    export namespace type_$_$of_$_$referenced_$_$type {
+                    export namespace child_$_$namespace {
                         
                         export namespace N {
                             
-                            export namespace TU {
+                            export namespace G {
                                 
                                 export namespace N {
                                     
-                                    export namespace namespace {
+                                    export namespace namespacex {
                                         
                                         export namespace N {}
                                         
                                         export namespace T {}
                                     }
                                     
-                                    export namespace type_$_$definition {
+                                    export namespace selection {
                                         
-                                        export namespace N {
-                                            
-                                            export namespace G {
-                                                
-                                                export namespace N {}
-                                                
-                                                export namespace T {}
-                                            }
-                                        }
+                                        export namespace N {}
                                         
                                         export namespace T {}
                                     }
@@ -1610,6 +1595,13 @@ export namespace N {
                                 export namespace T {}
                             }
                         }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace current_$_$namespace {
+                        
+                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -1658,29 +1650,6 @@ export namespace N {
                                                             }
                                                             
                                                             export namespace _$ltype {
-                                                                
-                                                                export namespace N {}
-                                                                
-                                                                export namespace T {}
-                                                            }
-                                                        }
-                                                        
-                                                        export namespace T {}
-                                                    }
-                                                }
-                                                
-                                                export namespace T {}
-                                            }
-                                            
-                                            export namespace parameter {
-                                                
-                                                export namespace N {
-                                                    
-                                                    export namespace G {
-                                                        
-                                                        export namespace N {
-                                                            
-                                                            export namespace parameter {
                                                                 
                                                                 export namespace N {}
                                                                 
@@ -2211,14 +2180,14 @@ export namespace T {
                                                 
                                                 export namespace parameter {
                                                     
-                                                    export type O<GAnnotation> = g_typesystem.T.Parameters.D<GAnnotation>
+                                                    export type O<GAnnotation> = g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>
                                                 }
                                                 
-                                                export type parameter<GAnnotation> = [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                                export type parameter<GAnnotation> = [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                             }
                                             
                                             export type constraints<GAnnotation> = {
-                                                readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                                readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                             }
                                             
                                             export type content<GAnnotation> = T.Expression<GAnnotation>
@@ -2227,7 +2196,7 @@ export namespace T {
                                         export type D<GAnnotation> = {
                                             readonly 'annotation': GAnnotation
                                             readonly 'constraints': {
-                                                readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                                readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                             }
                                             readonly 'content': T.Expression<GAnnotation>
                                         }
@@ -2236,7 +2205,7 @@ export namespace T {
                                     export type arguments<GAnnotation> = pt.Dictionary<{
                                         readonly 'annotation': GAnnotation
                                         readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                         }
                                         readonly 'content': T.Expression<GAnnotation>
                                     }>
@@ -2248,7 +2217,7 @@ export namespace T {
                                     readonly 'arguments': pt.Dictionary<{
                                         readonly 'annotation': GAnnotation
                                         readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                         }
                                         readonly 'content': T.Expression<GAnnotation>
                                     }>
@@ -2265,7 +2234,7 @@ export namespace T {
                                     readonly 'arguments': pt.Dictionary<{
                                         readonly 'annotation': GAnnotation
                                         readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                         }
                                         readonly 'content': T.Expression<GAnnotation>
                                     }>
@@ -2335,7 +2304,7 @@ export namespace T {
                                     readonly 'arguments': pt.Dictionary<{
                                         readonly 'annotation': GAnnotation
                                         readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                         }
                                         readonly 'content': T.Expression<GAnnotation>
                                     }>
@@ -2373,7 +2342,7 @@ export namespace T {
                                     readonly 'arguments': pt.Dictionary<{
                                         readonly 'annotation': GAnnotation
                                         readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                         }
                                         readonly 'content': T.Expression<GAnnotation>
                                     }>
@@ -2409,7 +2378,7 @@ export namespace T {
                                     readonly 'arguments': pt.Dictionary<{
                                         readonly 'annotation': GAnnotation
                                         readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                         }
                                         readonly 'content': T.Expression<GAnnotation>
                                     }>
@@ -2445,7 +2414,7 @@ export namespace T {
                                 readonly 'arguments': pt.Dictionary<{
                                     readonly 'annotation': GAnnotation
                                     readonly 'constraints': {
-                                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                     }
                                     readonly 'content': T.Expression<GAnnotation>
                                 }>
@@ -2489,7 +2458,7 @@ export namespace T {
                                 readonly 'arguments': pt.Dictionary<{
                                     readonly 'annotation': GAnnotation
                                     readonly 'constraints': {
-                                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                     }
                                     readonly 'content': T.Expression<GAnnotation>
                                 }>
@@ -2536,7 +2505,7 @@ export namespace T {
                                 readonly 'arguments': pt.Dictionary<{
                                     readonly 'annotation': GAnnotation
                                     readonly 'constraints': {
-                                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
+                                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
                                     }
                                     readonly 'content': T.Expression<GAnnotation>
                                 }>
@@ -3626,159 +3595,102 @@ export namespace T {
         
         export namespace content {
             
-            export namespace referenced__type {
+            export namespace content {
                 
-                export type annotation<GAnnotation> = GAnnotation
-                
-                export namespace constraint {
+                export namespace child__namespace {
                     
-                    export type O<GAnnotation> = g_typesystem.T.Namespace.D<GAnnotation>
-                }
-                
-                export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Namespace.D<GAnnotation>]
-                
-                export type key<GAnnotation> = string
-            }
-            
-            export type referenced__type<GAnnotation> = {
-                readonly 'annotation': GAnnotation
-                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.D<GAnnotation>]
-                readonly 'key': string
-            }
-            
-            export namespace type__of__referenced__type {
-                
-                export namespace content {
-                    
-                    export namespace namespace {
+                    export namespace namespacex {
                         
                         export type annotation<GAnnotation> = GAnnotation
                         
-                        export namespace constraints {
+                        export namespace constraint {
                             
-                            export namespace referenced__namespace {
-                                
-                                export type O<GAnnotation> = g_typesystem.T.Namespace.D._ltype.namespace<GAnnotation>
-                            }
-                            
-                            export type referenced__namespace<GAnnotation> = [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.namespace<GAnnotation>]
+                            export type O<GAnnotation> = g_typesystem.T.Namespace.namespaces.D<GAnnotation>
                         }
                         
-                        export type constraints<GAnnotation> = {
-                            readonly 'referenced namespace': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.namespace<GAnnotation>]
-                        }
+                        export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Namespace.namespaces.D<GAnnotation>]
                         
-                        export type content<GAnnotation> = T.Type__Selection<GAnnotation>
+                        export type key<GAnnotation> = string
                     }
                     
-                    export type namespace<GAnnotation> = {
+                    export type namespacex<GAnnotation> = {
                         readonly 'annotation': GAnnotation
-                        readonly 'constraints': {
-                            readonly 'referenced namespace': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.namespace<GAnnotation>]
-                        }
-                        readonly 'content': T.Type__Selection<GAnnotation>
+                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.namespaces.D<GAnnotation>]
+                        readonly 'key': string
                     }
                     
-                    export namespace type__definition {
-                        
-                        export type annotation<GAnnotation> = GAnnotation
-                        
-                        export namespace constraints {
-                            
-                            export namespace referenced__type__definition {
-                                
-                                export type O<GAnnotation> = g_typesystem.T.Namespace.D._ltype.type__definition<GAnnotation>
-                            }
-                            
-                            export type referenced__type__definition<GAnnotation> = [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.type__definition<GAnnotation>]
-                        }
-                        
-                        export type constraints<GAnnotation> = {
-                            readonly 'referenced type definition': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.type__definition<GAnnotation>]
-                        }
-                        
-                        export namespace content {}
-                        
-                        export type content<GAnnotation> = null
-                    }
-                    
-                    export type type__definition<GAnnotation> = {
-                        readonly 'annotation': GAnnotation
-                        readonly 'constraints': {
-                            readonly 'referenced type definition': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.type__definition<GAnnotation>]
-                        }
-                        readonly 'content': null
-                    }
+                    export type selection<GAnnotation> = T.Type__Selection<GAnnotation>
                 }
                 
-                export type content<GAnnotation> = 
-                    | ['namespace', {
+                export type child__namespace<GAnnotation> = {
+                    readonly 'namespacex': {
                         readonly 'annotation': GAnnotation
-                        readonly 'constraints': {
-                            readonly 'referenced namespace': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.namespace<GAnnotation>]
-                        }
-                        readonly 'content': T.Type__Selection<GAnnotation>
-                    }]
-                    | ['type definition', {
-                        readonly 'annotation': GAnnotation
-                        readonly 'constraints': {
-                            readonly 'referenced type definition': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.type__definition<GAnnotation>]
-                        }
-                        readonly 'content': null
-                    }]
-                
-                export namespace result {
-                    
-                    export type O<GAnnotation> = g_typesystem.T.Type<GAnnotation>
+                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.namespaces.D<GAnnotation>]
+                        readonly 'key': string
+                    }
+                    readonly 'selection': T.Type__Selection<GAnnotation>
                 }
                 
-                export type result<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
+                export namespace current__namespace {
+                    
+                    export type annotation<GAnnotation> = GAnnotation
+                    
+                    export namespace constraint {
+                        
+                        export type O<GAnnotation> = g_typesystem.T.Namespace.types.D<GAnnotation>
+                    }
+                    
+                    export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Namespace.types.D<GAnnotation>]
+                    
+                    export type key<GAnnotation> = string
+                }
+                
+                export type current__namespace<GAnnotation> = {
+                    readonly 'annotation': GAnnotation
+                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.types.D<GAnnotation>]
+                    readonly 'key': string
+                }
             }
             
-            export type type__of__referenced__type<GAnnotation> = {
-                readonly 'content': 
-                    | ['namespace', {
+            export type content<GAnnotation> = 
+                | ['child namespace', {
+                    readonly 'namespacex': {
                         readonly 'annotation': GAnnotation
-                        readonly 'constraints': {
-                            readonly 'referenced namespace': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.namespace<GAnnotation>]
-                        }
-                        readonly 'content': T.Type__Selection<GAnnotation>
-                    }]
-                    | ['type definition', {
-                        readonly 'annotation': GAnnotation
-                        readonly 'constraints': {
-                            readonly 'referenced type definition': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.type__definition<GAnnotation>]
-                        }
-                        readonly 'content': null
-                    }]
-                readonly 'result': [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
+                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.namespaces.D<GAnnotation>]
+                        readonly 'key': string
+                    }
+                    readonly 'selection': T.Type__Selection<GAnnotation>
+                }]
+                | ['current namespace', {
+                    readonly 'annotation': GAnnotation
+                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.types.D<GAnnotation>]
+                    readonly 'key': string
+                }]
+            
+            export namespace result {
+                
+                export type O<GAnnotation> = g_typesystem.T.Type<GAnnotation>
             }
+            
+            export type result<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
         }
         
         export type content<GAnnotation> = {
-            readonly 'referenced type': {
-                readonly 'annotation': GAnnotation
-                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.D<GAnnotation>]
-                readonly 'key': string
-            }
-            readonly 'type of referenced type': {
-                readonly 'content': 
-                    | ['namespace', {
+            readonly 'content': 
+                | ['child namespace', {
+                    readonly 'namespacex': {
                         readonly 'annotation': GAnnotation
-                        readonly 'constraints': {
-                            readonly 'referenced namespace': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.namespace<GAnnotation>]
-                        }
-                        readonly 'content': T.Type__Selection<GAnnotation>
-                    }]
-                    | ['type definition', {
-                        readonly 'annotation': GAnnotation
-                        readonly 'constraints': {
-                            readonly 'referenced type definition': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.type__definition<GAnnotation>]
-                        }
-                        readonly 'content': null
-                    }]
-                readonly 'result': [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
-            }
+                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.namespaces.D<GAnnotation>]
+                        readonly 'key': string
+                    }
+                    readonly 'selection': T.Type__Selection<GAnnotation>
+                }]
+                | ['current namespace', {
+                    readonly 'annotation': GAnnotation
+                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.types.D<GAnnotation>]
+                    readonly 'key': string
+                }]
+            readonly 'result': [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
         }
         
         export namespace result {
@@ -3791,29 +3703,21 @@ export namespace T {
     
     export type Type__Selection<GAnnotation> = {
         readonly 'content': {
-            readonly 'referenced type': {
-                readonly 'annotation': GAnnotation
-                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.D<GAnnotation>]
-                readonly 'key': string
-            }
-            readonly 'type of referenced type': {
-                readonly 'content': 
-                    | ['namespace', {
+            readonly 'content': 
+                | ['child namespace', {
+                    readonly 'namespacex': {
                         readonly 'annotation': GAnnotation
-                        readonly 'constraints': {
-                            readonly 'referenced namespace': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.namespace<GAnnotation>]
-                        }
-                        readonly 'content': T.Type__Selection<GAnnotation>
-                    }]
-                    | ['type definition', {
-                        readonly 'annotation': GAnnotation
-                        readonly 'constraints': {
-                            readonly 'referenced type definition': [ false ] | [ true, g_typesystem.T.Namespace.D._ltype.type__definition<GAnnotation>]
-                        }
-                        readonly 'content': null
-                    }]
-                readonly 'result': [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
-            }
+                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.namespaces.D<GAnnotation>]
+                        readonly 'key': string
+                    }
+                    readonly 'selection': T.Type__Selection<GAnnotation>
+                }]
+                | ['current namespace', {
+                    readonly 'annotation': GAnnotation
+                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Namespace.types.D<GAnnotation>]
+                    readonly 'key': string
+                }]
+            readonly 'result': [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
         }
         readonly 'result': [ false ] | [ true, g_typesystem.T.Type<GAnnotation>]
     }
@@ -3836,37 +3740,6 @@ export namespace T {
                     export type local<GAnnotation> = {
                         readonly 'initializer': T.Expression<GAnnotation>
                         readonly 'type': T.Type__Selection<GAnnotation>
-                    }
-                    
-                    export namespace parameter {
-                        
-                        export namespace parameter {
-                            
-                            export type annotation<GAnnotation> = GAnnotation
-                            
-                            export namespace constraint {
-                                
-                                export type O<GAnnotation> = g_typesystem.T.Parameters.D<GAnnotation>
-                            }
-                            
-                            export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
-                            
-                            export type key<GAnnotation> = string
-                        }
-                        
-                        export type parameter<GAnnotation> = {
-                            readonly 'annotation': GAnnotation
-                            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
-                            readonly 'key': string
-                        }
-                    }
-                    
-                    export type parameter<GAnnotation> = {
-                        readonly 'parameter': {
-                            readonly 'annotation': GAnnotation
-                            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
-                            readonly 'key': string
-                        }
                     }
                     
                     export namespace variable__stack2 {
@@ -3906,13 +3779,6 @@ export namespace T {
                         readonly 'initializer': T.Expression<GAnnotation>
                         readonly 'type': T.Type__Selection<GAnnotation>
                     }]
-                    | ['parameter', {
-                        readonly 'parameter': {
-                            readonly 'annotation': GAnnotation
-                            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
-                            readonly 'key': string
-                        }
-                    }]
                     | ['variable stack2', {
                         readonly 'variable': {
                             readonly 'annotation': GAnnotation
@@ -3935,13 +3801,6 @@ export namespace T {
                         readonly 'initializer': T.Expression<GAnnotation>
                         readonly 'type': T.Type__Selection<GAnnotation>
                     }]
-                    | ['parameter', {
-                        readonly 'parameter': {
-                            readonly 'annotation': GAnnotation
-                            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
-                            readonly 'key': string
-                        }
-                    }]
                     | ['variable stack2', {
                         readonly 'variable': {
                             readonly 'annotation': GAnnotation
@@ -3959,13 +3818,6 @@ export namespace T {
                     | ['local', {
                         readonly 'initializer': T.Expression<GAnnotation>
                         readonly 'type': T.Type__Selection<GAnnotation>
-                    }]
-                    | ['parameter', {
-                        readonly 'parameter': {
-                            readonly 'annotation': GAnnotation
-                            readonly 'constraint': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
-                            readonly 'key': string
-                        }
                     }]
                     | ['variable stack2', {
                         readonly 'variable': {
@@ -3985,13 +3837,6 @@ export namespace T {
                 | ['local', {
                     readonly 'initializer': T.Expression<GAnnotation>
                     readonly 'type': T.Type__Selection<GAnnotation>
-                }]
-                | ['parameter', {
-                    readonly 'parameter': {
-                        readonly 'annotation': GAnnotation
-                        readonly 'constraint': [ false ] | [ true, g_typesystem.T.Parameters.D<GAnnotation>]
-                        readonly 'key': string
-                    }
                 }]
                 | ['variable stack2', {
                     readonly 'variable': {

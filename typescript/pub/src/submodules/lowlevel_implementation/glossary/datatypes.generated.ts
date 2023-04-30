@@ -1565,43 +1565,28 @@ export namespace N {
         
         export namespace N {
             
-            export namespace G {
+            export namespace TU {
                 
                 export namespace N {
                     
-                    export namespace referenced_$_$type {
-                        
-                        export namespace N {}
-                        
-                        export namespace T {}
-                    }
-                    
-                    export namespace type_$_$of_$_$referenced_$_$type {
+                    export namespace child_$_$namespace {
                         
                         export namespace N {
                             
-                            export namespace TU {
+                            export namespace G {
                                 
                                 export namespace N {
                                     
-                                    export namespace namespace {
+                                    export namespace namespacex {
                                         
                                         export namespace N {}
                                         
                                         export namespace T {}
                                     }
                                     
-                                    export namespace type_$_$definition {
+                                    export namespace selection {
                                         
-                                        export namespace N {
-                                            
-                                            export namespace G {
-                                                
-                                                export namespace N {}
-                                                
-                                                export namespace T {}
-                                            }
-                                        }
+                                        export namespace N {}
                                         
                                         export namespace T {}
                                     }
@@ -1610,6 +1595,13 @@ export namespace N {
                                 export namespace T {}
                             }
                         }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace current_$_$namespace {
+                        
+                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -1658,29 +1650,6 @@ export namespace N {
                                                             }
                                                             
                                                             export namespace _$ltype {
-                                                                
-                                                                export namespace N {}
-                                                                
-                                                                export namespace T {}
-                                                            }
-                                                        }
-                                                        
-                                                        export namespace T {}
-                                                    }
-                                                }
-                                                
-                                                export namespace T {}
-                                            }
-                                            
-                                            export namespace parameter {
-                                                
-                                                export namespace N {
-                                                    
-                                                    export namespace G {
-                                                        
-                                                        export namespace N {
-                                                            
-                                                            export namespace parameter {
                                                                 
                                                                 export namespace N {}
                                                                 
@@ -2905,73 +2874,56 @@ export namespace T {
     
     export namespace Type__Selection {
         
-        export namespace referenced__type {
+        export namespace child__namespace {
+            
+            export namespace namespacex {
+                
+                export type annotation<GAnnotation> = GAnnotation
+                
+                export type key<GAnnotation> = string
+            }
+            
+            export type namespacex<GAnnotation> = {
+                readonly 'annotation': GAnnotation
+                readonly 'key': string
+            }
+            
+            export type selection<GAnnotation> = T.Type__Selection<GAnnotation>
+        }
+        
+        export type child__namespace<GAnnotation> = {
+            readonly 'namespacex': {
+                readonly 'annotation': GAnnotation
+                readonly 'key': string
+            }
+            readonly 'selection': T.Type__Selection<GAnnotation>
+        }
+        
+        export namespace current__namespace {
             
             export type annotation<GAnnotation> = GAnnotation
             
             export type key<GAnnotation> = string
         }
         
-        export type referenced__type<GAnnotation> = {
+        export type current__namespace<GAnnotation> = {
             readonly 'annotation': GAnnotation
             readonly 'key': string
         }
-        
-        export namespace type__of__referenced__type {
-            
-            export namespace namespace {
-                
-                export type annotation<GAnnotation> = GAnnotation
-                
-                export type content<GAnnotation> = T.Type__Selection<GAnnotation>
-            }
-            
-            export type namespace<GAnnotation> = {
-                readonly 'annotation': GAnnotation
-                readonly 'content': T.Type__Selection<GAnnotation>
-            }
-            
-            export namespace type__definition {
-                
-                export type annotation<GAnnotation> = GAnnotation
-                
-                export namespace content {}
-                
-                export type content<GAnnotation> = null
-            }
-            
-            export type type__definition<GAnnotation> = {
-                readonly 'annotation': GAnnotation
-                readonly 'content': null
-            }
-        }
-        
-        export type type__of__referenced__type<GAnnotation> = 
-            | ['namespace', {
-                readonly 'annotation': GAnnotation
-                readonly 'content': T.Type__Selection<GAnnotation>
-            }]
-            | ['type definition', {
-                readonly 'annotation': GAnnotation
-                readonly 'content': null
-            }]
     }
     
-    export type Type__Selection<GAnnotation> = {
-        readonly 'referenced type': {
+    export type Type__Selection<GAnnotation> = 
+        | ['child namespace', {
+            readonly 'namespacex': {
+                readonly 'annotation': GAnnotation
+                readonly 'key': string
+            }
+            readonly 'selection': T.Type__Selection<GAnnotation>
+        }]
+        | ['current namespace', {
             readonly 'annotation': GAnnotation
             readonly 'key': string
-        }
-        readonly 'type of referenced type': 
-            | ['namespace', {
-                readonly 'annotation': GAnnotation
-                readonly 'content': T.Type__Selection<GAnnotation>
-            }]
-            | ['type definition', {
-                readonly 'annotation': GAnnotation
-                readonly 'content': null
-            }]
-    }
+        }]
     
     export namespace Variables {
         
@@ -2989,28 +2941,6 @@ export namespace T {
                 export type local<GAnnotation> = {
                     readonly 'initializer': T.Expression<GAnnotation>
                     readonly 'type': T.Type__Selection<GAnnotation>
-                }
-                
-                export namespace parameter {
-                    
-                    export namespace parameter {
-                        
-                        export type annotation<GAnnotation> = GAnnotation
-                        
-                        export type key<GAnnotation> = string
-                    }
-                    
-                    export type parameter<GAnnotation> = {
-                        readonly 'annotation': GAnnotation
-                        readonly 'key': string
-                    }
-                }
-                
-                export type parameter<GAnnotation> = {
-                    readonly 'parameter': {
-                        readonly 'annotation': GAnnotation
-                        readonly 'key': string
-                    }
                 }
                 
                 export namespace variable__stack2 {
@@ -3041,12 +2971,6 @@ export namespace T {
                     readonly 'initializer': T.Expression<GAnnotation>
                     readonly 'type': T.Type__Selection<GAnnotation>
                 }]
-                | ['parameter', {
-                    readonly 'parameter': {
-                        readonly 'annotation': GAnnotation
-                        readonly 'key': string
-                    }
-                }]
                 | ['variable stack2', {
                     readonly 'variable': {
                         readonly 'annotation': GAnnotation
@@ -3060,12 +2984,6 @@ export namespace T {
                 | ['local', {
                     readonly 'initializer': T.Expression<GAnnotation>
                     readonly 'type': T.Type__Selection<GAnnotation>
-                }]
-                | ['parameter', {
-                    readonly 'parameter': {
-                        readonly 'annotation': GAnnotation
-                        readonly 'key': string
-                    }
                 }]
                 | ['variable stack2', {
                     readonly 'variable': {
@@ -3081,12 +2999,6 @@ export namespace T {
             | ['local', {
                 readonly 'initializer': T.Expression<GAnnotation>
                 readonly 'type': T.Type__Selection<GAnnotation>
-            }]
-            | ['parameter', {
-                readonly 'parameter': {
-                    readonly 'annotation': GAnnotation
-                    readonly 'key': string
-                }
             }]
             | ['variable stack2', {
                 readonly 'variable': {

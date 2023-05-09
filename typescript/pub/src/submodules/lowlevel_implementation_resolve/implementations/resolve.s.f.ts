@@ -21,33 +21,36 @@ export const $$: A.resolve = ($d, $se) => {
         $: g_in.T.A__dictionary__with__constraint<Annotation>,
     ): g_out.T.A__dictionary__with__constraint<Annotation> {
         return pl.cc($, ($) => {
-            const $p_dict: g_out.T.A__dictionary__with__constraint.dict<Annotation> = pl.cc($['dict'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
+            const $p_dict: g_out.T.A__dictionary__with__constraint.dict<Annotation> = pl.cc($['dict'], ($) => $d.resolveDictionary<g_in.T.A__dictionary__with__constraint.dict.D<Annotation>, g_out.T.A__dictionary__with__constraint.dict.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                 return null
-            })))
+            }))}))
             const $v_dict: pt.OptionalValue<g_out.T.A__dictionary__with__constraint.dict<Annotation>> = [true, $p_dict]
-            const $p_constrained__dict: g_out.T.A__dictionary__with__constraint.constrained__dict<Annotation> = pl.cc($['constrained dict'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
-                const /*dict constraint*/$v_a__constraint: pt.OptionalValue<g_out.T.A__dictionary__with__constraint.dict.D<Annotation>> = tempoptional/*3*/(
-                    $v_dict,
-                    ($) => $.__getEntry<pt.OptionalValue<g_out.T.A__dictionary__with__constraint.dict.D<Annotation>>>(
-                        key,
-                        ($) => [true, $],
-                        () => {
-                            $se.error("no such entry")
-                            return [false]
+            const $p_constrained__dict: g_out.T.A__dictionary__with__constraint.constrained__dict<Annotation> = pl.cc($['constrained dict'], ($) => $d.resolveDictionary<g_in.T.A__dictionary__with__constraint.constrained__dict.D<Annotation>, g_out.T.A__dictionary__with__constraint.constrained__dict.D<Annotation>>($, { 'map': ($, $l) => {
+                const entrykey = $.key
+                return pl.cc($.value, ($) => {
+                    const /*dict constraint*/$v_a__constraint: pt.OptionalValue<g_out.T.A__dictionary__with__constraint.dict.D<Annotation>> = tempoptional/*3*/(
+                        $v_dict,
+                        ($) => $.__getEntry<pt.OptionalValue<g_out.T.A__dictionary__with__constraint.dict.D<Annotation>>>(
+                            entrykey,
+                            ($) => [true, $],
+                            () => {
+                                $se.error("no such entry")
+                                return [false]
+                            },
+                        ),
+                        () => [false],
+                    )
+                    return {
+                        'annotation': $.annotation,
+                        'constraints': {
+                            'a constraint': $v_a__constraint,
                         },
-                    ),
-                    () => [false],
-                )
-                return {
-                    'annotation': $.annotation,
-                    'constraints': {
-                        'a constraint': $v_a__constraint,
-                    },
-                    'content': pl.cc($.content, ($) => pl.cc($, ($) => {
-                        return null
-                    })),
-                }
-            })))
+                        'content': pl.cc($.content, ($) => pl.cc($, ($) => {
+                            return null
+                        })),
+                    }
+                })
+            }}))
             const $v_constrained__dict: pt.OptionalValue<g_out.T.A__dictionary__with__constraint.constrained__dict<Annotation>> = [true, $p_constrained__dict]
             return {
                 'constrained dict': $p_constrained__dict,
@@ -275,11 +278,11 @@ export const $$: A.resolve = ($d, $se) => {
     ): g_out.T.Address__Selection<Annotation> {
         const content = pl.cc($, ($) => {
             const $p_variable: g_out.T.Address__Selection.content.variable<Annotation> = pl.cc($['variable'], ($) => pl.cc($, ($) => {
-                const key = $.key
+                const refkey = $.key
                 const constraint: pt.OptionalValue<g_out.T.Variables.D<Annotation>> = tempoptional/*3*/(
                     $v_variable__stack,
                     ($) => $.__getEntry<pt.OptionalValue<g_out.T.Variables.D<Annotation>>>(
-                        key,
+                        refkey,
                         ($) => [true, $],
                         () => {
                             $se.error("no such entry")
@@ -385,47 +388,7 @@ export const $$: A.resolve = ($d, $se) => {
                                                 ),//$v_type__parameters
                                             ))
                                             const $v_type__arguments: pt.OptionalValue<g_out.T.Address__Selection__Tail.content.content.O.step.content.call.content.type__arguments<Annotation>> = [true, $p_type__arguments]
-                                            const $p_arguments: g_out.T.Address__Selection__Tail.content.content.O.step.content.call.content.arguments<Annotation> = pl.cc($['arguments'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
-                                                const /*dict constraint*/$v_parameter: pt.OptionalValue<g_out_typesystem.T.Function__Declaration.parameters.D<Annotation>> = tempoptional/*3*/(
-                                                    $v_address__function,
-                                                    ($) => pl.cc($['declaration'], ($) => pl.cc($['parameters'], ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Function__Declaration.parameters.D<Annotation>>>(
-                                                        key,
-                                                        ($) => [true, $],
-                                                        () => {
-                                                            $se.error("no such entry")
-                                                            return [false]
-                                                        },
-                                                    ))),
-                                                    () => [false],
-                                                )
-                                                return {
-                                                    'annotation': $.annotation,
-                                                    'constraints': {
-                                                        'parameter': $v_parameter,
-                                                    },
-                                                    'content': pl.cc($.content, ($) => map_Expression<Annotation>(
-                                                        $,
-                                                        tempoptional/*3*/(
-                                                            $v_parameter,
-                                                            ($) => [true, $],
-                                                            () => [false],
-                                                        ),//$v_expected__type
-                                                        tempoptional/*3*/(
-                                                            $v_namespace,
-                                                            ($) => [true, $],
-                                                            () => [false],
-                                                        ),//$v_namespace
-                                                        tempoptional/*3*/(
-                                                            $v_variable__stack,
-                                                            ($) => [true, $],
-                                                            () => [false],
-                                                        ),//$v_variable__stack
-                                                    )),
-                                                }
-                                            })))
-                                            const $v_arguments: pt.OptionalValue<g_out.T.Address__Selection__Tail.content.content.O.step.content.call.content.arguments<Annotation>> = [true, $p_arguments]
                                             return {
-                                                'arguments': $p_arguments,
                                                 'type arguments': $p_type__arguments,
                                             }
                                         })),
@@ -462,17 +425,17 @@ export const $$: A.resolve = ($d, $se) => {
                                             'group': $v_group,
                                         },
                                         'content': pl.cc($.content, ($) => pl.cc($, ($) => {
-                                            const key = $.key
-                                            const constraint: pt.OptionalValue<g_out_typesystem.T.Type.group.properties.D<Annotation>> = tempoptional/*3*/(
+                                            const refkey = $.key
+                                            const constraint: pt.OptionalValue<g_out_typesystem.T.Type.group.D<Annotation>> = tempoptional/*3*/(
                                                 $v_group,
-                                                ($) => pl.cc($['properties'], ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Type.group.properties.D<Annotation>>>(
-                                                    key,
+                                                ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Type.group.D<Annotation>>>(
+                                                    refkey,
                                                     ($) => [true, $],
                                                     () => {
                                                         $se.error("no such entry")
                                                         return [false]
                                                     },
-                                                )),
+                                                ),
                                                 () => [false],
                                             )
                                             return {
@@ -487,7 +450,7 @@ export const $$: A.resolve = ($d, $se) => {
                                     'content': ['property', stateData],
                                     'result': pl.cc(stateData.content, ($): pt.OptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional/*1*/(
                                         $.constraint,
-                                        ($) => pl.cc($['type'], ($) => [true, $]),
+                                        ($) => [true, $],
                                         () => [false],
                                     )),
                                 }
@@ -1208,44 +1171,47 @@ export const $$: A.resolve = ($d, $se) => {
                                 'out': $v_out,
                             },
                             'content': pl.cc($.content, ($) => pl.cc($, ($) => {
-                                const $p_properties: g_out.T.Expression.object__literal.content.properties<Annotation> = pl.cc($['properties'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
-                                    const /*dict constraint*/$v_prop: pt.OptionalValue<g_out_typesystem.T.Type.group.properties.D<Annotation>> = tempoptional/*3*/(
-                                        $v_out,
-                                        ($) => pl.cc($['properties'], ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Type.group.properties.D<Annotation>>>(
-                                            key,
-                                            ($) => [true, $],
-                                            () => {
-                                                $se.error("no such entry")
-                                                return [false]
+                                const $p_properties: g_out.T.Expression.object__literal.content.properties<Annotation> = pl.cc($['properties'], ($) => $d.resolveDictionary<g_in.T.Expression.object__literal.content.properties.D<Annotation>, g_out.T.Expression.object__literal.content.properties.D<Annotation>>($, { 'map': ($, $l) => {
+                                    const entrykey = $.key
+                                    return pl.cc($.value, ($) => {
+                                        const /*dict constraint*/$v_prop: pt.OptionalValue<g_out_typesystem.T.Type.group.D<Annotation>> = tempoptional/*3*/(
+                                            $v_out,
+                                            ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Type.group.D<Annotation>>>(
+                                                entrykey,
+                                                ($) => [true, $],
+                                                () => {
+                                                    $se.error("no such entry")
+                                                    return [false]
+                                                },
+                                            ),
+                                            () => [false],
+                                        )
+                                        return {
+                                            'annotation': $.annotation,
+                                            'constraints': {
+                                                'prop': $v_prop,
                                             },
-                                        )),
-                                        () => [false],
-                                    )
-                                    return {
-                                        'annotation': $.annotation,
-                                        'constraints': {
-                                            'prop': $v_prop,
-                                        },
-                                        'content': pl.cc($.content, ($) => map_Expression<Annotation>(
-                                            $,
-                                            tempoptional/*3*/(
-                                                $v_prop,
-                                                ($) => pl.cc($['type'], ($) => [true, $]),
-                                                () => [false],
-                                            ),//$v_expected__type
-                                            tempoptional/*3*/(
-                                                $v_namespace,
-                                                ($) => [true, $],
-                                                () => [false],
-                                            ),//$v_namespace
-                                            tempoptional/*3*/(
-                                                $v_variable__stack,
-                                                ($) => [true, $],
-                                                () => [false],
-                                            ),//$v_variable__stack
-                                        )),
-                                    }
-                                })))
+                                            'content': pl.cc($.content, ($) => map_Expression<Annotation>(
+                                                $,
+                                                tempoptional/*3*/(
+                                                    $v_prop,
+                                                    ($) => [true, $],
+                                                    () => [false],
+                                                ),//$v_expected__type
+                                                tempoptional/*3*/(
+                                                    $v_namespace,
+                                                    ($) => [true, $],
+                                                    () => [false],
+                                                ),//$v_namespace
+                                                tempoptional/*3*/(
+                                                    $v_variable__stack,
+                                                    ($) => [true, $],
+                                                    () => [false],
+                                                ),//$v_variable__stack
+                                            )),
+                                        }
+                                    })
+                                }}))
                                 const $v_properties: pt.OptionalValue<g_out.T.Expression.object__literal.content.properties<Annotation>> = [true, $p_properties]
                                 return {
                                     'properties': $p_properties,
@@ -1885,40 +1851,43 @@ export const $$: A.resolve = ($d, $se) => {
         $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
         $v_type__parameters: pt.OptionalValue<g_out_typesystem.T.Type__Parameters<Annotation>>,
     ): g_out.T.Type__Arguments<Annotation> {
-        return $.__mapWithKey(($, key) => pl.cc($, ($) => {
-            const /*dict constraint*/$v_x: pt.OptionalValue<g_out_typesystem.T.Type__Parameters.D<Annotation>> = tempoptional/*3*/(
-                $v_type__parameters,
-                ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Type__Parameters.D<Annotation>>>(
-                    key,
-                    ($) => [true, $],
-                    () => {
-                        $se.error("no such entry")
-                        return [false]
+        return $d.resolveDictionary<g_in.T.Type__Arguments.D<Annotation>, g_out.T.Type__Arguments.D<Annotation>>($, { 'map': ($, $l) => {
+            const entrykey = $.key
+            return pl.cc($.value, ($) => {
+                const /*dict constraint*/$v_x: pt.OptionalValue<g_out_typesystem.T.Type__Parameters.D<Annotation>> = tempoptional/*3*/(
+                    $v_type__parameters,
+                    ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Type__Parameters.D<Annotation>>>(
+                        entrykey,
+                        ($) => [true, $],
+                        () => {
+                            $se.error("no such entry")
+                            return [false]
+                        },
+                    ),
+                    () => [false],
+                )
+                return {
+                    'annotation': $.annotation,
+                    'constraints': {
+                        'x': $v_x,
                     },
-                ),
-                () => [false],
-            )
-            return {
-                'annotation': $.annotation,
-                'constraints': {
-                    'x': $v_x,
-                },
-                'content': pl.cc($.content, ($) => pl.cc($, ($) => {
-                    const $p__ltype: g_out.T.Type__Arguments.D.content._ltype<Annotation> = pl.cc($['type'], ($) => map_Type__Selection<Annotation>(
-                        $,
-                        tempoptional/*3*/(
-                            $v_namespace,
-                            ($) => [true, $],
-                            () => [false],
-                        ),//$v_namespace
-                    ))
-                    const $v__ltype: pt.OptionalValue<g_out.T.Type__Arguments.D.content._ltype<Annotation>> = [true, $p__ltype]
-                    return {
-                        'type': $p__ltype,
-                    }
-                })),
-            }
-        }))
+                    'content': pl.cc($.content, ($) => pl.cc($, ($) => {
+                        const $p__ltype: g_out.T.Type__Arguments.D.content._ltype<Annotation> = pl.cc($['type'], ($) => map_Type__Selection<Annotation>(
+                            $,
+                            tempoptional/*3*/(
+                                $v_namespace,
+                                ($) => [true, $],
+                                () => [false],
+                            ),//$v_namespace
+                        ))
+                        const $v__ltype: pt.OptionalValue<g_out.T.Type__Arguments.D.content._ltype<Annotation>> = [true, $p__ltype]
+                        return {
+                            'type': $p__ltype,
+                        }
+                    })),
+                }
+            })
+        }})
     }
     
     function map_Type__Selection<Annotation>(
@@ -1930,11 +1899,11 @@ export const $$: A.resolve = ($d, $se) => {
                 case 'child namespace': return pl.ss($, ($) => { //option with result
                     const stateData: g_out.T.Type__Selection.content.content.child__namespace<Annotation> = pl.cc($, ($) => {
                         const $p_namespacex: g_out.T.Type__Selection.content.content.child__namespace.namespacex<Annotation> = pl.cc($['namespacex'], ($) => pl.cc($, ($) => {
-                            const key = $.key
+                            const refkey = $.key
                             const constraint: pt.OptionalValue<g_out_typesystem.T.Namespace.namespaces.D<Annotation>> = tempoptional/*3*/(
                                 $v_namespace,
                                 ($) => pl.cc($['namespaces'], ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Namespace.namespaces.D<Annotation>>>(
-                                    key,
+                                    refkey,
                                     ($) => [true, $],
                                     () => {
                                         $se.error("no such entry")
@@ -1979,11 +1948,11 @@ export const $$: A.resolve = ($d, $se) => {
                 })
                 case 'current namespace': return pl.ss($, ($) => { //option with result
                     const stateData: g_out.T.Type__Selection.content.content.current__namespace<Annotation> = pl.cc($, ($) => {
-                        const key = $.key
+                        const refkey = $.key
                         const constraint: pt.OptionalValue<g_out_typesystem.T.Namespace.types.D<Annotation>> = tempoptional/*3*/(
                             $v_namespace,
                             ($) => pl.cc($['types'], ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Namespace.types.D<Annotation>>>(
-                                key,
+                                refkey,
                                 ($) => [true, $],
                                 () => {
                                     $se.error("no such entry")
@@ -2025,7 +1994,7 @@ export const $$: A.resolve = ($d, $se) => {
         $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
         $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Variables<Annotation> {
-        return $.__mapWithKey(($, key) => pl.cc($, ($) => {
+        return $d.resolveDictionary<g_in.T.Variables.D<Annotation>, g_out.T.Variables.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
             const $p__ltype: g_out.T.Variables.D._ltype<Annotation> = pl.cc($['type'], ($) => pl.cc($, ($): g_out.T.Variables.D._ltype<Annotation> => {
                 switch ($[0]) {
                     case 'local': return pl.ss($, ($) => { //option with result
@@ -2079,11 +2048,11 @@ export const $$: A.resolve = ($d, $se) => {
                     case 'variable stack2': return pl.ss($, ($) => { //option with result
                         const stateData: g_out.T.Variables.D._ltype.content.variable__stack2<Annotation> = pl.cc($, ($) => {
                             const $p_variable: g_out.T.Variables.D._ltype.content.variable__stack2.variable<Annotation> = pl.cc($['variable'], ($) => pl.cc($, ($) => {
-                                const key = $.key
+                                const refkey = $.key
                                 const constraint: pt.OptionalValue<g_out.T.Variables.D<Annotation>> = tempoptional/*3*/(
                                     $v_variable__stack,
                                     ($) => $.__getEntry<pt.OptionalValue<g_out.T.Variables.D<Annotation>>>(
-                                        key,
+                                        refkey,
                                         ($) => [true, $],
                                         () => {
                                             $se.error("no such entry")
@@ -2123,7 +2092,7 @@ export const $$: A.resolve = ($d, $se) => {
             return {
                 'type': $p__ltype,
             }
-        }))
+        }))})
     }
     return map_Source__File
 }

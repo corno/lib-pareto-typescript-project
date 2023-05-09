@@ -161,45 +161,20 @@ export namespace N {
                         export namespace T {}
                     }
                     
+                    export namespace dictionary {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                    
                     export namespace group {
                         
                         export namespace N {
                             
-                            export namespace G {
+                            export namespace D {
                                 
-                                export namespace N {
-                                    
-                                    export namespace properties {
-                                        
-                                        export namespace N {
-                                            
-                                            export namespace D {
-                                                
-                                                export namespace N {
-                                                    
-                                                    export namespace G {
-                                                        
-                                                        export namespace N {
-                                                            
-                                                            export namespace _$ltype {
-                                                                
-                                                                export namespace N {}
-                                                                
-                                                                export namespace T {}
-                                                            }
-                                                        }
-                                                        
-                                                        export namespace T {}
-                                                    }
-                                                }
-                                                
-                                                export namespace T {}
-                                            }
-                                        }
-                                        
-                                        export namespace T {}
-                                    }
-                                }
+                                export namespace N {}
                                 
                                 export namespace T {}
                             }
@@ -427,37 +402,6 @@ export namespace N {
         
         export namespace T {}
     }
-    
-    export namespace TypeParameters {
-        
-        export namespace N {
-            
-            export namespace D {
-                
-                export namespace N {
-                    
-                    export namespace G {
-                        
-                        export namespace N {
-                            
-                            export namespace _$ltype {
-                                
-                                export namespace N {}
-                                
-                                export namespace T {}
-                            }
-                        }
-                        
-                        export namespace T {}
-                    }
-                }
-                
-                export namespace T {}
-            }
-        }
-        
-        export namespace T {}
-    }
 }
 
 export namespace T {
@@ -491,7 +435,7 @@ export namespace T {
         
         export type namespaces<GAnnotation> = pt.Dictionary<T.Namespace<GAnnotation>>
         
-        export type parameters<GAnnotation> = T.TypeParameters<GAnnotation>
+        export type parameters<GAnnotation> = T.Type__Parameters<GAnnotation>
         
         export namespace types {
             
@@ -503,7 +447,7 @@ export namespace T {
     
     export type Namespace<GAnnotation> = {
         readonly 'namespaces': pt.Dictionary<T.Namespace<GAnnotation>>
-        readonly 'parameters': T.TypeParameters<GAnnotation>
+        readonly 'parameters': T.Type__Parameters<GAnnotation>
         readonly 'types': pt.Dictionary<T.Type<GAnnotation>>
     }
     
@@ -527,30 +471,14 @@ export namespace T {
         
         export type _lboolean<GAnnotation> = null
         
+        export type dictionary<GAnnotation> = T.Type<GAnnotation>
+        
         export namespace group {
             
-            export namespace properties {
-                
-                export namespace D {
-                    
-                    export type _ltype<GAnnotation> = T.Type<GAnnotation>
-                }
-                
-                export type D<GAnnotation> = {
-                    readonly 'type': T.Type<GAnnotation>
-                }
-            }
-            
-            export type properties<GAnnotation> = pt.Dictionary<{
-                readonly 'type': T.Type<GAnnotation>
-            }>
+            export type D<GAnnotation> = T.Type<GAnnotation>
         }
         
-        export type group<GAnnotation> = {
-            readonly 'properties': pt.Dictionary<{
-                readonly 'type': T.Type<GAnnotation>
-            }>
-        }
+        export type group<GAnnotation> = pt.Dictionary<T.Type<GAnnotation>>
         
         export namespace _lnull {}
         
@@ -632,11 +560,8 @@ export namespace T {
         }]
         | ['array', T.Type<GAnnotation>]
         | ['boolean', null]
-        | ['group', {
-            readonly 'properties': pt.Dictionary<{
-                readonly 'type': T.Type<GAnnotation>
-            }>
-        }]
+        | ['dictionary', T.Type<GAnnotation>]
+        | ['group', pt.Dictionary<T.Type<GAnnotation>>]
         | ['null', null]
         | ['number', null]
         | ['optional', T.Type<GAnnotation>]
@@ -662,20 +587,4 @@ export namespace T {
     }
     
     export type Type__Parameters<GAnnotation> = pt.Dictionary<T.Type<GAnnotation>>
-    
-    export namespace TypeParameters {
-        
-        export namespace D {
-            
-            export type _ltype<GAnnotation> = T.Type<GAnnotation>
-        }
-        
-        export type D<GAnnotation> = {
-            readonly 'type': T.Type<GAnnotation>
-        }
-    }
-    
-    export type TypeParameters<GAnnotation> = pt.Dictionary<{
-        readonly 'type': T.Type<GAnnotation>
-    }>
 }

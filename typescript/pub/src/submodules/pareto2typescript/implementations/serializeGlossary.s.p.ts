@@ -247,7 +247,7 @@ export const $$: A.serializeGlossary = ($d) => {
                         })
                     },
                     () => {
-                        pd.logDebugMessage(`missing import: ${$}`)
+                        pd.logDebugMessage(`missing import: ${glosRef.glossary.key}`)
                     }
                 )
             }

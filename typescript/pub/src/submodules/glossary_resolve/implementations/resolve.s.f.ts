@@ -23,7 +23,7 @@ export const $$: A.resolve = ($d, $se) => {
         $v_parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
         $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
     ): g_out.T.Arguments<Annotation> {
-        return $.__mapWithKey(($, key) => map_DataSpecifier<Annotation>(
+        return $d.resolveDictionary<g_in.T.Arguments.D<Annotation>, g_out.T.Arguments.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_DataSpecifier<Annotation>(
             $,
             tempoptional/*3*/(
                 $v_glossary__parameters,
@@ -40,7 +40,7 @@ export const $$: A.resolve = ($d, $se) => {
                 ($) => [true, $],
                 () => [false],
             ),//$v_type__parameters
-        ))
+        ))})
     }
     
     function map_AsynchronousInterface<Annotation>(
@@ -52,7 +52,7 @@ export const $$: A.resolve = ($d, $se) => {
         return pl.cc($, ($): g_out.T.AsynchronousInterface<Annotation> => {
             switch ($[0]) {
                 case 'choice': return pl.ss($, ($) => ['choice', pl.cc($, ($) => {
-                    const $p_options: g_out.T.AsynchronousInterface.choice.options<Annotation> = pl.cc($['options'], ($) => $.__mapWithKey(($, key) => map_AsynchronousInterface<Annotation>(
+                    const $p_options: g_out.T.AsynchronousInterface.choice.options<Annotation> = pl.cc($['options'], ($) => $d.resolveDictionary<g_in.T.AsynchronousInterface.choice.options.D<Annotation>, g_out.T.AsynchronousInterface.choice.options.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_AsynchronousInterface<Annotation>(
                         $,
                         tempoptional/*3*/(
                             $v_glossary__parameters,
@@ -69,7 +69,7 @@ export const $$: A.resolve = ($d, $se) => {
                             ($) => [true, $],
                             () => [false],
                         ),//$v_type__parameters
-                    )))
+                    ))}))
                     const $v_options: pt.OptionalValue<g_out.T.AsynchronousInterface.choice.options<Annotation>> = [true, $p_options]
                     return {
                         'options': $p_options,
@@ -438,7 +438,7 @@ export const $$: A.resolve = ($d, $se) => {
             ))
             const $v_root: pt.OptionalValue<g_out.T.Glossary.root<Annotation>> = [true, $p_root]
             const $p_synchronous: g_out.T.Glossary.synchronous<Annotation> = pl.cc($['synchronous'], ($) => pl.cc($, ($) => {
-                const $p_interfaces: g_out.T.Glossary.synchronous.interfaces<Annotation> = pl.cc($['interfaces'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
+                const $p_interfaces: g_out.T.Glossary.synchronous.interfaces<Annotation> = pl.cc($['interfaces'], ($) => $d.resolveDictionary<g_in.T.Glossary.synchronous.interfaces.D<Annotation>, g_out.T.Glossary.synchronous.interfaces.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                     const $p_parameters: g_out.T.Glossary.synchronous.interfaces.D.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Parameters<Annotation>(
                         $,
                     ))
@@ -466,9 +466,9 @@ export const $$: A.resolve = ($d, $se) => {
                         'interface': $p__linterface,
                         'parameters': $p_parameters,
                     }
-                })))
+                }))}))
                 const $v_interfaces: pt.OptionalValue<g_out.T.Glossary.synchronous.interfaces<Annotation>> = [true, $p_interfaces]
-                const $p_algorithms: g_out.T.Glossary.synchronous.algorithms<Annotation> = pl.cc($['algorithms'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
+                const $p_algorithms: g_out.T.Glossary.synchronous.algorithms<Annotation> = pl.cc($['algorithms'], ($) => $d.resolveDictionary<g_in.T.Glossary.synchronous.algorithms.D<Annotation>, g_out.T.Glossary.synchronous.algorithms.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                     const $p_parameters: g_out.T.Glossary.synchronous.algorithms.D.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Parameters<Annotation>(
                         $,
                     ))
@@ -514,7 +514,7 @@ export const $$: A.resolve = ($d, $se) => {
                                     ),//$v_type__parameters
                                 ))
                                 const $v_out: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.out<Annotation>> = [true, $p_out]
-                                const $p_callbacks: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks<Annotation> = pl.cc($['callbacks'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
+                                const $p_callbacks: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks<Annotation> = pl.cc($['callbacks'], ($) => $d.resolveDictionary<g_in.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D<Annotation>, g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                                     const $p__lin: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D._lin<Annotation> = pl.cc($['in'], ($) => map_DataSpecifier<Annotation>(
                                         $,
                                         tempoptional/*3*/(
@@ -534,7 +534,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         ),//$v_type__parameters
                                     ))
                                     const $v__lin: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D._lin<Annotation>> = [true, $p__lin]
-                                    const $p_lookups: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.lookups<Annotation> = pl.cc($['lookups'], ($) => $.__mapWithKey(($, key) => map_DataSpecifier<Annotation>(
+                                    const $p_lookups: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.lookups<Annotation> = pl.cc($['lookups'], ($) => $d.resolveDictionary<g_in.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.lookups.D<Annotation>, g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.lookups.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_DataSpecifier<Annotation>(
                                         $,
                                         tempoptional/*3*/(
                                             $v_glossary__parameters,
@@ -551,7 +551,7 @@ export const $$: A.resolve = ($d, $se) => {
                                             ($) => [true, $],
                                             () => [false],
                                         ),//$v_type__parameters
-                                    )))
+                                    ))}))
                                     const $v_lookups: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.lookups<Annotation>> = [true, $p_lookups]
                                     const $p_out: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.out<Annotation> = pl.cc($['out'], ($) => map_DataSpecifier<Annotation>(
                                         $,
@@ -577,7 +577,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         'lookups': $p_lookups,
                                         'out': $p_out,
                                     }
-                                })))
+                                }))}))
                                 const $v_callbacks: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks<Annotation>> = [true, $p_callbacks]
                                 return {
                                     'callbacks': $p_callbacks,
@@ -637,7 +637,7 @@ export const $$: A.resolve = ($d, $se) => {
                         'parameters': $p_parameters,
                         'type': $p__ltype,
                     }
-                })))
+                }))}))
                 const $v_algorithms: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms<Annotation>> = [true, $p_algorithms]
                 return {
                     'algorithms': $p_algorithms,
@@ -646,7 +646,7 @@ export const $$: A.resolve = ($d, $se) => {
             }))
             const $v_synchronous: pt.OptionalValue<g_out.T.Glossary.synchronous<Annotation>> = [true, $p_synchronous]
             const $p_asynchronous: g_out.T.Glossary.asynchronous<Annotation> = pl.cc($['asynchronous'], ($) => pl.cc($, ($) => {
-                const $p_interfaces: g_out.T.Glossary.asynchronous.interfaces<Annotation> = pl.cc($['interfaces'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
+                const $p_interfaces: g_out.T.Glossary.asynchronous.interfaces<Annotation> = pl.cc($['interfaces'], ($) => $d.resolveDictionary<g_in.T.Glossary.asynchronous.interfaces.D<Annotation>, g_out.T.Glossary.asynchronous.interfaces.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                     const $p_parameters: g_out.T.Glossary.asynchronous.interfaces.D.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Parameters<Annotation>(
                         $,
                     ))
@@ -674,9 +674,9 @@ export const $$: A.resolve = ($d, $se) => {
                         'interface': $p__linterface,
                         'parameters': $p_parameters,
                     }
-                })))
+                }))}))
                 const $v_interfaces: pt.OptionalValue<g_out.T.Glossary.asynchronous.interfaces<Annotation>> = [true, $p_interfaces]
-                const $p_algorithms: g_out.T.Glossary.asynchronous.algorithms<Annotation> = pl.cc($['algorithms'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
+                const $p_algorithms: g_out.T.Glossary.asynchronous.algorithms<Annotation> = pl.cc($['algorithms'], ($) => $d.resolveDictionary<g_in.T.Glossary.asynchronous.algorithms.D<Annotation>, g_out.T.Glossary.asynchronous.algorithms.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                     const $p_parameters: g_out.T.Glossary.asynchronous.algorithms.D.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Parameters<Annotation>(
                         $,
                     ))
@@ -703,7 +703,7 @@ export const $$: A.resolve = ($d, $se) => {
                                     ),//$v_type__parameters
                                 ))
                                 const $v__linterface: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor._linterface<Annotation>> = [true, $p__linterface]
-                                const $p_downstreams: g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor.downstreams<Annotation> = pl.cc($['downstreams'], ($) => $.__mapWithKey(($, key) => map_AsynchronousInterfaceReference<Annotation>(
+                                const $p_downstreams: g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor.downstreams<Annotation> = pl.cc($['downstreams'], ($) => $d.resolveDictionary<g_in.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor.downstreams.D<Annotation>, g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor.downstreams.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_AsynchronousInterfaceReference<Annotation>(
                                     $,
                                     tempoptional/*3*/(
                                         $v_glossary__parameters,
@@ -720,7 +720,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         ($) => [true, $],
                                         () => [false],
                                     ),//$v_type__parameters
-                                )))
+                                ))}))
                                 const $v_downstreams: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor.downstreams<Annotation>> = [true, $p_downstreams]
                                 return {
                                     'downstreams': $p_downstreams,
@@ -823,7 +823,7 @@ export const $$: A.resolve = ($d, $se) => {
                         'parameters': $p_parameters,
                         'type': $p__ltype,
                     }
-                })))
+                }))}))
                 const $v_algorithms: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms<Annotation>> = [true, $p_algorithms]
                 return {
                     'algorithms': $p_algorithms,
@@ -849,11 +849,11 @@ export const $$: A.resolve = ($d, $se) => {
     ): g_out.T.Glossary__Reference<Annotation> {
         return pl.cc($, ($) => {
             const $p_glossary: g_out.T.Glossary__Reference.glossary<Annotation> = pl.cc($['glossary'], ($) => pl.cc($, ($) => {
-                const key = $.key
+                const refkey = $.key
                 const constraint: pt.OptionalValue<g_out.T.Imports.D<Annotation>> = tempoptional/*3*/(
                     $v_imports,
                     ($) => $.__getEntry<pt.OptionalValue<g_out.T.Imports.D<Annotation>>>(
-                        key,
+                        refkey,
                         ($) => [true, $],
                         () => {
                             $se.error("no such entry")
@@ -904,9 +904,9 @@ export const $$: A.resolve = ($d, $se) => {
         $: g_in.T.Imports<Annotation>,
         $v_glossaries: pt.Lookup<g_out.T.Glossary<Annotation>>,
     ): g_out.T.Imports<Annotation> {
-        return $.__mapWithKey(($, key) => pl.cc($, ($) => {
+        return $d.resolveDictionary<g_in.T.Imports.D<Annotation>, g_out.T.Imports.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
             return null
-        }))
+        }))})
     }
     
     function map_Namespace<Annotation>(
@@ -915,7 +915,7 @@ export const $$: A.resolve = ($d, $se) => {
         $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
     ): g_out.T.Namespace<Annotation> {
         return pl.cc($, ($) => {
-            const $p_namespaces: g_out.T.Namespace.namespaces<Annotation> = pl.cc($['namespaces'], ($) => $.__mapWithKey(($, key) => map_Namespace<Annotation>(
+            const $p_namespaces: g_out.T.Namespace.namespaces<Annotation> = pl.cc($['namespaces'], ($) => $d.resolveDictionary<g_in.T.Namespace.namespaces.D<Annotation>, g_out.T.Namespace.namespaces.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_Namespace<Annotation>(
                 $,
                 tempoptional/*3*/(
                     $v_glossary__parameters,
@@ -927,9 +927,9 @@ export const $$: A.resolve = ($d, $se) => {
                     ($) => [true, $],
                     () => [false],
                 ),//$v_imports
-            )))
+            ))}))
             const $v_namespaces: pt.OptionalValue<g_out.T.Namespace.namespaces<Annotation>> = [true, $p_namespaces]
-            const $p_types: g_out.T.Namespace.types<Annotation> = pl.cc($['types'], ($) => $.__mapWithKey(($, key) => pl.cc($, ($) => {
+            const $p_types: g_out.T.Namespace.types<Annotation> = pl.cc($['types'], ($) => $d.resolveDictionary<g_in.T.Namespace.types.D<Annotation>, g_out.T.Namespace.types.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                 const $p_parameters: g_out.T.Namespace.types.D.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Parameters<Annotation>(
                     $,
                 ))
@@ -957,7 +957,7 @@ export const $$: A.resolve = ($d, $se) => {
                     'parameters': $p_parameters,
                     'type': $p__ltype,
                 }
-            })))
+            }))}))
             const $v_types: pt.OptionalValue<g_out.T.Namespace.types<Annotation>> = [true, $p_types]
             return {
                 'namespaces': $p_namespaces,
@@ -969,9 +969,9 @@ export const $$: A.resolve = ($d, $se) => {
     function map_Parameters<Annotation>(
         $: g_in.T.Parameters<Annotation>,
     ): g_out.T.Parameters<Annotation> {
-        return $.__mapWithKey(($, key) => pl.cc($, ($) => {
+        return $d.resolveDictionary<g_in.T.Parameters.D<Annotation>, g_out.T.Parameters.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
             return null
-        }))
+        }))})
     }
     
     function map_Synchronous__Interface<Annotation>(
@@ -983,7 +983,7 @@ export const $$: A.resolve = ($d, $se) => {
         return pl.cc($, ($): g_out.T.Synchronous__Interface<Annotation> => {
             switch ($[0]) {
                 case 'group': return pl.ss($, ($) => ['group', pl.cc($, ($) => {
-                    const $p_members: g_out.T.Synchronous__Interface.group.members<Annotation> = pl.cc($['members'], ($) => $.__mapWithKey(($, key) => map_Synchronous__Interface<Annotation>(
+                    const $p_members: g_out.T.Synchronous__Interface.group.members<Annotation> = pl.cc($['members'], ($) => $d.resolveDictionary<g_in.T.Synchronous__Interface.group.members.D<Annotation>, g_out.T.Synchronous__Interface.group.members.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_Synchronous__Interface<Annotation>(
                         $,
                         tempoptional/*3*/(
                             $v_glossary__parameters,
@@ -1000,7 +1000,7 @@ export const $$: A.resolve = ($d, $se) => {
                             ($) => [true, $],
                             () => [false],
                         ),//$v_type__parameters
-                    )))
+                    ))}))
                     const $v_members: pt.OptionalValue<g_out.T.Synchronous__Interface.group.members<Annotation>> = [true, $p_members]
                     return {
                         'members': $p_members,
@@ -1224,7 +1224,7 @@ export const $$: A.resolve = ($d, $se) => {
                         () => [false],
                     ),//$v_type__parameters
                 )])
-                case 'group': return pl.ss($, ($) => ['group', $.__mapWithKey(($, key) => pl.cc($, ($) => {
+                case 'group': return pl.ss($, ($) => ['group', $d.resolveDictionary<g_in.T.Type.group.D<Annotation>, g_out.T.Type.group.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                     const $p__ltype: g_out.T.Type.group.D._ltype<Annotation> = pl.cc($['type'], ($) => map_Type<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -1247,7 +1247,7 @@ export const $$: A.resolve = ($d, $se) => {
                     return {
                         'type': $p__ltype,
                     }
-                }))])
+                }))})])
                 case 'null': return pl.ss($, ($) => ['null', pl.cc($, ($) => {
                     return null
                 })])
@@ -1293,7 +1293,7 @@ export const $$: A.resolve = ($d, $se) => {
                 case 'string': return pl.ss($, ($) => ['string', pl.cc($, ($) => {
                     return null
                 })])
-                case 'taggedUnion': return pl.ss($, ($) => ['taggedUnion', $.__mapWithKey(($, key) => map_Type<Annotation>(
+                case 'taggedUnion': return pl.ss($, ($) => ['taggedUnion', $d.resolveDictionary<g_in.T.Type.taggedUnion.D<Annotation>, g_out.T.Type.taggedUnion.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_Type<Annotation>(
                     $,
                     tempoptional/*3*/(
                         $v_glossary__parameters,
@@ -1310,7 +1310,7 @@ export const $$: A.resolve = ($d, $se) => {
                         ($) => [true, $],
                         () => [false],
                     ),//$v_type__parameters
-                ))])
+                ))})])
                 default: return pl.au($[0])
             }
         })

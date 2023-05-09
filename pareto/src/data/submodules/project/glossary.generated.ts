@@ -198,8 +198,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                             'glossary':{
                                                 'annotation': {
                                                     'file': "../../prebuild/src/data/models/project.data.ts",
-                                                    'line': 69,
-                                                    'column': 55,
+                                                    'line': 62,
+                                                    'column': 51,
                                                 },
                                                 'key': "glossary",
                                             },
@@ -247,8 +247,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                 'glossary':{
                                                     'annotation': {
                                                         'file': "../../prebuild/src/data/models/project.data.ts",
-                                                        'line': 141,
-                                                        'column': 59,
+                                                        'line': 136,
+                                                        'column': 55,
                                                     },
                                                     'key': "glossary",
                                                 },

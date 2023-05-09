@@ -437,21 +437,6 @@ export namespace N {
                                                         
                                                         export namespace N {
                                                             
-                                                            export namespace arguments {
-                                                                
-                                                                export namespace N {
-                                                                    
-                                                                    export namespace D {
-                                                                        
-                                                                        export namespace N {}
-                                                                        
-                                                                        export namespace T {}
-                                                                    }
-                                                                }
-                                                                
-                                                                export namespace T {}
-                                                            }
-                                                            
                                                             export namespace type_$_$arguments {
                                                                 
                                                                 export namespace N {}
@@ -2170,57 +2155,10 @@ export namespace T {
                                 
                                 export namespace content {
                                     
-                                    export namespace arguments {
-                                        
-                                        export namespace D {
-                                            
-                                            export type annotation<GAnnotation> = GAnnotation
-                                            
-                                            export namespace constraints {
-                                                
-                                                export namespace parameter {
-                                                    
-                                                    export type O<GAnnotation> = g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>
-                                                }
-                                                
-                                                export type parameter<GAnnotation> = [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                            }
-                                            
-                                            export type constraints<GAnnotation> = {
-                                                readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                            }
-                                            
-                                            export type content<GAnnotation> = T.Expression<GAnnotation>
-                                        }
-                                        
-                                        export type D<GAnnotation> = {
-                                            readonly 'annotation': GAnnotation
-                                            readonly 'constraints': {
-                                                readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                            }
-                                            readonly 'content': T.Expression<GAnnotation>
-                                        }
-                                    }
-                                    
-                                    export type arguments<GAnnotation> = pt.Dictionary<{
-                                        readonly 'annotation': GAnnotation
-                                        readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                        }
-                                        readonly 'content': T.Expression<GAnnotation>
-                                    }>
-                                    
                                     export type type__arguments<GAnnotation> = T.Type__Arguments<GAnnotation>
                                 }
                                 
                                 export type content<GAnnotation> = {
-                                    readonly 'arguments': pt.Dictionary<{
-                                        readonly 'annotation': GAnnotation
-                                        readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                        }
-                                        readonly 'content': T.Expression<GAnnotation>
-                                    }>
                                     readonly 'type arguments': T.Type__Arguments<GAnnotation>
                                 }
                             }
@@ -2231,13 +2169,6 @@ export namespace T {
                                     readonly 'address function': [ false ] | [ true, g_typesystem.T.Type.address__function<GAnnotation>]
                                 }
                                 readonly 'content': {
-                                    readonly 'arguments': pt.Dictionary<{
-                                        readonly 'annotation': GAnnotation
-                                        readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                        }
-                                        readonly 'content': T.Expression<GAnnotation>
-                                    }>
                                     readonly 'type arguments': T.Type__Arguments<GAnnotation>
                                 }
                             }
@@ -2266,17 +2197,17 @@ export namespace T {
                                     
                                     export namespace constraint {
                                         
-                                        export type O<GAnnotation> = g_typesystem.T.Type.group.properties.D<GAnnotation>
+                                        export type O<GAnnotation> = g_typesystem.T.Type.group.D<GAnnotation>
                                     }
                                     
-                                    export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                                    export type constraint<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                                     
                                     export type key<GAnnotation> = string
                                 }
                                 
                                 export type content<GAnnotation> = {
                                     readonly 'annotation': GAnnotation
-                                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                                     readonly 'key': string
                                 }
                             }
@@ -2288,7 +2219,7 @@ export namespace T {
                                 }
                                 readonly 'content': {
                                     readonly 'annotation': GAnnotation
-                                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                                     readonly 'key': string
                                 }
                             }
@@ -2301,13 +2232,6 @@ export namespace T {
                                     readonly 'address function': [ false ] | [ true, g_typesystem.T.Type.address__function<GAnnotation>]
                                 }
                                 readonly 'content': {
-                                    readonly 'arguments': pt.Dictionary<{
-                                        readonly 'annotation': GAnnotation
-                                        readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                        }
-                                        readonly 'content': T.Expression<GAnnotation>
-                                    }>
                                     readonly 'type arguments': T.Type__Arguments<GAnnotation>
                                 }
                             }]
@@ -2318,7 +2242,7 @@ export namespace T {
                                 }
                                 readonly 'content': {
                                     readonly 'annotation': GAnnotation
-                                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                                     readonly 'key': string
                                 }
                             }]
@@ -2339,13 +2263,6 @@ export namespace T {
                                     readonly 'address function': [ false ] | [ true, g_typesystem.T.Type.address__function<GAnnotation>]
                                 }
                                 readonly 'content': {
-                                    readonly 'arguments': pt.Dictionary<{
-                                        readonly 'annotation': GAnnotation
-                                        readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                        }
-                                        readonly 'content': T.Expression<GAnnotation>
-                                    }>
                                     readonly 'type arguments': T.Type__Arguments<GAnnotation>
                                 }
                             }]
@@ -2356,7 +2273,7 @@ export namespace T {
                                 }
                                 readonly 'content': {
                                     readonly 'annotation': GAnnotation
-                                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                                     readonly 'key': string
                                 }
                             }]
@@ -2375,13 +2292,6 @@ export namespace T {
                                     readonly 'address function': [ false ] | [ true, g_typesystem.T.Type.address__function<GAnnotation>]
                                 }
                                 readonly 'content': {
-                                    readonly 'arguments': pt.Dictionary<{
-                                        readonly 'annotation': GAnnotation
-                                        readonly 'constraints': {
-                                            readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                        }
-                                        readonly 'content': T.Expression<GAnnotation>
-                                    }>
                                     readonly 'type arguments': T.Type__Arguments<GAnnotation>
                                 }
                             }]
@@ -2392,7 +2302,7 @@ export namespace T {
                                 }
                                 readonly 'content': {
                                     readonly 'annotation': GAnnotation
-                                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                                    readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                                     readonly 'key': string
                                 }
                             }]
@@ -2411,13 +2321,6 @@ export namespace T {
                                 readonly 'address function': [ false ] | [ true, g_typesystem.T.Type.address__function<GAnnotation>]
                             }
                             readonly 'content': {
-                                readonly 'arguments': pt.Dictionary<{
-                                    readonly 'annotation': GAnnotation
-                                    readonly 'constraints': {
-                                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                    }
-                                    readonly 'content': T.Expression<GAnnotation>
-                                }>
                                 readonly 'type arguments': T.Type__Arguments<GAnnotation>
                             }
                         }]
@@ -2428,7 +2331,7 @@ export namespace T {
                             }
                             readonly 'content': {
                                 readonly 'annotation': GAnnotation
-                                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                                 readonly 'key': string
                             }
                         }]
@@ -2455,13 +2358,6 @@ export namespace T {
                                 readonly 'address function': [ false ] | [ true, g_typesystem.T.Type.address__function<GAnnotation>]
                             }
                             readonly 'content': {
-                                readonly 'arguments': pt.Dictionary<{
-                                    readonly 'annotation': GAnnotation
-                                    readonly 'constraints': {
-                                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                    }
-                                    readonly 'content': T.Expression<GAnnotation>
-                                }>
                                 readonly 'type arguments': T.Type__Arguments<GAnnotation>
                             }
                         }]
@@ -2472,7 +2368,7 @@ export namespace T {
                             }
                             readonly 'content': {
                                 readonly 'annotation': GAnnotation
-                                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                                 readonly 'key': string
                             }
                         }]
@@ -2502,13 +2398,6 @@ export namespace T {
                                 readonly 'address function': [ false ] | [ true, g_typesystem.T.Type.address__function<GAnnotation>]
                             }
                             readonly 'content': {
-                                readonly 'arguments': pt.Dictionary<{
-                                    readonly 'annotation': GAnnotation
-                                    readonly 'constraints': {
-                                        readonly 'parameter': [ false ] | [ true, g_typesystem.T.Function__Declaration.parameters.D<GAnnotation>]
-                                    }
-                                    readonly 'content': T.Expression<GAnnotation>
-                                }>
                                 readonly 'type arguments': T.Type__Arguments<GAnnotation>
                             }
                         }]
@@ -2519,7 +2408,7 @@ export namespace T {
                             }
                             readonly 'content': {
                                 readonly 'annotation': GAnnotation
-                                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                                readonly 'constraint': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                                 readonly 'key': string
                             }
                         }]
@@ -2936,14 +2825,14 @@ export namespace T {
                             
                             export namespace prop {
                                 
-                                export type O<GAnnotation> = g_typesystem.T.Type.group.properties.D<GAnnotation>
+                                export type O<GAnnotation> = g_typesystem.T.Type.group.D<GAnnotation>
                             }
                             
-                            export type prop<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                            export type prop<GAnnotation> = [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                         }
                         
                         export type constraints<GAnnotation> = {
-                            readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                            readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                         }
                         
                         export type content<GAnnotation> = T.Expression<GAnnotation>
@@ -2952,7 +2841,7 @@ export namespace T {
                     export type D<GAnnotation> = {
                         readonly 'annotation': GAnnotation
                         readonly 'constraints': {
-                            readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                            readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                         }
                         readonly 'content': T.Expression<GAnnotation>
                     }
@@ -2961,7 +2850,7 @@ export namespace T {
                 export type properties<GAnnotation> = pt.Dictionary<{
                     readonly 'annotation': GAnnotation
                     readonly 'constraints': {
-                        readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                        readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                     }
                     readonly 'content': T.Expression<GAnnotation>
                 }>
@@ -2971,7 +2860,7 @@ export namespace T {
                 readonly 'properties': pt.Dictionary<{
                     readonly 'annotation': GAnnotation
                     readonly 'constraints': {
-                        readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                        readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                     }
                     readonly 'content': T.Expression<GAnnotation>
                 }>
@@ -2987,7 +2876,7 @@ export namespace T {
                 readonly 'properties': pt.Dictionary<{
                     readonly 'annotation': GAnnotation
                     readonly 'constraints': {
-                        readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                        readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                     }
                     readonly 'content': T.Expression<GAnnotation>
                 }>
@@ -3062,7 +2951,7 @@ export namespace T {
                 readonly 'properties': pt.Dictionary<{
                     readonly 'annotation': GAnnotation
                     readonly 'constraints': {
-                        readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.properties.D<GAnnotation>]
+                        readonly 'prop': [ false ] | [ true, g_typesystem.T.Type.group.D<GAnnotation>]
                     }
                     readonly 'content': T.Expression<GAnnotation>
                 }>

@@ -180,21 +180,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 },
                                 "content": {
                                     'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                        "arguments": {
-                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
-                                                "annotation": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameterXX', "Annotation"]],
-                                                },
-                                                "content": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
-                                                        'context': ['local', null],
-                                                        'typeXX': "Expression",
-                                                        'tailXX': a([]),
-                                                        'type arguments': d({}),
-                                                    }]],
-                                                },
-                                            })]],
-                                        },
                                         "type arguments": {
                                             'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
                                                 'context': ['local', null],
@@ -1169,15 +1154,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                             "G": {
                                                                 'types': d({}),
                                                                 'namespaces': d({
-                                                                    "arguments": {
-                                                                        'types': d({}),
-                                                                        'namespaces': d({
-                                                                            "D": {
-                                                                                'types': d({}),
-                                                                                'namespaces': d({}),
-                                                                            },
-                                                                        }),
-                                                                    },
                                                                     "type arguments": {
                                                                         'types': d({}),
                                                                         'namespaces': d({}),

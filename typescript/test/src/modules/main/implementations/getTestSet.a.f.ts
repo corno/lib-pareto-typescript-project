@@ -2,9 +2,11 @@ import * as pl from 'pareto-core-lib'
 import * as ps from 'pareto-core-state'
 import * as pm from 'pareto-core-map'
 import * as pa from 'pareto-core-async'
+import * as pd from 'pareto-core-data'
 
 import * as g_test from "lib-pareto-test"
 import * as g_project from "../../../../../pub/dist/submodules/project"
+import * as g_llts from "../../../../../pub/dist/submodules/lowlevel_typesystem"
 import * as g_fp from "lib-fountain-pen"
 import * as g_pub from "../../../../../pub/dist"
 
@@ -13,9 +15,12 @@ const d = pm.wrapRawDictionary
 import { $ as tc } from "../../../data/project/project/tokenconsumer/project.data"
 
 import { A } from "../api.generated"
+import { data } from '../../../../../pub/dist/submodules/glossary/shorthands'
 
 export const $$: A.getTestSet = ($) => {
     const $XXX = $
+
+    //const llts: g_llts.T.Namespace<pd.SourceLocation> = 
 
     function genProj<Annotation>(dir: string, proj: g_project.T.Project<Annotation>) {
         g_pub.$b.createProjectGeneratorAndReporter().construct()(
@@ -136,6 +141,8 @@ export const $$: A.getTestSet = ($) => {
             }]
         })
     }
+
+
 
     //test that a failing test indeed fails!!! now it will make the program exit with an error code
     createTest(

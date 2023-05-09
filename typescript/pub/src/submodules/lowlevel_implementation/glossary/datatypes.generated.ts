@@ -437,21 +437,6 @@ export namespace N {
                                                         
                                                         export namespace N {
                                                             
-                                                            export namespace arguments {
-                                                                
-                                                                export namespace N {
-                                                                    
-                                                                    export namespace D {
-                                                                        
-                                                                        export namespace N {}
-                                                                        
-                                                                        export namespace T {}
-                                                                    }
-                                                                }
-                                                                
-                                                                export namespace T {}
-                                                            }
-                                                            
                                                             export namespace type_$_$arguments {
                                                                 
                                                                 export namespace N {}
@@ -1982,34 +1967,10 @@ export namespace T {
                     
                     export namespace content {
                         
-                        export namespace arguments {
-                            
-                            export namespace D {
-                                
-                                export type annotation<GAnnotation> = GAnnotation
-                                
-                                export type content<GAnnotation> = T.Expression<GAnnotation>
-                            }
-                            
-                            export type D<GAnnotation> = {
-                                readonly 'annotation': GAnnotation
-                                readonly 'content': T.Expression<GAnnotation>
-                            }
-                        }
-                        
-                        export type arguments<GAnnotation> = pt.Dictionary<{
-                            readonly 'annotation': GAnnotation
-                            readonly 'content': T.Expression<GAnnotation>
-                        }>
-                        
                         export type type__arguments<GAnnotation> = T.Type__Arguments<GAnnotation>
                     }
                     
                     export type content<GAnnotation> = {
-                        readonly 'arguments': pt.Dictionary<{
-                            readonly 'annotation': GAnnotation
-                            readonly 'content': T.Expression<GAnnotation>
-                        }>
                         readonly 'type arguments': T.Type__Arguments<GAnnotation>
                     }
                 }
@@ -2017,10 +1978,6 @@ export namespace T {
                 export type call<GAnnotation> = {
                     readonly 'annotation': GAnnotation
                     readonly 'content': {
-                        readonly 'arguments': pt.Dictionary<{
-                            readonly 'annotation': GAnnotation
-                            readonly 'content': T.Expression<GAnnotation>
-                        }>
                         readonly 'type arguments': T.Type__Arguments<GAnnotation>
                     }
                 }
@@ -2055,10 +2012,6 @@ export namespace T {
                 | ['call', {
                     readonly 'annotation': GAnnotation
                     readonly 'content': {
-                        readonly 'arguments': pt.Dictionary<{
-                            readonly 'annotation': GAnnotation
-                            readonly 'content': T.Expression<GAnnotation>
-                        }>
                         readonly 'type arguments': T.Type__Arguments<GAnnotation>
                     }
                 }]
@@ -2078,10 +2031,6 @@ export namespace T {
                 | ['call', {
                     readonly 'annotation': GAnnotation
                     readonly 'content': {
-                        readonly 'arguments': pt.Dictionary<{
-                            readonly 'annotation': GAnnotation
-                            readonly 'content': T.Expression<GAnnotation>
-                        }>
                         readonly 'type arguments': T.Type__Arguments<GAnnotation>
                     }
                 }]
@@ -2101,10 +2050,6 @@ export namespace T {
             | ['call', {
                 readonly 'annotation': GAnnotation
                 readonly 'content': {
-                    readonly 'arguments': pt.Dictionary<{
-                        readonly 'annotation': GAnnotation
-                        readonly 'content': T.Expression<GAnnotation>
-                    }>
                     readonly 'type arguments': T.Type__Arguments<GAnnotation>
                 }
             }]

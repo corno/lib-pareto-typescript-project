@@ -11,7 +11,7 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
     'outputs': pd.a([
         {
             'path': pd.a([`../../pareto/src/data/submodules/glossary_possiblyresolved/glossary.generated.ts`]),
-            'data': {
+            'data': ['liana', {
                 'settings': {
                     'annotations': true,
                     'datamodel': [true, {
@@ -33,11 +33,11 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                         "boolean": ['boolean', null],
                     }),
                 },
-            }
+            }]
         },
         {
             'path': pd.a([`../../pareto/src/data/submodules/glossary/glossary.generated.ts`]),
-            'data': {
+            'data': ['liana', {
                 'settings': {
                     'annotations': true,
                     'datamodel': [true, {
@@ -59,11 +59,11 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                         "boolean": ['boolean', null],
                     }),
                 },
-            }
+            }]
         },
         {
             'path': pd.a([`../../pareto/src/data/submodules/project/glossary.generated.ts`]),
-            'data': {
+            'data': ['liana', {
                 'settings': {
                     'annotations': true,
                     'datamodel': [true, {
@@ -85,11 +85,11 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                         "boolean": ['boolean', null],
                     }),
                 },
-            }
+            }]
         },
         {
             'path': pd.a([`../../pareto/src/data/submodules/lowlevel_typesystem_possiblyresolved/glossary.generated.ts`]),
-            'data': {
+            'data': ['liana', {
                 'settings': {
                     'annotations': true,
                     'datamodel': [true, {
@@ -110,11 +110,11 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                         "identifier": ['string', null],
                     }),
                 },
-            }
+            }]
         },
         {
             'path': pd.a([`../../pareto/src/data/submodules/lowlevel_typesystem/glossary.generated.ts`]),
-            'data': {
+            'data': ['liana', {
                 'settings': {
                     'annotations': true,
                     'datamodel': [true, {
@@ -135,11 +135,11 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                         "identifier": ['string', null],
                     }),
                 },
-            }
+            }]
         },
         {
             'path': pd.a([`../../pareto/src/data/submodules/lowlevel_implementation_possiblyresolved/glossary.generated.ts`]),
-            'data': {
+            'data': ['liana', {
                 'settings': {
                     'annotations': true,
                     'datamodel': [true, {
@@ -162,11 +162,11 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                         "string literal": ['string', null],
                     }),
                 },
-            }
+            }]
         },
         {
             'path': pd.a([`../../pareto/src/data/submodules/lowlevel_implementation/glossary.generated.ts`]),
-            'data': {
+            'data': ['liana', {
                 'settings': {
                     'annotations': true,
                     'datamodel': [true, {
@@ -189,7 +189,7 @@ export const $: g_liana.T.CompileParameters<pd.SourceLocation> = {
                         "string literal": ['string', null],
                     }),
                 },
-            }
+            }]
         },
         // {
         //     'path': `../../pareto/src/data/submodules/glossary_serialize`,

@@ -19,11 +19,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'root': {
         'namespaces': d({}),
         'types': d({
-            "SourceLocation": type(group({
-                "file": member(string()),
-                "line": member(number()),
-                "column": member(number()),
-            }))
         }),
     },
     'asynchronous': {
@@ -33,7 +28,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'synchronous': {
         'interfaces': d({}),
         'algorithms': d({
-            "GetSourceLocation": sfunction(typeReference("SourceLocation"), data(glossaryParameter("Annotation"))),
+            "SerializeAnnotation": procedure(data(glossaryParameter("Annotation")), sExternalInterfaceReference("fp", "Line")),
             "Serialize": procedure(data(externalTypeReference("model", "Glossary", {
                 "Annotation": glossaryParameter("Annotation"),
             })), sExternalInterfaceReference("fp", "Block")),

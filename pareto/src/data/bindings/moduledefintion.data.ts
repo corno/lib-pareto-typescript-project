@@ -27,6 +27,7 @@ export const $: g_project.T.ModuleDefinition<pd.SourceLocation> = {
         'root': api,
         'imports': d({
             "main": main(),
+            "serializeGlossary": submodule("glossary_serialize")
         }),
     },
 

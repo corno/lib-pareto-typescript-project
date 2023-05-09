@@ -10,7 +10,7 @@ export const $: g_project.T.ModuleDefinition.api.root<pd.SourceLocation> = {
     'algorithms': d({
         "serialize": algorithm(procedure("this", {}, "Serialize"), { "Annotation": "Annotation" }, dependent(null, {
             "dictionaryForEach": procedure("foreach", {}, "DictionaryForEach"),
-            "getSourceLocation": sfunction("this", { "X": "GAnnotation" }, "GetSourceLocation")
+            "serializeAnnotation": procedure("this", { "X": "GAnnotation" }, "SerializeAnnotation")
         }, {}))
     }),
 }

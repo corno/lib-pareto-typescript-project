@@ -2,6 +2,7 @@ import * as pt from 'pareto-core-types'
 
 import { T } from "./datatypes.generated"
 
+import * as g_common from "glo-pareto-common"
 import * as g_fp from "lib-fountain-pen"
 import * as g_model from "../../glossary"
 
@@ -24,6 +25,11 @@ export namespace SYNC {
         
         export namespace P {
             export type SerializeAnnotation<GAnnotation> = ($: GAnnotation, $i: g_fp.SYNC.I.Line) => void
+        }
+        
+        
+        export namespace P {
+            export type SerializeAnnotationType<GAnnotation> = ($: g_common.T.Null, $i: g_fp.SYNC.I.Line) => void
         }
     }
 }

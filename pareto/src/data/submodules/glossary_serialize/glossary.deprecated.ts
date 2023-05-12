@@ -29,6 +29,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         'interfaces': d({}),
         'algorithms': d({
             "SerializeAnnotation": procedure(data(glossaryParameter("Annotation")), sExternalInterfaceReference("fp", "Line")),
+            "SerializeAnnotationType": procedure(data(externalTypeReference("common", "Null")), sExternalInterfaceReference("fp", "Line")),
             "Serialize": procedure(data(externalTypeReference("model", "Glossary", {
                 "Annotation": glossaryParameter("Annotation"),
             })), sExternalInterfaceReference("fp", "Block")),

@@ -9,6 +9,7 @@ export namespace D {
     export type serialize<GAnnotation> = {
         readonly 'dictionaryForEach': g_foreach.SYNC.A.P.DictionaryForEach
         readonly 'serializeAnnotation': g_this.SYNC.A.P.SerializeAnnotation<GAnnotation>
+        readonly 'serializeAnnotationType': g_this.SYNC.A.P.SerializeAnnotationType<GAnnotation>
     }
 }
 

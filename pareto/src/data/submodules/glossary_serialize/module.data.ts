@@ -13,6 +13,7 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
         'glossary': {
             'root': glossary,
             'imports': d({
+                "common": external("glo-pareto-common"),
                 "model": sibling("glossary"),
                 "fp": external("lib-fountain-pen"),
             }),

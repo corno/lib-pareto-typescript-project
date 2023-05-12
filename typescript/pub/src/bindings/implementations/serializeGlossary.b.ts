@@ -13,6 +13,7 @@ export const $$: A.serializeGlossary = () => {
         'dictionaryForEach': a_foreach.$r.createDictionaryForEach({
             'compare': a_collation.$r.localeIsABeforeB(),
         }),
-        'serializeAnnotation': ($, $i) => $i.snippet(`null`)
+        'serializeAnnotation': ($, $i) => $i.snippet(`null`),
+        'serializeAnnotationType': ($, $i) => $i.snippet(`null`),
     })
 }

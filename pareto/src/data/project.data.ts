@@ -28,7 +28,7 @@ import { $ as d_lowlevel_implementation_resolve } from "./submodules/lowlevel_im
 
 const d = pd.d
 
-export const $: g_project.T.Project<pd.SourceLocation> = {
+export const $: g_project.T.Project<pd.SourceLocation | null> = {
     'author': "Corno",
     'description': "A library to generate a typescript project environment for Pareto",
     'license': "TBD",

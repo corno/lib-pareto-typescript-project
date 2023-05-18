@@ -226,7 +226,12 @@ export function data($: t.T.DataSpecifier<pd.SourceLocation>): ['data', t.T.Data
     return ['data', $]
 }
 
-export function inf($: t.T.AsynchronousInterfaceReference<pd.SourceLocation>): ['interface', t.T.AsynchronousInterfaceReference<pd.SourceLocation>] {
+export function sInf($: t.T.SynchronousInterfaceReference<pd.SourceLocation>): ['interface', t.T.SynchronousInterfaceReference<pd.SourceLocation>] {
+    return ['interface', $]
+}
+
+
+export function aInf($: t.T.AsynchronousInterfaceReference<pd.SourceLocation>): ['interface', t.T.AsynchronousInterfaceReference<pd.SourceLocation>] {
     return ['interface', $]
 }
 

@@ -7,7 +7,7 @@ import { $ as glossary } from "./glossary.generated"
 
 const d = pd.d
 
-export const $: g_project.T.Module<pd.SourceLocation> = {
+export const $: g_project.T.Module<null> = {
     'definition': {
         'glossary': {
             'root': glossary,

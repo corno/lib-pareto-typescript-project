@@ -247,7 +247,9 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
         }
 
         function serializeType($: g_glossary.T.Type<GAnnotation>, $i: g_fp.SYNC.I.Line) {
-            $i.snippet(`<g_glossary.T.Type<${$d.serializeAnnotationType(null, $i)}>>`)
+            $i.snippet(`<g_glossary.T.Type<`)
+            $d.serializeAnnotationType(null, $i)
+            $i.snippet(`>>`)
 
             switch ($[0]) {
                 case 'computed':
@@ -627,7 +629,9 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
         $i.line(`const a = pd.a`)
         $i.line(``)
         $i.nestedLine(($i) => {
-            $i.snippet(`export const $: g_glossary.T.Glossary<${$d.serializeAnnotationType(null, $i)}> = `)
+            $i.snippet(`export const $: g_glossary.T.Glossary<`)
+            $d.serializeAnnotationType(null, $i)
+            $i.snippet(`> = `)
 
             $i.snippet(`{`)
             $i.indent(($i) => {

@@ -5,7 +5,7 @@ import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/gloss
 const d = pd.d
 const a = pd.a
 
-export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
+export const $: g_glossary.T.Glossary<null> = {
     'imports': d({}),
     'glossary parameters': d({
         "Annotation": null,
@@ -14,7 +14,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         'types': d({
             "Arguments": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['reference', ['type', {
                     'context': ['local', null],
                     'typeXX': "DataSpecifier",
                     'tailXX': a([]),
@@ -23,10 +23,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             },
             "AsynchronousInterface": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                    "choice": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                'type': <g_glossary.T.Type<null>>['taggedUnion', d({
+                    "choice": <g_glossary.T.Type<null>>['group', d({
                         "options": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['reference', ['type', {
                                 'context': ['local', null],
                                 'typeXX': "AsynchronousInterface",
                                 'tailXX': a([]),
@@ -34,9 +34,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]]],
                         },
                     })],
-                    "method": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                    "method": <g_glossary.T.Type<null>>['group', d({
                         "data": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'type': <g_glossary.T.Type<null>>['optional', <g_glossary.T.Type<null>>['reference', ['type', {
                                 'context': ['local', null],
                                 'typeXX': "DataSpecifier",
                                 'tailXX': a([]),
@@ -44,7 +44,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]]],
                         },
                         "interface": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'type': <g_glossary.T.Type<null>>['optional', <g_glossary.T.Type<null>>['reference', ['type', {
                                 'context': ['local', null],
                                 'typeXX': "AsynchronousInterface",
                                 'tailXX': a([]),
@@ -52,15 +52,15 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]]],
                         },
                     })],
-                    "reference": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "reference": <g_glossary.T.Type<null>>['reference', ['type', {
                         'context': ['local', null],
                         'typeXX': "AsynchronousInterfaceReference",
                         'tailXX': a([]),
                         'type arguments': d({}),
                     }]],
-                    "streamconsumer": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                    "streamconsumer": <g_glossary.T.Type<null>>['group', d({
                         "data": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                 'context': ['local', null],
                                 'typeXX': "AsynchronousInterface",
                                 'tailXX': a([]),
@@ -68,7 +68,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]],
                         },
                         "end": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                 'context': ['local', null],
                                 'typeXX': "AsynchronousInterface",
                                 'tailXX': a([]),
@@ -80,12 +80,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             },
             "AsynchronousInterfaceReference": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                'type': <g_glossary.T.Type<null>>['group', d({
                     "context": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                            "import": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        'type': <g_glossary.T.Type<null>>['taggedUnion', d({
+                            "import": <g_glossary.T.Type<null>>['group', d({
                                 "glossary": {
-                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                         'context': ['local', null],
                                         'typeXX': "Glossary Reference",
                                         'tailXX': a([]),
@@ -93,14 +93,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     }]],
                                 },
                             })],
-                            "local": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                            "local": <g_glossary.T.Type<null>>['group', d({})],
                         })],
                     },
                     "interfaceXX": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                        'type': <g_glossary.T.Type<null>>['string', null],
                     },
                     "type arguments": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                             'context': ['local', null],
                             'typeXX': "Arguments",
                             'tailXX': a([]),
@@ -111,14 +111,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             },
             "DataOrSynchronousInterface": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                    "data": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                'type': <g_glossary.T.Type<null>>['taggedUnion', d({
+                    "data": <g_glossary.T.Type<null>>['reference', ['type', {
                         'context': ['local', null],
                         'typeXX': "DataSpecifier",
                         'tailXX': a([]),
                         'type arguments': d({}),
                     }]],
-                    "interface": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "interface": <g_glossary.T.Type<null>>['reference', ['type', {
                         'context': ['local', null],
                         'typeXX': "SynchronousInterfaceReference",
                         'tailXX': a([]),
@@ -128,14 +128,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             },
             "DataSpecifier": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                    "glossary parameterXX": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
-                    "type": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                'type': <g_glossary.T.Type<null>>['taggedUnion', d({
+                    "glossary parameterXX": <g_glossary.T.Type<null>>['string', null],
+                    "type": <g_glossary.T.Type<null>>['group', d({
                         "context": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                "import": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                            'type': <g_glossary.T.Type<null>>['taggedUnion', d({
+                                "import": <g_glossary.T.Type<null>>['group', d({
                                     "glossary": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                             'context': ['local', null],
                                             'typeXX': "Glossary Reference",
                                             'tailXX': a([]),
@@ -143,14 +143,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         }]],
                                     },
                                 })],
-                                "local": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
+                                "local": <g_glossary.T.Type<null>>['group', d({})],
                             })],
                         },
                         "tailXX": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['array', <g_glossary.T.Type<pd.SourceLocation>>['string', null]],
+                            'type': <g_glossary.T.Type<null>>['array', <g_glossary.T.Type<null>>['string', null]],
                         },
                         "type arguments": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                 'context': ['local', null],
                                 'typeXX': "Arguments",
                                 'tailXX': a([]),
@@ -158,25 +158,25 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]],
                         },
                         "typeXX": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                            'type': <g_glossary.T.Type<null>>['string', null],
                         },
                     })],
-                    "type parameterXX": <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                    "type parameterXX": <g_glossary.T.Type<null>>['string', null],
                 })]
             },
             "Dummy": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]
+                'type': <g_glossary.T.Type<null>>['group', d({})]
             },
             "Glossary": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                'type': <g_glossary.T.Type<null>>['group', d({
                     "asynchronous": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        'type': <g_glossary.T.Type<null>>['group', d({
                             "algorithms": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['group', d({
                                     "parameters": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                             'context': ['local', null],
                                             'typeXX': "Parameters",
                                             'tailXX': a([]),
@@ -184,10 +184,10 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         }]],
                                     },
                                     "type": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                            "constructor": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                        'type': <g_glossary.T.Type<null>>['taggedUnion', d({
+                                            "constructor": <g_glossary.T.Type<null>>['group', d({
                                                 "downstreams": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                    'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
                                                         'typeXX': "AsynchronousInterfaceReference",
                                                         'tailXX': a([]),
@@ -195,7 +195,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     }]]],
                                                 },
                                                 "interface": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
                                                         'typeXX': "AsynchronousInterfaceReference",
                                                         'tailXX': a([]),
@@ -203,9 +203,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     }]],
                                                 },
                                             })],
-                                            "function": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                            "function": <g_glossary.T.Type<null>>['group', d({
                                                 "in": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
                                                         'typeXX': "DataSpecifier",
                                                         'tailXX': a([]),
@@ -213,7 +213,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     }]],
                                                 },
                                                 "out": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
                                                         'typeXX': "DataSpecifier",
                                                         'tailXX': a([]),
@@ -221,9 +221,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     }]],
                                                 },
                                             })],
-                                            "resource": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                            "resource": <g_glossary.T.Type<null>>['group', d({
                                                 "consumer": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
                                                         'typeXX': "AsynchronousInterfaceReference",
                                                         'tailXX': a([]),
@@ -231,7 +231,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     }]],
                                                 },
                                                 "request": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
                                                         'typeXX': "DataSpecifier",
                                                         'tailXX': a([]),
@@ -244,9 +244,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 })]],
                             },
                             "interfaces": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['group', d({
                                     "interface": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                             'context': ['local', null],
                                             'typeXX': "AsynchronousInterface",
                                             'tailXX': a([]),
@@ -254,7 +254,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         }]],
                                     },
                                     "parameters": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                             'context': ['local', null],
                                             'typeXX': "Parameters",
                                             'tailXX': a([]),
@@ -266,7 +266,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         })],
                     },
                     "glossary parameters": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                             'context': ['local', null],
                             'typeXX': "Parameters",
                             'tailXX': a([]),
@@ -274,7 +274,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         }]],
                     },
                     "imports": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                             'context': ['local', null],
                             'typeXX': "Imports",
                             'tailXX': a([]),
@@ -282,7 +282,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         }]],
                     },
                     "root": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                             'context': ['local', null],
                             'typeXX': "Namespace",
                             'tailXX': a([]),
@@ -290,11 +290,11 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         }]],
                     },
                     "synchronous": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        'type': <g_glossary.T.Type<null>>['group', d({
                             "algorithms": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['group', d({
                                     "parameters": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                             'context': ['local', null],
                                             'typeXX': "Parameters",
                                             'tailXX': a([]),
@@ -302,12 +302,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         }]],
                                     },
                                     "type": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                                            "function": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                        'type': <g_glossary.T.Type<null>>['taggedUnion', d({
+                                            "function": <g_glossary.T.Type<null>>['group', d({
                                                 "callbacks": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                                    'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['group', d({
                                                         "in": {
-                                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                            'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                                 'context': ['local', null],
                                                                 'typeXX': "DataSpecifier",
                                                                 'tailXX': a([]),
@@ -315,7 +315,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                             }]],
                                                         },
                                                         "lookups": {
-                                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                            'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['reference', ['type', {
                                                                 'context': ['local', null],
                                                                 'typeXX': "DataSpecifier",
                                                                 'tailXX': a([]),
@@ -323,7 +323,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                             }]]],
                                                         },
                                                         "out": {
-                                                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                            'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                                 'context': ['local', null],
                                                                 'typeXX': "DataSpecifier",
                                                                 'tailXX': a([]),
@@ -333,7 +333,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     })]],
                                                 },
                                                 "in": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
                                                         'typeXX': "DataOrSynchronousInterface",
                                                         'tailXX': a([]),
@@ -341,7 +341,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     }]],
                                                 },
                                                 "out": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
                                                         'typeXX': "DataSpecifier",
                                                         'tailXX': a([]),
@@ -349,9 +349,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     }]],
                                                 },
                                             })],
-                                            "procedure": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                            "procedure": <g_glossary.T.Type<null>>['group', d({
                                                 "in": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
                                                         'typeXX': "DataOrSynchronousInterface",
                                                         'tailXX': a([]),
@@ -359,7 +359,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                                     }]],
                                                 },
                                                 "out": {
-                                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
                                                         'typeXX': "SynchronousInterfaceReference",
                                                         'tailXX': a([]),
@@ -372,9 +372,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 })]],
                             },
                             "interfaces": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                                'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['group', d({
                                     "interface": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                             'context': ['local', null],
                                             'typeXX': "Synchronous Interface",
                                             'tailXX': a([]),
@@ -382,7 +382,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                         }]],
                                     },
                                     "parameters": {
-                                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                             'context': ['local', null],
                                             'typeXX': "Parameters",
                                             'tailXX': a([]),
@@ -397,19 +397,19 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             },
             "Glossary Reference": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                'type': <g_glossary.T.Type<null>>['group', d({
                     "glossary": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        'type': <g_glossary.T.Type<null>>['group', d({
                             "annotation": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['glossary parameterXX', "Annotation"]],
+                                'type': <g_glossary.T.Type<null>>['reference', ['glossary parameterXX', "Annotation"]],
                             },
                             "key": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                'type': <g_glossary.T.Type<null>>['string', null],
                             },
                         })],
                     },
                     "glossary arguments": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                             'context': ['local', null],
                             'typeXX': "Arguments",
                             'tailXX': a([]),
@@ -420,13 +420,13 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             },
             "Imports": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]]
+                'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['group', d({})]]
             },
             "Namespace": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                'type': <g_glossary.T.Type<null>>['group', d({
                     "namespaces": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['reference', ['type', {
                             'context': ['local', null],
                             'typeXX': "Namespace",
                             'tailXX': a([]),
@@ -434,9 +434,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                         }]]],
                     },
                     "types": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['group', d({
                             "parameters": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                     'context': ['local', null],
                                     'typeXX': "Parameters",
                                     'tailXX': a([]),
@@ -444,7 +444,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                 }]],
                             },
                             "type": {
-                                'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                     'context': ['local', null],
                                     'typeXX': "Type",
                                     'tailXX': a([]),
@@ -457,14 +457,14 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             },
             "Parameters": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({})]]
+                'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['group', d({})]]
             },
             "Synchronous Interface": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                    "group": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                'type': <g_glossary.T.Type<null>>['taggedUnion', d({
+                    "group": <g_glossary.T.Type<null>>['group', d({
                         "members": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'type': <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['reference', ['type', {
                                 'context': ['local', null],
                                 'typeXX': "Synchronous Interface",
                                 'tailXX': a([]),
@@ -472,9 +472,9 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]]],
                         },
                     })],
-                    "method": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                    "method": <g_glossary.T.Type<null>>['group', d({
                         "data": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'type': <g_glossary.T.Type<null>>['optional', <g_glossary.T.Type<null>>['reference', ['type', {
                                 'context': ['local', null],
                                 'typeXX': "DataSpecifier",
                                 'tailXX': a([]),
@@ -482,7 +482,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]]],
                         },
                         "interface": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['optional', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'type': <g_glossary.T.Type<null>>['optional', <g_glossary.T.Type<null>>['reference', ['type', {
                                 'context': ['local', null],
                                 'typeXX': "Synchronous Interface",
                                 'tailXX': a([]),
@@ -490,7 +490,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]]],
                         },
                     })],
-                    "reference": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "reference": <g_glossary.T.Type<null>>['reference', ['type', {
                         'context': ['local', null],
                         'typeXX': "SynchronousInterfaceReference",
                         'tailXX': a([]),
@@ -500,12 +500,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             },
             "SynchronousInterfaceReference": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                'type': <g_glossary.T.Type<null>>['group', d({
                     "context": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                            "import": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                        'type': <g_glossary.T.Type<null>>['taggedUnion', d({
+                            "import": <g_glossary.T.Type<null>>['group', d({
                                 "glossary": {
-                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                         'context': ['local', null],
                                         'typeXX': "Glossary Reference",
                                         'tailXX': a([]),
@@ -513,18 +513,18 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                                     }]],
                                 },
                                 "interfaceXX": {
-                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                    'type': <g_glossary.T.Type<null>>['string', null],
                                 },
                             })],
-                            "local": <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                            "local": <g_glossary.T.Type<null>>['group', d({
                                 "interfaceXX": {
-                                    'type': <g_glossary.T.Type<pd.SourceLocation>>['string', null],
+                                    'type': <g_glossary.T.Type<null>>['string', null],
                                 },
                             })],
                         })],
                     },
                     "type arguments": {
-                        'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                        'type': <g_glossary.T.Type<null>>['reference', ['type', {
                             'context': ['local', null],
                             'typeXX': "Arguments",
                             'tailXX': a([]),
@@ -535,29 +535,29 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             },
             "Type": {
                 'parameters': d({}),
-                'type': <g_glossary.T.Type<pd.SourceLocation>>['taggedUnion', d({
-                    "array": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                'type': <g_glossary.T.Type<null>>['taggedUnion', d({
+                    "array": <g_glossary.T.Type<null>>['reference', ['type', {
                         'context': ['local', null],
                         'typeXX': "Type",
                         'tailXX': a([]),
                         'type arguments': d({}),
                     }]],
-                    "boolean": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
-                    "computed": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "boolean": <g_glossary.T.Type<null>>['group', d({})],
+                    "computed": <g_glossary.T.Type<null>>['reference', ['type', {
                         'context': ['local', null],
                         'typeXX': "Type",
                         'tailXX': a([]),
                         'type arguments': d({}),
                     }]],
-                    "dictionary": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "dictionary": <g_glossary.T.Type<null>>['reference', ['type', {
                         'context': ['local', null],
                         'typeXX': "Type",
                         'tailXX': a([]),
                         'type arguments': d({}),
                     }]],
-                    "group": <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['group', d({
+                    "group": <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['group', d({
                         "type": {
-                            'type': <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                            'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                 'context': ['local', null],
                                 'typeXX': "Type",
                                 'tailXX': a([]),
@@ -565,22 +565,22 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                             }]],
                         },
                     })]],
-                    "null": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
-                    "number": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
-                    "optional": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "null": <g_glossary.T.Type<null>>['group', d({})],
+                    "number": <g_glossary.T.Type<null>>['group', d({})],
+                    "optional": <g_glossary.T.Type<null>>['reference', ['type', {
                         'context': ['local', null],
                         'typeXX': "Type",
                         'tailXX': a([]),
                         'type arguments': d({}),
                     }]],
-                    "reference": <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "reference": <g_glossary.T.Type<null>>['reference', ['type', {
                         'context': ['local', null],
                         'typeXX': "DataSpecifier",
                         'tailXX': a([]),
                         'type arguments': d({}),
                     }]],
-                    "string": <g_glossary.T.Type<pd.SourceLocation>>['group', d({})],
-                    "taggedUnion": <g_glossary.T.Type<pd.SourceLocation>>['dictionary', <g_glossary.T.Type<pd.SourceLocation>>['reference', ['type', {
+                    "string": <g_glossary.T.Type<null>>['group', d({})],
+                    "taggedUnion": <g_glossary.T.Type<null>>['dictionary', <g_glossary.T.Type<null>>['reference', ['type', {
                         'context': ['local', null],
                         'typeXX': "Type",
                         'tailXX': a([]),

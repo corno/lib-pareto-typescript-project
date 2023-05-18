@@ -8,7 +8,7 @@ import { external, sibling, this_ } from "lib-pareto-typescript-project/dist/sub
 
 const d = pd.d
 
-export const $: g_project.T.Module<pd.SourceLocation> = {
+export const $: g_project.T.Module<null> = {
     'definition': {
         'glossary': {
             'root': glossary,
@@ -31,5 +31,4 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
         },
     },
     'implementation': ['typescript', null],
-
 }

@@ -10,7 +10,7 @@ import { A } from "../api.generated"
 
 export const $$: A.serializeGlossary = () => {
     return a_glossary_serialize.$a.serialize({
-        'dictionaryForEach': a_foreach.$r.createDictionaryForEach({
+        'dictionaryForEach': a_foreach.$r.dictionaryForEach({
             'compare': a_collation.$r.localeIsABeforeB(),
         }),
         'serializeAnnotation': ($, $i) => $i.snippet(`null`),

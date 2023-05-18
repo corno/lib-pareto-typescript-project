@@ -28,17 +28,17 @@ export const $$: A.createProjectGeneratorAndReporter = () => {
                     'validateFiles': a_pareto2typescript.$a.validateFiles(),
                     'serializeProject': a_pareto2typescript.$a.serializeProject(
                         {
-                            'dictionaryForEach': a_foreach.$r.createDictionaryForEach({
+                            'dictionaryForEach': a_foreach.$r.dictionaryForEach({
                                 'compare': a_coll.$r.localeIsABeforeB(),
                             }),
-                            'enrichedDictionaryForEach': a_foreach.$r.createEnrichedDictionaryForEach({
+                            'enrichedDictionaryForEach': a_foreach.$r.enrichedDictionaryForEach({
                                 'compare': a_coll.$r.localeIsABeforeB(),
                             }),
                             'serializeGlossary': a_pareto2typescript.$a.serializeGlossary({
-                                'enrichedDictionaryForEach': a_foreach.$r.createEnrichedDictionaryForEach({
+                                'enrichedDictionaryForEach': a_foreach.$r.enrichedDictionaryForEach({
                                     'compare': a_coll.$r.localeIsABeforeB(),
                                 }),
-                                'dictionaryForEach': a_foreach.$r.createDictionaryForEach({
+                                'dictionaryForEach': a_foreach.$r.dictionaryForEach({
                                     'compare': a_coll.$r.localeIsABeforeB(),
                                 }),
                                 'createIdentifier': a_ts.$r.createIdentifier(),
@@ -49,15 +49,15 @@ export const $$: A.createProjectGeneratorAndReporter = () => {
                             'serializeImplementation': a_pareto2typescript.$a.serializeImplementation(
                                 {
                                     // 'arrayForEach': a_foreach.$r.arrayForEach(),
-                                    'dictionaryForEach': a_foreach.$r.createDictionaryForEach({
+                                    'dictionaryForEach': a_foreach.$r.dictionaryForEach({
                                         'compare': a_coll.$r.localeIsABeforeB(),
                                     }),
         
-                                    // 'dictionaryForEach_InnerFunctions': a_foreach.$r.createDictionaryForEach({
+                                    // 'dictionaryForEach_InnerFunctions': a_foreach.$r.dictionaryForEach({
                                     //     'compare': a_coll.$r.localeIsABeforeB(),
                                     // }),
                                     //'enrichedArrayForEach': a_foreach.$r.enrichedArrayForEach(),
-                                    'enrichedDictionaryForEach': a_foreach.$r.createEnrichedDictionaryForEach({
+                                    'enrichedDictionaryForEach': a_foreach.$r.enrichedDictionaryForEach({
                                         'compare': a_coll.$r.localeIsABeforeB(),
                                     }),
                                     'createIdentifier': a_ts.$r.createIdentifier(),

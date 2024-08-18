@@ -116,47 +116,6 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                 })),
             })
         ),
-        "Project": globalType(
-            {},
-            group({
-                "author": prop(terminal("identifier")),
-                "license": prop(terminal("identifier")),
-                "description": prop(terminal("identifier")),
-                "dependencies": prop(dictionary(group({}))),
-                "type": prop(taggedUnion({
-                    "resource": option(group({
-                        "temp": prop(group({
-                            "nativeDependencies": prop(dictionary(group({}))),
-                            "devDependencies": prop(dictionary(group({}))),
-                        })),
-                        "definition": prop(resolvedSiblingComponent("ModuleDefinition", {})),
-                        "test": prop(resolvedSiblingComponent("Test", {})),
-                    })),
-                    "glossary": option(group({
-                        "root": prop(importedComponent("glossary", "Glossary", {})),
-                        "imports": prop(dictionary(taggedUnion({
-                            "external": option(terminal("identifier")),
-                        }))),
-                    })),
-                    "library": option(group({
-                        "main": prop(resolvedSiblingComponent("Module", {})),
-                        "submodules": prop(dictionary(resolvedSiblingComponent("Module", {}))),
-                        "bindings": prop(optional(group({
-                            "definition": prop(resolvedSiblingComponent("ModuleDefinition", {})),
-                            "implementation": prop(taggedUnion({
-                                "typescript": option(group({
-                                })),
-                                "pareto": option(group({})),
-                            })),
-                        }))),
-                        "executables": prop(dictionary(group({
-                            "constructor": prop(terminal("identifier"))
-                        }))),
-                        "test": prop(resolvedSiblingComponent("Test", {})),
-                    })),
-                })),
-            })
-        ),
         "Test": globalType(
             {},
             group({
@@ -167,6 +126,87 @@ export const $: g_liana.T.Type__Library<pd.SourceLocation> = {
                     "pub": option(terminal("identifier")),
                     "external": option(terminal("identifier")),
                 }))),
+            })
+        ),
+        /**
+        Defines a package
+        */
+        "Project": globalType( //FIX rename to Package
+            {},
+            group({
+                /** used for the generated package.json */
+                "description": prop(terminal("identifier")),
+                /** used for the generated package.json */
+                "author": prop(terminal("identifier")),
+                /** used for the generated package.json */
+                "license": prop(terminal("identifier")),
+                /**
+                 * a dictionary of all the dependencies this package has.
+                 * used for the generated package.json
+                 * */
+                "dependencies": prop(dictionary(group({}))),
+                "type": prop(taggedUnion({
+                    /**
+                     * a library provides a clearly specified API and an implementation.
+                     * libraries are the most common and should contain the bulk of the code in a project (think 95%)
+                     */
+                    "library": option(group({
+                        /**
+                         * the main module is what other packages can use
+                         */
+                        "main": prop(resolvedSiblingComponent("Module", {})),
+                        /**
+                         * submodules are implementation details, they should not be used by external packages
+                         */
+                        "submodules": prop(dictionary(resolvedSiblingComponent("Module", {}))),
+                        /**
+                         * Pareto algorithms cannot include or link to other packages. Their dependencies have to be injected
+                         * (see {@link https://en.wikipedia.org/wiki/Dependency_injection}).
+                         * bindings inject these dependencies and offer ready to go algorithms, or are partially linked if needed 
+                         */
+                        "bindings": prop(optional(group({
+                            "definition": prop(resolvedSiblingComponent("ModuleDefinition", {})),
+                            "implementation": prop(taggedUnion({
+                                /**
+                                 * the binding will be written in Typescript
+                                 */
+                                "typescript": option(group({
+                                })),
+                                /**
+                                 * I don't think that this option is already supported
+                                 */
+                                "pareto": option(group({})),
+                            })),
+                        }))),
+                        /**
+                         * if a library implements algorithms that can be called from the command line, then adding these algorithms here makes the library an executable package
+                         * these constructors should be references to synchronous algorithms in the 'bindings' section
+                         */
+                        "executables": prop(dictionary(group({
+                            "constructor": prop(terminal("identifier"))
+                        }))),
+                        "test": prop(resolvedSiblingComponent("Test", {})),
+                    })),
+                    "glossary": option(group({
+                        "root": prop(importedComponent("glossary", "Glossary", {})),
+                        "imports": prop(dictionary(taggedUnion({
+                            "external": option(terminal("identifier")),
+                        }))),
+                    })),
+                    /**
+                     * a resource package is a low level package that implements anything that cannot be implemented in the pure style that is expected/enforced for a library.
+                     * a resource can be created to access any peripheral (storage, network ).
+                     * there are resources    
+                     */
+                    "resource": option(group({
+                        "temp": prop(group({
+                            "nativeDependencies": prop(dictionary(group({}))),
+                            "devDependencies": prop(dictionary(group({}))),
+                        })),
+                        "definition": prop(resolvedSiblingComponent("ModuleDefinition", {})),
+                        "test": prop(resolvedSiblingComponent("Test", {})),
+                    })),
+                })),
             })
         ),
     }),

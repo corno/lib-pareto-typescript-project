@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "lib-fountain-pen": "^0.0.0",
+    "res-typescript": "^0.0.0",
+    "lib-pareto-test": "^0.0.0",
+    "pareto-core-exe": "^0.0.0",
+    "pareto-core-map": "^0.0.0",
+    "pareto-core-async": "^0.0.0",
+    "pareto-core-dev": "^0.0.0",
+    "pareto-core-lib": "^0.0.0",
+    "pareto-core-data": "^0.0.0",
+    "pareto-core-state": "^0.0.0",
+    "res-pareto-main": "^0.0.0"
+  }
+}

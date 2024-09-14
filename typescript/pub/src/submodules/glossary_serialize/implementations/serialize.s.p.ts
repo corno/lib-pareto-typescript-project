@@ -1,5 +1,6 @@
 import * as pl from 'pareto-core-lib'
 import * as pt from 'pareto-core-types'
+import * as tmp from 'pareto-core-internals'
 
 import * as g_glossary from "../../glossary"
 import * as g_fp from "lib-fountain-pen"
@@ -39,19 +40,16 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
             $i: g_fp.SYNC.I.Line,
             $c: ($: T, $i: g_fp.SYNC.I.Line) => void,
         ) {
-            switch ($[0]) {
-                case false:
+            $.map(
+                ($) => {
+                    $i.snippet(`[true, `)
+                    $c($, $i)
+                    $i.snippet(`]`)
+                },
+                () => {
                     $i.snippet(`[false]`)
-                    break
-                case true:
-                    pl.ss($, ($) => {
-                        $i.snippet(`[true, `)
-                        $c($, $i)
-                        $i.snippet(`]`)
-                    })
-                    break
-                default: pl.au($[0])
-            }
+                }
+            )
         }
         function serializeNamespace($: g_glossary.T.Namespace<GAnnotation>, $i: g_fp.SYNC.I.Line) {
             $i.snippet(`{`)
@@ -531,7 +529,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                             pl.cc($.data, ($) => {
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`'data': `)
-                                    doOptional($, $i, ($, $i) => {
+                                    doOptional(tmp.wrapRawOptionalValue($), $i, ($, $i) => {
                                         serializeDataSpecifier($, $i)
                                     })
                                     $i.snippet(`,`)
@@ -540,7 +538,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                             pl.cc($.interface, ($) => {
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`'interface': `)
-                                    doOptional($, $i, ($, $i) => {
+                                    doOptional(tmp.wrapRawOptionalValue($), $i, ($, $i) => {
                                         serializeAsynchronousInterface($, $i)
 
                                     })
@@ -592,7 +590,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                             pl.cc($.data, ($) => {
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`'data': `)
-                                    doOptional($, $i, ($, $i) => {
+                                    doOptional(tmp.wrapRawOptionalValue($), $i, ($, $i) => {
                                         serializeDataSpecifier($, $i)
                                     })
                                     $i.snippet(`,`)
@@ -601,7 +599,7 @@ export const $$: A.serialize = <GAnnotation>($d: D.serialize<GAnnotation>) => {
                             pl.cc($.interface, ($) => {
                                 $i.nestedLine(($i) => {
                                     $i.snippet(`'interface': `)
-                                    doOptional($, $i, ($, $i) => {
+                                    doOptional(tmp.wrapRawOptionalValue($), $i, ($, $i) => {
                                         serializeSynchronousInterface($, $i)
                                     })
                                     $i.snippet(`,`)

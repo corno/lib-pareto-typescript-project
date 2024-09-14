@@ -8,20 +8,20 @@ import * as g_out from "../../glossary_possiblyresolved"
 import { A } from "../api.generated"
 
 function tempoptional<T, RT>(
-    $: pt.OptionalValue<T>,
-    a: ($: T) => pt.OptionalValue<RT>,
-    b: () => pt.OptionalValue<RT>,
-): pt.OptionalValue<RT> {
+    $: pt.RawOptionalValue<T>,
+    a: ($: T) => pt.RawOptionalValue<RT>,
+    b: () => pt.RawOptionalValue<RT>,
+): pt.RawOptionalValue<RT> {
     return tempoptional($, a, b)
 }
 export const $$: A.resolve = ($d, $se) => {
     
     function map_Arguments<Annotation>(
         $: g_in.T.Arguments<Annotation>,
-        $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
-        $v_parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_imports: pt.RawOptionalValue<g_out.T.Imports<Annotation>>,
+        $v_parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
     ): g_out.T.Arguments<Annotation> {
         return $d.resolveDictionary<g_in.T.Arguments.D<Annotation>, g_out.T.Arguments.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_DataSpecifier<Annotation>(
             $,
@@ -45,9 +45,9 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_AsynchronousInterface<Annotation>(
         $: g_in.T.AsynchronousInterface<Annotation>,
-        $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_imports: pt.RawOptionalValue<g_out.T.Imports<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
     ): g_out.T.AsynchronousInterface<Annotation> {
         return pl.cc($, ($): g_out.T.AsynchronousInterface<Annotation> => {
             switch ($[0]) {
@@ -70,7 +70,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_type__parameters
                     ))}))
-                    const $v_options: pt.OptionalValue<g_out.T.AsynchronousInterface.choice.options<Annotation>> = [true, $p_options]
+                    const $v_options: pt.RawOptionalValue<g_out.T.AsynchronousInterface.choice.options<Annotation>> = [true, $p_options]
                     return {
                         'options': $p_options,
                     }
@@ -98,7 +98,7 @@ export const $$: A.resolve = ($d, $se) => {
                         )],
                         () => [false],
                     ))
-                    const $v_data: pt.OptionalValue<g_out.T.AsynchronousInterface.method.data<Annotation>> = [true, $p_data]
+                    const $v_data: pt.RawOptionalValue<g_out.T.AsynchronousInterface.method.data<Annotation>> = [true, $p_data]
                     const $p__linterface: g_out.T.AsynchronousInterface.method._linterface<Annotation> = pl.cc($['interface'], ($) => tempoptional/*4*/(
                         $,
                         ($): g_out.T.AsynchronousInterface.method._linterface<Annotation> => [true, map_AsynchronousInterface<Annotation>(
@@ -121,7 +121,7 @@ export const $$: A.resolve = ($d, $se) => {
                         )],
                         () => [false],
                     ))
-                    const $v__linterface: pt.OptionalValue<g_out.T.AsynchronousInterface.method._linterface<Annotation>> = [true, $p__linterface]
+                    const $v__linterface: pt.RawOptionalValue<g_out.T.AsynchronousInterface.method._linterface<Annotation>> = [true, $p__linterface]
                     return {
                         'data': $p_data,
                         'interface': $p__linterface,
@@ -164,7 +164,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_type__parameters
                     ))
-                    const $v_data: pt.OptionalValue<g_out.T.AsynchronousInterface.streamconsumer.data<Annotation>> = [true, $p_data]
+                    const $v_data: pt.RawOptionalValue<g_out.T.AsynchronousInterface.streamconsumer.data<Annotation>> = [true, $p_data]
                     const $p_end: g_out.T.AsynchronousInterface.streamconsumer.end<Annotation> = pl.cc($['end'], ($) => map_AsynchronousInterface<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -183,7 +183,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_type__parameters
                     ))
-                    const $v_end: pt.OptionalValue<g_out.T.AsynchronousInterface.streamconsumer.end<Annotation>> = [true, $p_end]
+                    const $v_end: pt.RawOptionalValue<g_out.T.AsynchronousInterface.streamconsumer.end<Annotation>> = [true, $p_end]
                     return {
                         'data': $p_data,
                         'end': $p_end,
@@ -196,9 +196,9 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_AsynchronousInterfaceReference<Annotation>(
         $: g_in.T.AsynchronousInterfaceReference<Annotation>,
-        $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_imports: pt.RawOptionalValue<g_out.T.Imports<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
     ): g_out.T.AsynchronousInterfaceReference<Annotation> {
         return pl.cc($, ($) => {
             const $p_context: g_out.T.AsynchronousInterfaceReference.context<Annotation> = pl.cc($['context'], ($) => pl.cc($, ($): g_out.T.AsynchronousInterfaceReference.context<Annotation> => {
@@ -222,7 +222,7 @@ export const $$: A.resolve = ($d, $se) => {
                                 () => [false],
                             ),//$v_type__parameters
                         ))
-                        const $v_glossary: pt.OptionalValue<g_out.T.AsynchronousInterfaceReference.context._limport.glossary<Annotation>> = [true, $p_glossary]
+                        const $v_glossary: pt.RawOptionalValue<g_out.T.AsynchronousInterfaceReference.context._limport.glossary<Annotation>> = [true, $p_glossary]
                         return {
                             'glossary': $p_glossary,
                         }
@@ -233,9 +233,9 @@ export const $$: A.resolve = ($d, $se) => {
                     default: return pl.au($[0])
                 }
             }))
-            const $v_context: pt.OptionalValue<g_out.T.AsynchronousInterfaceReference.context<Annotation>> = [true, $p_context]
+            const $v_context: pt.RawOptionalValue<g_out.T.AsynchronousInterfaceReference.context<Annotation>> = [true, $p_context]
             const $p_interfaceXX: g_out.T.AsynchronousInterfaceReference.interfaceXX<Annotation> = pl.cc($['interfaceXX'], ($) => $)
-            const $v_interfaceXX: pt.OptionalValue<g_out.T.AsynchronousInterfaceReference.interfaceXX<Annotation>> = [true, $p_interfaceXX]
+            const $v_interfaceXX: pt.RawOptionalValue<g_out.T.AsynchronousInterfaceReference.interfaceXX<Annotation>> = [true, $p_interfaceXX]
             const $p_type__arguments: g_out.T.AsynchronousInterfaceReference.type__arguments<Annotation> = pl.cc($['type arguments'], ($) => map_Arguments<Annotation>(
                 $,
                 tempoptional/*3*/(
@@ -259,7 +259,7 @@ export const $$: A.resolve = ($d, $se) => {
                     () => [false],
                 ),//$v_type__parameters
             ))
-            const $v_type__arguments: pt.OptionalValue<g_out.T.AsynchronousInterfaceReference.type__arguments<Annotation>> = [true, $p_type__arguments]
+            const $v_type__arguments: pt.RawOptionalValue<g_out.T.AsynchronousInterfaceReference.type__arguments<Annotation>> = [true, $p_type__arguments]
             return {
                 'context': $p_context,
                 'interfaceXX': $p_interfaceXX,
@@ -270,9 +270,9 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_DataOrSynchronousInterface<Annotation>(
         $: g_in.T.DataOrSynchronousInterface<Annotation>,
-        $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_imports: pt.RawOptionalValue<g_out.T.Imports<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
     ): g_out.T.DataOrSynchronousInterface<Annotation> {
         return pl.cc($, ($): g_out.T.DataOrSynchronousInterface<Annotation> => {
             switch ($[0]) {
@@ -319,9 +319,9 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_DataSpecifier<Annotation>(
         $: g_in.T.DataSpecifier<Annotation>,
-        $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_imports: pt.RawOptionalValue<g_out.T.Imports<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
     ): g_out.T.DataSpecifier<Annotation> {
         return pl.cc($, ($): g_out.T.DataSpecifier<Annotation> => {
             switch ($[0]) {
@@ -348,7 +348,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))
-                                const $v_glossary: pt.OptionalValue<g_out.T.DataSpecifier._ltype.context._limport.glossary<Annotation>> = [true, $p_glossary]
+                                const $v_glossary: pt.RawOptionalValue<g_out.T.DataSpecifier._ltype.context._limport.glossary<Annotation>> = [true, $p_glossary]
                                 return {
                                     'glossary': $p_glossary,
                                 }
@@ -359,11 +359,11 @@ export const $$: A.resolve = ($d, $se) => {
                             default: return pl.au($[0])
                         }
                     }))
-                    const $v_context: pt.OptionalValue<g_out.T.DataSpecifier._ltype.context<Annotation>> = [true, $p_context]
+                    const $v_context: pt.RawOptionalValue<g_out.T.DataSpecifier._ltype.context<Annotation>> = [true, $p_context]
                     const $p_typeXX: g_out.T.DataSpecifier._ltype.typeXX<Annotation> = pl.cc($['typeXX'], ($) => $)
-                    const $v_typeXX: pt.OptionalValue<g_out.T.DataSpecifier._ltype.typeXX<Annotation>> = [true, $p_typeXX]
+                    const $v_typeXX: pt.RawOptionalValue<g_out.T.DataSpecifier._ltype.typeXX<Annotation>> = [true, $p_typeXX]
                     const $p_tailXX: g_out.T.DataSpecifier._ltype.tailXX<Annotation> = pl.cc($['tailXX'], ($) => $.map(($) => $))
-                    const $v_tailXX: pt.OptionalValue<g_out.T.DataSpecifier._ltype.tailXX<Annotation>> = [true, $p_tailXX]
+                    const $v_tailXX: pt.RawOptionalValue<g_out.T.DataSpecifier._ltype.tailXX<Annotation>> = [true, $p_tailXX]
                     const $p_type__arguments: g_out.T.DataSpecifier._ltype.type__arguments<Annotation> = pl.cc($['type arguments'], ($) => map_Arguments<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -387,7 +387,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_type__parameters
                     ))
-                    const $v_type__arguments: pt.OptionalValue<g_out.T.DataSpecifier._ltype.type__arguments<Annotation>> = [true, $p_type__arguments]
+                    const $v_type__arguments: pt.RawOptionalValue<g_out.T.DataSpecifier._ltype.type__arguments<Annotation>> = [true, $p_type__arguments]
                     return {
                         'context': $p_context,
                         'tailXX': $p_tailXX,
@@ -418,11 +418,11 @@ export const $$: A.resolve = ($d, $se) => {
                 $,
                 $v_glossaries,//$v_glossaries
             ))
-            const $v_imports: pt.OptionalValue<g_out.T.Glossary.imports<Annotation>> = [true, $p_imports]
+            const $v_imports: pt.RawOptionalValue<g_out.T.Glossary.imports<Annotation>> = [true, $p_imports]
             const $p_glossary__parameters: g_out.T.Glossary.glossary__parameters<Annotation> = pl.cc($['glossary parameters'], ($) => map_Parameters<Annotation>(
                 $,
             ))
-            const $v_glossary__parameters: pt.OptionalValue<g_out.T.Glossary.glossary__parameters<Annotation>> = [true, $p_glossary__parameters]
+            const $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Glossary.glossary__parameters<Annotation>> = [true, $p_glossary__parameters]
             const $p_root: g_out.T.Glossary.root<Annotation> = pl.cc($['root'], ($) => map_Namespace<Annotation>(
                 $,
                 tempoptional/*3*/(
@@ -436,13 +436,13 @@ export const $$: A.resolve = ($d, $se) => {
                     () => [false],
                 ),//$v_imports
             ))
-            const $v_root: pt.OptionalValue<g_out.T.Glossary.root<Annotation>> = [true, $p_root]
+            const $v_root: pt.RawOptionalValue<g_out.T.Glossary.root<Annotation>> = [true, $p_root]
             const $p_synchronous: g_out.T.Glossary.synchronous<Annotation> = pl.cc($['synchronous'], ($) => pl.cc($, ($) => {
                 const $p_interfaces: g_out.T.Glossary.synchronous.interfaces<Annotation> = pl.cc($['interfaces'], ($) => $d.resolveDictionary<g_in.T.Glossary.synchronous.interfaces.D<Annotation>, g_out.T.Glossary.synchronous.interfaces.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                     const $p_parameters: g_out.T.Glossary.synchronous.interfaces.D.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Parameters<Annotation>(
                         $,
                     ))
-                    const $v_parameters: pt.OptionalValue<g_out.T.Glossary.synchronous.interfaces.D.parameters<Annotation>> = [true, $p_parameters]
+                    const $v_parameters: pt.RawOptionalValue<g_out.T.Glossary.synchronous.interfaces.D.parameters<Annotation>> = [true, $p_parameters]
                     const $p__linterface: g_out.T.Glossary.synchronous.interfaces.D._linterface<Annotation> = pl.cc($['interface'], ($) => map_Synchronous__Interface<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -461,18 +461,18 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_type__parameters
                     ))
-                    const $v__linterface: pt.OptionalValue<g_out.T.Glossary.synchronous.interfaces.D._linterface<Annotation>> = [true, $p__linterface]
+                    const $v__linterface: pt.RawOptionalValue<g_out.T.Glossary.synchronous.interfaces.D._linterface<Annotation>> = [true, $p__linterface]
                     return {
                         'interface': $p__linterface,
                         'parameters': $p_parameters,
                     }
                 }))}))
-                const $v_interfaces: pt.OptionalValue<g_out.T.Glossary.synchronous.interfaces<Annotation>> = [true, $p_interfaces]
+                const $v_interfaces: pt.RawOptionalValue<g_out.T.Glossary.synchronous.interfaces<Annotation>> = [true, $p_interfaces]
                 const $p_algorithms: g_out.T.Glossary.synchronous.algorithms<Annotation> = pl.cc($['algorithms'], ($) => $d.resolveDictionary<g_in.T.Glossary.synchronous.algorithms.D<Annotation>, g_out.T.Glossary.synchronous.algorithms.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                     const $p_parameters: g_out.T.Glossary.synchronous.algorithms.D.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Parameters<Annotation>(
                         $,
                     ))
-                    const $v_parameters: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D.parameters<Annotation>> = [true, $p_parameters]
+                    const $v_parameters: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms.D.parameters<Annotation>> = [true, $p_parameters]
                     const $p__ltype: g_out.T.Glossary.synchronous.algorithms.D._ltype<Annotation> = pl.cc($['type'], ($) => pl.cc($, ($): g_out.T.Glossary.synchronous.algorithms.D._ltype<Annotation> => {
                         switch ($[0]) {
                             case 'function': return pl.ss($, ($) => ['function', pl.cc($, ($) => {
@@ -494,7 +494,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))
-                                const $v__lin: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction._lin<Annotation>> = [true, $p__lin]
+                                const $v__lin: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction._lin<Annotation>> = [true, $p__lin]
                                 const $p_out: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.out<Annotation> = pl.cc($['out'], ($) => map_DataSpecifier<Annotation>(
                                     $,
                                     tempoptional/*3*/(
@@ -513,7 +513,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))
-                                const $v_out: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.out<Annotation>> = [true, $p_out]
+                                const $v_out: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.out<Annotation>> = [true, $p_out]
                                 const $p_callbacks: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks<Annotation> = pl.cc($['callbacks'], ($) => $d.resolveDictionary<g_in.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D<Annotation>, g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                                     const $p__lin: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D._lin<Annotation> = pl.cc($['in'], ($) => map_DataSpecifier<Annotation>(
                                         $,
@@ -533,7 +533,7 @@ export const $$: A.resolve = ($d, $se) => {
                                             () => [false],
                                         ),//$v_type__parameters
                                     ))
-                                    const $v__lin: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D._lin<Annotation>> = [true, $p__lin]
+                                    const $v__lin: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D._lin<Annotation>> = [true, $p__lin]
                                     const $p_lookups: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.lookups<Annotation> = pl.cc($['lookups'], ($) => $d.resolveDictionary<g_in.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.lookups.D<Annotation>, g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.lookups.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_DataSpecifier<Annotation>(
                                         $,
                                         tempoptional/*3*/(
@@ -552,7 +552,7 @@ export const $$: A.resolve = ($d, $se) => {
                                             () => [false],
                                         ),//$v_type__parameters
                                     ))}))
-                                    const $v_lookups: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.lookups<Annotation>> = [true, $p_lookups]
+                                    const $v_lookups: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.lookups<Annotation>> = [true, $p_lookups]
                                     const $p_out: g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.out<Annotation> = pl.cc($['out'], ($) => map_DataSpecifier<Annotation>(
                                         $,
                                         tempoptional/*3*/(
@@ -571,14 +571,14 @@ export const $$: A.resolve = ($d, $se) => {
                                             () => [false],
                                         ),//$v_type__parameters
                                     ))
-                                    const $v_out: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.out<Annotation>> = [true, $p_out]
+                                    const $v_out: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks.D.out<Annotation>> = [true, $p_out]
                                     return {
                                         'in': $p__lin,
                                         'lookups': $p_lookups,
                                         'out': $p_out,
                                     }
                                 }))}))
-                                const $v_callbacks: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks<Annotation>> = [true, $p_callbacks]
+                                const $v_callbacks: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype._lfunction.callbacks<Annotation>> = [true, $p_callbacks]
                                 return {
                                     'callbacks': $p_callbacks,
                                     'in': $p__lin,
@@ -604,7 +604,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))
-                                const $v__lin: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype.procedure._lin<Annotation>> = [true, $p__lin]
+                                const $v__lin: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype.procedure._lin<Annotation>> = [true, $p__lin]
                                 const $p_out: g_out.T.Glossary.synchronous.algorithms.D._ltype.procedure.out<Annotation> = pl.cc($['out'], ($) => map_SynchronousInterfaceReference<Annotation>(
                                     $,
                                     tempoptional/*3*/(
@@ -623,7 +623,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))
-                                const $v_out: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype.procedure.out<Annotation>> = [true, $p_out]
+                                const $v_out: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype.procedure.out<Annotation>> = [true, $p_out]
                                 return {
                                     'in': $p__lin,
                                     'out': $p_out,
@@ -632,25 +632,25 @@ export const $$: A.resolve = ($d, $se) => {
                             default: return pl.au($[0])
                         }
                     }))
-                    const $v__ltype: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype<Annotation>> = [true, $p__ltype]
+                    const $v__ltype: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms.D._ltype<Annotation>> = [true, $p__ltype]
                     return {
                         'parameters': $p_parameters,
                         'type': $p__ltype,
                     }
                 }))}))
-                const $v_algorithms: pt.OptionalValue<g_out.T.Glossary.synchronous.algorithms<Annotation>> = [true, $p_algorithms]
+                const $v_algorithms: pt.RawOptionalValue<g_out.T.Glossary.synchronous.algorithms<Annotation>> = [true, $p_algorithms]
                 return {
                     'algorithms': $p_algorithms,
                     'interfaces': $p_interfaces,
                 }
             }))
-            const $v_synchronous: pt.OptionalValue<g_out.T.Glossary.synchronous<Annotation>> = [true, $p_synchronous]
+            const $v_synchronous: pt.RawOptionalValue<g_out.T.Glossary.synchronous<Annotation>> = [true, $p_synchronous]
             const $p_asynchronous: g_out.T.Glossary.asynchronous<Annotation> = pl.cc($['asynchronous'], ($) => pl.cc($, ($) => {
                 const $p_interfaces: g_out.T.Glossary.asynchronous.interfaces<Annotation> = pl.cc($['interfaces'], ($) => $d.resolveDictionary<g_in.T.Glossary.asynchronous.interfaces.D<Annotation>, g_out.T.Glossary.asynchronous.interfaces.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                     const $p_parameters: g_out.T.Glossary.asynchronous.interfaces.D.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Parameters<Annotation>(
                         $,
                     ))
-                    const $v_parameters: pt.OptionalValue<g_out.T.Glossary.asynchronous.interfaces.D.parameters<Annotation>> = [true, $p_parameters]
+                    const $v_parameters: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.interfaces.D.parameters<Annotation>> = [true, $p_parameters]
                     const $p__linterface: g_out.T.Glossary.asynchronous.interfaces.D._linterface<Annotation> = pl.cc($['interface'], ($) => map_AsynchronousInterface<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -669,18 +669,18 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_type__parameters
                     ))
-                    const $v__linterface: pt.OptionalValue<g_out.T.Glossary.asynchronous.interfaces.D._linterface<Annotation>> = [true, $p__linterface]
+                    const $v__linterface: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.interfaces.D._linterface<Annotation>> = [true, $p__linterface]
                     return {
                         'interface': $p__linterface,
                         'parameters': $p_parameters,
                     }
                 }))}))
-                const $v_interfaces: pt.OptionalValue<g_out.T.Glossary.asynchronous.interfaces<Annotation>> = [true, $p_interfaces]
+                const $v_interfaces: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.interfaces<Annotation>> = [true, $p_interfaces]
                 const $p_algorithms: g_out.T.Glossary.asynchronous.algorithms<Annotation> = pl.cc($['algorithms'], ($) => $d.resolveDictionary<g_in.T.Glossary.asynchronous.algorithms.D<Annotation>, g_out.T.Glossary.asynchronous.algorithms.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                     const $p_parameters: g_out.T.Glossary.asynchronous.algorithms.D.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Parameters<Annotation>(
                         $,
                     ))
-                    const $v_parameters: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms.D.parameters<Annotation>> = [true, $p_parameters]
+                    const $v_parameters: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.algorithms.D.parameters<Annotation>> = [true, $p_parameters]
                     const $p__ltype: g_out.T.Glossary.asynchronous.algorithms.D._ltype<Annotation> = pl.cc($['type'], ($) => pl.cc($, ($): g_out.T.Glossary.asynchronous.algorithms.D._ltype<Annotation> => {
                         switch ($[0]) {
                             case 'constructor': return pl.ss($, ($) => ['constructor', pl.cc($, ($) => {
@@ -702,7 +702,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))
-                                const $v__linterface: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor._linterface<Annotation>> = [true, $p__linterface]
+                                const $v__linterface: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor._linterface<Annotation>> = [true, $p__linterface]
                                 const $p_downstreams: g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor.downstreams<Annotation> = pl.cc($['downstreams'], ($) => $d.resolveDictionary<g_in.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor.downstreams.D<Annotation>, g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor.downstreams.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_AsynchronousInterfaceReference<Annotation>(
                                     $,
                                     tempoptional/*3*/(
@@ -721,7 +721,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))}))
-                                const $v_downstreams: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor.downstreams<Annotation>> = [true, $p_downstreams]
+                                const $v_downstreams: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype._lconstructor.downstreams<Annotation>> = [true, $p_downstreams]
                                 return {
                                     'downstreams': $p_downstreams,
                                     'interface': $p__linterface,
@@ -746,7 +746,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))
-                                const $v_out: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype._lfunction.out<Annotation>> = [true, $p_out]
+                                const $v_out: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype._lfunction.out<Annotation>> = [true, $p_out]
                                 const $p__lin: g_out.T.Glossary.asynchronous.algorithms.D._ltype._lfunction._lin<Annotation> = pl.cc($['in'], ($) => map_DataSpecifier<Annotation>(
                                     $,
                                     tempoptional/*3*/(
@@ -765,7 +765,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))
-                                const $v__lin: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype._lfunction._lin<Annotation>> = [true, $p__lin]
+                                const $v__lin: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype._lfunction._lin<Annotation>> = [true, $p__lin]
                                 return {
                                     'in': $p__lin,
                                     'out': $p_out,
@@ -790,7 +790,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))
-                                const $v_consumer: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype.resource.consumer<Annotation>> = [true, $p_consumer]
+                                const $v_consumer: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype.resource.consumer<Annotation>> = [true, $p_consumer]
                                 const $p_request: g_out.T.Glossary.asynchronous.algorithms.D._ltype.resource.request<Annotation> = pl.cc($['request'], ($) => map_DataSpecifier<Annotation>(
                                     $,
                                     tempoptional/*3*/(
@@ -809,7 +809,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         () => [false],
                                     ),//$v_type__parameters
                                 ))
-                                const $v_request: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype.resource.request<Annotation>> = [true, $p_request]
+                                const $v_request: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype.resource.request<Annotation>> = [true, $p_request]
                                 return {
                                     'consumer': $p_consumer,
                                     'request': $p_request,
@@ -818,19 +818,19 @@ export const $$: A.resolve = ($d, $se) => {
                             default: return pl.au($[0])
                         }
                     }))
-                    const $v__ltype: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype<Annotation>> = [true, $p__ltype]
+                    const $v__ltype: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.algorithms.D._ltype<Annotation>> = [true, $p__ltype]
                     return {
                         'parameters': $p_parameters,
                         'type': $p__ltype,
                     }
                 }))}))
-                const $v_algorithms: pt.OptionalValue<g_out.T.Glossary.asynchronous.algorithms<Annotation>> = [true, $p_algorithms]
+                const $v_algorithms: pt.RawOptionalValue<g_out.T.Glossary.asynchronous.algorithms<Annotation>> = [true, $p_algorithms]
                 return {
                     'algorithms': $p_algorithms,
                     'interfaces': $p_interfaces,
                 }
             }))
-            const $v_asynchronous: pt.OptionalValue<g_out.T.Glossary.asynchronous<Annotation>> = [true, $p_asynchronous]
+            const $v_asynchronous: pt.RawOptionalValue<g_out.T.Glossary.asynchronous<Annotation>> = [true, $p_asynchronous]
             return {
                 'asynchronous': $p_asynchronous,
                 'glossary parameters': $p_glossary__parameters,
@@ -843,16 +843,16 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Glossary__Reference<Annotation>(
         $: g_in.T.Glossary__Reference<Annotation>,
-        $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_imports: pt.RawOptionalValue<g_out.T.Imports<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
     ): g_out.T.Glossary__Reference<Annotation> {
         return pl.cc($, ($) => {
             const $p_glossary: g_out.T.Glossary__Reference.glossary<Annotation> = pl.cc($['glossary'], ($) => pl.cc($, ($) => {
                 const refkey = $.key
-                const constraint: pt.OptionalValue<g_out.T.Imports.D<Annotation>> = tempoptional/*3*/(
+                const constraint: pt.RawOptionalValue<g_out.T.Imports.D<Annotation>> = tempoptional/*3*/(
                     $v_imports,
-                    ($) => $.__getEntry<pt.OptionalValue<g_out.T.Imports.D<Annotation>>>(
+                    ($) => $.__getEntry<pt.RawOptionalValue<g_out.T.Imports.D<Annotation>>>(
                         refkey,
                         ($) => [true, $],
                         () => {
@@ -868,7 +868,7 @@ export const $$: A.resolve = ($d, $se) => {
                     'key': $.key,
                 }
             }))
-            const $v_glossary: pt.OptionalValue<g_out.T.Glossary__Reference.glossary<Annotation>> = [true, $p_glossary]
+            const $v_glossary: pt.RawOptionalValue<g_out.T.Glossary__Reference.glossary<Annotation>> = [true, $p_glossary]
             const $p_glossary__arguments: g_out.T.Glossary__Reference.glossary__arguments<Annotation> = pl.cc($['glossary arguments'], ($) => map_Arguments<Annotation>(
                 $,
                 tempoptional/*3*/(
@@ -892,7 +892,7 @@ export const $$: A.resolve = ($d, $se) => {
                     () => [false],
                 ),//$v_type__parameters
             ))
-            const $v_glossary__arguments: pt.OptionalValue<g_out.T.Glossary__Reference.glossary__arguments<Annotation>> = [true, $p_glossary__arguments]
+            const $v_glossary__arguments: pt.RawOptionalValue<g_out.T.Glossary__Reference.glossary__arguments<Annotation>> = [true, $p_glossary__arguments]
             return {
                 'glossary': $p_glossary,
                 'glossary arguments': $p_glossary__arguments,
@@ -911,8 +911,8 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Namespace<Annotation>(
         $: g_in.T.Namespace<Annotation>,
-        $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
+        $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_imports: pt.RawOptionalValue<g_out.T.Imports<Annotation>>,
     ): g_out.T.Namespace<Annotation> {
         return pl.cc($, ($) => {
             const $p_namespaces: g_out.T.Namespace.namespaces<Annotation> = pl.cc($['namespaces'], ($) => $d.resolveDictionary<g_in.T.Namespace.namespaces.D<Annotation>, g_out.T.Namespace.namespaces.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => map_Namespace<Annotation>(
@@ -928,12 +928,12 @@ export const $$: A.resolve = ($d, $se) => {
                     () => [false],
                 ),//$v_imports
             ))}))
-            const $v_namespaces: pt.OptionalValue<g_out.T.Namespace.namespaces<Annotation>> = [true, $p_namespaces]
+            const $v_namespaces: pt.RawOptionalValue<g_out.T.Namespace.namespaces<Annotation>> = [true, $p_namespaces]
             const $p_types: g_out.T.Namespace.types<Annotation> = pl.cc($['types'], ($) => $d.resolveDictionary<g_in.T.Namespace.types.D<Annotation>, g_out.T.Namespace.types.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                 const $p_parameters: g_out.T.Namespace.types.D.parameters<Annotation> = pl.cc($['parameters'], ($) => map_Parameters<Annotation>(
                     $,
                 ))
-                const $v_parameters: pt.OptionalValue<g_out.T.Namespace.types.D.parameters<Annotation>> = [true, $p_parameters]
+                const $v_parameters: pt.RawOptionalValue<g_out.T.Namespace.types.D.parameters<Annotation>> = [true, $p_parameters]
                 const $p__ltype: g_out.T.Namespace.types.D._ltype<Annotation> = pl.cc($['type'], ($) => map_Type<Annotation>(
                     $,
                     tempoptional/*3*/(
@@ -952,13 +952,13 @@ export const $$: A.resolve = ($d, $se) => {
                         () => [false],
                     ),//$v_type__parameters
                 ))
-                const $v__ltype: pt.OptionalValue<g_out.T.Namespace.types.D._ltype<Annotation>> = [true, $p__ltype]
+                const $v__ltype: pt.RawOptionalValue<g_out.T.Namespace.types.D._ltype<Annotation>> = [true, $p__ltype]
                 return {
                     'parameters': $p_parameters,
                     'type': $p__ltype,
                 }
             }))}))
-            const $v_types: pt.OptionalValue<g_out.T.Namespace.types<Annotation>> = [true, $p_types]
+            const $v_types: pt.RawOptionalValue<g_out.T.Namespace.types<Annotation>> = [true, $p_types]
             return {
                 'namespaces': $p_namespaces,
                 'types': $p_types,
@@ -976,9 +976,9 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Synchronous__Interface<Annotation>(
         $: g_in.T.Synchronous__Interface<Annotation>,
-        $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_imports: pt.RawOptionalValue<g_out.T.Imports<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
     ): g_out.T.Synchronous__Interface<Annotation> {
         return pl.cc($, ($): g_out.T.Synchronous__Interface<Annotation> => {
             switch ($[0]) {
@@ -1001,7 +1001,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_type__parameters
                     ))}))
-                    const $v_members: pt.OptionalValue<g_out.T.Synchronous__Interface.group.members<Annotation>> = [true, $p_members]
+                    const $v_members: pt.RawOptionalValue<g_out.T.Synchronous__Interface.group.members<Annotation>> = [true, $p_members]
                     return {
                         'members': $p_members,
                     }
@@ -1029,7 +1029,7 @@ export const $$: A.resolve = ($d, $se) => {
                         )],
                         () => [false],
                     ))
-                    const $v_data: pt.OptionalValue<g_out.T.Synchronous__Interface.method.data<Annotation>> = [true, $p_data]
+                    const $v_data: pt.RawOptionalValue<g_out.T.Synchronous__Interface.method.data<Annotation>> = [true, $p_data]
                     const $p__linterface: g_out.T.Synchronous__Interface.method._linterface<Annotation> = pl.cc($['interface'], ($) => tempoptional/*4*/(
                         $,
                         ($): g_out.T.Synchronous__Interface.method._linterface<Annotation> => [true, map_Synchronous__Interface<Annotation>(
@@ -1052,7 +1052,7 @@ export const $$: A.resolve = ($d, $se) => {
                         )],
                         () => [false],
                     ))
-                    const $v__linterface: pt.OptionalValue<g_out.T.Synchronous__Interface.method._linterface<Annotation>> = [true, $p__linterface]
+                    const $v__linterface: pt.RawOptionalValue<g_out.T.Synchronous__Interface.method._linterface<Annotation>> = [true, $p__linterface]
                     return {
                         'data': $p_data,
                         'interface': $p__linterface,
@@ -1083,9 +1083,9 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_SynchronousInterfaceReference<Annotation>(
         $: g_in.T.SynchronousInterfaceReference<Annotation>,
-        $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_imports: pt.RawOptionalValue<g_out.T.Imports<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
     ): g_out.T.SynchronousInterfaceReference<Annotation> {
         return pl.cc($, ($) => {
             const $p_context: g_out.T.SynchronousInterfaceReference.context<Annotation> = pl.cc($['context'], ($) => pl.cc($, ($): g_out.T.SynchronousInterfaceReference.context<Annotation> => {
@@ -1109,9 +1109,9 @@ export const $$: A.resolve = ($d, $se) => {
                                 () => [false],
                             ),//$v_type__parameters
                         ))
-                        const $v_glossary: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context._limport.glossary<Annotation>> = [true, $p_glossary]
+                        const $v_glossary: pt.RawOptionalValue<g_out.T.SynchronousInterfaceReference.context._limport.glossary<Annotation>> = [true, $p_glossary]
                         const $p_interfaceXX: g_out.T.SynchronousInterfaceReference.context._limport.interfaceXX<Annotation> = pl.cc($['interfaceXX'], ($) => $)
-                        const $v_interfaceXX: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context._limport.interfaceXX<Annotation>> = [true, $p_interfaceXX]
+                        const $v_interfaceXX: pt.RawOptionalValue<g_out.T.SynchronousInterfaceReference.context._limport.interfaceXX<Annotation>> = [true, $p_interfaceXX]
                         return {
                             'glossary': $p_glossary,
                             'interfaceXX': $p_interfaceXX,
@@ -1119,7 +1119,7 @@ export const $$: A.resolve = ($d, $se) => {
                     })])
                     case 'local': return pl.ss($, ($) => ['local', pl.cc($, ($) => {
                         const $p_interfaceXX: g_out.T.SynchronousInterfaceReference.context.local.interfaceXX<Annotation> = pl.cc($['interfaceXX'], ($) => $)
-                        const $v_interfaceXX: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context.local.interfaceXX<Annotation>> = [true, $p_interfaceXX]
+                        const $v_interfaceXX: pt.RawOptionalValue<g_out.T.SynchronousInterfaceReference.context.local.interfaceXX<Annotation>> = [true, $p_interfaceXX]
                         return {
                             'interfaceXX': $p_interfaceXX,
                         }
@@ -1127,7 +1127,7 @@ export const $$: A.resolve = ($d, $se) => {
                     default: return pl.au($[0])
                 }
             }))
-            const $v_context: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.context<Annotation>> = [true, $p_context]
+            const $v_context: pt.RawOptionalValue<g_out.T.SynchronousInterfaceReference.context<Annotation>> = [true, $p_context]
             const $p_type__arguments: g_out.T.SynchronousInterfaceReference.type__arguments<Annotation> = pl.cc($['type arguments'], ($) => map_Arguments<Annotation>(
                 $,
                 tempoptional/*3*/(
@@ -1151,7 +1151,7 @@ export const $$: A.resolve = ($d, $se) => {
                     () => [false],
                 ),//$v_type__parameters
             ))
-            const $v_type__arguments: pt.OptionalValue<g_out.T.SynchronousInterfaceReference.type__arguments<Annotation>> = [true, $p_type__arguments]
+            const $v_type__arguments: pt.RawOptionalValue<g_out.T.SynchronousInterfaceReference.type__arguments<Annotation>> = [true, $p_type__arguments]
             return {
                 'context': $p_context,
                 'type arguments': $p_type__arguments,
@@ -1161,9 +1161,9 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Type<Annotation>(
         $: g_in.T.Type<Annotation>,
-        $v_glossary__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
-        $v_imports: pt.OptionalValue<g_out.T.Imports<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_glossary__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
+        $v_imports: pt.RawOptionalValue<g_out.T.Imports<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out.T.Parameters<Annotation>>,
     ): g_out.T.Type<Annotation> {
         return pl.cc($, ($): g_out.T.Type<Annotation> => {
             switch ($[0]) {
@@ -1243,7 +1243,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_type__parameters
                     ))
-                    const $v__ltype: pt.OptionalValue<g_out.T.Type.group.D._ltype<Annotation>> = [true, $p__ltype]
+                    const $v__ltype: pt.RawOptionalValue<g_out.T.Type.group.D._ltype<Annotation>> = [true, $p__ltype]
                     return {
                         'type': $p__ltype,
                     }

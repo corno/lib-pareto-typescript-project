@@ -1,6 +1,7 @@
 import * as pl from 'pareto-core-lib'
 import * as pd from 'pareto-core-dev'
 import * as pt from 'pareto-core-types'
+import * as tmp from 'pareto-core-internals'
 
 import * as g_fp from "lib-fountain-pen"
 import * as g_project from "../../project"
@@ -17,11 +18,14 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                 onNotset: ($: null, $i: g_fp.SYNC.I.Line) => void,
             },
         ) {
-            if ($[0] === true) {
-                $c.onSet($[1], $i)
-            } else {
-                $c.onNotset(null, $i)
-            }
+            $.map(
+                ($) => {
+                    $c.onSet($, $i)
+                },
+                () => {
+                    $c.onNotset(null, $i)
+                }
+            )
         }
 
         function generateAPI(
@@ -484,7 +488,7 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                                     switch ($.type[0]) {
                                                         case 'dependent':
                                                             pl.ss($.type, ($) => {
-                                                                doOptional($['configuration data'], $i, {
+                                                                doOptional(tmp.wrapRawOptionalValue($['configuration data']), $i, {
                                                                     onNotset: () => { },
                                                                     onSet: ($, $i) => {
 
@@ -917,10 +921,9 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                         })
                                     })
                                 })
-
-                                pl.optional(
-                                    $.bindings,
+                                tmp.wrapRawOptionalValue($.bindings).map(
                                     ($) => {
+
                                         $i.directory("bindings", ($i) => {
                                             doModuleDefinition(
                                                 {
@@ -968,19 +971,18 @@ export const $$: A.serializeProject = <GAnnotation>($d: D.serializeProject<GAnno
                                     },
                                     () => {
 
-                                    },
+                                    }
                                 )
                                 $i.file("index.ts", ($i) => {
                                     $i.line(`export { $a } from "./main"`)
                                     $i.line(`export * from "./main"`)
-                                    pl.optional(
-                                        $.bindings,
-                                        () => {
+                                    tmp.wrapRawOptionalValue($.bindings).map(
+                                        ($) => {
                                             $i.line(`export { $api as $b } from "./bindings/implementation.generated"`)
                                         },
                                         () => {
 
-                                        },
+                                        }
                                     )
                                 })
                             })

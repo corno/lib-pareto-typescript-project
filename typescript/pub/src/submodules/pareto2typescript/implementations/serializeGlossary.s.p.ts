@@ -6,6 +6,8 @@ import * as g_this from "../glossary"
 import * as g_glossary from "../../glossary"
 import * as g_fp from "lib-fountain-pen"
 
+import * as tmp from 'pareto-core-internals'
+
 export namespace VOptional { }
 export type VOptional<AType> =
     | ['not set', {}]
@@ -63,20 +65,17 @@ export const $$: A.serializeGlossary = ($d) => {
                 $i: g_fp.SYNC.I.Line,
                 $c: {
                     onSet: ($: T, $i: g_fp.SYNC.I.Line) => void,
-                    onNotset: ($: {}, $i: g_fp.SYNC.I.Line) => void,
+                    onNotset: ($: undefined, $i: g_fp.SYNC.I.Line) => void,
                 },
             ) {
-                switch ($[0]) {
-                    case false:
-                        $c.onNotset($, $i)
-                        break
-                    case true:
-                        pl.ss($, ($) => {
-                            $c.onSet($, $i)
-                        })
-                        break
-                    default: pl.au($[0])
-                }
+                $.map(
+                    ($) => {
+                        $c.onSet($, $i)
+                    },
+                    () => {
+                        $c.onNotset(undefined, $i)
+                    }
+                )
             }
             function serializeGlobalParametersOnly(
                 $i: g_fp.SYNC.I.Line
@@ -624,21 +623,17 @@ export const $$: A.serializeGlossary = ($d) => {
                                 pl.ss($, ($) => {
                                     $i.snippet(`(`)
                                     pl.cc($.data, ($) => {
-                                        if ($ === null) {
-                                            //
-                                        } else {
-                                            doOptional($, $i, {
-                                                onNotset: ($, $i) => { },
-                                                onSet: ($, $i) => {
-                                                    $i.snippet(`$: `)
-                                                    serializeDataSpecifier($, $i)
-                                                    $i.snippet(`, `)
-                                                }
-                                            })
-                                        }
+                                        doOptional(tmp.wrapRawOptionalValue($), $i, {
+                                            onNotset: ($, $i) => { },
+                                            onSet: ($, $i) => {
+                                                $i.snippet(`$: `)
+                                                serializeDataSpecifier($, $i)
+                                                $i.snippet(`, `)
+                                            }
+                                        })
                                     })
                                     pl.cc($.interface, ($) => {
-                                        doOptional($, $i, {
+                                        doOptional(tmp.wrapRawOptionalValue($), $i, {
                                             onNotset: () => { },
                                             onSet: ($, $i) => {
                                                 $i.snippet(`$c: ($b: `)
@@ -756,7 +751,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                         if ($ === null) {
                                             //
                                         } else {
-                                            doOptional($, $i, {
+                                            doOptional(tmp.wrapRawOptionalValue($), $i, {
                                                 onNotset: ($, $i) => { },
                                                 onSet: ($, $i) => {
                                                     $i.snippet(`$: `)
@@ -768,7 +763,7 @@ export const $$: A.serializeGlossary = ($d) => {
                                     })
                                     $i.snippet(`) => `)
                                     pl.cc($.interface, ($) => {
-                                        doOptional($, $i, {
+                                        doOptional(tmp.wrapRawOptionalValue($), $i, {
                                             onNotset: () => {
                                                 $i.snippet(`void`)
                                             },

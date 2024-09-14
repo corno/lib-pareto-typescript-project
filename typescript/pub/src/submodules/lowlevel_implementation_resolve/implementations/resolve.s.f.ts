@@ -9,10 +9,10 @@ import * as g_out_typesystem from "../../lowlevel_typesystem_possiblyresolved"
 import { A } from "../api.generated"
 
 function tempoptional<T, RT>(
-    $: pt.OptionalValue<T>,
-    a: ($: T) => pt.OptionalValue<RT>,
-    b: () => pt.OptionalValue<RT>,
-): pt.OptionalValue<RT> {
+    $: pt.RawOptionalValue<T>,
+    a: ($: T) => pt.RawOptionalValue<RT>,
+    b: () => pt.RawOptionalValue<RT>,
+): pt.RawOptionalValue<RT> {
     return tempoptional($, a, b)
 }
 export const $$: A.resolve = ($d, $se) => {
@@ -24,13 +24,13 @@ export const $$: A.resolve = ($d, $se) => {
             const $p_dict: g_out.T.A__dictionary__with__constraint.dict<Annotation> = pl.cc($['dict'], ($) => $d.resolveDictionary<g_in.T.A__dictionary__with__constraint.dict.D<Annotation>, g_out.T.A__dictionary__with__constraint.dict.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
                 return null
             }))}))
-            const $v_dict: pt.OptionalValue<g_out.T.A__dictionary__with__constraint.dict<Annotation>> = [true, $p_dict]
+            const $v_dict: pt.RawOptionalValue<g_out.T.A__dictionary__with__constraint.dict<Annotation>> = [true, $p_dict]
             const $p_constrained__dict: g_out.T.A__dictionary__with__constraint.constrained__dict<Annotation> = pl.cc($['constrained dict'], ($) => $d.resolveDictionary<g_in.T.A__dictionary__with__constraint.constrained__dict.D<Annotation>, g_out.T.A__dictionary__with__constraint.constrained__dict.D<Annotation>>($, { 'map': ($, $l) => {
                 const entrykey = $.key
                 return pl.cc($.value, ($) => {
-                    const /*dict constraint*/$v_a__constraint: pt.OptionalValue<g_out.T.A__dictionary__with__constraint.dict.D<Annotation>> = tempoptional/*3*/(
+                    const /*dict constraint*/$v_a__constraint: pt.RawOptionalValue<g_out.T.A__dictionary__with__constraint.dict.D<Annotation>> = tempoptional/*3*/(
                         $v_dict,
-                        ($) => $.__getEntry<pt.OptionalValue<g_out.T.A__dictionary__with__constraint.dict.D<Annotation>>>(
+                        ($) => $.__getEntry<pt.RawOptionalValue<g_out.T.A__dictionary__with__constraint.dict.D<Annotation>>>(
                             entrykey,
                             ($) => [true, $],
                             () => {
@@ -51,7 +51,7 @@ export const $$: A.resolve = ($d, $se) => {
                     }
                 })
             }}))
-            const $v_constrained__dict: pt.OptionalValue<g_out.T.A__dictionary__with__constraint.constrained__dict<Annotation>> = [true, $p_constrained__dict]
+            const $v_constrained__dict: pt.RawOptionalValue<g_out.T.A__dictionary__with__constraint.constrained__dict<Annotation>> = [true, $p_constrained__dict]
             return {
                 'constrained dict': $p_constrained__dict,
                 'dict': $p_dict,
@@ -61,7 +61,7 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_A__optional__with__result<Annotation>(
         $: g_in.T.A__optional__with__result<Annotation>,
-        $v_result__param: pt.OptionalValue<g_out.T.A__Result<Annotation>>,
+        $v_result__param: pt.RawOptionalValue<g_out.T.A__Result<Annotation>>,
     ): g_out.T.A__optional__with__result<Annotation> {
         return pl.cc($, ($) => {
             const $p_opt: g_out.T.A__optional__with__result.opt<Annotation> = pl.cc($['opt'], ($) => pl.cc($, ($) => { //optional with result
@@ -71,7 +71,7 @@ export const $$: A.resolve = ($d, $se) => {
                         const $p_rslt: g_out.T.A__optional__with__result.opt.content.O.rslt<Annotation> = pl.cc($['rslt'], ($) => map_A__Result<Annotation>(
                             $,
                         ))
-                        const $v_rslt: pt.OptionalValue<g_out.T.A__optional__with__result.opt.content.O.rslt<Annotation>> = [true, $p_rslt]
+                        const $v_rslt: pt.RawOptionalValue<g_out.T.A__optional__with__result.opt.content.O.rslt<Annotation>> = [true, $p_rslt]
                         return {
                             'rslt': $p_rslt,
                         }
@@ -91,7 +91,7 @@ export const $$: A.resolve = ($d, $se) => {
                     ),
                 }
             }))
-            const $v_opt: pt.OptionalValue<g_out.T.A__optional__with__result.opt<Annotation>> = [true, $p_opt]
+            const $v_opt: pt.RawOptionalValue<g_out.T.A__optional__with__result.opt<Annotation>> = [true, $p_opt]
             return {
                 'opt': $p_opt,
             }
@@ -103,7 +103,7 @@ export const $$: A.resolve = ($d, $se) => {
     ): g_out.T.A__Result<Annotation> {
         return pl.cc($, ($) => {
             const $p_foo: g_out.T.A__Result.foo<Annotation> = pl.cc($['foo'], ($) => $)
-            const $v_foo: pt.OptionalValue<g_out.T.A__Result.foo<Annotation>> = [true, $p_foo]
+            const $v_foo: pt.RawOptionalValue<g_out.T.A__Result.foo<Annotation>> = [true, $p_foo]
             return {
                 'foo': $p_foo,
             }
@@ -118,7 +118,7 @@ export const $$: A.resolve = ($d, $se) => {
                 switch ($[0]) {
                     case 'a': return pl.ss($, ($) => ['a', pl.cc($, ($) => {
                         const $p_bar: g_out.T.A__tagged__union__with__constrained__option.tu1.a.bar<Annotation> = pl.cc($['bar'], ($) => $)
-                        const $v_bar: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1.a.bar<Annotation>> = [true, $p_bar]
+                        const $v_bar: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1.a.bar<Annotation>> = [true, $p_bar]
                         return {
                             'bar': $p_bar,
                         }
@@ -126,12 +126,12 @@ export const $$: A.resolve = ($d, $se) => {
                     default: return pl.au($[0])
                 }
             }))
-            const $v_tu1: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1<Annotation>> = [true, $p_tu1]
+            const $v_tu1: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1<Annotation>> = [true, $p_tu1]
             const $p_tu2: g_out.T.A__tagged__union__with__constrained__option.tu2<Annotation> = pl.cc($['tu2'], ($) => pl.cc($, ($): g_out.T.A__tagged__union__with__constrained__option.tu2<Annotation> => {
                 switch ($[0]) {
                     case 'a': return pl.ss($, ($) => {
-                        const /*option constraint*/$v_opt__constraint: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1.a<Annotation>> = pl.cc($, ($) => {
-                            const optConstraint: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1.a<Annotation>> = tempoptional/*3*/(
+                        const /*option constraint*/$v_opt__constraint: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1.a<Annotation>> = pl.cc($, ($) => {
+                            const optConstraint: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1.a<Annotation>> = tempoptional/*3*/(
                                 $v_tu1,
                                 ($) => ($[0] === 'a')
                                     ? [true, $[1]]
@@ -154,7 +154,7 @@ export const $$: A.resolve = ($d, $se) => {
                                     const $p_rslt: g_out.T.A__tagged__union__with__constrained__option.tu2.a.content.rslt<Annotation> = pl.cc($['rslt'], ($) => map_A__Result<Annotation>(
                                         $,
                                     ))
-                                    const $v_rslt: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu2.a.content.rslt<Annotation>> = [true, $p_rslt]
+                                    const $v_rslt: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu2.a.content.rslt<Annotation>> = [true, $p_rslt]
                                     return {
                                         'rslt': $p_rslt,
                                     }
@@ -165,7 +165,7 @@ export const $$: A.resolve = ($d, $se) => {
                     default: return pl.au($[0])
                 }
             }))
-            const $v_tu2: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu2<Annotation>> = [true, $p_tu2]
+            const $v_tu2: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu2<Annotation>> = [true, $p_tu2]
             return {
                 'tu1': $p_tu1,
                 'tu2': $p_tu2,
@@ -181,7 +181,7 @@ export const $$: A.resolve = ($d, $se) => {
                 switch ($[0]) {
                     case 'a': return pl.ss($, ($) => ['a', pl.cc($, ($) => {
                         const $p_bar: g_out.T.A__tagged__union__with__constrained__option__and__result.tu1.a.bar<Annotation> = pl.cc($['bar'], ($) => $)
-                        const $v_bar: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option__and__result.tu1.a.bar<Annotation>> = [true, $p_bar]
+                        const $v_bar: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option__and__result.tu1.a.bar<Annotation>> = [true, $p_bar]
                         return {
                             'bar': $p_bar,
                         }
@@ -189,12 +189,12 @@ export const $$: A.resolve = ($d, $se) => {
                     default: return pl.au($[0])
                 }
             }))
-            const $v_tu1: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option__and__result.tu1<Annotation>> = [true, $p_tu1]
+            const $v_tu1: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option__and__result.tu1<Annotation>> = [true, $p_tu1]
             const $p_tu2: g_out.T.A__tagged__union__with__constrained__option__and__result.tu2<Annotation> = pl.cc($['tu2'], ($) => pl.cc($, ($): g_out.T.A__tagged__union__with__constrained__option__and__result.tu2<Annotation> => {
                 switch ($[0]) {
                     case 'a': return pl.ss($, ($) => { //option with result
-                        const /*option constraint*/$v_opt__constraint: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1.a<Annotation>> = pl.cc($, ($) => {
-                            const optConstraint: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1.a<Annotation>> = tempoptional/*3*/(
+                        const /*option constraint*/$v_opt__constraint: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1.a<Annotation>> = pl.cc($, ($) => {
+                            const optConstraint: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option.tu1.a<Annotation>> = tempoptional/*3*/(
                                 $v_tu1,
                                 ($) => ($[0] === 'a')
                                     ? [true, $[1]]
@@ -217,7 +217,7 @@ export const $$: A.resolve = ($d, $se) => {
                                     const $p_rslt: g_out.T.A__tagged__union__with__constrained__option__and__result.tu2.content.a.content.rslt<Annotation> = pl.cc($['rslt'], ($) => map_A__Result<Annotation>(
                                         $,
                                     ))
-                                    const $v_rslt: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option__and__result.tu2.content.a.content.rslt<Annotation>> = [true, $p_rslt]
+                                    const $v_rslt: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option__and__result.tu2.content.a.content.rslt<Annotation>> = [true, $p_rslt]
                                     return {
                                         'rslt': $p_rslt,
                                     }
@@ -226,13 +226,13 @@ export const $$: A.resolve = ($d, $se) => {
                         })
                         return {
                             'content': ['a', stateData],
-                            'result': pl.cc(stateData.content, ($): pt.OptionalValue<g_out.T.A__Result<Annotation>> => pl.cc($['rslt'], ($) => [true, $])),
+                            'result': pl.cc(stateData.content, ($): pt.RawOptionalValue<g_out.T.A__Result<Annotation>> => pl.cc($['rslt'], ($) => [true, $])),
                         }
                     })
                     default: return pl.au($[0])
                 }
             }))
-            const $v_tu2: pt.OptionalValue<g_out.T.A__tagged__union__with__constrained__option__and__result.tu2<Annotation>> = [true, $p_tu2]
+            const $v_tu2: pt.RawOptionalValue<g_out.T.A__tagged__union__with__constrained__option__and__result.tu2<Annotation>> = [true, $p_tu2]
             return {
                 'tu1': $p_tu1,
                 'tu2': $p_tu2,
@@ -251,20 +251,20 @@ export const $$: A.resolve = ($d, $se) => {
                             const $p_rslt: g_out.T.A__tagged__union__with__result.tu.content.a.rslt<Annotation> = pl.cc($['rslt'], ($) => map_A__Result<Annotation>(
                                 $,
                             ))
-                            const $v_rslt: pt.OptionalValue<g_out.T.A__tagged__union__with__result.tu.content.a.rslt<Annotation>> = [true, $p_rslt]
+                            const $v_rslt: pt.RawOptionalValue<g_out.T.A__tagged__union__with__result.tu.content.a.rslt<Annotation>> = [true, $p_rslt]
                             return {
                                 'rslt': $p_rslt,
                             }
                         })
                         return {
                             'content': ['a', stateData],
-                            'result': pl.cc(stateData, ($): pt.OptionalValue<g_out.T.A__Result<Annotation>> => pl.cc($['rslt'], ($) => [true, $])),
+                            'result': pl.cc(stateData, ($): pt.RawOptionalValue<g_out.T.A__Result<Annotation>> => pl.cc($['rslt'], ($) => [true, $])),
                         }
                     })
                     default: return pl.au($[0])
                 }
             }))
-            const $v_tu: pt.OptionalValue<g_out.T.A__tagged__union__with__result.tu<Annotation>> = [true, $p_tu]
+            const $v_tu: pt.RawOptionalValue<g_out.T.A__tagged__union__with__result.tu<Annotation>> = [true, $p_tu]
             return {
                 'tu': $p_tu,
             }
@@ -273,15 +273,15 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Address__Selection<Annotation>(
         $: g_in.T.Address__Selection<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Address__Selection<Annotation> {
         const content = pl.cc($, ($) => {
             const $p_variable: g_out.T.Address__Selection.content.variable<Annotation> = pl.cc($['variable'], ($) => pl.cc($, ($) => {
                 const refkey = $.key
-                const constraint: pt.OptionalValue<g_out.T.Variables.D<Annotation>> = tempoptional/*3*/(
+                const constraint: pt.RawOptionalValue<g_out.T.Variables.D<Annotation>> = tempoptional/*3*/(
                     $v_variable__stack,
-                    ($) => $.__getEntry<pt.OptionalValue<g_out.T.Variables.D<Annotation>>>(
+                    ($) => $.__getEntry<pt.RawOptionalValue<g_out.T.Variables.D<Annotation>>>(
                         refkey,
                         ($) => [true, $],
                         () => {
@@ -297,7 +297,7 @@ export const $$: A.resolve = ($d, $se) => {
                     'key': $.key,
                 }
             }))
-            const $v_variable: pt.OptionalValue<g_out.T.Address__Selection.content.variable<Annotation>> = [true, $p_variable]
+            const $v_variable: pt.RawOptionalValue<g_out.T.Address__Selection.content.variable<Annotation>> = [true, $p_variable]
             const $p_tail: g_out.T.Address__Selection.content.tail<Annotation> = pl.cc($['tail'], ($) => map_Address__Selection__Tail<Annotation>(
                 $,
                 tempoptional/*3*/(
@@ -324,7 +324,7 @@ export const $$: A.resolve = ($d, $se) => {
                     () => [false],
                 ),//$v_variable__stack
             ))
-            const $v_tail: pt.OptionalValue<g_out.T.Address__Selection.content.tail<Annotation>> = [true, $p_tail]
+            const $v_tail: pt.RawOptionalValue<g_out.T.Address__Selection.content.tail<Annotation>> = [true, $p_tail]
             return {
                 'tail': $p_tail,
                 'variable': $p_variable,
@@ -332,7 +332,7 @@ export const $$: A.resolve = ($d, $se) => {
         })
         return {
             'content': content,
-            'result': pl.cc(content, ($): pt.OptionalValue<g_out_typesystem.T.Type<Annotation>> => pl.cc($['tail'], ($) => tempoptional(
+            'result': pl.cc(content, ($): pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>> => pl.cc($['tail'], ($) => tempoptional(
                 $.result,
                 ($) => [true, $],
                 () => [false],
@@ -342,9 +342,9 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Address__Selection__Tail<Annotation>(
         $: g_in.T.Address__Selection__Tail<Annotation>,
-        $v_current__address: pt.OptionalValue<g_out_typesystem.T.Type<Annotation>>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_current__address: pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Address__Selection__Tail<Annotation> {
         const content = pl.cc($, ($) => { //optional with result
             const content: g_out.T.Address__Selection__Tail.content.content<Annotation> = tempoptional/*4*/(
@@ -353,8 +353,8 @@ export const $$: A.resolve = ($d, $se) => {
                     const $p_step: g_out.T.Address__Selection__Tail.content.content.O.step<Annotation> = pl.cc($['step'], ($) => pl.cc($, ($): g_out.T.Address__Selection__Tail.content.content.O.step<Annotation> => {
                         switch ($[0]) {
                             case 'call': return pl.ss($, ($) => { //option with result
-                                const /*option constraint*/$v_address__function: pt.OptionalValue<g_out_typesystem.T.Type.address__function<Annotation>> = pl.cc($, ($) => {
-                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type.address__function<Annotation>> = tempoptional/*3*/(
+                                const /*option constraint*/$v_address__function: pt.RawOptionalValue<g_out_typesystem.T.Type.address__function<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type.address__function<Annotation>> = tempoptional/*3*/(
                                         $v_current__address,
                                         ($) => ($[0] === 'address function')
                                             ? [true, $[1]]
@@ -387,7 +387,7 @@ export const $$: A.resolve = ($d, $se) => {
                                                     () => [false],
                                                 ),//$v_type__parameters
                                             ))
-                                            const $v_type__arguments: pt.OptionalValue<g_out.T.Address__Selection__Tail.content.content.O.step.content.call.content.type__arguments<Annotation>> = [true, $p_type__arguments]
+                                            const $v_type__arguments: pt.RawOptionalValue<g_out.T.Address__Selection__Tail.content.content.O.step.content.call.content.type__arguments<Annotation>> = [true, $p_type__arguments]
                                             return {
                                                 'type arguments': $p_type__arguments,
                                             }
@@ -396,7 +396,7 @@ export const $$: A.resolve = ($d, $se) => {
                                 })
                                 return {
                                     'content': ['call', stateData],
-                                    'result': pl.cc(stateData.content, ($): pt.OptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional/*3*/(
+                                    'result': pl.cc(stateData.content, ($): pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional/*3*/(
                                         $v_address__function,
                                         ($) => pl.cc($['return type'], ($) => [true, $]),
                                         () => [false],
@@ -404,8 +404,8 @@ export const $$: A.resolve = ($d, $se) => {
                                 }
                             })
                             case 'property': return pl.ss($, ($) => { //option with result
-                                const /*option constraint*/$v_group: pt.OptionalValue<g_out_typesystem.T.Type.group<Annotation>> = pl.cc($, ($) => {
-                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type.group<Annotation>> = tempoptional/*3*/(
+                                const /*option constraint*/$v_group: pt.RawOptionalValue<g_out_typesystem.T.Type.group<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type.group<Annotation>> = tempoptional/*3*/(
                                         $v_current__address,
                                         ($) => ($[0] === 'group')
                                             ? [true, $[1]]
@@ -426,9 +426,9 @@ export const $$: A.resolve = ($d, $se) => {
                                         },
                                         'content': pl.cc($.content, ($) => pl.cc($, ($) => {
                                             const refkey = $.key
-                                            const constraint: pt.OptionalValue<g_out_typesystem.T.Type.group.D<Annotation>> = tempoptional/*3*/(
+                                            const constraint: pt.RawOptionalValue<g_out_typesystem.T.Type.group.D<Annotation>> = tempoptional/*3*/(
                                                 $v_group,
-                                                ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Type.group.D<Annotation>>>(
+                                                ($) => $.__getEntry<pt.RawOptionalValue<g_out_typesystem.T.Type.group.D<Annotation>>>(
                                                     refkey,
                                                     ($) => [true, $],
                                                     () => {
@@ -448,7 +448,7 @@ export const $$: A.resolve = ($d, $se) => {
                                 })
                                 return {
                                     'content': ['property', stateData],
-                                    'result': pl.cc(stateData.content, ($): pt.OptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional/*1*/(
+                                    'result': pl.cc(stateData.content, ($): pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional/*1*/(
                                         $.constraint,
                                         ($) => [true, $],
                                         () => [false],
@@ -458,7 +458,7 @@ export const $$: A.resolve = ($d, $se) => {
                             default: return pl.au($[0])
                         }
                     }))
-                    const $v_step: pt.OptionalValue<g_out.T.Address__Selection__Tail.content.content.O.step<Annotation>> = [true, $p_step]
+                    const $v_step: pt.RawOptionalValue<g_out.T.Address__Selection__Tail.content.content.O.step<Annotation>> = [true, $p_step]
                     const $p_tail: g_out.T.Address__Selection__Tail.content.content.O.tail<Annotation> = pl.cc($['tail'], ($) => map_Address__Selection__Tail<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -481,7 +481,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_tail: pt.OptionalValue<g_out.T.Address__Selection__Tail.content.content.O.tail<Annotation>> = [true, $p_tail]
+                    const $v_tail: pt.RawOptionalValue<g_out.T.Address__Selection__Tail.content.content.O.tail<Annotation>> = [true, $p_tail]
                     return {
                         'step': $p_step,
                         'tail': $p_tail,
@@ -508,7 +508,7 @@ export const $$: A.resolve = ($d, $se) => {
         })
         return {
             'content': content,
-            'result': pl.cc(content, ($): pt.OptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional(
+            'result': pl.cc(content, ($): pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional(
                 $.result,
                 ($) => [true, $],
                 () => [false],
@@ -518,8 +518,8 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Assign<Annotation>(
         $: g_in.T.Assign<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Assign<Annotation> {
         return pl.cc($, ($) => {
             const $p_target: g_out.T.Assign.target<Annotation> = pl.cc($['target'], ($) => map_Address__Selection<Annotation>(
@@ -535,7 +535,7 @@ export const $$: A.resolve = ($d, $se) => {
                     () => [false],
                 ),//$v_variable__stack
             ))
-            const $v_target: pt.OptionalValue<g_out.T.Assign.target<Annotation>> = [true, $p_target]
+            const $v_target: pt.RawOptionalValue<g_out.T.Assign.target<Annotation>> = [true, $p_target]
             const $p_right__hand__side: g_out.T.Assign.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Expression<Annotation>(
                 $,
                 tempoptional/*3*/(
@@ -558,7 +558,7 @@ export const $$: A.resolve = ($d, $se) => {
                     () => [false],
                 ),//$v_variable__stack
             ))
-            const $v_right__hand__side: pt.OptionalValue<g_out.T.Assign.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+            const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Assign.right__hand__side<Annotation>> = [true, $p_right__hand__side]
             return {
                 'right hand side': $p_right__hand__side,
                 'target': $p_target,
@@ -568,9 +568,9 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Block<Annotation>(
         $: g_in.T.Block<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out_typesystem.T.Type__Parameters<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out_typesystem.T.Type__Parameters<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Block<Annotation> {
         return pl.cc($, ($) => {
             const $p_variables: g_out.T.Block.variables<Annotation> = pl.cc($['variables'], ($) => map_Variables<Annotation>(
@@ -586,7 +586,7 @@ export const $$: A.resolve = ($d, $se) => {
                     () => [false],
                 ),//$v_variable__stack
             ))
-            const $v_variables: pt.OptionalValue<g_out.T.Block.variables<Annotation>> = [true, $p_variables]
+            const $v_variables: pt.RawOptionalValue<g_out.T.Block.variables<Annotation>> = [true, $p_variables]
             const $p_statements: g_out.T.Block.statements<Annotation> = pl.cc($['statements'], ($) => map_Statements<Annotation>(
                 $,
                 tempoptional/*3*/(
@@ -605,7 +605,7 @@ export const $$: A.resolve = ($d, $se) => {
                     () => [false],
                 ),//$v_variable__stack
             ))
-            const $v_statements: pt.OptionalValue<g_out.T.Block.statements<Annotation>> = [true, $p_statements]
+            const $v_statements: pt.RawOptionalValue<g_out.T.Block.statements<Annotation>> = [true, $p_statements]
             return {
                 'statements': $p_statements,
                 'variables': $p_variables,
@@ -615,8 +615,8 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Boolean__Expression<Annotation>(
         $: g_in.T.Boolean__Expression<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Boolean__Expression<Annotation> {
         return pl.cc($, ($): g_out.T.Boolean__Expression<Annotation> => {
             switch ($[0]) {
@@ -634,7 +634,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.and.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $v_left__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.and.left__hand__side<Annotation>> = [true, $p_left__hand__side]
                     const $p_right__hand__side: g_out.T.Boolean__Expression.and.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Boolean__Expression__Or__Selection<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -648,7 +648,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.and.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.and.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                     return {
                         'left hand side': $p_left__hand__side,
                         'right hand side': $p_right__hand__side,
@@ -671,7 +671,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.greater__than.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $v_left__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.greater__than.left__hand__side<Annotation>> = [true, $p_left__hand__side]
                     const $p_right__hand__side: g_out.T.Boolean__Expression.greater__than.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -685,7 +685,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.greater__than.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.greater__than.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                     return {
                         'left hand side': $p_left__hand__side,
                         'right hand side': $p_right__hand__side,
@@ -705,7 +705,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.less__than.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $v_left__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.less__than.left__hand__side<Annotation>> = [true, $p_left__hand__side]
                     const $p_right__hand__side: g_out.T.Boolean__Expression.less__than.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -719,7 +719,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.less__than.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.less__than.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                     return {
                         'left hand side': $p_left__hand__side,
                         'right hand side': $p_right__hand__side,
@@ -752,7 +752,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.number__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $v_left__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.number__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
                     const $p_right__hand__side: g_out.T.Boolean__Expression.number__equals.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -766,7 +766,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.number__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.number__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                     return {
                         'left hand side': $p_left__hand__side,
                         'right hand side': $p_right__hand__side,
@@ -786,7 +786,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.number__not__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $v_left__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.number__not__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
                     const $p_right__hand__side: g_out.T.Boolean__Expression.number__not__equals.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -800,7 +800,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.number__not__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.number__not__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                     return {
                         'left hand side': $p_left__hand__side,
                         'right hand side': $p_right__hand__side,
@@ -820,7 +820,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.or.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $v_left__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.or.left__hand__side<Annotation>> = [true, $p_left__hand__side]
                     const $p_right__hand__side: g_out.T.Boolean__Expression.or.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Boolean__Expression__Or__Selection<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -834,7 +834,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.or.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.or.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                     return {
                         'left hand side': $p_left__hand__side,
                         'right hand side': $p_right__hand__side,
@@ -854,7 +854,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.string__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $v_left__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.string__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
                     const $p_right__hand__side: g_out.T.Boolean__Expression.string__equals.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_String__Expression__Or__Selection<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -868,7 +868,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.string__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.string__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                     return {
                         'left hand side': $p_left__hand__side,
                         'right hand side': $p_right__hand__side,
@@ -888,7 +888,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.string__not__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $v_left__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.string__not__equals.left__hand__side<Annotation>> = [true, $p_left__hand__side]
                     const $p_right__hand__side: g_out.T.Boolean__Expression.string__not__equals.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_String__Expression__Or__Selection<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -902,7 +902,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Boolean__Expression.string__not__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Boolean__Expression.string__not__equals.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                     return {
                         'left hand side': $p_left__hand__side,
                         'right hand side': $p_right__hand__side,
@@ -918,8 +918,8 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Boolean__Expression__Or__Selection<Annotation>(
         $: g_in.T.Boolean__Expression__Or__Selection<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Boolean__Expression__Or__Selection<Annotation> {
         return pl.cc($, ($): g_out.T.Boolean__Expression__Or__Selection<Annotation> => {
             switch ($[0]) {
@@ -950,12 +950,12 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_selection: pt.OptionalValue<g_out.T.Boolean__Expression__Or__Selection.selection.selection<Annotation>> = [true, $p_selection]
+                    const $v_selection: pt.RawOptionalValue<g_out.T.Boolean__Expression__Or__Selection.selection.selection<Annotation>> = [true, $p_selection]
                     const $p_cast__to__boolean: g_out.T.Boolean__Expression__Or__Selection.selection.cast__to__boolean<Annotation> = pl.cc($['cast to boolean'], ($) => pl.cc($, ($): g_out.T.Boolean__Expression__Or__Selection.selection.cast__to__boolean<Annotation> => {
                         switch ($[0]) {
                             case 'boolean': return pl.ss($, ($) => {
-                                const /*option constraint*/$v__lboolean: pt.OptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = pl.cc($, ($) => {
-                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = tempoptional/*3*/(
+                                const /*option constraint*/$v__lboolean: pt.RawOptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = tempoptional/*3*/(
                                         $v_selection,
                                         ($) => tempoptional(
                                             $.result,
@@ -987,7 +987,7 @@ export const $$: A.resolve = ($d, $se) => {
                             default: return pl.au($[0])
                         }
                     }))
-                    const $v_cast__to__boolean: pt.OptionalValue<g_out.T.Boolean__Expression__Or__Selection.selection.cast__to__boolean<Annotation>> = [true, $p_cast__to__boolean]
+                    const $v_cast__to__boolean: pt.RawOptionalValue<g_out.T.Boolean__Expression__Or__Selection.selection.cast__to__boolean<Annotation>> = [true, $p_cast__to__boolean]
                     return {
                         'cast to boolean': $p_cast__to__boolean,
                         'selection': $p_selection,
@@ -1000,15 +1000,15 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Expression<Annotation>(
         $: g_in.T.Expression<Annotation>,
-        $v_expected__type: pt.OptionalValue<g_out_typesystem.T.Type<Annotation>>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_expected__type: pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Expression<Annotation> {
         return pl.cc($, ($): g_out.T.Expression<Annotation> => {
             switch ($[0]) {
                 case 'array literal': return pl.ss($, ($) => {
-                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type.array<Annotation>> = pl.cc($, ($) => {
-                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type.array<Annotation>> = tempoptional/*3*/(
+                    const /*option constraint*/$v_out: pt.RawOptionalValue<g_out_typesystem.T.Type.array<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type.array<Annotation>> = tempoptional/*3*/(
                             $v_expected__type,
                             ($) => ($[0] === 'array')
                                 ? [true, $[1]]
@@ -1049,8 +1049,8 @@ export const $$: A.resolve = ($d, $se) => {
                     })]
                 })
                 case 'boolean': return pl.ss($, ($) => {
-                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = pl.cc($, ($) => {
-                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = tempoptional/*3*/(
+                    const /*option constraint*/$v_out: pt.RawOptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type._lboolean<Annotation>> = tempoptional/*3*/(
                             $v_expected__type,
                             ($) => ($[0] === 'boolean')
                                 ? [true, $[1]]
@@ -1086,8 +1086,8 @@ export const $$: A.resolve = ($d, $se) => {
                     })]
                 })
                 case 'null': return pl.ss($, ($) => {
-                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type._lnull<Annotation>> = pl.cc($, ($) => {
-                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lnull<Annotation>> = tempoptional/*3*/(
+                    const /*option constraint*/$v_out: pt.RawOptionalValue<g_out_typesystem.T.Type._lnull<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type._lnull<Annotation>> = tempoptional/*3*/(
                             $v_expected__type,
                             ($) => ($[0] === 'null')
                                 ? [true, $[1]]
@@ -1113,8 +1113,8 @@ export const $$: A.resolve = ($d, $se) => {
                     })]
                 })
                 case 'numerical': return pl.ss($, ($) => {
-                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
-                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
+                    const /*option constraint*/$v_out: pt.RawOptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
                             $v_expected__type,
                             ($) => ($[0] === 'number')
                                 ? [true, $[1]]
@@ -1150,8 +1150,8 @@ export const $$: A.resolve = ($d, $se) => {
                     })]
                 })
                 case 'object literal': return pl.ss($, ($) => {
-                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type.group<Annotation>> = pl.cc($, ($) => {
-                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type.group<Annotation>> = tempoptional/*3*/(
+                    const /*option constraint*/$v_out: pt.RawOptionalValue<g_out_typesystem.T.Type.group<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type.group<Annotation>> = tempoptional/*3*/(
                             $v_expected__type,
                             ($) => ($[0] === 'group')
                                 ? [true, $[1]]
@@ -1174,9 +1174,9 @@ export const $$: A.resolve = ($d, $se) => {
                                 const $p_properties: g_out.T.Expression.object__literal.content.properties<Annotation> = pl.cc($['properties'], ($) => $d.resolveDictionary<g_in.T.Expression.object__literal.content.properties.D<Annotation>, g_out.T.Expression.object__literal.content.properties.D<Annotation>>($, { 'map': ($, $l) => {
                                     const entrykey = $.key
                                     return pl.cc($.value, ($) => {
-                                        const /*dict constraint*/$v_prop: pt.OptionalValue<g_out_typesystem.T.Type.group.D<Annotation>> = tempoptional/*3*/(
+                                        const /*dict constraint*/$v_prop: pt.RawOptionalValue<g_out_typesystem.T.Type.group.D<Annotation>> = tempoptional/*3*/(
                                             $v_out,
-                                            ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Type.group.D<Annotation>>>(
+                                            ($) => $.__getEntry<pt.RawOptionalValue<g_out_typesystem.T.Type.group.D<Annotation>>>(
                                                 entrykey,
                                                 ($) => [true, $],
                                                 () => {
@@ -1212,7 +1212,7 @@ export const $$: A.resolve = ($d, $se) => {
                                         }
                                     })
                                 }}))
-                                const $v_properties: pt.OptionalValue<g_out.T.Expression.object__literal.content.properties<Annotation>> = [true, $p_properties]
+                                const $v_properties: pt.RawOptionalValue<g_out.T.Expression.object__literal.content.properties<Annotation>> = [true, $p_properties]
                                 return {
                                     'properties': $p_properties,
                                 }
@@ -1221,8 +1221,8 @@ export const $$: A.resolve = ($d, $se) => {
                     })]
                 })
                 case 'string': return pl.ss($, ($) => {
-                    const /*option constraint*/$v_out: pt.OptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = pl.cc($, ($) => {
-                        const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = tempoptional/*3*/(
+                    const /*option constraint*/$v_out: pt.RawOptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = pl.cc($, ($) => {
+                        const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = tempoptional/*3*/(
                             $v_expected__type,
                             ($) => ($[0] === 'string')
                                 ? [true, $[1]]
@@ -1264,8 +1264,8 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Numerical__Expression<Annotation>(
         $: g_in.T.Numerical__Expression<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Numerical__Expression<Annotation> {
         return pl.cc($, ($): g_out.T.Numerical__Expression<Annotation> => {
             switch ($[0]) {
@@ -1283,7 +1283,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Numerical__Expression.minus.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $v_left__hand__side: pt.RawOptionalValue<g_out.T.Numerical__Expression.minus.left__hand__side<Annotation>> = [true, $p_left__hand__side]
                     const $p_right__hand__side: g_out.T.Numerical__Expression.minus.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -1297,7 +1297,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Numerical__Expression.minus.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Numerical__Expression.minus.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                     return {
                         'left hand side': $p_left__hand__side,
                         'right hand side': $p_right__hand__side,
@@ -1318,7 +1318,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_left__hand__side: pt.OptionalValue<g_out.T.Numerical__Expression.plus.left__hand__side<Annotation>> = [true, $p_left__hand__side]
+                    const $v_left__hand__side: pt.RawOptionalValue<g_out.T.Numerical__Expression.plus.left__hand__side<Annotation>> = [true, $p_left__hand__side]
                     const $p_right__hand__side: g_out.T.Numerical__Expression.plus.right__hand__side<Annotation> = pl.cc($['right hand side'], ($) => map_Numerical__Expression__Or__Selection<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -1332,7 +1332,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_right__hand__side: pt.OptionalValue<g_out.T.Numerical__Expression.plus.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                    const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Numerical__Expression.plus.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                     return {
                         'left hand side': $p_left__hand__side,
                         'right hand side': $p_right__hand__side,
@@ -1397,8 +1397,8 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Numerical__Expression__Or__Selection<Annotation>(
         $: g_in.T.Numerical__Expression__Or__Selection<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Numerical__Expression__Or__Selection<Annotation> {
         return pl.cc($, ($): g_out.T.Numerical__Expression__Or__Selection<Annotation> => {
             switch ($[0]) {
@@ -1429,12 +1429,12 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_selection: pt.OptionalValue<g_out.T.Numerical__Expression__Or__Selection.selection.selection<Annotation>> = [true, $p_selection]
+                    const $v_selection: pt.RawOptionalValue<g_out.T.Numerical__Expression__Or__Selection.selection.selection<Annotation>> = [true, $p_selection]
                     const $p_cast__to__number: g_out.T.Numerical__Expression__Or__Selection.selection.cast__to__number<Annotation> = pl.cc($['cast to number'], ($) => pl.cc($, ($): g_out.T.Numerical__Expression__Or__Selection.selection.cast__to__number<Annotation> => {
                         switch ($[0]) {
                             case 'number': return pl.ss($, ($) => {
-                                const /*option constraint*/$v__lnumber: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
-                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
+                                const /*option constraint*/$v__lnumber: pt.RawOptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
                                         $v_selection,
                                         ($) => tempoptional(
                                             $.result,
@@ -1466,7 +1466,7 @@ export const $$: A.resolve = ($d, $se) => {
                             default: return pl.au($[0])
                         }
                     }))
-                    const $v_cast__to__number: pt.OptionalValue<g_out.T.Numerical__Expression__Or__Selection.selection.cast__to__number<Annotation>> = [true, $p_cast__to__number]
+                    const $v_cast__to__number: pt.RawOptionalValue<g_out.T.Numerical__Expression__Or__Selection.selection.cast__to__number<Annotation>> = [true, $p_cast__to__number]
                     return {
                         'cast to number': $p_cast__to__number,
                         'selection': $p_selection,
@@ -1487,9 +1487,9 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Statements<Annotation>(
         $: g_in.T.Statements<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out_typesystem.T.Type__Parameters<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out_typesystem.T.Type__Parameters<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Statements<Annotation> {
         return $.map(($) => pl.cc($, ($): g_out.T.Statements.A<Annotation> => {
             switch ($[0]) {
@@ -1525,7 +1525,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_condition: pt.OptionalValue<g_out.T.Statements.A._lif.condition<Annotation>> = [true, $p_condition]
+                    const $v_condition: pt.RawOptionalValue<g_out.T.Statements.A._lif.condition<Annotation>> = [true, $p_condition]
                     const $p_then: g_out.T.Statements.A._lif.then<Annotation> = pl.cc($['then'], ($) => map_Block<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -1544,7 +1544,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_then: pt.OptionalValue<g_out.T.Statements.A._lif.then<Annotation>> = [true, $p_then]
+                    const $v_then: pt.RawOptionalValue<g_out.T.Statements.A._lif.then<Annotation>> = [true, $p_then]
                     const $p__lelse: g_out.T.Statements.A._lif._lelse<Annotation> = pl.cc($['else'], ($) => tempoptional/*4*/(
                         $,
                         ($): g_out.T.Statements.A._lif._lelse<Annotation> => [true, map_Block<Annotation>(
@@ -1567,7 +1567,7 @@ export const $$: A.resolve = ($d, $se) => {
                         )],
                         () => [false],
                     ))
-                    const $v__lelse: pt.OptionalValue<g_out.T.Statements.A._lif._lelse<Annotation>> = [true, $p__lelse]
+                    const $v__lelse: pt.RawOptionalValue<g_out.T.Statements.A._lif._lelse<Annotation>> = [true, $p__lelse]
                     return {
                         'condition': $p_condition,
                         'else': $p__lelse,
@@ -1588,7 +1588,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_condition: pt.OptionalValue<g_out.T.Statements.A._lwhile.condition<Annotation>> = [true, $p_condition]
+                    const $v_condition: pt.RawOptionalValue<g_out.T.Statements.A._lwhile.condition<Annotation>> = [true, $p_condition]
                     const $p_block: g_out.T.Statements.A._lwhile.block<Annotation> = pl.cc($['block'], ($) => map_Block<Annotation>(
                         $,
                         tempoptional/*3*/(
@@ -1607,7 +1607,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_block: pt.OptionalValue<g_out.T.Statements.A._lwhile.block<Annotation>> = [true, $p_block]
+                    const $v_block: pt.RawOptionalValue<g_out.T.Statements.A._lwhile.block<Annotation>> = [true, $p_block]
                     return {
                         'block': $p_block,
                         'condition': $p_condition,
@@ -1627,7 +1627,7 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_address: pt.OptionalValue<g_out.T.Statements.A._lwith.address<Annotation>> = [true, $p_address]
+                    const $v_address: pt.RawOptionalValue<g_out.T.Statements.A._lwith.address<Annotation>> = [true, $p_address]
                     const $p_action: g_out.T.Statements.A._lwith.action<Annotation> = pl.cc($['action'], ($) => pl.cc($, ($): g_out.T.Statements.A._lwith.action<Annotation> => {
                         switch ($[0]) {
                             case 'assign': return pl.ss($, ($) => ['assign', map_Assign<Annotation>(
@@ -1644,8 +1644,8 @@ export const $$: A.resolve = ($d, $se) => {
                                 ),//$v_variable__stack
                             )])
                             case 'minus assign': return pl.ss($, ($) => {
-                                const /*option constraint*/$v_number__address: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
-                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
+                                const /*option constraint*/$v_number__address: pt.RawOptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
                                         $v_address,
                                         ($) => tempoptional(
                                             $.result,
@@ -1682,7 +1682,7 @@ export const $$: A.resolve = ($d, $se) => {
                                                     () => [false],
                                                 ),//$v_variable__stack
                                             ))
-                                            const $v_right__hand__side: pt.OptionalValue<g_out.T.Statements.A._lwith.action.minus__assign.content.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                                            const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Statements.A._lwith.action.minus__assign.content.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                                             return {
                                                 'right hand side': $p_right__hand__side,
                                             }
@@ -1691,8 +1691,8 @@ export const $$: A.resolve = ($d, $se) => {
                                 })]
                             })
                             case 'plus assign': return pl.ss($, ($) => {
-                                const /*option constraint*/$v_number__address: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
-                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
+                                const /*option constraint*/$v_number__address: pt.RawOptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type._lnumber<Annotation>> = tempoptional/*3*/(
                                         $v_address,
                                         ($) => tempoptional(
                                             $.result,
@@ -1729,7 +1729,7 @@ export const $$: A.resolve = ($d, $se) => {
                                                     () => [false],
                                                 ),//$v_variable__stack
                                             ))
-                                            const $v_right__hand__side: pt.OptionalValue<g_out.T.Statements.A._lwith.action.plus__assign.content.right__hand__side<Annotation>> = [true, $p_right__hand__side]
+                                            const $v_right__hand__side: pt.RawOptionalValue<g_out.T.Statements.A._lwith.action.plus__assign.content.right__hand__side<Annotation>> = [true, $p_right__hand__side]
                                             return {
                                                 'right hand side': $p_right__hand__side,
                                             }
@@ -1740,7 +1740,7 @@ export const $$: A.resolve = ($d, $se) => {
                             default: return pl.au($[0])
                         }
                     }))
-                    const $v_action: pt.OptionalValue<g_out.T.Statements.A._lwith.action<Annotation>> = [true, $p_action]
+                    const $v_action: pt.RawOptionalValue<g_out.T.Statements.A._lwith.action<Annotation>> = [true, $p_action]
                     return {
                         'action': $p_action,
                         'address': $p_address,
@@ -1753,8 +1753,8 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_String__Expression<Annotation>(
         $: g_in.T.String__Expression<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.String__Expression<Annotation> {
         return pl.cc($, ($): g_out.T.String__Expression<Annotation> => {
             switch ($[0]) {
@@ -1766,8 +1766,8 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_String__Expression__Or__Selection<Annotation>(
         $: g_in.T.String__Expression__Or__Selection<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.String__Expression__Or__Selection<Annotation> {
         return pl.cc($, ($): g_out.T.String__Expression__Or__Selection<Annotation> => {
             switch ($[0]) {
@@ -1798,12 +1798,12 @@ export const $$: A.resolve = ($d, $se) => {
                             () => [false],
                         ),//$v_variable__stack
                     ))
-                    const $v_selection: pt.OptionalValue<g_out.T.String__Expression__Or__Selection.selection.selection<Annotation>> = [true, $p_selection]
+                    const $v_selection: pt.RawOptionalValue<g_out.T.String__Expression__Or__Selection.selection.selection<Annotation>> = [true, $p_selection]
                     const $p_cast__to__string: g_out.T.String__Expression__Or__Selection.selection.cast__to__string<Annotation> = pl.cc($['cast to string'], ($) => pl.cc($, ($): g_out.T.String__Expression__Or__Selection.selection.cast__to__string<Annotation> => {
                         switch ($[0]) {
                             case 'string': return pl.ss($, ($) => {
-                                const /*option constraint*/$v__lstring: pt.OptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = pl.cc($, ($) => {
-                                    const optConstraint: pt.OptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = tempoptional/*3*/(
+                                const /*option constraint*/$v__lstring: pt.RawOptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = pl.cc($, ($) => {
+                                    const optConstraint: pt.RawOptionalValue<g_out_typesystem.T.Type._lstring<Annotation>> = tempoptional/*3*/(
                                         $v_selection,
                                         ($) => tempoptional(
                                             $.result,
@@ -1835,7 +1835,7 @@ export const $$: A.resolve = ($d, $se) => {
                             default: return pl.au($[0])
                         }
                     }))
-                    const $v_cast__to__string: pt.OptionalValue<g_out.T.String__Expression__Or__Selection.selection.cast__to__string<Annotation>> = [true, $p_cast__to__string]
+                    const $v_cast__to__string: pt.RawOptionalValue<g_out.T.String__Expression__Or__Selection.selection.cast__to__string<Annotation>> = [true, $p_cast__to__string]
                     return {
                         'cast to string': $p_cast__to__string,
                         'selection': $p_selection,
@@ -1848,15 +1848,15 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Type__Arguments<Annotation>(
         $: g_in.T.Type__Arguments<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_type__parameters: pt.OptionalValue<g_out_typesystem.T.Type__Parameters<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_type__parameters: pt.RawOptionalValue<g_out_typesystem.T.Type__Parameters<Annotation>>,
     ): g_out.T.Type__Arguments<Annotation> {
         return $d.resolveDictionary<g_in.T.Type__Arguments.D<Annotation>, g_out.T.Type__Arguments.D<Annotation>>($, { 'map': ($, $l) => {
             const entrykey = $.key
             return pl.cc($.value, ($) => {
-                const /*dict constraint*/$v_x: pt.OptionalValue<g_out_typesystem.T.Type__Parameters.D<Annotation>> = tempoptional/*3*/(
+                const /*dict constraint*/$v_x: pt.RawOptionalValue<g_out_typesystem.T.Type__Parameters.D<Annotation>> = tempoptional/*3*/(
                     $v_type__parameters,
-                    ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Type__Parameters.D<Annotation>>>(
+                    ($) => $.__getEntry<pt.RawOptionalValue<g_out_typesystem.T.Type__Parameters.D<Annotation>>>(
                         entrykey,
                         ($) => [true, $],
                         () => {
@@ -1880,7 +1880,7 @@ export const $$: A.resolve = ($d, $se) => {
                                 () => [false],
                             ),//$v_namespace
                         ))
-                        const $v__ltype: pt.OptionalValue<g_out.T.Type__Arguments.D.content._ltype<Annotation>> = [true, $p__ltype]
+                        const $v__ltype: pt.RawOptionalValue<g_out.T.Type__Arguments.D.content._ltype<Annotation>> = [true, $p__ltype]
                         return {
                             'type': $p__ltype,
                         }
@@ -1892,7 +1892,7 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Type__Selection<Annotation>(
         $: g_in.T.Type__Selection<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
     ): g_out.T.Type__Selection<Annotation> {
         const content = pl.cc($, ($): g_out.T.Type__Selection.content<Annotation> => {
             switch ($[0]) {
@@ -1900,9 +1900,9 @@ export const $$: A.resolve = ($d, $se) => {
                     const stateData: g_out.T.Type__Selection.content.content.child__namespace<Annotation> = pl.cc($, ($) => {
                         const $p_namespacex: g_out.T.Type__Selection.content.content.child__namespace.namespacex<Annotation> = pl.cc($['namespacex'], ($) => pl.cc($, ($) => {
                             const refkey = $.key
-                            const constraint: pt.OptionalValue<g_out_typesystem.T.Namespace.namespaces.D<Annotation>> = tempoptional/*3*/(
+                            const constraint: pt.RawOptionalValue<g_out_typesystem.T.Namespace.namespaces.D<Annotation>> = tempoptional/*3*/(
                                 $v_namespace,
-                                ($) => pl.cc($['namespaces'], ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Namespace.namespaces.D<Annotation>>>(
+                                ($) => pl.cc($['namespaces'], ($) => $.__getEntry<pt.RawOptionalValue<g_out_typesystem.T.Namespace.namespaces.D<Annotation>>>(
                                     refkey,
                                     ($) => [true, $],
                                     () => {
@@ -1918,7 +1918,7 @@ export const $$: A.resolve = ($d, $se) => {
                                 'key': $.key,
                             }
                         }))
-                        const $v_namespacex: pt.OptionalValue<g_out.T.Type__Selection.content.content.child__namespace.namespacex<Annotation>> = [true, $p_namespacex]
+                        const $v_namespacex: pt.RawOptionalValue<g_out.T.Type__Selection.content.content.child__namespace.namespacex<Annotation>> = [true, $p_namespacex]
                         const $p_selection: g_out.T.Type__Selection.content.content.child__namespace.selection<Annotation> = pl.cc($['selection'], ($) => map_Type__Selection<Annotation>(
                             $,
                             tempoptional/*3*/(
@@ -1931,7 +1931,7 @@ export const $$: A.resolve = ($d, $se) => {
                                 () => [false],
                             ),//$v_namespace
                         ))
-                        const $v_selection: pt.OptionalValue<g_out.T.Type__Selection.content.content.child__namespace.selection<Annotation>> = [true, $p_selection]
+                        const $v_selection: pt.RawOptionalValue<g_out.T.Type__Selection.content.content.child__namespace.selection<Annotation>> = [true, $p_selection]
                         return {
                             'namespacex': $p_namespacex,
                             'selection': $p_selection,
@@ -1939,7 +1939,7 @@ export const $$: A.resolve = ($d, $se) => {
                     })
                     return {
                         'content': ['child namespace', stateData],
-                        'result': pl.cc(stateData, ($): pt.OptionalValue<g_out_typesystem.T.Type<Annotation>> => pl.cc($['selection'], ($) => tempoptional(
+                        'result': pl.cc(stateData, ($): pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>> => pl.cc($['selection'], ($) => tempoptional(
                             $.result,
                             ($) => [true, $],
                             () => [false],
@@ -1949,9 +1949,9 @@ export const $$: A.resolve = ($d, $se) => {
                 case 'current namespace': return pl.ss($, ($) => { //option with result
                     const stateData: g_out.T.Type__Selection.content.content.current__namespace<Annotation> = pl.cc($, ($) => {
                         const refkey = $.key
-                        const constraint: pt.OptionalValue<g_out_typesystem.T.Namespace.types.D<Annotation>> = tempoptional/*3*/(
+                        const constraint: pt.RawOptionalValue<g_out_typesystem.T.Namespace.types.D<Annotation>> = tempoptional/*3*/(
                             $v_namespace,
-                            ($) => pl.cc($['types'], ($) => $.__getEntry<pt.OptionalValue<g_out_typesystem.T.Namespace.types.D<Annotation>>>(
+                            ($) => pl.cc($['types'], ($) => $.__getEntry<pt.RawOptionalValue<g_out_typesystem.T.Namespace.types.D<Annotation>>>(
                                 refkey,
                                 ($) => [true, $],
                                 () => {
@@ -1969,7 +1969,7 @@ export const $$: A.resolve = ($d, $se) => {
                     })
                     return {
                         'content': ['current namespace', stateData],
-                        'result': pl.cc(stateData, ($): pt.OptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional/*1*/(
+                        'result': pl.cc(stateData, ($): pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional/*1*/(
                             $.constraint,
                             ($) => [true, $],
                             () => [false],
@@ -1981,7 +1981,7 @@ export const $$: A.resolve = ($d, $se) => {
         })
         return {
             'content': content,
-            'result': pl.cc(content, ($): pt.OptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional(
+            'result': pl.cc(content, ($): pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>> => tempoptional(
                 $.result,
                 ($) => [true, $],
                 () => [false],
@@ -1991,8 +1991,8 @@ export const $$: A.resolve = ($d, $se) => {
     
     function map_Variables<Annotation>(
         $: g_in.T.Variables<Annotation>,
-        $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
-        $v_variable__stack: pt.OptionalValue<g_out.T.Variables<Annotation>>,
+        $v_namespace: pt.RawOptionalValue<g_out_typesystem.T.Namespace<Annotation>>,
+        $v_variable__stack: pt.RawOptionalValue<g_out.T.Variables<Annotation>>,
     ): g_out.T.Variables<Annotation> {
         return $d.resolveDictionary<g_in.T.Variables.D<Annotation>, g_out.T.Variables.D<Annotation>>($, { 'map': ($, $l) => pl.cc($.value, ($) => pl.cc($, ($) => {
             const $p__ltype: g_out.T.Variables.D._ltype<Annotation> = pl.cc($['type'], ($) => pl.cc($, ($): g_out.T.Variables.D._ltype<Annotation> => {
@@ -2007,7 +2007,7 @@ export const $$: A.resolve = ($d, $se) => {
                                     () => [false],
                                 ),//$v_namespace
                             ))
-                            const $v__ltype: pt.OptionalValue<g_out.T.Variables.D._ltype.content.local._ltype<Annotation>> = [true, $p__ltype]
+                            const $v__ltype: pt.RawOptionalValue<g_out.T.Variables.D._ltype.content.local._ltype<Annotation>> = [true, $p__ltype]
                             const $p_initializer: g_out.T.Variables.D._ltype.content.local.initializer<Annotation> = pl.cc($['initializer'], ($) => map_Expression<Annotation>(
                                 $,
                                 tempoptional/*3*/(
@@ -2030,7 +2030,7 @@ export const $$: A.resolve = ($d, $se) => {
                                     () => [false],
                                 ),//$v_variable__stack
                             ))
-                            const $v_initializer: pt.OptionalValue<g_out.T.Variables.D._ltype.content.local.initializer<Annotation>> = [true, $p_initializer]
+                            const $v_initializer: pt.RawOptionalValue<g_out.T.Variables.D._ltype.content.local.initializer<Annotation>> = [true, $p_initializer]
                             return {
                                 'initializer': $p_initializer,
                                 'type': $p__ltype,
@@ -2038,7 +2038,7 @@ export const $$: A.resolve = ($d, $se) => {
                         })
                         return {
                             'content': ['local', stateData],
-                            'result': pl.cc(stateData, ($): pt.OptionalValue<g_out_typesystem.T.Type<Annotation>> => pl.cc($['type'], ($) => tempoptional(
+                            'result': pl.cc(stateData, ($): pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>> => pl.cc($['type'], ($) => tempoptional(
                                 $.result,
                                 ($) => [true, $],
                                 () => [false],
@@ -2049,9 +2049,9 @@ export const $$: A.resolve = ($d, $se) => {
                         const stateData: g_out.T.Variables.D._ltype.content.variable__stack2<Annotation> = pl.cc($, ($) => {
                             const $p_variable: g_out.T.Variables.D._ltype.content.variable__stack2.variable<Annotation> = pl.cc($['variable'], ($) => pl.cc($, ($) => {
                                 const refkey = $.key
-                                const constraint: pt.OptionalValue<g_out.T.Variables.D<Annotation>> = tempoptional/*3*/(
+                                const constraint: pt.RawOptionalValue<g_out.T.Variables.D<Annotation>> = tempoptional/*3*/(
                                     $v_variable__stack,
-                                    ($) => $.__getEntry<pt.OptionalValue<g_out.T.Variables.D<Annotation>>>(
+                                    ($) => $.__getEntry<pt.RawOptionalValue<g_out.T.Variables.D<Annotation>>>(
                                         refkey,
                                         ($) => [true, $],
                                         () => {
@@ -2067,14 +2067,14 @@ export const $$: A.resolve = ($d, $se) => {
                                     'key': $.key,
                                 }
                             }))
-                            const $v_variable: pt.OptionalValue<g_out.T.Variables.D._ltype.content.variable__stack2.variable<Annotation>> = [true, $p_variable]
+                            const $v_variable: pt.RawOptionalValue<g_out.T.Variables.D._ltype.content.variable__stack2.variable<Annotation>> = [true, $p_variable]
                             return {
                                 'variable': $p_variable,
                             }
                         })
                         return {
                             'content': ['variable stack2', stateData],
-                            'result': pl.cc(stateData, ($): pt.OptionalValue<g_out_typesystem.T.Type<Annotation>> => pl.cc($['variable'], ($) => tempoptional/*1*/(
+                            'result': pl.cc(stateData, ($): pt.RawOptionalValue<g_out_typesystem.T.Type<Annotation>> => pl.cc($['variable'], ($) => tempoptional/*1*/(
                                 $.constraint,
                                 ($) => pl.cc($['type'], ($) => tempoptional(
                                     $.result,
@@ -2088,7 +2088,7 @@ export const $$: A.resolve = ($d, $se) => {
                     default: return pl.au($[0])
                 }
             }))
-            const $v__ltype: pt.OptionalValue<g_out.T.Variables.D._ltype<Annotation>> = [true, $p__ltype]
+            const $v__ltype: pt.RawOptionalValue<g_out.T.Variables.D._ltype<Annotation>> = [true, $p__ltype]
             return {
                 'type': $p__ltype,
             }

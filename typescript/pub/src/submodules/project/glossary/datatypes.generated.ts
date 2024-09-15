@@ -201,7 +201,7 @@ export namespace N {
                 
                 export namespace N {
                     
-                    export namespace arguments {
+                    export namespace _$larguments {
                         
                         export namespace N {
                             
@@ -1347,12 +1347,12 @@ export namespace T {
     
     export namespace Context {
         
-        export namespace arguments {
+        export namespace _larguments {
             
             export type D<GAnnotation> = string
         }
         
-        export type arguments<GAnnotation> = pt.Dictionary<string>
+        export type _larguments<GAnnotation> = pt.Dictionary<string>
         
         export type glossary<GAnnotation> = string
     }
